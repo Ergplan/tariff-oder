@@ -79,11 +79,48 @@ Status: **not yet applied.**  Terraform is written and `terraform validate`s wit
 `google 6.30.0`, `google-beta 6.30.0`, `random 3.6.3`; no plan or apply has been run against
 the project, because the session that wrote it has no Google credentials.
 
+### Getting the code onto the VM
+
+The GitHub repository is private, so an anonymous HTTPS clone prompts for a username and
+password — and a GitHub account password will not work (password auth for git was removed).
+Use a **deploy key**: scoped to this one repository, no personal credential on the VM, and it
+survives re-imaging the box only if you keep the key.
+
+```bash
+ssh-keygen -t ed25519 -C "tariff-order-vm" -f ~/.ssh/id_ed25519_tariff -N ""
+cat ~/.ssh/id_ed25519_tariff.pub
+```
+
+Paste that public key into GitHub → the repository → Settings → Deploy keys → *Add deploy key*.
+Tick **Allow write access** if the VM will push (it will, if Claude Code runs there).  Then:
+
+```bash
+cat >> ~/.ssh/config <<'SSHCFG'
+Host github.com
+  IdentityFile ~/.ssh/id_ed25519_tariff
+  IdentitiesOnly yes
+SSHCFG
+chmod 600 ~/.ssh/config
+git clone git@github.com:Ergplan/tariff-oder.git && cd tariff-oder
+git checkout claude/keen-tesla-r9mvv5
+```
+
+Alternative, if you would rather not manage a key: create a fine-grained personal access token
+(GitHub → Settings → Developer settings → Personal access tokens → Fine-grained), scoped to
+this repository with Contents read *and* write, then clone over HTTPS giving your GitHub
+username and the **token** as the password.  `git config --global credential.helper store`
+saves it to `~/.git-credentials` in plain text — acceptable on a single-purpose build VM,
+not on a shared machine.
+
+Do not put either credential in the repository, in a container image, or in Secret Manager
+alongside application secrets.
+
+### Standing up the project
+
 On the VM, as a user (or the `agent-builder` SA) with the roles listed above:
 
 ```bash
-git clone https://github.com/Ergplan/tariff-oder && cd tariff-oder
-git checkout claude/keen-tesla-r9mvv5
+cd tariff-oder
 scripts/verify-gcp-setup.sh                      # fix every MISSING item first
 
 # 1. Terraform state bucket versioning (confirm; the script reports it)
