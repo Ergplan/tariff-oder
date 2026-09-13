@@ -1,0 +1,235 @@
+# Cloud Run: api + web services (behind the IAP load balancer), worker + migrate jobs.
+# Request timeouts are sized for API calls; document processing never runs in a request.
+
+locals {
+  gcp_env = {
+    DEPLOYMENT_PROFILE   = "gcp"
+    ENVIRONMENT_NAME     = var.environment
+    GCP_PROJECT_ID       = var.project_id
+    OBJECT_STORE_BACKEND = "gcs"
+    SOURCE_BUCKET        = google_storage_bucket.b["sources"].name
+    ARTEFACT_BUCKET      = google_storage_bucket.b["artefacts"].name
+    EXPORT_BUCKET        = google_storage_bucket.b["exports"].name
+    SECRETS_BACKEND      = "secret_manager"
+    IDENTITY_BACKEND     = "iap"
+    # Two-phase: backend-service ids exist only after the first apply.  Copy the
+    # `iap_audiences` output into envs/<env>.tfvars and apply again (docs/deployment.md).
+    IAP_AUDIENCE         = join(",", var.iap_audiences)
+    LOG_FORMAT           = "json"
+    JOB_LEASE_SECONDS    = tostring(var.job_lease_seconds)
+    GOLDEN_MANIFEST_PATH = "/app/tests/golden/manifest.json"
+  }
+}
+
+data "google_project" "this" {
+  project_id = var.project_id
+}
+
+resource "google_cloud_run_v2_service" "api" {
+  name                = "${local.name}-api"
+  location            = var.region
+  ingress             = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
+  deletion_protection = false
+  labels              = local.labels
+
+  template {
+    service_account = google_service_account.api.email
+    timeout         = "60s"
+    scaling {
+      min_instance_count = var.api_min_instances
+      max_instance_count = 4
+    }
+    vpc_access {
+      network_interfaces {
+        network    = google_compute_network.vpc.id
+        subnetwork = google_compute_subnetwork.run.id
+      }
+      egress = "PRIVATE_RANGES_ONLY"
+    }
+    containers {
+      image = var.python_image
+      ports {
+        container_port = 8000
+      }
+      resources {
+        limits = { cpu = "1", memory = "1Gi" }
+      }
+      dynamic "env" {
+        for_each = local.gcp_env
+        content {
+          name  = env.key
+          value = env.value
+        }
+      }
+      env {
+        name = "DATABASE_URL"
+        value_source {
+          secret_key_ref {
+            secret  = google_secret_manager_secret.managed["DATABASE_URL"].secret_id
+            version = "latest"
+          }
+        }
+      }
+      startup_probe {
+        http_get {
+          path = "/healthz"
+        }
+        initial_delay_seconds = 2
+        period_seconds        = 5
+        failure_threshold     = 6
+      }
+      liveness_probe {
+        http_get {
+          path = "/healthz"
+        }
+        period_seconds = 30
+      }
+    }
+  }
+  depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
+}
+
+resource "google_cloud_run_v2_service" "web" {
+  name                = "${local.name}-web"
+  location            = var.region
+  ingress             = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
+  deletion_protection = false
+  labels              = local.labels
+
+  template {
+    service_account = google_service_account.web.email
+    timeout         = "60s"
+    scaling {
+      min_instance_count = 0
+      max_instance_count = 4
+    }
+    containers {
+      image = var.web_image
+      ports {
+        container_port = 3000
+      }
+      resources {
+        limits = { cpu = "1", memory = "512Mi" }
+      }
+      env {
+        name  = "DEPLOYMENT_PROFILE"
+        value = "gcp"
+      }
+      env {
+        name  = "API_BASE_URL"
+        value = google_cloud_run_v2_service.api.uri
+      }
+    }
+  }
+  depends_on = [google_project_service.apis]
+}
+
+# Worker: Cloud Run Job draining the queue on a schedule (Milestone 1 default).  Milestone 8
+# measures a full 570-page run and may replace this with a worker-pool service or GKE (ADR).
+resource "google_cloud_run_v2_job" "worker" {
+  name                = "${local.name}-worker"
+  location            = var.region
+  deletion_protection = false
+  labels              = local.labels
+
+  template {
+    task_count = 1
+    template {
+      service_account = google_service_account.worker.email
+      timeout         = "3600s"
+      max_retries     = 0 # retries are the queue's job (bounded attempts, checkpoints)
+      vpc_access {
+        network_interfaces {
+          network    = google_compute_network.vpc.id
+          subnetwork = google_compute_subnetwork.run.id
+        }
+        egress = "PRIVATE_RANGES_ONLY"
+      }
+      containers {
+        image   = var.python_image
+        command = ["tariff-worker", "--drain"]
+        resources {
+          limits = { cpu = "2", memory = "4Gi" }
+        }
+        dynamic "env" {
+          for_each = local.gcp_env
+          content {
+            name  = env.key
+            value = env.value
+          }
+        }
+        env {
+          name = "DATABASE_URL"
+          value_source {
+            secret_key_ref {
+              secret  = google_secret_manager_secret.managed["DATABASE_URL"].secret_id
+              version = "latest"
+            }
+          }
+        }
+      }
+    }
+  }
+  depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
+}
+
+resource "google_cloud_run_v2_job" "migrate" {
+  name                = "${local.name}-migrate"
+  location            = var.region
+  deletion_protection = false
+  labels              = local.labels
+
+  template {
+    task_count = 1
+    template {
+      service_account = google_service_account.api.email
+      timeout         = "900s"
+      max_retries     = 0
+      vpc_access {
+        network_interfaces {
+          network    = google_compute_network.vpc.id
+          subnetwork = google_compute_subnetwork.run.id
+        }
+        egress = "PRIVATE_RANGES_ONLY"
+      }
+      containers {
+        image   = var.python_image
+        command = ["tariff-api", "migrate"]
+        dynamic "env" {
+          for_each = local.gcp_env
+          content {
+            name  = env.key
+            value = env.value
+          }
+        }
+        env {
+          name = "DATABASE_URL"
+          value_source {
+            secret_key_ref {
+              secret  = google_secret_manager_secret.managed["DATABASE_URL"].secret_id
+              version = "latest"
+            }
+          }
+        }
+      }
+    }
+  }
+  depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
+}
+
+resource "google_cloud_scheduler_job" "worker" {
+  name        = "${local.name}-worker-drain"
+  description = "Run the worker job to drain the PostgreSQL queue"
+  schedule    = var.worker_schedule
+  time_zone   = "Asia/Kolkata"
+  region      = var.region
+
+  http_target {
+    http_method = "POST"
+    uri         = "https://run.googleapis.com/v2/projects/${var.project_id}/locations/${var.region}/jobs/${google_cloud_run_v2_job.worker.name}:run"
+    oauth_token {
+      service_account_email = google_service_account.scheduler.email
+    }
+  }
+  depends_on = [google_project_service.apis]
+}

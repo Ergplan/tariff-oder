@@ -1,0 +1,110 @@
+# Tariff Order Intelligence - developer and deployment entrypoints.
+# Two profiles: `local` (this file's dev/test targets) and `gcp` (deploy-* targets).
+
+SHELL := /bin/bash
+.DEFAULT_GOAL := help
+
+COMPOSE := docker compose -f infra/local/docker-compose.yml
+TEST_DB ?= postgresql+psycopg://postgres@127.0.0.1:5433/tariff_test
+ENV ?= dev
+TF_DIR := infra/gcp
+REGION ?= asia-south1
+
+help: ## List targets
+	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-22s\033[0m %s\n", $$1, $$2}'
+
+# ---------------------------------------------------------------- local profile
+install: ## Install Python (uv) and Node (pnpm) dependencies
+	uv sync --all-packages
+	pnpm install --frozen-lockfile
+
+dev: ## Start postgres, api, worker, web in containers (local profile)
+	$(COMPOSE) up --build
+
+dev-down: ## Stop the local stack (keeps volumes)
+	$(COMPOSE) down
+
+dev-reset: ## Stop the local stack and delete volumes
+	$(COMPOSE) down -v
+
+migrate: ## Apply migrations to $$DATABASE_URL
+	uv run tariff-api migrate
+
+seed: ## Seed jurisdictions/commissions/utilities (identities only)
+	uv run tariff-api seed
+
+api: ## Run the API without containers (needs DATABASE_URL, LOCAL_USER_ALLOWLIST)
+	uv run uvicorn tariff_api.asgi:app --host 127.0.0.1 --port 8000 --reload
+
+worker: ## Run the worker without containers
+	uv run tariff-worker
+
+web: ## Run the web app in dev mode (needs API_BASE_URL, LOCAL_WEB_USER)
+	pnpm --filter @tariff/web dev
+
+ephemeral-postgres: ## Start a throwaway PostgreSQL 16 + pgvector on :5433 (no Docker needed)
+	scripts/ephemeral-postgres.sh start
+
+test: ## Run unit + integration tests against TEST_DB
+	TARIFF_TEST_DATABASE_URL=$(TEST_DB) uv run pytest -q
+
+lint: ## Ruff + TypeScript checks
+	uv run ruff check services tests
+	uv run ruff format --check services tests
+	pnpm --filter @tariff/web typecheck
+
+contracts: ## Regenerate OpenAPI document and TypeScript types from the API
+	DEPLOYMENT_PROFILE=local LOCAL_USER_ALLOWLIST=contracts@example.com:analyst uv run tariff-api openapi -o packages/contracts/openapi.json
+	pnpm --filter @tariff/contracts generate
+
+contracts-check: ## Fail if committed contracts drift from the API
+	pnpm --filter @tariff/contracts check
+
+build-web: ## Production build of the web app
+	pnpm --filter @tariff/web build
+
+fixtures: ## Write synthetic PDFs to tests/fixtures/generated (labelled, git-ignored)
+	uv run python tests/fixtures/synthetic_pdfs.py tests/fixtures/generated
+
+# ---------------------------------------------------------------- gcp profile
+GCP_PROJECT ?= $(shell cd $(TF_DIR) && terraform output -raw project_id 2>/dev/null)
+AR_REPO = $(REGION)-docker.pkg.dev/$(GCP_PROJECT)/tariff
+GIT_SHA := $(shell git rev-parse --short HEAD 2>/dev/null || echo dev)
+
+tf-init: ## terraform init for infra/gcp (remote state bucket from envs/$(ENV).backend.hcl)
+	cd $(TF_DIR) && terraform init -backend-config=envs/$(ENV).backend.hcl
+
+tf-plan: ## terraform plan for ENV (default dev); writes $(ENV).tfplan
+	cd $(TF_DIR) && terraform plan -var-file=envs/$(ENV).tfvars -out=$(ENV).tfplan
+
+tf-apply: ## terraform apply the saved plan. Only `dev` without explicit authorisation.
+	@if [ "$(ENV)" != "dev" ] && [ "$(AUTHORISED)" != "yes" ]; then echo "Refusing to apply to $(ENV) without AUTHORISED=yes"; exit 2; fi
+	cd $(TF_DIR) && terraform apply $(ENV).tfplan
+
+build-images: ## Build amd64 images for api/worker and web
+	docker build --platform linux/amd64 -f infra/local/Dockerfile.python -t $(AR_REPO)/python:$(GIT_SHA) .
+	docker build --platform linux/amd64 -f infra/local/Dockerfile.web -t $(AR_REPO)/web:$(GIT_SHA) .
+
+push-images: ## Push images to Artifact Registry
+	gcloud auth configure-docker $(REGION)-docker.pkg.dev --quiet
+	docker push $(AR_REPO)/python:$(GIT_SHA)
+	docker push $(AR_REPO)/web:$(GIT_SHA)
+
+deploy-dev: ## Build, push, migrate and deploy to the dev project (same images as local)
+	@command -v gcloud >/dev/null || { echo "gcloud is not installed; see docs/deployment.md"; exit 2; }
+	@test -n "$(GCP_PROJECT)" || { echo "No dev project: run make tf-init tf-plan tf-apply ENV=dev first"; exit 2; }
+	$(MAKE) build-images push-images
+	gcloud run jobs update tariff-migrate --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
+	gcloud run jobs execute tariff-migrate --project $(GCP_PROJECT) --region $(REGION) --wait
+	gcloud run services update tariff-api --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
+	gcloud run jobs update tariff-worker --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
+	gcloud run services update tariff-web --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/web:$(GIT_SHA) --quiet
+	@echo "Deployed $(GIT_SHA) to $(GCP_PROJECT). Run: make smoke-dev"
+
+smoke-dev: ## Post-deploy checks against the dev project (readiness + authenticated status)
+	scripts/smoke-gcp.sh $(GCP_PROJECT) $(REGION)
+
+backup-dev: ## On-demand Cloud SQL backup + bucket copy (see docs/deployment.md)
+	scripts/backup-gcp.sh $(GCP_PROJECT) $(REGION)
+
+.PHONY: help install dev dev-down dev-reset migrate seed api worker web ephemeral-postgres test lint contracts contracts-check build-web fixtures tf-init tf-plan tf-apply build-images push-images deploy-dev smoke-dev backup-dev

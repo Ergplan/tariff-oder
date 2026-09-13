@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# Node
+node_modules/
+.next/
+apps/web/out/
+# Local data & secrets (never commit)
+.data/
+.env
+.env.*
+!.env.example
+*.pem
+*.json.key
+# Real source PDFs are referenced by hash only
+*.pdf
+!tests/fixtures/**/SYNTHETIC_*.pdf
+tests/fixtures/generated/
+# Terraform
+infra/gcp/.terraform/
+infra/gcp/*.tfstate*
+infra/gcp/.terraform.lock.hcl
+infra/gcp/*.tfplan
+# OS
+.DS_Store

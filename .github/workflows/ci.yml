@@ -1,0 +1,109 @@
+name: ci
+
+on:
+  push:
+    branches: ["main", "claude/**"]
+  pull_request:
+
+env:
+  UV_VERSION: "0.9.7"
+  PNPM_VERSION: "10.20.0"
+
+jobs:
+  python:
+    name: Python lint + tests (local profile)
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: tariff_test
+        ports: ["5433:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ env.UV_VERSION }}
+      - run: uv sync --all-packages --frozen
+      - run: uv run ruff check services tests
+      - run: uv run ruff format --check services tests
+      - name: Tests (unit + integration against PostgreSQL)
+        env:
+          TARIFF_TEST_DATABASE_URL: postgresql+psycopg://postgres:postgres@127.0.0.1:5433/tariff_test
+        run: uv run pytest -q --junitxml=pytest-report.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pytest-report
+          path: pytest-report.xml
+
+  contracts-and-web:
+    name: Contract drift + web build
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ env.UV_VERSION }}
+      - run: uv sync --all-packages --frozen
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Contract drift (OpenAPI + generated types must match the service)
+        run: pnpm --filter @tariff/contracts check
+      - run: pnpm --filter @tariff/web typecheck
+      - run: pnpm --filter @tariff/web build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+
+  terraform:
+    name: Terraform fmt + validate
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.4
+      - run: terraform -chdir=infra/gcp fmt -check -recursive
+      - run: terraform -chdir=infra/gcp init -backend=false
+      - run: terraform -chdir=infra/gcp validate
+
+  images:
+    name: Build container images (amd64)
+    runs-on: ubuntu-24.04
+    needs: [python]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build python image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: infra/local/Dockerfile.python
+          platforms: linux/amd64
+          push: false
+          tags: tariff/python:ci
+      - name: Build web image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: infra/local/Dockerfile.web
+          platforms: linux/amd64
+          push: false
+          tags: tariff/web:ci
+
+  # Post-deployment integration against the dev project runs from `make deploy-dev` +
+  # `make smoke-dev` with Workload Identity Federation once a dev project exists (blocked:
+  # see docs/BUILD_STATE.md).

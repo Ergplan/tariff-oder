@@ -1,0 +1,42 @@
+[project]
+name = "tariff-order-intelligence"
+version = "0.1.0"
+description = "Reliable Tariff Order Intelligence - workspace root (Python services)"
+requires-python = ">=3.11,<3.13"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["services/api", "services/worker"]
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3,<9",
+    "pytest-timeout>=2.3,<3",
+    "httpx>=0.28,<1",
+    "ruff>=0.9,<1",
+    "mypy>=1.14,<2",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["services/api/src", "services/worker/src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008", "UP042"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "services/api/tests", "services/worker/tests"]
+timeout = 300
+addopts = "-ra"
+markers = [
+    "integration: requires a running PostgreSQL (TARIFF_TEST_DATABASE_URL)",
+]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true

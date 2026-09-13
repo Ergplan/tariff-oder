@@ -1,0 +1,123 @@
+"""Runtime configuration.
+
+One settings object for both deployment profiles (``gcp`` and ``local``).  The profile
+selects platform adapters; it never changes application behaviour.  Combinations that
+would let a local-only adapter run in the cloud are rejected at startup
+(see :meth:`Settings.validate_profile`).
+"""
+
+from __future__ import annotations
+
+import enum
+from functools import lru_cache
+
+from pydantic import Field, field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class DeploymentProfile(str, enum.Enum):
+    gcp = "gcp"
+    local = "local"
+
+
+class StorageBackend(str, enum.Enum):
+    filesystem = "filesystem"
+    gcs = "gcs"
+
+
+class SecretsBackend(str, enum.Enum):
+    env = "env"
+    secret_manager = "secret_manager"
+
+
+class IdentityBackend(str, enum.Enum):
+    local = "local"
+    iap = "iap"
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_prefix="", env_file=None, extra="ignore")
+
+    deployment_profile: DeploymentProfile = DeploymentProfile.local
+    environment_name: str = "local"
+
+    database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/tariff_dev"
+    database_pool_size: int = 5
+
+    # Object storage
+    object_store_backend: StorageBackend = StorageBackend.filesystem
+    object_store_root: str = "./.data/object-store"
+    source_bucket: str = ""
+    artefact_bucket: str = ""
+    export_bucket: str = ""
+
+    # Secrets
+    secrets_backend: SecretsBackend = SecretsBackend.env
+    gcp_project_id: str = ""
+
+    # Identity
+    identity_backend: IdentityBackend = IdentityBackend.local
+    local_user_allowlist: str = Field(
+        default="",
+        description="Comma-separated `email:role` entries accepted by the local identity adapter",
+    )
+    iap_audience: str = ""
+
+    # Limits (Section 6.13) - hitting a limit stops with a typed reason, never lowers verification
+    max_upload_bytes: int = 64 * 1024 * 1024
+    max_pages_per_job: int = 1000
+    job_lease_seconds: int = 60
+    job_heartbeat_seconds: int = 15
+    job_max_attempts: int = 3
+    inventory_checkpoint_every_pages: int = 25
+
+    # Provenance / evaluation
+    golden_manifest_path: str = "tests/golden/manifest.json"
+
+    # Telemetry
+    log_format: str = "json"  # json | text
+    log_level: str = "INFO"
+    service_name: str = "tariff-api"
+
+    @field_validator("local_user_allowlist")
+    @classmethod
+    def _strip(cls, v: str) -> str:
+        return v.strip()
+
+    def validate_profile(self) -> None:
+        """Reject adapter combinations that violate the portability contract (Section 3.2)."""
+        if self.deployment_profile == DeploymentProfile.gcp:
+            problems = []
+            if self.identity_backend == IdentityBackend.local:
+                problems.append("identity_backend=local is forbidden under DEPLOYMENT_PROFILE=gcp")
+            if self.object_store_backend == StorageBackend.filesystem:
+                problems.append("object_store_backend=filesystem is forbidden under gcp")
+            if self.secrets_backend == SecretsBackend.env:
+                problems.append("secrets_backend=env is forbidden under gcp")
+            if not self.gcp_project_id:
+                problems.append("gcp_project_id is required under gcp")
+            if not (self.source_bucket and self.artefact_bucket):
+                problems.append("source_bucket and artefact_bucket are required under gcp")
+            if problems:
+                raise RuntimeError("Invalid gcp profile configuration: " + "; ".join(problems))
+
+    def allowlist_entries(self) -> dict[str, str]:
+        entries: dict[str, str] = {}
+        for raw in self.local_user_allowlist.split(","):
+            raw = raw.strip()
+            if not raw:
+                continue
+            email, _, role = raw.partition(":")
+            entries[email.strip().lower()] = role.strip() or "analyst"
+        return entries
+
+
+@lru_cache(maxsize=1)
+def get_settings() -> Settings:
+    s = Settings()
+    s.validate_profile()
+    return s
+
+
+def reset_settings_cache() -> None:
+    get_settings.cache_clear()

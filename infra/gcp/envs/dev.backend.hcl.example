@@ -1,0 +1,5 @@
+# Copy to dev.backend.hcl (git-ignored) after creating the state bucket:
+#   gcloud storage buckets create gs://REPLACE-tariff-dev-tfstate --location=asia-south1 --uniform-bucket-level-access
+#   gcloud storage buckets update gs://REPLACE-tariff-dev-tfstate --versioning
+bucket = "REPLACE-tariff-dev-tfstate"
+prefix = "tariff/dev"

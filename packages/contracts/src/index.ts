@@ -1,0 +1,44 @@
+/**
+ * Shared API contract for the web app.  `api.d.ts` is generated from `openapi.json`, which
+ * itself is exported from the FastAPI service (`tariff-api openapi`).  CI fails when either
+ * file drifts from the running service (`scripts/check-drift.mjs`).
+ */
+import type { components, paths } from "./api";
+
+export type { components, paths };
+
+export type Schemas = components["schemas"];
+
+export type SourceSummary = Schemas["SourceSummary"];
+export type SourceDetail = Schemas["SourceDetail"];
+export type SourceList = Schemas["SourceList"];
+export type SourcePageList = Schemas["SourcePageList"];
+export type SourcePageOut = Schemas["SourcePageOut"];
+export type SourceRegistration = Schemas["SourceRegistration"];
+export type JobSummary = Schemas["JobSummary"];
+export type JobDetail = Schemas["JobDetail"];
+export type JobList = Schemas["JobList"];
+export type StatusReport = Schemas["StatusReport"];
+export type Readiness = Schemas["Readiness"];
+export type ErrorResponse = Schemas["ErrorResponse"];
+export type Me = Schemas["Me"];
+export type RegistryOut = Schemas["RegistryOut"];
+export type SourceState = Schemas["SourceState"];
+export type JobStatus = Schemas["JobStatus"];
+export type DatasetKind = Schemas["DatasetKind"];
+export type UserRole = Schemas["UserRole"];
+
+/** Pipeline states of Section 6.2, in order; terminal/exception states listed separately. */
+export const PIPELINE_STATES: SourceState[] = [
+  "uploaded",
+  "inventoried",
+  "triaged",
+  "parsed",
+  "localised",
+  "gridded",
+  "extracted",
+  "validated",
+  "awaiting_review",
+  "published",
+];
+export const EXCEPTION_STATES: SourceState[] = ["failed", "cancelled", "rejected", "superseded", "needs_reprocessing"];
