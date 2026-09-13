@@ -202,6 +202,25 @@ and insert the administrator row (`PUT /users` once the API is reachable, or via
 If the front end goes to Firebase Hosting instead, note that Firebase Hosting does not front
 IAP; the authentication path would have to be decided first (ADR-0008).
 
+## Terraform state is sensitive
+
+`terraform apply` writes the generated Cloud SQL password into the state file in **plaintext**
+(`random_password.db`, and the `DATABASE_URL` secret version built from it).  Treat
+`gs://tarifforderstudio_tfstate` as a credential store:
+
+- public access prevention **enforced** (not merely "inherited") and uniform bucket-level access on;
+- object versioning on, so a corrupted state can be rolled back;
+- IAM limited to the people and service accounts that run Terraform — never `allUsers` or
+  `allAuthenticatedUsers`.
+
+`scripts/verify-gcp-setup.sh` fails on a state bucket that does not enforce public access
+prevention, and lists every principal that can read it.  This matters independently of the
+source repository being public: the repository names the bucket, but only IAM protects it.
+
+To avoid the password touching state at all, a later change can generate it out of band, store
+it in Secret Manager by hand and have Terraform reference the secret rather than create it.
+Not done yet; recorded here so the trade-off is visible.
+
 ## Backups and restore
 
 - Automated: daily Cloud SQL backups (20:00 UTC) + point-in-time recovery; object versioning on

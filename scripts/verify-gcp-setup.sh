@@ -68,7 +68,7 @@ done
 
 section "Buckets"
 check_bucket() {
-  local b=$1 want_versioning=$2 role=$3
+  local b=$1 want_versioning=$2 role=$3 strict_public=${4:-no}
   local json
   json=$(gcloud storage buckets describe "gs://$b" --project "$PROJECT" \
           --format='value(location,locationType,uniform_bucket_level_access.enabled,versioning.enabled,public_access_prevention)' 2>/dev/null)
@@ -90,12 +90,34 @@ check_bucket() {
     missing "gs://$b has versioning OFF"
     fixcmd "gcloud storage buckets update gs://$b --versioning"
   fi
-  if [ "${pap,,}" != "enforced" ] && [ "${pap,,}" != "inherited" ]; then
+  if [ "$strict_public" = "yes" ]; then
+    # Terraform state holds the Cloud SQL password in plaintext: "inherited" is not good enough,
+    # because an org-policy change could then make the bucket publicly readable.
+    if [ "${pap,,}" != "enforced" ]; then
+      missing "gs://$b does not ENFORCE public access prevention, and it holds secrets"
+      fixcmd "gcloud storage buckets update gs://$b --public-access-prevention"
+    fi
+  elif [ "${pap,,}" != "enforced" ] && [ "${pap,,}" != "inherited" ]; then
     deviation "gs://$b public access prevention: $pap"
   fi
 }
 check_bucket "$SOURCES_BUCKET" yes "tariff PDFs (adopted by Terraform as the source store)"
-check_bucket "$TFSTATE_BUCKET" yes "Terraform remote state"
+check_bucket "$TFSTATE_BUCKET" yes "Terraform remote state (contains the Cloud SQL password)" yes
+
+section "Who can read the Terraform state"
+STATE_READERS=$(gcloud storage buckets get-iam-policy "gs://$TFSTATE_BUCKET" \
+  --format='value(bindings.members)' 2>/dev/null | tr ';' '\n' | tr ',' '\n' | sed '/^$/d' | sort -u)
+if [ -n "$STATE_READERS" ]; then
+  echo "$STATE_READERS" | while read -r m; do
+    case "$m" in
+      allUsers|allAuthenticatedUsers) printf '  \033[31mMISSING\033[0m   %s can read Terraform state — remove immediately\n' "$m";;
+      *) info "$m";;
+    esac
+  done
+  if grep -qE '^(allUsers|allAuthenticatedUsers)$' <<<"$STATE_READERS"; then fail=1; fi
+else
+  info "could not read the bucket IAM policy (needs storage.buckets.getIamPolicy)"
+fi
 
 section "Source PDFs in gs://$SOURCES_BUCKET"
 OBJECTS=$(gcloud storage ls -r "gs://$SOURCES_BUCKET/**" 2>/dev/null | grep -i '\.pdf$')
