@@ -2,7 +2,8 @@
 
 Last updated: 2026-09-13. Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
-(3) first verification against the real project; (4) Milestone 2a — page triage.
+(3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
+2b — OCR, second reader, table grids with agreement classes, heading inventory.
 
 ## Current milestone and status
 
@@ -15,11 +16,59 @@ Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and buc
   planned or applied**: this build environment has no `gcloud` and its Google token is rejected
   (`ACCESS_TOKEN_TYPE_UNSUPPORTED`, re-checked after the project details arrived).  The apply
   has to run on the `tariff-order` VM.
-- **Milestone 2 — part (a) implemented and tested: page triage.**  Classification, text-layer
-  quality, printed-label maps, immutable stage artefacts, resumable and re-runnable.  Part (b)
-  — OCR execution, the second reader, table grids and agreement scoring — is the next task.
-- **No parser beyond PyMuPDF, no provider connection, no extracted number, no reviewer
-  decision exists.**
+- **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**
+  (a) page triage: classification, text-layer quality, printed-label maps, immutable stage
+  artefacts, resumable and re-runnable.  (b) parse: tesseract OCR on the pages triage routed
+  to it with per-word confidence; two independent table readers (PyMuPDF primary, pdfplumber
+  secondary) with an agreement class per grid; a document-wide heading inventory.  **Open
+  within Milestone 2:** grids from OCR word boxes are not attempted (flagged
+  `grid_from_ocr_pending`, listed for review); Docling is not measured; the three real orders
+  have not been run because their bytes are not in this environment.
+- **No provider connection, no extracted number, no reviewer decision exists.**  Grids are
+  read and compared; nothing is interpreted as a tariff value.
+
+### Increment 5 (Milestone 2b: OCR, readers, grids, headings)
+
+- Stage `triaged → parsed` (`tariff_worker.stages.parse`), chained after triage; page-batched
+  checkpoints; resume after a hard kill without re-parsing completed pages (tested); a re-run
+  at the same version replaces a page's grid rows and writes no new artefacts.  A stage
+  re-run now cancels the queued downstream stage jobs of that source (found while testing:
+  the parse job triage had chained ran first against the rolled-back state and failed).
+- OCR (`tariff_api.ocr`): tesseract 5 as a subprocess with TSV output — every word has a
+  confidence and a box; defaults dpi 300 / psm 4 chosen by measurement (psm 6 read 15% of a
+  known page, psm 4 100%); `ocr_no_text` and `ocr_low_confidence` flags; OCR never replaces
+  a text layer — where both exist their token-Jaccard agreement is stored and < 0.5 flags
+  `ocr_layer_disagreement`.  Vector-drawn and grey pages OCR to zero words and stay
+  unreadable: recorded, never guessed.
+- Readers (`tariff_api.readers`): `TableGrid` from PyMuPDF `find_tables` and pdfplumber;
+  ruling-line strategy first, whitespace strategy only on triage-classed `table`/`mixed`
+  pages when rulings find nothing; grids paired by bbox overlap; classes `high_agreement`
+  (≥ 98% cells equal), `minority_cell_disagreement` (≤ 20%, risk `reader_disagreement`),
+  `structure_disagreement`, `primary_missing`, `secondary_missing`; an all-empty grid carries
+  `empty_grid` (P1: pdfplumber returns a 20×6 grid of nothing on the vector page).
+- Headings (`tariff_api.headings`, rules v1): `RATE SCHEDULE LMV – 1`, `TARIFF SCHEDULE
+  LT-3(a)`, `11. RATE: HTP-1`, annexure, chapter, table captions; raw kept, canonical code
+  unifies dash/space variants; consecutive duplicates on a page counted once (KERC habit);
+  `repeated_codes` surfaces the same schedule seen twice.  Headings on OCR'd pages come from
+  the OCR text and say so (`text_source = ocr`).
+- Rule defect found by running over the fixtures and fixed with a test: the chapter pattern
+  anchored only the start of the line, so 42 contents/prose lines beginning "Chapter n …"
+  counted as chapter headings; a chapter heading must now be the whole line (number, optional
+  short title, no dot leaders, no sentence).
+- Schema 0003: `table_grids`, `document_headings`, OCR/parse columns on pages and documents,
+  `stage_artefacts.tool_version` widened to 160 (composite tool version).  API: `GET
+  /sources/{id}/tables` (filters page, agreement class, primary only), `GET
+  /sources/{id}/headings` (kind filter), `parse` summary on the source detail, OCR fields on
+  pages, `parse_source` accepted by the stage re-run.  Web: parse section (grids, agreement
+  classes, OCR pages, tables needing review, grids-from-OCR pending, heading inventory) and
+  per-page OCR/reader badges.
+- Fixture `readers_and_headings_pdf` (5 pages: KERC duplicate heading + unruled table, GERC
+  rate clauses, UPERC ruled table, a raster scan of that page, CHAPTER 6 + Table 6-7).
+  Limitation recorded: PyMuPDF's base font renders an en dash as a middle dot, so the fixture
+  heading uses a spaced hyphen; a single-glyph substitution is below the quality detector's
+  threshold (ADR-0009, ledger D2).
+- System dependency: `tesseract-ocr` + `tesseract-ocr-eng` in the Python image and CI.
+
 
 ### Increment 4 (Milestone 2a: page triage)
 
@@ -94,8 +143,12 @@ Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and buc
   rotation, text chars, text layer, images, drawings, class=unknown, role=unknown),
   authorized "open the PDF" link.
 - Jobs page and Registry page (seeded jurisdictions/commissions/utilities, no coverage claim).
+- Source detail (Milestone 2): triage summary and per-page class/quality/label badges; parse
+  summary — primary grids, agreement-class histogram, OCR pages, tables needing review,
+  grids-from-OCR pending, heading inventory with repeated codes flagged.
 - API: `/healthz`, `/readyz`, `/status`, `/me`, `/sources` (POST/GET), `/sources/{id}`,
-  `/sources/{id}/pages`, `/sources/{id}/file`, `/sources/{id}/reprocess`, `/jobs`,
+  `/sources/{id}/pages`, `/sources/{id}/tables`, `/sources/{id}/headings`,
+  `/sources/{id}/stages/rerun`, `/sources/{id}/file`, `/sources/{id}/reprocess`, `/jobs`,
   `/jobs/{id}`, `/jobs/{id}/cancel`, `/registry`, `/utilities`, `/users`, `/audit`.
   OpenAPI at `/docs`.
 
@@ -121,7 +174,10 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
   source_documents, source_pages, jobs, job_events, audit_events (append-only trigger),
   idempotency_records; enums dataset_kind, user_role, jurisdiction_kind, source_state (full
   Section 6.2 set), job_status; extensions vector, pgcrypto.
-- API contract v0.1.0 exported to `packages/contracts/openapi.json`; types generated.
+- Migration `0002_triage`: stage_artefacts, triage columns.  Migration `0003_parse`:
+  table_grids, document_headings, OCR/parse columns, `tool_version` → 160 chars.
+- API contract exported to `packages/contracts/openapi.json`; types generated; no drift.
+- Config: `ocr_engine/ocr_lang/ocr_dpi/ocr_psm/ocr_min_confidence`, `primary_reader`.
 - Adapters: storage (filesystem, gcs), secrets (env, secret_manager), identity (local, iap).
 - Reading profiles: none yet (`packages/reading-profiles/` holds a README; Milestone 3).
 
@@ -138,25 +194,38 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 `docs/reading-reliability.md` created with every Section 6.1 failure mode as a row.
 Handled+tested: D5 (printed-label maps), P4, P6, P7, P8, P9, P10, P11, P12, P13–P15
 (ingest, reproducible fixtures), P16 (immutable versioned artefacts), P17 (unknown is visible).
-Detected+tested, handling pending OCR (M2b): D1 (image-only), D2 (corrupted text layer),
-D3 (rotation), D8 (vector-drawn tables).  Detected: D7, D9.  Everything structure-, value-
-and network-level `n/a-yet` pending Milestones 3–4.
+Increment 5: D1 and D8 moved to handled+tested (OCR runs, confidence recorded, nothing
+guessed); D2 gains the single-glyph limitation; P1 (silent empty table) handled+tested; P18
+(whitespace strategy invents tables) and P19 (KERC double heading) added and handled; S14
+detected at inventory (canonical codes); S2 note (both representations' headings recorded).
+Detected: D3, D7, D9.  Everything value- and network-level `n/a-yet` pending Milestones 3–4.
 
 ## Tests and evaluations executed, with results and denominators
 
-Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`):
+Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
+installed:
 
-- **70 passed, 0 failed, 0 skipped** (~20 s): 43 unit (12 adapters/profile, 31 triage rules), 27
-  integration (7 sources, 5 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage incl.
-  a second worker-kill resume and a stage rerun, 2 migrations, 1 registry).  Three consecutive
-  clean runs after one earlier intermittent failure in a lease-expiry test (2 s lease, 2.5 s
-  wait); the wait margin was widened to 3.5 s.  Not a product defect.
-  (`tests/integration`: 7 sources, 4 ingest, 6 queue, 1 worker-kill recovery, 2 migrations,
-  1 registry).  Run twice in different orders to confirm no inter-test dependence.
+- **104 passed, 0 failed, 0 skipped** (~43 s): 73 unit (13 adapters/profile/fixtures, 31
+  triage rules, 29 readers/headings/OCR), 31 integration (8 sources, 5 ingest/CLI, 6 queue, 1
+  worker-kill recovery, 5 triage stage, 4 parse stage incl. a worker-kill resume with
+  `next_page=3` and a same-version re-run with no duplicate grids, 2 migrations).  Run three
+  times, twice in a different order.  Without tesseract the 2 OCR unit tests and the 4
+  parse-stage tests skip and say so.
+- Test-infrastructure defect found by the reordered run and fixed: the synthetic fixture
+  generators were byte-reproducible only ~98% of the time.  MuPDF writes the regenerated
+  half of the file `/ID` as a PDF literal string `(…)` when that is shorter than hex, and the
+  normaliser matched only `<hex>`, so about one file in fifty kept a random ID and a
+  different SHA-256 — the key that dedup, golden manifests and ingest tests assert on.  The
+  normaliser now matches both string forms, fails loudly if it does not find exactly one
+  `/ID`, and re-opens the result to prove no offset broke; probed 150 calls per generator,
+  one hash each; two tests added (a 150-call check and the literal/escaped/nested form).
+- Increment 4 baseline was 70 passed (43 unit, 27 integration); one earlier intermittent
+  lease-expiry failure (2 s lease, 2.5 s wait) was fixed by widening the wait to 3.5 s.
 - Worker-kill recovery: 1 hard kill (`os._exit(137)` after checkpoint `next_page=3`), lease
   2 s, resumed by a second worker; 6/6 page rows, 0 duplicates, attempts=2, events include
   `lease_expired_reclaimed`.
-- Migrations: downgrade to base and upgrade to head on a scratch DB: pass.
+- Migrations: downgrade to base and upgrade to head on a scratch DB: pass; 0003 round-trip
+  (head → 0002 → head) on a scratch DB: pass, `tool_version` length 160, both new tables.
 - `ruff check` + `ruff format --check`: clean.  `tsc --noEmit`: clean.  `next build`: success
   (8 routes).  `terraform fmt` + `terraform validate` (google 6.30.0 via filesystem mirror):
   valid, 2 provider warnings about `secret_data_wo`.
@@ -231,14 +300,23 @@ the three PDFs to upload, and the budget to confirm and its account id to paste 
   Milestone 2.
 - `apps/web` has no automated browser tests yet (Section 7.5 browser tests start when the
   review flow exists).
-- Docker Compose stack and Dockerfiles untested in this environment (no daemon).
+- Docker Compose stack and Dockerfiles untested in this environment (no daemon); the
+  tesseract apt lines in `infra/local/Dockerfile.python` are therefore unbuilt here (the CI
+  job installs the same packages and runs the OCR tests).
+- `pnpm --filter web lint` (`next lint`) no longer works under Next 16 and CI does not run
+  it; typecheck and build are the web gates.  To replace with an ESLint script.
+- Grids from OCR word boxes are not built (`grid_from_ocr_pending`); the KERC vector-drawn
+  charge tables will reach a reviewer OCR'd but un-gridded until then.
+- Docling unmeasured; PyMuPDF is primary by decision (ADR-0009), to be revisited on real pages.
 
 ## Architecture decisions and rationale
 
 ADR-0001 service boundaries · ADR-0002 migration owner + OpenAPI contract · ADR-0003
 PostgreSQL queue with fenced leases · ADR-0004 platform adapters, filesystem local store ·
 ADR-0005 PyMuPDF inventory tooling · ADR-0006 asia-south1, per-env projects, Cloud Run Job
-worker (revisit in M8) · ADR-0007 fixture/real isolation via datasets.
+worker (revisit in M8) · ADR-0007 fixture/real isolation via datasets · ADR-0008 no domain
+yet, internal ingress, admin Cloud Run Job · ADR-0009 PyMuPDF primary + pdfplumber secondary
+readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
@@ -247,14 +325,10 @@ worker (revisit in M8) · ADR-0007 fixture/real isolation via datasets.
    tfstate versioning, enabled APIs, PDFs present) and print the `billing_account_id` to paste
    into `envs/dev.tfvars`.  Then `make tf-init tf-plan ENV=dev` and review the plan before any
    apply.  Copy the three PDFs to `gs://tarifforderstudio_sources/inbox/` if not already there.
-2. Engineering (Milestone 2b, next run): execute OCR (tesseract, via apt in the image) on
-   `ocr_recommended` pages and reconcile with any existing text; add the reader interface with
-   PyMuPDF and pdfplumber producing table grids for `table`/`mixed` pages, agreement scoring
-   (cell count, header row, normalised cell text) recorded per grid; document-wide heading
-   and table inventory (`RATE SCHEDULE …`, `TARIFF SCHEDULE …`, `<n>. RATE: …` headings de-
-   duplicated); inventory UI.  Docling stays behind the reader interface until it can be
-   measured on real pages — it pulls a large ML stack that this environment cannot verify.
-   Then, as soon as the three PDFs are in the bucket: ingest, inventory, triage, and compare
-   the triage output with Parts D–F (NPCL 402–423 `image_only`; KERC 226–240
-   `vector_graphics_text_sparse` and the printed 209 → PDF 225 rule; GERC all-text with roman
-   front matter and the −16 rule).
+2. Engineering (next run): as soon as the three PDFs are in the bucket — ingest, inventory,
+   triage, parse, and compare with Parts D–F (NPCL 402–423 `image_only` now OCR'd; KERC
+   226–240 `vector_graphics_text_sparse` and the printed 209 → PDF 225 rule; GERC all-text
+   with roman front matter and the −16 rule; NPCL exactly 15 `RATE SCHEDULE` headings and no
+   LMV-10).  Then Milestone 2 close-out: grids from OCR word boxes for the KERC charge
+   tables, and a Docling measurement on real pages behind the reader interface.  Then
+   Milestone 3 (localisation and reading profiles).

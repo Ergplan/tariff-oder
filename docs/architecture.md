@@ -1,4 +1,4 @@
-# Architecture (as implemented through Milestone 2a)
+# Architecture (as implemented through Milestone 2b)
 
 The governing design is Section 4 of the specification.  This document records what exists.
 
@@ -16,8 +16,9 @@ browser ──► apps/web (Next.js, server components) ──► services/api (
 | --- | --- | --- |
 | Web | `apps/web` — App Router, server-side fetch to the API, same-origin proxy routes for upload and file bytes | Never touches the database; forwards identity (local header or IAP assertion) |
 | API | `services/api/src/tariff_api` — FastAPI app factory (`main.create_app`), routers `health`, `sources`, `jobs`, `registry` | Single schema owner; Alembic migrations under `services/api/migrations` |
-| Worker | `services/worker/src/tariff_worker` — `Runner` polls the queue, runs handlers with a heartbeat thread | Handlers: `inventory_source` (M1), `triage_source` (M2a); inventory chains triage automatically — only publication needs a human |
+| Worker | `services/worker/src/tariff_worker` — `Runner` polls the queue, runs handlers with a heartbeat thread | Handlers: `inventory_source` (M1) → `triage_source` (M2a) → `parse_source` (M2b), each chained automatically — only publication needs a human |
 | Triage rules | `tariff_api.triage` (pure functions, `TRIAGE_VERSION`), `tariff_api.page_signals` (PyMuPDF extraction) | Classification, text-quality components, printed-label rule inference; thresholds are data, overridable per reading profile |
+| Readers + OCR + headings | `tariff_api.readers` (PyMuPDF primary, pdfplumber secondary, agreement classes), `tariff_api.ocr` (tesseract subprocess, TSV), `tariff_api.headings` (inventory) | ADR-0009; Docling slots in behind the same `TableGrid` interface once measured |
 | Queue | `jobs` + `job_events` tables; `tariff_api.queue` | Claim with `SELECT … FOR UPDATE SKIP LOCKED`; expired leases reclaimable; writes fenced by `(job_id, run_id)`; bounded attempts; checkpoints; cancellation flag |
 | Adapters | `tariff_api.adapters` — `ObjectStore` (filesystem / GCS), `SecretProvider` (env / Secret Manager), `IdentityProvider` (local allow-list / IAP JWT) | Selected by `DEPLOYMENT_PROFILE`; invalid combinations refused at startup |
 | Telemetry | `tariff_api.telemetry` — JSON lines on stdout with `request_id`, `job_id`, `run_id`, `actor`, `severity` | Same schema in both profiles; Cloud Logging parses `severity` |
@@ -33,7 +34,7 @@ optimistic `version`) · `source_pages` (per-page inventory; `page_class`/`page_
 trigger) · `idempotency_records`.
 
 The full Section 6.2 state machine is encoded in `models.SOURCE_TRANSITIONS`; Milestones 1–2a
-exercise `uploaded → inventoried → triaged` and `→ failed`; a stage re-run moves the source
+exercise `uploaded → inventoried → triaged → parsed` and `→ failed`; a stage re-run moves the source
 back through `needs_reprocessing` to the stage's input state, audited.  Candidates, facts, evidence spans,
 review decisions and reading profiles are later migrations — nothing pre-empts their shape.
 

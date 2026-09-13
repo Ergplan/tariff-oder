@@ -132,6 +132,7 @@ SOURCE_TRANSITIONS: dict[SourceState, set[SourceState]] = {
         SourceState.uploaded,
         SourceState.inventoried,
         SourceState.triaged,
+        SourceState.parsed,
         SourceState.cancelled,
     },
     SourceState.cancelled: set(),
@@ -254,6 +255,12 @@ class SourceDocument(Base):
     triage_version: Mapped[str | None] = mapped_column(String(16))
     triaged_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
+    # Parse (Milestone 2b): heading inventory and table/agreement summary
+    parse_version: Mapped[str | None] = mapped_column(String(16))
+    parsed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    heading_inventory: Mapped[dict | None] = mapped_column(JSONB)
+    table_summary: Mapped[dict | None] = mapped_column(JSONB)
+
     # Golden-corpus reconciliation (tests/golden/manifest.json); never copied, always re-verified
     golden_id: Mapped[str | None] = mapped_column(String(80))
     manifest_check: Mapped[dict | None] = mapped_column(JSONB)
@@ -301,9 +308,75 @@ class SourcePage(Base):
     triage_rationale: Mapped[str | None] = mapped_column(Text)
     triage_version: Mapped[str | None] = mapped_column(String(16))
     triaged_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    # Parse (Milestone 2b): OCR provenance and outcome; `ocr_agreement` compares OCR with the
+    # text layer when both exist (a low value on a page that *has* a text layer is a finding).
+    ocr_used: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    ocr_engine: Mapped[str | None] = mapped_column(String(80))
+    ocr_confidence: Mapped[float | None] = mapped_column()
+    ocr_word_count: Mapped[int | None] = mapped_column(Integer)
+    ocr_text_chars: Mapped[int | None] = mapped_column(Integer)
+    ocr_agreement: Mapped[float | None] = mapped_column()
+    parse_version: Mapped[str | None] = mapped_column(String(16))
+    parsed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     source: Mapped[SourceDocument] = relationship(back_populates="pages")
+
+
+class TableGridRecord(Base):
+    """One reader's grid for one table on one page, with its agreement against the other
+    reader (Section 6.4).  The full grid lives in the artefact at ``object_key``."""
+
+    __tablename__ = "table_grids"
+    __table_args__ = (
+        UniqueConstraint("source_id", "page_index", "reader", "reader_version", "ordinal", name="uq_table_grid"),
+        Index("ix_table_grids_source_page", "source_id", "page_index"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    page_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    reader: Mapped[str] = mapped_column(String(40), nullable=False)
+    reader_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    ordinal: Mapped[int] = mapped_column(Integer, nullable=False)
+    strategy: Mapped[str] = mapped_column(String(16), nullable=False)
+    bbox: Mapped[list] = mapped_column(JSONB, nullable=False)
+    row_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    col_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    header_rows: Mapped[int] = mapped_column(Integer, nullable=False)
+    is_empty: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    is_primary: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    agreement_class: Mapped[str | None] = mapped_column(String(40))
+    agreement_score: Mapped[float | None] = mapped_column()
+    paired_ordinal: Mapped[int | None] = mapped_column(Integer)
+    disagreeing_cells: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    risk_tags: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    object_key: Mapped[str] = mapped_column(String(512), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class DocumentHeading(Base):
+    """Document-wide heading inventory (`tariff_api.headings`), the expectation localisation
+    reconciles against in Milestone 3."""
+
+    __tablename__ = "document_headings"
+    __table_args__ = (
+        UniqueConstraint("source_id", "page_index", "line_no", "kind", "rules_version", name="uq_document_heading"),
+        Index("ix_document_headings_source", "source_id", "ordinal"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    page_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    line_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    ordinal: Mapped[int] = mapped_column(Integer, nullable=False)
+    kind: Mapped[str] = mapped_column(String(32), nullable=False)
+    code_raw: Mapped[str | None] = mapped_column(String(80))
+    code_canonical: Mapped[str | None] = mapped_column(String(80))
+    text: Mapped[str] = mapped_column(String(200), nullable=False)
+    text_source: Mapped[str] = mapped_column(String(16), nullable=False)  # text_layer | ocr
+    rules_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
 
 class StageArtefact(Base):
@@ -321,7 +394,7 @@ class StageArtefact(Base):
     source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
     stage: Mapped[str] = mapped_column(String(40), nullable=False)
     tool: Mapped[str] = mapped_column(String(80), nullable=False)
-    tool_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    tool_version: Mapped[str] = mapped_column(String(160), nullable=False)  # composite for multi-tool stages
     page_index: Mapped[int] = mapped_column(Integer, nullable=False, default=0)  # 0 = document-level
     object_key: Mapped[str] = mapped_column(String(512), nullable=False)
     content_sha256: Mapped[str] = mapped_column(String(64), nullable=False)

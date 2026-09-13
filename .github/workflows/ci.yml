@@ -28,6 +28,8 @@ jobs:
           --health-retries 20
     steps:
       - uses: actions/checkout@v4
+      - name: OCR engine (the parse stage runs tesseract on image-only and vector-drawn pages)
+        run: sudo apt-get update -q && sudo apt-get install -y -q tesseract-ocr tesseract-ocr-eng && tesseract --version | head -1
       - uses: astral-sh/setup-uv@v6
         with:
           version: ${{ env.UV_VERSION }}

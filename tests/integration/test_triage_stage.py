@@ -47,9 +47,10 @@ def test_inventory_chains_into_triage_and_resolves_labels(client, runner, storag
     }
 
     assert runner.run_once() is True  # triage
-    assert runner.run_once() is False
     d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
     assert d["state"] == "triaged"
+    jobs = client.get("/jobs", params={"source_id": src_id}, headers=headers(ANALYST)).json()
+    assert {j["job_type"]: j["status"] for j in jobs["items"]}["parse_source"] == "queued"  # chained (2b)
     t = d["triage"]
     assert t["triage_version"] == "1"
     assert t["page_class_counts"] == {
@@ -167,6 +168,10 @@ def test_stage_rerun_keeps_old_artefacts_and_is_audited(client, runner, storage)
     assert r.json()["job_type"] == "triage_source" and r.json()["status"] == "queued"
     mid = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
     assert mid["state"] == "inventoried"  # moved back through the transition table, audited
+    # the parse job triage had chained is stale now: cancelled, never run against the rolled-back state
+    jobs = client.get("/jobs", params={"source_id": src_id}, headers=headers(ANALYST)).json()["items"]
+    assert sorted(j["status"] for j in jobs if j["job_type"] == "parse_source") == ["cancelled"]
+    assert sorted(j["status"] for j in jobs if j["job_type"] == "triage_source") == ["queued", "succeeded"]
     audit = client.get(
         "/audit", params={"entity_type": "source_document", "entity_id": src_id}, headers=headers(ADMIN)
     ).json()

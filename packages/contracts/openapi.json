@@ -252,6 +252,108 @@
         "title": "ErrorResponse",
         "type": "object"
       },
+      "HeadingList": {
+        "properties": {
+          "headings": {
+            "items": {
+              "$ref": "#/components/schemas/HeadingOut"
+            },
+            "title": "Headings",
+            "type": "array"
+          },
+          "inventory": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Inventory"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "source_id",
+          "total",
+          "inventory",
+          "headings"
+        ],
+        "title": "HeadingList",
+        "type": "object"
+      },
+      "HeadingOut": {
+        "properties": {
+          "code_canonical": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code Canonical"
+          },
+          "code_raw": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code Raw"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "line_no": {
+            "title": "Line No",
+            "type": "integer"
+          },
+          "ordinal": {
+            "title": "Ordinal",
+            "type": "integer"
+          },
+          "page_index": {
+            "title": "Page Index",
+            "type": "integer"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "text_source": {
+            "title": "Text Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_index",
+          "line_no",
+          "ordinal",
+          "kind",
+          "code_raw",
+          "code_canonical",
+          "text",
+          "text_source"
+        ],
+        "title": "HeadingOut",
+        "type": "object"
+      },
       "Health": {
         "properties": {
           "service": {
@@ -917,6 +1019,65 @@
         "title": "Me",
         "type": "object"
       },
+      "ParseSummary": {
+        "properties": {
+          "heading_inventory": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Heading Inventory"
+          },
+          "parse_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parse Version"
+          },
+          "parsed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parsed At"
+          },
+          "table_summary": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Table Summary"
+          }
+        },
+        "required": [
+          "parse_version",
+          "parsed_at",
+          "heading_inventory",
+          "table_summary"
+        ],
+        "title": "ParseSummary",
+        "type": "object"
+      },
       "Readiness": {
         "properties": {
           "database": {
@@ -1186,6 +1347,16 @@
             ],
             "title": "Pages Without Text"
           },
+          "parse": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ParseSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "pdf_version": {
             "anyOf": [
               {
@@ -1324,6 +1495,7 @@
           "latest_job",
           "text_layer_summary",
           "triage",
+          "parse",
           "artefacts"
         ],
         "title": "SourceDetail",
@@ -1438,9 +1610,68 @@
             "title": "Label Source",
             "type": "string"
           },
+          "ocr_agreement": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Agreement"
+          },
+          "ocr_confidence": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Confidence"
+          },
+          "ocr_engine": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Engine"
+          },
           "ocr_recommended": {
             "title": "Ocr Recommended",
             "type": "boolean"
+          },
+          "ocr_text_chars": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Text Chars"
+          },
+          "ocr_used": {
+            "title": "Ocr Used",
+            "type": "boolean"
+          },
+          "ocr_word_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Word Count"
           },
           "page_class": {
             "title": "Page Class",
@@ -1453,6 +1684,29 @@
           "page_role": {
             "title": "Page Role",
             "type": "string"
+          },
+          "parse_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parse Version"
+          },
+          "parsed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parsed At"
           },
           "printed_label": {
             "anyOf": [
@@ -1556,7 +1810,15 @@
           "ocr_recommended",
           "triage_rationale",
           "triage_version",
-          "triaged_at"
+          "triaged_at",
+          "ocr_used",
+          "ocr_engine",
+          "ocr_confidence",
+          "ocr_word_count",
+          "ocr_text_chars",
+          "ocr_agreement",
+          "parse_version",
+          "parsed_at"
         ],
         "title": "SourcePageOut",
         "type": "object"
@@ -1807,7 +2069,8 @@
           "job_type": {
             "enum": [
               "inventory_source",
-              "triage_source"
+              "triage_source",
+              "parse_source"
             ],
             "title": "Job Type",
             "type": "string"
@@ -1891,6 +2154,153 @@
           "limits"
         ],
         "title": "StatusReport",
+        "type": "object"
+      },
+      "TableGridList": {
+        "properties": {
+          "grids": {
+            "items": {
+              "$ref": "#/components/schemas/TableGridOut"
+            },
+            "title": "Grids",
+            "type": "array"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "source_id",
+          "total",
+          "grids"
+        ],
+        "title": "TableGridList",
+        "type": "object"
+      },
+      "TableGridOut": {
+        "properties": {
+          "agreement_class": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agreement Class"
+          },
+          "agreement_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agreement Score"
+          },
+          "bbox": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Bbox",
+            "type": "array"
+          },
+          "col_count": {
+            "title": "Col Count",
+            "type": "integer"
+          },
+          "disagreeing_cells": {
+            "title": "Disagreeing Cells",
+            "type": "integer"
+          },
+          "header_rows": {
+            "title": "Header Rows",
+            "type": "integer"
+          },
+          "is_empty": {
+            "title": "Is Empty",
+            "type": "boolean"
+          },
+          "is_primary": {
+            "title": "Is Primary",
+            "type": "boolean"
+          },
+          "object_key": {
+            "title": "Object Key",
+            "type": "string"
+          },
+          "ordinal": {
+            "title": "Ordinal",
+            "type": "integer"
+          },
+          "page_index": {
+            "title": "Page Index",
+            "type": "integer"
+          },
+          "paired_ordinal": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Paired Ordinal"
+          },
+          "reader": {
+            "title": "Reader",
+            "type": "string"
+          },
+          "reader_version": {
+            "title": "Reader Version",
+            "type": "string"
+          },
+          "risk_tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Risk Tags",
+            "type": "array"
+          },
+          "row_count": {
+            "title": "Row Count",
+            "type": "integer"
+          },
+          "strategy": {
+            "title": "Strategy",
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_index",
+          "reader",
+          "reader_version",
+          "ordinal",
+          "strategy",
+          "bbox",
+          "row_count",
+          "col_count",
+          "header_rows",
+          "is_empty",
+          "is_primary",
+          "agreement_class",
+          "agreement_score",
+          "paired_ordinal",
+          "disagreeing_cells",
+          "risk_tags",
+          "object_key"
+        ],
+        "title": "TableGridOut",
         "type": "object"
       },
       "TriageSummary": {
@@ -3758,6 +4168,126 @@
         ]
       }
     },
+    "/sources/{source_id}/headings": {
+      "get": {
+        "description": "The document-wide heading inventory: the expectation localisation reconciles against.",
+        "operationId": "list_headings_sources__source_id__headings_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "kind",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeadingList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Headings",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
     "/sources/{source_id}/pages": {
       "get": {
         "operationId": "list_pages_sources__source_id__pages_get",
@@ -4144,6 +4674,152 @@
           }
         },
         "summary": "Rerun Stage",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/tables": {
+      "get": {
+        "description": "Table grids from both readers with their agreement class \u2014 the routing signal of\nSection 6.4.  The full cell grid is in the artefact at ``object_key``.",
+        "operationId": "list_tables_sources__source_id__tables_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page_index",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Page Index"
+            }
+          },
+          {
+            "in": "query",
+            "name": "agreement_class",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Agreement Class"
+            }
+          },
+          {
+            "in": "query",
+            "name": "primary_only",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Primary Only",
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableGridList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Tables",
         "tags": [
           "sources"
         ]

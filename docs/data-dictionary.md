@@ -1,4 +1,4 @@
-# Data dictionary (through Milestone 2a)
+# Data dictionary (through Milestone 2b)
 
 Migration owner: `services/api/migrations/versions/0001_foundation.py`.  All timestamps are
 `timestamptz`; ids are UUIDv4 unless noted.  Enums are PostgreSQL enum types.
@@ -59,9 +59,37 @@ Triage (Milestone 2a, `docs/reading-reliability.md` D1/D2/D5/D8):
 | triage_version, triaged_at | Rules version and time; a version bump re-triages every page |
 | page_role | Section 6.5; `unknown` until Milestone 3 |
 
+Parse (Milestone 2b, ADR-0009): `ocr_used`, `ocr_engine` (`tesseract@5.3.4`), `ocr_confidence`
+(mean word confidence), `ocr_word_count`, `ocr_text_chars`, `ocr_agreement` (token Jaccard with
+the text layer when both exist; null otherwise), `parse_version`, `parsed_at`.  Extra
+`quality_flags`: `ocr_low_confidence`, `ocr_no_text`, `ocr_layer_disagreement`,
+`grid_from_ocr_pending`, `reader_disagreement`, `structure_disagreement`, `primary_missing`,
+`secondary_missing`, `empty_grid`.
+
+## `table_grids`
+One row per reader per table on a page (`uq_table_grid`): `reader`, `reader_version`,
+`ordinal`, `strategy` (`lines` | `text`), `bbox`, `row_count`, `col_count`, `header_rows`,
+`is_empty`, `is_primary`, `agreement_class` (`high_agreement` | `minority_cell_disagreement` |
+`structure_disagreement` | `primary_missing` | `secondary_missing`), `agreement_score`,
+`paired_ordinal`, `disagreeing_cells`, `risk_tags`, `object_key` (artefact holding the full
+grid and the agreement record).  A re-run at the same parse version replaces the rows for a
+page; artefacts stay immutable.
+
+## `document_headings`
+Heading inventory (`uq_document_heading` per page/line/kind/rules version): `ordinal`
+(document-wide), `kind` (`rate_schedule` | `tariff_schedule` | `rate_clause` | `annexure` |
+`chapter` | `table_caption`), `code_raw`, `code_canonical`, `text`, `text_source`
+(`text_layer` | `ocr`), `rules_version`.
+
+## `source_documents` — parse columns
+`parse_version`, `parsed_at`, `heading_inventory` (JSONB: `counts`, `unique_codes`,
+`repeated_codes` per kind), `table_summary` (JSONB: `tool_version`, `grid_pages`,
+`primary_grids`, `agreement_classes`, `pages_needing_review`, `ocr_pages`,
+`ocr_low_confidence_pages`, `grid_from_ocr_pending_pages`).
+
 ## `stage_artefacts`
 Index of immutable per-stage outputs in the `artefacts` bucket (Section 6.2): `stage`,
-`tool`, `tool_version` (e.g. `pymupdf@1.28.2+rules@1`), `page_index` (0 = document-level),
+`tool`, `tool_version` (e.g. `pymupdf@1.28.2+rules@1`; parse: `pymupdf@…+pdfplumber@…+tesseract@…+rules@1`, widened to 160 chars in 0003), `page_index` (0 = document-level),
 `object_key` (`<sha256>/<stage>/<tool_version>/page-NNNN.json`), `content_sha256`,
 `size_bytes`.  Unique per (source, stage, tool_version, page): a re-run at the same version
 is a no-op; a new version writes beside the old.

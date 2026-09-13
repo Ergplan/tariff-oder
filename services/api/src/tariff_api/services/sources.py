@@ -25,7 +25,7 @@ from ..models import (
     SourceDocument,
     SourceState,
 )
-from ..queue import enqueue
+from ..queue import enqueue, request_cancel
 from ..telemetry import request_id_var
 
 INVENTORY_JOB = "inventory_source"
@@ -222,7 +222,11 @@ def register_upload(
     return source, False, job
 
 
-STAGE_JOBS = {"inventory_source": SourceState.uploaded, "triage_source": SourceState.inventoried}
+STAGE_JOBS = {
+    "inventory_source": SourceState.uploaded,
+    "triage_source": SourceState.inventoried,
+    "parse_source": SourceState.triaged,
+}
 
 
 def enqueue_stage(session: Session, settings: Settings, source: SourceDocument, job_type: str, *, actor: str) -> Job:
@@ -262,6 +266,25 @@ def request_stage_rerun(
         if input_state not in SOURCE_TRANSITIONS[source.state]:
             transition(session, source, SourceState.needs_reprocessing, actor=actor, reason=f"rerun {job_type}")
         transition(session, source, input_state, actor=actor, reason=f"rerun {job_type}")
+    # A re-run invalidates the stages that followed: a queued downstream job (e.g. the parse
+    # that triage chained) would otherwise run first against the rolled-back state and fail.
+    # The re-run stage chains its successors again when it completes.
+    stage_rank = {jt: order.index(st) for jt, st in STAGE_JOBS.items()}
+    pending = (
+        session.execute(
+            select(Job).where(
+                Job.source_id == source.id,
+                Job.status.in_([JobStatus.queued, JobStatus.leased]),
+                Job.job_type.in_(list(STAGE_JOBS)),
+            )
+        )
+        .scalars()
+        .all()
+    )
+    for j in pending:
+        if stage_rank[j.job_type] >= stage_rank[job_type]:
+            request_cancel(session, j, actor=f"{actor} (rerun {job_type})")
+    session.flush()
     return enqueue_stage(session, settings, source, job_type, actor=actor)
 
 

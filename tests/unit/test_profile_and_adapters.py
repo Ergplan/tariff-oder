@@ -134,6 +134,21 @@ def test_synthetic_fixtures_are_byte_reproducible():
     assert sha(mixed_text_and_image_pdf()) == sha(mixed_text_and_image_pdf())
     assert sha(text_only_pdf(seed="a")) == sha(text_only_pdf(seed="a"))
     assert sha(text_only_pdf(seed="a")) != sha(text_only_pdf(seed="b"))
+    # MuPDF writes the regenerated /ID half as a literal string in about one file in fifty;
+    # the normaliser must catch that form too, or the hash flickers (seen once in CI order)
+    assert len({sha(text_only_pdf(seed="a")) for _ in range(150)}) == 1
+
+
+def test_fixture_id_normalisation_handles_hex_and_literal_forms():
+    from fixtures.synthetic_pdfs import _ZERO_ID, _normalise_id, text_only_pdf
+
+    base = text_only_pdf()
+    assert base.count(_ZERO_ID) == 1
+    literal = base.replace(_ZERO_ID, b"/ID[<C3A309550C1CC3B9C3BE452270C28CC3>(89$\\005l\\)BIfJ=\\tx(\\\\\\177)]", 1)
+    assert literal != base
+    assert _normalise_id(literal) == base  # escaped `\)`, `\\` and nested `(` inside the literal
+    spaced = base.replace(_ZERO_ID, b"/ID [ <ab> <cd> ]", 1)
+    assert _normalise_id(spaced) == base
 
 
 def test_object_store_listing(tmp_path):

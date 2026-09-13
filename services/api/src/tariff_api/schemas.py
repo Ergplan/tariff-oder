@@ -138,8 +138,59 @@ class TriageSummary(BaseModel):
     unknown_pages: list[int]
 
 
+class TableGridOut(BaseModel):
+    page_index: int
+    reader: str
+    reader_version: str
+    ordinal: int
+    strategy: str
+    bbox: list[float]
+    row_count: int
+    col_count: int
+    header_rows: int
+    is_empty: bool
+    is_primary: bool
+    agreement_class: str | None
+    agreement_score: float | None
+    paired_ordinal: int | None
+    disagreeing_cells: int
+    risk_tags: list[str]
+    object_key: str
+
+
+class TableGridList(BaseModel):
+    source_id: uuid.UUID
+    total: int
+    grids: list[TableGridOut]
+
+
+class HeadingOut(BaseModel):
+    page_index: int
+    line_no: int
+    ordinal: int
+    kind: str
+    code_raw: str | None
+    code_canonical: str | None
+    text: str
+    text_source: str
+
+
+class HeadingList(BaseModel):
+    source_id: uuid.UUID
+    total: int
+    inventory: dict[str, Any] | None
+    headings: list[HeadingOut]
+
+
+class ParseSummary(BaseModel):
+    parse_version: str | None
+    parsed_at: datetime | None
+    heading_inventory: dict[str, Any] | None
+    table_summary: dict[str, Any] | None
+
+
 class StageRerunRequest(BaseModel):
-    job_type: Literal["inventory_source", "triage_source"]
+    job_type: Literal["inventory_source", "triage_source", "parse_source"]
 
 
 class SourceDetail(SourceSummary):
@@ -160,6 +211,7 @@ class SourceDetail(SourceSummary):
     latest_job: JobSummary | None
     text_layer_summary: dict[str, Any] | None
     triage: TriageSummary | None
+    parse: ParseSummary | None
     artefacts: list[StageArtefactOut]
 
 
@@ -191,6 +243,14 @@ class SourcePageOut(BaseModel):
     triage_rationale: str | None
     triage_version: str | None
     triaged_at: datetime | None
+    ocr_used: bool
+    ocr_engine: str | None
+    ocr_confidence: float | None
+    ocr_word_count: int | None
+    ocr_text_chars: int | None
+    ocr_agreement: float | None
+    parse_version: str | None
+    parsed_at: datetime | None
 
 
 class InboxObject(BaseModel):

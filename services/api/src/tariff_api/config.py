@@ -71,6 +71,14 @@ class Settings(BaseSettings):
     job_max_attempts: int = 3
     inventory_checkpoint_every_pages: int = 25
 
+    # Reading (Milestone 2b).  Defaults chosen from measurements on fixtures; recorded on artefacts.
+    ocr_engine: str = "tesseract"
+    ocr_lang: str = "eng"
+    ocr_dpi: int = 300
+    ocr_psm: int = 4  # measured: psm 6 misses 8pt table cells (recall 0.15); psm 4 reads all (1.00)
+    ocr_min_confidence: float = 60.0  # mean word confidence below this flags `ocr_low_confidence`
+    primary_reader: str = "pymupdf"  # Docling once measured on real pages (ADR-0009)
+
     # Provenance / evaluation
     golden_manifest_path: str = "tests/golden/manifest.json"
 

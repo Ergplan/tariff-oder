@@ -17,6 +17,7 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
     );
   }
   const s = detail.data;
+  const parse = s.parse; // bound once: TS narrowing does not survive the nested map callbacks below
   const pages = s.page_count ? await apiTry<SourcePageList>(`/sources/${id}/pages?limit=1000`) : { data: undefined };
   const job = s.latest_job;
   const noTextRanges = (s.text_layer_summary?.pages_without_text_layer as string[] | undefined) ?? [];
@@ -241,6 +242,89 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
         </>
       ) : null}
 
+      {parse ? (
+        <>
+          <h2>Parse — readers, OCR, headings</h2>
+          <p className="muted">
+            Rules version <code>{parse.parse_version}</code> ·{" "}
+            <span className="mono">{String(parse.table_summary?.tool_version ?? "")}</span>. Two independent readers
+            reconstruct every table; agreement is a routing signal, never proof. OCR text never replaces a text layer
+            silently — where both exist their agreement is measured.
+          </p>
+          <div className="grid">
+            <div className="card">
+              <div className="label">Primary table grids</div>
+              <div className="value">{String(parse.table_summary?.primary_grids ?? 0)}</div>
+            </div>
+            {Object.entries((parse.table_summary?.agreement_classes as Record<string, number> | undefined) ?? {}).map(
+              ([k, v]) => (
+                <div className="card" key={k}>
+                  <div className="label">{k.replace(/_/g, " ")}</div>
+                  <div className="value">{v}</div>
+                </div>
+              ),
+            )}
+            <div className="card">
+              <div className="label">OCR pages</div>
+              <div className="value">{((parse.table_summary?.ocr_pages as number[] | undefined) ?? []).length}</div>
+            </div>
+          </div>
+          <dl className="kv">
+            <dt>Tables needing review</dt>
+            <dd>
+              {((parse.table_summary?.pages_needing_review as number[] | undefined) ?? []).length ? (
+                <>
+                  <span className="badge" data-tone="warn">reader disagreement</span>{" "}
+                  <span className="mono">pages {((parse.table_summary?.pages_needing_review as number[]) ?? []).join(", ")}</span>
+                  <span className="muted"> — both grids are kept; nothing is extracted from these automatically</span>
+                </>
+              ) : (
+                "none"
+              )}
+            </dd>
+            <dt>OCR low confidence</dt>
+            <dd>
+              {((parse.table_summary?.ocr_low_confidence_pages as number[] | undefined) ?? []).length ? (
+                <span className="mono">{((parse.table_summary?.ocr_low_confidence_pages as number[]) ?? []).join(", ")}</span>
+              ) : (
+                "none"
+              )}
+            </dd>
+            <dt>Grids from OCR</dt>
+            <dd>
+              {((parse.table_summary?.grid_from_ocr_pending_pages as number[] | undefined) ?? []).length ? (
+                <>
+                  <span className="badge" data-tone="unknown">not attempted</span>{" "}
+                  <span className="mono">pages {((parse.table_summary?.grid_from_ocr_pending_pages as number[]) ?? []).join(", ")}</span>
+                  <span className="muted"> — table reconstruction from OCR word boxes is not built yet; these pages are listed for review</span>
+                </>
+              ) : (
+                "none needed"
+              )}
+            </dd>
+            <dt>Heading inventory</dt>
+            <dd>
+              {Object.entries((parse.heading_inventory?.counts as Record<string, number> | undefined) ?? {}).map(([k, v]) => (
+                <div key={k}>
+                  <strong>{k.replace(/_/g, " ")}</strong>: {v}{" "}
+                  <span className="mono muted">
+                    {(((parse.heading_inventory?.unique_codes as Record<string, string[]>) ?? {})[k] ?? []).join(", ")}
+                  </span>
+                  {(((parse.heading_inventory?.repeated_codes as Record<string, string[]>) ?? {})[k] ?? []).length ? (
+                    <span className="badge" data-tone="warn">
+                      repeated: {(((parse.heading_inventory?.repeated_codes as Record<string, string[]>) ?? {})[k] ?? []).join(", ")}
+                    </span>
+                  ) : null}
+                </div>
+              ))}
+              {Object.keys((parse.heading_inventory?.counts as Record<string, number> | undefined) ?? {}).length === 0 ? (
+                <span className="muted">no schedule, annexure, chapter or table headings recognised</span>
+              ) : null}
+            </dd>
+          </dl>
+        </>
+      ) : null}
+
       <h2>Page inventory</h2>
       {!pages.data ? (
         <p className="muted">Not inventoried yet.</p>
@@ -291,6 +375,14 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
                   <span className="badge" data-tone={p.page_class === "unknown" ? "unknown" : "neutral"}>{p.page_class}</span>
                   {p.ocr_recommended ? <span className="badge" data-tone="warn">OCR</span> : null}
                   {p.quality_flags.includes("low_text_quality") ? <span className="badge" data-tone="bad">low quality</span> : null}
+                  {p.ocr_used ? (
+                    <span className="badge" data-tone={p.quality_flags.includes("ocr_low_confidence") ? "bad" : "ok"}>
+                      OCR {p.ocr_confidence != null ? `${Math.round(p.ocr_confidence)}%` : ""}
+                    </span>
+                  ) : null}
+                  {p.quality_flags.includes("structure_disagreement") || p.quality_flags.includes("empty_grid") ? (
+                    <span className="badge" data-tone="warn">readers disagree</span>
+                  ) : null}
                 </td>
                 <td>
                   <span className="badge" data-tone={p.page_role === "unknown" ? "unknown" : "neutral"}>{p.page_role}</span>

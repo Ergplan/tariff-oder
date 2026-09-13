@@ -16,18 +16,23 @@ from ..db import session_scope
 from ..errors import AppError
 from ..models import (
     DatasetKind,
+    DocumentHeading,
     IdempotencyRecord,
     Job,
     SourceDocument,
     SourcePage,
     SourceState,
     StageArtefact,
+    TableGridRecord,
 )
 from ..schemas import (
+    HeadingList,
+    HeadingOut,
     InboxList,
     InboxObject,
     IngestRequest,
     JobSummary,
+    ParseSummary,
     SourceDetail,
     SourceList,
     SourcePageList,
@@ -36,6 +41,8 @@ from ..schemas import (
     SourceSummary,
     StageArtefactOut,
     StageRerunRequest,
+    TableGridList,
+    TableGridOut,
     TriageSummary,
 )
 from ..services import sources as svc
@@ -306,6 +313,14 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
             latest_job=job_summary(job),
             text_layer_summary=text_summary,
             triage=triage,
+            parse=ParseSummary(
+                parse_version=src.parse_version,
+                parsed_at=src.parsed_at,
+                heading_inventory=src.heading_inventory,
+                table_summary=src.table_summary,
+            )
+            if src.parse_version
+            else None,
             artefacts=[StageArtefactOut.model_validate(a, from_attributes=True) for a in artefacts if a.page_index == 0]
             + [
                 StageArtefactOut.model_validate(a, from_attributes=True)
@@ -357,6 +372,59 @@ def list_pages(
             offset=offset,
             limit=limit,
             pages=[SourcePageOut.model_validate(r, from_attributes=True) for r in rows],
+        )
+
+
+@router.get("/{source_id}/tables", response_model=TableGridList, dependencies=[Depends(require_analyst)])
+def list_tables(
+    source_id: uuid.UUID,
+    page_index: int | None = None,
+    agreement_class: str | None = None,
+    primary_only: bool = False,
+) -> TableGridList:
+    """Table grids from both readers with their agreement class — the routing signal of
+    Section 6.4.  The full cell grid is in the artefact at ``object_key``."""
+    with session_scope() as s:
+        svc.get_source(s, source_id)
+        q = select(TableGridRecord).where(TableGridRecord.source_id == source_id)
+        if page_index is not None:
+            q = q.where(TableGridRecord.page_index == page_index)
+        if agreement_class is not None:
+            q = q.where(TableGridRecord.agreement_class == agreement_class)
+        if primary_only:
+            q = q.where(TableGridRecord.is_primary.is_(True))
+        rows = (
+            s.execute(
+                q.order_by(TableGridRecord.page_index, TableGridRecord.is_primary.desc(), TableGridRecord.ordinal)
+            )
+            .scalars()
+            .all()
+        )
+        return TableGridList(
+            source_id=source_id,
+            total=len(rows),
+            grids=[TableGridOut.model_validate(r, from_attributes=True) for r in rows],
+        )
+
+
+@router.get("/{source_id}/headings", response_model=HeadingList, dependencies=[Depends(require_analyst)])
+def list_headings(source_id: uuid.UUID, kind: str | None = None) -> HeadingList:
+    """The document-wide heading inventory: the expectation localisation reconciles against."""
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        q = select(DocumentHeading).where(DocumentHeading.source_id == source_id)
+        if kind is not None:
+            q = q.where(DocumentHeading.kind == kind)
+        rows = (
+            s.execute(q.order_by(DocumentHeading.ordinal, DocumentHeading.page_index, DocumentHeading.line_no))
+            .scalars()
+            .all()
+        )
+        return HeadingList(
+            source_id=source_id,
+            total=len(rows),
+            inventory=src.heading_inventory,
+            headings=[HeadingOut.model_validate(r, from_attributes=True) for r in rows],
         )
 
 

@@ -199,6 +199,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/{source_id}/headings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Headings
+         * @description The document-wide heading inventory: the expectation localisation reconciles against.
+         */
+        get: operations["list_headings_sources__source_id__headings_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sources/{source_id}/pages": {
         parameters: {
             query?: never;
@@ -248,6 +268,27 @@ export interface paths {
          *     Artefacts from earlier tool versions are kept; new ones are written beside them.
          */
         post: operations["rerun_stage_sources__source_id__stages_rerun_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/tables": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Tables
+         * @description Table grids from both readers with their agreement class — the routing signal of
+         *     Section 6.4.  The full cell grid is in the artefact at ``object_key``.
+         */
+        get: operations["list_tables_sources__source_id__tables_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -453,6 +494,41 @@ export interface components {
             request_id?: string | null;
             /** Severity */
             severity: string;
+        };
+        /** HeadingList */
+        HeadingList: {
+            /** Headings */
+            headings: components["schemas"]["HeadingOut"][];
+            /** Inventory */
+            inventory: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Total */
+            total: number;
+        };
+        /** HeadingOut */
+        HeadingOut: {
+            /** Code Canonical */
+            code_canonical: string | null;
+            /** Code Raw */
+            code_raw: string | null;
+            /** Kind */
+            kind: string;
+            /** Line No */
+            line_no: number;
+            /** Ordinal */
+            ordinal: number;
+            /** Page Index */
+            page_index: number;
+            /** Text */
+            text: string;
+            /** Text Source */
+            text_source: string;
         };
         /** Health */
         Health: {
@@ -670,6 +746,21 @@ export interface components {
             provider: string;
             role: components["schemas"]["UserRole"];
         };
+        /** ParseSummary */
+        ParseSummary: {
+            /** Heading Inventory */
+            heading_inventory: {
+                [key: string]: unknown;
+            } | null;
+            /** Parse Version */
+            parse_version: string | null;
+            /** Parsed At */
+            parsed_at: string | null;
+            /** Table Summary */
+            table_summary: {
+                [key: string]: unknown;
+            } | null;
+        };
         /** Readiness */
         Readiness: {
             /** Database */
@@ -752,6 +843,7 @@ export interface components {
             pages_with_text: number | null;
             /** Pages Without Text */
             pages_without_text: number | null;
+            parse: components["schemas"]["ParseSummary"] | null;
             /** Pdf Version */
             pdf_version: string | null;
             /** Producer */
@@ -821,14 +913,30 @@ export interface components {
             label_observed: string | null;
             /** Label Source */
             label_source: string;
+            /** Ocr Agreement */
+            ocr_agreement: number | null;
+            /** Ocr Confidence */
+            ocr_confidence: number | null;
+            /** Ocr Engine */
+            ocr_engine: string | null;
             /** Ocr Recommended */
             ocr_recommended: boolean;
+            /** Ocr Text Chars */
+            ocr_text_chars: number | null;
+            /** Ocr Used */
+            ocr_used: boolean;
+            /** Ocr Word Count */
+            ocr_word_count: number | null;
             /** Page Class */
             page_class: string;
             /** Page Index */
             page_index: number;
             /** Page Role */
             page_role: string;
+            /** Parse Version */
+            parse_version: string | null;
+            /** Parsed At */
+            parsed_at: string | null;
             /** Printed Label */
             printed_label: string | null;
             /** Quality Flags */
@@ -943,7 +1051,7 @@ export interface components {
              * Job Type
              * @enum {string}
              */
-            job_type: "inventory_source" | "triage_source";
+            job_type: "inventory_source" | "triage_source" | "parse_source";
         };
         /** StatusReport */
         StatusReport: {
@@ -979,6 +1087,55 @@ export interface components {
             };
             /** Version */
             version: string;
+        };
+        /** TableGridList */
+        TableGridList: {
+            /** Grids */
+            grids: components["schemas"]["TableGridOut"][];
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Total */
+            total: number;
+        };
+        /** TableGridOut */
+        TableGridOut: {
+            /** Agreement Class */
+            agreement_class: string | null;
+            /** Agreement Score */
+            agreement_score: number | null;
+            /** Bbox */
+            bbox: number[];
+            /** Col Count */
+            col_count: number;
+            /** Disagreeing Cells */
+            disagreeing_cells: number;
+            /** Header Rows */
+            header_rows: number;
+            /** Is Empty */
+            is_empty: boolean;
+            /** Is Primary */
+            is_primary: boolean;
+            /** Object Key */
+            object_key: string;
+            /** Ordinal */
+            ordinal: number;
+            /** Page Index */
+            page_index: number;
+            /** Paired Ordinal */
+            paired_ordinal: number | null;
+            /** Reader */
+            reader: string;
+            /** Reader Version */
+            reader_version: string;
+            /** Risk Tags */
+            risk_tags: string[];
+            /** Row Count */
+            row_count: number;
+            /** Strategy */
+            strategy: string;
         };
         /** TriageSummary */
         TriageSummary: {
@@ -2108,6 +2265,93 @@ export interface operations {
             };
         };
     };
+    list_headings_sources__source_id__headings_get: {
+        parameters: {
+            query?: {
+                kind?: string | null;
+            };
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HeadingList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     list_pages_sources__source_id__pages_get: {
         parameters: {
             query?: {
@@ -2306,6 +2550,95 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["JobSummary"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_tables_sources__source_id__tables_get: {
+        parameters: {
+            query?: {
+                agreement_class?: string | null;
+                page_index?: number | null;
+                primary_only?: boolean;
+            };
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TableGridList"];
                 };
             };
             /** @description Unauthorized */

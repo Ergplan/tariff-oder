@@ -41,10 +41,11 @@ def test_upload_inventory_reopen_and_dedup(client, runner):
     # chains the triage stage automatically, which we also run so the queue ends up empty.
     assert runner.run_once() is True  # inventory
     assert runner.run_once() is True  # triage (Milestone 2a)
+    assert runner.run_once() is True  # parse (Milestone 2b)
     assert runner.run_once() is False  # queue empty
 
     d = client.get(f"/sources/{src['id']}", headers=headers(REVIEWER)).json()
-    assert d["state"] == "triaged"
+    assert d["state"] == "parsed"  # inventory -> triage -> parse, all chained
     assert d["page_count"] == 6
     assert d["pages_with_text"] == 4
     assert d["pages_without_text"] == 2

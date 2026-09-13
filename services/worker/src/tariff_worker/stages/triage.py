@@ -28,7 +28,7 @@ from tariff_api.db import session_scope
 from tariff_api.inventory import NotAPdf, open_document
 from tariff_api.models import SourceDocument, SourcePage, SourceState, StageArtefact
 from tariff_api.page_signals import TOOL_NAME, TOOL_VERSION, extract_signals
-from tariff_api.services.sources import transition
+from tariff_api.services.sources import enqueue_stage, transition
 from tariff_api.triage import (
     TRIAGE_VERSION,
     ObservedLabel,
@@ -205,6 +205,7 @@ def triage_source(ctx: JobContext) -> dict:
         )
         if src.state != SourceState.triaged:
             transition(s, src, SourceState.triaged, actor=ctx.worker, reason=STAGE_TOOL_VERSION)
+        enqueue_stage(s, settings, src, "parse_source", actor=ctx.worker)
         summary = {
             "pages_total": total,
             "page_class_counts": dict(counts),

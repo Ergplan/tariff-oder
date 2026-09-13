@@ -34,10 +34,34 @@ def _finalise(doc: pymupdf.Document, extra: dict[str, str] | None = None) -> byt
     doc.set_metadata(meta)
     data = doc.tobytes(garbage=3, deflate=True)
     doc.close()
-    # PyMuPDF regenerates the second half of the file /ID at save time, so two identical
-    # documents differ in 16 bytes.  Zero both halves in place (same length, so the xref
-    # offsets stay valid) to make the generator byte-reproducible.
-    return re.sub(rb"/ID\s*\[<[0-9A-Fa-f]*><[0-9A-Fa-f]*>\]", b"/ID[<" + b"0" * 32 + b"><" + b"0" * 32 + b">]", data)
+    return _normalise_id(data)
+
+
+# A PDF string is either hex `<...>` or a literal `(...)` with backslash escapes.  MuPDF
+# writes the regenerated half of the /ID in whichever form is shorter, so roughly one file
+# in fifty carries a literal.  Match both forms; the literal may contain any byte.
+_PDF_STRING = rb"(?:<[0-9A-Fa-f]*>|\((?:\\.|[^\\)])*\))"
+_ID_ARRAY = re.compile(rb"/ID\s*\[\s*" + _PDF_STRING + rb"\s*" + _PDF_STRING + rb"\s*\]", re.S)
+_ZERO_ID = b"/ID[<" + b"0" * 32 + b"><" + b"0" * 32 + b">]"
+
+
+def _normalise_id(data: bytes) -> bytes:
+    """PyMuPDF regenerates the second half of the file /ID at save time, so two identical
+    documents differ in a few bytes.  Zero both halves to make the generator byte-reproducible.
+    The /ID lives in the trailer after the xref table, so a length change there leaves every
+    offset valid; the re-open below proves it (a repaired document would mean an offset broke).
+    Dedup, golden manifests and the ingest path key on SHA-256, so this must never silently
+    fail: exactly one /ID array is expected."""
+    out, n = _ID_ARRAY.subn(_ZERO_ID, data)
+    if n != 1:
+        raise AssertionError(f"expected one /ID array in the fixture PDF, found {n}")
+    check = pymupdf.open(stream=out, filetype="pdf")
+    try:
+        if check.is_repaired:
+            raise AssertionError("/ID normalisation broke the fixture PDF's xref")
+    finally:
+        check.close()
+    return out
 
 
 def mixed_text_and_image_pdf() -> bytes:
@@ -196,6 +220,92 @@ def labelled_order_pdf() -> bytes:
     return _finalise(doc, {"subject": "labelled order"})
 
 
+def _aligned_table(
+    page: pymupdf.Page, top: float, header: list[str], rows: list[tuple[str, ...]], xs: list[int]
+) -> None:
+    """An unruled, whitespace-aligned table: the KERC/UPERC text-table shape with no lines."""
+    for c, x in enumerate(xs):
+        page.insert_text((x, top), header[c], fontsize=9)
+    for r, row in enumerate(rows):
+        for c, x in enumerate(xs):
+            page.insert_text((x, top + 20 * (r + 1)), row[c], fontsize=9)
+
+
+def readers_and_headings_pdf() -> bytes:
+    """Five pages exercising the second reader, agreement scoring, OCR and the heading
+    inventory:
+
+    1. KERC shape — `TARIFF SCHEDULE LT-1` printed twice (title, then caption) over an unruled,
+       whitespace-aligned table: rulings find nothing, the text strategy must be used, and both
+       readers should agree exactly.
+    2. GERC shape — numbered clauses `1. RATE: RGP`, `1.1. FIXED CHARGES / MONTH`, narrative.
+    3. UPERC shape — `RATE SCHEDULE LMV - 1` (spaced hyphen) over a ruled table; both readers agree.
+    4. A scanned copy of page 3: the page rendered to a raster and inserted as a full-page image
+       (`image_only`).  OCR must read the heading and the table words back.
+    5. `Table 6-7 Approved distribution loss trajectory` caption over a ruled table, and a
+       `CHAPTER - 6` heading.
+    """
+    doc = pymupdf.open()
+    # 1
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    page.insert_text((72, 110), "TARIFF SCHEDULE LT-1", fontsize=13)
+    page.insert_text(
+        (72, 140), "Applicable to Bhagya Jyothi / Kuteera Jyothi installations and private residences.", fontsize=9
+    )
+    page.insert_text((72, 170), "TARIFF SCHEDULE LT-1", fontsize=10)  # the caption repeat
+    _aligned_table(
+        page,
+        200,
+        ["Particulars", "FY2025-26", "FY2026-27", "FY2027-28"],
+        [
+            ("Fixed charge per KW / Month", "Rs.145/-", "Rs.150/-", "Rs.160/-"),
+            ("Energy charge (Paise/Unit)", "580", "575", "575"),
+            ("Minimum charge", "-", "-", "-"),
+        ],
+        [72, 260, 370, 480],
+    )
+    _footer(page, "1")
+    # 2
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    page.insert_text((72, 110), "1. RATE: RGP", fontsize=13)
+    page.insert_text((72, 140), "1.1. FIXED CHARGES / MONTH", fontsize=11)
+    page.insert_text((90, 165), "(a) Up to and including 2 kW ... Rs. 15/- per month", fontsize=10)
+    page.insert_text((90, 185), "(b) Above 2 kW to 4 kW ... Rs. 25/- per month", fontsize=10)
+    page.insert_text((72, 220), "PLUS", fontsize=11)
+    page.insert_text((72, 250), "1.2. ENERGY CHARGES", fontsize=11)
+    for k in range(18):
+        page.insert_text(
+            (72, 290 + k * 18),
+            "The energy charges shall be payable by the consumer for the units consumed in the month.",
+            fontsize=9,
+        )
+    _footer(page, "2")
+    # 3
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    # Hyphen with spaces, not an en dash: PyMuPDF's base-14 font cannot encode U+2013 and
+    # silently substitutes a middle dot in the text layer.  The en-dash spelling is covered by
+    # the heading unit tests and, for real, by the NPCL order (hazard D.1).
+    page.insert_text((72, 110), "RATE SCHEDULE LMV - 1", fontsize=13)
+    page.insert_text((72, 135), "Domestic Light, Fan & Power", fontsize=10)
+    _ruled_table(page, top=160, rows=8)
+    _footer(page, "3")
+    # 4: scan of page 3
+    pix = doc[2].get_pixmap(dpi=150)
+    page = doc.new_page(width=595, height=842)
+    page.insert_image(page.rect, pixmap=pix)
+    # 5
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    page.insert_text((72, 100), "CHAPTER - 6", fontsize=12)
+    page.insert_text((72, 130), "Table 6-7 Approved distribution loss trajectory", fontsize=10)
+    _ruled_table(page, top=150, rows=5)
+    _footer(page, "5")
+    return _finalise(doc, {"subject": "readers and headings"})
+
+
 def garbled_text_pdf() -> bytes:
     """A page whose text layer is present but useless: private-use codepoints and consonant
     soup, the symptom of a missing ToUnicode map (failure mode D2)."""
@@ -229,4 +339,5 @@ if __name__ == "__main__":
     (out / "SYNTHETIC_text_only.pdf").write_bytes(text_only_pdf())
     (out / "SYNTHETIC_labelled_order.pdf").write_bytes(labelled_order_pdf())
     (out / "SYNTHETIC_garbled_text.pdf").write_bytes(garbled_text_pdf())
+    (out / "SYNTHETIC_readers_and_headings.pdf").write_bytes(readers_and_headings_pdf())
     print(f"wrote synthetic fixtures to {out}")

@@ -13,11 +13,13 @@ from tariff_api.telemetry import configure_logging
 
 from .runner import Runner
 from .stages.inventory import inventory_source
+from .stages.parse import parse_source
 from .stages.triage import triage_source
 
 HANDLERS = {
     "inventory_source": inventory_source,
     "triage_source": triage_source,
+    "parse_source": parse_source,
 }
 
 
