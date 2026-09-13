@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 import uuid
 from typing import Any
 
@@ -10,7 +11,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .. import golden
-from ..adapters.storage import ObjectStore
+from ..adapters.storage import ObjectNotFound, ObjectStore
 from ..config import Settings
 from ..errors import AppError
 from ..inventory import NotAPdf, open_document
@@ -27,6 +28,9 @@ from ..queue import enqueue
 from ..telemetry import request_id_var
 
 INVENTORY_JOB = "inventory_source"
+
+# Keys the store writes itself for registered sources.
+_CONTENT_KEY = re.compile(r"[0-9a-f]{64}\.pdf")
 
 
 def get_or_create_dataset(session: Session, kind: DatasetKind) -> Dataset:
@@ -64,6 +68,68 @@ def transition(
 
 def inventory_idempotency_key(sha256: str, attempt_series: int = 1) -> str:
     return f"{INVENTORY_JOB}:{sha256}:{attempt_series}"
+
+
+def register_from_object(
+    session: Session,
+    storage: ObjectStore,
+    settings: Settings,
+    *,
+    object_key: str,
+    dataset_kind: DatasetKind,
+    provenance_url: str | None,
+    actor: str,
+) -> tuple[SourceDocument, bool, Job | None]:
+    """Register a PDF that an operator already placed in the source bucket.
+
+    The bytes are read back and hashed here — the object's name, size or any metadata on it
+    are never trusted as identity.  Registration then follows exactly the same path as an
+    upload, so dedup, golden-manifest verification and the inventory job are identical.
+    """
+    listing = {o.key: o for o in storage.list(ObjectStore.SOURCES, prefix=object_key, limit=1)}
+    info = listing.get(object_key)
+    if info is None:
+        raise AppError("not_found", f"no object {object_key!r} in the source bucket")
+    if info.size_bytes > settings.max_upload_bytes:
+        raise AppError("source_too_large", f"{info.size_bytes} bytes > {settings.max_upload_bytes}")
+    try:
+        data = storage.get(ObjectStore.SOURCES, object_key)
+    except ObjectNotFound as e:
+        raise AppError("not_found", f"no object {object_key!r} in the source bucket") from e
+    return register_upload(
+        session,
+        storage,
+        settings,
+        data=data,
+        filename=object_key.rsplit("/", 1)[-1],
+        dataset_kind=dataset_kind,
+        provenance_url=provenance_url or f"gs://<source-bucket>/{object_key}",
+        actor=actor,
+    )
+
+
+def list_inbox(session: Session, storage: ObjectStore, *, prefix: str = "", limit: int = 200) -> list[dict[str, Any]]:
+    """Objects in the source bucket with their registration status.
+
+    Content-addressed keys (``<sha256>.pdf``) are the store's own copies of registered
+    sources and are listed as ``registered``; anything else is a candidate for ingestion.
+    """
+    objects = storage.list(ObjectStore.SOURCES, prefix=prefix, limit=limit)
+    known = {row.object_key: row for row in session.execute(select(SourceDocument)).scalars().all()}
+    out: list[dict[str, Any]] = []
+    for o in objects:
+        src = known.get(o.key)
+        out.append(
+            {
+                "object_key": o.key,
+                "size_bytes": o.size_bytes,
+                "updated_at": o.updated_at,
+                "registered": src is not None,
+                "source_id": src.id if src else None,
+                "is_content_addressed_copy": _CONTENT_KEY.fullmatch(o.key) is not None,
+            }
+        )
+    return out
 
 
 def register_upload(

@@ -5,8 +5,8 @@ GERC/MGVCL first) into published, evidence-backed, human-reviewed tariff facts t
 can browse, compare across periods, and query.
 
 **Status:** Milestone 1 (running foundation and provenance) implemented under the `local`
-profile; Google Cloud `dev` deployment is prepared as Terraform but **not applied** (no
-credentials in the build environment).  See [`docs/BUILD_STATE.md`](docs/BUILD_STATE.md) for
+profile; Google Cloud `dev` (project `tariff-order-parsing`) is prepared as Terraform but
+**not applied** — run `scripts/verify-gcp-setup.sh` on the build VM, then `make tf-plan ENV=dev`.  See [`docs/BUILD_STATE.md`](docs/BUILD_STATE.md) for
 exactly what works, what was tested, and what is blocked.  No tariff number has been
 extracted, reviewed, or published.
 

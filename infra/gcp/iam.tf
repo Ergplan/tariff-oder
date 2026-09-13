@@ -42,10 +42,11 @@ resource "google_project_iam_member" "log_writer" {
   member   = "serviceAccount:${each.value}"
 }
 
-# Bucket-scoped object access (objectUser: read/write objects, no bucket admin)
+# Bucket-scoped object access (objectUser: read/write objects, no bucket admin).  Applies to
+# the adopted source bucket as well as the created ones.
 resource "google_storage_bucket_iam_member" "data_services" {
-  for_each = { for pair in setproduct(keys(local.data_services), keys(local.buckets)) : "${pair[0]}-${pair[1]}" => pair }
-  bucket   = google_storage_bucket.b[each.value[1]].name
+  for_each = { for pair in setproduct(keys(local.data_services), keys(local.bucket_names)) : "${pair[0]}-${pair[1]}" => pair }
+  bucket   = local.bucket_names[each.value[1]]
   role     = "roles/storage.objectUser"
   member   = "serviceAccount:${local.data_services[each.value[0]]}"
 }
@@ -88,19 +89,20 @@ resource "google_cloud_run_v2_job_iam_member" "scheduler_runs_worker" {
 }
 
 # IAP: who may reach the web app / API through the load balancer.  Application roles
-# (analyst/reviewer/administrator) are assigned separately in the users table.
+# (analyst/reviewer/administrator) are assigned separately in the users table.  Only created
+# when the load balancer exists (var.domain set).
 resource "google_iap_web_backend_service_iam_member" "web_users" {
-  for_each            = toset(var.iap_members)
+  for_each            = local.enable_lb == 1 ? toset(var.iap_members) : toset([])
   project             = var.project_id
-  web_backend_service = google_compute_backend_service.web.name
+  web_backend_service = google_compute_backend_service.web[0].name
   role                = "roles/iap.httpsResourceAccessor"
   member              = each.value
 }
 
 resource "google_iap_web_backend_service_iam_member" "api_users" {
-  for_each            = toset(var.iap_members)
+  for_each            = local.enable_lb == 1 ? toset(var.iap_members) : toset([])
   project             = var.project_id
-  web_backend_service = google_compute_backend_service.api.name
+  web_backend_service = google_compute_backend_service.api[0].name
   role                = "roles/iap.httpsResourceAccessor"
   member              = each.value
 }

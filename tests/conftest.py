@@ -66,6 +66,18 @@ def migrated_db(env_root: Path):
 
 
 @pytest.fixture()
+def object_store_root(env_root: Path, tmp_path: Path):
+    """A fresh object store per test.  Object keys are immutable by design, so a store shared
+    across tests would serve an earlier test's bytes for the same key."""
+    root = tmp_path / "object-store"
+    root.mkdir(parents=True, exist_ok=True)
+    previous = os.environ["OBJECT_STORE_ROOT"]
+    os.environ["OBJECT_STORE_ROOT"] = str(root)
+    yield root
+    os.environ["OBJECT_STORE_ROOT"] = previous
+
+
+@pytest.fixture()
 def clean_tables(migrated_db):
     """Truncate mutable tables between tests (audit_events is append-only and is not truncated
     by row deletes; TRUNCATE bypasses the row trigger, which is intentional for tests only)."""
@@ -84,7 +96,7 @@ def clean_tables(migrated_db):
 
 
 @pytest.fixture()
-def app(clean_tables, env_root):
+def app(clean_tables, object_store_root):
     from tariff_api.config import get_settings, reset_settings_cache
     from tariff_api.db import dispose_db
     from tariff_api.main import create_app

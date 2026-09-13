@@ -45,7 +45,12 @@ make lint                   # ruff + tsc
 make contracts              # regenerate openapi.json + api.d.ts after any API change
 make dev                    # full local stack in containers (Docker)
 make tf-plan ENV=dev        # Terraform plan (never applies)
+scripts/verify-gcp-setup.sh # read-only check of the dev project: APIs, buckets, budget, roles
 ```
+
+Cloud ingestion: the tariff PDFs are copied into `gs://tarifforderstudio_sources` and
+registered with `GET /sources/inbox` then `POST /sources/ingest` — the bytes are re-hashed,
+so the object name is never identity.
 
 Local run without Docker: `make ephemeral-postgres`, then export
 `DATABASE_URL=postgresql+psycopg://postgres@127.0.0.1:5433/tariff_dev`,

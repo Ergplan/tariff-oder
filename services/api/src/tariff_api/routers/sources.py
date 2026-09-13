@@ -23,6 +23,9 @@ from ..models import (
     SourceState,
 )
 from ..schemas import (
+    InboxList,
+    InboxObject,
+    IngestRequest,
     JobSummary,
     SourceDetail,
     SourceList,
@@ -104,6 +107,82 @@ def upload_source(
             filename=file.filename or "upload.pdf",
             dataset_kind=dataset_kind,
             provenance_url=provenance_url,
+            actor=principal.email,
+        )
+        s.flush()
+        s.refresh(source)
+        result = SourceRegistration(source=_summary(source), deduplicated=dedup, job=job_summary(job))
+        status_code = 200 if dedup else 201
+        if idempotency_key:
+            s.add(
+                IdempotencyRecord(
+                    key=idempotency_key,
+                    actor=principal.email,
+                    request_fingerprint=fingerprint,
+                    response_status=status_code,
+                    response_body=json.loads(result.model_dump_json()),
+                )
+            )
+        response.status_code = status_code
+        return result
+
+
+@router.get("/inbox", response_model=InboxList, dependencies=[Depends(require_admin)])
+def list_inbox(
+    request: Request,
+    prefix: str = Query("", max_length=512),
+    limit: int = Query(200, ge=1, le=1000),
+) -> InboxList:
+    """List objects in the source bucket and whether each one is registered.
+
+    This is how the three tariff orders reach the system in the cloud: an operator copies
+    them into the bucket, then registers each one with POST /sources/ingest.
+    """
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        rows = svc.list_inbox(s, storage, prefix=prefix, limit=limit)
+    return InboxList(
+        prefix=prefix,
+        total=len(rows),
+        objects=[InboxObject.model_validate(r) for r in rows],
+    )
+
+
+@router.post("/ingest", response_model=SourceRegistration, status_code=201)
+def ingest_source(
+    body: IngestRequest,
+    request: Request,
+    response: Response,
+    idempotency_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
+    principal: Principal = Depends(require_admin),
+) -> SourceRegistration:
+    """Register an object already in the source bucket.  The bytes are re-read and hashed;
+    the object name is never trusted as identity.  Dedup and idempotency behave exactly as
+    for a browser upload."""
+    settings = request.app.state.settings
+    storage: ObjectStore = request.app.state.adapters.storage
+    fingerprint = hashlib.sha256(
+        f"ingest|{body.object_key}|{body.dataset_kind.value}|{body.provenance_url or ''}".encode()
+    ).hexdigest()
+
+    with session_scope() as s:
+        if idempotency_key:
+            rec = s.get(IdempotencyRecord, {"key": idempotency_key, "actor": principal.email})
+            if rec is not None:
+                if rec.request_fingerprint != fingerprint:
+                    raise AppError("idempotency_conflict")
+                response.status_code = rec.response_status
+                replay = dict(rec.response_body)
+                replay["idempotent_replay"] = True
+                return SourceRegistration.model_validate(replay)
+
+        source, dedup, job = svc.register_from_object(
+            s,
+            storage,
+            settings,
+            object_key=body.object_key,
+            dataset_kind=body.dataset_kind,
+            provenance_url=body.provenance_url,
             actor=principal.email,
         )
         s.flush()

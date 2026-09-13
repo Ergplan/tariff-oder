@@ -2,14 +2,18 @@
 # Request timeouts are sized for API calls; document processing never runs in a request.
 
 locals {
+  # With a load balancer the services accept traffic only from it; without one they accept
+  # nothing from the internet at all (ADR-0008).
+  run_ingress = local.enable_lb == 1 ? "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER" : "INGRESS_TRAFFIC_INTERNAL_ONLY"
+
   gcp_env = {
     DEPLOYMENT_PROFILE   = "gcp"
     ENVIRONMENT_NAME     = var.environment
     GCP_PROJECT_ID       = var.project_id
     OBJECT_STORE_BACKEND = "gcs"
-    SOURCE_BUCKET        = google_storage_bucket.b["sources"].name
-    ARTEFACT_BUCKET      = google_storage_bucket.b["artefacts"].name
-    EXPORT_BUCKET        = google_storage_bucket.b["exports"].name
+    SOURCE_BUCKET        = local.bucket_names["sources"]
+    ARTEFACT_BUCKET      = local.bucket_names["artefacts"]
+    EXPORT_BUCKET        = local.bucket_names["exports"]
     SECRETS_BACKEND      = "secret_manager"
     IDENTITY_BACKEND     = "iap"
     # Two-phase: backend-service ids exist only after the first apply.  Copy the
@@ -28,7 +32,7 @@ data "google_project" "this" {
 resource "google_cloud_run_v2_service" "api" {
   name                = "${local.name}-api"
   location            = var.region
-  ingress             = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
+  ingress             = local.run_ingress
   deletion_protection = false
   labels              = local.labels
 
@@ -92,7 +96,7 @@ resource "google_cloud_run_v2_service" "api" {
 resource "google_cloud_run_v2_service" "web" {
   name                = "${local.name}-web"
   location            = var.region
-  ingress             = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
+  ingress             = local.run_ingress
   deletion_protection = false
   labels              = local.labels
 
@@ -102,6 +106,13 @@ resource "google_cloud_run_v2_service" "web" {
     scaling {
       min_instance_count = 0
       max_instance_count = 4
+    }
+    vpc_access {
+      network_interfaces {
+        network    = google_compute_network.vpc.id
+        subnetwork = google_compute_subnetwork.run.id
+      }
+      egress = "PRIVATE_RANGES_ONLY"
     }
     containers {
       image = var.web_image

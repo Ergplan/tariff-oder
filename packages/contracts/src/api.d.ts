@@ -233,6 +233,51 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/inbox": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Inbox
+         * @description List objects in the source bucket and whether each one is registered.
+         *
+         *     This is how the three tariff orders reach the system in the cloud: an operator copies
+         *     them into the bucket, then registers each one with POST /sources/ingest.
+         */
+        get: operations["list_inbox_sources_inbox_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/ingest": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Ingest Source
+         * @description Register an object already in the source bucket.  The bytes are re-read and hashed;
+         *     the object name is never trusted as identity.  Dedup and idempotency behave exactly as
+         *     for a browser upload.
+         */
+        post: operations["ingest_source_sources_ingest_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/status": {
         parameters: {
             query?: never;
@@ -399,6 +444,48 @@ export interface components {
             status: "ok";
             /** Version */
             version: string;
+        };
+        /** InboxList */
+        InboxList: {
+            /**
+             * Bucket Role
+             * @default sources
+             * @constant
+             */
+            bucket_role: "sources";
+            /** Objects */
+            objects: components["schemas"]["InboxObject"][];
+            /** Prefix */
+            prefix: string;
+            /** Total */
+            total: number;
+        };
+        /** InboxObject */
+        InboxObject: {
+            /** Is Content Addressed Copy */
+            is_content_addressed_copy: boolean;
+            /** Object Key */
+            object_key: string;
+            /** Registered */
+            registered: boolean;
+            /** Size Bytes */
+            size_bytes: number;
+            /** Source Id */
+            source_id: string | null;
+            /** Updated At */
+            updated_at: string | null;
+        };
+        /**
+         * IngestRequest
+         * @description Register a PDF already present in the source bucket (operator uploaded it there).
+         */
+        IngestRequest: {
+            /** @default real */
+            dataset_kind: components["schemas"]["DatasetKind"];
+            /** Object Key */
+            object_key: string;
+            /** Provenance Url */
+            provenance_url?: string | null;
         };
         /** JobDetail */
         JobDetail: {
@@ -2033,6 +2120,181 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["JobSummary"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_inbox_sources_inbox_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+                prefix?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    ingest_source_sources_ingest_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "Idempotency-Key"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["IngestRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SourceRegistration"];
                 };
             };
             /** @description Unauthorized */

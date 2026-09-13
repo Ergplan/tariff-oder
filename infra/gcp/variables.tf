@@ -19,8 +19,9 @@ variable "region" {
 }
 
 variable "billing_account_id" {
-  description = "Billing account for the budget resource (format 012345-678901-ABCDEF)."
+  description = "Billing account for the budget resource (format 012345-678901-ABCDEF). Empty skips budget creation — set it as soon as it is known (docs/deployment.md)."
   type        = string
+  default     = ""
 }
 
 variable "budget_amount_inr" {
@@ -35,14 +36,27 @@ variable "alert_email" {
 }
 
 variable "domain" {
-  description = "Hostname for the IAP-protected load balancer (managed certificate)."
+  description = "Hostname for the IAP-protected load balancer (managed certificate). Empty disables the load balancer and IAP entirely: Cloud Run then has NO public ingress and is reachable only from the VPC (ADR-0008)."
   type        = string
+  default     = ""
 }
 
 variable "iap_members" {
-  description = "Principals allowed through IAP, e.g. [\"user:venture@aayuda.energy\"]. Roles are still enforced by the API."
+  description = "Principals allowed through IAP, e.g. [\"user:venture@aayuda.energy\"]. Roles are still enforced by the API. Ignored when var.domain is empty."
   type        = list(string)
   default     = []
+}
+
+variable "iap_audiences" {
+  description = "IAP JWT audiences the API accepts (api and web backend services). Empty on the first apply; fill from the `iap_audiences` output and re-apply."
+  type        = list(string)
+  default     = []
+}
+
+variable "existing_source_bucket" {
+  description = "Name of an already-created bucket to use as the source store instead of creating one (ADR-0008). Empty creates `<project>-tariff-sources` in var.region."
+  type        = string
+  default     = ""
 }
 
 variable "python_image" {
@@ -87,10 +101,4 @@ variable "worker_schedule" {
 variable "job_lease_seconds" {
   type    = number
   default = 120
-}
-
-variable "iap_audiences" {
-  description = "IAP JWT audiences the API accepts (api and web backend services). Empty on the first apply; fill from the `iap_audiences` output and re-apply."
-  type        = list(string)
-  default     = []
 }

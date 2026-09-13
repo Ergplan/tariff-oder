@@ -11,11 +11,23 @@ import abc
 import os
 import tempfile
 from collections.abc import Iterator
+from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 
 
 class ObjectNotFound(Exception):
     pass
+
+
+@dataclass(frozen=True)
+class ObjectInfo:
+    """One stored object, as listed.  Used by the bucket-ingest flow (an operator drops the
+    tariff PDFs in the source bucket; the administrator registers them by key)."""
+
+    key: str
+    size_bytes: int
+    updated_at: datetime | None = None
 
 
 class ObjectStore(abc.ABC):
@@ -32,6 +44,10 @@ class ObjectStore(abc.ABC):
 
     @abc.abstractmethod
     def exists(self, bucket: str, key: str) -> bool: ...
+
+    @abc.abstractmethod
+    def list(self, bucket: str, prefix: str = "", limit: int = 1000) -> list[ObjectInfo]:
+        """List objects under a prefix, sorted by key.  Never recurses into other buckets."""
 
     @abc.abstractmethod
     def health(self) -> dict: ...
@@ -87,6 +103,25 @@ class FilesystemObjectStore(ObjectStore):
 
     def exists(self, bucket: str, key: str) -> bool:
         return self._path(bucket, key).exists()
+
+    def list(self, bucket: str, prefix: str = "", limit: int = 1000) -> list[ObjectInfo]:
+        base = self.root / bucket
+        if not base.exists():
+            return []
+        out: list[ObjectInfo] = []
+        for path in sorted(base.rglob("*")):
+            if not path.is_file() or path.name.startswith(".tmp-"):
+                continue
+            key = path.relative_to(base).as_posix()
+            if prefix and not key.startswith(prefix):
+                continue
+            st = path.stat()
+            out.append(
+                ObjectInfo(key=key, size_bytes=st.st_size, updated_at=datetime.fromtimestamp(st.st_mtime, tz=UTC))
+            )
+            if len(out) >= limit:
+                break
+        return out
 
     def health(self) -> dict:
         ok = os.access(self.root, os.W_OK)
@@ -146,6 +181,16 @@ class GcsObjectStore(ObjectStore):
 
     def exists(self, bucket: str, key: str) -> bool:
         return self._blob(bucket, key).exists()
+
+    def list(self, bucket: str, prefix: str = "", limit: int = 1000) -> list[ObjectInfo]:
+        name = self._buckets.get(bucket)
+        if not name:
+            raise ValueError(f"unknown logical bucket {bucket!r}")
+        blobs = self._client.list_blobs(name, prefix=prefix or None, max_results=limit)
+        return sorted(
+            (ObjectInfo(key=b.name, size_bytes=int(b.size or 0), updated_at=b.updated) for b in blobs),
+            key=lambda o: o.key,
+        )
 
     def health(self) -> dict:
         try:

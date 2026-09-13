@@ -157,6 +157,30 @@ class SourcePageOut(BaseModel):
     quality_flags: list[Any]
 
 
+class InboxObject(BaseModel):
+    object_key: str
+    size_bytes: int
+    updated_at: datetime | None
+    registered: bool
+    source_id: uuid.UUID | None
+    is_content_addressed_copy: bool
+
+
+class InboxList(BaseModel):
+    bucket_role: Literal["sources"] = "sources"
+    prefix: str
+    total: int
+    objects: list[InboxObject]
+
+
+class IngestRequest(BaseModel):
+    """Register a PDF already present in the source bucket (operator uploaded it there)."""
+
+    object_key: str = Field(min_length=1, max_length=512)
+    dataset_kind: DatasetKind = DatasetKind.real
+    provenance_url: str | None = None
+
+
 class SourcePageList(BaseModel):
     source_id: uuid.UUID
     total: int

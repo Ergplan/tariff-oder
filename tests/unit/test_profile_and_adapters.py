@@ -119,3 +119,33 @@ def test_inventory_of_synthetic_fixture_direct():
     assert [p.has_text_layer for p in pages] == [True, True, True, True, False, False]
     assert [p.printed_label for p in pages] == ["i", "ii", "1", "2", "3", "4"]
     assert pages[2].rotation == 90
+
+
+def test_synthetic_fixtures_are_byte_reproducible():
+    """Dedup, golden manifests and the ingest path all key on SHA-256: a generator whose bytes
+    change between calls would make those tests assert nothing."""
+    import hashlib
+
+    from fixtures.synthetic_pdfs import mixed_text_and_image_pdf, text_only_pdf
+
+    def sha(b: bytes) -> str:
+        return hashlib.sha256(b).hexdigest()
+
+    assert sha(mixed_text_and_image_pdf()) == sha(mixed_text_and_image_pdf())
+    assert sha(text_only_pdf(seed="a")) == sha(text_only_pdf(seed="a"))
+    assert sha(text_only_pdf(seed="a")) != sha(text_only_pdf(seed="b"))
+
+
+def test_object_store_listing(tmp_path):
+    from tariff_api.adapters.storage import FilesystemObjectStore
+
+    st = FilesystemObjectStore(str(tmp_path))
+    st.put("sources", "inbox/order.pdf", b"%PDF-1", "application/pdf")
+    st.put("sources", "a" * 64 + ".pdf", b"%PDF-2", "application/pdf")
+    keys = [o.key for o in st.list("sources")]
+    assert keys == ["a" * 64 + ".pdf", "inbox/order.pdf"]  # sorted, no temp files
+    assert [o.key for o in st.list("sources", prefix="inbox/")] == ["inbox/order.pdf"]
+    assert st.list("sources", limit=1) == st.list("sources")[:1]
+    assert st.list("artefacts") == []
+    info = st.list("sources", prefix="inbox/")[0]
+    assert info.size_bytes == 6 and info.updated_at is not None

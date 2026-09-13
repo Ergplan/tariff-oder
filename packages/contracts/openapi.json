@@ -276,6 +276,123 @@
         "title": "Health",
         "type": "object"
       },
+      "InboxList": {
+        "properties": {
+          "bucket_role": {
+            "const": "sources",
+            "default": "sources",
+            "title": "Bucket Role",
+            "type": "string"
+          },
+          "objects": {
+            "items": {
+              "$ref": "#/components/schemas/InboxObject"
+            },
+            "title": "Objects",
+            "type": "array"
+          },
+          "prefix": {
+            "title": "Prefix",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "prefix",
+          "total",
+          "objects"
+        ],
+        "title": "InboxList",
+        "type": "object"
+      },
+      "InboxObject": {
+        "properties": {
+          "is_content_addressed_copy": {
+            "title": "Is Content Addressed Copy",
+            "type": "boolean"
+          },
+          "object_key": {
+            "title": "Object Key",
+            "type": "string"
+          },
+          "registered": {
+            "title": "Registered",
+            "type": "boolean"
+          },
+          "size_bytes": {
+            "title": "Size Bytes",
+            "type": "integer"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Id"
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At"
+          }
+        },
+        "required": [
+          "object_key",
+          "size_bytes",
+          "updated_at",
+          "registered",
+          "source_id",
+          "is_content_addressed_copy"
+        ],
+        "title": "InboxObject",
+        "type": "object"
+      },
+      "IngestRequest": {
+        "description": "Register a PDF already present in the source bucket (operator uploaded it there).",
+        "properties": {
+          "dataset_kind": {
+            "$ref": "#/components/schemas/DatasetKind",
+            "default": "real"
+          },
+          "object_key": {
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Object Key",
+            "type": "string"
+          },
+          "provenance_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provenance Url"
+          }
+        },
+        "required": [
+          "object_key"
+        ],
+        "title": "IngestRequest",
+        "type": "object"
+      },
       "JobDetail": {
         "properties": {
           "attempts": {
@@ -2939,6 +3056,243 @@
           }
         },
         "summary": "Upload Source",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/inbox": {
+      "get": {
+        "description": "List objects in the source bucket and whether each one is registered.\n\nThis is how the three tariff orders reach the system in the cloud: an operator copies\nthem into the bucket, then registers each one with POST /sources/ingest.",
+        "operationId": "list_inbox_sources_inbox_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "prefix",
+            "required": false,
+            "schema": {
+              "default": "",
+              "maxLength": 512,
+              "title": "Prefix",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 1000,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InboxList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Inbox",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/ingest": {
+      "post": {
+        "description": "Register an object already in the source bucket.  The bytes are re-read and hashed;\nthe object name is never trusted as identity.  Dedup and idempotency behave exactly as\nfor a browser upload.",
+        "operationId": "ingest_source_sources_ingest_post",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IngestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceRegistration"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Ingest Source",
         "tags": [
           "sources"
         ]

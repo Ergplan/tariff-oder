@@ -1,18 +1,45 @@
 # BUILD_STATE
 
-Last updated: 2026-09-13 (first run: Milestone 0 + Milestone 1). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-09-13. Branch `claude/keen-tesla-r9mvv5`.
+Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest.
 
 ## Current milestone and status
 
 - **Milestone 0 — complete.** Repository was empty (no commits); audit, ADR-0001…0007,
   architecture, data dictionary, reliability ledger skeleton, error taxonomy, evaluation
   plan with the D/E/F question set, deployment doc, milestone checklist all written.
-- **Milestone 1 — implemented and tested under the `local` profile; cloud gate blocked.**
-  Everything the gate requires runs locally against real PostgreSQL 16 + pgvector.  The
-  Google Cloud `dev` project was not created or deployed: no credentials, no `gcloud`, and
-  the `CLOUDSDK_AUTH_ACCESS_TOKEN` present in the environment is rejected by Google APIs
-  (`ACCESS_TOKEN_TYPE_UNSUPPORTED`).  Terraform for `dev` is written and validated, not applied.
+- **Milestone 1 — implemented and tested under the `local` profile; cloud gate still blocked.**
+  Everything the gate requires runs locally against real PostgreSQL 16 + pgvector.  Terraform
+  now targets the real project (`tariff-order-parsing`) and validates, but **nothing has been
+  planned or applied**: this build environment has no `gcloud` and its Google token is rejected
+  (`ACCESS_TOKEN_TYPE_UNSUPPORTED`, re-checked after the project details arrived).  The apply
+  has to run on the `tariff-order` VM.
 - **No parser, no provider connection, no extracted number, no reviewer decision exists.**
+
+### Increment 2 (dev-project wiring and bucket ingest)
+
+- `infra/gcp/envs/dev.tfvars` and `dev.backend.hcl` carry the real values: project
+  `tariff-order-parsing`, region `asia-south1`, state in `gs://tarifforderstudio_tfstate`.
+- Terraform **adopts** `gs://tarifforderstudio_sources` instead of creating a source bucket
+  (`var.existing_source_bucket`); artefacts/exports/backups are still created in `asia-south1`.
+- The load balancer, managed certificate and IAP are created only when `var.domain` is set.
+  With no domain (the current dev state) Cloud Run is `INGRESS_TRAFFIC_INTERNAL_ONLY` — no
+  public endpoint exists at all.  The budget resource is likewise gated on `billing_account_id`.
+- New `scripts/verify-gcp-setup.sh`: read-only check of project, billing and budget, the 15
+  required APIs, both buckets (location, uniform access, versioning, public-access prevention),
+  the presence of the three PDFs with their expected hashes, the `agent-builder` roles, and the
+  VM's zone.  Prints OK / MISSING / DEVIATION with the fix command and exits non-zero on MISSING.
+- **Bucket ingest**: `GET /sources/inbox` lists objects with registration state;
+  `POST /sources/ingest` registers one by key.  The bytes are re-read and hashed, so an
+  object's name is never identity; dedup, golden-manifest reconciliation and the inventory job
+  are the same code path as a browser upload.  `ObjectStore.list` added to both adapters.
+- Two test-quality defects found and fixed while writing those tests: the synthetic PDF
+  generators were not byte-reproducible (PyMuPDF stamps timestamps and randomises the trailer
+  `/ID`), which made every hash-based assertion vacuous; and the object store was shared across
+  tests, so an immutable key served an earlier test's bytes.  Both now have tests
+  (`test_synthetic_fixtures_are_byte_reproducible`, per-test `object_store_root` fixture).
+- ADR-0008 records the dev topology and the two accepted deviations (multi-region source
+  bucket; `roles/editor` on the build SA).  `CLAUDE.md` and `docs/build-spec.md` added.
 
 ## Deployment profile(s) exercised
 
@@ -87,8 +114,9 @@ labels), D7, D9.  Everything else `n/a-yet` pending Milestones 2–4.
 
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`):
 
-- **25 passed, 0 failed, 0 skipped** (8.7 s): 8 unit (`tests/unit`), 17 integration
-  (`tests/integration`: 7 sources, 6 queue, 1 worker-kill recovery, 2 migrations, 1 registry).
+- **31 passed, 0 failed, 0 skipped** (10.7 s): 10 unit (`tests/unit`), 21 integration
+  (`tests/integration`: 7 sources, 4 ingest, 6 queue, 1 worker-kill recovery, 2 migrations,
+  1 registry).  Run twice in different orders to confirm no inter-test dependence.
 - Worker-kill recovery: 1 hard kill (`os._exit(137)` after checkpoint `next_page=3`), lease
   2 s, resumed by a second worker; 6/6 page rows, 0 duplicates, attempts=2, events include
   `lease_expired_reclaimed`.
@@ -96,9 +124,9 @@ Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`):
 - `ruff check` + `ruff format --check`: clean.  `tsc --noEmit`: clean.  `next build`: success
   (8 routes).  `terraform fmt` + `terraform validate` (google 6.30.0 via filesystem mirror):
   valid, 2 provider warnings about `secret_data_wo`.
-- Contract drift script (`pnpm --filter @tariff/contracts check`): committed files are the
-  ones generated in this session; the script itself was not executed end-to-end here
-  because it shells out through `uv` and `npx` — CI runs it.
+- Contract drift script (`pnpm --filter @tariff/contracts check`): executed, reports
+  `contracts: no drift` against the committed `openapi.json` and `api.d.ts` (now including
+  the inbox/ingest endpoints).
 - End-to-end smoke (manual, this session): web upload → HTTP 201 → worker drained 1 job in
   0.04 s → detail page shows `inventoried` → file reopened via web proxy (6,714 bytes, same
   hash).
@@ -118,10 +146,14 @@ Nothing reviewed, nothing published, no coverage declared for any utility.
 
 ## Known defects and blocked acceptance gates
 
-- **Blocked (M1 gate):** deployment to the `dev` project, migrations against Cloud SQL,
-  IAP-protected access, Cloud Logging visibility, backup/restore on Cloud SQL, post-deploy
-  integration run.  Needs: a GCP project + billing account, `gcloud` auth for
-  `venture@aayuda.energy`, a domain for the managed certificate.
+- **Blocked (M1 gate):** deployment to the `dev` project, migrations against Cloud SQL, Cloud
+  Logging visibility, backup/restore on Cloud SQL, post-deploy integration run.  The project,
+  billing, buckets, service account and VM now exist; what is missing is a run of
+  `scripts/verify-gcp-setup.sh` + `make tf-plan/tf-apply ENV=dev` **on the VM**, since this
+  environment cannot authenticate to Google.
+- **Deferred by decision (ADR-0008):** IAP-protected browser access, pending a domain.  Until
+  then Cloud Run has no public ingress and the API is driven from inside the VPC.  The
+  web → API service-to-service identity token is written but untested.
 - **Blocked (M1 gate):** "upload the real NPCL file" — bytes not supplied.  When supplied,
   registration will verify hash/size/page count/text-layer ranges against the manifest.
 - Web → API service-to-service auth under the gcp profile needs a Cloud Run identity token
@@ -143,8 +175,11 @@ worker (revisit in M8) · ADR-0007 fixture/real isolation via datasets.
 
 ## Next smallest actionable task
 
-1. Operator: supply the three PDFs (or a path/bucket) and, if cloud work is wanted, a dev
-   project + `gcloud` auth; then run `make tf-init tf-plan ENV=dev` and review.
+1. **Operator, on the `tariff-order` VM:** clone the branch and run
+   `scripts/verify-gcp-setup.sh`.  It will confirm or flag the four open items (budget,
+   tfstate versioning, enabled APIs, PDFs present) and print the `billing_account_id` to paste
+   into `envs/dev.tfvars`.  Then `make tf-init tf-plan ENV=dev` and review the plan before any
+   apply.  Copy the three PDFs to `gs://tarifforderstudio_sources/inbox/` if not already there.
 2. Engineering (Milestone 2, next run): add the `triage` stage — page class (`narrative`,
    `table`, `mixed`, `image_only`, `vector_graphics_text_sparse`, …), text-quality score,
    footer-derived printed-label map (roman + offset), Docling + pdfplumber grids with

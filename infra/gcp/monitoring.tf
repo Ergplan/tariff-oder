@@ -9,7 +9,14 @@ resource "google_monitoring_notification_channel" "email" {
   depends_on = [google_project_service.apis]
 }
 
+locals {
+  # A budget needs the billing account id, which is not required to stand the project up.
+  # `scripts/verify-gcp-setup.sh` reports a missing budget as an outstanding item.
+  enable_budget = var.billing_account_id != "" ? 1 : 0
+}
+
 resource "google_billing_budget" "project" {
+  count           = local.enable_budget
   billing_account = var.billing_account_id
   display_name    = "tariff-${var.environment}-monthly"
 
