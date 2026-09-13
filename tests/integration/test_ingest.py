@@ -97,6 +97,29 @@ def test_ingesting_the_same_bytes_twice_deduplicates(client, storage):
     assert client.get("/sources", headers=headers(ANALYST)).json()["total"] == 1
 
 
+def test_console_folder_placeholder_is_not_a_candidate(client, storage):
+    """Making the `inbox` folder in the Cloud console creates a zero-byte object named
+    `inbox/`.  The listing must not offer it and ingest must refuse it before touching bytes."""
+    from datetime import UTC, datetime
+
+    from tariff_api.adapters.storage import ObjectInfo
+    from tariff_api.db import session_scope
+    from tariff_api.services import sources as svc
+
+    class BucketWithPlaceholder:
+        def list(self, bucket, prefix="", limit=1000):
+            rows = [ObjectInfo("inbox/", 0, datetime.now(UTC)), ObjectInfo("inbox/order.pdf", 5, datetime.now(UTC))]
+            return [o for o in rows if o.key.startswith(prefix)][:limit]
+
+    with session_scope() as s:
+        listed = svc.list_inbox(s, BucketWithPlaceholder())
+    assert [o["object_key"] for o in listed] == ["inbox/order.pdf"]
+
+    r = client.post("/sources/ingest", json={"object_key": "inbox/"}, headers=headers(ADMIN))
+    assert r.status_code == 422 and r.json()["error_type"] == "validation_failed"
+    assert client.get("/sources", headers=headers(ANALYST)).json()["total"] == 0
+
+
 def test_ingest_idempotency_and_missing_or_unreadable_objects(client, storage):
     _put(storage, "inbox/a.pdf", text_only_pdf(seed="idem-a"))
     _put(storage, "inbox/b.pdf", text_only_pdf(seed="idem-b"))

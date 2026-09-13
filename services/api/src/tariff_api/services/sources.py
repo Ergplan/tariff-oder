@@ -87,6 +87,10 @@ def register_from_object(
     are never trusted as identity.  Registration then follows exactly the same path as an
     upload, so dedup, golden-manifest verification and the inventory job are identical.
     """
+    if not object_key or object_key.endswith("/"):
+        # The console creates a zero-byte placeholder object named `inbox/` when a folder is
+        # made by hand; it is not a document and must not reach the hash-and-register path.
+        raise AppError("validation_failed", f"{object_key!r} names a folder placeholder, not an object")
     listing = {o.key: o for o in storage.list(ObjectStore.SOURCES, prefix=object_key, limit=1)}
     info = listing.get(object_key)
     if info is None:
@@ -119,6 +123,8 @@ def list_inbox(session: Session, storage: ObjectStore, *, prefix: str = "", limi
     known = {row.object_key: row for row in session.execute(select(SourceDocument)).scalars().all()}
     out: list[dict[str, Any]] = []
     for o in objects:
+        if o.key.endswith("/"):
+            continue  # console-made folder placeholder (`inbox/`, 0 bytes): not a candidate
         src = known.get(o.key)
         out.append(
             {

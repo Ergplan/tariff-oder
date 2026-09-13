@@ -183,10 +183,16 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 
 ## Source files and dataset coverage actually used (hashes)
 
-- **None of the three real orders was available** in this environment (only the
-  specification markdown was uploaded).  Their expected hashes are in
-  `tests/golden/manifest.json` (`ff36813e…174b1a` NPCL, `d84997a4…95fcf50` KERC,
-  `1c4697f8…95925e1a` GERC) with `bytes_present: false`.
+- **The three real orders are now in the bucket** (operator upload on 2026-09-13, listing
+  pasted into the session): `inbox/NPCL_TariffOrder1-pdf72202631759PM.pdf` 6,314,646 bytes,
+  `inbox/96731743148968.pdf` 21,755,322 bytes, `inbox/Gujaratdocument.pdf` 2,803,465 bytes —
+  each size equals the golden manifest's `size_bytes` exactly.  The bytes are still not
+  available in this build environment (no Google credentials), so **no hash has been
+  verified and nothing has been ingested**; `tests/golden/manifest.json` keeps
+  `bytes_present: false` until registration computes the SHA-256.  Expected hashes:
+  `ff36813e…174b1a` NPCL, `d84997a4…95fcf50` KERC, `1c4697f8…95925e1a` GERC.
+- The console-made folder placeholder `inbox/` (a zero-byte object) is now skipped by the
+  inbox listing and refused by ingest before any bytes are read (found in that listing; tested).
 - Synthetic fixtures only (dataset `fixture`): `mixed_text_and_image_pdf` (6 pages), `text_only_pdf` variants, `not_a_pdf`.
 
 ## Reading reliability ledger changes
@@ -205,8 +211,8 @@ Detected: D3, D7, D9.  Everything value- and network-level `n/a-yet` pending Mil
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **104 passed, 0 failed, 0 skipped** (~43 s): 73 unit (13 adapters/profile/fixtures, 31
-  triage rules, 29 readers/headings/OCR), 31 integration (8 sources, 5 ingest/CLI, 6 queue, 1
+- **105 passed, 0 failed, 0 skipped** (~44 s): 73 unit (13 adapters/profile/fixtures, 31
+  triage rules, 29 readers/headings/OCR), 32 integration (8 sources, 6 ingest/CLI, 6 queue, 1
   worker-kill recovery, 5 triage stage, 4 parse stage incl. a worker-kill resume with
   `next_page=3` and a same-version re-run with no duplicate grids, 2 migrations).  Run three
   times, twice in a different order.  Without tesseract the 2 OCR unit tests and the 4
