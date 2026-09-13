@@ -53,3 +53,11 @@ output "iap_audiences" {
     "/projects/${data.google_project.this.number}/global/backendServices/${google_compute_backend_service.web[0].generated_id}",
   ] : []
 }
+
+output "admin_job_usage" {
+  description = "How to run operator commands inside the VPC (the API has no public ingress)."
+  value = join(" && ", [
+    "gcloud run jobs update ${google_cloud_run_v2_job.admin.name} --project ${var.project_id} --region ${var.region} --args=<command>",
+    "gcloud run jobs execute ${google_cloud_run_v2_job.admin.name} --project ${var.project_id} --region ${var.region} --wait",
+  ])
+}

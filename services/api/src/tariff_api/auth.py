@@ -24,6 +24,8 @@ def _role_lookup(email: str) -> UserRole | None:
 
 def current_principal(request: Request) -> Principal:
     adapters = request.app.state.adapters
+    if adapters.identity is None:
+        raise AppError("unauthenticated", "this process has no identity provider")
     principal = adapters.identity.authenticate(request.headers, _role_lookup)
     if principal is None:
         raise AppError("unauthenticated")

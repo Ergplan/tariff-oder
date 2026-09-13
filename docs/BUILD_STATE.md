@@ -114,7 +114,7 @@ labels), D7, D9.  Everything else `n/a-yet` pending Milestones 2–4.
 
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`):
 
-- **31 passed, 0 failed, 0 skipped** (10.7 s): 10 unit (`tests/unit`), 21 integration
+- **34 passed, 0 failed, 0 skipped** (10.7 s): 12 unit (`tests/unit`), 22 integration
   (`tests/integration`: 7 sources, 4 ingest, 6 queue, 1 worker-kill recovery, 2 migrations,
   1 registry).  Run twice in different orders to confirm no inter-test dependence.
 - Worker-kill recovery: 1 hard kill (`os._exit(137)` after checkpoint `next_page=3`), lease
@@ -143,6 +143,37 @@ None required and none obtained.  No candidates exist.
 ## Review/publication status and completeness declarations
 
 Nothing reviewed, nothing published, no coverage declared for any utility.
+
+### Increment 3 (first real verification against the project)
+
+`scripts/verify-gcp-setup.sh` was run on the VM by the operator.  Findings and what changed:
+
+- **Two bugs in the verify script itself**, both fixed: `read` with the default IFS collapses
+  consecutive tabs, so gcloud's empty fields shifted every bucket column left (it reported the
+  public-access-prevention value as "uniform access"); and the billing check reported
+  "billing account not linked" when the real cause was that the caller has no billing
+  permission.  Bucket facts are now parsed from JSON (accepting both the `gcloud storage` and
+  JSON-API field spellings), and the script distinguishes MISSING from a new **UNKNOWN**
+  state — "could not verify" is never reported as "fine".
+- **Two deployment bugs found by reasoning about the verify output**, both fixed with tests:
+  with no domain `IAP_AUDIENCE` is empty, and `IapIdentityProvider` refused to construct — the
+  API container would have crash-looped on first deploy.  It now starts and fails closed
+  (refuses every request, logs a warning, shows `UNCONFIGURED` in `/status`).  And the worker
+  and CLI were building an identity provider they must never have; `build_adapters` now takes
+  `include_identity=False` for processes that serve no requests.
+- **The build VM cannot reach the deployed system**: it is in the default VPC in `asia-south2`,
+  while Terraform builds its VPC in `asia-south1` with private-IP Cloud SQL and VPC-internal
+  Cloud Run.  Rather than widen the network, administration runs as a new `tariff-admin` Cloud
+  Run Job inside the VPC, driving the same `tariff-api` CLI.  New CLI commands: `inbox`,
+  `ingest`, `users add|list` (`--actor` must be an email, so the audit trail names a person).
+- **A latent test-harness trap**, fixed: adapters were built in the FastAPI lifespan handler, so
+  fixtures that touched `app.state.adapters` worked or failed depending on the order fixtures
+  appeared in a test signature.  They are built eagerly in `create_app` now.
+
+Outstanding on the project itself, for the operator: four APIs to enable
+(`secretmanager`, `iap`, `cloudscheduler`, `cloudbuild`), object versioning on both buckets,
+the three PDFs to upload, and the budget to confirm and its account id to paste into
+`envs/dev.tfvars`.  Re-run the verify script after fixing them.
 
 ## Known defects and blocked acceptance gates
 

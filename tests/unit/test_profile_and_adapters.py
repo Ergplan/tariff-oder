@@ -149,3 +149,39 @@ def test_object_store_listing(tmp_path):
     assert st.list("artefacts") == []
     info = st.list("sources", prefix="inbox/")[0]
     assert info.size_bytes == 6 and info.updated_at is not None
+
+
+def test_iap_without_an_audience_starts_but_refuses_everything():
+    """No domain means no load balancer, so no assertion can be verified.  The service must
+    still start (health probes, migrations) and refuse every authenticated request — failing
+    closed and saying so, rather than crash-looping or silently letting requests through."""
+    from tariff_api.adapters.identity import IapIdentityProvider
+
+    provider = IapIdentityProvider(audience="")
+    assert provider.configured is False
+    assert "UNCONFIGURED" in provider.description
+    assert provider.authenticate({}, lambda e: None) is None
+    assert provider.authenticate({"x-goog-iap-jwt-assertion": "anything"}, lambda e: None) is None
+
+    configured = IapIdentityProvider(
+        audience=" /projects/1/global/backendServices/2 , /projects/1/global/backendServices/3 "
+    )
+    assert configured.configured is True
+    assert configured.audiences == [
+        "/projects/1/global/backendServices/2",
+        "/projects/1/global/backendServices/3",
+    ]
+    assert configured.description == "iap"
+
+
+def test_processes_that_serve_no_requests_get_no_identity_provider():
+    """The worker and the CLI must not be able to authenticate anyone, and must not require an
+    identity provider to be configurable at all."""
+    from tariff_api.adapters import build_adapters
+    from tariff_api.config import Settings
+
+    settings = Settings(deployment_profile="local", identity_backend="local", local_user_allowlist="")
+    adapters = build_adapters(settings, include_identity=False)
+    assert adapters.identity is None
+    assert adapters.describe()["identity"] == "not built (no request path)"
+    assert adapters.storage.name == "filesystem"

@@ -30,8 +30,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         init_db(settings)
-        app.state.settings = settings
-        app.state.adapters = build_adapters(settings)
         log.info(
             "api started",
             extra={
@@ -61,8 +59,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             503: {"model": ErrorResponse},
         },
     )
-    # settings/adapters are also set eagerly so tests using TestClient without lifespan work
+    # Settings and adapters are built eagerly rather than in the lifespan handler, so that
+    # anything holding the app object sees the same adapters whether or not lifespan has run.
     app.state.settings = settings
+    app.state.adapters = build_adapters(settings)
 
     @app.middleware("http")
     async def request_context(request: Request, call_next):

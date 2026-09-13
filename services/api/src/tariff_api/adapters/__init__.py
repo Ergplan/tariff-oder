@@ -23,17 +23,23 @@ from .storage import FilesystemObjectStore, GcsObjectStore, ObjectStore
 class Adapters:
     storage: ObjectStore
     secrets: SecretProvider
-    identity: IdentityProvider
+    identity: IdentityProvider | None
 
     def describe(self) -> dict[str, str]:
         return {
             "storage": self.storage.name,
             "secrets": self.secrets.name,
-            "identity": self.identity.name,
+            "identity": self.identity.description if self.identity else "not built (no request path)",
         }
 
 
-def build_adapters(settings: Settings) -> Adapters:
+def build_adapters(settings: Settings, *, include_identity: bool = True) -> Adapters:
+    """Build the platform adapters.
+
+    ``include_identity=False`` is for processes that never serve a request — the worker and the
+    operational CLI.  They must not require an identity provider to be configurable, and must
+    not be able to authenticate anyone.
+    """
     settings.validate_profile()
 
     if settings.object_store_backend == StorageBackend.filesystem:
@@ -51,13 +57,15 @@ def build_adapters(settings: Settings) -> Adapters:
     else:
         secrets = SecretManagerProvider(settings.gcp_project_id)
 
-    if settings.identity_backend == IdentityBackend.local:
-        identity: IdentityProvider = LocalIdentityProvider(
-            profile=settings.deployment_profile.value,
-            allowlist=settings.allowlist_entries(),
-        )
-    else:
-        identity = IapIdentityProvider(audience=settings.iap_audience)
+    identity: IdentityProvider | None = None
+    if include_identity:
+        if settings.identity_backend == IdentityBackend.local:
+            identity = LocalIdentityProvider(
+                profile=settings.deployment_profile.value,
+                allowlist=settings.allowlist_entries(),
+            )
+        else:
+            identity = IapIdentityProvider(audience=settings.iap_audience)
 
     return Adapters(storage=storage, secrets=secrets, identity=identity)
 

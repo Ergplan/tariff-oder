@@ -23,7 +23,8 @@ def build_runner(worker_name: str | None = None) -> Runner:
     settings = get_settings()
     configure_logging("tariff-worker", settings.deployment_profile.value, settings.log_format, settings.log_level)
     init_db(settings)
-    adapters = build_adapters(settings)
+    # The worker serves no requests; it must not be able to authenticate anyone.
+    adapters = build_adapters(settings, include_identity=False)
     return Runner(settings, adapters, HANDLERS, worker_name=worker_name)
 
 

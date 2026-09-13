@@ -120,9 +120,19 @@ def headers(user: str, **extra: str) -> dict[str, str]:
 
 
 @pytest.fixture()
+def storage(app):
+    """The object store the API and worker share in this test."""
+    return app.state.adapters.storage
+
+
+@pytest.fixture()
 def runner(app):
-    """In-process worker bound to the same settings/adapters as the app."""
+    """In-process worker.  It builds its own adapters with no identity provider, exactly as the
+    real worker process does — it must never be able to authenticate anyone."""
+    from tariff_api.adapters import build_adapters
     from tariff_worker.main import HANDLERS
     from tariff_worker.runner import Runner
 
-    return Runner(app.state.settings, app.state.adapters, HANDLERS, worker_name="test-worker-A")
+    adapters = build_adapters(app.state.settings, include_identity=False)
+    assert adapters.identity is None
+    return Runner(app.state.settings, adapters, HANDLERS, worker_name="test-worker-A")

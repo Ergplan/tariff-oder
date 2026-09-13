@@ -8,6 +8,7 @@ cloud one.
 from __future__ import annotations
 
 import abc
+import logging
 from collections.abc import Mapping
 from dataclasses import dataclass
 
@@ -24,6 +25,11 @@ class Principal:
 
 class IdentityProvider(abc.ABC):
     name: str = "abstract"
+
+    @property
+    def description(self) -> str:
+        """What /status shows.  Never hides a degraded state behind the backend name."""
+        return self.name
 
     @abc.abstractmethod
     def authenticate(self, headers: Mapping[str, str], role_lookup) -> Principal | None:
@@ -77,9 +83,26 @@ class IapIdentityProvider(IdentityProvider):
         # and the API backend's audience (direct /api/* requests through the load balancer).
         self.audiences = [a.strip() for a in audience.split(",") if a.strip()]
         if not self.audiences:
-            raise RuntimeError("IAP_AUDIENCE is required for the iap identity adapter")
+            # No load balancer exists yet (no domain), so no assertion can be verified.  Refusing
+            # to construct would crash-loop the service; instead start, serve health probes, and
+            # refuse every authenticated request.  Fails closed, and says so in logs and /status.
+            logging.getLogger(__name__).warning(
+                "IAP identity is not configured (IAP_AUDIENCE is empty): every authenticated "
+                "request will be refused with `unauthenticated`. Set var.domain, apply, then "
+                "copy `terraform output iap_audiences` into var.iap_audiences and apply again."
+            )
+
+    @property
+    def configured(self) -> bool:
+        return bool(self.audiences)
+
+    @property
+    def description(self) -> str:
+        return self.name if self.configured else f"{self.name} (UNCONFIGURED — all requests refused)"
 
     def authenticate(self, headers: Mapping[str, str], role_lookup) -> Principal | None:
+        if not self.audiences:
+            return None
         assertion = headers.get(self.HEADER)
         if not assertion:
             return None

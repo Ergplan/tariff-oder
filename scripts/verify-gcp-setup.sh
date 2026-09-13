@@ -15,7 +15,9 @@ TFSTATE_BUCKET=${TFSTATE_BUCKET:-tarifforderstudio_tfstate}
 SA=${SA:-agent-builder@${PROJECT}.iam.gserviceaccount.com}
 
 fail=0
+unverified=0
 ok()        { printf '  \033[32mOK\033[0m        %s\n' "$*"; }
+unknown()   { printf '  \033[35mUNKNOWN\033[0m   %s\n' "$*"; unverified=1; }
 missing()   { printf '  \033[31mMISSING\033[0m   %s\n' "$*"; fail=1; }
 deviation() { printf '  \033[33mDEVIATION\033[0m %s\n' "$*"; }
 info()      { printf '  \033[36mINFO\033[0m      %s\n' "$*"; }
@@ -36,20 +38,30 @@ ACCOUNT=$(gcloud config get-value account 2>/dev/null)
 info "authenticated as ${ACCOUNT:-unknown}"
 
 section "Billing and budget"
-BILLING=$(gcloud beta billing projects describe "$PROJECT" --format='value(billingAccountName)' 2>/dev/null)
-if [ -n "$BILLING" ]; then
-  ok "billing enabled (${BILLING})"
-  BA=${BILLING#billingAccounts/}
-  BUDGETS=$(gcloud billing budgets list --billing-account="$BA" --format='value(displayName)' 2>/dev/null)
-  if [ -n "$BUDGETS" ]; then
-    ok "budget(s) on the billing account: $(echo "$BUDGETS" | tr '\n' ' ')"
-  else
-    missing "no budget found on billing account $BA"
-    fixcmd "set billing_account_id = \"$BA\" in infra/gcp/envs/dev.tfvars and re-apply Terraform"
-  fi
+BILLING_OUT=$(gcloud beta billing projects describe "$PROJECT" --format='value(billingAccountName)' 2>&1)
+BILLING_RC=$?
+if [ $BILLING_RC -eq 0 ] && [ -n "$BILLING_OUT" ]; then
+  ok "billing enabled (${BILLING_OUT})"
+  BA=${BILLING_OUT#billingAccounts/}
   info "billing_account_id for dev.tfvars: $BA"
+  BUDGETS=$(gcloud billing budgets list --billing-account="$BA" --format='value(displayName)' 2>&1)
+  if [ $? -eq 0 ] && [ -n "$BUDGETS" ]; then
+    ok "budget(s) on the billing account: $(echo "$BUDGETS" | tr '\n' ' ')"
+  elif [ $? -eq 0 ]; then
+    missing "no budget on billing account $BA"
+    fixcmd "set billing_account_id = \"$BA\" in infra/gcp/envs/dev.tfvars and apply Terraform"
+  else
+    unknown "cannot list budgets: $(echo "$BUDGETS" | tail -1)"
+  fi
+elif grep -qiE "permission|denied|forbidden|not have" <<<"$BILLING_OUT"; then
+  # Editor on the project does not grant any billing permission: billing lives on the billing
+  # account, not the project.  This says nothing about whether billing is actually linked.
+  unknown "cannot read billing from this identity — this does NOT mean billing is unlinked"
+  fixcmd "grant the caller roles/billing.viewer on the billing account, or read the id from"
+  fixcmd "  console.cloud.google.com/billing → Account management, and paste it into envs/dev.tfvars"
+  info "gcloud said: $(echo "$BILLING_OUT" | tail -1)"
 else
-  missing "billing account not linked (or the billing API is not enabled for your account)"
+  unknown "billing state could not be determined: $(echo "$BILLING_OUT" | tail -1)"
 fi
 
 section "Enabled APIs"
@@ -67,36 +79,92 @@ for api in $REQUIRED_APIS; do
 done
 
 section "Buckets"
+# gcloud's `value(...)` projection drops empty fields, and `read` collapses consecutive tabs,
+# which silently shifts every column.  Parse JSON instead, and accept either the `gcloud
+# storage` (snake_case) or the JSON-API (nested) spelling of each field.
+bucket_facts() {
+  gcloud storage buckets describe "gs://$1" --project "$PROJECT" --format=json 2>/dev/null | python3 -c '
+import json, sys
+
+raw = sys.stdin.read().strip()
+if not raw:
+    print("ERROR"); sys.exit(0)
+b = json.loads(raw)
+if isinstance(b, list):
+    b = b[0] if b else {}
+iam = b.get("iam_configuration") or b.get("iamConfiguration") or {}
+
+def pick(*paths, default=None):
+    for path in paths:
+        cur, ok = b, True
+        for key in path.split("."):
+            src = iam if cur is b and key in iam and key not in b else cur
+            if isinstance(src, dict) and key in src:
+                cur = src[key]
+            else:
+                ok = False
+                break
+        if ok and cur is not None:
+            return cur
+    return default
+
+ubla = pick("uniform_bucket_level_access", "uniformBucketLevelAccess.enabled",
+            "uniform_bucket_level_access.enabled", default=None)
+if isinstance(ubla, dict):
+    ubla = ubla.get("enabled")
+ver = pick("versioning_enabled", "versioning.enabled", "versioningEnabled", default=None)
+pap = pick("public_access_prevention", "publicAccessPrevention", default=None)
+
+print("\t".join([
+    str(b.get("location", "?")),
+    str(b.get("location_type") or b.get("locationType") or "?"),
+    {True: "true", False: "false", None: "unknown"}.get(ubla, str(ubla)),
+    {True: "true", False: "false", None: "off"}.get(ver, str(ver)),
+    str(pap if pap is not None else "unknown"),
+]))
+'
+}
+
 check_bucket() {
   local b=$1 want_versioning=$2 role=$3 strict_public=${4:-no}
-  local json
-  json=$(gcloud storage buckets describe "gs://$b" --project "$PROJECT" \
-          --format='value(location,locationType,uniform_bucket_level_access.enabled,versioning.enabled,public_access_prevention)' 2>/dev/null)
-  if [ -z "$json" ]; then
+  local facts loc loctype ubla ver pap
+  facts=$(bucket_facts "$b")
+  if [ -z "$facts" ] || [ "$facts" = "ERROR" ]; then
     missing "gs://$b ($role) not found or not readable"
     return
   fi
-  read -r loc loctype ubla ver pap <<<"$json"
+  IFS=$'\t' read -r loc loctype ubla ver pap <<<"$facts"
   ok "gs://$b exists — $role"
   info "location=$loc ($loctype) uniform_access=$ubla versioning=$ver public_access_prevention=$pap"
+
   if [ "${loctype,,}" != "region" ] || [ "${loc,,}" != "${REGION,,}" ]; then
     deviation "gs://$b is $loc/$loctype, not regional $REGION — accepted for sources (ADR-0008); cross-region reads cost egress"
   fi
-  if [ "${ubla,,}" != "true" ]; then
-    missing "gs://$b does not enforce uniform bucket-level access"
-    fixcmd "gcloud storage buckets update gs://$b --uniform-bucket-level-access"
-  fi
-  if [ "$want_versioning" = "yes" ] && [ "${ver,,}" != "true" ]; then
-    missing "gs://$b has versioning OFF"
-    fixcmd "gcloud storage buckets update gs://$b --versioning"
+  case "${ubla,,}" in
+    true)    ok "gs://$b enforces uniform bucket-level access" ;;
+    unknown) unknown "gs://$b uniform bucket-level access could not be read" ;;
+    *)       missing "gs://$b does not enforce uniform bucket-level access"
+             fixcmd "gcloud storage buckets update gs://$b --uniform-bucket-level-access" ;;
+  esac
+  if [ "$want_versioning" = "yes" ]; then
+    case "${ver,,}" in
+      true)    ok "gs://$b has object versioning on" ;;
+      unknown) unknown "gs://$b versioning could not be read" ;;
+      *)       missing "gs://$b has versioning OFF"
+               fixcmd "gcloud storage buckets update gs://$b --versioning" ;;
+    esac
   fi
   if [ "$strict_public" = "yes" ]; then
-    # Terraform state holds the Cloud SQL password in plaintext: "inherited" is not good enough,
-    # because an org-policy change could then make the bucket publicly readable.
-    if [ "${pap,,}" != "enforced" ]; then
-      missing "gs://$b does not ENFORCE public access prevention, and it holds secrets"
-      fixcmd "gcloud storage buckets update gs://$b --public-access-prevention"
-    fi
+    # Terraform state holds the Cloud SQL password in plaintext, so "inherited" is not enough:
+    # it leaves the bucket one org-policy change away from being publicly readable.
+    case "${pap,,}" in
+      enforced) ok "gs://$b enforces public access prevention" ;;
+      unknown)  unknown "gs://$b public access prevention could not be read — check it by hand; this bucket holds secrets" ;;
+      *)        missing "gs://$b does not ENFORCE public access prevention, and it holds secrets"
+                fixcmd "gcloud storage buckets update gs://$b --public-access-prevention" ;;
+    esac
+  elif [ "${pap,,}" = "unknown" ]; then
+    unknown "gs://$b public access prevention could not be read"
   elif [ "${pap,,}" != "enforced" ] && [ "${pap,,}" != "inherited" ]; then
     deviation "gs://$b public access prevention: $pap"
   fi
@@ -105,19 +173,25 @@ check_bucket "$SOURCES_BUCKET" yes "tariff PDFs (adopted by Terraform as the sou
 check_bucket "$TFSTATE_BUCKET" yes "Terraform remote state (contains the Cloud SQL password)" yes
 
 section "Who can read the Terraform state"
-STATE_READERS=$(gcloud storage buckets get-iam-policy "gs://$TFSTATE_BUCKET" \
-  --format='value(bindings.members)' 2>/dev/null | tr ';' '\n' | tr ',' '\n' | sed '/^$/d' | sort -u)
-if [ -n "$STATE_READERS" ]; then
-  echo "$STATE_READERS" | while read -r m; do
-    case "$m" in
-      allUsers|allAuthenticatedUsers) printf '  \033[31mMISSING\033[0m   %s can read Terraform state — remove immediately\n' "$m";;
-      *) info "$m";;
-    esac
-  done
-  if grep -qE '^(allUsers|allAuthenticatedUsers)$' <<<"$STATE_READERS"; then fail=1; fi
-else
-  info "could not read the bucket IAM policy (needs storage.buckets.getIamPolicy)"
-fi
+gcloud storage buckets get-iam-policy "gs://$TFSTATE_BUCKET" --format=json 2>/dev/null | python3 -c '
+import json, sys
+raw = sys.stdin.read().strip()
+if not raw:
+    print("UNREADABLE"); sys.exit(0)
+pol = json.loads(raw)
+for binding in pol.get("bindings", []):
+    for member in binding.get("members", []):
+        print(f"{member}\t{binding.get(\"role\", \"?\")}")
+' | sort -u | while IFS=$'\t' read -r member role; do
+  case "$member" in
+    UNREADABLE) info "bucket IAM policy not readable (needs storage.buckets.getIamPolicy)" ;;
+    allUsers|allAuthenticatedUsers)
+      printf '  \033[31mMISSING\033[0m   %s holds %s on the state bucket — remove now\n' "$member" "$role" ;;
+    projectEditor:*|projectOwner:*)
+      deviation "$member holds $role — anyone with project Editor/Owner can read the Cloud SQL password in state" ;;
+    *) info "$member — $role" ;;
+  esac
+done
 
 section "Source PDFs in gs://$SOURCES_BUCKET"
 OBJECTS=$(gcloud storage ls -r "gs://$SOURCES_BUCKET/**" 2>/dev/null | grep -i '\.pdf$')
@@ -163,9 +237,15 @@ if [ -f infra/gcp/envs/dev.backend.hcl ]; then ok "infra/gcp/envs/dev.backend.hc
 fi
 
 section "Summary"
-if [ "$fail" -eq 0 ]; then
-  echo "  All required items present. Next: make tf-init tf-plan ENV=dev"
-else
-  echo "  Fix the MISSING items above, then re-run. DEVIATION lines are accepted choices, recorded in docs/deployment.md."
+if [ "$fail" -ne 0 ]; then
+  echo "  Fix the MISSING items above, then re-run."
 fi
+if [ "$unverified" -ne 0 ]; then
+  echo "  UNKNOWN items could not be checked from this identity — verify them by hand rather than"
+  echo "  assuming they are fine. An unverified budget is an unbounded bill."
+fi
+if [ "$fail" -eq 0 ] && [ "$unverified" -eq 0 ]; then
+  echo "  All required items present. Next: make tf-init tf-plan ENV=dev"
+fi
+echo "  DEVIATION lines are accepted choices, recorded in docs/deployment.md and ADR-0008."
 exit $fail

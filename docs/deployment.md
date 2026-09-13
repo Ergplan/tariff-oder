@@ -148,6 +148,42 @@ make deploy-dev            # builds amd64 images, pushes, runs tariff-migrate, u
 gcloud run jobs execute tariff-migrate --project tariff-order-parsing --region asia-south1 --wait
 ```
 
+### The build VM cannot reach the API or the database
+
+The VM `tariff-order` is in the **default** VPC in **asia-south2**; Terraform builds its own
+VPC in **asia-south1**.  After apply, Cloud SQL has only a private IP and Cloud Run is
+VPC-internal (with no domain, `INGRESS_TRAFFIC_INTERNAL_ONLY`), so **the VM can reach neither**.
+This is not a misconfiguration to route around — it is the intended blast radius.
+
+Administrative work therefore runs as the `tariff-admin` Cloud Run Job, which is inside the
+VPC.  It runs the same `tariff-api` CLI that a developer runs locally:
+
+```bash
+J="--project tariff-order-parsing --region asia-south1"
+gcloud run jobs update tariff-admin $J --args=<comma,separated,args>
+gcloud run jobs execute tariff-admin $J --wait
+gcloud beta run jobs executions logs read $(gcloud run jobs executions list $J \
+  --job=tariff-admin --limit=1 --format='value(name)') $J
+```
+
+Useful argument sets:
+
+| Purpose | `--args=` |
+| --- | --- |
+| Check the profile and adapters resolved correctly | `check-config` |
+| Seed jurisdictions, commissions and utilities (identities only) | `seed` |
+| List what is in the source bucket and what is registered | `inbox` |
+| Register one order | `ingest,inbox/<file>.pdf,--actor,venture@aayuda.energy` |
+| Create the first administrator | `users,add,--email,venture@aayuda.energy,--role,administrator,--actor,venture@aayuda.energy` |
+| List users | `users,list` |
+
+`--actor` must be an email: the audit trail records the person who registered a source, never
+a process name.
+
+If you would rather work directly against the API later, the options are a VM inside the
+tariff VPC in `asia-south1`, or the load balancer + IAP path once a domain exists.  Do not
+open Cloud Run to the internet to avoid this.
+
 ### Loading the three tariff orders
 
 The PDFs live in the bucket, not in a browser upload, so registration is a two-step operation:
@@ -159,11 +195,13 @@ gcloud storage cp NPCL_TariffOrder1-pdf72202631759PM.pdf \
                   gs://tarifforderstudio_sources/inbox/
 ```
 
-Then, as an administrator against the API:
+Then register each one through the admin job (or, where the API is reachable, `GET
+/sources/inbox` and `POST /sources/ingest` do exactly the same thing):
 
-```
-GET  /sources/inbox                 # what is in the bucket and what is already registered
-POST /sources/ingest {"object_key": "inbox/NPCL_TariffOrder1-pdf72202631759PM.pdf"}
+```bash
+gcloud run jobs update tariff-admin $J \
+  --args=ingest,inbox/NPCL_TariffOrder1-pdf72202631759PM.pdf,--actor,venture@aayuda.energy
+gcloud run jobs execute tariff-admin $J --wait
 ```
 
 The API re-reads and hashes the bytes — the object's name and metadata are never trusted as
@@ -175,16 +213,17 @@ Cloud Run Job) rather than from your laptop.
 
 ### Registering the first user
 
-An IAP-authenticated user with no row in `users` receives `permission_denied` by design.  Seed
-the registry and the first administrator with the migrate image:
+An IAP-authenticated user with no row in `users` receives `permission_denied` by design, so the
+first administrator is created through the admin job (`users,add,…` above).
 
-```bash
-gcloud run jobs execute tariff-migrate --project tariff-order-parsing --region asia-south1 --wait
-# then, from a shell with database access:
-tariff-api seed          # jurisdictions, commissions, utilities — identities only, no coverage
-```
+### What the API does while IAP is unconfigured
 
-and insert the administrator row (`PUT /users` once the API is reachable, or via `psql`).
+With no domain there is no load balancer, so `IAP_AUDIENCE` is empty and no assertion can be
+verified.  The API deliberately **starts anyway and refuses every authenticated request** with
+`unauthenticated`: crash-looping would take health probes and migrations down with it, and
+quietly allowing requests through would be far worse.  It is visible rather than silent —
+startup logs a warning, and `/status` reports the identity adapter as
+`iap (UNCONFIGURED — all requests refused)`.  `/healthz` and `/readyz` keep working.
 
 ### When a domain becomes available
 

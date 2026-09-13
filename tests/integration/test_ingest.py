@@ -18,14 +18,14 @@ from fixtures.synthetic_pdfs import mixed_text_and_image_pdf, plain_text_bytes, 
 pytestmark = pytest.mark.integration
 
 
-def _put(app, key: str, data: bytes) -> None:
+def _put(storage, key: str, data: bytes) -> None:
     """Simulate the operator's `gcloud storage cp` into the source bucket."""
-    app.state.adapters.storage.put("sources", key, data, "application/pdf")
+    storage.put("sources", key, data, "application/pdf")
 
 
-def test_inbox_lists_objects_and_registration_state(client, app):
-    _put(app, "inbox/NPCL_TariffOrder.pdf", mixed_text_and_image_pdf())
-    _put(app, "inbox/notes.txt.pdf", text_only_pdf(seed="notes"))
+def test_inbox_lists_objects_and_registration_state(client, storage):
+    _put(storage, "inbox/NPCL_TariffOrder.pdf", mixed_text_and_image_pdf())
+    _put(storage, "inbox/notes.txt.pdf", text_only_pdf(seed="notes"))
 
     inbox = client.get("/sources/inbox", headers=headers(ADMIN)).json()
     assert inbox["bucket_role"] == "sources"
@@ -41,10 +41,10 @@ def test_inbox_lists_objects_and_registration_state(client, app):
     assert client.get("/sources/inbox").status_code == 401
 
 
-def test_ingest_registers_hashes_and_inventories(client, app, runner):
+def test_ingest_registers_hashes_and_inventories(client, storage, runner):
     data = mixed_text_and_image_pdf()
     sha = hashlib.sha256(data).hexdigest()
-    _put(app, "inbox/NPCL_TariffOrder.pdf", data)
+    _put(storage, "inbox/NPCL_TariffOrder.pdf", data)
 
     r = client.post(
         "/sources/ingest",
@@ -77,10 +77,10 @@ def test_ingest_registers_hashes_and_inventories(client, app, runner):
     assert by_key[f"{sha}.pdf"]["is_content_addressed_copy"] is True
 
 
-def test_ingesting_the_same_bytes_twice_deduplicates(client, app):
+def test_ingesting_the_same_bytes_twice_deduplicates(client, storage):
     data = text_only_pdf(seed="dup")
-    _put(app, "inbox/first.pdf", data)
-    _put(app, "inbox/second-copy-of-the-same-order.pdf", data)
+    _put(storage, "inbox/first.pdf", data)
+    _put(storage, "inbox/second-copy-of-the-same-order.pdf", data)
 
     first = client.post(
         "/sources/ingest", json={"object_key": "inbox/first.pdf", "dataset_kind": "fixture"}, headers=headers(ADMIN)
@@ -97,10 +97,10 @@ def test_ingesting_the_same_bytes_twice_deduplicates(client, app):
     assert client.get("/sources", headers=headers(ANALYST)).json()["total"] == 1
 
 
-def test_ingest_idempotency_and_missing_or_unreadable_objects(client, app):
-    _put(app, "inbox/a.pdf", text_only_pdf(seed="idem-a"))
-    _put(app, "inbox/b.pdf", text_only_pdf(seed="idem-b"))
-    _put(app, "inbox/not-a-pdf.pdf", plain_text_bytes())
+def test_ingest_idempotency_and_missing_or_unreadable_objects(client, storage):
+    _put(storage, "inbox/a.pdf", text_only_pdf(seed="idem-a"))
+    _put(storage, "inbox/b.pdf", text_only_pdf(seed="idem-b"))
+    _put(storage, "inbox/not-a-pdf.pdf", plain_text_bytes())
 
     hdr = {**headers(ADMIN), "Idempotency-Key": "ing-1"}
     r1 = client.post("/sources/ingest", json={"object_key": "inbox/a.pdf", "dataset_kind": "fixture"}, headers=hdr)
@@ -117,3 +117,31 @@ def test_ingest_idempotency_and_missing_or_unreadable_objects(client, app):
     assert bad.status_code == 422 and bad.json()["error_type"] == "source_unreadable"
 
     assert client.get("/sources", headers=headers(ANALYST)).json()["total"] == 1
+
+
+def test_cli_ingest_and_user_commands(storage, runner, client):
+    """The operational CLI is how sources are registered in the cloud, where the API has no
+    public ingress: it runs as a Cloud Run Job inside the VPC."""
+    from tariff_api.cli import main as cli_main
+
+    _put(storage, "inbox/KERC_order.pdf", text_only_pdf(seed="cli"))
+
+    assert cli_main(["inbox"]) == 0
+    assert cli_main(["ingest", "inbox/KERC_order.pdf", "--dataset", "fixture", "--actor", "ops@example.com"]) == 0
+    # A non-email actor is refused: the audit trail must name a person, not a process
+    assert cli_main(["ingest", "inbox/KERC_order.pdf", "--dataset", "fixture", "--actor", "root"]) == 2
+
+    listing = client.get("/sources", headers=headers(ANALYST)).json()
+    assert listing["total"] == 1
+    assert listing["items"][0]["uploaded_by"] == "ops@example.com"
+
+    assert runner.run_once() is True
+    detail = client.get(f"/sources/{listing['items'][0]['id']}", headers=headers(ANALYST)).json()
+    assert detail["state"] == "inventoried"
+
+    assert cli_main(["users", "add", "--email", "Ops@Example.com", "--role", "administrator", "--actor", "cli"]) == 0
+    assert cli_main(["users", "list"]) == 0
+    users = client.get("/users", headers=headers(ADMIN)).json()
+    assert [(u["email"], u["role"]) for u in users] == [("ops@example.com", "administrator")]
+    audit = client.get("/audit", params={"entity_type": "user"}, headers=headers(ADMIN)).json()
+    assert audit[0]["action"] == "user.created"

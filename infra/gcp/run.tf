@@ -228,6 +228,67 @@ resource "google_cloud_run_v2_job" "migrate" {
   depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
 }
 
+# Operator console.  The API is VPC-internal (and, without a domain, has no public ingress at
+# all), and the build VM sits in a different network and region — so administrative work runs
+# here, inside the VPC, rather than from a laptop or the VM:
+#
+#   gcloud run jobs update tariff-admin --region <region> --args=inbox
+#   gcloud run jobs execute tariff-admin --region <region> --wait
+#
+# Useful argument sets: `seed`; `inbox`; `ingest,inbox/<file>.pdf,--actor,<email>`;
+# `users,add,--email,<email>,--role,administrator,--actor,<email>`.
+resource "google_cloud_run_v2_job" "admin" {
+  name                = "${local.name}-admin"
+  location            = var.region
+  deletion_protection = false
+  labels              = local.labels
+
+  template {
+    task_count = 1
+    template {
+      service_account = google_service_account.api.email
+      timeout         = "900s"
+      max_retries     = 0
+      vpc_access {
+        network_interfaces {
+          network    = google_compute_network.vpc.id
+          subnetwork = google_compute_subnetwork.run.id
+        }
+        egress = "PRIVATE_RANGES_ONLY"
+      }
+      containers {
+        image   = var.python_image
+        command = ["tariff-api"]
+        args    = ["check-config"]
+        resources {
+          limits = { cpu = "1", memory = "2Gi" }
+        }
+        dynamic "env" {
+          for_each = local.gcp_env
+          content {
+            name  = env.key
+            value = env.value
+          }
+        }
+        env {
+          name = "DATABASE_URL"
+          value_source {
+            secret_key_ref {
+              secret  = google_secret_manager_secret.managed["DATABASE_URL"].secret_id
+              version = "latest"
+            }
+          }
+        }
+      }
+    }
+  }
+  lifecycle {
+    # The operator changes `args` per invocation; Terraform must not revert them.
+    ignore_changes = [template[0].template[0].containers[0].args]
+  }
+  depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
+}
+
 resource "google_cloud_scheduler_job" "worker" {
   name        = "${local.name}-worker-drain"
   description = "Run the worker job to drain the PostgreSQL queue"
