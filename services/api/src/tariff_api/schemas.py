@@ -116,6 +116,32 @@ class JobDetail(JobSummary):
     events: list[JobEventOut]
 
 
+class StageArtefactOut(BaseModel):
+    stage: str
+    tool: str
+    tool_version: str
+    page_index: int
+    object_key: str
+    content_sha256: str
+    size_bytes: int
+    created_at: datetime
+
+
+class TriageSummary(BaseModel):
+    triage_version: str | None
+    triaged_at: datetime | None
+    page_class_counts: dict[str, int]
+    label_rule: dict[str, Any] | None
+    ocr_recommended_pages: list[int]
+    low_quality_pages: list[int]
+    label_flagged_pages: list[int]
+    unknown_pages: list[int]
+
+
+class StageRerunRequest(BaseModel):
+    job_type: Literal["inventory_source", "triage_source"]
+
+
 class SourceDetail(SourceSummary):
     content_type: str
     object_key: str
@@ -133,6 +159,8 @@ class SourceDetail(SourceSummary):
     superseded_by_id: uuid.UUID | None
     latest_job: JobSummary | None
     text_layer_summary: dict[str, Any] | None
+    triage: TriageSummary | None
+    artefacts: list[StageArtefactOut]
 
 
 class SourceRegistration(BaseModel):
@@ -144,7 +172,10 @@ class SourceRegistration(BaseModel):
 
 class SourcePageOut(BaseModel):
     page_index: int
-    printed_label: str | None
+    printed_label: str | None  # resolved label; see label_source
+    label_declared: str | None
+    label_observed: str | None
+    label_source: str  # observed | rule | declared | none
     width_pt: float | None
     height_pt: float | None
     rotation: int
@@ -155,6 +186,11 @@ class SourcePageOut(BaseModel):
     page_class: str
     page_role: str
     quality_flags: list[Any]
+    text_quality: dict[str, Any] | None
+    ocr_recommended: bool
+    triage_rationale: str | None
+    triage_version: str | None
+    triaged_at: datetime | None
 
 
 class InboxObject(BaseModel):

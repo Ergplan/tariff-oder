@@ -128,7 +128,12 @@ SOURCE_TRANSITIONS: dict[SourceState, set[SourceState]] = {
     },
     SourceState.published: {SourceState.superseded, SourceState.needs_reprocessing},
     SourceState.failed: {SourceState.uploaded, SourceState.needs_reprocessing, SourceState.cancelled},
-    SourceState.needs_reprocessing: {SourceState.uploaded, SourceState.inventoried, SourceState.cancelled},
+    SourceState.needs_reprocessing: {
+        SourceState.uploaded,
+        SourceState.inventoried,
+        SourceState.triaged,
+        SourceState.cancelled,
+    },
     SourceState.cancelled: set(),
     SourceState.rejected: {SourceState.needs_reprocessing},
     SourceState.superseded: set(),
@@ -243,6 +248,12 @@ class SourceDocument(Base):
     inventory_tool_version: Mapped[str | None] = mapped_column(String(40))
     inventoried_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
+    # Triage (Milestone 2a): the printed-label rule as explicit segments, class histogram, provenance
+    label_rule: Mapped[dict | None] = mapped_column(JSONB)
+    page_class_counts: Mapped[dict | None] = mapped_column(JSONB)
+    triage_version: Mapped[str | None] = mapped_column(String(16))
+    triaged_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
     # Golden-corpus reconciliation (tests/golden/manifest.json); never copied, always re-verified
     golden_id: Mapped[str | None] = mapped_column(String(80))
     manifest_check: Mapped[dict | None] = mapped_column(JSONB)
@@ -267,7 +278,12 @@ class SourcePage(Base):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
     page_index: Mapped[int] = mapped_column(Integer, nullable=False)  # 1-based PDF index
-    printed_label: Mapped[str | None] = mapped_column(String(40))  # PDF page-label entry if declared
+    # The label a human reads.  Inventory sets it to what the PDF declares; triage resolves it
+    # from the printed footer and the document-wide rule, recording where it came from.
+    printed_label: Mapped[str | None] = mapped_column(String(40))
+    label_declared: Mapped[str | None] = mapped_column(String(40))  # PDF page-label dictionary
+    label_observed: Mapped[str | None] = mapped_column(String(40))  # read from the page footer
+    label_source: Mapped[str] = mapped_column(String(16), nullable=False, default="none")  # observed|rule|declared|none
     width_pt: Mapped[float | None] = mapped_column()
     height_pt: Mapped[float | None] = mapped_column()
     rotation: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
@@ -280,9 +296,37 @@ class SourcePage(Base):
     )  # Section 6.3, assigned in M2
     page_role: Mapped[str] = mapped_column(String(40), nullable=False, default="unknown")  # Section 6.5, assigned in M3
     quality_flags: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    text_quality: Mapped[dict | None] = mapped_column(JSONB)  # glyph coverage, dictionary hit rate, reading order
+    ocr_recommended: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    triage_rationale: Mapped[str | None] = mapped_column(Text)
+    triage_version: Mapped[str | None] = mapped_column(String(16))
+    triaged_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     source: Mapped[SourceDocument] = relationship(back_populates="pages")
+
+
+class StageArtefact(Base):
+    """Index of immutable per-stage artefacts in object storage (Section 6.2).  The object key
+    embeds source hash, stage and tool version, so a tool upgrade produces new artefacts beside
+    the old ones rather than overwriting them."""
+
+    __tablename__ = "stage_artefacts"
+    __table_args__ = (
+        UniqueConstraint("source_id", "stage", "tool_version", "page_index", name="uq_stage_artefact"),
+        Index("ix_stage_artefacts_source_stage", "source_id", "stage"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    stage: Mapped[str] = mapped_column(String(40), nullable=False)
+    tool: Mapped[str] = mapped_column(String(80), nullable=False)
+    tool_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    page_index: Mapped[int] = mapped_column(Integer, nullable=False, default=0)  # 0 = document-level
+    object_key: Mapped[str] = mapped_column(String(512), nullable=False)
+    content_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    size_bytes: Mapped[int] = mapped_column(Integer, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
 
 class Job(Base):

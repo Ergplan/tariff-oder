@@ -78,6 +78,139 @@ def text_only_pdf(pages: int = 3, seed: str = "A") -> bytes:
     return _finalise(doc, {"subject": f"variant {seed}"})
 
 
+def _footer(page: pymupdf.Page, label: str, of: int | None = None) -> None:
+    text = f"Page {label} of {of}" if of else f"Page {label}"
+    page.insert_text((250, 820), text, fontsize=9)
+
+
+def _ruled_table(page: pymupdf.Page, top: float, rows: int = 8, cols: int = 4, cell_h: float = 22) -> None:
+    """Draw a genuine ruled table with text in every cell."""
+    left, width = 60, 475
+    col_w = width / cols
+    for r in range(rows + 1):
+        y = top + r * cell_h
+        page.draw_line((left, y), (left + width, y), width=0.6)
+    for c in range(cols + 1):
+        x = left + c * col_w
+        page.draw_line((x, top), (x, top + rows * cell_h), width=0.6)
+    headers = ["Description", "Fixed Charge", "Energy Charge", "Slab"]
+    for r in range(rows):
+        for c in range(cols):
+            txt = headers[c] if r == 0 else (f"Row {r} item" if c == 0 else f"{r}.{c}0")
+            page.insert_text((left + c * col_w + 4, top + r * cell_h + 15), txt, fontsize=8)
+
+
+def labelled_order_pdf() -> bytes:
+    """Mimics the KERC/GERC page-label shape: three roman-numbered contents pages, then body
+    pages whose printed label is `PDF index − 3`, each with a `Page N` footer, one ruled rate
+    table page, one vector-drawn table page with no text layer, one image-only page, one blank
+    page, and one page whose footer disagrees with the rule.
+
+    Failure modes exercised: D5 (roman + offset labels, label conflicts), D8 (vector-drawn
+    table with no text), D1 (image-only page), plus the `table`, `blank` and `annexure_cover`
+    classes.  Twelve pages total.
+    """
+    doc = pymupdf.open()
+    # 1-3: contents pages, roman labels i-iii, narrative text
+    for i, label in enumerate(["i", "ii", "iii"]):
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 72), BANNER, fontsize=10)
+        page.insert_text((72, 110), "CONTENTS" if i == 0 else "List of tables", fontsize=14)
+        for k in range(14):
+            page.insert_text(
+                (72, 150 + k * 18),
+                f"Chapter {k + 1} the commission shall determine the tariff for supply of electricity ...... {k + 4}",
+                fontsize=10,
+            )
+        _footer(page, label)
+    # 4: body page, printed 1 (offset -3), narrative
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    for k in range(30):
+        page.insert_text(
+            (72, 120 + k * 18),
+            "The Commission has considered the submissions of the petitioner and the objections "
+            "received from the consumers regarding the proposed tariff.",
+            fontsize=9,
+        )
+    _footer(page, "1")
+    # 5: annexure cover, printed 2
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    page.insert_text((150, 380), "ANNEXURE - I", fontsize=22)
+    page.insert_text((120, 420), "RATE SCHEDULE FOR FY 2026-27", fontsize=16)
+    _footer(page, "2")
+    # 6: ruled rate table, printed 3
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    page.insert_text((72, 100), "RATE SCHEDULE LMV-1", fontsize=12)
+    _ruled_table(page, top=130, rows=14)
+    _footer(page, "3")
+    # 7: vector-drawn table with NO text layer (the KERC hazard), printed 4 but no footer
+    page = doc.new_page(width=595, height=842)
+    for r in range(20):
+        for c in range(6):
+            x, y = 60 + c * 80, 120 + r * 28
+            page.draw_rect(pymupdf.Rect(x, y, x + 80, y + 28), width=0.5)
+            # "text" drawn as tiny path strokes, not glyphs
+            for k in range(6):
+                page.draw_line((x + 6 + k * 10, y + 14), (x + 12 + k * 10, y + 14), width=1.2)
+    # 8: image-only page, printed 5, no footer
+    page = doc.new_page(width=595, height=842)
+    pix = pymupdf.Pixmap(pymupdf.csRGB, pymupdf.IRect(0, 0, 500, 700), 0)
+    pix.clear_with(230)
+    page.insert_image(pymupdf.Rect(48, 60, 548, 780), pixmap=pix)
+    # 9: blank
+    doc.new_page(width=595, height=842)
+    # 10: narrative, printed 7
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    for k in range(28):
+        page.insert_text(
+            (72, 120 + k * 18),
+            "General provisions applicable to all consumers: the regulatory discount of ten percent "
+            "shall apply on fixed and energy charges.",
+            fontsize=9,
+        )
+    _footer(page, "7")
+    # 11: narrative whose footer CONFLICTS with the rule (says 99 instead of 8)
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    for k in range(20):
+        page.insert_text(
+            (72, 120 + k * 18),
+            "This page carries a wrong footer number to exercise the label conflict flag in the triage stage.",
+            fontsize=9,
+        )
+    _footer(page, "99")
+    # 12: narrative, printed 9
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    for k in range(20):
+        page.insert_text(
+            (72, 120 + k * 18),
+            "Final page of the synthetic order with the expected footer label according to the offset rule.",
+            fontsize=9,
+        )
+    _footer(page, "9")
+    return _finalise(doc, {"subject": "labelled order"})
+
+
+def garbled_text_pdf() -> bytes:
+    """A page whose text layer is present but useless: private-use codepoints and consonant
+    soup, the symptom of a missing ToUnicode map (failure mode D2)."""
+    doc = pymupdf.open()
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((72, 72), BANNER, fontsize=10)
+    for k in range(25):
+        page.insert_text(
+            (72, 120 + k * 18),
+            "\ue000\ue001\ue002 xqzvbn ptkrsd \ue010\ue011 wxqzb mnplk \ue020 zzxqw vbnmk",
+            fontsize=10,
+        )
+    return _finalise(doc, {"subject": "garbled"})
+
+
 def not_a_pdf() -> bytes:
     return b"%PDF-1.7\nthis is not really a pdf body\n"
 
@@ -94,4 +227,6 @@ if __name__ == "__main__":
     out.mkdir(parents=True, exist_ok=True)
     (out / "SYNTHETIC_mixed_text_and_image.pdf").write_bytes(mixed_text_and_image_pdf())
     (out / "SYNTHETIC_text_only.pdf").write_bytes(text_only_pdf())
+    (out / "SYNTHETIC_labelled_order.pdf").write_bytes(labelled_order_pdf())
+    (out / "SYNTHETIC_garbled_text.pdf").write_bytes(garbled_text_pdf())
     print(f"wrote synthetic fixtures to {out}")

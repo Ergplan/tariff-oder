@@ -8,6 +8,15 @@ from sqlalchemy import create_engine, text
 pytestmark = pytest.mark.integration
 
 
+def script_head() -> str:
+    """The newest revision in the migrations directory — the test must not hardcode it."""
+    from alembic.script import ScriptDirectory
+
+    from tariff_api.cli import _alembic_config
+
+    return ScriptDirectory.from_config(_alembic_config()).get_current_head()
+
+
 def test_downgrade_and_upgrade_roundtrip(migrated_db):
     from tariff_api.cli import main as cli_main
 
@@ -21,8 +30,17 @@ def test_downgrade_and_upgrade_roundtrip(migrated_db):
         tables = {r[0] for r in c.execute(text("select tablename from pg_tables where schemaname='public'"))}
         head = c.execute(text("select version_num from alembic_version")).scalar_one()
     engine.dispose()
-    assert {"source_documents", "source_pages", "jobs", "job_events", "audit_events", "datasets", "users"} <= tables
-    assert head == "0001_foundation"
+    assert {
+        "source_documents",
+        "source_pages",
+        "jobs",
+        "job_events",
+        "audit_events",
+        "datasets",
+        "users",
+        "stage_artefacts",
+    } <= tables
+    assert head == script_head()
 
 
 def test_audit_events_are_append_only(migrated_db):

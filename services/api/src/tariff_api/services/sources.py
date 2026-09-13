@@ -21,6 +21,7 @@ from ..models import (
     Dataset,
     DatasetKind,
     Job,
+    JobStatus,
     SourceDocument,
     SourceState,
 )
@@ -219,6 +220,49 @@ def register_upload(
         created_by=actor,
     )
     return source, False, job
+
+
+STAGE_JOBS = {"inventory_source": SourceState.uploaded, "triage_source": SourceState.inventoried}
+
+
+def enqueue_stage(session: Session, settings: Settings, source: SourceDocument, job_type: str, *, actor: str) -> Job:
+    """Queue a reading stage for a source.  Idempotent per (job, source, series): a stage that is
+    already queued or running is not queued twice; a finished one gets a new series."""
+    prior = session.execute(select(Job).where(Job.source_id == source.id, Job.job_type == job_type)).scalars().all()
+    for j in prior:
+        if j.status in (JobStatus.queued, JobStatus.leased):
+            return j
+    job, _ = enqueue(
+        session,
+        job_type=job_type,
+        payload={"source_id": str(source.id), "sha256": source.sha256},
+        idempotency_key=f"{job_type}:{source.sha256}:{len(prior) + 1}",
+        source_id=source.id,
+        max_attempts=settings.job_max_attempts,
+        created_by=actor,
+    )
+    return job
+
+
+def request_stage_rerun(
+    session: Session, settings: Settings, source: SourceDocument, job_type: str, *, actor: str
+) -> Job:
+    """Re-run one reading stage (for example after a rules-version bump).  The source must be
+    at or past the stage's input state; it is moved back to that state through the transition
+    table so the audit trail shows the re-run."""
+    if job_type not in STAGE_JOBS:
+        raise AppError("validation_failed", f"unknown stage job {job_type!r}")
+    input_state = STAGE_JOBS[job_type]
+    order = list(SourceState)
+    if source.state in (SourceState.failed, SourceState.needs_reprocessing):
+        pass
+    elif order.index(source.state) < order.index(input_state) and source.state != input_state:
+        raise AppError("invalid_transition", f"source is {source.state.value}; {job_type} needs {input_state.value}")
+    if source.state != input_state:
+        if input_state not in SOURCE_TRANSITIONS[source.state]:
+            transition(session, source, SourceState.needs_reprocessing, actor=actor, reason=f"rerun {job_type}")
+        transition(session, source, input_state, actor=actor, reason=f"rerun {job_type}")
+    return enqueue_stage(session, settings, source, job_type, actor=actor)
 
 
 def request_reprocess(session: Session, settings: Settings, source: SourceDocument, *, actor: str) -> Job:

@@ -1,7 +1,8 @@
 # BUILD_STATE
 
 Last updated: 2026-09-13. Branch `claude/keen-tesla-r9mvv5`.
-Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest.
+Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
+(3) first verification against the real project; (4) Milestone 2a — page triage.
 
 ## Current milestone and status
 
@@ -14,7 +15,37 @@ Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and buc
   planned or applied**: this build environment has no `gcloud` and its Google token is rejected
   (`ACCESS_TOKEN_TYPE_UNSUPPORTED`, re-checked after the project details arrived).  The apply
   has to run on the `tariff-order` VM.
-- **No parser, no provider connection, no extracted number, no reviewer decision exists.**
+- **Milestone 2 — part (a) implemented and tested: page triage.**  Classification, text-layer
+  quality, printed-label maps, immutable stage artefacts, resumable and re-runnable.  Part (b)
+  — OCR execution, the second reader, table grids and agreement scoring — is the next task.
+- **No parser beyond PyMuPDF, no provider connection, no extracted number, no reviewer
+  decision exists.**
+
+### Increment 4 (Milestone 2a: page triage)
+
+- Stage `inventoried → triaged` (`tariff_worker.stages.triage`), chained automatically after
+  inventory; page-batched checkpoints; pages already triaged at the current rules version are
+  skipped on resume; one immutable JSON artefact per page plus one per document under
+  `<sha>/triage/pymupdf@<v>+rules@<v>/`, indexed in the new `stage_artefacts` table.
+- `tariff_api.triage` — pure, versioned rules (`TRIAGE_VERSION = "1"`): eight page classes
+  with a recorded rationale each (`unknown` when nothing matches); three independent
+  text-quality components (glyph coverage, dictionary hit rate gated on token count,
+  reading-order sanity) with separate flags; footer label extraction anchored to line ends;
+  document-wide label rule inferred as segments of (style, offset) — singleton disagreements
+  excluded, agreeing neighbours merged — and every page resolved with a recorded source.
+- API: pages carry `label_declared/observed/source`, `text_quality`, `ocr_recommended`,
+  `triage_rationale`; `?page_class=` and `?ocr_recommended=` filters; source detail carries a
+  `triage` summary (class histogram, label rule, OCR/low-quality/unknown/label-flagged page
+  lists) and its artefact index; `POST /sources/{id}/stages/rerun` (admin) re-runs a stage
+  through the transition table, audited.  Web: triage section and per-page badges.
+- Fixtures: `labelled_order_pdf` (12 pages: roman i–iii, then index − 3 with footer-less
+  pages, a ruled table, a vector-drawn table with no text, an image-only page, a blank page,
+  an annexure cover, one wrong footer) and `garbled_text_pdf`.
+- Three rule defects were found by running the rules over the fixtures before locking
+  thresholds, and fixed with tests: a weighted quality score let consonant soup pass; running
+  prose ("see page 12 of the petition") was read as a footer label; a numeric table was
+  classed `mixed` because prose was measured in characters rather than words.  A fourth in
+  label inference: one wrong footer split a continuous rule in two.
 
 ### Increment 2 (dev-project wiring and bucket ingest)
 
@@ -105,16 +136,21 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 ## Reading reliability ledger changes
 
 `docs/reading-reliability.md` created with every Section 6.1 failure mode as a row.
-Handled+tested: P4 (partial run/retry duplicates), P6 (dedup), P7 (idempotent upload),
-P8 (unreadable upload), P9 (fixture isolation), P10 (authorization), P11 (local adapter in
-cloud), P12 (golden manifest verified not copied).  Detected only: D1, D3, D5 (declared
-labels), D7, D9.  Everything else `n/a-yet` pending Milestones 2–4.
+Handled+tested: D5 (printed-label maps), P4, P6, P7, P8, P9, P10, P11, P12, P13–P15
+(ingest, reproducible fixtures), P16 (immutable versioned artefacts), P17 (unknown is visible).
+Detected+tested, handling pending OCR (M2b): D1 (image-only), D2 (corrupted text layer),
+D3 (rotation), D8 (vector-drawn tables).  Detected: D7, D9.  Everything structure-, value-
+and network-level `n/a-yet` pending Milestones 3–4.
 
 ## Tests and evaluations executed, with results and denominators
 
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`):
 
-- **34 passed, 0 failed, 0 skipped** (10.7 s): 12 unit (`tests/unit`), 22 integration
+- **70 passed, 0 failed, 0 skipped** (~20 s): 43 unit (12 adapters/profile, 31 triage rules), 27
+  integration (7 sources, 5 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage incl.
+  a second worker-kill resume and a stage rerun, 2 migrations, 1 registry).  Three consecutive
+  clean runs after one earlier intermittent failure in a lease-expiry test (2 s lease, 2.5 s
+  wait); the wait margin was widened to 3.5 s.  Not a product defect.
   (`tests/integration`: 7 sources, 4 ingest, 6 queue, 1 worker-kill recovery, 2 migrations,
   1 registry).  Run twice in different orders to confirm no inter-test dependence.
 - Worker-kill recovery: 1 hard kill (`os._exit(137)` after checkpoint `next_page=3`), lease
@@ -211,9 +247,14 @@ worker (revisit in M8) · ADR-0007 fixture/real isolation via datasets.
    tfstate versioning, enabled APIs, PDFs present) and print the `billing_account_id` to paste
    into `envs/dev.tfvars`.  Then `make tf-init tf-plan ENV=dev` and review the plan before any
    apply.  Copy the three PDFs to `gs://tarifforderstudio_sources/inbox/` if not already there.
-2. Engineering (Milestone 2, next run): add the `triage` stage — page class (`narrative`,
-   `table`, `mixed`, `image_only`, `vector_graphics_text_sparse`, …), text-quality score,
-   footer-derived printed-label map (roman + offset), Docling + pdfplumber grids with
-   agreement scoring, document heading/table inventory, inventory UI, resumable stage
-   checkpoints — starting with the page-label map and `vector_graphics_text_sparse`
-   detection, both testable on synthetic fixtures before the real files arrive.
+2. Engineering (Milestone 2b, next run): execute OCR (tesseract, via apt in the image) on
+   `ocr_recommended` pages and reconcile with any existing text; add the reader interface with
+   PyMuPDF and pdfplumber producing table grids for `table`/`mixed` pages, agreement scoring
+   (cell count, header row, normalised cell text) recorded per grid; document-wide heading
+   and table inventory (`RATE SCHEDULE …`, `TARIFF SCHEDULE …`, `<n>. RATE: …` headings de-
+   duplicated); inventory UI.  Docling stays behind the reader interface until it can be
+   measured on real pages — it pulls a large ML stack that this environment cannot verify.
+   Then, as soon as the three PDFs are in the bucket: ingest, inventory, triage, and compare
+   the triage output with Parts D–F (NPCL 402–423 `image_only`; KERC 226–240
+   `vector_graphics_text_sparse` and the printed 209 → PDF 225 rule; GERC all-text with roman
+   front matter and the −16 rule).

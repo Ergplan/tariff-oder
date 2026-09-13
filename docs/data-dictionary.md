@@ -1,4 +1,4 @@
-# Data dictionary (Milestone 1)
+# Data dictionary (through Milestone 2a)
 
 Migration owner: `services/api/migrations/versions/0001_foundation.py`.  All timestamps are
 `timestamptz`; ids are UUIDv4 unless noted.  Enums are PostgreSQL enum types.
@@ -39,12 +39,37 @@ nothing here implies coverage.
 | version | Optimistic-concurrency counter; incremented on every transition |
 
 ## `source_pages`
-One row per PDF page (`page_index` 1-based, unique per source): `printed_label` (PDF
-page-label entry if the file declares one; footer-derived labels come in Milestone 2),
-`width_pt`, `height_pt`, `rotation`, `text_chars` (non-whitespace characters from the text
-layer), `has_text_layer`, `image_count`, `drawing_count`, `page_class` (Section 6.3;
-`unknown` until Milestone 2), `page_role` (Section 6.5; `unknown` until Milestone 3),
-`quality_flags` (JSONB list).
+One row per PDF page (`page_index` 1-based, unique per source).
+
+Inventory (Milestone 1): `width_pt`, `height_pt`, `rotation`, `text_chars` (non-whitespace
+characters from the text layer), `has_text_layer`, `image_count`, `drawing_count`,
+`label_declared` (the PDF's own page-label dictionary entry, if any).
+
+Triage (Milestone 2a, `docs/reading-reliability.md` D1/D2/D5/D8):
+| Column | Meaning |
+| --- | --- |
+| page_class | Section 6.3 class from a deterministic rule; `unknown` when no rule matched (never green) |
+| quality_flags | JSONB list: `no_text_layer`, `ocr_needed`, `rotated`, `overlapping_graphics`, `glyph_mapping_damaged`, `text_not_wordlike`, `suspected_column_interleaving`, `low_text_quality`, `label_conflict`, `label_off_rule` |
+| text_quality | JSONB `{glyph_coverage, dictionary_hit_rate, reading_order_sanity, score, token_count}`; null when there is no text layer |
+| ocr_recommended | The page should be rasterised and OCR'd (executed in Milestone 2b) |
+| triage_rationale | Why the class was chosen, in words |
+| label_observed | The label read from the page footer/header |
+| printed_label | The **resolved** label a citation should show |
+| label_source | Where `printed_label` came from: `observed` \| `rule` \| `declared` \| `none` |
+| triage_version, triaged_at | Rules version and time; a version bump re-triages every page |
+| page_role | Section 6.5; `unknown` until Milestone 3 |
+
+## `stage_artefacts`
+Index of immutable per-stage outputs in the `artefacts` bucket (Section 6.2): `stage`,
+`tool`, `tool_version` (e.g. `pymupdf@1.28.2+rules@1`), `page_index` (0 = document-level),
+`object_key` (`<sha256>/<stage>/<tool_version>/page-NNNN.json`), `content_sha256`,
+`size_bytes`.  Unique per (source, stage, tool_version, page): a re-run at the same version
+is a no-op; a new version writes beside the old.
+
+## `source_documents` — triage columns
+`label_rule` (JSONB: `segments[{start_index,end_index,style,offset,observed_pages}]`,
+`observed_pages`, `declared_pages`, `pages_with_label_flags`, `rules_version`),
+`page_class_counts` (JSONB histogram), `triage_version`, `triaged_at`.
 
 ## `jobs`, `job_events`
 | Column | Meaning |

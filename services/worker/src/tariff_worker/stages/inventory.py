@@ -24,7 +24,7 @@ from tariff_api.inventory import (
     page_inventory,
 )
 from tariff_api.models import SourceDocument, SourcePage, SourceState
-from tariff_api.services.sources import transition
+from tariff_api.services.sources import enqueue_stage, transition
 
 from ..runner import JobContext, JobFailure
 
@@ -105,6 +105,8 @@ def inventory_source(ctx: JobContext) -> dict:
                     "source_id": source_id,
                     "page_index": pi.page_index,
                     "printed_label": pi.printed_label,
+                    "label_declared": pi.printed_label,
+                    "label_source": "declared" if pi.printed_label else "none",
                     "width_pt": pi.width_pt,
                     "height_pt": pi.height_pt,
                     "rotation": pi.rotation,
@@ -141,4 +143,6 @@ def inventory_source(ctx: JobContext) -> dict:
                     {"size_bytes": src.size_bytes, "page_count": total, "pages_without_text": src.pages_without_text},
                 )
         transition(s, src, SourceState.inventoried, actor=ctx.worker, reason=f"{TOOL_NAME}@{TOOL_VERSION}")
+        # The next reading stage follows automatically; only publication needs a human.
+        enqueue_stage(s, settings, src, "triage_source", actor=ctx.worker)
     return {"pages_total": total, "pages_with_text": int(with_text), "pages_without_text": total - int(with_text)}

@@ -233,6 +233,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/{source_id}/stages/rerun": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Rerun Stage
+         * @description Re-run one reading stage (after a rules-version bump, or to reprocess a failed one).
+         *     Artefacts from earlier tool versions are kept; new ones are written beside them.
+         */
+        post: operations["rerun_stage_sources__source_id__stages_rerun_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sources/inbox": {
         parameters: {
             query?: never;
@@ -683,6 +704,8 @@ export interface components {
              * Format: date-time
              */
             acquired_at: string;
+            /** Artefacts */
+            artefacts: components["schemas"]["StageArtefactOut"][];
             /** Content Type */
             content_type: string;
             /**
@@ -748,6 +771,7 @@ export interface components {
             text_layer_summary: {
                 [key: string]: unknown;
             } | null;
+            triage: components["schemas"]["TriageSummary"] | null;
             /**
              * Updated At
              * Format: date-time
@@ -791,6 +815,14 @@ export interface components {
             height_pt: number | null;
             /** Image Count */
             image_count: number;
+            /** Label Declared */
+            label_declared: string | null;
+            /** Label Observed */
+            label_observed: string | null;
+            /** Label Source */
+            label_source: string;
+            /** Ocr Recommended */
+            ocr_recommended: boolean;
             /** Page Class */
             page_class: string;
             /** Page Index */
@@ -805,6 +837,16 @@ export interface components {
             rotation: number;
             /** Text Chars */
             text_chars: number;
+            /** Text Quality */
+            text_quality: {
+                [key: string]: unknown;
+            } | null;
+            /** Triage Rationale */
+            triage_rationale: string | null;
+            /** Triage Version */
+            triage_version: string | null;
+            /** Triaged At */
+            triaged_at: string | null;
             /** Width Pt */
             width_pt: number | null;
         };
@@ -873,6 +915,36 @@ export interface components {
             /** Version */
             version: number;
         };
+        /** StageArtefactOut */
+        StageArtefactOut: {
+            /** Content Sha256 */
+            content_sha256: string;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Object Key */
+            object_key: string;
+            /** Page Index */
+            page_index: number;
+            /** Size Bytes */
+            size_bytes: number;
+            /** Stage */
+            stage: string;
+            /** Tool */
+            tool: string;
+            /** Tool Version */
+            tool_version: string;
+        };
+        /** StageRerunRequest */
+        StageRerunRequest: {
+            /**
+             * Job Type
+             * @enum {string}
+             */
+            job_type: "inventory_source" | "triage_source";
+        };
         /** StatusReport */
         StatusReport: {
             /** Adapters */
@@ -907,6 +979,29 @@ export interface components {
             };
             /** Version */
             version: string;
+        };
+        /** TriageSummary */
+        TriageSummary: {
+            /** Label Flagged Pages */
+            label_flagged_pages: number[];
+            /** Label Rule */
+            label_rule: {
+                [key: string]: unknown;
+            } | null;
+            /** Low Quality Pages */
+            low_quality_pages: number[];
+            /** Ocr Recommended Pages */
+            ocr_recommended_pages: number[];
+            /** Page Class Counts */
+            page_class_counts: {
+                [key: string]: number;
+            };
+            /** Triage Version */
+            triage_version: string | null;
+            /** Triaged At */
+            triaged_at: string | null;
+            /** Unknown Pages */
+            unknown_pages: number[];
         };
         /** UserOut */
         UserOut: {
@@ -2017,7 +2112,9 @@ export interface operations {
         parameters: {
             query?: {
                 limit?: number;
+                ocr_recommended?: boolean | null;
                 offset?: number;
+                page_class?: string | null;
                 text_layer?: boolean | null;
             };
             header?: never;
@@ -2112,6 +2209,95 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JobSummary"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    rerun_stage_sources__source_id__stages_rerun_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StageRerunRequest"];
+            };
+        };
         responses: {
             /** @description Successful Response */
             202: {

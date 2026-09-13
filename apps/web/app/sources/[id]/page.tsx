@@ -20,6 +20,8 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
   const pages = s.page_count ? await apiTry<SourcePageList>(`/sources/${id}/pages?limit=1000`) : { data: undefined };
   const job = s.latest_job;
   const noTextRanges = (s.text_layer_summary?.pages_without_text_layer as string[] | undefined) ?? [];
+  type LabelSegment = { start_index: number; end_index: number; style: string; offset: number; observed_pages: number };
+  const labelSegments = ((s.triage?.label_rule as { segments?: LabelSegment[] } | null | undefined)?.segments ?? []) as LabelSegment[];
   const inFlight = job && (job.status === "queued" || job.status === "leased");
   const done = (job?.progress?.pages_done as number | undefined) ?? 0;
   const total = (job?.progress?.pages_total as number | undefined) ?? s.page_count ?? 0;
@@ -155,6 +157,90 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
         ) : null}
       </dl>
 
+      {s.triage ? (
+        <>
+          <h2>Triage</h2>
+          <p className="muted">
+            Rules version <code>{s.triage.triage_version}</code> · {new Date(s.triage.triaged_at!).toLocaleString()}. Every
+            class is a deterministic rule with a recorded rationale; <em>unknown</em> means no rule matched and is never
+            treated as fine.
+          </p>
+          <div className="grid">
+            {Object.entries(s.triage.page_class_counts)
+              .sort((a, b) => b[1] - a[1])
+              .map(([k, v]) => (
+                <div className="card" key={k}>
+                  <div className="label">{k}</div>
+                  <div className="value">{v}</div>
+                </div>
+              ))}
+          </div>
+          <dl className="kv">
+            <dt>Needs OCR</dt>
+            <dd>
+              {s.triage.ocr_recommended_pages.length ? (
+                <>
+                  <span className="badge" data-tone="warn">{s.triage.ocr_recommended_pages.length} pages</span>{" "}
+                  <span className="mono">{s.triage.ocr_recommended_pages.join(", ")}</span>
+                  <span className="muted"> — OCR execution is the next increment; these pages are listed, not read</span>
+                </>
+              ) : (
+                "none"
+              )}
+            </dd>
+            <dt>Low text quality</dt>
+            <dd>
+              {s.triage.low_quality_pages.length ? (
+                <span className="mono">{s.triage.low_quality_pages.join(", ")}</span>
+              ) : (
+                "none"
+              )}
+            </dd>
+            <dt>Unknown class</dt>
+            <dd>
+              {s.triage.unknown_pages.length ? (
+                <>
+                  <span className="badge" data-tone="unknown">{s.triage.unknown_pages.length} pages</span>{" "}
+                  <span className="mono">{s.triage.unknown_pages.join(", ")}</span>
+                </>
+              ) : (
+                "none"
+              )}
+            </dd>
+            <dt>Printed-label rule</dt>
+            <dd>
+              {labelSegments.length ? (
+                <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
+                  {labelSegments.map((seg) => (
+                    <li key={seg.start_index}>
+                      PDF pages {seg.start_index}–{seg.end_index}: printed label = index {seg.offset >= 0 ? "+" : "−"}{" "}
+                      {Math.abs(seg.offset)} ({seg.style.replace("_", " ")}), from {seg.observed_pages} observed footers
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <span className="muted">no printed labels observed — declared PDF labels only, if any</span>
+              )}
+              {s.triage.label_flagged_pages.length ? (
+                <div>
+                  <span className="badge" data-tone="warn">label conflict on {s.triage.label_flagged_pages.length} pages</span>{" "}
+                  <span className="mono">{s.triage.label_flagged_pages.join(", ")}</span>
+                </div>
+              ) : null}
+            </dd>
+            <dt>Artefacts</dt>
+            <dd>
+              {s.artefacts.filter((a) => a.page_index === 0).map((a) => (
+                <div key={a.object_key} className="mono muted">
+                  {a.stage} · {a.tool_version} · <code>{a.object_key}</code> · {a.size_bytes} B
+                </div>
+              ))}
+              {s.artefacts.length ? <div className="muted">plus one immutable JSON artefact per page</div> : null}
+            </dd>
+          </dl>
+        </>
+      ) : null}
+
       <h2>Page inventory</h2>
       {!pages.data ? (
         <p className="muted">Not inventoried yet.</p>
@@ -163,7 +249,7 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
           <thead>
             <tr>
               <th>PDF index</th>
-              <th>PDF label</th>
+              <th>Printed label</th>
               <th>Size (pt)</th>
               <th>Rotation</th>
               <th>Text chars</th>
@@ -178,7 +264,15 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
             {pages.data.pages.map((p) => (
               <tr key={p.page_index}>
                 <td>{p.page_index}</td>
-                <td>{p.printed_label ?? <span className="muted">—</span>}</td>
+                <td title={p.triage_rationale ?? undefined}>
+                  {p.printed_label ?? <span className="muted">—</span>}{" "}
+                  {p.label_source !== "none" ? (
+                    <span className="badge" data-tone={p.label_source === "declared" ? "neutral" : "ok"}>{p.label_source}</span>
+                  ) : null}
+                  {p.quality_flags.some((f) => f === "label_conflict" || f === "label_off_rule") ? (
+                    <span className="badge" data-tone="warn">conflict</span>
+                  ) : null}
+                </td>
                 <td className="mono">
                   {p.width_pt?.toFixed(0)}×{p.height_pt?.toFixed(0)}
                 </td>
@@ -193,8 +287,10 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
                 </td>
                 <td>{p.image_count}</td>
                 <td>{p.drawing_count}</td>
-                <td>
+                <td title={p.triage_rationale ?? "not triaged yet"}>
                   <span className="badge" data-tone={p.page_class === "unknown" ? "unknown" : "neutral"}>{p.page_class}</span>
+                  {p.ocr_recommended ? <span className="badge" data-tone="warn">OCR</span> : null}
+                  {p.quality_flags.includes("low_text_quality") ? <span className="badge" data-tone="bad">low quality</span> : null}
                 </td>
                 <td>
                   <span className="badge" data-tone={p.page_role === "unknown" ? "unknown" : "neutral"}>{p.page_role}</span>

@@ -21,6 +21,7 @@ from ..models import (
     SourceDocument,
     SourcePage,
     SourceState,
+    StageArtefact,
 )
 from ..schemas import (
     InboxList,
@@ -33,6 +34,9 @@ from ..schemas import (
     SourcePageOut,
     SourceRegistration,
     SourceSummary,
+    StageArtefactOut,
+    StageRerunRequest,
+    TriageSummary,
 )
 from ..services import sources as svc
 
@@ -249,6 +253,39 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
                 "rotated_pages": int(rotated),
                 "pages_with_pdf_labels": int(labelled),
             }
+        triage = None
+        if src.triage_version:
+            pages = s.execute(
+                select(
+                    SourcePage.page_index,
+                    SourcePage.page_class,
+                    SourcePage.ocr_recommended,
+                    SourcePage.quality_flags,
+                ).where(SourcePage.source_id == src.id)
+            ).all()
+            triage = TriageSummary(
+                triage_version=src.triage_version,
+                triaged_at=src.triaged_at,
+                page_class_counts=src.page_class_counts or {},
+                label_rule=src.label_rule,
+                ocr_recommended_pages=sorted(p.page_index for p in pages if p.ocr_recommended),
+                low_quality_pages=sorted(p.page_index for p in pages if "low_text_quality" in (p.quality_flags or [])),
+                label_flagged_pages=sorted(
+                    p.page_index
+                    for p in pages
+                    if any(f in (p.quality_flags or []) for f in ("label_conflict", "label_off_rule"))
+                ),
+                unknown_pages=sorted(p.page_index for p in pages if p.page_class == "unknown"),
+            )
+        artefacts = (
+            s.execute(
+                select(StageArtefact)
+                .where(StageArtefact.source_id == src.id)
+                .order_by(StageArtefact.stage, StageArtefact.tool_version, StageArtefact.page_index)
+            )
+            .scalars()
+            .all()
+        )
         base = _summary(src).model_dump()
         return SourceDetail(
             **base,
@@ -268,6 +305,13 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
             superseded_by_id=src.superseded_by_id,
             latest_job=job_summary(job),
             text_layer_summary=text_summary,
+            triage=triage,
+            artefacts=[StageArtefactOut.model_validate(a, from_attributes=True) for a in artefacts if a.page_index == 0]
+            + [
+                StageArtefactOut.model_validate(a, from_attributes=True)
+                for a in artefacts
+                if a.page_index != 0 and a.page_index <= 3
+            ],  # document-level artefacts plus a sample; the page table links the rest
         )
 
 
@@ -293,12 +337,18 @@ def list_pages(
     offset: int = Query(0, ge=0),
     limit: int = Query(100, ge=1, le=1000),
     text_layer: bool | None = None,
+    page_class: str | None = None,
+    ocr_recommended: bool | None = None,
 ) -> SourcePageList:
     with session_scope() as s:
         svc.get_source(s, source_id)
         q = select(SourcePage).where(SourcePage.source_id == source_id)
         if text_layer is not None:
             q = q.where(SourcePage.has_text_layer.is_(text_layer))
+        if page_class is not None:
+            q = q.where(SourcePage.page_class == page_class)
+        if ocr_recommended is not None:
+            q = q.where(SourcePage.ocr_recommended.is_(ocr_recommended))
         total = s.execute(select(func.count()).select_from(q.subquery())).scalar_one()
         rows = s.execute(q.order_by(SourcePage.page_index).offset(offset).limit(limit)).scalars().all()
         return SourcePageList(
@@ -333,6 +383,21 @@ def get_file(source_id: uuid.UUID, request: Request):
             "Cache-Control": "private, no-store",
         },
     )
+
+
+@router.post("/{source_id}/stages/rerun", response_model=JobSummary, status_code=202)
+def rerun_stage(
+    source_id: uuid.UUID, body: StageRerunRequest, request: Request, principal: Principal = Depends(require_admin)
+) -> JobSummary:
+    """Re-run one reading stage (after a rules-version bump, or to reprocess a failed one).
+    Artefacts from earlier tool versions are kept; new ones are written beside them."""
+    settings = request.app.state.settings
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        job = svc.request_stage_rerun(s, settings, src, body.job_type, actor=principal.email)
+        s.flush()
+        s.refresh(job)
+        return JobSummary.model_validate(job, from_attributes=True)
 
 
 @router.post("/{source_id}/reprocess", response_model=JobSummary, status_code=202)

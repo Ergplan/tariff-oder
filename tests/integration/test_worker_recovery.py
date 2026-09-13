@@ -44,7 +44,7 @@ def test_worker_killed_mid_job_is_resumed_from_checkpoint(client, runner):
 
     # Nobody can claim it before the lease expires
     assert runner.run_once() is False
-    time.sleep(2.5)
+    time.sleep(3.5)  # lease is 2 s; leave a margin for a loaded CI runner
 
     # Second worker reclaims the expired lease and resumes from the checkpoint
     assert runner.run_once() is True

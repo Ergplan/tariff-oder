@@ -37,12 +37,14 @@ def test_upload_inventory_reopen_and_dedup(client, runner):
     assert body["job"]["job_type"] == "inventory_source"
     assert body["job"]["status"] == "queued"
 
-    # Worker processes the inventory job with page-level checkpoints (every 2 pages)
-    assert runner.run_once() is True
+    # Worker processes the inventory job with page-level checkpoints (every 2 pages); inventory
+    # chains the triage stage automatically, which we also run so the queue ends up empty.
+    assert runner.run_once() is True  # inventory
+    assert runner.run_once() is True  # triage (Milestone 2a)
     assert runner.run_once() is False  # queue empty
 
     d = client.get(f"/sources/{src['id']}", headers=headers(REVIEWER)).json()
-    assert d["state"] == "inventoried"
+    assert d["state"] == "triaged"
     assert d["page_count"] == 6
     assert d["pages_with_text"] == 4
     assert d["pages_without_text"] == 2
@@ -62,7 +64,7 @@ def test_upload_inventory_reopen_and_dedup(client, runner):
     assert all(by_index[i]["has_text_layer"] for i in (1, 2, 3, 4))
     assert all(not by_index[i]["has_text_layer"] for i in (5, 6))
     assert by_index[5]["image_count"] == 1
-    assert all(p["page_class"] == "unknown" for p in pages["pages"])  # classification is Milestone 2
+    assert all(p["page_role"] == "unknown" for p in pages["pages"])  # localisation is Milestone 3
 
     # Authorized reopen returns the identical bytes
     f = client.get(f"/sources/{src['id']}/file", headers=headers(ANALYST))
@@ -86,7 +88,7 @@ def test_upload_inventory_reopen_and_dedup(client, runner):
     assert "source.deduplicated" in actions
     assert "source.transition" in actions
 
-    # Job events show the checkpoint trail
+    # Job events show the checkpoint trail (of the inventory job)
     job = client.get(f"/jobs/{body['job']['id']}", headers=headers(ANALYST)).json()
     events = [e["event"] for e in job["events"]]
     assert events[0] == "enqueued"
@@ -154,7 +156,7 @@ def test_fixture_and_real_datasets_are_separate(client):
     assert status["datasets"] == {"fixture": 1, "real": 1}
     assert status["deployment_profile"] == "local"
     assert status["adapters"] == {"storage": "filesystem", "secrets": "env", "identity": "local"}
-    assert status["database"]["migration_head"] == "0001_foundation"
+    assert status["database"]["migration_head"]  # whatever alembic's head is; replay is tested elsewhere
     assert status["database"]["pgvector_version"]
 
 

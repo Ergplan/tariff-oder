@@ -996,6 +996,13 @@
             "title": "Acquired At",
             "type": "string"
           },
+          "artefacts": {
+            "items": {
+              "$ref": "#/components/schemas/StageArtefactOut"
+            },
+            "title": "Artefacts",
+            "type": "array"
+          },
           "content_type": {
             "title": "Content Type",
             "type": "string"
@@ -1258,6 +1265,16 @@
             ],
             "title": "Text Layer Summary"
           },
+          "triage": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TriageSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "updated_at": {
             "format": "date-time",
             "title": "Updated At",
@@ -1305,7 +1322,9 @@
           "manifest_check",
           "superseded_by_id",
           "latest_job",
-          "text_layer_summary"
+          "text_layer_summary",
+          "triage",
+          "artefacts"
         ],
         "title": "SourceDetail",
         "type": "object"
@@ -1393,6 +1412,36 @@
             "title": "Image Count",
             "type": "integer"
           },
+          "label_declared": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label Declared"
+          },
+          "label_observed": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label Observed"
+          },
+          "label_source": {
+            "title": "Label Source",
+            "type": "string"
+          },
+          "ocr_recommended": {
+            "title": "Ocr Recommended",
+            "type": "boolean"
+          },
           "page_class": {
             "title": "Page Class",
             "type": "string"
@@ -1429,6 +1478,52 @@
             "title": "Text Chars",
             "type": "integer"
           },
+          "text_quality": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Quality"
+          },
+          "triage_rationale": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Triage Rationale"
+          },
+          "triage_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Triage Version"
+          },
+          "triaged_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Triaged At"
+          },
           "width_pt": {
             "anyOf": [
               {
@@ -1444,6 +1539,9 @@
         "required": [
           "page_index",
           "printed_label",
+          "label_declared",
+          "label_observed",
+          "label_source",
           "width_pt",
           "height_pt",
           "rotation",
@@ -1453,7 +1551,12 @@
           "drawing_count",
           "page_class",
           "page_role",
-          "quality_flags"
+          "quality_flags",
+          "text_quality",
+          "ocr_recommended",
+          "triage_rationale",
+          "triage_version",
+          "triaged_at"
         ],
         "title": "SourcePageOut",
         "type": "object"
@@ -1650,6 +1753,72 @@
         "title": "SourceSummary",
         "type": "object"
       },
+      "StageArtefactOut": {
+        "properties": {
+          "content_sha256": {
+            "title": "Content Sha256",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "object_key": {
+            "title": "Object Key",
+            "type": "string"
+          },
+          "page_index": {
+            "title": "Page Index",
+            "type": "integer"
+          },
+          "size_bytes": {
+            "title": "Size Bytes",
+            "type": "integer"
+          },
+          "stage": {
+            "title": "Stage",
+            "type": "string"
+          },
+          "tool": {
+            "title": "Tool",
+            "type": "string"
+          },
+          "tool_version": {
+            "title": "Tool Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "stage",
+          "tool",
+          "tool_version",
+          "page_index",
+          "object_key",
+          "content_sha256",
+          "size_bytes",
+          "created_at"
+        ],
+        "title": "StageArtefactOut",
+        "type": "object"
+      },
+      "StageRerunRequest": {
+        "properties": {
+          "job_type": {
+            "enum": [
+              "inventory_source",
+              "triage_source"
+            ],
+            "title": "Job Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_type"
+        ],
+        "title": "StageRerunRequest",
+        "type": "object"
+      },
       "StatusReport": {
         "properties": {
           "adapters": {
@@ -1722,6 +1891,92 @@
           "limits"
         ],
         "title": "StatusReport",
+        "type": "object"
+      },
+      "TriageSummary": {
+        "properties": {
+          "label_flagged_pages": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Label Flagged Pages",
+            "type": "array"
+          },
+          "label_rule": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label Rule"
+          },
+          "low_quality_pages": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Low Quality Pages",
+            "type": "array"
+          },
+          "ocr_recommended_pages": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Ocr Recommended Pages",
+            "type": "array"
+          },
+          "page_class_counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Page Class Counts",
+            "type": "object"
+          },
+          "triage_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Triage Version"
+          },
+          "triaged_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Triaged At"
+          },
+          "unknown_pages": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Unknown Pages",
+            "type": "array"
+          }
+        },
+        "required": [
+          "triage_version",
+          "triaged_at",
+          "page_class_counts",
+          "label_rule",
+          "ocr_recommended_pages",
+          "low_quality_pages",
+          "label_flagged_pages",
+          "unknown_pages"
+        ],
+        "title": "TriageSummary",
         "type": "object"
       },
       "UserOut": {
@@ -3555,6 +3810,38 @@
               ],
               "title": "Text Layer"
             }
+          },
+          {
+            "in": "query",
+            "name": "page_class",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Page Class"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ocr_recommended",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ocr Recommended"
+            }
           }
         ],
         "responses": {
@@ -3743,6 +4030,120 @@
           }
         },
         "summary": "Reprocess",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/stages/rerun": {
+      "post": {
+        "description": "Re-run one reading stage (after a rules-version bump, or to reprocess a failed one).\nArtefacts from earlier tool versions are kept; new ones are written beside them.",
+        "operationId": "rerun_stage_sources__source_id__stages_rerun_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StageRerunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobSummary"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Rerun Stage",
         "tags": [
           "sources"
         ]
