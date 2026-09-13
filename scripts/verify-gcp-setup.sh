@@ -65,18 +65,33 @@ else
 fi
 
 section "Enabled APIs"
-REQUIRED_APIS="run.googleapis.com sqladmin.googleapis.com storage.googleapis.com \
-secretmanager.googleapis.com artifactregistry.googleapis.com compute.googleapis.com \
-servicenetworking.googleapis.com iap.googleapis.com cloudscheduler.googleapis.com \
-logging.googleapis.com monitoring.googleapis.com billingbudgets.googleapis.com \
-cloudresourcemanager.googleapis.com iam.googleapis.com cloudbuild.googleapis.com"
+# Terraform enables the services it needs (google_project_service), so most of these are
+# informational before the first apply.  Only the ones Terraform itself depends on to run must
+# be enabled beforehand.
+BOOTSTRAP_APIS="cloudresourcemanager.googleapis.com serviceusage.googleapis.com storage.googleapis.com"
+TERRAFORM_MANAGED_APIS="run.googleapis.com sqladmin.googleapis.com secretmanager.googleapis.com \
+artifactregistry.googleapis.com compute.googleapis.com servicenetworking.googleapis.com \
+iap.googleapis.com cloudscheduler.googleapis.com logging.googleapis.com monitoring.googleapis.com \
+billingbudgets.googleapis.com iam.googleapis.com"
 ENABLED=$(gcloud services list --enabled --project "$PROJECT" --format='value(config.name)' 2>/dev/null)
-for api in $REQUIRED_APIS; do
-  if grep -qx "$api" <<<"$ENABLED"; then ok "$api"; else
-    missing "$api not enabled"
+for api in $BOOTSTRAP_APIS; do
+  if grep -qx "$api" <<<"$ENABLED"; then ok "$api (required before Terraform can run)"; else
+    missing "$api not enabled — Terraform needs it to run at all"
     fixcmd "gcloud services enable $api --project $PROJECT"
   fi
 done
+pending=""
+for api in $TERRAFORM_MANAGED_APIS; do
+  if grep -qx "$api" <<<"$ENABLED"; then ok "$api"; else pending="$pending $api"; fi
+done
+if [ -n "$pending" ]; then
+  info "not yet enabled, and Terraform will enable them on apply:$pending"
+  info "enable them early only if you want the first apply to be faster:"
+  fixcmd "gcloud services enable$pending --project $PROJECT"
+fi
+if grep -qx "cloudbuild.googleapis.com" <<<"$ENABLED"; then
+  info "cloudbuild.googleapis.com is enabled but unused — images are built with Docker on this VM"
+fi
 
 section "Buckets"
 # gcloud's `value(...)` projection drops empty fields, and `read` collapses consecutive tabs,
