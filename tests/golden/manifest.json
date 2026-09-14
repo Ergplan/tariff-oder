@@ -7,14 +7,18 @@
       "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
       "original_filename": "NPCL_TariffOrder1-pdf72202631759PM.pdf",
       "commission": "UPERC",
-      "utilities": ["NPCL"],
+      "utilities": [
+        "NPCL"
+      ],
       "reading_profile": "uperc-npcl",
       "bytes_present": false,
       "expected": {
         "size_bytes": 6314646,
         "page_count": 423,
         "pages_without_text_layer": 22,
-        "pages_without_text_layer_ranges": ["402-423"],
+        "pages_without_text_layer_ranges": [
+          "402-423"
+        ],
         "born_digital": true,
         "tagged": true,
         "encrypted": false,
@@ -23,37 +27,61 @@
         "approved_schedule_pages": "352-400"
       },
       "reviewed_reference_facts": [],
-      "reviewer_identities": []
+      "reviewer_identities": [],
+      "observed_on_registration": {
+        "pages_without_text_layer": 0,
+        "pages_without_text_layer_indices": [],
+        "note": "Registration on the dev deployment (2026-09-14) found a text layer on every page, including 402-423 which the specification describes as image-only scans with no text layer. Either the scans carry an OCR text layer or the specification's claim is wrong; the page class and text-char counts for 402-423 decide it. Kept as a visible mismatch until a human looks at those pages."
+      }
     },
     {
       "id": "kerc-fy2025-28",
       "sha256": "d84997a4f7195b5c4ebb94064bd15428d2e8657c4f53e1671a074200595fcf50",
       "original_filename": "96731743148968.pdf",
       "commission": "KERC",
-      "utilities": ["BESCOM", "MESCOM", "CESC", "HESCOM", "GESCOM"],
+      "utilities": [
+        "BESCOM",
+        "MESCOM",
+        "CESC",
+        "HESCOM",
+        "GESCOM"
+      ],
       "reading_profile": "kerc-escoms",
       "bytes_present": false,
       "expected": {
         "size_bytes": 21755322,
         "page_count": 570,
-        "pages_without_text_layer_ranges_known": ["226-240", "469-534"],
+        "pages_without_text_layer_ranges_known": [
+          "226-240",
+          "469-534"
+        ],
         "born_digital": true,
         "encrypted": false,
         "all_fonts_embedded": false,
-        "fonts_not_embedded_include": ["Arial", "TimesNewRoman"],
+        "fonts_not_embedded_include": [
+          "Arial",
+          "TimesNewRoman"
+        ],
         "page_label_rule": "roman i-x on contents pages, then printed = pdf_index - 16",
         "approved_schedule_pages": "538-570",
         "approved_summary_pages": "238-240"
       },
       "reviewed_reference_facts": [],
-      "reviewer_identities": []
+      "reviewer_identities": [],
+      "observed_on_registration": {
+        "pages_without_text_layer": 0,
+        "pages_without_text_layer_indices": [],
+        "note": "Registration on the dev deployment (2026-09-14): every page has a text layer, including PDF 469-534 which the specification describes as scanned. The manifest never claimed a count for this order, so nothing mismatches; the page classes decide whether those pages are image-only with an embedded text layer."
+      }
     },
     {
       "id": "gerc-mgvcl-fy2026-27",
       "sha256": "1c4697f8b315d64a2f161e2a26cafc5ad2ccc5cb62799161fcfb529695925e1a",
       "original_filename": "Gujaratdocument.pdf",
       "commission": "GERC",
-      "utilities": ["MGVCL"],
+      "utilities": [
+        "MGVCL"
+      ],
       "reading_profile": "gerc-discoms",
       "bytes_present": false,
       "expected": {
@@ -67,7 +95,15 @@
         "approved_schedule_pages": "159-184"
       },
       "reviewed_reference_facts": [],
-      "reviewer_identities": []
+      "reviewer_identities": [],
+      "observed_on_registration": {
+        "pages_without_text_layer": 2,
+        "pages_without_text_layer_indices": [
+          2,
+          4
+        ],
+        "note": "Registration on the dev deployment (2026-09-14): PDF pages 2 and 4 have no text layer (the specification says all-text). Likely blank or image pages in the front matter; kept as a visible mismatch until a human looks at them."
+      }
     }
   ]
 }

@@ -32,9 +32,17 @@ open-access view.
   account — fixed).  **All three real orders registered and read through localisation** by
   the scheduled worker on 2026-09-14: SHA-256 and page counts equal the golden manifest
   (NPCL 423, KERC 570, GERC 184 pages); each is at `localised`, the reviewer checkpoint.
-  The manifest check reports a mismatch on NPCL and GERC on a field other than size or
-  pages (the text-layer count is the candidate; the detail is in `sources --json` after the
-  next deploy) — recorded, not yet explained.  **Still open in the M1 gate:** Cloud Logging
+  **Manifest deviations found by the real bytes** (recorded in `tests/golden/manifest.json`
+  as `observed_on_registration`, expectations left as the specification stated them so the
+  mismatch stays visible): NPCL has a text layer on all 423 pages, where the specification
+  says 402–423 are image-only scans with no text layer; GERC has no text layer on PDF pages
+  2 and 4, where the specification says all-text; KERC matches (and also has a text layer
+  on the pages the specification calls scanned).  Whether the NPCL scans carry an embedded
+  OCR layer is decided by the triage page classes and text-char counts, visible on the
+  source page once a reviewer signs in — not assumed here.  Localisation: NPCL proposed
+  (46 regions, no blocking finding), GERC proposed (41 regions), KERC **ambiguous** (50
+  regions, 1 blocking finding: more than one approved-schedule candidate, as Part E's
+  summary-plus-annexure layout would produce) — the reviewer corrects it at the checkpoint.  **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**
