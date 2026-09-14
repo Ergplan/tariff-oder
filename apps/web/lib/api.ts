@@ -77,6 +77,12 @@ export async function apiFetch<T>(path: string, init: RequestInit = {}): Promise
     cache: "no-store",
   });
   if (!res.ok) {
+    if (res.status === 401 && PROFILE === "gcp") {
+      // Diagnostic: which headers the browser/IAP sent us (names only, never values), so an
+      // operator can see whether the IAP assertion arrived at the web service at all.
+      const names = Array.from((await headers()).keys()).sort();
+      console.warn(JSON.stringify({ event: "api_unauthenticated", path, incoming_headers: names }));
+    }
     let body: ErrorResponse;
     try {
       body = (await res.json()) as ErrorResponse;
