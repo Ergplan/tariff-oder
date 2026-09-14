@@ -554,8 +554,11 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-1. **Operator, on the `tariff-order` VM:** `git pull`, then `make bootstrap-dev`, then
-   `make tf-plan tf-apply ENV=dev` (expect 63 more to add after the bootstrap's 14), then
+1. **Operator, on the `tariff-order` VM:** `git pull`, then `make tf-plan tf-apply ENV=dev`
+   (the bootstrap already ran; `tf-plan` now runs `tf-init` first, which records the
+   `hashicorp/time` provider the alert-policy fix added — the "Inconsistent dependency lock
+   file" error seen on 2026-09-14 was exactly that missing init; expect the alert policy and
+   its wait to be the only additions), then
    `make deploy-dev`, then register the three orders through the `tariff-admin` job
    (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
 2. Engineering (next run): Milestone 5 — reviewer workflow (individual and batch review

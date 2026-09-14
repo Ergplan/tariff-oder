@@ -135,11 +135,19 @@ gcloud storage buckets update gs://tarifforderstudio_tfstate --versioning
 #    apply cannot succeed until the images are there.
 make bootstrap-dev
 
-# 4. Plan and apply everything else
-make tf-init ENV=dev
+# 4. Plan and apply everything else (tf-plan runs tf-init first; init is idempotent and
+#    installs any provider the configuration gained since your last init)
 make tf-plan ENV=dev                             # review every resource before applying
 make tf-apply ENV=dev
 ```
+
+The provider lock file (`infra/gcp/.terraform.lock.hcl`) is generated on the machine that
+runs Terraform and is not committed (the build environment installs providers from a
+filesystem mirror whose hashes would not match a registry download).  If a run ever fails
+with "Inconsistent dependency lock file … required by this configuration but no version is
+selected", the configuration gained a provider after your last init: `make tf-init ENV=dev`
+(or `terraform init -upgrade` inside `infra/gcp`) records it, and the plan or apply can be
+re-run.
 
 The first apply creates: VPC + private services access, Cloud SQL PostgreSQL 16 (private IP),
 the artefacts/exports/backups buckets, Secret Manager entries, Artifact Registry, four service

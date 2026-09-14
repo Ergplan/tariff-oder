@@ -72,10 +72,10 @@ GCP_PROJECT ?= $(shell cd $(TF_DIR) && terraform output -raw project_id 2>/dev/n
 AR_REPO = $(REGION)-docker.pkg.dev/$(GCP_PROJECT)/tariff
 GIT_SHA := $(shell git rev-parse --short HEAD 2>/dev/null || echo dev)
 
-tf-init: ## terraform init for infra/gcp (remote state bucket from envs/$(ENV).backend.hcl)
-	cd $(TF_DIR) && terraform init -backend-config=envs/$(ENV).backend.hcl
+tf-init: ## terraform init for infra/gcp (remote state bucket from envs/$(ENV).backend.hcl); idempotent, also installs providers added since the last init
+	cd $(TF_DIR) && terraform init -input=false -backend-config=envs/$(ENV).backend.hcl
 
-tf-plan: ## terraform plan for ENV (default dev); writes $(ENV).tfplan
+tf-plan: tf-init ## terraform plan for ENV (default dev); writes $(ENV).tfplan
 	cd $(TF_DIR) && terraform plan -var-file=envs/$(ENV).tfvars -out=$(ENV).tfplan
 
 tf-apply: ## terraform apply the saved plan. Only `dev` without explicit authorisation.
@@ -98,6 +98,7 @@ push-images: ## Push images to Artifact Registry (release tag = git sha, plus th
 bootstrap-dev: ## First-time only: create the APIs + Artifact Registry, then build and push images so the full apply can create Cloud Run
 	@command -v gcloud >/dev/null || { echo "gcloud is not installed; see docs/deployment.md"; exit 2; }
 	@command -v docker >/dev/null || { echo "docker is not installed; see docs/deployment.md"; exit 2; }
+	$(MAKE) tf-init ENV=dev
 	cd $(TF_DIR) && terraform apply -var-file=envs/dev.tfvars -target=google_project_service.apis -target=google_artifact_registry_repository.docker
 	$(MAKE) build-images push-images ENV=dev
 	@echo "Images pushed as python:dev and web:dev. Now run: make tf-plan tf-apply ENV=dev"
