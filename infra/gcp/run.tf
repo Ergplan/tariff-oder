@@ -151,7 +151,11 @@ resource "google_cloud_run_v2_service" "web" {
         network    = google_compute_network.vpc.id
         subnetwork = google_compute_subnetwork.run.id
       }
-      egress = "PRIVATE_RANGES_ONLY"
+      # ALL_TRAFFIC: the API's run.app address is public, and the API admits only traffic that
+      # arrives through the VPC (internal ingress via Private Google Access).  With
+      # PRIVATE_RANGES_ONLY the web service's calls took the public path and got 404.  The VPC
+      # has no NAT, so the web service can reach nothing else on the internet — intended.
+      egress = "ALL_TRAFFIC"
     }
     containers {
       image = var.web_image

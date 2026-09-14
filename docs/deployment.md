@@ -287,7 +287,13 @@ cd infra/gcp && terraform output -raw web_iap_commands     # run each printed li
 ```
 
 The steps create IAP's service agent, let it invoke the web service, switch IAP on, and
-admit every principal in `iap_members`.  The last step needs `roles/iap.admin` on the
+admit every principal in `iap_members`.  **Re-run the `--iap` line after every apply that
+touches the web service**: the pinned provider does not know the IAP field and its update
+clears it (observed 2026-09-14: a plain Cloud Run 403 instead of Google's sign-in).  IAP's
+access decision is cached per browser session, so after a new grant sign in from a private
+window.  The web service's VPC egress is `ALL_TRAFFIC`: the API's `run.app` address is
+public and the API admits only traffic arriving through the VPC, so with the default
+private-ranges-only egress the web service's API calls were refused with 404.  The last step needs `roles/iap.admin` on the
 identity running it (the build service account grants it to itself once:
 `gcloud projects add-iam-policy-binding tariff-order-parsing --member=serviceAccount:agent-builder@tariff-order-parsing.iam.gserviceaccount.com --role=roles/iap.admin`).  Then open the web URL in any browser and sign in.
 IAP grants *reachability*; the application role still comes only from `users`.  If IAP asks
