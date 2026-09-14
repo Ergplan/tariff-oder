@@ -25,7 +25,7 @@ import unicodedata
 from dataclasses import asdict, dataclass, field
 from typing import Any, Literal
 
-TRIAGE_VERSION = "1"
+TRIAGE_VERSION = "2"
 
 PageClass = Literal[
     "narrative",
@@ -47,6 +47,8 @@ DEFAULTS = {
     "vector_min_drawings": 150,
     "table_min_ruling_lines": 8,
     "table_min_aligned_columns": 3,
+    "grid_min_h_rulings": 3,
+    "grid_min_v_rulings": 2,
     "mixed_min_prose_tokens": 80,
     "cover_max_lines": 12,
     # Text-quality components are judged independently; a weighted average lets one broken
@@ -272,6 +274,10 @@ class PageSignals:
     rotation: int
     text: str = ""
     quality: TextQuality | None = None
+    # rules v2: short rulings in both orientations — a small ruled grid (3-4 rows) whose
+    # vertical strokes are shorter than the long-ruling threshold above
+    h_ruling_count: int = 0
+    v_ruling_count: int = 0
 
 
 @dataclass
@@ -354,9 +360,14 @@ def classify_page(sig: PageSignals, thresholds: dict[str, Any] | None = None) ->
             rationale=f"only {sig.text_chars} characters over {sig.drawing_count} drawing operators",
         )
 
+    # v2: a small ruled grid — at least three horizontal and two vertical rulings that cross
+    # — is a table even when its strokes are too short to count as long rulings (found on
+    # the Milestone 3b fixture: a 3-row rate table classed `narrative`, never gridded)
+    small_grid = sig.h_ruling_count >= t["grid_min_h_rulings"] and sig.v_ruling_count >= t["grid_min_v_rulings"]
     table_like = (
         sig.ruling_line_count >= t["table_min_ruling_lines"]
         or sig.aligned_column_count >= t["table_min_aligned_columns"]
+        or small_grid
     )
     if table_like:
         # A rate table is thousands of characters of digits; prose is measured in words.
@@ -373,7 +384,8 @@ def classify_page(sig: PageSignals, thresholds: dict[str, Any] | None = None) ->
             "table",
             flags,
             ocr_recommended=ocr_for_quality,
-            rationale=f"{sig.ruling_line_count} ruling lines and {sig.aligned_column_count} aligned columns",
+            rationale=f"{sig.ruling_line_count} ruling lines, {sig.h_ruling_count}x{sig.v_ruling_count} grid "
+            f"strokes and {sig.aligned_column_count} aligned columns",
         )
 
     if sig.line_count <= t["cover_max_lines"] and _looks_like_cover(sig.text):

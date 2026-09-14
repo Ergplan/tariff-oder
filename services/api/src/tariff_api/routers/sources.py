@@ -15,6 +15,7 @@ from ..auth import require_admin, require_analyst, require_reviewer
 from ..db import session_scope
 from ..errors import AppError
 from ..models import (
+    ClauseValueRecord,
     DatasetKind,
     DocumentHeading,
     IdempotencyRecord,
@@ -25,9 +26,12 @@ from ..models import (
     SourcePage,
     SourceState,
     StageArtefact,
+    StructureCell,
     TableGridRecord,
 )
 from ..schemas import (
+    ClauseValueList,
+    ClauseValueOut,
     HeadingList,
     HeadingOut,
     InboxList,
@@ -49,6 +53,9 @@ from ..schemas import (
     SourceSummary,
     StageArtefactOut,
     StageRerunRequest,
+    StructureCellList,
+    StructureCellOut,
+    StructureSummary,
     TableGridList,
     TableGridOut,
     TriageSummary,
@@ -337,6 +344,9 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
                 rationale=src.reading_profile_rationale,
             ),
             localisation=_localisation_summary(s, src),
+            structure=StructureSummary(**src.structure_summary, gridded_at=src.gridded_at)
+            if src.structure_summary
+            else None,
             artefacts=[StageArtefactOut.model_validate(a, from_attributes=True) for a in artefacts if a.page_index == 0]
             + [
                 StageArtefactOut.model_validate(a, from_attributes=True)
@@ -393,13 +403,16 @@ def get_localisation(source_id: uuid.UUID) -> LocalisationOut:
 
 @router.post("/{source_id}/localisation/decision", response_model=LocalisationOut)
 def decide_localisation(
-    source_id: uuid.UUID, body: LocalisationDecision, principal: Principal = Depends(require_reviewer)
+    source_id: uuid.UUID,
+    body: LocalisationDecision,
+    request: Request,
+    principal: Principal = Depends(require_reviewer),
 ) -> LocalisationOut:
     """The mandatory human checkpoint of Section 6.5.  Reviewer or administrator only; the
-    rules never confirm their own result."""
+    rules never confirm their own result.  A decision queues the structure stage."""
     with session_scope() as s:
         src = svc.get_source(s, source_id)
-        rec, regions = loc.decide(s, src, body, actor=principal.email)
+        rec, regions = loc.decide(s, request.app.state.settings, src, body, actor=principal.email)
         return _localisation_out(rec, regions)
 
 
@@ -413,6 +426,112 @@ def assign_profile(
             s, request.app.state.settings, src, body.profile_id, body.version, actor=principal.email, reason=body.reason
         )
     return get_source(source_id)
+
+
+def _cell_out(c: StructureCell) -> StructureCellOut:
+    return StructureCellOut(
+        id=c.id,
+        region_role=c.region_role,
+        page_index=c.page_index,
+        grid_ordinal=c.grid_ordinal,
+        row=c.row,
+        col=c.col,
+        raw=c.raw,
+        header_path=c.header_path,
+        row_path=c.row_path,
+        value_state=c.value_state,
+        value=c.normalised.get("value"),
+        currency=c.currency,
+        per_unit=c.per_unit,
+        frequency=c.frequency,
+        unit_source=c.unit_source,
+        flags=c.flags,
+        footnotes=c.footnotes,
+        slab=c.slab,
+        resolved=c.resolved,
+        rules_version=c.rules_version,
+    )
+
+
+@router.get("/{source_id}/structure/cells", response_model=StructureCellList, dependencies=[Depends(require_analyst)])
+def list_structure_cells(
+    source_id: uuid.UUID,
+    page_index: int | None = None,
+    unresolved_only: bool = False,
+    flag: str | None = None,
+    limit: int = Query(200, ge=1, le=2000),
+    offset: int = Query(0, ge=0),
+) -> StructureCellList:
+    """Every numeric cell of the confirmed approved regions with its header path, row path,
+    unit binding and flags (Section 6.6).  ``unresolved_only`` lists what a reviewer must look
+    at: cells with no header path, no row path or no unit."""
+    with session_scope() as s:
+        svc.get_source(s, source_id)
+        q = select(StructureCell).where(StructureCell.source_id == source_id)
+        if page_index is not None:
+            q = q.where(StructureCell.page_index == page_index)
+        if unresolved_only:
+            q = q.where(StructureCell.resolved.is_(False))
+        if flag:
+            q = q.where(StructureCell.flags.contains([flag]))
+        total = s.execute(select(func.count()).select_from(q.subquery())).scalar_one()
+        rows = (
+            s.execute(
+                q.order_by(StructureCell.page_index, StructureCell.grid_ordinal, StructureCell.row, StructureCell.col)
+                .limit(limit)
+                .offset(offset)
+            )
+            .scalars()
+            .all()
+        )
+        return StructureCellList(cells=[_cell_out(c) for c in rows], total=total, limit=limit, offset=offset)
+
+
+@router.get("/{source_id}/structure/clauses", response_model=ClauseValueList, dependencies=[Depends(require_analyst)])
+def list_clause_values(source_id: uuid.UUID, category: str | None = None, kind: str | None = None) -> ClauseValueList:
+    with session_scope() as s:
+        svc.get_source(s, source_id)
+        q = select(ClauseValueRecord).where(ClauseValueRecord.source_id == source_id)
+        if category:
+            q = q.where(ClauseValueRecord.category_code == category)
+        if kind:
+            q = q.where(ClauseValueRecord.kind == kind)
+        rows = (
+            s.execute(q.order_by(ClauseValueRecord.page_index, ClauseValueRecord.line_no, ClauseValueRecord.ordinal))
+            .scalars()
+            .all()
+        )
+        out = [
+            ClauseValueOut(
+                id=v.id,
+                region_role=v.region_role,
+                page_index=v.page_index,
+                line_no=v.line_no,
+                ordinal=v.ordinal,
+                category_code=v.category_code,
+                clause_path=v.clause_path,
+                role=v.role,
+                kind=v.kind,
+                connector=v.connector,
+                alternative=v.alternative,
+                line_text=v.line_text,
+                value=v.normalised.get("value"),
+                value_state=v.normalised.get("value_state"),
+                currency=v.normalised.get("currency"),
+                per_unit=v.normalised.get("per_unit"),
+                frequency=v.normalised.get("frequency"),
+                percent_of=v.normalised.get("percent_of"),
+                reference=v.normalised.get("reference"),
+                dimension=v.dimension,
+                slab=v.slab,
+                time_window=v.time_window,
+                sign=v.sign,
+                parameters=v.parameters,
+                rules_version=v.rules_version,
+            )
+            for v in rows
+        ]
+        return ClauseValueList(values=out, total=len(out))
 
 
 def _ranges(indices: list[int]) -> list[str]:

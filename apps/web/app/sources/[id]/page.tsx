@@ -1,4 +1,4 @@
-import type { LocalisationOut, SourceDetail, SourcePageList } from "@tariff/contracts";
+import type { ClauseValueList, LocalisationOut, SourceDetail, SourcePageList, StructureCellList } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, JobBadge, StageTrack, StateBadge, UnknownBadge } from "../../components";
 import { AutoRefresh } from "./auto-refresh";
@@ -21,6 +21,14 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
   const parse = s.parse; // bound once: TS narrowing does not survive the nested map callbacks below
   const pages = s.page_count ? await apiTry<SourcePageList>(`/sources/${id}/pages?limit=1000`) : { data: undefined };
   const localisation = s.localisation ? await apiTry<LocalisationOut>(`/sources/${id}/localisation`) : { data: undefined };
+  const structure = s.structure;
+  const unresolvedCells = structure
+    ? await apiTry<StructureCellList>(`/sources/${id}/structure/cells?unresolved_only=true&limit=50`)
+    : { data: undefined };
+  const clauses =
+    structure && structure.clause_values > 0
+      ? await apiTry<ClauseValueList>(`/sources/${id}/structure/clauses`)
+      : { data: undefined };
   const job = s.latest_job;
   const noTextRanges = (s.text_layer_summary?.pages_without_text_layer as string[] | undefined) ?? [];
   type LabelSegment = { start_index: number; end_index: number; style: string; offset: number; observed_pages: number };
@@ -419,6 +427,137 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
               <em>{localisation.data.decision_rationale}</em>
             </p>
           )}
+        </>
+      )}
+
+      <h2>Structure integrity</h2>
+      {!structure ? (
+        <p className="muted">
+          Not built yet: the structure stage runs only after a reviewer confirms the localisation (Section 6.6).
+        </p>
+      ) : (
+        <>
+          <p className="muted">
+            <span className="mono">{structure.tool_version}</span> · representation {structure.representation} · regions read{" "}
+            {structure.regions_read}, skipped {structure.regions_skipped}
+            {structure.regions_without_grids.length ? (
+              <>
+                {" "}
+                · <span className="badge" data-tone="warn">no grids in region {structure.regions_without_grids.join(", ")}</span>
+              </>
+            ) : null}
+          </p>
+          <div className="stats">
+            <div className="stat">
+              <div className="label">Numeric cells</div>
+              <div className="value">{structure.cells}</div>
+            </div>
+            <div className="stat">
+              <div className="label">Resolved (header + row + unit)</div>
+              <div className="value">{structure.cells_resolved}</div>
+            </div>
+            <div className="stat">
+              <div className="label">Unresolved, listed</div>
+              <div className="value">{structure.cells_unresolved}</div>
+            </div>
+            <div className="stat">
+              <div className="label">Continuations / inherited headers</div>
+              <div className="value">
+                {structure.continuations} / {structure.header_inherited_grids}
+              </div>
+            </div>
+            <div className="stat">
+              <div className="label">Clause values</div>
+              <div className="value">{structure.clause_values}</div>
+            </div>
+          </div>
+          <p className="muted">
+            Unit sources:{" "}
+            {Object.entries(structure.unit_sources)
+              .map(([k, v]) => `${k} ${v}`)
+              .join(" · ") || "—"}
+            {" · "}flags:{" "}
+            {Object.entries(structure.flags)
+              .map(([k, v]) => `${k} ${v}`)
+              .join(" · ") || "none"}
+          </p>
+          {unresolvedCells.data && unresolvedCells.data.total > 0 ? (
+            <div className="table-wrap">
+              <table>
+                <caption>Cells that resolve to no header path, row path or unit ({unresolvedCells.data.total}); never defaulted</caption>
+                <thead>
+                  <tr>
+                    <th>Page</th>
+                    <th>Grid / cell</th>
+                    <th>Text</th>
+                    <th>Header path</th>
+                    <th>Row path</th>
+                    <th>Flags</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {unresolvedCells.data.cells.map((c) => (
+                    <tr key={c.id}>
+                      <td className="mono">{c.page_index}</td>
+                      <td className="mono">
+                        {c.grid_ordinal} · r{c.row} c{c.col}
+                      </td>
+                      <td>
+                        <code>{c.raw}</code>
+                      </td>
+                      <td>{c.header_path.join(" > ") || "—"}</td>
+                      <td>{c.row_path.join(" > ") || "—"}</td>
+                      <td className="mono">{c.flags.join(", ")}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+          {clauses.data ? (
+            <div className="table-wrap">
+              <table>
+                <caption>Clause outline ({clauses.data.total} lines)</caption>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Clause path</th>
+                    <th>Role</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+                    <th>Dimension / slab / window</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {clauses.data.values.map((v) => (
+                    <tr key={v.id}>
+                      <td className="mono">
+                        {v.category_code}
+                        {v.alternative ? <span className="muted"> alt {v.alternative + 1}</span> : null}
+                        {v.connector ? <span className="muted"> {v.connector}</span> : null}
+                      </td>
+                      <td>{v.clause_path.slice(1).join(" > ")}</td>
+                      <td>
+                        {v.role}
+                        {v.kind !== "value" ? <span className="badge" data-tone="warn">{v.kind}</span> : null}
+                      </td>
+                      <td className="mono">
+                        {v.value ?? v.reference ?? "—"}
+                        {v.sign ? (v.sign > 0 ? " (+)" : " (−)") : ""}
+                        {v.percent_of ? <span className="muted"> % of {v.percent_of}</span> : null}
+                      </td>
+                      <td className="mono">{[v.currency, v.per_unit, v.frequency].filter(Boolean).join(" / ") || "—"}</td>
+                      <td className="muted">
+                        {v.dimension ? `${v.dimension.metering_type}` : ""}
+                        {v.slab ? ` slab ${v.slab.lower ?? ""}–${v.slab.upper ?? ""} (${v.slab.inclusivity})` : ""}
+                        {v.time_window ? ` ${v.time_window}` : ""}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
         </>
       )}
 

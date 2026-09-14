@@ -1,4 +1,4 @@
-# Architecture (as implemented through Milestone 3a)
+# Architecture (as implemented through Milestone 3b)
 
 The governing design is Section 4 of the specification.  This document records what exists.
 
@@ -62,6 +62,18 @@ order or the OCR artefact text, triage class, parse headings, grid counts) and r
 edit.  `POST /sources/{id}/localisation/decision` (reviewer+) confirms or corrects; only that
 sets `extraction_allowed`.  `PUT /sources/{id}/profile` (admin) re-binds and re-runs.  Profiles
 are data in `packages/reading-profiles/` (ADR-0010).
+
+## Structure (Milestone 3b)
+
+`localised -> gridded`, queued by the reviewer's localisation decision and refused while
+`extraction_allowed` is false: for `tables` profiles the parse stage's primary grids inside
+the approved regions go through `tariff_api.grid_integrity` (header/row paths, continuation,
+merged cells, unit binding with source, footnotes); for `clause_outline` profiles the page
+text goes through `tariff_api.clause_outline`.  Both use `tariff_api.normalise` for values.
+Rows land in `structure_cells` / `clause_values`; artefacts under `<sha>/grid/<tool>/`.
+`GET /sources/{id}/structure/cells` (filters: page, unresolved, flag) and
+`/structure/clauses` (category, kind) expose them; the detail page shows the integrity
+summary, the unresolved cells and the clause outline (ADR-0011).
 
 ## Profiles
 

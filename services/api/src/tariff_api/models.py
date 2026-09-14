@@ -133,6 +133,7 @@ SOURCE_TRANSITIONS: dict[SourceState, set[SourceState]] = {
         SourceState.inventoried,
         SourceState.triaged,
         SourceState.parsed,
+        SourceState.localised,
         SourceState.cancelled,
     },
     SourceState.cancelled: set(),
@@ -267,6 +268,10 @@ class SourceDocument(Base):
     reading_profile_rationale: Mapped[str | None] = mapped_column(Text)
     localisation_version: Mapped[str | None] = mapped_column(String(16))
     localised_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    # Milestone 3b: structure integrity (Section 6.6)
+    structure_version: Mapped[str | None] = mapped_column(String(40))
+    gridded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    structure_summary: Mapped[dict | None] = mapped_column(JSONB)
 
     # Golden-corpus reconciliation (tests/golden/manifest.json); never copied, always re-verified
     golden_id: Mapped[str | None] = mapped_column(String(80))
@@ -544,4 +549,71 @@ class LocalisationRegion(Base):
     note: Mapped[str | None] = mapped_column(Text)
     origin: Mapped[str] = mapped_column(String(16), nullable=False, default="detected")  # detected | reviewer
     grid_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class StructureCell(Base):
+    """One numeric-ish cell of a confirmed approved-region grid with its header path, row
+    path, unit binding and flags (Section 6.6).  A candidate cites a cell, never a page."""
+
+    __tablename__ = "structure_cells"
+    __table_args__ = (
+        UniqueConstraint("source_id", "page_index", "grid_ordinal", "row", "col", name="uq_structure_cell"),
+        Index("ix_structure_cells_source_page", "source_id", "page_index"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    region_role: Mapped[str] = mapped_column(String(32), nullable=False)
+    page_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    grid_ordinal: Mapped[int] = mapped_column(Integer, nullable=False)
+    row: Mapped[int] = mapped_column(Integer, nullable=False)
+    col: Mapped[int] = mapped_column(Integer, nullable=False)
+    raw: Mapped[str] = mapped_column(String(300), nullable=False)
+    header_path: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    row_path: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    normalised: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    value_state: Mapped[str] = mapped_column(String(24), nullable=False)
+    currency: Mapped[str | None] = mapped_column(String(8))
+    per_unit: Mapped[str | None] = mapped_column(String(16))
+    frequency: Mapped[str | None] = mapped_column(String(16))
+    unit_source: Mapped[str | None] = mapped_column(String(24))
+    flags: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    footnotes: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    slab: Mapped[dict | None] = mapped_column(JSONB)
+    resolved: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    rules_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class ClauseValueRecord(Base):
+    """One value line of a clause-outline schedule with its clause path, role and unit
+    (Section 6.6, GERC shape)."""
+
+    __tablename__ = "clause_values"
+    __table_args__ = (
+        UniqueConstraint("source_id", "page_index", "line_no", "ordinal", name="uq_clause_value"),
+        Index("ix_clause_values_source_category", "source_id", "category_code"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    region_role: Mapped[str] = mapped_column(String(32), nullable=False)
+    page_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    line_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    ordinal: Mapped[int] = mapped_column(Integer, nullable=False)  # several values on one line
+    category_code: Mapped[str | None] = mapped_column(String(80))
+    clause_path: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    role: Mapped[str] = mapped_column(String(24), nullable=False)
+    kind: Mapped[str] = mapped_column(String(24), nullable=False)
+    connector: Mapped[str | None] = mapped_column(String(16))
+    alternative: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    line_text: Mapped[str] = mapped_column(String(400), nullable=False)
+    normalised: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    dimension: Mapped[dict | None] = mapped_column(JSONB)
+    slab: Mapped[dict | None] = mapped_column(JSONB)
+    time_window: Mapped[str | None] = mapped_column(String(24))
+    sign: Mapped[int | None] = mapped_column(Integer)
+    parameters: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    rules_version: Mapped[str] = mapped_column(String(16), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

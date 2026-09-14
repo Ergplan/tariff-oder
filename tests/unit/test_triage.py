@@ -312,3 +312,24 @@ def test_declared_labels_are_used_when_nothing_is_printed():
     resolved = [resolve_label(i + 1, rows[i][3], None, segs) for i in range(n)]
     assert [r[0] for r in resolved] == ["i", "ii", "1", "2", "3", "4"]
     assert all(r[1] == "declared" and r[2] == [] for r in resolved)
+
+
+def test_small_ruled_grid_is_a_table_even_with_short_vertical_strokes():
+    """Rules v2.  A three-row rate table's vertical strokes are shorter than the long-ruling
+    threshold, so v1 classed the page `narrative` and the readers never ran on it (found on
+    the Milestone 3b structure fixture).  Three horizontals crossing two verticals is a grid."""
+    import pymupdf
+
+    from fixtures.synthetic_pdfs import structure_order_pdf
+    from tariff_api.page_signals import extract_signals
+    from tariff_api.triage import classify_page
+
+    doc = pymupdf.open(stream=structure_order_pdf(), filetype="pdf")
+    for idx in (4, 5, 7):
+        sig = extract_signals(doc[idx - 1])
+        assert sig.h_ruling_count >= 3 and sig.v_ruling_count >= 2, (idx, sig.h_ruling_count, sig.v_ruling_count)
+        res = classify_page(sig)
+        assert res.page_class in ("table", "mixed"), (idx, res)
+        assert "grid strokes" in res.rationale or "table structure" in res.rationale
+    prose = extract_signals(doc[7])  # page 8: two prose lines, no rulings
+    assert prose.h_ruling_count == 0 and classify_page(prose).page_class != "table"

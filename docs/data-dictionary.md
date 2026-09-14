@@ -1,4 +1,4 @@
-# Data dictionary (through Milestone 3a)
+# Data dictionary (through Milestone 3b)
 
 Migration owner: `services/api/migrations/versions/0001_foundation.py`.  All timestamps are
 `timestamptz`; ids are UUIDv4 unless noted.  Enums are PostgreSQL enum types.
@@ -119,6 +119,39 @@ Heading inventory (`uq_document_heading` per page/line/kind/rules version): `ord
 | utility, period | When exactly one profile utility / one or more `FY` periods appear on the cue page |
 | origin | `detected` by the rules or placed by a `reviewer` |
 | grid_count | Primary table grids inside the span (from the parse stage) |
+
+## `source_documents` — structure columns (Milestone 3b)
+
+| Column | Meaning |
+| --- | --- |
+| structure_version | `grid@<v>+clauses@<v>+normalise@<v>` that produced the rows |
+| gridded_at | Time of the last structure run |
+| structure_summary | Counts: cells, resolved/unresolved by flag, unit sources, continuations, clause values/cross-references/conditions/categories/option groups, per-region reports |
+
+## `structure_cells`
+
+| Column | Meaning |
+| --- | --- |
+| region_role, page_index, grid_ordinal, row, col | Where the cell is: the citation a candidate carries |
+| raw | The cell text as read |
+| header_path, row_path | Column header hierarchy and row label hierarchy, both required for a resolved cell |
+| normalised | The full normalisation record (value, state, rules, flags) |
+| value_state | `value`, `zero`, `not_applicable`, `unknown`, `cross_reference`, `formula`, `footnote_only` |
+| currency, per_unit, frequency, unit_source | The binding and where it came from (`cell`, `header`, `row_unit_column`, `title`, `footnote`) |
+| flags | `header_inherited`, `header_span_inherited`, `merged_cell_propagated`, `footnote_attached`, `footnote_unresolved`, `unit_unresolved`, `currency_unresolved`, `unresolved_header`, `unresolved_row`, `slab_inclusivity_ambiguous`, `nil_word`, … |
+| footnotes | Attached footnote texts |
+| slab | Parsed slab bounds of the row label, when it is one |
+| resolved | Header path + row path + unit all present |
+
+## `clause_values`
+
+| Column | Meaning |
+| --- | --- |
+| category_code, clause_path | `RGP`, `["1. RATE: RGP", "1.2. ENERGY CHARGES", "(a) First 50 units …"]` |
+| role | `fixed`, `demand`, `energy`, `tou_surcharge`, `rebate`, `minimum`, `power_factor`, `penalty`, `option`, `condition`, `other` |
+| kind | `value`, `cross_reference`, `condition` |
+| connector, alternative | `PLUS` joins to the previous block; alternative index within the category's option group |
+| normalised, dimension, slab, time_window, sign, parameters | Value record; metering-type column; parsed slab; `11:00-17:00`; ±1; further amounts on a rule line |
 
 ## `stage_artefacts`
 Index of immutable per-stage outputs in the `artefacts` bucket (Section 6.2): `stage`,

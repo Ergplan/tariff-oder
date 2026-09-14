@@ -265,7 +265,7 @@ export interface paths {
         /**
          * Decide Localisation
          * @description The mandatory human checkpoint of Section 6.5.  Reviewer or administrator only; the
-         *     rules never confirm their own result.
+         *     rules never confirm their own result.  A decision queues the structure stage.
          */
         post: operations["decide_localisation_sources__source_id__localisation_decision_post"];
         delete?: never;
@@ -340,6 +340,45 @@ export interface paths {
          *     Artefacts from earlier tool versions are kept; new ones are written beside them.
          */
         post: operations["rerun_stage_sources__source_id__stages_rerun_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/structure/cells": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Structure Cells
+         * @description Every numeric cell of the confirmed approved regions with its header path, row path,
+         *     unit binding and flags (Section 6.6).  ``unresolved_only`` lists what a reviewer must look
+         *     at: cells with no header path, no row path or no unit.
+         */
+        get: operations["list_structure_cells_sources__source_id__structure_cells_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/structure/clauses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Clause Values */
+        get: operations["list_clause_values_sources__source_id__structure_clauses_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -522,6 +561,73 @@ export interface components {
              * @enum {string}
              */
             result: "cancelled" | "cancel_requested" | "not_cancellable";
+        };
+        /** ClauseValueList */
+        ClauseValueList: {
+            /** Total */
+            total: number;
+            /** Values */
+            values: components["schemas"]["ClauseValueOut"][];
+        };
+        /** ClauseValueOut */
+        ClauseValueOut: {
+            /** Alternative */
+            alternative: number;
+            /** Category Code */
+            category_code: string | null;
+            /** Clause Path */
+            clause_path: string[];
+            /** Connector */
+            connector: string | null;
+            /** Currency */
+            currency: string | null;
+            /** Dimension */
+            dimension: {
+                [key: string]: string;
+            } | null;
+            /** Frequency */
+            frequency: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Kind */
+            kind: string;
+            /** Line No */
+            line_no: number;
+            /** Line Text */
+            line_text: string;
+            /** Ordinal */
+            ordinal: number;
+            /** Page Index */
+            page_index: number;
+            /** Parameters */
+            parameters: string[];
+            /** Per Unit */
+            per_unit: string | null;
+            /** Percent Of */
+            percent_of: string | null;
+            /** Reference */
+            reference: string | null;
+            /** Region Role */
+            region_role: string;
+            /** Role */
+            role: string;
+            /** Rules Version */
+            rules_version: string;
+            /** Sign */
+            sign: number | null;
+            /** Slab */
+            slab: {
+                [key: string]: unknown;
+            } | null;
+            /** Time Window */
+            time_window: string | null;
+            /** Value */
+            value: string | null;
+            /** Value State */
+            value_state: string | null;
         };
         /** CommissionOut */
         CommissionOut: {
@@ -1094,6 +1200,7 @@ export interface components {
             state: components["schemas"]["SourceState"];
             /** State Reason */
             state_reason: string | null;
+            structure: components["schemas"]["StructureSummary"] | null;
             /** Superseded By Id */
             superseded_by_id: string | null;
             /** Text Layer Summary */
@@ -1299,7 +1406,7 @@ export interface components {
              * Job Type
              * @enum {string}
              */
-            job_type: "inventory_source" | "triage_source" | "parse_source" | "localise_source";
+            job_type: "inventory_source" | "triage_source" | "parse_source" | "localise_source" | "grid_source";
         };
         /** StatusReport */
         StatusReport: {
@@ -1335,6 +1442,116 @@ export interface components {
             };
             /** Version */
             version: string;
+        };
+        /** StructureCellList */
+        StructureCellList: {
+            /** Cells */
+            cells: components["schemas"]["StructureCellOut"][];
+            /** Limit */
+            limit: number;
+            /** Offset */
+            offset: number;
+            /** Total */
+            total: number;
+        };
+        /** StructureCellOut */
+        StructureCellOut: {
+            /** Col */
+            col: number;
+            /** Currency */
+            currency: string | null;
+            /** Flags */
+            flags: string[];
+            /** Footnotes */
+            footnotes: string[];
+            /** Frequency */
+            frequency: string | null;
+            /** Grid Ordinal */
+            grid_ordinal: number;
+            /** Header Path */
+            header_path: string[];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Page Index */
+            page_index: number;
+            /** Per Unit */
+            per_unit: string | null;
+            /** Raw */
+            raw: string;
+            /** Region Role */
+            region_role: string;
+            /** Resolved */
+            resolved: boolean;
+            /** Row */
+            row: number;
+            /** Row Path */
+            row_path: string[];
+            /** Rules Version */
+            rules_version: string;
+            /** Slab */
+            slab: {
+                [key: string]: unknown;
+            } | null;
+            /** Unit Source */
+            unit_source: string | null;
+            /** Value */
+            value: string | null;
+            /** Value State */
+            value_state: string;
+        };
+        /** StructureSummary */
+        StructureSummary: {
+            /** Cells */
+            cells: number;
+            /** Cells Resolved */
+            cells_resolved: number;
+            /** Cells Unresolved */
+            cells_unresolved: number;
+            /** Clause Categories */
+            clause_categories: string[];
+            /** Clause Conditions */
+            clause_conditions: number;
+            /** Clause Cross References */
+            clause_cross_references: number;
+            /** Clause Option Groups */
+            clause_option_groups: number;
+            /** Clause Values */
+            clause_values: number;
+            /** Continuations */
+            continuations: number;
+            /** Flags */
+            flags: {
+                [key: string]: number;
+            };
+            /** Gridded At */
+            gridded_at: string | null;
+            /** Header Inherited Grids */
+            header_inherited_grids: number;
+            /** Regions */
+            regions: {
+                [key: string]: unknown;
+            }[];
+            /** Regions Read */
+            regions_read: number;
+            /** Regions Skipped */
+            regions_skipped: number;
+            /** Regions Without Grids */
+            regions_without_grids: number[];
+            /** Representation */
+            representation: string;
+            /** Tool Version */
+            tool_version: string;
+            /** Unit Sources */
+            unit_sources: {
+                [key: string]: number;
+            };
+            /** Unresolved By Flag */
+            unresolved_by_flag: {
+                [key: string]: number;
+            };
         };
         /** TableGridList */
         TableGridList: {
@@ -3144,6 +3361,185 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["JobSummary"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_structure_cells_sources__source_id__structure_cells_get: {
+        parameters: {
+            query?: {
+                flag?: string | null;
+                limit?: number;
+                offset?: number;
+                page_index?: number | null;
+                unresolved_only?: boolean;
+            };
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StructureCellList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_clause_values_sources__source_id__structure_clauses_get: {
+        parameters: {
+            query?: {
+                category?: string | null;
+                kind?: string | null;
+            };
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ClauseValueList"];
                 };
             };
             /** @description Unauthorized */

@@ -143,6 +143,262 @@
         "title": "CancelResult",
         "type": "object"
       },
+      "ClauseValueList": {
+        "properties": {
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          },
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/ClauseValueOut"
+            },
+            "title": "Values",
+            "type": "array"
+          }
+        },
+        "required": [
+          "values",
+          "total"
+        ],
+        "title": "ClauseValueList",
+        "type": "object"
+      },
+      "ClauseValueOut": {
+        "properties": {
+          "alternative": {
+            "title": "Alternative",
+            "type": "integer"
+          },
+          "category_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Code"
+          },
+          "clause_path": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Clause Path",
+            "type": "array"
+          },
+          "connector": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Connector"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "dimension": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dimension"
+          },
+          "frequency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Frequency"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "line_no": {
+            "title": "Line No",
+            "type": "integer"
+          },
+          "line_text": {
+            "title": "Line Text",
+            "type": "string"
+          },
+          "ordinal": {
+            "title": "Ordinal",
+            "type": "integer"
+          },
+          "page_index": {
+            "title": "Page Index",
+            "type": "integer"
+          },
+          "parameters": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Parameters",
+            "type": "array"
+          },
+          "per_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Per Unit"
+          },
+          "percent_of": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Percent Of"
+          },
+          "reference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference"
+          },
+          "region_role": {
+            "title": "Region Role",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "sign": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sign"
+          },
+          "slab": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slab"
+          },
+          "time_window": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time Window"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "value_state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value State"
+          }
+        },
+        "required": [
+          "id",
+          "region_role",
+          "page_index",
+          "line_no",
+          "ordinal",
+          "category_code",
+          "clause_path",
+          "role",
+          "kind",
+          "connector",
+          "alternative",
+          "line_text",
+          "value",
+          "value_state",
+          "currency",
+          "per_unit",
+          "frequency",
+          "percent_of",
+          "reference",
+          "dimension",
+          "slab",
+          "time_window",
+          "sign",
+          "parameters",
+          "rules_version"
+        ],
+        "title": "ClauseValueOut",
+        "type": "object"
+      },
       "CommissionOut": {
         "properties": {
           "aliases": {
@@ -1939,6 +2195,16 @@
             ],
             "title": "State Reason"
           },
+          "structure": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StructureSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "superseded_by_id": {
             "anyOf": [
               {
@@ -2025,6 +2291,7 @@
           "parse",
           "reading_profile",
           "localisation",
+          "structure",
           "artefacts"
         ],
         "title": "SourceDetail",
@@ -2656,7 +2923,8 @@
               "inventory_source",
               "triage_source",
               "parse_source",
-              "localise_source"
+              "localise_source",
+              "grid_source"
             ],
             "title": "Job Type",
             "type": "string"
@@ -2740,6 +3008,336 @@
           "limits"
         ],
         "title": "StatusReport",
+        "type": "object"
+      },
+      "StructureCellList": {
+        "properties": {
+          "cells": {
+            "items": {
+              "$ref": "#/components/schemas/StructureCellOut"
+            },
+            "title": "Cells",
+            "type": "array"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "integer"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "integer"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cells",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "title": "StructureCellList",
+        "type": "object"
+      },
+      "StructureCellOut": {
+        "properties": {
+          "col": {
+            "title": "Col",
+            "type": "integer"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "flags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Flags",
+            "type": "array"
+          },
+          "footnotes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Footnotes",
+            "type": "array"
+          },
+          "frequency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Frequency"
+          },
+          "grid_ordinal": {
+            "title": "Grid Ordinal",
+            "type": "integer"
+          },
+          "header_path": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Header Path",
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "page_index": {
+            "title": "Page Index",
+            "type": "integer"
+          },
+          "per_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Per Unit"
+          },
+          "raw": {
+            "title": "Raw",
+            "type": "string"
+          },
+          "region_role": {
+            "title": "Region Role",
+            "type": "string"
+          },
+          "resolved": {
+            "title": "Resolved",
+            "type": "boolean"
+          },
+          "row": {
+            "title": "Row",
+            "type": "integer"
+          },
+          "row_path": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Row Path",
+            "type": "array"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "slab": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slab"
+          },
+          "unit_source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit Source"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "value_state": {
+            "title": "Value State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "region_role",
+          "page_index",
+          "grid_ordinal",
+          "row",
+          "col",
+          "raw",
+          "header_path",
+          "row_path",
+          "value_state",
+          "value",
+          "currency",
+          "per_unit",
+          "frequency",
+          "unit_source",
+          "flags",
+          "footnotes",
+          "slab",
+          "resolved",
+          "rules_version"
+        ],
+        "title": "StructureCellOut",
+        "type": "object"
+      },
+      "StructureSummary": {
+        "properties": {
+          "cells": {
+            "title": "Cells",
+            "type": "integer"
+          },
+          "cells_resolved": {
+            "title": "Cells Resolved",
+            "type": "integer"
+          },
+          "cells_unresolved": {
+            "title": "Cells Unresolved",
+            "type": "integer"
+          },
+          "clause_categories": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Clause Categories",
+            "type": "array"
+          },
+          "clause_conditions": {
+            "title": "Clause Conditions",
+            "type": "integer"
+          },
+          "clause_cross_references": {
+            "title": "Clause Cross References",
+            "type": "integer"
+          },
+          "clause_option_groups": {
+            "title": "Clause Option Groups",
+            "type": "integer"
+          },
+          "clause_values": {
+            "title": "Clause Values",
+            "type": "integer"
+          },
+          "continuations": {
+            "title": "Continuations",
+            "type": "integer"
+          },
+          "flags": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Flags",
+            "type": "object"
+          },
+          "gridded_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gridded At"
+          },
+          "header_inherited_grids": {
+            "title": "Header Inherited Grids",
+            "type": "integer"
+          },
+          "regions": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Regions",
+            "type": "array"
+          },
+          "regions_read": {
+            "title": "Regions Read",
+            "type": "integer"
+          },
+          "regions_skipped": {
+            "title": "Regions Skipped",
+            "type": "integer"
+          },
+          "regions_without_grids": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Regions Without Grids",
+            "type": "array"
+          },
+          "representation": {
+            "title": "Representation",
+            "type": "string"
+          },
+          "tool_version": {
+            "title": "Tool Version",
+            "type": "string"
+          },
+          "unit_sources": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Unit Sources",
+            "type": "object"
+          },
+          "unresolved_by_flag": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Unresolved By Flag",
+            "type": "object"
+          }
+        },
+        "required": [
+          "tool_version",
+          "representation",
+          "regions_read",
+          "regions_skipped",
+          "regions_without_grids",
+          "cells",
+          "cells_resolved",
+          "cells_unresolved",
+          "unresolved_by_flag",
+          "flags",
+          "unit_sources",
+          "continuations",
+          "header_inherited_grids",
+          "clause_values",
+          "clause_cross_references",
+          "clause_conditions",
+          "clause_categories",
+          "clause_option_groups",
+          "regions",
+          "gridded_at"
+        ],
+        "title": "StructureSummary",
         "type": "object"
       },
       "TableGridList": {
@@ -5070,7 +5668,7 @@
     },
     "/sources/{source_id}/localisation/decision": {
       "post": {
-        "description": "The mandatory human checkpoint of Section 6.5.  Reviewer or administrator only; the\nrules never confirm their own result.",
+        "description": "The mandatory human checkpoint of Section 6.5.  Reviewer or administrator only; the\nrules never confirm their own result.  A decision queues the structure stage.",
         "operationId": "decide_localisation_sources__source_id__localisation_decision_post",
         "parameters": [
           {
@@ -5681,6 +6279,310 @@
           }
         },
         "summary": "Rerun Stage",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/structure/cells": {
+      "get": {
+        "description": "Every numeric cell of the confirmed approved regions with its header path, row path,\nunit binding and flags (Section 6.6).  ``unresolved_only`` lists what a reviewer must look\nat: cells with no header path, no row path or no unit.",
+        "operationId": "list_structure_cells_sources__source_id__structure_cells_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page_index",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Page Index"
+            }
+          },
+          {
+            "in": "query",
+            "name": "unresolved_only",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Unresolved Only",
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "flag",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Flag"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 2000,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StructureCellList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Structure Cells",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/structure/clauses": {
+      "get": {
+        "operationId": "list_clause_values_sources__source_id__structure_clauses_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            }
+          },
+          {
+            "in": "query",
+            "name": "kind",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClauseValueList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Clause Values",
         "tags": [
           "sources"
         ]

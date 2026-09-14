@@ -12,6 +12,7 @@ from tariff_api.db import init_db
 from tariff_api.telemetry import configure_logging
 
 from .runner import Runner
+from .stages.grid import grid_source
 from .stages.inventory import inventory_source
 from .stages.localise import localise_source
 from .stages.parse import parse_source
@@ -22,6 +23,7 @@ HANDLERS = {
     "triage_source": triage_source,
     "parse_source": parse_source,
     "localise_source": localise_source,
+    "grid_source": grid_source,
 }
 
 

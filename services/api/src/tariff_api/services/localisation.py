@@ -131,7 +131,7 @@ def _validate_regions(regions: list[RegionEdit], page_count: int | None) -> None
 
 
 def decide(
-    session: Session, source: SourceDocument, body: LocalisationDecision, *, actor: str
+    session: Session, settings: Settings, source: SourceDocument, body: LocalisationDecision, *, actor: str
 ) -> tuple[LocalisationRecord, list[LocalisationRegion]]:
     """Reviewer decision.  ``confirm`` is refused while the record is ambiguous: the reviewer
     resolves ambiguity by correcting, never by waving it through.  Every decision is audited
@@ -186,6 +186,13 @@ def decide(
     rec.decision_count += 1
     rec.version += 1
     session.flush()
+    # the confirmed regions are what the structure stage reads; queue it now (Section 6.6:
+    # extraction inputs are built only from confirmed structural representations)
+    if source.state in (SourceState.localised, SourceState.gridded):
+        if source.state == SourceState.gridded:
+            request_stage_rerun(session, settings, source, "grid_source", actor=actor)
+        else:
+            enqueue_stage(session, settings, source, "grid_source", actor=actor)
     session.add(
         AuditEvent(
             actor=actor,

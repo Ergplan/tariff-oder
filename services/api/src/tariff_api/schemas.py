@@ -288,8 +288,94 @@ class LocalisationDecision(BaseModel):
     expected_version: int | None = None  # optimistic concurrency on the record
 
 
+class StructureCellOut(BaseModel):
+    id: uuid.UUID
+    region_role: str
+    page_index: int
+    grid_ordinal: int
+    row: int
+    col: int
+    raw: str
+    header_path: list[str]
+    row_path: list[str]
+    value_state: str
+    value: str | None
+    currency: str | None
+    per_unit: str | None
+    frequency: str | None
+    unit_source: str | None
+    flags: list[str]
+    footnotes: list[str]
+    slab: dict[str, Any] | None
+    resolved: bool
+    rules_version: str
+
+
+class StructureCellList(BaseModel):
+    cells: list[StructureCellOut]
+    total: int
+    limit: int
+    offset: int
+
+
+class ClauseValueOut(BaseModel):
+    id: uuid.UUID
+    region_role: str
+    page_index: int
+    line_no: int
+    ordinal: int
+    category_code: str | None
+    clause_path: list[str]
+    role: str
+    kind: str
+    connector: str | None
+    alternative: int
+    line_text: str
+    value: str | None
+    value_state: str | None
+    currency: str | None
+    per_unit: str | None
+    frequency: str | None
+    percent_of: str | None
+    reference: str | None
+    dimension: dict[str, str] | None
+    slab: dict[str, Any] | None
+    time_window: str | None
+    sign: int | None
+    parameters: list[str]
+    rules_version: str
+
+
+class ClauseValueList(BaseModel):
+    values: list[ClauseValueOut]
+    total: int
+
+
+class StructureSummary(BaseModel):
+    tool_version: str
+    representation: str
+    regions_read: int
+    regions_skipped: int
+    regions_without_grids: list[int]
+    cells: int
+    cells_resolved: int
+    cells_unresolved: int
+    unresolved_by_flag: dict[str, int]
+    flags: dict[str, int]
+    unit_sources: dict[str, int]
+    continuations: int
+    header_inherited_grids: int
+    clause_values: int
+    clause_cross_references: int
+    clause_conditions: int
+    clause_categories: list[str]
+    clause_option_groups: int
+    regions: list[dict[str, Any]]
+    gridded_at: datetime | None
+
+
 class StageRerunRequest(BaseModel):
-    job_type: Literal["inventory_source", "triage_source", "parse_source", "localise_source"]
+    job_type: Literal["inventory_source", "triage_source", "parse_source", "localise_source", "grid_source"]
 
 
 class SourceDetail(SourceSummary):
@@ -313,6 +399,7 @@ class SourceDetail(SourceSummary):
     parse: ParseSummary | None
     reading_profile: SourceProfileOut
     localisation: LocalisationSummary | None
+    structure: StructureSummary | None
     artefacts: list[StageArtefactOut]
 
 

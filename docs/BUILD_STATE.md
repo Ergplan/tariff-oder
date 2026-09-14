@@ -5,7 +5,8 @@ Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and buc
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
 Terraform plan against the project and the image-bootstrap fix it exposed; (7) Milestone 3a —
-reading profiles as data and the localisation stage with its reviewer checkpoint.
+reading profiles as data and the localisation stage with its reviewer checkpoint; (8) Milestone
+3b — normalisation, clause outlines, grid integrity and the gated structure stage.
 
 ## Current milestone and status
 
@@ -26,8 +27,14 @@ reading profiles as data and the localisation stage with its reviewer checkpoint
   within Milestone 2:** grids from OCR word boxes are not attempted (flagged
   `grid_from_ocr_pending`, listed for review); Docling is not measured; the three real orders
   have not been run because their bytes are not in this environment.
-- **Milestone 3 — part (a) implemented and tested under the `local` profile: reading profiles
-  and binding-schedule localisation.**  Three seed profiles (`uperc-npcl`, `kerc-escoms`,
+- **Milestone 3 — parts (a) and (b) implemented and tested under the `local` profile.**  (b)
+  adds the versioned normalisation module, clause-outline reconstruction, grid integrity
+  (header/row paths, continuation, merged cells, unit binding with source, footnotes) and
+  the `localised → gridded` stage that runs only from reviewer-confirmed regions.  **The
+  Milestone 3 gate is blocked on the real orders**: it asks for the NPCL localisation
+  confirmed by a reviewer and the Karnataka vector tables read by OCR into grids; neither the
+  bytes nor a reviewer are available here.  Grids from OCR word boxes are still not built.
+- **Milestone 3 — part (a): reading profiles and binding-schedule localisation.**  Three seed profiles (`uperc-npcl`, `kerc-escoms`,
   `gerc-discoms`) as validated JSON; stage `parsed → localised` producing classified regions
   with textual cues; ambiguity halts; a mandatory reviewer checkpoint (confirm / correct,
   audited, versioned) that the rules can never pass on their own.  **Part (b)** — clause
@@ -37,6 +44,48 @@ reading profiles as data and the localisation stage with its reviewer checkpoint
 - **No provider connection, no extracted number exists.**  The only reviewer decisions that
   exist are localisation confirmations on synthetic fixtures made by the test harness's
   reviewer user; no real-source region has been confirmed by anyone.
+
+### Increment 8 (Milestone 3b: normalisation, clause outlines, grid integrity)
+
+- `tariff_api.normalise` (rules v1, one rule id per transformation, original text kept):
+  currency/unit/frequency from the value's own text only; `Nil` → state `zero` with no
+  number + `nil_word`; `-`/`NA` → `not_applicable`; blank → `unknown`; bare marker →
+  `footnote_only`; signed percentages with a named base; parenthesised negatives; bracketed
+  secondary figures; Indian/western grouping; stray spaces flagged; cross-references and
+  formulae as states.  `parse_slab` with explicit/inferred/ambiguous inclusivity, telescopic
+  kinds and reference bounds; `check_slab_sequence` marks a twice-claimed boundary or a gap
+  ambiguous.
+- `tariff_api.clause_outline` (v1): clause paths from titles keyed by depth (state carries
+  across pages), `PLUS` connector, `ALTERNATIVELY` alternatives closed by a sibling clause,
+  roles from the title vocabulary with opposite signs for ToU discount vs charges, two-column
+  metering-type binding, conditions kept as conditions, rule lines keep thresholds as
+  parameters.  All F.3 M3 items for RGP, AG and HTP-1 pass on the clause fixture.
+- `tariff_api.grid_integrity` (v1): header paths with span inheritance; label columns =
+  every mostly non-numeric column; row paths with merged-cell propagation (within a grid and
+  across the page break for a merged continuation, D.2 hazard 1); heading-less continuation
+  inherits the header; unit binding cell → header → row-unit column → title → footnote with
+  the source recorded and currency/denominator combined from different sources (KERC);
+  footnotes attached; `resolved` only with header + row + unit; everything else flagged.
+- Stage `tariff_worker.stages.grid` (`localised → gridded`, tool
+  `grid@1+clauses@1+normalise@1`): refuses to run until the localisation record's
+  `extraction_allowed` is true; reads `approved_schedule` / `approved_summary` only and
+  lists skipped regions; rows in `structure_cells` / `clause_values`; per-grid, per-region
+  and summary artefacts; queued by the reviewer's decision, re-run by a new decision.  API:
+  `GET /sources/{id}/structure/cells` (page, unresolved_only, flag) and `/structure/clauses`
+  (category, kind); detail carries `structure`.  Web: integrity summary, unresolved cells,
+  clause outline.
+- Fixtures: `structure_order_pdf` (merged cells over a page break with the header repeated,
+  footnote, `% of Energy Charges` TOD with signed and zero forms, `Nil`/`-`/`NA`, Indian
+  number, cross-reference, slab boundary claimed twice, heading-less closing page, derived
+  Annexure-II), `gerc_structure_order_pdf` (the clause fixture over three pages),
+  `tests/fixtures/text/gerc_clauses.txt`.
+- Rule defect found by the fixture and fixed with a test (triage rules v2): a 3-row ruled
+  rate table was classed `narrative` because its vertical strokes were shorter than the
+  long-ruling threshold, so the readers never ran on it and the region had no grids.  Three
+  horizontals crossing two verticals is now a table.  Migration `0005_gridded`; re-runs may
+  go back to `localised` from `gridded`.
+- Ledger: S5, S8, S10–S13, S15–S21, V1–V5 moved from n/a-yet to handled/detected with test
+  ids; P21 added.  ADR-0011.
 
 ### Increment 7 (Milestone 3a: reading profiles and localisation)
 
@@ -279,13 +328,14 @@ Detected: D3, D7, D9.  Everything value- and network-level `n/a-yet` pending Mil
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **120 passed, 0 failed, 0 skipped** (~52 s): 84 unit (13 adapters/profile/fixtures, 31
-  triage rules, 29 readers/headings/OCR, 11 profiles/localisation rules), 36 integration (8
-  sources, 6 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage, 4 parse stage, 4
-  localisation stage incl. the ambiguity halt, the refused confirm, the audited correction
-  and the profile re-assignment re-run, 2 migrations).  Without tesseract the OCR unit
-  tests and the parse/localise stage tests skip and say so.
-- Increment 5 baseline was 105 passed (73 unit, 32 integration).
+- **200 passed, 0 failed, 0 skipped** (~63 s): 162 unit (13 adapters/profile/fixtures, 32
+  triage rules, 29 readers/headings/OCR, 11 profiles/localisation, 60 normalisation, 10
+  clause outline, 7 grid integrity), 38 integration (8 sources, 6 ingest/CLI, 6 queue, 1
+  worker-kill recovery, 5 triage stage, 4 parse stage, 4 localisation stage, 2 structure
+  stage incl. the pre-confirmation refusal and the re-decision re-run, 2 migrations).
+  Without tesseract the OCR unit tests and the parse/localise/grid stage tests skip and say
+  so.
+- Increment 7 baseline was 120 passed (84 unit, 36 integration).
 - Test-infrastructure defect found by the reordered run and fixed: the synthetic fixture
   generators were byte-reproducible only ~98% of the time.  MuPDF writes the regenerated
   half of the file `/ID` as a PDF literal string `(…)` when that is shorter than hex, and the
@@ -398,10 +448,11 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
    `make tf-plan tf-apply ENV=dev` (expect 63 more to add after the bootstrap's 14), then
    `make deploy-dev`, then register the three orders through the `tariff-admin` job
    (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
-2. Engineering (next run): Milestone 3b — clause-outline reconstruction (GERC), header-path
-   and row-label reconstruction, continuation header inheritance, merged-cell expansion, unit
-   binding with source, footnote attachment, the versioned normalisation module, fixtures for
-   every 6.1 structure- and value-level failure mode.  Then, as soon as the deploy is done — ingest, inventory,
+2. Engineering (next run): Milestone 3 close-out on real material once the deploy is done
+   (ingest, inventory, triage, parse, localise the three orders; a reviewer confirms; grid;
+   compare with Parts D–F), grids from OCR word boxes for the Karnataka vector tables, then
+   Milestone 4 (versioned tariff schema, provider adapter with fixture mode, dual-channel
+   candidates, validators).  As soon as the deploy is done — ingest, inventory,
    triage, parse, and compare with Parts D–F (NPCL 402–423 `image_only` now OCR'd; KERC
    226–240 `vector_graphics_text_sparse` and the printed 209 → PDF 225 rule; GERC all-text
    with roman front matter and the −16 rule; NPCL exactly 15 `RATE SCHEDULE` headings and no

@@ -35,6 +35,7 @@ def extract_signals(page: pymupdf.Page) -> PageSignals:
 
     drawings = page.get_cdrawings()
     ruling = _ruling_lines(drawings, page.rect)
+    h_rulings, v_rulings = _grid_strokes(drawings)
     columns = _aligned_columns(lines)
 
     return PageSignals(
@@ -48,6 +49,8 @@ def extract_signals(page: pymupdf.Page) -> PageSignals:
         rotation=int(page.rotation),
         text=text,
         quality=quality,
+        h_ruling_count=h_rulings,
+        v_ruling_count=v_rulings,
     )
 
 
@@ -83,6 +86,24 @@ def _ruling_lines(drawings: list[dict], rect: pymupdf.Rect) -> int:
         if (w >= min_len and h <= 3.0) or (h >= min_len and w <= 3.0):
             count += 1
     return count
+
+
+def _grid_strokes(drawings: list[dict], min_len: float = 30.0) -> tuple[int, int]:
+    """Thin strokes at least ``min_len`` long, by orientation.  Three horizontals crossing two
+    verticals is the smallest ruled grid; the long-ruling count above misses it because a
+    three-row table's vertical strokes are shorter than 15% of the page."""
+    h = v = 0
+    for d in drawings:
+        r = d.get("rect")
+        if not r:
+            continue
+        x0, y0, x1, y1 = r
+        w, hh = abs(x1 - x0), abs(y1 - y0)
+        if w >= min_len and hh <= 3.0:
+            h += 1
+        elif hh >= min_len and w <= 3.0:
+            v += 1
+    return h, v
 
 
 def _aligned_columns(lines: list[tuple[float, float, str]], tolerance: float = 2.0) -> int:

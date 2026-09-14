@@ -1,0 +1,57 @@
+PART - I
+1. RATE: RGP
+1.1. FIXED CHARGES / MONTH
+(a) Up to and including 2 kW ... Rs. 15/- per month
+(b) Above 2 kW to 4 kW ... Rs. 25/- per month
+(c) Above 4 kW to 6 kW ... Rs. 45/- per month
+(d) Above 6 kW ... Rs. 70/- per month
+PLUS
+1.2. ENERGY CHARGES
+                       Post-Paid Energy Charge   Pre-paid Energy Charge
+(a) First 50 units      305 Paise per Unit        296 Paise per Unit
+(b) Next 50 Units       350 Paise per Unit        340 Paise per Unit
+(c) Next 150 Units      415 Paise per Unit        403 Paise per Unit
+(d) Above 250 Units     520 Paise per Unit        504 Paise per Unit
+1.3. BPL CONSUMERS
+(a) First 50 units ... 150 Paise per Unit
+(b) Above 50 units ... Rate as per RGP
+1.4. TIME OF USE DISCOUNT
+Consumers with smart meters shall get a concession of 60 Paise per Unit for consumption between 11:00 hrs to 17:00 hrs.
+1.5. MINIMUM BILL
+The minimum bill shall be the fixed charge as per clause 1.1.
+8. RATE: AG
+8.1.1 HP BASED TARIFF
+Rs. 200 per HP per month
+ALTERNATIVELY
+8.1.2 METERED TARIFF
+(a) Fixed charge ... Rs. 20 per HP per month
+PLUS
+(b) Energy charge ... 60 Paise per Unit
+ALTERNATIVELY
+8.1.3 TATKAL SCHEME
+(a) Fixed charge ... Rs. 20 per HP per month
+PLUS
+(b) Energy charge ... 80 Paise per Unit
+The Tatkal tariff shall revert to the metered tariff after five years.
+8.2. BRICK MANUFACTURING
+Rs. 1800 per annum per kW subject to a minimum of Rs. 5400 per annum
+11. RATE: HTP-1
+11.1. DEMAND CHARGE
+11.1.1. For billing demand up to contract demand
+(a) For the first 500 kVA of billing demand ... Rs. 150/- per kVA per month
+(b) For the next 500 kVA of billing demand ... Rs. 250/- per kVA per month
+(c) For billing demand in excess of 1000 kVA ... Rs. 400/- per kVA per month
+11.1.2. For billing demand in excess of the contract demand ... Rs. 555 per kVA per month
+PLUS
+11.2. ENERGY CHARGES
+(a) Up to 500 kVA ... 400 Paise per Unit
+(b) above 500 up to 2500 kVA ... 420 Paise per Unit
+(c) above 2500 kVA ... 430 Paise per Unit
+11.3. TIME OF USE CHARGES
+(a) Up to 500 kVA ... 45 Paise per Unit for consumption between 07:00 to 11:00 hrs and 18:00 to 22:00 hrs
+(b) above 500 kVA ... 85 Paise per Unit
+11.4. BILLING DEMAND
+The billing demand shall be the highest of the actual maximum demand, 85% of the contract demand and 100 kVA.
+11.5. POWER FACTOR ADJUSTMENT CHARGES
+(a) Penalty of 1% of the energy charge bill for every 1% fall below 90% down to 85%
+(b) Rebate of 0.5% of the energy charge bill for every 1% rise above 95%

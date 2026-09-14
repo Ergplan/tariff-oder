@@ -52,7 +52,7 @@ def test_inventory_chains_into_triage_and_resolves_labels(client, runner, storag
     jobs = client.get("/jobs", params={"source_id": src_id}, headers=headers(ANALYST)).json()
     assert {j["job_type"]: j["status"] for j in jobs["items"]}["parse_source"] == "queued"  # chained (2b)
     t = d["triage"]
-    assert t["triage_version"] == "1"
+    assert t["triage_version"] == "2"
     assert t["page_class_counts"] == {
         "narrative": 7,
         "annexure_cover": 1,
@@ -90,7 +90,7 @@ def test_inventory_chains_into_triage_and_resolves_labels(client, runner, storag
     art = d["artefacts"]
     doc_art = [a for a in art if a["page_index"] == 0]
     assert len(doc_art) == 1 and doc_art[0]["stage"] == "triage"
-    assert doc_art[0]["tool_version"].endswith("+rules@1")
+    assert doc_art[0]["tool_version"].endswith("+rules@2")
     body = json.loads(storage.get("artefacts", doc_art[0]["object_key"]))
     assert body["label_rule"]["segments"] == segs
     page_art = json.loads(storage.get("artefacts", art[1]["object_key"]))

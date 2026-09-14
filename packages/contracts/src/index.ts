@@ -32,6 +32,11 @@ export type LocalisationRegionOut = Schemas["LocalisationRegionOut"];
 export type LocalisationDecision = Schemas["LocalisationDecision"];
 export type ReadingProfileOut = Schemas["ReadingProfileOut"];
 export type ReadingProfileList = Schemas["ReadingProfileList"];
+export type StructureSummary = Schemas["StructureSummary"];
+export type StructureCellList = Schemas["StructureCellList"];
+export type StructureCellOut = Schemas["StructureCellOut"];
+export type ClauseValueList = Schemas["ClauseValueList"];
+export type ClauseValueOut = Schemas["ClauseValueOut"];
 
 /** Pipeline states of Section 6.2, in order; terminal/exception states listed separately. */
 export const PIPELINE_STATES: SourceState[] = [

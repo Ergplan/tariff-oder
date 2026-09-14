@@ -791,3 +791,228 @@ def gerc_like_order_pdf() -> bytes:
         18,
     )
     return _finalise(doc)
+
+
+# ------------------------------------------------------------------ Milestone 3b: structure integrity
+
+
+def _ruled_grid(page: pymupdf.Page, top: float, rows: list[list[str]], widths: list[int], cell_h: float = 22) -> float:
+    """A ruled table with the given cell texts (an empty string leaves a merged/blank cell).
+    Returns the y coordinate just below the table."""
+    left = 60
+    total_w = sum(widths)
+    for r in range(len(rows) + 1):
+        y = top + r * cell_h
+        page.draw_line((left, y), (left + total_w, y), width=0.6)
+    x = left
+    for w in [*widths, 0]:
+        page.draw_line((x, top), (x, top + len(rows) * cell_h), width=0.6)
+        x += w
+    for r, row in enumerate(rows):
+        x = left
+        for c, w in enumerate(widths):
+            txt = row[c] if c < len(row) else ""
+            if txt:
+                page.insert_text((x + 3, top + r * cell_h + 15), txt, fontsize=7.5)
+            x += w
+    return top + len(rows) * cell_h
+
+
+def structure_order_pdf() -> bytes:
+    """Nine pages in the NPCL shape whose annexure tables carry the Section 6.1 structure and
+    value hazards: a rate table whose merged `Metered` / fixed-charge cells span the page
+    break with the header repeated on the next page (D.2 hazard 1); a footnote marker on a
+    cell; a TOD table with `% of Energy Charges` in the header and `(+) 15%` / `(-) 15%` /
+    `0` cells; a table with `Nil`, `-`, `NA`, an Indian-format number and a cross-reference;
+    a slab table with a boundary claimed twice; an Annexure-II derived table that must
+    produce no cells.  Page labels identity (`Page N of 9`)."""
+    doc = pymupdf.open()
+    total = 9
+
+    def new(label: int) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        _footer(page, str(label), total)
+        return page
+
+    p = new(1)
+    _lines(p, 120, ["SYNTHETIC COMMISSION", "Tariff Order for FY 2026-27", "Licensee: NPCL"], 14, 24)
+    p = new(2)
+    _lines(
+        p,
+        110,
+        [
+            "CONTENTS",
+            "12.1 ANNEXURE-I: RATE SCHEDULE FOR FY 2026-27 .............. 3",
+            "ANNEXURE-II ................ 9",
+        ],
+    )
+    # 3 annexure cover + general provisions
+    p = new(3)
+    _lines(
+        p,
+        110,
+        [
+            "12.1 ANNEXURE-I: RATE SCHEDULE FOR FY 2026-27",
+            "(APPLICABLE FOR NPCL)",
+            "A. GENERAL PROVISIONS",
+            "21. A regulatory discount of 10% shall apply to fixed / demand and energy charges.",
+        ],
+        10.5,
+        20,
+    )
+    # 4 LMV-1 rural table, merged cells continuing onto page 5
+    p = new(4)
+    _lines(
+        p,
+        110,
+        [
+            "B. RETAIL TARIFFS FOR FINANCIAL YEAR 2026-27",
+            "RATE SCHEDULE LMV - 1",
+            "(a) Consumers getting supply as per 'Rural Schedule'",
+        ],
+        10.5,
+        20,
+    )
+    _ruled_grid(
+        p,
+        190,
+        [
+            ["Description", "Fixed Charge", "Energy Charge", "Slab"],
+            ["Unmetered", "Rs. 500.00 / kW / month", "", ""],
+            ["Metered", "Rs. 90.00/ kW / month", "Rs. 3.00/ kWh", "Up to 100 kWh / month"],
+        ],
+        [90, 150, 110, 130],
+    )
+    p = new(5)
+    _lines(p, 100, ["RATE SCHEDULE LMV - 1 (continued)"], 9, 16)
+    bottom = _ruled_grid(
+        p,
+        130,
+        [
+            ["Description", "Fixed Charge", "Energy Charge", "Slab"],
+            ["", "", "Rs. 3.50/ kWh", "101 - 150 kWh / month"],
+            ["", "", "Rs. 4.00/ kWh", "151 - 300 kWh / month"],
+            ["", "", "Rs. 5.00/ kWh *", "Above 300 kWh / month"],
+        ],
+        [90, 150, 110, 130],
+    )
+    p.insert_text((60, bottom + 18), "* subject to the regulatory discount of general provision 21", fontsize=7.5)
+    # 6 TOD table (percent of energy charges) and a table with Nil / - / NA / Indian number / cross-reference
+    p = new(6)
+    _lines(
+        p,
+        110,
+        ["RATE SCHEDULE HV-2", "Large and Heavy Power", "TOD adjustments: Summer Months (April to September)"],
+        10.5,
+        20,
+    )
+    bottom = _ruled_grid(
+        p,
+        190,
+        [
+            ["Hours", "% of Energy Charges"],
+            ["05:00 hrs - 10:00 hrs", "(-) 15%"],
+            ["10:00 hrs - 19:00 hrs", "0"],
+            ["19:00 hrs - 02:00 hrs", "(+) 15%"],
+        ],
+        [200, 160],
+    )
+    _lines(p, bottom + 30, ["Other charges"], 10, 16)
+    _ruled_grid(
+        p,
+        bottom + 45,
+        [
+            ["Item", "Fixed Charge", "Energy Charge", "Minimum Charge"],
+            ["Temporary supply", "Nil", "as applicable to HV-1", "1,00,000"],
+            ["Seasonal", "-", "NA", "12,500"],
+        ],
+        [110, 130, 150, 100],
+    )
+    # 7 slab table with a boundary claimed twice
+    p = new(7)
+    _lines(p, 110, ["RATE SCHEDULE LMV - 2", "Non-Domestic"], 10.5, 20)
+    _ruled_grid(
+        p,
+        160,
+        [
+            ["Slab", "Energy Charge"],
+            ["up to 100 kWh / month", "Rs. 6.50/ kWh"],
+            ["100 - 300 kWh / month", "Rs. 7.00/ kWh"],
+            ["above 300 kWh / month", "Rs. 7.50/ kWh"],
+        ],
+        [200, 160],
+    )
+    # 8 closing conditions (no heading, no table): still inside the schedule
+    p = new(8)
+    _lines(
+        p,
+        110,
+        [
+            "The rates above are exclusive of electricity duty.",
+            "Billable demand is the higher of recorded demand and 75% of contracted demand.",
+        ],
+        10,
+        18,
+    )
+    # 9 derived table
+    p = new(9)
+    _lines(
+        p,
+        110,
+        [
+            "ANNEXURE-II: CATEGORY-WISE AVERAGE BILLING RATE (Rs/kWh)",
+            "Note: only for the purpose of fuel surcharge computation.",
+        ],
+        11,
+        20,
+    )
+    _ruled_grid(p, 170, [["Category", "ABR (Rs/kWh)"], ["LMV-1", "6.12"], ["LMV-9", "0.00"]], [200, 160])
+    return _finalise(doc)
+
+
+def gerc_structure_order_pdf() -> bytes:
+    """Six pages in the GERC shape whose annexure carries the full clause fixture
+    (tests/fixtures/text/gerc_clauses.txt) split over three pages, so clause state must
+    carry across page breaks.  Roman contents, an amendment table, the schedule."""
+    from pathlib import Path
+
+    clauses = (Path(__file__).with_name("text") / "gerc_clauses.txt").read_text().splitlines()
+    doc = pymupdf.open()
+
+    def new(label: str) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        page.insert_text((250, 820), f"Page {label}", fontsize=9)
+        return page
+
+    p = new("i")
+    _lines(p, 110, ["CONTENTS", "ANNEXURE: TARIFF SCHEDULE ..................... 2"])
+    p = new("1")
+    _lines(p, 110, ["CHAPTER 10", "Table 10-1 Amendments"], 11, 20)
+    _aligned_table(
+        p,
+        170,
+        ["Clause", "Existing description", "Modified description"],
+        [("1.4", "11:00 to 15:00", "11:00 to 17:00")],
+        [72, 160, 380],
+    )
+    p = new("2")
+    _lines(
+        p,
+        110,
+        [
+            "ANNEXURE: TARIFF SCHEDULE",
+            "TARIFF FOR SUPPLY OF ELECTRICITY AT LOW TENSION, HIGH TENSION, AND EXTRA HIGH TENSION",
+            "Effective from 1st April, 2026",
+            "GENERAL",
+            "1. The figures are the rates payable by consumers of MGVCL.",
+        ],
+        10,
+        18,
+    )
+    third = (len(clauses) + 2) // 3
+    for i, label in enumerate(("3", "4", "5")):
+        p = new(label)
+        _lines(p, 100, clauses[i * third : (i + 1) * third], 8.5, 15)
+    return _finalise(doc)
