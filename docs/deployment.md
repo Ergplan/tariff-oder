@@ -129,7 +129,13 @@ gcloud storage buckets update gs://tarifforderstudio_tfstate --versioning
 # 2. Optional but recommended: put the billing account id in envs/dev.tfvars so the budget
 #    is created (the verify script prints the id in the right format).
 
-# 3. Plan and apply
+# 3. Bootstrap (first time only): enable the APIs, create Artifact Registry, build and push
+#    the images tagged python:dev / web:dev.  Cloud Run refuses to create a service or job
+#    whose image does not exist, and the registry is created by the same apply, so the full
+#    apply cannot succeed until the images are there.
+make bootstrap-dev
+
+# 4. Plan and apply everything else
 make tf-init ENV=dev
 make tf-plan ENV=dev                             # review every resource before applying
 make tf-apply ENV=dev
@@ -144,9 +150,14 @@ migrate jobs, Cloud Scheduler, logging metrics and alerts.  It creates **no** lo
 Then deploy and migrate:
 
 ```bash
-make deploy-dev            # builds amd64 images, pushes, runs tariff-migrate, updates services
-gcloud run jobs execute tariff-migrate --project tariff-order-parsing --region asia-south1 --wait
+make deploy-dev            # builds amd64 images, pushes, runs tariff-migrate, updates services + jobs
 ```
+
+Images: every deploy pushes the release tag (the git sha) and moves the `:dev` tag to the same
+image.  Terraform only sets the image when it creates a Cloud Run resource and ignores it
+afterwards (`ignore_changes` on the image attribute), so `make tf-plan` after a deploy shows no
+image drift and never rolls a service back to the bootstrap tag.  Pin digests per release in
+`envs/<env>.tfvars` for anything you intend to keep.
 
 ### The build VM cannot reach the API or the database
 

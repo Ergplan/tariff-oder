@@ -67,7 +67,8 @@ fixtures: ## Write synthetic PDFs to tests/fixtures/generated (labelled, git-ign
 	uv run python tests/fixtures/synthetic_pdfs.py tests/fixtures/generated
 
 # ---------------------------------------------------------------- gcp profile
-GCP_PROJECT ?= $(shell cd $(TF_DIR) && terraform output -raw project_id 2>/dev/null)
+# Before the first apply there is no Terraform output yet; fall back to the tfvars value.
+GCP_PROJECT ?= $(shell cd $(TF_DIR) && terraform output -raw project_id 2>/dev/null || sed -n 's/^project_id *= *"\(.*\)"/\1/p' envs/$(ENV).tfvars)
 AR_REPO = $(REGION)-docker.pkg.dev/$(GCP_PROJECT)/tariff
 GIT_SHA := $(shell git rev-parse --short HEAD 2>/dev/null || echo dev)
 
@@ -85,10 +86,21 @@ build-images: ## Build amd64 images for api/worker and web
 	docker build --platform linux/amd64 -f infra/local/Dockerfile.python -t $(AR_REPO)/python:$(GIT_SHA) .
 	docker build --platform linux/amd64 -f infra/local/Dockerfile.web -t $(AR_REPO)/web:$(GIT_SHA) .
 
-push-images: ## Push images to Artifact Registry
+push-images: ## Push images to Artifact Registry (release tag = git sha, plus the moving `$(ENV)` tag Terraform bootstraps from)
 	gcloud auth configure-docker $(REGION)-docker.pkg.dev --quiet
+	docker tag $(AR_REPO)/python:$(GIT_SHA) $(AR_REPO)/python:$(ENV)
+	docker tag $(AR_REPO)/web:$(GIT_SHA) $(AR_REPO)/web:$(ENV)
 	docker push $(AR_REPO)/python:$(GIT_SHA)
 	docker push $(AR_REPO)/web:$(GIT_SHA)
+	docker push $(AR_REPO)/python:$(ENV)
+	docker push $(AR_REPO)/web:$(ENV)
+
+bootstrap-dev: ## First-time only: create the APIs + Artifact Registry, then build and push images so the full apply can create Cloud Run
+	@command -v gcloud >/dev/null || { echo "gcloud is not installed; see docs/deployment.md"; exit 2; }
+	@command -v docker >/dev/null || { echo "docker is not installed; see docs/deployment.md"; exit 2; }
+	cd $(TF_DIR) && terraform apply -var-file=envs/dev.tfvars -target=google_project_service.apis -target=google_artifact_registry_repository.docker
+	$(MAKE) build-images push-images ENV=dev
+	@echo "Images pushed as python:dev and web:dev. Now run: make tf-plan tf-apply ENV=dev"
 
 deploy-dev: ## Build, push, migrate and deploy to the dev project (same images as local)
 	@command -v gcloud >/dev/null || { echo "gcloud is not installed; see docs/deployment.md"; exit 2; }
@@ -98,6 +110,7 @@ deploy-dev: ## Build, push, migrate and deploy to the dev project (same images a
 	gcloud run jobs execute tariff-migrate --project $(GCP_PROJECT) --region $(REGION) --wait
 	gcloud run services update tariff-api --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
 	gcloud run jobs update tariff-worker --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
+	gcloud run jobs update tariff-admin --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
 	gcloud run services update tariff-web --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/web:$(GIT_SHA) --quiet
 	@echo "Deployed $(GIT_SHA) to $(GCP_PROJECT). Run: make smoke-dev"
 
@@ -107,4 +120,4 @@ smoke-dev: ## Post-deploy checks against the dev project (readiness + authentica
 backup-dev: ## On-demand Cloud SQL backup + bucket copy (see docs/deployment.md)
 	scripts/backup-gcp.sh $(GCP_PROJECT) $(REGION)
 
-.PHONY: help install dev dev-down dev-reset migrate seed api worker web ephemeral-postgres test lint contracts contracts-check build-web fixtures tf-init tf-plan tf-apply build-images push-images deploy-dev smoke-dev backup-dev
+.PHONY: help install dev dev-down dev-reset migrate seed api worker web ephemeral-postgres test lint contracts contracts-check build-web fixtures tf-init tf-plan tf-apply build-images push-images bootstrap-dev deploy-dev smoke-dev backup-dev

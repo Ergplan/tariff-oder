@@ -90,6 +90,10 @@ resource "google_cloud_run_v2_service" "api" {
       }
     }
   }
+  lifecycle {
+    # Terraform sets the bootstrap image; `make deploy-dev` moves services to release tags.
+    ignore_changes = [template[0].containers[0].image]
+  }
   depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
 }
 
@@ -131,6 +135,9 @@ resource "google_cloud_run_v2_service" "web" {
         value = google_cloud_run_v2_service.api.uri
       }
     }
+  }
+  lifecycle {
+    ignore_changes = [template[0].containers[0].image]
   }
   depends_on = [google_project_service.apis]
 }
@@ -181,6 +188,9 @@ resource "google_cloud_run_v2_job" "worker" {
       }
     }
   }
+  lifecycle {
+    ignore_changes = [template[0].template[0].containers[0].image]
+  }
   depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
 }
 
@@ -224,6 +234,9 @@ resource "google_cloud_run_v2_job" "migrate" {
         }
       }
     }
+  }
+  lifecycle {
+    ignore_changes = [template[0].template[0].containers[0].image]
   }
   depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
 }
@@ -283,8 +296,9 @@ resource "google_cloud_run_v2_job" "admin" {
     }
   }
   lifecycle {
-    # The operator changes `args` per invocation; Terraform must not revert them.
-    ignore_changes = [template[0].template[0].containers[0].args]
+    # The operator changes `args` per invocation and `make deploy-dev` changes the image;
+    # Terraform must not revert either.
+    ignore_changes = [template[0].template[0].containers[0].args, template[0].template[0].containers[0].image]
   }
   depends_on = [google_project_service.apis, google_secret_manager_secret_version.managed]
 }

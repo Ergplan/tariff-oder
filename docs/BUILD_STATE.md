@@ -3,7 +3,8 @@
 Last updated: 2026-09-13. Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
-2b — OCR, second reader, table grids with agreement classes, heading inventory.
+2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
+Terraform plan against the project and the image-bootstrap fix it exposed.
 
 ## Current milestone and status
 
@@ -26,6 +27,24 @@ Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and buc
   have not been run because their bytes are not in this environment.
 - **No provider connection, no extracted number, no reviewer decision exists.**  Grids are
   read and compared; nothing is interpreted as a tariff value.
+
+### Increment 6 (first plan against the project)
+
+- The operator ran `make tf-init tf-plan ENV=dev` on the VM against `tariff-order-parsing`:
+  65 to add, 0 to change, 0 to destroy; the sources bucket adopted (IAM only), no load
+  balancer, no IAP, no budget (`billing_account_id` empty), Cloud Run internal-only.  Nothing
+  has been applied.
+- Deployment defect found by reading that plan and fixed before apply: every Cloud Run
+  service and job referenced `python:dev` / `web:dev`, images that cannot exist because the
+  Artifact Registry repository is created by the same apply, and Cloud Run refuses a
+  resource whose image is missing.  `make deploy-dev` also pushed only git-sha tags (never
+  `:dev`) and did not update the `tariff-admin` job.  Now: `make bootstrap-dev` (targeted
+  apply of APIs + registry, then build and push images tagged `:dev` and the git sha), then
+  the full apply; `ignore_changes` on the image attribute so a deploy never shows as drift
+  and Terraform never rolls a service back to the bootstrap tag; `GCP_PROJECT` falls back to
+  the tfvars value before any output exists.  `terraform fmt` + `validate`: clean.
+- The three real orders are in the bucket at the golden sizes (see below); registration
+  waits on the apply and deploy.
 
 ### Increment 5 (Milestone 2b: OCR, readers, grids, headings)
 
@@ -326,11 +345,10 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-1. **Operator, on the `tariff-order` VM:** clone the branch and run
-   `scripts/verify-gcp-setup.sh`.  It will confirm or flag the four open items (budget,
-   tfstate versioning, enabled APIs, PDFs present) and print the `billing_account_id` to paste
-   into `envs/dev.tfvars`.  Then `make tf-init tf-plan ENV=dev` and review the plan before any
-   apply.  Copy the three PDFs to `gs://tarifforderstudio_sources/inbox/` if not already there.
+1. **Operator, on the `tariff-order` VM:** `git pull`, then `make bootstrap-dev`, then
+   `make tf-plan tf-apply ENV=dev` (expect 63 more to add after the bootstrap's 14), then
+   `make deploy-dev`, then register the three orders through the `tariff-admin` job
+   (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
 2. Engineering (next run): as soon as the three PDFs are in the bucket — ingest, inventory,
    triage, parse, and compare with Parts D–F (NPCL 402–423 `image_only` now OCR'd; KERC
    226–240 `vector_graphics_text_sparse` and the printed 209 → PDF 225 rule; GERC all-text
