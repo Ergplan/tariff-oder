@@ -200,3 +200,73 @@ def test_processes_that_serve_no_requests_get_no_identity_provider():
     assert adapters.identity is None
     assert adapters.describe()["identity"] == "not built (no request path)"
     assert adapters.storage.name == "filesystem"
+
+
+def test_google_id_token_identity_verifies_audience_issuer_and_email(monkeypatch):
+    """No domain (ADR-0015): the API accepts a Google-signed ID token naming one of our own
+    service URLs, forwarded by the web app or sent directly.  Unverified emails, foreign
+    audiences and unregistered users never become a usable principal; verification itself
+    is delegated to google-auth and substituted here."""
+    from tariff_api.adapters.identity import GoogleIdTokenIdentityProvider
+    from tariff_api.models import UserRole
+
+    unconfigured = GoogleIdTokenIdentityProvider(audiences="")
+    assert unconfigured.configured is False and "UNCONFIGURED" in unconfigured.description
+    assert unconfigured.authenticate({"authorization": "Bearer x"}, lambda e: UserRole.reviewer) is None
+
+    p = GoogleIdTokenIdentityProvider(
+        audiences="https://tariff-web-1.asia-south1.run.app/, https://tariff-api-1.asia-south1.run.app"
+    )
+    assert p.audiences == ["https://tariff-web-1.asia-south1.run.app", "https://tariff-api-1.asia-south1.run.app"]
+    seen: list[str] = []
+    claims = {
+        "iss": "https://accounts.google.com",
+        "aud": "https://tariff-web-1.asia-south1.run.app",
+        "email": "Reviewer@Example.com",
+        "email_verified": True,
+        "name": "R",
+    }
+
+    def fake_verify(token: str):
+        seen.append(token)
+        return dict(claims) if token == "good" else None
+
+    monkeypatch.setattr(p, "verify", fake_verify)
+    roles = {"reviewer@example.com": UserRole.reviewer}
+    lookup = roles.get
+    # the forwarded user header wins over the bearer used for the call itself
+    pr = p.authenticate({"x-user-id-token": "good", "authorization": "Bearer service"}, lookup)
+    assert pr is not None and pr.email == "reviewer@example.com" and pr.role == UserRole.reviewer
+    assert pr.provider == "google_id_token" and seen == ["good"]
+    # a direct call uses the bearer
+    assert p.authenticate({"authorization": "Bearer good"}, lookup).email == "reviewer@example.com"
+    # a token google-auth rejects (wrong audience, expired, bad signature) is unauthenticated
+    assert p.authenticate({"authorization": "Bearer bad"}, lookup) is None
+    # unverified email, wrong issuer
+    claims["email_verified"] = False
+    assert p.authenticate({"x-user-id-token": "good"}, lookup) is None
+    claims["email_verified"] = True
+    claims["iss"] = "https://evil.example"
+    assert p.authenticate({"x-user-id-token": "good"}, lookup) is None
+    claims["iss"] = "accounts.google.com"
+    # verified but not registered: flagged so the API answers permission_denied, not analyst access
+    pr = p.authenticate({"x-user-id-token": "good"}, lambda e: None)
+    assert pr is not None and pr.provider.endswith(":unregistered")
+    assert p.authenticate({}, lookup) is None
+
+
+def test_gcp_profile_accepts_google_id_token_backend():
+    from tariff_api.config import IdentityBackend, Settings
+
+    s = Settings(
+        deployment_profile="gcp",
+        identity_backend="google_id_token",
+        object_store_backend="gcs",
+        secrets_backend="secret_manager",
+        gcp_project_id="p",
+        source_bucket="s",
+        artefact_bucket="a",
+        id_token_audiences="https://x.run.app",
+    )
+    s.validate_profile()
+    assert s.identity_backend == IdentityBackend.google_id_token

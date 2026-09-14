@@ -34,6 +34,7 @@ class SecretsBackend(str, enum.Enum):
 class IdentityBackend(str, enum.Enum):
     local = "local"
     iap = "iap"
+    google_id_token = "google_id_token"  # no domain yet: Google-signed ID tokens (ADR-0015)
 
 
 class Settings(BaseSettings):
@@ -63,6 +64,9 @@ class Settings(BaseSettings):
         description="Comma-separated `email:role` entries accepted by the local identity adapter",
     )
     iap_audience: str = ""
+    # google_id_token backend: comma-separated service URLs that a token may name as its
+    # audience (our own Cloud Run URLs, both forms).  Empty = refuse every request.
+    id_token_audiences: str = ""
 
     # Limits (Section 6.13) - hitting a limit stops with a typed reason, never lowers verification
     max_upload_bytes: int = 64 * 1024 * 1024

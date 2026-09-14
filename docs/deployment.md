@@ -270,14 +270,42 @@ Cloud Run Job) rather than from your laptop.
 An IAP-authenticated user with no row in `users` receives `permission_denied` by design, so the
 first administrator is created through the admin job (`users,add,…` above).
 
-### What the API does while IAP is unconfigured
+### Reviewing without a domain (ADR-0015)
 
-With no domain there is no load balancer, so `IAP_AUDIENCE` is empty and no assertion can be
-verified.  The API deliberately **starts anyway and refuses every authenticated request** with
-`unauthenticated`: crash-looping would take health probes and migrations down with it, and
-quietly allowing requests through would be far worse.  It is visible rather than silent —
-startup logs a warning, and `/status` reports the identity adapter as
-`iap (UNCONFIGURED — all requests refused)`.  `/healthz` and `/readyz` keep working.
+With no domain there is no load balancer and no IAP.  The API therefore runs the
+`google_id_token` identity adapter (Terraform sets it whenever `domain` is empty): it accepts a
+Google-signed OpenID Connect ID token whose audience is one of our own Cloud Run URLs, takes
+the verified email from it, and looks the role up in `users`.  Cloud Run's front door has
+already checked the same kind of token for invoker permission; the adapter only establishes
+*who the human is*.  A token minted for any other service is refused; a verified email with
+no `users` row gets `permission_denied`.  With an empty `ID_TOKEN_AUDIENCES` the API starts,
+serves health probes, and refuses every authenticated request — `/status` says
+`google_id_token (UNCONFIGURED — all requests refused)`.
+
+The web service forwards the operator's token as `X-User-Id-Token` and makes the API call with
+its own service-account token (minted from the metadata server with the API URL as audience).
+
+To review the real orders, the reviewer's own Google account must sign in on the VM (the
+build service account is not a reviewer) and the browser reaches the web service through
+`gcloud run services proxy` on the VM, tunnelled over SSH.  Cloud Run's internal ingress
+admits the VM because it is in the same project.
+
+```bash
+# on the VM, once: sign in as the reviewer (the build SA stays the default for Terraform)
+gcloud auth login --no-launch-browser venture@aayuda.energy     # copy the URL to a browser, paste the code back
+gcloud config set account venture@aayuda.energy
+
+# on the VM: proxy the web service on localhost:3000 with your identity token attached
+gcloud run services proxy tariff-web --project tariff-order-parsing --region asia-south1 --port 3000
+
+# on your laptop: tunnel, then open http://localhost:3000
+gcloud compute ssh tariff-order --zone asia-south2-b --project tariff-order-parsing -- -N -L 3000:localhost:3000
+```
+
+Switch back to the build identity for Terraform and deploys with
+`gcloud config set account agent-builder@tariff-order-parsing.iam.gserviceaccount.com`.  The
+reviewer must exist in `users` with the `reviewer` or `administrator` role (`users,add,…`
+above); the role check is the API's, never the proxy's.
 
 ### When a domain becomes available
 
@@ -286,11 +314,9 @@ startup logs a warning, and `/status` reports the identity adapter as
    certificate to become ACTIVE.
 3. `terraform output iap_audiences` → paste into `iap_audiences` → plan and apply again (the
    audiences only exist after the backend services do).
-4. Re-check that the web service can call the API: `apps/web/lib/api.ts` forwards the IAP
-   assertion but does not yet attach a Cloud Run identity token.  With the API restricted to
-   the load balancer, either route web → API through the load balancer's `/api/*` path or add
-   an `Authorization: Bearer <id token>` header minted from the web service account.  **Untested
-   — verify before relying on it.**
+4. The web service forwards the IAP assertion and attaches its own Cloud Run identity token
+   to every API call (`apps/web/lib/api.ts`); Terraform switches the API back to the `iap`
+   adapter once `domain` is set.  Verify the round trip after the switch.
 
 If the front end goes to Firebase Hosting instead, note that Firebase Hosting does not front
 IAP; the authentication path would have to be decided first (ADR-0008).

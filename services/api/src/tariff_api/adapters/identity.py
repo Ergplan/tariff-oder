@@ -130,3 +130,79 @@ class IapIdentityProvider(IdentityProvider):
         if role is None:
             return Principal(email=email, role=UserRole.analyst, provider=self.name + ":unregistered")
         return Principal(email=email, role=role, provider=self.name)
+
+
+class GoogleIdTokenIdentityProvider(IdentityProvider):
+    """``gcp`` profile without a domain: verifies a Google-signed OpenID Connect ID token.
+
+    Cloud Run already authenticates the caller at its front door (no public ingress, invoker
+    IAM); this adapter establishes *who* the human is from the same kind of token.  Two
+    places to find it: ``X-User-Id-Token`` (the web app forwards the token it received from
+    ``gcloud run services proxy`` while using its own service token for the call itself) or,
+    for direct API calls, the ``Authorization: Bearer`` header.  The token must be signed by
+    Google, unexpired, carry a verified email, and name one of the configured audiences —
+    our own service URLs, so a token minted for any other service is refused.  Roles come
+    from the users table; a verified but unregistered user gets ``permission_denied``.
+    """
+
+    name = "google_id_token"
+    USER_HEADER = "x-user-id-token"
+
+    def __init__(self, audiences: str) -> None:
+        self.audiences = [a.strip().rstrip("/") for a in audiences.split(",") if a.strip()]
+        if not self.audiences:
+            logging.getLogger(__name__).warning(
+                "google_id_token identity has no audiences (ID_TOKEN_AUDIENCES is empty): every "
+                "authenticated request will be refused with `unauthenticated`."
+            )
+
+    @property
+    def configured(self) -> bool:
+        return bool(self.audiences)
+
+    @property
+    def description(self) -> str:
+        return self.name if self.configured else f"{self.name} (UNCONFIGURED — all requests refused)"
+
+    @staticmethod
+    def _extract(headers: Mapping[str, str]) -> str | None:
+        token = (headers.get(GoogleIdTokenIdentityProvider.USER_HEADER) or "").strip()
+        if token:
+            return token
+        auth = (headers.get("authorization") or "").strip()
+        if auth.lower().startswith("bearer "):
+            return auth[7:].strip() or None
+        return None
+
+    def verify(self, token: str) -> dict | None:
+        """Claims of a Google-signed token whose audience is one of ours, else ``None``.
+        Separated so tests can substitute the verifier; production uses google-auth."""
+        from google.auth.transport import requests as google_requests
+        from google.oauth2 import id_token
+
+        request = google_requests.Request()
+        for audience in self.audiences:
+            try:
+                return id_token.verify_oauth2_token(token, request, audience=audience)
+            except Exception:  # noqa: BLE001 - any verification failure is "unauthenticated"
+                continue
+        return None
+
+    def authenticate(self, headers: Mapping[str, str], role_lookup) -> Principal | None:
+        if not self.audiences:
+            return None
+        token = self._extract(headers)
+        if not token:
+            return None
+        claims = self.verify(token)
+        if not claims:
+            return None
+        if claims.get("iss") not in ("https://accounts.google.com", "accounts.google.com"):
+            return None
+        email = (claims.get("email") or "").lower()
+        if not email or not claims.get("email_verified", False):
+            return None
+        role = role_lookup(email)
+        if role is None:
+            return Principal(email=email, role=UserRole.analyst, provider=self.name + ":unregistered")
+        return Principal(email=email, role=role, provider=self.name, display_name=claims.get("name"))

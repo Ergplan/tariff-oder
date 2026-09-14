@@ -15,10 +15,14 @@ locals {
     ARTEFACT_BUCKET      = local.bucket_names["artefacts"]
     EXPORT_BUCKET        = local.bucket_names["exports"]
     SECRETS_BACKEND      = "secret_manager"
-    IDENTITY_BACKEND     = "iap"
+    # With a domain: IAP assertions through the load balancer.  Without one (ADR-0015):
+    # Google-signed ID tokens, as minted by `gcloud run services proxy` for the operator and
+    # by the web service for itself; audiences are our own Cloud Run URLs in both forms.
+    IDENTITY_BACKEND = local.enable_lb == 1 ? "iap" : "google_id_token"
     # Two-phase: backend-service ids exist only after the first apply.  Copy the
     # `iap_audiences` output into envs/<env>.tfvars and apply again (docs/deployment.md).
     IAP_AUDIENCE         = join(",", var.iap_audiences)
+    ID_TOKEN_AUDIENCES   = join(",", local.id_token_audiences)
     LOG_FORMAT           = "json"
     JOB_LEASE_SECONDS    = tostring(var.job_lease_seconds)
     GOLDEN_MANIFEST_PATH = "/app/tests/golden/manifest.json"
@@ -27,6 +31,19 @@ locals {
 
 data "google_project" "this" {
   project_id = var.project_id
+}
+
+locals {
+  # Cloud Run gives every service two URLs: the deterministic
+  # https://<name>-<project number>.<region>.run.app and a per-project hashed
+  # https://<name>-<hash>-<rc>.a.run.app.  gcloud and the web service may mint tokens for
+  # either.  The API cannot reference its own resource, so its hashed form is derived from the
+  # web service's (the hash is per project).
+  run_base = "${data.google_project.this.number}.${var.region}.run.app"
+  id_token_audiences = [
+    "https://${local.name}-api-${local.run_base}",
+    "https://${local.name}-web-${local.run_base}",
+  ]
 }
 
 resource "google_cloud_run_v2_service" "api" {

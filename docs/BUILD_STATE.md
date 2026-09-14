@@ -29,11 +29,14 @@ open-access view.
   jobs; `make smoke-dev` reported `/readyz` HTTP 200: PostgreSQL 16.15, migration head
   `0009_publication`, pgvector 0.8.5, all three buckets reachable through the object-level
   probe (the first probe used bucket metadata and failed on the least-privilege service
-  account — fixed).  The first real order (NPCL) was registered through the admin job:
-  size 6,314,646 B matches the manifest; hash and page count are recorded by the ingest and
-  inventory outputs the operator holds.  **Still open in the M1 gate:** Cloud Logging
-  visibility and the backup/restore drill on Cloud SQL (Milestone 8 items), and the
-  post-deploy integration run.
+  account — fixed).  **All three real orders registered and read through localisation** by
+  the scheduled worker on 2026-09-14: SHA-256 and page counts equal the golden manifest
+  (NPCL 423, KERC 570, GERC 184 pages); each is at `localised`, the reviewer checkpoint.
+  The manifest check reports a mismatch on NPCL and GERC on a field other than size or
+  pages (the text-layer count is the candidate; the detail is in `sources --json` after the
+  next deploy) — recorded, not yet explained.  **Still open in the M1 gate:** Cloud Logging
+  is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
+  Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**
   (a) page triage: classification, text-layer quality, printed-label maps, immutable stage
   artefacts, resumable and re-runnable.  (b) parse: tesseract OCR on the pages triage routed
@@ -101,6 +104,13 @@ open-access view.
   outlines, header/row-path reconstruction, continuation inheritance, merged-cell expansion,
   unit binding, footnotes, the normalisation module and the 6.1 structure/value fixtures — is
   next.
+- **Reviewer access without a domain (ADR-0015, increment 13):** the API's `google_id_token`
+  identity adapter (verified Google ID tokens, exact audiences = our Cloud Run URLs, roles
+  from `users`), the web service forwarding the user token and minting its own service
+  token, Terraform selecting the adapter by the presence of a domain, and the
+  proxy-over-SSH runbook in `docs/deployment.md`.  Unit-tested with a substituted verifier;
+  **not yet exercised against the deployment** (needs the next `make tf-apply` + deploy and
+  the reviewer's own Google sign-in on the VM).
 - **No provider connection, no extracted number exists.**  The only reviewer decisions that
   exist are localisation confirmations on synthetic fixtures made by the test harness's
   reviewer user; no real-source region has been confirmed by anyone.

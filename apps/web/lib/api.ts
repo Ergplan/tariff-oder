@@ -22,11 +22,48 @@ export class ApiError extends Error {
   }
 }
 
+/**
+ * Service-to-service identity for the API call itself (gcp profile).  Cloud Run's front door
+ * requires an invoker token; the metadata server mints one for the web service account with
+ * the API URL as audience.  Cached until shortly before expiry.  Never used as the user's
+ * identity: the API reads the user from the forwarded headers below.
+ */
+let s2sToken: { value: string; expiresAt: number } | null = null;
+
+async function serviceToken(): Promise<string | null> {
+  if (PROFILE !== "gcp") return null;
+  const now = Date.now();
+  if (s2sToken && s2sToken.expiresAt > now + 60_000) return s2sToken.value;
+  try {
+    const res = await fetch(
+      `http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity?audience=${encodeURIComponent(API_BASE)}&format=full`,
+      { headers: { "Metadata-Flavor": "Google" }, cache: "no-store", signal: AbortSignal.timeout(3000) },
+    );
+    if (!res.ok) return null;
+    const value = (await res.text()).trim();
+    // ID tokens from the metadata server last 60 minutes; refresh after 50.
+    s2sToken = { value, expiresAt: now + 50 * 60_000 };
+    return value;
+  } catch {
+    return null;
+  }
+}
+
 export async function identityHeaders(): Promise<Record<string, string>> {
   const h = await headers();
   if (PROFILE === "gcp") {
+    const out: Record<string, string> = {};
+    // Behind a load balancer: IAP's assertion identifies the user.
     const assertion = h.get("x-goog-iap-jwt-assertion");
-    return assertion ? { "x-goog-iap-jwt-assertion": assertion } : {};
+    if (assertion) out["x-goog-iap-jwt-assertion"] = assertion;
+    // Without a domain (ADR-0015): the user's Google ID token arrives as the Authorization
+    // bearer (gcloud run services proxy); it is forwarded as the user identity, while the
+    // call itself carries the web service's own token.
+    const auth = h.get("authorization");
+    if (auth && auth.toLowerCase().startsWith("bearer ")) out["X-User-Id-Token"] = auth.slice(7).trim();
+    const svc = await serviceToken();
+    if (svc) out.Authorization = `Bearer ${svc}`;
+    return out;
   }
   const user = process.env.LOCAL_WEB_USER;
   return user ? { "X-Local-User": user } : {};

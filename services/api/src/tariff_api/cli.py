@@ -230,7 +230,7 @@ def cmd_sources(args: argparse.Namespace) -> int:
     from sqlalchemy import select
 
     from .db import session_scope
-    from .models import Job, SourceDocument
+    from .models import Job, SourceDocument, SourcePage
 
     _adapters()
     with session_scope() as s:
@@ -250,6 +250,21 @@ def cmd_sources(args: argparse.Namespace) -> int:
                     "page_count": src.page_count,
                     "golden_id": src.golden_id,
                     "manifest_all_match": (src.manifest_check or {}).get("all_match"),
+                    "manifest_check": src.manifest_check if args.json else None,
+                    "pages_with_text": src.pages_with_text,
+                    "pages_without_text": src.pages_without_text,
+                    "pages_without_text_layer": (
+                        [
+                            p.page_index
+                            for p in s.execute(
+                                select(SourcePage.page_index)
+                                .where(SourcePage.source_id == src.id, SourcePage.has_text_layer.is_(False))
+                                .order_by(SourcePage.page_index)
+                            ).scalars()
+                        ]
+                        if args.json
+                        else None
+                    ),
                     "latest_job": (
                         {
                             "id": str(job.id),

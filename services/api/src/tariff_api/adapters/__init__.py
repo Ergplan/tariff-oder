@@ -14,7 +14,7 @@ from ..config import (
     Settings,
     StorageBackend,
 )
-from .identity import IapIdentityProvider, IdentityProvider, LocalIdentityProvider
+from .identity import GoogleIdTokenIdentityProvider, IapIdentityProvider, IdentityProvider, LocalIdentityProvider
 from .secrets import EnvSecretProvider, SecretManagerProvider, SecretProvider
 from .storage import FilesystemObjectStore, GcsObjectStore, ObjectStore
 
@@ -65,7 +65,11 @@ def build_adapters(settings: Settings, *, include_identity: bool = True) -> Adap
                 allowlist=settings.allowlist_entries(),
             )
         else:
-            identity = IapIdentityProvider(audience=settings.iap_audience)
+            identity = (
+                GoogleIdTokenIdentityProvider(audiences=settings.id_token_audiences)
+                if settings.identity_backend == IdentityBackend.google_id_token
+                else IapIdentityProvider(audience=settings.iap_audience)
+            )
 
     return Adapters(storage=storage, secrets=secrets, identity=identity)
 
