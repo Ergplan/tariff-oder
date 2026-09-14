@@ -168,6 +168,11 @@ gcloud projects add-iam-policy-binding tariff-order-parsing \
 # or --member=user:<the account shown active by `gcloud auth list`>
 ```
 
+If the apply stops on `google_sql_database_instance.pg` with `Invalid Tier (db-custom-…) for
+(ENTERPRISE_PLUS) Edition`, the configuration predates the explicit
+`edition = "ENTERPRISE"` in `sql.tf`; pull and re-run.  Custom tiers exist only in the
+Enterprise edition; Enterprise Plus takes `db-perf-optimized-N-*` machine types.
+
 `make tf-apply` must finish with `Apply complete` before anything else: Cloud SQL alone takes
 around ten minutes, and an apply that stops on an error leaves the resources that had not
 started (Cloud Run services and jobs among them) uncreated.  `make tf-plan ENV=dev` after a

@@ -15,6 +15,9 @@ resource "google_sql_database_instance" "pg" {
   depends_on          = [google_service_networking_connection.psa]
 
   settings {
+    # Enterprise edition accepts the shared-core / custom tiers (db-custom-N-M); the API's
+    # default for POSTGRES_16 is Enterprise Plus, which only takes db-perf-optimized-N-*.
+    edition           = "ENTERPRISE"
     tier              = var.db_tier
     availability_type = var.db_availability_type
     disk_autoresize   = true
