@@ -295,14 +295,18 @@ admits the VM because it is in the same project.
 gcloud auth login --no-launch-browser venture@aayuda.energy     # copy the URL to a browser, paste the code back
 gcloud config set account venture@aayuda.energy
 
-# on the VM: proxy the web service on localhost:3000 with your identity token attached
-# (the VM's gcloud is apt-managed, so the proxy component is an apt package, not `gcloud components install`)
-sudo apt-get install -y google-cloud-cli-cloud-run-proxy
-gcloud run services proxy tariff-web --project tariff-order-parsing --region asia-south1 --port 3000
+# on the VM: proxy the web service on localhost:3000 with your identity token attached.
+# The VM's gcloud comes from Ubuntu's archive and cannot install the `cloud-run-proxy`
+# component, so the repository ships an equivalent (standard library only):
+make proxy-dev            # = scripts/run-proxy.py --service tariff-web --port 3000
 
 # on your laptop: tunnel, then open http://localhost:3000
 gcloud compute ssh tariff-order --zone asia-south2-b --project tariff-order-parsing -- -N -L 3000:localhost:3000
 ```
+
+A user's gcloud identity token names gcloud's OAuth client as its audience rather than a
+service URL, so that client id is part of the API's accepted audiences (Terraform,
+`local.gcloud_user_audience`); the role still comes only from `users`.
 
 Switch back to the build identity for Terraform and deploys with
 `gcloud config set account agent-builder@tariff-order-parsing.iam.gserviceaccount.com`.  The

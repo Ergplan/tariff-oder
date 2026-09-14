@@ -121,7 +121,10 @@ deploy-dev: ## Build, push, migrate and deploy to the dev project (same images a
 smoke-dev: ## Post-deploy checks against the dev project (readiness + authenticated status)
 	scripts/smoke-gcp.sh $(GCP_PROJECT) $(REGION)
 
+proxy-dev: ## Proxy the VPC-internal web service to localhost:3000 with the active gcloud identity (run on the VM, tunnel over SSH)
+	python3 scripts/run-proxy.py --service tariff-web --project $(GCP_PROJECT) --region $(REGION) --port 3000
+
 backup-dev: ## On-demand Cloud SQL backup + bucket copy (see docs/deployment.md)
 	scripts/backup-gcp.sh $(GCP_PROJECT) $(REGION)
 
-.PHONY: help install dev dev-down dev-reset migrate seed api worker web ephemeral-postgres test lint contracts contracts-check build-web fixtures tf-init tf-plan tf-apply build-images push-images bootstrap-dev deploy-dev smoke-dev backup-dev
+.PHONY: help install dev dev-down dev-reset migrate seed api worker web ephemeral-postgres test lint contracts contracts-check build-web fixtures tf-init tf-plan tf-apply build-images push-images bootstrap-dev deploy-dev smoke-dev proxy-dev backup-dev

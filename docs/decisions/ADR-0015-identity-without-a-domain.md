@@ -25,9 +25,12 @@ a DNS purchase.
 - Terraform selects the adapter from the presence of a domain: `iap` with a load balancer,
   `google_id_token` without.  Nothing else in the topology changes: ingress stays internal,
   no public endpoint exists, the VM reaches the services only because it is in the project.
-- The operator path is `gcloud run services proxy` on the VM, signed in as the reviewer's
-  own Google account, tunnelled to the laptop over SSH.  The build service account is never
-  a reviewer.
+- The operator path is a local proxy on the VM (`scripts/run-proxy.py`, the equivalent of
+  `gcloud run services proxy`, which the VM's apt-managed gcloud cannot install), signed in
+  as the reviewer's own Google account, tunnelled to the laptop over SSH.  A user account's
+  gcloud identity token names gcloud's OAuth client id as its audience, so that id is in the
+  accepted list alongside the service URLs; the role still comes only from `users`.  The
+  build service account is never a reviewer.
 
 ## Consequences
 

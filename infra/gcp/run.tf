@@ -40,9 +40,15 @@ locals {
   # either.  The API cannot reference its own resource, so its hashed form is derived from the
   # web service's (the hash is per project).
   run_base = "${data.google_project.this.number}.${var.region}.run.app"
+  # A token minted by `gcloud auth print-identity-token` for a *user* account names gcloud's
+  # own OAuth client as its audience (service accounts can name a URL; users cannot).  Cloud
+  # Run accepts it at the front door; the API accepts it too, and still takes the role only
+  # from the users table.
+  gcloud_user_audience = "32555940559.apps.googleusercontent.com"
   id_token_audiences = [
     "https://${local.name}-api-${local.run_base}",
     "https://${local.name}-web-${local.run_base}",
+    local.gcloud_user_audience,
   ]
 }
 
