@@ -122,6 +122,18 @@ class IapIdentityProvider(IdentityProvider):
             except Exception:  # noqa: BLE001 - any verification failure is "unauthenticated"
                 continue
         if claims is None:
+            # Diagnostic only: the unverified `aud` tells the operator which audience string
+            # IAP actually signs for this deployment (Cloud Run IAP and load-balancer IAP use
+            # different forms).  Nothing from an unverified token is ever trusted.
+            try:
+                from google.auth import jwt as google_jwt
+
+                observed = google_jwt.decode(assertion, verify=False).get("aud")
+            except Exception:  # noqa: BLE001
+                observed = None
+            logging.getLogger(__name__).warning(
+                "IAP assertion rejected", extra={"observed_aud": observed, "configured": self.audiences}
+            )
             return None
         email = (claims.get("email") or "").lower()
         if not email:
