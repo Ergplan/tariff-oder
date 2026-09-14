@@ -85,6 +85,14 @@ resource "google_logging_metric" "job_failed" {
   depends_on = [google_project_service.apis]
 }
 
+# A log-based metric is not queryable by the Monitoring API the moment it is created; the
+# first apply against the project failed here with "Cannot find metric(s) ... could take up
+# to 10 minutes".  Wait before the policy references it.  Creation-time only.
+resource "time_sleep" "job_failed_metric_indexed" {
+  depends_on      = [google_logging_metric.job_failed]
+  create_duration = "180s"
+}
+
 resource "google_monitoring_alert_policy" "job_failed" {
   display_name = "tariff-${var.environment} worker job failed"
   combiner     = "OR"
@@ -102,4 +110,5 @@ resource "google_monitoring_alert_policy" "job_failed" {
     }
   }
   notification_channels = [google_monitoring_notification_channel.email.id]
+  depends_on            = [time_sleep.job_failed_metric_indexed]
 }

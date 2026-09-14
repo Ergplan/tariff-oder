@@ -43,8 +43,13 @@ Terraform plan against the project and the image-bootstrap fix it exposed.
   the full apply; `ignore_changes` on the image attribute so a deploy never shows as drift
   and Terraform never rolls a service back to the bootstrap tag; `GCP_PROJECT` falls back to
   the tfvars value before any output exists.  `terraform fmt` + `validate`: clean.
+- `make bootstrap-dev` and the full apply ran on the VM: images pushed, everything created
+  except the last resource, the worker-failure alert policy, which Google rejected because the
+  log-based metric created seconds earlier was not yet queryable ("could take up to 10
+  minutes").  Fixed with a creation-time wait (`time_sleep`, 180 s) between the metric and the
+  policy; re-running the apply adds the policy.  Not yet re-applied.
 - The three real orders are in the bucket at the golden sizes (see below); registration
-  waits on the apply and deploy.
+  waits on `make deploy-dev`.
 
 ### Increment 5 (Milestone 2b: OCR, readers, grids, headings)
 
