@@ -120,8 +120,13 @@ open-access view.
   the operator does not use, so on the operator's explicit authorisation (2026-09-14) the
   web service gets IAP directly on Cloud Run (`web_iap = true`: public `run.app` URL behind
   Google sign-in for `iap_members`; API stays internal and verifies the IAP assertion).
-  The gcloud steps that switch IAP on are printed by Terraform.  **Not yet exercised**:
-  the apply and the sign-in are the operator's next step.
+  **Exercised on 2026-09-14**: the operator signed in through IAP at the web service's
+  `run.app` URL; `/status` reported `identity=iap`, database and storage ready, the operator
+  registered as administrator.  Three platform facts learned on the way, each recorded in
+  `docs/deployment.md`: a Terraform apply with the pinned provider clears the IAP flag (now
+  re-enabled by `make deploy-dev`); the web service's egress must be `ALL_TRAFFIC` for its
+  calls to reach the internal-only API; Cloud Run strips `x-goog-*` identity headers on
+  delivery, so the web service forwards the assertion as `X-Forwarded-IAP-Assertion`.
 - **No provider connection, no extracted number exists.**  The only reviewer decisions that
   exist are localisation confirmations on synthetic fixtures made by the test harness's
   reviewer user; no real-source region has been confirmed by anyone.
