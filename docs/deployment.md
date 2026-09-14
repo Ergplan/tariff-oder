@@ -296,6 +296,8 @@ gcloud auth login --no-launch-browser venture@aayuda.energy     # copy the URL t
 gcloud config set account venture@aayuda.energy
 
 # on the VM: proxy the web service on localhost:3000 with your identity token attached
+# (the VM's gcloud is apt-managed, so the proxy component is an apt package, not `gcloud components install`)
+sudo apt-get install -y google-cloud-cli-cloud-run-proxy
 gcloud run services proxy tariff-web --project tariff-order-parsing --region asia-south1 --port 3000
 
 # on your laptop: tunnel, then open http://localhost:3000
