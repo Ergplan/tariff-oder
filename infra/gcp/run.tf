@@ -18,10 +18,12 @@ locals {
     # With a domain: IAP assertions through the load balancer.  Without one (ADR-0015):
     # Google-signed ID tokens, as minted by `gcloud run services proxy` for the operator and
     # by the web service for itself; audiences are our own Cloud Run URLs in both forms.
-    IDENTITY_BACKEND = local.enable_lb == 1 ? "iap" : "google_id_token"
-    # Two-phase: backend-service ids exist only after the first apply.  Copy the
-    # `iap_audiences` output into envs/<env>.tfvars and apply again (docs/deployment.md).
-    IAP_AUDIENCE         = join(",", var.iap_audiences)
+    IDENTITY_BACKEND = (local.enable_lb == 1 || var.web_iap) ? "iap" : "google_id_token"
+    # Load balancer: backend-service ids exist only after the first apply (copy the
+    # `iap_audiences` output into envs/<env>.tfvars and apply again).  IAP directly on the
+    # Cloud Run web service (operator-authorised 2026-09-14): the audience is the web
+    # service's own resource path.
+    IAP_AUDIENCE         = join(",", concat(var.iap_audiences, var.web_iap ? [local.web_iap_audience] : []))
     ID_TOKEN_AUDIENCES   = join(",", local.id_token_audiences)
     LOG_FORMAT           = "json"
     JOB_LEASE_SECONDS    = tostring(var.job_lease_seconds)
@@ -45,6 +47,10 @@ locals {
   # Run accepts it at the front door; the API accepts it too, and still takes the role only
   # from the users table.
   gcloud_user_audience = "32555940559.apps.googleusercontent.com"
+  # IAP on a Cloud Run service signs assertions for the service's resource path.  The web
+  # service becomes reachable from the internet behind Google's sign-in; the API stays internal.
+  web_iap_audience = "/projects/${data.google_project.this.number}/locations/${var.region}/services/${local.name}-web"
+  web_ingress      = var.web_iap ? "INGRESS_TRAFFIC_ALL" : local.run_ingress
   id_token_audiences = [
     "https://${local.name}-api-${local.run_base}",
     "https://${local.name}-web-${local.run_base}",
@@ -123,7 +129,7 @@ resource "google_cloud_run_v2_service" "api" {
 resource "google_cloud_run_v2_service" "web" {
   name                = "${local.name}-web"
   location            = var.region
-  ingress             = local.run_ingress
+  ingress             = local.web_ingress
   deletion_protection = false
   labels              = local.labels
 

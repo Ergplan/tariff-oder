@@ -270,7 +270,32 @@ Cloud Run Job) rather than from your laptop.
 An IAP-authenticated user with no row in `users` receives `permission_denied` by design, so the
 first administrator is created through the admin job (`users,add,…` above).
 
-### Reviewing without a domain (ADR-0015)
+### Reviewer access from a browser: IAP directly on the web service (ADR-0015 addendum)
+
+Cloud Run can put Identity-Aware Proxy on a service without a load balancer or a domain:
+the service's own `run.app` URL becomes reachable from the internet, IAP shows a Google
+sign-in, and the signed assertion reaches the web app, which forwards it to the still
+VPC-internal API.  The operator authorised this posture change on 2026-09-14.
+`web_iap = true` in `envs/dev.tfvars` sets the web ingress to public and switches the API
+to the `iap` adapter with the Cloud Run audience
+`/projects/<number>/locations/<region>/services/tariff-web`.  The pinned Terraform provider
+has no field for the IAP switch itself, so after the apply run the printed gcloud steps:
+
+```bash
+make tf-plan tf-apply ENV=dev
+cd infra/gcp && terraform output -raw web_iap_commands     # run each printed line
+```
+
+The steps create IAP's service agent, let it invoke the web service, switch IAP on, and
+admit every principal in `iap_members`.  Then open the web URL in any browser and sign in.
+IAP grants *reachability*; the application role still comes only from `users`.  If IAP asks
+for an OAuth consent screen the first time, configure it in the console (user type
+Internal) and re-run the `--iap` line.  If sign-in succeeds but every page reports
+`unauthenticated`, the assertion's audience differs from the configured one: the API logs
+`IAP assertion rejected` with `observed_aud`; put that value into `iap_audiences` in the
+tfvars and apply again.
+
+### Reviewing through a proxy (fallback when web_iap is false)
 
 With no domain there is no load balancer and no IAP.  The API therefore runs the
 `google_id_token` identity adapter (Terraform sets it whenever `domain` is empty): it accepts a

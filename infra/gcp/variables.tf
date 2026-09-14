@@ -102,3 +102,9 @@ variable "job_lease_seconds" {
   type    = number
   default = 120
 }
+
+variable "web_iap" {
+  description = "Identity-Aware Proxy directly on the Cloud Run web service (no domain, no load balancer): the web URL becomes public behind a Google sign-in for var.iap_members; the API stays VPC-internal and verifies IAP assertions. IAP itself is switched on with gcloud (`terraform output web_iap_commands`) because the pinned provider predates that field. Operator-authorised 2026-09-14; ADR-0015."
+  type        = bool
+  default     = false
+}

@@ -42,3 +42,17 @@ a DNS purchase.
   Manager and Cloud Storage).
 - When a domain arrives the switch back to IAP is a Terraform variable, and the web service's
   forwarding already covers both headers.
+
+## Addendum (2026-09-14): IAP directly on the Cloud Run web service
+
+The proxy path needs a terminal on the reviewer's own machine; the operator works from the
+browser SSH console and Claude Code on the VM, so a plain URL is required.  Cloud Run's own
+IAP integration provides it without a domain: with `web_iap = true` the web service's
+`run.app` URL is reachable from the internet behind Google's sign-in, for the principals in
+`iap_members` only, while the API stays VPC-internal and verifies the forwarded IAP
+assertion (audience = the web service's resource path).  This is a deliberate change from
+ADR-0008's "no public ingress", authorised by the operator on 2026-09-14; IAP was always the
+intended gate once reachable.  The pinned provider (6.30) predates the `iap_enabled` field,
+so the switch itself is an idempotent gcloud step printed by `terraform output
+web_iap_commands`; a field the provider does not read cannot drift.  The `google_id_token`
+adapter and the proxy remain the fallback when `web_iap` is false.

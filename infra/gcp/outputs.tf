@@ -61,3 +61,18 @@ output "admin_job_usage" {
     "gcloud run jobs execute ${google_cloud_run_v2_job.admin.name} --project ${var.project_id} --region ${var.region} --wait",
   ])
 }
+
+output "web_iap_commands" {
+  description = "With var.web_iap: the gcloud steps that switch IAP on for the web service (the pinned provider has no field for it) and admit var.iap_members. Idempotent; re-run after any apply that changes the web service."
+  value = var.web_iap ? join("\n", concat(
+    [
+      "gcloud beta services identity create --service=iap.googleapis.com --project ${var.project_id}",
+      "gcloud run services add-iam-policy-binding ${local.name}-web --project ${var.project_id} --region ${var.region} --member=serviceAccount:service-${data.google_project.this.number}@gcp-sa-iap.iam.gserviceaccount.com --role=roles/run.invoker",
+      "gcloud beta run services update ${local.name}-web --project ${var.project_id} --region ${var.region} --iap",
+    ],
+    [for m in var.iap_members :
+      "gcloud beta iap web add-iam-policy-binding --project ${var.project_id} --resource-type=cloud-run --service=${local.name}-web --region=${var.region} --member=${m} --role=roles/iap.httpsResourceAccessor"
+    ],
+    ["echo open: ${google_cloud_run_v2_service.web.uri}"],
+  )) : "web_iap is false: no IAP on the web service"
+}

@@ -31,3 +31,8 @@ db_availability_type = "ZONAL"
 db_tier              = "db-custom-1-3840"
 deletion_protection  = false
 api_min_instances    = 0
+
+# IAP directly on the Cloud Run web service (ADR-0015 addendum, operator-authorised
+# 2026-09-14): a public URL with a Google sign-in for iap_members, no domain needed.  After
+# apply, run every line of `terraform output -raw web_iap_commands`.
+web_iap = true

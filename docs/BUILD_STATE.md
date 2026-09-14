@@ -116,9 +116,12 @@ open-access view.
   identity adapter (verified Google ID tokens, exact audiences = our Cloud Run URLs, roles
   from `users`), the web service forwarding the user token and minting its own service
   token, Terraform selecting the adapter by the presence of a domain, and the
-  proxy-over-SSH runbook in `docs/deployment.md`.  Unit-tested with a substituted verifier;
-  **not yet exercised against the deployment** (needs the next `make tf-apply` + deploy and
-  the reviewer's own Google sign-in on the VM).
+  proxy-over-SSH runbook in `docs/deployment.md`.  The proxy path needs a laptop terminal
+  the operator does not use, so on the operator's explicit authorisation (2026-09-14) the
+  web service gets IAP directly on Cloud Run (`web_iap = true`: public `run.app` URL behind
+  Google sign-in for `iap_members`; API stays internal and verifies the IAP assertion).
+  The gcloud steps that switch IAP on are printed by Terraform.  **Not yet exercised**:
+  the apply and the sign-in are the operator's next step.
 - **No provider connection, no extracted number exists.**  The only reviewer decisions that
   exist are localisation confirmations on synthetic fixtures made by the test harness's
   reviewer user; no real-source region has been confirmed by anyone.
