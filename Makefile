@@ -126,7 +126,18 @@ smoke-dev: ## Post-deploy checks against the dev project (readiness + authentica
 proxy-dev: ## Proxy the VPC-internal web service to localhost:3000 with the active gcloud identity (run on the VM, tunnel over SSH)
 	python3 scripts/run-proxy.py --service tariff-web --project $(GCP_PROJECT) --region $(REGION) --port 3000
 
+admin-dev: ## Run the tariff-api CLI inside the VPC: make admin-dev ARGS=inbox  (comma-separated, e.g. ARGS=users,add,--email,x@y,--role,administrator,--actor,x@y)
+	@test -n "$(ARGS)" || { echo "usage: make admin-dev ARGS=<comma-separated tariff-api arguments>"; exit 2; }
+	gcloud run jobs update tariff-admin --project $(GCP_PROJECT) --region $(REGION) --args=$(ARGS) --quiet
+	gcloud run jobs execute tariff-admin --project $(GCP_PROJECT) --region $(REGION) --wait
+
+drain-dev: ## Run the worker job until the queue is empty (each run drains what is queued; stages enqueue the next)
+	@for i in 1 2 3 4 5 6; do \
+	  gcloud run jobs execute tariff-worker --project $(GCP_PROJECT) --region $(REGION) --wait --quiet || exit 1; \
+	done
+	@echo "Worker ran 6 times. Check: make admin-dev ARGS=sources"
+
 backup-dev: ## On-demand Cloud SQL backup + bucket copy (see docs/deployment.md)
 	scripts/backup-gcp.sh $(GCP_PROJECT) $(REGION)
 
-.PHONY: help install dev dev-down dev-reset migrate seed api worker web ephemeral-postgres test lint contracts contracts-check build-web fixtures tf-init tf-plan tf-apply build-images push-images bootstrap-dev deploy-dev smoke-dev proxy-dev backup-dev
+.PHONY: help install dev dev-down dev-reset migrate seed api worker web ephemeral-postgres test lint contracts contracts-check build-web fixtures tf-init tf-plan tf-apply build-images push-images bootstrap-dev deploy-dev smoke-dev proxy-dev admin-dev drain-dev backup-dev

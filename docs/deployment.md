@@ -202,6 +202,10 @@ This is not a misconfiguration to route around — it is the intended blast radi
 Administrative work therefore runs as the `tariff-admin` Cloud Run Job, which is inside the
 VPC.  It runs the same `tariff-api` CLI that a developer runs locally:
 
+Shortcuts: `make admin-dev ARGS=<comma-separated arguments>` updates and runs the admin job in one
+step; `make drain-dev` runs the worker job six times in a row (each run drains what is queued and
+later stages enqueue the next).
+
 ```bash
 J="--project tariff-order-parsing --region asia-south1"
 gcloud run jobs update tariff-admin $J --args=<comma,separated,args>
