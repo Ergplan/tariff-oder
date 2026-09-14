@@ -229,10 +229,11 @@ def cmd_sources(args: argparse.Namespace) -> int:
     while the API is VPC-internal.  Read-only."""
     from sqlalchemy import select
 
+    from . import golden
     from .db import session_scope
     from .models import Job, SourceDocument, SourcePage
 
-    _adapters()
+    settings, _ = _adapters()
     with session_scope() as s:
         rows = s.execute(select(SourceDocument).order_by(SourceDocument.acquired_at)).scalars().all()
         out = []
@@ -240,6 +241,7 @@ def cmd_sources(args: argparse.Namespace) -> int:
             job = s.execute(
                 select(Job).where(Job.source_id == src.id).order_by(Job.created_at.desc()).limit(1)
             ).scalar_one_or_none()
+            check = golden.current_check(settings.golden_manifest_path, src)
             out.append(
                 {
                     "source_id": str(src.id),
@@ -249,8 +251,8 @@ def cmd_sources(args: argparse.Namespace) -> int:
                     "state_reason": src.state_reason,
                     "page_count": src.page_count,
                     "golden_id": src.golden_id,
-                    "manifest_all_match": (src.manifest_check or {}).get("all_match"),
-                    "manifest_check": src.manifest_check if args.json else None,
+                    "manifest_all_match": (check or {}).get("all_match"),
+                    "manifest_check": check if args.json else None,
                     "pages_with_text": src.pages_with_text,
                     "pages_without_text": src.pages_without_text,
                     "pages_without_text_layer": (

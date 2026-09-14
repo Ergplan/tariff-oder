@@ -60,7 +60,17 @@ open-access view.
   observations conflict with the label rule (table numbers read as labels) — the rule is
   right and the conflicts are listed, precision of the footer reader is a later fix.
   Admin-job commands `assign-profile` and `rerun` exist so the operator can bind profile
-  v2 and re-triage without the API.  **Still open in the M1 gate:** Cloud Logging
+  v2 and re-triage without the API.  **Verified on dev (2026-09-14, second look):** after
+  `rerun triage_source` the NPCL page shows rules@3 with 402–417 and 419–423 as
+  `image_only` (OCR'd, low-confidence pages flagged), profile `uperc-npcl@2` bound and the
+  localisation re-proposed with the same schedule regions and the banking cue now firing
+  only on "banked power" (p. 33) and "BANKING OF POWER" (p. 227).  (6) The manifest
+  verdict on the page was stale — it was frozen at inventory time against the manifest
+  baked into that image (expected 22 pages without text layer) after the manifest had
+  been corrected to 0 — so the source detail and `sources --json` now re-check the
+  persisted inventory facts against the current manifest on every read
+  (`golden.current_check`, unit-tested); the stored record stays as the registration-time
+  history.  **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**

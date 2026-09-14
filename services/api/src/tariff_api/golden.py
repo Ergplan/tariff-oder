@@ -43,3 +43,25 @@ def compare_inventory(entry: dict[str, Any], observed: dict[str, Any]) -> dict[s
             "match": exp_no_text == observed["pages_without_text"],
         }
     return {"golden_id": entry["id"], "checks": checks, "all_match": all(c["match"] for c in checks.values())}
+
+
+def current_check(path: str, src: Any) -> dict[str, Any] | None:
+    """Re-verify a registered source against the manifest as it is *now*.
+
+    The stored ``manifest_check`` is the record made at registration and inventory time; the
+    manifest is versioned with the code and its expectations can be corrected later (the NPCL
+    entry's text-layer count was).  Every read re-compares the persisted inventory facts with
+    the current manifest so the page never shows a stale verdict; the stored record is kept
+    as history and returned when the source is not in the manifest or not yet inventoried.
+    """
+    if not src.golden_id or src.page_count is None:
+        return src.manifest_check
+    entry = find_by_sha256(path, src.sha256)
+    if entry is None:
+        return src.manifest_check
+    observed: dict[str, Any] = {"size_bytes": src.size_bytes, "page_count": src.page_count}
+    if src.pages_without_text is not None:
+        observed["pages_without_text"] = src.pages_without_text
+    check = compare_inventory(entry, observed)
+    check["checked_at_read"] = True
+    return check

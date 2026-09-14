@@ -9,6 +9,7 @@ from fastapi import APIRouter, Depends, File, Form, Header, Query, Request, Resp
 from fastapi.responses import StreamingResponse
 from sqlalchemy import func, select
 
+from .. import golden
 from ..adapters.identity import Principal
 from ..adapters.storage import ObjectNotFound, ObjectStore
 from ..auth import require_admin, require_analyst, require_reviewer
@@ -252,7 +253,8 @@ def list_sources(
 
 
 @router.get("/{source_id}", response_model=SourceDetail, dependencies=[Depends(require_analyst)])
-def get_source(source_id: uuid.UUID) -> SourceDetail:
+def get_source(request: Request, source_id: uuid.UUID) -> SourceDetail:
+    settings = request.app.state.settings
     with session_scope() as s:
         src = svc.get_source(s, source_id)
         job = s.execute(select(Job).where(Job.source_id == src.id).order_by(Job.created_at.desc())).scalars().first()
@@ -327,7 +329,7 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
             inventory_tool=src.inventory_tool,
             inventory_tool_version=src.inventory_tool_version,
             inventoried_at=src.inventoried_at,
-            manifest_check=src.manifest_check,
+            manifest_check=golden.current_check(settings.golden_manifest_path, src),
             superseded_by_id=src.superseded_by_id,
             latest_job=job_summary(job),
             text_layer_summary=text_summary,
@@ -435,7 +437,7 @@ def assign_profile(
         loc.assign_profile(
             s, request.app.state.settings, src, body.profile_id, body.version, actor=principal.email, reason=body.reason
         )
-    return get_source(source_id)
+    return get_source(request, source_id)
 
 
 def _cell_out(c: StructureCell) -> StructureCellOut:
