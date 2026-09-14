@@ -23,7 +23,7 @@ locals {
     # `iap_audiences` output into envs/<env>.tfvars and apply again).  IAP directly on the
     # Cloud Run web service (operator-authorised 2026-09-14): the audience is the web
     # service's own resource path.
-    IAP_AUDIENCE         = join(",", concat(var.iap_audiences, var.web_iap ? [local.web_iap_audience] : []))
+    IAP_AUDIENCE         = join(",", concat(var.iap_audiences, var.web_iap ? local.web_iap_audiences : []))
     ID_TOKEN_AUDIENCES   = join(",", local.id_token_audiences)
     LOG_FORMAT           = "json"
     JOB_LEASE_SECONDS    = tostring(var.job_lease_seconds)
@@ -49,8 +49,14 @@ locals {
   gcloud_user_audience = "32555940559.apps.googleusercontent.com"
   # IAP on a Cloud Run service signs assertions for the service's resource path.  The web
   # service becomes reachable from the internet behind Google's sign-in; the API stays internal.
-  web_iap_audience = "/projects/${data.google_project.this.number}/locations/${var.region}/services/${local.name}-web"
-  web_ingress      = var.web_iap ? "INGRESS_TRAFFIC_ALL" : local.run_ingress
+  # Two candidate forms, both exact: the service resource path and the IAP web resource path
+  # that IAM reports for the service (`iap_web/cloud_run-<region>/services/<name>`).  The
+  # adapter logs the observed audience if neither matches.
+  web_iap_audiences = [
+    "/projects/${data.google_project.this.number}/locations/${var.region}/services/${local.name}-web",
+    "/projects/${data.google_project.this.number}/iap_web/cloud_run-${var.region}/services/${local.name}-web",
+  ]
+  web_ingress = var.web_iap ? "INGRESS_TRAFFIC_ALL" : local.run_ingress
   id_token_audiences = [
     "https://${local.name}-api-${local.run_base}",
     "https://${local.name}-web-${local.run_base}",

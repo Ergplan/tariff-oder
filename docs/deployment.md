@@ -287,7 +287,9 @@ cd infra/gcp && terraform output -raw web_iap_commands     # run each printed li
 ```
 
 The steps create IAP's service agent, let it invoke the web service, switch IAP on, and
-admit every principal in `iap_members`.  Then open the web URL in any browser and sign in.
+admit every principal in `iap_members`.  The last step needs `roles/iap.admin` on the
+identity running it (the build service account grants it to itself once:
+`gcloud projects add-iam-policy-binding tariff-order-parsing --member=serviceAccount:agent-builder@tariff-order-parsing.iam.gserviceaccount.com --role=roles/iap.admin`).  Then open the web URL in any browser and sign in.
 IAP grants *reachability*; the application role still comes only from `users`.  If IAP asks
 for an OAuth consent screen the first time, configure it in the console (user type
 Internal) and re-run the `--iap` line.  If sign-in succeeds but every page reports
