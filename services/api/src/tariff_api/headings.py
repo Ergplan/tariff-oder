@@ -18,7 +18,7 @@ from collections import Counter
 from dataclasses import asdict, dataclass
 from typing import Any
 
-HEADINGS_VERSION = "1"
+HEADINGS_VERSION = "2"
 
 _DASHES = re.compile(r"\s*[-–—]\s*")
 _WS = re.compile(r"\s+")
@@ -27,7 +27,11 @@ _WS = re.compile(r"\s+")
 PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     (
         "rate_schedule",
-        re.compile(r"^\s*RATE\s+SCHEDULE\s+(?P<code>[A-Z]{2,4}\s*[-–—]?\s*\d{1,2}[A-Za-z0-9()\s]*?)\s*$", re.I),
+        re.compile(
+            r"^\s*RATE\s+SCHEDULE\s+(?P<code>[A-Z]{2,4}\s*[-–—]?\s*\d{1,2}[A-Za-z0-9()\s]*?)"
+            r"\s*(?:\(?\s*(?:continued|contd\.?|cont\.)\s*\)?)?\s*$",
+            re.I,
+        ),
     ),
     (
         "tariff_schedule",
@@ -53,6 +57,9 @@ def canonical_code(kind: str, raw: str | None) -> str | None:
     if raw is None:
         return None
     s = _WS.sub(" ", raw).strip().upper()
+    # v2: a continuation marker on a repeated heading (`LMV-1 (continued)`, `(Contd.)`) is
+    # not part of the code — the page continues the same schedule
+    s = re.sub(r"\s*\(?\s*(CONTINUED|CONTD\.?|CONT\.)\s*\)?\s*$", "", s)
     s = _DASHES.sub("-", s)
     s = re.sub(r"\s*\(\s*", "(", s)
     s = re.sub(r"\s*\)\s*", ")", s)

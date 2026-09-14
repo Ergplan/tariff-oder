@@ -143,6 +143,259 @@
         "title": "CancelResult",
         "type": "object"
       },
+      "CandidateList": {
+        "properties": {
+          "candidates": {
+            "items": {
+              "$ref": "#/components/schemas/CandidateOut"
+            },
+            "title": "Candidates",
+            "type": "array"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "integer"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "integer"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "candidates",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "title": "CandidateList",
+        "type": "object"
+      },
+      "CandidateOut": {
+        "properties": {
+          "blocking_finding_count": {
+            "title": "Blocking Finding Count",
+            "type": "integer"
+          },
+          "candidate_key": {
+            "title": "Candidate Key",
+            "type": "string"
+          },
+          "category_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Code"
+          },
+          "channel_agreement": {
+            "title": "Channel Agreement",
+            "type": "string"
+          },
+          "component_type": {
+            "title": "Component Type",
+            "type": "string"
+          },
+          "confidence": {
+            "title": "Confidence",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "decision_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decision Status"
+          },
+          "disagreeing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Disagreeing Fields",
+            "type": "array"
+          },
+          "extraction_version": {
+            "title": "Extraction Version",
+            "type": "string"
+          },
+          "family": {
+            "title": "Family",
+            "type": "string"
+          },
+          "finding_count": {
+            "title": "Finding Count",
+            "type": "integer"
+          },
+          "frequency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Frequency"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "image_record": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Record"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "per_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Per Unit"
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period"
+          },
+          "record": {
+            "additionalProperties": true,
+            "title": "Record",
+            "type": "object"
+          },
+          "review_status": {
+            "title": "Review Status",
+            "type": "string"
+          },
+          "risk_tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Risk Tags",
+            "type": "array"
+          },
+          "routing": {
+            "title": "Routing",
+            "type": "string"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "utility": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "value_state": {
+            "title": "Value State",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "source_id",
+          "candidate_key",
+          "family",
+          "category_code",
+          "component_type",
+          "value",
+          "value_state",
+          "currency",
+          "per_unit",
+          "frequency",
+          "decision_status",
+          "period",
+          "utility",
+          "record",
+          "image_record",
+          "channel_agreement",
+          "disagreeing_fields",
+          "confidence",
+          "risk_tags",
+          "routing",
+          "review_status",
+          "is_fixture",
+          "finding_count",
+          "blocking_finding_count",
+          "extraction_version",
+          "version",
+          "created_at"
+        ],
+        "title": "CandidateOut",
+        "type": "object"
+      },
       "ClauseValueList": {
         "properties": {
           "total": {
@@ -446,6 +699,81 @@
         "title": "DatasetKind",
         "type": "string"
       },
+      "DispositionOut": {
+        "properties": {
+          "decided_at": {
+            "format": "date-time",
+            "title": "Decided At",
+            "type": "string"
+          },
+          "decided_by": {
+            "title": "Decided By",
+            "type": "string"
+          },
+          "disposition": {
+            "title": "Disposition",
+            "type": "string"
+          },
+          "family": {
+            "title": "Family",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "rationale": {
+            "title": "Rationale",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "family",
+          "disposition",
+          "rationale",
+          "decided_by",
+          "decided_at"
+        ],
+        "title": "DispositionOut",
+        "type": "object"
+      },
+      "DispositionRequest": {
+        "properties": {
+          "disposition": {
+            "enum": [
+              "absent_in_source",
+              "out_of_scope",
+              "not_a_tariff_category"
+            ],
+            "title": "Disposition",
+            "type": "string"
+          },
+          "family": {
+            "title": "Family",
+            "type": "string"
+          },
+          "pages_viewed": {
+            "title": "Pages Viewed",
+            "type": "boolean"
+          },
+          "rationale": {
+            "maxLength": 2000,
+            "minLength": 5,
+            "title": "Rationale",
+            "type": "string"
+          }
+        },
+        "required": [
+          "family",
+          "disposition",
+          "rationale",
+          "pages_viewed"
+        ],
+        "title": "DispositionRequest",
+        "type": "object"
+      },
       "ErrorResponse": {
         "properties": {
           "detail": {
@@ -506,6 +834,342 @@
           "severity"
         ],
         "title": "ErrorResponse",
+        "type": "object"
+      },
+      "ExtractionRunList": {
+        "properties": {
+          "fixture_runs": {
+            "title": "Fixture Runs",
+            "type": "integer"
+          },
+          "real_runs": {
+            "title": "Real Runs",
+            "type": "integer"
+          },
+          "runs": {
+            "items": {
+              "$ref": "#/components/schemas/ExtractionRunOut"
+            },
+            "title": "Runs",
+            "type": "array"
+          },
+          "total_cost_usd": {
+            "title": "Total Cost Usd",
+            "type": "number"
+          }
+        },
+        "required": [
+          "runs",
+          "total_cost_usd",
+          "fixture_runs",
+          "real_runs"
+        ],
+        "title": "ExtractionRunList",
+        "type": "object"
+      },
+      "ExtractionRunOut": {
+        "properties": {
+          "candidates_returned": {
+            "title": "Candidates Returned",
+            "type": "integer"
+          },
+          "channel": {
+            "title": "Channel",
+            "type": "string"
+          },
+          "cost_usd": {
+            "title": "Cost Usd",
+            "type": "number"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "input_hash": {
+            "title": "Input Hash",
+            "type": "string"
+          },
+          "input_tokens": {
+            "title": "Input Tokens",
+            "type": "integer"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "output_tokens": {
+            "title": "Output Tokens",
+            "type": "integer"
+          },
+          "prompt_version": {
+            "title": "Prompt Version",
+            "type": "string"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "region_ordinal": {
+            "title": "Region Ordinal",
+            "type": "integer"
+          },
+          "schema_version": {
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "title": "Started At",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "region_ordinal",
+          "channel",
+          "provider",
+          "model",
+          "prompt_version",
+          "schema_version",
+          "is_fixture",
+          "input_hash",
+          "input_tokens",
+          "output_tokens",
+          "cost_usd",
+          "status",
+          "error",
+          "candidates_returned",
+          "started_at",
+          "finished_at"
+        ],
+        "title": "ExtractionRunOut",
+        "type": "object"
+      },
+      "ExtractionSummary": {
+        "properties": {
+          "by_agreement": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Agreement",
+            "type": "object"
+          },
+          "by_confidence": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Confidence",
+            "type": "object"
+          },
+          "by_family": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Family",
+            "type": "object"
+          },
+          "by_routing": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Routing",
+            "type": "object"
+          },
+          "candidates": {
+            "title": "Candidates",
+            "type": "integer"
+          },
+          "cost_usd": {
+            "title": "Cost Usd",
+            "type": "number"
+          },
+          "extracted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extracted At"
+          },
+          "extraction_version": {
+            "title": "Extraction Version",
+            "type": "string"
+          },
+          "image_channel": {
+            "title": "Image Channel",
+            "type": "boolean"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "new_profile": {
+            "title": "New Profile",
+            "type": "boolean"
+          },
+          "prompt_version": {
+            "title": "Prompt Version",
+            "type": "string"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "risk_tags": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Risk Tags",
+            "type": "object"
+          },
+          "runs": {
+            "title": "Runs",
+            "type": "integer"
+          },
+          "runs_failed": {
+            "title": "Runs Failed",
+            "type": "integer"
+          },
+          "schema_version": {
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "tokens": {
+            "title": "Tokens",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "extraction_version",
+          "provider",
+          "model",
+          "is_fixture",
+          "prompt_version",
+          "schema_version",
+          "runs",
+          "runs_failed",
+          "cost_usd",
+          "tokens",
+          "candidates",
+          "by_family",
+          "by_confidence",
+          "by_agreement",
+          "by_routing",
+          "risk_tags",
+          "image_channel",
+          "new_profile",
+          "extracted_at"
+        ],
+        "title": "ExtractionSummary",
+        "type": "object"
+      },
+      "FindingList": {
+        "properties": {
+          "findings": {
+            "items": {
+              "$ref": "#/components/schemas/FindingOut"
+            },
+            "title": "Findings",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "findings",
+          "total"
+        ],
+        "title": "FindingList",
+        "type": "object"
+      },
+      "FindingOut": {
+        "properties": {
+          "candidate_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Candidate Ids",
+            "type": "array"
+          },
+          "detail": {
+            "additionalProperties": true,
+            "title": "Detail",
+            "type": "object"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "severity": {
+            "title": "Severity",
+            "type": "string"
+          },
+          "validator_id": {
+            "title": "Validator Id",
+            "type": "string"
+          },
+          "validators_version": {
+            "title": "Validators Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "validator_id",
+          "severity",
+          "message",
+          "candidate_ids",
+          "detail",
+          "validators_version"
+        ],
+        "title": "FindingOut",
         "type": "object"
       },
       "HeadingList": {
@@ -1920,6 +2584,79 @@
         "title": "RegistryOut",
         "type": "object"
       },
+      "ReviewQueue": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewQueueItem"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "total_pending": {
+            "title": "Total Pending",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total_pending"
+        ],
+        "title": "ReviewQueue",
+        "type": "object"
+      },
+      "ReviewQueueItem": {
+        "properties": {
+          "batch": {
+            "title": "Batch",
+            "type": "integer"
+          },
+          "blocked": {
+            "title": "Blocked",
+            "type": "integer"
+          },
+          "dataset_kind": {
+            "$ref": "#/components/schemas/DatasetKind"
+          },
+          "individual": {
+            "title": "Individual",
+            "type": "integer"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "original_filename": {
+            "title": "Original Filename",
+            "type": "string"
+          },
+          "pending": {
+            "title": "Pending",
+            "type": "integer"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/SourceState"
+          }
+        },
+        "required": [
+          "source_id",
+          "original_filename",
+          "dataset_kind",
+          "state",
+          "pending",
+          "individual",
+          "batch",
+          "blocked",
+          "is_fixture"
+        ],
+        "title": "ReviewQueueItem",
+        "type": "object"
+      },
       "SourceDetail": {
         "properties": {
           "acquired_at": {
@@ -1956,6 +2693,16 @@
           },
           "dataset_kind": {
             "$ref": "#/components/schemas/DatasetKind"
+          },
+          "extraction": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ExtractionSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "fonts_not_embedded": {
             "anyOf": [
@@ -2248,6 +2995,16 @@
             "title": "Uploaded By",
             "type": "string"
           },
+          "validation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ValidationSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "version": {
             "title": "Version",
             "type": "integer"
@@ -2292,6 +3049,8 @@
           "reading_profile",
           "localisation",
           "structure",
+          "extraction",
+          "validation",
           "artefacts"
         ],
         "title": "SourceDetail",
@@ -2924,7 +3683,9 @@
               "triage_source",
               "parse_source",
               "localise_source",
-              "grid_source"
+              "grid_source",
+              "extract_source",
+              "validate_source"
             ],
             "title": "Job Type",
             "type": "string"
@@ -3781,6 +4542,92 @@
         ],
         "title": "UtilityOut",
         "type": "object"
+      },
+      "ValidationSummary": {
+        "properties": {
+          "by_severity": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Severity",
+            "type": "object"
+          },
+          "by_validator": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Validator",
+            "type": "object"
+          },
+          "candidates_blocked": {
+            "title": "Candidates Blocked",
+            "type": "integer"
+          },
+          "candidates_with_findings": {
+            "title": "Candidates With Findings",
+            "type": "integer"
+          },
+          "confidence": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Confidence",
+            "type": "object"
+          },
+          "families_without_disposition": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Families Without Disposition",
+            "type": "array"
+          },
+          "findings": {
+            "title": "Findings",
+            "type": "integer"
+          },
+          "routing": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Routing",
+            "type": "object"
+          },
+          "source_level_findings": {
+            "title": "Source Level Findings",
+            "type": "integer"
+          },
+          "validated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Validated At"
+          },
+          "validators_version": {
+            "title": "Validators Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "validators_version",
+          "findings",
+          "by_severity",
+          "by_validator",
+          "candidates_with_findings",
+          "candidates_blocked",
+          "source_level_findings",
+          "families_without_disposition",
+          "routing",
+          "confidence",
+          "validated_at"
+        ],
+        "title": "ValidationSummary",
+        "type": "object"
       }
     }
   },
@@ -3929,6 +4776,109 @@
         "summary": "List Audit",
         "tags": [
           "registry"
+        ]
+      }
+    },
+    "/candidates/{candidate_id}": {
+      "get": {
+        "operationId": "get_candidate_candidates__candidate_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "candidate_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Candidate Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CandidateOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Get Candidate",
+        "tags": [
+          "candidates"
         ]
       }
     },
@@ -4742,6 +5692,116 @@
         ]
       }
     },
+    "/review/queue": {
+      "get": {
+        "description": "Sources with pending candidates, with the individual / batch split (Section 6.10).\nFixture sources are listed with their flag and never mixed into real counts.",
+        "operationId": "review_queue_review_queue_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "dataset_kind",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dataset Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewQueue"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Review Queue",
+        "tags": [
+          "candidates"
+        ]
+      }
+    },
     "/sources": {
       "get": {
         "operationId": "list_sources_sources_get",
@@ -5341,6 +6401,551 @@
         ]
       }
     },
+    "/sources/{source_id}/candidates": {
+      "get": {
+        "operationId": "list_candidates_sources__source_id__candidates_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "family",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Family"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            }
+          },
+          {
+            "in": "query",
+            "name": "routing",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Routing"
+            }
+          },
+          {
+            "in": "query",
+            "name": "confidence",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Confidence"
+            }
+          },
+          {
+            "in": "query",
+            "name": "risk",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Risk"
+            }
+          },
+          {
+            "in": "query",
+            "name": "review_status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Review Status"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 2000,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CandidateList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Candidates",
+        "tags": [
+          "candidates"
+        ]
+      }
+    },
+    "/sources/{source_id}/dispositions": {
+      "get": {
+        "operationId": "list_dispositions_sources__source_id__dispositions_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DispositionOut"
+                  },
+                  "title": "Response List Dispositions Sources  Source Id  Dispositions Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Dispositions",
+        "tags": [
+          "candidates"
+        ]
+      },
+      "put": {
+        "description": "A reviewer records that a charge family is not decided by this order (Section 6.9,\nnetwork-charge completeness).  Audited; the next validation run reads it.",
+        "operationId": "set_disposition_sources__source_id__dispositions_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DispositionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DispositionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Set Disposition",
+        "tags": [
+          "candidates"
+        ]
+      }
+    },
+    "/sources/{source_id}/extraction-runs": {
+      "get": {
+        "description": "Provider telemetry per run: provider, model, prompt and schema versions, tokens, cost;\nfixture and real runs are counted separately and never summed together.",
+        "operationId": "list_runs_sources__source_id__extraction_runs_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractionRunList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Runs",
+        "tags": [
+          "candidates"
+        ]
+      }
+    },
     "/sources/{source_id}/file": {
       "get": {
         "description": "Authorized access to the immutable bytes.  No signed or public URL exists.",
@@ -5440,6 +7045,141 @@
         "summary": "Get File",
         "tags": [
           "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/findings": {
+      "get": {
+        "operationId": "list_findings_sources__source_id__findings_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "severity",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Severity"
+            }
+          },
+          {
+            "in": "query",
+            "name": "validator",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Validator"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FindingList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Findings",
+        "tags": [
+          "candidates"
         ]
       }
     },

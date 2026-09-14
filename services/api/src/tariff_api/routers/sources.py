@@ -32,6 +32,7 @@ from ..models import (
 from ..schemas import (
     ClauseValueList,
     ClauseValueOut,
+    ExtractionSummary,
     HeadingList,
     HeadingOut,
     InboxList,
@@ -59,6 +60,7 @@ from ..schemas import (
     TableGridList,
     TableGridOut,
     TriageSummary,
+    ValidationSummary,
 )
 from ..services import localisation as loc
 from ..services import sources as svc
@@ -346,6 +348,12 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
             localisation=_localisation_summary(s, src),
             structure=StructureSummary(**src.structure_summary, gridded_at=src.gridded_at)
             if src.structure_summary
+            else None,
+            extraction=ExtractionSummary(**src.extraction_summary, extracted_at=src.extracted_at)
+            if src.extraction_summary
+            else None,
+            validation=ValidationSummary(**src.validation_summary, validated_at=src.validated_at)
+            if src.validation_summary
             else None,
             artefacts=[StageArtefactOut.model_validate(a, from_attributes=True) for a in artefacts if a.page_index == 0]
             + [

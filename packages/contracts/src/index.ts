@@ -37,6 +37,13 @@ export type StructureCellList = Schemas["StructureCellList"];
 export type StructureCellOut = Schemas["StructureCellOut"];
 export type ClauseValueList = Schemas["ClauseValueList"];
 export type ClauseValueOut = Schemas["ClauseValueOut"];
+export type CandidateOut = Schemas["CandidateOut"];
+export type CandidateList = Schemas["CandidateList"];
+export type FindingList = Schemas["FindingList"];
+export type ReviewQueue = Schemas["ReviewQueue"];
+export type ExtractionSummary = Schemas["ExtractionSummary"];
+export type ValidationSummary = Schemas["ValidationSummary"];
+export type ExtractionRunList = Schemas["ExtractionRunList"];
 
 /** Pipeline states of Section 6.2, in order; terminal/exception states listed separately. */
 export const PIPELINE_STATES: SourceState[] = [

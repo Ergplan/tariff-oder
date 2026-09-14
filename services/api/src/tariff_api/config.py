@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import enum
 from functools import lru_cache
+from typing import Literal
 
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -81,6 +82,20 @@ class Settings(BaseSettings):
 
     # Provenance / evaluation
     golden_manifest_path: str = "tests/golden/manifest.json"
+
+    # Extraction provider (Section 6.8) and cost limits (Section 6.13).  `fixture` is the
+    # default everywhere: a real provider run needs an explicit backend and a key in the
+    # secrets adapter, and is reported separately from fixture runs.
+    provider_backend: Literal["fixture", "anthropic"] = "fixture"
+    anthropic_model: str = "claude-sonnet-5"
+    provider_price_in_per_mtok: float = 3.0
+    provider_price_out_per_mtok: float = 15.0
+    provider_timeout_seconds: float = 120.0
+    provider_fixture_perturbations_path: str | None = None
+    image_channel_enabled: bool = True
+    image_channel_dpi: int = 110
+    provider_max_cost_per_order_usd: float = 5.0
+    provider_max_tokens_per_order: int = 2_000_000
 
     # Telemetry
     log_format: str = "json"  # json | text

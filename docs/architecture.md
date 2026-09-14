@@ -1,4 +1,4 @@
-# Architecture (as implemented through Milestone 3b)
+# Architecture (as implemented through Milestone 4a)
 
 The governing design is Section 4 of the specification.  This document records what exists.
 
@@ -74,6 +74,17 @@ Rows land in `structure_cells` / `clause_values`; artefacts under `<sha>/grid/<t
 `GET /sources/{id}/structure/cells` (filters: page, unresolved, flag) and
 `/structure/clauses` (category, kind) expose them; the detail page shows the integrity
 summary, the unresolved cells and the clause outline (ADR-0011).
+
+## Extraction and validation (Milestone 4a)
+
+`gridded -> extracted`: for each approved region the structure channel receives the serialised
+cells/clauses and the image channel the page images, both through the provider adapter
+(`fixture` by default; `anthropic` with a key); prose decisions come from the network-charge
+regions; channels are compared field by field and every candidate gets confidence, risk tags
+and a routing.  `extracted -> validated -> awaiting_review`: the deterministic validators run,
+findings attach, affected candidates go to individual review.  Endpoints:
+`/sources/{id}/candidates`, `/candidates/{id}`, `/sources/{id}/findings`,
+`/sources/{id}/extraction-runs`, `/review/queue`, `/sources/{id}/dispositions` (ADR-0012).
 
 ## Profiles
 

@@ -6,7 +6,9 @@ Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and buc
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
 Terraform plan against the project and the image-bootstrap fix it exposed; (7) Milestone 3a —
 reading profiles as data and the localisation stage with its reviewer checkpoint; (8) Milestone
-3b — normalisation, clause outlines, grid integrity and the gated structure stage.
+3b — normalisation, clause outlines, grid integrity and the gated structure stage; (9) Milestone
+4a — candidate schema, provider adapter with fixture mode, dual-channel extraction,
+validators, routing and the review queue.
 
 ## Current milestone and status
 
@@ -27,6 +29,17 @@ reading profiles as data and the localisation stage with its reviewer checkpoint
   within Milestone 2:** grids from OCR word boxes are not attempted (flagged
   `grid_from_ocr_pending`, listed for review); Docling is not measured; the three real orders
   have not been run because their bytes are not in this environment.
+- **Milestone 4 — part (a) implemented and tested under the `local` profile with the fixture
+  provider.**  Versioned candidate schema; provider adapter (fixture + Anthropic Messages
+  API path, the latter written but never run: no credentials here); structure and image
+  channels per approved region; prose decisions for network-charge families; comparison,
+  confidence, risk tags and routing; validators VAL-01–04, 06, 08–11, 13, 15, 17, 18 with
+  fixtures; the review queue and family dispositions.  **Not built:** derivation checks,
+  amendment consistency, cross-representation agreement, temporal consistency,
+  rate-condition links (they need network-charge grids, schedule versions and condition
+  records); the live model channel is unexercised; **no real provider run has happened**.
+  The Milestone 4 gate's "every charge family has candidates or a reviewed disposition for
+  each supplied order" is blocked on the real orders and on a reviewer.
 - **Milestone 3 — parts (a) and (b) implemented and tested under the `local` profile.**  (b)
   adds the versioned normalisation module, clause-outline reconstruction, grid integrity
   (header/row paths, continuation, merged cells, unit binding with source, footnotes) and
@@ -44,6 +57,39 @@ reading profiles as data and the localisation stage with its reviewer checkpoint
 - **No provider connection, no extracted number exists.**  The only reviewer decisions that
   exist are localisation confirmations on synthetic fixtures made by the test harness's
   reviewer user; no real-source region has been confirmed by anyone.
+
+### Increment 9 (Milestone 4a: candidates, validators, routing)
+
+- `tariff_api.tariff_schema` (schema v1): `Candidate` with exact decimal strings, original
+  text, `value_state` on every numeric field, `decision_status` on network families,
+  applicability dimensions (slab/load band with basis, season, time band, metering type,
+  consumer class, alternative, rate block, description), conditions as text, evidence
+  (cell: page/grid/row/col + header and row paths; clause: page/line + clause path; prose)
+  with the exact excerpt; `ExtractionOutput` with `missing`.  The same model is the tool
+  schema handed to a provider.
+- `tariff_api.extraction` (rules v1, prompt v1): serialised structure input that declares
+  all text as data; deterministic rules structure → candidates (cells and clauses; `Nil`
+  stays a zero state without a number; cross-references stay references; conditions and
+  footnotes attach); prose decisions (`approved_zero`, `not_levied_pending_petition`,
+  `deferred_to_separate_petition`, `by_reference`); channel comparison; routing per 6.10
+  plus `single_channel` (recorded deviation).
+- `tariff_api.providers`: `FixtureProvider` (labelled, zero cost, optional perturbation
+  file for tests) and `AnthropicProvider` (tool-forced structured output, versioned system
+  prompt, cost from configured prices, key via the secrets adapter).  Settings:
+  `provider_backend=fixture` by default, budgets `provider_max_cost_per_order_usd` /
+  `provider_max_tokens_per_order` → `budget_exceeded` stops the job, nothing skipped.
+- `tariff_api.validators` (v1): 13 validators with ids and severities, each with a unit
+  fixture; findings attach to candidates and force individual review.
+- Stages `gridded → extracted` (runs, artefacts per channel, telemetry) and `extracted →
+  validated → awaiting_review`; migration `0006_candidates`; API for candidates, findings,
+  runs, the review queue and dispositions; web review queue page and candidates section.
+- Rule change found by the fixture (headings v2): a repeated heading with a continuation
+  marker (`RATE SCHEDULE LMV - 1 (continued)`) canonicalised to a different code, so the
+  continuation page's candidates got the wrong category.  Continuation markers are now
+  stripped.
+- Adversarial fixture: an instruction-like row label and a `SYSTEM:` footnote; outputs
+  unchanged except the extra row; nothing approved or published.  This proves the
+  deterministic channel and the plumbing, not a model.
 
 ### Increment 8 (Milestone 3b: normalisation, clause outlines, grid integrity)
 
@@ -328,14 +374,14 @@ Detected: D3, D7, D9.  Everything value- and network-level `n/a-yet` pending Mil
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **200 passed, 0 failed, 0 skipped** (~63 s): 162 unit (13 adapters/profile/fixtures, 32
-  triage rules, 29 readers/headings/OCR, 11 profiles/localisation, 60 normalisation, 10
-  clause outline, 7 grid integrity), 38 integration (8 sources, 6 ingest/CLI, 6 queue, 1
-  worker-kill recovery, 5 triage stage, 4 parse stage, 4 localisation stage, 2 structure
-  stage incl. the pre-confirmation refusal and the re-decision re-run, 2 migrations).
-  Without tesseract the OCR unit tests and the parse/localise/grid stage tests skip and say
-  so.
-- Increment 7 baseline was 120 passed (84 unit, 36 integration).
+- **226 passed, 0 failed, 0 skipped** (~68 s): 185 unit (13 adapters/profile/fixtures, 32
+  triage rules, 31 readers/headings/OCR, 11 profiles/localisation, 60 normalisation, 10
+  clause outline, 7 grid integrity, 21 extraction/comparison/routing/validators), 41
+  integration (8 sources, 6 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage, 4
+  parse stage, 4 localisation stage, 2 structure stage, 3 extraction/validation incl. the
+  perturbed image channel and the adversarial fixture, 2 migrations).  Without tesseract
+  the OCR unit tests and the stage tests from parse onward skip and say so.
+- Increment 8 baseline was 200 passed (162 unit, 38 integration).
 - Test-infrastructure defect found by the reordered run and fixed: the synthetic fixture
   generators were byte-reproducible only ~98% of the time.  MuPDF writes the regenerated
   half of the file `/ID` as a PDF literal string `(…)` when that is shorter than hex, and the
@@ -363,7 +409,10 @@ installed:
 
 ## Real provider calls versus fixtures
 
-No provider (Claude, OpenAI, OCR) is integrated in Milestone 1.  Zero real provider calls.
+**Zero real provider calls.**  Every extraction run so far used the `fixture` provider
+(labelled on every run and every candidate; cost 0).  The Anthropic Messages API path exists
+in `tariff_api.providers` but has never been executed: no key in this environment.  OCR
+(tesseract, local) is the only non-fixture tool that has run.
 
 ## Reviewer decisions obtained versus pending
 
@@ -448,7 +497,11 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
    `make tf-plan tf-apply ENV=dev` (expect 63 more to add after the bootstrap's 14), then
    `make deploy-dev`, then register the three orders through the `tariff-admin` job
    (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
-2. Engineering (next run): Milestone 3 close-out on real material once the deploy is done
+2. Engineering (next run): Milestone 4b — network-charge grids (wheeling, losses, CSS
+   tables inside `network_charges` regions), derivation and cross-representation validators,
+   amendment consistency, condition records, then a real provider run on a small NPCL
+   category set once a key exists (reported separately from fixture runs).  Then Milestone
+   5 (reviewer workflow, publication).  Also Milestone 3 close-out on real material once the deploy is done
    (ingest, inventory, triage, parse, localise the three orders; a reviewer confirms; grid;
    compare with Parts D–F), grids from OCR word boxes for the Karnataka vector tables, then
    Milestone 4 (versioned tariff schema, provider adapter with fixture mode, dual-channel

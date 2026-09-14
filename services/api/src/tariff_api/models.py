@@ -17,6 +17,7 @@ from sqlalchemy import (
     Boolean,
     DateTime,
     Enum,
+    Float,
     ForeignKey,
     Index,
     Integer,
@@ -134,6 +135,8 @@ SOURCE_TRANSITIONS: dict[SourceState, set[SourceState]] = {
         SourceState.triaged,
         SourceState.parsed,
         SourceState.localised,
+        SourceState.gridded,
+        SourceState.extracted,
         SourceState.cancelled,
     },
     SourceState.cancelled: set(),
@@ -272,6 +275,13 @@ class SourceDocument(Base):
     structure_version: Mapped[str | None] = mapped_column(String(40))
     gridded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     structure_summary: Mapped[dict | None] = mapped_column(JSONB)
+    # Milestone 4a: candidate extraction and validation (Sections 6.8-6.10)
+    extraction_version: Mapped[str | None] = mapped_column(String(80))
+    extracted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    extraction_summary: Mapped[dict | None] = mapped_column(JSONB)
+    validators_version: Mapped[str | None] = mapped_column(String(16))
+    validated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    validation_summary: Mapped[dict | None] = mapped_column(JSONB)
 
     # Golden-corpus reconciliation (tests/golden/manifest.json); never copied, always re-verified
     golden_id: Mapped[str | None] = mapped_column(String(80))
@@ -617,3 +627,108 @@ class ClauseValueRecord(Base):
     parameters: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
     rules_version: Mapped[str] = mapped_column(String(16), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class ExtractionRun(Base):
+    """One provider call for one channel over one region (Section 6.8): provider, model,
+    prompt and schema versions, input hash, token usage and cost, and whether it was a
+    fixture.  Fixture runs are never mixed with real runs: the flag is on every row."""
+
+    __tablename__ = "extraction_runs"
+    __table_args__ = (Index("ix_extraction_runs_source", "source_id", "started_at"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    job_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    region_ordinal: Mapped[int] = mapped_column(Integer, nullable=False)
+    channel: Mapped[str] = mapped_column(String(16), nullable=False)  # structure | image
+    provider: Mapped[str] = mapped_column(String(40), nullable=False)
+    model: Mapped[str] = mapped_column(String(80), nullable=False)
+    prompt_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    schema_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    input_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    input_tokens: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    output_tokens: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    cost_usd: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    status: Mapped[str] = mapped_column(String(16), nullable=False)  # succeeded | failed
+    error: Mapped[str | None] = mapped_column(Text)
+    candidates_returned: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    artefact_key: Mapped[str | None] = mapped_column(String(512))
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class CandidateRecord(Base):
+    """A proposed fact (Section 5.2: candidate).  Separate from published facts; no tool of
+    Section 8 ever reads this table."""
+
+    __tablename__ = "candidates"
+    __table_args__ = (
+        Index("ix_candidates_source_family", "source_id", "family"),
+        Index("ix_candidates_routing", "routing", "review_status"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    candidate_key: Mapped[str] = mapped_column(String(400), nullable=False)
+    family: Mapped[str] = mapped_column(String(32), nullable=False)
+    category_code: Mapped[str | None] = mapped_column(String(80))
+    component_type: Mapped[str] = mapped_column(String(24), nullable=False)
+    value: Mapped[str | None] = mapped_column(String(40))
+    value_state: Mapped[str] = mapped_column(String(24), nullable=False)
+    currency: Mapped[str | None] = mapped_column(String(8))
+    per_unit: Mapped[str | None] = mapped_column(String(16))
+    frequency: Mapped[str | None] = mapped_column(String(16))
+    decision_status: Mapped[str | None] = mapped_column(String(40))
+    period: Mapped[str | None] = mapped_column(String(80))
+    utility: Mapped[str | None] = mapped_column(String(40))
+    record: Mapped[dict] = mapped_column(JSONB, nullable=False)  # the full Candidate (structure or only channel)
+    image_record: Mapped[dict | None] = mapped_column(JSONB)  # the image channel's version, when it exists
+    channel_agreement: Mapped[str] = mapped_column(String(16), nullable=False)
+    disagreeing_fields: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    confidence: Mapped[str] = mapped_column(String(8), nullable=False)
+    risk_tags: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    routing: Mapped[str] = mapped_column(String(16), nullable=False)  # individual | batch
+    review_status: Mapped[str] = mapped_column(String(24), nullable=False, default="pending")
+    is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    structure_run_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    image_run_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    extraction_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    finding_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    blocking_finding_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class ValidatorFindingRecord(Base):
+    """A validator finding (Section 6.9) attached to candidates or to the source."""
+
+    __tablename__ = "validator_findings"
+    __table_args__ = (Index("ix_validator_findings_source", "source_id", "validator_id"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    validator_id: Mapped[str] = mapped_column(String(16), nullable=False)
+    severity: Mapped[str] = mapped_column(String(16), nullable=False)
+    message: Mapped[str] = mapped_column(Text, nullable=False)
+    candidate_ids: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    detail: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    validators_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class FamilyDisposition(Base):
+    """A reviewer's disposition for a charge family the order does not decide
+    (``absent_in_source``, ``out_of_scope``), needed for the completeness validator."""
+
+    __tablename__ = "family_dispositions"
+    __table_args__ = (UniqueConstraint("source_id", "family", name="uq_family_disposition"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    family: Mapped[str] = mapped_column(String(32), nullable=False)
+    disposition: Mapped[str] = mapped_column(String(32), nullable=False)
+    rationale: Mapped[str] = mapped_column(Text, nullable=False)
+    decided_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    decided_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

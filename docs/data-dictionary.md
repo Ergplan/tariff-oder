@@ -1,4 +1,4 @@
-# Data dictionary (through Milestone 3b)
+# Data dictionary (through Milestone 4a)
 
 Migration owner: `services/api/migrations/versions/0001_foundation.py`.  All timestamps are
 `timestamptz`; ids are UUIDv4 unless noted.  Enums are PostgreSQL enum types.
@@ -152,6 +152,44 @@ Heading inventory (`uq_document_heading` per page/line/kind/rules version): `ord
 | kind | `value`, `cross_reference`, `condition` |
 | connector, alternative | `PLUS` joins to the previous block; alternative index within the category's option group |
 | normalised, dimension, slab, time_window, sign, parameters | Value record; metering-type column; parsed slab; `11:00-17:00`; ±1; further amounts on a rule line |
+
+## `extraction_runs` (Milestone 4a)
+
+One provider call per channel per region: `channel`, `provider`, `model`, `prompt_version`,
+`schema_version`, `is_fixture`, `input_hash`, `input_tokens`, `output_tokens`, `cost_usd`,
+`status`, `error`, `candidates_returned`.  Fixture and real runs are never summed together.
+
+## `candidates`
+
+| Column | Meaning |
+| --- | --- |
+| candidate_key | Identity of the fact (family, category, component, applicability, period, utility) used for channel comparison and duplicate detection |
+| family, category_code, component_type | Section 5.1 family; source category code; component (`energy`, `fixed`, `demand`, `minimum`, `tod_adjustment`, `rebate`, `surcharge`, `subsidy`, `green_premium`, `charge`, `loss`, `cross_reference`) |
+| value, value_state, currency, per_unit, frequency, decision_status, period, utility | Denormalised from the record for queries |
+| record | The full `Candidate` (schema v1): original text, applicability, conditions, evidence, missing/ambiguous |
+| image_record | The image channel's version when both channels ran |
+| channel_agreement, disagreeing_fields | `agree`, `disagree`, `one_missing`, `single_channel` |
+| confidence, risk_tags, routing | Section 6.10; `individual` or `batch` |
+| review_status | `pending` (Milestone 5 adds the outcomes) |
+| is_fixture | Set from the provider; never mixed with real |
+| finding_count, blocking_finding_count | From the last validation run |
+
+## `validator_findings`
+
+`validator_id` (VAL-nn), `severity` (`blocking` / `warning` / `info`), `message`,
+`candidate_ids` (empty = source-level), `detail`, `validators_version`.
+
+## `family_dispositions`
+
+Reviewer-recorded `absent_in_source` / `out_of_scope` / `not_a_tariff_category` per family,
+with rationale, actor and time.
+
+## `source_documents` — extraction and validation columns
+
+`extraction_version`, `extracted_at`, `extraction_summary` (provider, versions, runs, cost,
+tokens, candidates by family/confidence/agreement/routing, risk tags, new_profile);
+`validators_version`, `validated_at`, `validation_summary` (findings by severity and
+validator, candidates with findings / blocked, families without disposition, routing).
 
 ## `stage_artefacts`
 Index of immutable per-stage outputs in the `artefacts` bucket (Section 6.2): `stage`,

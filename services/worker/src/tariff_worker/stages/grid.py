@@ -38,7 +38,7 @@ from tariff_api.models import (
 )
 from tariff_api.normalise import NORMALISE_VERSION
 from tariff_api.profiles import load_profile
-from tariff_api.services.sources import transition
+from tariff_api.services.sources import enqueue_stage, transition
 
 from ..runner import JobContext, JobFailure
 
@@ -289,6 +289,7 @@ def grid_source(ctx: JobContext) -> dict:
         src.gridded_at = datetime.now(UTC)
         if src.state != SourceState.gridded:
             transition(s, src, SourceState.gridded, actor=ctx.worker, reason=tool_version)
+        enqueue_stage(s, ctx.settings, src, "extract_source", actor=ctx.worker)
     return {
         "cells": summary["cells"],
         "cells_unresolved": summary["cells_unresolved"],

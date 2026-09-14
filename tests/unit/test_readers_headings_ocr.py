@@ -115,6 +115,8 @@ def test_text_strategy_recovers_unruled_table_and_both_readers_agree():
         ("RATE SCHEDULE LMV - 3", "rate_schedule", "LMV-3"),
         ("RATE SCHEDULE LMV1", "rate_schedule", "LMV-1"),
         ("RATE SCHEDULE LMV-4 (A)", "rate_schedule", "LMV-4(A)"),
+        ("RATE SCHEDULE LMV - 1 (continued)", "rate_schedule", "LMV-1"),  # v2: a continued page is the same schedule
+        ("RATE SCHEDULE LMV-1 (Contd.)", "rate_schedule", "LMV-1"),
         ("RATE SCHEDULE HV-2", "rate_schedule", "HV-2"),
         ("TARIFF SCHEDULE LT-1", "tariff_schedule", "LT-1"),
         ("TARIFF SCHEDULE LT-3(a)", "tariff_schedule", "LT-3(A)"),

@@ -193,7 +193,7 @@ def test_stage_rerun_keeps_old_artefacts_and_is_audited(client, runner, storage)
     )
     assert (
         client.post(
-            f"/sources/{src_id}/stages/rerun", json={"job_type": "extract_source"}, headers=headers(ADMIN)
+            f"/sources/{src_id}/stages/rerun", json={"job_type": "publish_source"}, headers=headers(ADMIN)
         ).status_code
         == 422
     )

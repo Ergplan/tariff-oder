@@ -374,8 +374,165 @@ class StructureSummary(BaseModel):
     gridded_at: datetime | None
 
 
+class ExtractionSummary(BaseModel):
+    extraction_version: str
+    provider: str
+    model: str
+    is_fixture: bool
+    prompt_version: str
+    schema_version: str
+    runs: int
+    runs_failed: int
+    cost_usd: float
+    tokens: int
+    candidates: int
+    by_family: dict[str, int]
+    by_confidence: dict[str, int]
+    by_agreement: dict[str, int]
+    by_routing: dict[str, int]
+    risk_tags: dict[str, int]
+    image_channel: bool
+    new_profile: bool
+    extracted_at: datetime | None
+
+
+class ValidationSummary(BaseModel):
+    validators_version: str
+    findings: int
+    by_severity: dict[str, int]
+    by_validator: dict[str, int]
+    candidates_with_findings: int
+    candidates_blocked: int
+    source_level_findings: int
+    families_without_disposition: list[str]
+    routing: dict[str, int]
+    confidence: dict[str, int]
+    validated_at: datetime | None
+
+
+class CandidateOut(BaseModel):
+    id: uuid.UUID
+    source_id: uuid.UUID
+    candidate_key: str
+    family: str
+    category_code: str | None
+    component_type: str
+    value: str | None
+    value_state: str
+    currency: str | None
+    per_unit: str | None
+    frequency: str | None
+    decision_status: str | None
+    period: str | None
+    utility: str | None
+    record: dict[str, Any]
+    image_record: dict[str, Any] | None
+    channel_agreement: str
+    disagreeing_fields: list[str]
+    confidence: str
+    risk_tags: list[str]
+    routing: str
+    review_status: str
+    is_fixture: bool
+    finding_count: int
+    blocking_finding_count: int
+    extraction_version: str
+    version: int
+    created_at: datetime
+
+
+class CandidateList(BaseModel):
+    candidates: list[CandidateOut]
+    total: int
+    limit: int
+    offset: int
+
+
+class FindingOut(BaseModel):
+    id: uuid.UUID
+    validator_id: str
+    severity: str
+    message: str
+    candidate_ids: list[str]
+    detail: dict[str, Any]
+    validators_version: str
+
+
+class FindingList(BaseModel):
+    findings: list[FindingOut]
+    total: int
+
+
+class ReviewQueueItem(BaseModel):
+    source_id: uuid.UUID
+    original_filename: str
+    dataset_kind: DatasetKind
+    state: SourceState
+    pending: int
+    individual: int
+    batch: int
+    blocked: int
+    is_fixture: bool
+
+
+class ReviewQueue(BaseModel):
+    items: list[ReviewQueueItem]
+    total_pending: int
+
+
+class DispositionRequest(BaseModel):
+    family: str
+    disposition: Literal["absent_in_source", "out_of_scope", "not_a_tariff_category"]
+    rationale: str = Field(min_length=5, max_length=2000)
+    pages_viewed: bool
+
+
+class DispositionOut(BaseModel):
+    id: uuid.UUID
+    family: str
+    disposition: str
+    rationale: str
+    decided_by: str
+    decided_at: datetime
+
+
+class ExtractionRunOut(BaseModel):
+    id: uuid.UUID
+    region_ordinal: int
+    channel: str
+    provider: str
+    model: str
+    prompt_version: str
+    schema_version: str
+    is_fixture: bool
+    input_hash: str
+    input_tokens: int
+    output_tokens: int
+    cost_usd: float
+    status: str
+    error: str | None
+    candidates_returned: int
+    started_at: datetime
+    finished_at: datetime | None
+
+
+class ExtractionRunList(BaseModel):
+    runs: list[ExtractionRunOut]
+    total_cost_usd: float
+    fixture_runs: int
+    real_runs: int
+
+
 class StageRerunRequest(BaseModel):
-    job_type: Literal["inventory_source", "triage_source", "parse_source", "localise_source", "grid_source"]
+    job_type: Literal[
+        "inventory_source",
+        "triage_source",
+        "parse_source",
+        "localise_source",
+        "grid_source",
+        "extract_source",
+        "validate_source",
+    ]
 
 
 class SourceDetail(SourceSummary):
@@ -400,6 +557,8 @@ class SourceDetail(SourceSummary):
     reading_profile: SourceProfileOut
     localisation: LocalisationSummary | None
     structure: StructureSummary | None
+    extraction: ExtractionSummary | None
+    validation: ValidationSummary | None
     artefacts: list[StageArtefactOut]
 
 

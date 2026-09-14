@@ -198,7 +198,7 @@ def reconstruct(pages: list[tuple[int, str]]) -> ClauseOutline:
                 else [*path(), *([applicability] if applicability and not lettered else []), line]
             )
             role, sign = _role_for([p for p in item_path if p != line] or item_path)
-            label = _ELLIPSIS.split(body)[0]
+            label = re.sub(r"^\s*\d{1,2}(?:\.\d{1,2}){0,3}\.?\s*", "", _ELLIPSIS.split(body)[0])
             slab = parse_slab(label)
             tw = _TIME_WINDOW.search(line)
             window = f"{tw['a']}-{tw['b']}" if tw else None

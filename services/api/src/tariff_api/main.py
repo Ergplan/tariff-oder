@@ -16,7 +16,7 @@ from .adapters import build_adapters
 from .config import Settings, get_settings
 from .db import dispose_db, init_db
 from .errors import AppError
-from .routers import health, jobs, profiles, registry, sources
+from .routers import candidates, health, jobs, profiles, registry, sources
 from .schemas import ErrorResponse, Me
 from .telemetry import actor_var, configure_logging, request_id_var
 
@@ -111,6 +111,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(jobs.router)
     app.include_router(registry.router)
     app.include_router(profiles.router)
+    app.include_router(candidates.router)
 
     from fastapi import Depends
 

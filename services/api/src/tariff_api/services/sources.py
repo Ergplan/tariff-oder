@@ -234,6 +234,8 @@ STAGE_JOBS = {
     "parse_source": SourceState.triaged,
     "localise_source": SourceState.parsed,
     "grid_source": SourceState.localised,
+    "extract_source": SourceState.gridded,
+    "validate_source": SourceState.extracted,
 }
 
 

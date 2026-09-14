@@ -1,4 +1,12 @@
-import type { ClauseValueList, LocalisationOut, SourceDetail, SourcePageList, StructureCellList } from "@tariff/contracts";
+import type {
+  CandidateList,
+  ClauseValueList,
+  FindingList,
+  LocalisationOut,
+  SourceDetail,
+  SourcePageList,
+  StructureCellList,
+} from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, JobBadge, StageTrack, StateBadge, UnknownBadge } from "../../components";
 import { AutoRefresh } from "./auto-refresh";
@@ -25,6 +33,12 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
   const unresolvedCells = structure
     ? await apiTry<StructureCellList>(`/sources/${id}/structure/cells?unresolved_only=true&limit=50`)
     : { data: undefined };
+  const extraction = s.extraction;
+  const validation = s.validation;
+  const candidates = extraction
+    ? await apiTry<CandidateList>(`/sources/${id}/candidates?limit=100&routing=individual`)
+    : { data: undefined };
+  const findings = validation ? await apiTry<FindingList>(`/sources/${id}/findings`) : { data: undefined };
   const clauses =
     structure && structure.clause_values > 0
       ? await apiTry<ClauseValueList>(`/sources/${id}/structure/clauses`)
@@ -554,6 +568,179 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
                       </td>
                     </tr>
                   ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+        </>
+      )}
+
+      <h2>Candidates and validation</h2>
+      {!extraction ? (
+        <p className="muted">Not extracted yet: extraction runs after the structure stage, from confirmed regions only.</p>
+      ) : (
+        <>
+          <div className="banner" data-tone={extraction.is_fixture ? "fixture" : "neutral"}>
+            {extraction.is_fixture ? "Fixture provider run — labelled, never mixed with real runs." : `Real provider run: ${extraction.provider} ${extraction.model}.`}{" "}
+            <span className="mono muted">
+              prompt {extraction.prompt_version} · schema {extraction.schema_version} · {extraction.runs} runs · {extraction.tokens} tokens ·{" "}
+              {extraction.cost_usd} USD
+            </span>
+          </div>
+          <div className="stats">
+            <div className="stat">
+              <div className="label">Candidates</div>
+              <div className="value">{extraction.candidates}</div>
+            </div>
+            <div className="stat">
+              <div className="label">Channel agreement</div>
+              <div className="value">
+                {Object.entries(extraction.by_agreement)
+                  .map(([k, v]) => `${k} ${v}`)
+                  .join(" · ")}
+              </div>
+            </div>
+            <div className="stat">
+              <div className="label">Confidence</div>
+              <div className="value">
+                {Object.entries(extraction.by_confidence)
+                  .map(([k, v]) => `${k} ${v}`)
+                  .join(" · ")}
+              </div>
+            </div>
+            <div className="stat">
+              <div className="label">Routing</div>
+              <div className="value">
+                {Object.entries(extraction.by_routing)
+                  .map(([k, v]) => `${k} ${v}`)
+                  .join(" · ")}
+              </div>
+            </div>
+            {validation ? (
+              <div className="stat">
+                <div className="label">Validator findings</div>
+                <div className="value">
+                  {validation.findings}{" "}
+                  <span className="muted">
+                    ({Object.entries(validation.by_severity)
+                      .map(([k, v]) => `${k} ${v}`)
+                      .join(" · ")})
+                  </span>
+                </div>
+              </div>
+            ) : null}
+          </div>
+          <p className="muted">
+            Risk tags:{" "}
+            {Object.entries(extraction.risk_tags)
+              .map(([k, v]) => `${k} ${v}`)
+              .join(" · ") || "none"}
+            {extraction.new_profile ? " · first order read with this profile: everything is individual review" : ""}
+          </p>
+          {validation && validation.families_without_disposition.length ? (
+            <div className="banner" data-tone="warn">
+              Charge families with no candidate, no decision status and no reviewed disposition:{" "}
+              <span className="mono">{validation.families_without_disposition.join(", ")}</span>. Coverage cannot be declared complete
+              until a reviewer records what this order decides for each.
+            </div>
+          ) : null}
+          {findings.data && findings.data.total > 0 ? (
+            <div className="table-wrap">
+              <table>
+                <caption>Validator findings ({findings.data.total})</caption>
+                <thead>
+                  <tr>
+                    <th>Validator</th>
+                    <th>Severity</th>
+                    <th>Finding</th>
+                    <th>Candidates</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {findings.data.findings.map((f) => (
+                    <tr key={f.id}>
+                      <td className="mono">{f.validator_id}</td>
+                      <td>
+                        <span className="badge" data-tone={f.severity === "blocking" ? "bad" : f.severity === "warning" ? "warn" : "neutral"}>
+                          {f.severity}
+                        </span>
+                      </td>
+                      <td>{f.message}</td>
+                      <td className="mono">{f.candidate_ids.length || "source"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+          {candidates.data ? (
+            <div className="table-wrap">
+              <table>
+                <caption>
+                  Candidates for individual review ({candidates.data.total}; first {candidates.data.candidates.length}) — proposals, not facts
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Family / category</th>
+                    <th>Component</th>
+                    <th>Value</th>
+                    <th>State</th>
+                    <th>Unit</th>
+                    <th>Applies to</th>
+                    <th>Evidence</th>
+                    <th>Confidence / risks</th>
+                    <th>Channels</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {candidates.data.candidates.map((c) => {
+                    const rec = c.record as {
+                      applicability?: { description?: string | null; time_band?: string | null; metering_type?: string | null; slab?: { original_text?: string | null } | null; load_band?: { original_text?: string | null } | null; alternative?: number | null };
+                      evidence?: { page_index: number; kind: string; row?: number | null; col?: number | null; line_no?: number | null }[];
+                      sign?: number | null;
+                      reference_target?: string | null;
+                    };
+                    const a = rec.applicability ?? {};
+                    const ev = rec.evidence?.[0];
+                    return (
+                      <tr key={c.id}>
+                        <td>
+                          <span className="mono">{c.family}</span>
+                          {c.category_code ? <div className="mono">{c.category_code}</div> : null}
+                        </td>
+                        <td>{c.component_type}</td>
+                        <td className="mono">
+                          {c.value ?? rec.reference_target ?? "—"}
+                          {rec.sign ? (rec.sign > 0 ? " (+)" : " (−)") : ""}
+                        </td>
+                        <td>
+                          <code>{c.value_state}</code>
+                          {c.decision_status ? <div className="muted">{c.decision_status}</div> : null}
+                        </td>
+                        <td className="mono">{[c.currency, c.per_unit, c.frequency].filter(Boolean).join(" / ") || "—"}</td>
+                        <td className="muted">
+                          {[a.description, a.slab?.original_text ?? a.load_band?.original_text, a.time_band, a.metering_type, a.alternative != null ? `alt ${a.alternative + 1}` : null]
+                            .filter(Boolean)
+                            .join(" · ")}
+                        </td>
+                        <td className="mono">
+                          {ev ? `p${ev.page_index} ${ev.kind}${ev.row != null ? ` r${ev.row} c${ev.col}` : ev.line_no != null ? ` l${ev.line_no}` : ""}` : "—"}
+                        </td>
+                        <td>
+                          <span className="badge" data-tone={c.confidence === "high" ? "ok" : c.confidence === "medium" ? "warn" : "bad"}>
+                            {c.confidence}
+                          </span>{" "}
+                          <span className="mono muted">{c.risk_tags.join(", ")}</span>
+                        </td>
+                        <td>
+                          <span className="badge" data-tone={c.channel_agreement === "agree" ? "ok" : c.channel_agreement === "disagree" ? "bad" : "warn"}>
+                            {c.channel_agreement}
+                          </span>
+                          {c.disagreeing_fields.length ? <span className="mono muted"> {c.disagreeing_fields.join(", ")}</span> : null}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
