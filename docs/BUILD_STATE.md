@@ -20,12 +20,20 @@ open-access view.
 - **Milestone 0 — complete.** Repository was empty (no commits); audit, ADR-0001…0007,
   architecture, data dictionary, reliability ledger skeleton, error taxonomy, evaluation
   plan with the D/E/F question set, deployment doc, milestone checklist all written.
-- **Milestone 1 — implemented and tested under the `local` profile; cloud gate still blocked.**
-  Everything the gate requires runs locally against real PostgreSQL 16 + pgvector.  Terraform
-  now targets the real project (`tariff-order-parsing`) and validates, but **nothing has been
-  planned or applied**: this build environment has no `gcloud` and its Google token is rejected
-  (`ACCESS_TOKEN_TYPE_UNSUPPORTED`, re-checked after the project details arrived).  The apply
-  has to run on the `tariff-order` VM.
+- **Milestone 1 — implemented and tested under the `local` profile; deployed to `dev` on
+  2026-09-14 (operator, on the `tariff-order` VM).**  Terraform applied in full against
+  `tariff-order-parsing` (65 resources over three runs; the failures on the way — missing
+  `hashicorp/time` in the provider lock, a missing Service Networking Admin role, the Cloud
+  SQL edition default — are each recorded in `docs/deployment.md` with their fix).
+  `make deploy-dev` ran the migrate job against Cloud SQL and updated the four services and
+  jobs; `make smoke-dev` reported `/readyz` HTTP 200: PostgreSQL 16.15, migration head
+  `0009_publication`, pgvector 0.8.5, all three buckets reachable through the object-level
+  probe (the first probe used bucket metadata and failed on the least-privilege service
+  account — fixed).  The first real order (NPCL) was registered through the admin job:
+  size 6,314,646 B matches the manifest; hash and page count are recorded by the ingest and
+  inventory outputs the operator holds.  **Still open in the M1 gate:** Cloud Logging
+  visibility and the backup/restore drill on Cloud SQL (Milestone 8 items), and the
+  post-deploy integration run.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**
   (a) page triage: classification, text-layer quality, printed-label maps, immutable stage
   artefacts, resumable and re-runnable.  (b) parse: tesseract OCR on the pages triage routed
@@ -450,9 +458,13 @@ open-access view.
   filesystem object store, env secrets, local identity allow-list.  API + worker + Next.js
   web ran together end-to-end in this session (upload through the web proxy → inventory →
   detail page → authorized file reopen).
-- `gcp`: adapters implemented (`GcsObjectStore`, `SecretManagerProvider`,
-  `IapIdentityProvider`) but **not exercised** against real services.  Docker daemon was
-  unavailable, so images were not built here; Dockerfiles are validated only by reading.
+- `gcp`: exercised on 2026-09-14 from the operator's VM: images built and pushed to Artifact
+  Registry, Cloud Run services/jobs deployed, migrations applied to Cloud SQL, readiness
+  green, the NPCL order ingested from the bucket by the admin job.  The identity adapter is
+  `iap` in its UNCONFIGURED state (no domain, no load balancer): the API refuses every
+  authenticated request by design until a domain exists; all administrative work runs
+  through the `tariff-admin` job.  Nothing was built or run against Google Cloud from this
+  build environment.
 
 ## Implemented user-visible behaviour
 
@@ -513,6 +525,10 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 
 ## Source files and dataset coverage actually used (hashes)
 
+- **NPCL registered on 2026-09-14** through the admin job (`ingest inbox/NPCL_…pdf`):
+  `size_bytes` 6,314,646 matches the manifest; the SHA-256 and page count are in the
+  operator's job output and the inventory run (not yet pasted into this session, so not
+  asserted here).  KERC and GERC not yet registered.
 - **The three real orders are now in the bucket** (operator upload on 2026-09-13, listing
   pasted into the session): `inbox/NPCL_TariffOrder1-pdf72202631759PM.pdf` 6,314,646 bytes,
   `inbox/96731743148968.pdf` 21,755,322 bytes, `inbox/Gujaratdocument.pdf` 2,803,465 bytes —
