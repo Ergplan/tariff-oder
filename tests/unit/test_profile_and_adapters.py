@@ -187,6 +187,23 @@ def test_iap_without_an_audience_starts_but_refuses_everything():
         "/projects/1/global/backendServices/3",
     ]
     assert configured.description == "iap"
+    # the forwarded name is read like the native one (Cloud Run strips x-goog-* on delivery)
+    import google.oauth2.id_token as real
+
+    seen: list[tuple[str, str | None]] = []
+
+    def fake_verify_token(token, request, audience=None, certs_url=None):
+        seen.append((token, audience))
+        return {"email": "r@example.com"}
+
+    original = real.verify_token
+    real.verify_token = fake_verify_token
+    try:
+        pr = configured.authenticate({"x-forwarded-iap-assertion": "tok"}, lambda e: None)
+    finally:
+        real.verify_token = original
+    assert pr is not None and pr.email == "r@example.com" and seen[0][0] == "tok"
+    assert pr.provider.endswith(":unregistered")
 
 
 def test_processes_that_serve_no_requests_get_no_identity_provider():

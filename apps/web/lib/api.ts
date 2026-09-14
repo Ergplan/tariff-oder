@@ -53,9 +53,11 @@ export async function identityHeaders(): Promise<Record<string, string>> {
   const h = await headers();
   if (PROFILE === "gcp") {
     const out: Record<string, string> = {};
-    // Behind a load balancer: IAP's assertion identifies the user.
+    // IAP's assertion identifies the user.  Cloud Run strips Google's reserved x-goog-*
+    // identity headers from requests it delivers to the API, so it travels under our own
+    // name; the API verifies the signature and audience exactly as before.
     const assertion = h.get("x-goog-iap-jwt-assertion");
-    if (assertion) out["x-goog-iap-jwt-assertion"] = assertion;
+    if (assertion) out["X-Forwarded-IAP-Assertion"] = assertion;
     // Without a domain (ADR-0015): the user's Google ID token arrives as the Authorization
     // bearer (gcloud run services proxy); it is forwarded as the user identity, while the
     // call itself carries the web service's own token.

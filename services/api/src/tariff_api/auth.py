@@ -33,7 +33,13 @@ def current_principal(request: Request) -> Principal:
         # operator can tell "no assertion arrived" from "assertion rejected" in the logs.
         present = [
             h
-            for h in ("x-goog-iap-jwt-assertion", "x-user-id-token", "authorization", "x-local-user")
+            for h in (
+                "x-goog-iap-jwt-assertion",
+                "x-forwarded-iap-assertion",
+                "x-user-id-token",
+                "authorization",
+                "x-local-user",
+            )
             if h in request.headers
         ]
         logging.getLogger(__name__).warning(

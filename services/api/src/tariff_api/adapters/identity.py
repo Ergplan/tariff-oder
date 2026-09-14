@@ -76,6 +76,10 @@ class IapIdentityProvider(IdentityProvider):
 
     name = "iap"
     HEADER = "x-goog-iap-jwt-assertion"
+    # Cloud Run strips Google's reserved x-goog-* identity headers from requests it delivers,
+    # so the web service forwards the assertion it received from IAP under this name.  The
+    # signature and audience checks are identical; only the header name differs.
+    FORWARDED_HEADER = "x-forwarded-iap-assertion"
     CERTS_URL = "https://www.gstatic.com/iap/verify/public_key"
 
     def __init__(self, audience: str) -> None:
@@ -103,7 +107,7 @@ class IapIdentityProvider(IdentityProvider):
     def authenticate(self, headers: Mapping[str, str], role_lookup) -> Principal | None:
         if not self.audiences:
             return None
-        assertion = headers.get(self.HEADER)
+        assertion = headers.get(self.HEADER) or headers.get(self.FORWARDED_HEADER)
         if not assertion:
             return None
         from google.auth.transport import requests as google_requests
