@@ -101,6 +101,19 @@ supports undo from the decision's own snapshot.  Endpoints: `/sources/{id}/revie
 `/sources/{id}/review` talks to the API through same-origin proxies; the browser never holds
 API credentials.  Nothing here publishes.
 
+## Publication and explorer (Milestone 5b)
+
+`awaiting_review -> published` is a transaction (`tariff_api.services.publication`):
+preview the consequences over a declared scope (token over the in-scope candidate state),
+refuse `complete` with missing required items and `partial` with undeclared gaps, copy the
+effective records of finally approved candidates into `published_facts` and their evidence
+into `published_evidence` with printed page labels, supersede the prior release, freeze the
+published candidates' decisions.  `tariff_api.routers.explorer` reads only releases, facts
+and evidence (never candidates; enforced by a source-reading test) and derives citations in
+code: `/explorer/releases`, `/explorer/sources/{id}/tariff`, `/explorer/sources/{id}/network`,
+`/explorer/facts/{id}`, `/explorer/facts/{id}/evidence/{n}/image` (ADR-0014).  Web:
+`/explorer`, `/explorer/{id}`, `/explorer/{id}/network`, `/sources/{id}/publish`.
+
 ## Profiles
 
 | Concern | `local` | `gcp` |

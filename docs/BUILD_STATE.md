@@ -11,7 +11,9 @@ reading profiles as data and the localisation stage with its reviewer checkpoint
 validators, routing and the review queue; (10) Milestone 4b — network-charge grids,
 derivations, amendment consistency, condition records, cross-representation agreement;
 (11) Milestone 5a — reviewer workflow: decisions with rendered-evidence and stale-version
-enforcement, corrections with cause tags, second review, undo, checklist, telemetry.
+enforcement, corrections with cause tags, second review, undo, checklist, telemetry; (12)
+Milestone 5b — publication transaction, published facts and evidence, explorer and
+open-access view.
 
 ## Current milestone and status
 
@@ -50,7 +52,8 @@ enforcement, corrections with cause tags, second review, undo, checklist, teleme
   to make the first one a two-cell synthetic input, not an order).  The Milestone 4 gate's
   "every charge family has candidates or a reviewed disposition for each supplied order" is
   blocked on the real orders and on a reviewer.
-- **Milestone 5 — part (a) implemented and tested under the `local` profile (ADR-0013).**
+- **Milestone 5 — parts (a) and (b) implemented and tested under the `local` profile
+  (ADR-0013, ADR-0014).**  (a)
   Per-order review queue in risk order with filters; completeness checklist derived from the
   heading inventory; evidence rendering that records the view (`evidence_views`); decisions
   (`approve` / `correct` / `reject` / `unresolved`) that refuse without the reviewer's own
@@ -61,11 +64,20 @@ enforcement, corrections with cause tags, second review, undo, checklist, teleme
   batch approval limited to clean high-confidence candidates, each with its own evidence;
   undo from the decision's snapshot with history intact; idempotent decisions; audit events;
   telemetry without document text; web workspace `/sources/{id}/review` (side by side,
-  keyboard-first, decision rendered only from the API's response).  **Not built (5b):**
-  publication transaction, published facts separate from candidates, the API-layer gate
-  that no tool reads a candidate, the explorer and the open-access view, structured
-  interpretation of condition records.  **The Milestone 5 gate's real-order part is
-  blocked**: no real candidate exists (no deploy, no provider run) and no reviewer has
+  keyboard-first, decision rendered only from the API's response).  (b) Publication as a
+  preview-then-confirm transaction over a declared scope with a completeness declaration
+  (`complete` refused on missing required items; `partial` must list every gap and is
+  labelled partial everywhere); published facts and evidence in their own tables, copied
+  from the effective records of finally approved candidates, with citations derived in code
+  (pdf page, printed label, table id, cell, excerpt); cumulative releases that supersede
+  the prior one; published decisions frozen; the explorer (category tree, completeness
+  banner, citation drill-down to the rendered page) and the open-access / network-charges
+  view; an API-layer test that the explorer module never touches candidates and that a
+  pending candidate never appears.  **Not built:** structured interpretation of condition
+  records; the reader-grid toggle in the workspace; browser tests (Section 7.5); a cache
+  (nothing to invalidate yet: explorer reads the current release per request).  **The
+  Milestone 5 gate's real-order part is blocked**: no real candidate exists (no deploy, no
+  provider run) and no reviewer has
   decided anything real.
 - **Milestone 3 — parts (a) and (b) implemented and tested under the `local` profile.**  (b)
   adds the versioned normalisation module, clause-outline reconstruction, grid integrity
@@ -84,6 +96,47 @@ enforcement, corrections with cause tags, second review, undo, checklist, teleme
 - **No provider connection, no extracted number exists.**  The only reviewer decisions that
   exist are localisation confirmations on synthetic fixtures made by the test harness's
   reviewer user; no real-source region has been confirmed by anyone.
+
+### Increment 12 (Milestone 5b: publication, published facts, explorer)
+
+- Migration `0009_publication`: `data_releases` (scope, completeness, gaps, consequences
+  at publication, checklist snapshot incl. dispositions, preview token, current /
+  superseded), `published_facts`, `published_evidence` (with printed page labels),
+  `candidates.published_release_id`, `source_documents.publication_summary`.
+- `tariff_api.services.publication`: `preview` (facts to publish, pending / awaiting second
+  review / unresolved / blocked-by-findings candidates, missing required items for
+  `complete`, gap keys required for `partial`, prior release, token over the in-scope
+  candidate state and the source version) and `publish` (state, `expected_source_version`,
+  token, `confirm_consequences`, blocked candidates, completeness rules, nothing-to-publish;
+  copies facts and evidence, supersedes the prior release, transitions the source to
+  `published` or bumps its version on a re-release, audits).
+- Routers: `publication` (`/sources/{id}/publish/preview`, `/sources/{id}/publish`,
+  `/sources/{id}/releases`) and `explorer` (`/explorer/releases`,
+  `/explorer/sources/{id}/tariff`, `/explorer/sources/{id}/network`, `/explorer/facts/{id}`,
+  `/explorer/facts/{id}/evidence/{n}/image`), the latter reading only the published
+  tables.  `SourceDetail.publication` summarises the current release.  Review decisions
+  stay possible on a `published` source for candidates no release has published; decide
+  and undo are refused on published candidates.
+- Web: `/explorer` (current releases, real and fixture counted separately),
+  `/explorer/{id}` (category tree, components, units, value states, applicability,
+  conditions, citations linking to the rendered cited page, completeness banner),
+  `/explorer/{id}/network` (screen 6a: per family, published facts with derivation inputs
+  and decision status, or coverage insufficient with the reviewed disposition),
+  `/sources/{id}/publish` (releases so far; scope → consequences → completeness
+  declaration with per-gap reasons → rationale → confirmation → publish; result rendered
+  only from the API's response; stale token explained).  Nav gains Explorer.
+- Tests: `tests/integration/test_publication_and_explorer.py` (explorer module source has
+  no candidate import; coverage-insufficient before any release; preview by reviewer only;
+  complete refused with `extra.missing`; partial refused with `extra.undeclared_gaps`;
+  nothing-to-publish; stale token after decisions; stale source version; unconfirmed;
+  analyst refused; subset partial release → source `published`, facts and citations match
+  the approved candidates' evidence, a pending candidate never appears, fact detail and
+  evidence image, network view with the banking disposition, release list counts fixture
+  separately; undo of a published decision refused; decisions continue after publication;
+  second cumulative release supersedes the first; audit events by two actors).
+- Honest limits: no cache exists, so "cache invalidation" is by construction (ADR-0014);
+  the coverage dashboard (screen 1) is not built — the data it needs is in
+  `data_releases`; no browser tests yet.
 
 ### Increment 11 (Milestone 5a: reviewer workflow)
 
@@ -419,8 +472,12 @@ enforcement, corrections with cause tags, second review, undo, checklist, teleme
 - API: `/healthz`, `/readyz`, `/status`, `/me`, `/sources` (POST/GET), `/sources/{id}`,
   `/sources/{id}/pages`, `/sources/{id}/tables`, `/sources/{id}/headings`,
   `/sources/{id}/stages/rerun`, `/sources/{id}/file`, `/sources/{id}/reprocess`, `/jobs`,
-  `/jobs/{id}`, `/jobs/{id}/cancel`, `/registry`, `/utilities`, `/users`, `/audit`.
-  OpenAPI at `/docs`.
+  `/jobs/{id}`, `/jobs/{id}/cancel`, `/registry`, `/utilities`, `/users`, `/audit`;
+  Milestone 3–5: localisation, structure, candidates, findings, runs, conditions, review
+  queue/checklist/evidence/decisions/batch/undo/telemetry, publish preview/publish/releases,
+  explorer releases/tariff/network/facts/evidence image.  OpenAPI at `/docs`.
+- Review workspace (`/sources/{id}/review`), publication (`/sources/{id}/publish`), explorer
+  (`/explorer`, `/explorer/{id}`, `/explorer/{id}/network`) — Milestone 5.
 
 ## Exact commands to run and test
 
@@ -487,17 +544,18 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **242 passed, 0 failed, 0 skipped** (~78 s): 196 unit (13 adapters/profile/fixtures, 32
+- **244 passed, 0 failed, 0 skipped** (~80 s): 196 unit (13 adapters/profile/fixtures, 32
   triage rules, 31 readers/headings/OCR, 11 profiles/localisation, 60 normalisation, 10
   clause outline, 7 grid integrity, 21 extraction/comparison/routing/validators, 8
-  network extraction/derivations/conditions/VAL-05/07/12/16, 3 review policy), 46
+  network extraction/derivations/conditions/VAL-05/07/12/16, 3 review policy), 48
   integration (8 sources, 6 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage, 4
   parse stage, 4 localisation stage, 2 structure stage, 3 extraction/validation incl. the
   perturbed image channel and the adversarial fixture, 3 network/dual-representation/
-  amendment stage runs, 2 review workflow, 2 migrations incl. 0008 downgrade/upgrade).
-  Without tesseract the OCR unit tests and the stage tests from parse onward skip and say so.
-- Increment 10 baseline was 237 passed (193 unit, 44 integration); increment 9 was 226
-  (185 unit, 41 integration).
+  amendment stage runs, 2 review workflow, 2 publication/explorer, 2 migrations incl.
+  0008–0009 downgrade/upgrade).  Without tesseract the OCR unit tests and the stage tests
+  from parse onward skip and say so.
+- Increment 11 baseline was 242 passed (196 unit, 46 integration); increment 10 was 237
+  (193 unit, 44 integration).
 - Test-infrastructure defect found by the reordered run and fixed: the synthetic fixture
   generators were byte-reproducible only ~98% of the time.  MuPDF writes the regenerated
   half of the file `/ID` as a PDF literal string `(…)` when that is shorter than hex, and the
@@ -541,7 +599,9 @@ real decision has been taken by anyone.
 
 ## Review/publication status and completeness declarations
 
-Nothing reviewed, nothing published, no coverage declared for any utility.
+Nothing real reviewed, nothing real published, no coverage declared for any utility.
+Publication exists and is exercised only on synthetic fixture orders inside the test suite
+(partial subset releases labelled FIXTURE); the explorer lists zero real releases.
 
 ### Increment 3 (first real verification against the project)
 
@@ -621,13 +681,14 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
    its wait to be the only additions), then
    `make deploy-dev`, then register the three orders through the `tariff-admin` job
    (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
-2. Engineering (next run): Milestone 5b — publication transaction over a declared scope
-   with the completeness declaration (`complete` / `partial` with listed gaps), a data
-   release, published facts and evidence tables separate from candidates, the API-layer gate
-   that only published facts reach the explorer and (later) the Section 8 tools, stale-version
-   and missing-item failures, partial labelling everywhere, the tariff explorer with citation
-   drill-down and the open-access/network-charges view (screen 6a); then the reviewer
-   workspace's reader-grid toggle and the first browser tests (Section 7.5).  Before
+2. Engineering (next run): Milestone 6 — historical comparison (preceding-order ingestion,
+   amendment relationships, effective rules and the temporal resolver, reviewed category
+   mappings with evidence, the deterministic comparison service citing both releases, the
+   comparison screen incl. wheeling/CSS/additional surcharge/green tariff across years),
+   with the fixtures the gate names (unchanged rates, changed conditions, splits/merges,
+   incompatible units, zero and missing baselines, retroactive corrections, overlapping
+   schedules).  Small follow-ups first: the coverage dashboard from `data_releases`, the
+   reader-grid toggle in the review workspace, the first browser tests (Section 7.5).  Before
    any real extraction: `ANTHROPIC_API_KEY` into Secret Manager, `tariff-api provider-smoke`,
    then one small NPCL category set reported separately from fixture runs.  VAL-14 temporal
    consistency waits for a second order of the same utility.  Also Milestone 3 close-out on real material once the deploy is done

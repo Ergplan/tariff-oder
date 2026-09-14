@@ -508,8 +508,10 @@ def decide(
 ) -> ReviewDecision:
     src = session.get(SourceDocument, cand.source_id)
     assert src is not None
-    if src.state != SourceState.awaiting_review:
+    if src.state not in (SourceState.awaiting_review, SourceState.published):
         raise AppError("invalid_transition", f"source is {src.state.value}; decisions are taken while it awaits review")
+    if cand.published_release_id is not None:
+        raise AppError("invalid_transition", "this candidate is published; its decision is no longer changeable")
     if cand.review_status not in OPEN_STATUSES:
         raise AppError(
             "invalid_transition",
@@ -628,8 +630,8 @@ def undo(session: Session, decision: ReviewDecision, *, actor: str) -> ReviewDec
         raise AppError("invalid_transition", "this decision is already undone")
     if decision.reviewer != actor:
         raise AppError("permission_denied", "only the reviewer who took a decision can undo it")
-    if src.state == SourceState.published:
-        raise AppError("invalid_transition", "the source is published; decisions are no longer reversible")
+    if cand.published_release_id is not None:
+        raise AppError("invalid_transition", "the candidate is published; its decision is no longer reversible")
     latest = session.execute(
         select(func.max(ReviewDecision.sequence)).where(
             ReviewDecision.candidate_id == cand.id, ReviewDecision.undone.is_(False)

@@ -45,6 +45,7 @@ from ..schemas import (
     LocalisationSummary,
     ParseSummary,
     ProfileAssignRequest,
+    PublicationSummary,
     SourceDetail,
     SourceList,
     SourcePageList,
@@ -355,6 +356,7 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
             validation=ValidationSummary(**src.validation_summary, validated_at=src.validated_at)
             if src.validation_summary
             else None,
+            publication=PublicationSummary(**src.publication_summary) if src.publication_summary else None,
             artefacts=[StageArtefactOut.model_validate(a, from_attributes=True) for a in artefacts if a.page_index == 0]
             + [
                 StageArtefactOut.model_validate(a, from_attributes=True)

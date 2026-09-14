@@ -715,6 +715,114 @@
         "title": "ChecklistItem",
         "type": "object"
       },
+      "CitationOut": {
+        "description": "Derived by backend code from a published evidence row; never model-produced.",
+        "properties": {
+          "cell": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cell"
+          },
+          "clause_path": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Clause Path",
+            "type": "array"
+          },
+          "evidence_id": {
+            "format": "uuid",
+            "title": "Evidence Id",
+            "type": "string"
+          },
+          "excerpt": {
+            "title": "Excerpt",
+            "type": "string"
+          },
+          "header_path": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Header Path",
+            "type": "array"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "line_no": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Line No"
+          },
+          "pdf_page": {
+            "title": "Pdf Page",
+            "type": "integer"
+          },
+          "printed_page": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Printed Page"
+          },
+          "row_path": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Row Path",
+            "type": "array"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "table_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Table Id"
+          }
+        },
+        "required": [
+          "evidence_id",
+          "source_id",
+          "pdf_page",
+          "printed_page",
+          "kind",
+          "table_id",
+          "cell",
+          "line_no",
+          "header_path",
+          "row_path",
+          "clause_path",
+          "excerpt"
+        ],
+        "title": "CitationOut",
+        "type": "object"
+      },
       "ClauseValueList": {
         "properties": {
           "total": {
@@ -1007,6 +1115,59 @@
           "aliases"
         ],
         "title": "CommissionOut",
+        "type": "object"
+      },
+      "CompletenessBanner": {
+        "properties": {
+          "awaiting_second_review": {
+            "title": "Awaiting Second Review",
+            "type": "integer"
+          },
+          "completeness": {
+            "title": "Completeness",
+            "type": "string"
+          },
+          "gaps": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Gaps",
+            "type": "array"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "pending": {
+            "title": "Pending",
+            "type": "integer"
+          },
+          "published_at": {
+            "format": "date-time",
+            "title": "Published At",
+            "type": "string"
+          },
+          "release_number": {
+            "title": "Release Number",
+            "type": "integer"
+          },
+          "unresolved": {
+            "title": "Unresolved",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "completeness",
+          "gaps",
+          "unresolved",
+          "pending",
+          "awaiting_second_review",
+          "release_number",
+          "published_at",
+          "is_fixture"
+        ],
+        "title": "CompletenessBanner",
         "type": "object"
       },
       "ConditionList": {
@@ -1411,6 +1572,99 @@
           "rendered_at"
         ],
         "title": "EvidenceViewOut",
+        "type": "object"
+      },
+      "ExplorerCategory": {
+        "properties": {
+          "category_code": {
+            "title": "Category Code",
+            "type": "string"
+          },
+          "components": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/PublishedFactOut"
+              },
+              "type": "array"
+            },
+            "title": "Components",
+            "type": "object"
+          },
+          "conditions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Conditions",
+            "type": "array"
+          },
+          "facts": {
+            "title": "Facts",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "category_code",
+          "components",
+          "conditions",
+          "facts"
+        ],
+        "title": "ExplorerCategory",
+        "type": "object"
+      },
+      "ExplorerReleaseItem": {
+        "properties": {
+          "dataset_kind": {
+            "$ref": "#/components/schemas/DatasetKind"
+          },
+          "original_filename": {
+            "title": "Original Filename",
+            "type": "string"
+          },
+          "release": {
+            "$ref": "#/components/schemas/ReleaseOut"
+          },
+          "state": {
+            "$ref": "#/components/schemas/SourceState"
+          }
+        },
+        "required": [
+          "release",
+          "original_filename",
+          "dataset_kind",
+          "state"
+        ],
+        "title": "ExplorerReleaseItem",
+        "type": "object"
+      },
+      "ExplorerReleaseList": {
+        "properties": {
+          "fixture": {
+            "title": "Fixture",
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ExplorerReleaseItem"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "real": {
+            "title": "Real",
+            "type": "integer"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "real",
+          "fixture"
+        ],
+        "title": "ExplorerReleaseList",
         "type": "object"
       },
       "ExtractionRunList": {
@@ -2868,6 +3122,123 @@
         "title": "Me",
         "type": "object"
       },
+      "NetworkExplorer": {
+        "properties": {
+          "completeness": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompletenessBanner"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "families": {
+            "items": {
+              "$ref": "#/components/schemas/NetworkFamilyView"
+            },
+            "title": "Families",
+            "type": "array"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          },
+          "release": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReleaseOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "published",
+              "coverage_insufficient"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "source_id",
+          "release",
+          "completeness",
+          "families"
+        ],
+        "title": "NetworkExplorer",
+        "type": "object"
+      },
+      "NetworkFamilyView": {
+        "properties": {
+          "disposition": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Disposition"
+          },
+          "facts": {
+            "items": {
+              "$ref": "#/components/schemas/PublishedFactOut"
+            },
+            "title": "Facts",
+            "type": "array"
+          },
+          "family": {
+            "title": "Family",
+            "type": "string"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          },
+          "status": {
+            "enum": [
+              "published",
+              "coverage_insufficient"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "family",
+          "status",
+          "disposition",
+          "facts"
+        ],
+        "title": "NetworkFamilyView",
+        "type": "object"
+      },
       "ParseSummary": {
         "properties": {
           "heading_inventory": {
@@ -2958,6 +3329,578 @@
           "reason"
         ],
         "title": "ProfileAssignRequest",
+        "type": "object"
+      },
+      "PublicationSummary": {
+        "properties": {
+          "awaiting_second_review": {
+            "default": 0,
+            "title": "Awaiting Second Review",
+            "type": "integer"
+          },
+          "completeness": {
+            "title": "Completeness",
+            "type": "string"
+          },
+          "fact_count": {
+            "title": "Fact Count",
+            "type": "integer"
+          },
+          "gaps": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Gaps",
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "is_current": {
+            "title": "Is Current",
+            "type": "boolean"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "pending": {
+            "default": 0,
+            "title": "Pending",
+            "type": "integer"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Published At"
+          },
+          "published_by": {
+            "title": "Published By",
+            "type": "string"
+          },
+          "release_number": {
+            "title": "Release Number",
+            "type": "integer"
+          },
+          "scope": {
+            "title": "Scope",
+            "type": "string"
+          },
+          "unresolved": {
+            "default": 0,
+            "title": "Unresolved",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "release_number",
+          "scope",
+          "completeness",
+          "gaps",
+          "fact_count",
+          "published_by",
+          "published_at",
+          "is_current",
+          "is_fixture"
+        ],
+        "title": "PublicationSummary",
+        "type": "object"
+      },
+      "PublishGap": {
+        "properties": {
+          "key": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Key",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 1000,
+            "minLength": 3,
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "reason"
+        ],
+        "title": "PublishGap",
+        "type": "object"
+      },
+      "PublishPreview": {
+        "description": "The consequences of a publication over a scope (Section 7.1, principle 5).  The\ntoken must be presented with the publish request.",
+        "properties": {
+          "awaiting_second_review": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Awaiting Second Review",
+            "type": "array"
+          },
+          "blocked_by_findings": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Blocked By Findings",
+            "type": "array"
+          },
+          "candidates_in_scope": {
+            "title": "Candidates In Scope",
+            "type": "integer"
+          },
+          "categories": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Categories",
+            "type": "array"
+          },
+          "checklist": {
+            "$ref": "#/components/schemas/ReviewChecklist"
+          },
+          "dispositions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Dispositions",
+            "type": "object"
+          },
+          "facts_to_publish": {
+            "title": "Facts To Publish",
+            "type": "integer"
+          },
+          "families": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Families",
+            "type": "array"
+          },
+          "gap_keys_required_for_partial": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Gap Keys Required For Partial",
+            "type": "array"
+          },
+          "missing_for_complete": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "title": "Missing For Complete",
+            "type": "array"
+          },
+          "pending": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Pending",
+            "type": "array"
+          },
+          "preview_token": {
+            "title": "Preview Token",
+            "type": "string"
+          },
+          "prior_release": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PublicationSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scope": {
+            "title": "Scope",
+            "type": "string"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "source_version": {
+            "title": "Source Version",
+            "type": "integer"
+          },
+          "unresolved": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unresolved",
+            "type": "array"
+          }
+        },
+        "required": [
+          "source_id",
+          "scope",
+          "categories",
+          "families",
+          "candidates_in_scope",
+          "facts_to_publish",
+          "pending",
+          "awaiting_second_review",
+          "unresolved",
+          "blocked_by_findings",
+          "missing_for_complete",
+          "gap_keys_required_for_partial",
+          "dispositions",
+          "checklist",
+          "prior_release",
+          "source_version",
+          "preview_token"
+        ],
+        "title": "PublishPreview",
+        "type": "object"
+      },
+      "PublishPreviewRequest": {
+        "properties": {
+          "categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Categories"
+          },
+          "families": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Families"
+          },
+          "scope": {
+            "default": "whole_schedule",
+            "enum": [
+              "whole_schedule",
+              "subset"
+            ],
+            "title": "Scope",
+            "type": "string"
+          }
+        },
+        "title": "PublishPreviewRequest",
+        "type": "object"
+      },
+      "PublishRequest": {
+        "properties": {
+          "categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Categories"
+          },
+          "completeness": {
+            "enum": [
+              "complete",
+              "partial"
+            ],
+            "title": "Completeness",
+            "type": "string"
+          },
+          "confirm_consequences": {
+            "title": "Confirm Consequences",
+            "type": "boolean"
+          },
+          "expected_source_version": {
+            "title": "Expected Source Version",
+            "type": "integer"
+          },
+          "families": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Families"
+          },
+          "gaps": {
+            "items": {
+              "$ref": "#/components/schemas/PublishGap"
+            },
+            "title": "Gaps",
+            "type": "array"
+          },
+          "preview_token": {
+            "maxLength": 64,
+            "minLength": 64,
+            "title": "Preview Token",
+            "type": "string"
+          },
+          "rationale": {
+            "maxLength": 4000,
+            "minLength": 5,
+            "title": "Rationale",
+            "type": "string"
+          },
+          "scope": {
+            "default": "whole_schedule",
+            "enum": [
+              "whole_schedule",
+              "subset"
+            ],
+            "title": "Scope",
+            "type": "string"
+          }
+        },
+        "required": [
+          "completeness",
+          "rationale",
+          "expected_source_version",
+          "preview_token",
+          "confirm_consequences"
+        ],
+        "title": "PublishRequest",
+        "type": "object"
+      },
+      "PublishedFactOut": {
+        "properties": {
+          "applicability": {
+            "additionalProperties": true,
+            "title": "Applicability",
+            "type": "object"
+          },
+          "candidate_id": {
+            "format": "uuid",
+            "title": "Candidate Id",
+            "type": "string"
+          },
+          "category_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Code"
+          },
+          "citations": {
+            "items": {
+              "$ref": "#/components/schemas/CitationOut"
+            },
+            "title": "Citations",
+            "type": "array"
+          },
+          "component_type": {
+            "title": "Component Type",
+            "type": "string"
+          },
+          "conditions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Conditions",
+            "type": "array"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "decision_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decision Status"
+          },
+          "derivation": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Derivation"
+          },
+          "fact_id": {
+            "format": "uuid",
+            "title": "Fact Id",
+            "type": "string"
+          },
+          "family": {
+            "title": "Family",
+            "type": "string"
+          },
+          "frequency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Frequency"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "original_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Original Text"
+          },
+          "per_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Per Unit"
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period"
+          },
+          "reference_target": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Target"
+          },
+          "release_id": {
+            "format": "uuid",
+            "title": "Release Id",
+            "type": "string"
+          },
+          "review_status": {
+            "title": "Review Status",
+            "type": "string"
+          },
+          "utility": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "value_state": {
+            "title": "Value State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fact_id",
+          "release_id",
+          "candidate_id",
+          "review_status",
+          "family",
+          "category_code",
+          "component_type",
+          "value",
+          "value_state",
+          "currency",
+          "per_unit",
+          "frequency",
+          "decision_status",
+          "period",
+          "utility",
+          "applicability",
+          "conditions",
+          "derivation",
+          "original_text",
+          "reference_target",
+          "is_fixture",
+          "citations"
+        ],
+        "title": "PublishedFactOut",
         "type": "object"
       },
       "Readiness": {
@@ -3164,6 +4107,180 @@
           "utilities"
         ],
         "title": "RegistryOut",
+        "type": "object"
+      },
+      "ReleaseList": {
+        "properties": {
+          "releases": {
+            "items": {
+              "$ref": "#/components/schemas/ReleaseOut"
+            },
+            "title": "Releases",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "releases",
+          "total"
+        ],
+        "title": "ReleaseList",
+        "type": "object"
+      },
+      "ReleaseOut": {
+        "properties": {
+          "awaiting_second_review_count": {
+            "title": "Awaiting Second Review Count",
+            "type": "integer"
+          },
+          "candidates_in_scope": {
+            "title": "Candidates In Scope",
+            "type": "integer"
+          },
+          "completeness": {
+            "title": "Completeness",
+            "type": "string"
+          },
+          "fact_count": {
+            "title": "Fact Count",
+            "type": "integer"
+          },
+          "gaps": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Gaps",
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "is_current": {
+            "title": "Is Current",
+            "type": "boolean"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "pending_count": {
+            "title": "Pending Count",
+            "type": "integer"
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period"
+          },
+          "published_at": {
+            "format": "date-time",
+            "title": "Published At",
+            "type": "string"
+          },
+          "published_by": {
+            "title": "Published By",
+            "type": "string"
+          },
+          "rationale": {
+            "title": "Rationale",
+            "type": "string"
+          },
+          "release_number": {
+            "title": "Release Number",
+            "type": "integer"
+          },
+          "scope": {
+            "title": "Scope",
+            "type": "string"
+          },
+          "scope_categories": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scope Categories",
+            "type": "array"
+          },
+          "scope_families": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scope Families",
+            "type": "array"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "source_version": {
+            "title": "Source Version",
+            "type": "integer"
+          },
+          "superseded_by_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Superseded By Id"
+          },
+          "unresolved_count": {
+            "title": "Unresolved Count",
+            "type": "integer"
+          },
+          "utility": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility"
+          }
+        },
+        "required": [
+          "id",
+          "source_id",
+          "release_number",
+          "scope",
+          "scope_categories",
+          "scope_families",
+          "completeness",
+          "gaps",
+          "rationale",
+          "published_by",
+          "published_at",
+          "source_version",
+          "utility",
+          "period",
+          "fact_count",
+          "candidates_in_scope",
+          "unresolved_count",
+          "pending_count",
+          "awaiting_second_review_count",
+          "is_current",
+          "superseded_by_id",
+          "is_fixture"
+        ],
+        "title": "ReleaseOut",
         "type": "object"
       },
       "ReviewChecklist": {
@@ -4038,6 +5155,16 @@
               }
             ],
             "title": "Provenance Url"
+          },
+          "publication": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PublicationSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "reading_profile": {
             "$ref": "#/components/schemas/SourceProfileOut"
@@ -5370,6 +6497,86 @@
         "title": "TableGridOut",
         "type": "object"
       },
+      "TariffExplorer": {
+        "properties": {
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/ExplorerCategory"
+            },
+            "title": "Categories",
+            "type": "array"
+          },
+          "completeness": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompletenessBanner"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "general_conditions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "General Conditions",
+            "type": "array"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          },
+          "release": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReleaseOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "published",
+              "coverage_insufficient"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "unresolved_items": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unresolved Items",
+            "type": "array"
+          }
+        },
+        "required": [
+          "status",
+          "source_id",
+          "release",
+          "completeness",
+          "categories",
+          "general_conditions",
+          "unresolved_items"
+        ],
+        "title": "TariffExplorer",
+        "type": "object"
+      },
       "TriageSummary": {
         "properties": {
           "label_flagged_pages": {
@@ -6451,6 +7658,567 @@
         "summary": "Candidate Evidence Image",
         "tags": [
           "review"
+        ]
+      }
+    },
+    "/explorer/facts/{fact_id}": {
+      "get": {
+        "operationId": "get_fact_explorer_facts__fact_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "fact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Fact Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishedFactOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Get Fact",
+        "tags": [
+          "explorer"
+        ]
+      }
+    },
+    "/explorer/facts/{fact_id}/evidence/{ordinal}/image": {
+      "get": {
+        "description": "Citation drill-down: the cited page rendered from the immutable source bytes.",
+        "operationId": "fact_evidence_image_explorer_facts__fact_id__evidence__ordinal__image_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "fact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Fact Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ordinal",
+            "required": true,
+            "schema": {
+              "title": "Ordinal",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "dpi",
+            "required": false,
+            "schema": {
+              "default": 110,
+              "maximum": 200,
+              "minimum": 50,
+              "title": "Dpi",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              },
+              "image/png": {}
+            },
+            "description": "the cited page, cited table outlined"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Fact Evidence Image",
+        "tags": [
+          "explorer"
+        ]
+      }
+    },
+    "/explorer/releases": {
+      "get": {
+        "description": "Current releases across sources; fixture releases are counted separately and never\npresented as coverage.",
+        "operationId": "list_current_releases_explorer_releases_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "dataset_kind",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dataset Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExplorerReleaseList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Current Releases",
+        "tags": [
+          "explorer"
+        ]
+      }
+    },
+    "/explorer/sources/{source_id}/network": {
+      "get": {
+        "description": "Screen 6a: wheeling, losses by role, CSS with its derivation (computed / cap /\napproved), additional surcharge with decision status, banking, green tariff and\ntransmission references, each with citations and review state; families with no\npublished fact are `coverage_insufficient` with the reviewed disposition if one exists.",
+        "operationId": "network_explorer_explorer_sources__source_id__network_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkExplorer"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Network Explorer",
+        "tags": [
+          "explorer"
+        ]
+      }
+    },
+    "/explorer/sources/{source_id}/tariff": {
+      "get": {
+        "description": "Screen 5: category tree with components, units, value states, applicability,\nconditions and citations, under a completeness banner.  Only published facts.",
+        "operationId": "tariff_explorer_explorer_sources__source_id__tariff_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TariffExplorer"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Tariff Explorer",
+        "tags": [
+          "explorer"
         ]
       }
     },
@@ -9947,6 +11715,337 @@
         "summary": "Assign Profile",
         "tags": [
           "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/publish": {
+      "post": {
+        "description": "The publication transaction.  Fails on a stale source version or preview token, on\nmissing required items for a `complete` declaration, on undeclared gaps for a `partial`\none, and on approved candidates that still carry blocking findings.",
+        "operationId": "publish_source_sources__source_id__publish_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReleaseOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Publish Source",
+        "tags": [
+          "publication"
+        ]
+      }
+    },
+    "/sources/{source_id}/publish/preview": {
+      "post": {
+        "description": "Show what a release over this scope would publish and what stands in its way.  The\nreturned token is required by the publish call: the consequences shown must still hold.",
+        "operationId": "publish_preview_sources__source_id__publish_preview_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishPreviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishPreview"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Publish Preview",
+        "tags": [
+          "publication"
+        ]
+      }
+    },
+    "/sources/{source_id}/releases": {
+      "get": {
+        "operationId": "list_releases_sources__source_id__releases_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReleaseList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Releases",
+        "tags": [
+          "publication"
         ]
       }
     },

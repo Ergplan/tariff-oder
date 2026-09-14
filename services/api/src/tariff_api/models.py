@@ -282,6 +282,8 @@ class SourceDocument(Base):
     validators_version: Mapped[str | None] = mapped_column(String(16))
     validated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     validation_summary: Mapped[dict | None] = mapped_column(JSONB)
+    # Milestone 5b: the current data release, denormalised for the detail page
+    publication_summary: Mapped[dict | None] = mapped_column(JSONB)
 
     # Golden-corpus reconciliation (tests/golden/manifest.json); never copied, always re-verified
     golden_id: Mapped[str | None] = mapped_column(String(80))
@@ -707,6 +709,9 @@ class CandidateRecord(Base):
     first_reviewer: Mapped[str | None] = mapped_column(String(320))
     second_review: Mapped[str] = mapped_column(String(16), nullable=False, default="not_required")
     decision_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    # Milestone 5b: set by the first release that published this candidate; decisions on a
+    # published candidate are no longer reversible
+    published_release_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     @property
@@ -828,3 +833,103 @@ class ReviewDecision(Base):
     idempotency_key: Mapped[str | None] = mapped_column(String(200))
     request_id: Mapped[str | None] = mapped_column(String(64))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class DataRelease(Base):
+    """A publication transaction over a declared scope (Section 7.2, publication).  Releases
+    are cumulative snapshots per source: the current one carries every published fact; an
+    earlier one stays readable as history and is marked superseded.  Partial releases are
+    labelled partial everywhere and list their gaps."""
+
+    __tablename__ = "data_releases"
+    __table_args__ = (
+        UniqueConstraint("source_id", "release_number", name="uq_data_release_number"),
+        Index("ix_data_releases_current", "source_id", "is_current"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    release_number: Mapped[int] = mapped_column(Integer, nullable=False)
+    scope: Mapped[str] = mapped_column(String(16), nullable=False)  # whole_schedule | subset
+    scope_categories: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    scope_families: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    completeness: Mapped[str] = mapped_column(String(8), nullable=False)  # complete | partial
+    gaps: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    rationale: Mapped[str] = mapped_column(Text, nullable=False)
+    published_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    published_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    source_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    utility: Mapped[str | None] = mapped_column(String(40))
+    period: Mapped[str | None] = mapped_column(String(80))
+    fact_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    candidates_in_scope: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    unresolved_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    pending_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    awaiting_second_review_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    checklist_snapshot: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    preview_token: Mapped[str] = mapped_column(String(64), nullable=False)
+    is_current: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    superseded_by_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    request_id: Mapped[str | None] = mapped_column(String(64))
+
+
+class PublishedFact(Base):
+    """A published fact (Section 5.2: the database is the source of truth for published
+    answers).  Separate table, separate routes from candidates; the explorer and every tool
+    of Section 8 read this and only this."""
+
+    __tablename__ = "published_facts"
+    __table_args__ = (
+        UniqueConstraint("release_id", "candidate_id", name="uq_published_fact_candidate"),
+        Index("ix_published_facts_release", "release_id", "family", "category_code"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    release_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("data_releases.id", ondelete="CASCADE"), nullable=False)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    candidate_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
+    decision_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    review_status: Mapped[str] = mapped_column(String(24), nullable=False)  # approved | corrected
+    family: Mapped[str] = mapped_column(String(32), nullable=False)
+    category_code: Mapped[str | None] = mapped_column(String(80))
+    component_type: Mapped[str] = mapped_column(String(24), nullable=False)
+    value: Mapped[str | None] = mapped_column(String(40))
+    value_state: Mapped[str] = mapped_column(String(24), nullable=False)
+    currency: Mapped[str | None] = mapped_column(String(8))
+    per_unit: Mapped[str | None] = mapped_column(String(16))
+    frequency: Mapped[str | None] = mapped_column(String(16))
+    decision_status: Mapped[str | None] = mapped_column(String(40))
+    period: Mapped[str | None] = mapped_column(String(80))
+    utility: Mapped[str | None] = mapped_column(String(40))
+    applicability: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
+    conditions: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    derivation: Mapped[dict | None] = mapped_column(JSONB)
+    record: Mapped[dict] = mapped_column(JSONB, nullable=False)  # the effective record at publication
+    is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    published_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class PublishedEvidence(Base):
+    """Evidence span of a published fact (Section 5.2): the citation is derived from this row
+    by backend code; no model ever produces a page number that reaches a user."""
+
+    __tablename__ = "published_evidence"
+    __table_args__ = (Index("ix_published_evidence_fact", "fact_id", "ordinal"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    fact_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("published_facts.id", ondelete="CASCADE"), nullable=False)
+    release_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
+    source_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), nullable=False)
+    ordinal: Mapped[int] = mapped_column(Integer, nullable=False)
+    page_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    printed_label: Mapped[str | None] = mapped_column(String(40))
+    kind: Mapped[str] = mapped_column(String(8), nullable=False)
+    grid_ordinal: Mapped[int | None] = mapped_column(Integer)
+    row: Mapped[int | None] = mapped_column(Integer)
+    col: Mapped[int | None] = mapped_column(Integer)
+    line_no: Mapped[int | None] = mapped_column(Integer)
+    header_path: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    row_path: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    clause_path: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    excerpt: Mapped[str] = mapped_column(String(400), nullable=False)

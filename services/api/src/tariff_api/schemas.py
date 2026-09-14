@@ -560,6 +560,22 @@ class StageRerunRequest(BaseModel):
     ]
 
 
+class PublicationSummary(BaseModel):
+    id: uuid.UUID
+    release_number: int
+    scope: str
+    completeness: str
+    gaps: list[dict[str, Any]]
+    fact_count: int
+    published_by: str
+    published_at: datetime | None
+    is_current: bool
+    is_fixture: bool
+    unresolved: int = 0
+    pending: int = 0
+    awaiting_second_review: int = 0
+
+
 class SourceDetail(SourceSummary):
     content_type: str
     object_key: str
@@ -584,6 +600,7 @@ class SourceDetail(SourceSummary):
     structure: StructureSummary | None
     extraction: ExtractionSummary | None
     validation: ValidationSummary | None
+    publication: PublicationSummary | None = None
     artefacts: list[StageArtefactOut]
 
 
@@ -900,3 +917,184 @@ class ReviewTelemetry(BaseModel):
     corrections_by_cause: dict[str, int]
     by_utility: dict[str, dict[str, Any]]
     review_ms_by_risk_tag: dict[str, dict[str, int]]
+
+
+# ------------------------------------------------------------------ Milestone 5b: publication and explorer
+
+
+class PublishGap(BaseModel):
+    key: str = Field(min_length=1, max_length=120)
+    reason: str = Field(min_length=3, max_length=1000)
+
+
+class PublishPreviewRequest(BaseModel):
+    scope: Literal["whole_schedule", "subset"] = "whole_schedule"
+    categories: list[str] | None = None
+    families: list[str] | None = None
+
+
+class PublishPreview(BaseModel):
+    """The consequences of a publication over a scope (Section 7.1, principle 5).  The
+    token must be presented with the publish request."""
+
+    source_id: uuid.UUID
+    scope: str
+    categories: list[str]
+    families: list[str]
+    candidates_in_scope: int
+    facts_to_publish: int
+    pending: list[str]
+    awaiting_second_review: list[str]
+    unresolved: list[str]
+    blocked_by_findings: list[str]
+    missing_for_complete: list[dict[str, str]]
+    gap_keys_required_for_partial: list[str]
+    dispositions: dict[str, str]
+    checklist: ReviewChecklist
+    prior_release: PublicationSummary | None
+    source_version: int
+    preview_token: str
+
+
+class PublishRequest(BaseModel):
+    scope: Literal["whole_schedule", "subset"] = "whole_schedule"
+    categories: list[str] | None = None
+    families: list[str] | None = None
+    completeness: Literal["complete", "partial"]
+    gaps: list[PublishGap] = Field(default_factory=list)
+    rationale: str = Field(min_length=5, max_length=4000)
+    expected_source_version: int
+    preview_token: str = Field(min_length=64, max_length=64)
+    confirm_consequences: bool
+
+
+class ReleaseOut(BaseModel):
+    id: uuid.UUID
+    source_id: uuid.UUID
+    release_number: int
+    scope: str
+    scope_categories: list[str]
+    scope_families: list[str]
+    completeness: str
+    gaps: list[dict[str, Any]]
+    rationale: str
+    published_by: str
+    published_at: datetime
+    source_version: int
+    utility: str | None
+    period: str | None
+    fact_count: int
+    candidates_in_scope: int
+    unresolved_count: int
+    pending_count: int
+    awaiting_second_review_count: int
+    is_current: bool
+    superseded_by_id: uuid.UUID | None
+    is_fixture: bool
+
+
+class ReleaseList(BaseModel):
+    releases: list[ReleaseOut]
+    total: int
+
+
+class CitationOut(BaseModel):
+    """Derived by backend code from a published evidence row; never model-produced."""
+
+    evidence_id: uuid.UUID
+    source_id: uuid.UUID
+    pdf_page: int
+    printed_page: str | None
+    kind: str
+    table_id: str | None
+    cell: str | None
+    line_no: int | None
+    header_path: list[str]
+    row_path: list[str]
+    clause_path: list[str]
+    excerpt: str
+
+
+class PublishedFactOut(BaseModel):
+    fact_id: uuid.UUID
+    release_id: uuid.UUID
+    candidate_id: uuid.UUID
+    review_status: str
+    family: str
+    category_code: str | None
+    component_type: str
+    value: str | None
+    value_state: str
+    currency: str | None
+    per_unit: str | None
+    frequency: str | None
+    decision_status: str | None
+    period: str | None
+    utility: str | None
+    applicability: dict[str, Any]
+    conditions: list[str]
+    derivation: dict[str, Any] | None
+    original_text: str | None
+    reference_target: str | None
+    is_fixture: bool
+    citations: list[CitationOut]
+
+
+class CompletenessBanner(BaseModel):
+    completeness: str  # complete | partial
+    gaps: list[dict[str, Any]]
+    unresolved: int
+    pending: int
+    awaiting_second_review: int
+    release_number: int
+    published_at: datetime
+    is_fixture: bool
+
+
+class ExplorerCategory(BaseModel):
+    category_code: str
+    components: dict[str, list[PublishedFactOut]]
+    conditions: list[str]
+    facts: int
+
+
+class TariffExplorer(BaseModel):
+    status: Literal["published", "coverage_insufficient"]
+    source_id: uuid.UUID
+    release: ReleaseOut | None
+    completeness: CompletenessBanner | None
+    categories: list[ExplorerCategory]
+    general_conditions: list[str]
+    unresolved_items: list[str]
+    message: str | None = None
+
+
+class NetworkFamilyView(BaseModel):
+    family: str
+    status: Literal["published", "coverage_insufficient"]
+    disposition: str | None
+    facts: list[PublishedFactOut]
+    message: str | None = None
+
+
+class NetworkExplorer(BaseModel):
+    status: Literal["published", "coverage_insufficient"]
+    source_id: uuid.UUID
+    release: ReleaseOut | None
+    completeness: CompletenessBanner | None
+    families: list[NetworkFamilyView]
+    message: str | None = None
+
+
+class ExplorerReleaseItem(BaseModel):
+    release: ReleaseOut
+    original_filename: str
+    dataset_kind: DatasetKind
+    state: SourceState
+
+
+class ExplorerReleaseList(BaseModel):
+    items: list[ExplorerReleaseItem]
+    total: int
+    real: int
+    fixture: int

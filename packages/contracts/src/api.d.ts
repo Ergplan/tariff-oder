@@ -123,6 +123,108 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/explorer/facts/{fact_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Fact */
+        get: operations["get_fact_explorer_facts__fact_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/explorer/facts/{fact_id}/evidence/{ordinal}/image": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Fact Evidence Image
+         * @description Citation drill-down: the cited page rendered from the immutable source bytes.
+         */
+        get: operations["fact_evidence_image_explorer_facts__fact_id__evidence__ordinal__image_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/explorer/releases": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Current Releases
+         * @description Current releases across sources; fixture releases are counted separately and never
+         *     presented as coverage.
+         */
+        get: operations["list_current_releases_explorer_releases_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/explorer/sources/{source_id}/network": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Network Explorer
+         * @description Screen 6a: wheeling, losses by role, CSS with its derivation (computed / cap /
+         *     approved), additional surcharge with decision status, banking, green tariff and
+         *     transmission references, each with citations and review state; families with no
+         *     published fact are `coverage_insufficient` with the reviewed disposition if one exists.
+         */
+        get: operations["network_explorer_explorer_sources__source_id__network_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/explorer/sources/{source_id}/tariff": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Tariff Explorer
+         * @description Screen 5: category tree with components, units, value states, applicability,
+         *     conditions and citations, under a completeness banner.  Only published facts.
+         */
+        get: operations["tariff_explorer_explorer_sources__source_id__tariff_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/healthz": {
         parameters: {
             query?: never;
@@ -599,6 +701,66 @@ export interface paths {
         get?: never;
         /** Assign Profile */
         put: operations["assign_profile_sources__source_id__profile_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Publish Source
+         * @description The publication transaction.  Fails on a stale source version or preview token, on
+         *     missing required items for a `complete` declaration, on undeclared gaps for a `partial`
+         *     one, and on approved candidates that still carry blocking findings.
+         */
+        post: operations["publish_source_sources__source_id__publish_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/publish/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Publish Preview
+         * @description Show what a release over this scope would publish and what stands in its way.  The
+         *     returned token is required by the publish call: the consequences shown must still hold.
+         */
+        post: operations["publish_preview_sources__source_id__publish_preview_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/releases": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Releases */
+        get: operations["list_releases_sources__source_id__releases_get"];
+        put?: never;
         post?: never;
         delete?: never;
         options?: never;
@@ -1095,6 +1257,42 @@ export interface components {
             /** Status */
             status: string;
         };
+        /**
+         * CitationOut
+         * @description Derived by backend code from a published evidence row; never model-produced.
+         */
+        CitationOut: {
+            /** Cell */
+            cell: string | null;
+            /** Clause Path */
+            clause_path: string[];
+            /**
+             * Evidence Id
+             * Format: uuid
+             */
+            evidence_id: string;
+            /** Excerpt */
+            excerpt: string;
+            /** Header Path */
+            header_path: string[];
+            /** Kind */
+            kind: string;
+            /** Line No */
+            line_no: number | null;
+            /** Pdf Page */
+            pdf_page: number;
+            /** Printed Page */
+            printed_page: string | null;
+            /** Row Path */
+            row_path: string[];
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Table Id */
+            table_id: string | null;
+        };
         /** ClauseValueList */
         ClauseValueList: {
             /** Total */
@@ -1180,6 +1378,30 @@ export interface components {
             jurisdiction_id: string;
             /** Name */
             name: string;
+        };
+        /** CompletenessBanner */
+        CompletenessBanner: {
+            /** Awaiting Second Review */
+            awaiting_second_review: number;
+            /** Completeness */
+            completeness: string;
+            /** Gaps */
+            gaps: {
+                [key: string]: unknown;
+            }[];
+            /** Is Fixture */
+            is_fixture: boolean;
+            /** Pending */
+            pending: number;
+            /**
+             * Published At
+             * Format: date-time
+             */
+            published_at: string;
+            /** Release Number */
+            release_number: number;
+            /** Unresolved */
+            unresolved: number;
         };
         /** ConditionList */
         ConditionList: {
@@ -1337,6 +1559,38 @@ export interface components {
             rendered_at: string;
             /** Viewer */
             viewer: string;
+        };
+        /** ExplorerCategory */
+        ExplorerCategory: {
+            /** Category Code */
+            category_code: string;
+            /** Components */
+            components: {
+                [key: string]: components["schemas"]["PublishedFactOut"][];
+            };
+            /** Conditions */
+            conditions: string[];
+            /** Facts */
+            facts: number;
+        };
+        /** ExplorerReleaseItem */
+        ExplorerReleaseItem: {
+            dataset_kind: components["schemas"]["DatasetKind"];
+            /** Original Filename */
+            original_filename: string;
+            release: components["schemas"]["ReleaseOut"];
+            state: components["schemas"]["SourceState"];
+        };
+        /** ExplorerReleaseList */
+        ExplorerReleaseList: {
+            /** Fixture */
+            fixture: number;
+            /** Items */
+            items: components["schemas"]["ExplorerReleaseItem"][];
+            /** Real */
+            real: number;
+            /** Total */
+            total: number;
         };
         /** ExtractionRunList */
         ExtractionRunList: {
@@ -1843,6 +2097,41 @@ export interface components {
             provider: string;
             role: components["schemas"]["UserRole"];
         };
+        /** NetworkExplorer */
+        NetworkExplorer: {
+            completeness: components["schemas"]["CompletenessBanner"] | null;
+            /** Families */
+            families: components["schemas"]["NetworkFamilyView"][];
+            /** Message */
+            message?: string | null;
+            release: components["schemas"]["ReleaseOut"] | null;
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "published" | "coverage_insufficient";
+        };
+        /** NetworkFamilyView */
+        NetworkFamilyView: {
+            /** Disposition */
+            disposition: string | null;
+            /** Facts */
+            facts: components["schemas"]["PublishedFactOut"][];
+            /** Family */
+            family: string;
+            /** Message */
+            message?: string | null;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "published" | "coverage_insufficient";
+        };
         /** ParseSummary */
         ParseSummary: {
             /** Heading Inventory */
@@ -1866,6 +2155,203 @@ export interface components {
             reason: string;
             /** Version */
             version?: number | null;
+        };
+        /** PublicationSummary */
+        PublicationSummary: {
+            /**
+             * Awaiting Second Review
+             * @default 0
+             */
+            awaiting_second_review: number;
+            /** Completeness */
+            completeness: string;
+            /** Fact Count */
+            fact_count: number;
+            /** Gaps */
+            gaps: {
+                [key: string]: unknown;
+            }[];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Is Current */
+            is_current: boolean;
+            /** Is Fixture */
+            is_fixture: boolean;
+            /**
+             * Pending
+             * @default 0
+             */
+            pending: number;
+            /** Published At */
+            published_at: string | null;
+            /** Published By */
+            published_by: string;
+            /** Release Number */
+            release_number: number;
+            /** Scope */
+            scope: string;
+            /**
+             * Unresolved
+             * @default 0
+             */
+            unresolved: number;
+        };
+        /** PublishedFactOut */
+        PublishedFactOut: {
+            /** Applicability */
+            applicability: {
+                [key: string]: unknown;
+            };
+            /**
+             * Candidate Id
+             * Format: uuid
+             */
+            candidate_id: string;
+            /** Category Code */
+            category_code: string | null;
+            /** Citations */
+            citations: components["schemas"]["CitationOut"][];
+            /** Component Type */
+            component_type: string;
+            /** Conditions */
+            conditions: string[];
+            /** Currency */
+            currency: string | null;
+            /** Decision Status */
+            decision_status: string | null;
+            /** Derivation */
+            derivation: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Fact Id
+             * Format: uuid
+             */
+            fact_id: string;
+            /** Family */
+            family: string;
+            /** Frequency */
+            frequency: string | null;
+            /** Is Fixture */
+            is_fixture: boolean;
+            /** Original Text */
+            original_text: string | null;
+            /** Per Unit */
+            per_unit: string | null;
+            /** Period */
+            period: string | null;
+            /** Reference Target */
+            reference_target: string | null;
+            /**
+             * Release Id
+             * Format: uuid
+             */
+            release_id: string;
+            /** Review Status */
+            review_status: string;
+            /** Utility */
+            utility: string | null;
+            /** Value */
+            value: string | null;
+            /** Value State */
+            value_state: string;
+        };
+        /** PublishGap */
+        PublishGap: {
+            /** Key */
+            key: string;
+            /** Reason */
+            reason: string;
+        };
+        /**
+         * PublishPreview
+         * @description The consequences of a publication over a scope (Section 7.1, principle 5).  The
+         *     token must be presented with the publish request.
+         */
+        PublishPreview: {
+            /** Awaiting Second Review */
+            awaiting_second_review: string[];
+            /** Blocked By Findings */
+            blocked_by_findings: string[];
+            /** Candidates In Scope */
+            candidates_in_scope: number;
+            /** Categories */
+            categories: string[];
+            checklist: components["schemas"]["ReviewChecklist"];
+            /** Dispositions */
+            dispositions: {
+                [key: string]: string;
+            };
+            /** Facts To Publish */
+            facts_to_publish: number;
+            /** Families */
+            families: string[];
+            /** Gap Keys Required For Partial */
+            gap_keys_required_for_partial: string[];
+            /** Missing For Complete */
+            missing_for_complete: {
+                [key: string]: string;
+            }[];
+            /** Pending */
+            pending: string[];
+            /** Preview Token */
+            preview_token: string;
+            prior_release: components["schemas"]["PublicationSummary"] | null;
+            /** Scope */
+            scope: string;
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Source Version */
+            source_version: number;
+            /** Unresolved */
+            unresolved: string[];
+        };
+        /** PublishPreviewRequest */
+        PublishPreviewRequest: {
+            /** Categories */
+            categories?: string[] | null;
+            /** Families */
+            families?: string[] | null;
+            /**
+             * Scope
+             * @default whole_schedule
+             * @enum {string}
+             */
+            scope: "whole_schedule" | "subset";
+        };
+        /** PublishRequest */
+        PublishRequest: {
+            /** Categories */
+            categories?: string[] | null;
+            /**
+             * Completeness
+             * @enum {string}
+             */
+            completeness: "complete" | "partial";
+            /** Confirm Consequences */
+            confirm_consequences: boolean;
+            /** Expected Source Version */
+            expected_source_version: number;
+            /** Families */
+            families?: string[] | null;
+            /** Gaps */
+            gaps?: components["schemas"]["PublishGap"][];
+            /** Preview Token */
+            preview_token: string;
+            /** Rationale */
+            rationale: string;
+            /**
+             * Scope
+             * @default whole_schedule
+             * @enum {string}
+             */
+            scope: "whole_schedule" | "subset";
         };
         /** Readiness */
         Readiness: {
@@ -1932,6 +2418,71 @@ export interface components {
             jurisdictions: components["schemas"]["JurisdictionOut"][];
             /** Utilities */
             utilities: components["schemas"]["UtilityOut"][];
+        };
+        /** ReleaseList */
+        ReleaseList: {
+            /** Releases */
+            releases: components["schemas"]["ReleaseOut"][];
+            /** Total */
+            total: number;
+        };
+        /** ReleaseOut */
+        ReleaseOut: {
+            /** Awaiting Second Review Count */
+            awaiting_second_review_count: number;
+            /** Candidates In Scope */
+            candidates_in_scope: number;
+            /** Completeness */
+            completeness: string;
+            /** Fact Count */
+            fact_count: number;
+            /** Gaps */
+            gaps: {
+                [key: string]: unknown;
+            }[];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Is Current */
+            is_current: boolean;
+            /** Is Fixture */
+            is_fixture: boolean;
+            /** Pending Count */
+            pending_count: number;
+            /** Period */
+            period: string | null;
+            /**
+             * Published At
+             * Format: date-time
+             */
+            published_at: string;
+            /** Published By */
+            published_by: string;
+            /** Rationale */
+            rationale: string;
+            /** Release Number */
+            release_number: number;
+            /** Scope */
+            scope: string;
+            /** Scope Categories */
+            scope_categories: string[];
+            /** Scope Families */
+            scope_families: string[];
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Source Version */
+            source_version: number;
+            /** Superseded By Id */
+            superseded_by_id: string | null;
+            /** Unresolved Count */
+            unresolved_count: number;
+            /** Utility */
+            utility: string | null;
         };
         /** ReviewChecklist */
         ReviewChecklist: {
@@ -2222,6 +2773,7 @@ export interface components {
             producer: string | null;
             /** Provenance Url */
             provenance_url: string | null;
+            publication?: components["schemas"]["PublicationSummary"] | null;
             reading_profile: components["schemas"]["SourceProfileOut"];
             /** Sha256 */
             sha256: string;
@@ -2632,6 +3184,29 @@ export interface components {
             row_count: number;
             /** Strategy */
             strategy: string;
+        };
+        /** TariffExplorer */
+        TariffExplorer: {
+            /** Categories */
+            categories: components["schemas"]["ExplorerCategory"][];
+            completeness: components["schemas"]["CompletenessBanner"] | null;
+            /** General Conditions */
+            general_conditions: string[];
+            /** Message */
+            message?: string | null;
+            release: components["schemas"]["ReleaseOut"] | null;
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "published" | "coverage_insufficient";
+            /** Unresolved Items */
+            unresolved_items: string[];
         };
         /** TriageSummary */
         TriageSummary: {
@@ -3225,6 +3800,437 @@ export interface operations {
                 content: {
                     "application/json": unknown;
                     "image/png": unknown;
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_fact_explorer_facts__fact_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                fact_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PublishedFactOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    fact_evidence_image_explorer_facts__fact_id__evidence__ordinal__image_get: {
+        parameters: {
+            query?: {
+                dpi?: number;
+            };
+            header?: never;
+            path: {
+                fact_id: string;
+                ordinal: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description the cited page, cited table outlined */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                    "image/png": unknown;
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_current_releases_explorer_releases_get: {
+        parameters: {
+            query?: {
+                dataset_kind?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExplorerReleaseList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    network_explorer_explorer_sources__source_id__network_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NetworkExplorer"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    tariff_explorer_explorer_sources__source_id__tariff_get: {
+        parameters: {
+            query?: {
+                category?: string | null;
+            };
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TariffExplorer"];
                 };
             };
             /** @description Unauthorized */
@@ -5642,6 +6648,269 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SourceDetail"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    publish_source_sources__source_id__publish_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PublishRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReleaseOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    publish_preview_sources__source_id__publish_preview_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PublishPreviewRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PublishPreview"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_releases_sources__source_id__releases_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReleaseList"];
                 };
             };
             /** @description Unauthorized */

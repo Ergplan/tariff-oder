@@ -172,6 +172,7 @@ One provider call per channel per region: `channel`, `provider`, `model`, `promp
 | confidence, risk_tags, routing | Section 6.10; `individual` or `batch` |
 | review_status | `pending`, `awaiting_second_review`, `approved`, `corrected`, `rejected`, `unresolved` (Milestone 5a) |
 | reviewed_record, reviewed_by, reviewed_at, first_reviewer, second_review, decision_count | Review state (Milestone 5a): the corrected record (the extractor's `record` is never overwritten), who decided last, the first-round reviewer while a second review is pending, `not_required` / `pending` / `done`, decisions taken |
+| published_release_id | The first release that published this candidate; set → no further decision or undo (Milestone 5b) |
 | version | Optimistic concurrency: every decision and undo increments it |
 | is_fixture | Set from the provider; never mixed with real |
 | finding_count, blocking_finding_count | From the last validation run |
@@ -212,6 +213,33 @@ with rationale, actor and time.
 
 One row per rendered evidence image: candidate, evidence index, page, viewer, dpi, whether
 the cited table was outlined, time.  Written only by the image endpoint; cited by decisions.
+
+## `data_releases` (Milestone 5b)
+
+| Column | Meaning |
+| --- | --- |
+| release_number, is_current, superseded_by_id | Cumulative releases per source; the current one carries every published fact |
+| scope, scope_categories, scope_families | `whole_schedule` or `subset` with its lists |
+| completeness, gaps | `complete` or `partial` with `[{key, reason}]`; partial is labelled everywhere it is read |
+| rationale, published_by, published_at, source_version, request_id | Who, why, when, against which source version |
+| fact_count, candidates_in_scope, unresolved_count, pending_count, awaiting_second_review_count | The consequences at publication |
+| checklist_snapshot | Checklist summary, candidate status counts and family dispositions at publication (the coverage record) |
+| preview_token | Hash of the state the reviewer confirmed |
+| utility, period, is_fixture | Denormalised for the release list; fixture releases never count as coverage |
+
+## `published_facts` (Milestone 5b)
+
+One row per published candidate per release: `candidate_id`, `decision_id` (the final
+decision), `review_status` (`approved` / `corrected`), the denormalised fact columns
+(family, category, component, value, value_state, currency, per_unit, frequency,
+decision_status, period, utility), `applicability`, `conditions`, `derivation`, the full
+effective `record`, `is_fixture`.  No route reads candidates to answer an explorer query.
+
+## `published_evidence` (Milestone 5b)
+
+Evidence spans of published facts: `ordinal`, `page_index`, `printed_label` (resolved by
+triage), `kind`, `grid_ordinal`, `row`, `col`, `line_no`, `header_path`, `row_path`,
+`clause_path`, `excerpt`.  Citations are derived from these rows by backend code.
 
 ## `source_documents` — extraction and validation columns
 
@@ -257,6 +285,7 @@ Append-only (UPDATE/DELETE raise via trigger): `actor`, `action`, `entity_type`,
 ## Reserved for later milestones (not created yet)
 Regulatory order, schedule version, effective rule, category/version, option group, category
 mapping, charge component, slab/time band, condition/rule, evidence span, table grid,
-publication, coverage record, failure report — Section 5.2 (candidate, review decision,
-condition/rule, network charge determination and loss record exist as `candidates`,
-`review_decisions`, `condition_records` and candidate families).
+failure report — Section 5.2 (candidate, review decision, condition/rule, network charge
+determination, loss record, publication and coverage record exist as `candidates`,
+`review_decisions`, `condition_records`, candidate families, `data_releases` with its
+checklist snapshot, `published_facts` and `published_evidence`).

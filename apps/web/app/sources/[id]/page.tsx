@@ -577,11 +577,20 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
       )}
 
       <h2>Candidates and validation</h2>
-      {s.state === "awaiting_review" ? (
+      {s.state === "awaiting_review" || s.state === "published" ? (
         <p>
           <Link href={`/sources/${id}/review`}>Open the review workspace</Link> — side-by-side evidence, decisions with rationale,
-          completeness checklist.
+          completeness checklist. <Link href={`/sources/${id}/publish`}>Publish a release</Link> — declared scope, completeness
+          declaration, consequences shown first.
         </p>
+      ) : null}
+      {s.publication ? (
+        <div className="banner" data-tone={s.publication.completeness === "complete" ? "ok" : "warn"}>
+          Release {s.publication.release_number} ({s.publication.completeness}
+          {s.publication.completeness === "partial" ? `, ${s.publication.gaps.length} declared gap(s)` : ""}) · {s.publication.fact_count} published
+          facts · by {s.publication.published_by}. <Link href={`/explorer/${id}`}>Open in the explorer</Link>
+          {s.publication.is_fixture ? " · FIXTURE release, never coverage" : ""}
+        </div>
       ) : null}
       {!extraction ? (
         <p className="muted">Not extracted yet: extraction runs after the structure stage, from confirmed regions only.</p>

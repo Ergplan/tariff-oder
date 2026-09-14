@@ -56,6 +56,20 @@ export type DecisionList = Schemas["DecisionList"];
 export type CandidateEvidenceOut = Schemas["CandidateEvidenceOut"];
 export type BatchApproveResult = Schemas["BatchApproveResult"];
 export type ReviewTelemetry = Schemas["ReviewTelemetry"];
+export type PublishPreview = Schemas["PublishPreview"];
+export type PublishRequest = Schemas["PublishRequest"];
+export type PublishGap = Schemas["PublishGap"];
+export type ReleaseOut = Schemas["ReleaseOut"];
+export type ReleaseList = Schemas["ReleaseList"];
+export type PublicationSummary = Schemas["PublicationSummary"];
+export type TariffExplorer = Schemas["TariffExplorer"];
+export type ExplorerCategory = Schemas["ExplorerCategory"];
+export type NetworkExplorer = Schemas["NetworkExplorer"];
+export type NetworkFamilyView = Schemas["NetworkFamilyView"];
+export type PublishedFactOut = Schemas["PublishedFactOut"];
+export type CitationOut = Schemas["CitationOut"];
+export type CompletenessBanner = Schemas["CompletenessBanner"];
+export type ExplorerReleaseList = Schemas["ExplorerReleaseList"];
 
 /** Pipeline states of Section 6.2, in order; terminal/exception states listed separately. */
 export const PIPELINE_STATES: SourceState[] = [
