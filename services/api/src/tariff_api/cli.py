@@ -224,6 +224,68 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_sources(args: argparse.Namespace) -> int:
+    """List registered sources with their pipeline state and latest job — the operator's view
+    while the API is VPC-internal.  Read-only."""
+    from sqlalchemy import select
+
+    from .db import session_scope
+    from .models import Job, SourceDocument
+
+    _adapters()
+    with session_scope() as s:
+        rows = s.execute(select(SourceDocument).order_by(SourceDocument.acquired_at)).scalars().all()
+        out = []
+        for src in rows:
+            job = s.execute(
+                select(Job).where(Job.source_id == src.id).order_by(Job.created_at.desc()).limit(1)
+            ).scalar_one_or_none()
+            out.append(
+                {
+                    "source_id": str(src.id),
+                    "original_filename": src.original_filename,
+                    "dataset": src.dataset.kind.value,
+                    "state": src.state.value,
+                    "state_reason": src.state_reason,
+                    "page_count": src.page_count,
+                    "golden_id": src.golden_id,
+                    "manifest_all_match": (src.manifest_check or {}).get("all_match"),
+                    "latest_job": (
+                        {
+                            "id": str(job.id),
+                            "type": job.job_type,
+                            "status": job.status.value,
+                            "stage": job.stage,
+                            "attempts": job.attempts,
+                            "progress": job.progress,
+                            "error_type": job.error_type,
+                            "error": (job.error_message or "")[:200] or None,
+                        }
+                        if job
+                        else None
+                    ),
+                }
+            )
+    if args.json:
+        print(json.dumps(out, indent=2, default=str))
+        return 0
+    if not out:
+        print("no sources registered")
+        return 0
+    for r in out:
+        j = r["latest_job"]
+        jtxt = (
+            f"{j['type']} {j['status']}" + (f" [{j['error_type']}]" if j and j["error_type"] else "") if j else "no job"
+        )
+        m = r["manifest_all_match"]
+        manifest = "ok" if m else ("n/a" if m is None else "MISMATCH")
+        print(
+            f"{r['source_id']}  {r['dataset']:<7} {r['state']:<18} pages={r['page_count'] or '?':<4} "
+            f"manifest={manifest}  {jtxt}  {r['original_filename']}"
+        )
+    return 0
+
+
 def cmd_users(args: argparse.Namespace) -> int:
     """List users, or add/update one.  Role changes are audit events."""
     from sqlalchemy import select
@@ -318,6 +380,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     p.add_argument("--provenance", default=None, help="where the document came from, if known")
     p.set_defaults(fn=cmd_ingest)
+
+    p = sub.add_parser("sources", help="list registered sources with pipeline state and latest job")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(fn=cmd_sources)
 
     p = sub.add_parser("users", help="list users, or add/update one")
     p.add_argument("action", choices=["list", "add"])

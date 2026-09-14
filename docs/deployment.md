@@ -220,6 +220,16 @@ Useful argument sets:
 | Register one order | `ingest,inbox/<file>.pdf,--actor,venture@aayuda.energy` |
 | Create the first administrator | `users,add,--email,venture@aayuda.energy,--role,administrator,--actor,venture@aayuda.energy` |
 | List users | `users,list` |
+| List registered sources with pipeline state, page count, manifest check and latest job | `sources` (add `,--json` for the full record) |
+
+Worker and API logs are structured JSON on stdout, which `gcloud beta run jobs executions logs
+read` renders as blank lines.  Read them through Cloud Logging instead:
+
+```bash
+gcloud logging read 'resource.type="cloud_run_job" AND resource.labels.job_name="tariff-worker"' \
+  --project tariff-order-parsing --freshness=2h --limit 50 \
+  --format='value(timestamp,jsonPayload.message,jsonPayload.job_type,jsonPayload.stage,jsonPayload.error_type)'
+```
 
 `--actor` must be an email: the audit trail records the person who registered a source, never
 a process name.
