@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 from collections.abc import Callable
 
 from fastapi import Depends, Request
@@ -28,6 +29,17 @@ def current_principal(request: Request) -> Principal:
         raise AppError("unauthenticated", "this process has no identity provider")
     principal = adapters.identity.authenticate(request.headers, _role_lookup)
     if principal is None:
+        # Names of the identity headers present (never their values) plus the adapter, so an
+        # operator can tell "no assertion arrived" from "assertion rejected" in the logs.
+        present = [
+            h
+            for h in ("x-goog-iap-jwt-assertion", "x-user-id-token", "authorization", "x-local-user")
+            if h in request.headers
+        ]
+        logging.getLogger(__name__).warning(
+            "unauthenticated request",
+            extra={"identity_headers": present, "adapter": adapters.identity.description, "path": request.url.path},
+        )
         raise AppError("unauthenticated")
     if principal.provider.endswith(":unregistered"):
         raise AppError("permission_denied", "authenticated user is not registered in this workspace")
