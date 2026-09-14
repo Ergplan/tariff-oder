@@ -393,6 +393,7 @@ class ExtractionSummary(BaseModel):
     risk_tags: dict[str, int]
     image_channel: bool
     new_profile: bool
+    conditions: int = 0
     extracted_at: datetime | None
 
 
@@ -521,6 +522,22 @@ class ExtractionRunList(BaseModel):
     total_cost_usd: float
     fixture_runs: int
     real_runs: int
+
+
+class ConditionOut(BaseModel):
+    id: uuid.UUID
+    page_index: int
+    line_no: int
+    number: str | None
+    kind: str
+    text: str
+    scope_codes: list[str]
+    interpretation_status: str
+
+
+class ConditionList(BaseModel):
+    conditions: list[ConditionOut]
+    total: int
 
 
 class StageRerunRequest(BaseModel):

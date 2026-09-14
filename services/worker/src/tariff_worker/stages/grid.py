@@ -43,7 +43,18 @@ from tariff_api.services.sources import enqueue_stage, transition
 from ..runner import JobContext, JobFailure
 
 STAGE = "grid"
-READ_ROLES = ("approved_schedule", "approved_summary")
+# Regions whose grids become structure: the approved representations (extraction input) and
+# the network-charge, loss-trajectory, green-tariff and amendment regions (network facts,
+# derivation inputs and the amendment-consistency validator).  Existing/proposed/illustrative
+# tables are never gridded: nothing from them may become a candidate.
+READ_ROLES = (
+    "approved_schedule",
+    "approved_summary",
+    "network_charges",
+    "loss_trajectory",
+    "green_tariff",
+    "amendment_diff",
+)
 
 
 def _tool_version() -> str:
@@ -126,18 +137,20 @@ def grid_source(ctx: JobContext) -> dict:
     grid_summaries: list[dict[str, Any]] = []
     region_reports: list[dict[str, Any]] = []
     artefacts: list[tuple[str, dict[str, Any]]] = []
+    seen_grids: set[tuple[int, int]] = set()  # regions may overlap on a page: each grid is read once
     for reg in regions:
         if reg["role"] not in READ_ROLES:
             region_reports.append({**reg, "status": "skipped", "reason": "not an approved representation"})
             continue
         pages = list(range(reg["page_start"], reg["page_end"] + 1))
         report: dict[str, Any] = {**reg, "status": "read", "pages": len(pages)}
-        if representation in ("tables", "mixed"):
+        if representation in ("tables", "mixed") or reg["role"] not in ("approved_schedule", "approved_summary"):
             inputs: list[GridInput] = []
             for pi in pages:
                 for (gp, ordinal), key in sorted(grid_rows.items()):
-                    if gp != pi:
+                    if gp != pi or (gp, ordinal) in seen_grids:
                         continue
+                    seen_grids.add((gp, ordinal))
                     try:
                         payload = json.loads(storage.get(ObjectStore.ARTEFACTS, key))
                     except (ObjectNotFound, ValueError):
@@ -171,7 +184,7 @@ def grid_source(ctx: JobContext) -> dict:
                         r.to_dict(),
                     )
                 )
-        if representation in ("clause_outline", "mixed"):
+        if representation in ("clause_outline", "mixed") and reg["role"] in ("approved_schedule", "approved_summary"):
             texts = [(pi, doc[pi - 1].get_text("text", sort=True)) for pi in pages]
             outline = reconstruct(texts)
             report["clauses"] = summarise_clauses(outline)

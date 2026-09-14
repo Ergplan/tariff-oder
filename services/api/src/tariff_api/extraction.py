@@ -50,6 +50,7 @@ class StructureInput:
     utility: str | None = None
     period: str | None = None
     utilities: list[str] = field(default_factory=list)
+    category_code_pattern: str | None = None  # the profile's code pattern, for summary-table row labels
 
 
 # ------------------------------------------------------------------ serialisation (prompt input)
@@ -151,6 +152,22 @@ def _category_for_page(inp: StructureInput, page: int) -> str | None:
     return best
 
 
+def _category_from_row(inp: StructureInput, row_path: list[str]) -> str | None:
+    """A summary table (KERC Table 6.3A) names the category in its first column rather than
+    in a heading: the first row label matching the profile's code pattern, canonicalised."""
+    if not inp.category_code_pattern:
+        return None
+    from .headings import canonical_code
+
+    rx = re.compile(inp.category_code_pattern, re.I)
+    for x in row_path:
+        m = rx.search(x)
+        if m:
+            kind = inp.schedule_heading_kind
+            return canonical_code(kind, m.group(0))
+    return None
+
+
 def _season_for_page(inp: StructureInput, page: int) -> str | None:
     m = _SEASON.search(inp.page_texts.get(page, ""))
     return m.group(0).strip()[:60] if m else None
@@ -182,6 +199,8 @@ def rules_extract(inp: StructureInput) -> ExtractionOutput:
             out.missing.append(f"page {c['page_index']} grid {c['grid_ordinal']} r{c['row']} c{c['col']}: {state}")
             continue
         category = _category_for_page(inp, c["page_index"])
+        if inp.region_role == "approved_summary" or category is None:
+            category = _category_from_row(inp, c["row_path"]) or category
         comp, base = _component_from_header(c["header_path"], c["row_path"])
         slab = _slab_from(c.get("slab"))
         row_text = " ".join(c["row_path"])
@@ -438,3 +457,330 @@ def route(cmp: Compared, cell_flags: list[str], *, ocr_page: bool, new_profile: 
         risks.append("new_profile")
     routing = "batch" if confidence == "high" and not risks else "individual"
     return Routing(confidence, risks, routing)
+
+
+# ------------------------------------------------------------------ network-charge grids (Milestone 4b)
+
+_LEVEL_WORDS = re.compile(
+    r"\b(inter[- ]?state|intra[- ]?state|transmission|ht|lt|ehv|hv|\d{2,3}\s*kv"
+    r"|below\s+\d+\s*kv|above\s+\d+\s*kv|400\s*v)\b",
+    re.I,
+)
+_GREEN_VALUE = re.compile(
+    r"(?:Rs\.?|Re\.?|₹)\s*(?P<v>\d+(?:\.\d+)?)\s*(?:per\s+unit|/\s*unit|per\s+kWh|/\s*kWh)[^.;\n]{0,60}?"
+    r"\bfor\s+(?P<scope>[A-Z][A-Z0-9-]{1,6}(?:\s+categories)?)",
+    re.I,
+)
+_GREEN_PAISE = re.compile(
+    r"(?P<v>\d+)\s*paise\s*(?:per\s+unit|/\s*unit)[^.;\n]{0,60}?\bfor\s+(?P<scope>[A-Za-z][A-Za-z0-9 -]{2,40}?)"
+    r"(?:[,.;]|\s+and\b|$)",
+    re.I,
+)
+_GREEN_EXCL = re.compile(
+    r"(regulatory discount[^.\n]{0,80}not\s+(?:be\s+)?applicable"
+    r"|not\s+(?:be\s+)?applicable[^.\n]{0,60}regulatory discount)",
+    re.I,
+)
+_PROVISION = re.compile(r"^\s*(?P<num>\d{1,2})\s*[.)]\s+(?P<text>[A-Z(][^\n]{15,})$")
+_SUB_PROVISION = re.compile(r"(?<![\w.])(?P<num>\d{1,2}\([a-z]\))\s+(?P<text>[A-Z][^\n]{15,})")
+_CODE_IN_TEXT = re.compile(r"\b(LMV|HV|LT|HT|HTP|RGP|GLP|AG|LTMD|WWSP|TMP)\s*[-–—]?\s*\d{0,2}(?:\s*\([A-Za-z]\))?\b")
+
+
+def _grid_family(header: list[str], rows: list[str], region_role: str, sub_role: str | None) -> str | None:
+    text = " ".join(header + rows).lower()
+    if region_role == "loss_trajectory":
+        return "distribution_loss_approved" if "loss" in text else None
+    if "wheeling" in text:
+        return "wheeling_charge"
+    if "cross subsidy" in text or "css" in text.split():
+        return "cross_subsidy_surcharge"
+    if "additional surcharge" in text:
+        return "additional_surcharge"
+    if "loss" in text:
+        return "oa_loss"
+    if "green" in text:
+        return "green_tariff"
+    return (
+        sub_role
+        if sub_role in ("wheeling_charge", "oa_loss", "cross_subsidy_surcharge", "additional_surcharge")
+        else None
+    )
+
+
+def network_extract(inp: StructureInput, sub_role: str | None) -> ExtractionOutput:
+    """Network-charge candidates from grids inside `network_charges` / `loss_trajectory`
+    regions.  Only the approved column of a derivation table becomes a candidate; the other
+    columns are kept as `derivation` inputs so VAL-07 can recompute and a reviewer can see
+    the arithmetic.  A loss is filed under the role its region gives it (Section 5.1): open
+    access billing in a network-charge region, ARR trajectory in a loss-trajectory region."""
+    out = ExtractionOutput()
+    by_grid: dict[tuple[int, int], list[dict[str, Any]]] = {}
+    for c in inp.cells:
+        by_grid.setdefault((c["page_index"], c["grid_ordinal"]), []).append(c)
+    for (page, grid), cells in sorted(by_grid.items()):
+        headers = sorted({h for c in cells for h in c["header_path"]})
+        rows = sorted({r for c in cells for r in c["row_path"]})
+        fam = _grid_family(headers, rows, inp.region_role, sub_role)
+        if fam is None:
+            out.missing.append(f"page {page} grid {grid}: no network family recognised")
+            continue
+        if fam == "cross_subsidy_surcharge":
+            out.candidates.extend(_css_rows(inp, fam, cells))
+            continue
+        if fam == "wheeling_charge" and any("sales" in r.lower() or "arr" in r.lower() for r in rows):
+            out.candidates.extend(_wheeling_derived(inp, cells))
+            continue
+        for c in sorted(cells, key=lambda x: (x["row"], x["col"])):
+            n = c["normalised"]
+            state = c["value_state"]
+            if state not in ("value", "zero", "not_applicable"):
+                continue
+            hdr = " ".join(c["header_path"])
+            row = " ".join(c["row_path"])
+            percent = c.get("per_unit") == "percent" or n.get("percent") or "%" in hdr or "%" in row
+            fy = _FY.search(hdr) or _FY.search(row)
+            period = f"FY{fy.group(1)}-{fy.group(2)[-2:]}" if fy else inp.period
+            level = _level_from(c["row_path"]) or _level_from(c["header_path"])
+            out.candidates.append(
+                Candidate(
+                    family=fam,
+                    component_type="loss" if fam in ("oa_loss", "distribution_loss_approved") else "charge",
+                    value=n.get("value") if state in ("value", "zero") else None,
+                    value_state=state,
+                    original_text=c["raw"][:400],
+                    currency=None if percent else c.get("currency"),
+                    per_unit="percent" if percent else c.get("per_unit"),
+                    frequency=c.get("frequency"),
+                    applicability=Applicability(voltage=level or (c["row_path"][0] if c["row_path"] else None)),
+                    period=period,
+                    utility=inp.utility or (_utility_in(inp, hdr + " " + row)),
+                    decision_status="approved",
+                    conditions=list(c.get("footnotes") or []),
+                    evidence=[_cell_ev(c)],
+                )
+            )
+    return out
+
+
+def _level_from(labels: list[str]) -> str | None:
+    """The row-path element that names a network level / voltage (`Inter-state transmission`,
+    `33 kV`, `Below 11 kV`): the whole label, never just the matched word."""
+    for x in labels:
+        if _LEVEL_WORDS.search(x):
+            return x
+    return None
+
+
+def _utility_in(inp: StructureInput, text: str) -> str | None:
+    found = [u for u in inp.utilities if re.search(rf"\b{re.escape(u)}\b", text)]
+    return found[0] if len(found) == 1 else None
+
+
+def _cell_ev(c: dict[str, Any]) -> EvidenceRef:
+    return EvidenceRef(
+        page_index=c["page_index"],
+        kind="cell",
+        grid_ordinal=c["grid_ordinal"],
+        row=c["row"],
+        col=c["col"],
+        header_path=c["header_path"],
+        row_path=c["row_path"],
+        excerpt=c["raw"][:400],
+    )
+
+
+def _css_rows(inp: StructureInput, fam: str, cells: list[dict[str, Any]]) -> list[Candidate]:
+    """A CSS derivation table: per row, the `Approved` column is the candidate and the other
+    numeric columns (last year's, computed, cap, tariff) are derivation inputs."""
+    out: list[Candidate] = []
+    rows: dict[int, list[dict[str, Any]]] = {}
+    for c in cells:
+        rows.setdefault(c["row"], []).append(c)
+    for _, rc in sorted(rows.items()):
+        approved = [c for c in rc if "approved" in " ".join(c["header_path"]).lower()]
+        if not approved:
+            continue
+        a = approved[-1]
+        inputs = {}
+        for c in rc:
+            if c is a or c["value_state"] not in ("value", "zero"):
+                continue
+            inputs[" > ".join(c["header_path"])] = c["normalised"].get("value")
+        hdr_all = " ".join(" ".join(c["header_path"]) for c in rc).lower()
+        rule = "lower_of" if "lower of" in hdr_all else ("cap" if "cap" in hdr_all or "20%" in hdr_all else None)
+        n = a["normalised"]
+        state = a["value_state"]
+        level = _level_from(a["row_path"][1:])  # the first label is the category code
+        out.append(
+            Candidate(
+                family=fam,
+                category_code=(a["row_path"][0] if a["row_path"] else None),
+                component_type="charge",
+                value=n.get("value") if state in ("value", "zero") else None,
+                value_state=state if state in ("value", "zero", "not_applicable") else "unknown",
+                original_text=a["raw"][:400],
+                currency=a.get("currency"),
+                per_unit=a.get("per_unit"),
+                applicability=Applicability(voltage=level),
+                period=inp.period,
+                utility=inp.utility,
+                decision_status="approved",
+                derivation={"inputs": inputs, "rule": rule, "approved_column": " > ".join(a["header_path"])},
+                conditions=list(a.get("footnotes") or []),
+                evidence=[_cell_ev(a)],
+            )
+        )
+    return out
+
+
+def _wheeling_derived(inp: StructureInput, cells: list[dict[str, Any]]) -> list[Candidate]:
+    """Wheeling charge derived in a working table: `ARR (Rs Cr) / Sales (MU)` → the printed
+    average charge is the candidate; ARR and sales are derivation inputs."""
+    by_label: dict[str, dict[str, Any]] = {}
+    for c in cells:
+        if c["value_state"] in ("value", "zero") and c["row_path"]:
+            by_label[" ".join(c["row_path"]).lower()] = c
+    charge = next((c for k, c in by_label.items() if "charge" in k), None)
+    arr = next((c for k, c in by_label.items() if "arr" in k), None)
+    sales = next((c for k, c in by_label.items() if "sales" in k), None)
+    if charge is None:
+        return []
+    inputs = {}
+    if arr is not None:
+        inputs["arr"] = {"value": arr["normalised"]["value"], "label": " ".join(arr["row_path"])}
+    if sales is not None:
+        inputs["sales"] = {"value": sales["normalised"]["value"], "label": " ".join(sales["row_path"])}
+    return [
+        Candidate(
+            family="wheeling_charge",
+            component_type="charge",
+            value=charge["normalised"]["value"],
+            value_state=charge["value_state"],
+            original_text=charge["raw"][:400],
+            currency=charge.get("currency") or ("rupees" if "rs" in " ".join(charge["row_path"]).lower() else None),
+            per_unit=charge.get("per_unit") or ("kWh" if "kwh" in " ".join(charge["row_path"]).lower() else None),
+            period=inp.period,
+            utility=inp.utility,
+            decision_status="approved",
+            derivation={"inputs": inputs, "rule": "arr_over_sales"},
+            conditions=list(charge.get("footnotes") or []),
+            evidence=[_cell_ev(charge)],
+        )
+    ]
+
+
+def green_tariff_prose(inp: StructureInput) -> list[Candidate]:
+    """Green tariff premiums stated in a general provision: `Rs 0.34 per unit for HV and Rs
+    0.17 per unit for LMV categories`, with the regulatory-discount exclusion as a condition."""
+    out: list[Candidate] = []
+    for page, text in sorted(inp.page_texts.items()):
+        for line in text.splitlines():
+            if not re.search(r"green", line, re.I):
+                continue
+            excl = _GREEN_EXCL.search(text)
+            conds = [excl.group(0)] if excl else []
+            for m in list(_GREEN_VALUE.finditer(line)):
+                out.append(
+                    Candidate(
+                        family="green_tariff",
+                        component_type="green_premium",
+                        value=m["v"],
+                        value_state="value",
+                        original_text=line.strip()[:400],
+                        currency="rupees",
+                        per_unit="unit",
+                        applicability=Applicability(voltage=m["scope"].replace(" categories", "").strip()),
+                        period=inp.period,
+                        utility=inp.utility,
+                        decision_status="approved",
+                        conditions=conds,
+                        evidence=[EvidenceRef(page_index=page, kind="prose", excerpt=line.strip()[:400])],
+                        notes="premium over and above the normal tariff",
+                    )
+                )
+            for m in list(_GREEN_PAISE.finditer(line)):
+                out.append(
+                    Candidate(
+                        family="green_tariff",
+                        component_type="green_premium",
+                        value=m["v"],
+                        value_state="value",
+                        original_text=line.strip()[:400],
+                        currency="paise",
+                        per_unit="unit",
+                        applicability=Applicability(voltage=m["scope"].strip()),
+                        period=inp.period,
+                        utility=inp.utility,
+                        decision_status="approved",
+                        conditions=conds,
+                        evidence=[EvidenceRef(page_index=page, kind="prose", excerpt=line.strip()[:400])],
+                    )
+                )
+    return out
+
+
+@dataclass
+class ConditionRecord:
+    page_index: int
+    line_no: int
+    number: str | None
+    text: str
+    scope_codes: list[str]
+    kind: str  # general_provision | footnote | clause_condition
+    interpretation_status: str = "verbatim_only"
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "page_index": self.page_index,
+            "line_no": self.line_no,
+            "number": self.number,
+            "text": self.text,
+            "scope_codes": self.scope_codes,
+            "kind": self.kind,
+            "interpretation_status": self.interpretation_status,
+        }
+
+
+def extract_conditions(inp: StructureInput) -> list[ConditionRecord]:
+    """Condition records (Section 5.2): numbered general provisions in the approved region's
+    text before the first category schedule, cell footnotes, and clause-outline condition
+    lines — verbatim, with the category codes they name as scope, interpretation
+    ``verbatim_only``.  Structured interpretation is a reviewer's job."""
+    out: list[ConditionRecord] = []
+    first_schedule_page = min(
+        (h["page_index"] for h in inp.headings if h["kind"] == inp.schedule_heading_kind), default=10**9
+    )
+    for page, text in sorted(inp.page_texts.items()):
+        if page > first_schedule_page:
+            continue
+        for ln_no, line in enumerate(text.splitlines(), start=1):
+            m = _PROVISION.match(line.strip())
+            if m:
+                codes = sorted({re.sub(r"\s+", "", x.group(0)).upper() for x in _CODE_IN_TEXT.finditer(m["text"])})
+                out.append(ConditionRecord(page, ln_no, m["num"], line.strip()[:600], codes, "general_provision"))
+            # a lettered sub-provision (`20(f) The regulatory discount shall not be applicable …`)
+            # may start mid-line; it is a condition in its own right
+            for sm in _SUB_PROVISION.finditer(line):
+                codes = sorted({re.sub(r"\s+", "", x.group(0)).upper() for x in _CODE_IN_TEXT.finditer(sm["text"])})
+                out.append(
+                    ConditionRecord(page, ln_no, sm["num"], sm.group(0).strip()[:600], codes, "general_provision")
+                )
+    seen: set[str] = set()
+    for c in inp.cells:
+        for fn in c.get("footnotes") or []:
+            if fn not in seen:
+                seen.add(fn)
+                out.append(ConditionRecord(c["page_index"], 0, None, fn[:600], [], "footnote"))
+    for v in inp.clauses:
+        if v["kind"] == "condition":
+            out.append(
+                ConditionRecord(
+                    v["page_index"],
+                    v["line_no"],
+                    None,
+                    v["line_text"][:600],
+                    [v["category_code"]] if v.get("category_code") else [],
+                    "clause_condition",
+                )
+            )
+    return out

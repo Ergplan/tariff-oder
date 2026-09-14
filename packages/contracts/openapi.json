@@ -690,6 +690,86 @@
         "title": "CommissionOut",
         "type": "object"
       },
+      "ConditionList": {
+        "properties": {
+          "conditions": {
+            "items": {
+              "$ref": "#/components/schemas/ConditionOut"
+            },
+            "title": "Conditions",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "conditions",
+          "total"
+        ],
+        "title": "ConditionList",
+        "type": "object"
+      },
+      "ConditionOut": {
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "interpretation_status": {
+            "title": "Interpretation Status",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "line_no": {
+            "title": "Line No",
+            "type": "integer"
+          },
+          "number": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Number"
+          },
+          "page_index": {
+            "title": "Page Index",
+            "type": "integer"
+          },
+          "scope_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scope Codes",
+            "type": "array"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "page_index",
+          "line_no",
+          "number",
+          "kind",
+          "text",
+          "scope_codes",
+          "interpretation_status"
+        ],
+        "title": "ConditionOut",
+        "type": "object"
+      },
       "DatasetKind": {
         "description": "Fixture and real data are isolated (working agreement 12).",
         "enum": [
@@ -1009,6 +1089,11 @@
           },
           "candidates": {
             "title": "Candidates",
+            "type": "integer"
+          },
+          "conditions": {
+            "default": 0,
+            "title": "Conditions",
             "type": "integer"
           },
           "cost_usd": {
@@ -6618,6 +6703,126 @@
           }
         },
         "summary": "List Candidates",
+        "tags": [
+          "candidates"
+        ]
+      }
+    },
+    "/sources/{source_id}/conditions": {
+      "get": {
+        "description": "Condition records: verbatim general provisions, footnotes and clause conditions with\nthe category codes they name.  All `verbatim_only` until a reviewer interprets them.",
+        "operationId": "list_conditions_sources__source_id__conditions_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "kind",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConditionList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Conditions",
         "tags": [
           "candidates"
         ]

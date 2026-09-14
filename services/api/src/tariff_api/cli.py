@@ -36,6 +36,86 @@ def cmd_downgrade(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_provider_smoke(args: argparse.Namespace) -> int:
+    """A real provider run on a two-cell synthetic structure (never a real order): proves the
+    key, the model, the tool schema and the cost telemetry before any order is spent on it.
+    With the fixture backend it says so and exits 2; nothing here touches the database."""
+    from .adapters import build_adapters
+    from .config import get_settings
+    from .extraction import StructureInput
+    from .providers import ProviderUnavailable, build_provider
+
+    settings = get_settings()
+    adapters = build_adapters(settings, include_identity=False)
+    provider = build_provider(settings, adapters.secrets)
+    if provider.is_fixture:
+        print("provider_backend=fixture: nothing to smoke; set PROVIDER_BACKEND=anthropic and ANTHROPIC_API_KEY")
+        return 2
+    cell = {
+        "page_index": 1,
+        "grid_ordinal": 0,
+        "row": 1,
+        "col": 1,
+        "raw": "Rs. 3.00/ kWh",
+        "header_path": ["Energy Charge"],
+        "row_path": ["Metered", "Up to 100 kWh / month"],
+        "normalised": {"value": "3.00", "value_state": "value"},
+        "value_state": "value",
+        "currency": "rupees",
+        "per_unit": "kWh",
+        "frequency": None,
+        "unit_source": "cell",
+        "flags": [],
+        "footnotes": [],
+        "slab": {
+            "lower": None,
+            "upper": "100",
+            "kind": "absolute",
+            "unit": "kWh",
+            "original_text": "Up to 100 kWh / month",
+        },
+    }
+    inp = StructureInput(
+        source_sha="0" * 64,
+        profile_id="uperc-npcl",
+        schedule_heading_kind="rate_schedule",
+        region_role="approved_schedule",
+        region_ordinal=1,
+        page_indices=[1],
+        cells=[cell],
+        headings=[
+            {"page_index": 1, "kind": "rate_schedule", "code_canonical": "LMV-1", "text": "RATE SCHEDULE LMV - 1"}
+        ],
+        page_texts={1: "SYNTHETIC SMOKE INPUT - NOT A TARIFF ORDER\n"},
+        period="FY2026-27",
+        utility="SYNTHETIC",
+    )
+    try:
+        res = provider.extract_structure(inp)
+    except ProviderUnavailable as e:
+        print(f"provider unavailable: {e}")
+        return 1
+    print(
+        json.dumps(
+            {
+                "provider": res.provider,
+                "model": res.model,
+                "prompt_version": res.prompt_version,
+                "schema_version": res.schema_version,
+                "input_tokens": res.input_tokens,
+                "output_tokens": res.output_tokens,
+                "cost_usd": res.cost_usd,
+                "candidates": len(res.output.candidates),
+                "first": res.output.candidates[0].model_dump() if res.output.candidates else None,
+                "is_fixture": res.is_fixture,
+            },
+            indent=2,
+            default=str,
+        )
+    )
+    return 0
+
+
 def cmd_profiles_schema(args: argparse.Namespace) -> int:
     from .profiles import schema_json
 
@@ -209,6 +289,11 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("downgrade", help="revert migrations")
     p.add_argument("revision")
     p.set_defaults(fn=cmd_downgrade)
+    p = sub.add_parser(
+        "provider-smoke",
+        help="one small extraction through the configured provider; reports provider, model, tokens and cost",
+    )
+    p.set_defaults(fn=cmd_provider_smoke)
     p = sub.add_parser("profiles-schema", help="export the reading-profile JSON schema")
     p.add_argument("-o", "--output", default="-")
     p.set_defaults(fn=cmd_profiles_schema)

@@ -1,4 +1,4 @@
-# Data dictionary (through Milestone 4a)
+# Data dictionary (through Milestone 4b)
 
 Migration owner: `services/api/migrations/versions/0001_foundation.py`.  All timestamps are
 `timestamptz`; ids are UUIDv4 unless noted.  Enums are PostgreSQL enum types.
@@ -166,7 +166,7 @@ One provider call per channel per region: `channel`, `provider`, `model`, `promp
 | candidate_key | Identity of the fact (family, category, component, applicability, period, utility) used for channel comparison and duplicate detection |
 | family, category_code, component_type | Section 5.1 family; source category code; component (`energy`, `fixed`, `demand`, `minimum`, `tod_adjustment`, `rebate`, `surcharge`, `subsidy`, `green_premium`, `charge`, `loss`, `cross_reference`) |
 | value, value_state, currency, per_unit, frequency, decision_status, period, utility | Denormalised from the record for queries |
-| record | The full `Candidate` (schema v1): original text, applicability, conditions, evidence, missing/ambiguous |
+| record | The full `Candidate` (schema v1): original text, applicability, conditions, evidence, missing/ambiguous, `derivation` (printed inputs and rule behind a network value) |
 | image_record | The image channel's version when both channels ran |
 | channel_agreement, disagreeing_fields | `agree`, `disagree`, `one_missing`, `single_channel` |
 | confidence, risk_tags, routing | Section 6.10; `individual` or `batch` |
@@ -183,6 +183,15 @@ One provider call per channel per region: `channel`, `provider`, `model`, `promp
 
 Reviewer-recorded `absent_in_source` / `out_of_scope` / `not_a_tariff_category` per family,
 with rationale, actor and time.
+
+## `condition_records` (Milestone 4b)
+
+| Column | Meaning |
+| --- | --- |
+| kind | `general_provision` (numbered, incl. `20(f)` sub-provisions), `footnote`, `clause_condition` |
+| number, text, text_hash | The provision number and its verbatim text |
+| scope_codes | Category codes the text names |
+| interpretation_status | `verbatim_only` until a reviewer interprets it (Milestone 5) |
 
 ## `source_documents` — extraction and validation columns
 

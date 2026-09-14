@@ -29,6 +29,9 @@ from tariff_api.extraction import (
     Compared,
     StructureInput,
     compare_channels,
+    extract_conditions,
+    green_tariff_prose,
+    network_extract,
     prose_decisions,
     route,
 )
@@ -36,6 +39,7 @@ from tariff_api.inventory import NotAPdf, open_document
 from tariff_api.models import (
     CandidateRecord,
     ClauseValueRecord,
+    ConditionRecordRow,
     DocumentHeading,
     ExtractionRun,
     LocalisationRecord,
@@ -56,6 +60,7 @@ from ..runner import JobContext, JobFailure
 STAGE = "extract"
 READ_ROLES = ("approved_schedule", "approved_summary")
 PROSE_ROLES = ("network_charges", "green_tariff", "loss_trajectory")
+GRID_FACT_ROLES = ("network_charges", "loss_trajectory")
 
 
 def _row(o: Any, cols: tuple[str, ...]) -> dict[str, Any]:
@@ -63,6 +68,7 @@ def _row(o: Any, cols: tuple[str, ...]) -> dict[str, Any]:
 
 
 _CELL_COLS = (
+    "region_role",
     "page_index",
     "grid_ordinal",
     "row",
@@ -179,6 +185,19 @@ def extract_source(ctx: JobContext) -> dict:
 
     total_cost = 0.0
     total_tokens = 0
+    conditions_found: list[Any] = []
+    claimed_grids: set[tuple[int, int]] = set()  # regions may overlap on a page: each grid feeds one region
+    single_keys: set[str] = set()  # prose facts are read per region; overlapping regions must not repeat them
+
+    def add_single(c, reg) -> None:
+        # identity for de-duplication across overlapping regions: the fact and its evidence
+        # span (regions may carry different periods for the same page)
+        ev = c.evidence[0]
+        ident = f"{c.family}|{c.category_code}|{c.applicability.voltage}|{c.value}|{ev.page_index}|{ev.excerpt}"
+        if ident not in single_keys:
+            single_keys.add(ident)
+            compared_all.append((_single(c), reg))
+
     runs: list[dict[str, Any]] = []
     compared_all: list[tuple[Any, dict[str, Any]]] = []  # (Compared, region)
     artefacts: list[tuple[str, dict[str, Any]]] = []
@@ -213,7 +232,15 @@ def extract_source(ctx: JobContext) -> dict:
             region_role=reg["role"],
             region_ordinal=reg["ordinal"],
             page_indices=pages,
-            cells=[c for c in cells if c["page_index"] in pages] if reg["role"] in READ_ROLES else [],
+            cells=[
+                c
+                for c in cells
+                if c["page_index"] in pages
+                and c["region_role"] == reg["role"]
+                and (c["page_index"], c["grid_ordinal"]) not in claimed_grids
+            ]
+            if reg["role"] in READ_ROLES + GRID_FACT_ROLES
+            else [],
             clauses=[v for v in clauses if v["page_index"] in pages] if reg["role"] in READ_ROLES else [],
             headings=[h for h in headings if h["page_index"] <= reg["page_end"]],
             page_texts=page_texts if reg["role"] in PROSE_ROLES or reg["role"] in READ_ROLES else {},
@@ -221,16 +248,32 @@ def extract_source(ctx: JobContext) -> dict:
             utility=reg["utility"],
             period=reg["period"],
             utilities=profile.utilities,
+            category_code_pattern=profile.category_code_pattern,
         )
         if reg["role"] not in READ_ROLES and reg["role"] not in PROSE_ROLES:
             continue
+        claimed_grids |= {(c["page_index"], c["grid_ordinal"]) for c in inp.cells}
         if reg["role"] in PROSE_ROLES:
-            # prose decisions need no provider call: deterministic rules over the region text
-            out = ExtractionOutput(candidates=prose_decisions(inp))
-            structure_res = None
+            # network-charge grids and prose decisions are deterministic rules: no provider call,
+            # so they are single-channel candidates (risk `single_channel`, individual review)
+            out = ExtractionOutput(candidates=prose_decisions(inp) + green_tariff_prose(inp))
+            if reg["role"] in GRID_FACT_ROLES and inp.cells:
+                net = network_extract(inp, reg["sub_role"])
+                out.candidates.extend(net.candidates)
+                out.missing.extend(net.missing)
+            artefacts.append(
+                (
+                    f"{sha}/{STAGE}/{extraction_version}/region-{reg['ordinal']:02d}/rules.json",
+                    {"output": out.model_dump(), "channel": "rules", "sub_role": reg["sub_role"]},
+                )
+            )
             for c in out.candidates:
-                compared_all.append((_single(c), reg))
+                add_single(c, reg)
             continue
+        # green tariff premiums printed among the general provisions of the approved region
+        for c in green_tariff_prose(inp):
+            add_single(c, reg)
+        conditions_found.extend(extract_conditions(inp))
         try:
             structure_res = provider.extract_structure(inp)
         except ProviderUnavailable as e:
@@ -392,6 +435,29 @@ def extract_source(ctx: JobContext) -> dict:
                     **row,
                 )
             )
+        s.execute(delete(ConditionRecordRow).where(ConditionRecordRow.source_id == source_id))
+        seen_conditions: set[tuple] = set()
+        for cr in conditions_found:
+            h = hashlib.sha256(cr.text.encode()).hexdigest()
+            key = (cr.page_index, cr.line_no, cr.kind, h)
+            if key in seen_conditions:
+                continue
+            seen_conditions.add(key)
+            s.add(
+                ConditionRecordRow(
+                    source_id=source_id,
+                    page_index=cr.page_index,
+                    line_no=cr.line_no,
+                    number=cr.number,
+                    kind=cr.kind,
+                    text=cr.text,
+                    text_hash=h,
+                    scope_codes=cr.scope_codes,
+                    interpretation_status=cr.interpretation_status,
+                    extraction_version=extraction_version[:80],
+                )
+            )
+        summary["conditions"] = len(seen_conditions)
         src.extraction_summary = summary
         src.extraction_version = extraction_version[:80]
         src.extracted_at = datetime.now(UTC)

@@ -16,6 +16,7 @@ from ..errors import AppError
 from ..models import (
     AuditEvent,
     CandidateRecord,
+    ConditionRecordRow,
     ExtractionRun,
     FamilyDisposition,
     SourceDocument,
@@ -25,6 +26,8 @@ from ..models import (
 from ..schemas import (
     CandidateList,
     CandidateOut,
+    ConditionList,
+    ConditionOut,
     DispositionOut,
     DispositionRequest,
     ExtractionRunList,
@@ -232,3 +235,18 @@ def set_disposition(
             )
         )
         return DispositionOut.model_validate(row, from_attributes=True)
+
+
+@router.get("/sources/{source_id}/conditions", response_model=ConditionList, dependencies=[Depends(require_analyst)])
+def list_conditions(source_id: uuid.UUID, kind: str | None = None) -> ConditionList:
+    """Condition records: verbatim general provisions, footnotes and clause conditions with
+    the category codes they name.  All `verbatim_only` until a reviewer interprets them."""
+    with session_scope() as s:
+        svc.get_source(s, source_id)
+        q = select(ConditionRecordRow).where(ConditionRecordRow.source_id == source_id)
+        if kind:
+            q = q.where(ConditionRecordRow.kind == kind)
+        rows = s.execute(q.order_by(ConditionRecordRow.page_index, ConditionRecordRow.line_no)).scalars().all()
+        return ConditionList(
+            conditions=[ConditionOut.model_validate(r, from_attributes=True) for r in rows], total=len(rows)
+        )

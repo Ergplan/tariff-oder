@@ -145,6 +145,7 @@ class Candidate(BaseModel):
     decision_status: DecisionStatus | None = None
     reference_target: str | None = None  # for cross_reference / by_reference
     conditions: list[str] = Field(default_factory=list)  # verbatim condition or footnote texts
+    derivation: dict[str, Any] | None = None  # printed inputs/arithmetic behind a network value (VAL-07 recomputes)
     evidence: list[EvidenceRef] = Field(min_length=1)
     missing: list[str] = Field(default_factory=list)  # field names the channel could not read
     ambiguous: list[str] = Field(default_factory=list)
@@ -170,6 +171,7 @@ class Candidate(BaseModel):
             self.family,
             self.category_code or "",
             self.component_type,
+            a.voltage or "",
             a.description or "",
             (a.slab.original_text if a.slab else "") or "",
             (a.load_band.original_text if a.load_band else "") or "",

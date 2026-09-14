@@ -1,4 +1,4 @@
-# Architecture (as implemented through Milestone 4a)
+# Architecture (as implemented through Milestone 4b)
 
 The governing design is Section 4 of the specification.  This document records what exists.
 
@@ -80,11 +80,11 @@ summary, the unresolved cells and the clause outline (ADR-0011).
 `gridded -> extracted`: for each approved region the structure channel receives the serialised
 cells/clauses and the image channel the page images, both through the provider adapter
 (`fixture` by default; `anthropic` with a key); prose decisions come from the network-charge
-regions; channels are compared field by field and every candidate gets confidence, risk tags
+regions; network-charge and loss-trajectory grids and the green-tariff provisions become single-channel typed facts with derivation inputs; condition records are stored verbatim; channels are compared field by field and every candidate gets confidence, risk tags
 and a routing.  `extracted -> validated -> awaiting_review`: the deterministic validators run,
 findings attach, affected candidates go to individual review.  Endpoints:
 `/sources/{id}/candidates`, `/candidates/{id}`, `/sources/{id}/findings`,
-`/sources/{id}/extraction-runs`, `/review/queue`, `/sources/{id}/dispositions` (ADR-0012).
+`/sources/{id}/extraction-runs`, `/sources/{id}/conditions`, `/review/queue`, `/sources/{id}/dispositions` (ADR-0012).
 
 ## Profiles
 

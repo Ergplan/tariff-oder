@@ -732,3 +732,28 @@ class FamilyDisposition(Base):
     rationale: Mapped[str] = mapped_column(Text, nullable=False)
     decided_by: Mapped[str] = mapped_column(String(320), nullable=False)
     decided_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class ConditionRecordRow(Base):
+    """A condition / rule (Section 5.2): verbatim source text, the category codes it names as
+    scope, and an interpretation status.  Structured interpretation is a reviewer's job
+    (Milestone 5); until then every record is ``verbatim_only``."""
+
+    __tablename__ = "condition_records"
+    __table_args__ = (
+        UniqueConstraint("source_id", "page_index", "line_no", "kind", "text_hash", name="uq_condition_record"),
+        Index("ix_condition_records_source", "source_id", "kind"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    page_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    line_no: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    number: Mapped[str | None] = mapped_column(String(16))
+    kind: Mapped[str] = mapped_column(String(24), nullable=False)  # general_provision | footnote | clause_condition
+    text: Mapped[str] = mapped_column(Text, nullable=False)
+    text_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    scope_codes: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    interpretation_status: Mapped[str] = mapped_column(String(16), nullable=False, default="verbatim_only")
+    extraction_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

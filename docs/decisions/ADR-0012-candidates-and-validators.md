@@ -55,6 +55,32 @@ Status: accepted (2026-09-14)
   them.  This is the only reviewer action in Milestone 4a; approval, correction and
   publication are Milestone 5.
 
+## Addendum (Milestone 4b, 2026-09-14)
+
+- **Network-charge grids** in `network_charges` and `loss_trajectory` regions are gridded
+  by the structure stage and read by deterministic rules (`network_extract`): a grid's family
+  comes from its own header/row vocabulary (wheeling, cross subsidy, loss) with the region's
+  sub-role as fallback; a loss is filed as `oa_loss` in a network region and
+  `distribution_loss_approved` in a loss-trajectory region, never by its number.  Derivation
+  tables keep only the approved column as the candidate and the other columns as
+  `derivation.inputs`; the wheeling working table keeps ARR and sales.  These candidates are
+  single-channel (no provider call) and carry the `single_channel` risk.
+- **Green-tariff premiums** are read from the provision text with the regulatory-discount
+  exclusion attached; **condition records** (numbered general provisions and mid-line
+  sub-provisions, cell footnotes, clause conditions) are stored verbatim with the category
+  codes they name and `interpretation_status = verbatim_only`.
+- **Validators added**: VAL-05 amendment consistency (from the amendment grid artefacts
+  against the consolidated schedule text), VAL-07 derivation checks (ARR÷sales, lower-of,
+  printed caps), VAL-12 condition links (a cited condition must be a recorded provision,
+  footnote or a fragment of one), VAL-16 cross-representation agreement (schedule vs summary
+  per category/component/period; a disagreement blocks both).  Still not built: VAL-14
+  temporal consistency (needs schedule versions, Milestone 5).
+- **Overlapping regions**: a page can belong to several network sub-role regions; each grid
+  is read once and prose facts are de-duplicated by their evidence span.
+- `tariff-api provider-smoke` runs one two-cell synthetic extraction through the configured
+  provider and prints provider, model, tokens and cost — the first thing to run when a key
+  exists, before any order is spent on it.
+
 ## Consequences
 
 - Nothing in Milestone 4a publishes: candidates live in their own table with their own

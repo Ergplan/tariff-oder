@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-09-13. Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-09-14. Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -8,7 +8,8 @@ Terraform plan against the project and the image-bootstrap fix it exposed; (7) M
 reading profiles as data and the localisation stage with its reviewer checkpoint; (8) Milestone
 3b — normalisation, clause outlines, grid integrity and the gated structure stage; (9) Milestone
 4a — candidate schema, provider adapter with fixture mode, dual-channel extraction,
-validators, routing and the review queue.
+validators, routing and the review queue; (10) Milestone 4b — network-charge grids,
+derivations, amendment consistency, condition records, cross-representation agreement.
 
 ## Current milestone and status
 
@@ -29,17 +30,24 @@ validators, routing and the review queue.
   within Milestone 2:** grids from OCR word boxes are not attempted (flagged
   `grid_from_ocr_pending`, listed for review); Docling is not measured; the three real orders
   have not been run because their bytes are not in this environment.
-- **Milestone 4 — part (a) implemented and tested under the `local` profile with the fixture
-  provider.**  Versioned candidate schema; provider adapter (fixture + Anthropic Messages
-  API path, the latter written but never run: no credentials here); structure and image
-  channels per approved region; prose decisions for network-charge families; comparison,
-  confidence, risk tags and routing; validators VAL-01–04, 06, 08–11, 13, 15, 17, 18 with
-  fixtures; the review queue and family dispositions.  **Not built:** derivation checks,
-  amendment consistency, cross-representation agreement, temporal consistency,
-  rate-condition links (they need network-charge grids, schedule versions and condition
-  records); the live model channel is unexercised; **no real provider run has happened**.
-  The Milestone 4 gate's "every charge family has candidates or a reviewed disposition for
-  each supplied order" is blocked on the real orders and on a reviewer.
+- **Milestone 4 — parts (a) and (b) implemented and tested under the `local` profile with
+  the fixture provider.**  (a) Versioned candidate schema; provider adapter (fixture +
+  Anthropic Messages API path, the latter written but never run: no credentials here);
+  structure and image channels per approved region; prose decisions for network-charge
+  families; comparison, confidence, risk tags and routing; validators VAL-01–04, 06, 08–11,
+  13, 15, 17, 18 with fixtures; the review queue and family dispositions.  (b) Grids inside
+  `network_charges`, `loss_trajectory`, `green_tariff` and `amendment_diff` regions are read
+  and extracted (wheeling, loss trajectories, cross-subsidy surcharge keeping only the
+  approved column with the working columns as a recorded derivation, additional surcharge,
+  green tariff premiums from prose); condition records (general provisions, sub-provisions,
+  footnotes, clause conditions, all verbatim); validators VAL-05 (amendment consistency),
+  VAL-07 (derivations: ARR ÷ sales at printed precision, lower-of, cap), VAL-12 (rate
+  condition links) and VAL-16 (schedule vs summary agreement).  **Still not built:** VAL-14
+  temporal consistency (needs a second order for the same utility); the live model channel
+  is unexercised; **no real provider run has happened** (`tariff-api provider-smoke` exists
+  to make the first one a two-cell synthetic input, not an order).  The Milestone 4 gate's
+  "every charge family has candidates or a reviewed disposition for each supplied order" is
+  blocked on the real orders and on a reviewer.
 - **Milestone 3 — parts (a) and (b) implemented and tested under the `local` profile.**  (b)
   adds the versioned normalisation module, clause-outline reconstruction, grid integrity
   (header/row paths, continuation, merged cells, unit binding with source, footnotes) and
@@ -57,6 +65,48 @@ validators, routing and the review queue.
 - **No provider connection, no extracted number exists.**  The only reviewer decisions that
   exist are localisation confirmations on synthetic fixtures made by the test harness's
   reviewer user; no real-source region has been confirmed by anyone.
+
+### Increment 10 (Milestone 4b: network-charge grids, derivations, conditions, cross-checks)
+
+- Grid stage now reads tables in every read role (`approved_schedule`, `approved_summary`,
+  `network_charges`, `loss_trajectory`, `green_tariff`, `amendment_diff`), each grid once
+  even where reviewer regions overlap; clause outlines stay limited to the approved roles.
+- `tariff_api.extraction`: `network_extract` classifies a network grid by its vocabulary
+  (wheeling, cross-subsidy surcharge, additional surcharge, losses, green) with the region's
+  role as fallback.  CSS tables yield one candidate per voltage level from the *approved*
+  column only; the other columns (formula value, cap, existing) are kept as
+  `derivation.inputs` with the rule (`lower_of` / `cap`) — never emitted as tariff values.
+  Wheeling working tables (ARR Rs Cr, sales MU, Rs/kWh) produce a `derivation` with rule
+  `arr_over_sales`.  Loss trajectories carry `applicability.voltage` from the row path
+  (`Candidate.key()` now includes voltage, which the fixture exposed: all loss rows had
+  collapsed to one key).  Green-tariff premiums are read from prose, and a "regulatory
+  discount … not applicable" sentence is excluded.  `extract_conditions` records numbered
+  provisions, mid-line sub-provisions (`20(f) …`), cell footnotes and clause conditions
+  as `verbatim_only` rows in `condition_records` (migration `0007_conditions`;
+  `GET /sources/{id}/conditions`).  Summary tables take their category from the profile's
+  `category_code_pattern` when the region is `approved_summary`.
+- Extraction stage: each grid feeds exactly one region (`claimed_grids`); prose facts are
+  de-duplicated by evidence span so overlapping regions do not double-count.
+- Validators: VAL-05 blocks when an amendment's modified text is absent from the
+  consolidated text, or when the schedule still carries the superseded text; VAL-07 recomputes
+  derivations at the printed precision; VAL-12 blocks a candidate whose condition text is
+  neither a recorded condition nor a ≥12-character fragment of one; VAL-16 compares schedule
+  and summary candidates per (category, component, period) where the profile declares the
+  summary authoritative — disagreement blocks, absence of a summary warns.
+- Fixtures: `network_order_pdf` (10 pages; the CSS table's HV-2 row deliberately has an
+  approved value that is not the lower of the two, so VAL-07 must flag it),
+  `dual_representation_pdf(disagree=True)` (KERC-style summary 585 vs schedule 650 for LT-2),
+  `gerc_amendment_order_pdf(mismatch=True)` (existing/modified time bands).
+- Defects found by the fixtures and fixed: overlapping network regions raised an
+  IntegrityError in the grid stage; `region_role` missing from the cell columns; duplicated
+  candidates from overlapping regions; `_level_from` returned only the matched word so CSS
+  rows lost their level; text-only amendment tables yield no structure cells, so VAL-05
+  reads the parse grid artefacts instead.
+- `tariff-api provider-smoke`: with the fixture backend it prints why and exits 2; with a
+  real backend it runs one two-cell synthetic structure and prints provider, model, tokens
+  and cost.  It has not been run with a key.
+- Docs: ledger rows N2, N5, N7, N11 handled+tested; S2 → VAL-16, S6 → VAL-05; ADR-0012
+  addendum; data dictionary (`condition_records`, `derivation`); architecture.
 
 ### Increment 9 (Milestone 4a: candidates, validators, routing)
 
@@ -339,6 +389,9 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
   Section 6.2 set), job_status; extensions vector, pgcrypto.
 - Migration `0002_triage`: stage_artefacts, triage columns.  Migration `0003_parse`:
   table_grids, document_headings, OCR/parse columns, `tool_version` → 160 chars.
+  `0004`–`0006`: localisation records, structure cells/clauses, candidates/findings/runs/
+  dispositions.  `0007_conditions`: `condition_records` (verbatim provisions, footnotes and
+  clause conditions, unique per source/page/line/kind/text hash).
 - API contract exported to `packages/contracts/openapi.json`; types generated; no drift.
 - Config: `ocr_engine/ocr_lang/ocr_dpi/ocr_psm/ocr_min_confidence`, `primary_reader`.
 - Adapters: storage (filesystem, gcs), secrets (env, secret_manager), identity (local, iap).
@@ -368,20 +421,26 @@ guessed); D2 gains the single-glyph limitation; P1 (silent empty table) handled+
 (whitespace strategy invents tables) and P19 (KERC double heading) added and handled; S14
 detected at inventory (canonical codes); S2 note (both representations' headings recorded).
 Detected: D3, D7, D9.  Everything value- and network-level `n/a-yet` pending Milestones 3–4.
+Increment 10: N2 (wheeling derivation), N5 (CSS approved vs formula), N7 (loss trajectory by
+level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) → VAL-16; S6
+(amendment vs consolidated text) → VAL-05.
 
 ## Tests and evaluations executed, with results and denominators
 
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **226 passed, 0 failed, 0 skipped** (~68 s): 185 unit (13 adapters/profile/fixtures, 32
+- **237 passed, 0 failed, 0 skipped** (~80 s): 193 unit (13 adapters/profile/fixtures, 32
   triage rules, 31 readers/headings/OCR, 11 profiles/localisation, 60 normalisation, 10
-  clause outline, 7 grid integrity, 21 extraction/comparison/routing/validators), 41
-  integration (8 sources, 6 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage, 4
-  parse stage, 4 localisation stage, 2 structure stage, 3 extraction/validation incl. the
-  perturbed image channel and the adversarial fixture, 2 migrations).  Without tesseract
-  the OCR unit tests and the stage tests from parse onward skip and say so.
-- Increment 8 baseline was 200 passed (162 unit, 38 integration).
+  clause outline, 7 grid integrity, 21 extraction/comparison/routing/validators, 8
+  network extraction/derivations/conditions/VAL-05/07/12/16), 44 integration (8 sources,
+  6 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage, 4 parse stage, 4
+  localisation stage, 2 structure stage, 3 extraction/validation incl. the perturbed image
+  channel and the adversarial fixture, 3 network/dual-representation/amendment stage runs,
+  2 migrations).  Without tesseract the OCR unit tests and the stage tests from parse
+  onward skip and say so.
+- Increment 9 baseline was 226 passed (185 unit, 41 integration); increment 8 was 200 (162
+  unit, 38 integration).
 - Test-infrastructure defect found by the reordered run and fixed: the synthetic fixture
   generators were byte-reproducible only ~98% of the time.  MuPDF writes the regenerated
   half of the file `/ID` as a PDF literal string `(…)` when that is shorter than hex, and the
@@ -412,11 +471,13 @@ installed:
 **Zero real provider calls.**  Every extraction run so far used the `fixture` provider
 (labelled on every run and every candidate; cost 0).  The Anthropic Messages API path exists
 in `tariff_api.providers` but has never been executed: no key in this environment.  OCR
-(tesseract, local) is the only non-fixture tool that has run.
+(tesseract, local) is the only non-fixture tool that has run.  The first real call should be
+`tariff-api provider-smoke` (a two-cell synthetic input, cost printed) once
+`ANTHROPIC_API_KEY` is in Secret Manager; that too has not happened.
 
 ## Reviewer decisions obtained versus pending
 
-None required and none obtained.  No candidates exist.
+None required and none obtained.  The only candidates that exist were produced from synthetic fixtures inside the test suite (dataset `fixture`, provider `fixture`); no real-source candidate exists and nobody has reviewed anything.
 
 ## Review/publication status and completeness declarations
 
@@ -497,11 +558,12 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
    `make tf-plan tf-apply ENV=dev` (expect 63 more to add after the bootstrap's 14), then
    `make deploy-dev`, then register the three orders through the `tariff-admin` job
    (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
-2. Engineering (next run): Milestone 4b — network-charge grids (wheeling, losses, CSS
-   tables inside `network_charges` regions), derivation and cross-representation validators,
-   amendment consistency, condition records, then a real provider run on a small NPCL
-   category set once a key exists (reported separately from fixture runs).  Then Milestone
-   5 (reviewer workflow, publication).  Also Milestone 3 close-out on real material once the deploy is done
+2. Engineering (next run): Milestone 5 — reviewer workflow (individual and batch review
+   with pages viewed, rationale, optimistic versions, audited decisions; corrections that
+   re-run validators) and publication (versioned, reviewer-gated, never automatic).  Before
+   any real extraction: `ANTHROPIC_API_KEY` into Secret Manager, `tariff-api provider-smoke`,
+   then one small NPCL category set reported separately from fixture runs.  VAL-14 temporal
+   consistency waits for a second order of the same utility.  Also Milestone 3 close-out on real material once the deploy is done
    (ingest, inventory, triage, parse, localise the three orders; a reviewer confirms; grid;
    compare with Parts D–F), grids from OCR word boxes for the Karnataka vector tables, then
    Milestone 4 (versioned tariff schema, provider adapter with fixture mode, dual-channel

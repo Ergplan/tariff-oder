@@ -263,8 +263,8 @@ def test_fixture_provider_labels_runs_and_perturbations_drive_channel_disagreeme
         json.dumps(
             {
                 "image": [
-                    {"key_contains": "|energy|Metered|101 - 150 kWh / month|", "set": {"value": "9.99"}},
-                    {"key_contains": "|fixed|Metered|Up to 100 kWh / month|", "drop": True},
+                    {"key_contains": "|energy||Metered|101 - 150 kWh / month|", "set": {"value": "9.99"}},
+                    {"key_contains": "|fixed||Metered|Up to 100 kWh / month|", "drop": True},
                 ]
             }
         )

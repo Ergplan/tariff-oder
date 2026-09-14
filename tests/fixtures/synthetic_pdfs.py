@@ -1035,3 +1035,301 @@ def gerc_structure_order_pdf() -> bytes:
         p = new(label)
         _lines(p, 100, clauses[i * third : (i + 1) * third], 8.5, 15)
     return _finalise(doc)
+
+
+# ------------------------------------------------------------------ Milestone 4b: network charges, dual representation, amendments
+
+
+def network_order_pdf() -> bytes:
+    """Ten pages in the NPCL shape whose network-charge chapter prints its arithmetic (Part D.4):
+    Table 6-7 approved distribution loss trajectory; Chapter 9 with the wheeling working
+    table (ARR Rs Cr ÷ sales MU → Rs/kWh), Table 9-11 open-access losses by level, the CSS
+    table with `Last year approved (A)`, `Computed (C)` and `Approved (Lower of A & C)` columns
+    (one row deliberately not the lower), the zero additional surcharge and a by-reference
+    banking sentence; the annexure with general provisions 20 (green tariff with the
+    regulatory-discount exclusion) and 21, and one RATE SCHEDULE table."""
+    doc = pymupdf.open()
+    total = 10
+
+    def new(label: int) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        _footer(page, str(label), total)
+        return page
+
+    p = new(1)
+    _lines(p, 120, ["SYNTHETIC COMMISSION", "Tariff Order for FY 2026-27", "Licensee: NPCL"], 14, 24)
+    p = new(2)
+    _lines(
+        p,
+        110,
+        [
+            "CONTENTS",
+            "CHAPTER 6 DISTRIBUTION LOSS ............ 3",
+            "CHAPTER 9 OPEN ACCESS CHARGES .......... 4",
+            "12.1 ANNEXURE-I: RATE SCHEDULE FOR FY 2026-27 ...... 8",
+        ],
+    )
+    p = new(3)
+    _lines(p, 110, ["CHAPTER - 6", "6.4 Distribution Loss", "Table 6-7 Approved distribution loss trajectory"], 11, 20)
+    _ruled_grid(
+        p,
+        190,
+        [["Particulars", "FY2025-26", "FY2026-27", "FY2027-28"], ["Distribution loss (%)", "8.00", "7.48", "7.00"]],
+        [200, 90, 90, 90],
+    )
+    p = new(4)
+    _lines(p, 110, ["CHAPTER - 9", "9.2 Wheeling Charges", "Table 9-5 Average Wheeling Charges"], 11, 20)
+    _ruled_grid(
+        p,
+        190,
+        [
+            ["Particulars", "Value"],
+            ["Wheeling ARR (Rs Cr)", "451.70"],
+            ["Sales (MU)", "4399.84"],
+            ["Average Wheeling Charge (Rs/kWh)", "1.03"],
+        ],
+        [260, 120],
+    )
+    _lines(
+        p,
+        300,
+        ["9.2.11 Embedded open access consumers already paying demand charges are exempt from wheeling charges."],
+        9,
+        16,
+    )
+    p = new(5)
+    _lines(p, 110, ["9.3 Cross Subsidy Surcharge", "Table 9-11 Losses applicable for open access consumers"], 11, 20)
+    _ruled_grid(
+        p,
+        170,
+        [
+            ["Level", "Loss (%)"],
+            ["Inter-state transmission", "3.58"],
+            ["Intra-state transmission", "3.18"],
+            ["33 kV", "0.79"],
+            ["11 kV", "2.58"],
+            ["Below 11 kV", "6.97"],
+        ],
+        [260, 120],
+    )
+    _lines(
+        p,
+        330,
+        [
+            "9.3.7 Both transmission losses apply to all open access consumers; the distribution loss by connection voltage."
+        ],
+        9,
+        16,
+    )
+    p = new(6)
+    _lines(p, 110, ["Table 9-14 Cross Subsidy Surcharge approved (Rs/kWh)"], 11, 20)
+    _ruled_grid(
+        p,
+        150,
+        [
+            ["Category", "Voltage", "Last year approved (A)", "Computed (C)", "Approved (Lower of A & C)"],
+            ["LMV-2", "11 kV", "1.50", "1.33", "1.33"],
+            ["HV-2", "33 kV", "1.20", "1.45", "1.45"],
+            ["HV-1", "132 kV", "-", "0.90", "-"],
+        ],
+        [80, 70, 130, 100, 150],
+    )
+    _lines(
+        p,
+        270,
+        [
+            "9.4.7 The Commission approves the additional surcharge as zero for FY 2026-27.",
+            "9.5.2 Banking charges as specified in the separate Regulations / Orders shall be applicable.",
+        ],
+        9.5,
+        16,
+    )
+    p = new(7)
+    _lines(p, 110, ["7.2.3 The Petitioner has proposed to increase the TOD adjustment from 15% to 20%."], 9.5, 16)
+    p = new(8)
+    _lines(
+        p,
+        110,
+        [
+            "12.1 ANNEXURE-I: RATE SCHEDULE FOR FY 2026-27",
+            "(APPLICABLE FOR NPCL)",
+            "A. GENERAL PROVISIONS",
+            "20. Green Energy Tariff: Rs 0.34 per unit for HV categories and Rs 0.17 per unit for LMV categories,",
+            "in addition to the regular tariff. 20(f) The regulatory discount shall not be applicable to the Green Tariff.",
+            "21. A regulatory discount of 10% shall apply to fixed / demand and energy charges of all consumers.",
+        ],
+        9.5,
+        18,
+    )
+    p = new(9)
+    _lines(p, 110, ["B. RETAIL TARIFFS FOR FINANCIAL YEAR 2026-27", "RATE SCHEDULE LMV - 2", "Non-Domestic"], 10.5, 20)
+    _ruled_grid(
+        p,
+        180,
+        [
+            ["Description", "Fixed Charge", "Energy Charge", "Slab"],
+            ["Metered", "Rs. 120.00/ kW / month", "Rs. 7.50/ kWh *", "Up to 300 kWh / month"],
+        ],
+        [90, 150, 110, 130],
+    )
+    p.insert_text((60, 250), "* subject to the regulatory discount of general provision 21", fontsize=7.5)
+    p = new(10)
+    _lines(p, 110, ["RATE SCHEDULE HV-2", "Large and Heavy Power"], 10.5, 20)
+    _ruled_grid(
+        p,
+        160,
+        [
+            ["Description", "Demand Charge", "Energy Charge"],
+            ["Supply at 33 kV", "Rs. 430.00 / kVA / month", "Rs. 8.32 / kVAh"],
+        ],
+        [140, 170, 150],
+    )
+    return _finalise(doc)
+
+
+def dual_representation_pdf(*, disagree: bool = True) -> bytes:
+    """Seven pages in the KERC shape with two authoritative representations of the same
+    numbers (Part E.2 hazard 2): a chapter summary Table 6.3A (rupees and paise in adjacent
+    columns) and the Annexure-9 category schedules.  With ``disagree=True`` the LT-2 energy
+    charge differs between the two (580 vs 585 paise): a finding, not a choice."""
+    doc = pymupdf.open()
+
+    def new(label: str, section: str | None = None) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        page.insert_text((72, 78), "Karnataka Synthetic Commission - Tariff Order 2025 - All ESCOMs", fontsize=8)
+        page.insert_text((250, 820), f"{section + '   ' if section else ''}Page {label}", fontsize=9)
+        return page
+
+    p = new("i")
+    _lines(
+        p,
+        110,
+        [
+            "CONTENTS",
+            "6.8 Tariff Charges ........................... 1",
+            "Annexure - 9 ............................... 3",
+        ],
+    )
+    p = new("1", "Chapter - 6 : Tariff")
+    _lines(p, 110, ["6.8 Tariff Charges", "Table 6.3A Approved tariff for FY2025-26"], 11, 20)
+    _ruled_grid(
+        p,
+        170,
+        [
+            ["Category", "Fixed Charges Billing Unit", "Fixed Charges (In Rupees)", "Energy Charges (Paise/Unit)"],
+            ["", "", "FY2025-26", "FY2025-26"],
+            ["LT-1", "per KW", "145", "580"],
+            ["LT-2", "per KW", "90", "585" if disagree else "650"],
+        ],
+        [90, 150, 140, 150],
+    )
+    p = new("2", "Chapter - 6 : Tariff")
+    _lines(
+        p,
+        110,
+        [
+            "6.12 Wheeling Charges for BESCOM and MESCOM",
+            "6.13.6 Additional Surcharge shall not be levied until a fresh petition is filed.",
+        ],
+        10.5,
+        18,
+    )
+    p = new("3", "ANNEXURE - 9")
+    _lines(
+        p,
+        140,
+        [
+            "ANNEXURE - 9",
+            "ELECTRICITY TARIFF - 2026",
+            "K.E.R.C. ORDER DATED: 27th MARCH 2025",
+            "BESCOM  MESCOM  CESC  HESCOM  GESCOM",
+        ],
+        13,
+        26,
+    )
+    p = new("4", "ANNEXURE - 9")
+    _lines(
+        p,
+        110,
+        [
+            "GENERAL TERMS AND CONDITIONS OF TARIFF (APPLICABLE TO BOTH HT AND LT)",
+            "3. Minimum charges shall be as per the schedule.",
+        ],
+        10.5,
+        20,
+    )
+    p = new("5", "ANNEXURE - 9")
+    _lines(p, 110, ["TARIFF SCHEDULE LT-1", "Applicable to Bhagya Jyothi installations."], 11, 20)
+    _ruled_grid(
+        p,
+        170,
+        [["Particulars", "FY2025-26"], ["Fixed charge per KW / Month", "Rs.145/-"], ["Energy charge", "580 paise"]],
+        [260, 120],
+    )
+    p = new("6", "ANNEXURE - 9")
+    _lines(p, 110, ["TARIFF SCHEDULE LT-2", "Applicable to private residences."], 11, 20)
+    _ruled_grid(
+        p,
+        170,
+        [["Particulars", "FY2025-26"], ["Fixed charge per KW / Month", "Rs.90/-"], ["Energy charge", "650 paise"]],
+        [260, 120],
+    )
+    return _finalise(doc)
+
+
+def gerc_amendment_order_pdf(*, mismatch: bool = True) -> bytes:
+    """Six pages in the GERC shape with a *ruled* Table 10-1 `Existing description / Modified
+    description` amendment table (Part F.2 hazard 8) followed by the clause schedule.  Row
+    1.4's modified text matches the consolidated schedule; with ``mismatch=True`` a second row
+    quotes a modified text the schedule does not carry."""
+    from pathlib import Path
+
+    clauses = (Path(__file__).with_name("text") / "gerc_clauses.txt").read_text().splitlines()
+    doc = pymupdf.open()
+
+    def new(label: str) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        page.insert_text((250, 820), f"Page {label}", fontsize=9)
+        return page
+
+    p = new("i")
+    _lines(
+        p,
+        110,
+        [
+            "CONTENTS",
+            "Chapter 10 Amendments ..................... 1",
+            "ANNEXURE: TARIFF SCHEDULE ..................... 2",
+        ],
+    )
+    p = new("1")
+    _lines(p, 110, ["CHAPTER 10", "Table 10-1 Amendments to the tariff schedule"], 11, 20)
+    rows = [
+        ["Clause", "Existing description", "Modified description"],
+        ["1.4", "consumption between 11:00 hrs to 15:00 hrs", "consumption between 11:00 hrs to 17:00 hrs"],
+    ]
+    if mismatch:
+        rows.append(["4.4", "consumption between 11:00 hrs to 16:00 hrs", "consumption between 11:00 hrs to 18:00 hrs"])
+    _ruled_grid(p, 170, rows, [40, 235, 235], cell_h=26)
+    p = new("2")
+    _lines(
+        p,
+        110,
+        [
+            "ANNEXURE: TARIFF SCHEDULE",
+            "TARIFF FOR SUPPLY OF ELECTRICITY AT LOW TENSION, HIGH TENSION, AND EXTRA HIGH TENSION",
+            "Effective from 1st April, 2026",
+            "GENERAL",
+            "1. The figures are the rates payable by consumers of MGVCL.",
+        ],
+        10,
+        18,
+    )
+    third = (len(clauses) + 2) // 3
+    for i, label in enumerate(("3", "4", "5")):
+        p = new(label)
+        _lines(p, 100, clauses[i * third : (i + 1) * third], 8.5, 15)
+    return _finalise(doc)

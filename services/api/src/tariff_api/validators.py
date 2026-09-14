@@ -64,6 +64,10 @@ class ValidationContext:
     periods: list[str] = field(default_factory=list)
     profile_id: str = "default"
     secondary_authoritative: bool = False
+    # Milestone 4b
+    approved_page_texts: dict[int, str] = field(default_factory=dict)  # consolidated schedule text
+    amendment_rows: list[dict[str, Any]] = field(default_factory=list)  # {page, row, existing, modified}
+    condition_texts: list[str] = field(default_factory=list)  # condition records + footnotes
 
 
 def _dec(v: str | None) -> Decimal | None:
@@ -89,6 +93,10 @@ def run_all(ctx: ValidationContext) -> list[Finding]:
         val_15_inventory_reconciliation,
         val_17_magnitude_plausibility,
         val_18_region_provenance,
+        val_05_amendment_consistency,
+        val_07_derivation_checks,
+        val_12_condition_links,
+        val_16_cross_representation,
     ):
         findings.extend(fn(ctx))
     return findings
@@ -460,4 +468,217 @@ def val_18_region_provenance(ctx: ValidationContext) -> list[Finding]:
                         [c.key()],
                     )
                 )
+    return out
+
+
+# ------------------------------------------------------------------ Milestone 4b validators
+
+
+def _norm_text(t: str) -> str:
+    return re.sub(r"[^a-z0-9%.:]+", " ", t.lower()).strip()
+
+
+def val_05_amendment_consistency(ctx: ValidationContext) -> list[Finding]:
+    """VAL-05 every `Modified description` in an amendment table must appear in the
+    consolidated schedule; a mismatch is a finding (the left column is superseded text)."""
+    out = []
+    consolidated = _norm_text(" ".join(ctx.approved_page_texts.values()))
+    for r in ctx.amendment_rows:
+        modified = _norm_text(r.get("modified") or "")
+        if not modified:
+            continue
+        if modified in consolidated:
+            out.append(
+                Finding(
+                    "VAL-05",
+                    "info",
+                    f"amendment row {r.get('row')} on page {r.get('page')}: modified text present in the "
+                    "consolidated schedule",
+                    [],
+                    r,
+                )
+            )
+        else:
+            out.append(
+                Finding(
+                    "VAL-05",
+                    "blocking",
+                    f"amendment row {r.get('row')} on page {r.get('page')}: modified description {r.get('modified')!r} "
+                    "not found in the consolidated schedule",
+                    [],
+                    r,
+                )
+            )
+        existing = _norm_text(r.get("existing") or "")
+        if existing and existing != modified and existing in consolidated and modified not in consolidated:
+            out.append(
+                Finding(
+                    "VAL-05",
+                    "blocking",
+                    "the superseded (existing) text is what the consolidated schedule carries",
+                    [],
+                    r,
+                )
+            )
+    return out
+
+
+def val_07_derivation_checks(ctx: ValidationContext) -> list[Finding]:
+    """VAL-07 where the order prints the arithmetic, recompute from the printed inputs and
+    compare with the printed result; mismatch flags, never corrects.  Rules: wheeling =
+    ARR (Rs Cr) ÷ sales (MU) → Rs/kWh; CSS approved = lower of the two printed columns;
+    cap = printed cap column bounds the approved value."""
+    out = []
+    for c in ctx.candidates:
+        d = c.derivation
+        if not d or c.value is None:
+            continue
+        k = c.key()
+        rule = d.get("rule")
+        inputs = d.get("inputs") or {}
+        printed = _dec(c.value)
+        if rule == "arr_over_sales" and printed is not None:
+            arr = _dec((inputs.get("arr") or {}).get("value"))
+            sales = _dec((inputs.get("sales") or {}).get("value"))
+            if arr is None or sales is None or sales == 0:
+                out.append(
+                    Finding("VAL-07", "warning", "wheeling derivation inputs incomplete; not recomputed", [k], d)
+                )
+                continue
+            computed = (arr * Decimal(10_000_000)) / (sales * Decimal(1_000_000))  # Rs Cr / MU → Rs/kWh
+            places = max(0, -printed.as_tuple().exponent)
+            if abs(computed - printed) > Decimal(1).scaleb(-places):
+                out.append(
+                    Finding(
+                        "VAL-07",
+                        "blocking",
+                        f"wheeling charge printed {printed} but ARR/sales gives {computed:.4f}",
+                        [k],
+                        {**d, "computed": str(round(computed, 4))},
+                    )
+                )
+            else:
+                out.append(
+                    Finding(
+                        "VAL-07",
+                        "info",
+                        f"wheeling charge {printed} agrees with ARR/sales ({computed:.4f})",
+                        [k],
+                        {**d, "computed": str(round(computed, 4))},
+                    )
+                )
+        elif rule == "lower_of" and printed is not None:
+            vals = [_dec(v) for v in inputs.values() if _dec(v) is not None]
+            if len(vals) < 2:
+                out.append(Finding("VAL-07", "warning", "lower-of rule with fewer than two printed inputs", [k], d))
+                continue
+            expected = min(vals)
+            if printed != expected:
+                out.append(
+                    Finding(
+                        "VAL-07",
+                        "blocking",
+                        f"approved {printed} is not the lower of the printed inputs (expected {expected})",
+                        [k],
+                        d,
+                    )
+                )
+            else:
+                out.append(
+                    Finding(
+                        "VAL-07", "info", f"approved {printed} is the lower of {sorted(str(v) for v in vals)}", [k], d
+                    )
+                )
+        elif rule == "cap" and printed is not None:
+            cap = next((_dec(v) for h, v in inputs.items() if "cap" in h.lower() and _dec(v) is not None), None)
+            tariff = next((_dec(v) for h, v in inputs.items() if "tariff" in h.lower() and _dec(v) is not None), None)
+            if cap is not None and tariff is not None and abs(cap - tariff * Decimal("0.2")) > Decimal("0.01"):
+                out.append(
+                    Finding(
+                        "VAL-07", "blocking", f"printed cap {cap} is not 20% of the printed tariff {tariff}", [k], d
+                    )
+                )
+            if cap is not None and printed > cap:
+                out.append(Finding("VAL-07", "blocking", f"approved {printed} exceeds the printed cap {cap}", [k], d))
+            elif cap is not None:
+                out.append(Finding("VAL-07", "info", f"approved {printed} within the cap {cap}", [k], d))
+    return out
+
+
+def val_12_condition_links(ctx: ValidationContext) -> list[Finding]:
+    """VAL-12 a component that references a condition must link to an existing condition
+    record: every condition text on a candidate must be a recorded condition or footnote."""
+    out = []
+    known = [_norm_text(t) for t in ctx.condition_texts]
+    for c in ctx.candidates:
+        for cond in c.conditions:
+            n = _norm_text(cond)
+            # a candidate may cite a provision in full or the clause of it that binds the rate
+            if not any(n == k or (len(n) >= 12 and n in k) for k in known):
+                out.append(
+                    Finding(
+                        "VAL-12",
+                        "warning",
+                        f"condition text not found among condition records: {cond[:80]!r}",
+                        [c.key()],
+                    )
+                )
+    return out
+
+
+def val_16_cross_representation(ctx: ValidationContext) -> list[Finding]:
+    """VAL-16 where two authoritative representations exist (schedule and summary), every
+    category/component/period must match after normalisation; mismatches block."""
+    out = []
+    if not ctx.secondary_authoritative:
+        return out
+    by_role: dict[str, dict[tuple, Candidate]] = {"approved_schedule": {}, "approved_summary": {}}
+    for c in ctx.candidates:
+        if c.family != "retail_tariff" or c.value is None:
+            continue
+        roles = set()
+        for e in c.evidence:
+            roles |= ctx.region_roles_by_page.get(e.page_index, set())
+        role = (
+            "approved_summary"
+            if "approved_summary" in roles
+            else ("approved_schedule" if "approved_schedule" in roles else None)
+        )
+        if role is None:
+            continue
+        by_role[role][(c.category_code, c.component_type, c.period)] = c
+    if not by_role["approved_summary"]:
+        out.append(
+            Finding(
+                "VAL-16",
+                "warning",
+                "profile declares a secondary authoritative table but no summary candidates exist",
+                [],
+            )
+        )
+        return out
+    for key, sc in by_role["approved_summary"].items():
+        pc = by_role["approved_schedule"].get(key)
+        if pc is None:
+            out.append(
+                Finding(
+                    "VAL-16", "warning", f"summary has {key} but the schedule has no matching candidate", [sc.key()]
+                )
+            )
+            continue
+        same = _dec(sc.value) == _dec(pc.value) and (sc.currency == pc.currency or None in (sc.currency, pc.currency))
+        if same:
+            out.append(
+                Finding("VAL-16", "info", f"{key}: schedule and summary agree ({pc.value})", [pc.key(), sc.key()])
+            )
+        else:
+            out.append(
+                Finding(
+                    "VAL-16",
+                    "blocking",
+                    f"{key}: schedule {pc.value} {pc.currency} vs summary {sc.value} {sc.currency} disagree; "
+                    "publication of both blocked until reviewed",
+                    [pc.key(), sc.key()],
+                )
+            )
     return out

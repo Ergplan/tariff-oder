@@ -10,16 +10,20 @@ from datetime import UTC, datetime
 
 from sqlalchemy import delete, select
 
+from tariff_api.adapters.storage import ObjectNotFound, ObjectStore
 from tariff_api.db import session_scope
+from tariff_api.inventory import NotAPdf, open_document
 from tariff_api.models import (
     CandidateRecord,
     ClauseValueRecord,
+    ConditionRecordRow,
     DocumentHeading,
     FamilyDisposition,
     LocalisationRegion,
     SourceDocument,
     SourceState,
     StructureCell,
+    TableGridRecord,
     ValidatorFindingRecord,
 )
 from tariff_api.profiles import load_profile
@@ -74,6 +78,29 @@ def validate_source(ctx: JobContext) -> dict:
             d.family: d.disposition
             for d in s.execute(select(FamilyDisposition).where(FamilyDisposition.source_id == source_id)).scalars()
         }
+        # Milestone 4b inputs: the consolidated schedule text, the amendment table rows and
+        # the condition records
+        approved_pages = sorted(p for p, rs in roles.items() if rs & {"approved_schedule", "approved_summary"})
+        amendment_pages = sorted(p for p, rs in roles.items() if "amendment_diff" in rs)
+        amendment_grids = [
+            g.object_key
+            for g in s.execute(
+                select(TableGridRecord).where(
+                    TableGridRecord.source_id == source_id,
+                    TableGridRecord.is_primary.is_(True),
+                    TableGridRecord.page_index.in_(amendment_pages or [-1]),
+                )
+            ).scalars()
+        ]
+        object_key, sha = src.object_key, src.sha256
+        condition_texts = [
+            r.text
+            for r in s.execute(select(ConditionRecordRow).where(ConditionRecordRow.source_id == source_id)).scalars()
+        ] + [
+            fn
+            for c in s.execute(select(StructureCell).where(StructureCell.source_id == source_id)).scalars()
+            for fn in c.footnotes
+        ]
         ctxv = ValidationContext(
             candidates=cands,
             region_roles_by_page=roles,
@@ -84,6 +111,9 @@ def validate_source(ctx: JobContext) -> dict:
             utilities=profile.utilities,
             profile_id=profile.id,
             secondary_authoritative=profile.secondary_authoritative,
+            approved_page_texts=_page_texts(ctx, object_key, sha, approved_pages),
+            amendment_rows=_amendment_rows(ctx, amendment_grids),
+            condition_texts=condition_texts,
         )
         findings = run_all(ctxv)
         s.execute(delete(ValidatorFindingRecord).where(ValidatorFindingRecord.source_id == source_id))
@@ -155,4 +185,54 @@ def _count(values: list[str]) -> dict[str, int]:
     out: dict[str, int] = {}
     for v in values:
         out[v] = out.get(v, 0) + 1
+    return out
+
+
+def _page_texts(ctx: JobContext, object_key: str, sha: str, pages: list[int]) -> dict[int, str]:
+    if not pages:
+        return {}
+    storage: ObjectStore = ctx.adapters.storage
+    try:
+        data = storage.get(ObjectStore.SOURCES, object_key)
+    except ObjectNotFound as e:
+        raise JobFailure("storage_unavailable", f"object {object_key} missing", retry=True) from e
+    try:
+        doc = open_document(data)
+    except NotAPdf as e:
+        raise JobFailure("source_unreadable", str(e), retry=False) from e
+    return {p: doc[p - 1].get_text("text", sort=True) for p in pages if p <= doc.page_count}
+
+
+def _amendment_rows(ctx: JobContext, grid_keys: list[str]) -> list[dict]:
+    """Rows of `Existing description / Modified description` grids, read from the parse
+    stage's grid artefacts (text-only tables yield no numeric structure cells)."""
+    import json
+
+    storage: ObjectStore = ctx.adapters.storage
+    out: list[dict] = []
+    for key in grid_keys:
+        try:
+            grid = json.loads(storage.get(ObjectStore.ARTEFACTS, key))["grid"]
+        except (ObjectNotFound, ValueError, KeyError):
+            continue
+        rows = grid.get("rows") or []
+        if not rows:
+            continue
+        header = [(h or "").lower() for h in rows[0]]
+        try:
+            ex = next(i for i, h in enumerate(header) if "existing" in h)
+            mo = next(i for i, h in enumerate(header) if "modified" in h)
+        except StopIteration:
+            continue
+        for r_i, row in enumerate(rows[1:], start=1):
+            out.append(
+                {
+                    "page": grid.get("page_index"),
+                    "grid": grid.get("ordinal"),
+                    "row": r_i,
+                    "clause": (row[0] or "").strip() if row else None,
+                    "existing": (row[ex] or "").strip() if ex < len(row) else None,
+                    "modified": (row[mo] or "").strip() if mo < len(row) else None,
+                }
+            )
     return out
