@@ -300,6 +300,54 @@ def cmd_sources(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_assign_profile(args: argparse.Namespace) -> int:
+    """Bind a reading profile version to a source (administrator); queues a localisation
+    re-run when the source is parsed or beyond.  Audited."""
+    import uuid
+
+    from .db import session_scope
+    from .services.localisation import assign_profile
+    from .services.sources import get_source
+
+    settings, _ = _adapters()
+    with session_scope() as s:
+        src = get_source(s, uuid.UUID(args.source_id))
+        profile, rerun = assign_profile(
+            s, settings, src, args.profile_id, args.version, actor=args.actor, reason=args.reason
+        )
+        print(
+            json.dumps(
+                {"source_id": args.source_id, "profile": f"{profile.id}@{profile.version}", "rerun_queued": rerun}
+            )
+        )
+    return 0
+
+
+def cmd_rerun(args: argparse.Namespace) -> int:
+    """Re-run one reading stage for a source (administrator).  Downstream stages re-chain."""
+    import uuid
+
+    from .db import session_scope
+    from .services.sources import get_source, request_stage_rerun
+
+    settings, _ = _adapters()
+    with session_scope() as s:
+        src = get_source(s, uuid.UUID(args.source_id))
+        job = request_stage_rerun(s, settings, src, args.job_type, actor=args.actor)
+        s.flush()
+        print(
+            json.dumps(
+                {
+                    "source_id": args.source_id,
+                    "job_type": args.job_type,
+                    "job_id": str(job.id),
+                    "state": src.state.value,
+                }
+            )
+        )
+    return 0
+
+
 def cmd_users(args: argparse.Namespace) -> int:
     """List users, or add/update one.  Role changes are audit events."""
     from sqlalchemy import select
@@ -398,6 +446,30 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("sources", help="list registered sources with pipeline state and latest job")
     p.add_argument("--json", action="store_true")
     p.set_defaults(fn=cmd_sources)
+
+    p = sub.add_parser("assign-profile", help="bind a reading profile version to a source (queues localisation)")
+    p.add_argument("source_id")
+    p.add_argument("profile_id")
+    p.add_argument("--version", type=int, default=None)
+    p.add_argument("--actor", required=True)
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=cmd_assign_profile)
+
+    p = sub.add_parser("rerun", help="re-run one reading stage for a source")
+    p.add_argument("source_id")
+    p.add_argument(
+        "job_type",
+        choices=[
+            "triage_source",
+            "parse_source",
+            "localise_source",
+            "grid_source",
+            "extract_source",
+            "validate_source",
+        ],
+    )
+    p.add_argument("--actor", required=True)
+    p.set_defaults(fn=cmd_rerun)
 
     p = sub.add_parser("users", help="list users, or add/update one")
     p.add_argument("action", choices=["list", "add"])

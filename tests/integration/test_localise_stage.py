@@ -44,7 +44,7 @@ def test_uperc_layout_is_localised_and_confirmed_by_a_reviewer(client, runner, s
     assert d["state"] == "localised"
     assert d["reading_profile"] == {
         "profile_id": "uperc-npcl",
-        "version": 1,
+        "version": 2,
         "source": "detected",
         "rationale": "3 `rate_schedule` headings in the inventory",
     }
@@ -60,7 +60,7 @@ def test_uperc_layout_is_localised_and_confirmed_by_a_reviewer(client, runner, s
     approved = next(r for r in L["regions"] if r["role"] == "approved_schedule")
     assert approved["cue_text"].startswith("12.1 ANNEXURE-I: RATE SCHEDULE") and approved["origin"] == "detected"
     assert approved["grid_count"] == 3  # the three ruled RATE SCHEDULE tables sit inside the region
-    assert L["profile_ref"] == "uperc-npcl@1" and L["decided_by"] is None
+    assert L["profile_ref"] == "uperc-npcl@2" and L["decided_by"] is None
     art = json.loads(storage.get("artefacts", L["artefact_key"]))
     # the scans have no text layer, so their text came from the parse stage's OCR artefacts;
     # they are still classed `other` by page class, never by what the OCR read
@@ -192,7 +192,7 @@ def test_admin_assigns_a_profile_and_the_stage_reruns_reopening_the_checkpoint(c
     d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
     assert d["state"] == "localised" and d["localisation"]["status"] == "ambiguous"
     L = client.get(f"/sources/{src_id}/localisation", headers=headers(ANALYST)).json()
-    assert L["profile_ref"] == "uperc-npcl@1" and L["extraction_allowed"] is False and L["decided_by"] is None
+    assert L["profile_ref"] == "uperc-npcl@2" and L["extraction_allowed"] is False and L["decided_by"] is None
     assert any(f["code"] == "approved_schedule_not_found" for f in L["findings"])
     audit = client.get(
         "/audit", params={"entity_type": "source_document", "entity_id": src_id}, headers=headers(ADMIN)

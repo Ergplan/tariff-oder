@@ -128,6 +128,12 @@ def _sig(**kw) -> PageSignals:
     [
         (dict(), "blank", {"no_text_layer"}),
         (dict(image_count=1, image_area_ratio=0.8), "image_only", {"no_text_layer", "ocr_needed"}),
+        # NPCL 402-423: a page-number footer over a page-size scan is a scan, not a cover (rules v3)
+        (
+            dict(text_chars=21, line_count=1, image_count=3, image_area_ratio=0.92),
+            "image_only",
+            {"footer_only_text", "ocr_needed"},
+        ),
         (
             dict(drawing_count=900),
             "vector_graphics_text_sparse",

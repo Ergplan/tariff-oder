@@ -25,7 +25,7 @@ import unicodedata
 from dataclasses import asdict, dataclass, field
 from typing import Any, Literal
 
-TRIAGE_VERSION = "2"
+TRIAGE_VERSION = "3"
 
 PageClass = Literal[
     "narrative",
@@ -386,6 +386,19 @@ def classify_page(sig: PageSignals, thresholds: dict[str, Any] | None = None) ->
             ocr_recommended=ocr_for_quality,
             rationale=f"{sig.ruling_line_count} ruling lines, {sig.h_ruling_count}x{sig.v_ruling_count} grid "
             f"strokes and {sig.aligned_column_count} aligned columns",
+        )
+
+    # A scanned page whose only text is a page-number footer (NPCL 402-423: 21-80 chars over a
+    # page-size image) is a scan, not a cover: classify image_only and OCR it.  Rules v3.
+    if sparse and sig.image_area_ratio >= t["image_only_min_coverage"] and sig.drawing_count < t["vector_min_drawings"]:
+        return TriageResult(
+            "image_only",
+            flags + ["footer_only_text", "ocr_needed"],
+            ocr_recommended=True,
+            rationale=(
+                f"only {sig.text_chars} text characters over a raster image covering "
+                f"{sig.image_area_ratio:.0%} of the page (footer-only text layer)"
+            ),
         )
 
     if sig.line_count <= t["cover_max_lines"] and _looks_like_cover(sig.text):

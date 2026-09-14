@@ -1,0 +1,171 @@
+{
+  "id": "gerc-discoms",
+  "version": 2,
+  "commission": "GERC",
+  "utilities": [
+    "MGVCL",
+    "DGVCL",
+    "PGVCL",
+    "UGVCL"
+  ],
+  "seeded_from": "Part F of the build specification (GERC/MGVCL FY 2026-27 order); not yet verified against the real file",
+  "page_labels": {
+    "style": "roman_then_offset",
+    "offset": -16,
+    "footer_pattern": "Page N"
+  },
+  "schedule_representation": "clause_outline",
+  "schedule_heading_kind": "rate_clause",
+  "schedule_scope": "shared_via_parallel_orders",
+  "locators": [
+    {
+      "role": "approved_schedule",
+      "scope": "span",
+      "pattern": "^\\s*ANNEXURE\\s*:?\\s*TARIFF SCHEDULE",
+      "note": "F.1: ANNEXURE: TARIFF SCHEDULE (PDF 159) opens the clause-outline schedule"
+    },
+    {
+      "role": "approved_schedule",
+      "scope": "span",
+      "pattern": "TARIFF FOR SUPPLY OF ELECTRICITY AT LOW TENSION",
+      "note": "F.1: schedule subtitle"
+    },
+    {
+      "role": "amendment_diff",
+      "scope": "page",
+      "pattern": "Existing description",
+      "also_on_page": [
+        "Modified description"
+      ],
+      "note": "F.1/F.2 hazard 8: Table 10-1; the left column is superseded text"
+    },
+    {
+      "role": "formula_parameters",
+      "scope": "page",
+      "pattern": "FPPAS|Fuel and Power Purchase Price Adjustment",
+      "note": "F.1: Chapter 8 defines the FPPAS formula and base parameters outside the schedule"
+    },
+    {
+      "role": "proposed_tariff",
+      "scope": "page",
+      "pattern": "petitioner.{0,80}proposed|tariff proposal",
+      "note": "F.1: the only category proposal (homestays) is rejected in prose; absence is recorded"
+    },
+    {
+      "role": "illustrative",
+      "scope": "page",
+      "pattern": "bill impact|illustrative",
+      "note": "illustrative tables are not tariffs"
+    },
+    {
+      "role": "loss_trajectory",
+      "scope": "page",
+      "pattern": "distribution loss(es)?.{0,60}(trajectory|approved)|approved.{0,40}distribution loss",
+      "note": "F.4: MGVCL ARR loss levels"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "wheeling_charge",
+      "scope": "page",
+      "pattern": "wheeling charge",
+      "note": "F.4: 9.2, Table 9-2"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "oa_loss",
+      "scope": "page",
+      "pattern": "open access.{0,60}loss|loss(es)?.{0,60}open access",
+      "note": "F.4: 9.3 matrix"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "cross_subsidy_surcharge",
+      "scope": "page",
+      "pattern": "cross[- ]subsidy surcharge",
+      "note": "F.4: 9.4, Table 9-3"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "additional_surcharge",
+      "scope": "page",
+      "pattern": "additional surcharge",
+      "note": "F.4: parameter_specified under the 30.08.2022 methodology"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "banking_rule",
+      "scope": "page",
+      "pattern": "\\b(?:banking\\s+of\\s+(?:power|energy)|banked\\s+(?:power|energy|units)|banking\\s+(?:facility|arrangement|provision|charges?\\s+for\\s+(?:banked|renewable|green|open\\s+access))|open\\s+access[^.\\n]{0,80}\\bbanking\\b|\\bbanking\\b[^.\\n]{0,80}open\\s+access)",
+      "note": "F.4: no banking provisions expected; a hit is a finding v2 (2026-09-14, NPCL review): the v1 cue `\\bbanking\\b` matched 'internet banking' and 'Banking and Finance Charges' (a financing cost); the cue now needs banking of power/energy, banked units, or banking next to open access."
+    },
+    {
+      "role": "green_tariff",
+      "scope": "page",
+      "pattern": "green (energy )?tariff",
+      "note": "F.4"
+    }
+  ],
+  "secondary_authoritative": false,
+  "header_vocabulary": [
+    "FIXED CHARGES / MONTH",
+    "ENERGY CHARGES",
+    "TIME OF USE DISCOUNT",
+    "TIME OF USE CHARGES",
+    "MINIMUM BILL",
+    "DEMAND CHARGE",
+    "BILLING DEMAND",
+    "POWER FACTOR ADJUSTMENT CHARGES",
+    "Post-Paid Energy Charge",
+    "Pre-paid Energy Charge"
+  ],
+  "unit_placement": "cell",
+  "currency_convention": "paise_energy_rupee_fixed",
+  "load_units": [
+    "kW",
+    "kVA",
+    "HP"
+  ],
+  "conversion_factors": {},
+  "category_code_pattern": "\\b(RGP( \\(RURAL\\))?|GLP|NON-RGP|LTMD|LTP|WWSP|AG|TMP|HTP\\s*-\\s*(1|II|III|IV|V)|RAILWAY TRACTION|(LT|HT) ELECTRIC VEHICLE)",
+  "effective_rule": {
+    "type": "fixed_date",
+    "note": "Effective from 1st April, 2026, applying to consumption from that date"
+  },
+  "tod_adjustment": "absolute_paise_per_unit",
+  "footnote_markers": [
+    "*",
+    "#"
+  ],
+  "inventory_expectations": {
+    "schedule_headings": 17,
+    "codes": [
+      "RGP",
+      "RGP(RURAL)",
+      "GLP",
+      "NON-RGP",
+      "LTMD",
+      "LTP-LIFTIRRIGATION",
+      "WWSP",
+      "AG",
+      "TMP",
+      "LTELECTRICVEHICLE(EV)CHARGINGSTATIONS",
+      "HTP-1",
+      "HTP-II",
+      "HTP-III",
+      "HTP-IV",
+      "HTP-V",
+      "RAILWAYTRACTION",
+      "HTELECTRICVEHICLE(EV)CHARGINGSTATIONS"
+    ],
+    "absent_codes": [],
+    "general_conditions": 11
+  },
+  "known_quirks": [
+    "No tables in the schedule: rates are lines inside numbered clauses joined by PLUS / ALTERNATIVELY",
+    "Post-paid and pre-paid energy charges differ (two value columns)",
+    "Time of Use Discount reduces the rate; Time of Use Charges increase it",
+    "Table 10-1 quotes superseded clause text in its Existing description column",
+    "FPPAS is a formula whose base parameters live in Chapter 8, not in the schedule",
+    "Printed page N = PDF index - 16 after roman front matter"
+  ]
+}

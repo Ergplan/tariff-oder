@@ -220,6 +220,8 @@ Useful argument sets:
 | Register one order | `ingest,inbox/<file>.pdf,--actor,venture@aayuda.energy` |
 | Create the first administrator | `users,add,--email,venture@aayuda.energy,--role,administrator,--actor,bootstrap` |
 | List users | `users,list` |
+| Bind a reading profile version to a source (queues localisation) | `assign-profile,<source_id>,uperc-npcl,--version,2,--actor,<label>,--reason,<why>` |
+| Re-run a reading stage (downstream stages re-chain) | `rerun,<source_id>,triage_source,--actor,<label>` |
 | List registered sources with pipeline state, page count, manifest check and latest job | `sources` (add `,--json` for the full record) |
 
 Worker and API logs are structured JSON on stdout, which `gcloud beta run jobs executions logs

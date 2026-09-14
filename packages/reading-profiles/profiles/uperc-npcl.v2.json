@@ -1,0 +1,173 @@
+{
+  "id": "uperc-npcl",
+  "version": 2,
+  "commission": "UPERC",
+  "utilities": [
+    "NPCL"
+  ],
+  "seeded_from": "Part D of the build specification (NPCL FY 2026-27 order); not yet verified against the real file",
+  "page_labels": {
+    "style": "identity",
+    "offset": 0,
+    "footer_pattern": "Page N of 423"
+  },
+  "schedule_representation": "tables",
+  "schedule_heading_kind": "rate_schedule",
+  "schedule_scope": "per_utility",
+  "locators": [
+    {
+      "role": "approved_schedule",
+      "scope": "span",
+      "pattern": "ANNEXURE\\s*[-–—]?\\s*I\\s*:?\\s*RATE SCHEDULE",
+      "note": "D.1: section 12.1 ANNEXURE-I: RATE SCHEDULE FOR FY 2026-27 opens the approved schedule"
+    },
+    {
+      "role": "approved_schedule",
+      "scope": "span",
+      "pattern": "RETAIL TARIFFS? FOR (THE )?FINANCIAL YEAR",
+      "note": "D.1: B. RETAIL TARIFFS FOR FINANCIAL YEAR marks the start of the category schedules"
+    },
+    {
+      "role": "derived_not_tariff",
+      "scope": "page",
+      "pattern": "ANNEXURE\\s*[-–—]?\\s*II\\b",
+      "also_on_page": [
+        "average billing rate|ABR|fuel.{0,30}surcharge"
+      ],
+      "note": "D.2 hazard 3: Annexure-II Rs/kWh averages exist only for fuel-surcharge computation"
+    },
+    {
+      "role": "proposed_tariff",
+      "scope": "page",
+      "pattern": "petitioner.{0,80}proposed|tariff proposal|proposed (by the petitioner|tariff)",
+      "note": "D.2 hazard 2: Chapter 7 proposals (20% TOD, 85% billable demand) were not approved"
+    },
+    {
+      "role": "existing_tariff",
+      "scope": "page",
+      "pattern": "existing tariff",
+      "note": "existing-tariff columns and tables in the tariff chapter"
+    },
+    {
+      "role": "illustrative",
+      "scope": "page",
+      "pattern": "bill impact|illustrative",
+      "note": "bill-impact tables are not tariffs"
+    },
+    {
+      "role": "loss_trajectory",
+      "scope": "page",
+      "pattern": "distribution loss(es)?.{0,60}(trajectory|approved)|approved.{0,40}distribution loss",
+      "note": "D.4: Table 6-7 approved loss trajectory; a different role from open-access losses"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "wheeling_charge",
+      "scope": "page",
+      "pattern": "wheeling charge",
+      "note": "D.4: Chapter 9.2, Table 9-5"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "oa_loss",
+      "scope": "page",
+      "pattern": "open access.{0,60}loss|loss(es)?.{0,60}open access",
+      "note": "D.4: Table 9-11 losses for open-access billing"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "cross_subsidy_surcharge",
+      "scope": "page",
+      "pattern": "cross[- ]subsidy surcharge",
+      "note": "D.4: Tables 9-12 to 9-14; only the approved column is leviable"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "additional_surcharge",
+      "scope": "page",
+      "pattern": "additional surcharge",
+      "note": "D.4: 9.4.7 approves the additional surcharge as zero"
+    },
+    {
+      "role": "network_charges",
+      "sub_role": "banking_rule",
+      "scope": "page",
+      "pattern": "\\b(?:banking\\s+of\\s+(?:power|energy)|banked\\s+(?:power|energy|units)|banking\\s+(?:facility|arrangement|provision|charges?\\s+for\\s+(?:banked|renewable|green|open\\s+access))|open\\s+access[^.\\n]{0,80}\\bbanking\\b|\\bbanking\\b[^.\\n]{0,80}open\\s+access)",
+      "note": "D.4: 6.5.19-6.5.33 discuss banking; verify whether any consumer-facing rule is determined v2 (2026-09-14, NPCL review): the v1 cue `\\bbanking\\b` matched 'internet banking' and 'Banking and Finance Charges' (a financing cost); the cue now needs banking of power/energy, banked units, or banking next to open access."
+    },
+    {
+      "role": "green_tariff",
+      "scope": "page",
+      "pattern": "green (energy )?tariff",
+      "note": "D.4: general provision 20"
+    }
+  ],
+  "secondary_authoritative": false,
+  "header_vocabulary": [
+    "Description",
+    "Slab",
+    "Fixed Charge",
+    "Energy Charge",
+    "Contracted Load",
+    "BASE RATE",
+    "Hours",
+    "% of Energy Charges"
+  ],
+  "unit_placement": "cell",
+  "currency_convention": "rupees",
+  "load_units": [
+    "kW",
+    "kVA",
+    "BHP",
+    "kWh",
+    "kVAh"
+  ],
+  "conversion_factors": {
+    "kw_per_bhp": 0.746,
+    "kva_per_kw": 1.1111
+  },
+  "category_code_pattern": "\\b(LMV|HV)\\s*[-–—]?\\s*\\d{1,2}(\\s*\\([AB]\\))?",
+  "effective_rule": {
+    "type": "publication_plus_days",
+    "days": 7,
+    "note": "11.1.2: in force seven days after newspaper publication, until the next order"
+  },
+  "tod_adjustment": "percent_of_energy_charge",
+  "footnote_markers": [
+    "*",
+    "**",
+    "#"
+  ],
+  "inventory_expectations": {
+    "schedule_headings": 15,
+    "codes": [
+      "LMV-1",
+      "LMV-2",
+      "LMV-3",
+      "LMV-4(A)",
+      "LMV-4(B)",
+      "LMV-5",
+      "LMV-6",
+      "LMV-7",
+      "LMV-8",
+      "LMV-9",
+      "LMV-11",
+      "HV-1",
+      "HV-2",
+      "HV-3",
+      "HV-4"
+    ],
+    "absent_codes": [
+      "LMV-10"
+    ],
+    "general_conditions": 23
+  },
+  "known_quirks": [
+    "Units are inside cells with inconsistent spacing (Rs. 7.50/ kVAh vs Rs. 7.70 / kVAh)",
+    "Merged cells spanning the page break 362 -> 363 in the LMV-1 rural table",
+    "Dash inside category codes varies: en dash, hyphen, none",
+    "General provision 21: 10% regulatory discount on every scheduled rate except Green Tariff (20(f))",
+    "Effective start is an external event: newspaper publication plus seven days",
+    "Pages 402-423 are scanned stamps and logos, never part of the schedule"
+  ]
+}

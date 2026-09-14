@@ -42,7 +42,25 @@ open-access view.
   source page once a reviewer signs in — not assumed here.  Localisation: NPCL proposed
   (46 regions, no blocking finding), GERC proposed (41 regions), KERC **ambiguous** (50
   regions, 1 blocking finding: more than one approved-schedule candidate, as Part E's
-  summary-plus-annexure layout would produce) — the reviewer corrects it at the checkpoint.  **Still open in the M1 gate:** Cloud Logging
+  summary-plus-annexure layout would produce) — the reviewer corrects it at the checkpoint.
+  **What the reviewer's first look at the NPCL page taught (2026-09-14)**, each fixed with
+  a versioned rule or profile change and a test: (1) pages 402–423 are scans with a
+  page-number footer as their only text (21–80 chars over a page-size image), so
+  `has_text_layer` was true and triage classed them `annexure_cover` — triage rules v3 class
+  a sparse-text page over a page-size image as `image_only` and route it to OCR (page 418
+  is a real text page with a table, so the specification's "402–423" is one page too
+  wide); (2) the approved schedule was localised exactly as Part D says (352–400, 401
+  derived, green tariff 359–360); (3) the v1 banking cue `\bbanking\b` matched "internet
+  banking" and "Banking and Finance Charges" (a financing cost) on seven pages — profiles v2
+  tighten it to banking of power/energy, banked units, or banking next to open access
+  (all three profiles, so the same noise does not reach the KERC/GERC reviews); (4) the
+  heading inventory has 14 rate-schedule codes against the profile's 15 — one `LMV-4`
+  where Part D lists `LMV-4(A)` and `LMV-4(B)`; recorded as a warning, to be settled by
+  looking at the LMV-4 heading in the PDF, not by editing the expectation; (5) 34 footer
+  observations conflict with the label rule (table numbers read as labels) — the rule is
+  right and the conflicts are listed, precision of the footer reader is a later fix.
+  Admin-job commands `assign-profile` and `rerun` exist so the operator can bind profile
+  v2 and re-triage without the API.  **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**
