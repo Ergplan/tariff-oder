@@ -106,6 +106,9 @@ bootstrap-dev: ## First-time only: create the APIs + Artifact Registry, then bui
 deploy-dev: ## Build, push, migrate and deploy to the dev project (same images as local)
 	@command -v gcloud >/dev/null || { echo "gcloud is not installed; see docs/deployment.md"; exit 2; }
 	@test -n "$(GCP_PROJECT)" || { echo "No dev project: run make tf-init tf-plan tf-apply ENV=dev first"; exit 2; }
+	@gcloud run jobs describe tariff-migrate --project $(GCP_PROJECT) --region $(REGION) --format='value(name)' >/dev/null 2>&1 || { \
+	  echo "Cloud Run job tariff-migrate does not exist in $(GCP_PROJECT): the Terraform apply has not completed."; \
+	  echo "Run: make tf-plan ENV=dev   (the plan lists what is still to be created)   then: make tf-apply ENV=dev"; exit 2; }
 	$(MAKE) build-images push-images
 	gcloud run jobs update tariff-migrate --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
 	gcloud run jobs execute tariff-migrate --project $(GCP_PROJECT) --region $(REGION) --wait

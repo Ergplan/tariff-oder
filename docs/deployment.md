@@ -155,6 +155,13 @@ accounts with least-privilege bindings, the Cloud Run API and web services, the 
 migrate jobs, Cloud Scheduler, logging metrics and alerts.  It creates **no** load balancer,
 **no** IAP and **no** public endpoint while `domain = ""`.
 
+`make tf-apply` must finish with `Apply complete` before anything else: Cloud SQL alone takes
+around ten minutes, and an apply that stops on an error leaves the resources that had not
+started (Cloud Run services and jobs among them) uncreated.  `make tf-plan ENV=dev` after a
+failed apply shows exactly what remains; re-run `make tf-apply ENV=dev` until the plan shows
+nothing to add.  `make deploy-dev` refuses to start while the `tariff-migrate` job does not
+exist, so it never spends an image build on an unfinished environment.
+
 Then deploy and migrate:
 
 ```bash
