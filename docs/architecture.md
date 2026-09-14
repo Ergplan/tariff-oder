@@ -86,6 +86,21 @@ findings attach, affected candidates go to individual review.  Endpoints:
 `/sources/{id}/candidates`, `/candidates/{id}`, `/sources/{id}/findings`,
 `/sources/{id}/extraction-runs`, `/sources/{id}/conditions`, `/review/queue`, `/sources/{id}/dispositions` (ADR-0012).
 
+## Review (Milestone 5a)
+
+`awaiting_review` is where humans work.  `tariff_api.services.review` orders the open
+candidates (risk, coverage impact, confidence), derives the completeness checklist from
+the heading inventory and the extraction, renders cited evidence (`evidence_views` rows are
+the proof), applies decisions with stale-version, evidence-viewed, rationale, cause-tag,
+evidence-selection and second-reviewer checks, re-queues validation after a correction, and
+supports undo from the decision's own snapshot.  Endpoints: `/sources/{id}/review/queue`,
+`/sources/{id}/review/checklist`, `/candidates/{id}/evidence`,
+`/candidates/{id}/evidence/{n}/image`, `/candidates/{id}/decision`,
+`/candidates/{id}/decisions`, `/sources/{id}/decisions`, `/review/batch`,
+`/review/decisions/{id}/undo`, `/review/telemetry` (ADR-0013).  The web workspace
+`/sources/{id}/review` talks to the API through same-origin proxies; the browser never holds
+API credentials.  Nothing here publishes.
+
 ## Profiles
 
 | Concern | `local` | `gcp` |

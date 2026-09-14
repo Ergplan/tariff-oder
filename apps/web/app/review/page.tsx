@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 
 /**
  * Review queue (Section 6.10): sources awaiting review with the individual / batch split.
- * Fixture sources carry their flag; there is no approval control here yet — the reviewer
- * workflow of Section 7.2 arrives in Milestone 5.  Nothing on this page is a published fact.
+ * Fixture sources carry their flag.  Decisions are taken in each source's review workspace
+ * (Section 7.2); nothing on this page is a published fact.
  */
 export default async function ReviewQueuePage() {
   const q = await apiTry<ReviewQueue>("/review/queue");
@@ -48,7 +48,8 @@ export default async function ReviewQueuePage() {
               {q.data.items.map((i) => (
                 <tr key={i.source_id}>
                   <td>
-                    <Link href={`/sources/${i.source_id}`}>{i.original_filename}</Link>
+                    <Link href={`/sources/${i.source_id}`}>{i.original_filename}</Link>{" "}
+                    <Link href={`/sources/${i.source_id}/review`}>open workspace</Link>
                   </td>
                   <td>
                     <DatasetBadge kind={i.dataset_kind} />

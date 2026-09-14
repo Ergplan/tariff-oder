@@ -45,6 +45,17 @@ export type ExtractionSummary = Schemas["ExtractionSummary"];
 export type ValidationSummary = Schemas["ValidationSummary"];
 export type ExtractionRunList = Schemas["ExtractionRunList"];
 export type ConditionList = Schemas["ConditionList"];
+export type ReviewQueueDetail = Schemas["ReviewQueueDetail"];
+export type ReviewQueueCandidate = Schemas["ReviewQueueCandidate"];
+export type ReviewChecklist = Schemas["ReviewChecklist"];
+export type ChecklistItem = Schemas["ChecklistItem"];
+export type ReviewDecisionRequest = Schemas["ReviewDecisionRequest"];
+export type ReviewDecisionOut = Schemas["ReviewDecisionOut"];
+export type DecisionResult = Schemas["DecisionResult"];
+export type DecisionList = Schemas["DecisionList"];
+export type CandidateEvidenceOut = Schemas["CandidateEvidenceOut"];
+export type BatchApproveResult = Schemas["BatchApproveResult"];
+export type ReviewTelemetry = Schemas["ReviewTelemetry"];
 
 /** Pipeline states of Section 6.2, in order; terminal/exception states listed separately. */
 export const PIPELINE_STATES: SourceState[] = [

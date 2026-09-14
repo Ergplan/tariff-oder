@@ -51,7 +51,8 @@ def validate_source(ctx: JobContext) -> dict:
             )
         profile = load_profile(src.reading_profile_id, src.reading_profile_version)
         rows = s.execute(select(CandidateRecord).where(CandidateRecord.source_id == source_id)).scalars().all()
-        cands = [Candidate.model_validate(r.record) for r in rows]
+        # reviewer corrections are the effective proposal; the extractor's record stays as read
+        cands = [Candidate.model_validate(r.effective_record) for r in rows]
         by_key: dict[str, list[CandidateRecord]] = {}
         for r in rows:
             by_key.setdefault(r.candidate_key, []).append(r)

@@ -10,6 +10,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 from .models import DatasetKind, JobStatus, SourceState, UserRole
+from .tariff_schema import EvidenceRef
 
 
 class ErrorResponse(BaseModel):
@@ -440,6 +441,13 @@ class CandidateOut(BaseModel):
     extraction_version: str
     version: int
     created_at: datetime
+    # Milestone 5a review state
+    reviewed_record: dict[str, Any] | None = None
+    reviewed_by: str | None = None
+    reviewed_at: datetime | None = None
+    first_reviewer: str | None = None
+    second_review: str = "not_required"
+    decision_count: int = 0
 
 
 class CandidateList(BaseModel):
@@ -733,3 +741,162 @@ class AuditEventOut(BaseModel):
     reason: str | None
     request_id: str | None
     at: datetime
+
+
+# ------------------------------------------------------------------ Milestone 5a: review workflow
+
+
+class ReviewDecisionRequest(BaseModel):
+    """A reviewer's decision on one candidate (Section 7.2).  ``expected_version`` is the
+    candidate version the reviewer looked at; ``evidence_view_ids`` are the views the image
+    endpoint issued to this reviewer for this candidate.  A correction is a partial record
+    (only the listed fields change), a cause tag and an evidence selection."""
+
+    outcome: Literal["approve", "correct", "reject", "unresolved"]
+    expected_version: int
+    rationale: str | None = Field(default=None, max_length=4000)
+    evidence_view_ids: list[uuid.UUID] = Field(default_factory=list)
+    correction: dict[str, Any] | None = None
+    evidence_indices: list[int] | None = None
+    evidence: list[EvidenceRef] | None = None
+    cause_tag: (
+        Literal["wrong_table", "header_misbound", "unit", "ocr", "footnote_missed", "cross_reference", "other"] | None
+    ) = None
+    time_spent_ms: int | None = Field(default=None, ge=0)
+
+
+class ReviewDecisionOut(BaseModel):
+    id: uuid.UUID
+    source_id: uuid.UUID
+    candidate_id: uuid.UUID
+    sequence: int
+    review_round: int
+    outcome: str
+    reviewer: str
+    candidate_version: int
+    rationale: str | None
+    cause_tag: str | None
+    corrected_record: dict[str, Any] | None
+    corrected_fields: list[str]
+    evidence_view_ids: list[str]
+    evidence_viewed: bool
+    time_spent_ms: int | None
+    view_to_decision_ms: int | None
+    before: dict[str, Any]
+    after: dict[str, Any]
+    undone: bool
+    undone_by: str | None
+    undone_at: datetime | None
+    request_id: str | None
+    created_at: datetime
+
+
+class DecisionResult(BaseModel):
+    decision: ReviewDecisionOut
+    candidate: CandidateOut
+    idempotent_replay: bool = False
+
+
+class DecisionList(BaseModel):
+    decisions: list[ReviewDecisionOut]
+    total: int
+
+
+class EvidenceViewOut(BaseModel):
+    id: uuid.UUID
+    evidence_index: int
+    page_index: int
+    viewer: str
+    highlighted: bool
+    rendered_at: datetime
+
+
+class CandidateEvidenceOut(BaseModel):
+    """The candidate's evidence references with, for the caller, the views already issued.
+    ``required_index`` is the evidence a decision must have had rendered."""
+
+    candidate_id: uuid.UUID
+    version: int
+    review_status: str
+    evidence: list[EvidenceRef]
+    views: list[EvidenceViewOut]
+    required_index: int = 0
+    viewed_required: bool
+
+
+class ReviewQueueCandidate(BaseModel):
+    position: int
+    candidate: CandidateOut
+    page_index: int | None
+    coverage_impact: bool
+    reason: str
+
+
+class ReviewQueueDetail(BaseModel):
+    source_id: uuid.UUID
+    items: list[ReviewQueueCandidate]
+    total: int
+    limit: int
+    offset: int
+    filters: dict[str, Any]
+
+
+class ChecklistItem(BaseModel):
+    kind: str  # category | category_component | family
+    key: str
+    category_code: str | None
+    component_type: str | None
+    expected_from: str  # inventory | extraction | spec
+    candidates: int
+    status: str  # not_started | in_progress | approved | corrected | rejected | unresolved | disposition:<x>
+    counts: dict[str, int]
+    note: str | None
+
+
+class ReviewChecklist(BaseModel):
+    source_id: uuid.UUID
+    items: list[ChecklistItem]
+    summary: dict[str, int]
+    inventory_categories: list[str]
+    condition_records: int
+    condition_candidates: dict[str, int]
+    candidates: dict[str, int]
+    awaiting_second_review: int
+    unresolved: int
+    second_review_policy: dict[str, bool]
+
+
+class BatchApproveItem(BaseModel):
+    candidate_id: uuid.UUID
+    expected_version: int
+    evidence_view_ids: list[uuid.UUID]
+    time_spent_ms: int | None = None
+
+
+class BatchApproveRequest(BaseModel):
+    items: list[BatchApproveItem] = Field(min_length=1, max_length=200)
+
+
+class BatchItemResult(BaseModel):
+    candidate_id: uuid.UUID
+    ok: bool
+    review_status: str | None = None
+    error_type: str | None = None
+    message: str | None = None
+
+
+class BatchApproveResult(BaseModel):
+    results: list[BatchItemResult]
+    approved: int
+    refused: int
+
+
+class ReviewTelemetry(BaseModel):
+    decisions: int
+    outcomes: dict[str, int]
+    undone: int
+    second_reviews: int
+    correction_rate: float | None
+    corrections_by_cause: dict[str, int]
+    by_utility: dict[str, dict[str, Any]]
+    review_ms_by_risk_tag: dict[str, dict[str, int]]

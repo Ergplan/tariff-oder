@@ -97,6 +97,15 @@ class Settings(BaseSettings):
     provider_max_cost_per_order_usd: float = 5.0
     provider_max_tokens_per_order: int = 2_000_000
 
+    # Review workflow (Section 7.2).  Second review is a policy, not a reviewer's choice:
+    # material conditions, formula components and corrections of channel disagreements always
+    # need a second reviewer; the first order from any utility routes everything to second
+    # review.  Evidence must have been rendered to the deciding reviewer within the window.
+    second_review_material: bool = True
+    second_review_first_order: bool = True
+    evidence_view_max_age_seconds: int = 8 * 3600
+    evidence_render_dpi: int = 110
+
     # Telemetry
     log_format: str = "json"  # json | text
     log_level: str = "INFO"

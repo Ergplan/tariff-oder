@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type {
   CandidateList,
   ClauseValueList,
@@ -576,6 +577,12 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
       )}
 
       <h2>Candidates and validation</h2>
+      {s.state === "awaiting_review" ? (
+        <p>
+          <Link href={`/sources/${id}/review`}>Open the review workspace</Link> — side-by-side evidence, decisions with rationale,
+          completeness checklist.
+        </p>
+      ) : null}
       {!extraction ? (
         <p className="muted">Not extracted yet: extraction runs after the structure stage, from confirmed regions only.</p>
       ) : (

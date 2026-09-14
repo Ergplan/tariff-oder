@@ -698,7 +698,20 @@ class CandidateRecord(Base):
     finding_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     blocking_finding_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    # Milestone 5a: review state.  ``record`` stays what the extractor produced; a correction
+    # writes ``reviewed_record`` (the effective proposal) and never overwrites the original.
+    # review_status: pending | awaiting_second_review | approved | corrected | rejected | unresolved
+    reviewed_record: Mapped[dict | None] = mapped_column(JSONB)
+    reviewed_by: Mapped[str | None] = mapped_column(String(320))
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    first_reviewer: Mapped[str | None] = mapped_column(String(320))
+    second_review: Mapped[str] = mapped_column(String(16), nullable=False, default="not_required")
+    decision_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+    @property
+    def effective_record(self) -> dict:
+        return self.reviewed_record or self.record
 
 
 class ValidatorFindingRecord(Base):
@@ -756,4 +769,62 @@ class ConditionRecordRow(Base):
     scope_codes: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
     interpretation_status: Mapped[str] = mapped_column(String(16), nullable=False, default="verbatim_only")
     extraction_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class EvidenceView(Base):
+    """Proof that the cited evidence of a candidate was rendered to a named reviewer (Section
+    7.2: the approve control is disabled until the evidence has been rendered).  The API
+    writes one row when it serves the page image; a decision must cite views made by the
+    deciding reviewer for that candidate.  Nothing else can create one."""
+
+    __tablename__ = "evidence_views"
+    __table_args__ = (Index("ix_evidence_views_candidate", "candidate_id", "viewer"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    candidate_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("candidates.id", ondelete="CASCADE"), nullable=False)
+    evidence_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    page_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    viewer: Mapped[str] = mapped_column(String(320), nullable=False)
+    dpi: Mapped[int] = mapped_column(Integer, nullable=False)
+    highlighted: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    rendered_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class ReviewDecision(Base):
+    """One reviewer decision on one candidate (Section 5.2: review decision).  Append-only:
+    an undo marks the row undone and restores the candidate from ``before``; nothing is
+    deleted, so the correction history stays intact."""
+
+    __tablename__ = "review_decisions"
+    __table_args__ = (
+        Index("ix_review_decisions_candidate", "candidate_id", "sequence"),
+        Index("ix_review_decisions_source", "source_id", "created_at"),
+        UniqueConstraint("reviewer", "idempotency_key", name="uq_review_decision_idempotency"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    candidate_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("candidates.id", ondelete="CASCADE"), nullable=False)
+    sequence: Mapped[int] = mapped_column(Integer, nullable=False)  # per candidate, 1-based
+    review_round: Mapped[int] = mapped_column(Integer, nullable=False)  # 1 = first review, 2 = second
+    outcome: Mapped[str] = mapped_column(String(16), nullable=False)  # approve | correct | reject | unresolved
+    reviewer: Mapped[str] = mapped_column(String(320), nullable=False)
+    candidate_version: Mapped[int] = mapped_column(Integer, nullable=False)  # the version decided on
+    rationale: Mapped[str | None] = mapped_column(Text)
+    cause_tag: Mapped[str | None] = mapped_column(String(24))
+    corrected_record: Mapped[dict | None] = mapped_column(JSONB)
+    corrected_fields: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    evidence_view_ids: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    evidence_viewed: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    time_spent_ms: Mapped[int | None] = mapped_column(Integer)  # client-reported
+    view_to_decision_ms: Mapped[int | None] = mapped_column(Integer)  # server-measured from the first view
+    before: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    after: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    undone: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    undone_by: Mapped[str | None] = mapped_column(String(320))
+    undone_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    idempotency_key: Mapped[str | None] = mapped_column(String(200))
+    request_id: Mapped[str | None] = mapped_column(String(64))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

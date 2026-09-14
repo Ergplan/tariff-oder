@@ -153,7 +153,7 @@ def review_queue(dataset_kind: str | None = None) -> ReviewQueue:
                 func.sum(func.cast(CandidateRecord.blocking_finding_count > 0, type_=Integer)).label("blocked"),
                 func.bool_or(CandidateRecord.is_fixture).label("is_fixture"),
             )
-            .where(CandidateRecord.review_status == "pending")
+            .where(CandidateRecord.review_status.in_(["pending", "awaiting_second_review"]))
             .group_by(CandidateRecord.source_id)
         )
         items = []

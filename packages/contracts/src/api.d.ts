@@ -38,6 +38,91 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/candidates/{candidate_id}/decision": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Decide Candidate
+         * @description One of the four outcomes (Section 7.2).  Refused without the rendered evidence, with a
+         *     stale version, without a rationale (except approve), without a cause tag and evidence
+         *     selection for a correction, or by the first reviewer at second review.  An
+         *     ``Idempotency-Key`` replays the original result for the same request.
+         */
+        post: operations["decide_candidate_candidates__candidate_id__decision_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/candidates/{candidate_id}/decisions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Candidate Decisions
+         * @description Correction history, undone decisions included: nothing is deleted.
+         */
+        get: operations["candidate_decisions_candidates__candidate_id__decisions_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/candidates/{candidate_id}/evidence": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Candidate Evidence
+         * @description The candidate's evidence references and the views already issued to the caller.
+         */
+        get: operations["candidate_evidence_candidates__candidate_id__evidence_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/candidates/{candidate_id}/evidence/{evidence_index}/image": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Candidate Evidence Image
+         * @description Render the cited page to the reviewer and record the view.  The response header
+         *     ``X-Evidence-View-Id`` is what a decision cites; it is issued only here, only to the
+         *     reviewer who receives the bytes.
+         */
+        get: operations["candidate_evidence_image_candidates__candidate_id__evidence__evidence_index__image_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/healthz": {
         parameters: {
             query?: never;
@@ -174,6 +259,45 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/review/batch": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Batch Approve
+         * @description Batch approval (Section 6.10): only high-confidence, no-risk, finding-free candidates
+         *     routed to batch, each still with its own rendered evidence and version.  Items are
+         *     decided one by one; a refused item never blocks the others and says why.
+         */
+        post: operations["batch_approve_review_batch_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/review/decisions/{decision_id}/undo": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Undo Decision */
+        post: operations["undo_decision_review_decisions__decision_id__undo_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/review/queue": {
         parameters: {
             query?: never;
@@ -187,6 +311,27 @@ export interface paths {
          *     Fixture sources are listed with their flag and never mixed into real counts.
          */
         get: operations["review_queue_review_queue_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/review/telemetry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Review Telemetry
+         * @description Section 7.6: review time by risk tag, correction rate by cause and utility, outcomes.
+         *     No document text, ever.
+         */
+        get: operations["review_telemetry_review_telemetry_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -264,6 +409,23 @@ export interface paths {
          *     the category codes they name.  All `verbatim_only` until a reviewer interprets them.
          */
         get: operations["list_conditions_sources__source_id__conditions_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/decisions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Source Decisions */
+        get: operations["source_decisions_sources__source_id__decisions_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -455,6 +617,44 @@ export interface paths {
         put?: never;
         /** Reprocess */
         post: operations["reprocess_sources__source_id__reprocess_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/review/checklist": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Review Checklist */
+        get: operations["review_checklist_sources__source_id__review_checklist_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/review/queue": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Review Queue Detail
+         * @description Pending candidates of one order in review order: risk first, then coverage impact,
+         *     then confidence (Section 7.2).  Every item says why it sits where it does.
+         */
+        get: operations["review_queue_detail_sources__source_id__review_queue_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -676,6 +876,50 @@ export interface components {
             /** Request Id */
             request_id: string | null;
         };
+        /** BatchApproveItem */
+        BatchApproveItem: {
+            /**
+             * Candidate Id
+             * Format: uuid
+             */
+            candidate_id: string;
+            /** Evidence View Ids */
+            evidence_view_ids: string[];
+            /** Expected Version */
+            expected_version: number;
+            /** Time Spent Ms */
+            time_spent_ms?: number | null;
+        };
+        /** BatchApproveRequest */
+        BatchApproveRequest: {
+            /** Items */
+            items: components["schemas"]["BatchApproveItem"][];
+        };
+        /** BatchApproveResult */
+        BatchApproveResult: {
+            /** Approved */
+            approved: number;
+            /** Refused */
+            refused: number;
+            /** Results */
+            results: components["schemas"]["BatchItemResult"][];
+        };
+        /** BatchItemResult */
+        BatchItemResult: {
+            /**
+             * Candidate Id
+             * Format: uuid
+             */
+            candidate_id: string;
+            /** Error Type */
+            error_type?: string | null;
+            /** Message */
+            message?: string | null;
+            /** Ok */
+            ok: boolean;
+            /** Review Status */
+            review_status?: string | null;
+        };
         /** Body_upload_source_sources_post */
         Body_upload_source_sources_post: {
             /** @default real */
@@ -697,6 +941,33 @@ export interface components {
              * @enum {string}
              */
             result: "cancelled" | "cancel_requested" | "not_cancellable";
+        };
+        /**
+         * CandidateEvidenceOut
+         * @description The candidate's evidence references with, for the caller, the views already issued.
+         *     ``required_index`` is the evidence a decision must have had rendered.
+         */
+        CandidateEvidenceOut: {
+            /**
+             * Candidate Id
+             * Format: uuid
+             */
+            candidate_id: string;
+            /** Evidence */
+            evidence: components["schemas"]["EvidenceRef"][];
+            /**
+             * Required Index
+             * @default 0
+             */
+            required_index: number;
+            /** Review Status */
+            review_status: string;
+            /** Version */
+            version: number;
+            /** Viewed Required */
+            viewed_required: boolean;
+            /** Views */
+            views: components["schemas"]["EvidenceViewOut"][];
         };
         /** CandidateList */
         CandidateList: {
@@ -730,6 +1001,11 @@ export interface components {
             created_at: string;
             /** Currency */
             currency: string | null;
+            /**
+             * Decision Count
+             * @default 0
+             */
+            decision_count: number;
             /** Decision Status */
             decision_status: string | null;
             /** Disagreeing Fields */
@@ -740,6 +1016,8 @@ export interface components {
             family: string;
             /** Finding Count */
             finding_count: number;
+            /** First Reviewer */
+            first_reviewer?: string | null;
             /** Frequency */
             frequency: string | null;
             /**
@@ -763,10 +1041,23 @@ export interface components {
             };
             /** Review Status */
             review_status: string;
+            /** Reviewed At */
+            reviewed_at?: string | null;
+            /** Reviewed By */
+            reviewed_by?: string | null;
+            /** Reviewed Record */
+            reviewed_record?: {
+                [key: string]: unknown;
+            } | null;
             /** Risk Tags */
             risk_tags: string[];
             /** Routing */
             routing: string;
+            /**
+             * Second Review
+             * @default not_required
+             */
+            second_review: string;
             /**
              * Source Id
              * Format: uuid
@@ -780,6 +1071,29 @@ export interface components {
             value_state: string;
             /** Version */
             version: number;
+        };
+        /** ChecklistItem */
+        ChecklistItem: {
+            /** Candidates */
+            candidates: number;
+            /** Category Code */
+            category_code: string | null;
+            /** Component Type */
+            component_type: string | null;
+            /** Counts */
+            counts: {
+                [key: string]: number;
+            };
+            /** Expected From */
+            expected_from: string;
+            /** Key */
+            key: string;
+            /** Kind */
+            kind: string;
+            /** Note */
+            note: string | null;
+            /** Status */
+            status: string;
         };
         /** ClauseValueList */
         ClauseValueList: {
@@ -902,6 +1216,23 @@ export interface components {
          * @enum {string}
          */
         DatasetKind: "real" | "fixture";
+        /** DecisionList */
+        DecisionList: {
+            /** Decisions */
+            decisions: components["schemas"]["ReviewDecisionOut"][];
+            /** Total */
+            total: number;
+        };
+        /** DecisionResult */
+        DecisionResult: {
+            candidate: components["schemas"]["CandidateOut"];
+            decision: components["schemas"]["ReviewDecisionOut"];
+            /**
+             * Idempotent Replay
+             * @default false
+             */
+            idempotent_replay: boolean;
+        };
         /** DispositionOut */
         DispositionOut: {
             /**
@@ -955,6 +1286,57 @@ export interface components {
             request_id?: string | null;
             /** Severity */
             severity: string;
+        };
+        /**
+         * EvidenceRef
+         * @description Where a field was read.  A table cell (page, grid, row, col) or a clause line (page,
+         *     line, clause path); the excerpt is the exact text of that cell or line.
+         */
+        EvidenceRef: {
+            /** Clause Path */
+            clause_path?: string[];
+            /** Col */
+            col?: number | null;
+            /** Excerpt */
+            excerpt: string;
+            /** Grid Ordinal */
+            grid_ordinal?: number | null;
+            /** Header Path */
+            header_path?: string[];
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "cell" | "clause" | "prose";
+            /** Line No */
+            line_no?: number | null;
+            /** Page Index */
+            page_index: number;
+            /** Row */
+            row?: number | null;
+            /** Row Path */
+            row_path?: string[];
+        };
+        /** EvidenceViewOut */
+        EvidenceViewOut: {
+            /** Evidence Index */
+            evidence_index: number;
+            /** Highlighted */
+            highlighted: boolean;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Page Index */
+            page_index: number;
+            /**
+             * Rendered At
+             * Format: date-time
+             */
+            rendered_at: string;
+            /** Viewer */
+            viewer: string;
         };
         /** ExtractionRunList */
         ExtractionRunList: {
@@ -1551,12 +1933,177 @@ export interface components {
             /** Utilities */
             utilities: components["schemas"]["UtilityOut"][];
         };
+        /** ReviewChecklist */
+        ReviewChecklist: {
+            /** Awaiting Second Review */
+            awaiting_second_review: number;
+            /** Candidates */
+            candidates: {
+                [key: string]: number;
+            };
+            /** Condition Candidates */
+            condition_candidates: {
+                [key: string]: number;
+            };
+            /** Condition Records */
+            condition_records: number;
+            /** Inventory Categories */
+            inventory_categories: string[];
+            /** Items */
+            items: components["schemas"]["ChecklistItem"][];
+            /** Second Review Policy */
+            second_review_policy: {
+                [key: string]: boolean;
+            };
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Summary */
+            summary: {
+                [key: string]: number;
+            };
+            /** Unresolved */
+            unresolved: number;
+        };
+        /** ReviewDecisionOut */
+        ReviewDecisionOut: {
+            /** After */
+            after: {
+                [key: string]: unknown;
+            };
+            /** Before */
+            before: {
+                [key: string]: unknown;
+            };
+            /**
+             * Candidate Id
+             * Format: uuid
+             */
+            candidate_id: string;
+            /** Candidate Version */
+            candidate_version: number;
+            /** Cause Tag */
+            cause_tag: string | null;
+            /** Corrected Fields */
+            corrected_fields: string[];
+            /** Corrected Record */
+            corrected_record: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Evidence View Ids */
+            evidence_view_ids: string[];
+            /** Evidence Viewed */
+            evidence_viewed: boolean;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Outcome */
+            outcome: string;
+            /** Rationale */
+            rationale: string | null;
+            /** Request Id */
+            request_id: string | null;
+            /** Review Round */
+            review_round: number;
+            /** Reviewer */
+            reviewer: string;
+            /** Sequence */
+            sequence: number;
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Time Spent Ms */
+            time_spent_ms: number | null;
+            /** Undone */
+            undone: boolean;
+            /** Undone At */
+            undone_at: string | null;
+            /** Undone By */
+            undone_by: string | null;
+            /** View To Decision Ms */
+            view_to_decision_ms: number | null;
+        };
+        /**
+         * ReviewDecisionRequest
+         * @description A reviewer's decision on one candidate (Section 7.2).  ``expected_version`` is the
+         *     candidate version the reviewer looked at; ``evidence_view_ids`` are the views the image
+         *     endpoint issued to this reviewer for this candidate.  A correction is a partial record
+         *     (only the listed fields change), a cause tag and an evidence selection.
+         */
+        ReviewDecisionRequest: {
+            /** Cause Tag */
+            cause_tag?: ("wrong_table" | "header_misbound" | "unit" | "ocr" | "footnote_missed" | "cross_reference" | "other") | null;
+            /** Correction */
+            correction?: {
+                [key: string]: unknown;
+            } | null;
+            /** Evidence */
+            evidence?: components["schemas"]["EvidenceRef"][] | null;
+            /** Evidence Indices */
+            evidence_indices?: number[] | null;
+            /** Evidence View Ids */
+            evidence_view_ids?: string[];
+            /** Expected Version */
+            expected_version: number;
+            /**
+             * Outcome
+             * @enum {string}
+             */
+            outcome: "approve" | "correct" | "reject" | "unresolved";
+            /** Rationale */
+            rationale?: string | null;
+            /** Time Spent Ms */
+            time_spent_ms?: number | null;
+        };
         /** ReviewQueue */
         ReviewQueue: {
             /** Items */
             items: components["schemas"]["ReviewQueueItem"][];
             /** Total Pending */
             total_pending: number;
+        };
+        /** ReviewQueueCandidate */
+        ReviewQueueCandidate: {
+            candidate: components["schemas"]["CandidateOut"];
+            /** Coverage Impact */
+            coverage_impact: boolean;
+            /** Page Index */
+            page_index: number | null;
+            /** Position */
+            position: number;
+            /** Reason */
+            reason: string;
+        };
+        /** ReviewQueueDetail */
+        ReviewQueueDetail: {
+            /** Filters */
+            filters: {
+                [key: string]: unknown;
+            };
+            /** Items */
+            items: components["schemas"]["ReviewQueueCandidate"][];
+            /** Limit */
+            limit: number;
+            /** Offset */
+            offset: number;
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Total */
+            total: number;
         };
         /** ReviewQueueItem */
         ReviewQueueItem: {
@@ -1579,6 +2126,37 @@ export interface components {
              */
             source_id: string;
             state: components["schemas"]["SourceState"];
+        };
+        /** ReviewTelemetry */
+        ReviewTelemetry: {
+            /** By Utility */
+            by_utility: {
+                [key: string]: {
+                    [key: string]: unknown;
+                };
+            };
+            /** Correction Rate */
+            correction_rate: number | null;
+            /** Corrections By Cause */
+            corrections_by_cause: {
+                [key: string]: number;
+            };
+            /** Decisions */
+            decisions: number;
+            /** Outcomes */
+            outcomes: {
+                [key: string]: number;
+            };
+            /** Review Ms By Risk Tag */
+            review_ms_by_risk_tag: {
+                [key: string]: {
+                    [key: string]: number;
+                };
+            };
+            /** Second Reviews */
+            second_reviews: number;
+            /** Undone */
+            undone: number;
         };
         /** SourceDetail */
         SourceDetail: {
@@ -2366,6 +2944,354 @@ export interface operations {
             };
         };
     };
+    decide_candidate_candidates__candidate_id__decision_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "Idempotency-Key"?: string | null;
+            };
+            path: {
+                candidate_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReviewDecisionRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DecisionResult"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    candidate_decisions_candidates__candidate_id__decisions_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                candidate_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DecisionList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    candidate_evidence_candidates__candidate_id__evidence_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                candidate_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CandidateEvidenceOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    candidate_evidence_image_candidates__candidate_id__evidence__evidence_index__image_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                candidate_id: string;
+                evidence_index: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description rendered page with the cited table outlined */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                    "image/png": unknown;
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     healthz_healthz_get: {
         parameters: {
             query?: never;
@@ -3039,6 +3965,178 @@ export interface operations {
             };
         };
     };
+    batch_approve_review_batch_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BatchApproveRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BatchApproveResult"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    undo_decision_review_decisions__decision_id__undo_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                decision_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DecisionResult"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     review_queue_review_queue_get: {
         parameters: {
             query?: {
@@ -3057,6 +4155,91 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ReviewQueue"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    review_telemetry_review_telemetry_get: {
+        parameters: {
+            query?: {
+                source_id?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReviewTelemetry"];
                 };
             };
             /** @description Unauthorized */
@@ -3498,6 +4681,94 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ConditionList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    source_decisions_sources__source_id__decisions_get: {
+        parameters: {
+            query?: {
+                outcome?: string | null;
+                reviewer?: string | null;
+            };
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DecisionList"];
                 };
             };
             /** @description Unauthorized */
@@ -4456,6 +5727,187 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["JobSummary"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    review_checklist_sources__source_id__review_checklist_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReviewChecklist"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    review_queue_detail_sources__source_id__review_queue_get: {
+        parameters: {
+            query?: {
+                category?: string | null;
+                channel?: string | null;
+                component?: string | null;
+                family?: string | null;
+                limit?: number;
+                offset?: number;
+                page_end?: number | null;
+                page_start?: number | null;
+                risk?: string | null;
+                status?: string | null;
+            };
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReviewQueueDetail"];
                 };
             };
             /** @description Unauthorized */

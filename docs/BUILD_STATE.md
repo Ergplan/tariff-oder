@@ -9,7 +9,9 @@ reading profiles as data and the localisation stage with its reviewer checkpoint
 3b — normalisation, clause outlines, grid integrity and the gated structure stage; (9) Milestone
 4a — candidate schema, provider adapter with fixture mode, dual-channel extraction,
 validators, routing and the review queue; (10) Milestone 4b — network-charge grids,
-derivations, amendment consistency, condition records, cross-representation agreement.
+derivations, amendment consistency, condition records, cross-representation agreement;
+(11) Milestone 5a — reviewer workflow: decisions with rendered-evidence and stale-version
+enforcement, corrections with cause tags, second review, undo, checklist, telemetry.
 
 ## Current milestone and status
 
@@ -48,6 +50,23 @@ derivations, amendment consistency, condition records, cross-representation agre
   to make the first one a two-cell synthetic input, not an order).  The Milestone 4 gate's
   "every charge family has candidates or a reviewed disposition for each supplied order" is
   blocked on the real orders and on a reviewer.
+- **Milestone 5 — part (a) implemented and tested under the `local` profile (ADR-0013).**
+  Per-order review queue in risk order with filters; completeness checklist derived from the
+  heading inventory; evidence rendering that records the view (`evidence_views`); decisions
+  (`approve` / `correct` / `reject` / `unresolved`) that refuse without the reviewer's own
+  rendered evidence, with a stale version, without a rationale, without a cause tag and
+  evidence selection for a correction, or by the first reviewer at second review; corrections
+  keep the extractor's record and re-run the validators; second-review policy (material
+  items, formula components, corrected channel disagreements, first order from a utility);
+  batch approval limited to clean high-confidence candidates, each with its own evidence;
+  undo from the decision's snapshot with history intact; idempotent decisions; audit events;
+  telemetry without document text; web workspace `/sources/{id}/review` (side by side,
+  keyboard-first, decision rendered only from the API's response).  **Not built (5b):**
+  publication transaction, published facts separate from candidates, the API-layer gate
+  that no tool reads a candidate, the explorer and the open-access view, structured
+  interpretation of condition records.  **The Milestone 5 gate's real-order part is
+  blocked**: no real candidate exists (no deploy, no provider run) and no reviewer has
+  decided anything real.
 - **Milestone 3 — parts (a) and (b) implemented and tested under the `local` profile.**  (b)
   adds the versioned normalisation module, clause-outline reconstruction, grid integrity
   (header/row paths, continuation, merged cells, unit binding with source, footnotes) and
@@ -65,6 +84,44 @@ derivations, amendment consistency, condition records, cross-representation agre
 - **No provider connection, no extracted number exists.**  The only reviewer decisions that
   exist are localisation confirmations on synthetic fixtures made by the test harness's
   reviewer user; no real-source region has been confirmed by anyone.
+
+### Increment 11 (Milestone 5a: reviewer workflow)
+
+- Migration `0008_review`: `review_decisions` (append-only, before/after snapshots, cause
+  tag, corrected record and fields, evidence views cited, client and server times, undo
+  marks, idempotency key), `evidence_views` (written only by the image endpoint), and the
+  candidate review columns (`reviewed_record`, `reviewed_by`, `reviewed_at`,
+  `first_reviewer`, `second_review`, `decision_count`).
+- `tariff_api.services.review`: queue ordering (blocking findings, findings, channel
+  disagreement, risk-tag count, coverage impact, confidence) with a reason per item;
+  checklist (inventory headings without candidates are visible `not_started` gaps; any open
+  or unresolved candidate keeps an item off green); evidence rendering with the cited
+  primary-reader table outlined when its bbox is known; `decide` with every refusal typed
+  (`validation_failed` with `extra.evidence_required`, `conflict_stale_version` with the
+  current version and status, `invalid_transition` for decided candidates,
+  `permission_denied` for undo by someone else); second-review reasons; batch eligibility;
+  undo; telemetry.
+- Endpoints under `tariff_api.routers.review`; `CandidateOut` carries the review state;
+  `/review/queue` counts `awaiting_second_review` as pending.  Validators now run over the
+  effective (corrected) record; review state survives the re-run.
+- Web: `/sources/{id}/review` (checklist, filters, queue) with `review-workspace.tsx`
+  (evidence image fetched through a same-origin proxy that passes the view id header; the
+  approve/correct controls stay disabled until the image has loaded; structured correction
+  form with cause tag; rationale; keyboard n/p/a/c/r/u/Enter/z; undo; stale-version message
+  says to reload and that nothing was overwritten); proxies for decision, evidence image and
+  undo; links from the review queue and the source page.
+- Tests: `tests/unit/test_review_policy.py` (second-review policy, checklist status
+  derivation, batch eligibility) and `tests/integration/test_review_workflow.py` (the
+  approve-without-evidence, other reviewer's view, stale version, first/second reviewer,
+  re-decide, audit, idempotent replay/conflict, correction refusals and success with
+  re-validation, reject/unresolved, undo permissions and history, checklist and queue
+  updates, telemetry; batch approval refusals and one-by-one results).
+- Settings: `second_review_material`, `second_review_first_order` (both default on),
+  `evidence_view_max_age_seconds`, `evidence_render_dpi`.
+- Honest limits: the evidence image outlines the table, not the cell (readers store no
+  cell bboxes yet); both reader grids are not yet toggled in the workspace (the tables
+  endpoint exists; the toggle is UI work for 5b); no browser tests yet (Section 7.5 starts
+  when publish exists).
 
 ### Increment 10 (Milestone 4b: network-charge grids, derivations, conditions, cross-checks)
 
@@ -430,17 +487,17 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **237 passed, 0 failed, 0 skipped** (~80 s): 193 unit (13 adapters/profile/fixtures, 32
+- **242 passed, 0 failed, 0 skipped** (~78 s): 196 unit (13 adapters/profile/fixtures, 32
   triage rules, 31 readers/headings/OCR, 11 profiles/localisation, 60 normalisation, 10
   clause outline, 7 grid integrity, 21 extraction/comparison/routing/validators, 8
-  network extraction/derivations/conditions/VAL-05/07/12/16), 44 integration (8 sources,
-  6 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage, 4 parse stage, 4
-  localisation stage, 2 structure stage, 3 extraction/validation incl. the perturbed image
-  channel and the adversarial fixture, 3 network/dual-representation/amendment stage runs,
-  2 migrations).  Without tesseract the OCR unit tests and the stage tests from parse
-  onward skip and say so.
-- Increment 9 baseline was 226 passed (185 unit, 41 integration); increment 8 was 200 (162
-  unit, 38 integration).
+  network extraction/derivations/conditions/VAL-05/07/12/16, 3 review policy), 46
+  integration (8 sources, 6 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage, 4
+  parse stage, 4 localisation stage, 2 structure stage, 3 extraction/validation incl. the
+  perturbed image channel and the adversarial fixture, 3 network/dual-representation/
+  amendment stage runs, 2 review workflow, 2 migrations incl. 0008 downgrade/upgrade).
+  Without tesseract the OCR unit tests and the stage tests from parse onward skip and say so.
+- Increment 10 baseline was 237 passed (193 unit, 44 integration); increment 9 was 226
+  (185 unit, 41 integration).
 - Test-infrastructure defect found by the reordered run and fixed: the synthetic fixture
   generators were byte-reproducible only ~98% of the time.  MuPDF writes the regenerated
   half of the file `/ID` as a PDF literal string `(…)` when that is shorter than hex, and the
@@ -477,7 +534,10 @@ in `tariff_api.providers` but has never been executed: no key in this environmen
 
 ## Reviewer decisions obtained versus pending
 
-None required and none obtained.  The only candidates that exist were produced from synthetic fixtures inside the test suite (dataset `fixture`, provider `fixture`); no real-source candidate exists and nobody has reviewed anything.
+None obtained on real material.  The review workflow exists and is exercised only by the
+test harness's reviewer and administrator users on synthetic fixture candidates (approve,
+correct, reject, unresolved, second review, undo).  No real-source candidate exists and no
+real decision has been taken by anyone.
 
 ## Review/publication status and completeness declarations
 
@@ -561,9 +621,13 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
    its wait to be the only additions), then
    `make deploy-dev`, then register the three orders through the `tariff-admin` job
    (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
-2. Engineering (next run): Milestone 5 — reviewer workflow (individual and batch review
-   with pages viewed, rationale, optimistic versions, audited decisions; corrections that
-   re-run validators) and publication (versioned, reviewer-gated, never automatic).  Before
+2. Engineering (next run): Milestone 5b — publication transaction over a declared scope
+   with the completeness declaration (`complete` / `partial` with listed gaps), a data
+   release, published facts and evidence tables separate from candidates, the API-layer gate
+   that only published facts reach the explorer and (later) the Section 8 tools, stale-version
+   and missing-item failures, partial labelling everywhere, the tariff explorer with citation
+   drill-down and the open-access/network-charges view (screen 6a); then the reviewer
+   workspace's reader-grid toggle and the first browser tests (Section 7.5).  Before
    any real extraction: `ANTHROPIC_API_KEY` into Secret Manager, `tariff-api provider-smoke`,
    then one small NPCL category set reported separately from fixture runs.  VAL-14 temporal
    consistency waits for a second order of the same utility.  Also Milestone 3 close-out on real material once the deploy is done

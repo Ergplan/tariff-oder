@@ -170,7 +170,9 @@ One provider call per channel per region: `channel`, `provider`, `model`, `promp
 | image_record | The image channel's version when both channels ran |
 | channel_agreement, disagreeing_fields | `agree`, `disagree`, `one_missing`, `single_channel` |
 | confidence, risk_tags, routing | Section 6.10; `individual` or `batch` |
-| review_status | `pending` (Milestone 5 adds the outcomes) |
+| review_status | `pending`, `awaiting_second_review`, `approved`, `corrected`, `rejected`, `unresolved` (Milestone 5a) |
+| reviewed_record, reviewed_by, reviewed_at, first_reviewer, second_review, decision_count | Review state (Milestone 5a): the corrected record (the extractor's `record` is never overwritten), who decided last, the first-round reviewer while a second review is pending, `not_required` / `pending` / `done`, decisions taken |
+| version | Optimistic concurrency: every decision and undo increments it |
 | is_fixture | Set from the provider; never mixed with real |
 | finding_count, blocking_finding_count | From the last validation run |
 
@@ -192,6 +194,24 @@ with rationale, actor and time.
 | number, text, text_hash | The provision number and its verbatim text |
 | scope_codes | Category codes the text names |
 | interpretation_status | `verbatim_only` until a reviewer interprets it (Milestone 5) |
+
+## `review_decisions` (Milestone 5a)
+
+| Column | Meaning |
+| --- | --- |
+| candidate_id, sequence, review_round | Per-candidate sequence; round 1 or 2 |
+| outcome, reviewer, candidate_version | `approve` / `correct` / `reject` / `unresolved`; who; the version decided on |
+| rationale, cause_tag | Mandatory rationale except for approve; cause tag on corrections |
+| corrected_record, corrected_fields | The full record after correction and the field names that changed |
+| evidence_view_ids, evidence_viewed, time_spent_ms, view_to_decision_ms | The views cited (this reviewer's, this candidate's, incl. index 0); client-reported and server-measured time |
+| before, after | Snapshots of the candidate's review state; undo restores `before` |
+| undone, undone_by, undone_at | Undo marks, never deletes |
+| idempotency_key, request_id | Traceability |
+
+## `evidence_views` (Milestone 5a)
+
+One row per rendered evidence image: candidate, evidence index, page, viewer, dpi, whether
+the cited table was outlined, time.  Written only by the image endpoint; cited by decisions.
 
 ## `source_documents` — extraction and validation columns
 
@@ -237,6 +257,6 @@ Append-only (UPDATE/DELETE raise via trigger): `actor`, `action`, `entity_type`,
 ## Reserved for later milestones (not created yet)
 Regulatory order, schedule version, effective rule, category/version, option group, category
 mapping, charge component, slab/time band, condition/rule, evidence span, table grid,
-candidate, review decision, publication, coverage record, network charge determination,
-loss record, reading profile, failure report — Section 5.2.  `value_state` and
-`decision_status` enums will be introduced with the candidate schema (Milestone 4).
+publication, coverage record, failure report — Section 5.2 (candidate, review decision,
+condition/rule, network charge determination and loss record exist as `candidates`,
+`review_decisions`, `condition_records` and candidate families).
