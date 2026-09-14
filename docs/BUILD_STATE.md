@@ -83,7 +83,14 @@ open-access view.
   extraction summary) and the note follows the family into the review checklist so the
   disposition is taken with the reason in view.  Reviewer role, `expected_version`,
   audited, frozen once candidates exist, carried across a localise re-run for an
-  unchanged span; `test_network_stage.py`.  **Still open in the M1 gate:** Cloud Logging
+  unchanged span; `test_network_stage.py`.  (9) "Confirm localisation is not working": the
+  button was disabled until the pages-viewed box was ticked and a five-character rationale
+  typed, and said nothing about it.  Reproduced in headless Chromium against the local
+  stack (click on the old build did nothing; the API stayed `proposed`).  The form now
+  always accepts the click and states what is missing, shows API errors above the button
+  with the request id, and turns a non-JSON answer (an expired IAP session) into a
+  readable message; the same run on the new build recorded `confirmed` and queued the
+  structure stage.  **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**

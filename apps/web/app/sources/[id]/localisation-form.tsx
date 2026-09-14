@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { ErrorResponse, LocalisationOut, LocalisationRegionOut } from "@tariff/contracts";
+import { networkError, readError } from "@/lib/client-errors";
 
 const ROLES = [
   "approved_schedule",
@@ -49,6 +50,11 @@ export function LocalisationForm({ sourceId, record }: { sourceId: string; recor
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<ErrorResponse | null>(null);
   const [done, setDone] = useState<LocalisationOut | null>(null);
+  const [attempted, setAttempted] = useState(false);
+  const problems: string[] = [];
+  if (!viewed) problems.push("tick the box confirming you opened the pages");
+  if (rationale.trim().length < 5) problems.push("write a rationale of at least five characters");
+  if (mode === "correct" && regions.length === 0) problems.push("keep at least one region");
 
   function update(i: number, patch: Partial<Edit>) {
     setRegions((rs) => rs.map((r, j) => (j === i ? { ...r, ...patch } : r)));
@@ -56,7 +62,8 @@ export function LocalisationForm({ sourceId, record }: { sourceId: string; recor
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (busy) return;
+    setAttempted(true);
+    if (busy || problems.length) return;
     setBusy(true);
     setError(null);
     const body = {
@@ -83,20 +90,17 @@ export function LocalisationForm({ sourceId, record }: { sourceId: string; recor
         headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
       });
-      const json = await res.json();
-      if (!res.ok) setError(json as ErrorResponse);
-      else {
-        setDone(json as LocalisationOut);
+      if (!res.ok) {
+        const err = await readError(res);
+        console.error("localisation decision failed", err);
+        setError(err);
+      } else {
+        setDone((await res.json()) as LocalisationOut);
         router.refresh();
       }
-    } catch {
-      setError({
-        error_type: "provider_unavailable",
-        message: "The decision could not reach the server.",
-        next_step: "Check your connection and retry; nothing was recorded.",
-        severity: "error",
-        request_id: null,
-      });
+    } catch (e) {
+      console.error("localisation decision failed", e);
+      setError(networkError("The decision"));
     } finally {
       setBusy(false);
     }
@@ -203,14 +207,22 @@ export function LocalisationForm({ sourceId, record }: { sourceId: string; recor
           region list and checked the cues against the document
         </label>
       </p>
-      <button type="submit" disabled={busy || !viewed || rationale.length < 5}>
-        {busy ? "Recording…" : mode === "confirm" ? "Confirm localisation" : "Record corrected regions"}
-      </button>
       {error ? (
         <div className="banner" data-tone="bad" role="alert">
           <strong>{error.error_type}</strong>: {error.message} {error.detail ? <em>{error.detail}</em> : null} — {error.next_step}
+          {error.request_id ? (
+            <div className="muted">
+              request id <code>{error.request_id}</code>
+            </div>
+          ) : null}
         </div>
       ) : null}
+      <button type="submit" disabled={busy} aria-describedby="decision-requirements">
+        {busy ? "Recording…" : mode === "confirm" ? "Confirm localisation" : "Record corrected regions"}
+      </button>
+      <div id="decision-requirements" className={attempted && problems.length ? "banner" : "muted"} data-tone="warn" role={attempted && problems.length ? "alert" : undefined}>
+        {problems.length ? `Before this can be recorded: ${problems.join("; ")}.` : "Ready to record. The decision is written under your name with the rules and profile versions."}
+      </div>
     </form>
   );
 }

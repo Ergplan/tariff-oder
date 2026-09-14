@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { ErrorResponse, LocalisationRegionOut } from "@tariff/contracts";
+import { networkError, readError } from "@/lib/client-errors";
 
 /**
  * A reviewer's comment on one detected region, with the switch that tells the stages to
@@ -41,19 +42,13 @@ export function RegionNote({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ note, excluded, expected_version: version }),
       });
-      if (!res.ok) setError((await res.json()) as ErrorResponse);
+      if (!res.ok) setError(await readError(res));
       else {
         setOpen(false);
         router.refresh();
       }
     } catch {
-      setError({
-        error_type: "provider_unavailable",
-        message: "The note could not reach the server.",
-        next_step: "Check your connection and retry; nothing was recorded.",
-        severity: "error",
-        request_id: null,
-      });
+      setError(networkError("The note"));
     } finally {
       setBusy(false);
     }
