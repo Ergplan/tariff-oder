@@ -1,7 +1,8 @@
-import type { SourceDetail, SourcePageList } from "@tariff/contracts";
+import type { LocalisationOut, SourceDetail, SourcePageList } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, JobBadge, StageTrack, StateBadge, UnknownBadge } from "../../components";
 import { AutoRefresh } from "./auto-refresh";
+import { LocalisationForm } from "./localisation-form";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,7 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
   const s = detail.data;
   const parse = s.parse; // bound once: TS narrowing does not survive the nested map callbacks below
   const pages = s.page_count ? await apiTry<SourcePageList>(`/sources/${id}/pages?limit=1000`) : { data: undefined };
+  const localisation = s.localisation ? await apiTry<LocalisationOut>(`/sources/${id}/localisation`) : { data: undefined };
   const job = s.latest_job;
   const noTextRanges = (s.text_layer_summary?.pages_without_text_layer as string[] | undefined) ?? [];
   type LabelSegment = { start_index: number; end_index: number; style: string; offset: number; observed_pages: number };
@@ -324,6 +326,101 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
           </dl>
         </>
       ) : null}
+
+      <h2>Localisation checkpoint</h2>
+      <p className="muted">
+        Reading profile:{" "}
+        {s.reading_profile.profile_id ? (
+          <>
+            <code>
+              {s.reading_profile.profile_id}@{s.reading_profile.version}
+            </code>{" "}
+            ({s.reading_profile.source}: {s.reading_profile.rationale})
+          </>
+        ) : (
+          <UnknownBadge label="none yet" />
+        )}
+      </p>
+      {!localisation.data ? (
+        <p className="muted">Not localised yet: the stage runs after parsing.</p>
+      ) : (
+        <>
+          <div
+            className="banner"
+            data-tone={
+              localisation.data.status === "ambiguous"
+                ? "bad"
+                : localisation.data.extraction_allowed
+                  ? "ok"
+                  : "warn"
+            }
+          >
+            {localisation.data.status === "ambiguous"
+              ? "Halted: the rules could not localise the approved schedule unambiguously. A reviewer must correct the regions."
+              : localisation.data.extraction_allowed
+                ? `Localisation ${localisation.data.status} by ${localisation.data.decided_by}. Extraction may proceed.`
+                : "Proposed by the rules. A reviewer must confirm the page ranges before any extraction (mandatory checkpoint)."}
+            {" "}
+            <span className="mono muted">rules {localisation.data.rules_version} · profile {localisation.data.profile_ref}</span>
+          </div>
+          {localisation.data.findings.length ? (
+            <ul>
+              {localisation.data.findings.map((f, i) => (
+                <li key={i}>
+                  <span className="badge" data-tone={f.severity === "blocking" ? "bad" : f.severity === "warning" ? "warn" : "neutral"}>
+                    {f.severity}
+                  </span>{" "}
+                  <code>{f.code}</code> {f.message}
+                  {(f.pages ?? []).length ? <span className="mono muted"> pages {(f.pages ?? []).join(", ")}</span> : null}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>Pages</th>
+                  <th>Cue</th>
+                  <th>Utility / period</th>
+                  <th>Grids</th>
+                  <th>Origin</th>
+                </tr>
+              </thead>
+              <tbody>
+                {localisation.data.regions.map((r) => (
+                  <tr key={r.id} data-role={r.role}>
+                    <td>
+                      <strong>{r.role.replace(/_/g, " ")}</strong>
+                      {r.sub_role ? <span className="muted"> / {r.sub_role.replace(/_/g, " ")}</span> : null}
+                    </td>
+                    <td className="mono">
+                      {r.page_start === r.page_end ? r.page_start : `${r.page_start}–${r.page_end}`}
+                    </td>
+                    <td>
+                      <code>{r.cue_text}</code>
+                      <span className="muted"> (p. {r.cue_page}, {r.cue_kind})</span>
+                      {r.note ? <div className="muted">{r.note}</div> : null}
+                    </td>
+                    <td>{[r.utility, r.period].filter(Boolean).join(" · ") || "—"}</td>
+                    <td className="mono">{r.grid_count}</td>
+                    <td>{r.origin}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {!localisation.data.extraction_allowed ? (
+            <LocalisationForm sourceId={id} record={localisation.data} />
+          ) : (
+            <p className="muted">
+              Decided by {localisation.data.decided_by} · decisions {localisation.data.decision_count} · rationale:{" "}
+              <em>{localisation.data.decision_rationale}</em>
+            </p>
+          )}
+        </>
+      )}
 
       <h2>Page inventory</h2>
       {!pages.data ? (

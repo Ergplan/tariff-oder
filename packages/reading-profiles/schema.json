@@ -1,0 +1,369 @@
+{
+  "$defs": {
+    "EffectiveRule": {
+      "properties": {
+        "days": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Days"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "type": {
+          "enum": [
+            "publication_plus_days",
+            "first_meter_reading_on_or_after",
+            "fixed_date",
+            "until_next_order"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "EffectiveRule",
+      "type": "object"
+    },
+    "InventoryExpectations": {
+      "description": "Expectations, not truth: an inventory that differs is a finding shown to the reviewer.",
+      "properties": {
+        "absent_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Absent Codes",
+          "type": "array"
+        },
+        "codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Codes",
+          "type": "array"
+        },
+        "general_conditions": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "General Conditions"
+        },
+        "schedule_headings": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schedule Headings"
+        }
+      },
+      "title": "InventoryExpectations",
+      "type": "object"
+    },
+    "LocatorCue": {
+      "description": "One textual cue that justifies a region classification.  ``pattern`` is a\ncase-insensitive regular expression matched against single lines (headings, captions,\nprose).  ``scope`` says what the hit opens: ``span`` opens the approved-schedule span\n(closed by the rules in ``tariff_api.localisation``); ``page`` classifies the page it is\non (adjacent pages with the same role merge).",
+      "properties": {
+        "also_on_page": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Also On Page",
+          "type": "array"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "pattern": {
+          "maxLength": 300,
+          "minLength": 3,
+          "title": "Pattern",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "approved_schedule",
+            "approved_summary",
+            "existing_tariff",
+            "proposed_tariff",
+            "amendment_diff",
+            "formula_parameters",
+            "network_charges",
+            "loss_trajectory",
+            "green_tariff",
+            "illustrative",
+            "derived_not_tariff",
+            "other"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "scope": {
+          "default": "page",
+          "enum": [
+            "span",
+            "page"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "sub_role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sub Role"
+        }
+      },
+      "required": [
+        "role",
+        "pattern"
+      ],
+      "title": "LocatorCue",
+      "type": "object"
+    },
+    "PageLabelRule": {
+      "properties": {
+        "footer_pattern": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Footer Pattern"
+        },
+        "offset": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Offset"
+        },
+        "style": {
+          "enum": [
+            "identity",
+            "roman_then_offset",
+            "offset"
+          ],
+          "title": "Style",
+          "type": "string"
+        }
+      },
+      "required": [
+        "style"
+      ],
+      "title": "PageLabelRule",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "category_code_pattern": {
+      "title": "Category Code Pattern",
+      "type": "string"
+    },
+    "commission": {
+      "title": "Commission",
+      "type": "string"
+    },
+    "conversion_factors": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Conversion Factors",
+      "type": "object"
+    },
+    "currency_convention": {
+      "enum": [
+        "rupees",
+        "paise_energy_rupee_fixed"
+      ],
+      "title": "Currency Convention",
+      "type": "string"
+    },
+    "effective_rule": {
+      "$ref": "#/$defs/EffectiveRule"
+    },
+    "footnote_markers": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Footnote Markers",
+      "type": "array"
+    },
+    "header_vocabulary": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Header Vocabulary",
+      "type": "array"
+    },
+    "id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "inventory_expectations": {
+      "$ref": "#/$defs/InventoryExpectations"
+    },
+    "known_quirks": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Known Quirks",
+      "type": "array"
+    },
+    "load_units": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Load Units",
+      "type": "array"
+    },
+    "locators": {
+      "items": {
+        "$ref": "#/$defs/LocatorCue"
+      },
+      "minItems": 1,
+      "title": "Locators",
+      "type": "array"
+    },
+    "page_labels": {
+      "$ref": "#/$defs/PageLabelRule"
+    },
+    "schedule_heading_kind": {
+      "enum": [
+        "rate_schedule",
+        "tariff_schedule",
+        "rate_clause"
+      ],
+      "title": "Schedule Heading Kind",
+      "type": "string"
+    },
+    "schedule_representation": {
+      "enum": [
+        "tables",
+        "clause_outline",
+        "mixed"
+      ],
+      "title": "Schedule Representation",
+      "type": "string"
+    },
+    "schedule_scope": {
+      "enum": [
+        "per_utility",
+        "shared",
+        "shared_via_parallel_orders"
+      ],
+      "title": "Schedule Scope",
+      "type": "string"
+    },
+    "secondary_authoritative": {
+      "default": false,
+      "title": "Secondary Authoritative",
+      "type": "boolean"
+    },
+    "seeded_from": {
+      "title": "Seeded From",
+      "type": "string"
+    },
+    "tod_adjustment": {
+      "enum": [
+        "percent_of_energy_charge",
+        "absolute_paise_per_unit"
+      ],
+      "title": "Tod Adjustment",
+      "type": "string"
+    },
+    "unit_placement": {
+      "enum": [
+        "cell",
+        "header",
+        "mixed"
+      ],
+      "title": "Unit Placement",
+      "type": "string"
+    },
+    "utilities": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Utilities",
+      "type": "array"
+    },
+    "version": {
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "commission",
+    "utilities",
+    "seeded_from",
+    "page_labels",
+    "schedule_representation",
+    "schedule_heading_kind",
+    "schedule_scope",
+    "locators",
+    "unit_placement",
+    "currency_convention",
+    "category_code_pattern",
+    "effective_rule",
+    "tod_adjustment"
+  ],
+  "title": "ReadingProfile",
+  "type": "object"
+}

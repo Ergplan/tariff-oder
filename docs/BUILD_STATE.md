@@ -4,7 +4,8 @@ Last updated: 2026-09-13. Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
-Terraform plan against the project and the image-bootstrap fix it exposed.
+Terraform plan against the project and the image-bootstrap fix it exposed; (7) Milestone 3a —
+reading profiles as data and the localisation stage with its reviewer checkpoint.
 
 ## Current milestone and status
 
@@ -25,8 +26,51 @@ Terraform plan against the project and the image-bootstrap fix it exposed.
   within Milestone 2:** grids from OCR word boxes are not attempted (flagged
   `grid_from_ocr_pending`, listed for review); Docling is not measured; the three real orders
   have not been run because their bytes are not in this environment.
-- **No provider connection, no extracted number, no reviewer decision exists.**  Grids are
-  read and compared; nothing is interpreted as a tariff value.
+- **Milestone 3 — part (a) implemented and tested under the `local` profile: reading profiles
+  and binding-schedule localisation.**  Three seed profiles (`uperc-npcl`, `kerc-escoms`,
+  `gerc-discoms`) as validated JSON; stage `parsed → localised` producing classified regions
+  with textual cues; ambiguity halts; a mandatory reviewer checkpoint (confirm / correct,
+  audited, versioned) that the rules can never pass on their own.  **Part (b)** — clause
+  outlines, header/row-path reconstruction, continuation inheritance, merged-cell expansion,
+  unit binding, footnotes, the normalisation module and the 6.1 structure/value fixtures — is
+  next.
+- **No provider connection, no extracted number exists.**  The only reviewer decisions that
+  exist are localisation confirmations on synthetic fixtures made by the test harness's
+  reviewer user; no real-source region has been confirmed by anyone.
+
+### Increment 7 (Milestone 3a: reading profiles and localisation)
+
+- `packages/reading-profiles/profiles/*.v1.json` + `schema.json` generated from the pydantic
+  model (`tariff_api.profiles`; drift test).  The schema expresses every Part D/E/F
+  difference as data: representation, schedule-heading kind, unit placement, currency, ToD
+  adjustment type, effective-rule type, scope, conversion factors, inventory expectations,
+  locator cues with a `note` per cue naming the spec paragraph.
+- `tariff_api.localisation` (rules v1): span locators open `approved_schedule`; it runs to the
+  last schedule heading, over heading-less continuation pages, and closes at foreign
+  material or an image-only run; page locators classify `approved_summary`,
+  `existing_tariff`, `proposed_tariff`, `amendment_diff`, `formula_parameters`,
+  `network_charges` (with sub-role), `loss_trajectory`, `green_tariff`, `illustrative`,
+  `derived_not_tariff`; image-only runs are `other`; contents pages (dot leaders) never open
+  a region; several/no approved candidates and profile-declared absent codes are blocking.
+- Stage `tariff_worker.stages.localise`: profile detected from the heading inventory with a
+  recorded rationale (or assigned by an administrator, audited, re-run); per-page text from
+  the layer in reading order or the OCR artefact; immutable artefact
+  `<sha>/localise/rules@1+profile@<ref>/document.json`; record + regions rows; state
+  `localised` even when halted, so the halt is visible.
+- API: `GET /profiles`; `GET /sources/{id}/localisation`; `POST
+  /sources/{id}/localisation/decision` (reviewer+: confirm refused on ambiguous records,
+  pages_viewed required, rationale required, optimistic version, audit with full before/after
+  regions); `PUT /sources/{id}/profile` (admin).  Detail carries `reading_profile` and a
+  `localisation` summary.  Web: checkpoint section with findings, region table with cues,
+  and the reviewer form (confirm / correct with editable regions).
+- Fixtures: `uperc_like_order_pdf` (14 pages, optional second annexure for the ambiguity
+  case), `kerc_like_order_pdf` (12), `gerc_like_order_pdf` (11) following the three real
+  layouts: contents pages quoting the locators, proposals, existing/proposed tables per
+  ESCOM, derived ABR table, amendment diff, FPPAS chapter, scanned pages.
+- Migration `0004_localise`; `0003`'s downgrade made data-safe (it dropped the column width
+  under rows the parse stage had written; found by the round-trip test once the suite order
+  changed).
+
 
 ### Increment 6 (first plan against the project)
 
@@ -235,12 +279,13 @@ Detected: D3, D7, D9.  Everything value- and network-level `n/a-yet` pending Mil
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **105 passed, 0 failed, 0 skipped** (~44 s): 73 unit (13 adapters/profile/fixtures, 31
-  triage rules, 29 readers/headings/OCR), 32 integration (8 sources, 6 ingest/CLI, 6 queue, 1
-  worker-kill recovery, 5 triage stage, 4 parse stage incl. a worker-kill resume with
-  `next_page=3` and a same-version re-run with no duplicate grids, 2 migrations).  Run three
-  times, twice in a different order.  Without tesseract the 2 OCR unit tests and the 4
-  parse-stage tests skip and say so.
+- **120 passed, 0 failed, 0 skipped** (~52 s): 84 unit (13 adapters/profile/fixtures, 31
+  triage rules, 29 readers/headings/OCR, 11 profiles/localisation rules), 36 integration (8
+  sources, 6 ingest/CLI, 6 queue, 1 worker-kill recovery, 5 triage stage, 4 parse stage, 4
+  localisation stage incl. the ambiguity halt, the refused confirm, the audited correction
+  and the profile re-assignment re-run, 2 migrations).  Without tesseract the OCR unit
+  tests and the parse/localise stage tests skip and say so.
+- Increment 5 baseline was 105 passed (73 unit, 32 integration).
 - Test-infrastructure defect found by the reordered run and fixed: the synthetic fixture
   generators were byte-reproducible only ~98% of the time.  MuPDF writes the regenerated
   half of the file `/ID` as a PDF literal string `(…)` when that is shorter than hex, and the
@@ -254,8 +299,7 @@ installed:
 - Worker-kill recovery: 1 hard kill (`os._exit(137)` after checkpoint `next_page=3`), lease
   2 s, resumed by a second worker; 6/6 page rows, 0 duplicates, attempts=2, events include
   `lease_expired_reclaimed`.
-- Migrations: downgrade to base and upgrade to head on a scratch DB: pass; 0003 round-trip
-  (head → 0002 → head) on a scratch DB: pass, `tool_version` length 160, both new tables.
+- Migrations: downgrade to base and upgrade to head (through 0004) in the suite: pass.
 - `ruff check` + `ruff format --check`: clean.  `tsc --noEmit`: clean.  `next build`: success
   (8 routes).  `terraform fmt` + `terraform validate` (google 6.30.0 via filesystem mirror):
   valid, 2 provider warnings about `secret_data_wo`.
@@ -354,7 +398,10 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
    `make tf-plan tf-apply ENV=dev` (expect 63 more to add after the bootstrap's 14), then
    `make deploy-dev`, then register the three orders through the `tariff-admin` job
    (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
-2. Engineering (next run): as soon as the three PDFs are in the bucket — ingest, inventory,
+2. Engineering (next run): Milestone 3b — clause-outline reconstruction (GERC), header-path
+   and row-label reconstruction, continuation header inheritance, merged-cell expansion, unit
+   binding with source, footnote attachment, the versioned normalisation module, fixtures for
+   every 6.1 structure- and value-level failure mode.  Then, as soon as the deploy is done — ingest, inventory,
    triage, parse, and compare with Parts D–F (NPCL 402–423 `image_only` now OCR'd; KERC
    226–240 `vector_graphics_text_sparse` and the printed 209 → PDF 225 rule; GERC all-text
    with roman front matter and the −16 rule; NPCL exactly 15 `RATE SCHEDULE` headings and no

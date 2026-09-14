@@ -11,7 +11,7 @@ from sqlalchemy import func, select
 
 from ..adapters.identity import Principal
 from ..adapters.storage import ObjectNotFound, ObjectStore
-from ..auth import require_admin, require_analyst
+from ..auth import require_admin, require_analyst, require_reviewer
 from ..db import session_scope
 from ..errors import AppError
 from ..models import (
@@ -19,6 +19,8 @@ from ..models import (
     DocumentHeading,
     IdempotencyRecord,
     Job,
+    LocalisationRecord,
+    LocalisationRegion,
     SourceDocument,
     SourcePage,
     SourceState,
@@ -32,11 +34,17 @@ from ..schemas import (
     InboxObject,
     IngestRequest,
     JobSummary,
+    LocalisationDecision,
+    LocalisationOut,
+    LocalisationRegionOut,
+    LocalisationSummary,
     ParseSummary,
+    ProfileAssignRequest,
     SourceDetail,
     SourceList,
     SourcePageList,
     SourcePageOut,
+    SourceProfileOut,
     SourceRegistration,
     SourceSummary,
     StageArtefactOut,
@@ -45,6 +53,7 @@ from ..schemas import (
     TableGridOut,
     TriageSummary,
 )
+from ..services import localisation as loc
 from ..services import sources as svc
 
 router = APIRouter(prefix="/sources", tags=["sources"])
@@ -321,6 +330,13 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
             )
             if src.parse_version
             else None,
+            reading_profile=SourceProfileOut(
+                profile_id=src.reading_profile_id,
+                version=src.reading_profile_version,
+                source=src.reading_profile_source,
+                rationale=src.reading_profile_rationale,
+            ),
+            localisation=_localisation_summary(s, src),
             artefacts=[StageArtefactOut.model_validate(a, from_attributes=True) for a in artefacts if a.page_index == 0]
             + [
                 StageArtefactOut.model_validate(a, from_attributes=True)
@@ -328,6 +344,75 @@ def get_source(source_id: uuid.UUID) -> SourceDetail:
                 if a.page_index != 0 and a.page_index <= 3
             ],  # document-level artefacts plus a sample; the page table links the rest
         )
+
+
+def _localisation_summary(s, src: SourceDocument) -> LocalisationSummary | None:
+    rec = s.get(LocalisationRecord, src.id)
+    if rec is None:
+        return None
+    regions = s.execute(select(LocalisationRegion).where(LocalisationRegion.source_id == src.id)).scalars().all()
+    approved = sorted(
+        {i for r in regions if r.role == "approved_schedule" for i in range(r.page_start, r.page_end + 1)}
+    )
+    return LocalisationSummary(
+        status=rec.status,
+        rules_version=rec.rules_version,
+        profile_ref=rec.profile_ref,
+        extraction_allowed=rec.extraction_allowed,
+        region_count=len(regions),
+        blocking_findings=sum(1 for f in rec.findings if f.get("severity") == "blocking"),
+        approved_schedule_pages=_ranges(approved),
+    )
+
+
+def _localisation_out(rec: LocalisationRecord, regions: list[LocalisationRegion]) -> LocalisationOut:
+    return LocalisationOut(
+        source_id=rec.source_id,
+        status=rec.status,
+        rules_version=rec.rules_version,
+        profile_ref=rec.profile_ref,
+        extraction_allowed=rec.extraction_allowed,
+        findings=rec.findings,
+        regions=[LocalisationRegionOut.model_validate(r, from_attributes=True) for r in regions],
+        decided_by=rec.decided_by,
+        decided_at=rec.decided_at,
+        decision_rationale=rec.decision_rationale,
+        decision_count=rec.decision_count,
+        version=rec.version,
+        artefact_key=rec.artefact_key,
+    )
+
+
+@router.get("/{source_id}/localisation", response_model=LocalisationOut, dependencies=[Depends(require_analyst)])
+def get_localisation(source_id: uuid.UUID) -> LocalisationOut:
+    with session_scope() as s:
+        svc.get_source(s, source_id)
+        rec, regions = loc.get_record(s, source_id)
+        return _localisation_out(rec, regions)
+
+
+@router.post("/{source_id}/localisation/decision", response_model=LocalisationOut)
+def decide_localisation(
+    source_id: uuid.UUID, body: LocalisationDecision, principal: Principal = Depends(require_reviewer)
+) -> LocalisationOut:
+    """The mandatory human checkpoint of Section 6.5.  Reviewer or administrator only; the
+    rules never confirm their own result."""
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        rec, regions = loc.decide(s, src, body, actor=principal.email)
+        return _localisation_out(rec, regions)
+
+
+@router.put("/{source_id}/profile", response_model=SourceDetail)
+def assign_profile(
+    source_id: uuid.UUID, body: ProfileAssignRequest, request: Request, principal: Principal = Depends(require_admin)
+) -> SourceDetail:
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        loc.assign_profile(
+            s, request.app.state.settings, src, body.profile_id, body.version, actor=principal.email, reason=body.reason
+        )
+    return get_source(source_id)
 
 
 def _ranges(indices: list[int]) -> list[str]:

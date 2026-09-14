@@ -1,4 +1,4 @@
-# Architecture (as implemented through Milestone 2b)
+# Architecture (as implemented through Milestone 3a)
 
 The governing design is Section 4 of the specification.  This document records what exists.
 
@@ -51,6 +51,17 @@ review decisions and reading profiles are later migrations — nothing pre-empts
    dangling lease; the next claim after expiry resumes from the checkpoint (tested).
 3. `GET /sources/{id}` shows the inventory summary and the latest job; `GET /sources/{id}/file`
    streams the bytes through authorization (no signed/public URLs).
+
+## Localisation (Milestone 3a)
+
+`parsed -> localised`: the worker binds a reading profile (detected from the heading
+inventory or assigned by an administrator), builds per-page inputs (text layer in reading
+order or the OCR artefact text, triage class, parse headings, grid counts) and runs
+`tariff_api.localisation.localise`.  The result — regions with cues, findings, a status of
+`proposed` or `ambiguous` — is stored as an immutable artefact and as rows the reviewer can
+edit.  `POST /sources/{id}/localisation/decision` (reviewer+) confirms or corrects; only that
+sets `extraction_allowed`.  `PUT /sources/{id}/profile` (admin) re-binds and re-runs.  Profiles
+are data in `packages/reading-profiles/` (ADR-0010).
 
 ## Profiles
 

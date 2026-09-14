@@ -46,9 +46,9 @@ def _run_all(runner) -> int:
 
 def test_parse_readers_headings_and_ocr_end_to_end(client, runner, storage):
     src_id = _upload(client, readers_and_headings_pdf(), "SYNTHETIC_readers.pdf")
-    assert _run_all(runner) == 3  # inventory -> triage -> parse, chained
+    assert _run_all(runner) == 4  # inventory -> triage -> parse -> localise, chained
     d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
-    assert d["state"] == "parsed"
+    assert d["state"] == "localised"
     assert d["parse"]["parse_version"] == "1"
     tv = d["parse"]["table_summary"]["tool_version"]
     assert tv.startswith("pymupdf@") and "+pdfplumber@" in tv and "+tesseract@" in tv and "absent" not in tv
@@ -124,9 +124,9 @@ def test_parse_readers_headings_and_ocr_end_to_end(client, runner, storage):
 
 def test_silent_empty_grid_and_unreadable_vector_page_are_findings(client, runner, storage):
     src_id = _upload(client, labelled_order_pdf(), "SYNTHETIC_labelled.pdf")
-    assert _run_all(runner) == 3
+    assert _run_all(runner) == 4
     d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
-    assert d["state"] == "parsed"
+    assert d["state"] == "localised"
     pages = client.get(f"/sources/{src_id}/pages", headers=headers(ANALYST)).json()["pages"]
 
     # page 7: vector strokes, no text -> OCR ran and found nothing; recorded, not guessed

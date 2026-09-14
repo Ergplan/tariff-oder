@@ -341,3 +341,453 @@ if __name__ == "__main__":
     (out / "SYNTHETIC_garbled_text.pdf").write_bytes(garbled_text_pdf())
     (out / "SYNTHETIC_readers_and_headings.pdf").write_bytes(readers_and_headings_pdf())
     print(f"wrote synthetic fixtures to {out}")
+
+
+# ------------------------------------------------------------------ Milestone 3a: whole-order layouts
+#
+# Three small synthetic orders that follow the *layout* of the supplied NPCL, KERC and GERC
+# documents (Parts D, E, F) so that the localisation rules can be tested end to end: a
+# contents page quoting every locator, ARR chapters with proposals and derived tables, network
+# charge chapters, and the annexed schedule.  The numbers are meaningless placeholders.
+
+
+def _lines(page: pymupdf.Page, y: float, lines: list[str], size: float = 9.5, step: float = 16) -> float:
+    for ln in lines:
+        page.insert_text((72, y), ln, fontsize=size)
+        y += step
+    return y
+
+
+def _scan_page(doc: pymupdf.Document, text: str) -> None:
+    """An image-only page: text rendered to a raster and inserted as a picture."""
+    tmp = pymupdf.open()
+    p = tmp.new_page(width=595, height=842)
+    p.insert_text((72, 100), text, fontsize=12)
+    pix = p.get_pixmap(dpi=100)
+    page = doc.new_page(width=595, height=842)
+    page.insert_image(page.rect, pixmap=pix)
+    tmp.close()
+
+
+def uperc_like_order_pdf(*, second_annexure: bool = False) -> bytes:
+    """Fourteen pages in the NPCL shape (Part D): identity page labels (`Page N of 14`); a
+    contents page quoting the annexure locators with dot leaders; Table 6-7 (loss trajectory);
+    Chapter 7 proposals (the 20% TOD that was never approved); an existing/proposed table;
+    Chapter 9 wheeling, losses, CSS and the zero additional surcharge; `12.1 ANNEXURE-I: RATE
+    SCHEDULE` with general provisions (green tariff = provision 20) and three RATE SCHEDULE
+    tables; `ANNEXURE-II` average billing rates (derived, not tariff); two scanned pages.
+
+    ``second_annexure=True`` adds a second `ANNEXURE-I: RATE SCHEDULE` region separated from
+    the first by the derived table: the ambiguity the rules must refuse to resolve alone."""
+    doc = pymupdf.open()
+    total = 16 if second_annexure else 14
+
+    def new(label: int) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        _footer(page, str(label), total)
+        return page
+
+    # 1 cover
+    p = new(1)
+    _lines(
+        p, 120, ["SYNTHETIC ELECTRICITY REGULATORY COMMISSION", "Tariff Order for FY 2026-27", "Licensee: NPCL"], 14, 24
+    )
+    # 2 contents
+    p = new(2)
+    _lines(
+        p,
+        110,
+        [
+            "CONTENTS",
+            "CHAPTER 6 DISTRIBUTION LOSS ................................ 3",
+            "CHAPTER 7 TARIFF PROPOSAL OF THE PETITIONER ................ 4",
+            "CHAPTER 9 OPEN ACCESS CHARGES .............................. 6",
+            "12.1 ANNEXURE-I: RATE SCHEDULE FOR FY 2026-27 .............. 8",
+            "ANNEXURE-II: CATEGORY-WISE AVERAGE BILLING RATE ............ 12",
+        ],
+    )
+    # 3 loss trajectory
+    p = new(3)
+    _lines(p, 110, ["CHAPTER - 6", "6.4 Distribution Loss", "Table 6-7 Approved distribution loss trajectory"], 11, 20)
+    _ruled_table(p, 190, rows=4, cols=4)
+    # 4 proposals in prose
+    p = new(4)
+    _lines(
+        p,
+        110,
+        [
+            "CHAPTER - 7",
+            "7.2.3 The Petitioner has proposed to increase the TOD adjustment from 15% to 20% and the",
+            "billable demand from 75% to 85% of contracted demand. The Commission has examined the",
+            "proposal and does not approve it. The existing tariff shall continue to apply.",
+        ],
+    )
+    # 5 existing / proposed table
+    p = new(5)
+    _lines(
+        p,
+        110,
+        ["7.4 Existing Tariff and Proposed Tariff", "Table 7-3 Existing tariff and tariff proposed by the Petitioner"],
+        11,
+        20,
+    )
+    _aligned_table(
+        p,
+        170,
+        ["Category", "Existing Tariff", "Proposed Tariff"],
+        [("LMV-1", "6.50", "7.10"), ("LMV-2", "8.00", "8.60")],
+        [72, 250, 400],
+    )
+    # 6 wheeling
+    p = new(6)
+    _lines(p, 110, ["CHAPTER - 9", "9.2 Wheeling Charges", "Table 9-5 Average Wheeling Charges (Rs/kWh)"], 11, 20)
+    _ruled_table(p, 190, rows=3, cols=4)
+    # 7 CSS, losses, additional surcharge
+    p = new(7)
+    _lines(
+        p,
+        110,
+        [
+            "9.3 Cross Subsidy Surcharge",
+            "Table 9-11 Losses applicable for open access consumers",
+            "9.4.7 The Commission approves the additional surcharge as zero for FY 2026-27.",
+        ],
+        11,
+        20,
+    )
+    _ruled_table(p, 190, rows=5, cols=4)
+
+    def annexure(start_label: int) -> None:
+        pg = new(start_label)
+        _lines(
+            pg,
+            110,
+            [
+                "12.1 ANNEXURE-I: RATE SCHEDULE FOR FY 2026-27",
+                "(APPLICABLE FOR NPCL)",
+                "A. GENERAL PROVISIONS",
+                "20. Green Energy Tariff: Rs 0.34 per unit for HV and Rs 0.17 per unit for LMV categories",
+                "21. A regulatory discount of 10% shall apply to fixed / demand and energy charges.",
+            ],
+            10.5,
+            20,
+        )
+        pg = new(start_label + 1)
+        _lines(
+            pg,
+            110,
+            ["B. RETAIL TARIFFS FOR FINANCIAL YEAR 2026-27", "RATE SCHEDULE LMV - 1", "Domestic Light, Fan & Power"],
+            11,
+            20,
+        )
+        _ruled_table(pg, 190, rows=5, cols=4)
+        pg = new(start_label + 2)
+        _lines(pg, 110, ["RATE SCHEDULE LMV - 2", "Non-Domestic Light, Fan & Power"], 11, 20)
+        _ruled_table(pg, 160, rows=5, cols=4)
+        pg = new(start_label + 3)
+        _lines(
+            pg,
+            110,
+            ["RATE SCHEDULE HV-1", "Non-Industrial Bulk Loads", "TOD: Summer Months (April to September) (+) 15%"],
+            11,
+            20,
+        )
+        _ruled_table(pg, 180, rows=4, cols=4)
+
+    annexure(8)  # pages 8-11
+    # 12 derived table
+    p = new(12)
+    _lines(
+        p,
+        110,
+        [
+            "ANNEXURE-II: CATEGORY-WISE AVERAGE BILLING RATE (Rs/kWh)",
+            "Note: The values are only for the purpose of fuel surcharge computation.",
+        ],
+        11,
+        20,
+    )
+    _aligned_table(p, 170, ["Category", "ABR (Rs/kWh)"], [("LMV-1", "6.12"), ("LMV-9", "0.00")], [72, 300])
+    if second_annexure:
+        annexure(13)  # a second approved-schedule candidate after the derived table
+        # (pages 13-16 replace the scans)
+        return _finalise(doc)
+    # 13-14 scans
+    _scan_page(doc, "Scanned stamp page A")
+    _scan_page(doc, "Scanned stamp page B")
+    return _finalise(doc)
+
+
+def kerc_like_order_pdf() -> bytes:
+    """Twelve pages in the KERC shape (Part E): roman contents pages; Tables 6.2A/6.2B
+    (existing and proposed, one per ESCOM); Table 6.3A (approved summary); a network-charges
+    page; `ANNEXURE – 9` with `ELECTRICITY TARIFF - 2026`, the general terms, three TARIFF
+    SCHEDULE pages (LT-1 printed twice, LT-4(a) with `-`, HT-1 with ToD); a scanned annexure.
+    Printed labels: i, ii, then 1.. (index - 2)."""
+    doc = pymupdf.open()
+
+    def new(label: str, section: str | None = None) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        page.insert_text((72, 78), "Karnataka Synthetic Commission - Tariff Order 2025 - All ESCOMs", fontsize=8)
+        page.insert_text((250, 820), f"{section + '   ' if section else ''}Page {label}", fontsize=9)
+        return page
+
+    p = new("i")
+    _lines(
+        p,
+        110,
+        [
+            "CONTENTS",
+            "Chapter - 6 : Tariff ......................... 1",
+            "6.8 Tariff Charges ........................... 3",
+            "Annexure - 9 ............................... 5",
+        ],
+    )
+    p = new("ii")
+    _lines(
+        p,
+        110,
+        [
+            "LIST OF TABLES",
+            "Table 6.2A Existing and proposed charges - BESCOM ....... 1",
+            "Table 6.3A Approved tariff FY2025-26 ......... 3",
+        ],
+    )
+    for i, (label, esc) in enumerate((("1", "BESCOM"), ("2", "MESCOM"))):
+        p = new(label, "Chapter - 6 : Tariff")
+        _lines(p, 110, ["6.7 Proposed tariff", f"Table 6.2{'AB'[i]}: Existing and Proposed charges - {esc}"], 11, 20)
+        _aligned_table(
+            p,
+            170,
+            ["Category", "Existing Charges (#)", "Proposed FY2025-26", "Proposed FY2026-27"],
+            [("LT-1", "Rs.130/-", "Rs.145/-", "Rs.150/-"), ("LT-2", "Rs.80/-", "Rs.90/-", "Rs.95/-")],
+            [72, 200, 340, 460],
+        )
+        p.insert_text((72, 260), "# As approved in Tariff Order 2024 dated 28.02.2024", fontsize=8)
+    p = new("3", "Chapter - 6 : Tariff")
+    _lines(p, 110, ["6.8 Tariff Charges", "Table 6.3A Approved tariff for FY2025-26"], 11, 20)
+    _aligned_table(
+        p,
+        170,
+        [
+            "Category",
+            "Description",
+            "Fixed Charges Billing Unit",
+            "Fixed Charges (In Rupees)",
+            "Energy Charges (Paise/Unit)",
+        ],
+        [("LT-1", "Bhagya Jyothi", "per KW", "145", "580")],
+        [72, 140, 240, 360, 470],
+    )
+    p = new("4", "Chapter - 6 : Tariff")
+    _lines(
+        p,
+        110,
+        [
+            "6.12 Wheeling Charges for BESCOM, MESCOM, CESC, HESCOM and GESCOM",
+            "6.13 Cross Subsidy Surcharge",
+            "6.13.6 Additional Surcharge shall not be levied until a fresh petition is filed.",
+        ],
+        11,
+        20,
+    )
+    p = new("5", "ANNEXURE - 9")
+    _lines(
+        p,
+        140,
+        [
+            "ANNEXURE - 9",
+            "ELECTRICITY TARIFF - 2026",
+            "K.E.R.C. ORDER DATED: 27th MARCH 2025",
+            "BESCOM  MESCOM  CESC  HESCOM  GESCOM",
+        ],
+        13,
+        26,
+    )
+    p = new("6", "ANNEXURE - 9")
+    _lines(
+        p,
+        110,
+        [
+            "GENERAL TERMS AND CONDITIONS OF TARIFF (APPLICABLE TO BOTH HT AND LT)",
+            "1. Applicability of tariff.",
+            "3. Minimum charges.",
+        ],
+        10.5,
+        20,
+    )
+    p = new("7", "ANNEXURE - 9")
+    _lines(
+        p, 110, ["TARIFF SCHEDULE LT-1", "Applicable to Bhagya Jyothi installations.", "TARIFF SCHEDULE LT-1"], 11, 20
+    )
+    _aligned_table(
+        p,
+        190,
+        ["Particulars", "FY2025-26", "FY2026-27", "FY2027-28"],
+        [
+            ("Fixed charge per KW / Month", "Rs.145/-", "Rs.150/-", "Rs.160/-"),
+            ("Energy charge", "580 paise", "590 paise", "600 paise"),
+        ],
+        [72, 260, 360, 460],
+    )
+    p = new("8", "ANNEXURE - 9")
+    _lines(p, 110, ["TARIFF SCHEDULE LT-4(a)", "Irrigation pump sets up to 10 HP."], 11, 20)
+    _aligned_table(
+        p, 170, ["Particulars", "FY2025-26"], [("Fixed charge", "-"), ("Energy charge", "610 paise")], [72, 300]
+    )
+    p = new("9", "ANNEXURE - 9")
+    _lines(p, 110, ["TARIFF SCHEDULE HT-1", "Time of Day tariff: July to November (monsoon period)"], 11, 20)
+    _aligned_table(
+        p, 170, ["Hours", "Adjustment"], [("22:00 to 06:00", "(-)100"), ("18:00 to 22:00", "(+)100")], [72, 300]
+    )
+    _scan_page(doc, "ANNEXURE 1 (scanned)")
+    return _finalise(doc)
+
+
+def gerc_like_order_pdf() -> bytes:
+    """Eleven pages in the GERC/MGVCL shape (Part F): roman contents; Chapter 8 FPPAS formula;
+    Chapter 9 network charges; Chapter 10 `Existing description / Modified description`
+    amendment table; `ANNEXURE: TARIFF SCHEDULE` with GENERAL conditions and numbered
+    `<n>. RATE: <CODE>` clauses joined by PLUS / ALTERNATIVELY; the last page continues the
+    schedule with no heading at all."""
+    doc = pymupdf.open()
+
+    def new(label: str) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        page.insert_text(
+            (72, 78), "Synthetic Gujarat Vij Company Limited / Determination of Tariff for FY 2026-27", fontsize=8
+        )
+        page.insert_text((250, 820), f"Page {label}", fontsize=9)
+        return page
+
+    p = new("i")
+    _lines(
+        p,
+        110,
+        [
+            "CONTENTS",
+            "Chapter 8 FPPAS ............................... 1",
+            "Chapter 10 Amendments ......................... 3",
+            "ANNEXURE: TARIFF SCHEDULE ..................... 4",
+        ],
+    )
+    p = new("ii")
+    _lines(p, 110, ["LIST OF TABLES", "Table 10-1 Existing description and modified description ..... 3"])
+    p = new("1")
+    _lines(
+        p,
+        110,
+        [
+            "CHAPTER 8",
+            "8.1 Fuel and Power Purchase Price Adjustment (FPPAS)",
+            "FPPAS (%) = (A + B) / C x 100, where projected PPC = 4.42 Rs/kWh",
+        ],
+        11,
+        20,
+    )
+    p = new("2")
+    _lines(
+        p,
+        110,
+        [
+            "CHAPTER 9",
+            "9.2 Wheeling Charges",
+            "9.3 Losses for open access",
+            "9.4 Cross Subsidy Surcharge",
+            "9.5 Additional surcharge under the methodology of 30.08.2022",
+        ],
+        11,
+        20,
+    )
+    p = new("3")
+    _lines(p, 110, ["CHAPTER 10", "Table 10-1 Amendments to the tariff schedule"], 11, 20)
+    _aligned_table(
+        p,
+        170,
+        ["Clause", "Existing description", "Modified description"],
+        [("1.4", "ToU discount 11:00 to 15:00 hours", "ToU discount 11:00 to 17:00 hours")],
+        [72, 160, 380],
+    )
+    p = new("4")
+    _lines(
+        p,
+        110,
+        [
+            "ANNEXURE: TARIFF SCHEDULE",
+            "TARIFF FOR SUPPLY OF ELECTRICITY AT LOW TENSION, HIGH TENSION, AND EXTRA HIGH TENSION",
+            "Effective from 1st April, 2026",
+            "GENERAL",
+            "1. The figures are the rates payable by consumers of DGVCL, MGVCL, PGVCL and UGVCL.",
+        ],
+        10.5,
+        20,
+    )
+    p = new("5")
+    _lines(
+        p,
+        110,
+        [
+            "PART - I",
+            "1. RATE: RGP",
+            "1.1. FIXED CHARGES / MONTH",
+            "(a) Up to and including 2 kW ... Rs. 15/- per month",
+            "(b) Above 2 kW to 4 kW ... Rs. 25/- per month",
+            "PLUS",
+            "1.2. ENERGY CHARGES",
+            "                       Post-Paid Energy Charge   Pre-paid Energy Charge",
+            "(a) First 50 units      305 Paise per Unit        296 Paise per Unit",
+        ],
+        10,
+        18,
+    )
+    p = new("6")
+    _lines(
+        p,
+        110,
+        [
+            "8. RATE: AG",
+            "8.1.1 HP BASED TARIFF ... Rs. 200 per HP per month",
+            "ALTERNATIVELY",
+            "8.1.2 METERED TARIFF ... Rs. 20 per HP plus 60 Paise per Unit",
+        ],
+        10,
+        18,
+    )
+    p = new("7")
+    _lines(
+        p,
+        110,
+        [
+            "PART - II",
+            "11. RATE: HTP-1",
+            "11.1. DEMAND CHARGE",
+            "(a) For the first 500 kVA of billing demand ... Rs. 150/- per kVA per month",
+            "11.3. TIME OF USE CHARGES ... 45 Paise per Unit",
+        ],
+        10,
+        18,
+    )
+    p = new("8")
+    _lines(
+        p,
+        110,
+        ["17. RATE: HT ELECTRIC VEHICLE (EV) CHARGING STATIONS", "17.1. DEMAND CHARGE ... Rs. 25/- per kVA per month"],
+        10,
+        18,
+    )
+    p = new("9")
+    _lines(
+        p,
+        110,
+        [
+            "(b) The billing demand shall be the highest of the actual maximum demand, 85% of the",
+            "contract demand and 100 kVA.",
+            "Power factor adjustment: penalty of 1% of the energy charge bill per 1% below 90%.",
+        ],
+        10,
+        18,
+    )
+    return _finalise(doc)

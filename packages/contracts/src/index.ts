@@ -27,6 +27,11 @@ export type SourceState = Schemas["SourceState"];
 export type JobStatus = Schemas["JobStatus"];
 export type DatasetKind = Schemas["DatasetKind"];
 export type UserRole = Schemas["UserRole"];
+export type LocalisationOut = Schemas["LocalisationOut"];
+export type LocalisationRegionOut = Schemas["LocalisationRegionOut"];
+export type LocalisationDecision = Schemas["LocalisationDecision"];
+export type ReadingProfileOut = Schemas["ReadingProfileOut"];
+export type ReadingProfileList = Schemas["ReadingProfileList"];
 
 /** Pipeline states of Section 6.2, in order; terminal/exception states listed separately. */
 export const PIPELINE_STATES: SourceState[] = [

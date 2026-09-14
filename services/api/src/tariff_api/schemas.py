@@ -189,8 +189,107 @@ class ParseSummary(BaseModel):
     table_summary: dict[str, Any] | None
 
 
+class ReadingProfileOut(BaseModel):
+    id: str
+    version: int
+    commission: str
+    utilities: list[str]
+    schedule_representation: str
+    schedule_heading_kind: str
+    seeded_from: str
+
+
+class ReadingProfileList(BaseModel):
+    profiles: list[ReadingProfileOut]
+
+
+class ProfileAssignRequest(BaseModel):
+    profile_id: str = Field(pattern=r"^[a-z0-9]+(-[a-z0-9]+)*$")
+    version: int | None = Field(default=None, ge=1)  # None = latest
+    reason: str = Field(min_length=5, max_length=500)
+
+
+class SourceProfileOut(BaseModel):
+    profile_id: str | None
+    version: int | None
+    source: str | None  # detected | assigned
+    rationale: str | None
+
+
+class LocalisationRegionOut(BaseModel):
+    id: uuid.UUID
+    ordinal: int
+    role: str
+    sub_role: str | None
+    page_start: int
+    page_end: int
+    cue_text: str
+    cue_page: int
+    cue_kind: str
+    utility: str | None
+    period: str | None
+    note: str | None
+    origin: str
+    grid_count: int
+
+
+class LocalisationFindingOut(BaseModel):
+    code: str
+    severity: str
+    message: str
+    pages: list[int] = Field(default_factory=list)
+
+
+class LocalisationOut(BaseModel):
+    source_id: uuid.UUID
+    status: str  # proposed | ambiguous | confirmed | corrected
+    rules_version: str
+    profile_ref: str
+    extraction_allowed: bool
+    findings: list[LocalisationFindingOut]
+    regions: list[LocalisationRegionOut]
+    decided_by: str | None
+    decided_at: datetime | None
+    decision_rationale: str | None
+    decision_count: int
+    version: int
+    artefact_key: str | None
+
+
+class LocalisationSummary(BaseModel):
+    status: str
+    rules_version: str
+    profile_ref: str
+    extraction_allowed: bool
+    region_count: int
+    blocking_findings: int
+    approved_schedule_pages: list[str]
+
+
+class RegionEdit(BaseModel):
+    role: str
+    page_start: int = Field(ge=1)
+    page_end: int = Field(ge=1)
+    sub_role: str | None = None
+    utility: str | None = Field(default=None, max_length=40)
+    period: str | None = Field(default=None, max_length=80)
+    note: str | None = Field(default=None, max_length=500)
+
+
+class LocalisationDecision(BaseModel):
+    """A reviewer's checkpoint decision.  ``confirm`` keeps the detected regions; ``correct``
+    replaces them with ``regions`` (every region then carries origin=reviewer).  Both need a
+    rationale and a statement that the pages were looked at."""
+
+    decision: Literal["confirm", "correct"]
+    rationale: str = Field(min_length=5, max_length=2000)
+    pages_viewed: bool
+    regions: list[RegionEdit] | None = None
+    expected_version: int | None = None  # optimistic concurrency on the record
+
+
 class StageRerunRequest(BaseModel):
-    job_type: Literal["inventory_source", "triage_source", "parse_source"]
+    job_type: Literal["inventory_source", "triage_source", "parse_source", "localise_source"]
 
 
 class SourceDetail(SourceSummary):
@@ -212,6 +311,8 @@ class SourceDetail(SourceSummary):
     text_layer_summary: dict[str, Any] | None
     triage: TriageSummary | None
     parse: ParseSummary | None
+    reading_profile: SourceProfileOut
+    localisation: LocalisationSummary | None
     artefacts: list[StageArtefactOut]
 
 

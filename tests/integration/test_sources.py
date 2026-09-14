@@ -42,10 +42,12 @@ def test_upload_inventory_reopen_and_dedup(client, runner):
     assert runner.run_once() is True  # inventory
     assert runner.run_once() is True  # triage (Milestone 2a)
     assert runner.run_once() is True  # parse (Milestone 2b)
+    assert runner.run_once() is True  # localise (Milestone 3a): no profile detectable, halts visibly
     assert runner.run_once() is False  # queue empty
 
     d = client.get(f"/sources/{src['id']}", headers=headers(REVIEWER)).json()
-    assert d["state"] == "parsed"  # inventory -> triage -> parse, all chained
+    assert d["state"] == "localised"  # inventory -> triage -> parse -> localise, all chained
+    assert d["localisation"]["status"] == "ambiguous"  # a fixture with no schedule headings: no profile, no guess
     assert d["page_count"] == 6
     assert d["pages_with_text"] == 4
     assert d["pages_without_text"] == 2

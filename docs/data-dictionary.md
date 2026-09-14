@@ -1,4 +1,4 @@
-# Data dictionary (through Milestone 2b)
+# Data dictionary (through Milestone 3a)
 
 Migration owner: `services/api/migrations/versions/0001_foundation.py`.  All timestamps are
 `timestamptz`; ids are UUIDv4 unless noted.  Enums are PostgreSQL enum types.
@@ -86,6 +86,39 @@ Heading inventory (`uq_document_heading` per page/line/kind/rules version): `ord
 `repeated_codes` per kind), `table_summary` (JSONB: `tool_version`, `grid_pages`,
 `primary_grids`, `agreement_classes`, `pages_needing_review`, `ocr_pages`,
 `ocr_low_confidence_pages`, `grid_from_ocr_pending_pages`).
+
+## `source_documents` — reading profile and localisation columns (Milestone 3a)
+
+| Column | Meaning |
+| --- | --- |
+| reading_profile_id, reading_profile_version | The profile the source is read with (`packages/reading-profiles/profiles`) |
+| reading_profile_source | `detected` (from the heading inventory) or `assigned` (administrator) |
+| reading_profile_rationale | Why: the detection explanation or the assignment reason and actor |
+| localisation_version, localised_at | Rules version and time of the last localisation run |
+
+## `localisation_records` (one per source)
+
+| Column | Meaning |
+| --- | --- |
+| status | `proposed` (rules ran, reviewer needed), `ambiguous` (rules halted), `confirmed`, `corrected` |
+| rules_version, profile_ref | What produced the current regions (`<id>@<version>`) |
+| findings | Rule findings: `code`, `severity` (`blocking` / `warning` / `info`), `message`, `pages` |
+| extraction_allowed | True only after a reviewer decision; the gate Milestone 4 reads |
+| decided_by, decided_at, decision_rationale, decision_count | The human decision; a re-run resets the first three and keeps the count |
+| artefact_key | The immutable rules output (`<sha>/localise/rules@<v>+profile@<ref>/document.json`) |
+| version | Optimistic concurrency for decisions |
+
+## `localisation_regions`
+
+| Column | Meaning |
+| --- | --- |
+| role | `approved_schedule`, `approved_summary`, `existing_tariff`, `proposed_tariff`, `amendment_diff`, `formula_parameters`, `network_charges`, `loss_trajectory`, `green_tariff`, `illustrative`, `derived_not_tariff`, `other` |
+| sub_role | For `network_charges`: `wheeling_charge`, `oa_loss`, `cross_subsidy_surcharge`, `additional_surcharge`, `banking_rule`, `green_tariff`, `transmission_reference` |
+| page_start, page_end | PDF indices, inclusive |
+| cue_text, cue_page, cue_kind | The line that justified the classification, where it was found, and how (`locator`, `page_class`, `reviewer`) |
+| utility, period | When exactly one profile utility / one or more `FY` periods appear on the cue page |
+| origin | `detected` by the rules or placed by a `reviewer` |
+| grid_count | Primary table grids inside the span (from the parse stage) |
 
 ## `stage_artefacts`
 Index of immutable per-stage outputs in the `artefacts` bucket (Section 6.2): `stage`,

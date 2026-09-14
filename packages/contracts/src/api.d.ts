@@ -106,6 +106,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/profiles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Profiles */
+        get: operations["get_profiles_profiles_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/readyz": {
         parameters: {
             query?: never;
@@ -219,6 +236,44 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/{source_id}/localisation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Localisation */
+        get: operations["get_localisation_sources__source_id__localisation_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/localisation/decision": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Decide Localisation
+         * @description The mandatory human checkpoint of Section 6.5.  Reviewer or administrator only; the
+         *     rules never confirm their own result.
+         */
+        post: operations["decide_localisation_sources__source_id__localisation_decision_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sources/{source_id}/pages": {
         parameters: {
             query?: never;
@@ -229,6 +284,23 @@ export interface paths {
         /** List Pages */
         get: operations["list_pages_sources__source_id__pages_get"];
         put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Assign Profile */
+        put: operations["assign_profile_sources__source_id__profile_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -738,6 +810,121 @@ export interface components {
             /** Name */
             name: string;
         };
+        /**
+         * LocalisationDecision
+         * @description A reviewer's checkpoint decision.  ``confirm`` keeps the detected regions; ``correct``
+         *     replaces them with ``regions`` (every region then carries origin=reviewer).  Both need a
+         *     rationale and a statement that the pages were looked at.
+         */
+        LocalisationDecision: {
+            /**
+             * Decision
+             * @enum {string}
+             */
+            decision: "confirm" | "correct";
+            /** Expected Version */
+            expected_version?: number | null;
+            /** Pages Viewed */
+            pages_viewed: boolean;
+            /** Rationale */
+            rationale: string;
+            /** Regions */
+            regions?: components["schemas"]["RegionEdit"][] | null;
+        };
+        /** LocalisationFindingOut */
+        LocalisationFindingOut: {
+            /** Code */
+            code: string;
+            /** Message */
+            message: string;
+            /** Pages */
+            pages?: number[];
+            /** Severity */
+            severity: string;
+        };
+        /** LocalisationOut */
+        LocalisationOut: {
+            /** Artefact Key */
+            artefact_key: string | null;
+            /** Decided At */
+            decided_at: string | null;
+            /** Decided By */
+            decided_by: string | null;
+            /** Decision Count */
+            decision_count: number;
+            /** Decision Rationale */
+            decision_rationale: string | null;
+            /** Extraction Allowed */
+            extraction_allowed: boolean;
+            /** Findings */
+            findings: components["schemas"]["LocalisationFindingOut"][];
+            /** Profile Ref */
+            profile_ref: string;
+            /** Regions */
+            regions: components["schemas"]["LocalisationRegionOut"][];
+            /** Rules Version */
+            rules_version: string;
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Status */
+            status: string;
+            /** Version */
+            version: number;
+        };
+        /** LocalisationRegionOut */
+        LocalisationRegionOut: {
+            /** Cue Kind */
+            cue_kind: string;
+            /** Cue Page */
+            cue_page: number;
+            /** Cue Text */
+            cue_text: string;
+            /** Grid Count */
+            grid_count: number;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Note */
+            note: string | null;
+            /** Ordinal */
+            ordinal: number;
+            /** Origin */
+            origin: string;
+            /** Page End */
+            page_end: number;
+            /** Page Start */
+            page_start: number;
+            /** Period */
+            period: string | null;
+            /** Role */
+            role: string;
+            /** Sub Role */
+            sub_role: string | null;
+            /** Utility */
+            utility: string | null;
+        };
+        /** LocalisationSummary */
+        LocalisationSummary: {
+            /** Approved Schedule Pages */
+            approved_schedule_pages: string[];
+            /** Blocking Findings */
+            blocking_findings: number;
+            /** Extraction Allowed */
+            extraction_allowed: boolean;
+            /** Profile Ref */
+            profile_ref: string;
+            /** Region Count */
+            region_count: number;
+            /** Rules Version */
+            rules_version: string;
+            /** Status */
+            status: string;
+        };
         /** Me */
         Me: {
             /** Email */
@@ -761,6 +948,15 @@ export interface components {
                 [key: string]: unknown;
             } | null;
         };
+        /** ProfileAssignRequest */
+        ProfileAssignRequest: {
+            /** Profile Id */
+            profile_id: string;
+            /** Reason */
+            reason: string;
+            /** Version */
+            version?: number | null;
+        };
         /** Readiness */
         Readiness: {
             /** Database */
@@ -778,6 +974,45 @@ export interface components {
             storage: {
                 [key: string]: unknown;
             };
+        };
+        /** ReadingProfileList */
+        ReadingProfileList: {
+            /** Profiles */
+            profiles: components["schemas"]["ReadingProfileOut"][];
+        };
+        /** ReadingProfileOut */
+        ReadingProfileOut: {
+            /** Commission */
+            commission: string;
+            /** Id */
+            id: string;
+            /** Schedule Heading Kind */
+            schedule_heading_kind: string;
+            /** Schedule Representation */
+            schedule_representation: string;
+            /** Seeded From */
+            seeded_from: string;
+            /** Utilities */
+            utilities: string[];
+            /** Version */
+            version: number;
+        };
+        /** RegionEdit */
+        RegionEdit: {
+            /** Note */
+            note?: string | null;
+            /** Page End */
+            page_end: number;
+            /** Page Start */
+            page_start: number;
+            /** Period */
+            period?: string | null;
+            /** Role */
+            role: string;
+            /** Sub Role */
+            sub_role?: string | null;
+            /** Utility */
+            utility?: string | null;
         };
         /** RegistryOut */
         RegistryOut: {
@@ -829,6 +1064,7 @@ export interface components {
             /** Is Tagged */
             is_tagged: boolean | null;
             latest_job: components["schemas"]["JobSummary"] | null;
+            localisation: components["schemas"]["LocalisationSummary"] | null;
             /** Manifest Check */
             manifest_check: {
                 [key: string]: unknown;
@@ -850,6 +1086,7 @@ export interface components {
             producer: string | null;
             /** Provenance Url */
             provenance_url: string | null;
+            reading_profile: components["schemas"]["SourceProfileOut"];
             /** Sha256 */
             sha256: string;
             /** Size Bytes */
@@ -958,6 +1195,17 @@ export interface components {
             /** Width Pt */
             width_pt: number | null;
         };
+        /** SourceProfileOut */
+        SourceProfileOut: {
+            /** Profile Id */
+            profile_id: string | null;
+            /** Rationale */
+            rationale: string | null;
+            /** Source */
+            source: string | null;
+            /** Version */
+            version: number | null;
+        };
         /** SourceRegistration */
         SourceRegistration: {
             /** Deduplicated */
@@ -1051,7 +1299,7 @@ export interface components {
              * Job Type
              * @enum {string}
              */
-            job_type: "inventory_source" | "triage_source" | "parse_source";
+            job_type: "inventory_source" | "triage_source" | "parse_source" | "localise_source";
         };
         /** StatusReport */
         StatusReport: {
@@ -1754,6 +2002,89 @@ export interface operations {
             };
         };
     };
+    get_profiles_profiles_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReadingProfileList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     readyz_readyz_get: {
         parameters: {
             query?: never;
@@ -2352,6 +2683,180 @@ export interface operations {
             };
         };
     };
+    get_localisation_sources__source_id__localisation_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LocalisationOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    decide_localisation_sources__source_id__localisation_decision_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LocalisationDecision"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LocalisationOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     list_pages_sources__source_id__pages_get: {
         parameters: {
             query?: {
@@ -2376,6 +2881,95 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SourcePageList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    assign_profile_sources__source_id__profile_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProfileAssignRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SourceDetail"];
                 };
             };
             /** @description Unauthorized */

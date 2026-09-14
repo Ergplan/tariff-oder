@@ -1,0 +1,51 @@
+{
+  "id": "kerc-escoms",
+  "version": 1,
+  "commission": "KERC",
+  "utilities": ["BESCOM", "MESCOM", "CESC", "HESCOM", "GESCOM"],
+  "seeded_from": "Part E of the build specification (KERC Tariff Order 2025, three tariff years); not yet verified against the real file",
+  "page_labels": {"style": "roman_then_offset", "offset": -16, "footer_pattern": "Page N"},
+  "schedule_representation": "tables",
+  "schedule_heading_kind": "tariff_schedule",
+  "schedule_scope": "shared",
+  "locators": [
+    {"role": "approved_schedule", "scope": "span", "pattern": "ANNEXURE\\s*[-–—]?\\s*9\\b", "note": "E.1: Annexure-9 is the approved schedule; its label also sits in every annexure footer"},
+    {"role": "approved_schedule", "scope": "span", "pattern": "ELECTRICITY TARIFF\\s*[-–—]\\s*20\\d\\d", "note": "E.1: schedule title 'ELECTRICITY TARIFF - 2026' (the title year is not the applicability year)"},
+    {"role": "approved_schedule", "scope": "span", "pattern": "GENERAL TERMS AND CONDITIONS OF TARIFF", "note": "E.1: general terms open the annexure before the category schedules"},
+    {"role": "approved_summary", "scope": "page", "pattern": "Table\\s*6\\.3\\s*[A-C]\\b", "note": "E.1: Tables 6.3A/B/C are the secondary authoritative representation (vector-drawn; OCR text)"},
+    {"role": "existing_tariff", "scope": "page", "pattern": "Table\\s*6\\.2\\s*[A-E]\\b", "also_on_page": ["existing"], "note": "E.1: Tables 6.2A-E carry Existing Charges (#) columns, one table per ESCOM"},
+    {"role": "proposed_tariff", "scope": "page", "pattern": "Table\\s*6\\.2\\s*[A-E]\\b", "also_on_page": ["proposed"], "note": "E.1: the same tables carry Proposed FY columns"},
+    {"role": "illustrative", "scope": "page", "pattern": "bill impact|illustrative", "note": "illustrative tables are not tariffs"},
+    {"role": "loss_trajectory", "scope": "page", "pattern": "distribution loss(es)?.{0,60}(trajectory|approved)|approved.{0,40}distribution loss", "note": "ARR loss approvals"},
+    {"role": "network_charges", "sub_role": "wheeling_charge", "scope": "page", "pattern": "wheeling charge", "note": "E.4: per-ESCOM wheeling charges"},
+    {"role": "network_charges", "sub_role": "oa_loss", "scope": "page", "pattern": "open access.{0,60}loss|loss(es)?.{0,60}open access", "note": "E.4"},
+    {"role": "network_charges", "sub_role": "cross_subsidy_surcharge", "scope": "page", "pattern": "cross[- ]subsidy surcharge", "note": "E.4: per-ESCOM CSS"},
+    {"role": "network_charges", "sub_role": "additional_surcharge", "scope": "page", "pattern": "additional surcharge", "note": "E.1: 6.13.6 not levied until a fresh petition"},
+    {"role": "network_charges", "sub_role": "banking_rule", "scope": "page", "pattern": "\\bbanking\\b", "note": "banking charges as per separate regulations (by_reference)"},
+    {"role": "green_tariff", "scope": "page", "pattern": "green (energy )?tariff", "note": "E.4"}
+  ],
+  "secondary_authoritative": true,
+  "header_vocabulary": ["Category", "Description", "Particulars", "Fixed Charges Billing Unit", "Fixed Charges (In Rupees)", "Energy Charges (Paise/Unit)", "FY2025-26", "FY2026-27", "FY2027-28"],
+  "unit_placement": "header",
+  "currency_convention": "paise_energy_rupee_fixed",
+  "load_units": ["KW", "HP", "KVA"],
+  "conversion_factors": {"kw_per_hp": 0.746, "kva_per_hp": 0.878},
+  "category_code_pattern": "\\b(LT|HT)\\s*[-–—]?\\s*\\d(\\s*\\([a-c]\\))?(\\s*\\([ivx]+\\))?(/HT)?",
+  "effective_rule": {"type": "first_meter_reading_on_or_after", "note": "first meter reading on or after 1 April of each tariff year; until further orders"},
+  "tod_adjustment": "absolute_paise_per_unit",
+  "footnote_markers": ["*", "#"],
+  "inventory_expectations": {
+    "schedule_headings": 22,
+    "codes": ["LT-1", "LT-2", "LT-3(A)", "LT-3(B)", "LT-4(A)", "LT-4(B)", "LT-4(C)", "LT-5", "LT-6(A)", "LT-6(B)", "LT-6(C)/HT", "LT-7", "HT-1", "HT-2(A)", "HT-2(B)", "HT-2(C)(I)", "HT-2(C)(II)", "HT-3", "HT-4", "HT-5", "HT-6", "HT-7"],
+    "absent_codes": [],
+    "general_conditions": null
+  },
+  "known_quirks": [
+    "Tables 6.2 and 6.3 are vector-drawn with no text layer: cues come from OCR text",
+    "Each TARIFF SCHEDULE heading is printed twice (title and table caption)",
+    "Paise (energy) and rupees (fixed) sit in adjacent columns; billing unit per row",
+    "One order binds five ESCOMs and three tariff years",
+    "Printed page N = PDF index - 16 after roman front matter",
+    "'-' in the LT-4(a) fixed-charge column is not_applicable, never zero"
+  ]
+}

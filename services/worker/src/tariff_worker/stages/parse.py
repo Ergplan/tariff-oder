@@ -51,7 +51,7 @@ from tariff_api.readers import (
     read_tables_pymupdf,
     score_agreement,
 )
-from tariff_api.services.sources import transition
+from tariff_api.services.sources import enqueue_stage, transition
 
 from ..runner import JobContext, JobFailure
 
@@ -313,6 +313,7 @@ def parse_source(ctx: JobContext) -> dict:
         )
         if src.state != SourceState.parsed:
             transition(s, src, SourceState.parsed, actor=ctx.worker, reason=tool_version)
+        enqueue_stage(s, settings, src, "localise_source", actor=ctx.worker)
     return {
         "pages_total": total,
         "headings": inv["counts"],

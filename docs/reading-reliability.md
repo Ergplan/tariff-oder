@@ -24,15 +24,15 @@ extraction exists, so most structure- and value-level rows are `n/a-yet` by desi
 
 | # | Failure mode | Status |
 | --- | --- | --- |
-| S1 | Approved schedule only in an annexure after hundreds of ARR pages | n/a-yet |
+| S1 | Approved schedule only in an annexure after hundreds of ARR pages | handled at localisation: profile span locators (`ANNEXURE-I: RATE SCHEDULE`, `ANNEXURE – 9`, `ANNEXURE: TARIFF SCHEDULE`) open the region; contents pages quoting the locator are excluded; the span closes at the next foreign region or image run. Fixtures `uperc_like_order_pdf`, `kerc_like_order_pdf`, `gerc_like_order_pdf`; tests `test_uperc_layout_localises_annexure_derived_table_proposals_and_scans`, `test_kerc_layout_localises_per_escom_tables_summary_and_annexure_9`, `test_gerc_layout_localises_clause_schedule_amendment_diff_and_formula` |
 | S2 | Same approved numbers in two authoritative places must agree | n/a-yet (cross-representation validator, M4) — the heading inventory now records both representations' headings (`TARIFF SCHEDULE …` and `Table 6.3A …`) so localisation can pair them |
 | S3 | One order → several years / several utilities with one schedule | n/a-yet (schedule-version model, M5) |
 | S4 | Per-utility table variants differing only in a title cell | n/a-yet |
 | S5 | Schedule as numbered clauses joined by PLUS / ALTERNATIVELY (GERC) | n/a-yet (clause outline, M3) |
-| S6 | Existing/Modified amendment diff tables with superseded left column | n/a-yet (M3 localisation, M4 validator) |
+| S6 | Existing/Modified amendment diff tables with superseded left column | detected at localisation: a page carrying both `Existing description` and `Modified description` is an `amendment_diff` region, excluded from the approved span (`test_gerc_layout_localises_clause_schedule_amendment_diff_and_formula`). The M4 validator that refuses candidates from the left column is n/a-yet |
 | S7 | Textually identical schedules annexed to separate per-utility orders | n/a-yet (M5 shared-scope review) |
 | S8 | Rates keyed to metering type, consumer class, season, election | n/a-yet |
-| S9 | Same category in existing / proposed / approved / illustrative / ARR tables | n/a-yet — **single most common failure; localisation is a mandatory human checkpoint** |
+| S9 | Same category in existing / proposed / approved / illustrative / ARR tables | handled at localisation (**the single most common failure**): every region carries a role (`approved_schedule`, `approved_summary`, `existing_tariff`, `proposed_tariff`, `illustrative`, `derived_not_tariff`, …) and the textual cue that justified it; several or no `approved_schedule` candidates halt with a blocking finding; the record is only ever `proposed` until a reviewer confirms or corrects it (`test_two_approved_candidates_halt_with_a_blocking_finding`, `test_ambiguous_localisation_halts_until_a_reviewer_corrects`, `test_uperc_layout_is_localised_and_confirmed_by_a_reviewer`). The M4 rule that no candidate may come from a non-approved region is n/a-yet |
 | S10 | Tables continuing across pages with repeated/omitted/altered headers | n/a-yet |
 | S11 | Multi-level headers with units in header/super-header/footnote/title | n/a-yet |
 | S12 | Merged cells spanning categories or voltage levels | n/a-yet |

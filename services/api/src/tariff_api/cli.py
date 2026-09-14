@@ -36,6 +36,17 @@ def cmd_downgrade(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_profiles_schema(args: argparse.Namespace) -> int:
+    from .profiles import schema_json
+
+    out = schema_json()
+    if args.output == "-":
+        sys.stdout.write(out)
+    else:
+        Path(args.output).write_text(out, encoding="utf-8")
+    return 0
+
+
 def cmd_openapi(args: argparse.Namespace) -> int:
     from .main import create_app
 
@@ -198,6 +209,9 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("downgrade", help="revert migrations")
     p.add_argument("revision")
     p.set_defaults(fn=cmd_downgrade)
+    p = sub.add_parser("profiles-schema", help="export the reading-profile JSON schema")
+    p.add_argument("-o", "--output", default="-")
+    p.set_defaults(fn=cmd_profiles_schema)
     p = sub.add_parser("openapi", help="export the OpenAPI document")
     p.add_argument("--output", "-o", default="-")
     p.set_defaults(fn=cmd_openapi)

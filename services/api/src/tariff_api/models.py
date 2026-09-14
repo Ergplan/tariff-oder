@@ -260,6 +260,13 @@ class SourceDocument(Base):
     parsed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     heading_inventory: Mapped[dict | None] = mapped_column(JSONB)
     table_summary: Mapped[dict | None] = mapped_column(JSONB)
+    # Milestone 3a: reading profile binding and localisation (Sections 6.5, 6.11)
+    reading_profile_id: Mapped[str | None] = mapped_column(String(64))
+    reading_profile_version: Mapped[int | None] = mapped_column(Integer)
+    reading_profile_source: Mapped[str | None] = mapped_column(String(16))  # detected | assigned
+    reading_profile_rationale: Mapped[str | None] = mapped_column(Text)
+    localisation_version: Mapped[str | None] = mapped_column(String(16))
+    localised_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     # Golden-corpus reconciliation (tests/golden/manifest.json); never copied, always re-verified
     golden_id: Mapped[str | None] = mapped_column(String(80))
@@ -480,4 +487,61 @@ class IdempotencyRecord(Base):
     request_fingerprint: Mapped[str] = mapped_column(String(64), nullable=False)
     response_status: Mapped[int] = mapped_column(Integer, nullable=False)
     response_body: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class LocalisationRecord(Base):
+    """Where the binding schedule is (Section 6.5), one record per source.  ``status`` is
+    ``proposed`` (rules ran, reviewer must confirm), ``ambiguous`` (rules halted: several or no
+    approved-schedule candidates; reviewer must correct), ``confirmed`` or ``corrected`` (a
+    reviewer decided; extraction may proceed).  The rules' own output is kept in the stage
+    artefact; the regions table holds the current, possibly reviewer-edited, set."""
+
+    __tablename__ = "localisation_records"
+
+    source_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("source_documents.id", ondelete="CASCADE"), primary_key=True
+    )
+    status: Mapped[str] = mapped_column(String(16), nullable=False)
+    rules_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    profile_ref: Mapped[str] = mapped_column(String(80), nullable=False)  # <id>@<version>
+    findings: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    extraction_allowed: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    decided_by: Mapped[str | None] = mapped_column(String(320))
+    decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    decision_rationale: Mapped[str | None] = mapped_column(Text)
+    decision_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    artefact_key: Mapped[str | None] = mapped_column(String(512))
+    version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+
+class LocalisationRegion(Base):
+    """One classified page span with the textual cue that justified it.  ``origin`` says
+    whether the rules or a reviewer placed it."""
+
+    __tablename__ = "localisation_regions"
+    __table_args__ = (
+        UniqueConstraint("source_id", "ordinal", name="uq_localisation_region"),
+        Index("ix_localisation_regions_source_role", "source_id", "role"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    ordinal: Mapped[int] = mapped_column(Integer, nullable=False)
+    role: Mapped[str] = mapped_column(String(32), nullable=False)
+    sub_role: Mapped[str | None] = mapped_column(String(32))
+    page_start: Mapped[int] = mapped_column(Integer, nullable=False)
+    page_end: Mapped[int] = mapped_column(Integer, nullable=False)
+    cue_text: Mapped[str] = mapped_column(String(300), nullable=False)
+    cue_page: Mapped[int] = mapped_column(Integer, nullable=False)
+    cue_kind: Mapped[str] = mapped_column(String(16), nullable=False)  # locator | page_class | reviewer
+    utility: Mapped[str | None] = mapped_column(String(40))
+    period: Mapped[str | None] = mapped_column(String(80))
+    note: Mapped[str | None] = mapped_column(Text)
+    origin: Mapped[str] = mapped_column(String(16), nullable=False, default="detected")  # detected | reviewer
+    grid_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

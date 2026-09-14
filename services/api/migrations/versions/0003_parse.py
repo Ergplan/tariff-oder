@@ -92,6 +92,10 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
+    # The parse stage's artefact index rows carry composite tool versions that do not fit the
+    # 0002 column; they belong to this revision's feature and go with it (object storage keeps
+    # the immutable artefacts themselves).
+    op.execute("DELETE FROM stage_artefacts WHERE stage = 'parse' OR length(tool_version) > 40")
     op.alter_column("stage_artefacts", "tool_version", type_=sa.String(40), existing_type=sa.String(160))
     op.drop_index("ix_document_headings_source", table_name="document_headings")
     op.drop_table("document_headings")

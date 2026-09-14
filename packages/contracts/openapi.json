@@ -997,6 +997,353 @@
         "title": "JurisdictionOut",
         "type": "object"
       },
+      "LocalisationDecision": {
+        "description": "A reviewer's checkpoint decision.  ``confirm`` keeps the detected regions; ``correct``\nreplaces them with ``regions`` (every region then carries origin=reviewer).  Both need a\nrationale and a statement that the pages were looked at.",
+        "properties": {
+          "decision": {
+            "enum": [
+              "confirm",
+              "correct"
+            ],
+            "title": "Decision",
+            "type": "string"
+          },
+          "expected_version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Version"
+          },
+          "pages_viewed": {
+            "title": "Pages Viewed",
+            "type": "boolean"
+          },
+          "rationale": {
+            "maxLength": 2000,
+            "minLength": 5,
+            "title": "Rationale",
+            "type": "string"
+          },
+          "regions": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/RegionEdit"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Regions"
+          }
+        },
+        "required": [
+          "decision",
+          "rationale",
+          "pages_viewed"
+        ],
+        "title": "LocalisationDecision",
+        "type": "object"
+      },
+      "LocalisationFindingOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "pages": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Pages",
+            "type": "array"
+          },
+          "severity": {
+            "title": "Severity",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "severity",
+          "message"
+        ],
+        "title": "LocalisationFindingOut",
+        "type": "object"
+      },
+      "LocalisationOut": {
+        "properties": {
+          "artefact_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Artefact Key"
+          },
+          "decided_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decided At"
+          },
+          "decided_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decided By"
+          },
+          "decision_count": {
+            "title": "Decision Count",
+            "type": "integer"
+          },
+          "decision_rationale": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decision Rationale"
+          },
+          "extraction_allowed": {
+            "title": "Extraction Allowed",
+            "type": "boolean"
+          },
+          "findings": {
+            "items": {
+              "$ref": "#/components/schemas/LocalisationFindingOut"
+            },
+            "title": "Findings",
+            "type": "array"
+          },
+          "profile_ref": {
+            "title": "Profile Ref",
+            "type": "string"
+          },
+          "regions": {
+            "items": {
+              "$ref": "#/components/schemas/LocalisationRegionOut"
+            },
+            "title": "Regions",
+            "type": "array"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "source_id",
+          "status",
+          "rules_version",
+          "profile_ref",
+          "extraction_allowed",
+          "findings",
+          "regions",
+          "decided_by",
+          "decided_at",
+          "decision_rationale",
+          "decision_count",
+          "version",
+          "artefact_key"
+        ],
+        "title": "LocalisationOut",
+        "type": "object"
+      },
+      "LocalisationRegionOut": {
+        "properties": {
+          "cue_kind": {
+            "title": "Cue Kind",
+            "type": "string"
+          },
+          "cue_page": {
+            "title": "Cue Page",
+            "type": "integer"
+          },
+          "cue_text": {
+            "title": "Cue Text",
+            "type": "string"
+          },
+          "grid_count": {
+            "title": "Grid Count",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "ordinal": {
+            "title": "Ordinal",
+            "type": "integer"
+          },
+          "origin": {
+            "title": "Origin",
+            "type": "string"
+          },
+          "page_end": {
+            "title": "Page End",
+            "type": "integer"
+          },
+          "page_start": {
+            "title": "Page Start",
+            "type": "integer"
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "sub_role": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sub Role"
+          },
+          "utility": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility"
+          }
+        },
+        "required": [
+          "id",
+          "ordinal",
+          "role",
+          "sub_role",
+          "page_start",
+          "page_end",
+          "cue_text",
+          "cue_page",
+          "cue_kind",
+          "utility",
+          "period",
+          "note",
+          "origin",
+          "grid_count"
+        ],
+        "title": "LocalisationRegionOut",
+        "type": "object"
+      },
+      "LocalisationSummary": {
+        "properties": {
+          "approved_schedule_pages": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Approved Schedule Pages",
+            "type": "array"
+          },
+          "blocking_findings": {
+            "title": "Blocking Findings",
+            "type": "integer"
+          },
+          "extraction_allowed": {
+            "title": "Extraction Allowed",
+            "type": "boolean"
+          },
+          "profile_ref": {
+            "title": "Profile Ref",
+            "type": "string"
+          },
+          "region_count": {
+            "title": "Region Count",
+            "type": "integer"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "rules_version",
+          "profile_ref",
+          "extraction_allowed",
+          "region_count",
+          "blocking_findings",
+          "approved_schedule_pages"
+        ],
+        "title": "LocalisationSummary",
+        "type": "object"
+      },
       "Me": {
         "properties": {
           "email": {
@@ -1078,6 +1425,39 @@
         "title": "ParseSummary",
         "type": "object"
       },
+      "ProfileAssignRequest": {
+        "properties": {
+          "profile_id": {
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "title": "Profile Id",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 5,
+            "title": "Reason",
+            "type": "string"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          }
+        },
+        "required": [
+          "profile_id",
+          "reason"
+        ],
+        "title": "ProfileAssignRequest",
+        "type": "object"
+      },
       "Readiness": {
         "properties": {
           "database": {
@@ -1116,6 +1496,140 @@
           "storage"
         ],
         "title": "Readiness",
+        "type": "object"
+      },
+      "ReadingProfileList": {
+        "properties": {
+          "profiles": {
+            "items": {
+              "$ref": "#/components/schemas/ReadingProfileOut"
+            },
+            "title": "Profiles",
+            "type": "array"
+          }
+        },
+        "required": [
+          "profiles"
+        ],
+        "title": "ReadingProfileList",
+        "type": "object"
+      },
+      "ReadingProfileOut": {
+        "properties": {
+          "commission": {
+            "title": "Commission",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "schedule_heading_kind": {
+            "title": "Schedule Heading Kind",
+            "type": "string"
+          },
+          "schedule_representation": {
+            "title": "Schedule Representation",
+            "type": "string"
+          },
+          "seeded_from": {
+            "title": "Seeded From",
+            "type": "string"
+          },
+          "utilities": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Utilities",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "commission",
+          "utilities",
+          "schedule_representation",
+          "schedule_heading_kind",
+          "seeded_from"
+        ],
+        "title": "ReadingProfileOut",
+        "type": "object"
+      },
+      "RegionEdit": {
+        "properties": {
+          "note": {
+            "anyOf": [
+              {
+                "maxLength": 500,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "page_end": {
+            "minimum": 1.0,
+            "title": "Page End",
+            "type": "integer"
+          },
+          "page_start": {
+            "minimum": 1.0,
+            "title": "Page Start",
+            "type": "integer"
+          },
+          "period": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "sub_role": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sub Role"
+          },
+          "utility": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility"
+          }
+        },
+        "required": [
+          "role",
+          "page_start",
+          "page_end"
+        ],
+        "title": "RegionEdit",
         "type": "object"
       },
       "RegistryOut": {
@@ -1294,6 +1808,16 @@
               }
             ]
           },
+          "localisation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LocalisationSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "manifest_check": {
             "anyOf": [
               {
@@ -1389,6 +1913,9 @@
               }
             ],
             "title": "Provenance Url"
+          },
+          "reading_profile": {
+            "$ref": "#/components/schemas/SourceProfileOut"
           },
           "sha256": {
             "title": "Sha256",
@@ -1496,6 +2023,8 @@
           "text_layer_summary",
           "triage",
           "parse",
+          "reading_profile",
+          "localisation",
           "artefacts"
         ],
         "title": "SourceDetail",
@@ -1823,6 +2352,62 @@
         "title": "SourcePageOut",
         "type": "object"
       },
+      "SourceProfileOut": {
+        "properties": {
+          "profile_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile Id"
+          },
+          "rationale": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rationale"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          }
+        },
+        "required": [
+          "profile_id",
+          "version",
+          "source",
+          "rationale"
+        ],
+        "title": "SourceProfileOut",
+        "type": "object"
+      },
       "SourceRegistration": {
         "properties": {
           "deduplicated": {
@@ -2070,7 +2655,8 @@
             "enum": [
               "inventory_source",
               "triage_source",
-              "parse_source"
+              "parse_source",
+              "localise_source"
             ],
             "title": "Job Type",
             "type": "string"
@@ -3285,6 +3871,97 @@
         ]
       }
     },
+    "/profiles": {
+      "get": {
+        "operationId": "get_profiles_profiles_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadingProfileList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Get Profiles",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
     "/readyz": {
       "get": {
         "operationId": "readyz_readyz_get",
@@ -4288,6 +4965,223 @@
         ]
       }
     },
+    "/sources/{source_id}/localisation": {
+      "get": {
+        "operationId": "get_localisation_sources__source_id__localisation_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalisationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Get Localisation",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/localisation/decision": {
+      "post": {
+        "description": "The mandatory human checkpoint of Section 6.5.  Reviewer or administrator only; the\nrules never confirm their own result.",
+        "operationId": "decide_localisation_sources__source_id__localisation_decision_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalisationDecision"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalisationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Decide Localisation",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
     "/sources/{source_id}/pages": {
       "get": {
         "operationId": "list_pages_sources__source_id__pages_get",
@@ -4457,6 +5351,119 @@
           }
         },
         "summary": "List Pages",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/profile": {
+      "put": {
+        "operationId": "assign_profile_sources__source_id__profile_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileAssignRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Assign Profile",
         "tags": [
           "sources"
         ]

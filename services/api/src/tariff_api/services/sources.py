@@ -232,6 +232,7 @@ STAGE_JOBS = {
     "inventory_source": SourceState.uploaded,
     "triage_source": SourceState.inventoried,
     "parse_source": SourceState.triaged,
+    "localise_source": SourceState.parsed,
 }
 
 
