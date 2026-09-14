@@ -235,6 +235,10 @@ if gcloud iam service-accounts describe "$SA" --project "$PROJECT" >/dev/null 2>
   if grep -q "resourcemanager.projectIamAdmin\|roles/owner" <<<"$ROLES"; then
     info "can grant IAM — required for Terraform to create the per-service accounts"
   fi
+  if ! grep -q "roles/servicenetworking.networksAdmin\|roles/owner" <<<"$ROLES"; then
+    missing "roles/servicenetworking.networksAdmin — Editor does not include servicenetworking.services.addPeering, which the private-services connection for Cloud SQL needs (seen as a 403 on google_service_networking_connection.psa)"
+    fixcmd "gcloud projects add-iam-policy-binding $PROJECT --member=serviceAccount:$SA --role=roles/servicenetworking.networksAdmin"
+  fi
 else
   missing "service account $SA not found"
 fi

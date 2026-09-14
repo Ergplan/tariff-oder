@@ -12,7 +12,7 @@ adapters listed in `docs/architecture.md`.
 | Region for Cloud Run, Cloud SQL, Artifact Registry | `asia-south1` (pinned by Terraform, independent of where the VM sits) |
 | Source PDFs | `gs://tarifforderstudio_sources` — adopted by Terraform, **multi-region `asia`** (accepted deviation, ADR-0008) |
 | Terraform state | `gs://tarifforderstudio_tfstate`, prefix `tariff/dev` |
-| Build identity | `agent-builder@tariff-order-parsing.iam.gserviceaccount.com` (Editor + admin roles, this project only) |
+| Build identity | `agent-builder@tariff-order-parsing.iam.gserviceaccount.com` (Editor + admin roles, this project only, **plus `roles/servicenetworking.networksAdmin`**: Editor lacks `servicenetworking.services.addPeering`, which the Cloud SQL private-services peering needs; whichever identity runs Terraform must hold it) |
 | Build VM | `tariff-order`, e2-standard-4, 100 GB, Ubuntu 25.10, Docker, Terraform, Node 22, Claude Code |
 | Public ingress | **none** — no domain, so no load balancer and no IAP (ADR-0008) |
 | Budget | set `billing_account_id` in `envs/dev.tfvars` to have Terraform create 50/80/100% alerts |
@@ -154,6 +154,19 @@ the artefacts/exports/backups buckets, Secret Manager entries, Artifact Registry
 accounts with least-privilege bindings, the Cloud Run API and web services, the worker and
 migrate jobs, Cloud Scheduler, logging metrics and alerts.  It creates **no** load balancer,
 **no** IAP and **no** public endpoint while `domain = ""`.
+
+If the apply stops on `google_service_networking_connection.psa` with
+`Permission denied to add peering for service 'servicenetworking.googleapis.com'`, the
+identity running Terraform (check `gcloud auth list`; on the VM without a user login it is the
+attached service account) lacks `roles/servicenetworking.networksAdmin`.  A project owner
+grants it once, then the apply is simply re-run:
+
+```bash
+gcloud projects add-iam-policy-binding tariff-order-parsing \
+  --member=serviceAccount:agent-builder@tariff-order-parsing.iam.gserviceaccount.com \
+  --role=roles/servicenetworking.networksAdmin
+# or --member=user:<the account shown active by `gcloud auth list`>
+```
 
 `make tf-apply` must finish with `Apply complete` before anything else: Cloud SQL alone takes
 around ten minutes, and an apply that stops on an error leaves the resources that had not
