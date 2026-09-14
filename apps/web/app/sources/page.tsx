@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { SourceList } from "@tariff/contracts";
+import type { SourceList, SourceState } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, StateBadge, UnknownBadge } from "../components";
 import { UploadForm } from "./upload-form";
@@ -12,10 +12,9 @@ export default async function SourcesPage() {
     <>
       <h1>Source inbox</h1>
       <p className="muted">
-        Upload a tariff order PDF. Identical bytes are deduplicated by SHA-256. The worker inventories every page
-        (text layer, labels, rotation); no number is extracted at this milestone.
+        Every registered tariff order and where it stands. Open a source to see what it needs next; the source page leads
+        with the one action that is yours.
       </p>
-      <UploadForm />
       <h2>Registered sources</h2>
       {list.error ? <ErrorBanner error={list.error} /> : null}
       {list.data ? (
@@ -29,8 +28,7 @@ export default async function SourcesPage() {
                 <th>Dataset</th>
                 <th>State</th>
                 <th>Pages</th>
-                <th>Text layer</th>
-                <th>SHA-256</th>
+                <th>Next</th>
                 <th>Uploaded</th>
               </tr>
             </thead>
@@ -52,16 +50,7 @@ export default async function SourcesPage() {
                     <StateBadge state={s.state} />
                   </td>
                   <td>{s.page_count ?? <UnknownBadge label="pages" />}</td>
-                  <td>
-                    {s.pages_with_text == null ? (
-                      <UnknownBadge label="text layer" />
-                    ) : (
-                      <>
-                        {s.pages_with_text} with / {s.pages_without_text} without
-                      </>
-                    )}
-                  </td>
-                  <td className="mono">{s.sha256.slice(0, 16)}…</td>
+                  <td>{nextStep(s.state, s.id)}</td>
                   <td>
                     <span className="muted">{s.uploaded_by}</span>
                     <br />
@@ -73,6 +62,43 @@ export default async function SourcesPage() {
           </table>
         )
       ) : null}
+      <h2>Upload</h2>
+      <p className="muted">
+        Upload a tariff order PDF. Identical bytes are deduplicated by SHA-256; the pipeline starts at inventory.
+      </p>
+      <UploadForm />
     </>
   );
+}
+
+/** The reader's next step per state — the same rule the source page uses for its banner. */
+function nextStep(state: SourceState, id: string) {
+  switch (state) {
+    case "localised":
+      return (
+        <Link href={`/sources/${id}#checkpoint`}>
+          <span className="badge" data-tone="warn">reviewer: confirm localisation</span>
+        </Link>
+      );
+    case "awaiting_review":
+      return (
+        <Link href={`/sources/${id}/review`}>
+          <span className="badge" data-tone="warn">reviewer: decide candidates</span>
+        </Link>
+      );
+    case "published":
+      return (
+        <Link href={`/explorer/${id}`}>
+          <span className="badge" data-tone="ok">published: explore</span>
+        </Link>
+      );
+    case "failed":
+    case "cancelled":
+    case "rejected":
+    case "superseded":
+    case "needs_reprocessing":
+      return <span className="badge" data-tone="bad">{state.replace(/_/g, " ")}</span>;
+    default:
+      return <span className="muted">worker: next stage</span>;
+  }
 }

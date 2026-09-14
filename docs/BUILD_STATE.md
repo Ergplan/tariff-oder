@@ -70,7 +70,11 @@ open-access view.
   been corrected to 0 — so the source detail and `sources --json` now re-check the
   persisted inventory facts against the current manifest on every read
   (`golden.current_check`, unit-tested); the stored record stays as the registration-time
-  history.  **Still open in the M1 gate:** Cloud Logging
+  history.  (7) The source page was a flat dump (423 inventory rows, 299 table captions,
+  every page list spelled out); it now leads with the one next action (yours or the
+  worker's), keeps every section collapsible with a one-line summary, renders page lists
+  as ranges, shows only flagged pages by default, and derives page roles from the
+  localisation regions; the inbox shows the next step per source.  **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**
