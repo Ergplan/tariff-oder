@@ -116,6 +116,8 @@ deploy-dev: ## Build, push, migrate and deploy to the dev project (same images a
 	gcloud run jobs update tariff-worker --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
 	gcloud run jobs update tariff-admin --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/python:$(GIT_SHA) --quiet
 	gcloud run services update tariff-web --project $(GCP_PROJECT) --region $(REGION) --image $(AR_REPO)/web:$(GIT_SHA) --quiet
+	@if grep -Eq '^web_iap *= *true' $(TF_DIR)/envs/$(ENV).tfvars; then \
+	  gcloud beta run services update tariff-web --project $(GCP_PROJECT) --region $(REGION) --iap --quiet; fi
 	@echo "Deployed $(GIT_SHA) to $(GCP_PROJECT). Run: make smoke-dev"
 
 smoke-dev: ## Post-deploy checks against the dev project (readiness + authenticated status)
