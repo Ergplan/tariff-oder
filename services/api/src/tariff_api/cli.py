@@ -254,14 +254,13 @@ def cmd_sources(args: argparse.Namespace) -> int:
                     "pages_with_text": src.pages_with_text,
                     "pages_without_text": src.pages_without_text,
                     "pages_without_text_layer": (
-                        [
-                            p.page_index
-                            for p in s.execute(
+                        list(
+                            s.execute(
                                 select(SourcePage.page_index)
                                 .where(SourcePage.source_id == src.id, SourcePage.has_text_layer.is_(False))
                                 .order_by(SourcePage.page_index)
                             ).scalars()
-                        ]
+                        )
                         if args.json
                         else None
                     ),
