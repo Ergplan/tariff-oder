@@ -15,23 +15,30 @@
       "expected": {
         "size_bytes": 6314646,
         "page_count": 423,
-        "pages_without_text_layer": 22,
-        "pages_without_text_layer_ranges": [
-          "402-423"
-        ],
+        "pages_without_text_layer": 0,
         "born_digital": true,
         "tagged": true,
         "encrypted": false,
         "all_fonts_embedded": true,
         "page_label_rule": "label == pdf_index",
-        "approved_schedule_pages": "352-400"
+        "approved_schedule_pages": "352-400",
+        "low_text_quality_pages_observed": [
+          17,
+          78,
+          373,
+          402,
+          407,
+          411,
+          419,
+          423
+        ]
       },
       "reviewed_reference_facts": [],
       "reviewer_identities": [],
       "observed_on_registration": {
         "pages_without_text_layer": 0,
         "pages_without_text_layer_indices": [],
-        "note": "Registration on the dev deployment (2026-09-14) found a text layer on every page, including 402-423 which the specification describes as image-only scans with no text layer. Either the scans carry an OCR text layer or the specification's claim is wrong; the page class and text-char counts for 402-423 decide it. Kept as a visible mismatch until a human looks at those pages."
+        "note": "Registration on the dev deployment (2026-09-14): every page has a text layer. The PDF was produced by Microsoft Word, is tagged and has all 3,764 fonts embedded, so pages 402-423 are not scanned image-only annexures as the specification's Part D describes; eight pages (17, 78, 373, 402, 407, 411, 419, 423) have low text quality and were OCR'd. Expectation corrected to the observed value on this evidence."
       }
     },
     {

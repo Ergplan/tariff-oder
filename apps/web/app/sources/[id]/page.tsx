@@ -208,7 +208,7 @@ export default async function SourceDetailPage({ params }: { params: Promise<{ i
                 <>
                   <span className="badge" data-tone="warn">{s.triage.ocr_recommended_pages.length} pages</span>{" "}
                   <span className="mono">{s.triage.ocr_recommended_pages.join(", ")}</span>
-                  <span className="muted"> — OCR execution is the next increment; these pages are listed, not read</span>
+                  <span className="muted"> — OCR ran on these pages in the parse stage; their words carry per-word confidence</span>
                 </>
               ) : (
                 "none"
