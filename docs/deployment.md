@@ -218,7 +218,7 @@ Useful argument sets:
 | Seed jurisdictions, commissions and utilities (identities only) | `seed` |
 | List what is in the source bucket and what is registered | `inbox` |
 | Register one order | `ingest,inbox/<file>.pdf,--actor,venture@aayuda.energy` |
-| Create the first administrator | `users,add,--email,venture@aayuda.energy,--role,administrator,--actor,venture@aayuda.energy` |
+| Create the first administrator | `users,add,--email,venture@aayuda.energy,--role,administrator,--actor,bootstrap` |
 | List users | `users,list` |
 | List registered sources with pipeline state, page count, manifest check and latest job | `sources` (add `,--json` for the full record) |
 
