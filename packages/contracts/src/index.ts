@@ -29,6 +29,7 @@ export type DatasetKind = Schemas["DatasetKind"];
 export type UserRole = Schemas["UserRole"];
 export type LocalisationOut = Schemas["LocalisationOut"];
 export type LocalisationRegionOut = Schemas["LocalisationRegionOut"];
+export type RegionAnnotation = Schemas["RegionAnnotation"];
 export type LocalisationDecision = Schemas["LocalisationDecision"];
 export type ReadingProfileOut = Schemas["ReadingProfileOut"];
 export type ReadingProfileList = Schemas["ReadingProfileList"];

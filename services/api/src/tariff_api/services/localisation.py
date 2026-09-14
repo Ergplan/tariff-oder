@@ -16,7 +16,7 @@ from ..errors import AppError
 from ..localisation import LOCALISATION_VERSION
 from ..models import AuditEvent, LocalisationRecord, LocalisationRegion, SourceDocument, SourceState
 from ..profiles import ReadingProfile, latest_version, load_profile
-from ..schemas import LocalisationDecision, RegionEdit
+from ..schemas import LocalisationDecision, RegionAnnotation, RegionEdit
 from ..telemetry import request_id_var
 from .sources import enqueue_stage, request_stage_rerun
 
@@ -208,6 +208,60 @@ def decide(
     return rec, regions
 
 
+def annotate_region(
+    session: Session,
+    settings: Settings,
+    source: SourceDocument,
+    region_id: uuid.UUID,
+    body: RegionAnnotation,
+    *,
+    actor: str,
+) -> tuple[LocalisationRecord, list[LocalisationRegion]]:
+    """Reviewer comment on one region, optionally excluding it from the stages.  Allowed
+    while the source is localised or gridded (an exclusion after gridding re-runs the
+    structure stage, as a correction does); once candidates exist the region set is frozen
+    and the reviewer works in the review workspace instead.  Versioned and audited like a
+    decision; it never changes whether extraction is allowed."""
+    rec, regions = get_record(session, source.id)
+    if body.expected_version is not None and body.expected_version != rec.version:
+        raise AppError(
+            "conflict_stale_version",
+            f"record is at version {rec.version}, you annotated version {body.expected_version}",
+        )
+    if source.state not in (SourceState.localised, SourceState.gridded):
+        raise AppError(
+            "invalid_transition",
+            f"regions cannot be annotated while the source is {source.state.value}; "
+            "candidates already exist — decide them in the review workspace or request a reprocess",
+        )
+    region = next((r for r in regions if r.id == region_id), None)
+    if region is None:
+        raise AppError("not_found", "no such region on this source")
+    before = {**_region_dict(region), "version": rec.version}
+    was_excluded = region.excluded
+    region.reviewer_note = body.note
+    region.excluded = body.excluded
+    region.annotated_by = actor
+    region.annotated_at = datetime.now(UTC)
+    rec.version += 1
+    session.flush()
+    if source.state == SourceState.gridded and was_excluded != body.excluded and rec.extraction_allowed:
+        request_stage_rerun(session, settings, source, "grid_source", actor=actor)
+    session.add(
+        AuditEvent(
+            actor=actor,
+            action="localisation.annotate",
+            entity_type="localisation_region",
+            entity_id=str(region.id),
+            before=before,
+            after={**_region_dict(region), "version": rec.version},
+            reason=body.note,
+            request_id=request_id_var.get(),
+        )
+    )
+    return rec, regions
+
+
 def _region_dict(r: LocalisationRegion) -> dict:
     return {
         "role": r.role,
@@ -218,4 +272,6 @@ def _region_dict(r: LocalisationRegion) -> dict:
         "origin": r.origin,
         "utility": r.utility,
         "period": r.period,
+        "reviewer_note": r.reviewer_note,
+        "excluded": r.excluded,
     }

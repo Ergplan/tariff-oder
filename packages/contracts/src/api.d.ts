@@ -674,6 +674,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/{source_id}/localisation/regions/{region_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Annotate Region
+         * @description A reviewer's comment on one region, optionally excluding it from every stage.  Reviewer
+         *     or administrator only; versioned against the localisation record and audited.
+         */
+        put: operations["annotate_region_sources__source_id__localisation_regions__region_id__put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sources/{source_id}/pages": {
         parameters: {
             query?: never;
@@ -2040,12 +2061,21 @@ export interface components {
         };
         /** LocalisationRegionOut */
         LocalisationRegionOut: {
+            /** Annotated At */
+            annotated_at?: string | null;
+            /** Annotated By */
+            annotated_by?: string | null;
             /** Cue Kind */
             cue_kind: string;
             /** Cue Page */
             cue_page: number;
             /** Cue Text */
             cue_text: string;
+            /**
+             * Excluded
+             * @default false
+             */
+            excluded: boolean;
             /** Grid Count */
             grid_count: number;
             /**
@@ -2065,6 +2095,8 @@ export interface components {
             page_start: number;
             /** Period */
             period: string | null;
+            /** Reviewer Note */
+            reviewer_note?: string | null;
             /** Role */
             role: string;
             /** Sub Role */
@@ -2392,6 +2424,24 @@ export interface components {
             utilities: string[];
             /** Version */
             version: number;
+        };
+        /**
+         * RegionAnnotation
+         * @description A reviewer's comment on one detected region, and whether the stages must skip it.
+         *     Excluding a region is how a reviewer says "this is not the thing we want" — e.g. a
+         *     banking passage about the utility's own inter-state banking, not the open-access
+         *     banking rule — without redrawing every region.  The note is mandatory when excluding.
+         */
+        RegionAnnotation: {
+            /**
+             * Excluded
+             * @default false
+             */
+            excluded: boolean;
+            /** Expected Version */
+            expected_version?: number | null;
+            /** Note */
+            note: string;
         };
         /** RegionEdit */
         RegionEdit: {
@@ -3117,6 +3167,8 @@ export interface components {
             regions: {
                 [key: string]: unknown;
             }[];
+            /** Regions Excluded */
+            regions_excluded?: number[];
             /** Regions Read */
             regions_read: number;
             /** Regions Skipped */
@@ -6458,6 +6510,96 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["LocalisationDecision"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LocalisationOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    annotate_region_sources__source_id__localisation_regions__region_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RegionAnnotation"];
             };
         };
         responses: {

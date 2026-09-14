@@ -74,7 +74,16 @@ open-access view.
   every page list spelled out); it now leads with the one next action (yours or the
   worker's), keeps every section collapsible with a one-line summary, renders page lists
   as ranges, shows only flagged pages by default, and derives page roles from the
-  localisation regions; the inbox shows the next step per source.  **Still open in the M1 gate:** Cloud Logging
+  localisation regions; the inbox shows the next step per source.  (8) Reviewer
+  comments per region (`localisation_regions.reviewer_note`, `excluded`), asked for after
+  the NPCL banking regions turned out to describe the utility's own inter-state banking of
+  power rather than the open-access banking rule: a reviewer annotates any region from the
+  checkpoint table, optionally excluding it; the structure and extraction stages skip an
+  excluded span (`regions_excluded` in the structure summary, `excluded_regions` in the
+  extraction summary) and the note follows the family into the review checklist so the
+  disposition is taken with the reason in view.  Reviewer role, `expected_version`,
+  audited, frozen once candidates exist, carried across a localise re-run for an
+  unchanged span; `test_network_stage.py`.  **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**

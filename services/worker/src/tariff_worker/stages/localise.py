@@ -226,6 +226,14 @@ def _write_record(s, src: SourceDocument, *, status, profile_ref, findings, regi
     """Replace the current record and regions with the rules' output.  A reviewer's earlier
     decision does not survive a re-run: the pages may have been re-read with new rules or a
     new profile, so the checkpoint is opened again (visible in decision_count and the audit)."""
+    # Reviewer annotations survive a re-run when the rules find the same span again (same
+    # role, sub-role and pages); a span the new rules no longer produce loses its note, and
+    # the audit trail still has it.
+    carried = {
+        (r.role, r.sub_role, r.page_start, r.page_end): (r.reviewer_note, r.excluded, r.annotated_by, r.annotated_at)
+        for r in s.execute(select(LocalisationRegion).where(LocalisationRegion.source_id == src.id)).scalars()
+        if r.reviewer_note
+    }
     s.execute(delete(LocalisationRegion).where(LocalisationRegion.source_id == src.id))
     rec = s.get(LocalisationRecord, src.id)
     if rec is None:
@@ -251,6 +259,7 @@ def _write_record(s, src: SourceDocument, *, status, profile_ref, findings, regi
     rec.version = (rec.version or 0) + 1  # a new row has no Python-side default until flush
     s.flush()
     for i, r in enumerate(regions, start=1):
+        ann = carried.get((r["role"], r.get("sub_role"), r["page_start"], r["page_end"]))
         s.add(
             LocalisationRegion(
                 source_id=src.id,
@@ -267,5 +276,9 @@ def _write_record(s, src: SourceDocument, *, status, profile_ref, findings, regi
                 note=r.get("note"),
                 origin=r.get("origin", "detected"),
                 grid_count=r.get("grid_count", 0),
+                reviewer_note=ann[0] if ann else None,
+                excluded=ann[1] if ann else False,
+                annotated_by=ann[2] if ann else None,
+                annotated_at=ann[3] if ann else None,
             )
         )

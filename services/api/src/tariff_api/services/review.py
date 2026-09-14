@@ -31,6 +31,7 @@ from ..models import (
     DocumentHeading,
     EvidenceView,
     FamilyDisposition,
+    LocalisationRegion,
     ReviewDecision,
     SourceDocument,
     SourceState,
@@ -226,6 +227,18 @@ def checklist(session: Session, source: SourceDocument) -> dict[str, Any]:
         d.family: d.disposition
         for d in session.execute(select(FamilyDisposition).where(FamilyDisposition.source_id == source.id)).scalars()
     }
+    # regions a reviewer excluded at the localisation checkpoint, by the family they covered:
+    # the note explains why the family has no candidate and informs the disposition
+    excluded_notes: dict[str, list[str]] = {}
+    for reg in session.execute(
+        select(LocalisationRegion).where(
+            LocalisationRegion.source_id == source.id, LocalisationRegion.excluded.is_(True)
+        )
+    ).scalars():
+        if reg.sub_role:
+            excluded_notes.setdefault(reg.sub_role, []).append(
+                f"pages {reg.page_start}–{reg.page_end} excluded by {reg.annotated_by}: {reg.reviewer_note}"
+            )
     items: list[dict[str, Any]] = []
     groups: dict[tuple[str, str], list[CandidateRecord]] = {}
     for r in rows:
@@ -276,7 +289,10 @@ def checklist(session: Session, source: SourceDocument) -> dict[str, Any]:
                 "candidates": len(rs),
                 "status": _item_status(statuses) if rs else (f"disposition:{disp}" if disp else "not_started"),
                 "counts": _count(statuses),
-                "note": None if rs or disp else "no candidate and no reviewed disposition",
+                "note": "; ".join(
+                    ([] if rs or disp else ["no candidate and no reviewed disposition"]) + excluded_notes.get(fam, [])
+                )
+                or None,
             }
         )
     conditions = session.execute(

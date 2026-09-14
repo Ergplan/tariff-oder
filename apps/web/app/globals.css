@@ -91,3 +91,8 @@ tr.group-start td { border-top: 2px solid var(--border); }
 .table-wrap { overflow-x: auto; }
 ul.findings { margin: 0.5rem 0; padding-left: 1.2rem; }
 @media (max-width: 700px) { details.section > summary { flex-direction: column; gap: 0.2rem; } }
+tr[data-excluded] td:not(:last-child) { opacity: 0.55; text-decoration: line-through; }
+.note { max-width: 24rem; }
+.note-form { display: grid; gap: 0.35rem; min-width: 18rem; }
+.note-form textarea { font: inherit; font-size: 0.9rem; padding: 0.3rem; }
+button.link { background: none; color: var(--accent); padding: 0; text-decoration: underline; font-size: 0.85rem; }

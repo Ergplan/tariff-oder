@@ -2949,6 +2949,29 @@
       },
       "LocalisationRegionOut": {
         "properties": {
+          "annotated_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annotated At"
+          },
+          "annotated_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annotated By"
+          },
           "cue_kind": {
             "title": "Cue Kind",
             "type": "string"
@@ -2960,6 +2983,11 @@
           "cue_text": {
             "title": "Cue Text",
             "type": "string"
+          },
+          "excluded": {
+            "default": false,
+            "title": "Excluded",
+            "type": "boolean"
           },
           "grid_count": {
             "title": "Grid Count",
@@ -3007,6 +3035,17 @@
               }
             ],
             "title": "Period"
+          },
+          "reviewer_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewer Note"
           },
           "role": {
             "title": "Role",
@@ -4003,6 +4042,38 @@
           "seeded_from"
         ],
         "title": "ReadingProfileOut",
+        "type": "object"
+      },
+      "RegionAnnotation": {
+        "description": "A reviewer's comment on one detected region, and whether the stages must skip it.\nExcluding a region is how a reviewer says \"this is not the thing we want\" \u2014 e.g. a\nbanking passage about the utility's own inter-state banking, not the open-access\nbanking rule \u2014 without redrawing every region.  The note is mandatory when excluding.",
+        "properties": {
+          "excluded": {
+            "default": false,
+            "title": "Excluded",
+            "type": "boolean"
+          },
+          "expected_version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Version"
+          },
+          "note": {
+            "maxLength": 1000,
+            "minLength": 5,
+            "title": "Note",
+            "type": "string"
+          }
+        },
+        "required": [
+          "note"
+        ],
+        "title": "RegionAnnotation",
         "type": "object"
       },
       "RegionEdit": {
@@ -6285,6 +6356,13 @@
               "type": "object"
             },
             "title": "Regions",
+            "type": "array"
+          },
+          "regions_excluded": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Regions Excluded",
             "type": "array"
           },
           "regions_read": {
@@ -11426,6 +11504,130 @@
           }
         },
         "summary": "Decide Localisation",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/localisation/regions/{region_id}": {
+      "put": {
+        "description": "A reviewer's comment on one region, optionally excluding it from every stage.  Reviewer\nor administrator only; versioned against the localisation record and audited.",
+        "operationId": "annotate_region_sources__source_id__localisation_regions__region_id__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "region_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Region Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegionAnnotation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalisationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Annotate Region",
         "tags": [
           "sources"
         ]

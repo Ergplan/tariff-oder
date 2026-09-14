@@ -134,7 +134,20 @@ def extract_source(ctx: JobContext) -> dict:
             return {"skipped": "already_extracted"}
         profile = load_profile(src.reading_profile_id, src.reading_profile_version)
         regions = [
-            _row(r, ("ordinal", "role", "sub_role", "page_start", "page_end", "utility", "period"))
+            _row(
+                r,
+                (
+                    "ordinal",
+                    "role",
+                    "sub_role",
+                    "page_start",
+                    "page_end",
+                    "utility",
+                    "period",
+                    "excluded",
+                    "reviewer_note",
+                ),
+            )
             for r in s.execute(
                 select(LocalisationRegion)
                 .where(LocalisationRegion.source_id == source_id)
@@ -222,7 +235,12 @@ def extract_source(ctx: JobContext) -> dict:
             out.append(pix.tobytes("png"))
         return out
 
+    excluded_regions = [reg for reg in regions if reg["excluded"]]
     for reg in regions:
+        if reg["excluded"]:
+            # the reviewer said this span is not the thing we want (note on the region);
+            # nothing is read from it, and the skip is part of the run record
+            continue
         pages = list(range(reg["page_start"], reg["page_end"] + 1))
         page_texts = {pi: doc[pi - 1].get_text("text", sort=True) for pi in pages}
         inp = StructureInput(
@@ -371,6 +389,16 @@ def extract_source(ctx: JobContext) -> dict:
         "risk_tags": _count_list(candidate_rows, "risk_tags"),
         "image_channel": settings.image_channel_enabled,
         "new_profile": is_first_for_utility,
+        "excluded_regions": [
+            {
+                "ordinal": r["ordinal"],
+                "role": r["role"],
+                "sub_role": r["sub_role"],
+                "pages": [r["page_start"], r["page_end"]],
+                "note": r["reviewer_note"],
+            }
+            for r in excluded_regions
+        ],
     }
     artefacts.append((f"{sha}/{STAGE}/{extraction_version}/summary.json", {"summary": summary, "runs": runs}))
 

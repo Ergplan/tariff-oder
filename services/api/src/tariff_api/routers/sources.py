@@ -47,6 +47,7 @@ from ..schemas import (
     ParseSummary,
     ProfileAssignRequest,
     PublicationSummary,
+    RegionAnnotation,
     SourceDetail,
     SourceList,
     SourcePageList,
@@ -410,6 +411,22 @@ def get_localisation(source_id: uuid.UUID) -> LocalisationOut:
     with session_scope() as s:
         svc.get_source(s, source_id)
         rec, regions = loc.get_record(s, source_id)
+        return _localisation_out(rec, regions)
+
+
+@router.put("/{source_id}/localisation/regions/{region_id}", response_model=LocalisationOut)
+def annotate_region(
+    source_id: uuid.UUID,
+    region_id: uuid.UUID,
+    body: RegionAnnotation,
+    request: Request,
+    principal: Principal = Depends(require_reviewer),
+) -> LocalisationOut:
+    """A reviewer's comment on one region, optionally excluding it from every stage.  Reviewer
+    or administrator only; versioned against the localisation record and audited."""
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        rec, regions = loc.annotate_region(s, request.app.state.settings, src, region_id, body, actor=principal.email)
         return _localisation_out(rec, regions)
 
 

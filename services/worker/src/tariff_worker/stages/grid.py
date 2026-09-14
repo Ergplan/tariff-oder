@@ -103,7 +103,14 @@ def grid_source(ctx: JobContext) -> dict:
             return {"skipped": "already_gridded"}
         profile = load_profile(src.reading_profile_id, src.reading_profile_version)
         regions = [
-            {"role": r.role, "page_start": r.page_start, "page_end": r.page_end, "ordinal": r.ordinal}
+            {
+                "role": r.role,
+                "page_start": r.page_start,
+                "page_end": r.page_end,
+                "ordinal": r.ordinal,
+                "excluded": r.excluded,
+                "reviewer_note": r.reviewer_note,
+            }
             for r in s.execute(
                 select(LocalisationRegion)
                 .where(LocalisationRegion.source_id == source_id)
@@ -139,6 +146,11 @@ def grid_source(ctx: JobContext) -> dict:
     artefacts: list[tuple[str, dict[str, Any]]] = []
     seen_grids: set[tuple[int, int]] = set()  # regions may overlap on a page: each grid is read once
     for reg in regions:
+        if reg["excluded"]:
+            region_reports.append(
+                {**reg, "status": "skipped", "reason": f"excluded by reviewer: {reg['reviewer_note']}"}
+            )
+            continue
         if reg["role"] not in READ_ROLES:
             region_reports.append({**reg, "status": "skipped", "reason": "not an approved representation"})
             continue
@@ -204,6 +216,7 @@ def grid_source(ctx: JobContext) -> dict:
         "regions_read": sum(1 for r in region_reports if r["status"] == "read"),
         "regions_skipped": sum(1 for r in region_reports if r["status"] == "skipped"),
         "regions_without_grids": [r["ordinal"] for r in region_reports if r.get("finding") == "no_grids_in_region"],
+        "regions_excluded": [r["ordinal"] for r in region_reports if r.get("excluded")],
         "cells": len(cells_out),
         "cells_resolved": sum(1 for c in cells_out if c["resolved"]),
         "cells_unresolved": sum(1 for c in cells_out if not c["resolved"]),

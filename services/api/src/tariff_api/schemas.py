@@ -232,6 +232,21 @@ class LocalisationRegionOut(BaseModel):
     note: str | None
     origin: str
     grid_count: int
+    reviewer_note: str | None = None
+    excluded: bool = False
+    annotated_by: str | None = None
+    annotated_at: datetime | None = None
+
+
+class RegionAnnotation(BaseModel):
+    """A reviewer's comment on one detected region, and whether the stages must skip it.
+    Excluding a region is how a reviewer says "this is not the thing we want" — e.g. a
+    banking passage about the utility's own inter-state banking, not the open-access
+    banking rule — without redrawing every region.  The note is mandatory when excluding."""
+
+    note: str = Field(min_length=5, max_length=1000)
+    excluded: bool = False
+    expected_version: int | None = None
 
 
 class LocalisationFindingOut(BaseModel):
@@ -358,6 +373,7 @@ class StructureSummary(BaseModel):
     regions_read: int
     regions_skipped: int
     regions_without_grids: list[int]
+    regions_excluded: list[int] = Field(default_factory=list)  # reviewer-excluded, skipped with their note
     cells: int
     cells_resolved: int
     cells_unresolved: int

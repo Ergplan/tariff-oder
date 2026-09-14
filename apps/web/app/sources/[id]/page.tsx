@@ -12,6 +12,7 @@ import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, JobBadge, StageTrack, StateBadge, UnknownBadge } from "../../components";
 import { AutoRefresh } from "./auto-refresh";
 import { LocalisationForm } from "./localisation-form";
+import { RegionNote } from "./region-note";
 import { PageList, Section, Stat, ranges } from "./ui";
 
 export const dynamic = "force-dynamic";
@@ -62,6 +63,7 @@ export default async function SourceDetailPage({
   const loc = localisation.data;
   const checkpointOpen = !!loc && !loc.extraction_allowed;
   const reviewable = s.state === "awaiting_review" || s.state === "published";
+  const regionsEditable = s.state === "localised" || s.state === "gridded";
   type LabelSegment = { start_index: number; end_index: number; style: string; offset: number; observed_pages: number };
   const labelSegments = ((s.triage?.label_rule as { segments?: LabelSegment[] } | null | undefined)?.segments ?? []) as LabelSegment[];
   const ts = parse?.table_summary as Record<string, unknown> | undefined;
@@ -246,7 +248,11 @@ export default async function SourceDetailPage({
             )}
             <div className="table-wrap">
               <table className="compact">
-                <caption>Regions the rules found, grouped by role. Only the approved schedule and the network-charge regions feed extraction.</caption>
+                <caption>
+                  Regions the rules found, grouped by role. Only the approved schedule and the network-charge regions feed
+                  extraction. Comment on any region; exclude one to keep the stages off it (the note follows the family into
+                  the review checklist).
+                </caption>
                 <thead>
                   <tr>
                     <th>Role</th>
@@ -254,13 +260,19 @@ export default async function SourceDetailPage({
                     <th>Cue found on the page</th>
                     <th>Utility / period</th>
                     <th>Grids</th>
+                    <th>Reviewer comment</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[...loc.regions]
                     .sort((a, b) => a.role.localeCompare(b.role) || a.page_start - b.page_start)
                     .map((r, i, arr) => (
-                      <tr key={r.id} data-role={r.role} className={i > 0 && arr[i - 1].role !== r.role ? "group-start" : undefined}>
+                      <tr
+                        key={r.id}
+                        data-role={r.role}
+                        data-excluded={r.excluded || undefined}
+                        className={i > 0 && arr[i - 1].role !== r.role ? "group-start" : undefined}
+                      >
                         <td>
                           {i === 0 || arr[i - 1].role !== r.role ? <strong>{r.role.replace(/_/g, " ")}</strong> : null}
                           {r.sub_role ? <div className="muted">{r.sub_role.replace(/_/g, " ")}</div> : null}
@@ -273,6 +285,9 @@ export default async function SourceDetailPage({
                         </td>
                         <td className="muted">{[r.utility, r.period].filter(Boolean).join(" · ") || "—"}</td>
                         <td className="mono">{r.grid_count}</td>
+                        <td>
+                          <RegionNote sourceId={id} region={r} version={loc.version} editable={regionsEditable} />
+                        </td>
                       </tr>
                     ))}
                 </tbody>

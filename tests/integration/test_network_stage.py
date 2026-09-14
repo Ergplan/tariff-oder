@@ -181,3 +181,61 @@ def test_amendment_table_is_checked_against_the_consolidated_schedule(client, ru
     assert all(
         c["record"]["evidence"][0]["page_index"] >= 3 for c in cands
     )  # nothing extracted from the amendment table itself
+
+
+def test_a_reviewer_can_exclude_a_region_with_a_note_and_the_stages_leave_it_alone(client, runner):
+    """Section 6.5: a reviewer's comment on one region, with an exclusion the structure and
+    extraction stages honour; the note follows the family into the checklist.  Role-gated,
+    versioned, audited; frozen once candidates exist."""
+    src_id = _upload(client, network_order_pdf(), "SYNTHETIC_network_excluded.pdf")
+    assert _run_all(runner) == 4
+    L = client.get(f"/sources/{src_id}/localisation", headers=headers(ANALYST)).json()
+    # the wheeling region is the only one covering its page, so excluding it removes the family
+    bank = next(r for r in L["regions"] if r["sub_role"] == "wheeling_charge")
+    assert bank["reviewer_note"] is None and bank["excluded"] is False
+    url = f"/sources/{src_id}/localisation/regions/{bank['id']}"
+    note = {
+        "note": "These are the utility's own inter-state charges, not the open-access wheeling charge; out of scope.",
+        "excluded": True,
+        "expected_version": L["version"],
+    }
+    assert client.put(url, json=note, headers=headers(ANALYST)).status_code == 403
+    r = client.put(url, json={**note, "expected_version": L["version"] + 7}, headers=headers(REVIEWER))
+    assert r.status_code == 409 and r.json()["error_type"] == "conflict_stale_version"
+    r = client.put(url, json={**note, "note": "no"}, headers=headers(REVIEWER))
+    assert r.status_code == 422
+    r = client.put(url, json=note, headers=headers(REVIEWER))
+    assert r.status_code == 200, r.text
+    out = r.json()
+    assert out["version"] == L["version"] + 1 and out["extraction_allowed"] is False  # a note is not a decision
+    bank2 = next(x for x in out["regions"] if x["id"] == bank["id"])
+    assert bank2["excluded"] is True and bank2["annotated_by"] == REVIEWER and bank2["reviewer_note"] == note["note"]
+    audit = client.get(
+        "/audit", params={"entity_type": "localisation_region", "entity_id": bank["id"]}, headers=headers(ADMIN)
+    ).json()
+    assert [a["action"] for a in audit] == ["localisation.annotate"]
+    assert audit[0]["before"]["excluded"] is False and audit[0]["after"]["excluded"] is True
+
+    # confirm with the current version, run the remaining stages
+    r = client.post(
+        f"/sources/{src_id}/localisation/decision",
+        json={**CONFIRM, "expected_version": out["version"]},
+        headers=headers(REVIEWER),
+    )
+    assert r.status_code == 200, r.text
+    assert _run_all(runner) == 3
+    d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
+    assert d["state"] == "awaiting_review"
+    assert "wheeling_charge" not in d["extraction"]["by_family"]
+    assert "wheeling_charge" in d["validation"]["families_without_disposition"]
+    assert "additional_surcharge" in d["extraction"]["by_family"]  # the neighbouring family is unaffected
+    assert d["structure"]["regions_excluded"] == [bank["ordinal"]]
+    cl = client.get(f"/sources/{src_id}/review/checklist", headers=headers(ANALYST)).json()
+    fam = next(i for i in cl["items"] if i["kind"] == "family" and i["key"] == "wheeling_charge")
+    assert fam["candidates"] == 0 and fam["status"] == "not_started"
+    assert "no candidate and no reviewed disposition" in fam["note"] and "inter-state charges" in fam["note"]
+    assert f"excluded by {REVIEWER}" in fam["note"]
+
+    # candidates exist: the region set is frozen
+    r = client.put(url, json={**note, "excluded": False, "expected_version": None}, headers=headers(REVIEWER))
+    assert r.status_code == 409 and r.json()["error_type"] == "invalid_transition"

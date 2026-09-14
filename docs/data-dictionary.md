@@ -119,6 +119,7 @@ Heading inventory (`uq_document_heading` per page/line/kind/rules version): `ord
 | utility, period | When exactly one profile utility / one or more `FY` periods appear on the cue page |
 | origin | `detected` by the rules or placed by a `reviewer` |
 | grid_count | Primary table grids inside the span (from the parse stage) |
+| reviewer_note, excluded, annotated_by, annotated_at | A reviewer's comment on the region (`PUT /sources/{id}/localisation/regions/{region_id}`, reviewer role, versioned against the localisation record, audited as `localisation.annotate`). `excluded` makes the structure and extraction stages skip the span; the note is shown on the family in the review checklist. Allowed while the source is `localised` or `gridded`; frozen once candidates exist. Carried across a localise re-run when the rules find the same span again. |
 
 ## `source_documents` — structure columns (Milestone 3b)
 
