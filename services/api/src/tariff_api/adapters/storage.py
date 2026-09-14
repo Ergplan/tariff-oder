@@ -193,9 +193,13 @@ class GcsObjectStore(ObjectStore):
         )
 
     def health(self) -> dict:
+        # Object-level probe on every bucket.  The services hold roles/storage.objectUser,
+        # which carries storage.objects.list but not storage.buckets.get, so a bucket
+        # metadata read (get_bucket) reports Forbidden even where object access is fine —
+        # the first deployment's readiness failed exactly that way.
         try:
             for name in self._buckets.values():
-                self._client.get_bucket(name)
+                next(iter(self._client.list_blobs(name, max_results=1)), None)
             return {"ok": True, "backend": self.name, "buckets": list(self._buckets)}
         except Exception as e:  # noqa: BLE001 - reported, not raised, by readiness
             return {"ok": False, "backend": self.name, "error": type(e).__name__}
