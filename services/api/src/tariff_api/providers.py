@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+import httpx
 from pydantic import ValidationError
 
 from .config import Settings
@@ -194,8 +195,6 @@ class AnthropicProvider(ExtractionProvider):
         self._timeout = timeout
 
     def _call(self, channel: str, content: list[dict[str, Any]], input_hash: str) -> ProviderResult:
-        import httpx
-
         body = {
             "model": self.model,
             "max_tokens": 8192,
@@ -256,8 +255,6 @@ class AnthropicProvider(ExtractionProvider):
         return self._call("structure", [{"type": "text", "text": text}], _hash(text))
 
     def summarise_category(self, inp: SummaryInput) -> SummaryResult:
-        import httpx
-
         text = serialise_summary_input(inp)
         body = {
             "model": self.model,
