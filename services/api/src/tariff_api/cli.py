@@ -107,9 +107,28 @@ def cmd_provider_smoke(args: argparse.Namespace) -> int:
 
     settings = get_settings()
     adapters = build_adapters(settings, include_identity=False)
-    provider = build_provider(settings, adapters.secrets)
+    key_present = bool(adapters.secrets.get("ANTHROPIC_API_KEY") or "")
+    facts = {
+        "provider_backend": settings.provider_backend,
+        "model": settings.anthropic_model,
+        "secrets_backend": adapters.secrets.name,
+        "anthropic_key_present": key_present,  # never the value
+    }
+    try:
+        provider = build_provider(settings, adapters.secrets)
+    except ProviderUnavailable as e:
+        print(json.dumps({**facts, "status": "unavailable", "reason": str(e)}))
+        return 1
     if provider.is_fixture:
-        print("provider_backend=fixture: nothing to smoke; set PROVIDER_BACKEND=anthropic and ANTHROPIC_API_KEY")
+        print(
+            json.dumps(
+                {
+                    **facts,
+                    "status": "fixture",
+                    "reason": "set PROVIDER_BACKEND=anthropic (Terraform provider_backend) and a key version",
+                }
+            )
+        )
         return 2
     cell = {
         "page_index": 1,
@@ -153,7 +172,7 @@ def cmd_provider_smoke(args: argparse.Namespace) -> int:
     try:
         res = provider.extract_structure(inp)
     except ProviderUnavailable as e:
-        print(f"provider unavailable: {e}")
+        print(json.dumps({**facts, "status": "failed", "reason": str(e)}))
         return 1
     print(
         json.dumps(
