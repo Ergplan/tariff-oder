@@ -47,6 +47,7 @@ from tariff_api.readers import (
     READERS_VERSION,
     GridAgreement,
     TableGrid,
+    prefer_strict,
     read_tables_pdfplumber,
     read_tables_pymupdf,
     score_agreement,
@@ -56,7 +57,7 @@ from tariff_api.services.sources import enqueue_stage, transition
 from ..runner import JobContext, JobFailure
 
 STAGE = "parse"
-PARSE_VERSION = "1"
+PARSE_VERSION = "2"
 GRID_CLASSES = {"table", "mixed"}
 
 
@@ -207,8 +208,14 @@ def parse_source(ctx: JobContext) -> dict:
                 # ---- table grids from two readers (text-layer pages only)
                 if page_class in GRID_CLASSES and has_layer:
                     strategy = "lines"
-                    prim = read_tables_pymupdf(pm_page, idx, "lines")
-                    sec = read_tables_pdfplumber(data, idx, "lines")
+                    # ruled lines, with the reading that ignores borderless fills preferred per
+                    # table (shaded heading rows otherwise split every column; readers v2)
+                    prim = prefer_strict(
+                        read_tables_pymupdf(pm_page, idx, "lines"), read_tables_pymupdf(pm_page, idx, "lines_strict")
+                    )
+                    sec = prefer_strict(
+                        read_tables_pdfplumber(data, idx, "lines"), read_tables_pdfplumber(data, idx, "lines_strict")
+                    )
                     if not prim and not sec:
                         strategy = "text"
                         prim = read_tables_pymupdf(pm_page, idx, "text")

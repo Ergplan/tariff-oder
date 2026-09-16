@@ -129,7 +129,11 @@ proxy-dev: ## Proxy the VPC-internal web service to localhost:3000 with the acti
 admin-dev: ## Run the tariff-api CLI inside the VPC: make admin-dev ARGS=inbox  (comma-separated, e.g. ARGS=users,add,--email,x@y,--role,administrator,--actor,x@y)
 	@test -n "$(ARGS)" || { echo "usage: make admin-dev ARGS=<comma-separated tariff-api arguments>"; exit 2; }
 	gcloud run jobs update tariff-admin --project $(GCP_PROJECT) --region $(REGION) --args=$(ARGS) --quiet
-	gcloud run jobs execute tariff-admin --project $(GCP_PROJECT) --region $(REGION) --wait
+	@gcloud run jobs execute tariff-admin --project $(GCP_PROJECT) --region $(REGION) --wait; rc=$$?; \
+	  echo "--- job output (Cloud Logging, last 3 minutes) ---"; \
+	  gcloud logging read 'resource.type="cloud_run_job" AND resource.labels.job_name="tariff-admin"' \
+	    --project $(GCP_PROJECT) --freshness=3m --order=asc --limit 80 --format='value(textPayload,jsonPayload.message)' | grep -v '^$$'; \
+	  exit $$rc
 
 drain-dev: ## Run the worker job until the queue is empty (each run drains what is queued; stages enqueue the next)
 	@for i in 1 2 3 4 5 6; do \

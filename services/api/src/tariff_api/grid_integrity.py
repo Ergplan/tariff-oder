@@ -13,7 +13,7 @@ from typing import Any
 
 from .normalise import Normalised, check_slab_sequence, normalise_value, parse_slab, unit_hint
 
-GRID_VERSION = "1"
+GRID_VERSION = "2"
 
 _MARKER_LINE = re.compile(r"^\s*(?P<m>\*\*|\*|#|†|‡|\^)\s*(?P<text>.+)$")
 _ROW_UNIT_HEADER = re.compile(r"billing\s+unit|\bunit\b\s*$|basis", re.I)
@@ -185,11 +185,49 @@ def _bind_unit(
     return None, None, None, None, flags
 
 
+def collapse_split_columns(rows: list[list[str]], header_rows: int = 1) -> tuple[list[list[str]], list[list[int]]]:
+    """Merge reader columns that are one logical column drawn as several.  Word-exported
+    tables carry extra rulings, so a three-column schedule table arrives as nine columns:
+    the heading in one sub-column, the numbers in the next, blanks between.  With the
+    columns kept apart the empty heading cells inherit the heading to their left and every
+    number lands under the wrong heading (NPCL page 384: the energy charge under "Fixed
+    Charge").  Adjacent columns are merged while no row has text in more than one of them;
+    a column pair that ever co-occurs on a row stays apart, and a group is kept only when
+    it shows the shaded-heading signature — its heading text and its numbers in different
+    sub-columns — so a sparse continuation grid or an empty remarks column is never
+    folded into a neighbour.  Returns the merged rows and, per merged column, the original
+    column indices, so cells keep citing the reader's own column."""
+    ncols = max((len(r) for r in rows), default=0)
+    groups: list[list[int]] = []
+    for c in range(ncols):
+        if groups and all(not (r[c] and any(r[o] for o in groups[-1])) for r in rows):
+            groups[-1].append(c)
+        else:
+            groups.append([c])
+
+    def qualifies(grp: list[int]) -> bool:
+        if len(grp) < 2 or header_rows <= 0:
+            return False
+        head_cols = {o for o in grp for r in rows[:header_rows] if o < len(r) and r[o]}
+        data_cols = {o for o in grp for r in rows[header_rows:] if o < len(r) and r[o]}
+        return bool(head_cols) and bool(data_cols) and not (head_cols & data_cols)
+
+    groups = [x for grp in groups for x in ([grp] if qualifies(grp) else [[o] for o in grp])]
+    if len(groups) == ncols:
+        return rows, groups
+    merged = [[next((r[o] for o in grp if r[o]), "") for grp in groups] for r in rows]
+    return merged, groups
+
+
 def analyse_grid(g: GridInput, previous: GridRecord | None) -> GridRecord:
     rows = [[_clean(c) for c in r] for r in g.rows]
     ncols = max((len(r) for r in rows), default=0)
     rows = [r + [""] * (ncols - len(r)) for r in rows]
     flags: list[str] = []
+    rows, col_groups = collapse_split_columns(rows, g.header_rows)
+    if len(col_groups) != ncols:
+        flags.append("split_columns_merged")
+        ncols = len(col_groups)
     header_rows = g.header_rows
     continuation: tuple[int, int] | None = None
     inherited = False
@@ -285,12 +323,17 @@ def analyse_grid(g: GridInput, previous: GridRecord | None) -> GridRecord:
                 cflags.append("footnote_attached")
             if n.flags:
                 cflags.extend(n.flags)
+            # cite the reader's own column (the sub-column that held the text), never the
+            # merged index, so the outline and the table-as-read stay true to the grid
+            orig_col = next(
+                (o for o in col_groups[c] if o < len(g.rows[ri]) and _clean(g.rows[ri][o])), col_groups[c][0]
+            )
             cells.append(
                 CellRecord(
                     page_index=g.page_index,
                     grid_ordinal=g.ordinal,
                     row=ri,
-                    col=c,
+                    col=orig_col,
                     raw=raw,
                     header_path=list(paths[c]),
                     row_path=row_path,

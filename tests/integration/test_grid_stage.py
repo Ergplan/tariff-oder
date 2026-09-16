@@ -68,7 +68,7 @@ def test_structure_is_built_only_from_confirmed_regions_and_resolves_or_flags_ev
     assert st["representation"] == "tables" and st["regions_read"] == 1 and st["regions_skipped"] >= 1
     assert st["cells"] == st["cells_resolved"] + st["cells_unresolved"] and st["cells"] > 15
     assert st["continuations"] == 1  # page 5 continues page 4 with the header repeated
-    assert st["tool_version"].startswith("grid@1+clauses@1+normalise@1")
+    assert st["tool_version"].startswith("grid@2+clauses@1+normalise@1")
 
     cells = client.get(f"/sources/{src_id}/structure/cells", params={"limit": 500}, headers=headers(ANALYST)).json()
     assert cells["total"] == st["cells"]

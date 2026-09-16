@@ -28,10 +28,10 @@ from typing import Any, Literal
 
 import pymupdf
 
-READERS_VERSION = "1"
+READERS_VERSION = "2"
 PYMUPDF_VERSION = str(getattr(pymupdf, "__version__", None) or pymupdf.VersionBind)
 
-Strategy = Literal["lines", "text", "model"]
+Strategy = Literal["lines", "lines_strict", "text", "model"]
 AgreementClass = Literal[
     "high_agreement",
     "minority_cell_disagreement",
@@ -129,13 +129,24 @@ def read_tables_pymupdf(page: pymupdf.Page, page_index: int, strategy: Strategy 
     return grids
 
 
+def _no_borderless_fill(o: dict[str, Any]) -> bool:
+    """pdfplumber's analogue of PyMuPDF's `lines_strict`: drop filled shapes with no stroke —
+    a shaded heading cell is drawn as such a shape, inset from the cell border, and its
+    edges would otherwise be read as extra column rulings."""
+    return not (o.get("object_type") in ("rect", "curve") and o.get("fill") and not o.get("stroke"))
+
+
 def read_tables_pdfplumber(pdf_bytes: bytes, page_index: int, strategy: Strategy = "lines") -> list[TableGrid]:
     import pdfplumber
 
-    settings = {} if strategy == "lines" else {"vertical_strategy": "text", "horizontal_strategy": "text"}
+    settings = (
+        {} if strategy in ("lines", "lines_strict") else {"vertical_strategy": "text", "horizontal_strategy": "text"}
+    )
     grids: list[TableGrid] = []
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         page = pdf.pages[page_index - 1]
+        if strategy == "lines_strict":
+            page = page.filter(_no_borderless_fill)
         for i, t in enumerate(page.find_tables(table_settings=settings)):
             rows = [[normalise_cell(c) for c in row] for row in t.extract()]
             grids.append(
@@ -151,6 +162,45 @@ def read_tables_pdfplumber(pdf_bytes: bytes, page_index: int, strategy: Strategy
                 )
             )
     return grids
+
+
+def _iou(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> float:
+    x0, y0, x1, y1 = max(a[0], b[0]), max(a[1], b[1]), min(a[2], b[2]), min(a[3], b[3])
+    inter = max(0.0, x1 - x0) * max(0.0, y1 - y0)
+    if inter <= 0:
+        return 0.0
+    area = (a[2] - a[0]) * (a[3] - a[1]) + (b[2] - b[0]) * (b[3] - b[1]) - inter
+    return inter / area if area > 0 else 0.0
+
+
+def prefer_strict(loose: list[TableGrid], strict: list[TableGrid]) -> list[TableGrid]:
+    """Per table, the ruled-lines reading that ignores borderless fills (`lines_strict`) when
+    one covers the same area, else the plain ruled-lines reading.  Word-exported tariff
+    tables shade their heading row with a filled rectangle inset from the borders; read
+    with fills as rulings, a three-column table arrives as nine (NPCL page 384: heading in
+    one sub-column, number in the next, the energy cell then bound to "Fixed Charge").  A
+    table whose borders *are* filled shapes has no strict twin and keeps the plain reading,
+    so nothing is lost.  Ordinals follow the plain reading's order."""
+    out: list[TableGrid] = []
+    for i, g in enumerate(loose):
+        twin = max(strict, key=lambda s: _iou(g.bbox, s.bbox), default=None)
+        if twin is not None and _iou(g.bbox, twin.bbox) >= 0.5 and not twin.is_empty:
+            chosen = twin
+        else:
+            chosen = g
+        out.append(
+            TableGrid(
+                reader=chosen.reader,
+                reader_version=chosen.reader_version,
+                page_index=chosen.page_index,
+                ordinal=i,
+                strategy=chosen.strategy,
+                bbox=chosen.bbox,
+                rows=chosen.rows,
+                header_rows=chosen.header_rows,
+            )
+        )
+    return out
 
 
 # ------------------------------------------------------------------ agreement

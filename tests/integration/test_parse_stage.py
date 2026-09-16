@@ -49,7 +49,7 @@ def test_parse_readers_headings_and_ocr_end_to_end(client, runner, storage):
     assert _run_all(runner) == 4  # inventory -> triage -> parse -> localise, chained
     d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
     assert d["state"] == "localised"
-    assert d["parse"]["parse_version"] == "1"
+    assert d["parse"]["parse_version"] == "2"
     tv = d["parse"]["table_summary"]["tool_version"]
     assert tv.startswith("pymupdf@") and "+pdfplumber@" in tv and "+tesseract@" in tv and "absent" not in tv
 

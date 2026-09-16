@@ -174,7 +174,32 @@ open-access view.
   and energy cells share a unit warns; this catches the page-384 shift before a reviewer
   does, whatever reader produced it.  Terraform `provider_backend` (dev: `anthropic`) sets
   `PROVIDER_BACKEND` on the worker and admin jobs; the key is added to Secret Manager from a
-  terminal prompt, never from a file (`docs/deployment.md`).
+  terminal prompt, never from a file (`docs/deployment.md`).  **The page-384 shift, diagnosed
+  from the table-as-read panel**: the readers (both, in high agreement) returned nine columns
+  for a three-column Word-exported table — heading in one sub-column, number in the next,
+  blanks between — and the empty heading cells inherited the heading to their left, so the
+  energy cell bound to "Fixed Charge".  Grid rules 2 collapse adjacent columns that never
+  both carry text on the same row before binding headings (`collapse_split_columns`, flag
+  `split_columns_merged`), while every cell keeps citing the reader's own column so the
+  outline and the panel stay true to the grid; unit-tested on the exact shape.  The NPCL
+  structure stage must be re-run (`rerun … grid_source`) for it to take effect.  The real
+  provider is not yet proven: the first smoke failed on a missing HTTP client in the image
+  (now a declared dependency), the second is unexplained until its log lines are read —
+  `make admin-dev` now prints the job's own output after every run.  **Root cause, reproduced
+  and fixed at the reader (readers 2, parse 2)**: the schedule's heading rows are shaded, and
+  Word draws the shading as a borderless filled rectangle inset from the cell border; both
+  readers took its edges as rulings, so every column became three and heading text was even
+  sliced mid-number (HV-2, page 387: "For supply up to 1" | "1" | "kV").  A synthetic page with
+  one shaded heading row reproduces the nine-for-three split exactly.  PyMuPDF's
+  `lines_strict` strategy and a pdfplumber page filtered of borderless fills read the same
+  table as three columns; the parse stage now reads both ways and prefers the strict twin per
+  table (`prefer_strict`, IoU ≥ 0.5), so a table whose borders are themselves fills keeps the
+  plain reading.  The split-column merge in the structure stage remains as a second line of
+  defence.  NPCL must be re-parsed (`rerun … parse_source`), which re-runs localisation and
+  reopens the checkpoint; region notes carry over.  The reviewer also asked for the
+  time-of-day structure and rates to be captured — the schedule extractor already reads
+  time-band rows as `tod_adjustment`; whether NPCL's ToD table survives the reader fix is
+  checked on the re-run.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
