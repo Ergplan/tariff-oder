@@ -97,7 +97,7 @@ def test_dual_channel_fixture_extraction_produces_routed_candidates_and_findings
 
     # validators ran, findings attach, families without a decision block coverage
     val = d["validation"]
-    assert val["validators_version"] == "1" and val["findings"] > 0
+    assert val["validators_version"] == "2" and val["findings"] > 0
     assert len(val["families_without_disposition"]) == 8  # no network-charge region in this fixture
     findings = client.get(f"/sources/{src_id}/findings", headers=headers(ANALYST)).json()
     ids = {f["validator_id"] for f in findings["findings"]}

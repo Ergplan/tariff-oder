@@ -52,3 +52,27 @@ A single-glyph substitution in a text layer (an en dash rendered as a middle dot
 text-quality detector's threshold: glyph coverage stays 1.0 and the dictionary hit rate is
 unaffected.  Such pages are caught only where readers or OCR disagree with the layer.  Found
 while building the fixture; recorded in the reliability ledger under D2.
+
+## Addendum (2026-09-16): Docling installed as an optional third reader; measurement pending
+
+- **Installed and adapted, not yet trusted.**  `tariff-api[docling]` (optional extra, never in
+  the default image) brings Docling 2.128 with torch 2.14; about 6 GB.  `readers.read_tables_docling`
+  runs the layout and TableFormer models over a whole document and converts every
+  `TableItem` (cells with row/column offsets and spans, provenance page and box) into the
+  pipeline's `TableGrid` with `strategy=model`, spans repeated into every covered position and
+  boxes moved to the top-left origin the other readers use (`grids_from_docling_tables`, pure
+  and unit-tested).  Nothing consumes these grids yet: Docling becomes a reader of record only
+  after the measurement below is recorded here with numbers.
+- **What blocked the measurement in the build environment.**  The package installed from
+  PyPI (the CPU-only torch index at download.pytorch.org is refused by the egress policy, so
+  the CUDA build was pulled and runs on CPU).  On first use Docling fetches its models from
+  huggingface.co, which the environment cannot reach at all; the run failed before touching a
+  page.  So the fixture measurement has not happened.  `tariff-api reader-measure --pdf <file>`
+  exists for the machine that can: it prints per page how many grids each of the three readers
+  finds, their shapes, and how Docling's grids agree with PyMuPDF's under `score_agreement`.
+- **Decision rule for promotion.**  Docling replaces pdfplumber as the secondary reader (or
+  PyMuPDF as the primary) only if, on the three real orders' schedule and network-charge pages,
+  it finds every ruled table the current readers find, produces `high_agreement` with PyMuPDF on
+  at least as many grids as pdfplumber does, and reads the unruled KERC-style charge tables
+  that neither current reader grids.  Runtime per 570-page order and the image size are
+  recorded alongside.  Until then the two current readers stay as they are.

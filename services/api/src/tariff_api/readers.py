@@ -31,7 +31,7 @@ import pymupdf
 READERS_VERSION = "1"
 PYMUPDF_VERSION = str(getattr(pymupdf, "__version__", None) or pymupdf.VersionBind)
 
-Strategy = Literal["lines", "text"]
+Strategy = Literal["lines", "text", "model"]
 AgreementClass = Literal[
     "high_agreement",
     "minority_cell_disagreement",
@@ -287,3 +287,119 @@ def score_agreement(
             )
         )
     return results
+
+
+# ------------------------------------------------------------------ Docling (optional third reader)
+
+DOCLING_MODEL_REPOS = ("docling-project/docling-layout-heron", "docling-project/docling-models")
+
+
+def docling_available() -> tuple[bool, str]:
+    """Whether the optional Docling reader can run here.  Docling itself installs from PyPI
+    (about 6 GB with torch); its layout and table-structure models are fetched from
+    huggingface.co on first use, which some build environments block.  The answer says
+    which of the two is missing so the operator knows what to fix."""
+    try:
+        import docling  # noqa: F401
+    except ImportError:
+        return False, "docling is not installed (uv sync --extra docling)"
+    try:
+        from docling.utils.model_downloader import download_models  # noqa: F401
+    except ImportError:
+        pass
+    return True, "installed"
+
+
+def _docling_converter(artifacts_path: str | None = None):
+    from docling.datamodel.base_models import InputFormat
+    from docling.datamodel.pipeline_options import PdfPipelineOptions
+    from docling.document_converter import DocumentConverter, PdfFormatOption
+
+    opts = PdfPipelineOptions(do_ocr=False, do_table_structure=True, artifacts_path=artifacts_path)
+    opts.table_structure_options.do_cell_matching = True
+    return DocumentConverter(format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=opts)})
+
+
+def grids_from_docling_tables(
+    tables: list[Any], reader_version: str, page_heights: dict[int, float] | None = None
+) -> list[TableGrid]:
+    """Convert Docling `TableItem`s (`data.table_cells` with row/col offsets and spans, `prov`
+    with page number and bbox) into the pipeline's `TableGrid`s.  Spanned cells are repeated
+    into every position they cover, which is how the other readers present merged cells.
+    Pure function so it is testable without models."""
+    grids: list[TableGrid] = []
+    ordinals: dict[int, int] = {}
+    for t in tables:
+        prov = t.prov[0] if getattr(t, "prov", None) else None
+        if prov is None:
+            continue
+        page = int(prov.page_no)
+        data = t.data
+        rows = [["" for _ in range(int(data.num_cols))] for _ in range(int(data.num_rows))]
+        header_rows = 0
+        for cell in data.table_cells:
+            txt = normalise_cell(cell.text)
+            for r in range(int(cell.start_row_offset_idx), int(cell.end_row_offset_idx)):
+                for c in range(int(cell.start_col_offset_idx), int(cell.end_col_offset_idx)):
+                    if 0 <= r < len(rows) and 0 <= c < len(rows[r]):
+                        rows[r][c] = txt
+            if getattr(cell, "column_header", False):
+                header_rows = max(header_rows, int(cell.end_row_offset_idx))
+        bb = prov.bbox
+        # Docling boxes are bottom-left origin on the PDF page; the other readers use top-left
+        height = (page_heights or {}).get(page)
+        if height is not None and getattr(bb.coord_origin, "value", str(bb.coord_origin)).upper().endswith(
+            "BOTTOMLEFT"
+        ):
+            bbox = (float(bb.l), float(height - bb.t), float(bb.r), float(height - bb.b))
+        else:
+            bbox = (float(bb.l), float(bb.t), float(bb.r), float(bb.b))
+        ordinal = ordinals.get(page, 0)
+        ordinals[page] = ordinal + 1
+        grids.append(
+            TableGrid(
+                reader="docling",
+                reader_version=reader_version,
+                page_index=page,
+                ordinal=ordinal,
+                strategy="model",
+                bbox=bbox,
+                rows=rows,
+                header_rows=header_rows if header_rows else (1 if rows else 0),
+            )
+        )
+    return grids
+
+
+def read_tables_docling(
+    pdf_bytes: bytes, *, artifacts_path: str | None = None
+) -> tuple[list[TableGrid], dict[str, Any]]:
+    """Run Docling over a whole document (it lays out every page in one pass) and return
+    the grids of every page plus run facts (version, seconds, pages).  Raises ImportError
+    when Docling is absent; model-download failures surface as the underlying exception so
+    the operator sees the blocked host."""
+    import importlib.metadata as md
+    import tempfile
+    import time
+
+    from docling.datamodel.base_models import InputFormat  # noqa: F401 - import check
+
+    version = md.version("docling")
+    t0 = time.time()
+    with tempfile.NamedTemporaryFile(suffix=".pdf") as tmp:
+        tmp.write(pdf_bytes)
+        tmp.flush()
+        res = _docling_converter(artifacts_path).convert(tmp.name)
+    doc = res.document
+    heights = {}
+    for no, page in (doc.pages or {}).items():
+        size = getattr(page, "size", None)
+        if size is not None:
+            heights[int(no)] = float(size.height)
+    grids = grids_from_docling_tables(list(doc.tables), version, heights)
+    return grids, {
+        "reader": "docling",
+        "reader_version": version,
+        "seconds": round(time.time() - t0, 1),
+        "pages": len(heights),
+    }

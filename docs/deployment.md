@@ -206,6 +206,20 @@ Shortcuts: `make admin-dev ARGS=<comma-separated arguments>` updates and runs th
 step; `make drain-dev` runs the worker job six times in a row (each run drains what is queued and
 later stages enqueue the next).
 
+### Measuring the optional Docling reader (ADR-0009 addendum)
+
+Docling is not in the images.  Measure it on the VM, which can reach PyPI and huggingface.co:
+
+```bash
+cd ~/tariff-oder && uv sync --extra docling            # about 6 GB, once
+gsutil cp gs://tarifforderstudio_sources/inbox/NPCL_TariffOrder1-pdf72202631759PM.pdf /tmp/npcl.pdf
+uv run tariff-api reader-measure --pdf /tmp/npcl.pdf > /tmp/npcl-docling.json   # models download on first run
+```
+
+Paste the `totals` block and the rows for the schedule pages (352–400) and the open-access pages
+(310–323) into the chat; the decision rule for promoting Docling is in the ADR.  The command is
+read-only: it writes nothing to the database or the buckets.
+
 ```bash
 J="--project tariff-order-parsing --region asia-south1"
 gcloud run jobs update tariff-admin $J --args=<comma,separated,args>

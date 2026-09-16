@@ -21,6 +21,11 @@ dependencies = [
     "pdfplumber>=0.11,<1",
 ]
 
+[project.optional-dependencies]
+# Third table reader (ADR-0009): about 6 GB with torch; its models download from
+# huggingface.co on first use.  Never in the default image; measured before it is trusted.
+docling = ["docling>=2.100,<3"]
+
 [project.scripts]
 tariff-api = "tariff_api.cli:main"
 

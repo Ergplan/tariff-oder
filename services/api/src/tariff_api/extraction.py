@@ -11,9 +11,10 @@ import re
 from dataclasses import dataclass, field
 from typing import Any
 
+from . import css_formula
 from .tariff_schema import Applicability, Candidate, EvidenceRef, ExtractionOutput, Slab
 
-EXTRACTION_RULES_VERSION = "1"
+EXTRACTION_RULES_VERSION = "2"
 PROMPT_VERSION = "1"
 
 _TIME_BAND = re.compile(r"(\d{1,2}:\d{2})\s*(?:hrs\.?\s*)?(?:to|-|–|—)\s*(\d{1,2}:\d{2})", re.I)
@@ -30,6 +31,18 @@ _BANKING_BY_REF = re.compile(
     re.I,
 )
 _DEFERRED = re.compile(r"additional surcharge[^.\n]{0,160}(separate petition|file(d)? separately|separately)", re.I)
+# "Intra-State Transmission Loss (3.18%) shall be applicable to all the open access consumers"
+# "transmission charges as determined by the Commission in the order dated ... for UPPTCL"
+_TRANSMISSION_VALUE = re.compile(
+    r"\b((?:inter|intra)[- ]?state\s+)?transmission\s+(loss(?:es)?|charges?)\s*(?:of|at|@|is|shall be|=|\()?\s*"
+    r"(?:Rs\.?\s*)?(\d+(?:\.\d+)?)\s*(%|percent|paise|ps|Rs\.?/kWh|per (?:kWh|unit))?",
+    re.I,
+)
+_TRANSMISSION_REF = re.compile(
+    r"\btransmission\s+(?:loss(?:es)?|charges?|tariff)\b[^.\n]{0,120}?\b(as (?:per|determined|approved|specified)|"
+    r"determined by|in accordance with|order dated|separate order|SLDC|STU|[A-Z]{2,}TCL)\b",
+    re.I,
+)
 
 
 @dataclass
@@ -361,6 +374,36 @@ def prose_decisions(inp: StructureInput) -> list[Candidate]:
                         evidence=[ev],
                     )
                 )
+            for tm in _TRANSMISSION_VALUE.finditer(ln):
+                # a transmission charge or loss that appears as an input of an in-scope
+                # determination is captured as a referenced value with its source (spec
+                # Section 1): never modelled as a transmission tariff of its own
+                kind = tm.group(2).lower()
+                unit = (tm.group(4) or "").lower()
+                ref = _TRANSMISSION_REF.search(ln)
+                out.append(
+                    Candidate(
+                        family="transmission_reference",
+                        component_type="loss" if kind.startswith("loss") else "charge",
+                        value=tm.group(3),
+                        value_state="value",
+                        original_text=ln[:400],
+                        currency="paise"
+                        if unit.startswith(("paise", "ps"))
+                        else ("rupees" if "rs" in unit or "kwh" in unit else None),
+                        per_unit="percent"
+                        if kind.startswith("loss") or unit in ("%", "percent")
+                        else ("kWh" if "kwh" in unit or "unit" in unit else None),
+                        applicability=Applicability(
+                            voltage=(tm.group(1) or "").strip() + " transmission" if tm.group(1) else "transmission"
+                        ),
+                        decision_status="by_reference" if ref else "parameter_specified",
+                        reference_target=ln[ref.start(1) :][:200] if ref else None,
+                        period=inp.period,
+                        utility=inp.utility,
+                        evidence=[ev],
+                    )
+                )
             m = _BANKING_BY_REF.search(ln)
             if m:
                 out.append(
@@ -517,7 +560,15 @@ def network_extract(inp: StructureInput, sub_role: str | None) -> ExtractionOutp
     by_grid: dict[tuple[int, int], list[dict[str, Any]]] = {}
     for c in inp.cells:
         by_grid.setdefault((c["page_index"], c["grid_ordinal"]), []).append(c)
+    # CSS as a computation: the formula statement and definitions from the page text, the
+    # parameter tables (T, C, D = DC + TC + WC, L, R, computed S, cap) from the grids
+    css_params, css_grids = (
+        css_formula.read_parameters(inp.cells) if sub_role == "cross_subsidy_surcharge" else ({}, set())
+    )
+    statements = css_formula.formula_statements(inp.page_texts) if css_params else {}
     for (page, grid), cells in sorted(by_grid.items()):
+        if (page, grid) in css_grids:
+            continue
         headers = sorted({h for c in cells for h in c["header_path"]})
         rows = sorted({r for c in cells for r in c["row_path"]})
         fam = _grid_family(headers, rows, inp.region_role, sub_role)
@@ -559,7 +610,54 @@ def network_extract(inp: StructureInput, sub_role: str | None) -> ExtractionOutp
                     evidence=[_cell_ev(c)],
                 )
             )
+    if css_params:
+        _attach_css_formula(out, inp, css_params, statements)
     return out
+
+
+def _attach_css_formula(
+    out: ExtractionOutput, inp: StructureInput, params: dict[str, dict[str, dict[str, Any]]], statements: dict[str, Any]
+) -> None:
+    """Pair each parameter level with the approved-table candidates at that level and give
+    them the derivation; a level with a printed computed S and no approved row becomes a
+    `formula` candidate of its own so the arithmetic is reviewable; a level with inputs but
+    nothing printed is listed as missing, never computed into a value."""
+    matched: set[str] = set()
+    for c in out.candidates:
+        if c.family != "cross_subsidy_surcharge":
+            continue
+        lvl = css_formula.norm_level(c.applicability.voltage or "") or css_formula.norm_level(c.original_text)
+        if lvl and lvl in params:
+            base = c.derivation or {}
+            c.derivation = {**base, "formula": css_formula.derivation_for(lvl, params[lvl], statements)}
+            matched.add(lvl)
+    for lvl, p in params.items():
+        if lvl in matched:
+            continue
+        printed = p.get("S")
+        if printed is None:
+            out.missing.append(
+                f"CSS formula inputs found at {lvl} but no printed surcharge; nothing computed into a value"
+            )
+            continue
+        ev = printed["evidence"]
+        out.candidates.append(
+            Candidate(
+                family="cross_subsidy_surcharge",
+                component_type="charge",
+                value=printed["value"],
+                value_state="value",
+                original_text=ev["excerpt"][:400],
+                currency="paise" if printed.get("unit") == "paise" else "rupees",
+                per_unit="kWh",
+                applicability=Applicability(voltage=printed.get("label") and lvl),
+                period=inp.period,
+                utility=inp.utility,
+                decision_status="parameter_specified",
+                derivation={"formula": css_formula.derivation_for(lvl, p, statements), "rule": "css_formula"},
+                evidence=[EvidenceRef(**ev)],
+            )
+        )
 
 
 def _level_from(labels: list[str]) -> str | None:

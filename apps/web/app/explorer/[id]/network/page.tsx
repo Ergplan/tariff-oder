@@ -17,13 +17,36 @@ const LABELS: Record<string, string> = {
   transmission_reference: "Transmission references",
 };
 
+type Formula = {
+  formula?: string;
+  level?: string;
+  inputs?: Record<string, { value?: string; unit?: string }>;
+  computed?: string | null;
+  printed_computed?: string | null;
+  cap_20pct_of_T?: string;
+  printed_cap?: string | null;
+  d_components?: Record<string, string> | null;
+  assumed?: string[];
+  missing?: string[];
+};
+
 function derivation(f: PublishedFactOut): string {
-  const d = f.derivation as { rule?: string; inputs?: Record<string, unknown> } | null;
+  const d = f.derivation as { rule?: string; inputs?: Record<string, unknown>; formula?: Formula } | null;
   if (!d) return "—";
   const inputs = Object.entries(d.inputs ?? {})
     .map(([k, v]) => `${k}=${typeof v === "object" && v && "value" in (v as object) ? String((v as { value: unknown }).value) : String(v)}`)
     .join(" · ");
-  return `${d.rule ?? "?"}${inputs ? `: ${inputs}` : ""}`;
+  const base = `${d.rule ?? "?"}${inputs ? `: ${inputs}` : ""}`;
+  const fm = d.formula;
+  if (!fm || !fm.inputs) return base;
+  // the surcharge as a computation: the printed inputs, D's parts, what the formula gives and the cap
+  const ins = Object.entries(fm.inputs)
+    .map(([k, v]) => `${k}=${v.value ?? "?"}${v.unit === "paise" ? "p" : v.unit === "percent" ? "%" : ""}`)
+    .join(", ");
+  const parts = fm.d_components ? ` (D = ${Object.entries(fm.d_components).map(([k, v]) => `${k} ${v}`).join(" + ")})` : "";
+  const comp = fm.computed != null ? `S = ${fm.computed}` : `not recomputed: ${(fm.missing ?? []).join(", ") || "inputs missing"}`;
+  const cap = fm.printed_cap ?? fm.cap_20pct_of_T;
+  return `${base}\n${fm.formula ?? "S = T - [C/(1 - L/100) + D + R]"} at ${fm.level ?? "?"}: ${ins}${parts} → ${comp}${fm.printed_computed != null ? ` (printed ${fm.printed_computed})` : ""}${cap ? `; cap 20% of T = ${cap}` : ""}${fm.assumed?.length ? `; ${fm.assumed.join("; ")}` : ""}`;
 }
 
 /**
@@ -105,7 +128,9 @@ export default async function NetworkExplorerPage({ params }: { params: Promise<
                           {f.reference_target ? <div className="muted">{f.reference_target}</div> : null}
                         </td>
                         <td className="mono">{[f.currency, f.per_unit, f.frequency].filter(Boolean).join(" / ") || "—"}</td>
-                        <td className="mono muted">{derivation(f)}</td>
+                        <td className="mono muted" style={{ whiteSpace: "pre-line" }}>
+                          {derivation(f)}
+                        </td>
                         <td className="mono">{[f.period, f.utility].filter(Boolean).join(" / ") || "—"}</td>
                         <td>
                           <Citations f={f} />

@@ -15,7 +15,7 @@ from typing import Any
 
 from .tariff_schema import FAMILIES, NETWORK_FAMILIES, Candidate
 
-VALIDATORS_VERSION = "1"
+VALIDATORS_VERSION = "2"
 
 _TIME = re.compile(r"^(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$")
 
@@ -537,6 +537,9 @@ def val_07_derivation_checks(ctx: ValidationContext) -> list[Finding]:
         rule = d.get("rule")
         inputs = d.get("inputs") or {}
         printed = _dec(c.value)
+        f = d.get("formula")
+        if isinstance(f, dict) and f.get("rule") == "css_formula":
+            out.extend(_css_formula_findings(k, f, printed))
         if rule == "arr_over_sales" and printed is not None:
             arr = _dec((inputs.get("arr") or {}).get("value"))
             sales = _dec((inputs.get("sales") or {}).get("value"))
@@ -602,6 +605,70 @@ def val_07_derivation_checks(ctx: ValidationContext) -> list[Finding]:
                 out.append(Finding("VAL-07", "blocking", f"approved {printed} exceeds the printed cap {cap}", [k], d))
             elif cap is not None:
                 out.append(Finding("VAL-07", "info", f"approved {printed} within the cap {cap}", [k], d))
+    return out
+
+
+def _css_formula_findings(k: str, f: dict[str, Any], approved: Decimal | None) -> list[Finding]:
+    """S = T − [C/(1 − L/100) + D + R] recomputed from the printed inputs (css_formula
+    module) against the printed computed value, the printed cap against 20% of T, and the
+    approved value against the cap.  Every mismatch is a finding for the reviewer; the
+    order's numbers are never rewritten."""
+    out: list[Finding] = []
+    lvl = f.get("level")
+    if f.get("computed") is None:
+        why = f.get("error") or f"inputs missing: {', '.join(f.get('missing') or [])}"
+        out.append(Finding("VAL-07", "warning", f"CSS formula at {lvl}: not recomputed ({why})", [k], f))
+        return out
+    computed = _dec(f["computed"])
+    printed_s = _dec(f.get("printed_computed"))
+    if printed_s is not None and computed is not None:
+        places = max(0, -printed_s.as_tuple().exponent)
+        tol = Decimal(1).scaleb(-places)  # printed rounding
+        if abs(computed - printed_s) > tol:
+            out.append(
+                Finding(
+                    "VAL-07",
+                    "blocking",
+                    f"CSS at {lvl}: order prints computed {printed_s} but its own inputs give {computed}",
+                    [k],
+                    f,
+                )
+            )
+        else:
+            out.append(
+                Finding(
+                    "VAL-07",
+                    "info",
+                    f"CSS at {lvl}: printed computed {printed_s} agrees with S = T - [C/(1-L/100) + D + R] ({computed})"
+                    + (f"; {'; '.join(f['assumed'])}" if f.get("assumed") else ""),
+                    [k],
+                    f,
+                )
+            )
+    cap = _dec(f.get("cap_20pct_of_T"))
+    printed_cap = _dec(f.get("printed_cap"))
+    if printed_cap is not None and cap is not None and abs(printed_cap - cap) > Decimal("0.01"):
+        out.append(
+            Finding("VAL-07", "blocking", f"CSS at {lvl}: printed cap {printed_cap} is not 20% of T ({cap})", [k], f)
+        )
+    effective_cap = printed_cap if printed_cap is not None else cap
+    if approved is not None and effective_cap is not None:
+        if approved > effective_cap + Decimal("0.005"):
+            out.append(
+                Finding(
+                    "VAL-07",
+                    "blocking",
+                    f"CSS at {lvl}: approved {approved} exceeds the 20% cap {effective_cap}",
+                    [k],
+                    f,
+                )
+            )
+        else:
+            out.append(
+                Finding(
+                    "VAL-07", "info", f"CSS at {lvl}: approved {approved} is within the 20% cap {effective_cap}", [k], f
+                )
+            )
     return out
 
 

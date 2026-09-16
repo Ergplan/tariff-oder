@@ -1117,12 +1117,63 @@ def network_order_pdf() -> bytes:
         p,
         330,
         [
-            "9.3.7 Both transmission losses apply to all open access consumers; the distribution loss by connection voltage."
+            "9.3.7 Both transmission losses apply to all open access consumers; the distribution loss by connection voltage.",
+            "9.3.8 The Intra-State Transmission Loss (3.18%) and the transmission charges as determined by the Commission",
+            "in its order dated 22.11.2025 for UPPTCL shall be applicable to all open access consumers.",
         ],
         9,
         16,
     )
     p = new(6)
+    y = _lines(
+        p,
+        90,
+        [
+            "9.3.4 The Cross Subsidy Surcharge is computed as per the formula of the Tariff Policy:",
+            "S = T - [C/(1-L/100) + D + R]",
+            "Where:",
+            "S is the Cross Subsidy Surcharge;",
+            "T is the tariff payable by the relevant category of consumers, including reflecting the RPO;",
+            "C is the per unit weighted average cost of power purchase by the Licensee, including RPO;",
+            "D is the aggregate of transmission, distribution and wheeling charge applicable to the relevant voltage level;",
+            "L is the aggregate of transmission, distribution and commercial losses, expressed as a percentage;",
+            "R is per unit carrying cost of regulatory assets.",
+            "9.3.5 Solely for computing 'D', the Commission has derived DC, TC and WC as follows:",
+        ],
+        8.5,
+        13,
+    )
+    y = _ruled_grid(
+        p,
+        y + 6,
+        [
+            ["Component (Rs/kWh)", "33 kV", "11 kV"],
+            ["Distribution Charges (DC)", "0.14", "0.10"],
+            ["Transmission Charges (TC)", "0.06", "0.06"],
+            ["Wheeling Charges (WC)", "0.14", "0.10"],
+            ["D = DC + TC + WC", "0.34", "0.26"],
+        ],
+        [230, 100, 100],
+        18,
+    )
+    _lines(p, y + 8, ["Table 9-13 Computation of Cross Subsidy Surcharge for FY 2026-27"], 9, 14)
+    _ruled_grid(
+        p,
+        y + 26,
+        [
+            ["Parameter", "33 kV", "11 kV"],
+            ["Tariff payable (T) Rs/kWh", "7.11", "7.06"],
+            ["Weighted average cost of power purchase (C) Rs/kWh", "5.11", "5.11"],
+            ["Aggregate losses (L) %", "3.97", "6.50"],
+            ["Charges (D) Rs/kWh", "0.34", "0.26"],
+            ["Carrying cost of regulatory assets (R) Rs/kWh", "0", "0"],
+            ["Cross Subsidy Surcharge computed (S) Rs/kWh", "1.45", "1.33"],
+            ["Cap: 20% of T Rs/kWh", "1.42", "1.41"],
+        ],
+        [290, 90, 90],
+        18,
+    )
+    p = new(7)
     _lines(p, 110, ["Table 9-14 Cross Subsidy Surcharge approved (Rs/kWh)"], 11, 20)
     _ruled_grid(
         p,
@@ -1145,9 +1196,9 @@ def network_order_pdf() -> bytes:
         9.5,
         16,
     )
-    p = new(7)
-    _lines(p, 110, ["7.2.3 The Petitioner has proposed to increase the TOD adjustment from 15% to 20%."], 9.5, 16)
     p = new(8)
+    _lines(p, 110, ["7.2.3 The Petitioner has proposed to increase the TOD adjustment from 15% to 20%."], 9.5, 16)
+    p = new(9)
     _lines(
         p,
         110,
@@ -1162,7 +1213,7 @@ def network_order_pdf() -> bytes:
         9.5,
         18,
     )
-    p = new(9)
+    p = new(10)
     _lines(p, 110, ["B. RETAIL TARIFFS FOR FINANCIAL YEAR 2026-27", "RATE SCHEDULE LMV - 2", "Non-Domestic"], 10.5, 20)
     _ruled_grid(
         p,
@@ -1174,7 +1225,7 @@ def network_order_pdf() -> bytes:
         [90, 150, 110, 130],
     )
     p.insert_text((60, 250), "* subject to the regulatory discount of general provision 21", fontsize=7.5)
-    p = new(10)
+    p = new(11)
     _lines(p, 110, ["RATE SCHEDULE HV-2", "Large and Heavy Power"], 10.5, 20)
     _ruled_grid(
         p,

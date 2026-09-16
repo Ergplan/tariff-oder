@@ -65,7 +65,7 @@ def test_network_order_yields_typed_network_facts_with_derivations_and_condition
         "retail_tariff",
     } <= set(fams)
     assert d["extraction"]["conditions"] >= 3  # provisions 20, 21 and the footnote
-    assert d["validation"]["families_without_disposition"] == ["transmission_reference"]
+    assert d["validation"]["families_without_disposition"] == []  # 9.3.8 names the transmission loss and its order
 
     cands = client.get(f"/sources/{src_id}/candidates", params={"limit": 500}, headers=headers(ANALYST)).json()[
         "candidates"
@@ -95,6 +95,25 @@ def test_network_order_yields_typed_network_facts_with_derivations_and_condition
     assert css["LMV-2"]["value"] == "1.33" and css["HV-1"]["value_state"] == "not_applicable"
     (add,) = by_fam["additional_surcharge"]
     assert add["decision_status"] == "approved_zero" and add["value"] == "0" and add["value_state"] == "zero"
+    # the CSS approved rows carry the formula: inputs with evidence, D from DC + TC + WC, the
+    # recomputed S and the cap; VAL-07 recomputes and compares with what the order printed
+    f11 = css["LMV-2"]["record"]["derivation"]["formula"]
+    assert f11["rule"] == "css_formula" and f11["level"] == "11kv" and f11["computed"] == "1.3348"
+    assert f11["inputs"]["T"]["value"] == "7.06" and f11["inputs"]["DC"]["value"] == "0.10"
+    assert f11["inputs"]["C"]["evidence"]["page_index"] == 6 and f11["inputs"]["C"]["evidence"]["kind"] == "cell"
+    assert f11["printed_computed"] == "1.33" and f11["printed_cap"] == "1.41" and f11["cap_20pct_of_T"] == "1.4120"
+    assert f11["formula_as_printed"]["text"].startswith("S = T - [C/(1-L/100) + D + R]")
+    assert f11["definitions"]["D"]["text"].startswith("D is the aggregate of transmission, distribution and wheeling")
+    f33 = css["HV-2"]["record"]["derivation"]["formula"]
+    assert f33["computed"] == "1.4487" and f33["d_used"] == "0.34"
+    # transmission loss and charges appear as inputs of the open-access determination:
+    # captured as referenced values with their source, never as a transmission tariff
+    tr = by_fam["transmission_reference"]
+    loss = next(c for c in tr if c["component_type"] == "loss")
+    assert loss["value"] == "3.18" and loss["per_unit"] == "percent" and loss["decision_status"] == "by_reference"
+    assert "order dated" in (loss["record"]["reference_target"] or "") or "determined" in (
+        loss["record"]["reference_target"] or ""
+    )
     (bank,) = by_fam["banking_rule"]
     assert bank["decision_status"] == "by_reference" and "Regulations" in bank["record"]["reference_target"]
     green = sorted((c["record"]["applicability"]["voltage"], c["value"]) for c in by_fam["green_tariff"])
@@ -109,6 +128,12 @@ def test_network_order_yields_typed_network_facts_with_derivations_and_condition
     findings = client.get(f"/sources/{src_id}/findings", headers=headers(ANALYST)).json()["findings"]
     v07 = [f for f in findings if f["validator_id"] == "VAL-07"]
     assert any(f["severity"] == "info" and "agrees with ARR/sales (1.0266)" in f["message"] for f in v07)
+    assert any("CSS at 11kv: printed computed 1.33 agrees with S = T" in f["message"] for f in v07)
+    assert any("CSS at 11kv: approved 1.33 is within the 20% cap 1.41" in f["message"] for f in v07)
+    assert any(
+        f["severity"] == "blocking" and "CSS at 33kv: approved 1.45 exceeds the 20% cap 1.42" in f["message"]
+        for f in v07
+    )
     assert any(
         f["severity"] == "blocking" and "not the lower" in f["message"] for f in v07
     )  # HV-2: 1.45 is not min(1.20, 1.45)

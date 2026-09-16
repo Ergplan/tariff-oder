@@ -36,6 +36,66 @@ def cmd_downgrade(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_reader_measure(args: argparse.Namespace) -> int:
+    """Measure the optional Docling reader against the two production readers on one PDF
+    (ADR-0009): per page, how many grids each reader finds, their shapes, and how Docling's
+    grids agree with PyMuPDF's under the pipeline's own agreement scoring.  Read-only; nothing
+    is written to the database or to storage.  Exits 2 when Docling or its models are not
+    available here, saying which."""
+    from . import readers
+    from .inventory import open_document
+
+    ok, why = readers.docling_available()
+    if not ok:
+        print(json.dumps({"docling": why, "hint": "uv sync --extra docling  (about 6 GB; models from huggingface.co)"}))
+        return 2
+    data = Path(args.pdf).read_bytes()
+    doc = open_document(data)
+    try:
+        dl_grids, run = readers.read_tables_docling(data, artifacts_path=args.artifacts_path)
+    except Exception as e:  # noqa: BLE001 - the operator needs the blocked host or the model error verbatim
+        print(json.dumps({"docling": "failed", "error": f"{type(e).__name__}: {str(e)[:300]}"}))
+        return 2
+    by_page: dict[int, list] = {}
+    for g in dl_grids:
+        by_page.setdefault(g.page_index, []).append(g)
+    pages_out = []
+    totals = {"pymupdf": 0, "pdfplumber": 0, "docling": len(dl_grids), "paired": 0, "high_agreement": 0}
+    for idx in range(1, doc.page_count + 1):
+        page = doc[idx - 1]
+        if not page.get_text("text").strip():
+            continue
+        prim = readers.read_tables_pymupdf(page, idx, "lines") or readers.read_tables_pymupdf(page, idx, "text")
+        sec = readers.read_tables_pdfplumber(data, idx, "lines")
+        dl = by_page.get(idx, [])
+        agreements = readers.score_agreement(prim, dl) if (prim or dl) else []
+        paired = [a for a in agreements if a.primary_ordinal is not None and a.secondary_ordinal is not None]
+        totals["pymupdf"] += len(prim)
+        totals["pdfplumber"] += len(sec)
+        totals["paired"] += len(paired)
+        totals["high_agreement"] += sum(1 for a in paired if a.classification == "high_agreement")
+        if prim or sec or dl:
+            pages_out.append(
+                {
+                    "page": idx,
+                    "pymupdf": [[g.row_count, g.col_count] for g in prim],
+                    "pdfplumber": [[g.row_count, g.col_count] for g in sec],
+                    "docling": [[g.row_count, g.col_count] for g in dl],
+                    "docling_vs_pymupdf": [
+                        {
+                            "pymupdf": a.primary_ordinal,
+                            "docling": a.secondary_ordinal,
+                            "class": a.classification,
+                            "cells_equal": a.cell_equality,
+                        }
+                        for a in agreements
+                    ],
+                }
+            )
+    print(json.dumps({"pdf": args.pdf, "run": run, "totals": totals, "pages": pages_out}, indent=2))
+    return 0
+
+
 def cmd_provider_smoke(args: argparse.Namespace) -> int:
     """A real provider run on a two-cell synthetic structure (never a real order): proves the
     key, the model, the tool schema and the cost telemetry before any order is spent on it.
@@ -420,6 +480,14 @@ def main(argv: list[str] | None = None) -> int:
         help="one small extraction through the configured provider; reports provider, model, tokens and cost",
     )
     p.set_defaults(fn=cmd_provider_smoke)
+    p = sub.add_parser(
+        "reader-measure", help="measure the optional Docling reader against PyMuPDF/pdfplumber on one PDF"
+    )
+    p.add_argument("--pdf", required=True, help="path to a PDF (a fixture, or a real order copied from the bucket)")
+    p.add_argument(
+        "--artifacts-path", default=None, help="pre-downloaded Docling models directory (docling-tools models download)"
+    )
+    p.set_defaults(fn=cmd_reader_measure)
     p = sub.add_parser("profiles-schema", help="export the reading-profile JSON schema")
     p.add_argument("-o", "--output", default="-")
     p.set_defaults(fn=cmd_profiles_schema)

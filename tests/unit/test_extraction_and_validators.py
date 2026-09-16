@@ -555,5 +555,5 @@ def test_val18_candidates_outside_approved_regions_are_blocked():
 
 
 def test_versions_are_declared():
-    assert EXTRACTION_RULES_VERSION == "1" and V.VALIDATORS_VERSION == "1"
+    assert EXTRACTION_RULES_VERSION == "2" and V.VALIDATORS_VERSION == "2"
     assert ExtractionOutput().schema_version == SCHEMA_VERSION

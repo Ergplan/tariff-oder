@@ -90,7 +90,36 @@ open-access view.
   always accepts the click and states what is missing, shows API errors above the button
   with the request id, and turns a non-JSON answer (an expired IAP session) into a
   readable message; the same run on the new build recorded `confirmed` and queued the
-  structure stage.  **Still open in the M1 gate:** Cloud Logging
+  structure stage.
+
+  **Increment 13 (2026-09-16): CSS as a computation, transmission references, Docling as an
+  optional reader.**  (a) `tariff_api.css_formula` (spec 5.1, VAL-07 derivation rule): inside a
+  `cross_subsidy_surcharge` region the extractor recognises the formula statement
+  `S = T − [C/(1 − L/100) + D + R]` and the symbol definitions in the page text, reads the
+  parameter tables (T, C, L, D or its parts DC + TC + WC, R, the printed computed S, the
+  printed cap) per voltage level with a cell citation for every input, recomputes S and
+  attaches the whole derivation to the approved candidate at that level
+  (`derivation.formula`).  A level with a printed computed S but no approved row becomes its
+  own candidate; a level with inputs and nothing printed is listed as missing, never computed
+  into a value.  VAL-07 v2 compares the recomputed S with the printed one (tolerance: the
+  printed rounding), the printed cap with 20% of T and the approved value with the cap; each
+  mismatch blocks, agreement is an info finding.  The explorer's network view prints the
+  formula line under the value.  Fixture: an NPCL-style page (formula, definitions,
+  D = DC + TC + WC table, parameter table) in the synthetic network order;
+  `test_network_stage.py` asserts inputs, evidence pages, recomputation, cap and findings.
+  Extraction rules 2, validators 2.  **Not yet run on the real NPCL pages 316–318**: that
+  happens when the operator drains the queue after the confirmed localisation; the page-317
+  wording the reviewer quoted matches the patterns here, the table layout does not until seen.
+  (b) A transmission loss or charge named as an input of an open-access determination
+  ("Intra-State Transmission Loss (3.18%) … as determined … order dated …") is captured in
+  the `transmission_reference` family with value, unit and the instrument it points to
+  (`by_reference`), never as a transmission tariff of its own.  (c) Docling: installed as the
+  optional extra `tariff-api[docling]` (6 GB with torch), reader adapter written and
+  unit-tested against Docling's table model, `tariff-api reader-measure` added — and the
+  measurement **not done**: this build environment cannot reach huggingface.co for the
+  models and refuses the CPU torch index; ADR-0009 addendum records the promotion rule,
+  `docs/deployment.md` the VM commands.  Pipeline behaviour is unchanged by (c).  Karnataka
+  and Gujarat localisations remain unreviewed.  **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**
