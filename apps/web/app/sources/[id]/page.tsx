@@ -337,6 +337,7 @@ export default async function SourceDetailPage({
             </div>
             <div className="stats">
               <Stat label="Candidates" value={extraction.candidates} />
+              <Stat label="By family" value={fmt(extraction.by_family)} />
               <Stat label="Channel agreement" value={fmt(extraction.by_agreement)} />
               <Stat label="Confidence" value={fmt(extraction.by_confidence)} />
               <Stat label="Routing" value={fmt(extraction.by_routing)} />

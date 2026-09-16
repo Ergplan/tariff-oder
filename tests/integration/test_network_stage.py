@@ -98,7 +98,7 @@ def test_network_order_yields_typed_network_facts_with_derivations_and_condition
     # the CSS approved rows carry the formula: inputs with evidence, D from DC + TC + WC, the
     # recomputed S and the cap; VAL-07 recomputes and compares with what the order printed
     f11 = css["LMV-2"]["record"]["derivation"]["formula"]
-    assert f11["rule"] == "css_formula" and f11["level"] == "11kv" and f11["computed"] == "1.3348"
+    assert f11["rule"] == "css_formula" and f11["level"] == "11 kV" and f11["computed"] == "1.3348"
     assert f11["inputs"]["T"]["value"] == "7.06" and f11["inputs"]["DC"]["value"] == "0.10"
     assert f11["inputs"]["C"]["evidence"]["page_index"] == 6 and f11["inputs"]["C"]["evidence"]["kind"] == "cell"
     assert f11["printed_computed"] == "1.33" and f11["printed_cap"] == "1.41" and f11["cap_20pct_of_T"] == "1.4120"
@@ -128,10 +128,10 @@ def test_network_order_yields_typed_network_facts_with_derivations_and_condition
     findings = client.get(f"/sources/{src_id}/findings", headers=headers(ANALYST)).json()["findings"]
     v07 = [f for f in findings if f["validator_id"] == "VAL-07"]
     assert any(f["severity"] == "info" and "agrees with ARR/sales (1.0266)" in f["message"] for f in v07)
-    assert any("CSS at 11kv: printed computed 1.33 agrees with S = T" in f["message"] for f in v07)
-    assert any("CSS at 11kv: approved 1.33 is within the 20% cap 1.41" in f["message"] for f in v07)
+    assert any("CSS at 11 kV: printed computed 1.33 agrees with S = T" in f["message"] for f in v07)
+    assert any("CSS at 11 kV: approved 1.33 is within the 20% cap 1.41" in f["message"] for f in v07)
     assert any(
-        f["severity"] == "blocking" and "CSS at 33kv: approved 1.45 exceeds the 20% cap 1.42" in f["message"]
+        f["severity"] == "blocking" and "CSS at 33 kV: approved 1.45 exceeds the 20% cap 1.42" in f["message"]
         for f in v07
     )
     assert any(

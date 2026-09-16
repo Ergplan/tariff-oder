@@ -28,6 +28,7 @@ from tariff_api.extraction import (
     PROMPT_VERSION,
     Compared,
     StructureInput,
+    annotate,
     compare_channels,
     extract_conditions,
     green_tariff_prose,
@@ -146,6 +147,8 @@ def extract_source(ctx: JobContext) -> dict:
                     "period",
                     "excluded",
                     "reviewer_note",
+                    "cue_text",
+                    "note",
                 ),
             )
             for r in s.execute(
@@ -267,6 +270,8 @@ def extract_source(ctx: JobContext) -> dict:
             period=reg["period"],
             utilities=profile.utilities,
             category_code_pattern=profile.category_code_pattern,
+            region_cue=reg.get("cue_text"),
+            region_note=reg.get("note"),
         )
         if reg["role"] not in READ_ROLES and reg["role"] not in PROSE_ROLES:
             continue
@@ -279,6 +284,7 @@ def extract_source(ctx: JobContext) -> dict:
                 net = network_extract(inp, reg["sub_role"])
                 out.candidates.extend(net.candidates)
                 out.missing.extend(net.missing)
+            annotate(out.candidates, inp)
             artefacts.append(
                 (
                     f"{sha}/{STAGE}/{extraction_version}/region-{reg['ordinal']:02d}/rules.json",
@@ -328,6 +334,9 @@ def extract_source(ctx: JobContext) -> dict:
                     {"input_hash": image_res.input_hash, "output": image_res.output.model_dump(), "raw": image_res.raw},
                 )
             )
+        annotate(structure_res.output.candidates, inp)
+        if image_res:
+            annotate(image_res.output.candidates, inp)
         for cmp in compare_channels(structure_res.output, image_res.output if image_res else None):
             compared_all.append((cmp, reg))
         ctx.save_checkpoint(

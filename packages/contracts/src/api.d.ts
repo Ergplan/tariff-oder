@@ -832,8 +832,10 @@ export interface paths {
         };
         /**
          * Review Queue Detail
-         * @description Pending candidates of one order in review order: risk first, then coverage impact,
-         *     then confidence (Section 7.2).  Every item says why it sits where it does.
+         * @description Pending candidates of one order in review order: ``document`` (default) follows the
+         *     order as printed — schedule categories first, then the network families; ``risk`` puts
+         *     blocking findings, disagreements and low confidence first (Section 7.2).  Every item
+         *     says why it sits where it does.
          */
         get: operations["review_queue_detail_sources__source_id__review_queue_get"];
         put?: never;
@@ -7299,6 +7301,7 @@ export interface operations {
                 family?: string | null;
                 limit?: number;
                 offset?: number;
+                order?: string;
                 page_end?: number | null;
                 page_start?: number | null;
                 risk?: string | null;

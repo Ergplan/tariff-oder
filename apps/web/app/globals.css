@@ -96,3 +96,24 @@ tr[data-excluded] td:not(:last-child) { opacity: 0.55; text-decoration: line-thr
 .note-form { display: grid; gap: 0.35rem; min-width: 18rem; }
 .note-form textarea { font: inherit; font-size: 0.9rem; padding: 0.3rem; }
 button.link { background: none; color: var(--accent); padding: 0; text-decoration: underline; font-size: 0.85rem; }
+/* Review workspace */
+.rw { display: flex; gap: 1rem; align-items: flex-start; }
+.rw-side { flex: 0 0 220px; position: sticky; top: 0.5rem; max-height: 90vh; overflow: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.6rem 0.75rem; font-size: 0.88rem; }
+.rw-side ol { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+.rw-side li { padding: 0.15rem 0.3rem; border-radius: 3px; }
+.rw-side li[data-active] { background: #e8eef5; }
+.rw-side button.link { font-size: 0.88rem; text-decoration: none; color: var(--text); }
+.rw-side li[data-active] button.link { font-weight: 600; color: var(--accent); }
+.rw-main { flex: 1 1 520px; min-width: 0; }
+.rw-title { margin: 0.2rem 0 0.2rem; font-size: 1.3rem; }
+.rw-value { font-size: 1.6rem; font-weight: 700; margin: 0.1rem 0 0.6rem; }
+.rw-block { margin: 0 0 0.75rem; }
+.rw-block blockquote { margin: 0.4rem 0; padding: 0.35rem 0.7rem; border-left: 3px solid var(--border); background: var(--bg); font-size: 0.92rem; }
+.rw-page { max-width: 100%; border: 1px solid var(--border); }
+.rw-decide { position: sticky; bottom: 0; box-shadow: 0 -6px 12px -8px rgba(0,0,0,0.25); }
+.rw-buttons { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.rw-buttons button.primary { background: var(--ok); font-weight: 600; padding: 0.55rem 1.2rem; }
+.rw-buttons button[data-active] { outline: 3px solid #f2b705; }
+.rw-buttons button:not(.primary):not(.link) { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.rw-correct { margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; align-items: center; }
+@media (max-width: 800px) { .rw { flex-direction: column; } .rw-side { position: static; flex-basis: auto; width: 100%; max-height: 12rem; } }

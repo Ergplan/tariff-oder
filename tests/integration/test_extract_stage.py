@@ -57,7 +57,7 @@ def test_dual_channel_fixture_extraction_produces_routed_candidates_and_findings
     assert d["state"] == "awaiting_review"
     ex = d["extraction"]
     assert ex["is_fixture"] is True and ex["provider"] == "fixture" and ex["cost_usd"] == 0.0
-    assert ex["prompt_version"] == "1" and ex["schema_version"] == "1" and ex["image_channel"] is True
+    assert ex["prompt_version"] == "1" and ex["schema_version"] == "2" and ex["image_channel"] is True
     assert ex["runs"] == 2 and ex["runs_failed"] == 0  # one approved region, two channels
     assert ex["candidates"] > 15 and set(ex["by_agreement"]) == {"agree"}
     assert ex["new_profile"] is True and ex["by_routing"] == {"individual": ex["candidates"]}
@@ -119,7 +119,7 @@ def test_dual_channel_fixture_extraction_produces_routed_candidates_and_findings
     keys = [o.key for o in storage.list("artefacts", prefix=f"{d['sha256']}/extract/")]
     assert any(k.endswith("/structure.json") for k in keys) and any(k.endswith("/image.json") for k in keys)
     art = json.loads(storage.get("artefacts", next(k for k in keys if k.endswith("/structure.json"))))
-    assert art["output"]["schema_version"] == "1" and art["raw"]["fixture"] is True
+    assert art["output"]["schema_version"] == "2" and art["raw"]["fixture"] is True
 
     # review queue lists it as a fixture with everything individual; nothing is published
     q = client.get("/review/queue", headers=headers(ANALYST)).json()

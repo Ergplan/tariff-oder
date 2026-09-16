@@ -12,7 +12,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field, field_validator
 
-SCHEMA_VERSION = "1"
+SCHEMA_VERSION = "2"
 
 Family = Literal[
     "retail_tariff",
@@ -150,6 +150,12 @@ class Candidate(BaseModel):
     missing: list[str] = Field(default_factory=list)  # field names the channel could not read
     ambiguous: list[str] = Field(default_factory=list)
     notes: str | None = None
+    # Why the reviewer is being shown this value (schema 2): a rule-written sentence naming
+    # the table, row and column or the clause, and the verbatim page text that gives the
+    # cue — the caption above the table, the paragraph that decides the value.  Never a
+    # number the order did not print.
+    rationale: str | None = None
+    context: list[str] = Field(default_factory=list)
 
     @field_validator("value")
     @classmethod

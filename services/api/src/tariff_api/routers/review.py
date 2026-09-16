@@ -64,11 +64,14 @@ def review_queue_detail(
     risk: str | None = None,
     channel: str | None = None,
     status: str | None = None,
+    order: str = Query("risk", pattern="^(document|risk)$"),
     limit: int = Query(50, ge=1, le=500),
     offset: int = Query(0, ge=0),
 ) -> ReviewQueueDetail:
-    """Pending candidates of one order in review order: risk first, then coverage impact,
-    then confidence (Section 7.2).  Every item says why it sits where it does."""
+    """Pending candidates of one order in review order: ``document`` (default) follows the
+    order as printed — schedule categories first, then the network families; ``risk`` puts
+    blocking findings, disagreements and low confidence first (Section 7.2).  Every item
+    says why it sits where it does."""
     with session_scope() as s:
         src = svc.get_source(s, source_id)
         ordered = rv.ordered_queue(
@@ -82,6 +85,7 @@ def review_queue_detail(
             risk=risk,
             channel=channel,
             status=status,
+            order=order,
         )
         page = ordered[offset : offset + limit]
         return ReviewQueueDetail(

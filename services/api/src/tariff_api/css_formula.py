@@ -81,6 +81,33 @@ def norm_level(text: str) -> str | None:
     return re.sub(r"[\s\-]", "", m.group(1).lower())
 
 
+_BAND = re.compile(r"(below|above|up\s*to|upto|at|and above|&\s*above)?\s*(\d{2,3})\s*kv", re.I)
+
+
+def band_key(text: str) -> str | None:
+    """A voltage band as a comparable, readable key: `Supply below 11 kV` → `below 11 kV`;
+    `at 11 kV up to 66 kV` → `11 kV, up to 66 kV`; `above 11 kV and up to 33 kV` →
+    `above 11 kV, up to 33 kV`; `132 kV#` → `132 kV`; `HT`/`LT`/`EHV` without numbers → the
+    word.  Used to pair a computation row with the approved row for the same band; different
+    bands never pair."""
+    parts = []
+    for m in _BAND.finditer(text):
+        mod = (m.group(1) or "").lower().replace(" ", "")
+        n = m.group(2)
+        word = {
+            "below": "below ",
+            "above": "above ",
+            "upto": "up to ",
+            "andabove": "and above ",
+            "&above": "and above ",
+        }
+        parts.append(f"{word.get(mod, '')}{n} kV")
+    if parts:
+        return ", ".join(parts)
+    m = re.search(r"\b(ehv|ht|lt|hv|lv)\b", text, re.I)
+    return m.group(1).lower() if m else None
+
+
 def _dec(v: Any) -> Decimal | None:
     try:
         return Decimal(str(v)) if v is not None and str(v) != "" else None
@@ -129,7 +156,7 @@ def read_parameters(cells: list[dict[str, Any]]) -> tuple[dict[str, dict[str, di
             if c["value_state"] not in ("value", "zero"):
                 continue
             sym = symbol_of(" ".join(c[sym_from]))
-            level = norm_level(" ".join(c[level_from]))
+            level = band_key(" ".join(c[level_from])) or norm_level(" ".join(c[level_from]))
             if sym is None or level is None:
                 continue
             label = " ".join(c[sym_from])

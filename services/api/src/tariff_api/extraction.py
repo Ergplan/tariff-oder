@@ -33,6 +33,15 @@ _BANKING_BY_REF = re.compile(
 _DEFERRED = re.compile(r"additional surcharge[^.\n]{0,160}(separate petition|file(d)? separately|separately)", re.I)
 # "Intra-State Transmission Loss (3.18%) shall be applicable to all the open access consumers"
 # "transmission charges as determined by the Commission in the order dated ... for UPPTCL"
+# "for open access consumers connected at 33 kV, 0.79% distribution loss shall apply"
+_OA_LOSS_PROSE = re.compile(
+    r"open access consumers? connected (?:at|below|above)\s+([^,;:]{2,40}?),?\s*(\d+(?:\.\d+)?)\s*%\s*"
+    r"(distribution|wheeling|transmission)?\s*loss(?:es)?\s+(?:shall|will|would|is to) apply",
+    re.I,
+)
+_AMOUNT_TABLE = re.compile(
+    r"\b(rs\.?\s*(cr|crore|lakh)s?|crore|lakh|\bMU\b|million units|revenue|ARR|expense|cost)\b", re.I
+)
 _TRANSMISSION_VALUE = re.compile(
     r"\b((?:inter|intra)[- ]?state\s+)?transmission\s+(loss(?:es)?|charges?)\s*(?:of|at|@|is|shall be|=|\()?\s*"
     r"(?:Rs\.?\s*)?(\d+(?:\.\d+)?)\s*(%|percent|paise|ps|Rs\.?/kWh|per (?:kWh|unit))?",
@@ -64,6 +73,8 @@ class StructureInput:
     period: str | None = None
     utilities: list[str] = field(default_factory=list)
     category_code_pattern: str | None = None  # the profile's code pattern, for summary-table row labels
+    region_cue: str | None = None  # the line that justified the region (localisation)
+    region_note: str | None = None  # the profile's note on that region (why it matters)
 
 
 # ------------------------------------------------------------------ serialisation (prompt input)
@@ -374,6 +385,26 @@ def prose_decisions(inp: StructureInput) -> list[Candidate]:
                         evidence=[ev],
                     )
                 )
+            for om in _OA_LOSS_PROSE.finditer(ln):
+                out.append(
+                    Candidate(
+                        family="oa_loss",
+                        component_type="loss",
+                        value=om.group(2),
+                        value_state="value",
+                        original_text=ln[:400],
+                        per_unit="percent",
+                        applicability=Applicability(voltage=om.group(1).strip()),
+                        period=inp.period,
+                        utility=inp.utility,
+                        decision_status="approved",
+                        rationale=(
+                            f"The paragraph states the {(om.group(3) or 'distribution').lower()} loss for open access "
+                            f"consumers connected at {om.group(1).strip()}: a per-level loss stated in prose."
+                        ),
+                        evidence=[ev],
+                    )
+                )
             for tm in _TRANSMISSION_VALUE.finditer(ln):
                 # a transmission charge or loss that appears as an input of an in-scope
                 # determination is captured as a referenced value with its source (spec
@@ -543,11 +574,10 @@ def _grid_family(header: list[str], rows: list[str], region_role: str, sub_role:
         return "oa_loss"
     if "green" in text:
         return "green_tariff"
-    return (
-        sub_role
-        if sub_role in ("wheeling_charge", "oa_loss", "cross_subsidy_surcharge", "additional_surcharge")
-        else None
-    )
+    # a grid that names no family is read only when the region's sub-role is a loss or CSS
+    # table (their captions name the family, the grid itself says only level, %, approved);
+    # a wheeling or additional-surcharge grid must name its family in a row or column
+    return sub_role if sub_role in ("oa_loss", "cross_subsidy_surcharge") else None
 
 
 def network_extract(inp: StructureInput, sub_role: str | None) -> ExtractionOutput:
@@ -562,8 +592,10 @@ def network_extract(inp: StructureInput, sub_role: str | None) -> ExtractionOutp
         by_grid.setdefault((c["page_index"], c["grid_ordinal"]), []).append(c)
     # CSS as a computation: the formula statement and definitions from the page text, the
     # parameter tables (T, C, D = DC + TC + WC, L, R, computed S, cap) from the grids
+    # network regions overlap and the CSS computation table may sit under a page the rules
+    # cued for losses, so the parameter tables are looked for in every network region
     css_params, css_grids = (
-        css_formula.read_parameters(inp.cells) if sub_role == "cross_subsidy_surcharge" else ({}, set())
+        css_formula.read_parameters(inp.cells) if inp.region_role == "network_charges" else ({}, set())
     )
     statements = css_formula.formula_statements(inp.page_texts) if css_params else {}
     for (page, grid), cells in sorted(by_grid.items()):
@@ -579,7 +611,13 @@ def network_extract(inp: StructureInput, sub_role: str | None) -> ExtractionOutp
             out.candidates.extend(_css_rows(inp, fam, cells))
             continue
         if fam == "wheeling_charge" and any("sales" in r.lower() or "arr" in r.lower() for r in rows):
+            # the one amount table that determines a charge: ARR ÷ sales → the printed rate
             out.candidates.extend(_wheeling_derived(inp, cells))
+            continue
+        if _AMOUNT_TABLE.search(" ".join(headers + rows)):
+            # any other ARR working table (Rs crore, MU, revenue) mentions the family without
+            # determining it: nothing in it is a leviable charge or a billing loss
+            out.missing.append(f"page {page} grid {grid}: {fam} named in an amount table; not a determination")
             continue
         for c in sorted(cells, key=lambda x: (x["row"], x["col"])):
             n = c["normalised"]
@@ -592,6 +630,19 @@ def network_extract(inp: StructureInput, sub_role: str | None) -> ExtractionOutp
             fy = _FY.search(hdr) or _FY.search(row)
             period = f"FY{fy.group(1)}-{fy.group(2)[-2:]}" if fy else inp.period
             level = _level_from(c["row_path"]) or _level_from(c["header_path"])
+            label = f"{hdr} {row}".lower()
+            if fam in ("oa_loss", "distribution_loss_approved"):
+                # a loss is a percentage at a level or for a year; volumes and amounts in
+                # the same table are not losses
+                if not percent or not (level or fy or "loss" in label):
+                    continue
+            else:
+                # a charge is named in its row or column and carries a per-unit basis
+                words = {"wheeling_charge": "wheeling", "additional_surcharge": "additional surcharge"}
+                named = words.get(fam, fam.replace("_", " ")) in label
+                unit = c.get("per_unit") or percent or "kwh" in label or "unit" in label
+                if not named or not unit:
+                    continue
             out.candidates.append(
                 Candidate(
                     family=fam,
@@ -626,7 +677,8 @@ def _attach_css_formula(
     for c in out.candidates:
         if c.family != "cross_subsidy_surcharge":
             continue
-        lvl = css_formula.norm_level(c.applicability.voltage or "") or css_formula.norm_level(c.original_text)
+        text = " ".join(x for x in (c.applicability.voltage, c.category_code, c.original_text) if x)
+        lvl = css_formula.band_key(text) or css_formula.norm_level(text)
         if lvl and lvl in params:
             base = c.derivation or {}
             c.derivation = {**base, "formula": css_formula.derivation_for(lvl, params[lvl], statements)}
@@ -882,3 +934,90 @@ def extract_conditions(inp: StructureInput) -> list[ConditionRecord]:
                 )
             )
     return out
+
+
+# ------------------------------------------------------------------ why the reviewer sees this
+
+
+_CAPTION = re.compile(r"^\s*(Table\s+\d+[-–.]\d+[A-Za-z]?\b.*)$", re.I)
+_SENTENCE_SPLIT = re.compile(r"(?<=[.;])\s+")
+
+
+def _page_lines(inp: StructureInput, page: int) -> list[str]:
+    return [ln.strip() for ln in (inp.page_texts.get(page) or "").splitlines()]
+
+
+def _caption_for(inp: StructureInput, ev: EvidenceRef) -> str | None:
+    """The `Table x-y …` line nearest above the cited row on the page, or the last caption
+    on the page when the row text is not found line-wise."""
+    lines = _page_lines(inp, ev.page_index)
+    if not lines:
+        return None
+    anchor = (ev.row_path[0] if ev.row_path else ev.excerpt or "").strip()[:40].lower()
+    row_at = next((i for i, ln in enumerate(lines) if anchor and anchor in ln.lower()), len(lines))
+    caption = None
+    for ln in lines[:row_at]:
+        m = _CAPTION.match(ln)
+        if m:
+            caption = m.group(1)[:300]
+    return caption
+
+
+def _sentences_about(inp: StructureInput, page: int, needles: list[str], limit: int = 2) -> list[str]:
+    text = " ".join(_page_lines(inp, page))
+    out: list[str] = []
+    for sent in _SENTENCE_SPLIT.split(text):
+        low = sent.lower()
+        if any(n and n.lower() in low for n in needles) and len(sent) > 25:
+            out.append(sent.strip()[:400])
+        if len(out) >= limit:
+            break
+    return out
+
+
+_WHAT = {
+    "retail_tariff": "the approved rate",
+    "cross_subsidy_surcharge": "the cross-subsidy surcharge",
+    "wheeling_charge": "the wheeling charge",
+    "oa_loss": "the loss applied to open-access billing",
+    "distribution_loss_approved": "the approved distribution loss",
+    "additional_surcharge": "the additional surcharge",
+    "green_tariff": "the green tariff premium",
+    "transmission_reference": "the transmission reference",
+}
+
+
+def annotate(cands: list[Candidate], inp: StructureInput) -> None:
+    """Give every candidate a plain-language rationale and the page text that cues it: the
+    table caption above the cited cell, sentences on the page that name the row or the
+    value, the region's note.  Quoted text is verbatim from the order; the rationale
+    sentence is written by this rule and says which table, row and column."""
+    for c in cands:
+        ev = c.evidence[0]
+        ctx: list[str] = list(c.context)
+        if ev.kind == "cell":
+            caption = _caption_for(inp, ev)
+            row = " › ".join(ev.row_path) or "(unlabelled row)"
+            col = " › ".join(ev.header_path) or "(unlabelled column)"
+            where = f"{caption}, " if caption else f"the table on page {ev.page_index}, "
+            if c.rationale is None:
+                what = _WHAT.get(c.family, c.family.replace("_", " "))
+                if c.family == "retail_tariff" and c.category_code:
+                    what = f"the approved {c.component_type} rate for {c.category_code}"
+                c.rationale = f"Read as {what} from {where}row “{row}”, column “{col}”: “{ev.excerpt}”."
+            if caption:
+                ctx.append(caption)
+            needles = [x for x in (ev.row_path[-1] if ev.row_path else None, c.value) if x]
+            ctx.extend(s for s in _sentences_about(inp, ev.page_index, needles) if s not in ctx)
+        else:
+            if c.rationale is None:
+                c.rationale = f"Stated on page {ev.page_index}: “{ev.excerpt[:200]}”."
+            lines = _page_lines(inp, ev.page_index)
+            i = next((k for k, ln in enumerate(lines) if ev.excerpt[:60] in ln), None)
+            if i is not None:
+                around = " ".join(x for x in lines[max(0, i - 2) : i + 3] if x)[:400]
+                if around and around not in ctx:
+                    ctx.append(around)
+        if inp.region_note and inp.region_note not in ctx:
+            ctx.append(f"Region note (profile): {inp.region_note}"[:400])
+        c.context = ctx[:4]

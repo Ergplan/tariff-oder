@@ -72,6 +72,34 @@ CORRECTABLE_FIELDS = frozenset(
     }
 )
 _CONF_RANK = {"low": 0, "medium": 1, "high": 2}
+# document order: the schedule first, then the open-access chapter's families as an order
+# prints them (wheeling, losses, CSS, additional surcharge, banking, green, transmission)
+_FAMILY_ORDER = {
+    "retail_tariff": 0,
+    "wheeling_charge": 10,
+    "oa_loss": 11,
+    "distribution_loss_approved": 12,
+    "cross_subsidy_surcharge": 13,
+    "additional_surcharge": 14,
+    "banking_rule": 15,
+    "green_tariff": 16,
+    "transmission_reference": 17,
+}
+_COMPONENT_ORDER = {
+    "fixed": 0,
+    "demand": 1,
+    "energy": 2,
+    "minimum": 3,
+    "tod_adjustment": 4,
+    "rebate": 5,
+    "surcharge": 6,
+    "subsidy": 7,
+    "green_premium": 8,
+    "charge": 9,
+    "loss": 10,
+    "condition": 11,
+    "cross_reference": 12,
+}
 
 
 # ------------------------------------------------------------------ policy
@@ -115,10 +143,13 @@ def ordered_queue(
     risk: str | None = None,
     channel: str | None = None,
     status: str | None = None,
+    order: str = "risk",
 ) -> list[tuple[CandidateRecord, dict[str, Any]]]:
-    """Pending candidates in review order: risk first (blocking findings, findings, channel
-    disagreement, risk tags), then coverage impact (categories with no approved fact), then
-    confidence (low first).  Filters of Section 7.2."""
+    """Pending candidates in review order.  ``document`` (default): the retail schedule first,
+    category by category in the order the schedule prints them, fixed charge before energy
+    charge, then the open-access and network families in page order — the way a reviewer
+    reads the order.  ``risk``: blocking findings, findings, channel disagreement, risk tags,
+    then coverage impact, then confidence (low first).  Filters of Section 7.2."""
     rows = session.execute(select(CandidateRecord).where(CandidateRecord.source_id == source.id)).scalars().all()
     approved_categories = {
         r.category_code for r in rows if r.review_status in ("approved", "corrected") and r.category_code
@@ -146,17 +177,31 @@ def ordered_queue(
         if page_end is not None and (page is None or page > page_end):
             continue
         no_approved_fact = bool(r.category_code) and r.category_code not in approved_categories
-        rank = (
-            -r.blocking_finding_count,
-            -r.finding_count,
-            0 if r.channel_agreement == "disagree" else 1,
-            -len(r.risk_tags or []),
-            0 if no_approved_fact else 1,
-            _CONF_RANK.get(r.confidence, 1),
-            r.family,
-            r.category_code or "",
-            r.candidate_key,
-        )
+        if order == "risk":
+            rank: tuple = (
+                -r.blocking_finding_count,
+                -r.finding_count,
+                0 if r.channel_agreement == "disagree" else 1,
+                -len(r.risk_tags or []),
+                0 if no_approved_fact else 1,
+                _CONF_RANK.get(r.confidence, 1),
+                r.family,
+                r.category_code or "",
+                r.candidate_key,
+            )
+        else:
+            ev = (r.effective_record.get("evidence") or [{}])[0]
+            rank = (
+                _FAMILY_ORDER.get(r.family, 50),
+                page or 0,
+                ev.get("grid_ordinal") or 0,
+                r.category_code or "",
+                _COMPONENT_ORDER.get(r.component_type, 50),
+                ev.get("row") or 0,
+                ev.get("col") or 0,
+                ev.get("line_no") or 0,
+                r.candidate_key,
+            )
         out.append(
             (
                 r,

@@ -3,20 +3,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { CandidateOut, DecisionResult, ErrorResponse, ReviewQueueDetail } from "@tariff/contracts";
+import { networkError, readError } from "@/lib/client-errors";
 
 type Outcome = "approve" | "correct" | "reject" | "unresolved";
 const CAUSE_TAGS = ["wrong_table", "header_misbound", "unit", "ocr", "footnote_missed", "cross_reference", "other"] as const;
-const VALUE_STATES = [
-  "value",
-  "zero",
-  "absent_in_source",
-  "unknown",
-  "unchanged_reference",
-  "not_applicable",
-  "formula",
-  "cross_reference",
-  "not_yet_verified",
-] as const;
+const VALUE_STATES = ["value", "zero", "absent_in_source", "unknown", "unchanged_reference", "not_applicable", "formula", "cross_reference", "not_yet_verified"] as const;
 
 type EvidenceRef = {
   page_index: number;
@@ -30,6 +21,20 @@ type EvidenceRef = {
   clause_path?: string[];
   excerpt: string;
 };
+type Formula = {
+  formula?: string;
+  level?: string;
+  inputs?: Record<string, { value?: string; unit?: string; label?: string; evidence?: { page_index?: number } }>;
+  computed?: string | null;
+  printed_computed?: string | null;
+  cap_20pct_of_T?: string;
+  printed_cap?: string | null;
+  d_components?: Record<string, string> | null;
+  assumed?: string[];
+  missing?: string[];
+  formula_as_printed?: { text: string; page_index: number } | null;
+  definitions?: Record<string, { text: string }>;
+};
 type Rec = {
   value?: string | null;
   value_state?: string;
@@ -38,31 +43,104 @@ type Rec = {
   per_unit?: string | null;
   frequency?: string | null;
   decision_status?: string | null;
+  reference_target?: string | null;
   conditions?: string[];
   evidence?: EvidenceRef[];
   applicability?: Record<string, unknown>;
+  rationale?: string | null;
+  context?: string[];
+  derivation?: { rule?: string; inputs?: Record<string, unknown>; formula?: Formula } | null;
   [k: string]: unknown;
 };
+export type FindingLine = { severity: string; validator_id: string; message: string };
 
-function fieldRows(rec: Rec, other: Rec | null, disagreeing: string[]) {
-  const keys = ["value", "value_state", "original_text", "currency", "per_unit", "frequency", "decision_status", "period", "utility"];
-  return keys.map((k) => ({
-    key: k,
-    a: rec[k] == null ? "—" : String(rec[k]),
-    b: other ? (other[k] == null ? "—" : String(other[k])) : null,
-    differs: disagreeing.includes(k),
-  }));
+const FAMILY_LABEL: Record<string, string> = {
+  retail_tariff: "Retail tariff",
+  wheeling_charge: "Wheeling charge",
+  oa_loss: "Open-access losses",
+  distribution_loss_approved: "Approved distribution loss",
+  cross_subsidy_surcharge: "Cross-subsidy surcharge",
+  additional_surcharge: "Additional surcharge",
+  banking_rule: "Banking",
+  green_tariff: "Green tariff",
+  transmission_reference: "Transmission reference",
+};
+const COMPONENT_LABEL: Record<string, string> = {
+  energy: "Energy charge",
+  fixed: "Fixed charge",
+  demand: "Demand charge",
+  minimum: "Minimum charge",
+  tod_adjustment: "Time-of-day adjustment",
+  rebate: "Rebate",
+  surcharge: "Surcharge",
+  subsidy: "Subsidy",
+  green_premium: "Green premium",
+  charge: "Charge",
+  loss: "Loss",
+  condition: "Condition",
+  cross_reference: "Cross-reference",
+};
+const UNIT_WORD: Record<string, string> = { kWh: "per kWh", kVAh: "per kVAh", kW: "per kW", kVA: "per kVA", HP: "per HP", BHP: "per BHP", unit: "per unit", connection: "per connection", percent: "%" };
+const FREQ_WORD: Record<string, string> = { per_month: "per month", per_annum: "per year", per_bill: "per bill" };
+
+/** "Rs 6.50 per kWh per month", "Zero (nil)", "Not applicable", "By reference: …". */
+function valueWords(rec: Rec): string {
+  const st = rec.value_state;
+  if (st === "zero") return "Zero (nil)";
+  if (st === "not_applicable") return "Not applicable";
+  if (st === "absent_in_source") return rec.reference_target ? `By reference: ${rec.reference_target}` : "Not stated in the order";
+  if (st === "cross_reference" || st === "unchanged_reference") return `Refers to: ${rec.reference_target ?? rec.original_text ?? "another instrument"}`;
+  if (st === "formula") return `Formula: ${rec.original_text ?? ""}`;
+  if (rec.value == null) return st ?? "unknown";
+  const unit = rec.per_unit ? UNIT_WORD[rec.per_unit] ?? `per ${rec.per_unit}` : "";
+  if (rec.per_unit === "percent") return `${rec.value}%`;
+  const cur = rec.currency === "paise" ? "paise" : rec.currency === "rupees" ? "Rs" : "";
+  return [cur, rec.value, unit, rec.frequency ? FREQ_WORD[rec.frequency] ?? rec.frequency : ""].filter(Boolean).join(" ");
+}
+
+/** A sentence a person can read instead of header/row paths. */
+function whereRead(ev: EvidenceRef | undefined): string {
+  if (!ev) return "No evidence reference.";
+  if (ev.kind === "cell") {
+    const row = ev.row_path?.length ? `row “${ev.row_path.join(" › ")}”` : "an unlabelled row";
+    const col = ev.header_path?.length ? `column “${ev.header_path.join(" › ")}”` : "an unlabelled column";
+    return `Page ${ev.page_index}, table ${(ev.grid_ordinal ?? 0) + 1}, ${row}, ${col}.`;
+  }
+  if (ev.kind === "clause") return `Page ${ev.page_index}, clause ${ev.clause_path?.join(" › ") ?? ""}${ev.line_no != null ? `, line ${ev.line_no}` : ""}.`;
+  return `Page ${ev.page_index}, paragraph${ev.line_no != null ? ` at line ${ev.line_no}` : ""}.`;
+}
+
+function title(c: CandidateOut, rec: Rec): string {
+  const a = (rec.applicability ?? {}) as { voltage?: string | null; description?: string | null; time_band?: string | null; slab?: { original_text?: string | null } | null; load_band?: { original_text?: string | null } | null };
+  const qual = [a.description, a.voltage, a.slab?.original_text ?? a.load_band?.original_text, a.time_band].filter(Boolean).join(" · ");
+  if (c.family === "retail_tariff") return `${c.category_code ?? "Category ?"} · ${COMPONENT_LABEL[c.component_type] ?? c.component_type}${qual ? ` · ${qual}` : ""}`;
+  return `${FAMILY_LABEL[c.family] ?? c.family}${c.category_code ? ` · ${c.category_code}` : ""}${qual ? ` · ${qual}` : ""}`;
+}
+
+function groupKey(c: CandidateOut): string {
+  return c.family === "retail_tariff" ? `Retail tariff · ${c.category_code ?? "?"}` : FAMILY_LABEL[c.family] ?? c.family;
 }
 
 /**
- * Side-by-side review (Section 7.2).  Left: the rendered page with the cited table outlined,
- * fetched through the same-origin proxy so the API can record that this reviewer saw it.
- * Right: the candidate, both channels when they disagree, findings count, and the four
- * outcomes.  Approve and correct stay disabled until the evidence image has loaded; the
- * server refuses anyway.  Keyboard: a approve, c correct, r reject, u unresolved, n/p next
- * and previous, z undo the last decision.  Nothing renders as decided until the API says so.
+ * Review workspace (Section 7.2), one candidate at a time in the order the document
+ * prints them: what was read, in words; where it was read; the page text that gives the
+ * cue; the arithmetic when there is one; what the validators said; the cited page with the
+ * table outlined; then approve, change, reject or "cannot decide".  Approve and change stay
+ * disabled until the evidence image has loaded (the server refuses anyway).  Keyboard: a c
+ * r u outcome, Enter approve, n/p next and previous, z undo.  Nothing renders as decided
+ * until the API says so.
  */
-export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: string; queue: ReviewQueueDetail; sourceState: string }) {
+export function ReviewWorkspace({
+  sourceId,
+  queue,
+  sourceState,
+  findings,
+}: {
+  sourceId: string;
+  queue: ReviewQueueDetail;
+  sourceState: string;
+  findings: Record<string, FindingLine[]>;
+}) {
   const router = useRouter();
   const items = queue.items;
   const [index, setIndex] = useState(0);
@@ -76,8 +154,8 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
   const [imageError, setImageError] = useState<ErrorResponse | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<ErrorResponse | null>(null);
-  const [result, setResult] = useState<DecisionResult | null>(null);
   const [decided, setDecided] = useState<Record<string, DecisionResult>>({});
+  const [showChannels, setShowChannels] = useState(false);
   const viewedAt = useRef<number | null>(null);
   const attemptKey = useRef<string | null>(null);
 
@@ -86,8 +164,21 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
   const rec = useMemo(() => ((cand?.reviewed_record ?? cand?.record ?? {}) as Rec), [cand]);
   const image = (cand?.image_record ?? null) as Rec | null;
   const evidence = rec.evidence ?? [];
+  const ev0 = evidence[0];
   const prior = cand ? decided[cand.id] : undefined;
   const open = sourceState === "awaiting_review" && !prior;
+  const groups = useMemo(() => {
+    const out: { key: string; first: number; count: number }[] = [];
+    items.forEach((it, i) => {
+      const k = groupKey(it.candidate);
+      const last = out[out.length - 1];
+      if (last && last.key === k) last.count += 1;
+      else out.push({ key: k, first: i, count: 1 });
+    });
+    return out;
+  }, [items]);
+  const fm = rec.derivation?.formula;
+  const lines = cand ? findings[cand.id] ?? [] : [];
 
   const loadEvidence = useCallback(async (candidateId: string) => {
     setImageUrl(null);
@@ -97,7 +188,7 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
     try {
       const res = await fetch(`/api/candidates/${candidateId}/evidence/0/image`, { cache: "no-store" });
       if (!res.ok) {
-        setImageError((await res.json()) as ErrorResponse);
+        setImageError(await readError(res));
         return;
       }
       const blob = await res.blob();
@@ -106,13 +197,7 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
       setViewMeta({ highlighted: res.headers.get("x-evidence-highlighted") === "1", page: res.headers.get("x-evidence-page") ?? "" });
       viewedAt.current = Date.now();
     } catch {
-      setImageError({
-        error_type: "provider_unavailable",
-        message: "The evidence image could not be fetched.",
-        next_step: "Check the connection and retry; no decision is possible without it.",
-        severity: "error",
-        request_id: null,
-      });
+      setImageError(networkError("The evidence image"));
     }
   }, []);
 
@@ -123,22 +208,17 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
       setRationale("");
       setCorrection({});
       setError(null);
-      setResult(decided[cand.id] ?? null);
+      setShowChannels(false);
       attemptKey.current = null;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cand?.id]);
 
-  async function submit() {
+  async function submit(o: Outcome = outcome) {
     if (!cand || busy || !open) return;
-    if (outcome !== "approve" && rationale.trim().length < 5) {
-      setError({
-        error_type: "validation_failed",
-        message: `${outcome} needs a rationale.`,
-        next_step: "Say why, in a sentence; it is recorded with the decision.",
-        severity: "warning",
-        request_id: null,
-      });
+    if (o !== "approve" && rationale.trim().length < 5) {
+      setOutcome(o);
+      setError({ error_type: "validation_failed", message: `${o === "correct" ? "A change" : o === "reject" ? "A rejection" : "Cannot decide"} needs a reason.`, next_step: "Say why in a sentence; it is recorded with the decision.", severity: "warning", request_id: null });
       return;
     }
     const patch: Record<string, unknown> = {};
@@ -147,18 +227,18 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
       patch[k] = k === "value" ? v : v === "null" ? null : v;
     }
     const body: Record<string, unknown> = {
-      outcome,
+      outcome: o,
       expected_version: cand.version,
       rationale: rationale || null,
       evidence_view_ids: viewId ? [viewId] : [],
       time_spent_ms: viewedAt.current ? Date.now() - viewedAt.current : null,
     };
-    if (outcome === "correct") {
+    if (o === "correct") {
       body.correction = patch;
       body.cause_tag = cause;
       body.evidence_indices = [0];
     }
-    if (!attemptKey.current) attemptKey.current = crypto.randomUUID(); // reused on retry: exactly one effect
+    if (!attemptKey.current) attemptKey.current = crypto.randomUUID();
     setBusy(true);
     setError(null);
     try {
@@ -167,23 +247,16 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
         headers: { "content-type": "application/json", "Idempotency-Key": attemptKey.current },
         body: JSON.stringify(body),
       });
-      const json = await res.json();
-      if (!res.ok) setError(json as ErrorResponse);
+      if (!res.ok) setError(await readError(res));
       else {
-        const r = json as DecisionResult;
-        setResult(r);
+        const r = (await res.json()) as DecisionResult;
         setDecided((d) => ({ ...d, [cand.id]: r }));
         attemptKey.current = null;
         router.refresh();
+        if (o === "approve" && index < items.length - 1) setIndex(index + 1); // keep the flow moving
       }
     } catch {
-      setError({
-        error_type: "provider_unavailable",
-        message: "The decision could not reach the server.",
-        next_step: "Retry; the same idempotency key guarantees a single effect.",
-        severity: "error",
-        request_id: null,
-      });
+      setError(networkError("The decision"));
     } finally {
       setBusy(false);
     }
@@ -195,15 +268,13 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
     setError(null);
     try {
       const res = await fetch(`/api/review/decisions/${prior.decision.id}/undo`, { method: "POST" });
-      const json = await res.json();
-      if (!res.ok) setError(json as ErrorResponse);
+      if (!res.ok) setError(await readError(res));
       else {
         setDecided((d) => {
           const copy = { ...d };
           delete copy[cand.id];
           return copy;
         });
-        setResult(null);
         router.refresh();
       }
     } finally {
@@ -222,62 +293,144 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
       else if (e.key === "r") setOutcome("reject");
       else if (e.key === "u") setOutcome("unresolved");
       else if (e.key === "z") void undo();
-      else if (e.key === "Enter" && outcome === "approve") void submit();
+      else if (e.key === "Enter" && outcome === "approve") void submit("approve");
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items.length, outcome, cand?.id, viewId, busy, prior]);
+  }, [items.length, outcome, cand?.id, viewId, busy, prior, rationale, correction]);
 
   if (!cand) return null;
-  const canDecide = open && !busy && (outcome === "reject" || outcome === "unresolved" || !!viewId);
-  const ev0 = evidence[0];
+  const decidable = open && !busy;
+  const needsImage = !viewId;
+  const decidedCount = Object.keys(decided).length;
 
   return (
-    <div>
-      <p className="muted">
-        Candidate {item.position} of {queue.total}
-        {queue.total > items.length ? ` (first ${items.length} loaded)` : ""} · {item.reason}
-        {item.coverage_impact ? " · category has no approved fact yet" : ""} · keys: n next, p previous, a/c/r/u outcome, Enter approve, z undo
-      </p>
-      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "flex-start" }}>
-        <section style={{ flex: "1 1 460px", minWidth: 0 }} aria-label="Cited evidence">
-          <div className="card">
-            <div className="label">
-              Evidence · page {ev0?.page_index ?? "?"} · {ev0?.kind}
-              {ev0?.row != null ? ` · row ${ev0.row} col ${ev0.col}` : ev0?.line_no != null ? ` · line ${ev0.line_no}` : ""}
-              {viewMeta.highlighted ? " · cited table outlined" : imageUrl ? " · no table outline available for this evidence" : ""}
-            </div>
-            {ev0?.header_path?.length ? (
-              <div>
-                Header path: <span className="mono">{ev0.header_path.join(" › ")}</span>
+    <div className="rw">
+      <aside className="rw-side" aria-label="Review order">
+        <div className="label">In document order · {decidedCount} decided this session</div>
+        <ol>
+          {groups.map((g) => {
+            const active = index >= g.first && index < g.first + g.count;
+            return (
+              <li key={g.key} data-active={active || undefined}>
+                <button type="button" className="link" onClick={() => setIndex(g.first)}>
+                  {g.key}
+                </button>{" "}
+                <span className="muted">{g.count}</span>
+              </li>
+            );
+          })}
+        </ol>
+      </aside>
+
+      <section className="rw-main" aria-label="Candidate under review">
+        <p className="muted">
+          {item.position} of {queue.total}
+          {queue.total > items.length ? ` (first ${items.length} loaded)` : ""} · {item.reason}
+          {item.coverage_impact ? " · this category has no approved fact yet" : ""}
+          {cand.is_fixture ? " · FIXTURE" : ""}
+        </p>
+        <h2 className="rw-title">{title(cand, rec)}</h2>
+        <div className="rw-value">{valueWords(rec)}</div>
+        {rec.original_text && rec.original_text !== rec.value ? <div className="muted">As printed: “{rec.original_text}”</div> : null}
+        {cand.channel_agreement === "disagree" ? (
+          <div className="banner" data-tone="bad">
+            The two reading channels disagree on {cand.disagreeing_fields.join(", ") || "this record"}.{" "}
+            <button type="button" className="link" onClick={() => setShowChannels((v) => !v)}>
+              {showChannels ? "hide" : "show"} both readings
+            </button>
+            {showChannels && image ? (
+              <div className="mono muted" style={{ marginTop: "0.4rem" }}>
+                structure: {valueWords(rec)} · image: {valueWords(image)}
               </div>
             ) : null}
-            {ev0?.row_path?.length ? (
-              <div>
-                Row path: <span className="mono">{ev0.row_path.join(" › ")}</span>
-              </div>
-            ) : null}
-            {ev0?.clause_path?.length ? (
-              <div>
-                Clause: <span className="mono">{ev0.clause_path.join(" › ")}</span>
-              </div>
-            ) : null}
-            <div>
-              Excerpt: <code>{ev0?.excerpt}</code>
-            </div>
+          </div>
+        ) : null}
+
+        <div className="card rw-block">
+          <div className="label">Where it was read</div>
+          <p>{rec.rationale ?? whereRead(ev0)}</p>
+          {rec.rationale ? <p className="muted">{whereRead(ev0)}</p> : null}
+          {evidence.length > 1 ? (
+            <p className="muted">
+              Also cited: {evidence.slice(1).map((e, i) => (
+                <span key={i}>
+                  page {e.page_index}
+                  {e.row != null ? ` r${e.row} c${e.col}` : ""}
+                  {i < evidence.length - 2 ? ", " : ""}
+                </span>
+              ))}
+            </p>
+          ) : null}
+        </div>
+
+        {rec.context?.length || rec.conditions?.length ? (
+          <div className="card rw-block">
+            <div className="label">What the order says around it</div>
+            {rec.context?.map((c, i) => (
+              <blockquote key={i}>{c}</blockquote>
+            ))}
             {rec.conditions?.length ? (
-              <div className="muted">
-                Linked conditions:
-                <ul>
-                  {rec.conditions.map((c, i) => (
-                    <li key={i}>
-                      <code>{c}</code>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <>
+                <div className="muted">Conditions attached to this value:</div>
+                {rec.conditions.map((c, i) => (
+                  <blockquote key={`c${i}`}>{c}</blockquote>
+                ))}
+              </>
             ) : null}
+          </div>
+        ) : null}
+
+        {fm ? (
+          <div className="card rw-block">
+            <div className="label">How the surcharge is computed</div>
+            <p className="mono">{fm.formula ?? "S = T - [C/(1 - L/100) + D + R]"}{fm.level ? ` at ${fm.level}` : ""}</p>
+            <ul>
+              {Object.entries(fm.inputs ?? {}).map(([k, v]) => (
+                <li key={k}>
+                  <strong>{k}</strong> = {v.value ?? "?"}
+                  {v.unit === "paise" ? " paise" : v.unit === "percent" ? "%" : ""} <span className="muted">{v.label}{v.evidence?.page_index ? ` (page ${v.evidence.page_index})` : ""}</span>
+                </li>
+              ))}
+            </ul>
+            <p>
+              {fm.computed != null ? (
+                <>
+                  The formula gives <strong>S = {fm.computed}</strong>
+                  {fm.printed_computed != null ? `; the order prints ${fm.printed_computed}` : ""}.
+                </>
+              ) : (
+                <>Not recomputed: {(fm.missing ?? []).join(", ") || "inputs missing"}.</>
+              )}
+              {fm.d_components ? ` D = ${Object.entries(fm.d_components).map(([k, v]) => `${k} ${v}`).join(" + ")}.` : ""}
+              {fm.printed_cap ?? fm.cap_20pct_of_T ? ` Cap, 20% of T: ${fm.printed_cap ?? fm.cap_20pct_of_T}.` : ""}
+              {fm.assumed?.length ? ` ${fm.assumed.join("; ")}.` : ""}
+            </p>
+            {fm.formula_as_printed ? <blockquote>{fm.formula_as_printed.text} (page {fm.formula_as_printed.page_index})</blockquote> : null}
+          </div>
+        ) : null}
+
+        {lines.length ? (
+          <div className="card rw-block">
+            <div className="label">What the checks found</div>
+            <ul className="findings">
+              {lines.map((f, i) => (
+                <li key={i}>
+                  <span className="badge" data-tone={f.severity === "blocking" ? "bad" : f.severity === "warning" ? "warn" : "ok"}>
+                    {f.severity}
+                  </span>{" "}
+                  {f.message} <span className="mono muted">{f.validator_id}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        <div className="rw-block">
+          <div className="label">
+            The page{viewMeta.page ? ` (printed ${viewMeta.page})` : ""}
+            {viewMeta.highlighted ? " · cited table outlined" : imageUrl ? " · no outline available for this evidence" : ""}
           </div>
           {imageError ? (
             <div className="banner" data-tone="bad" role="alert">
@@ -285,200 +438,131 @@ export function ReviewWorkspace({ sourceId, queue, sourceState }: { sourceId: st
             </div>
           ) : imageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={imageUrl} alt={`Page ${viewMeta.page} of the source with the cited table outlined`} style={{ maxWidth: "100%", border: "1px solid var(--border)" }} />
+            <img src={imageUrl} alt={`Page ${viewMeta.page} of the source with the cited table outlined`} className="rw-page" />
           ) : (
             <p className="muted" aria-live="polite">
-              Rendering the cited page… (stage: evidence render)
+              Rendering the cited page…
             </p>
           )}
-          {evidence.length > 1 ? (
-            <p className="muted">
-              {evidence.length - 1} further evidence reference(s):{" "}
-              {evidence.slice(1).map((e, i) => (
-                <span key={i} className="mono">
-                  p{e.page_index} {e.kind}
-                  {e.row != null ? ` r${e.row} c${e.col}` : ""}{" "}
-                </span>
-              ))}
-            </p>
-          ) : null}
-        </section>
+        </div>
 
-        <section style={{ flex: "1 1 420px", minWidth: 0 }} aria-label="Candidate">
-          <div className="card">
-            <div className="label">
-              Candidate · <span className="mono">{cand.family}</span> {cand.category_code ? <span className="mono">{cand.category_code}</span> : null} ·{" "}
-              {cand.component_type} · version {cand.version}
-            </div>
-            <div>
-              <span className="badge" data-tone={cand.confidence === "high" ? "ok" : cand.confidence === "medium" ? "warn" : "bad"}>
-                {cand.confidence}
-              </span>{" "}
-              <span className="badge" data-tone={cand.channel_agreement === "agree" ? "ok" : cand.channel_agreement === "disagree" ? "bad" : "warn"}>
-                channels {cand.channel_agreement}
-              </span>{" "}
-              <span className="badge" data-tone={cand.routing === "batch" ? "neutral" : "warn"}>{cand.routing} review</span>{" "}
-              {cand.is_fixture ? <span className="badge" data-tone="fixture">FIXTURE</span> : null}{" "}
-              <span className="mono muted">{cand.risk_tags.join(", ")}</span>
-              {cand.finding_count ? (
-                <span className="badge" data-tone={cand.blocking_finding_count ? "bad" : "warn"}>
-                  {cand.finding_count} finding(s){cand.blocking_finding_count ? `, ${cand.blocking_finding_count} blocking` : ""}
-                </span>
-              ) : null}
-              {cand.review_status === "awaiting_second_review" ? (
-                <span className="badge" data-tone="warn">second review · first by {cand.first_reviewer}</span>
-              ) : null}
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Field</th>
-                  <th>{cand.reviewed_record ? "Corrected record" : "Structure channel"}</th>
-                  {image ? <th>Image channel</th> : null}
-                </tr>
-              </thead>
-              <tbody>
-                {fieldRows(rec, image, cand.disagreeing_fields).map((f) => (
-                  <tr key={f.key} data-differs={f.differs}>
-                    <td className="muted">{f.key}</td>
-                    <td className="mono">{f.a}</td>
-                    {image ? <td className="mono" style={f.differs ? { color: "var(--bad)", fontWeight: 600 } : undefined}>{f.b}</td> : null}
-                  </tr>
-                ))}
-                <tr>
-                  <td className="muted">applicability</td>
-                  <td className="mono" colSpan={image ? 2 : 1}>
-                    {Object.entries(rec.applicability ?? {})
-                      .filter(([, v]) => v != null)
-                      .map(([k, v]) => `${k}=${typeof v === "object" ? ((v as { original_text?: string }).original_text ?? JSON.stringify(v)) : String(v)}`)
-                      .join(" · ") || "—"}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        {prior ? (
+          <div className="banner" data-tone={prior.candidate.review_status === "rejected" || prior.candidate.review_status === "unresolved" ? "warn" : "ok"} aria-live="polite">
+            Recorded: <strong>{prior.decision.outcome}</strong> → {prior.candidate.review_status.replace(/_/g, " ")}
+            {prior.candidate.review_status === "awaiting_second_review" ? " (a different reviewer must confirm before publication)" : ""}.{" "}
+            <button type="button" onClick={undo} disabled={busy}>
+              Undo (z)
+            </button>
           </div>
+        ) : null}
 
-          {prior ? (
-            <div className="banner" data-tone={prior.candidate.review_status === "rejected" || prior.candidate.review_status === "unresolved" ? "warn" : "ok"} aria-live="polite">
-              Recorded: <strong>{prior.decision.outcome}</strong> → candidate is <code>{prior.candidate.review_status}</code>
-              {prior.candidate.review_status === "awaiting_second_review" ? " (a different reviewer must confirm before publication)" : ""}. Decision{" "}
-              <code>{prior.decision.id}</code>.{" "}
-              <button type="button" onClick={undo} disabled={busy}>
-                Undo (z)
+        {open ? (
+          <form
+            className="card rw-decide"
+            aria-label="Decision"
+            onSubmit={(e) => {
+              e.preventDefault();
+              void submit();
+            }}
+          >
+            <div className="rw-buttons">
+              <button type="button" className="primary" disabled={!decidable || needsImage} onClick={() => void submit("approve")}>
+                {busy ? "Recording…" : "Approve"}
               </button>
+              <button type="button" data-active={outcome === "correct" || undefined} disabled={!decidable} onClick={() => setOutcome("correct")}>
+                Change…
+              </button>
+              <button type="button" data-active={outcome === "reject" || undefined} disabled={!decidable} onClick={() => setOutcome("reject")}>
+                Reject
+              </button>
+              <button type="button" data-active={outcome === "unresolved" || undefined} disabled={!decidable} onClick={() => setOutcome("unresolved")}>
+                Cannot decide
+              </button>
+              <span className="muted">
+                <button type="button" className="link" onClick={() => setIndex((i) => Math.max(0, i - 1))} disabled={index === 0}>
+                  previous
+                </button>{" "}
+                ·{" "}
+                <button type="button" className="link" onClick={() => setIndex((i) => Math.min(items.length - 1, i + 1))} disabled={index >= items.length - 1}>
+                  skip for now
+                </button>
+              </span>
             </div>
-          ) : null}
-
-          {open ? (
-            <form
-              className="card"
-              aria-label="Decision"
-              onSubmit={(e) => {
-                e.preventDefault();
-                void submit();
-              }}
-            >
-              <div className="label">Decision</div>
-              <p>
-                {(["approve", "correct", "reject", "unresolved"] as Outcome[]).map((o) => (
-                  <label key={o} style={{ marginRight: "0.75rem" }}>
-                    <input type="radio" name="outcome" checked={outcome === o} onChange={() => setOutcome(o)} /> {o}
-                  </label>
-                ))}
-              </p>
-              {outcome === "correct" ? (
-                <div>
-                  <p className="muted">Structured edit: only filled fields change. Evidence selection defaults to the cited cell (index 0).</p>
-                  <label>
-                    value <input value={correction.value ?? ""} onChange={(e) => setCorrection({ ...correction, value: e.target.value })} size={10} />
-                  </label>{" "}
-                  <label>
-                    value_state{" "}
-                    <select value={correction.value_state ?? ""} onChange={(e) => setCorrection({ ...correction, value_state: e.target.value })}>
-                      <option value="">(keep)</option>
-                      {VALUE_STATES.map((v) => (
-                        <option key={v} value={v}>
-                          {v}
-                        </option>
-                      ))}
-                    </select>
-                  </label>{" "}
-                  <label>
-                    currency{" "}
-                    <select value={correction.currency ?? ""} onChange={(e) => setCorrection({ ...correction, currency: e.target.value })}>
-                      <option value="">(keep)</option>
-                      <option value="rupees">rupees</option>
-                      <option value="paise">paise</option>
-                    </select>
-                  </label>{" "}
-                  <label>
-                    per_unit <input value={correction.per_unit ?? ""} onChange={(e) => setCorrection({ ...correction, per_unit: e.target.value })} size={6} />
-                  </label>{" "}
-                  <label>
-                    frequency <input value={correction.frequency ?? ""} onChange={(e) => setCorrection({ ...correction, frequency: e.target.value })} size={10} />
-                  </label>{" "}
-                  <label>
-                    category_code <input value={correction.category_code ?? ""} onChange={(e) => setCorrection({ ...correction, category_code: e.target.value })} size={8} />
-                  </label>
-                  <p>
-                    <label>
-                      Cause{" "}
-                      <select value={cause} onChange={(e) => setCause(e.target.value as (typeof CAUSE_TAGS)[number])}>
-                        {CAUSE_TAGS.map((c) => (
-                          <option key={c} value={c}>
-                            {c}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                  </p>
-                </div>
-              ) : null}
+            {needsImage ? <p className="muted">Approve and Change unlock once the page has rendered.</p> : null}
+            {outcome === "correct" ? (
+              <div className="rw-correct">
+                <p className="muted">Fill only what is wrong; the rest stays as read. The cited cell stays as evidence.</p>
+                <label>
+                  Value <input value={correction.value ?? ""} onChange={(e) => setCorrection({ ...correction, value: e.target.value })} size={10} placeholder={rec.value ?? ""} />
+                </label>{" "}
+                <label>
+                  State{" "}
+                  <select value={correction.value_state ?? ""} onChange={(e) => setCorrection({ ...correction, value_state: e.target.value })}>
+                    <option value="">(keep)</option>
+                    {VALUE_STATES.map((v) => (
+                      <option key={v} value={v}>
+                        {v.replace(/_/g, " ")}
+                      </option>
+                    ))}
+                  </select>
+                </label>{" "}
+                <label>
+                  Currency{" "}
+                  <select value={correction.currency ?? ""} onChange={(e) => setCorrection({ ...correction, currency: e.target.value })}>
+                    <option value="">(keep)</option>
+                    <option value="rupees">rupees</option>
+                    <option value="paise">paise</option>
+                  </select>
+                </label>{" "}
+                <label>
+                  Per <input value={correction.per_unit ?? ""} onChange={(e) => setCorrection({ ...correction, per_unit: e.target.value })} size={6} placeholder={rec.per_unit ?? ""} />
+                </label>{" "}
+                <label>
+                  Frequency <input value={correction.frequency ?? ""} onChange={(e) => setCorrection({ ...correction, frequency: e.target.value })} size={10} placeholder={rec.frequency ?? ""} />
+                </label>{" "}
+                <label>
+                  Category <input value={correction.category_code ?? ""} onChange={(e) => setCorrection({ ...correction, category_code: e.target.value })} size={8} placeholder={cand.category_code ?? ""} />
+                </label>{" "}
+                <label>
+                  Cause{" "}
+                  <select value={cause} onChange={(e) => setCause(e.target.value as (typeof CAUSE_TAGS)[number])}>
+                    {CAUSE_TAGS.map((c) => (
+                      <option key={c} value={c}>
+                        {c.replace(/_/g, " ")}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+            ) : null}
+            {outcome !== "approve" ? (
               <p>
                 <label>
-                  Rationale {outcome === "approve" ? "(optional)" : "(required)"}
-                  <br />
-                  <textarea value={rationale} onChange={(e) => setRationale(e.target.value)} rows={2} cols={60} />
+                  Why{" "}
+                  <textarea value={rationale} onChange={(e) => setRationale(e.target.value)} rows={2} cols={70} placeholder="one sentence; it is recorded with the decision" />
                 </label>
+                <br />
+                <button type="submit" disabled={!decidable || (outcome === "correct" && needsImage)}>
+                  {busy ? "Recording…" : outcome === "correct" ? "Record the change" : outcome === "reject" ? "Record the rejection" : "Record: cannot decide"}
+                </button>
               </p>
-              {!viewId && (outcome === "approve" || outcome === "correct") ? (
-                <p className="muted">The {outcome} control is disabled until the cited evidence has rendered.</p>
-              ) : null}
-              <button type="submit" disabled={!canDecide}>
-                {busy ? "Recording…" : `Record ${outcome}`}
-              </button>{" "}
-              <button type="button" onClick={() => setIndex((i) => Math.max(0, i - 1))} disabled={index === 0}>
-                Previous (p)
-              </button>{" "}
-              <button type="button" onClick={() => setIndex((i) => Math.min(items.length - 1, i + 1))} disabled={index >= items.length - 1}>
-                Next (n)
-              </button>
-              {error ? (
-                <div className="banner" data-tone="bad" role="alert" style={{ marginTop: "0.75rem" }}>
-                  <strong>{error.message}</strong> <span className="muted">({error.error_type})</span>
-                  <div>{error.next_step}</div>
-                  {error.detail ? <div className="muted mono">{error.detail}</div> : null}
-                  {error.error_type === "conflict_stale_version" ? (
-                    <div className="muted">
-                      Someone changed this candidate since you loaded it. Reload to see the current version; nothing was overwritten.
-                    </div>
-                  ) : null}
-                  {error.request_id ? (
-                    <div className="muted">
-                      Request id: <code>{error.request_id}</code>
-                    </div>
-                  ) : null}
-                </div>
-              ) : null}
-            </form>
-          ) : null}
-          {result && !prior ? (
-            <div className="banner" data-tone="ok">
-              Recorded: {result.decision.outcome} → <code>{result.candidate.review_status}</code>
-            </div>
-          ) : null}
-        </section>
-      </div>
+            ) : (
+              <p className="muted">
+                Approving needs no reason. <label>Optional note <input value={rationale} onChange={(e) => setRationale(e.target.value)} size={40} /></label>
+              </p>
+            )}
+            {error ? (
+              <div className="banner" data-tone="bad" role="alert">
+                <strong>{error.message}</strong> <span className="muted">({error.error_type})</span>
+                <div>{error.next_step}</div>
+                {error.detail ? <div className="muted mono">{error.detail}</div> : null}
+                {error.error_type === "conflict_stale_version" ? <div className="muted">Someone changed this candidate since you loaded it. Reload; nothing was overwritten.</div> : null}
+              </div>
+            ) : null}
+          </form>
+        ) : null}
+        <p className="muted">Keys: Enter approve · c change · r reject · u cannot decide · n next · p previous · z undo</p>
+      </section>
     </div>
   );
 }

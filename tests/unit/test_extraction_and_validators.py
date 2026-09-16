@@ -109,7 +109,7 @@ def _gerc_input() -> StructureInput:
 
 def test_schema_is_versioned_and_rejects_non_decimal_values():
     s = tool_schema()
-    assert "candidates" in s["properties"] and SCHEMA_VERSION == "1"
+    assert "candidates" in s["properties"] and SCHEMA_VERSION == "2"
     ev = EvidenceRef(page_index=1, kind="cell", grid_ordinal=0, row=1, col=1, excerpt="x")
     with pytest.raises(ValueError):
         Candidate(
@@ -556,4 +556,4 @@ def test_val18_candidates_outside_approved_regions_are_blocked():
 
 def test_versions_are_declared():
     assert EXTRACTION_RULES_VERSION == "2" and V.VALIDATORS_VERSION == "2"
-    assert ExtractionOutput().schema_version == SCHEMA_VERSION
+    assert ExtractionOutput().schema_version == SCHEMA_VERSION == "2"

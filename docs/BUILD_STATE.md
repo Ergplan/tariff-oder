@@ -119,7 +119,36 @@ open-access view.
   measurement **not done**: this build environment cannot reach huggingface.co for the
   models and refuses the CPU torch index; ADR-0009 addendum records the promotion rule,
   `docs/deployment.md` the VM commands.  Pipeline behaviour is unchanged by (c).  Karnataka
-  and Gujarat localisations remain unreviewed.  **Still open in the M1 gate:** Cloud Logging
+  and Gujarat localisations remain unreviewed.
+
+  **Increment 14 (2026-09-16): the first real extraction, and what it taught.**  NPCL reached
+  `awaiting_review` with 370 candidates and 261 findings; the reviewer's reading of the page:
+  the retail tariff appeared missing (it was there, hidden behind an alphabetical first-100
+  list), the network families were flooded with numbers that are not determinations (every
+  numeric cell of ARR working tables on pages 56, 171, 195 and 218 read as a loss or an
+  additional surcharge; the CSS computation table on page 319 read as open-access losses), and
+  the review workspace showed header/row paths instead of saying what was read and why.
+  Fixed, each with a test: (1) a loss candidate must be a percentage at a level or for a year,
+  a charge candidate must be named in its row or column and carry a per-unit basis, and any
+  other amount table (Rs crore, MU, revenue, ARR) is skipped with a note; a grid that names
+  no family is read only under a loss or CSS sub-role; (2) the CSS parameter tables are looked
+  for in every network region (regions overlap), levels are keyed as readable voltage bands
+  (`11 kV, up to 66 kV`), so page 319's `D = PC+TC+DC+WC` table feeds the formula instead of
+  the loss family; (3) the paragraph that states per-level open-access losses ("for open
+  access consumers connected at 33 kV, 0.79% distribution loss shall apply") yields `oa_loss`
+  candidates with the sentence as evidence; (4) every candidate now carries `rationale` (a
+  rule-written sentence naming table, row and column) and `context` (the caption above the
+  table, sentences on the page naming the row or the value, the profile's note on the
+  region), schema 2; (5) the queue has a `document` order — schedule categories first, fixed
+  before energy, then the open-access families in page order — which the workspace uses by
+  default (the API default stays `risk`, as Section 7.2 specifies); (6) the workspace was
+  rewritten around one candidate at a time: the value in words ("Rs 6.50 per kWh per
+  month"), where it was read as a sentence, what the order says around it, the surcharge
+  arithmetic when there is one, what the checks found, the page with the table outlined, and
+  Approve / Change / Reject / Cannot decide with the reason box; a sidebar lists the groups in
+  document order.  The NPCL extraction must be re-run to pick up (1)–(4)
+  (`rerun … extract_source`); the numbers above are from the run before these fixes.
+  **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
 - **Milestone 2 — parts (a) and (b) implemented and tested under the `local` profile.**

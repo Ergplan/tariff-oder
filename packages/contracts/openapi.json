@@ -12459,7 +12459,7 @@
     },
     "/sources/{source_id}/review/queue": {
       "get": {
-        "description": "Pending candidates of one order in review order: risk first, then coverage impact,\nthen confidence (Section 7.2).  Every item says why it sits where it does.",
+        "description": "Pending candidates of one order in review order: ``document`` (default) follows the\norder as printed \u2014 schedule categories first, then the network families; ``risk`` puts\nblocking findings, disagreements and low confidence first (Section 7.2).  Every item\nsays why it sits where it does.",
         "operationId": "review_queue_detail_sources__source_id__review_queue_get",
         "parameters": [
           {
@@ -12600,6 +12600,17 @@
                 }
               ],
               "title": "Status"
+            }
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "default": "risk",
+              "pattern": "^(document|risk)$",
+              "title": "Order",
+              "type": "string"
             }
           },
           {

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import type { ReviewChecklist, ReviewQueueDetail, SourceDetail } from "@tariff/contracts";
+import type { FindingList, ReviewChecklist, ReviewQueueDetail, SourceDetail } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, StateBadge } from "../../../components";
-import { ReviewWorkspace } from "./review-workspace";
+import { ReviewWorkspace, type FindingLine } from "./review-workspace";
 
 export const dynamic = "force-dynamic";
 
@@ -36,11 +36,22 @@ export default async function ReviewWorkspacePage({
     const v = sp[k];
     if (typeof v === "string" && v) filters.set(k, v);
   }
-  filters.set("limit", "200");
-  const [queue, checklist] = await Promise.all([
+  const order = sp.order === "risk" ? "risk" : "document";
+  filters.set("order", order);
+  filters.set("limit", "500");
+  const [queue, checklist, findingList] = await Promise.all([
     apiTry<ReviewQueueDetail>(`/sources/${id}/review/queue?${filters.toString()}`),
     apiTry<ReviewChecklist>(`/sources/${id}/review/checklist`),
+    apiTry<FindingList>(`/sources/${id}/findings`),
   ]);
+  const findings: Record<string, FindingLine[]> = {};
+  for (const f of findingList.data?.findings ?? []) {
+    for (const cid of f.candidate_ids) (findings[cid] ??= []).push({ severity: f.severity, validator_id: f.validator_id, message: f.message });
+  }
+  const otherOrder = order === "document" ? "risk" : "document";
+  const switchParams = new URLSearchParams(filters);
+  switchParams.set("order", otherOrder);
+  switchParams.delete("limit");
   const tone = (status: string) =>
     status === "approved" || status === "corrected"
       ? "ok"
@@ -70,7 +81,28 @@ export default async function ReviewWorkspacePage({
         </div>
       ) : null}
 
-      <h2>Completeness checklist</h2>
+      {queue.error || !queue.data ? (
+        <ErrorBanner error={queue.error!} />
+      ) : queue.data.total === 0 ? (
+        <p className="muted">No open candidates match. Decided candidates are listed under the source; nothing here is published.</p>
+      ) : (
+        <>
+          <p className="muted">
+            {queue.data.total} open candidates in {order === "document" ? "document order (schedule first, then the open-access chapter)" : "risk order (blocking findings first)"}.{" "}
+            <Link href={`/sources/${id}/review?${switchParams.toString()}`}>Switch to {otherOrder} order</Link>
+          </p>
+          <ReviewWorkspace sourceId={id} queue={queue.data} sourceState={s.state} findings={findings} />
+        </>
+      )}
+
+      <details className="section" id="checklist">
+        <summary>
+          <span className="title">Completeness checklist</span>
+          <span className="summary muted">
+            {checklist.data ? `${checklist.data.items.length} items · ${checklist.data.awaiting_second_review} awaiting a second reviewer · ${checklist.data.unresolved} unresolved` : ""}
+          </span>
+        </summary>
+        <div className="body">
       {checklist.error || !checklist.data ? (
         <ErrorBanner error={checklist.error!} />
       ) : (
@@ -120,9 +152,17 @@ export default async function ReviewWorkspacePage({
         </>
       )}
 
-      <h2>Queue</h2>
+        </div>
+      </details>
+
+      <details className="section" id="filters">
+        <summary>
+          <span className="title">Filters</span>
+          <span className="summary muted">{filters.size > 2 ? "active" : "none"}</span>
+        </summary>
+        <div className="body">
       <form method="get" className="card" aria-label="Queue filters">
-        <div className="label">Filters</div>
+        <input type="hidden" name="order" value={order} />
         <label>
           Category <input name="category" defaultValue={(sp.category as string) ?? ""} size={10} />
         </label>{" "}
@@ -151,13 +191,8 @@ export default async function ReviewWorkspacePage({
         </label>{" "}
         <button type="submit">Apply</button>
       </form>
-      {queue.error || !queue.data ? (
-        <ErrorBanner error={queue.error!} />
-      ) : queue.data.total === 0 ? (
-        <p className="muted">No open candidates match. Decided candidates are listed under the source; nothing here is published.</p>
-      ) : (
-        <ReviewWorkspace sourceId={id} queue={queue.data} sourceState={s.state} />
-      )}
+        </div>
+      </details>
     </>
   );
 }
