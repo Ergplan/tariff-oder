@@ -121,6 +121,23 @@ Heading inventory (`uq_document_heading` per page/line/kind/rules version): `ord
 | grid_count | Primary table grids inside the span (from the parse stage) |
 | reviewer_note, excluded, annotated_by, annotated_at | A reviewer's comment on the region (`PUT /sources/{id}/localisation/regions/{region_id}`, reviewer role, versioned against the localisation record, audited as `localisation.annotate`). `excluded` makes the structure and extraction stages skip the span; the note is shown on the family in the review checklist. Allowed while the source is `localised` or `gridded`; frozen once candidates exist. Carried across a localise re-run when the rules find the same span again. |
 
+## `category_summaries`
+
+Generated reviewer context for one schedule category — labelled generated, never a fact, never
+published, never an input to a validator.
+
+| Column | Meaning |
+| --- | --- |
+| category_code, heading_text, page_indices | The category, its schedule heading and the pages from that heading to the next |
+| text | The summary. Fixture mode: a template that reads the candidates back grouped by rate block. Real provider: prose from the same inputs under `SUMMARY_SYSTEM_PROMPT` (only printed numbers, every rate with component, unit and who it applies to, applicability and conditions quoted, ≤160 words) |
+| grounded, unsupported_numbers | Deterministic check: every number in the text must be a candidate value or appear in the category's page text; failures are stored and shown, not hidden |
+| provider, model, prompt_version, is_fixture, input_tokens, output_tokens, cost_usd | The call that wrote it, counted in the order's provider budget |
+
+`Applicability.rate_block` on a retail candidate: the lettered block above the table the cell
+sits in ("(b) Public Institutions … supply at Single Point on 11 kV & above voltage levels:"),
+read from the page text; part of the candidate key, so the same row label under (a) and (b) are
+two facts.
+
 ## `source_documents` — structure columns (Milestone 3b)
 
 | Column | Meaning |

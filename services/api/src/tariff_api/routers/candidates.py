@@ -16,6 +16,7 @@ from ..errors import AppError
 from ..models import (
     AuditEvent,
     CandidateRecord,
+    CategorySummary,
     ConditionRecordRow,
     ExtractionRun,
     FamilyDisposition,
@@ -26,6 +27,8 @@ from ..models import (
 from ..schemas import (
     CandidateList,
     CandidateOut,
+    CategorySummaryList,
+    CategorySummaryOut,
     ConditionList,
     ConditionOut,
     DispositionOut,
@@ -96,6 +99,29 @@ def get_candidate(candidate_id: uuid.UUID) -> CandidateOut:
         if row is None:
             raise AppError("not_found", f"candidate {candidate_id} not found")
         return CandidateOut.model_validate(row, from_attributes=True)
+
+
+@router.get(
+    "/sources/{source_id}/summaries", response_model=CategorySummaryList, dependencies=[Depends(require_analyst)]
+)
+def list_summaries(source_id: uuid.UUID) -> CategorySummaryList:
+    """Generated category summaries: reviewer context with a grounding flag; never facts."""
+    with session_scope() as s:
+        svc.get_source(s, source_id)
+        rows = (
+            s.execute(
+                select(CategorySummary)
+                .where(CategorySummary.source_id == source_id)
+                .order_by(CategorySummary.category_code)
+            )
+            .scalars()
+            .all()
+        )
+        return CategorySummaryList(
+            source_id=source_id,
+            summaries=[CategorySummaryOut.model_validate(r, from_attributes=True) for r in rows],
+            total=len(rows),
+        )
 
 
 @router.get("/sources/{source_id}/findings", response_model=FindingList, dependencies=[Depends(require_analyst)])

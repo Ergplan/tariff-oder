@@ -18,6 +18,13 @@ from pydantic import ValidationError
 
 from .config import Settings
 from .extraction import PROMPT_VERSION, StructureInput, rules_extract, serialise_structure
+from .summaries import (
+    SUMMARY_PROMPT_VERSION,
+    SUMMARY_SYSTEM_PROMPT,
+    SummaryInput,
+    serialise_summary_input,
+    template_summary,
+)
 from .tariff_schema import SCHEMA_VERSION, ExtractionOutput, tool_schema
 
 
@@ -65,6 +72,23 @@ class ExtractionProvider(abc.ABC):
     @abc.abstractmethod
     def extract_image(self, inp: StructureInput, images: list[bytes]) -> ProviderResult: ...
 
+    @abc.abstractmethod
+    def summarise_category(self, inp: SummaryInput) -> SummaryResult: ...
+
+
+@dataclass
+class SummaryResult:
+    text: str
+    provider: str
+    model: str
+    prompt_version: str
+    input_hash: str
+    input_tokens: int
+    output_tokens: int
+    cost_usd: float
+    is_fixture: bool
+    raw: dict[str, Any] = field(default_factory=dict)
+
 
 def _hash(*parts: bytes | str) -> str:
     h = hashlib.sha256()
@@ -104,6 +128,21 @@ class FixtureProvider(ExtractionProvider):
             0.0,
             True,
             {"fixture": True, "input_chars": len(text)},
+        )
+
+    def summarise_category(self, inp: SummaryInput) -> SummaryResult:
+        text = serialise_summary_input(inp)
+        return SummaryResult(
+            template_summary(inp),
+            self.name,
+            self.model,
+            SUMMARY_PROMPT_VERSION,
+            _hash(text),
+            len(text) // 4,
+            0,
+            0.0,
+            True,
+            {"fixture": True},
         )
 
     def extract_image(self, inp: StructureInput, images: list[bytes]) -> ProviderResult:
@@ -215,6 +254,59 @@ class AnthropicProvider(ExtractionProvider):
     def extract_structure(self, inp: StructureInput) -> ProviderResult:
         text = serialise_structure(inp)
         return self._call("structure", [{"type": "text", "text": text}], _hash(text))
+
+    def summarise_category(self, inp: SummaryInput) -> SummaryResult:
+        import httpx
+
+        text = serialise_summary_input(inp)
+        body = {
+            "model": self.model,
+            "max_tokens": 1024,
+            "system": SUMMARY_SYSTEM_PROMPT,
+            "tools": [
+                {
+                    "name": "return_summary",
+                    "description": "Return the reviewer's summary of this category.",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {"text": {"type": "string", "maxLength": 2000}},
+                        "required": ["text"],
+                    },
+                }
+            ],
+            "tool_choice": {"type": "tool", "name": "return_summary"},
+            "messages": [{"role": "user", "content": [{"type": "text", "text": text}]}],
+        }
+        try:
+            r = httpx.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={"x-api-key": self._key, "anthropic-version": "2023-06-01", "content-type": "application/json"},
+                json=body,
+                timeout=self._timeout,
+            )
+        except httpx.HTTPError as e:
+            raise ProviderUnavailable(f"provider request failed: {type(e).__name__}") from e
+        if r.status_code >= 400:
+            raise ProviderUnavailable(f"provider returned {r.status_code}: {r.text[:200]}")
+        data = r.json()
+        tool_input = next((b.get("input") for b in data.get("content", []) if b.get("type") == "tool_use"), None)
+        if not tool_input or not isinstance(tool_input.get("text"), str):
+            raise ProviderUnavailable("provider returned no summary")
+        usage = data.get("usage", {})
+        tin, tout = int(usage.get("input_tokens", 0)), int(usage.get("output_tokens", 0))
+        cost = tin / 1_000_000 * self._price_in + tout / 1_000_000 * self._price_out
+        return SummaryResult(
+            tool_input["text"][:2000],
+            self.name,
+            self.model,
+            SUMMARY_PROMPT_VERSION,
+            _hash(text),
+            tin,
+            tout,
+            round(cost, 6),
+            False,
+            {"id": data.get("id"), "stop_reason": data.get("stop_reason")},
+        )
 
     def extract_image(self, inp: StructureInput, images: list[bytes]) -> ProviderResult:
         import base64

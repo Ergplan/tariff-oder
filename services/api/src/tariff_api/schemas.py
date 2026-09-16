@@ -411,6 +411,8 @@ class ExtractionSummary(BaseModel):
     image_channel: bool
     new_profile: bool
     conditions: int = 0
+    category_summaries: int = 0  # generated reviewer context per schedule category
+    summaries_grounded: int = 0
     extracted_at: datetime | None
 
 
@@ -481,6 +483,44 @@ class FindingOut(BaseModel):
     candidate_ids: list[str]
     detail: dict[str, Any]
     validators_version: str
+
+
+class CategorySummaryOut(BaseModel):
+    """Generated reviewer context for one category — labelled, grounding-checked, never a fact."""
+
+    category_code: str
+    heading_text: str | None
+    page_indices: list[int]
+    text: str
+    provider: str
+    model: str
+    prompt_version: str
+    is_fixture: bool
+    grounded: bool
+    unsupported_numbers: list[str]
+    candidate_count: int
+    cost_usd: float
+    created_at: datetime
+
+
+class CategorySummaryList(BaseModel):
+    source_id: uuid.UUID
+    summaries: list[CategorySummaryOut]
+    total: int
+
+
+class TableRows(BaseModel):
+    """The cell grid a reader produced for one table, as read: rows of raw text."""
+
+    page_index: int
+    ordinal: int
+    reader: str
+    reader_version: str
+    header_rows: int
+    rows: list[list[str]]
+    secondary_reader: str | None = None
+    secondary_rows: list[list[str]] | None = None
+    agreement_class: str | None = None
 
 
 class FindingList(BaseModel):

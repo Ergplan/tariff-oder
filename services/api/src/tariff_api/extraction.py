@@ -168,6 +168,43 @@ def _slab_from(d: dict[str, Any] | None) -> Slab | None:
     )
 
 
+_LETTERED = re.compile(r"^\(?([a-z]|[ivx]{1,4})\)\s+(\S.*)$", re.I)
+_BLOCK_STOP = re.compile(
+    r"^\s*(\d+\.\s*)?(RATE|APPLICABILITY|CHARACTER OF SERVICE|POINT OF SUPPLY|\d+\.\s+[A-Z ]{4,})\s*:?\s*$"
+)
+
+
+def _rate_block_for(inp: StructureInput, c: dict[str, Any]) -> str | None:
+    """The lettered block a table sits under — UPERC prints "(a) Commercial Loads … supply at
+    Single Point on 11 kV & above:" above one table and "(b) Public Institutions …:" above the
+    next, inside one category's RATE section.  Found in the page text: scanning upward from the
+    cited row's first label, the nearest line that starts a lettered block, joined with its
+    continuation lines up to the colon.  Stops at the RATE heading or the top of the page."""
+    lines = [ln.strip() for ln in (inp.page_texts.get(c["page_index"]) or "").splitlines()]
+    if not lines:
+        return None
+    anchor = (c["row_path"][0] if c["row_path"] else c["raw"]).strip()[:40].lower()
+    row_at = next((i for i, ln in enumerate(lines) if anchor and anchor in ln.lower()), None)
+    if row_at is None:
+        return None
+    for i in range(row_at - 1, -1, -1):
+        ln = lines[i]
+        if _BLOCK_STOP.match(ln):
+            return None
+        m = _LETTERED.match(ln)
+        if m:
+            parts = [ln]
+            for j in range(i + 1, min(row_at, i + 6)):
+                nxt = lines[j]
+                if not nxt or _LETTERED.match(nxt):
+                    break
+                parts.append(nxt)
+                if nxt.endswith(":"):
+                    break
+            return " ".join(parts)[:300]
+    return None
+
+
 def _category_for_page(inp: StructureInput, page: int) -> str | None:
     best = None
     for h in inp.headings:
@@ -232,6 +269,7 @@ def rules_extract(inp: StructureInput) -> ExtractionOutput:
         desc = next(
             (x for x in c["row_path"] if not (slab and x == slab.original_text) and not _TIME_BAND.search(x)), None
         )
+        rate_block = _rate_block_for(inp, c)
         period = inp.period
         fy = _FY.search(" ".join(c["header_path"]))
         if fy:
@@ -257,6 +295,7 @@ def rules_extract(inp: StructureInput) -> ExtractionOutput:
                 time_band=f"{tb.group(1)}-{tb.group(2)}" if tb else None,
                 season=_season_for_page(inp, c["page_index"]) if tb else None,
                 description=desc,
+                rate_block=rate_block,
             ),
             period=period,
             utility=inp.utility,

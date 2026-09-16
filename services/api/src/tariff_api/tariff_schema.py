@@ -185,6 +185,7 @@ class Candidate(BaseModel):
             a.time_band or "",
             a.metering_type or "",
             a.consumer_class or "",
+            a.rate_block or "",
             str(a.alternative) if a.alternative is not None else "",
             self.period or "",
             self.utility or "",

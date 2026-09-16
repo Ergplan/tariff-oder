@@ -906,6 +906,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/{source_id}/summaries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Summaries
+         * @description Generated category summaries: reviewer context with a grounding flag; never facts.
+         */
+        get: operations["list_summaries_sources__source_id__summaries_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sources/{source_id}/tables": {
         parameters: {
             query?: never;
@@ -919,6 +939,28 @@ export interface paths {
          *     Section 6.4.  The full cell grid is in the artefact at ``object_key``.
          */
         get: operations["list_tables_sources__source_id__tables_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/tables/{page_index}/{ordinal}/rows": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Table Rows
+         * @description The table as the primary reader read it (and the paired secondary grid when there is
+         *     one): raw cell text, so a reviewer can see a column shift or a merged header without
+         *     leaving the workspace.
+         */
+        get: operations["table_rows_sources__source_id__tables__page_index___ordinal__rows_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1256,6 +1298,53 @@ export interface components {
             value_state: string;
             /** Version */
             version: number;
+        };
+        /** CategorySummaryList */
+        CategorySummaryList: {
+            /**
+             * Source Id
+             * Format: uuid
+             */
+            source_id: string;
+            /** Summaries */
+            summaries: components["schemas"]["CategorySummaryOut"][];
+            /** Total */
+            total: number;
+        };
+        /**
+         * CategorySummaryOut
+         * @description Generated reviewer context for one category — labelled, grounding-checked, never a fact.
+         */
+        CategorySummaryOut: {
+            /** Candidate Count */
+            candidate_count: number;
+            /** Category Code */
+            category_code: string;
+            /** Cost Usd */
+            cost_usd: number;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Grounded */
+            grounded: boolean;
+            /** Heading Text */
+            heading_text: string | null;
+            /** Is Fixture */
+            is_fixture: boolean;
+            /** Model */
+            model: string;
+            /** Page Indices */
+            page_indices: number[];
+            /** Prompt Version */
+            prompt_version: string;
+            /** Provider */
+            provider: string;
+            /** Text */
+            text: string;
+            /** Unsupported Numbers */
+            unsupported_numbers: string[];
         };
         /** ChecklistItem */
         ChecklistItem: {
@@ -1690,6 +1779,11 @@ export interface components {
             /** Candidates */
             candidates: number;
             /**
+             * Category Summaries
+             * @default 0
+             */
+            category_summaries: number;
+            /**
              * Conditions
              * @default 0
              */
@@ -1722,6 +1816,11 @@ export interface components {
             runs_failed: number;
             /** Schema Version */
             schema_version: string;
+            /**
+             * Summaries Grounded
+             * @default 0
+             */
+            summaries_grounded: number;
             /** Tokens */
             tokens: number;
         };
@@ -3238,6 +3337,30 @@ export interface components {
             row_count: number;
             /** Strategy */
             strategy: string;
+        };
+        /**
+         * TableRows
+         * @description The cell grid a reader produced for one table, as read: rows of raw text.
+         */
+        TableRows: {
+            /** Agreement Class */
+            agreement_class?: string | null;
+            /** Header Rows */
+            header_rows: number;
+            /** Ordinal */
+            ordinal: number;
+            /** Page Index */
+            page_index: number;
+            /** Reader */
+            reader: string;
+            /** Reader Version */
+            reader_version: string;
+            /** Rows */
+            rows: string[][];
+            /** Secondary Reader */
+            secondary_reader?: string | null;
+            /** Secondary Rows */
+            secondary_rows?: string[][] | null;
         };
         /** TariffExplorer */
         TariffExplorer: {
@@ -7482,6 +7605,7 @@ export interface operations {
         parameters: {
             query?: {
                 flag?: string | null;
+                grid_ordinal?: number | null;
                 limit?: number;
                 offset?: number;
                 page_index?: number | null;
@@ -7657,6 +7781,91 @@ export interface operations {
             };
         };
     };
+    list_summaries_sources__source_id__summaries_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CategorySummaryList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     list_tables_sources__source_id__tables_get: {
         parameters: {
             query?: {
@@ -7679,6 +7888,93 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TableGridList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    table_rows_sources__source_id__tables__page_index___ordinal__rows_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ordinal: number;
+                page_index: number;
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TableRows"];
                 };
             };
             /** @description Unauthorized */

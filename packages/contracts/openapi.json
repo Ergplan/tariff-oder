@@ -638,6 +638,121 @@
         "title": "CandidateOut",
         "type": "object"
       },
+      "CategorySummaryList": {
+        "properties": {
+          "source_id": {
+            "format": "uuid",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "summaries": {
+            "items": {
+              "$ref": "#/components/schemas/CategorySummaryOut"
+            },
+            "title": "Summaries",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "source_id",
+          "summaries",
+          "total"
+        ],
+        "title": "CategorySummaryList",
+        "type": "object"
+      },
+      "CategorySummaryOut": {
+        "description": "Generated reviewer context for one category \u2014 labelled, grounding-checked, never a fact.",
+        "properties": {
+          "candidate_count": {
+            "title": "Candidate Count",
+            "type": "integer"
+          },
+          "category_code": {
+            "title": "Category Code",
+            "type": "string"
+          },
+          "cost_usd": {
+            "title": "Cost Usd",
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "grounded": {
+            "title": "Grounded",
+            "type": "boolean"
+          },
+          "heading_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Heading Text"
+          },
+          "is_fixture": {
+            "title": "Is Fixture",
+            "type": "boolean"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "page_indices": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Page Indices",
+            "type": "array"
+          },
+          "prompt_version": {
+            "title": "Prompt Version",
+            "type": "string"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "unsupported_numbers": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unsupported Numbers",
+            "type": "array"
+          }
+        },
+        "required": [
+          "category_code",
+          "heading_text",
+          "page_indices",
+          "text",
+          "provider",
+          "model",
+          "prompt_version",
+          "is_fixture",
+          "grounded",
+          "unsupported_numbers",
+          "candidate_count",
+          "cost_usd",
+          "created_at"
+        ],
+        "title": "CategorySummaryOut",
+        "type": "object"
+      },
       "ChecklistItem": {
         "properties": {
           "candidates": {
@@ -1842,6 +1957,11 @@
             "title": "Candidates",
             "type": "integer"
           },
+          "category_summaries": {
+            "default": 0,
+            "title": "Category Summaries",
+            "type": "integer"
+          },
           "conditions": {
             "default": 0,
             "title": "Conditions",
@@ -1909,6 +2029,11 @@
           "schema_version": {
             "title": "Schema Version",
             "type": "string"
+          },
+          "summaries_grounded": {
+            "default": 0,
+            "title": "Summaries Grounded",
+            "type": "integer"
           },
           "tokens": {
             "title": "Tokens",
@@ -6573,6 +6698,90 @@
           "object_key"
         ],
         "title": "TableGridOut",
+        "type": "object"
+      },
+      "TableRows": {
+        "description": "The cell grid a reader produced for one table, as read: rows of raw text.",
+        "properties": {
+          "agreement_class": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agreement Class"
+          },
+          "header_rows": {
+            "title": "Header Rows",
+            "type": "integer"
+          },
+          "ordinal": {
+            "title": "Ordinal",
+            "type": "integer"
+          },
+          "page_index": {
+            "title": "Page Index",
+            "type": "integer"
+          },
+          "reader": {
+            "title": "Reader",
+            "type": "string"
+          },
+          "reader_version": {
+            "title": "Reader Version",
+            "type": "string"
+          },
+          "rows": {
+            "items": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "title": "Rows",
+            "type": "array"
+          },
+          "secondary_reader": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Secondary Reader"
+          },
+          "secondary_rows": {
+            "anyOf": [
+              {
+                "items": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Secondary Rows"
+          }
+        },
+        "required": [
+          "page_index",
+          "ordinal",
+          "reader",
+          "reader_version",
+          "header_rows",
+          "rows"
+        ],
+        "title": "TableRows",
         "type": "object"
       },
       "TariffExplorer": {
@@ -12872,6 +13081,22 @@
           },
           {
             "in": "query",
+            "name": "grid_ordinal",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Grid Ordinal"
+            }
+          },
+          {
+            "in": "query",
             "name": "unresolved_only",
             "required": false,
             "schema": {
@@ -13143,6 +13368,110 @@
         ]
       }
     },
+    "/sources/{source_id}/summaries": {
+      "get": {
+        "description": "Generated category summaries: reviewer context with a grounding flag; never facts.",
+        "operationId": "list_summaries_sources__source_id__summaries_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategorySummaryList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Summaries",
+        "tags": [
+          "candidates"
+        ]
+      }
+    },
     "/sources/{source_id}/tables": {
       "get": {
         "description": "Table grids from both readers with their agreement class \u2014 the routing signal of\nSection 6.4.  The full cell grid is in the artefact at ``object_key``.",
@@ -13284,6 +13613,128 @@
           }
         },
         "summary": "List Tables",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/tables/{page_index}/{ordinal}/rows": {
+      "get": {
+        "description": "The table as the primary reader read it (and the paired secondary grid when there is\none): raw cell text, so a reviewer can see a column shift or a merged header without\nleaving the workspace.",
+        "operationId": "table_rows_sources__source_id__tables__page_index___ordinal__rows_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "page_index",
+            "required": true,
+            "schema": {
+              "title": "Page Index",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ordinal",
+            "required": true,
+            "schema": {
+              "title": "Ordinal",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableRows"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Table Rows",
         "tags": [
           "sources"
         ]

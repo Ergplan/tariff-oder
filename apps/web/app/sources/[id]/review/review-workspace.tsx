@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { CandidateOut, DecisionResult, ErrorResponse, ReviewQueueDetail } from "@tariff/contracts";
+import type { CandidateOut, CategorySummaryOut, DecisionResult, ErrorResponse, ReviewQueueDetail, TableRows } from "@tariff/contracts";
 import { networkError, readError } from "@/lib/client-errors";
 
 type Outcome = "approve" | "correct" | "reject" | "unresolved";
@@ -111,8 +111,9 @@ function whereRead(ev: EvidenceRef | undefined): string {
 }
 
 function title(c: CandidateOut, rec: Rec): string {
-  const a = (rec.applicability ?? {}) as { voltage?: string | null; description?: string | null; time_band?: string | null; slab?: { original_text?: string | null } | null; load_band?: { original_text?: string | null } | null };
-  const qual = [a.description, a.voltage, a.slab?.original_text ?? a.load_band?.original_text, a.time_band].filter(Boolean).join(" · ");
+  const a = (rec.applicability ?? {}) as { voltage?: string | null; description?: string | null; time_band?: string | null; slab?: { original_text?: string | null } | null; load_band?: { original_text?: string | null } | null; rate_block?: string | null };
+  const block = a.rate_block ? a.rate_block.replace(/\s+/g, " ").slice(0, 60) + (a.rate_block.length > 60 ? "…" : "") : null;
+  const qual = [block, a.description, a.voltage, a.slab?.original_text ?? a.load_band?.original_text, a.time_band].filter(Boolean).join(" · ");
   if (c.family === "retail_tariff") return `${c.category_code ?? "Category ?"} · ${COMPONENT_LABEL[c.component_type] ?? c.component_type}${qual ? ` · ${qual}` : ""}`;
   return `${FAMILY_LABEL[c.family] ?? c.family}${c.category_code ? ` · ${c.category_code}` : ""}${qual ? ` · ${qual}` : ""}`;
 }
@@ -135,11 +136,13 @@ export function ReviewWorkspace({
   queue,
   sourceState,
   findings,
+  summaries,
 }: {
   sourceId: string;
   queue: ReviewQueueDetail;
   sourceState: string;
   findings: Record<string, FindingLine[]>;
+  summaries: Record<string, CategorySummaryOut>;
 }) {
   const router = useRouter();
   const items = queue.items;
@@ -156,6 +159,8 @@ export function ReviewWorkspace({
   const [error, setError] = useState<ErrorResponse | null>(null);
   const [decided, setDecided] = useState<Record<string, DecisionResult>>({});
   const [showChannels, setShowChannels] = useState(false);
+  const [table, setTable] = useState<TableRows | null>(null);
+  const [showTable, setShowTable] = useState(false);
   const viewedAt = useRef<number | null>(null);
   const attemptKey = useRef<string | null>(null);
 
@@ -179,6 +184,28 @@ export function ReviewWorkspace({
   }, [items]);
   const fm = rec.derivation?.formula;
   const lines = cand ? findings[cand.id] ?? [] : [];
+  const summary = cand?.category_code ? summaries[cand.category_code] : undefined;
+  const prevItem = index > 0 ? items[index - 1] : undefined;
+  const newGroup = !prevItem || groupKey(prevItem.candidate) !== groupKey(cand!);
+
+  useEffect(() => {
+    setTable(null);
+    setShowTable(false);
+    if (!ev0 || ev0.kind !== "cell") return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/sources/${sourceId}/tables/${ev0.page_index}/${ev0.grid_ordinal ?? 0}`, { cache: "no-store" });
+        if (res.ok && !cancelled) setTable((await res.json()) as TableRows);
+      } catch {
+        /* the panel simply stays unavailable */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cand?.id]);
 
   const loadEvidence = useCallback(async (candidateId: string) => {
     setImageUrl(null);
@@ -331,6 +358,22 @@ export function ReviewWorkspace({
           {item.coverage_impact ? " · this category has no approved fact yet" : ""}
           {cand.is_fixture ? " · FIXTURE" : ""}
         </p>
+        {summary && newGroup ? (
+          <div className="card rw-summary">
+            <div className="label">
+              Summary of {summary.category_code} · generated{summary.is_fixture ? " by the fixture template" : ` by ${summary.model}`} · not a fact ·{" "}
+              {summary.grounded ? (
+                <span className="badge" data-tone="ok">every number traced to the pages</span>
+              ) : (
+                <span className="badge" data-tone="bad">numbers not found in the pages: {summary.unsupported_numbers.join(", ")}</span>
+              )}
+            </div>
+            <p>{summary.text}</p>
+            <p className="muted">
+              {summary.heading_text ? `${summary.heading_text} · ` : ""}pages {summary.page_indices.join(", ")} · {summary.candidate_count} candidates
+            </p>
+          </div>
+        ) : null}
         <h2 className="rw-title">{title(cand, rec)}</h2>
         <div className="rw-value">{valueWords(rec)}</div>
         {rec.original_text && rec.original_text !== rec.value ? <div className="muted">As printed: “{rec.original_text}”</div> : null}
@@ -352,6 +395,33 @@ export function ReviewWorkspace({
           <div className="label">Where it was read</div>
           <p>{rec.rationale ?? whereRead(ev0)}</p>
           {rec.rationale ? <p className="muted">{whereRead(ev0)}</p> : null}
+          {table ? (
+            <details className="inline" open={showTable} onToggle={(e) => setShowTable((e.target as HTMLDetailsElement).open)}>
+              <summary>
+                Show the table as read ({table.reader}
+                {table.agreement_class ? `, ${table.agreement_class.replace(/_/g, " ")} with ${table.secondary_reader ?? "the second reader"}` : ""})
+              </summary>
+              <div className="table-wrap">
+                <table className="compact rw-grid">
+                  <tbody>
+                    {table.rows.map((r, ri) => (
+                      <tr key={ri} data-header={ri < table.header_rows || undefined}>
+                        {r.map((cell, ci) => (
+                          <td key={ci} data-cited={ev0?.row === ri && ev0?.col === ci ? true : undefined}>
+                            {cell || <span className="muted">·</span>}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="muted">
+                The highlighted cell is the one cited. If the column headings sit one cell off from the numbers, choose Change and say
+                so: the cause tag “header misbound” tells us to fix the reader, not just this value.
+              </p>
+            </details>
+          ) : null}
           {evidence.length > 1 ? (
             <p className="muted">
               Also cited: {evidence.slice(1).map((e, i) => (

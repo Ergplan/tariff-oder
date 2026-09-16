@@ -39,6 +39,7 @@ from tariff_api.extraction import (
 from tariff_api.inventory import NotAPdf, open_document
 from tariff_api.models import (
     CandidateRecord,
+    CategorySummary,
     ClauseValueRecord,
     ConditionRecordRow,
     DocumentHeading,
@@ -54,6 +55,7 @@ from tariff_api.models import (
 from tariff_api.profiles import load_profile
 from tariff_api.providers import ProviderUnavailable, build_provider
 from tariff_api.services.sources import enqueue_stage, transition
+from tariff_api.summaries import SummaryInput, category_pages, grounding_check
 from tariff_api.tariff_schema import SCHEMA_VERSION, ExtractionOutput
 
 from ..runner import JobContext, JobFailure
@@ -343,6 +345,76 @@ def extract_source(ctx: JobContext) -> dict:
             "extract", {"regions_done": reg["ordinal"]}, {"pages_done": reg["page_end"], "pages_total": page_count}
         )
 
+    # ---- category summaries from the schedule candidates (Section 7.2 reviewer context)
+    summary_inputs: list[dict[str, Any]] = []
+    schedule_pages = sorted(
+        {
+            p
+            for r in regions
+            if r["role"] in READ_ROLES and not r["excluded"]
+            for p in range(r["page_start"], r["page_end"] + 1)
+        }
+    )
+    if schedule_pages:
+        by_cat: dict[str, list[Any]] = {}
+        for cmp, _reg in compared_all:
+            prim = cmp.primary
+            if prim.family == "retail_tariff" and prim.category_code:
+                by_cat.setdefault(prim.category_code, []).append(prim)
+        page_texts_all = {p: doc[p - 1].get_text("text", sort=True) for p in schedule_pages}
+        spans = category_pages(headings, profile.schedule_heading_kind, schedule_pages)
+        cond_texts = [cr.text for cr in conditions_found]
+        for code, cands in sorted(by_cat.items()):
+            heading_text, pages = spans.get(code, (None, sorted({e.page_index for c in cands for e in c.evidence})))
+            sin = SummaryInput(
+                source_sha=sha,
+                category_code=code,
+                heading_text=heading_text,
+                page_indices=pages,
+                page_texts={p: page_texts_all.get(p, "") for p in pages},
+                candidates=cands,
+                conditions=[t for t in cond_texts if code in t][:12],
+            )
+            try:
+                res = provider.summarise_category(sin)
+            except ProviderUnavailable as e:
+                runs.append({**_run_row({"ordinal": 0}, "summary", provider, None, str(e)), "region_ordinal": 0})
+                continue
+            total_cost += res.cost_usd
+            total_tokens += res.input_tokens + res.output_tokens
+            check_budget()
+            grounded, unsupported = grounding_check(res.text, sin)
+            summary_inputs.append(
+                {
+                    "category_code": code,
+                    "heading_text": (heading_text or "")[:300] or None,
+                    "page_indices": pages,
+                    "text": res.text,
+                    "provider": res.provider,
+                    "model": res.model,
+                    "prompt_version": res.prompt_version,
+                    "is_fixture": res.is_fixture,
+                    "grounded": grounded,
+                    "unsupported_numbers": unsupported,
+                    "candidate_count": len(cands),
+                    "input_tokens": res.input_tokens,
+                    "output_tokens": res.output_tokens,
+                    "cost_usd": res.cost_usd,
+                }
+            )
+            artefacts.append(
+                (
+                    f"{sha}/{STAGE}/{extraction_version}/summary-{code}.json",
+                    {
+                        "input_hash": res.input_hash,
+                        "text": res.text,
+                        "grounded": grounded,
+                        "unsupported": unsupported,
+                        "raw": res.raw,
+                    },
+                )
+            )
+
     cell_flags = {(c["page_index"], c["grid_ordinal"], c["row"], c["col"]): c["flags"] for c in cells}
     candidate_rows: list[dict[str, Any]] = []
     for cmp, reg in compared_all:
@@ -495,6 +567,16 @@ def extract_source(ctx: JobContext) -> dict:
                 )
             )
         summary["conditions"] = len(seen_conditions)
+        # category summaries: generated reviewer context, grounding-checked, never a fact
+        s.execute(delete(CategorySummary).where(CategorySummary.source_id == source_id))
+        summary_rows = 0
+        for row in summary_inputs:
+            s.add(CategorySummary(source_id=source_id, extraction_version=extraction_version[:80], **row))
+            summary_rows += 1
+        summary["category_summaries"] = summary_rows
+        summary["summaries_grounded"] = sum(1 for r in summary_inputs if r["grounded"])
+        summary["cost_usd"] = round(total_cost, 6)
+        summary["tokens"] = total_tokens
         src.extraction_summary = summary
         src.extraction_version = extraction_version[:80]
         src.extracted_at = datetime.now(UTC)

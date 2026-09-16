@@ -62,6 +62,7 @@ from ..schemas import (
     StructureSummary,
     TableGridList,
     TableGridOut,
+    TableRows,
     TriageSummary,
     ValidationSummary,
 )
@@ -486,6 +487,7 @@ def _cell_out(c: StructureCell) -> StructureCellOut:
 def list_structure_cells(
     source_id: uuid.UUID,
     page_index: int | None = None,
+    grid_ordinal: int | None = None,
     unresolved_only: bool = False,
     flag: str | None = None,
     limit: int = Query(200, ge=1, le=2000),
@@ -499,6 +501,8 @@ def list_structure_cells(
         q = select(StructureCell).where(StructureCell.source_id == source_id)
         if page_index is not None:
             q = q.where(StructureCell.page_index == page_index)
+        if grid_ordinal is not None:
+            q = q.where(StructureCell.grid_ordinal == grid_ordinal)
         if unresolved_only:
             q = q.where(StructureCell.resolved.is_(False))
         if flag:
@@ -638,6 +642,62 @@ def list_tables(
             total=len(rows),
             grids=[TableGridOut.model_validate(r, from_attributes=True) for r in rows],
         )
+
+
+@router.get(
+    "/{source_id}/tables/{page_index}/{ordinal}/rows", response_model=TableRows, dependencies=[Depends(require_analyst)]
+)
+def table_rows(request: Request, source_id: uuid.UUID, page_index: int, ordinal: int) -> TableRows:
+    """The table as the primary reader read it (and the paired secondary grid when there is
+    one): raw cell text, so a reviewer can see a column shift or a merged header without
+    leaving the workspace."""
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        svc.get_source(s, source_id)
+        prim = s.execute(
+            select(TableGridRecord).where(
+                TableGridRecord.source_id == source_id,
+                TableGridRecord.page_index == page_index,
+                TableGridRecord.ordinal == ordinal,
+                TableGridRecord.is_primary.is_(True),
+            )
+        ).scalar_one_or_none()
+        if prim is None:
+            raise AppError("not_found", f"no primary grid {ordinal} on page {page_index}")
+        sec = None
+        if prim.paired_ordinal is not None:
+            sec = s.execute(
+                select(TableGridRecord).where(
+                    TableGridRecord.source_id == source_id,
+                    TableGridRecord.page_index == page_index,
+                    TableGridRecord.ordinal == prim.paired_ordinal,
+                    TableGridRecord.is_primary.is_(False),
+                )
+            ).scalar_one_or_none()
+        keys = (prim.object_key, sec.object_key if sec else None)
+        meta = (
+            prim.reader,
+            prim.reader_version,
+            prim.header_rows,
+            prim.agreement_class,
+            sec.reader if sec else None,
+        )
+    try:
+        grid = json.loads(storage.get(ObjectStore.ARTEFACTS, keys[0]))["grid"]
+        sec_rows = json.loads(storage.get(ObjectStore.ARTEFACTS, keys[1]))["grid"]["rows"] if keys[1] else None
+    except ObjectNotFound as e:
+        raise AppError("not_found", "the grid artefact is missing from storage") from e
+    return TableRows(
+        page_index=page_index,
+        ordinal=ordinal,
+        reader=meta[0],
+        reader_version=meta[1],
+        header_rows=meta[2],
+        rows=grid["rows"],
+        secondary_reader=meta[4],
+        secondary_rows=sec_rows,
+        agreement_class=meta[3],
+    )
 
 
 @router.get("/{source_id}/headings", response_model=HeadingList, dependencies=[Depends(require_analyst)])

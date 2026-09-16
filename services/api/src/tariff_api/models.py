@@ -759,6 +759,35 @@ class FamilyDisposition(Base):
     decided_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
 
+class CategorySummary(Base):
+    """A generated summary of what the schedule says about one category — reviewer context,
+    never a fact.  Grounding is checked deterministically: every number in the text must be
+    a candidate value or appear in the category's pages; failures are stored, flagged and
+    listed, never hidden."""
+
+    __tablename__ = "category_summaries"
+    __table_args__ = (UniqueConstraint("source_id", "category_code", name="uq_category_summary"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    category_code: Mapped[str] = mapped_column(String(40), nullable=False)
+    heading_text: Mapped[str | None] = mapped_column(String(300))
+    page_indices: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    text: Mapped[str] = mapped_column(Text, nullable=False)
+    provider: Mapped[str] = mapped_column(String(40), nullable=False)
+    model: Mapped[str] = mapped_column(String(120), nullable=False)
+    prompt_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    grounded: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    unsupported_numbers: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    candidate_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    input_tokens: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    output_tokens: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    cost_usd: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    extraction_version: Mapped[str] = mapped_column(String(80), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
 class ConditionRecordRow(Base):
     """A condition / rule (Section 5.2): verbatim source text, the category codes it names as
     scope, and an interpretation status.  Structured interpretation is a reviewer's job

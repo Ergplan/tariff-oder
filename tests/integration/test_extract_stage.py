@@ -95,6 +95,22 @@ def test_dual_channel_fixture_extraction_produces_routed_candidates_and_findings
     ).json()
     assert by_risk["total"] >= 1  # the 1,00,000 minimum with no unit anywhere: in the queue, never defaulted
 
+    # every schedule category gets a generated, grounding-checked summary (fixture template here)
+    sm = client.get(f"/sources/{src_id}/summaries", headers=headers(ANALYST)).json()
+    assert sm["total"] >= 1 and all(
+        x["is_fixture"] and x["grounded"] and x["provider"] == "fixture" for x in sm["summaries"]
+    )
+    assert {x["category_code"] for x in sm["summaries"]} == {
+        c["category_code"] for c in cands["candidates"] if c["family"] == "retail_tariff" and c["category_code"]
+    }
+    assert ex["category_summaries"] == sm["total"] and ex["summaries_grounded"] == sm["total"]
+    # the table as read is available for any cited cell
+    ev0 = next(c for c in cands["candidates"] if c["record"]["evidence"][0]["kind"] == "cell")["record"]["evidence"][0]
+    rows = client.get(
+        f"/sources/{src_id}/tables/{ev0['page_index']}/{ev0['grid_ordinal']}/rows", headers=headers(ANALYST)
+    ).json()
+    assert rows["reader"] == "pymupdf" and rows["rows"][ev0["row"]][ev0["col"]] == ev0["excerpt"]
+
     # validators ran, findings attach, families without a decision block coverage
     val = d["validation"]
     assert val["validators_version"] == "2" and val["findings"] > 0

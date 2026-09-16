@@ -117,3 +117,8 @@ button.link { background: none; color: var(--accent); padding: 0; text-decoratio
 .rw-buttons button:not(.primary):not(.link) { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .rw-correct { margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; align-items: center; }
 @media (max-width: 800px) { .rw { flex-direction: column; } .rw-side { position: static; flex-basis: auto; width: 100%; max-height: 12rem; } }
+.rw-summary { border-left: 4px solid var(--unknown); background: #fbfbfd; }
+.rw-summary p { margin: 0.3rem 0; }
+table.rw-grid td { border: 1px solid var(--border); font-size: 0.82rem; }
+table.rw-grid tr[data-header] td { background: #efefeb; font-weight: 600; }
+table.rw-grid td[data-cited] { outline: 3px solid #f2b705; background: #fff8e6; font-weight: 700; }

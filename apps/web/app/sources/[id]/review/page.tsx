@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { FindingList, ReviewChecklist, ReviewQueueDetail, SourceDetail } from "@tariff/contracts";
+import type { CategorySummaryList, CategorySummaryOut, FindingList, ReviewChecklist, ReviewQueueDetail, SourceDetail } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, StateBadge } from "../../../components";
 import { ReviewWorkspace, type FindingLine } from "./review-workspace";
@@ -39,11 +39,14 @@ export default async function ReviewWorkspacePage({
   const order = sp.order === "risk" ? "risk" : "document";
   filters.set("order", order);
   filters.set("limit", "500");
-  const [queue, checklist, findingList] = await Promise.all([
+  const [queue, checklist, findingList, summaryList] = await Promise.all([
     apiTry<ReviewQueueDetail>(`/sources/${id}/review/queue?${filters.toString()}`),
     apiTry<ReviewChecklist>(`/sources/${id}/review/checklist`),
     apiTry<FindingList>(`/sources/${id}/findings`),
+    apiTry<CategorySummaryList>(`/sources/${id}/summaries`),
   ]);
+  const summaries: Record<string, CategorySummaryOut> = {};
+  for (const sm of summaryList.data?.summaries ?? []) summaries[sm.category_code] = sm;
   const findings: Record<string, FindingLine[]> = {};
   for (const f of findingList.data?.findings ?? []) {
     for (const cid of f.candidate_ids) (findings[cid] ??= []).push({ severity: f.severity, validator_id: f.validator_id, message: f.message });
@@ -91,7 +94,7 @@ export default async function ReviewWorkspacePage({
             {queue.data.total} open candidates in {order === "document" ? "document order (schedule first, then the open-access chapter)" : "risk order (blocking findings first)"}.{" "}
             <Link href={`/sources/${id}/review?${switchParams.toString()}`}>Switch to {otherOrder} order</Link>
           </p>
-          <ReviewWorkspace sourceId={id} queue={queue.data} sourceState={s.state} findings={findings} />
+          <ReviewWorkspace sourceId={id} queue={queue.data} sourceState={s.state} findings={findings} summaries={summaries} />
         </>
       )}
 

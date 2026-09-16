@@ -148,6 +148,26 @@ open-access view.
   Approve / Change / Reject / Cannot decide with the reason box; a sidebar lists the groups in
   document order.  The NPCL extraction must be re-run to pick up (1)–(4)
   (`rerun … extract_source`); the numbers above are from the run before these fixes.
+
+  **Increment 15 (2026-09-16): rate blocks, category summaries, the table as read.**  From
+  the reviewer's second look (NPCL HV-1, page 384): the two tables under "(a) Commercial Loads
+  …" and "(b) Public Institutions …" are two consumer groups of one category, and the
+  candidate shown as the fixed charge carried the energy-charge cell.  (1) Retail candidates
+  now carry `applicability.rate_block`, the lettered block above their table, read from the
+  page text and part of the candidate key; the workspace title shows it.  (2) Every schedule
+  category gets a generated summary (`category_summaries`, `GET /sources/{id}/summaries`):
+  in fixture mode a template that reads the candidates back by rate block; with the real
+  provider, prose from the same inputs under a prompt that allows only printed numbers and
+  requires component, unit and applicability per rate.  A deterministic grounding check
+  lists any number the pages or candidates do not carry; the workspace shows the summary at
+  the top of each category with its grounded/unsupported badge and the label "generated ·
+  not a fact".  Summaries are never published and never feed a validator.  (3) The workspace
+  can show the table as the reader read it (`GET /sources/{id}/tables/{page}/{ordinal}/rows`,
+  primary and paired secondary grid, cited cell highlighted) so a column shift is visible on
+  the spot and a `header_misbound` correction points at the reader.  **The page-384 shift
+  itself is not yet diagnosed**: it needs the grid as read, which the operator can now paste
+  from the workspace.  Fixture summaries are exercised end to end in `test_extract_stage.py`;
+  no real-provider summary has been generated (no key).
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
