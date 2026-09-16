@@ -167,7 +167,14 @@ open-access view.
   the spot and a `header_misbound` correction points at the reader.  **The page-384 shift
   itself is not yet diagnosed**: it needs the grid as read, which the operator can now paste
   from the workspace.  Fixture summaries are exercised end to end in `test_extract_stage.py`;
-  no real-provider summary has been generated (no key).
+  no real-provider summary has been generated (no key).  **VAL-19 unit consistency** (validators
+  3): a retail component priced per a unit it cannot be priced per (a fixed charge per kVAh,
+  an energy charge per kVA per month) blocks with the likely cause named — the neighbouring
+  column's cell, a column shift in the reader or the header binding — and a row whose fixed
+  and energy cells share a unit warns; this catches the page-384 shift before a reviewer
+  does, whatever reader produced it.  Terraform `provider_backend` (dev: `anthropic`) sets
+  `PROVIDER_BACKEND` on the worker and admin jobs; the key is added to Secret Manager from a
+  terminal prompt, never from a file (`docs/deployment.md`).
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.

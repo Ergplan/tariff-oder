@@ -555,5 +555,58 @@ def test_val18_candidates_outside_approved_regions_are_blocked():
 
 
 def test_versions_are_declared():
-    assert EXTRACTION_RULES_VERSION == "2" and V.VALIDATORS_VERSION == "2"
+    assert EXTRACTION_RULES_VERSION == "2" and V.VALIDATORS_VERSION == "3"
     assert ExtractionOutput().schema_version == SCHEMA_VERSION == "2"
+
+
+def _retail(comp, per_unit, row=1, freq=None, value="7.70"):
+    from tariff_api.tariff_schema import Applicability, Candidate, EvidenceRef
+
+    return Candidate(
+        family="retail_tariff",
+        category_code="HV-1",
+        component_type=comp,
+        value=value,
+        value_state="value",
+        original_text=f"Rs. {value} / {per_unit}",
+        currency="rupees",
+        per_unit=per_unit,
+        frequency=freq,
+        applicability=Applicability(description="For supply at 11kV"),
+        evidence=[
+            EvidenceRef(
+                page_index=384, kind="cell", grid_ordinal=1, row=row, col=1, excerpt=f"Rs. {value} / {per_unit}"
+            )
+        ],
+    )
+
+
+def test_val_19_blocks_a_fixed_charge_priced_per_kvah_and_warns_on_a_shifted_row():
+    ctx = V.ValidationContext(
+        candidates=[
+            _retail("fixed", "kVAh"),
+            _retail("energy", "kVAh", value="8.32"),
+            _retail("fixed", "kVA", row=2, freq="per_month", value="380.00"),
+        ],
+        region_roles_by_page={384: {"approved_schedule"}},
+        cells={},
+        clause_lines={},
+        inventory_codes=["HV-1"],
+    )
+    fs = V.val_19_unit_consistency(ctx)
+    blocking = [f for f in fs if f.severity == "blocking"]
+    assert len(blocking) == 1 and "fixed charge priced per kVAh" in blocking[0].message
+    assert "energy-charge cell under a fixed/demand heading" in blocking[0].message
+    warn = [f for f in fs if f.severity == "warning"]
+    assert len(warn) == 1 and "both priced per kVAh" in warn[0].message and len(warn[0].candidate_keys) == 2
+    # the well-formed row raises nothing
+    ok = V.val_19_unit_consistency(
+        V.ValidationContext(
+            [_retail("fixed", "kVA", freq="per_month"), _retail("energy", "kVAh")],
+            {384: {"approved_schedule"}},
+            {},
+            {},
+            ["HV-1"],
+        )
+    )
+    assert ok == []

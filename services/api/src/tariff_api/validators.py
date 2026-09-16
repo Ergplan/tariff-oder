@@ -15,7 +15,7 @@ from typing import Any
 
 from .tariff_schema import FAMILIES, NETWORK_FAMILIES, Candidate
 
-VALIDATORS_VERSION = "2"
+VALIDATORS_VERSION = "3"
 
 _TIME = re.compile(r"^(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$")
 
@@ -93,6 +93,7 @@ def run_all(ctx: ValidationContext) -> list[Finding]:
         val_15_inventory_reconciliation,
         val_17_magnitude_plausibility,
         val_18_region_provenance,
+        val_19_unit_consistency,
         val_05_amendment_consistency,
         val_07_derivation_checks,
         val_12_condition_links,
@@ -308,6 +309,77 @@ def val_09_unit_sanity_per_family(ctx: ValidationContext) -> list[Finding]:
             out.append(Finding("VAL-09", "blocking", f"{c.family} must be a percentage, got {c.per_unit}", [k]))
         if c.family == "banking_rule" and c.per_unit not in ("percent", "kWh", "unit", None):
             out.append(Finding("VAL-09", "warning", f"banking charge unit {c.per_unit} needs a stated basis", [k]))
+    return out
+
+
+# what a component is priced per, in a retail schedule: a fixed or demand charge per unit of
+# load or per connection and per month or year; an energy charge per unit of energy; a
+# minimum charge per load or per connection; a time-of-day adjustment as a percentage or per
+# unit of energy; rebates and surcharges either way.  A cell that breaks this is almost
+# always the neighbouring column's cell (a column shift in the reader or the header binding),
+# so it blocks and names the shift as the likely cause.
+_COMPONENT_UNITS: dict[str, set[str]] = {
+    "fixed": {"kW", "kVA", "HP", "BHP", "connection", "unit"},
+    "demand": {"kW", "kVA", "HP", "BHP"},
+    "minimum": {"kW", "kVA", "HP", "BHP", "connection", "kWh", "kVAh", "unit"},
+    "energy": {"kWh", "kVAh", "unit"},
+    "tod_adjustment": {"kWh", "kVAh", "unit", "percent"},
+    "green_premium": {"kWh", "kVAh", "unit"},
+    "rebate": {"kWh", "kVAh", "unit", "percent", "kW", "kVA"},
+    "surcharge": {"kWh", "kVAh", "unit", "percent", "kW", "kVA"},
+}
+_ENERGY_UNITS = {"kWh", "kVAh"}
+
+
+def val_19_unit_consistency(ctx: ValidationContext) -> list[Finding]:
+    """VAL-19 a retail component's unit must be one the component can be priced per: a fixed
+    charge per kVAh, or an energy charge per kVA per month, is the wrong cell under the
+    heading.  Blocks the candidate and says so; in the same table row the fixed and energy
+    cells must not carry the same unit either."""
+    out: list[Finding] = []
+    by_row: dict[tuple, list[Candidate]] = {}
+    for c in ctx.candidates:
+        if c.family != "retail_tariff" or c.value_state not in ("value", "zero"):
+            continue
+        k = c.key()
+        allowed = _COMPONENT_UNITS.get(c.component_type)
+        if allowed is None or not c.per_unit:
+            continue
+        if c.per_unit not in allowed:
+            hint = (
+                "an energy-charge cell under a fixed/demand heading"
+                if c.component_type in ("fixed", "demand") and c.per_unit in _ENERGY_UNITS
+                else "a load-charge cell under an energy heading"
+                if c.component_type == "energy" and c.per_unit in _COMPONENT_UNITS["demand"]
+                else "the neighbouring column's cell"
+            )
+            out.append(
+                Finding(
+                    "VAL-19",
+                    "blocking",
+                    f"{c.component_type} charge priced per {c.per_unit}: likely {hint} (column shift in the reader "
+                    "or header binding); check the table as read",
+                    [k],
+                    {"component_type": c.component_type, "per_unit": c.per_unit, "allowed": sorted(allowed)},
+                )
+            )
+        ev = c.evidence[0]
+        if ev.kind == "cell" and ev.row is not None:
+            by_row.setdefault((ev.page_index, ev.grid_ordinal, ev.row), []).append(c)
+    for _, cs in by_row.items():
+        fixed = [c for c in cs if c.component_type in ("fixed", "demand")]
+        energy = [c for c in cs if c.component_type == "energy"]
+        for f in fixed:
+            for e in energy:
+                if f.per_unit and f.per_unit == e.per_unit:
+                    out.append(
+                        Finding(
+                            "VAL-19",
+                            "warning",
+                            f"fixed and energy cells of one row both priced per {f.per_unit}: headings may be shifted",
+                            [f.key(), e.key()],
+                        )
+                    )
     return out
 
 

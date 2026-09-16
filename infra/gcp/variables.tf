@@ -98,6 +98,16 @@ variable "worker_schedule" {
   default     = "*/5 * * * *"
 }
 
+variable "provider_backend" {
+  description = "Extraction provider for the worker and admin jobs: `fixture` (deterministic rules, labelled, zero cost) or `anthropic` (Messages API; ANTHROPIC_API_KEY must hold a version in Secret Manager). Every run and candidate carries the flag; the two are never mixed."
+  type        = string
+  default     = "fixture"
+  validation {
+    condition     = contains(["fixture", "anthropic"], var.provider_backend)
+    error_message = "provider_backend must be fixture or anthropic."
+  }
+}
+
 variable "job_lease_seconds" {
   type    = number
   default = 120

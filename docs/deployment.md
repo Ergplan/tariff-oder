@@ -206,6 +206,24 @@ Shortcuts: `make admin-dev ARGS=<comma-separated arguments>` updates and runs th
 step; `make drain-dev` runs the worker job six times in a row (each run drains what is queued and
 later stages enqueue the next).
 
+### Switching the extraction provider to Anthropic (dev)
+
+The key never appears in a file, an image, a chat or a shell history.  On the VM, paste it into
+the prompt of the first command (input is read from the terminal, not from the command line):
+
+```bash
+printf 'Paste the Anthropic key, then Enter: '; read -rs K; printf '%s' "$K" | \
+  gcloud secrets versions add ANTHROPIC_API_KEY --project tariff-order-parsing --data-file=-; unset K
+cd ~/tariff-oder && git pull && make tf-plan tf-apply ENV=dev && make deploy-dev   # PROVIDER_BACKEND=anthropic on worker/admin
+make admin-dev ARGS=provider-smoke                                              # one two-cell call; prints model, tokens, cost
+```
+
+`envs/dev.tfvars` sets `provider_backend = "anthropic"`; set it back to `fixture` and apply to
+return to fixture mode.  Every run, candidate and summary carries the provider flag; the order
+budget (`PROVIDER_MAX_COST_PER_ORDER_USD`, default 5) stops a run that exceeds it — nothing is
+skipped to fit.  A key pasted anywhere other than that prompt is compromised: rotate it in the
+Anthropic console and add the new version the same way.
+
 ### Measuring the optional Docling reader (ADR-0009 addendum)
 
 Docling is not in the images.  Measure it on the VM, which can reach PyPI and huggingface.co:

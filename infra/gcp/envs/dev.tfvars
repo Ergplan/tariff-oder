@@ -36,3 +36,5 @@ api_min_instances    = 0
 # 2026-09-14): a public URL with a Google sign-in for iap_members, no domain needed.  After
 # apply, run every line of `terraform output -raw web_iap_commands`.
 web_iap = true
+# Real model calls for extraction and category summaries (key in Secret Manager, never in files).
+provider_backend = "anthropic"

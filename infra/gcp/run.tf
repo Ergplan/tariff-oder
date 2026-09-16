@@ -27,6 +27,7 @@ locals {
     ID_TOKEN_AUDIENCES   = join(",", local.id_token_audiences)
     LOG_FORMAT           = "json"
     JOB_LEASE_SECONDS    = tostring(var.job_lease_seconds)
+    PROVIDER_BACKEND     = var.provider_backend
     GOLDEN_MANIFEST_PATH = "/app/tests/golden/manifest.json"
   }
 }
