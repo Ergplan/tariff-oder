@@ -14,11 +14,17 @@ model; nothing here ever changes a value.
 
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import dataclass, field
 from typing import Any
 
-from haystack import Document
+# Haystack phones home by default and writes a config file under the user's home directory
+# at import time; the job containers run as a user with no home, and nothing here may call
+# out anywhere but the provider.  Off, before the import.
+os.environ.setdefault("HAYSTACK_TELEMETRY_ENABLED", "False")
+
+from haystack import Document  # noqa: E402
 from haystack.components.retrievers.in_memory import InMemoryBM25Retriever
 from haystack.document_stores.in_memory import InMemoryDocumentStore
 
