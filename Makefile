@@ -137,7 +137,11 @@ admin-dev: ## Run the tariff-api CLI inside the VPC: make admin-dev ARGS=inbox  
 
 drain-dev: ## Run the worker job until the queue is empty (each run drains what is queued; stages enqueue the next)
 	@for i in 1 2 3 4 5 6; do \
-	  gcloud run jobs execute tariff-worker --project $(GCP_PROJECT) --region $(REGION) --wait --quiet || exit 1; \
+	  gcloud run jobs execute tariff-worker --project $(GCP_PROJECT) --region $(REGION) --wait --quiet || { \
+	    echo "--- worker output (Cloud Logging, last 5 minutes) ---"; \
+	    gcloud logging read 'resource.type="cloud_run_job" AND resource.labels.job_name="tariff-worker"' \
+	      --project $(GCP_PROJECT) --freshness=5m --order=asc --limit 120 --format='value(textPayload,jsonPayload.message)' | grep -v '^$$'; \
+	    exit 1; }; \
 	done
 	@echo "Worker ran 6 times. Check: make admin-dev ARGS=sources"
 
