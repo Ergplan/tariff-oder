@@ -636,3 +636,45 @@ def test_a_nested_or_wrapped_tool_output_is_unwrapped_before_validation():
     plain = {"candidates": [], "missing": []}
     assert normalise_tool_output(plain, "candidates") == plain
     assert normalise_tool_output({"items": {"items": [{"index": 0}]}}, "items") == {"items": [{"index": 0}]}
+
+
+def test_a_model_value_that_is_not_a_number_becomes_unknown_and_a_broken_candidate_is_dropped_alone():
+    from tariff_api.providers import ProviderUnavailable, coerce_candidates
+    from tariff_api.tariff_schema import ExtractionOutput
+
+    def cand(**over):
+        base = {
+            "family": "retail_tariff",
+            "category_code": "HV-1",
+            "component_type": "fixed",
+            "value": "380.00",
+            "value_state": "value",
+            "original_text": "380.00",
+            "evidence": [{"page_index": 384, "kind": "cell", "row": 1, "col": 1, "excerpt": "380.00"}],
+        }
+        base.update(over)
+        return base
+
+    obj = {
+        "candidates": [
+            cand(),
+            cand(value="unknown", value_state="unknown"),  # the NPCL 2026-09-17 failure
+            cand(value="NA", value_state="value"),
+            cand(value=7.7),
+            cand(value="seven point seven", value_state="value"),
+            cand(family="not_a_family"),
+            "not an object",
+        ],
+        "missing": [],
+    }
+    shaped, rejected = coerce_candidates(obj)
+    out = ExtractionOutput.model_validate(shaped)
+    assert len(out.candidates) == 5 and len(rejected) == 2
+    assert rejected[0].startswith("5: family") and rejected[1] == "6: not an object"
+    vals = [(c.value, c.value_state) for c in out.candidates]
+    assert vals == [("380.00", "value"), (None, "unknown"), (None, "unknown"), ("7.7", "value"), (None, "unknown")]
+    assert out.candidates[2].missing == ["value"] and out.candidates[4].notes.endswith("seven point seven")
+    assert out.candidates[1].notes is None  # "unknown" is a state word, not something to note
+    # a schema failure that survives coercion is not worth a retry; a network failure is
+    assert ProviderUnavailable("bad output", retry=False).retry is False
+    assert ProviderUnavailable("timeout").retry is True

@@ -250,6 +250,18 @@ open-access view.
   (fetch failed)".  Haystack is now imported only inside the retrieval functions, the
   constant the endpoint needed lives in the extraction module, and a test starts the
   application in a subprocess and asserts Haystack is not loaded.
+  **Second defect from the same deploy (the first real chunked run):** the model wrote
+  `"unknown"` into a candidate's `value` (a decimal string or null by schema); one such
+  row in one chunk failed the whole call, the job was retried three times from the start
+  and the extraction failed with `retries_exhausted`, each attempt billed.  Now each model
+  candidate is coerced where the intent is unambiguous (a non-numeric value becomes null
+  with `value_state` unknown and `value` listed as missing, a numeric value becomes its
+  string) and validated on its own; a row that still fails is dropped and listed under
+  the run's `missing` and `raw.rejected_candidates`, never the chunk.  A schema failure
+  that survives that is no longer retried (`ProviderUnavailable(retry=False)`), because
+  the same input fails the same way and a retry only repeats the cost.  The three failed
+  attempts' cost is on the provider's bill, not in `extraction_runs` (a failed call writes
+  no run row; recording failed-call usage is an open item).
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.

@@ -10,7 +10,9 @@ from __future__ import annotations
 import abc
 import hashlib
 import json
+import re
 from dataclasses import dataclass, field
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
@@ -41,11 +43,17 @@ from .summaries import (
     serialise_summary_input,
     template_summary,
 )
-from .tariff_schema import SCHEMA_VERSION, ExtractionOutput, tool_schema
+from .tariff_schema import SCHEMA_VERSION, Candidate, ExtractionOutput, tool_schema
 
 
 class ProviderUnavailable(RuntimeError):
-    pass
+    """The provider could not be used.  `retry` is False when the same input would fail the
+    same way (an output that does not fit the schema): retrying the job only repeats the
+    cost."""
+
+    def __init__(self, message: str, *, retry: bool = True) -> None:
+        super().__init__(message)
+        self.retry = retry
 
 
 @dataclass
@@ -185,6 +193,52 @@ def normalise_tool_output(obj: Any, key: str) -> Any:
             continue
         break
     return obj
+
+
+_NOT_A_NUMBER = re.compile(r"^\s*(unknown|n/?a|nil|none|null|-|–|—|not applicable|not specified)?\s*$", re.I)
+
+
+def coerce_candidates(obj: Any) -> tuple[Any, list[str]]:
+    """Make each model candidate fit the schema where the intent is unambiguous, and drop
+    the ones that still do not, one by one, so one bad row in a chunk never loses the chunk.
+    A `value` that is not a decimal — the model wrote "unknown", "NA", "-" or nothing into
+    it (NPCL, 2026-09-17) — becomes null with value_state `unknown` and the field listed
+    under the candidate's `missing`: the same state a reader gives an unreadable cell, and
+    never a number.  A numeric `value` becomes its string.  Returns the object and one line
+    per dropped candidate (index and the first validation error), for the run record."""
+    rejected: list[str] = []
+    if not isinstance(obj, dict) or not isinstance(obj.get("candidates"), list):
+        return obj, rejected
+    kept = []
+    for i, c in enumerate(obj["candidates"]):
+        if not isinstance(c, dict):
+            rejected.append(f"{i}: not an object")
+            continue
+        v = c.get("value")
+        if isinstance(v, bool):
+            v = None
+        if isinstance(v, (int, float)):
+            c["value"] = str(v)
+        elif v is not None:
+            try:
+                Decimal(str(v))
+            except InvalidOperation:
+                c["value"] = None
+                if c.get("value_state") in ("value", "zero", None):
+                    c["value_state"] = "unknown"
+                    miss = c.get("missing") if isinstance(c.get("missing"), list) else []
+                    c["missing"] = [*miss, "value"] if "value" not in miss else miss
+                if not _NOT_A_NUMBER.match(str(v)):
+                    c["notes"] = f"{c.get('notes') or ''} value as returned: {str(v)[:60]}".strip()
+        try:
+            Candidate.model_validate(c)
+        except ValidationError as e:
+            first = e.errors()[0] if e.errors() else {}
+            rejected.append(f"{i}: {'.'.join(str(x) for x in first.get('loc', ()))}: {first.get('msg', '')[:120]}")
+            continue
+        kept.append(c)
+    obj["candidates"] = kept
+    return obj, rejected
 
 
 def _hash(*parts: bytes | str) -> str:
@@ -339,10 +393,13 @@ class AnthropicProvider(ExtractionProvider):
         tool_input = next((b.get("input") for b in data.get("content", []) if b.get("type") == "tool_use"), None)
         if tool_input is None:
             raise ProviderUnavailable("provider returned no tool call")
+        shaped, rejected = coerce_candidates(normalise_tool_output(tool_input, "candidates"))
         try:
-            out = ExtractionOutput.model_validate(normalise_tool_output(tool_input, "candidates"))
+            out = ExtractionOutput.model_validate(shaped)
         except ValidationError as e:
-            raise ProviderUnavailable(f"provider output failed schema validation: {str(e)[:300]}") from e
+            raise ProviderUnavailable(f"provider output failed schema validation: {str(e)[:300]}", retry=False) from e
+        if rejected:
+            out.missing.extend(f"model candidate dropped ({r})" for r in rejected)
         usage = data.get("usage", {})
         tin, tout = int(usage.get("input_tokens", 0)), int(usage.get("output_tokens", 0))
         cost = tin / 1_000_000 * self._price_in + tout / 1_000_000 * self._price_out
@@ -358,7 +415,7 @@ class AnthropicProvider(ExtractionProvider):
             tout,
             round(cost, 6),
             False,
-            {"id": data.get("id"), "stop_reason": data.get("stop_reason")},
+            {"id": data.get("id"), "stop_reason": data.get("stop_reason"), "rejected_candidates": rejected},
         )
 
     def extract_structure(self, inp: StructureInput) -> ProviderResult:

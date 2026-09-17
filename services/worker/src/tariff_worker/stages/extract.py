@@ -331,7 +331,7 @@ def extract_source(ctx: JobContext) -> dict:
                     part = provider.extract_image(cinp, render(chunk))
                 except ProviderUnavailable as e:
                     runs.append(_run_row(reg, "image", provider, None, f"pages {chunk[0]}-{chunk[-1]}: {e}"))
-                    raise JobFailure("provider_unavailable", str(e), retry=True) from e
+                    raise JobFailure("provider_unavailable", str(e), retry=e.retry) from e
                 total_cost += part.cost_usd
                 total_tokens += part.input_tokens + part.output_tokens
                 check_budget()
