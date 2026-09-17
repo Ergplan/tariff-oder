@@ -24,11 +24,10 @@ from typing import Any
 # out anywhere but the provider.  Off, before the import.
 os.environ.setdefault("HAYSTACK_TELEMETRY_ENABLED", "False")
 
-from haystack import Document  # noqa: E402
-from haystack.components.retrievers.in_memory import InMemoryBM25Retriever
-from haystack.document_stores.in_memory import InMemoryDocumentStore
-from haystack.document_stores.types import DuplicatePolicy
-
+# Haystack is imported inside the functions that use it, never at module import: loading it
+# takes seconds and tens of megabytes, which the API service must not pay at start-up (its
+# start-up probe allows about thirty seconds on one CPU; the 2026-09-17 deploy that imported
+# it eagerly left the API unreachable).  Only the worker's assessment loop pays for it.
 from .tariff_schema import Candidate
 
 ASSESSMENT_PROMPT_VERSION = "1"
@@ -58,8 +57,12 @@ class AssessmentInput:
     passages: dict[int, list[dict[str, Any]]] = field(default_factory=dict)  # candidate index -> retrieved
 
 
-def build_store(page_texts: dict[int, str]) -> InMemoryDocumentStore:
+def build_store(page_texts: dict[int, str]) -> Any:
     """The category's pages as paragraph-sized passages with page metadata."""
+    from haystack import Document
+    from haystack.document_stores.in_memory import InMemoryDocumentStore
+    from haystack.document_stores.types import DuplicatePolicy
+
     docs: list[Document] = []
     for page, text in sorted(page_texts.items()):
         buf: list[str] = []
@@ -101,6 +104,8 @@ def retrieve(inp: AssessmentInput) -> AssessmentInput:
     store = build_store(inp.page_texts)
     if store.count_documents() == 0:
         return inp
+    from haystack.components.retrievers.in_memory import InMemoryBM25Retriever
+
     retriever = InMemoryBM25Retriever(document_store=store, top_k=inp.top_k)
     for i, c in enumerate(inp.candidates):
         found = retriever.run(query=query_for(c))["documents"]

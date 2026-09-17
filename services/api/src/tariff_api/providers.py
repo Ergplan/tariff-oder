@@ -29,6 +29,7 @@ from .config import Settings
 from .extraction import (
     EXTRACTION_RULES_VERSION,
     PROMPT_VERSION,
+    RULES_PROVIDER,
     StructureInput,
     rules_extract,
     serialise_structure,
@@ -74,9 +75,6 @@ SYSTEM_PROMPT = f"""You extract tariff facts from Indian electricity tariff orde
 5. Nil, -, NA, blank and footnote markers are value states, never the number 0.
 6. Do not return a fact for a category or component you cannot find in the input.
 Return one tool call with the ExtractionOutput object."""
-
-
-RULES_PROVIDER = "rules"
 
 
 def rules_result(inp: StructureInput) -> ProviderResult:

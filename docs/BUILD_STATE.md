@@ -242,6 +242,14 @@ open-access view.
   with these changes is the next operator step; the page-316 split and the divider rows
   were built from the reviewer's description of the table and are proven on a synthetic
   copy of that shape, not yet on the real page.
+  **Defect found by the first deploy of increment 17 and fixed the same day:** the
+  extraction-runs endpoint imported the provider module, which imported the assessment
+  module, which imported Haystack at module level; the API process then took seconds and
+  tens of megabytes to start (9 s on the build machine, longer on one Cloud Run CPU),
+  overran its start-up probe, and the review workspace showed "The API is not reachable
+  (fetch failed)".  Haystack is now imported only inside the retrieval functions, the
+  constant the endpoint needed lives in the extraction module, and a test starts the
+  application in a subprocess and asserts Haystack is not loaded.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.

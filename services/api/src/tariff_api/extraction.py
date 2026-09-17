@@ -15,6 +15,7 @@ from . import css_formula
 from .tariff_schema import Applicability, Candidate, EvidenceRef, ExtractionOutput, Slab
 
 EXTRACTION_RULES_VERSION = "2"
+RULES_PROVIDER = "rules"  # the deterministic structure channel's provider name on run rows
 PROMPT_VERSION = "1"
 
 _TIME_BAND = re.compile(r"(\d{1,2}:\d{2})\s*(?:hrs\.?\s*)?(?:to|-|–|—)\s*(\d{1,2}:\d{2})", re.I)

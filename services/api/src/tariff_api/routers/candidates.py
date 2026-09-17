@@ -13,6 +13,7 @@ from ..adapters.identity import Principal
 from ..auth import require_analyst, require_reviewer
 from ..db import session_scope
 from ..errors import AppError
+from ..extraction import RULES_PROVIDER
 from ..models import (
     AuditEvent,
     CandidateRecord,
@@ -24,7 +25,6 @@ from ..models import (
     SourceState,
     ValidatorFindingRecord,
 )
-from ..providers import RULES_PROVIDER
 from ..schemas import (
     CandidateList,
     CandidateOut,
