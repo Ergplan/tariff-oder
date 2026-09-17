@@ -108,6 +108,12 @@ variable "provider_backend" {
   }
 }
 
+variable "anthropic_model" {
+  description = "Model id used by the anthropic provider backend for extraction, assessment and summaries. Must be one the account's /v1/models lists."
+  type        = string
+  default     = "claude-sonnet-5"
+}
+
 variable "job_lease_seconds" {
   type    = number
   default = 120

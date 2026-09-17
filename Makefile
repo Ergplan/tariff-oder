@@ -130,7 +130,7 @@ admin-dev: ## Run the tariff-api CLI inside the VPC: make admin-dev ARGS=inbox  
 	@test -n "$(ARGS)" || { echo "usage: make admin-dev ARGS=<comma-separated tariff-api arguments>"; exit 2; }
 	gcloud run jobs update tariff-admin --project $(GCP_PROJECT) --region $(REGION) --args=$(ARGS) --quiet
 	@gcloud run jobs execute tariff-admin --project $(GCP_PROJECT) --region $(REGION) --wait; rc=$$?; \
-	  echo "--- job output (Cloud Logging, last 3 minutes) ---"; \
+	  echo "--- job output (Cloud Logging, last 3 minutes; waiting 20s for ingestion) ---"; sleep 20; \
 	  gcloud logging read 'resource.type="cloud_run_job" AND resource.labels.job_name="tariff-admin"' \
 	    --project $(GCP_PROJECT) --freshness=3m --order=asc --limit 80 --format='value(textPayload,jsonPayload.message)' | grep -v '^$$'; \
 	  exit $$rc
@@ -138,7 +138,7 @@ admin-dev: ## Run the tariff-api CLI inside the VPC: make admin-dev ARGS=inbox  
 drain-dev: ## Run the worker job until the queue is empty (each run drains what is queued; stages enqueue the next)
 	@for i in 1 2 3 4 5 6; do \
 	  gcloud run jobs execute tariff-worker --project $(GCP_PROJECT) --region $(REGION) --wait --quiet || { \
-	    echo "--- worker output (Cloud Logging, last 5 minutes) ---"; \
+	    echo "--- worker output (Cloud Logging, last 5 minutes; waiting 20s for ingestion) ---"; sleep 20; \
 	    gcloud logging read 'resource.type="cloud_run_job" AND resource.labels.job_name="tariff-worker"' \
 	      --project $(GCP_PROJECT) --freshness=5m --order=asc --limit 120 --format='value(textPayload,jsonPayload.message)' | grep -v '^$$'; \
 	    exit 1; }; \

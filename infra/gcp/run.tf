@@ -28,6 +28,7 @@ locals {
     LOG_FORMAT           = "json"
     JOB_LEASE_SECONDS    = tostring(var.job_lease_seconds)
     PROVIDER_BACKEND     = var.provider_backend
+    ANTHROPIC_MODEL      = var.anthropic_model
     GOLDEN_MANIFEST_PATH = "/app/tests/golden/manifest.json"
   }
 }
