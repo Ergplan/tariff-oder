@@ -135,6 +135,26 @@ def unstringify(obj: Any) -> Any:
     return obj
 
 
+def normalise_tool_output(obj: Any, key: str) -> Any:
+    """Bring a tool call's input to the shape the schema expects.  Beyond stringified fields
+    (`unstringify`), a model sometimes nests the output one level deeper — `{"candidates":
+    {"candidates": [...], "missing": []}}` — or wraps it in a single key of its own naming.
+    Unwrap up to three levels while the expected key is not a list-or-scalar at the top."""
+    obj = unstringify(obj)
+    for _ in range(3):
+        if not isinstance(obj, dict):
+            break
+        inner = obj.get(key)
+        if isinstance(inner, dict) and key in inner:
+            obj = inner
+            continue
+        if key not in obj and len(obj) == 1 and isinstance(next(iter(obj.values())), dict):
+            obj = next(iter(obj.values()))
+            continue
+        break
+    return obj
+
+
 def _hash(*parts: bytes | str) -> str:
     h = hashlib.sha256()
     for p in parts:
@@ -288,7 +308,7 @@ class AnthropicProvider(ExtractionProvider):
         if tool_input is None:
             raise ProviderUnavailable("provider returned no tool call")
         try:
-            out = ExtractionOutput.model_validate(unstringify(tool_input))
+            out = ExtractionOutput.model_validate(normalise_tool_output(tool_input, "candidates"))
         except ValidationError as e:
             raise ProviderUnavailable(f"provider output failed schema validation: {str(e)[:300]}") from e
         usage = data.get("usage", {})
@@ -350,6 +370,9 @@ class AnthropicProvider(ExtractionProvider):
         out, tin, tout, raw = self._tool_call(
             ASSESSMENT_SYSTEM_PROMPT, "return_assessment", assessment_tool_schema(), text, 4096
         )
+        out = normalise_tool_output(out, "items")
+        if not isinstance(out.get("items"), list):
+            raise ProviderUnavailable("provider returned an assessment without an items list")
         cost = tin / 1_000_000 * self._price_in + tout / 1_000_000 * self._price_out
         return AssessmentResult(
             out, self.name, self.model, ASSESSMENT_PROMPT_VERSION, _hash(text), tin, tout, round(cost, 6), False, raw

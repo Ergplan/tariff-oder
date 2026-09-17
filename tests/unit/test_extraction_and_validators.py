@@ -624,3 +624,15 @@ def test_a_tool_call_with_a_stringified_list_is_parsed_before_validation():
         and out["n"] == 3
     )
     assert unstringify({"x": "[not json"})["x"] == "[not json"
+
+
+def test_a_nested_or_wrapped_tool_output_is_unwrapped_before_validation():
+    from tariff_api.providers import normalise_tool_output
+
+    nested = {"candidates": {"candidates": [{"family": "x"}], "missing": ["m"]}}
+    assert normalise_tool_output(nested, "candidates") == {"candidates": [{"family": "x"}], "missing": ["m"]}
+    wrapped = {"ExtractionOutput": '{"candidates": [], "missing": []}'}
+    assert normalise_tool_output(wrapped, "candidates") == {"candidates": [], "missing": []}
+    plain = {"candidates": [], "missing": []}
+    assert normalise_tool_output(plain, "candidates") == plain
+    assert normalise_tool_output({"items": {"items": [{"index": 0}]}}, "items") == {"items": [{"index": 0}]}
