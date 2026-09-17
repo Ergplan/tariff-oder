@@ -678,3 +678,18 @@ def test_a_model_value_that_is_not_a_number_becomes_unknown_and_a_broken_candida
     # a schema failure that survives coercion is not worth a retry; a network failure is
     assert ProviderUnavailable("bad output", retry=False).retry is False
     assert ProviderUnavailable("timeout").retry is True
+
+
+def test_a_truncated_candidates_string_yields_its_complete_objects_and_a_note():
+    from tariff_api.providers import recover_truncated, salvage_truncated_array
+
+    cut = (
+        '[{"family":"retail_tariff","value":"1.00"}, {"family":"retail_tariff","value":"2.00"}, {"family":"retail_tarif'
+    )
+    items, was_cut = salvage_truncated_array(cut)
+    assert [x["value"] for x in items] == ["1.00", "2.00"] and was_cut
+    assert salvage_truncated_array('[{"a": 1}]') == ([{"a": 1}], False)
+    assert salvage_truncated_array("not an array") == ([], False)
+    obj, note = recover_truncated({"candidates": cut, "missing": []}, "candidates")
+    assert len(obj["candidates"]) == 2 and note.startswith("model output cut off: 2 complete candidates")
+    assert recover_truncated({"candidates": []}, "candidates") == ({"candidates": []}, None)

@@ -325,7 +325,9 @@ def extract_source(ctx: JobContext) -> dict:
             per_call = 0 if provider.is_fixture else settings.image_channel_pages_per_call
             chunks = [pages[i : i + per_call] for i in range(0, len(pages), per_call)] if per_call > 0 else [pages]
             parts: list[ProviderResult] = []
-            for chunk in chunks:
+
+            def read_pages(chunk: list[int], *, reg=reg, inp=inp) -> ProviderResult:
+                nonlocal total_cost, total_tokens
                 cinp = _chunk_input(inp, chunk)
                 try:
                     part = provider.extract_image(cinp, render(chunk))
@@ -336,6 +338,14 @@ def extract_source(ctx: JobContext) -> dict:
                 total_tokens += part.input_tokens + part.output_tokens
                 check_budget()
                 runs.append(_run_row(reg, "image", provider, part, None))
+                return part
+
+            for chunk in chunks:
+                part = read_pages(chunk)
+                if part.raw.get("truncated") and len(chunk) > 1:
+                    # the output limit cut the reading of these pages: one page per call
+                    # reads them whole (the cut call stays on the run record for its cost)
+                    part = _merge_results([read_pages([pg]) for pg in chunk])
                 parts.append(part)
             image_res = _merge_results(parts)
             artefacts.append(

@@ -175,6 +175,41 @@ def unstringify(obj: Any) -> Any:
     return obj
 
 
+def salvage_truncated_array(text: str) -> tuple[list[Any], bool]:
+    """The complete objects at the front of a JSON array that was cut off (a model that
+    reached its output limit while writing `[{...}, {...}, {"family": "retail_tarif`).
+    Returns the objects and whether anything was cut; a string that is not an array start
+    yields nothing.  A cut object is never completed by guessing."""
+    s = text.strip()
+    if not s.startswith("["):
+        return [], False
+    dec = json.JSONDecoder()
+    i, items = 1, []
+    while True:
+        while i < len(s) and s[i] in " \t\r\n,":
+            i += 1
+        if i >= len(s) or s[i] == "]":
+            return items, i >= len(s)
+        try:
+            item, end = dec.raw_decode(s, i)
+        except ValueError:
+            return items, True
+        items.append(item)
+        i = end
+
+
+def recover_truncated(obj: Any, key: str) -> tuple[Any, str | None]:
+    """When the expected list arrived as a string that does not parse, keep the complete
+    items and say so; the note goes on the output's `missing` and the run record."""
+    if not isinstance(obj, dict) or not isinstance(obj.get(key), str):
+        return obj, None
+    items, cut = salvage_truncated_array(obj[key])
+    if not items and not cut:
+        return obj, None
+    obj = {**obj, key: unstringify(items)}
+    return obj, f"model output cut off: {len(items)} complete {key} recovered, the rest of the pages unread"
+
+
 def normalise_tool_output(obj: Any, key: str) -> Any:
     """Bring a tool call's input to the shape the schema expects.  Beyond stringified fields
     (`unstringify`), a model sometimes nests the output one level deeper — `{"candidates":
@@ -393,11 +428,14 @@ class AnthropicProvider(ExtractionProvider):
         tool_input = next((b.get("input") for b in data.get("content", []) if b.get("type") == "tool_use"), None)
         if tool_input is None:
             raise ProviderUnavailable("provider returned no tool call")
-        shaped, rejected = coerce_candidates(normalise_tool_output(tool_input, "candidates"))
+        shaped, cut_note = recover_truncated(normalise_tool_output(tool_input, "candidates"), "candidates")
+        shaped, rejected = coerce_candidates(shaped)
         try:
             out = ExtractionOutput.model_validate(shaped)
         except ValidationError as e:
             raise ProviderUnavailable(f"provider output failed schema validation: {str(e)[:300]}", retry=False) from e
+        if cut_note:
+            out.missing.append(cut_note)
         if rejected:
             out.missing.extend(f"model candidate dropped ({r})" for r in rejected)
         usage = data.get("usage", {})
@@ -415,7 +453,12 @@ class AnthropicProvider(ExtractionProvider):
             tout,
             round(cost, 6),
             False,
-            {"id": data.get("id"), "stop_reason": data.get("stop_reason"), "rejected_candidates": rejected},
+            {
+                "id": data.get("id"),
+                "stop_reason": data.get("stop_reason"),
+                "rejected_candidates": rejected,
+                "truncated": bool(cut_note) or data.get("stop_reason") == "max_tokens",
+            },
         )
 
     def extract_structure(self, inp: StructureInput) -> ProviderResult:

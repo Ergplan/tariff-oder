@@ -289,3 +289,34 @@ def test_a_real_backend_keeps_the_rules_as_structure_channel_and_reads_images_in
     assert ex["runs"] == 1 + len(calls) and ex["candidates"] > 15
     # every rules candidate is matched by the chunked image reading: nothing dropped by chunking
     assert set(ex["by_agreement"]) == {"agree"}
+
+
+def test_a_chunk_cut_off_by_the_output_limit_is_re_read_one_page_at_a_time(client, runner, monkeypatch):
+    from tariff_api.providers import FixtureProvider
+    from tariff_worker.stages import extract as ex_stage
+
+    calls: list[list[int]] = []
+
+    class CutModel(FixtureProvider):
+        name = "stub-model"
+        is_fixture = False
+
+        def extract_image(self, inp, images):
+            calls.append(list(inp.page_indices))
+            r = super().extract_image(inp, images)
+            r.is_fixture, r.provider = False, self.name
+            if len(inp.page_indices) > 1:  # every two-page call "hits the limit" and loses its rows
+                r.output.candidates = []
+                r.raw["truncated"] = True
+            return r
+
+    monkeypatch.setattr(ex_stage, "build_provider", lambda settings, secrets: CutModel())
+    src_id = _to_review(client, runner, structure_order_pdf(), "SYNTHETIC_structure_cut.pdf")
+    d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
+    ex = d["extraction"]
+    two_page = [c for c in calls if len(c) == 2]
+    single = [c[0] for c in calls if len(c) == 1]
+    assert two_page and sorted(single) == sorted(p for c in two_page for p in c)
+    assert set(ex["by_agreement"]) == {"agree"}  # nothing lost: the single-page reads matched every rules row
+    runs = client.get(f"/sources/{src_id}/extraction-runs", headers=headers(ANALYST)).json()
+    assert runs["real_runs"] == len(calls)  # the cut calls stay on the record for their cost

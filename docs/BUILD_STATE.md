@@ -262,6 +262,14 @@ open-access view.
   the same input fails the same way and a retry only repeats the cost.  The three failed
   attempts' cost is on the provider's bill, not in `extraction_runs` (a failed call writes
   no run row; recording failed-call usage is an open item).
+  **Third defect, next run:** the model returned the candidates list as a JSON string cut
+  off mid-object — its output limit reached while writing a two-page chunk — and the
+  string could not be parsed.  Now the complete objects at the front of a cut array are
+  kept and the cut is noted on the output's `missing` and the run record (`truncated`),
+  and a chunk whose call was cut or stopped on `max_tokens` is re-read one page per call;
+  the cut call stays on the run record for its cost.  Proven with a stub model that
+  "loses" every two-page call: every page is re-read singly and every rules candidate is
+  matched.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
