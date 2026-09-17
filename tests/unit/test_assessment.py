@@ -97,3 +97,11 @@ def test_ungrounded_quotes_low_confidence_and_contradictions_raise_tags_but_neve
     assert set(tags) == {"0:model_low_confidence", "0:model_contradicted", "0:assessment_ungrounded"}
     assert c.value == "7.70" and c.applicability.rate_block is None  # the ungrounded sub-category was not applied
     assert c.assessment["grounded"] is False and c.assessment["sub_categories_seen"] == ["(b) Public Institutions"]
+
+
+def test_repeated_passages_on_a_page_do_not_break_the_store():
+    page = (
+        "NPCL Tariff Order FY 2026-27\n\nFor supply at 11kV Rs. 380.00 / kVA / month\n\nNPCL Tariff Order FY 2026-27\n"
+    )
+    inp = assessment.retrieve(assessment.AssessmentInput("sha", "HV-1", [_cand("380.00", "fixed", "kVA")], {384: page}))
+    assert inp.passages[0] and any("380.00" in p["text"] for p in inp.passages[0])

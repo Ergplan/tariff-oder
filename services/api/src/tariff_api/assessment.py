@@ -27,6 +27,7 @@ os.environ.setdefault("HAYSTACK_TELEMETRY_ENABLED", "False")
 from haystack import Document  # noqa: E402
 from haystack.components.retrievers.in_memory import InMemoryBM25Retriever
 from haystack.document_stores.in_memory import InMemoryDocumentStore
+from haystack.document_stores.types import DuplicatePolicy
 
 from .tariff_schema import Candidate
 
@@ -73,7 +74,9 @@ def build_store(page_texts: dict[int, str]) -> InMemoryDocumentStore:
             docs.append(Document(content=" ".join(buf), meta={"page": page}))
     store = InMemoryDocumentStore()
     if docs:
-        store.write_documents(docs)
+        # real pages repeat running headers and footers; identical passages on one page share
+        # an id, and the second copy adds nothing to retrieval
+        store.write_documents(docs, policy=DuplicatePolicy.SKIP)
     return store
 
 
