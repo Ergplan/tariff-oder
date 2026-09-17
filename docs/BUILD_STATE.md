@@ -795,7 +795,20 @@ installed:
 
 ## Real provider calls versus fixtures
 
-**Zero real provider calls.**  Every extraction run so far used the `fixture` provider
+**First real provider call: 2026-09-17, `tariff-api provider-smoke` on dev** — provider
+`anthropic`, model `claude-sonnet-5`, 4,534 input and 407 output tokens, 0.0197 USD, one
+candidate returned exactly as printed (LMV-1 energy, Rs 3.00/kWh, slab "Up to 100 kWh /
+month").  Three failures preceded it, each with its cause and fix recorded: the image lacked
+the HTTP client (now a declared dependency), Haystack's telemetry wrote to a home directory
+the job user does not have (telemetry off before import, user given a home), and the model
+returned the tool input first with the candidates list stringified and then nested one
+level deeper (`unstringify` and `normalise_tool_output` before validation).  A stored key
+that had been pasted into a chat was found invalid and replaced; the runbook reads the key
+from a terminal prompt only.  The NPCL extraction was then re-queued on the real provider
+and the worker drained six runs without failure; its results are unread at the time of
+writing.  Everything below this paragraph describes the state before that call.
+
+**Zero real provider calls before 2026-09-17.**  Every extraction run so far used the `fixture` provider
 (labelled on every run and every candidate; cost 0).  The Anthropic Messages API path exists
 in `tariff_api.providers` but has never been executed: no key in this environment.  OCR
 (tesseract, local) is the only non-fixture tool that has run.  The first real call should be
