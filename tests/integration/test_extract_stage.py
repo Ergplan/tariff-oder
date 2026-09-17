@@ -95,6 +95,19 @@ def test_dual_channel_fixture_extraction_produces_routed_candidates_and_findings
     ).json()
     assert by_risk["total"] >= 1  # the 1,00,000 minimum with no unit anywhere: in the queue, never defaulted
 
+    # the model feedback loop ran (fixture template): every candidate carries a grounded
+    # assessment with a confidence and a meaning; nothing was routed by it on this clean order
+    assessed = [c for c in cands["candidates"] if c["record"].get("assessment")]
+    assert len(assessed) == len(cands["candidates"])
+    a0 = assessed[0]["record"]["assessment"]
+    assert (
+        a0["is_fixture"]
+        and a0["grounded"]
+        and 0 <= a0["confidence"] <= 1
+        and a0["meaning"]
+        and a0["prompt_version"] == "1"
+    )
+    assert not any("assessment_ungrounded" in c["risk_tags"] for c in cands["candidates"])
     # every schedule category gets a generated, grounding-checked summary (fixture template here)
     sm = client.get(f"/sources/{src_id}/summaries", headers=headers(ANALYST)).json()
     assert sm["total"] >= 1 and all(

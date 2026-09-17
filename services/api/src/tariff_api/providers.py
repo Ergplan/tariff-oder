@@ -17,6 +17,14 @@ from typing import Any
 import httpx
 from pydantic import ValidationError
 
+from .assessment import (
+    ASSESSMENT_PROMPT_VERSION,
+    ASSESSMENT_SYSTEM_PROMPT,
+    AssessmentInput,
+    assessment_tool_schema,
+    template_assessment,
+)
+from .assessment import serialise as serialise_assessment
 from .config import Settings
 from .extraction import PROMPT_VERSION, StructureInput, rules_extract, serialise_structure
 from .summaries import (
@@ -76,6 +84,23 @@ class ExtractionProvider(abc.ABC):
     @abc.abstractmethod
     def summarise_category(self, inp: SummaryInput) -> SummaryResult: ...
 
+    @abc.abstractmethod
+    def assess_candidates(self, inp: AssessmentInput) -> AssessmentResult: ...
+
+
+@dataclass
+class AssessmentResult:
+    output: dict[str, Any]  # {items: [...], sub_categories: [...]}
+    provider: str
+    model: str
+    prompt_version: str
+    input_hash: str
+    input_tokens: int
+    output_tokens: int
+    cost_usd: float
+    is_fixture: bool
+    raw: dict[str, Any] = field(default_factory=dict)
+
 
 @dataclass
 class SummaryResult:
@@ -129,6 +154,21 @@ class FixtureProvider(ExtractionProvider):
             0.0,
             True,
             {"fixture": True, "input_chars": len(text)},
+        )
+
+    def assess_candidates(self, inp: AssessmentInput) -> AssessmentResult:
+        text = serialise_assessment(inp)
+        return AssessmentResult(
+            template_assessment(inp),
+            self.name,
+            self.model,
+            ASSESSMENT_PROMPT_VERSION,
+            _hash(text),
+            len(text) // 4,
+            0,
+            0.0,
+            True,
+            {"fixture": True},
         )
 
     def summarise_category(self, inp: SummaryInput) -> SummaryResult:
@@ -253,6 +293,48 @@ class AnthropicProvider(ExtractionProvider):
     def extract_structure(self, inp: StructureInput) -> ProviderResult:
         text = serialise_structure(inp)
         return self._call("structure", [{"type": "text", "text": text}], _hash(text))
+
+    def _tool_call(
+        self, system: str, tool_name: str, schema: dict[str, Any], text: str, max_tokens: int
+    ) -> tuple[dict[str, Any], int, int, dict[str, Any]]:
+        body = {
+            "model": self.model,
+            "max_tokens": max_tokens,
+            "system": system,
+            "tools": [
+                {"name": tool_name, "description": f"Return the {tool_name.replace('_', ' ')}.", "input_schema": schema}
+            ],
+            "tool_choice": {"type": "tool", "name": tool_name},
+            "messages": [{"role": "user", "content": [{"type": "text", "text": text}]}],
+        }
+        try:
+            r = httpx.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={"x-api-key": self._key, "anthropic-version": "2023-06-01", "content-type": "application/json"},
+                json=body,
+                timeout=self._timeout,
+            )
+        except httpx.HTTPError as e:
+            raise ProviderUnavailable(f"provider request failed: {type(e).__name__}") from e
+        if r.status_code >= 400:
+            raise ProviderUnavailable(f"provider returned {r.status_code}: {r.text[:200]}")
+        data = r.json()
+        tool_input = next((b.get("input") for b in data.get("content", []) if b.get("type") == "tool_use"), None)
+        if not isinstance(tool_input, dict):
+            raise ProviderUnavailable("provider returned no tool call")
+        usage = data.get("usage", {})
+        raw = {"id": data.get("id"), "stop_reason": data.get("stop_reason")}
+        return tool_input, int(usage.get("input_tokens", 0)), int(usage.get("output_tokens", 0)), raw
+
+    def assess_candidates(self, inp: AssessmentInput) -> AssessmentResult:
+        text = serialise_assessment(inp)
+        out, tin, tout, raw = self._tool_call(
+            ASSESSMENT_SYSTEM_PROMPT, "return_assessment", assessment_tool_schema(), text, 4096
+        )
+        cost = tin / 1_000_000 * self._price_in + tout / 1_000_000 * self._price_out
+        return AssessmentResult(
+            out, self.name, self.model, ASSESSMENT_PROMPT_VERSION, _hash(text), tin, tout, round(cost, 6), False, raw
+        )
 
     def summarise_category(self, inp: SummaryInput) -> SummaryResult:
         text = serialise_summary_input(inp)

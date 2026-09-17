@@ -133,6 +133,13 @@ published, never an input to a validator.
 | grounded, unsupported_numbers | Deterministic check: every number in the text must be a candidate value or appear in the category's page text; failures are stored and shown, not hidden |
 | provider, model, prompt_version, is_fixture, input_tokens, output_tokens, cost_usd | The call that wrote it, counted in the order's provider budget |
 
+`Candidate.assessment` (schema 2): the model's feedback on one value — `verdict`,
+`confidence`, `sub_category`, `meaning`, `quote`, `grounded`, `issue`, provider, model,
+`is_fixture`, `prompt_version`, `sub_categories_seen`.  Grounding is mechanical (the quote
+must be on the pages); doubt raises `model_low_confidence` / `model_contradicted` /
+`assessment_ungrounded` risk tags and individual review; nothing in it changes a value
+(ADR-0016).
+
 `Applicability.rate_block` on a retail candidate: the lettered block above the table the cell
 sits in ("(b) Public Institutions … supply at Single Point on 11 kV & above voltage levels:"),
 read from the page text; part of the candidate key, so the same row label under (a) and (b) are

@@ -49,6 +49,19 @@ type Rec = {
   applicability?: Record<string, unknown>;
   rationale?: string | null;
   context?: string[];
+  assessment?: {
+    verdict?: string;
+    confidence?: number;
+    sub_category?: string | null;
+    meaning?: string;
+    quote?: string;
+    grounded?: boolean;
+    issue?: string | null;
+    model?: string;
+    is_fixture?: boolean;
+    status?: string;
+    sub_categories_seen?: string[];
+  } | null;
   derivation?: { rule?: string; inputs?: Record<string, unknown>; formula?: Formula } | null;
   [k: string]: unknown;
 };
@@ -435,6 +448,35 @@ export function ReviewWorkspace({
           ) : null}
         </div>
 
+        {rec.assessment && rec.assessment.status !== "not_assessed" ? (
+          <div className="card rw-block rw-assess" data-verdict={rec.assessment.verdict}>
+            <div className="label">
+              Model check · {rec.assessment.is_fixture ? "fixture template" : rec.assessment.model} ·{" "}
+              <span className="badge" data-tone={rec.assessment.verdict === "supported" ? "ok" : rec.assessment.verdict === "contradicted" ? "bad" : "warn"}>
+                {rec.assessment.verdict}
+              </span>{" "}
+              <span className="badge" data-tone={(rec.assessment.confidence ?? 0) >= 0.8 ? "ok" : (rec.assessment.confidence ?? 0) >= 0.6 ? "warn" : "bad"}>
+                confidence {Math.round((rec.assessment.confidence ?? 0) * 100)}%
+              </span>{" "}
+              {rec.assessment.grounded ? (
+                <span className="badge" data-tone="ok">quote found on the page</span>
+              ) : (
+                <span className="badge" data-tone="bad">quote not found on the page</span>
+              )}
+            </div>
+            <p>{rec.assessment.meaning}</p>
+            {rec.assessment.sub_category ? (
+              <p className="muted">
+                Consumer group: {rec.assessment.sub_category}
+                {rec.assessment.quote ? <> · “{rec.assessment.quote}”</> : null}
+              </p>
+            ) : null}
+            {rec.assessment.issue ? <p className="muted">Issue raised: {rec.assessment.issue}</p> : null}
+            {rec.assessment.sub_categories_seen?.length ? (
+              <p className="muted">Groups seen in this category: {rec.assessment.sub_categories_seen.join(" · ")}</p>
+            ) : null}
+          </div>
+        ) : null}
         {rec.context?.length || rec.conditions?.length ? (
           <div className="card rw-block">
             <div className="label">What the order says around it</div>

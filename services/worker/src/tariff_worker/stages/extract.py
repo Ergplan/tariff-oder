@@ -21,6 +21,7 @@ from typing import Any
 from sqlalchemy import delete, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
+from tariff_api import assessment
 from tariff_api.adapters.storage import ObjectNotFound, ObjectStore
 from tariff_api.db import session_scope
 from tariff_api.extraction import (
@@ -345,6 +346,44 @@ def extract_source(ctx: JobContext) -> dict:
             "extract", {"regions_done": reg["ordinal"]}, {"pages_done": reg["page_end"], "pages_total": page_count}
         )
 
+    # ---- the model's feedback loop per category / family: confidence, sub-category, meaning
+    # (Haystack BM25 retrieval over the group's pages feeds the prompt; quotes are grounded)
+    assessment_tags: dict[int, list[str]] = {}  # id(candidate) -> risk tags
+    groups: dict[str, list[Any]] = {}
+    for cmp, _reg in compared_all:
+        prim = cmp.primary
+        key = prim.category_code if prim.family == "retail_tariff" and prim.category_code else prim.family
+        groups.setdefault(key, []).append(prim)
+    for key, cands in sorted(groups.items()):
+        pages = sorted({e.page_index for c in cands for e in c.evidence})
+        ain = assessment.retrieve(
+            assessment.AssessmentInput(
+                source_sha=sha,
+                group_key=key,
+                candidates=cands,
+                page_texts={p: doc[p - 1].get_text("text", sort=True) for p in pages if 1 <= p <= page_count},
+            )
+        )
+        try:
+            ares = provider.assess_candidates(ain)
+        except ProviderUnavailable as e:
+            runs.append({**_run_row({"ordinal": 0}, "assessment", provider, None, str(e)), "region_ordinal": 0})
+            continue
+        total_cost += ares.cost_usd
+        total_tokens += ares.input_tokens + ares.output_tokens
+        check_budget()
+        for tag in assessment.apply(
+            ain, ares.output, provider=ares.provider, model=ares.model, is_fixture=ares.is_fixture
+        ):
+            i, name = tag.split(":", 1)
+            assessment_tags.setdefault(id(cands[int(i)]), []).append(name)
+        artefacts.append(
+            (
+                f"{sha}/{STAGE}/{extraction_version}/assessment-{key}.json",
+                {"input_hash": ares.input_hash, "output": ares.output, "passages": ain.passages, "raw": ares.raw},
+            )
+        )
+
     # ---- category summaries from the schedule candidates (Section 7.2 reviewer context)
     summary_inputs: list[dict[str, Any]] = []
     schedule_pages = sorted(
@@ -425,6 +464,15 @@ def extract_source(ctx: JobContext) -> dict:
                 flags.extend(cell_flags.get((e.page_index, e.grid_ordinal or 0, e.row or 0, e.col or 0), []))
         ocr = any(e.page_index in ocr_pages for e in prim.evidence)
         r = route(cmp, flags, ocr_page=ocr, new_profile=is_first_for_utility)
+        for tag in assessment_tags.get(id(prim), []):
+            # the model's doubt never lowers scrutiny; it can only add to it
+            if tag not in r.risk_tags:
+                r.risk_tags = [*r.risk_tags, tag]
+            r.routing = "individual"
+            if tag == "model_contradicted":
+                r.confidence = "low"
+            elif tag == "model_low_confidence" and r.confidence == "high":
+                r.confidence = "medium"
         candidate_rows.append(
             {
                 "candidate_key": cmp.key[:400],

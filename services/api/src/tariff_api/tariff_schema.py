@@ -156,6 +156,9 @@ class Candidate(BaseModel):
     # number the order did not print.
     rationale: str | None = None
     context: list[str] = Field(default_factory=list)
+    # the model's feedback (schema 2, assessment 1): verdict, confidence, sub-category, meaning,
+    # verbatim quote and whether the quote was found on the page.  Never changes the value.
+    assessment: dict[str, Any] | None = None
 
     @field_validator("value")
     @classmethod

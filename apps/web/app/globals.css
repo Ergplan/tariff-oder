@@ -122,3 +122,6 @@ button.link { background: none; color: var(--accent); padding: 0; text-decoratio
 table.rw-grid td { border: 1px solid var(--border); font-size: 0.82rem; }
 table.rw-grid tr[data-header] td { background: #efefeb; font-weight: 600; }
 table.rw-grid td[data-cited] { outline: 3px solid #f2b705; background: #fff8e6; font-weight: 700; }
+.rw-assess { border-left: 4px solid var(--accent); }
+.rw-assess[data-verdict="contradicted"] { border-left-color: var(--bad); }
+.rw-assess[data-verdict="uncertain"] { border-left-color: var(--warn); }

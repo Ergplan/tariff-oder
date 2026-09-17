@@ -200,6 +200,18 @@ open-access view.
   time-of-day structure and rates to be captured — the schedule extractor already reads
   time-band rows as `tod_adjustment`; whether NPCL's ToD table survives the reader fix is
   checked on the re-run.
+
+  **Increment 16 (2026-09-17): the model feedback loop (ADR-0016).**  After the channels
+  and before validation, the model sees each category's candidates with Haystack-retrieved
+  passages from its own pages and returns per value a verdict, a confidence, the consumer
+  sub-category in the order's words, a one-sentence meaning and a verbatim quote; quotes are
+  grounded mechanically, low confidence and contradictions add risk tags and force individual
+  review, a grounded sub-category fills an empty rate block, and no value ever changes.  Shown
+  as "Model check" in the workspace.  Fixture mode runs the same loop with a template
+  (unit-tested for grounding, tag raising and the no-change rule; end to end in
+  `test_extract_stage.py`).  `haystack-ai` added to the API package for the document store
+  and BM25 retriever; the model call stays on the provider adapter.  **Not yet run with the
+  real provider**: the smoke on dev is still unproven.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
