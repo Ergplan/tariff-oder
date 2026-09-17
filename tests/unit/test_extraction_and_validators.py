@@ -610,3 +610,17 @@ def test_val_19_blocks_a_fixed_charge_priced_per_kvah_and_warns_on_a_shifted_row
         )
     )
     assert ok == []
+
+
+def test_a_tool_call_with_a_stringified_list_is_parsed_before_validation():
+    from tariff_api.providers import unstringify
+
+    raw = {"candidates": '[{"family": "retail_tariff"}]', "missing": "[]", "note": "plain text", "n": 3}
+    out = unstringify(raw)
+    assert (
+        out["candidates"] == [{"family": "retail_tariff"}]
+        and out["missing"] == []
+        and out["note"] == "plain text"
+        and out["n"] == 3
+    )
+    assert unstringify({"x": "[not json"})["x"] == "[not json"

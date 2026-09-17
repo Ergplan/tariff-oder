@@ -116,6 +116,25 @@ class SummaryResult:
     raw: dict[str, Any] = field(default_factory=dict)
 
 
+def unstringify(obj: Any) -> Any:
+    """A model sometimes returns a structured field as a JSON *string* inside the tool call
+    (`"candidates": "[{...}]"`).  Parse any string value that reads as a JSON object or array,
+    recursively, before schema validation.  Nothing else is altered; a string that does not
+    parse stays a string and fails validation as before."""
+    if isinstance(obj, dict):
+        return {k: unstringify(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [unstringify(v) for v in obj]
+    if isinstance(obj, str):
+        s = obj.strip()
+        if (s.startswith("[") and s.endswith("]")) or (s.startswith("{") and s.endswith("}")):
+            try:
+                return unstringify(json.loads(s))
+            except ValueError:
+                return obj
+    return obj
+
+
 def _hash(*parts: bytes | str) -> str:
     h = hashlib.sha256()
     for p in parts:
@@ -269,7 +288,7 @@ class AnthropicProvider(ExtractionProvider):
         if tool_input is None:
             raise ProviderUnavailable("provider returned no tool call")
         try:
-            out = ExtractionOutput.model_validate(tool_input)
+            out = ExtractionOutput.model_validate(unstringify(tool_input))
         except ValidationError as e:
             raise ProviderUnavailable(f"provider output failed schema validation: {str(e)[:300]}") from e
         usage = data.get("usage", {})
@@ -324,7 +343,7 @@ class AnthropicProvider(ExtractionProvider):
             raise ProviderUnavailable("provider returned no tool call")
         usage = data.get("usage", {})
         raw = {"id": data.get("id"), "stop_reason": data.get("stop_reason")}
-        return tool_input, int(usage.get("input_tokens", 0)), int(usage.get("output_tokens", 0)), raw
+        return unstringify(tool_input), int(usage.get("input_tokens", 0)), int(usage.get("output_tokens", 0)), raw
 
     def assess_candidates(self, inp: AssessmentInput) -> AssessmentResult:
         text = serialise_assessment(inp)
