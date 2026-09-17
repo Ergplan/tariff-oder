@@ -24,6 +24,7 @@ from ..models import (
     SourceState,
     ValidatorFindingRecord,
 )
+from ..providers import RULES_PROVIDER
 from ..schemas import (
     CandidateList,
     CandidateOut,
@@ -156,12 +157,15 @@ def list_runs(source_id: uuid.UUID) -> ExtractionRunList:
             .scalars()
             .all()
         )
-        real = [r for r in rows if not r.is_fixture]
+        # the rules channel is deterministic and free: neither a fixture nor a billed model run
+        real = [r for r in rows if not r.is_fixture and r.provider != RULES_PROVIDER]
+        fixture = [r for r in rows if r.is_fixture]
         return ExtractionRunList(
             runs=[ExtractionRunOut.model_validate(r, from_attributes=True) for r in rows],
             total_cost_usd=round(sum(r.cost_usd for r in real), 6),
-            fixture_runs=len(rows) - len(real),
+            fixture_runs=len(fixture),
             real_runs=len(real),
+            rules_runs=len(rows) - len(real) - len(fixture),
         )
 
 

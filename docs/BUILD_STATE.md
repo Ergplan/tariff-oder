@@ -212,6 +212,36 @@ open-access view.
   `test_extract_stage.py`).  `haystack-ai` added to the API package for the document store
   and BM25 retriever; the model call stays on the provider adapter.  **Not yet run with the
   real provider**: the smoke on dev is still unproven.
+  **Increment 17 (2026-09-17): the rules are always the structure channel; the model reads
+  pages in chunks; stacked rows split; CSS inputs keyed by category and band.**  The first
+  real NPCL run showed the flaw: with the anthropic backend the model was handed the
+  serialised structure of the 49-page schedule in one call and returned one retail candidate
+  (HV-1 fixed, 7.70/kVAh, itself a mis-bound cell); the rules that had read every row in
+  fixture mode were not a channel at all.  Now `rules_result` is the structure channel for
+  every backend (run rows carry provider `rules`, cost 0, neither fixture nor model;
+  `extraction-runs` reports `rules_runs` separately) and the model reads the page images
+  as the independent second channel, `IMAGE_CHANNEL_PAGES_PER_CALL` pages per call (default
+  2; the fixture channel is not chunked because it is derived from the rules) with a prompt
+  that names the rate-schedule heading in force above the chunk, the profile's code shape
+  and the fields a candidate must carry to pair with the rules (category code, lettered
+  block, component, voltage, exact value and unit).  Chunk results are merged for the
+  comparison; every call is a run row for cost.  Readers 3 / parse 3: a ruled row whose
+  numeric cells stack the same number of printed lines is split into those rows (NPCL page
+  316, the CSS computation table, read as one row per voltage group with six values in each
+  cell); two-line headings and wrapped prose never split.  Grid 3: a row whose only text is
+  a voltage (`----- 33 kV -----`) is a divider that scopes the rows under it and emits no
+  cells.  CSS: bare `T`/`D`/`R`/`C`/`L`/`S` column headings are recognised; parameters are
+  keyed `HV-1 @ 33 kV` (category and band), the approved row pairs by both, a category with
+  inputs and a printed S but no approved row becomes a formula candidate, and the `L` column
+  of a consumed table is a formula input, never an open-access loss (the 15.56% shown as
+  `oa_loss` on 2026-09-17).  Review policy: `SECOND_REVIEW_FIRST_ORDER` is now a Terraform
+  variable; dev sets it false (one reviewer on the project; material conditions and formula
+  components still need two).  A stub model in `test_extract_stage.py` proves the real-mode
+  path: the model is never asked for the structure, image calls carry at most two pages,
+  and every rules candidate is matched.  **Not yet run on dev**: the NPCL re-extraction
+  with these changes is the next operator step; the page-316 split and the divider rows
+  were built from the reviewer's description of the table and are proven on a synthetic
+  copy of that shape, not yet on the real page.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -899,13 +929,17 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-1. **Operator, on the `tariff-order` VM:** `git pull`, then `make tf-plan tf-apply ENV=dev`
-   (the bootstrap already ran; `tf-plan` now runs `tf-init` first, which records the
-   `hashicorp/time` provider the alert-policy fix added — the "Inconsistent dependency lock
-   file" error seen on 2026-09-14 was exactly that missing init; expect the alert policy and
-   its wait to be the only additions), then
-   `make deploy-dev`, then register the three orders through the `tariff-admin` job
-   (`docs/deployment.md`, "Loading the three tariff orders") and paste the job output.
+1. **Operator, on the `tariff-order` VM (increment 17):** `git pull && make tf-plan tf-apply
+   ENV=dev` (adds `SECOND_REVIEW_FIRST_ORDER=false` to the services; expect only env changes),
+   `make deploy-dev`, then re-run NPCL from parse so the page-316 split and the divider rows
+   take effect: `make admin-dev ARGS=rerun,5f900540-a863-4f43-a570-7640114a190e,parse_source,--actor,bootstrap`
+   and `make drain-dev` until the source is `localised`; confirm the localisation again
+   (regions are re-created by the stage), then `make drain-dev` through grid, extract and
+   validate.  Expect about 25 image calls for the schedule region (two pages each) plus the
+   assessment and summary calls; the `extraction-runs` page shows the cost.  Read the queue
+   in document order: every HV and LMV category with its (a)/(b) blocks should be present
+   from the rules channel, each with the model's agreement or disagreement per value.
+   Then `gcloud secrets versions destroy 2 --secret ANTHROPIC_API_KEY --project tariff-order-parsing`.
 2. Engineering (next run): Milestone 6 — historical comparison (preceding-order ingestion,
    amendment relationships, effective rules and the temporal resolver, reviewed category
    mappings with evidence, the deterministic comparison service citing both releases, the

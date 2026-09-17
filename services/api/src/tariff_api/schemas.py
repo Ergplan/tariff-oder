@@ -586,6 +586,7 @@ class ExtractionRunList(BaseModel):
     total_cost_usd: float
     fixture_runs: int
     real_runs: int
+    rules_runs: int = 0  # deterministic structure channel: free, not a fixture, not a model
 
 
 class ConditionOut(BaseModel):

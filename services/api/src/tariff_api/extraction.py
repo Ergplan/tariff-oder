@@ -634,7 +634,9 @@ def network_extract(inp: StructureInput, sub_role: str | None) -> ExtractionOutp
     # network regions overlap and the CSS computation table may sit under a page the rules
     # cued for losses, so the parameter tables are looked for in every network region
     css_params, css_grids = (
-        css_formula.read_parameters(inp.cells) if inp.region_role == "network_charges" else ({}, set())
+        css_formula.read_parameters(inp.cells, inp.category_code_pattern)
+        if inp.region_role == "network_charges"
+        else ({}, set())
     )
     statements = css_formula.formula_statements(inp.page_texts) if css_params else {}
     for (page, grid), cells in sorted(by_grid.items()):
@@ -716,12 +718,13 @@ def _attach_css_formula(
     for c in out.candidates:
         if c.family != "cross_subsidy_surcharge":
             continue
-        text = " ".join(x for x in (c.applicability.voltage, c.category_code, c.original_text) if x)
+        text = " ".join(x for x in (c.applicability.voltage, c.original_text) if x)
         lvl = css_formula.band_key(text) or css_formula.norm_level(text)
-        if lvl and lvl in params:
+        key = next((k for k in css_formula.lookup_keys(c.category_code, lvl) if k in params), None)
+        if key:
             base = c.derivation or {}
-            c.derivation = {**base, "formula": css_formula.derivation_for(lvl, params[lvl], statements)}
-            matched.add(lvl)
+            c.derivation = {**base, "formula": css_formula.derivation_for(key, params[key], statements)}
+            matched.add(key)
     for lvl, p in params.items():
         if lvl in matched:
             continue
@@ -732,16 +735,20 @@ def _attach_css_formula(
             )
             continue
         ev = printed["evidence"]
+        cat, _, band = lvl.partition(" @ ")
+        if not band:  # a level-only or category-only key
+            cat, band = (None, lvl) if css_formula.band_key(lvl) or css_formula.norm_level(lvl) else (lvl, None)
         out.candidates.append(
             Candidate(
                 family="cross_subsidy_surcharge",
+                category_code=cat,
                 component_type="charge",
                 value=printed["value"],
                 value_state="value",
                 original_text=ev["excerpt"][:400],
                 currency="paise" if printed.get("unit") == "paise" else "rupees",
                 per_unit="kWh",
-                applicability=Applicability(voltage=printed.get("label") and lvl),
+                applicability=Applicability(voltage=band),
                 period=inp.period,
                 utility=inp.utility,
                 decision_status="parameter_specified",

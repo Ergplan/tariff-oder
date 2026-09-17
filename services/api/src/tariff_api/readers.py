@@ -28,7 +28,7 @@ from typing import Any, Literal
 
 import pymupdf
 
-READERS_VERSION = "2"
+READERS_VERSION = "3"
 PYMUPDF_VERSION = str(getattr(pymupdf, "__version__", None) or pymupdf.VersionBind)
 
 Strategy = Literal["lines", "lines_strict", "text", "model"]
@@ -171,6 +171,62 @@ def _iou(a: tuple[float, float, float, float], b: tuple[float, float, float, flo
         return 0.0
     area = (a[2] - a[0]) * (a[3] - a[1]) + (b[2] - b[0]) * (b[3] - b[1]) - inter
     return inter / area if area > 0 else 0.0
+
+
+_NUMERIC_LINE = re.compile(
+    r"^\s*[-–]?\s*(?:rs\.?|₹)?\s*[\d,]*\.?\d+\s*(?:%|paise|ps\.?|/\s*\w+)?\s*$|^\s*(?:nil|na|n\.a\.|-|–|—)\s*$", re.I
+)
+
+
+def split_tall_rows(rows: list[list[str]]) -> tuple[list[list[str]], int]:
+    """Rows whose numeric cells hold several printed lines each are several printed rows
+    that the ruled-lines reader merged (no horizontal ruling between them: NPCL page 316,
+    the CSS computation table, arrived as one row per voltage group with six values stacked
+    in every cell).  Such a row is split into one row per line: cells with k lines give one
+    line each; a one-line cell (a group label spanning the rows) goes on the first row and
+    is blank below, where the structure stage's merged-cell propagation carries it down.
+    A row splits only when at least two cells stack the same number of lines and every
+    stacked line is a number, so wrapped prose and two-line headings never split.  Returns
+    the rows and how many rows were split."""
+    out: list[list[str]] = []
+    split = 0
+    for r in rows:
+        stacks = [c.split("\n") for c in r]
+        counts = {len(st) for st in stacks if len(st) > 1 and all(_NUMERIC_LINE.match(x) for x in st if x.strip())}
+        k = max(counts, default=1)
+        stacked = [st for st in stacks if len(st) == k and all(_NUMERIC_LINE.match(x) for x in st if x.strip())]
+        others_fit = all(len(st) in (1, k) for st in stacks)
+        if k < 2 or len(stacked) < 2 or not others_fit:
+            out.append(r)
+            continue
+        for i in range(k):
+            out.append([st[i].strip() if len(st) == k else (st[0] if i == 0 else "") for st in stacks])
+        split += 1
+    return out, split
+
+
+def resplit_tall_rows(grids: list[TableGrid]) -> list[TableGrid]:
+    """`split_tall_rows` over every grid; the header rows are never split."""
+    out: list[TableGrid] = []
+    for g in grids:
+        head, body = g.rows[: g.header_rows], g.rows[g.header_rows :]
+        body2, n = split_tall_rows(body)
+        if n == 0:
+            out.append(g)
+            continue
+        out.append(
+            TableGrid(
+                reader=g.reader,
+                reader_version=g.reader_version,
+                page_index=g.page_index,
+                ordinal=g.ordinal,
+                strategy=g.strategy,
+                bbox=g.bbox,
+                rows=head + body2,
+                header_rows=g.header_rows,
+            )
+        )
+    return out
 
 
 def prefer_strict(loose: list[TableGrid], strict: list[TableGrid]) -> list[TableGrid]:

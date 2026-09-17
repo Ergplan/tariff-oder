@@ -38,6 +38,8 @@ DEFINITION = re.compile(r"^\s*(?:where\s*:?\s*)?\b(T|C|D|L|R|S)\s+(?:is|=|:|mean
 # symbol from a row or column label: "(T)", "Tariff (T) Rs/kWh", "D = DC + TC + WC"
 _SYMBOL_PAREN = re.compile(r"\((DC|TC|WC|T|C|D|L|R|S)\)")
 _SYMBOL_EQ = re.compile(r"^\s*(DC|TC|WC|T|C|D|L|R|S)\s*=")
+# a column headed by the bare symbol: `T`, `D`, `L (%)`, `S`
+_SYMBOL_BARE = re.compile(r"^\s*(DC|TC|WC|T|C|D|L|R|S)\s*(?:\(.{0,20}\))?\s*$")
 _DESCRIPTORS: list[tuple[str, re.Pattern[str]]] = [
     ("DC", re.compile(r"distribution charge", re.I)),
     ("TC", re.compile(r"transmission charge", re.I)),
@@ -63,7 +65,7 @@ _LEVEL = re.compile(
 
 def symbol_of(label: str) -> str | None:
     """Which formula symbol a row or column label names, or None."""
-    m = _SYMBOL_PAREN.search(label) or _SYMBOL_EQ.match(label)
+    m = _SYMBOL_PAREN.search(label) or _SYMBOL_EQ.match(label) or _SYMBOL_BARE.match(label)
     if m:
         return m.group(1).upper()
     for sym, pat in _DESCRIPTORS:
@@ -132,11 +134,45 @@ def formula_statements(page_texts: dict[int, str]) -> dict[str, Any]:
     return out
 
 
-def read_parameters(cells: list[dict[str, Any]]) -> tuple[dict[str, dict[str, dict[str, Any]]], set[tuple[int, int]]]:
+def param_key(labels: list[str], category_code_pattern: str | None = None) -> str | None:
+    """The key a parameter row (or column) is filed under: `HV-1 @ 33 kV` when the labels
+    name a consumer category and a voltage level (the NPCL computation table: one row per
+    category under a voltage divider), `33 kV` when only a level is named, `HV-1` when only
+    a category is.  Nothing when neither is named."""
+    text = " ".join(labels)
+    level = band_key(text) or norm_level(text)
+    cat = None
+    if category_code_pattern:
+        for x in labels:
+            m = re.search(category_code_pattern, x, re.I)
+            if m:
+                cat = m.group(0).strip().upper()
+                break
+    if cat and level:
+        return f"{cat} @ {level}"
+    return level or cat
+
+
+def lookup_keys(category_code: str | None, level: str | None) -> list[str]:
+    """The parameter keys a candidate is paired with, most specific first."""
+    keys: list[str] = []
+    if category_code and level:
+        keys.append(f"{category_code.upper()} @ {level}")
+    if level:
+        keys.append(level)
+    if category_code:
+        keys.append(category_code.upper())
+    return keys
+
+
+def read_parameters(
+    cells: list[dict[str, Any]], category_code_pattern: str | None = None
+) -> tuple[dict[str, dict[str, dict[str, Any]]], set[tuple[int, int]]]:
     """Parameter grids inside the CSS region: cells whose row (or column) label names a
-    formula symbol and whose column (or row) label names a level.  Returns
-    `{level: {symbol: {value, unit, evidence}}}` and the (page, grid) ids consumed, so the
-    caller does not also read them as an approved table."""
+    formula symbol and whose column (or row) label names a level, a category, or both.
+    Returns `{key: {symbol: {value, unit, evidence}}}` (key per `param_key`) and the (page,
+    grid) ids consumed, so the caller does not also read them as an approved table or file
+    the `L` column as a loss."""
     params: dict[str, dict[str, dict[str, Any]]] = {}
     consumed: set[tuple[int, int]] = set()
     by_grid: dict[tuple[int, int], list[dict[str, Any]]] = {}
@@ -144,7 +180,7 @@ def read_parameters(cells: list[dict[str, Any]]) -> tuple[dict[str, dict[str, di
         by_grid.setdefault((c["page_index"], c["grid_ordinal"]), []).append(c)
     for gid, gcells in sorted(by_grid.items()):
         rows_syms = {symbol_of(" ".join(c["row_path"])) for c in gcells} - {None, "CAP"}
-        cols_syms = {symbol_of(" ".join(c["header_path"])) for c in gcells} - {None, "CAP"}
+        cols_syms = {symbol_of(c["header_path"][-1] if c["header_path"] else "") for c in gcells} - {None, "CAP"}
         if len(rows_syms) >= 2:
             sym_from, level_from = "row_path", "header_path"
         elif len(cols_syms) >= 2:
@@ -155,8 +191,8 @@ def read_parameters(cells: list[dict[str, Any]]) -> tuple[dict[str, dict[str, di
         for c in gcells:
             if c["value_state"] not in ("value", "zero"):
                 continue
-            sym = symbol_of(" ".join(c[sym_from]))
-            level = band_key(" ".join(c[level_from])) or norm_level(" ".join(c[level_from]))
+            sym = symbol_of(c[sym_from][-1] if sym_from == "header_path" and c[sym_from] else " ".join(c[sym_from]))
+            level = param_key(c[level_from], category_code_pattern)
             if sym is None or level is None:
                 continue
             label = " ".join(c[sym_from])

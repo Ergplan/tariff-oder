@@ -142,13 +142,18 @@ def test_dual_channel_fixture_extraction_produces_routed_candidates_and_findings
 
     # telemetry: fixture runs are labelled and never summed as real cost
     runs = client.get(f"/sources/{src_id}/extraction-runs", headers=headers(ANALYST)).json()
-    assert runs["fixture_runs"] == 2 and runs["real_runs"] == 0 and runs["total_cost_usd"] == 0.0
-    assert {r["channel"] for r in runs["runs"]} == {"structure", "image"}
-    assert all(r["input_hash"] and r["status"] == "succeeded" and r["is_fixture"] for r in runs["runs"])
+    # the structure channel is the rules (free, neither fixture nor model); the image channel is the fixture
+    assert runs["fixture_runs"] == 1 and runs["rules_runs"] == 1 and runs["real_runs"] == 0
+    assert runs["total_cost_usd"] == 0.0
+    by_channel = {r["channel"]: r for r in runs["runs"]}
+    assert set(by_channel) == {"structure", "image"}
+    assert by_channel["structure"]["provider"] == "rules" and not by_channel["structure"]["is_fixture"]
+    assert by_channel["image"]["provider"] == "fixture" and by_channel["image"]["is_fixture"]
+    assert all(r["input_hash"] and r["status"] == "succeeded" for r in runs["runs"])
     keys = [o.key for o in storage.list("artefacts", prefix=f"{d['sha256']}/extract/")]
     assert any(k.endswith("/structure.json") for k in keys) and any(k.endswith("/image.json") for k in keys)
     art = json.loads(storage.get("artefacts", next(k for k in keys if k.endswith("/structure.json"))))
-    assert art["output"]["schema_version"] == "2" and art["raw"]["fixture"] is True
+    assert art["output"]["schema_version"] == "2" and art["raw"]["rules"] is True
 
     # review queue lists it as a fixture with everything individual; nothing is published
     q = client.get("/review/queue", headers=headers(ANALYST)).json()
@@ -245,3 +250,42 @@ def test_adversarial_instruction_text_does_not_alter_candidates(client, runner):
     assert all(c["review_status"] == "pending" for c in cands["candidates"])
     d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
     assert d["state"] == "awaiting_review"  # never published, whatever the document said
+
+
+def test_a_real_backend_keeps_the_rules_as_structure_channel_and_reads_images_in_chunks(client, runner, monkeypatch):
+    """Stub model: not a fixture, never asked for the structure, called once per two pages."""
+    from tariff_api.providers import FixtureProvider
+    from tariff_worker.stages import extract as ex_stage
+
+    calls: list[list[int]] = []
+
+    class StubModel(FixtureProvider):
+        name = "stub-model"
+        is_fixture = False
+
+        def extract_structure(self, inp):
+            raise AssertionError("the model must never be the structure channel")
+
+        def extract_image(self, inp, images):
+            calls.append(list(inp.page_indices))
+            assert len(images) == len(inp.page_indices) <= 2
+            r = super().extract_image(inp, images)
+            r.is_fixture = False
+            r.provider = self.name
+            return r
+
+    monkeypatch.setattr(ex_stage, "build_provider", lambda settings, secrets: StubModel())
+    src_id = _to_review(client, runner, structure_order_pdf(), "SYNTHETIC_structure_stub.pdf")
+    d = client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()
+    ex = d["extraction"]
+    assert d["state"] == "awaiting_review" and ex["provider"] == "stub-model" and ex["is_fixture"] is False
+    assert (
+        calls
+        and all(len(c) <= 2 for c in calls)
+        and sorted(p for c in calls for p in c) == sorted({p for c in calls for p in c})
+    )
+    runs = client.get(f"/sources/{src_id}/extraction-runs", headers=headers(ANALYST)).json()
+    assert runs["rules_runs"] == 1 and runs["fixture_runs"] == 0 and runs["real_runs"] == len(calls)
+    assert ex["runs"] == 1 + len(calls) and ex["candidates"] > 15
+    # every rules candidate is matched by the chunked image reading: nothing dropped by chunking
+    assert set(ex["by_agreement"]) == {"agree"}

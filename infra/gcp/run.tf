@@ -23,13 +23,14 @@ locals {
     # `iap_audiences` output into envs/<env>.tfvars and apply again).  IAP directly on the
     # Cloud Run web service (operator-authorised 2026-09-14): the audience is the web
     # service's own resource path.
-    IAP_AUDIENCE         = join(",", concat(var.iap_audiences, var.web_iap ? local.web_iap_audiences : []))
-    ID_TOKEN_AUDIENCES   = join(",", local.id_token_audiences)
-    LOG_FORMAT           = "json"
-    JOB_LEASE_SECONDS    = tostring(var.job_lease_seconds)
-    PROVIDER_BACKEND     = var.provider_backend
-    ANTHROPIC_MODEL      = var.anthropic_model
-    GOLDEN_MANIFEST_PATH = "/app/tests/golden/manifest.json"
+    IAP_AUDIENCE              = join(",", concat(var.iap_audiences, var.web_iap ? local.web_iap_audiences : []))
+    ID_TOKEN_AUDIENCES        = join(",", local.id_token_audiences)
+    LOG_FORMAT                = "json"
+    JOB_LEASE_SECONDS         = tostring(var.job_lease_seconds)
+    PROVIDER_BACKEND          = var.provider_backend
+    ANTHROPIC_MODEL           = var.anthropic_model
+    SECOND_REVIEW_FIRST_ORDER = var.second_review_first_order ? "true" : "false"
+    GOLDEN_MANIFEST_PATH      = "/app/tests/golden/manifest.json"
   }
 }
 

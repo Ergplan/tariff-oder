@@ -42,3 +42,17 @@ Status: accepted (2026-09-17)
   and the model's verdict with confidence, each labelled by origin.
 - The category summary (ADR-0015 addendum in BUILD_STATE) and the assessment are the two
   generated texts in the system; both are grounding-checked, neither is published.
+
+## Addendum (2026-09-17): which channel is which
+
+The first real run made the division of labour explicit.  The **rules** are the structure
+channel for every backend: they read every cell and clause of the approved regions and cite
+them; they cannot skip a row, and they cost nothing.  The **model** is used three times, all
+on the provider adapter: (1) the image channel, reading the page images a few pages per call
+as the independent second reading that the comparison and routing rely on; (2) the
+assessment loop of this ADR, where **Haystack** (an in-memory document store and BM25
+retriever over the region's own page text) selects the passages the model sees for each
+category so its verdict, confidence, sub-category and quote are grounded in that text;
+(3) the category summaries, grounded the same way.  The model never supplies the value the
+reviewer approves: it agrees or disagrees with the rules' reading, scores it, names the
+sub-category and explains it.

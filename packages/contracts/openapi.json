@@ -1792,6 +1792,11 @@
             "title": "Real Runs",
             "type": "integer"
           },
+          "rules_runs": {
+            "default": 0,
+            "title": "Rules Runs",
+            "type": "integer"
+          },
           "runs": {
             "items": {
               "$ref": "#/components/schemas/ExtractionRunOut"

@@ -124,3 +124,9 @@ variable "web_iap" {
   type        = bool
   default     = false
 }
+
+variable "second_review_first_order" {
+  description = "Review policy: the first order read with a new profile routes every candidate to a second reviewer (Section 7.2). A project with one reviewer cannot satisfy it; set false there and record the decision in BUILD_STATE. Material conditions and formula components still need a second reviewer regardless."
+  type        = bool
+  default     = true
+}

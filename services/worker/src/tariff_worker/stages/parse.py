@@ -50,6 +50,7 @@ from tariff_api.readers import (
     prefer_strict,
     read_tables_pdfplumber,
     read_tables_pymupdf,
+    resplit_tall_rows,
     score_agreement,
 )
 from tariff_api.services.sources import enqueue_stage, transition
@@ -57,7 +58,7 @@ from tariff_api.services.sources import enqueue_stage, transition
 from ..runner import JobContext, JobFailure
 
 STAGE = "parse"
-PARSE_VERSION = "2"
+PARSE_VERSION = "3"
 GRID_CLASSES = {"table", "mixed"}
 
 
@@ -220,6 +221,8 @@ def parse_source(ctx: JobContext) -> dict:
                         strategy = "text"
                         prim = read_tables_pymupdf(pm_page, idx, "text")
                         sec = read_tables_pdfplumber(data, idx, "text")
+                    # stacked numeric lines in one ruled row are the printed rows (readers 3)
+                    prim, sec = resplit_tall_rows(prim), resplit_tall_rows(sec)
                     agreements = score_agreement(prim, sec)
                     _store_grids(s, storage, source_id, sha, tool_version, idx, prim, sec, agreements, strategy)
                     for a in agreements:

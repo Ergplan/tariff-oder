@@ -1710,6 +1710,11 @@ export interface components {
             fixture_runs: number;
             /** Real Runs */
             real_runs: number;
+            /**
+             * Rules Runs
+             * @default 0
+             */
+            rules_runs: number;
             /** Runs */
             runs: components["schemas"]["ExtractionRunOut"][];
             /** Total Cost Usd */

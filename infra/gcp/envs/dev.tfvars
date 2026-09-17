@@ -38,3 +38,6 @@ api_min_instances    = 0
 web_iap = true
 # Real model calls for extraction and category summaries (key in Secret Manager, never in files).
 provider_backend = "anthropic"
+# One reviewer on dev: the first-order second-review rule cannot be satisfied (operator
+# decision 2026-09-17; material conditions and formula components still need two reviewers).
+second_review_first_order = false

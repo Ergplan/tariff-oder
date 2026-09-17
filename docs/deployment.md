@@ -219,7 +219,12 @@ make admin-dev ARGS=provider-smoke                                              
 ```
 
 `envs/dev.tfvars` sets `provider_backend = "anthropic"`; set it back to `fixture` and apply to
-return to fixture mode.  Every run, candidate and summary carries the provider flag; the order
+return to fixture mode.  In either mode the structure channel is the deterministic rules
+(`provider=rules`, cost 0); the model reads the page images, `IMAGE_CHANNEL_PAGES_PER_CALL`
+pages per call (Terraform does not set it; the default is 2), and then runs the per-category
+assessment and summaries.  `second_review_first_order` (dev: `false`, one reviewer on the
+project) switches off the rule that routes every candidate of a utility's first order to a
+second reviewer; material conditions and formula components still need two reviewers.  Every run, candidate and summary carries the provider flag; the order
 budget (`PROVIDER_MAX_COST_PER_ORDER_USD`, default 5) stops a run that exceeds it — nothing is
 skipped to fit.  A key pasted anywhere other than that prompt is compromised: rotate it in the
 Anthropic console and add the new version the same way.

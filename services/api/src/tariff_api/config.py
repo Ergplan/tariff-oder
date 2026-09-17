@@ -98,6 +98,7 @@ class Settings(BaseSettings):
     provider_fixture_perturbations_path: str | None = None
     image_channel_enabled: bool = True
     image_channel_dpi: int = 110
+    image_channel_pages_per_call: int = 2  # real model: pages per image call (0 = whole region)
     provider_max_cost_per_order_usd: float = 5.0
     provider_max_tokens_per_order: int = 2_000_000
 

@@ -12,6 +12,7 @@ cost or tokens would pass the configured limits; nothing is skipped or lowered t
 
 from __future__ import annotations
 
+import dataclasses
 import hashlib
 import json
 import uuid
@@ -54,7 +55,7 @@ from tariff_api.models import (
     StructureCell,
 )
 from tariff_api.profiles import load_profile
-from tariff_api.providers import ProviderUnavailable, build_provider
+from tariff_api.providers import ProviderResult, ProviderUnavailable, build_provider, rules_result
 from tariff_api.services.sources import enqueue_stage, transition
 from tariff_api.summaries import SummaryInput, category_pages, grounding_check
 from tariff_api.tariff_schema import SCHEMA_VERSION, ExtractionOutput
@@ -301,14 +302,10 @@ def extract_source(ctx: JobContext) -> dict:
         for c in green_tariff_prose(inp):
             add_single(c, reg)
         conditions_found.extend(extract_conditions(inp))
-        try:
-            structure_res = provider.extract_structure(inp)
-        except ProviderUnavailable as e:
-            runs.append(_run_row(reg, "structure", provider, None, str(e)))
-            raise JobFailure("provider_unavailable", str(e), retry=True) from e
-        total_cost += structure_res.cost_usd
-        total_tokens += structure_res.input_tokens + structure_res.output_tokens
-        check_budget()
+        # the structure channel is the deterministic rules over every cell and clause, whatever
+        # backend serves the model: a model given a fifty-page schedule as text returned one
+        # candidate (NPCL, 2026-09-17); the rules cannot skip a row
+        structure_res = rules_result(inp)
         runs.append(_run_row(reg, "structure", provider, structure_res, None))
         artefacts.append(
             (
@@ -322,15 +319,25 @@ def extract_source(ctx: JobContext) -> dict:
         )
         image_res = None
         if settings.image_channel_enabled:
-            try:
-                image_res = provider.extract_image(inp, render(pages))
-            except ProviderUnavailable as e:
-                runs.append(_run_row(reg, "image", provider, None, str(e)))
-                raise JobFailure("provider_unavailable", str(e), retry=True) from e
-            total_cost += image_res.cost_usd
-            total_tokens += image_res.input_tokens + image_res.output_tokens
-            check_budget()
-            runs.append(_run_row(reg, "image", provider, image_res, None))
+            # the model reads the page images as the independent second channel, a few pages
+            # per call (a whole region in one call is one output budget for fifty pages); the
+            # fixture channel is derived from the rules, so chunking it proves nothing
+            per_call = 0 if provider.is_fixture else settings.image_channel_pages_per_call
+            chunks = [pages[i : i + per_call] for i in range(0, len(pages), per_call)] if per_call > 0 else [pages]
+            parts: list[ProviderResult] = []
+            for chunk in chunks:
+                cinp = _chunk_input(inp, chunk)
+                try:
+                    part = provider.extract_image(cinp, render(chunk))
+                except ProviderUnavailable as e:
+                    runs.append(_run_row(reg, "image", provider, None, f"pages {chunk[0]}-{chunk[-1]}: {e}"))
+                    raise JobFailure("provider_unavailable", str(e), retry=True) from e
+                total_cost += part.cost_usd
+                total_tokens += part.input_tokens + part.output_tokens
+                check_budget()
+                runs.append(_run_row(reg, "image", provider, part, None))
+                parts.append(part)
+            image_res = _merge_results(parts)
             artefacts.append(
                 (
                     f"{sha}/{STAGE}/{extraction_version}/region-{reg['ordinal']:02d}/image.json",
@@ -642,11 +649,11 @@ def _run_row(reg, channel, provider, res, error) -> dict[str, Any]:
     return {
         "region_ordinal": reg["ordinal"],
         "channel": channel,
-        "provider": provider.name,
-        "model": provider.model,
+        "provider": res.provider if res else provider.name,
+        "model": res.model if res else provider.model,
         "prompt_version": res.prompt_version if res else PROMPT_VERSION,
         "schema_version": res.schema_version if res else SCHEMA_VERSION,
-        "is_fixture": provider.is_fixture,
+        "is_fixture": res.is_fixture if res else provider.is_fixture,
         "input_hash": res.input_hash if res else "",
         "input_tokens": res.input_tokens if res else 0,
         "output_tokens": res.output_tokens if res else 0,
@@ -655,6 +662,48 @@ def _run_row(reg, channel, provider, res, error) -> dict[str, Any]:
         "error": error,
         "candidates_returned": len(res.output.candidates) if res else 0,
     }
+
+
+def _chunk_input(inp: StructureInput, pages: list[int]) -> StructureInput:
+    """The region's input restricted to a few pages: the cells, clauses and page texts of
+    those pages, every heading up to their end (a continued table needs the heading before
+    it), the same cue and note."""
+    ps = set(pages)
+    return dataclasses.replace(
+        inp,
+        page_indices=list(pages),
+        cells=[c for c in inp.cells if c["page_index"] in ps],
+        clauses=[v for v in inp.clauses if v["page_index"] in ps],
+        headings=[h for h in inp.headings if h["page_index"] <= pages[-1]],
+        page_texts={p: t for p, t in inp.page_texts.items() if p in ps},
+        ocr_pages={p for p in inp.ocr_pages if p in ps},
+    )
+
+
+def _merge_results(parts: list[ProviderResult]) -> ProviderResult:
+    """One image-channel result for the region from its per-chunk calls: candidates and
+    missing lists concatenated, tokens and cost summed, the hash over the chunk hashes."""
+    if len(parts) == 1:
+        return parts[0]
+    out = ExtractionOutput()
+    for p in parts:
+        out.candidates.extend(p.output.candidates)
+        out.missing.extend(p.output.missing)
+    first = parts[0]
+    return ProviderResult(
+        "image",
+        out,
+        first.provider,
+        first.model,
+        first.prompt_version,
+        first.schema_version,
+        hashlib.sha256("|".join(p.input_hash for p in parts).encode()).hexdigest(),
+        sum(p.input_tokens for p in parts),
+        sum(p.output_tokens for p in parts),
+        round(sum(p.cost_usd for p in parts), 6),
+        first.is_fixture,
+        {"chunks": [{"input_hash": p.input_hash, **p.raw} for p in parts]},
+    )
 
 
 def _count(rows: list[dict[str, Any]], key: str) -> dict[str, int]:

@@ -13,7 +13,7 @@ from typing import Any
 
 from .normalise import Normalised, check_slab_sequence, normalise_value, parse_slab, unit_hint
 
-GRID_VERSION = "2"
+GRID_VERSION = "3"
 
 _MARKER_LINE = re.compile(r"^\s*(?P<m>\*\*|\*|#|†|‡|\^)\s*(?P<text>.+)$")
 _ROW_UNIT_HEADER = re.compile(r"billing\s+unit|\bunit\b\s*$|basis", re.I)
@@ -101,6 +101,12 @@ class GridRecord:
 
 def _clean(s: str | None) -> str:
     return re.sub(r"\s+", " ", (s or "")).strip()
+
+
+# a row whose only text names a voltage level: `33 kV`, `----- 11 kV -----`, `At 66 kV and above`
+_DIVIDER = re.compile(
+    r"^[\s\-–—]*(?:at\s+)?(?:above\s+|below\s+|up\s*to\s+)?\d{2,3}\s*kv(?:\s+and\s+above)?[\s\-–—]*$", re.I
+)
 
 
 def _is_numeric_state(n: Normalised) -> bool:
@@ -274,9 +280,14 @@ def analyse_grid(g: GridInput, previous: GridRecord | None) -> GridRecord:
             carried_values = {c.col: c.raw for c in prev_cells}
     cells: list[CellRecord] = []
     row_slabs: list[tuple[int, Any]] = []
+    divider: str | None = None  # a voltage-only row ("----- 33 kV -----") scopes the rows below it
     for ri, r in enumerate(data, start=header_rows):
         row_flags: list[str] = []
         labels: list[str] = []
+        filled = [x for x in r if _clean(x)]
+        if len(filled) == 1 and _DIVIDER.match(filled[0]):
+            divider = _clean(filled[0]).strip("-–— ")
+            continue  # the divider is not a data row; it is the level of every row under it
         own_label_empty = bool(label_cols) and not r[label_cols[0]]
         for i, c in enumerate(label_cols):
             if r[c]:
@@ -287,6 +298,8 @@ def analyse_grid(g: GridInput, previous: GridRecord | None) -> GridRecord:
                 row_flags.append("merged_cell_propagated")
             labels.append(last_labels[i])
         row_path = [x for x in labels if x]
+        if divider:
+            row_path = [*row_path, divider]
         if not row_path:
             row_flags.append("unresolved_row")
         row_unit = r[row_unit_col] if row_unit_col is not None else None

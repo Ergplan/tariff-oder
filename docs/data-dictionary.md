@@ -180,9 +180,12 @@ two facts.
 
 ## `extraction_runs` (Milestone 4a)
 
-One provider call per channel per region: `channel`, `provider`, `model`, `prompt_version`,
+One row per call per channel per region: `channel`, `provider`, `model`, `prompt_version`,
 `schema_version`, `is_fixture`, `input_hash`, `input_tokens`, `output_tokens`, `cost_usd`,
-`status`, `error`, `candidates_returned`.  Fixture and real runs are never summed together.
+`status`, `error`, `candidates_returned`.  The structure channel is always the rules
+(`provider=rules`, `is_fixture=false`, cost 0, one row per region); the image channel is one
+row per page chunk for a real model, one row for the fixture.  Fixture, rules and real runs
+are never summed together (`fixture_runs`, `rules_runs`, `real_runs`).
 
 ## `candidates`
 
