@@ -229,6 +229,14 @@ budget (`PROVIDER_MAX_COST_PER_ORDER_USD`, default 5) stops a run that exceeds i
 skipped to fit.  A key pasted anywhere other than that prompt is compromised: rotate it in the
 Anthropic console and add the new version the same way.
 
+### Diagnosing one page without the browser
+
+`make admin-dev ARGS=page-dump,<source_id>,--page,<n>` prints, as one JSON line, the primary
+grids of that page as read (rows, header rows, reader, agreement), the structure cells
+(header path, row path, text, state, flags) and every candidate whose evidence cites the
+page (value, block, row, channel agreement, whether the model channel had it, the cited
+cell).  Read-only; paste the output when a reading looks wrong.
+
 ### Measuring the optional Docling reader (ADR-0009 addendum)
 
 Docling is not in the images.  Measure it on the VM, which can reach PyPI and huggingface.co:

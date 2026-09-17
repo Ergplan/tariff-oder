@@ -270,6 +270,18 @@ open-access view.
   the cut call stays on the run record for its cost.  Proven with a stub model that
   "loses" every two-page call: every page is re-read singly and every rules candidate is
   matched.
+  **First successful real run (2026-09-17, after the three fixes):** NPCL extracted on
+  `claude-sonnet-5`; HV-1 shows 15 candidates over pages 383–387 with both lettered blocks
+  and a grounded category summary.  Two things seen on the first candidate are open: its
+  evidence cites "(unlabelled row)" and a column path of all three headings, which is the
+  model channel's way of citing (row and column as counted on the image), so either the
+  rules channel missed that row or the workspace shows the model's record — `tariff-api
+  page-dump <source> --page 384` now prints the grids, cells and candidates of a page as
+  JSON so the operator can settle it without the browser; and the model check contradicted
+  a correct value by matching block (b)'s table to a block (a) candidate — assessment
+  prompt 2 says a passage from another lettered block is not a contradiction.  Context
+  under "What the order says around it" no longer shows table fragments as sentences and
+  starts with the lettered block.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.

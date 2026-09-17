@@ -105,7 +105,7 @@ def test_dual_channel_fixture_extraction_produces_routed_candidates_and_findings
         and a0["grounded"]
         and 0 <= a0["confidence"] <= 1
         and a0["meaning"]
-        and a0["prompt_version"] == "1"
+        and a0["prompt_version"] == "2"
     )
     assert not any("assessment_ungrounded" in c["risk_tags"] for c in cands["candidates"])
     # every schedule category gets a generated, grounding-checked summary (fixture template here)
@@ -320,3 +320,17 @@ def test_a_chunk_cut_off_by_the_output_limit_is_re_read_one_page_at_a_time(clien
     assert set(ex["by_agreement"]) == {"agree"}  # nothing lost: the single-page reads matched every rules row
     runs = client.get(f"/sources/{src_id}/extraction-runs", headers=headers(ANALYST)).json()
     assert runs["real_runs"] == len(calls)  # the cut calls stay on the record for their cost
+
+
+def test_page_dump_prints_grids_cells_and_candidates_of_one_page(client, runner, capsys):
+    from tariff_api.cli import main as cli_main
+
+    src_id = _to_review(client, runner, structure_order_pdf(), "SYNTHETIC_structure_dump.pdf")
+    cands = client.get(f"/sources/{src_id}/candidates", params={"limit": 500}, headers=headers(ANALYST)).json()
+    page = cands["candidates"][0]["record"]["evidence"][0]["page_index"]
+    assert cli_main(["page-dump", src_id, "--page", str(page)]) == 0
+    out = json.loads(capsys.readouterr().out.strip().splitlines()[-1])
+    assert out["page"] == page and out["grids"] and out["grids"][0]["rows"] and out["cells"]
+    c0 = out["candidates"][0]
+    assert {"family", "value", "block", "row", "channel_agreement", "model_had_it", "evidence", "excerpt"} <= set(c0)
+    assert all(c["evidence"]["kind"] for c in out["candidates"])

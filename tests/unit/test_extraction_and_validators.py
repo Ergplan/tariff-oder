@@ -693,3 +693,50 @@ def test_a_truncated_candidates_string_yields_its_complete_objects_and_a_note():
     obj, note = recover_truncated({"candidates": cut, "missing": []}, "candidates")
     assert len(obj["candidates"]) == 2 and note.startswith("model output cut off: 2 complete candidates")
     assert recover_truncated({"candidates": []}, "candidates") == ({"candidates": []}, None)
+
+
+def test_context_shows_the_lettered_block_first_and_never_a_table_fragment():
+    from tariff_api.extraction import StructureInput, annotate
+    from tariff_api.tariff_schema import Applicability, Candidate, EvidenceRef
+
+    page = (
+        "(a) Commercial Loads with contracted load 75 kW & above at Single Point on 11 kV & above:\n"
+        "Contracted Load Fixed Charge Energy Charge\n"
+        "For supply at 11kV Rs. 430.00 / kVA / month Rs. 8.32 / kVAh\n"
+        "The body seeking the supply at Single point for bulk loads under this category shall be considered "
+        "as a deemed franchisee of the Licensee.\n"
+    )
+    inp = StructureInput(
+        source_sha="a" * 64,
+        profile_id="uperc-npcl",
+        schedule_heading_kind="rate_schedule",
+        region_role="approved_schedule",
+        region_ordinal=1,
+        page_indices=[384],
+        page_texts={384: page},
+    )
+    c = Candidate(
+        family="retail_tariff",
+        category_code="HV-1",
+        component_type="demand",
+        value="430.00",
+        value_state="value",
+        original_text="Rs. 430.00 / kVA / month",
+        applicability=Applicability(rate_block="(a) Commercial Loads with contracted load 75 kW & above"),
+        evidence=[
+            EvidenceRef(
+                page_index=384,
+                kind="cell",
+                grid_ordinal=1,
+                row=1,
+                col=1,
+                header_path=["Fixed Charge"],
+                row_path=["For supply at 11kV"],
+                excerpt="Rs. 430.00 / kVA / month",
+            )
+        ],
+    )
+    annotate([c], inp)
+    assert c.context[0].startswith("(a) Commercial Loads")
+    assert not any("430.00 / kVA / month Rs" in x for x in c.context)  # the table row is not a sentence
+    assert "row “For supply at 11kV”, column “Fixed Charge”" in c.rationale

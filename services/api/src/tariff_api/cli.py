@@ -429,6 +429,107 @@ def cmd_rerun(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_page_dump(args: argparse.Namespace) -> int:
+    """Everything the pipeline holds for one page, as JSON, for diagnosing a wrong reading
+    without the browser: the primary grids as read (rows, header rows, reader, agreement),
+    the structure cells (row, column, header path, row path, text, state, flags) and the
+    candidates whose evidence cites the page (value, block, row, channel agreement, the
+    cited cell, whether the model channel had it).  Read-only."""
+    import uuid
+
+    from sqlalchemy import select
+
+    from .adapters.storage import ObjectNotFound, ObjectStore
+    from .db import session_scope
+    from .models import CandidateRecord, StructureCell, TableGridRecord
+
+    _, adapters = _adapters()
+    storage: ObjectStore = adapters.storage
+    sid, page = uuid.UUID(args.source_id), int(args.page)
+    with session_scope() as s:
+        grids = []
+        for g in (
+            s.execute(
+                select(TableGridRecord)
+                .where(
+                    TableGridRecord.source_id == sid,
+                    TableGridRecord.page_index == page,
+                    TableGridRecord.is_primary.is_(True),
+                )
+                .order_by(TableGridRecord.ordinal)
+            )
+            .scalars()
+            .all()
+        ):
+            try:
+                rows = json.loads(storage.get(ObjectStore.ARTEFACTS, g.object_key))["grid"]["rows"]
+            except (ObjectNotFound, KeyError, ValueError):
+                rows = None
+            grids.append(
+                {
+                    "ordinal": g.ordinal,
+                    "reader": g.reader,
+                    "strategy": g.strategy,
+                    "header_rows": g.header_rows,
+                    "agreement_class": g.agreement_class,
+                    "risk_tags": g.risk_tags,
+                    "rows": rows,
+                }
+            )
+        cells = [
+            {
+                "grid": c.grid_ordinal,
+                "row": c.row,
+                "col": c.col,
+                "header_path": c.header_path,
+                "row_path": c.row_path,
+                "raw": c.raw,
+                "value_state": c.value_state,
+                "value": (c.normalised or {}).get("value"),
+                "flags": c.flags,
+                "region_role": c.region_role,
+            }
+            for c in s.execute(
+                select(StructureCell)
+                .where(StructureCell.source_id == sid, StructureCell.page_index == page)
+                .order_by(StructureCell.grid_ordinal, StructureCell.row, StructureCell.col)
+            ).scalars()
+        ]
+        cands = []
+        for c in s.execute(select(CandidateRecord).where(CandidateRecord.source_id == sid)).scalars():
+            rec = c.record or {}
+            ev = (rec.get("evidence") or [{}])[0]
+            if ev.get("page_index") != page:
+                continue
+            a = rec.get("applicability") or {}
+            cands.append(
+                {
+                    "family": c.family,
+                    "category": c.category_code,
+                    "component": c.component_type,
+                    "value": c.value,
+                    "value_state": c.value_state,
+                    "unit": " ".join(x for x in (c.currency, c.per_unit, c.frequency) if x),
+                    "block": a.get("rate_block"),
+                    "row": a.get("description"),
+                    "voltage": a.get("voltage"),
+                    "channel_agreement": c.channel_agreement,
+                    "model_had_it": c.image_record is not None,
+                    "risk_tags": c.risk_tags,
+                    "evidence": {
+                        k: ev.get(k) for k in ("kind", "grid_ordinal", "row", "col", "header_path", "row_path")
+                    },
+                    "excerpt": ev.get("excerpt"),
+                    "review_status": c.review_status.value if hasattr(c.review_status, "value") else c.review_status,
+                }
+            )
+        cands.sort(
+            key=lambda x: (x["evidence"].get("grid_ordinal") or 0, x["evidence"].get("row") or 0, x["component"])
+        )
+    print(json.dumps({"source_id": args.source_id, "page": page, "grids": grids, "cells": cells, "candidates": cands}))
+    return 0
+
+
 def cmd_users(args: argparse.Namespace) -> int:
     """List users, or add/update one.  Role changes are audit events."""
     from sqlalchemy import select
@@ -560,6 +661,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--actor", required=True)
     p.set_defaults(fn=cmd_rerun)
 
+    p = sub.add_parser("page-dump", help="grids, structure cells and candidates of one page, as JSON (diagnostic)")
+    p.add_argument("source_id")
+    p.add_argument("--page", required=True)
+    p.set_defaults(fn=cmd_page_dump)
     p = sub.add_parser("users", help="list users, or add/update one")
     p.add_argument("action", choices=["list", "add"])
     p.add_argument("--email")

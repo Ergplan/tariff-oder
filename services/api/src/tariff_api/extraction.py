@@ -1010,12 +1010,22 @@ def _caption_for(inp: StructureInput, ev: EvidenceRef) -> str | None:
     return caption
 
 
+_WORD = re.compile(r"[A-Za-z]{3,}")
+
+
+def _is_prose(sent: str) -> bool:
+    """A sentence worth showing a reviewer: at least six words of which four are real words,
+    not a run of table fragments (`430.00 / kVA / month Rs.`)."""
+    words = sent.split()
+    return len(words) >= 6 and len(_WORD.findall(sent)) >= 4
+
+
 def _sentences_about(inp: StructureInput, page: int, needles: list[str], limit: int = 2) -> list[str]:
     text = " ".join(_page_lines(inp, page))
     out: list[str] = []
     for sent in _SENTENCE_SPLIT.split(text):
         low = sent.lower()
-        if any(n and n.lower() in low for n in needles) and len(sent) > 25:
+        if any(n and n.lower() in low for n in needles) and len(sent) > 25 and _is_prose(sent):
             out.append(sent.strip()[:400])
         if len(out) >= limit:
             break
@@ -1052,6 +1062,10 @@ def annotate(cands: list[Candidate], inp: StructureInput) -> None:
                 if c.family == "retail_tariff" and c.category_code:
                     what = f"the approved {c.component_type} rate for {c.category_code}"
                 c.rationale = f"Read as {what} from {where}row “{row}”, column “{col}”: “{ev.excerpt}”."
+            # the lettered block the table sits under is the cue that names the consumer group
+            block = c.applicability.rate_block
+            if block and block not in ctx:
+                ctx.insert(0, block)
             if caption:
                 ctx.append(caption)
             needles = [x for x in (ev.row_path[-1] if ev.row_path else None, c.value) if x]
