@@ -132,7 +132,7 @@ admin-dev: ## Run the tariff-api CLI inside the VPC: make admin-dev ARGS=inbox  
 	@gcloud run jobs execute tariff-admin --project $(GCP_PROJECT) --region $(REGION) --wait; rc=$$?; \
 	  echo "--- job output (Cloud Logging, last 3 minutes; waiting 20s for ingestion) ---"; sleep 20; \
 	  gcloud logging read 'resource.type="cloud_run_job" AND resource.labels.job_name="tariff-admin"' \
-	    --project $(GCP_PROJECT) --freshness=3m --limit 80 --format='value(textPayload,jsonPayload.message)' | grep -v '^$$' | tac; \
+	    --project $(GCP_PROJECT) --freshness=3m --limit 80 --format='value(textPayload,jsonPayload)' | grep -v '^$$' | tac; \
 	  exit $$rc
 
 drain-dev: ## Run the worker job until the queue is empty (each run drains what is queued; stages enqueue the next)
@@ -140,7 +140,7 @@ drain-dev: ## Run the worker job until the queue is empty (each run drains what 
 	  gcloud run jobs execute tariff-worker --project $(GCP_PROJECT) --region $(REGION) --wait --quiet || { \
 	    echo "--- worker output (Cloud Logging, last 5 minutes; waiting 20s for ingestion) ---"; sleep 20; \
 	    gcloud logging read 'resource.type="cloud_run_job" AND resource.labels.job_name="tariff-worker"' \
-	      --project $(GCP_PROJECT) --freshness=5m --limit 120 --format='value(textPayload,jsonPayload.message)' | grep -v '^$$' | tac; \
+	      --project $(GCP_PROJECT) --freshness=5m --limit 120 --format='value(textPayload,jsonPayload)' | grep -v '^$$' | tac; \
 	    exit 1; }; \
 	done
 	@echo "Worker ran 6 times. Check: make admin-dev ARGS=sources"
