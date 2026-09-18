@@ -9,12 +9,13 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from decimal import Decimal, InvalidOperation
 from typing import Any
 
 from . import css_formula
 from .tariff_schema import Applicability, Candidate, EvidenceRef, ExtractionOutput, Slab, block_letter, norm_text
 
-EXTRACTION_RULES_VERSION = "2"
+EXTRACTION_RULES_VERSION = "3"
 RULES_PROVIDER = "rules"  # the deterministic structure channel's provider name on run rows
 PROMPT_VERSION = "1"
 
@@ -171,6 +172,15 @@ def _slab_from(d: dict[str, Any] | None) -> Slab | None:
 
 
 _LETTERED = re.compile(r"^\(?([a-z]|[ivx]{1,4})\)\s+(\S.*)$", re.I)
+# a page-text line that is a table row or header, not block prose: a rupee amount, a
+# per-unit, or two voltage levels side by side (HV-2's "For supply up to 11 kV | above 11 kV …")
+_TABLE_LINE = re.compile(
+    r"\bRs\.?\s|\d+\.\d{2}\b|/\s*k(?:W|VA|Wh|VAh)\b|(?:\d+\s*kv\b.*){2}"
+    r"|\b(?:fixed|energy|demand|minimum)\s+charges?\b",
+    re.I,
+)
+# a column heading that names the voltage the column applies to
+_VOLT_HDR = re.compile(r"\d{2,3}\s*kv\b|\bsupply\s+(?:at|above|up\s*to|below)\b", re.I)
 _BLOCK_STOP = re.compile(
     r"^\s*(\d+\.\s*)?(RATE|APPLICABILITY|CHARACTER OF SERVICE|POINT OF SUPPLY|\d+\.\s+[A-Z ]{4,})\s*:?\s*$"
 )
@@ -193,9 +203,15 @@ def _grid_anchor_lines(inp: StructureInput, page: int) -> dict[int, int]:
     start = 0
     for g, gcells in sorted(by_grid.items()):
         first = min(gcells, key=lambda x: (x["row"], x["col"]))
-        texts = [t for t in ((first["row_path"][0] if first["row_path"] else ""), first["raw"]) if t]
-        needles = [t.strip()[:40].lower() for t in texts]
-        hit = next((i for i in range(start, len(lines)) if any(n and n in lines[i] for n in needles)), None)
+        label = (first["row_path"][0] if first["row_path"] else "").strip()[:40].lower()
+        raw = (first["raw"] or "").strip()[:25].lower()
+        # the row's own line: the cell text, else the label on a line that also holds a
+        # number (a block heading may repeat the label: "(b) Metered Supply" above "Metered …")
+        hit = next((i for i in range(start, len(lines)) if raw and raw in lines[i]), None)
+        if hit is None and label:
+            hit = next((i for i in range(start, len(lines)) if label in lines[i] and re.search(r"\d", lines[i])), None)
+        if hit is None and label:
+            hit = next((i for i in range(start, len(lines)) if label in lines[i]), None)
         if hit is None:
             continue
         anchors[g] = hit
@@ -228,7 +244,7 @@ def _rate_block_for(inp: StructureInput, c: dict[str, Any]) -> str | None:
                 nxt = lines[j]
                 if not nxt:
                     continue
-                if _LETTERED.match(nxt):
+                if _LETTERED.match(nxt) or _TABLE_LINE.search(nxt):
                     break
                 parts.append(nxt)
                 if nxt.endswith(":"):
@@ -307,6 +323,15 @@ def rules_extract(inp: StructureInput) -> ExtractionOutput:
         if fy:
             period = f"FY{fy.group(1)}-{fy.group(2)[-2:]}"
         percent = c.get("per_unit") == "percent" or n.get("percent")
+        if state == "value" and not percent and not c.get("currency") and not c.get("per_unit") and comp == "charge":
+            # a bare number under a heading that names no charge: a serial number, a count,
+            # a year — never a tariff (HV-4's list of industries arrived as "charge 1, 2, 3")
+            out.missing.append(
+                f"page {c['page_index']} grid {c['grid_ordinal']} r{c['row']} c{c['col']}: "
+                "unitless number, no charge named"
+            )
+            continue
+        voltage = next((h for h in c["header_path"] if _VOLT_HDR.search(h)), None)
         cand = Candidate(
             family="retail_tariff",
             category_code=category,
@@ -327,6 +352,7 @@ def rules_extract(inp: StructureInput) -> ExtractionOutput:
                 time_band=f"{tb.group(1)}-{tb.group(2)}" if tb else None,
                 season=_season_for_page(inp, c["page_index"]) if tb else None,
                 description=desc,
+                voltage=voltage,
                 rate_block=rate_block,
             ),
             period=period,
@@ -402,7 +428,107 @@ def rules_extract(inp: StructureInput) -> ExtractionOutput:
         )
         out.candidates.append(cand)
     out.candidates.extend(prose_decisions(inp))
+    out.candidates = merge_duplicates(out.candidates)
     return out
+
+
+_UNIT_ALIAS = {"bhp": "hp", "unit": "kwh", "units": "kwh"}
+
+
+def canon_unit(u: str | None) -> str:
+    """Units that name the same thing: BHP and HP, unit and kWh."""
+    u = (u or "").strip().lower()
+    return _UNIT_ALIAS.get(u, u)
+
+
+def _dup_key(c: Candidate) -> tuple | None:
+    """What makes two readings the same printed fact: category, component, page, the value
+    with its sign and unit, and the row (time band, else the row label)."""
+    if c.value_state not in ("value", "zero") or c.family != "retail_tariff":
+        return None
+    a = c.applicability
+    try:
+        val = str(Decimal(c.value)) if c.value is not None else ""
+    except (InvalidOperation, TypeError):
+        val = c.value or ""
+    row = a.time_band or " | ".join(
+        norm_text(x)
+        for x in (
+            a.description,
+            a.voltage,
+            a.slab.original_text if a.slab else None,
+            a.load_band.original_text if a.load_band else None,
+        )
+        if x
+    )
+    return (
+        c.category_code or "",
+        c.component_type,
+        c.evidence[0].page_index,
+        val,
+        c.sign or 0,
+        canon_unit(c.per_unit),
+        c.frequency or "",
+        row,
+    )
+
+
+def _blocks_compatible(x: str | None, y: str | None) -> bool:
+    if not x or not y:
+        return True
+    lx, ly = block_letter(x), block_letter(y)
+    if lx == ly:
+        return True
+    # "LMV- 4 (A) - PUBLIC INSTITUTIONS" and "(A) Public Institutions"
+    return (lx.startswith("(") and lx in norm_text(y)) or (ly.startswith("(") and ly in norm_text(x))
+
+
+def merge_duplicates(cands: list[Candidate]) -> list[Candidate]:
+    """The same printed fact read twice — from the table and again from the clause text, or
+    from a table and its repeat under a second heading — becomes one candidate that cites
+    both places.  Only identical value, unit, sign, page and row merge, and only under
+    compatible lettered blocks; a cell-cited reading with a block is kept over a clause
+    reading.  Different values never merge: those stay for VAL-13 to flag."""
+    kept: list[Candidate] = []
+    by_key: dict[tuple, list[int]] = {}
+    for c in cands:
+        k = _dup_key(c)
+        if k is None:
+            kept.append(c)
+            continue
+        merged = False
+        for idx in by_key.get(k, []):
+            other = kept[idx]
+            if not _blocks_compatible(other.applicability.rate_block, c.applicability.rate_block):
+                continue
+            prefer_new = (c.evidence[0].kind == "cell" and other.evidence[0].kind != "cell") or (
+                bool(c.applicability.rate_block) and not other.applicability.rate_block
+            )
+            winner, loser = (c, other) if prefer_new else (other, c)
+            for ev in loser.evidence:
+                if ev not in winner.evidence:
+                    winner.evidence.append(ev)
+            if not winner.applicability.rate_block and loser.applicability.rate_block:
+                winner.applicability.rate_block = loser.applicability.rate_block
+            if not winner.applicability.slab and loser.applicability.slab:
+                winner.applicability.slab = loser.applicability.slab
+            winner.notes = (
+                (winner.notes or "")
+                + (" " if winner.notes else "")
+                + "Also printed at "
+                + (
+                    f"page {loser.evidence[0].page_index} line {loser.evidence[0].line_no}."
+                    if loser.evidence[0].kind != "cell"
+                    else f"page {loser.evidence[0].page_index} table {(loser.evidence[0].grid_ordinal or 0) + 1}."
+                )
+            )
+            kept[idx] = winner
+            merged = True
+            break
+        if not merged:
+            by_key.setdefault(k, []).append(len(kept))
+            kept.append(c)
+    return kept
 
 
 def prose_decisions(inp: StructureInput) -> list[Candidate]:
@@ -543,6 +669,20 @@ class Compared:
 _COMPARE_FIELDS = ("value", "value_state", "currency", "per_unit", "frequency", "sign", "decision_status")
 
 
+def _canon_field(field_name: str, v: Any) -> Any:
+    """Compare what the channels mean, not how they spelt it: 7.5 = 7.50, BHP = HP."""
+    if field_name == "value" and v is not None:
+        try:
+            return str(Decimal(str(v)).normalize())
+        except InvalidOperation:
+            return v
+    if field_name == "per_unit":
+        return canon_unit(v) or None
+    if field_name == "sign":
+        return v or 0
+    return v
+
+
 def _loose_key(c: Candidate) -> tuple[str, str, str, str, int]:
     """What both channels agree on however they label a row: family, category, component,
     the block letter and the page."""
@@ -592,7 +732,7 @@ def compare_channels(structure: ExtractionOutput | None, image: ExtractionOutput
         if match is not None:
             paired[sc.key()] = (sc, i_left.pop(match))
     for key, (sc, ic) in paired.items():
-        diff = [f for f in _COMPARE_FIELDS if getattr(sc, f) != getattr(ic, f)]
+        diff = [f for f in _COMPARE_FIELDS if _canon_field(f, getattr(sc, f)) != _canon_field(f, getattr(ic, f))]
         out.append(Compared(key, sc, ic, "disagree" if diff else "agree", diff))
     for k, sc in s_by.items():
         if k not in paired:

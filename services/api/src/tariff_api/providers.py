@@ -33,6 +33,7 @@ from .extraction import (
     PROMPT_VERSION,
     RULES_PROVIDER,
     StructureInput,
+    merge_duplicates,
     rules_extract,
     serialise_structure,
 )
@@ -230,6 +231,7 @@ def normalise_tool_output(obj: Any, key: str) -> Any:
     return obj
 
 
+_PLACEHOLDER = re.compile(r"^\s*(<[^>]*>|unknown|n/?a|none|null|-|\?|general)\s*$", re.I)
 _NOT_A_NUMBER = re.compile(r"^\s*(unknown|n/?a|nil|none|null|-|–|—|not applicable|not specified)?\s*$", re.I)
 
 
@@ -249,6 +251,9 @@ def coerce_candidates(obj: Any) -> tuple[Any, list[str]]:
         if not isinstance(c, dict):
             rejected.append(f"{i}: not an object")
             continue
+        cat = c.get("category_code")
+        if isinstance(cat, str) and _PLACEHOLDER.match(cat):
+            c["category_code"] = None  # "<UNKNOWN>", "N/A", "?": no category, never a code
         v = c.get("value")
         if isinstance(v, bool):
             v = None
@@ -434,6 +439,7 @@ class AnthropicProvider(ExtractionProvider):
             out = ExtractionOutput.model_validate(shaped)
         except ValidationError as e:
             raise ProviderUnavailable(f"provider output failed schema validation: {str(e)[:300]}", retry=False) from e
+        out.candidates = merge_duplicates(out.candidates)
         if cut_note:
             out.missing.append(cut_note)
         if rejected:

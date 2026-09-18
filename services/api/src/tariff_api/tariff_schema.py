@@ -76,7 +76,7 @@ DecisionStatus = Literal[
 Currency = Literal["rupees", "paise"]
 
 
-_LETTER = re.compile(r"^\s*\(?([a-z]|[ivx]{1,4}|\d{1,2})\)")
+_LETTER = re.compile(r"^\s*\(?([a-z]|[ivx]{1,4}|\d{1,2})\)", re.I)
 
 
 def norm_text(text: str) -> str:
