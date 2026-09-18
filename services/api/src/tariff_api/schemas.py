@@ -79,6 +79,13 @@ class SourceSummary(BaseModel):
     version: int
     created_at: datetime
     updated_at: datetime
+    assigned_to: str | None = None  # the reviewer responsible (increment 19)
+
+
+class AssignmentRequest(BaseModel):
+    """Who reviews this order.  Null clears the assignment."""
+
+    reviewer: str | None = Field(default=None, max_length=320)
 
 
 class JobSummary(BaseModel):
@@ -538,6 +545,8 @@ class ReviewQueueItem(BaseModel):
     batch: int
     blocked: int
     is_fixture: bool
+    assigned_to: str | None = None
+    open_categories: int = 0
 
 
 class ReviewQueue(BaseModel):

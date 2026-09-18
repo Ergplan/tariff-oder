@@ -1,6 +1,25 @@
 {
   "components": {
     "schemas": {
+      "AssignmentRequest": {
+        "description": "Who reviews this order.  Null clears the assignment.",
+        "properties": {
+          "reviewer": {
+            "anyOf": [
+              {
+                "maxLength": 320,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewer"
+          }
+        },
+        "title": "AssignmentRequest",
+        "type": "object"
+      },
       "AuditEventOut": {
         "properties": {
           "action": {
@@ -4976,6 +4995,17 @@
       },
       "ReviewQueueItem": {
         "properties": {
+          "assigned_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned To"
+          },
           "batch": {
             "title": "Batch",
             "type": "integer"
@@ -4994,6 +5024,11 @@
           "is_fixture": {
             "title": "Is Fixture",
             "type": "boolean"
+          },
+          "open_categories": {
+            "default": 0,
+            "title": "Open Categories",
+            "type": "integer"
           },
           "original_filename": {
             "title": "Original Filename",
@@ -5110,6 +5145,17 @@
             },
             "title": "Artefacts",
             "type": "array"
+          },
+          "assigned_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned To"
           },
           "content_type": {
             "title": "Content Type",
@@ -5945,6 +5991,17 @@
             "format": "date-time",
             "title": "Acquired At",
             "type": "string"
+          },
+          "assigned_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned To"
           },
           "created_at": {
             "format": "date-time",
@@ -9549,6 +9606,22 @@
               ],
               "title": "Dataset Kind"
             }
+          },
+          {
+            "in": "query",
+            "name": "assigned",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Assigned"
+            }
           }
         ],
         "responses": {
@@ -10344,6 +10417,120 @@
           }
         },
         "summary": "Get Source",
+        "tags": [
+          "sources"
+        ]
+      }
+    },
+    "/sources/{source_id}/assignment": {
+      "put": {
+        "description": "Assign the order to a reviewer (or clear it).  A reviewer may take an order for\nthemselves; assigning someone else needs an administrator.  Recorded in the audit trail;\nit never restricts who may decide.",
+        "operationId": "assign_reviewer_sources__source_id__assignment_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignmentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceSummary"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Assign Reviewer",
         "tags": [
           "sources"
         ]

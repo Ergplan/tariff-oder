@@ -170,7 +170,7 @@ def list_runs(source_id: uuid.UUID) -> ExtractionRunList:
 
 
 @router.get("/review/queue", response_model=ReviewQueue, dependencies=[Depends(require_analyst)])
-def review_queue(dataset_kind: str | None = None) -> ReviewQueue:
+def review_queue(dataset_kind: str | None = None, assigned: str | None = None) -> ReviewQueue:
     """Sources with pending candidates, with the individual / batch split (Section 6.10).
     Fixture sources are listed with their flag and never mixed into real counts."""
     with session_scope() as s:
@@ -194,6 +194,14 @@ def review_queue(dataset_kind: str | None = None) -> ReviewQueue:
                 continue
             if dataset_kind and src.dataset.kind.value != dataset_kind:
                 continue
+            if assigned and (src.assigned_to or "").lower() != assigned.strip().lower():
+                continue
+            open_cats = s.execute(
+                select(func.count(func.distinct(CandidateRecord.category_code))).where(
+                    CandidateRecord.source_id == src.id,
+                    CandidateRecord.review_status.in_(["pending", "awaiting_second_review"]),
+                )
+            ).scalar_one()
             items.append(
                 ReviewQueueItem(
                     source_id=src.id,
@@ -205,6 +213,8 @@ def review_queue(dataset_kind: str | None = None) -> ReviewQueue:
                     batch=int(row.batch or 0),
                     blocked=int(row.blocked or 0),
                     is_fixture=bool(row.is_fixture),
+                    assigned_to=src.assigned_to,
+                    open_categories=int(open_cats or 0),
                 )
             )
             total += int(row.pending)

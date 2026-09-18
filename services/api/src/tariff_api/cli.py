@@ -530,6 +530,44 @@ def cmd_page_dump(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_assign(args: argparse.Namespace) -> int:
+    """Assign an order to a reviewer (administrator, from the admin job).  The reviewer must
+    be an active user with the reviewer role or higher; `--clear` removes the assignment."""
+    import uuid
+
+    from .auth import ROLE_RANK, known_role
+    from .db import session_scope
+    from .models import AuditEvent, UserRole
+    from .services.sources import get_source
+
+    settings, _ = _adapters()
+    with session_scope() as s:
+        src = get_source(s, uuid.UUID(args.source_id))
+        reviewer = None if args.clear else (args.email or "").strip().lower()
+        if reviewer:
+            role = known_role(s, settings, reviewer)
+            if role is None or ROLE_RANK[role] < ROLE_RANK[UserRole.reviewer]:
+                print(
+                    json.dumps({"error": f"{reviewer} is not an active reviewer; add with: users add --role reviewer"})
+                )
+                return 2
+        before = src.assigned_to
+        src.assigned_to = reviewer
+        s.add(
+            AuditEvent(
+                actor=args.actor,
+                action="source.assign",
+                entity_type="source",
+                entity_id=str(src.id),
+                before={"assigned_to": before},
+                after={"assigned_to": reviewer},
+                reason="cli",
+            )
+        )
+        print(json.dumps({"source_id": args.source_id, "assigned_to": reviewer, "was": before}))
+    return 0
+
+
 def cmd_users(args: argparse.Namespace) -> int:
     """List users, or add/update one.  Role changes are audit events."""
     from sqlalchemy import select
@@ -665,6 +703,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("source_id")
     p.add_argument("--page", required=True)
     p.set_defaults(fn=cmd_page_dump)
+    p = sub.add_parser("assign-reviewer", help="assign an order to a reviewer (or --clear)")
+    p.add_argument("source_id")
+    p.add_argument("--email", default=None)
+    p.add_argument("--clear", action="store_true")
+    p.add_argument("--actor", required=True)
+    p.set_defaults(fn=cmd_assign)
     p = sub.add_parser("users", help="list users, or add/update one")
     p.add_argument("action", choices=["list", "add"])
     p.add_argument("--email")

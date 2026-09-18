@@ -385,3 +385,37 @@ def test_one_page_render_issues_a_view_per_candidate_on_that_page_and_those_view
         f"/sources/{src_id}/review/pages/{page}/image", params={"candidates": "nope"}, headers=headers(REVIEWER)
     )
     assert r.status_code == 422
+
+
+def test_an_order_is_assigned_to_a_reviewer_and_the_queue_filters_by_it(client, runner):
+    src_id = _to_review(client, runner, structure_order_pdf(), "SYNTHETIC_structure_assign.pdf")
+    # a reviewer takes it for themselves; an analyst cannot; assigning someone else needs an admin
+    r = client.put(f"/sources/{src_id}/assignment", json={"reviewer": REVIEWER}, headers=headers(REVIEWER))
+    assert r.status_code == 200 and r.json()["assigned_to"] == REVIEWER
+    assert (
+        client.put(f"/sources/{src_id}/assignment", json={"reviewer": REVIEWER}, headers=headers(ANALYST)).status_code
+        == 403
+    )
+    r = client.put(f"/sources/{src_id}/assignment", json={"reviewer": ADMIN}, headers=headers(REVIEWER))
+    assert r.status_code == 403
+    r = client.put(f"/sources/{src_id}/assignment", json={"reviewer": ANALYST}, headers=headers(ADMIN))
+    assert r.status_code == 422 and "not an active reviewer" in r.json()["detail"]
+    r = client.put(f"/sources/{src_id}/assignment", json={"reviewer": ADMIN}, headers=headers(ADMIN))
+    assert r.status_code == 200 and r.json()["assigned_to"] == ADMIN
+    q = client.get("/review/queue", params={"assigned": ADMIN}, headers=headers(ANALYST)).json()
+    item = next(i for i in q["items"] if i["source_id"] == src_id)
+    assert item["assigned_to"] == ADMIN and item["open_categories"] >= 1
+    assert not [
+        i
+        for i in client.get("/review/queue", params={"assigned": REVIEWER}, headers=headers(ANALYST)).json()["items"]
+        if i["source_id"] == src_id
+    ]
+    assert client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()["assigned_to"] == ADMIN
+    # cleared
+    r = client.put(f"/sources/{src_id}/assignment", json={"reviewer": None}, headers=headers(ADMIN))
+    assert r.status_code == 200 and r.json()["assigned_to"] is None
+    # the CLI path
+    from tariff_api.cli import main as cli_main
+
+    assert cli_main(["assign-reviewer", src_id, "--email", REVIEWER, "--actor", "ops"]) == 0
+    assert client.get(f"/sources/{src_id}", headers=headers(ANALYST)).json()["assigned_to"] == REVIEWER

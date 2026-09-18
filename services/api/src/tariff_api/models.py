@@ -276,6 +276,10 @@ class SourceDocument(Base):
     gridded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     structure_summary: Mapped[dict | None] = mapped_column(JSONB)
     # Milestone 4a: candidate extraction and validation (Sections 6.8-6.10)
+    # Review assignment (increment 19): the reviewer responsible for this order; the queue
+    # filters by it and the source page shows it.  Not an access control: any reviewer may
+    # still decide, and the second-review policy still needs a different reviewer.
+    assigned_to: Mapped[str | None] = mapped_column(String(320))
     extraction_version: Mapped[str | None] = mapped_column(String(80))
     extracted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     extraction_summary: Mapped[dict | None] = mapped_column(JSONB)

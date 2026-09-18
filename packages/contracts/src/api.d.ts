@@ -481,6 +481,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/{source_id}/assignment": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Assign Reviewer
+         * @description Assign the order to a reviewer (or clear it).  A reviewer may take an order for
+         *     themselves; assigning someone else needs an administrator.  Recorded in the audit trail;
+         *     it never restricts who may decide.
+         */
+        put: operations["assign_reviewer_sources__source_id__assignment_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sources/{source_id}/candidates": {
         parameters: {
             query?: never;
@@ -1097,6 +1119,14 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /**
+         * AssignmentRequest
+         * @description Who reviews this order.  Null clears the assignment.
+         */
+        AssignmentRequest: {
+            /** Reviewer */
+            reviewer?: string | null;
+        };
         /** AuditEventOut */
         AuditEventOut: {
             /** Action */
@@ -2838,6 +2868,8 @@ export interface components {
         };
         /** ReviewQueueItem */
         ReviewQueueItem: {
+            /** Assigned To */
+            assigned_to?: string | null;
             /** Batch */
             batch: number;
             /** Blocked */
@@ -2847,6 +2879,11 @@ export interface components {
             individual: number;
             /** Is Fixture */
             is_fixture: boolean;
+            /**
+             * Open Categories
+             * @default 0
+             */
+            open_categories: number;
             /** Original Filename */
             original_filename: string;
             /** Pending */
@@ -2898,6 +2935,8 @@ export interface components {
             acquired_at: string;
             /** Artefacts */
             artefacts: components["schemas"]["StageArtefactOut"][];
+            /** Assigned To */
+            assigned_to?: string | null;
             /** Content Type */
             content_type: string;
             /**
@@ -3101,6 +3140,8 @@ export interface components {
              * Format: date-time
              */
             acquired_at: string;
+            /** Assigned To */
+            assigned_to?: string | null;
             /**
              * Created At
              * Format: date-time
@@ -5352,6 +5393,7 @@ export interface operations {
     review_queue_review_queue_get: {
         parameters: {
             query?: {
+                assigned?: string | null;
                 dataset_kind?: string | null;
             };
             header?: never;
@@ -5712,6 +5754,95 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SourceDetail"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    assign_reviewer_sources__source_id__assignment_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AssignmentRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SourceSummary"];
                 };
             };
             /** @description Unauthorized */

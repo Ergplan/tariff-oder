@@ -69,3 +69,22 @@ def require_role(minimum: UserRole) -> Callable[[Principal], Principal]:
 require_analyst = require_role(UserRole.analyst)
 require_reviewer = require_role(UserRole.reviewer)
 require_admin = require_role(UserRole.administrator)
+
+
+def known_role(session, settings, email: str) -> UserRole | None:
+    """The role an email holds: the users table (every profile), else the local
+    allow-list when the deployment is not `gcp`.  None when the email is unknown."""
+    from sqlalchemy import select
+
+    from .models import User
+
+    email = (email or "").strip().lower()
+    if not email:
+        return None
+    user = session.execute(select(User).where(User.email == email, User.active.is_(True))).scalar_one_or_none()
+    if user is not None:
+        return user.role
+    if settings.deployment_profile != "gcp":
+        entry = settings.allowlist_entries().get(email)
+        return UserRole(entry) if entry else None
+    return None

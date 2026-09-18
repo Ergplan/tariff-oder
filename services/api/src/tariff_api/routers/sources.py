@@ -12,10 +12,11 @@ from sqlalchemy import func, select
 from .. import golden
 from ..adapters.identity import Principal
 from ..adapters.storage import ObjectNotFound, ObjectStore
-from ..auth import require_admin, require_analyst, require_reviewer
+from ..auth import ROLE_RANK, known_role, require_admin, require_analyst, require_reviewer
 from ..db import session_scope
 from ..errors import AppError
 from ..models import (
+    AuditEvent,
     ClauseValueRecord,
     DatasetKind,
     DocumentHeading,
@@ -29,8 +30,10 @@ from ..models import (
     StageArtefact,
     StructureCell,
     TableGridRecord,
+    UserRole,
 )
 from ..schemas import (
+    AssignmentRequest,
     ClauseValueList,
     ClauseValueOut,
     ExtractionSummary,
@@ -91,7 +94,41 @@ def _summary(src: SourceDocument) -> SourceSummary:
         version=src.version,
         created_at=src.created_at,
         updated_at=src.updated_at,
+        assigned_to=src.assigned_to,
     )
+
+
+@router.put("/{source_id}/assignment", response_model=SourceSummary)
+def assign_reviewer(
+    source_id: uuid.UUID, body: AssignmentRequest, request: Request, principal: Principal = Depends(require_reviewer)
+) -> SourceSummary:
+    """Assign the order to a reviewer (or clear it).  A reviewer may take an order for
+    themselves; assigning someone else needs an administrator.  Recorded in the audit trail;
+    it never restricts who may decide."""
+    reviewer = (body.reviewer or "").strip().lower() or None
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        if reviewer not in (None, principal.email.lower()) and principal.role != UserRole.administrator:
+            raise AppError("permission_denied", "only an administrator assigns an order to someone else")
+        if reviewer is not None:
+            role = known_role(s, request.app.state.settings, reviewer)
+            if role is None or ROLE_RANK[role] < ROLE_RANK[UserRole.reviewer]:
+                raise AppError("validation_failed", f"{reviewer} is not an active reviewer")
+        before = src.assigned_to
+        src.assigned_to = reviewer
+        s.add(
+            AuditEvent(
+                actor=principal.email,
+                action="source.assign",
+                entity_type="source",
+                entity_id=str(src.id),
+                before={"assigned_to": before},
+                after={"assigned_to": reviewer},
+                reason="review assignment",
+            )
+        )
+        s.flush()
+        return _summary(src)
 
 
 def job_summary(job: Job | None) -> JobSummary | None:
