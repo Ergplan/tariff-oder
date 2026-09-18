@@ -235,7 +235,8 @@ Sign-in is Google through IAP; roles live in the app.  Put one Google Group you 
 in `iap_members` (`"group:tariff-reviewers@aayuda.energy"`) and apply once; after that a
 new person is two steps with no Terraform: add them to the group, then add them on
 `/admin/users` with a role (analyst reads, reviewer decides, administrator uploads,
-assigns and manages users).  Orders are uploaded under a utility on the source inbox
+assigns and manages users).  Load the registry once with `make admin-dev ARGS=seed` (every commission and the
+distribution licensees; idempotent).  Orders are uploaded under a utility on the source inbox
 (the utility's active reading profile binds at once and the commission's reviewer is
 inherited); `/commissions` shows each commission's utilities, orders by state and
 reviewer, and an administrator assigns a commission to a reviewer there.  The worker

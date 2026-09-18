@@ -5189,6 +5189,17 @@
             "title": "Blocked",
             "type": "integer"
           },
+          "commission_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commission Code"
+          },
           "dataset_kind": {
             "$ref": "#/components/schemas/DatasetKind"
           },
@@ -5220,6 +5231,17 @@
           },
           "state": {
             "$ref": "#/components/schemas/SourceState"
+          },
+          "utility_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility Code"
           }
         },
         "required": [

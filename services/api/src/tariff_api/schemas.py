@@ -549,6 +549,8 @@ class ReviewQueueItem(BaseModel):
     is_fixture: bool
     assigned_to: str | None = None
     open_categories: int = 0
+    commission_code: str | None = None
+    utility_code: str | None = None
 
 
 class ReviewQueue(BaseModel):

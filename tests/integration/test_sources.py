@@ -177,7 +177,10 @@ def test_registry_seed_and_utility_creation(client):
 
     with session_scope() as s:
         created = seed_registry(s)
-    assert created == {"jurisdictions": 3, "commissions": 3, "utilities": 10}
+    from tariff_api.seed import REGISTRY
+
+    assert created == {k: len(REGISTRY[k]) for k in ("jurisdictions", "commissions", "utilities")}
+    assert created["commissions"] == 29 and created["utilities"] >= 60
     with session_scope() as s:
         assert seed_registry(s) == {"jurisdictions": 0, "commissions": 0, "utilities": 0}
     reg = client.get("/registry", headers=headers(ANALYST)).json()

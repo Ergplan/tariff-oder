@@ -3003,6 +3003,8 @@ export interface components {
             batch: number;
             /** Blocked */
             blocked: number;
+            /** Commission Code */
+            commission_code?: string | null;
             dataset_kind: components["schemas"]["DatasetKind"];
             /** Individual */
             individual: number;
@@ -3023,6 +3025,8 @@ export interface components {
              */
             source_id: string;
             state: components["schemas"]["SourceState"];
+            /** Utility Code */
+            utility_code?: string | null;
         };
         /** ReviewTelemetry */
         ReviewTelemetry: {

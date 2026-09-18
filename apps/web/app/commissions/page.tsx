@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { CommissionList, Me } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../components";
+import { AddUtility } from "./add-utility";
 import { CommissionAssign } from "./commission-assign";
 
 export const dynamic = "force-dynamic";
@@ -9,9 +10,9 @@ export const dynamic = "force-dynamic";
 const STATE_TONE: Record<string, string> = { awaiting_review: "warn", localised: "warn", published: "ok", failed: "bad", rejected: "bad" };
 
 /**
- * Commission folders: one card per commission with its utilities, their orders by state,
- * open values and the responsible reviewer.  Upload orders under a utility on the source
- * inbox; assign the commission here; the orders inherit the reviewer.
+ * Commissions, alphabetically, each with its distribution companies underneath: orders by
+ * state, an upload link per company, the commission's reviewer.  Upload an order under a
+ * company and it inherits the company's reading profile and the commission's reviewer.
  */
 export default async function CommissionsPage() {
   const [list, me] = await Promise.all([apiTry<CommissionList>("/commissions"), apiTry<Me>("/me")]);
@@ -24,75 +25,63 @@ export default async function CommissionsPage() {
     );
   }
   const isAdmin = me.data?.role === "administrator";
+  const commissions = [...list.data.commissions].sort((a, b) => a.jurisdiction_name.localeCompare(b.jurisdiction_name));
+  const totals = commissions.reduce((t, c) => ({ orders: t.orders + c.sources, open: t.open + c.open_values }), { orders: 0, open: 0 });
   return (
     <>
       <h1>Commissions</h1>
       <p className="muted">
-        One folder per regulatory commission. Upload orders under a utility on the <Link href="/sources">source inbox</Link>;
-        assign the commission to a reviewer here and its orders follow. Every order runs the same pipeline; a value is a
-        proposal until a reviewer decides.
+        {commissions.length} commissions · {totals.orders} orders registered · {totals.open} values open for review. Upload an order
+        against its distribution company; it takes the company&apos;s reading profile and the commission&apos;s reviewer. Nothing here
+        is a tariff value.
       </p>
-      <div className="cm-grid">
-        {list.data.commissions.map((c) => (
-          <section className="cm-card" key={c.id}>
-            <header>
+      <ol className="cm-list">
+        {commissions.map((c) => (
+          <li key={c.id} id={c.code}>
+            <div className="cm-head">
               <div>
-                <h2>{c.code}</h2>
-                <div className="muted">
-                  {c.name} · {c.jurisdiction_name}
-                </div>
+                <strong>{c.jurisdiction_name}</strong> · {c.code} <span className="muted">{c.name}</span>
               </div>
               <div className="cm-stats">
-                <span className="badge" data-tone={c.awaiting_review ? "warn" : "neutral"}>
-                  {c.sources} order{c.sources === 1 ? "" : "s"}
-                </span>{" "}
+                {c.sources ? (
+                  <span className="badge" data-tone={c.awaiting_review ? "warn" : "neutral"}>
+                    {c.sources} order{c.sources === 1 ? "" : "s"}
+                  </span>
+                ) : (
+                  <span className="badge" data-tone="neutral">no orders yet</span>
+                )}{" "}
                 {c.open_values ? <span className="badge" data-tone="warn">{c.open_values} open values</span> : null}
               </div>
-            </header>
+            </div>
             <CommissionAssign code={c.code} assignedTo={c.assigned_to} isAdmin={isAdmin} />
-            <table className="compact">
-              <thead>
-                <tr>
-                  <th>Utility</th>
-                  <th>Profile</th>
-                  <th>Orders</th>
-                </tr>
-              </thead>
-              <tbody>
-                {c.utilities.map((u) => (
-                  <tr key={u.code}>
-                    <td>
-                      <Link href={`/sources?utility=${encodeURIComponent(u.code)}`}>
-                        <strong>{u.code}</strong>
-                      </Link>{" "}
-                      <span className="muted">{u.name}</span>
-                    </td>
-                    <td className="mono muted">{u.active_reading_profile ?? "—"}</td>
-                    <td>
-                      {u.sources === 0 ? (
-                        <span className="muted">none yet</span>
-                      ) : (
-                        Object.entries(u.by_state).map(([st, n]) => (
-                          <span key={st} className="badge" data-tone={STATE_TONE[st] ?? "neutral"} style={{ marginRight: 4 }}>
-                            {n} {st.replace(/_/g, " ")}
-                          </span>
-                        ))
-                      )}
-                    </td>
-                  </tr>
-                ))}
-                {c.utilities.length === 0 ? (
-                  <tr>
-                    <td colSpan={3} className="muted">
-                      No utilities registered under this commission yet (add one on the Registry page).
-                    </td>
-                  </tr>
-                ) : null}
-              </tbody>
-            </table>
-          </section>
+            <ul className="cm-utils">
+              {c.utilities.map((u) => (
+                <li key={u.code}>
+                  <span className="mono">{u.code}</span> <span className="muted">{u.name}</span>
+                  {u.active_reading_profile ? <span className="badge" data-tone="ok" title="reading profile bound at upload">profile</span> : <span className="badge" data-tone="unknown" title="no reading profile yet: the first order will need localisation cues">no profile</span>}{" "}
+                  {Object.entries(u.by_state).map(([st, n]) => (
+                    <span key={st} className="badge" data-tone={STATE_TONE[st] ?? "neutral"}>
+                      {n} {st.replace(/_/g, " ")}
+                    </span>
+                  ))}{" "}
+                  <Link href={`/sources?utility=${encodeURIComponent(u.code)}#upload`}>upload an order</Link>
+                  {u.sources ? (
+                    <>
+                      {" · "}
+                      <Link href={`/sources?utility=${encodeURIComponent(u.code)}`}>orders</Link>
+                    </>
+                  ) : null}
+                </li>
+              ))}
+              {isAdmin ? (
+                <li>
+                  <AddUtility commissionCode={c.code} />
+                </li>
+              ) : null}
+            </ul>
+          </li>
         ))}
-      </div>
+      </ol>
     </>
   );
 }

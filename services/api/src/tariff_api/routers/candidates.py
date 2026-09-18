@@ -215,10 +215,12 @@ def review_queue(dataset_kind: str | None = None, assigned: str | None = None) -
                     is_fixture=bool(row.is_fixture),
                     assigned_to=src.assigned_to,
                     open_categories=int(open_cats or 0),
+                    commission_code=src.utility.commission.code if src.utility and src.utility.commission else None,
+                    utility_code=src.utility.code if src.utility else None,
                 )
             )
             total += int(row.pending)
-        items.sort(key=lambda i: (i.is_fixture, i.original_filename))
+        items.sort(key=lambda i: (i.is_fixture, i.commission_code or "~", i.utility_code or "~", i.original_filename))
         return ReviewQueue(items=items, total_pending=total)
 
 

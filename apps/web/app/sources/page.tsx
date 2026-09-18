@@ -1,5 +1,6 @@
+import { Fragment } from "react";
 import Link from "next/link";
-import type { RegistryOut, SourceList, SourceState } from "@tariff/contracts";
+import type { RegistryOut, SourceList, SourceState , SourceSummary } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, StateBadge, UnknownBadge } from "../components";
 import { UploadForm } from "./upload-form";
@@ -44,7 +45,20 @@ export default async function SourcesPage({ searchParams }: { searchParams: Prom
               </tr>
             </thead>
             <tbody>
-              {list.data.items.map((s) => (
+              {groupByCommission(list.data.items).map((g) => (
+                <Fragment key={g.key}>
+                  <tr className="group-row">
+                    <td colSpan={8}>
+                      <strong>{g.title}</strong> <span className="muted">· {g.items.length} order{g.items.length === 1 ? "" : "s"}</span>
+                      {g.code ? (
+                        <>
+                          {" · "}
+                          <Link href={`/commissions#${g.code}`}>commission</Link>
+                        </>
+                      ) : null}
+                    </td>
+                  </tr>
+                  {g.items.map((s) => (
                 <tr key={s.id}>
                   <td>
                     <Link href={`/sources/${s.id}`}>{s.original_filename}</Link>
@@ -79,6 +93,8 @@ export default async function SourcesPage({ searchParams }: { searchParams: Prom
                     <span className="muted">{new Date(s.acquired_at).toLocaleString()}</span>
                   </td>
                 </tr>
+                  ))}
+                </Fragment>
               ))}
             </tbody>
           </table>
@@ -86,9 +102,11 @@ export default async function SourcesPage({ searchParams }: { searchParams: Prom
       ) : null}
       <h2>Upload</h2>
       <p className="muted">
-        Upload a tariff order PDF. Identical bytes are deduplicated by SHA-256; the pipeline starts at inventory.
+        Upload a tariff order PDF under its distribution company (choose it on the <Link href="/commissions">Commissions</Link> page to
+        land here with it selected). Identical bytes are deduplicated by SHA-256; the pipeline starts at inventory.
       </p>
-      <UploadForm utilities={registry.data?.utilities ?? []} />
+      <div id="upload" />
+      <UploadForm utilities={registry.data?.utilities ?? []} preselect={typeof sp.utility === "string" ? sp.utility : undefined} />
     </>
   );
 }
@@ -123,4 +141,17 @@ function nextStep(state: SourceState, id: string) {
     default:
       return <span className="muted">worker: next stage</span>;
   }
+}
+
+/** Orders grouped by commission, alphabetically; orders without a utility last. */
+function groupByCommission(items: SourceSummary[]) {
+  const groups = new Map<string, { key: string; code: string | null; title: string; items: SourceSummary[] }>();
+  for (const s of items) {
+    const code = s.commission_code ?? null;
+    const key = code ?? "~none";
+    const g = groups.get(key) ?? { key, code, title: code ? code : "Not filed under a commission yet", items: [] };
+    g.items.push(s);
+    groups.set(key, g);
+  }
+  return [...groups.values()].sort((a, b) => (a.code === null ? 1 : b.code === null ? -1 : a.code.localeCompare(b.code)));
 }

@@ -94,3 +94,4 @@ export type CommissionSummary = components["schemas"]["CommissionSummary"];
 export type CommissionUtilitySummary = components["schemas"]["CommissionUtilitySummary"];
 export type CommissionList = components["schemas"]["CommissionList"];
 export type UtilityOut = components["schemas"]["UtilityOut"];
+export type ReviewQueueItem = components["schemas"]["ReviewQueueItem"];

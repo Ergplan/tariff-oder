@@ -9,7 +9,7 @@ import type { ErrorResponse, SourceRegistration, UtilityOut } from "@tariff/cont
  * registers exactly one source (Section 7.1, principle 8).  Nothing is rendered as done
  * until the backend confirms it (principle 3).
  */
-export function UploadForm({ utilities = [] }: { utilities?: UtilityOut[] }) {
+export function UploadForm({ utilities = [], preselect }: { utilities?: UtilityOut[]; preselect?: string }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<SourceRegistration | null>(null);
@@ -54,7 +54,7 @@ export function UploadForm({ utilities = [] }: { utilities?: UtilityOut[] }) {
       </label>
       <label>
         Utility (the order&apos;s distribution company; binds its reading profile and commission)
-        <select name="utility_code" defaultValue="" disabled={busy} required>
+        <select name="utility_code" defaultValue={preselect && utilities.some((u) => u.code === preselect) ? preselect : ""} disabled={busy} required>
           <option value="" disabled>
             choose a utility…
           </option>

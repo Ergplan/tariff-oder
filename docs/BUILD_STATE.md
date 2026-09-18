@@ -355,6 +355,18 @@ open-access view.
   (Nagar Nigam, Nagar Palika) into the row.  Not yet deployed; the worker already runs on
   a Cloud Scheduler every five minutes, so on dev "click extract" is: confirm the
   localisation and wait.
+  **Increment 21 (2026-09-18): every commission in the registry; commission-first screens.**
+  The seed now holds all 27 state commissions and the two joint commissions (Goa and
+  Union Territories; Manipur and Mizoram; Jammu & Kashmir and Ladakh as a joint
+  commission) with 70 distribution licensees under them, as identities only, names as
+  commonly used in 2026 and correctable on the Registry page; Telangana is TGERC with
+  TSERC as an alias, Arunachal Pradesh is APSERC to keep it apart from Andhra Pradesh's
+  APERC.  The Commissions page is an alphabetical list with each commission's
+  distribution companies underneath, an "upload an order" link per company that lands on
+  the inbox with the company preselected, the commission's reviewer, and an inline
+  "add a distribution company" for administrators.  The source inbox and the review
+  queue group orders by commission the same way (orders not filed under a company last).
+  `make admin-dev ARGS=seed` is idempotent and adds only what is missing.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1042,6 +1054,9 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+0000. **Operator, on the `tariff-order` VM (increment 21):** after the deploy below,
+   `make admin-dev ARGS=seed` once to load every commission and distribution company;
+   then the Commissions page is the place to upload from.
 000. **Operator, on the `tariff-order` VM (increment 20):** `git pull && make deploy-dev`
    (migration 0013), then in `infra/gcp/envs/dev.tfvars` replace the per-person
    `iap_members` with a Google Group you own (e.g. `"group:tariff-reviewers@aayuda.energy"`)

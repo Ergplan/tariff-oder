@@ -1,5 +1,6 @@
+import { Fragment } from "react";
 import Link from "next/link";
-import type { Me, ReviewQueue } from "@tariff/contracts";
+import type { Me, ReviewQueue , ReviewQueueItem } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, StateBadge } from "../components";
 
@@ -41,14 +42,21 @@ export default async function ReviewQueuePage({ searchParams }: { searchParams: 
                 <th>Source</th>
                 <th>Dataset</th>
                 <th>State</th>
-                <th>Reviewer</th>
+                <th>Utility · reviewer</th>
                 <th>Open values</th>
                 <th>Open categories</th>
                 <th>Blocked by checks</th>
               </tr>
             </thead>
             <tbody>
-              {q.data.items.map((i) => (
+              {groupQueue(q.data.items).map((g) => (
+                <Fragment key={g.key}>
+                  <tr className="group-row">
+                    <td colSpan={7}>
+                      <strong>{g.title}</strong> <span className="muted">· {g.items.length} order{g.items.length === 1 ? "" : "s"} · {g.open} values open</span>
+                    </td>
+                  </tr>
+                  {g.items.map((i) => (
                 <tr key={i.source_id}>
                   <td>
                     <Link href={`/sources/${i.source_id}`}>{i.original_filename}</Link>{" "}
@@ -63,11 +71,16 @@ export default async function ReviewQueuePage({ searchParams }: { searchParams: 
                   <td>
                     <StateBadge state={i.state} />
                   </td>
-                  <td>{i.assigned_to ?? <span className="muted">unassigned</span>}</td>
+                  <td>
+                    {i.utility_code ? <span className="mono">{i.utility_code} · </span> : null}
+                    {i.assigned_to ?? <span className="muted">unassigned</span>}
+                  </td>
                   <td className="mono">{i.pending}</td>
                   <td className="mono">{i.open_categories}</td>
                   <td className="mono">{i.blocked}</td>
                 </tr>
+                  ))}
+                </Fragment>
               ))}
             </tbody>
           </table>
@@ -75,4 +88,17 @@ export default async function ReviewQueuePage({ searchParams }: { searchParams: 
       )}
     </>
   );
+}
+
+/** Queue items grouped by commission, alphabetically; unfiled orders last. */
+function groupQueue(items: ReviewQueueItem[]) {
+  const groups = new Map<string, { key: string; title: string; open: number; items: ReviewQueueItem[] }>();
+  for (const i of items) {
+    const key = i.commission_code ?? "~none";
+    const g = groups.get(key) ?? { key, title: i.commission_code ?? "Not filed under a commission yet", open: 0, items: [] };
+    g.items.push(i);
+    g.open += i.pending;
+    groups.set(key, g);
+  }
+  return [...groups.values()].sort((a, b) => a.key.localeCompare(b.key));
 }
