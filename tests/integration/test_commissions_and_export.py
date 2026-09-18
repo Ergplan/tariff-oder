@@ -113,8 +113,9 @@ def test_an_order_exports_as_json_files_in_a_zip_and_to_the_export_bucket(client
     # the CLI writes the same files to the bucket and a local folder
     from tariff_api.cli import main as cli_main
 
-    assert cli_main(["export", src_id, "--out", str(tmp_path)]) == 0
-    local = next(tmp_path.iterdir())
+    out_dir = tmp_path / "exchange"
+    assert cli_main(["export", src_id, "--out", str(out_dir)]) == 0
+    local = next(out_dir.iterdir())
     assert (local / "source.json").is_file() and (local / "candidates.json").is_file()
     keys = [o.key for o in storage.list("exports", prefix="UPERC/NPCL/")]
     assert any(k.endswith("/candidates.json") for k in keys)
