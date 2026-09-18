@@ -315,6 +315,24 @@ open-access view.
   with them, a candidate on another page still refused).  The queue and the source page
   link to the table first.  Not yet used on real material: dev needs a deploy and the
   NPCL re-extraction from increment 17.
+  **Increment 19 (2026-09-18): what the first full NPCL table showed, and three reviewers.**
+  The table (283 values) read the rate schedules correctly but slowly for a reviewer:
+  the same rate read twice (table and clause: time-of-day rows, HV-3; a table repeated
+  under a second heading: LMV-4), slab labels missing from row names, HV-2's voltage lost
+  from column headings, plus and minus signs on time-of-day rates not shown, HV-4's list
+  of industries read as charges, BHP versus HP counted as a disagreement, "<UNKNOWN>" as
+  a category.  Rules 3 fixes each (duplicates merge into one candidate citing both
+  places; unitless numbers under no charge heading are skipped; a voltage column heading
+  becomes the row's voltage; block text stops at the table; unit aliases and trailing
+  zeros are equal to the comparison; placeholder categories are cleared), each with a
+  unit test on the shape seen.  The tariff table gained a category sidebar with progress,
+  denser cells, row labels that carry the slab, signs on percentages, the model's
+  one-line meaning under each value as the reviewer's cue, and "General provisions" for
+  values tied to no category.  Reviewer assignment: `assigned_to` on sources, a reviewer
+  takes an order or an administrator assigns one, the queue filters by assignee and shows
+  open categories per order, `tariff-api assign-reviewer` for the admin job.  Plan agreed
+  with the operator: three reviewers, one per ten commissions, in parallel.  Not yet
+  re-run on dev.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1002,6 +1020,12 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+00. **Operator, on the `tariff-order` VM (increment 19):** `git pull && make deploy-dev`
+   (runs migration 0012), re-extract NPCL (`make admin-dev ARGS=rerun,5f900540-a863-4f43-a570-7640114a190e,extract_source,--actor,bootstrap && make drain-dev`),
+   then add the reviewers: each email into `iap_members` in `infra/gcp/envs/dev.tfvars`
+   and `make tf-plan tf-apply ENV=dev`, then `make admin-dev ARGS=users,add,--email,<email>,--role,reviewer,--actor,<you>`,
+   then `make admin-dev ARGS=assign-reviewer,<source_id>,--email,<email>,--actor,<you>`
+   (or the reviewer clicks "Take it" on the source page).
 0. **Operator, on the `tariff-order` VM (increment 18):** `git pull && make deploy-dev`, then
    `make admin-dev ARGS=rerun,5f900540-a863-4f43-a570-7640114a190e,extract_source,--actor,bootstrap && make drain-dev`,
    then open the source and click "Open the tariff table": HV-1 should show two blocks of

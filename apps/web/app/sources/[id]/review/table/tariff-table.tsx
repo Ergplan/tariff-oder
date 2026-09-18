@@ -46,7 +46,20 @@ function blockLetter(block: string | null | undefined): string {
   return m ? `(${m[1].toLowerCase()})` : (block ?? "").trim().toLowerCase().slice(0, 80);
 }
 function rowLabel(a: Applic): string {
-  return a.description || a.voltage || a.slab?.original_text || a.load_band?.original_text || a.time_band || a.season || "Rate";
+  const parts = [a.description, a.voltage, a.slab?.original_text, a.load_band?.original_text, a.time_band, a.season]
+    .filter((x): x is string => !!x)
+    .map((x) => x.replace(/\s+/g, " ").trim());
+  const seen = new Set<string>();
+  const out = parts.filter((x) => {
+    const k = x.toLowerCase();
+    if (seen.has(k) || [...seen].some((y) => y.includes(k))) return false;
+    seen.add(k);
+    return true;
+  });
+  return out.join(" · ") || "Rate";
+}
+function isPlaceholder(code: string | null | undefined): boolean {
+  return !code || /^(\?|<[^>]*>|unknown|n\/?a|general)$/i.test(code.trim());
 }
 function isOpen(c: CandidateOut): boolean {
   return c.review_status === "pending" || c.review_status === "awaiting_second_review";
@@ -70,7 +83,12 @@ function buildGroups(cands: CandidateOut[]): Group[] {
   });
   const byGroup = new Map<string, Cell[]>();
   for (const c of cells) {
-    const k = c.cand.family === "retail_tariff" ? `retail:${c.cand.category_code ?? "?"}` : `family:${c.cand.family}`;
+    const k =
+      c.cand.family === "retail_tariff"
+        ? isPlaceholder(c.cand.category_code)
+          ? "general"
+          : `retail:${c.cand.category_code}`
+        : `family:${c.cand.family}`;
     (byGroup.get(k) ?? byGroup.set(k, []).get(k)!).push(c);
   }
   const groups: Group[] = [];
@@ -79,15 +97,16 @@ function buildGroups(cands: CandidateOut[]): Group[] {
     const pages = [...new Set(list.map((c) => c.page).filter(Boolean))].sort((a, b) => a - b);
     const blocksMap = new Map<string, Block>();
     for (const c of list) {
-      const bk = key.startsWith("retail:") ? blockLetter(c.a.rate_block) || "" : c.cand.category_code ?? "";
+      const retail = key.startsWith("retail:") || key === "general";
+      const bk = retail ? blockLetter(c.a.rate_block) || "" : c.cand.category_code ?? "";
       let block = blocksMap.get(bk);
       if (!block) {
-        block = { key: bk, label: key.startsWith("retail:") ? (c.a.rate_block ?? "").replace(/\s+/g, " ") || "Rates" : c.cand.category_code ?? "All categories", components: [], rows: [] };
+        block = { key: bk, label: retail ? (c.a.rate_block ?? "").replace(/\s+/g, " ") || "Rates" : c.cand.category_code ?? "All categories", components: [], rows: [] };
         blocksMap.set(bk, block);
       }
       const comp = c.cand.component_type;
       if (!block.components.includes(comp)) block.components.push(comp);
-      const label = key.startsWith("retail:") ? rowLabel(c.a) : [c.cand.category_code, c.a.voltage, c.a.description].filter(Boolean).join(" · ") || "Value";
+      const label = retail ? rowLabel(c.a) : [c.cand.category_code, c.a.voltage, c.a.description].filter(Boolean).join(" · ") || "Value";
       let row = block.rows.find((r) => r.label === label && !r.cells[comp]);
       if (!row) {
         row = { label, cells: {} };
@@ -100,14 +119,19 @@ function buildGroups(cands: CandidateOut[]): Group[] {
     groups.push({
       key,
       family,
-      title: key.startsWith("retail:") ? `Rate schedule ${list[0].cand.category_code ?? "?"}` : FAMILY_LABEL[family] ?? family,
+      title:
+        key === "general"
+          ? "General provisions (not tied to one category)"
+          : key.startsWith("retail:")
+            ? `Rate schedule ${list[0].cand.category_code}`
+            : FAMILY_LABEL[family] ?? family,
       subtitle: null,
       pages,
       blocks: [...blocksMap.values()],
       all: list,
     });
   }
-  const famOrder = (g: Group) => (g.family === "retail_tariff" ? 0 : 1);
+  const famOrder = (g: Group) => (g.key === "general" ? 1 : g.family === "retail_tariff" ? 0 : 2);
   groups.sort((x, y) => famOrder(x) - famOrder(y) || (x.pages[0] ?? 0) - (y.pages[0] ?? 0));
   return groups;
 }
@@ -262,16 +286,35 @@ export function TariffTable({
     return t;
   }, [cands]);
 
+  const pct = cands.length ? Math.round(((totals.approved + totals.rejected) / cands.length) * 100) : 0;
   return (
     <div className="tt">
-      <div className="tt-main">
-        <div className="tt-bar">
-          <span>
-            <strong>{totals.open}</strong> open · <strong>{totals.approved}</strong> approved · <strong>{totals.rejected}</strong> rejected
-            {totals.other ? ` · ${totals.other} need a decision` : ""}
-          </span>
-          {progress ? <span className="muted">{progress}</span> : null}
+      <nav className="tt-nav" aria-label="Categories">
+        <div className="tt-nav-head">
+          <div className="tt-progress" title={`${pct}% decided`}>
+            <span style={{ width: `${pct}%` }} />
+          </div>
+          <div className="muted">
+            {totals.open} open · {totals.approved} approved · {totals.rejected} rejected{totals.other ? ` · ${totals.other} undecided` : ""}
+          </div>
         </div>
+        <ol>
+          {groups.map((g) => {
+            const openHere = g.all.filter((c) => isOpen(c.cand)).length;
+            const done = g.all.length - openHere;
+            return (
+              <li key={g.key} data-done={openHere === 0 || undefined}>
+                <a href={`#${g.key}`}>{g.title.replace(/^Rate schedule /, "")}</a>
+                <span className="mono muted">
+                  {done}/{g.all.length}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
+      <div className="tt-main">
+        {progress ? <div className="tt-bar muted">{progress}</div> : null}
         {error ? (
           <div className="banner" data-tone="bad" role="alert">
             <strong>{error.message}</strong> {error.next_step}
@@ -341,9 +384,13 @@ export function TariffTable({
                               const blocking = fl.filter((f) => f.severity === "blocking");
                               const reasonHere = reason?.cid === c.id;
                               const st = c.review_status;
+                              const meaning = (c.record?.assessment as { meaning?: string; grounded?: boolean } | null)?.meaning;
                               return (
                                 <td key={comp} className="tt-cell" data-status={st} data-busy={busy === c.id || undefined}>
-                                  <div className="tt-val">{valueWords(cell.rec)}</div>
+                                  <div className="tt-val" title={cell.rec.rationale ?? ""}>
+                                    {valueWords(cell.rec)}
+                                  </div>
+                                  {meaning ? <div className="tt-cue muted">{meaning}</div> : null}
                                   <div className="tt-meta">
                                     <span className="badge" data-tone={badge.tone} title={badge.title}>
                                       {badge.text}
@@ -364,7 +411,9 @@ export function TariffTable({
                                   </div>
                                   <div className="tt-where muted" title={cell.rec.rationale ?? ""}>
                                     p. {cell.page}
-                                    {cell.rec.original_text && cell.rec.original_text !== cell.rec.value ? ` · “${cell.rec.original_text}”` : ""}
+                                    {cell.rec.original_text && cell.rec.original_text !== cell.rec.value
+                                      ? ` · “${cell.rec.original_text.length > 90 ? `${cell.rec.original_text.slice(0, 90)}…` : cell.rec.original_text}”`
+                                      : ""}
                                   </div>
                                   {open && isOpen(c) ? (
                                     <div className="tt-actions">
@@ -372,7 +421,7 @@ export function TariffTable({
                                         ✓ Approve
                                       </button>
                                       <button type="button" className="tt-btn bad" onClick={() => setReason({ cid: c.id, outcome: "reject", text: "" })} disabled={!!busy} title="Reject: the value is wrong or not a tariff">
-                                        ✗ Reject
+                                        ✗
                                       </button>
                                       <button type="button" className="tt-btn" onClick={() => setReason({ cid: c.id, outcome: "unresolved", text: "" })} disabled={!!busy} title="Leave a note; the value stays undecided">
                                         Note

@@ -44,6 +44,8 @@ export type Rec = {
   frequency?: string | null;
   decision_status?: string | null;
   reference_target?: string | null;
+  sign?: number | null;
+  adjustment_base?: string | null;
   conditions?: string[];
   evidence?: EvidenceRef[];
   applicability?: Record<string, unknown>;
@@ -99,14 +101,16 @@ const FREQ_WORD: Record<string, string> = { per_month: "per month", per_annum: "
 /** "Rs 6.50 per kWh per month", "Zero (nil)", "Not applicable", "By reference: …". */
 export function valueWords(rec: Rec): string {
   const st = rec.value_state;
-  if (st === "zero") return "Zero (nil)";
+  const pct = rec.per_unit === "percent";
+  const sign = typeof rec.sign === "number" ? (rec.sign < 0 ? "−" : rec.sign > 0 ? "+" : "") : "";
+  if (st === "zero") return pct ? "0%" : "Zero (nil)";
   if (st === "not_applicable") return "Not applicable";
   if (st === "absent_in_source") return rec.reference_target ? `By reference: ${rec.reference_target}` : "Not stated in the order";
   if (st === "cross_reference" || st === "unchanged_reference") return `Refers to: ${rec.reference_target ?? rec.original_text ?? "another instrument"}`;
   if (st === "formula") return `Formula: ${rec.original_text ?? ""}`;
   if (rec.value == null) return st ?? "unknown";
   const unit = rec.per_unit ? UNIT_WORD[rec.per_unit] ?? `per ${rec.per_unit}` : "";
-  if (rec.per_unit === "percent") return `${rec.value}%`;
+  if (pct) return `${sign}${rec.value}%${rec.adjustment_base ? ` of ${rec.adjustment_base}` : ""}`;
   const cur = rec.currency === "paise" ? "paise" : rec.currency === "rupees" ? "Rs" : "";
   return [cur, rec.value, unit, rec.frequency ? FREQ_WORD[rec.frequency] ?? rec.frequency : ""].filter(Boolean).join(" ");
 }

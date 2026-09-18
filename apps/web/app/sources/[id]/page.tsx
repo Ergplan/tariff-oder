@@ -6,9 +6,11 @@ import type {
   LocalisationOut,
   SourceDetail,
   SourcePageList,
+  Me,
   StructureCellList,
 } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
+import { AssignForm } from "./assign-form";
 import { DatasetBadge, ErrorBanner, JobBadge, StageTrack, StateBadge, UnknownBadge } from "../../components";
 import { AutoRefresh } from "./auto-refresh";
 import { LocalisationForm } from "./localisation-form";
@@ -35,6 +37,7 @@ export default async function SourceDetailPage({
   const sp = await searchParams;
   const allPages = sp.pages === "all";
   const detail = await apiTry<SourceDetail>(`/sources/${id}`);
+  const me = await apiTry<Me>("/me");
   if (detail.error || !detail.data) {
     return (
       <>
@@ -133,6 +136,7 @@ export default async function SourceDetailPage({
           <Link href={`/sources/${id}/review/table`}>Open the tariff table</Link> (approve, reject or note every value) or the{" "}
           <Link href={`/sources/${id}/review`}>one-at-a-time workspace</Link> — every value is a proposal until a reviewer
           decides. <Link href={`/sources/${id}/publish`}>Publish a release</Link> once the checklist allows.
+          {me.data ? <AssignForm sourceId={id} assignedTo={s.assigned_to ?? null} me={me.data.email} isAdmin={me.data.role === "administrator"} /> : null}
         </>
       ),
     };

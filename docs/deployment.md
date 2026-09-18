@@ -229,6 +229,17 @@ budget (`PROVIDER_MAX_COST_PER_ORDER_USD`, default 5) stops a run that exceeds i
 skipped to fit.  A key pasted anywhere other than that prompt is compromised: rotate it in the
 Anthropic console and add the new version the same way.
 
+### Adding reviewers and assigning orders
+
+Three steps per reviewer, all on the VM: (1) add the Google account to `iap_members` in
+`infra/gcp/envs/dev.tfvars` and `make tf-plan tf-apply ENV=dev` so IAP lets them in;
+(2) `make admin-dev ARGS=users,add,--email,<email>,--role,reviewer,--actor,<you>` so the API
+knows their role; (3) assign orders with
+`make admin-dev ARGS=assign-reviewer,<source_id>,--email,<email>,--actor,<you>`, or let the
+reviewer click "Take it" on the source page.  The review queue's "Only mine" link filters
+by assignee.  Assignment never restricts who may decide; the second-review policy still
+requires a different reviewer for the second approval.
+
 ### Diagnosing one page without the browser
 
 `make admin-dev ARGS=page-dump,<source_id>,--page,<n>` prints, as one JSON line, the primary
