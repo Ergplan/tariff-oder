@@ -89,3 +89,8 @@ export const PIPELINE_STATES: SourceState[] = [
   "published",
 ];
 export const EXCEPTION_STATES: SourceState[] = ["failed", "cancelled", "rejected", "superseded", "needs_reprocessing"];
+export type UserOut = components["schemas"]["UserOut"];
+export type CommissionSummary = components["schemas"]["CommissionSummary"];
+export type CommissionUtilitySummary = components["schemas"]["CommissionUtilitySummary"];
+export type CommissionList = components["schemas"]["CommissionList"];
+export type UtilityOut = components["schemas"]["UtilityOut"];

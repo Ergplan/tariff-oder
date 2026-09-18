@@ -126,7 +126,9 @@ table.rw-grid td[data-cited] { outline: 3px solid #f2b705; background: #fff8e6; 
 .rw-assess[data-verdict="contradicted"] { border-left-color: var(--bad); }
 .rw-assess[data-verdict="uncertain"] { border-left-color: var(--warn); }
 /* Tariff table review */
-.tt { display: grid; grid-template-columns: 200px minmax(0, 1fr) 360px; gap: 1rem; align-items: start; }
+.tt { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 1rem; align-items: start; }
+.tt[data-page] { grid-template-columns: 200px minmax(0, 1fr) 380px; }
+.tt-page-head { display: flex; justify-content: space-between; gap: 0.5rem; align-items: center; }
 .tt-nav { position: sticky; top: 0.5rem; max-height: 94vh; overflow: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; }
 .tt-nav-head { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
 .tt-progress { height: 6px; background: #e6e6e1; border-radius: 3px; overflow: hidden; margin-bottom: 0.35rem; }
@@ -179,5 +181,13 @@ table.tt-grid tr:nth-child(even) td { background: #fbfbfa; }
 .assign { margin-top: 0.5rem; font-size: 0.9rem; }
 .assign-admin { display: inline-flex; gap: 0.3rem; margin-left: 0.5rem; }
 .assign-admin input { font: inherit; font-size: 0.85rem; padding: 0.2rem 0.4rem; }
-@media (max-width: 1200px) { .tt { grid-template-columns: 180px minmax(0, 1fr); } .tt-page { grid-column: 1 / -1; position: static; max-height: 26rem; } }
+@media (max-width: 1200px) { .tt, .tt[data-page] { grid-template-columns: 180px minmax(0, 1fr); } .tt-page { grid-column: 1 / -1; position: static; max-height: 26rem; } }
 @media (max-width: 800px) { .tt { grid-template-columns: minmax(0, 1fr); } .tt-nav { position: static; max-height: 12rem; } }
+.cm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 1rem; }
+.cm-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem 0.9rem; }
+.cm-card header { display: flex; justify-content: space-between; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.4rem; }
+.cm-card h2 { margin: 0; font-size: 1.05rem; }
+.cm-card table { margin-top: 0.5rem; }
+.users-add { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: flex-end; margin-bottom: 0.75rem; }
+.users-add label { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.85rem; }
+.users-add input, .users-add select { font: inherit; padding: 0.3rem 0.4rem; }

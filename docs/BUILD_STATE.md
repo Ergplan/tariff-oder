@@ -333,6 +333,28 @@ open-access view.
   open categories per order, `tariff-api assign-reviewer` for the admin job.  Plan agreed
   with the operator: three reviewers, one per ten commissions, in parallel.  Not yet
   re-run on dev.
+  **Increment 20 (2026-09-18): commission folders, users in the app, JSON export.**  The
+  operator's target: aayuda.energy creates users, makes one folder per commission, uploads
+  each distribution company's orders there, assigns commissions to reviewers, and hands
+  whole orders to engineering as files rather than pasted screens.  Built: an order
+  belongs to a utility (`utility_id`, migration 0013; chosen on the upload form or named
+  on ingest), the utility's active reading profile binds at registration (no detection,
+  no CLI) and the commission's reviewer is inherited; `/commissions` lists each
+  commission with its utilities, orders by state, open values and reviewer, and an
+  administrator assigns a commission with cascade to its unassigned orders; `/admin/users`
+  adds, re-roles and disables users through the existing audited endpoints; the source
+  list filters by commission, utility and assignee; `GET /sources/{id}/export.zip`, the
+  "Download everything as JSON" link and `tariff-api export` write the whole pipeline
+  state as JSON files (bucket under `COMMISSION/UTILITY/`, local folder, or zip), and
+  `exchange/` in the repo is the agreed place to commit them for engineering.  Sign-in
+  stays Google through IAP: the recommended set-up is one Google Group in `iap_members`
+  so the app's user list and the group are the only two places to add a person.  The
+  tariff table hides the page panel until a page is shown.  Rules 3 also merges
+  duplicates across row spellings and families, skips serial-number columns even when a
+  unit was bound from the notes, and carries column headings that name a consumer group
+  (Nagar Nigam, Nagar Palika) into the row.  Not yet deployed; the worker already runs on
+  a Cloud Scheduler every five minutes, so on dev "click extract" is: confirm the
+  localisation and wait.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1020,6 +1042,15 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+000. **Operator, on the `tariff-order` VM (increment 20):** `git pull && make deploy-dev`
+   (migration 0013), then in `infra/gcp/envs/dev.tfvars` replace the per-person
+   `iap_members` with a Google Group you own (e.g. `"group:tariff-reviewers@aayuda.energy"`)
+   and `make tf-plan tf-apply ENV=dev`; from then on a new person is: add to the group,
+   add on `/admin/users`.  Register the existing three orders under their utilities so the
+   commission folders fill: `make admin-dev ARGS=sources` for the ids, then for each the
+   assignment is one `PUT /sources/{id}/assignment` from the page or the CLI; new uploads
+   choose the utility on the form.  Share an order with engineering: download the zip from
+   the source page, unzip into `exchange/<COMMISSION>/`, commit, push.
 00. **Operator, on the `tariff-order` VM (increment 19):** `git pull && make deploy-dev`
    (runs migration 0012), re-extract NPCL (`make admin-dev ARGS=rerun,5f900540-a863-4f43-a570-7640114a190e,extract_source,--actor,bootstrap && make drain-dev`),
    then add the reviewers: each email into `iap_members` in `infra/gcp/envs/dev.tfvars`

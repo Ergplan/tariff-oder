@@ -229,6 +229,22 @@ budget (`PROVIDER_MAX_COST_PER_ORDER_USD`, default 5) stops a run that exceeds i
 skipped to fit.  A key pasted anywhere other than that prompt is compromised: rotate it in the
 Anthropic console and add the new version the same way.
 
+### Users, commissions and the exchange folder (increment 20)
+
+Sign-in is Google through IAP; roles live in the app.  Put one Google Group you control
+in `iap_members` (`"group:tariff-reviewers@aayuda.energy"`) and apply once; after that a
+new person is two steps with no Terraform: add them to the group, then add them on
+`/admin/users` with a role (analyst reads, reviewer decides, administrator uploads,
+assigns and manages users).  Orders are uploaded under a utility on the source inbox
+(the utility's active reading profile binds at once and the commission's reviewer is
+inherited); `/commissions` shows each commission's utilities, orders by state and
+reviewer, and an administrator assigns a commission to a reviewer there.  The worker
+runs on Cloud Scheduler every five minutes, so after a reviewer confirms the localisation
+the extraction runs by itself.  To hand an order to engineering, click "Download
+everything as JSON (zip)" on the source page and commit the unzipped folder under
+`exchange/<COMMISSION>/` in this repository (see `exchange/README.md`);
+`make admin-dev ARGS=export,<source_id>` writes the same files to the export bucket.
+
 ### Adding reviewers and assigning orders
 
 Three steps per reviewer, all on the VM: (1) add the Google account to `iap_members` in

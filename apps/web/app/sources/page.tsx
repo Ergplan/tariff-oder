@@ -1,16 +1,25 @@
 import Link from "next/link";
-import type { SourceList, SourceState } from "@tariff/contracts";
+import type { RegistryOut, SourceList, SourceState } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, StateBadge, UnknownBadge } from "../components";
 import { UploadForm } from "./upload-form";
 
 export const dynamic = "force-dynamic";
 
-export default async function SourcesPage() {
-  const list = await apiTry<SourceList>("/sources?limit=200");
+export default async function SourcesPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const sp = await searchParams;
+  const qs = new URLSearchParams({ limit: "200" });
+  for (const k of ["commission", "utility", "assigned"]) if (typeof sp[k] === "string" && sp[k]) qs.set(k, sp[k] as string);
+  const [list, registry] = await Promise.all([apiTry<SourceList>(`/sources?${qs.toString()}`), apiTry<RegistryOut>("/registry")]);
   return (
     <>
       <h1>Source inbox</h1>
+      {qs.has("commission") || qs.has("utility") || qs.has("assigned") ? (
+        <p className="muted">
+          Filtered: {[qs.get("commission"), qs.get("utility"), qs.get("assigned")].filter(Boolean).join(" · ")} ·{" "}
+          <Link href="/sources">show all</Link>
+        </p>
+      ) : null}
       <p className="muted">
         Every registered tariff order and where it stands. Open a source to see what it needs next; the source page leads
         with the one action that is yours.
@@ -27,6 +36,8 @@ export default async function SourcesPage() {
                 <th>File</th>
                 <th>Dataset</th>
                 <th>State</th>
+                <th>Commission · utility</th>
+                <th>Reviewer</th>
                 <th>Pages</th>
                 <th>Next</th>
                 <th>Uploaded</th>
@@ -49,6 +60,17 @@ export default async function SourcesPage() {
                   <td>
                     <StateBadge state={s.state} />
                   </td>
+                  <td>
+                    {s.commission_code ? (
+                      <>
+                        <Link href={`/sources?commission=${encodeURIComponent(s.commission_code)}`}>{s.commission_code}</Link> ·{" "}
+                        <span className="mono">{s.utility_code}</span>
+                      </>
+                    ) : (
+                      <span className="muted">not set</span>
+                    )}
+                  </td>
+                  <td>{s.assigned_to ?? <span className="muted">—</span>}</td>
                   <td>{s.page_count ?? <UnknownBadge label="pages" />}</td>
                   <td>{nextStep(s.state, s.id)}</td>
                   <td>
@@ -66,7 +88,7 @@ export default async function SourcesPage() {
       <p className="muted">
         Upload a tariff order PDF. Identical bytes are deduplicated by SHA-256; the pipeline starts at inventory.
       </p>
-      <UploadForm />
+      <UploadForm utilities={registry.data?.utilities ?? []} />
     </>
   );
 }

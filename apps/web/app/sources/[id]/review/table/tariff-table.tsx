@@ -288,7 +288,7 @@ export function TariffTable({
 
   const pct = cands.length ? Math.round(((totals.approved + totals.rejected) / cands.length) * 100) : 0;
   return (
-    <div className="tt">
+    <div className="tt" data-page={pageImage ? "1" : undefined}>
       <nav className="tt-nav" aria-label="Categories">
         <div className="tt-nav-head">
           <div className="tt-progress" title={`${pct}% decided`}>
@@ -468,17 +468,18 @@ export function TariffTable({
           );
         })}
       </div>
-      <aside className="tt-page">
-        {pageImage ? (
-          <>
-            <div className="muted">Page {pageImage.page} as printed; cited tables outlined. Seeing this is what allows approval.</div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={pageImage.url} alt={`Page ${pageImage.page} with the cited tables outlined`} />
-          </>
-        ) : (
-          <div className="muted">Click a page number, or approve a value, to see the page here with its tables outlined.</div>
-        )}
-      </aside>
+      {pageImage ? (
+        <aside className="tt-page">
+          <div className="tt-page-head">
+            <span className="muted">Page {pageImage.page} as printed, cited tables outlined. Seeing it is what allows approval.</span>
+            <button type="button" className="tt-btn" onClick={() => setPageImage(null)} title="Hide the page and widen the table">
+              Hide
+            </button>
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={pageImage.url} alt={`Page ${pageImage.page} with the cited tables outlined`} />
+        </aside>
+      ) : null}
     </div>
   );
 }

@@ -16,11 +16,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <span className="brand">Tariff Order Intelligence</span>
           <nav aria-label="Primary">
             <Link href="/">Status</Link>
+            <Link href="/commissions">Commissions</Link>
             <Link href="/sources">Source inbox</Link>
             <Link href="/review">Review</Link>
             <Link href="/explorer">Explorer</Link>
             <Link href="/jobs">Jobs</Link>
             <Link href="/registry">Registry</Link>
+            <Link href="/admin/users">Users</Link>
           </nav>
           <span className="badge" data-tone={PROFILE === "gcp" ? "ok" : "neutral"} title="Deployment profile">
             profile: {PROFILE}

@@ -171,6 +171,14 @@ export default async function SourceDetailPage({
       <h1>
         {s.original_filename} <DatasetBadge kind={s.dataset_kind} /> <StateBadge state={s.state} />
       </h1>
+      <p className="muted">
+        {s.commission_code ? (
+          <>
+            <Link href={`/commissions`}>{s.commission_code}</Link> · <span className="mono">{s.utility_code}</span> ·{" "}
+          </>
+        ) : null}
+        <a href={`/api/sources/${id}/export`}>Download everything as JSON (zip)</a>
+      </p>
       {s.dataset_kind === "fixture" ? (
         <div className="banner" data-tone="fixture">
           Fixture dataset: synthetic or test material. Never joined with real-utility data.

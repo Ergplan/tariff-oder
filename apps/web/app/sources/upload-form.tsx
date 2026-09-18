@@ -2,14 +2,14 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import type { ErrorResponse, SourceRegistration } from "@tariff/contracts";
+import type { ErrorResponse, SourceRegistration, UtilityOut } from "@tariff/contracts";
 
 /**
  * Upload form.  Sends an Idempotency-Key so a double submit or a retry after a timeout
  * registers exactly one source (Section 7.1, principle 8).  Nothing is rendered as done
  * until the backend confirms it (principle 3).
  */
-export function UploadForm() {
+export function UploadForm({ utilities = [] }: { utilities?: UtilityOut[] }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<SourceRegistration | null>(null);
@@ -51,6 +51,19 @@ export function UploadForm() {
       <label>
         PDF file
         <input type="file" name="file" accept="application/pdf" required disabled={busy} />
+      </label>
+      <label>
+        Utility (the order&apos;s distribution company; binds its reading profile and commission)
+        <select name="utility_code" defaultValue="" disabled={busy} required>
+          <option value="" disabled>
+            choose a utility…
+          </option>
+          {utilities.map((u) => (
+            <option key={u.code} value={u.code}>
+              {u.code} — {u.name}
+            </option>
+          ))}
+        </select>
       </label>
       <label>
         Dataset
