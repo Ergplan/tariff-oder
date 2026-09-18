@@ -194,6 +194,60 @@ def candidate_evidence_image(
     )
 
 
+@router.get(
+    "/sources/{source_id}/review/pages/{page_index}/image",
+    responses={200: {"content": {"image/png": {}}, "description": "the page with every cited table outlined"}},
+)
+def review_page_image(
+    source_id: uuid.UUID,
+    page_index: int,
+    request: Request,
+    candidates: str = Query(..., description="comma-separated candidate ids whose evidence is on this page"),
+    principal: Principal = Depends(require_reviewer),
+):
+    """One render of the page for a block of candidates (the tariff-table screen): each
+    candidate whose primary evidence is on the page gets its own evidence view, returned in
+    ``X-Evidence-View-Ids`` as a JSON map; ``X-Evidence-Skipped`` lists the ids whose
+    evidence is elsewhere.  Views are issued only here, only to the reviewer who receives
+    the bytes, exactly as for the single-candidate image."""
+    ids: list[uuid.UUID] = []
+    for part in candidates.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        try:
+            ids.append(uuid.UUID(part))
+        except ValueError as e:
+            raise AppError("validation_failed", f"not a candidate id: {part[:40]}") from e
+    if not ids or len(ids) > 200:
+        raise AppError("validation_failed", "between 1 and 200 candidate ids")
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        cands = (
+            s.execute(
+                select(CandidateRecord).where(CandidateRecord.source_id == source_id, CandidateRecord.id.in_(ids))
+            )
+            .scalars()
+            .all()
+        )
+        if len(cands) != len(set(ids)):
+            raise AppError("not_found", "a candidate id is not on this source")
+        png, views, skipped = rv.render_page_for(
+            s, storage, request.app.state.settings, src, page_index, list(cands), viewer=principal.email
+        )
+    return Response(
+        content=png,
+        media_type="image/png",
+        headers={
+            "X-Evidence-View-Ids": json.dumps(views),
+            "X-Evidence-Skipped": json.dumps(skipped),
+            "X-Evidence-Page": str(page_index),
+            "Cache-Control": "private, no-store",
+        },
+    )
+
+
 @router.post("/candidates/{candidate_id}/decision", response_model=DecisionResult)
 def decide_candidate(
     candidate_id: uuid.UUID,

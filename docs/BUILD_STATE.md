@@ -298,6 +298,23 @@ open-access view.
   reading no longer produces is tagged `stale_reading` (the 7.70/kVAh "fixed charge"
   approved once on 2026-09-17 is such a row: reject it in the queue).  Proven on a
   synthetic copy of page 384's text and grids; not yet re-run on dev.
+  **Increment 18 (2026-09-18): the tariff table.**  The operator's verdict after the first
+  real HV-1 review: one candidate at a time will not scale to 28 states.  New screen
+  `/sources/<id>/review/table`: one card per category in document order, one grid per
+  lettered block, rows as printed, fixed / demand / energy / other charges as columns;
+  every value shows its words, whether the two readings agree (or what the model read
+  instead), its review status, blocking checks and the model check's disagreement; approve,
+  reject (with a recorded reason) and note (recorded, value stays undecided) on every
+  cell; "Approve all agreeing" per category; "Change" hands off to the one-at-a-time
+  workspace for corrections.  The rendered-evidence rule is kept, not bypassed: a new
+  endpoint renders a page once with every cited table outlined and issues one evidence
+  view per candidate on that page (`GET /sources/{id}/review/pages/{n}/image?candidates=`),
+  the screen shows that page beside the table before any value on it can be approved,
+  and each decision still goes through the same decision endpoint with its version, view
+  id and audit event (integration test: views issued per candidate, decisions accepted
+  with them, a candidate on another page still refused).  The queue and the source page
+  link to the table first.  Not yet used on real material: dev needs a deploy and the
+  NPCL re-extraction from increment 17.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -985,7 +1002,12 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-1. **Operator, on the `tariff-order` VM (increment 17):** `git pull && make tf-plan tf-apply
+0. **Operator, on the `tariff-order` VM (increment 18):** `git pull && make deploy-dev`, then
+   `make admin-dev ARGS=rerun,5f900540-a863-4f43-a570-7640114a190e,extract_source,--actor,bootstrap && make drain-dev`,
+   then open the source and click "Open the tariff table": HV-1 should show two blocks of
+   two rows with fixed and energy charges, most values "2 readings agree"; approve, reject
+   or note them there.  Reject the row tagged `stale`.
+1. **Operator, on the `tariff-order` VM (increment 17, done 2026-09-17/18):** `git pull && make tf-plan tf-apply
    ENV=dev` (adds `SECOND_REVIEW_FIRST_ORDER=false` to the services; expect only env changes),
    `make deploy-dev`, then re-run NPCL from parse so the page-316 split and the divider rows
    take effect: `make admin-dev ARGS=rerun,5f900540-a863-4f43-a570-7640114a190e,parse_source,--actor,bootstrap`

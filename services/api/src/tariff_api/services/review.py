@@ -450,6 +450,80 @@ def render_evidence(
     return png, view, meta
 
 
+def render_page_for(
+    session: Session,
+    storage: ObjectStore,
+    settings: Settings,
+    source: SourceDocument,
+    page_index: int,
+    cands: list[CandidateRecord],
+    *,
+    viewer: str,
+) -> tuple[bytes, dict[str, str], list[str]]:
+    """Render one page once with every cited table outlined and record a view for each
+    candidate whose primary evidence is on that page — the tariff-table screen shows a
+    reviewer the page for a whole block before they approve its values.  Returns the PNG,
+    `{candidate_id: view_id}` and the ids of candidates skipped because their primary
+    evidence is on another page (those need their own render)."""
+    try:
+        data = storage.get(ObjectStore.SOURCES, source.object_key)
+    except ObjectNotFound as e:
+        raise AppError("storage_unavailable", "object missing for registered source") from e
+    try:
+        doc = open_document(data)
+    except NotAPdf as e:
+        raise AppError("source_unreadable", str(e)) from e
+    if page_index < 1 or page_index > doc.page_count:
+        raise AppError("validation_failed", f"page {page_index} is outside the document ({doc.page_count} pages)")
+    page = doc[page_index - 1]
+    grids = {
+        g.ordinal: g
+        for g in session.execute(
+            select(TableGridRecord).where(
+                TableGridRecord.source_id == source.id,
+                TableGridRecord.page_index == page_index,
+                TableGridRecord.is_primary.is_(True),
+            )
+        ).scalars()
+    }
+    outlined: set[int] = set()
+    views: dict[str, str] = {}
+    skipped: list[str] = []
+    shape = page.new_shape()
+    for cand in cands:
+        record = Candidate.model_validate(cand.effective_record)
+        ref = record.evidence[0]
+        if ref.page_index != page_index:
+            skipped.append(str(cand.id))
+            continue
+        highlighted = False
+        if ref.kind == "cell" and ref.grid_ordinal is not None and ref.grid_ordinal in grids:
+            g = grids[ref.grid_ordinal]
+            if g.bbox and len(g.bbox) == 4:
+                if ref.grid_ordinal not in outlined:
+                    shape.draw_rect(pymupdf.Rect(*[float(v) for v in g.bbox]))
+                    outlined.add(ref.grid_ordinal)
+                highlighted = True
+        view = EvidenceView(
+            source_id=source.id,
+            candidate_id=cand.id,
+            evidence_index=0,
+            page_index=page_index,
+            viewer=viewer,
+            dpi=settings.evidence_render_dpi,
+            highlighted=highlighted,
+        )
+        session.add(view)
+        session.flush()
+        views[str(cand.id)] = str(view.id)
+    if outlined:
+        shape.finish(color=(0.85, 0.1, 0.1), width=2.0)
+        shape.commit()
+    png = page.get_pixmap(dpi=settings.evidence_render_dpi).tobytes("png")
+    doc.close()
+    return png, views, skipped
+
+
 def views_for(session: Session, cand: CandidateRecord, viewer: str) -> list[EvidenceView]:
     return (
         session.execute(

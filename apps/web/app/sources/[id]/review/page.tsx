@@ -71,7 +71,8 @@ export default async function ReviewWorkspacePage({
         Review: {s.original_filename} <DatasetBadge kind={s.dataset_kind} /> <StateBadge state={s.state} />
       </h1>
       <p className="muted">
-        <Link href={`/sources/${id}`}>Back to the source</Link> · <Link href="/review">Review queue</Link>
+        <Link href={`/sources/${id}`}>Back to the source</Link> · <Link href={`/sources/${id}/review/table`}>Tariff table (approve or reject every value)</Link> ·{" "}
+        <Link href="/review">Review queue</Link>
       </p>
       {s.dataset_kind === "fixture" ? (
         <div className="banner" data-tone="fixture">

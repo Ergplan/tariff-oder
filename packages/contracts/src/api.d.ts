@@ -823,6 +823,30 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/{source_id}/review/pages/{page_index}/image": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Review Page Image
+         * @description One render of the page for a block of candidates (the tariff-table screen): each
+         *     candidate whose primary evidence is on the page gets its own evidence view, returned in
+         *     ``X-Evidence-View-Ids`` as a JSON map; ``X-Evidence-Skipped`` lists the ids whose
+         *     evidence is elsewhere.  Views are issued only here, only to the reviewer who receives
+         *     the bytes, exactly as for the single-candidate image.
+         */
+        get: operations["review_page_image_sources__source_id__review_pages__page_index__image_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sources/{source_id}/review/queue": {
         parameters: {
             query?: never;
@@ -7353,6 +7377,96 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ReviewChecklist"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    review_page_image_sources__source_id__review_pages__page_index__image_get: {
+        parameters: {
+            query: {
+                /** @description comma-separated candidate ids whose evidence is on this page */
+                candidates: string;
+            };
+            header?: never;
+            path: {
+                page_index: number;
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description the page with every cited table outlined */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                    "image/png": unknown;
                 };
             };
             /** @description Unauthorized */

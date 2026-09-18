@@ -35,7 +35,7 @@ type Formula = {
   formula_as_printed?: { text: string; page_index: number } | null;
   definitions?: Record<string, { text: string }>;
 };
-type Rec = {
+export type Rec = {
   value?: string | null;
   value_state?: string;
   original_text?: string;
@@ -67,7 +67,7 @@ type Rec = {
 };
 export type FindingLine = { severity: string; validator_id: string; message: string };
 
-const FAMILY_LABEL: Record<string, string> = {
+export const FAMILY_LABEL: Record<string, string> = {
   retail_tariff: "Retail tariff",
   wheeling_charge: "Wheeling charge",
   oa_loss: "Open-access losses",
@@ -78,7 +78,7 @@ const FAMILY_LABEL: Record<string, string> = {
   green_tariff: "Green tariff",
   transmission_reference: "Transmission reference",
 };
-const COMPONENT_LABEL: Record<string, string> = {
+export const COMPONENT_LABEL: Record<string, string> = {
   energy: "Energy charge",
   fixed: "Fixed charge",
   demand: "Demand charge",
@@ -97,7 +97,7 @@ const UNIT_WORD: Record<string, string> = { kWh: "per kWh", kVAh: "per kVAh", kW
 const FREQ_WORD: Record<string, string> = { per_month: "per month", per_annum: "per year", per_bill: "per bill" };
 
 /** "Rs 6.50 per kWh per month", "Zero (nil)", "Not applicable", "By reference: …". */
-function valueWords(rec: Rec): string {
+export function valueWords(rec: Rec): string {
   const st = rec.value_state;
   if (st === "zero") return "Zero (nil)";
   if (st === "not_applicable") return "Not applicable";

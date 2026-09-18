@@ -12671,6 +12671,129 @@
         ]
       }
     },
+    "/sources/{source_id}/review/pages/{page_index}/image": {
+      "get": {
+        "description": "One render of the page for a block of candidates (the tariff-table screen): each\ncandidate whose primary evidence is on the page gets its own evidence view, returned in\n``X-Evidence-View-Ids`` as a JSON map; ``X-Evidence-Skipped`` lists the ids whose\nevidence is elsewhere.  Views are issued only here, only to the reviewer who receives\nthe bytes, exactly as for the single-candidate image.",
+        "operationId": "review_page_image_sources__source_id__review_pages__page_index__image_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "page_index",
+            "required": true,
+            "schema": {
+              "title": "Page Index",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "comma-separated candidate ids whose evidence is on this page",
+            "in": "query",
+            "name": "candidates",
+            "required": true,
+            "schema": {
+              "description": "comma-separated candidate ids whose evidence is on this page",
+              "title": "Candidates",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              },
+              "image/png": {}
+            },
+            "description": "the page with every cited table outlined"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Review Page Image",
+        "tags": [
+          "review"
+        ]
+      }
+    },
     "/sources/{source_id}/review/queue": {
       "get": {
         "description": "Pending candidates of one order in review order: ``document`` (default) follows the\norder as printed \u2014 schedule categories first, then the network families; ``risk`` puts\nblocking findings, disagreements and low confidence first (Section 7.2).  Every item\nsays why it sits where it does.",

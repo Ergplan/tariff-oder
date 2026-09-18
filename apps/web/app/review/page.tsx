@@ -49,7 +49,10 @@ export default async function ReviewQueuePage() {
                 <tr key={i.source_id}>
                   <td>
                     <Link href={`/sources/${i.source_id}`}>{i.original_filename}</Link>{" "}
-                    <Link href={`/sources/${i.source_id}/review`}>open workspace</Link>
+                    <Link href={`/sources/${i.source_id}/review/table`}>
+                      <strong>open tariff table</strong>
+                    </Link>{" "}
+                    · <Link href={`/sources/${i.source_id}/review`}>one at a time</Link>
                   </td>
                   <td>
                     <DatasetBadge kind={i.dataset_kind} />

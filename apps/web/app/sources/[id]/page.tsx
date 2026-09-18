@@ -130,7 +130,8 @@ export default async function SourceDetailPage({
       title: `Your action: review ${extraction?.candidates ?? ""} candidates`,
       body: (
         <>
-          <Link href={`/sources/${id}/review`}>Open the review workspace</Link> — every value is a proposal until a reviewer
+          <Link href={`/sources/${id}/review/table`}>Open the tariff table</Link> (approve, reject or note every value) or the{" "}
+          <Link href={`/sources/${id}/review`}>one-at-a-time workspace</Link> — every value is a proposal until a reviewer
           decides. <Link href={`/sources/${id}/publish`}>Publish a release</Link> once the checklist allows.
         </>
       ),

@@ -338,3 +338,50 @@ def test_batch_approval_is_limited_to_high_confidence_no_risk_candidates_each_wi
             headers=headers(REVIEWER),
         )
         assert r.json()["results"][0]["review_status"] == "awaiting_second_review"
+
+
+def test_one_page_render_issues_a_view_per_candidate_on_that_page_and_those_views_decide(client, runner):
+    import json
+
+    src_id = _to_review(client, runner, structure_order_pdf(), "SYNTHETIC_structure_pageview.pdf")
+    q = client.get(f"/sources/{src_id}/review/queue", params={"limit": 500}, headers=headers(ANALYST)).json()
+    by_page: dict[int, list[dict]] = {}
+    for it in q["items"]:
+        by_page.setdefault(it["page_index"], []).append(it["candidate"])
+    page, cands = max(by_page.items(), key=lambda kv: len(kv[1]))
+    assert len(cands) >= 2
+    other_page = next(p for p in by_page if p != page)
+    stranger = by_page[other_page][0]
+    ids = ",".join([c["id"] for c in cands] + [stranger["id"]])
+
+    # analysts cannot render for a decision
+    r = client.get(f"/sources/{src_id}/review/pages/{page}/image", params={"candidates": ids}, headers=headers(ANALYST))
+    assert r.status_code == 403
+    r = client.get(
+        f"/sources/{src_id}/review/pages/{page}/image", params={"candidates": ids}, headers=headers(REVIEWER)
+    )
+    assert r.status_code == 200 and r.headers["content-type"] == "image/png" and r.content[:4] == b"\x89PNG"
+    views = json.loads(r.headers["x-evidence-view-ids"])
+    assert set(views) == {c["id"] for c in cands} and json.loads(r.headers["x-evidence-skipped"]) == [stranger["id"]]
+
+    # every candidate on the page now decides with its own view from that single render
+    for c in cands[:2]:
+        r = client.post(
+            f"/candidates/{c['id']}/decision",
+            json={"outcome": "approve", "expected_version": c["version"], "evidence_view_ids": [views[c["id"]]]},
+            headers=headers(REVIEWER),
+        )
+        assert r.status_code == 200, r.text
+        assert r.json()["decision"]["outcome"] == "approve" and r.json()["decision"]["evidence_viewed"] is True
+    # the skipped one has no view: refused as before
+    r = client.post(
+        f"/candidates/{stranger['id']}/decision",
+        json={"outcome": "approve", "expected_version": stranger["version"], "evidence_view_ids": []},
+        headers=headers(REVIEWER),
+    )
+    assert r.status_code == 422
+    # a bad id list is a validation error, not a crash
+    r = client.get(
+        f"/sources/{src_id}/review/pages/{page}/image", params={"candidates": "nope"}, headers=headers(REVIEWER)
+    )
+    assert r.status_code == 422
