@@ -200,3 +200,5 @@ table.tt-grid tr:nth-child(even) td { background: #fbfbfa; }
 .cm-add { display: flex; gap: 0.3rem; flex-wrap: wrap; align-items: center; }
 .cm-add input { font: inherit; font-size: 0.85rem; padding: 0.2rem 0.4rem; }
 tr.group-row td { background: #eef0ec; font-size: 0.92rem; border-top: 2px solid var(--border); }
+.rerun { margin: 0.2rem 0 0.8rem; font-size: 0.9rem; }
+.rerun select { font: inherit; font-size: 0.85rem; padding: 0.2rem 0.4rem; max-width: 100%; }

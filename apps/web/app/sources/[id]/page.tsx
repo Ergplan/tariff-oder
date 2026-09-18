@@ -11,6 +11,7 @@ import type {
 } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { AssignForm } from "./assign-form";
+import { RerunButton } from "./rerun-button";
 import { DatasetBadge, ErrorBanner, JobBadge, StageTrack, StateBadge, UnknownBadge } from "../../components";
 import { AutoRefresh } from "./auto-refresh";
 import { LocalisationForm } from "./localisation-form";
@@ -179,6 +180,7 @@ export default async function SourceDetailPage({
         ) : null}
         <a href={`/api/sources/${id}/export`}>Download everything as JSON (zip)</a>
       </p>
+      {me.data?.role === "administrator" ? <RerunButton sourceId={id} /> : null}
       {s.dataset_kind === "fixture" ? (
         <div className="banner" data-tone="fixture">
           Fixture dataset: synthetic or test material. Never joined with real-utility data.
