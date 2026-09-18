@@ -8,6 +8,7 @@ Bump ``SCHEMA_VERSION`` when a field changes."""
 
 from __future__ import annotations
 
+import re
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field, field_validator
@@ -73,6 +74,25 @@ DecisionStatus = Literal[
     "absent_in_source",
 ]
 Currency = Literal["rupees", "paise"]
+
+
+_LETTER = re.compile(r"^\s*\(?([a-z]|[ivx]{1,4}|\d{1,2})\)")
+
+
+def norm_text(text: str) -> str:
+    """Case- and spacing-insensitive form of a label: `For supply at 11kV` = `for supply at
+    11 kv`."""
+    t = re.sub(r"\s+", " ", (text or "").strip().lower())
+    return re.sub(r"(\d)\s*kv\b", r"\1kv", t)
+
+
+def block_letter(block: str | None) -> str:
+    """A lettered block by its letter — `(a) Commercial Loads …` and `(a)` are one block; a
+    block without a letter by its normalised text."""
+    if not block:
+        return ""
+    m = _LETTER.match(block)
+    return f"({m.group(1).lower()})" if m else norm_text(block)[:80]
 
 
 class EvidenceRef(BaseModel):
@@ -174,21 +194,24 @@ class Candidate(BaseModel):
         return v
 
     def key(self) -> str:
-        """Identity for channel comparison and duplicate detection: what the fact is about."""
+        """Identity for channel comparison and duplicate detection: what the fact is about.
+        Texts are compared normalised (case, spacing, `11kV` = `11 kV`) and a lettered block
+        by its letter, so "(a)" from one channel and "(a) Commercial Loads …" from the other
+        are the same block."""
         a = self.applicability
         parts = [
             self.family,
-            self.category_code or "",
+            (self.category_code or "").upper(),
             self.component_type,
-            a.voltage or "",
-            a.description or "",
-            (a.slab.original_text if a.slab else "") or "",
-            (a.load_band.original_text if a.load_band else "") or "",
-            a.season or "",
-            a.time_band or "",
+            norm_text(a.voltage or ""),
+            norm_text(a.description or ""),
+            norm_text((a.slab.original_text if a.slab else "") or ""),
+            norm_text((a.load_band.original_text if a.load_band else "") or ""),
+            norm_text(a.season or ""),
+            norm_text(a.time_band or ""),
             a.metering_type or "",
-            a.consumer_class or "",
-            a.rate_block or "",
+            norm_text(a.consumer_class or ""),
+            block_letter(a.rate_block),
             str(a.alternative) if a.alternative is not None else "",
             self.period or "",
             self.utility or "",

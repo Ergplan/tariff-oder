@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from . import css_formula
-from .tariff_schema import Applicability, Candidate, EvidenceRef, ExtractionOutput, Slab
+from .tariff_schema import Applicability, Candidate, EvidenceRef, ExtractionOutput, Slab, block_letter, norm_text
 
 EXTRACTION_RULES_VERSION = "2"
 RULES_PROVIDER = "rules"  # the deterministic structure channel's provider name on run rows
@@ -76,6 +76,7 @@ class StructureInput:
     category_code_pattern: str | None = None  # the profile's code pattern, for summary-table row labels
     region_cue: str | None = None  # the line that justified the region (localisation)
     region_note: str | None = None  # the profile's note on that region (why it matters)
+    cache: dict[str, Any] = field(default_factory=dict, repr=False, compare=False)  # per-page derived lookups
 
 
 # ------------------------------------------------------------------ serialisation (prompt input)
@@ -175,17 +176,45 @@ _BLOCK_STOP = re.compile(
 )
 
 
+def _grid_anchor_lines(inp: StructureInput, page: int) -> dict[int, int]:
+    """The page-text line each grid on the page starts at, by grid ordinal.  Grids are
+    found in ordinal (reading) order, each searched for after the previous one, so two
+    tables with the same row labels ("For supply at 11kV" under block (a) and again under
+    block (b), NPCL page 384) anchor to their own rows, never both to the first."""
+    key = f"anchors:{page}"
+    if key in inp.cache:
+        return inp.cache[key]
+    lines = [ln.strip().lower() for ln in (inp.page_texts.get(page) or "").splitlines()]
+    by_grid: dict[int, list[dict[str, Any]]] = {}
+    for c in inp.cells:
+        if c["page_index"] == page:
+            by_grid.setdefault(c["grid_ordinal"], []).append(c)
+    anchors: dict[int, int] = {}
+    start = 0
+    for g, gcells in sorted(by_grid.items()):
+        first = min(gcells, key=lambda x: (x["row"], x["col"]))
+        texts = [t for t in ((first["row_path"][0] if first["row_path"] else ""), first["raw"]) if t]
+        needles = [t.strip()[:40].lower() for t in texts]
+        hit = next((i for i in range(start, len(lines)) if any(n and n in lines[i] for n in needles)), None)
+        if hit is None:
+            continue
+        anchors[g] = hit
+        start = hit + 1
+    inp.cache[key] = anchors
+    return anchors
+
+
 def _rate_block_for(inp: StructureInput, c: dict[str, Any]) -> str | None:
     """The lettered block a table sits under — UPERC prints "(a) Commercial Loads … supply at
     Single Point on 11 kV & above:" above one table and "(b) Public Institutions …:" above the
     next, inside one category's RATE section.  Found in the page text: scanning upward from the
-    cited row's first label, the nearest line that starts a lettered block, joined with its
-    continuation lines up to the colon.  Stops at the RATE heading or the top of the page."""
+    line where this grid starts (`_grid_anchor_lines`), the nearest line that starts a
+    lettered block, joined with its continuation lines up to the colon (blank lines between
+    wrapped lines are skipped).  Stops at the RATE heading or the top of the page."""
     lines = [ln.strip() for ln in (inp.page_texts.get(c["page_index"]) or "").splitlines()]
     if not lines:
         return None
-    anchor = (c["row_path"][0] if c["row_path"] else c["raw"]).strip()[:40].lower()
-    row_at = next((i for i, ln in enumerate(lines) if anchor and anchor in ln.lower()), None)
+    row_at = _grid_anchor_lines(inp, c["page_index"]).get(c["grid_ordinal"])
     if row_at is None:
         return None
     for i in range(row_at - 1, -1, -1):
@@ -195,9 +224,11 @@ def _rate_block_for(inp: StructureInput, c: dict[str, Any]) -> str | None:
         m = _LETTERED.match(ln)
         if m:
             parts = [ln]
-            for j in range(i + 1, min(row_at, i + 6)):
+            for j in range(i + 1, min(row_at, i + 9)):
                 nxt = lines[j]
-                if not nxt or _LETTERED.match(nxt):
+                if not nxt:
+                    continue
+                if _LETTERED.match(nxt):
                     break
                 parts.append(nxt)
                 if nxt.endswith(":"):
@@ -512,20 +543,63 @@ class Compared:
 _COMPARE_FIELDS = ("value", "value_state", "currency", "per_unit", "frequency", "sign", "decision_status")
 
 
+def _loose_key(c: Candidate) -> tuple[str, str, str, str, int]:
+    """What both channels agree on however they label a row: family, category, component,
+    the block letter and the page."""
+    a = c.applicability
+    return (
+        c.family,
+        (c.category_code or "").upper(),
+        c.component_type,
+        block_letter(a.rate_block),
+        c.evidence[0].page_index,
+    )
+
+
+def _row_texts(c: Candidate) -> set[str]:
+    a = c.applicability
+    return {norm_text(x) for x in (a.description, a.voltage, a.rate_block) if x}
+
+
+def _same_row(sc: Candidate, ic: Candidate) -> bool:
+    """The rules name the row by its label (description); the model may put that label in
+    `voltage` and the block text in `description`.  They are the same row when the rules'
+    row label appears among the model's applicability texts, or vice versa."""
+    s_rows, i_rows = _row_texts(sc), _row_texts(ic)
+    label = norm_text(sc.applicability.description or "")
+    if label and any(label in t for t in i_rows):
+        return True
+    ilabel = norm_text(ic.applicability.description or "")
+    return bool(ilabel) and any(ilabel in t for t in s_rows)
+
+
 def compare_channels(structure: ExtractionOutput | None, image: ExtractionOutput | None) -> list[Compared]:
     s_by = {c.key(): c for c in (structure.candidates if structure else [])}
     i_by = {c.key(): c for c in (image.candidates if image else [])}
     out: list[Compared] = []
-    for key in sorted(set(s_by) | set(i_by)):
-        sc, ic = s_by.get(key), i_by.get(key)
-        if image is None or structure is None:
-            out.append(Compared(key, sc, ic, "single_channel"))
-            continue
-        if sc is None or ic is None:
-            out.append(Compared(key, sc, ic, "one_missing"))
-            continue
+    if image is None or structure is None:
+        for key in sorted(set(s_by) | set(i_by)):
+            out.append(Compared(key, s_by.get(key), i_by.get(key), "single_channel"))
+        return out
+    paired: dict[str, tuple[Candidate, Candidate]] = {k: (s_by[k], i_by[k]) for k in s_by if k in i_by}
+    # second pass: the same row labelled differently by the two channels (block letter and
+    # row text) pairs once per side; an unmatched candidate on either side stays one_missing
+    s_left = [c for k, c in s_by.items() if k not in paired]
+    i_left = {k: c for k, c in i_by.items() if k not in paired}
+    for sc in s_left:
+        lk = _loose_key(sc)
+        match = next((k for k, ic in i_left.items() if _loose_key(ic) == lk and _same_row(sc, ic)), None)
+        if match is not None:
+            paired[sc.key()] = (sc, i_left.pop(match))
+    for key, (sc, ic) in paired.items():
         diff = [f for f in _COMPARE_FIELDS if getattr(sc, f) != getattr(ic, f)]
         out.append(Compared(key, sc, ic, "disagree" if diff else "agree", diff))
+    for k, sc in s_by.items():
+        if k not in paired:
+            out.append(Compared(k, sc, None, "one_missing"))
+    for k, ic in i_left.items():
+        out.append(Compared(k, None, ic, "one_missing"))
+    out.sort(key=lambda x: x.key)
     return out
 
 

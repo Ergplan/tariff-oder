@@ -82,16 +82,28 @@ def test_lettered_rate_block_above_a_table_becomes_applicability():
         page_indices=[384],
         page_texts={384: PAGE},
     )
-    # the second table's 11 kV row: its block is (b), not (a)
-    cell = {"page_index": 384, "row_path": ["For supply at 11kV"], "raw": "Rs. 7.70 / kVAh"}
-    # the anchor line appears twice on the page; the block is decided per occurrence, so the
-    # helper is exercised on a text that holds only the second table
-    second = PAGE[PAGE.index("(b)") :]
-    inp.page_texts = {384: PAGE[: PAGE.index("(a)")] + second}
-    block = extraction._rate_block_for(inp, cell)
+    # two tables with the same row labels: the block is decided per grid, in reading order,
+    # so the second table's 11 kV row takes (b) on the full page, the first table's (a)
+    first = {
+        "page_index": 384,
+        "grid_ordinal": 0,
+        "row": 1,
+        "col": 1,
+        "row_path": ["For supply at 11kV"],
+        "raw": "Rs. 430.00 / kVA / month",
+    }
+    second = {
+        "page_index": 384,
+        "grid_ordinal": 1,
+        "row": 1,
+        "col": 1,
+        "row_path": ["For supply at 11kV"],
+        "raw": "Rs. 7.70 / kVAh",
+    }
+    inp.cells = [first, second]
+    block = extraction._rate_block_for(inp, second)
     assert block.startswith("(b) Public Institutions") and block.endswith("voltage levels:")
-    inp.page_texts = {384: PAGE}
-    assert extraction._rate_block_for(inp, cell).startswith("(a) Commercial Loads")
+    assert extraction._rate_block_for(inp, first).startswith("(a) Commercial Loads")
 
 
 def test_category_pages_span_from_heading_to_next_heading():

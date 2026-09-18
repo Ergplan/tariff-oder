@@ -352,7 +352,7 @@ class FixtureProvider(ExtractionProvider):
         for rule in self._perturb.get("image", []):
             target_key = rule.get("key_contains")
             for c in list(out.candidates):
-                if target_key and target_key in c.key():
+                if target_key and target_key.lower() in c.key().lower():
                     if rule.get("drop"):
                         out.candidates.remove(c)
                         applied.append(f"drop:{c.key()}")
@@ -575,7 +575,7 @@ class AnthropicProvider(ExtractionProvider):
         return self._call("image", content, _hash(*images))
 
 
-IMAGE_PROMPT_VERSION = "2"
+IMAGE_PROMPT_VERSION = "3"
 
 
 def image_prompt(inp: StructureInput) -> str:
@@ -599,8 +599,10 @@ def image_prompt(inp: StructureInput) -> str:
         "every voltage or season variant. Do not summarise, do not skip rows.",
         "Each candidate: family retail_tariff for a rate schedule; category_code exactly as printed in the "
         "schedule heading" + (f" (shape: {inp.category_code_pattern})" if inp.category_code_pattern else "") + "; "
-        "applicability.rate_block = the lettered block heading the table sits under, verbatim, or null; "
-        "applicability.voltage / slab / load_band / time_band / description as printed on the row; "
+        "applicability.rate_block = the lettered block heading the table sits under, verbatim from its letter "
+        "to the colon, or null; applicability.description = the row's label in the first column exactly as "
+        "printed (e.g. 'For supply at 11kV'), never the block text; applicability.voltage only when a voltage "
+        "is printed separately from that label; slab / load_band / time_band as printed on the row; "
         "value = the decimal exactly as printed, currency rupees or paise as printed, per_unit "
         "(kWh, kVAh, kW, kVA, HP, connection, percent), frequency (per_month, per_annum) as printed.",
         "Evidence: kind 'cell' with page_index = the page number given here, row and col as you count them "

@@ -609,6 +609,16 @@ def extract_source(ctx: JobContext) -> dict:
                     **row,
                 )
             )
+        # a reviewed candidate from an earlier reading that this reading no longer produces is
+        # kept (the decision is the reviewer's) but tagged, so the queue shows it as stale
+        new_keys = {r["candidate_key"] for r in candidate_rows}
+        for old in s.execute(
+            select(CandidateRecord).where(
+                CandidateRecord.source_id == source_id, CandidateRecord.extraction_version != extraction_version[:80]
+            )
+        ).scalars():
+            if old.candidate_key not in new_keys and "stale_reading" not in (old.risk_tags or []):
+                old.risk_tags = [*(old.risk_tags or []), "stale_reading"]
         s.execute(delete(ConditionRecordRow).where(ConditionRecordRow.source_id == source_id))
         seen_conditions: set[tuple] = set()
         for cr in conditions_found:

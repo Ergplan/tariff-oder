@@ -282,6 +282,22 @@ open-access view.
   prompt 2 says a passage from another lettered block is not a contradiction.  Context
   under "What the order says around it" no longer shows table fragments as sentences and
   starts with the lettered block.
+  **Page-dump verdict on the HV-1 citation (2026-09-18):** both page-384 tables were read
+  correctly (two grids, eight cells, right values); the rules gave *both* tables block
+  (a) because the block finder anchored on the first line matching the row label ("For
+  supply at 11kV" appears under (a) and again under (b)), so the (a) and (b) readings
+  collided on one identity and the (a) table's four values were dropped as duplicates;
+  the eight "unlabelled row" candidates were the model channel's, which never paired
+  with the rules because it names the block by its letter and puts the row label in
+  `voltage`.  Fixed: the block is found per grid in reading order (each table anchors
+  after the previous one; wrapped block text is joined to the colon across blank lines);
+  a candidate key compares texts normalised and a lettered block by its letter; the
+  channel comparison pairs a rules row with a model row on block letter and row label
+  however the two spell them; the image prompt (3) says description is the row label and
+  the block is verbatim; a reviewed candidate from an earlier reading that the current
+  reading no longer produces is tagged `stale_reading` (the 7.70/kVAh "fixed charge"
+  approved once on 2026-09-17 is such a row: reject it in the queue).  Proven on a
+  synthetic copy of page 384's text and grids; not yet re-run on dev.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
