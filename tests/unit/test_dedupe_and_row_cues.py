@@ -205,3 +205,82 @@ def test_model_placeholder_category_is_cleared():
     }
     shaped, rejected = coerce_candidates(obj)
     assert rejected == [] and shaped["candidates"][0]["category_code"] is None
+
+
+def test_table_and_clause_readings_with_different_row_labels_merge_and_all_families_dedupe():
+    from tariff_api.extraction import merge_duplicates
+
+    grid = _c("3.85", page=363, block=None, desc="Metered", unit="kWh", comp="energy", cat="LMV-1")
+    grid.applicability.slab = __import__("tariff_api.tariff_schema", fromlist=["Slab"]).Slab(
+        original_text="101 - 150 kWh / month"
+    )
+    clause = _c(
+        "3.85",
+        kind="clause",
+        page=363,
+        block="(a) Consumers getting supply as per Rural Schedule",
+        desc="101 - 150 kWh / month",
+        unit="kWh",
+        comp="energy",
+        cat="LMV-1",
+        line=8,
+    )
+    out = merge_duplicates([grid, clause])
+    assert len(out) == 1 and out[0].evidence[0].kind == "cell" and out[0].applicability.rate_block.startswith("(a)")
+    # green tariff: "per unit" from prose and "per kWh" from the clause are one premium
+    a = _c("0.34", page=359, block=None, desc="HV category consumers", unit="unit", comp="green_premium", cat=None)
+    a.family = "green_tariff"
+    b = _c(
+        "0.34",
+        kind="clause",
+        page=359,
+        block=None,
+        desc="Green Energy Tariff for HV category consumers",
+        unit="kWh",
+        comp="green_premium",
+        cat=None,
+        line=3,
+    )
+    b.family = "green_tariff"
+    assert len(merge_duplicates([a, b])) == 1
+    # a different row label that is not contained stays separate
+    c = _c(
+        "0.34",
+        kind="clause",
+        page=359,
+        block=None,
+        desc="LMV category consumers",
+        unit="kWh",
+        comp="green_premium",
+        cat=None,
+        line=4,
+    )
+    c.family = "green_tariff"
+    assert len(merge_duplicates([a, c])) == 2
+
+
+def test_serial_columns_are_skipped_even_with_a_unit_bound_from_the_notes_and_group_headings_qualify_rows():
+    serial = GridInput(
+        400, 0, [["S. No.", "Industry"], ["1", "Cement"], ["2", "Steel"], ["3", "Paper"]], 1, title_lines=["Rs. / kVA"]
+    )
+    lmv3 = GridInput(
+        369,
+        0,
+        [
+            ["Description", "Nagar Nigam", "Nagar Palika"],
+            ["Metered", "Rs. 8.50 / kWh", "Rs. 7.50 / kWh"],
+        ],
+        1,
+    )
+    texts = {
+        400: "1 Cement\n2 Steel\n3 Paper\n",
+        369: "RATE SCHEDULE LMV - 3\n(b) Metered Supply:\nDescription Nagar Nigam Nagar Palika\nMetered Rs. 8.50 / kWh Rs. 7.50 / kWh\n",
+    }
+    headings = [
+        {"page_index": 369, "kind": "rate_schedule", "code_canonical": "LMV-3", "text": "RATE SCHEDULE LMV - 3"},
+        {"page_index": 393, "kind": "rate_schedule", "code_canonical": "HV-4", "text": "RATE SCHEDULE HV – 4"},
+    ]
+    out = rules_extract(_inp(_cells([serial, lmv3]), texts, headings=headings))
+    assert not [c for c in out.candidates if c.evidence[0].page_index == 400]
+    rows = {c.applicability.description: c.value for c in out.candidates if c.category_code == "LMV-3"}
+    assert rows == {"Metered · Nagar Nigam": "8.50", "Metered · Nagar Palika": "7.50"}

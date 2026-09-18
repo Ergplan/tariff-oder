@@ -186,6 +186,46 @@ _BLOCK_STOP = re.compile(
 )
 
 
+_CHARGE_HDR = re.compile(
+    r"charge|rate|tariff|\brs\b|₹|paise|kwh|kvah|\bkw\b|\bkva\b|\bhp\b|%|percent|description|particular|"
+    r"category|load|unit|month|slab|consumption|fixed|energy|demand|minimum|rebate|surcharge|tod|time|hours|"
+    r"applicab|s\.?\s*no|sl\.?\s*no|sr\.?\s*no",
+    re.I,
+)
+
+
+def _is_group_heading(h: str) -> bool:
+    """A column heading that names who the column is for, not what it charges."""
+    t = (h or "").strip()
+    return (
+        3 <= len(t) <= 80
+        and not _CHARGE_HDR.search(t)
+        and not _VOLT_HDR.search(t)
+        and bool(re.search(r"[A-Za-z]{3,}", t))
+    )
+
+
+def _serial_columns(cells: list[dict[str, Any]]) -> set[tuple[int, int, int]]:
+    """Columns whose values run 1, 2, 3 … down the rows (three or more): row numbers."""
+    by_col: dict[tuple[int, int, int], list[tuple[int, str | None]]] = {}
+    for c in cells:
+        by_col.setdefault((c["page_index"], c["grid_ordinal"], c["col"]), []).append(
+            (c["row"], (c["normalised"] or {}).get("value"))
+        )
+    out: set[tuple[int, int, int]] = set()
+    for key, vals in by_col.items():
+        seq = [v for _, v in sorted(vals)]
+        if len(seq) < 3:
+            continue
+        try:
+            nums = [int(Decimal(v)) for v in seq if v is not None]
+        except (InvalidOperation, ValueError):
+            continue
+        if len(nums) >= 3 and nums[0] == 1 and all(b - a in (0, 1) for a, b in zip(nums, nums[1:], strict=False)):
+            out.add(key)
+    return out
+
+
 def _grid_anchor_lines(inp: StructureInput, page: int) -> dict[int, int]:
     """The page-text line each grid on the page starts at, by grid ordinal.  Grids are
     found in ordinal (reading) order, each searched for after the previous one, so two
@@ -291,9 +331,12 @@ def rules_extract(inp: StructureInput) -> ExtractionOutput:
     for v in inp.clauses:
         if v["kind"] == "condition":
             conditions_by_cat.setdefault(v.get("category_code"), []).append(v["line_text"])
+    serial_cols = _serial_columns(inp.cells)
     for c in sorted(inp.cells, key=lambda x: (x["page_index"], x["grid_ordinal"], x["row"], x["col"])):
         n = c["normalised"]
         state = c["value_state"]
+        if (c["page_index"], c["grid_ordinal"], c["col"]) in serial_cols:
+            continue  # 1, 2, 3 … down a column: row numbers, never charges (HV-4's list of industries)
         ev = EvidenceRef(
             page_index=c["page_index"],
             kind="cell",
@@ -317,6 +360,11 @@ def rules_extract(inp: StructureInput) -> ExtractionOutput:
         desc = next(
             (x for x in c["row_path"] if not (slab and x == slab.original_text) and not _TIME_BAND.search(x)), None
         )
+        # a column heading that names a consumer group rather than a charge ("Nagar Nigam",
+        # "Individual Residential Consumers") qualifies the row
+        qualifier = next((h for h in c["header_path"] if _is_group_heading(h)), None)
+        if qualifier and qualifier.lower() not in (desc or "").lower():
+            desc = f"{desc} · {qualifier}" if desc else qualifier
         rate_block = _rate_block_for(inp, c)
         period = inp.period
         fy = _FY.search(" ".join(c["header_path"]))
@@ -442,35 +490,51 @@ def canon_unit(u: str | None) -> str:
 
 
 def _dup_key(c: Candidate) -> tuple | None:
-    """What makes two readings the same printed fact: category, component, page, the value
-    with its sign and unit, and the row (time band, else the row label)."""
-    if c.value_state not in ("value", "zero") or c.family != "retail_tariff":
+    """What makes two readings the same printed fact: family, category, component, page,
+    the value with its sign and unit.  The row is matched separately (`_parts_match`)."""
+    if c.value_state not in ("value", "zero"):
         return None
-    a = c.applicability
     try:
-        val = str(Decimal(c.value)) if c.value is not None else ""
+        val = str(Decimal(c.value).normalize()) if c.value is not None else ""
     except (InvalidOperation, TypeError):
         val = c.value or ""
-    row = a.time_band or " | ".join(
-        norm_text(x)
-        for x in (
-            a.description,
-            a.voltage,
-            a.slab.original_text if a.slab else None,
-            a.load_band.original_text if a.load_band else None,
-        )
-        if x
-    )
     return (
-        c.category_code or "",
+        c.family,
+        (c.category_code or "").upper(),
         c.component_type,
         c.evidence[0].page_index,
         val,
         c.sign or 0,
         canon_unit(c.per_unit),
-        c.frequency or "",
-        row,
     )
+
+
+def _row_parts(c: Candidate) -> set[str]:
+    a = c.applicability
+    parts = {
+        norm_text(x)
+        for x in (
+            a.description,
+            a.voltage,
+            a.time_band,
+            a.slab.original_text if a.slab else None,
+            a.load_band.original_text if a.load_band else None,
+        )
+        if x
+    }
+    return {p for p in parts if p}
+
+
+def _parts_match(x: set[str], y: set[str]) -> bool:
+    """The same row however labelled: equal, or every part of the shorter label is found
+    inside a part of the longer ("101 - 150 kwh / month" against "metered | 101 - 150 kwh /
+    month"; "hv category consumers" against "green energy tariff for hv category consumers")."""
+    if x == y:
+        return True
+    if not x or not y:
+        return False
+    small, big = (x, y) if len(x) <= len(y) else (y, x)
+    return all(any(p in q for q in big) for p in small)
 
 
 def _blocks_compatible(x: str | None, y: str | None) -> bool:
@@ -501,26 +565,34 @@ def merge_duplicates(cands: list[Candidate]) -> list[Candidate]:
             other = kept[idx]
             if not _blocks_compatible(other.applicability.rate_block, c.applicability.rate_block):
                 continue
-            prefer_new = (c.evidence[0].kind == "cell" and other.evidence[0].kind != "cell") or (
-                bool(c.applicability.rate_block) and not other.applicability.rate_block
-            )
+            if not _parts_match(_row_parts(other), _row_parts(c)):
+                continue
+            new_cell, old_cell = c.evidence[0].kind == "cell", other.evidence[0].kind == "cell"
+            if new_cell != old_cell:
+                prefer_new = new_cell  # a table cell outranks a clause reading, whichever came first
+            else:
+                prefer_new = bool(c.applicability.rate_block) and not other.applicability.rate_block
             winner, loser = (c, other) if prefer_new else (other, c)
             for ev in loser.evidence:
                 if ev not in winner.evidence:
                     winner.evidence.append(ev)
-            if not winner.applicability.rate_block and loser.applicability.rate_block:
-                winner.applicability.rate_block = loser.applicability.rate_block
-            if not winner.applicability.slab and loser.applicability.slab:
-                winner.applicability.slab = loser.applicability.slab
+            wa, la = winner.applicability, loser.applicability
+            if not wa.rate_block and la.rate_block:
+                wa.rate_block = la.rate_block
+            if not wa.slab and la.slab:
+                wa.slab = la.slab
+            if not wa.description and la.description:
+                wa.description = la.description
+            if not winner.frequency and loser.frequency:
+                winner.frequency = loser.frequency
+            lev = loser.evidence[0]
+            where = (
+                f"page {lev.page_index} table {(lev.grid_ordinal or 0) + 1}"
+                if lev.kind == "cell"
+                else f"page {lev.page_index} line {lev.line_no}"
+            )
             winner.notes = (
-                (winner.notes or "")
-                + (" " if winner.notes else "")
-                + "Also printed at "
-                + (
-                    f"page {loser.evidence[0].page_index} line {loser.evidence[0].line_no}."
-                    if loser.evidence[0].kind != "cell"
-                    else f"page {loser.evidence[0].page_index} table {(loser.evidence[0].grid_ordinal or 0) + 1}."
-                )
+                f"{winner.notes} Also printed at {where}.".strip() if winner.notes else f"Also printed at {where}."
             )
             kept[idx] = winner
             merged = True
