@@ -195,6 +195,9 @@ class Commission(Base):
     jurisdiction_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("jurisdictions.id"), nullable=False)
     aliases: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    # the reviewer responsible for this commission's orders (increment 20); new orders under
+    # its utilities inherit it, existing unassigned ones take it when it is set
+    assigned_to: Mapped[str | None] = mapped_column(String(320))
 
     jurisdiction: Mapped[Jurisdiction] = relationship(back_populates="commissions")
     utilities: Mapped[list[Utility]] = relationship(back_populates="commission")
@@ -280,6 +283,10 @@ class SourceDocument(Base):
     # filters by it and the source page shows it.  Not an access control: any reviewer may
     # still decide, and the second-review policy still needs a different reviewer.
     assigned_to: Mapped[str | None] = mapped_column(String(320))
+    # the utility (and through it the commission) this order belongs to (increment 20):
+    # set at upload or ingest; the utility's active reading profile binds automatically
+    utility_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("utilities.id"))
+    utility: Mapped[Utility | None] = relationship(lazy="joined")
     extraction_version: Mapped[str | None] = mapped_column(String(80))
     extracted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     extraction_summary: Mapped[dict | None] = mapped_column(JSONB)

@@ -24,6 +24,7 @@ from ..models import (
     JobStatus,
     SourceDocument,
     SourceState,
+    Utility,
 )
 from ..queue import enqueue, request_cancel
 from ..telemetry import request_id_var
@@ -71,6 +72,33 @@ def inventory_idempotency_key(sha256: str, attempt_series: int = 1) -> str:
     return f"{INVENTORY_JOB}:{sha256}:{attempt_series}"
 
 
+def resolve_utility(session: Session, code: str) -> Utility:
+    u = session.execute(select(Utility).where(Utility.code == code.strip().upper())).scalar_one_or_none()
+    if u is None:
+        raise AppError("validation_failed", f"unknown utility {code!r}; add it to the registry first")
+    return u
+
+
+def apply_utility(source: SourceDocument, utility: Utility, *, actor: str) -> None:
+    """The order belongs to this utility: bind the utility's active reading profile (latest
+    version) and inherit the commission's reviewer.  Nothing is detected or guessed."""
+    from ..profiles import latest_version
+
+    source.utility_id = utility.id
+    pid = utility.active_reading_profile
+    if pid and source.reading_profile_id is None:
+        v = utility.active_reading_profile_version or latest_version(pid)
+        if v is not None:
+            source.reading_profile_id = pid
+            source.reading_profile_version = v
+            source.reading_profile_source = "utility"
+            source.reading_profile_rationale = (
+                f"utility {utility.code} uses {pid} v{v} (set at registration by {actor})"
+            )
+    if source.assigned_to is None and utility.commission is not None and utility.commission.assigned_to:
+        source.assigned_to = utility.commission.assigned_to
+
+
 def register_from_object(
     session: Session,
     storage: ObjectStore,
@@ -80,6 +108,7 @@ def register_from_object(
     dataset_kind: DatasetKind,
     provenance_url: str | None,
     actor: str,
+    utility_code: str | None = None,
 ) -> tuple[SourceDocument, bool, Job | None]:
     """Register a PDF that an operator already placed in the source bucket.
 
@@ -110,6 +139,7 @@ def register_from_object(
         dataset_kind=dataset_kind,
         provenance_url=provenance_url or f"gs://<source-bucket>/{object_key}",
         actor=actor,
+        utility_code=utility_code,
     )
 
 
@@ -149,8 +179,12 @@ def register_upload(
     dataset_kind: DatasetKind,
     provenance_url: str | None,
     actor: str,
+    utility_code: str | None = None,
 ) -> tuple[SourceDocument, bool, Job | None]:
-    """Register bytes as a source.  Returns (source, deduplicated, inventory_job)."""
+    """Register bytes as a source.  Returns (source, deduplicated, inventory_job).  With a
+    utility code the order belongs to that utility: its active reading profile binds now
+    (no detection, no CLI) and the commission's reviewer is inherited."""
+    utility = resolve_utility(session, utility_code) if utility_code else None
     if len(data) > settings.max_upload_bytes:
         raise AppError("source_too_large", f"{len(data)} bytes > {settings.max_upload_bytes}")
     if not data.startswith(b"%PDF"):
@@ -204,6 +238,8 @@ def register_upload(
     if entry:
         source.golden_id = entry["id"]
         source.manifest_check = golden.compare_inventory(entry, {"size_bytes": len(data)})
+    if utility is not None:
+        apply_utility(source, utility, actor=actor)
     session.add(source)
     session.flush()
     session.add(

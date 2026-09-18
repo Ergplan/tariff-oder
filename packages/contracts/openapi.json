@@ -265,6 +265,17 @@
               }
             ],
             "title": "Provenance Url"
+          },
+          "utility_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility Code"
           }
         },
         "required": [
@@ -1213,6 +1224,45 @@
         "title": "ClauseValueOut",
         "type": "object"
       },
+      "CommissionAssignmentRequest": {
+        "properties": {
+          "cascade": {
+            "default": true,
+            "title": "Cascade",
+            "type": "boolean"
+          },
+          "reviewer": {
+            "anyOf": [
+              {
+                "maxLength": 320,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewer"
+          }
+        },
+        "title": "CommissionAssignmentRequest",
+        "type": "object"
+      },
+      "CommissionList": {
+        "properties": {
+          "commissions": {
+            "items": {
+              "$ref": "#/components/schemas/CommissionSummary"
+            },
+            "title": "Commissions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "commissions"
+        ],
+        "title": "CommissionList",
+        "type": "object"
+      },
       "CommissionOut": {
         "properties": {
           "aliases": {
@@ -1249,6 +1299,119 @@
           "aliases"
         ],
         "title": "CommissionOut",
+        "type": "object"
+      },
+      "CommissionSummary": {
+        "description": "One commission \"folder\": its utilities, their orders by state, the reviewer.",
+        "properties": {
+          "assigned_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned To"
+          },
+          "awaiting_review": {
+            "title": "Awaiting Review",
+            "type": "integer"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "jurisdiction_code": {
+            "title": "Jurisdiction Code",
+            "type": "string"
+          },
+          "jurisdiction_name": {
+            "title": "Jurisdiction Name",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "open_values": {
+            "title": "Open Values",
+            "type": "integer"
+          },
+          "sources": {
+            "title": "Sources",
+            "type": "integer"
+          },
+          "utilities": {
+            "items": {
+              "$ref": "#/components/schemas/CommissionUtilitySummary"
+            },
+            "title": "Utilities",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "name",
+          "jurisdiction_code",
+          "jurisdiction_name",
+          "assigned_to",
+          "utilities",
+          "sources",
+          "open_values",
+          "awaiting_review"
+        ],
+        "title": "CommissionSummary",
+        "type": "object"
+      },
+      "CommissionUtilitySummary": {
+        "properties": {
+          "active_reading_profile": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Reading Profile"
+          },
+          "by_state": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By State",
+            "type": "object"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "sources": {
+            "title": "Sources",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "code",
+          "name",
+          "active_reading_profile",
+          "sources",
+          "by_state"
+        ],
+        "title": "CommissionUtilitySummary",
         "type": "object"
       },
       "CompletenessBanner": {
@@ -2392,6 +2555,18 @@
               }
             ],
             "title": "Provenance Url"
+          },
+          "utility_code": {
+            "anyOf": [
+              {
+                "maxLength": 32,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility Code"
           }
         },
         "required": [
@@ -5157,6 +5332,17 @@
             ],
             "title": "Assigned To"
           },
+          "commission_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commission Code"
+          },
           "content_type": {
             "title": "Content Type",
             "type": "string"
@@ -5490,6 +5676,17 @@
           "uploaded_by": {
             "title": "Uploaded By",
             "type": "string"
+          },
+          "utility_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility Code"
           },
           "validation": {
             "anyOf": [
@@ -6003,6 +6200,17 @@
             ],
             "title": "Assigned To"
           },
+          "commission_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commission Code"
+          },
           "created_at": {
             "format": "date-time",
             "title": "Created At",
@@ -6105,6 +6313,17 @@
           "uploaded_by": {
             "title": "Uploaded By",
             "type": "string"
+          },
+          "utility_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility Code"
           },
           "version": {
             "title": "Version",
@@ -8010,6 +8229,211 @@
         ]
       }
     },
+    "/commissions": {
+      "get": {
+        "description": "The commission \"folders\": each commission with its utilities, their orders by state,\nopen values and the responsible reviewer.",
+        "operationId": "list_commissions_commissions_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommissionList"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "List Commissions",
+        "tags": [
+          "registry"
+        ]
+      }
+    },
+    "/commissions/{code}/assignment": {
+      "put": {
+        "description": "Give a commission's orders to one reviewer (administrator).  With `cascade` (the\ndefault) every order under its utilities that has no reviewer yet takes this one; a\nreviewer already set on an order is kept.  Audited.",
+        "operationId": "assign_commission_commissions__code__assignment_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "schema": {
+              "title": "Code",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommissionAssignmentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommissionSummary"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Assign Commission",
+        "tags": [
+          "registry"
+        ]
+      }
+    },
     "/explorer/facts/{fact_id}": {
       "get": {
         "operationId": "get_fact_explorer_facts__fact_id__get",
@@ -9861,6 +10285,54 @@
           },
           {
             "in": "query",
+            "name": "commission",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Commission"
+            }
+          },
+          {
+            "in": "query",
+            "name": "utility",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Utility"
+            }
+          },
+          {
+            "in": "query",
+            "name": "assigned",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Assigned"
+            }
+          },
+          {
+            "in": "query",
             "name": "offset",
             "required": false,
             "schema": {
@@ -11229,6 +11701,109 @@
         "summary": "Set Disposition",
         "tags": [
           "candidates"
+        ]
+      }
+    },
+    "/sources/{source_id}/export.zip": {
+      "get": {
+        "description": "Everything the pipeline holds for the order, as JSON files in one zip: the source\nrecord, localisation and regions, page dumps for every region page, candidates with\ntheir review state, decisions, summaries, findings, runs.  What a reviewer or an\nengineer needs to look at a reading without the browser or the database.",
+        "operationId": "export_zip_sources__source_id__export_zip_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              },
+              "application/zip": {}
+            },
+            "description": "every stage's output as JSON files"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Export Zip",
+        "tags": [
+          "sources"
         ]
       }
     },

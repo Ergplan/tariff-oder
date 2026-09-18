@@ -2,17 +2,31 @@
 
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, Query
-from sqlalchemy import select
+from fastapi import APIRouter, Depends, Query, Request
+from sqlalchemy import func, select
 
 from ..adapters.identity import Principal
-from ..auth import require_admin, require_analyst
+from ..auth import ROLE_RANK, known_role, require_admin, require_analyst
 from ..db import session_scope
 from ..errors import AppError
-from ..models import AuditEvent, Commission, Jurisdiction, User, Utility
+from ..models import (
+    AuditEvent,
+    CandidateRecord,
+    Commission,
+    Jurisdiction,
+    SourceDocument,
+    SourceState,
+    User,
+    UserRole,
+    Utility,
+)
 from ..schemas import (
     AuditEventOut,
+    CommissionAssignmentRequest,
+    CommissionList,
     CommissionOut,
+    CommissionSummary,
+    CommissionUtilitySummary,
     JurisdictionOut,
     RegistryOut,
     UserOut,
@@ -51,6 +65,102 @@ def registry() -> RegistryOut:
             commissions=[CommissionOut.model_validate(c, from_attributes=True) for c in cs],
             utilities=[_utility_out(u) for u in us],
         )
+
+
+def _summarise(s, c: Commission) -> CommissionSummary:
+    utils = []
+    total = 0
+    awaiting = 0
+    open_values = 0
+    for u in sorted(c.utilities, key=lambda x: x.code):
+        srcs = s.execute(select(SourceDocument).where(SourceDocument.utility_id == u.id)).scalars().all()
+        by_state: dict[str, int] = {}
+        for src in srcs:
+            by_state[src.state.value] = by_state.get(src.state.value, 0) + 1
+            if src.state == SourceState.awaiting_review:
+                awaiting += 1
+                open_values += int(
+                    s.execute(
+                        select(func.count()).where(
+                            CandidateRecord.source_id == src.id,
+                            CandidateRecord.review_status.in_(["pending", "awaiting_second_review"]),
+                        )
+                    ).scalar_one()
+                )
+        total += len(srcs)
+        utils.append(
+            CommissionUtilitySummary(
+                code=u.code,
+                name=u.name,
+                active_reading_profile=u.active_reading_profile,
+                sources=len(srcs),
+                by_state=by_state,
+            )
+        )
+    return CommissionSummary(
+        id=c.id,
+        code=c.code,
+        name=c.name,
+        jurisdiction_code=c.jurisdiction.code,
+        jurisdiction_name=c.jurisdiction.name,
+        assigned_to=c.assigned_to,
+        utilities=utils,
+        sources=total,
+        open_values=open_values,
+        awaiting_review=awaiting,
+    )
+
+
+@router.get("/commissions", response_model=CommissionList, dependencies=[Depends(require_analyst)])
+def list_commissions() -> CommissionList:
+    """The commission "folders": each commission with its utilities, their orders by state,
+    open values and the responsible reviewer."""
+    with session_scope() as s:
+        cs = s.execute(select(Commission).order_by(Commission.code)).scalars().all()
+        return CommissionList(commissions=[_summarise(s, c) for c in cs])
+
+
+@router.put("/commissions/{code}/assignment", response_model=CommissionSummary)
+def assign_commission(
+    code: str, body: CommissionAssignmentRequest, request: Request, principal: Principal = Depends(require_admin)
+) -> CommissionSummary:
+    """Give a commission's orders to one reviewer (administrator).  With `cascade` (the
+    default) every order under its utilities that has no reviewer yet takes this one; a
+    reviewer already set on an order is kept.  Audited."""
+    reviewer = (body.reviewer or "").strip().lower() or None
+    with session_scope() as s:
+        c = s.execute(select(Commission).where(Commission.code == code.strip().upper())).scalar_one_or_none()
+        if c is None:
+            raise AppError("not_found", f"unknown commission {code}")
+        if reviewer is not None:
+            role = known_role(s, request.app.state.settings, reviewer)
+            if role is None or ROLE_RANK[role] < ROLE_RANK[UserRole.reviewer]:
+                raise AppError("validation_failed", f"{reviewer} is not an active reviewer")
+        before = c.assigned_to
+        c.assigned_to = reviewer
+        cascaded = 0
+        if reviewer and body.cascade:
+            for u in c.utilities:
+                for src in s.execute(
+                    select(SourceDocument).where(
+                        SourceDocument.utility_id == u.id, SourceDocument.assigned_to.is_(None)
+                    )
+                ).scalars():
+                    src.assigned_to = reviewer
+                    cascaded += 1
+        s.add(
+            AuditEvent(
+                actor=principal.email,
+                action="commission.assign",
+                entity_type="commission",
+                entity_id=str(c.id),
+                before={"assigned_to": before},
+                after={"assigned_to": reviewer, "cascaded_sources": cascaded},
+                request_id=request_id_var.get(),
+            )
+        )
+        s.flush()
+        return _summarise(s, c)
 
 
 @router.post("/utilities", response_model=UtilityOut, status_code=201)

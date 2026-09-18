@@ -31,6 +31,7 @@ from ..models import (
     StructureCell,
     TableGridRecord,
     UserRole,
+    Utility,
 )
 from ..schemas import (
     AssignmentRequest,
@@ -69,6 +70,7 @@ from ..schemas import (
     TriageSummary,
     ValidationSummary,
 )
+from ..services import export as export_svc
 from ..services import localisation as loc
 from ..services import sources as svc
 
@@ -95,6 +97,8 @@ def _summary(src: SourceDocument) -> SourceSummary:
         created_at=src.created_at,
         updated_at=src.updated_at,
         assigned_to=src.assigned_to,
+        utility_code=src.utility.code if src.utility is not None else None,
+        commission_code=src.utility.commission.code if src.utility is not None and src.utility.commission else None,
     )
 
 
@@ -131,6 +135,28 @@ def assign_reviewer(
         return _summary(src)
 
 
+@router.get(
+    "/{source_id}/export.zip",
+    responses={200: {"content": {"application/zip": {}}, "description": "every stage's output as JSON files"}},
+    dependencies=[Depends(require_analyst)],
+)
+def export_zip(request: Request, source_id: uuid.UUID):
+    """Everything the pipeline holds for the order, as JSON files in one zip: the source
+    record, localisation and regions, page dumps for every region page, candidates with
+    their review state, decisions, summaries, findings, runs.  What a reviewer or an
+    engineer needs to look at a reading without the browser or the database."""
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        data = export_svc.build_zip(s, storage, request.app.state.settings, src)
+        name = export_svc.export_name(src)
+    return Response(
+        content=data,
+        media_type="application/zip",
+        headers={"Content-Disposition": f'attachment; filename="{name}.zip"', "Cache-Control": "private, no-store"},
+    )
+
+
 def job_summary(job: Job | None) -> JobSummary | None:
     if job is None:
         return None
@@ -146,6 +172,7 @@ def upload_source(
     file: Annotated[UploadFile, File()],
     dataset_kind: Annotated[DatasetKind, Form()] = DatasetKind.real,
     provenance_url: Annotated[str | None, Form()] = None,
+    utility_code: Annotated[str | None, Form()] = None,
     idempotency_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
     principal: Principal = Depends(require_admin),
 ) -> SourceRegistration:
@@ -155,7 +182,15 @@ def upload_source(
     storage: ObjectStore = request.app.state.adapters.storage
     data = file.file.read(settings.max_upload_bytes + 1)
     fingerprint = hashlib.sha256(
-        (hashlib.sha256(data).hexdigest() + "|" + dataset_kind.value + "|" + (provenance_url or "")).encode()
+        (
+            hashlib.sha256(data).hexdigest()
+            + "|"
+            + dataset_kind.value
+            + "|"
+            + (provenance_url or "")
+            + "|"
+            + (utility_code or "")
+        ).encode()
     ).hexdigest()
 
     with session_scope() as s:
@@ -178,6 +213,7 @@ def upload_source(
             dataset_kind=dataset_kind,
             provenance_url=provenance_url,
             actor=principal.email,
+            utility_code=utility_code or None,
         )
         s.flush()
         s.refresh(source)
@@ -232,7 +268,9 @@ def ingest_source(
     settings = request.app.state.settings
     storage: ObjectStore = request.app.state.adapters.storage
     fingerprint = hashlib.sha256(
-        f"ingest|{body.object_key}|{body.dataset_kind.value}|{body.provenance_url or ''}".encode()
+        (
+            f"ingest|{body.object_key}|{body.dataset_kind.value}|{body.provenance_url or ''}|{body.utility_code or ''}"
+        ).encode()
     ).hexdigest()
 
     with session_scope() as s:
@@ -254,6 +292,7 @@ def ingest_source(
             dataset_kind=body.dataset_kind,
             provenance_url=body.provenance_url,
             actor=principal.email,
+            utility_code=body.utility_code,
         )
         s.flush()
         s.refresh(source)
@@ -277,6 +316,9 @@ def ingest_source(
 def list_sources(
     dataset_kind: DatasetKind | None = None,
     state: SourceState | None = None,
+    commission: str | None = None,
+    utility: str | None = None,
+    assigned: str | None = None,
     offset: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=500),
 ) -> SourceList:
@@ -286,6 +328,12 @@ def list_sources(
             q = q.where(SourceDocument.dataset.has(kind=dataset_kind))
         if state is not None:
             q = q.where(SourceDocument.state == state)
+        if utility:
+            q = q.where(SourceDocument.utility.has(code=utility.strip().upper()))
+        if commission:
+            q = q.where(SourceDocument.utility.has(Utility.commission.has(code=commission.strip().upper())))
+        if assigned:
+            q = q.where(func.lower(SourceDocument.assigned_to) == assigned.strip().lower())
         total = s.execute(select(func.count()).select_from(q.subquery())).scalar_one()
         rows = s.execute(q.order_by(SourceDocument.created_at.desc()).offset(offset).limit(limit)).scalars().all()
         return SourceList(total=total, items=[_summary(r) for r in rows])

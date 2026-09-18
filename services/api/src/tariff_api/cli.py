@@ -6,6 +6,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 from .config import get_settings
 from .models import DatasetKind
@@ -568,6 +569,34 @@ def cmd_assign(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_export(args: argparse.Namespace) -> int:
+    """Write one order's pipeline state as JSON files: to the export bucket under
+    `<COMMISSION>/<UTILITY>/<name>/` (default) and/or to a local directory (`--out`)."""
+    import uuid
+    from pathlib import Path
+
+    from .db import session_scope
+    from .services import export as export_svc
+    from .services.sources import get_source
+
+    settings, adapters = _adapters()
+    written: dict[str, Any] = {}
+    with session_scope() as s:
+        src = get_source(s, uuid.UUID(args.source_id))
+        if args.out:
+            root = Path(args.out) / export_svc.export_name(src)
+            for path, data in export_svc.build_files(s, adapters.storage, settings, src).items():
+                target = root / path
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(data)
+            written["local"] = str(root)
+        if not args.no_bucket:
+            keys = export_svc.write_to_bucket(s, adapters.storage, settings, src)
+            written["bucket"] = {"prefix": export_svc.export_prefix(src), "files": len(keys)}
+    print(json.dumps({"source_id": args.source_id, **written}))
+    return 0
+
+
 def cmd_users(args: argparse.Namespace) -> int:
     """List users, or add/update one.  Role changes are audit events."""
     from sqlalchemy import select
@@ -703,6 +732,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("source_id")
     p.add_argument("--page", required=True)
     p.set_defaults(fn=cmd_page_dump)
+    p = sub.add_parser("export", help="write an order's pipeline state as JSON files (bucket and/or --out dir)")
+    p.add_argument("source_id")
+    p.add_argument("--out", default=None, help="local directory; a folder named after the order is created inside")
+    p.add_argument("--no-bucket", action="store_true", help="skip the export bucket")
+    p.set_defaults(fn=cmd_export)
     p = sub.add_parser("assign-reviewer", help="assign an order to a reviewer (or --clear)")
     p.add_argument("source_id")
     p.add_argument("--email", default=None)

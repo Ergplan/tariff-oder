@@ -123,6 +123,49 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/commissions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Commissions
+         * @description The commission "folders": each commission with its utilities, their orders by state,
+         *     open values and the responsible reviewer.
+         */
+        get: operations["list_commissions_commissions_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/commissions/{code}/assignment": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Assign Commission
+         * @description Give a commission's orders to one reviewer (administrator).  With `cascade` (the
+         *     default) every order under its utilities that has no reviewer yet takes this one; a
+         *     reviewer already set on an order is kept.  Audited.
+         */
+        put: operations["assign_commission_commissions__code__assignment_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/explorer/facts/{fact_id}": {
         parameters: {
             query?: never;
@@ -573,6 +616,29 @@ export interface paths {
          *     network-charge completeness).  Audited; the next validation run reads it.
          */
         put: operations["set_disposition_sources__source_id__dispositions_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/sources/{source_id}/export.zip": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Export Zip
+         * @description Everything the pipeline holds for the order, as JSON files in one zip: the source
+         *     record, localisation and regions, page dumps for every region page, candidates with
+         *     their review state, decisions, summaries, findings, runs.  What a reviewer or an
+         *     engineer needs to look at a reading without the browser or the database.
+         */
+        get: operations["export_zip_sources__source_id__export_zip_get"];
+        put?: never;
         post?: never;
         delete?: never;
         options?: never;
@@ -1209,6 +1275,8 @@ export interface components {
             file: string;
             /** Provenance Url */
             provenance_url?: string | null;
+            /** Utility Code */
+            utility_code?: string | null;
         };
         /** CancelResult */
         CancelResult: {
@@ -1526,6 +1594,21 @@ export interface components {
             /** Value State */
             value_state: string | null;
         };
+        /** CommissionAssignmentRequest */
+        CommissionAssignmentRequest: {
+            /**
+             * Cascade
+             * @default true
+             */
+            cascade: boolean;
+            /** Reviewer */
+            reviewer?: string | null;
+        };
+        /** CommissionList */
+        CommissionList: {
+            /** Commissions */
+            commissions: components["schemas"]["CommissionSummary"][];
+        };
         /** CommissionOut */
         CommissionOut: {
             /** Aliases */
@@ -1544,6 +1627,50 @@ export interface components {
             jurisdiction_id: string;
             /** Name */
             name: string;
+        };
+        /**
+         * CommissionSummary
+         * @description One commission "folder": its utilities, their orders by state, the reviewer.
+         */
+        CommissionSummary: {
+            /** Assigned To */
+            assigned_to: string | null;
+            /** Awaiting Review */
+            awaiting_review: number;
+            /** Code */
+            code: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Jurisdiction Code */
+            jurisdiction_code: string;
+            /** Jurisdiction Name */
+            jurisdiction_name: string;
+            /** Name */
+            name: string;
+            /** Open Values */
+            open_values: number;
+            /** Sources */
+            sources: number;
+            /** Utilities */
+            utilities: components["schemas"]["CommissionUtilitySummary"][];
+        };
+        /** CommissionUtilitySummary */
+        CommissionUtilitySummary: {
+            /** Active Reading Profile */
+            active_reading_profile: string | null;
+            /** By State */
+            by_state: {
+                [key: string]: number;
+            };
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+            /** Sources */
+            sources: number;
         };
         /** CompletenessBanner */
         CompletenessBanner: {
@@ -2000,6 +2127,8 @@ export interface components {
             object_key: string;
             /** Provenance Url */
             provenance_url?: string | null;
+            /** Utility Code */
+            utility_code?: string | null;
         };
         /** JobDetail */
         JobDetail: {
@@ -2937,6 +3066,8 @@ export interface components {
             artefacts: components["schemas"]["StageArtefactOut"][];
             /** Assigned To */
             assigned_to?: string | null;
+            /** Commission Code */
+            commission_code?: string | null;
             /** Content Type */
             content_type: string;
             /**
@@ -3016,6 +3147,8 @@ export interface components {
             updated_at: string;
             /** Uploaded By */
             uploaded_by: string;
+            /** Utility Code */
+            utility_code?: string | null;
             validation: components["schemas"]["ValidationSummary"] | null;
             /** Version */
             version: number;
@@ -3142,6 +3275,8 @@ export interface components {
             acquired_at: string;
             /** Assigned To */
             assigned_to?: string | null;
+            /** Commission Code */
+            commission_code?: string | null;
             /**
              * Created At
              * Format: date-time
@@ -3179,6 +3314,8 @@ export interface components {
             updated_at: string;
             /** Uploaded By */
             uploaded_by: string;
+            /** Utility Code */
+            utility_code?: string | null;
             /** Version */
             version: number;
         };
@@ -4047,6 +4184,178 @@ export interface operations {
                 content: {
                     "application/json": unknown;
                     "image/png": unknown;
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_commissions_commissions_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CommissionList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    assign_commission_commissions__code__assignment_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommissionAssignmentRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CommissionSummary"];
                 };
             };
             /** @description Unauthorized */
@@ -5564,10 +5873,13 @@ export interface operations {
     list_sources_sources_get: {
         parameters: {
             query?: {
+                assigned?: string | null;
+                commission?: string | null;
                 dataset_kind?: components["schemas"]["DatasetKind"] | null;
                 limit?: number;
                 offset?: number;
                 state?: components["schemas"]["SourceState"] | null;
+                utility?: string | null;
             };
             header?: never;
             path?: never;
@@ -6286,6 +6598,92 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DispositionOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    export_zip_sources__source_id__export_zip_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description every stage's output as JSON files */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                    "application/zip": unknown;
                 };
             };
             /** @description Unauthorized */

@@ -80,6 +80,8 @@ class SourceSummary(BaseModel):
     created_at: datetime
     updated_at: datetime
     assigned_to: str | None = None  # the reviewer responsible (increment 19)
+    utility_code: str | None = None  # increment 20: the order's utility and commission
+    commission_code: str | None = None
 
 
 class AssignmentRequest(BaseModel):
@@ -730,6 +732,7 @@ class IngestRequest(BaseModel):
     object_key: str = Field(min_length=1, max_length=512)
     dataset_kind: DatasetKind = DatasetKind.real
     provenance_url: str | None = None
+    utility_code: str | None = Field(default=None, max_length=32)
 
 
 class SourcePageList(BaseModel):
@@ -790,6 +793,38 @@ class UtilityCreate(BaseModel):
     dataset_kind: DatasetKind = DatasetKind.real
     licensed_area: str | None = None
     aliases: list[str] = Field(default_factory=list)
+
+
+class CommissionUtilitySummary(BaseModel):
+    code: str
+    name: str
+    active_reading_profile: str | None
+    sources: int
+    by_state: dict[str, int]
+
+
+class CommissionSummary(BaseModel):
+    """One commission "folder": its utilities, their orders by state, the reviewer."""
+
+    id: uuid.UUID
+    code: str
+    name: str
+    jurisdiction_code: str
+    jurisdiction_name: str
+    assigned_to: str | None
+    utilities: list[CommissionUtilitySummary]
+    sources: int
+    open_values: int
+    awaiting_review: int
+
+
+class CommissionList(BaseModel):
+    commissions: list[CommissionSummary]
+
+
+class CommissionAssignmentRequest(BaseModel):
+    reviewer: str | None = Field(default=None, max_length=320)
+    cascade: bool = True  # also set on this commission's orders that have no reviewer yet
 
 
 class RegistryOut(BaseModel):
