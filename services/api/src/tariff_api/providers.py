@@ -581,7 +581,7 @@ class AnthropicProvider(ExtractionProvider):
         return self._call("image", content, _hash(*images))
 
 
-IMAGE_PROMPT_VERSION = "3"
+IMAGE_PROMPT_VERSION = "4"
 
 
 def image_prompt(inp: StructureInput) -> str:
@@ -605,8 +605,11 @@ def image_prompt(inp: StructureInput) -> str:
         "every voltage or season variant. Do not summarise, do not skip rows.",
         "Each candidate: family retail_tariff for a rate schedule; category_code exactly as printed in the "
         "schedule heading" + (f" (shape: {inp.category_code_pattern})" if inp.category_code_pattern else "") + "; "
-        "applicability.rate_block = the lettered block heading the table sits under, verbatim from its letter "
-        "to the colon, or null; applicability.description = the row's label in the first column exactly as "
+        "applicability.rate_block = the nearest lettered heading directly above the table, verbatim from its "
+        "letter to the colon, or null. When headings nest ('(A) Metered' over '(ii) Rural schedule'), give the "
+        "innermost one, the one printed closest above the table, never the outer one; a season heading "
+        "('Summer months') goes in season, not rate_block; applicability.description = the row's label in the "
+        "first column exactly as "
         "printed (e.g. 'For supply at 11kV'), never the block text; applicability.voltage only when a voltage "
         "is printed separately from that label; slab / load_band / time_band as printed on the row; "
         "value = the decimal exactly as printed, currency rupees or paise as printed, per_unit "

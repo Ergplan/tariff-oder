@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-09-14. Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-09-20. Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -367,6 +367,32 @@ open-access view.
   "add a distribution company" for administrators.  The source inbox and the review
   queue group orders by commission the same way (orders not filed under a company last).
   `make admin-dev ARGS=seed` is idempotent and adds only what is missing.
+  **Increment 22 (2026-09-20): rules 4 pairing and de-duplication from the NPCL re-run.**
+  The re-run under rules 3 left 253 open values with four repeating shapes, read from the
+  tariff table the operator pasted (not from files yet: the exchange folder is still
+  empty).  Each is now handled and unit-tested (`tests/unit/test_tod_regions_and_units.py`,
+  9 tests): a time-of-day row is named by its band however the hours are printed
+  ("19:00 hrs – 02:00 hrs" = "19:00-02:00"), so the table cell and the clause line under
+  a season heading merge and the model's ToD reading pairs; an unlettered heading above
+  a table ("Summer Months (April to September)") is a season or a note, never a block
+  that keeps two readings apart, while two different seasons always stay two rows; a unit
+  missing on one side ("per day" against "per connection per day") no longer splits one
+  fact; the same fact read in two overlapping regions (HV-3 traction in the schedule
+  region and again in the railway region) survives once in the worker, preferring the
+  pair both channels agree on and a table cell over a clause line, with the other place
+  noted on the survivor; the model's outer block "(A)" pairs with the rules' inner
+  sub-block "(ii)" when exactly one row on each side names that row (LMV-5), and never
+  when it is ambiguous; the row-part containment test now works in both directions (it
+  silently depended on set size before).  The image prompt is version 4: the rate block
+  is the innermost heading printed closest above the table, and a season goes in
+  `season`.  On the tariff table, condition paragraphs and "not stated" readings leave
+  the rate grids for a folded "Conditions and notes (n)" section under each category,
+  every block is a collapsible section, and a block's heading comes from the table's
+  own reading when a clause reading arrived first (the HV-1 "(b) Private institutions"
+  applicability sentence no longer names the "(b) Public Institutions" rate table).
+  Not deployed; the NPCL run has not been repeated under rules 4; the numbers above
+  are from the operator's paste, and LMV-3/LMV-5 page dumps still wait on the export
+  into `exchange/UPERC/`.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -911,7 +937,10 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **244 passed, 0 failed, 0 skipped** (~80 s): 196 unit (13 adapters/profile/fixtures, 32
+- **Increment 22 (2026-09-20): 309 passed, 0 failed, 0 skipped** (133 s, full suite with
+  the ephemeral PostgreSQL; `ruff check` and `ruff format --check` clean; web typecheck
+  and `next build` green).  Increment 21 baseline was 300 passed.
+- Increment 11 baseline: **244 passed, 0 failed, 0 skipped** (~80 s): 196 unit (13 adapters/profile/fixtures, 32
   triage rules, 31 readers/headings/OCR, 11 profiles/localisation, 60 normalisation, 10
   clause outline, 7 grid integrity, 21 extraction/comparison/routing/validators, 8
   network extraction/derivations/conditions/VAL-05/07/12/16, 3 review policy), 48
@@ -1054,6 +1083,15 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+00000. **Operator, on the `tariff-order` VM (increment 22):** `git pull && make deploy-dev`,
+   then open the NPCL source page and click "Re-run extraction" (or
+   `make admin-dev ARGS=rerun,5f900540-a863-4f43-a570-7640114a190e,extract_source,--actor,bootstrap`),
+   wait for the scheduler (or `make drain-dev`), and open the tariff table: expect the
+   ToD rows once each, HV-3 traction once, LMV-9 once, LMV-5 rows paired, and the
+   applicability paragraphs folded under "Conditions and notes".  Then "Download
+   everything as JSON" from the source page, unzip into `exchange/UPERC/`, commit and
+   push: the LMV-3 and LMV-5 pages (369, 372, 373) are diagnosed from those files, not
+   from pasted screens.
 0000. **Operator, on the `tariff-order` VM (increment 21):** after the deploy below,
    `make admin-dev ARGS=seed` once to load every commission and distribution company;
    then the Commissions page is the place to upload from.

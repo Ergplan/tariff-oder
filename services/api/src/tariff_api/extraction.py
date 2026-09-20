@@ -489,9 +489,36 @@ def canon_unit(u: str | None) -> str:
     return _UNIT_ALIAS.get(u, u)
 
 
+_TIME_TOKEN = re.compile(r"(\d{1,2})[:.](\d{2})")
+_SEASON_WORD = re.compile(r"\b(summer|winter|monsoon|rabi|kharif)\b", re.I)
+
+
+def norm_time_band(text: str | None) -> str:
+    """ "19:00 hrs – 02:00 hrs", "19:00-02:00" and "19.00 to 02.00 hrs" are one band: the
+    clock times in order, or "" when the text does not hold two of them."""
+    toks = [f"{int(h):02d}:{m}" for h, m in _TIME_TOKEN.findall(text or "")]
+    return "-".join(toks) if len(toks) >= 2 else ""
+
+
+def _season_word(text: str | None) -> str:
+    m = _SEASON_WORD.search(text or "")
+    return m.group(1).lower() if m else ""
+
+
+def _seasons_conflict(x: Candidate, y: Candidate) -> bool:
+    """Two readings that each name a season, and not the same one, are different rows even
+    when everything else on them matches (a summer and a winter ToD adjustment can print the
+    same number)."""
+    sx = _season_word(x.applicability.season) or _season_word(x.applicability.rate_block)
+    sy = _season_word(y.applicability.season) or _season_word(y.applicability.rate_block)
+    return bool(sx and sy and sx != sy)
+
+
 def _dup_key(c: Candidate) -> tuple | None:
     """What makes two readings the same printed fact: family, category, component, page,
-    the value with its sign and unit.  The row is matched separately (`_parts_match`)."""
+    the value with its sign.  The row is matched separately (`_parts_match`) and the unit
+    inside the bucket (equal, or absent on one side: "per connection per day" against a bare
+    "per day")."""
     if c.value_state not in ("value", "zero"):
         return None
     try:
@@ -505,8 +532,12 @@ def _dup_key(c: Candidate) -> tuple | None:
         c.evidence[0].page_index,
         val,
         c.sign or 0,
-        canon_unit(c.per_unit),
     )
+
+
+def _units_compatible(x: Candidate, y: Candidate) -> bool:
+    ux, uy = canon_unit(x.per_unit), canon_unit(y.per_unit)
+    return not ux or not uy or ux == uy
 
 
 def _row_parts(c: Candidate) -> set[str]:
@@ -516,12 +547,13 @@ def _row_parts(c: Candidate) -> set[str]:
         for x in (
             a.description,
             a.voltage,
-            a.time_band,
             a.slab.original_text if a.slab else None,
             a.load_band.original_text if a.load_band else None,
         )
         if x
     }
+    if a.time_band:
+        parts.add(norm_time_band(a.time_band) or norm_text(a.time_band))
     return {p for p in parts if p}
 
 
@@ -533,17 +565,23 @@ def _parts_match(x: set[str], y: set[str]) -> bool:
         return True
     if not x or not y:
         return False
-    small, big = (x, y) if len(x) <= len(y) else (y, x)
-    return all(any(p in q for q in big) for p in small)
+    return all(any(p in q for q in y) for p in x) or all(any(p in q for q in x) for p in y)
 
 
 def _blocks_compatible(x: str | None, y: str | None) -> bool:
+    """Two lettered blocks are one block when the letter matches ("(a) Commercial …" and "(a)")
+    or one names the other ("LMV- 4 (A) - PUBLIC INSTITUTIONS" and "(A) Public Institutions").
+    An unlettered heading ("Summer Months (April to September)", "Rate") is a season or a
+    note above the table, not a block: it never separates two readings, unless both name
+    different seasons."""
     if not x or not y:
         return True
     lx, ly = block_letter(x), block_letter(y)
     if lx == ly:
         return True
-    # "LMV- 4 (A) - PUBLIC INSTITUTIONS" and "(A) Public Institutions"
+    if not lx.startswith("(") or not ly.startswith("("):
+        sx, sy = _season_word(x), _season_word(y)
+        return not (sx and sy and sx != sy)
     return (lx.startswith("(") and lx in norm_text(y)) or (ly.startswith("(") and ly in norm_text(x))
 
 
@@ -565,6 +603,8 @@ def merge_duplicates(cands: list[Candidate]) -> list[Candidate]:
             other = kept[idx]
             if not _blocks_compatible(other.applicability.rate_block, c.applicability.rate_block):
                 continue
+            if not _units_compatible(other, c) or _seasons_conflict(other, c):
+                continue
             if not _parts_match(_row_parts(other), _row_parts(c)):
                 continue
             new_cell, old_cell = c.evidence[0].kind == "cell", other.evidence[0].kind == "cell"
@@ -585,6 +625,8 @@ def merge_duplicates(cands: list[Candidate]) -> list[Candidate]:
                 wa.description = la.description
             if not winner.frequency and loser.frequency:
                 winner.frequency = loser.frequency
+            if not winner.per_unit and loser.per_unit:
+                winner.per_unit = loser.per_unit
             lev = loser.evidence[0]
             where = (
                 f"page {lev.page_index} table {(lev.grid_ordinal or 0) + 1}"
@@ -777,12 +819,21 @@ def _same_row(sc: Candidate, ic: Candidate) -> bool:
     """The rules name the row by its label (description); the model may put that label in
     `voltage` and the block text in `description`.  They are the same row when the rules'
     row label appears among the model's applicability texts, or vice versa."""
+    if _seasons_conflict(sc, ic):
+        return False
+    tb_s, tb_i = norm_time_band(sc.applicability.time_band), norm_time_band(ic.applicability.time_band)
+    if tb_s and tb_i:
+        # a time-of-day row is named by its band: "19:00 hrs – 02:00 hrs" is "19:00-02:00"
+        return tb_s == tb_i
     s_rows, i_rows = _row_texts(sc), _row_texts(ic)
     label = norm_text(sc.applicability.description or "")
     if label and any(label in t for t in i_rows):
         return True
     ilabel = norm_text(ic.applicability.description or "")
-    return bool(ilabel) and any(ilabel in t for t in s_rows)
+    if bool(ilabel) and any(ilabel in t for t in s_rows):
+        return True
+    # neither side names the row in words: the same slab or load band is the same row
+    return _parts_match(_row_parts(sc), _row_parts(ic)) if (_row_parts(sc) and _row_parts(ic)) else False
 
 
 def compare_channels(structure: ExtractionOutput | None, image: ExtractionOutput | None) -> list[Compared]:
@@ -803,6 +854,16 @@ def compare_channels(structure: ExtractionOutput | None, image: ExtractionOutput
         match = next((k for k, ic in i_left.items() if _loose_key(ic) == lk and _same_row(sc, ic)), None)
         if match is not None:
             paired[sc.key()] = (sc, i_left.pop(match))
+    # third pass: the block named differently by the two channels (the model cites the outer
+    # "(A)" heading, the rules the inner "(ii)") pairs only when the row is unambiguous: one
+    # candidate on each side of the same category, component and page names that row
+    s_left = [c for k, c in s_by.items() if k not in paired]
+    for sc in s_left:
+        gk = _loose_key(sc)[:3] + _loose_key(sc)[4:]
+        rivals = [c for c in s_left if (_loose_key(c)[:3] + _loose_key(c)[4:]) == gk and _same_row(sc, c)]
+        cands = [k for k, ic in i_left.items() if (_loose_key(ic)[:3] + _loose_key(ic)[4:]) == gk and _same_row(sc, ic)]
+        if len(rivals) == 1 and len(cands) == 1:
+            paired[sc.key()] = (sc, i_left.pop(cands[0]))
     for key, (sc, ic) in paired.items():
         diff = [f for f in _COMPARE_FIELDS if _canon_field(f, getattr(sc, f)) != _canon_field(f, getattr(ic, f))]
         out.append(Compared(key, sc, ic, "disagree" if diff else "agree", diff))
@@ -813,6 +874,61 @@ def compare_channels(structure: ExtractionOutput | None, image: ExtractionOutput
         out.append(Compared(k, None, ic, "one_missing"))
     out.sort(key=lambda x: x.key)
     return out
+
+
+def _cmp_rank(cmp: Compared) -> tuple[int, int, int]:
+    p = cmp.primary
+    return (
+        0 if cmp.agreement == "agree" else 1,
+        0 if p.evidence[0].kind == "cell" else 1,
+        0 if p.applicability.rate_block else 1,
+    )
+
+
+def dedupe_compared(cmps: list[Compared]) -> list[Compared]:
+    """Regions overlap (a category's pages are read for the schedule and again for the ToD
+    or railway section), so the same printed fact reaches the comparison twice.  One survives
+    per fact and row: the pair on which both channels agree over a lone reading, a table cell
+    over a clause line; the other's evidence is carried on the survivor.  Different values
+    never collapse."""
+    kept: list[Compared] = []
+    by_key: dict[tuple, list[int]] = {}
+    for cmp in cmps:
+        p = cmp.primary
+        k = _dup_key(p)
+        if k is None:
+            kept.append(cmp)
+            continue
+        merged = False
+        for idx in by_key.get(k, []):
+            o = kept[idx].primary
+            if not _blocks_compatible(o.applicability.rate_block, p.applicability.rate_block):
+                continue
+            if not _units_compatible(o, p) or _seasons_conflict(o, p):
+                continue
+            if not _parts_match(_row_parts(o), _row_parts(p)):
+                continue
+            winner, loser = (cmp, kept[idx]) if _cmp_rank(cmp) < _cmp_rank(kept[idx]) else (kept[idx], cmp)
+            for ev in loser.primary.evidence:
+                if ev not in winner.primary.evidence:
+                    winner.primary.evidence.append(ev)
+            lev = loser.primary.evidence[0]
+            where = (
+                f"page {lev.page_index} table {(lev.grid_ordinal or 0) + 1}"
+                if lev.kind == "cell"
+                else f"page {lev.page_index} line {lev.line_no}"
+            )
+            note = f"Also read at {where}."
+            wp = winner.primary
+            if note not in (wp.notes or ""):
+                wp.notes = f"{wp.notes} {note}".strip() if wp.notes else note
+            kept[idx] = winner
+            merged = True
+            break
+        if not merged:
+            by_key.setdefault(k, []).append(len(kept))
+            kept.append(cmp)
+    return kept
 
 
 @dataclass

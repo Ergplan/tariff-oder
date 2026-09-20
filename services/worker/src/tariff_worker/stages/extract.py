@@ -32,6 +32,7 @@ from tariff_api.extraction import (
     StructureInput,
     annotate,
     compare_channels,
+    dedupe_compared,
     extract_conditions,
     green_tariff_prose,
     network_extract,
@@ -362,6 +363,10 @@ def extract_source(ctx: JobContext) -> dict:
         ctx.save_checkpoint(
             "extract", {"regions_done": reg["ordinal"]}, {"pages_done": reg["page_end"], "pages_total": page_count}
         )
+
+    # ---- regions overlap: the same printed fact read in two of them is one candidate
+    survivors = {id(c) for c in dedupe_compared([c for c, _ in compared_all])}
+    compared_all[:] = [(c, r) for c, r in compared_all if id(c) in survivors]
 
     # ---- the model's feedback loop per category / family: confidence, sub-category, meaning
     # (Haystack BM25 retrieval over the group's pages feeds the prompt; quotes are grounded)

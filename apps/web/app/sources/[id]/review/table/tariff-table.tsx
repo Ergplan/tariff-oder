@@ -16,8 +16,8 @@ type Applic = {
   slab?: { original_text?: string | null } | null;
   load_band?: { original_text?: string | null } | null;
 };
-type Cell = { cand: CandidateOut; rec: Rec; a: Applic; page: number; row: number };
-type Block = { key: string; label: string; components: string[]; rows: { label: string; cells: Record<string, Cell> }[] };
+type Cell = { cand: CandidateOut; rec: Rec; a: Applic; page: number; row: number; fromTable: boolean };
+type Block = { key: string; label: string; fromTable: boolean; notes?: boolean; components: string[]; rows: { label: string; cells: Record<string, Cell> }[] };
 type Group = { key: string; title: string; subtitle: string | null; pages: number[]; blocks: Block[]; all: Cell[]; family: string };
 
 const COMPONENT_ORDER = ["fixed", "demand", "energy", "minimum", "tod_adjustment", "rebate", "surcharge", "subsidy", "green_premium", "charge", "loss", "condition", "cross_reference"];
@@ -61,6 +61,11 @@ function rowLabel(a: Applic): string {
 function isPlaceholder(code: string | null | undefined): boolean {
   return !code || /^(\?|<[^>]*>|unknown|n\/?a|general)$/i.test(code.trim());
 }
+/** A condition paragraph, or a reading with nothing to approve as a rate ("not stated"). */
+function isNote(c: Cell): boolean {
+  const st = c.rec.value_state;
+  return c.cand.component_type === "condition" || st === "absent_in_source" || st === "unknown" || st === "not_yet_verified";
+}
 function isOpen(c: CandidateOut): boolean {
   return c.review_status === "pending" || c.review_status === "awaiting_second_review";
 }
@@ -79,7 +84,7 @@ function buildGroups(cands: CandidateOut[]): Group[] {
   const cells: Cell[] = cands.map((cand) => {
     const rec = effective(cand);
     const ev = rec.evidence?.[0];
-    return { cand, rec, a: (rec.applicability ?? {}) as Applic, page: ev?.page_index ?? 0, row: ev?.row ?? ev?.line_no ?? 0 };
+    return { cand, rec, a: (rec.applicability ?? {}) as Applic, page: ev?.page_index ?? 0, row: ev?.row ?? ev?.line_no ?? 0, fromTable: ev?.kind === "cell" };
   });
   const byGroup = new Map<string, Cell[]>();
   for (const c of cells) {
@@ -96,13 +101,21 @@ function buildGroups(cands: CandidateOut[]): Group[] {
     list.sort((x, y) => x.page - y.page || x.row - y.row);
     const pages = [...new Set(list.map((c) => c.page).filter(Boolean))].sort((a, b) => a - b);
     const blocksMap = new Map<string, Block>();
+    // applicability paragraphs and "not stated" readings are notes for the reviewer, not rates:
+    // they sit under the category's grids, folded, so the rate table stays a rate table
+    const notes: Block = { key: "__notes", label: "Conditions and notes", fromTable: false, notes: true, components: [], rows: [] };
     for (const c of list) {
       const retail = key.startsWith("retail:") || key === "general";
       const bk = retail ? blockLetter(c.a.rate_block) || "" : c.cand.category_code ?? "";
-      let block = blocksMap.get(bk);
+      const blockText = retail ? (c.a.rate_block ?? "").replace(/\s+/g, " ") || "Rates" : c.cand.category_code ?? "All categories";
+      let block = isNote(c) ? notes : blocksMap.get(bk);
       if (!block) {
-        block = { key: bk, label: retail ? (c.a.rate_block ?? "").replace(/\s+/g, " ") || "Rates" : c.cand.category_code ?? "All categories", components: [], rows: [] };
+        block = { key: bk, label: blockText, fromTable: c.fromTable, components: [], rows: [] };
         blocksMap.set(bk, block);
+      } else if (!block.notes && !block.fromTable && c.fromTable && c.a.rate_block) {
+        // the table's own heading names the block; a clause reading's heading is a fallback
+        block.label = blockText;
+        block.fromTable = true;
       }
       const comp = c.cand.component_type;
       if (!block.components.includes(comp)) block.components.push(comp);
@@ -114,6 +127,7 @@ function buildGroups(cands: CandidateOut[]): Group[] {
       }
       row.cells[comp] = c;
     }
+    if (notes.rows.length) blocksMap.set(notes.key, notes);
     for (const b of blocksMap.values()) b.components.sort((x, y) => (COMPONENT_ORDER.indexOf(x) + 99) % 99 - ((COMPONENT_ORDER.indexOf(y) + 99) % 99));
     const family = list[0].cand.family;
     groups.push({
@@ -359,8 +373,10 @@ export function TariffTable({
                 </div>
               ) : null}
               {g.blocks.map((b) => (
-                <div className="tt-block" key={b.key || "default"}>
-                  {b.label !== "Rates" ? <h3>{b.label}</h3> : null}
+                <details className={b.notes ? "tt-block tt-notes" : "tt-block"} key={b.key || "default"} open={!b.notes}>
+                  <summary>
+                    {b.notes ? `${b.label} (${b.rows.length})` : b.label !== "Rates" ? b.label : "Rates"}
+                  </summary>
                   <div className="table-wrap">
                     <table className="tt-grid">
                       <thead>
@@ -462,7 +478,7 @@ export function TariffTable({
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </details>
               ))}
             </section>
           );

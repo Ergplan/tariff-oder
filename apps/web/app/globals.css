@@ -151,7 +151,7 @@ table.rw-grid td[data-cited] { outline: 3px solid #f2b705; background: #fff8e6; 
 .tt-summary { padding: 0.35rem 0.9rem; border-bottom: 1px solid var(--border); font-size: 0.86rem; background: #fbfbfd; }
 .tt-summary p { margin: 0.4rem 0 0; line-height: 1.45; }
 .tt-block { padding: 0.4rem 0.9rem 0.7rem; }
-.tt-block h3 { margin: 0.5rem 0 0.35rem; font-size: 0.9rem; font-weight: 600; color: var(--accent); line-height: 1.35; }
+
 table.tt-grid { font-size: 0.86rem; table-layout: fixed; }
 table.tt-grid th { position: static; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--muted); background: #f7f7f4; }
 table.tt-grid th:first-child { width: 26%; }
@@ -202,3 +202,12 @@ table.tt-grid tr:nth-child(even) td { background: #fbfbfa; }
 tr.group-row td { background: #eef0ec; font-size: 0.92rem; border-top: 2px solid var(--border); }
 .rerun { margin: 0.2rem 0 0.8rem; font-size: 0.9rem; }
 .rerun select { font: inherit; font-size: 0.85rem; padding: 0.2rem 0.4rem; max-width: 100%; }
+.tt-block > summary { cursor: pointer; list-style: none; margin: 0.5rem 0 0.35rem; font-size: 0.9rem; font-weight: 600; color: var(--accent); line-height: 1.35; }
+.tt-block > summary::-webkit-details-marker { display: none; }
+.tt-block:not(.tt-notes) > summary::before { content: "▾ "; color: var(--muted); }
+.tt-block:not([open]) > summary::before { content: "▸ "; }
+.tt-notes { border-top: 1px dashed var(--border); margin-top: 0.4rem; }
+.tt-notes > summary { color: var(--muted); font-weight: 500; }
+.tt-notes > summary::before { content: "▸ "; }
+.tt-notes[open] > summary::before { content: "▾ "; }
+.tt-notes .tt-grid td { background: #fafaf8; }
