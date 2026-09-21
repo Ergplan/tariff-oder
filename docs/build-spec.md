@@ -26,4 +26,5 @@ Quick map:
 | 11 | Milestones and gates | `docs/BUILD_STATE.md` |
 | 12 | Evaluation and operations | `docs/evaluation-plan.md`, `tests/` |
 | 13 | Required handoff | `docs/BUILD_STATE.md` |
+| 11 (M12) | ARR foundation: taxonomy, fact schema, identities, review screen, what-if | `docs/arr-spec.md`, `packages/arr-taxonomy/`, ADR-0017 |
 | D/E/F | Per-order reading hazards and acceptance checks | `tests/golden/manifest.json`, Milestones 2–7 |

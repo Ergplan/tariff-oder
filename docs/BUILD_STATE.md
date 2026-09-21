@@ -393,6 +393,19 @@ open-access view.
   Not deployed; the NPCL run has not been repeated under rules 4; the numbers above
   are from the operator's paste, and LMV-3/LMV-5 page dumps still wait on the export
   into `exchange/UPERC/`.
+  **Increment 23 (2026-09-21): Milestone 12 specified; ARR taxonomy and mappings as data.**
+  `docs/arr-spec.md` (fact identity versioned by order and voice, the taxonomy branches,
+  the commission mapping, twelve identities, registry and source changes, the chapter
+  pipeline, the chapter-first review screen, the power-purchase-mix what-if with fixed
+  cost retained) and ADR-0017.  `packages/arr-taxonomy/taxonomy.json` holds 123 line
+  items with generic aliases, six value types, seven reason categories and identities
+  ARR-I1 to ARR-I12; `mappings/{uperc,kerc,gerc}-arr.v1.json` are skeletons naming the
+  licensees, the orders expected with the years and voices each decides, chapter cues
+  and voice words, with empty alias, clause and unplaced lists.  Four unit tests keep the
+  files coherent.  Nothing reads them yet; no pipeline, schema or UI code was written,
+  by decision.  Everything in the taxonomy is a domain expectation, not verified against
+  any order.  Gate to the next increment: the hand-mapping of one exported order per
+  commission with its unplaced list reviewed.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -937,6 +950,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 23 (2026-09-21): 313 passed** (increment 22 suite plus the four taxonomy checks).
 - **Increment 22 (2026-09-20): 309 passed, 0 failed, 0 skipped** (133 s, full suite with
   the ephemeral PostgreSQL; `ruff check` and `ruff format --check` clean; web typecheck
   and `next build` green).  Increment 21 baseline was 300 passed.
@@ -1083,6 +1097,13 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+000000. **Operator (increment 23, ARR):** upload to the bucket, under each commission's
+   folder, the distribution and transmission ARR/tariff orders for the three years, the
+   MYT orders and mid-term reviews, and the tariff regulations with amendments, for UPERC,
+   KERC and GERC (see `docs/arr-spec.md` section 5 for the order types).  Then export the
+   NPCL order and one KERC and one GERC order (`parsed` or later) into
+   `exchange/<COMMISSION>/` and push: the hand-mapping starts from those files.  Name one
+   reviewer with ARR literacy for a day per commission.
 00000. **Operator, on the `tariff-order` VM (increment 22):** `git pull && make deploy-dev`,
    then open the NPCL source page and click "Re-run extraction" (or
    `make admin-dev ARGS=rerun,5f900540-a863-4f43-a570-7640114a190e,extract_source,--actor,bootstrap`),

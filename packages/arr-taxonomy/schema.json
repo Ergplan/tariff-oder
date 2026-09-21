@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ARR taxonomy and commission mapping files",
+  "description": "Hand-written for the data-first increment; regenerated from the pydantic model once the loader exists (as packages/reading-profiles/schema.json is).",
+  "$defs": {
+    "line_item": {
+      "type": "object",
+      "required": [
+        "code",
+        "label",
+        "unit",
+        "kind",
+        "branch",
+        "parent",
+        "aliases"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_.]*$"
+        },
+        "label": {
+          "type": "string"
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "INR_crore",
+            "MU",
+            "percent",
+            "MW",
+            "INR_per_kWh",
+            "number",
+            null
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "group",
+            "printed",
+            "computed",
+            "detail"
+          ]
+        },
+        "branch": {
+          "type": "string",
+          "enum": [
+            "shared",
+            "distribution",
+            "transmission"
+          ]
+        },
+        "parent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "by_category": {
+          "type": "boolean"
+        },
+        "sign": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            -1,
+            1,
+            null
+          ]
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "expression",
+        "severity"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^ARR-I[0-9]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "expression": {
+          "type": "string"
+        },
+        "tolerance": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "blocking",
+            "advisory"
+          ]
+        },
+        "cross_order": {
+          "type": "boolean"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "taxonomy": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "canonical_units",
+        "value_types",
+        "reason_categories",
+        "line_items",
+        "identities"
+      ],
+      "properties": {
+        "id": {
+          "const": "arr-taxonomy"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "line_items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/line_item"
+          }
+        },
+        "identities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identity"
+          }
+        }
+      }
+    },
+    "mapping": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "taxonomy_version",
+        "commission",
+        "licensees",
+        "regulations",
+        "return_basis",
+        "gap_convention",
+        "unit_convention",
+        "chapter_map",
+        "year_columns",
+        "voice_columns",
+        "label_aliases",
+        "regulation_clauses",
+        "unplaced"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z]+-arr$"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "taxonomy_version": {
+          "type": "integer"
+        },
+        "commission": {
+          "type": "string"
+        },
+        "return_basis": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "enum": [
+                "roe",
+                "roce",
+                null
+              ]
+            }
+          }
+        },
+        "gap_convention": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "enum": [
+                "before_subsidy",
+                "after_subsidy",
+                null
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/taxonomy"
+    },
+    {
+      "$ref": "#/$defs/mapping"
+    }
+  ]
+}

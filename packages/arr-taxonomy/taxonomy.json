@@ -1,0 +1,2164 @@
+{
+  "id": "arr-taxonomy",
+  "version": 1,
+  "status": "draft; seeded from domain expectations, not yet verified against any order",
+  "canonical_units": {
+    "money": "INR_crore",
+    "energy": "MU",
+    "power": "MW",
+    "rate": "INR_per_kWh",
+    "share": "percent"
+  },
+  "unit_conversions": {
+    "INR_lakh->INR_crore": 0.01,
+    "INR_million->INR_crore": 0.1,
+    "INR->INR_crore": 1e-07,
+    "kWh->MU": 1e-06,
+    "GWh->MU": 1.0,
+    "MWh->MU": 0.001,
+    "paise_per_kWh->INR_per_kWh": 0.01
+  },
+  "fiscal_year_format": "FY2026-27",
+  "value_types": [
+    {
+      "code": "petitioned",
+      "label": "Claimed by the licensee in the petition",
+      "note": "The petition voice; disallowance = petitioned - approved is computed."
+    },
+    {
+      "code": "approved",
+      "label": "Approved by the commission for a future year"
+    },
+    {
+      "code": "provisional_true_up",
+      "label": "Provisionally trued up on unaudited figures (APR / revised estimate)"
+    },
+    {
+      "code": "final_true_up",
+      "label": "Finally trued up on audited accounts"
+    },
+    {
+      "code": "actual",
+      "label": "Audited actual printed as such (not a decision)"
+    },
+    {
+      "code": "control_period",
+      "label": "Approved for a year of a multi-year control period in the MYT order"
+    }
+  ],
+  "reason_categories": [
+    {
+      "code": "normative",
+      "label": "Set by a formula or norm in the regulations"
+    },
+    {
+      "code": "prudence_check",
+      "label": "Allowed after a prudence check of the claim"
+    },
+    {
+      "code": "audited_accounts",
+      "label": "Taken from audited accounts"
+    },
+    {
+      "code": "carried_forward",
+      "label": "Carried forward from an earlier order without re-examination"
+    },
+    {
+      "code": "disallowed",
+      "label": "Disallowed in full or part with reasons"
+    },
+    {
+      "code": "deferred",
+      "label": "Decision deferred to a later order or true-up"
+    },
+    {
+      "code": "not_stated",
+      "label": "The order prints the number without a reason"
+    }
+  ],
+  "line_items": [
+    {
+      "code": "E",
+      "label": "Energy",
+      "unit": null,
+      "kind": "group",
+      "branch": "distribution",
+      "parent": null,
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.SALES",
+      "label": "Retail sales (energy sold to consumers)",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "energy sales",
+        "sales",
+        "retail sales",
+        "sales to consumers",
+        "energy sold"
+      ],
+      "note": "Printed by consumer category; the categories are the tariff categories already in the registry, so a sales row cites the same category code as the rate schedule.",
+      "by_category": true,
+      "sign": null
+    },
+    {
+      "code": "E.SALES.OA",
+      "label": "Open-access drawal wheeled through the network",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "open access sales",
+        "OA consumption",
+        "wheeled energy",
+        "open access drawal"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.LOSS.DIST_PCT",
+      "label": "Distribution loss (approved trajectory / trued-up)",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "distribution loss",
+        "distribution losses",
+        "T&D loss",
+        "loss level",
+        "AT&C loss (only when the order approves AT&C, note the role)"
+      ],
+      "note": "The same fact as the existing family distribution_loss_approved (role arr_trajectory or arr_trued_up); never an open-access billing loss.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.INPUT.DIST",
+      "label": "Energy input at the distribution periphery",
+      "unit": "MU",
+      "kind": "computed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "energy input",
+        "energy requirement at DISCOM periphery",
+        "energy required",
+        "input energy"
+      ],
+      "note": "Printed by most commissions and recomputed: E.SALES / (1 - E.LOSS.DIST_PCT).",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.LOSS.INTRA_TX_PCT",
+      "label": "Intra-state transmission loss",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "E",
+      "aliases": [
+        "intra-state transmission loss",
+        "STU loss",
+        "transmission loss",
+        "KPTCL loss",
+        "GETCO loss",
+        "UPPTCL loss"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.LOSS.INTER_TX_PCT",
+      "label": "Inter-state transmission loss",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "inter-state transmission loss",
+        "PGCIL loss",
+        "ISTS loss",
+        "CTU loss"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.INPUT.TX",
+      "label": "Energy requirement at the state periphery",
+      "unit": "MU",
+      "kind": "computed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "energy requirement at state periphery",
+        "energy at transmission periphery",
+        "energy to be purchased",
+        "power purchase requirement"
+      ],
+      "note": "E.INPUT.DIST / (1 - E.LOSS.INTRA_TX_PCT); inter-state loss applies only to the inter-state share.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY",
+      "label": "Power purchase quantity",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "power purchase quantum",
+        "energy purchased",
+        "power purchase (MU)",
+        "gross power purchase"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.OWN",
+      "label": "Own generation",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY",
+      "aliases": [
+        "own generation",
+        "own stations",
+        "licensee's own generation"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.CENTRAL",
+      "label": "Central generating stations",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY",
+      "aliases": [
+        "central sector",
+        "CGS",
+        "NTPC",
+        "NHPC",
+        "NPCIL",
+        "central generating stations",
+        "ISGS"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.STATE_GEN",
+      "label": "State generating company",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY",
+      "aliases": [
+        "state genco",
+        "state sector",
+        "UPRVUNL",
+        "KPCL",
+        "GSECL",
+        "state generating stations"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.IPP",
+      "label": "Independent power producers and long-term contracts",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY",
+      "aliases": [
+        "IPP",
+        "IPPs",
+        "long term PPA",
+        "case-1 bids",
+        "private generators"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.RE",
+      "label": "Renewable sources",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY",
+      "aliases": [
+        "renewable",
+        "RE",
+        "NCE",
+        "non-conventional",
+        "renewable energy purchase"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.RE.SOLAR",
+      "label": "Solar",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY.RE",
+      "aliases": [
+        "solar",
+        "solar PV",
+        "rooftop solar (net purchase)"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.RE.WIND",
+      "label": "Wind",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY.RE",
+      "aliases": [
+        "wind"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.RE.HYDRO_SMALL",
+      "label": "Small hydro",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY.RE",
+      "aliases": [
+        "small hydro",
+        "mini hydel",
+        "SHP"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.RE.BIOMASS",
+      "label": "Biomass, bagasse and co-generation",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY.RE",
+      "aliases": [
+        "biomass",
+        "bagasse",
+        "co-generation",
+        "cogen",
+        "waste to energy"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.RE.OTHER",
+      "label": "Other renewable",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY.RE",
+      "aliases": [
+        "other RE",
+        "hybrid",
+        "other renewable"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.SHORT_TERM",
+      "label": "Short-term, bilateral and exchange purchases",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY",
+      "aliases": [
+        "short term",
+        "bilateral",
+        "power exchange",
+        "IEX",
+        "PXIL",
+        "traders",
+        "UI",
+        "DSM purchase",
+        "banking drawal"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.BANKING",
+      "label": "Banked energy returned",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY",
+      "aliases": [
+        "banking",
+        "banked energy",
+        "return of banked energy"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.OTHER",
+      "label": "Other sources",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E.PP.QTY",
+      "aliases": [
+        "others",
+        "other sources",
+        "miscellaneous purchase"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "E.PP.QTY.SURPLUS_SALE",
+      "label": "Sale of surplus power (energy)",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "sale of surplus",
+        "surplus sale",
+        "sale of power",
+        "energy sold outside",
+        "trading sale"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": -1
+    },
+    {
+      "code": "E.BALANCE",
+      "label": "Energy balance closes",
+      "unit": null,
+      "kind": "computed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [],
+      "note": "E.PP.QTY - E.PP.QTY.SURPLUS_SALE - inter- and intra-state losses = E.INPUT.DIST, within the identity tolerance.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "T",
+      "label": "Transmission licensee",
+      "unit": null,
+      "kind": "group",
+      "branch": "transmission",
+      "parent": null,
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "T.ENERGY_HANDLED",
+      "label": "Energy transmitted / handled at the STU periphery",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "transmission",
+      "parent": "T",
+      "aliases": [
+        "energy handled",
+        "energy transmitted",
+        "energy input to transmission",
+        "energy wheeled by STU"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "T.AVAILABILITY_PCT",
+      "label": "Transmission system availability",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "transmission",
+      "parent": "T",
+      "aliases": [
+        "availability",
+        "system availability",
+        "transmission availability",
+        "normative availability"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "T.CAPACITY_MW",
+      "label": "Transmission capacity / peak demand met",
+      "unit": "MW",
+      "kind": "printed",
+      "branch": "transmission",
+      "parent": "T",
+      "aliases": [
+        "peak demand",
+        "transmission capacity",
+        "contracted capacity",
+        "long term open access capacity"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "T.TARIFF.TOTAL",
+      "label": "Approved transmission charges (annual)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "transmission",
+      "parent": "T",
+      "aliases": [
+        "transmission tariff",
+        "transmission charges",
+        "intra-state transmission charges",
+        "STU charges",
+        "net ARR to be recovered through transmission charges"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "T.TARIFF.RATE",
+      "label": "Transmission charge rate",
+      "unit": null,
+      "kind": "printed",
+      "branch": "transmission",
+      "parent": "T",
+      "aliases": [
+        "transmission charge per MW",
+        "Rs/kW/month",
+        "Rs/MW/month",
+        "paise per unit transmission charge",
+        "transmission tariff rate"
+      ],
+      "note": "Unit as printed (INR per MW per month, INR per kW per month, or paise per kWh); the stated unit stays on the fact.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "T.SLDC.FEES",
+      "label": "SLDC fees and charges approved",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "transmission",
+      "parent": "T",
+      "aliases": [
+        "SLDC charges",
+        "SLDC fees",
+        "system operation charges",
+        "SLDC ARR"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "T.SHARING",
+      "label": "Sharing of transmission charges among users",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "transmission",
+      "parent": "T",
+      "aliases": [
+        "allocation of transmission charges",
+        "sharing of charges",
+        "DISCOM-wise transmission charges",
+        "share of transmission charges"
+      ],
+      "note": "Per DISCOM (or per long-term user); the distribution licensee's C.TX.INTRA must reconcile with its share here (cross-order identity ARR-I10).",
+      "by_category": true,
+      "sign": null
+    },
+    {
+      "code": "C",
+      "label": "Costs (ARR components)",
+      "unit": null,
+      "kind": "group",
+      "branch": "shared",
+      "parent": null,
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP",
+      "label": "Power purchase cost",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C",
+      "aliases": [
+        "power purchase cost",
+        "cost of power purchase",
+        "power purchase expenses",
+        "PPC",
+        "cost of power"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.OWN",
+      "label": "Own generation cost",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.OWN; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.CENTRAL",
+      "label": "Central generating stations",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.CENTRAL; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.STATE_GEN",
+      "label": "State generating company",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.STATE_GEN; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.IPP",
+      "label": "IPPs and long-term contracts",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.IPP; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.RE",
+      "label": "Renewable sources",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.RE; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.RE.SOLAR",
+      "label": "Solar",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP.RE",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.RE.SOLAR; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.RE.WIND",
+      "label": "Wind",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP.RE",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.RE.WIND; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.RE.HYDRO_SMALL",
+      "label": "Small hydro",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP.RE",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.RE.HYDRO_SMALL; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.RE.BIOMASS",
+      "label": "Biomass, bagasse and co-generation",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP.RE",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.RE.BIOMASS; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.RE.OTHER",
+      "label": "Other renewable",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP.RE",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.RE.OTHER; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.SHORT_TERM",
+      "label": "Short-term, bilateral and exchange",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.SHORT_TERM; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.BANKING",
+      "label": "Banking charges",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.BANKING; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.OTHER",
+      "label": "Other sources",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [],
+      "note": "Mirrors E.PP.QTY.OTHER; the average rate per class is C.PP.x / E.PP.QTY.x and is derived, never read.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.FIXED",
+      "label": "Fixed (capacity) charges in power purchase",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [
+        "fixed charges",
+        "capacity charges",
+        "fixed cost of power purchase"
+      ],
+      "note": "Where the order splits fixed and variable; the what-if engine needs this split (ARR spec section 8).",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.VARIABLE",
+      "label": "Variable (energy) charges in power purchase",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [
+        "variable charges",
+        "energy charges",
+        "variable cost of power purchase",
+        "fuel cost"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PP.SURPLUS_SALE_INCOME",
+      "label": "Income from sale of surplus power",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.PP",
+      "aliases": [
+        "sale of surplus power",
+        "revenue from sale of power",
+        "less: sale of surplus",
+        "trading income"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": -1
+    },
+    {
+      "code": "C.TX.INTER",
+      "label": "Inter-state transmission charges",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C",
+      "aliases": [
+        "PGCIL charges",
+        "ISTS charges",
+        "inter-state transmission charges",
+        "CTU charges",
+        "PoC charges",
+        "transmission charges (PGCIL)"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.TX.INTRA",
+      "label": "Intra-state transmission charges",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C",
+      "aliases": [
+        "intra-state transmission charges",
+        "STU charges",
+        "transmission charges (STU)",
+        "KPTCL charges",
+        "GETCO charges",
+        "UPPTCL charges"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.SLDC",
+      "label": "SLDC charges",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C",
+      "aliases": [
+        "SLDC charges",
+        "SLDC fees",
+        "system operation charges"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.TX.OTHER",
+      "label": "Other transmission and scheduling charges",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C",
+      "aliases": [
+        "RLDC charges",
+        "NLDC charges",
+        "scheduling charges",
+        "other transmission charges",
+        "reactive energy charges"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OM",
+      "label": "Operation and maintenance expenses",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "O&M expenses",
+        "operation and maintenance",
+        "O and M",
+        "O&M"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OM.EMPLOYEE",
+      "label": "Employee expenses",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C.OM",
+      "aliases": [
+        "employee cost",
+        "employee expenses",
+        "salaries and wages",
+        "staff cost"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OM.RM",
+      "label": "Repairs and maintenance",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C.OM",
+      "aliases": [
+        "R&M",
+        "repairs and maintenance",
+        "repair & maintenance"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OM.AG",
+      "label": "Administration and general expenses",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C.OM",
+      "aliases": [
+        "A&G",
+        "administration and general",
+        "administrative and general expenses"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OM.TERMINAL",
+      "label": "Terminal benefits and pension liabilities",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C.OM",
+      "aliases": [
+        "terminal benefits",
+        "terminal liabilities",
+        "pension and gratuity",
+        "pension fund contribution",
+        "employee terminal benefits"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OM.OTHER",
+      "label": "Other O&M items",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C.OM",
+      "aliases": [
+        "other O&M",
+        "O&M others",
+        "special O&M"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.DEP",
+      "label": "Depreciation",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "depreciation",
+        "depreciation expenses"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.INT.LOAN",
+      "label": "Interest on long-term loans",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "interest on loans",
+        "interest and finance charges",
+        "interest on long term loans",
+        "interest expenses",
+        "finance charges"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.INT.WC",
+      "label": "Interest on working capital",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "interest on working capital",
+        "IoWC",
+        "IWC"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.INT.CSD",
+      "label": "Interest on consumer security deposits",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "interest on security deposit",
+        "interest on consumer security deposit",
+        "interest on CSD"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.INT.OTHER",
+      "label": "Other finance charges",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "guarantee fee",
+        "other finance charges",
+        "finance cost others",
+        "interest on GPF",
+        "lease charges"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.RETURN",
+      "label": "Return to the licensee",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [],
+      "note": "Exactly one child applies per commission and regulation period; the mapping's return_basis says which.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.RETURN.ROE",
+      "label": "Return on equity",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C.RETURN",
+      "aliases": [
+        "return on equity",
+        "RoE",
+        "ROE"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.RETURN.ROCE",
+      "label": "Return on capital employed",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C.RETURN",
+      "aliases": [
+        "return on capital employed",
+        "RoCE",
+        "ROCE",
+        "WACC based return"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.TAX",
+      "label": "Income tax",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "income tax",
+        "tax on return",
+        "taxes on income",
+        "tax"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.CONTINGENCY",
+      "label": "Contingency reserve",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "contingency reserve",
+        "contribution to contingency reserve"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.BAD_DEBT",
+      "label": "Provision for bad and doubtful debts",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "bad debts",
+        "provision for bad debts",
+        "bad and doubtful debts",
+        "doubtful debts"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.LOSS_SHARING",
+      "label": "Gain or loss sharing on controllable items",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "sharing of gains",
+        "sharing of losses",
+        "incentive",
+        "penalty",
+        "gain/loss sharing",
+        "efficiency gain",
+        "controllable gains"
+      ],
+      "note": "Signed: an incentive to the licensee is positive, a penalty negative.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OTHER",
+      "label": "Other expenses",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "other expenses",
+        "other costs",
+        "miscellaneous expenses"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OTHER.RPO",
+      "label": "RPO compliance cost (REC purchase, shortfall)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.OTHER",
+      "aliases": [
+        "RPO",
+        "REC purchase",
+        "renewable purchase obligation",
+        "RPO compliance"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OTHER.DSM",
+      "label": "Demand-side management expenses",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.OTHER",
+      "aliases": [
+        "DSM",
+        "demand side management",
+        "energy conservation"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OTHER.SMART_METER",
+      "label": "Smart metering and technology expenses",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C.OTHER",
+      "aliases": [
+        "smart meter",
+        "smart metering",
+        "AMI",
+        "IT expenses",
+        "RDSS"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.OTHER.OTHER",
+      "label": "Other items not elsewhere classified",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C.OTHER",
+      "aliases": [
+        "others",
+        "any other"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.PRIOR_PERIOD",
+      "label": "Prior period items",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "prior period",
+        "prior period expenses",
+        "prior period items"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.RA.CARRYING",
+      "label": "Carrying cost on regulatory asset / revenue gap",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "carrying cost",
+        "interest on regulatory asset",
+        "carrying cost on gap",
+        "holding cost"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "C.TOTAL",
+      "label": "Total expenditure",
+      "unit": "INR_crore",
+      "kind": "computed",
+      "branch": "shared",
+      "parent": "C",
+      "aliases": [
+        "total expenditure",
+        "total expenses",
+        "total cost",
+        "gross ARR",
+        "total ARR before non-tariff income"
+      ],
+      "note": "Sum of the printed cost leaves; the printed total reconciles against it (identity ARR-I1).",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "L",
+      "label": "Less: income set off against costs",
+      "unit": null,
+      "kind": "group",
+      "branch": "shared",
+      "parent": null,
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "L.NTI",
+      "label": "Non-tariff income",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "L",
+      "aliases": [
+        "non-tariff income",
+        "NTI",
+        "non tariff income",
+        "other income"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "L.OTHER_BUSINESS",
+      "label": "Income from other business",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "L",
+      "aliases": [
+        "income from other business",
+        "other business income",
+        "share of other business"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "L.OA",
+      "label": "Open-access income",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "L",
+      "aliases": [
+        "open access income",
+        "income from open access",
+        "OA charges recovered"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "L.OA.WHEELING",
+      "label": "Wheeling charges recovered",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "L.OA",
+      "aliases": [
+        "wheeling charges",
+        "wheeling income"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "L.OA.CSS",
+      "label": "Cross-subsidy surcharge recovered",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "L.OA",
+      "aliases": [
+        "cross subsidy surcharge",
+        "CSS income",
+        "CSS recovered"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "L.OA.ADDL_SURCHARGE",
+      "label": "Additional surcharge recovered",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "L.OA",
+      "aliases": [
+        "additional surcharge",
+        "additional surcharge income"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "L.OTHER",
+      "label": "Other income set off",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "L",
+      "aliases": [
+        "other income set off",
+        "less: others",
+        "income from trading"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R",
+      "label": "Revenue requirement and gap",
+      "unit": null,
+      "kind": "group",
+      "branch": "shared",
+      "parent": null,
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.ARR",
+      "label": "Aggregate revenue requirement (net)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "R",
+      "aliases": [
+        "ARR",
+        "aggregate revenue requirement",
+        "net ARR",
+        "annual revenue requirement",
+        "net revenue requirement"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.REV.EXISTING",
+      "label": "Revenue at existing tariff",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "R",
+      "aliases": [
+        "revenue at existing tariff",
+        "revenue from existing tariff",
+        "revenue at current tariff",
+        "revenue from sale of power (existing tariff)"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.REV.APPROVED",
+      "label": "Revenue at approved tariff",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "R",
+      "aliases": [
+        "revenue at approved tariff",
+        "revenue at revised tariff",
+        "revenue from approved tariff",
+        "revenue at proposed tariff (petition voice)"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.REV.SUBSIDY",
+      "label": "Government subsidy counted as revenue",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "R",
+      "aliases": [
+        "government subsidy",
+        "subsidy from state government",
+        "tariff subsidy",
+        "GoUP subsidy",
+        "GoK subsidy",
+        "GoG subsidy"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.GAP",
+      "label": "Revenue gap (surplus negative)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "R",
+      "aliases": [
+        "revenue gap",
+        "gap",
+        "net gap",
+        "revenue deficit",
+        "surplus",
+        "revenue surplus"
+      ],
+      "note": "R.ARR - R.REV.EXISTING - R.REV.SUBSIDY for the ensuing year; a surplus prints as a negative gap.",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.GAP.CUMULATIVE",
+      "label": "Cumulative revenue gap carried",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "R",
+      "aliases": [
+        "cumulative gap",
+        "accumulated gap",
+        "cumulative revenue gap",
+        "total gap including previous years"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.RA.OPENING",
+      "label": "Regulatory asset, opening",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "R",
+      "aliases": [
+        "regulatory asset opening",
+        "opening regulatory asset",
+        "opening balance of gap"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.RA.CLOSING",
+      "label": "Regulatory asset, closing",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "R",
+      "aliases": [
+        "regulatory asset closing",
+        "closing regulatory asset",
+        "closing balance of gap"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.GAP.RECOVERY",
+      "label": "Gap recovered through tariff this year",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "R",
+      "aliases": [
+        "recovery of gap",
+        "gap recovery",
+        "regulatory asset recovery",
+        "amortisation of regulatory asset",
+        "recovery of regulatory asset"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.ACOS",
+      "label": "Average cost of supply",
+      "unit": "INR_per_kWh",
+      "kind": "computed",
+      "branch": "distribution",
+      "parent": "R",
+      "aliases": [
+        "average cost of supply",
+        "ACoS",
+        "ACS",
+        "cost of supply"
+      ],
+      "note": "Printed by most commissions; recomputed as R.ARR / E.SALES x 10 (crore per MU to INR per kWh).",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.ABR",
+      "label": "Average billing rate / average realisation",
+      "unit": "INR_per_kWh",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "R",
+      "aliases": [
+        "average billing rate",
+        "ABR",
+        "average realisation",
+        "ARR per unit",
+        "average revenue realisation"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "R.TARIFF_CHANGE_PCT",
+      "label": "Average tariff change approved",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "R",
+      "aliases": [
+        "tariff hike",
+        "tariff increase",
+        "average tariff increase",
+        "overall increase",
+        "tariff revision %"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K",
+      "label": "Capital, assets and funding",
+      "unit": null,
+      "kind": "group",
+      "branch": "shared",
+      "parent": null,
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.CAPEX",
+      "label": "Capital expenditure approved",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "capex",
+        "capital expenditure",
+        "capital investment",
+        "investment approved"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.CAPITALISATION",
+      "label": "Capitalisation (assets put to use)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "capitalisation",
+        "capitalization",
+        "assets capitalised",
+        "addition to GFA"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.GFA.OPEN",
+      "label": "Gross fixed assets, opening",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "opening GFA",
+        "GFA opening",
+        "opening gross fixed assets"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.GFA.CLOSE",
+      "label": "Gross fixed assets, closing",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "closing GFA",
+        "GFA closing",
+        "closing gross fixed assets"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.FUNDING.DEBT",
+      "label": "Capitalisation funded by debt",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "loan funding",
+        "debt",
+        "normative loan",
+        "funded by loan"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.FUNDING.EQUITY",
+      "label": "Capitalisation funded by equity",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "equity",
+        "equity funding",
+        "normative equity",
+        "funded by equity"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.FUNDING.GRANT",
+      "label": "Consumer contributions, grants and deposit works",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "consumer contribution",
+        "grants",
+        "capital subsidy",
+        "deposit works",
+        "government grant",
+        "RDSS grant"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.LOAN.OPEN",
+      "label": "Loan balance, opening (normative)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "opening loan",
+        "opening balance of loan",
+        "opening normative loan"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.LOAN.REPAY",
+      "label": "Loan repayment (normative = depreciation where the regulation says so)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "repayment",
+        "loan repayment",
+        "normative repayment"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.LOAN.CLOSE",
+      "label": "Loan balance, closing (normative)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "closing loan",
+        "closing balance of loan",
+        "closing normative loan"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.EQUITY.CLOSE",
+      "label": "Equity base, closing",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "closing equity",
+        "equity base",
+        "regulated equity",
+        "equity for return"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.WC",
+      "label": "Working capital requirement",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "working capital",
+        "working capital requirement",
+        "normative working capital"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.RATE.ROE_PCT",
+      "label": "Rate of return on equity",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "rate of RoE",
+        "RoE %",
+        "return on equity rate",
+        "post-tax RoE"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.RATE.INTEREST_PCT",
+      "label": "Rate of interest on loans",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "weighted average interest rate",
+        "interest rate",
+        "rate of interest",
+        "SBI MCLR plus"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.RATE.WC_INTEREST_PCT",
+      "label": "Rate of interest on working capital",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "IoWC rate",
+        "working capital interest rate"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "K.RATE.DEP_PCT",
+      "label": "Weighted average depreciation rate",
+      "unit": "percent",
+      "kind": "printed",
+      "branch": "shared",
+      "parent": "K",
+      "aliases": [
+        "depreciation rate",
+        "weighted average rate of depreciation"
+      ],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "X",
+      "label": "Detail tables",
+      "unit": null,
+      "kind": "group",
+      "branch": "shared",
+      "parent": null,
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "X.PP.STATION",
+      "label": "Station-wise power purchase (quantity, fixed cost, variable cost, rate)",
+      "unit": null,
+      "kind": "detail",
+      "branch": "distribution",
+      "parent": "X",
+      "aliases": [],
+      "note": "Columns: station, source class (E.PP.QTY.*), fiscal year, value type, quantity MU, fixed cost INR crore, variable cost INR crore, total INR crore, rate INR/kWh as printed. Rolls up to C.PP.* and E.PP.QTY.* (identity ARR-I5).",
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "X.LOAN",
+      "label": "Loan-wise schedule (lender, opening, addition, repayment, closing, rate)",
+      "unit": null,
+      "kind": "detail",
+      "branch": "shared",
+      "parent": "X",
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "X.CAPEX.SCHEME",
+      "label": "Scheme-wise capital expenditure",
+      "unit": null,
+      "kind": "detail",
+      "branch": "shared",
+      "parent": "X",
+      "aliases": [],
+      "note": null,
+      "by_category": false,
+      "sign": null
+    },
+    {
+      "code": "X.SALES.CATEGORY",
+      "label": "Category-wise sales, consumers and connected load",
+      "unit": null,
+      "kind": "detail",
+      "branch": "distribution",
+      "parent": "X",
+      "aliases": [],
+      "note": "Rows keyed by the tariff category code; feeds E.SALES.",
+      "by_category": false,
+      "sign": null
+    }
+  ],
+  "identities": [
+    {
+      "id": "ARR-I1",
+      "name": "Total expenditure is the sum of its printed components",
+      "expression": "C.TOTAL = sum(children of C that are printed for the year)",
+      "tolerance": {
+        "abs_inr_crore": 0.5,
+        "rel": 0.001
+      },
+      "severity": "blocking",
+      "note": "A printed total that does not add up means a component was misread or a line is unplaced."
+    },
+    {
+      "id": "ARR-I2",
+      "name": "Net ARR is total expenditure less the less-items",
+      "expression": "R.ARR = C.TOTAL - L.NTI - L.OTHER_BUSINESS - L.OA - L.OTHER",
+      "tolerance": {
+        "abs_inr_crore": 0.5,
+        "rel": 0.001
+      },
+      "severity": "blocking"
+    },
+    {
+      "id": "ARR-I3",
+      "name": "Revenue gap",
+      "expression": "R.GAP = R.ARR - R.REV.EXISTING - R.REV.SUBSIDY",
+      "tolerance": {
+        "abs_inr_crore": 0.5,
+        "rel": 0.001
+      },
+      "severity": "blocking",
+      "note": "Some commissions state the gap before subsidy; the mapping's gap_convention says which, and the identity adapts."
+    },
+    {
+      "id": "ARR-I4",
+      "name": "Energy input from sales and loss",
+      "expression": "E.INPUT.DIST = E.SALES / (1 - E.LOSS.DIST_PCT / 100)",
+      "tolerance": {
+        "abs_mu": 1.0,
+        "rel": 0.002
+      },
+      "severity": "blocking"
+    },
+    {
+      "id": "ARR-I5",
+      "name": "Power purchase cost and quantity roll up from stations",
+      "expression": "C.PP = sum(X.PP.STATION.total) and E.PP.QTY = sum(X.PP.STATION.quantity), when the detail table is read",
+      "tolerance": {
+        "abs_inr_crore": 1.0,
+        "abs_mu": 5.0,
+        "rel": 0.002
+      },
+      "severity": "blocking"
+    },
+    {
+      "id": "ARR-I6",
+      "name": "Energy balance closes",
+      "expression": "E.PP.QTY - E.PP.QTY.SURPLUS_SALE - inter-state loss share - intra-state loss = E.INPUT.DIST",
+      "tolerance": {
+        "abs_mu": 5.0,
+        "rel": 0.005
+      },
+      "severity": "advisory",
+      "note": "Advisory because commissions apply inter-state loss to different bases; the finding names the base it tried."
+    },
+    {
+      "id": "ARR-I7",
+      "name": "Average cost of supply",
+      "expression": "R.ACOS = R.ARR / E.SALES * 10",
+      "tolerance": {
+        "abs_inr_per_kwh": 0.01
+      },
+      "severity": "advisory"
+    },
+    {
+      "id": "ARR-I8",
+      "name": "Fixed plus variable is the power purchase cost",
+      "expression": "C.PP = C.PP.FIXED + C.PP.VARIABLE - C.PP.SURPLUS_SALE_INCOME, when the split is printed",
+      "tolerance": {
+        "abs_inr_crore": 0.5,
+        "rel": 0.001
+      },
+      "severity": "blocking"
+    },
+    {
+      "id": "ARR-I9",
+      "name": "Loan roll-forward",
+      "expression": "K.LOAN.CLOSE = K.LOAN.OPEN + K.FUNDING.DEBT - K.LOAN.REPAY",
+      "tolerance": {
+        "abs_inr_crore": 0.5,
+        "rel": 0.001
+      },
+      "severity": "advisory"
+    },
+    {
+      "id": "ARR-I10",
+      "name": "Intra-state transmission charge matches the transmission order's sharing table",
+      "expression": "C.TX.INTRA (distribution order, utility U, year Y) = T.SHARING[U] (transmission order, year Y)",
+      "tolerance": {
+        "rel": 0.02
+      },
+      "severity": "advisory",
+      "cross_order": true,
+      "note": "Cross-order: the two orders may be passed months apart; a gap above tolerance is reported, never corrected."
+    },
+    {
+      "id": "ARR-I11",
+      "name": "True-up chain",
+      "expression": "final_true_up(Y) in order N+k refers to the same utility and year as approved(Y) in order N; the difference is reported per line",
+      "tolerance": null,
+      "severity": "advisory",
+      "cross_order": true
+    },
+    {
+      "id": "ARR-I12",
+      "name": "Sales roll up from categories",
+      "expression": "E.SALES = sum(X.SALES.CATEGORY.sales)",
+      "tolerance": {
+        "abs_mu": 1.0,
+        "rel": 0.002
+      },
+      "severity": "blocking"
+    }
+  ]
+}

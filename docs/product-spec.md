@@ -25,7 +25,9 @@ identically; every discovered reading failure becomes a fixture and a test.
 M0 assessment → M1 foundation (this increment) → M2 triage/parsing → M3 localisation and
 table integrity → M4 dual-channel extraction and validators → M5 review, publication,
 explorer → M6 history → M7 text Q&A → M8 cloud hardening → M9 prod promotion → M10 voice →
-M11 multi-state pilot → M12 ARR foundation.
+M11 multi-state pilot → M12 ARR foundation (specified 2026-09-21 in `docs/arr-spec.md`; data in
+`packages/arr-taxonomy/`; scope: distribution and transmission, UPERC/KERC/GERC first, three
+years plus MYT orders, regulations mapped, what-if on the power purchase mix only).
 
 ## Source availability at Milestone 0/1
 

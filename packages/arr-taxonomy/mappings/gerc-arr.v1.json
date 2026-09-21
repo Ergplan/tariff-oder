@@ -1,0 +1,237 @@
+{
+  "id": "gerc-arr",
+  "version": 1,
+  "taxonomy_version": 1,
+  "commission": "GERC",
+  "status": "skeleton; every entry below is an expectation to be confirmed against the exported order text, not a verified mapping",
+  "licensees": {
+    "distribution": [
+      "MGVCL",
+      "DGVCL",
+      "PGVCL",
+      "UGVCL",
+      "Torrent Power Ahmedabad",
+      "Torrent Power Surat"
+    ],
+    "transmission": [
+      "GETCO"
+    ]
+  },
+  "regulations": [
+    {
+      "role": "distribution_tariff",
+      "title": "to be confirmed from the regulation on file",
+      "year": null,
+      "amendments": [],
+      "control_periods": [
+        {
+          "from_fy": "FY2025-26",
+          "to_fy": "FY2029-30",
+          "note": "fourth MYT control period, from the order"
+        }
+      ],
+      "source_id": null,
+      "note": "Filled when the regulation PDF is uploaded as order_type=regulation and parsed into clauses."
+    },
+    {
+      "role": "transmission_tariff",
+      "title": "to be confirmed from the regulation on file",
+      "year": null,
+      "amendments": [],
+      "control_periods": [
+        {
+          "from_fy": "FY2025-26",
+          "to_fy": "FY2029-30",
+          "note": "fourth MYT control period, from the order"
+        }
+      ],
+      "source_id": null,
+      "note": "As above."
+    }
+  ],
+  "return_basis": {
+    "value": null,
+    "note": "roe or roce; confirmed from the regulation and the order's finance chapter."
+  },
+  "gap_convention": {
+    "value": null,
+    "note": "before_subsidy or after_subsidy; decides identity ARR-I3."
+  },
+  "unit_convention": {
+    "money": "INR_crore",
+    "energy": "MU",
+    "note": "Overridden per table when a printed unit line says otherwise; the printed unit always stays on the fact."
+  },
+  "orders_expected": [
+    {
+      "order_type": "tariff_order",
+      "decides": [
+        {
+          "fy": "FY2024-25",
+          "value_type": "final_true_up"
+        },
+        {
+          "fy": "FY2026-27",
+          "value_type": "approved"
+        }
+      ],
+      "note": "MGVCL order in Case No. 2582 of 2025 (Part F): truing up FY2024-25 and revised ARR for FY2026-27, second year of the fourth MYT control period FY2025-26 to FY2029-30."
+    }
+  ],
+  "chapter_map": [
+    {
+      "branch": "E",
+      "heading_patterns": [
+        "sales",
+        "energy sales",
+        "energy balance",
+        "energy requirement",
+        "distribution loss"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "E.PP",
+      "heading_patterns": [
+        "power purchase",
+        "power procurement",
+        "cost of power"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "C.TX",
+      "heading_patterns": [
+        "transmission charges",
+        "SLDC",
+        "inter-state transmission"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "C.OM",
+      "heading_patterns": [
+        "operation and maintenance",
+        "O&M",
+        "employee",
+        "repairs",
+        "administration"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "K",
+      "heading_patterns": [
+        "capital expenditure",
+        "capitalisation",
+        "capitalization",
+        "gross fixed assets",
+        "GFA",
+        "funding"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "C.DEP",
+      "heading_patterns": [
+        "depreciation"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "C.INT",
+      "heading_patterns": [
+        "interest",
+        "finance charges",
+        "working capital",
+        "security deposit"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "C.RETURN",
+      "heading_patterns": [
+        "return on equity",
+        "return on capital",
+        "RoE",
+        "RoCE"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "L",
+      "heading_patterns": [
+        "non-tariff income",
+        "non tariff income",
+        "other income",
+        "income from other business"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "R",
+      "heading_patterns": [
+        "aggregate revenue requirement",
+        "revenue gap",
+        "revenue at existing tariff",
+        "regulatory asset",
+        "average cost of supply"
+      ],
+      "note": "expectation"
+    },
+    {
+      "branch": "T",
+      "heading_patterns": [
+        "transmission tariff",
+        "transmission charges",
+        "availability",
+        "sharing of transmission charges"
+      ],
+      "note": "transmission order only; expectation"
+    }
+  ],
+  "year_columns": {
+    "note": "Column-header patterns to the fiscal year and voice; filled from the exported tables.",
+    "patterns": []
+  },
+  "voice_columns": {
+    "note": "Column-header words to value types; the generic set applies until the commission's own words are confirmed.",
+    "patterns": [
+      {
+        "pattern": "petition|claimed|proposed|submitted|as per petitioner",
+        "value_type": "petitioned"
+      },
+      {
+        "pattern": "approved|allowed|commission",
+        "value_type": "approved"
+      },
+      {
+        "pattern": "provisional|APR|revised estimate|RE\\b",
+        "value_type": "provisional_true_up"
+      },
+      {
+        "pattern": "true[- ]?up|trued[- ]?up|final",
+        "value_type": "final_true_up"
+      },
+      {
+        "pattern": "actual|audited",
+        "value_type": "actual"
+      }
+    ]
+  },
+  "label_aliases": {
+    "note": "Printed row label (normalised) to taxonomy code, only where the generic aliases in taxonomy.json do not place it.",
+    "entries": []
+  },
+  "regulation_clauses": {
+    "note": "Taxonomy code to the clause that governs it, filled from the parsed regulation.",
+    "entries": []
+  },
+  "unplaced": {
+    "note": "Every printed line the taxonomy could not place, from the hand-mapping pass; the reviewer decides each.",
+    "entries": []
+  },
+  "known_quirks": [
+    "Revised ARR for a control-period year: the MYT order's control_period value and this order's approved value for FY2026-27 are two facts for the same year; the as_of_order versioning keeps both."
+  ]
+}
