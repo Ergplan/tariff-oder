@@ -21,8 +21,10 @@ service in Milestone 3 (link does not exist yet).
 
 ## `jurisdictions`, `commissions`, `utilities`
 Stable identities with `code`, `name`, `aliases` (JSONB list).  `utilities` additionally:
-`licensed_area`, `active_reading_profile`, `active_reading_profile_version` (null until a
-profile version is published in Milestone 3), `dataset_id`.  A state is not a schedule;
+`licensed_area`, `licensee_kind` (`distribution` | `transmission` | `generation`, migration 0014;
+the seed carries UPPTCL, KPTCL and GETCO as transmission), `active_reading_profile`,
+`active_reading_profile_version` (null until a profile version is published in Milestone 3),
+`dataset_id`.  A state is not a schedule;
 nothing here implies coverage.
 
 ## `source_documents`
@@ -35,6 +37,7 @@ nothing here implies coverage.
 | page_count, pdf_version, producer, creator, is_encrypted, is_tagged, fonts_total, fonts_not_embedded | Document-level inventory; null until the inventory stage ran (never guessed) |
 | pages_with_text, pages_without_text, inventory_tool, inventory_tool_version, inventoried_at | Text-layer summary and tool provenance |
 | golden_id, manifest_check | Set when the hash matches `tests/golden/manifest.json`; `manifest_check` records expected vs observed per field |
+| order_type, decides | Increment 24 (migration 0014): what the instrument is (`tariff_order`, `arr_true_up_order`, `myt_order`, `mid_term_review`, `regulation`, `regulation_amendment`, `other`) and the list of `{fiscal_year, value_type}` it decides; stated on upload or via `PUT /sources/{id}/classification` (administrator, audited `source.classify`), never inferred |
 | superseded_by_id | Supersession link (set by later milestones' supersede action) |
 | version | Optimistic-concurrency counter; incremented on every transition |
 

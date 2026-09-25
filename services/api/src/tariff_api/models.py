@@ -212,6 +212,8 @@ class Utility(Base):
     commission_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("commissions.id"), nullable=False)
     dataset_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("datasets.id"), nullable=False)
     licensed_area: Mapped[str | None] = mapped_column(Text)
+    # distribution | transmission | generation (ARR spec section 5); generation is registered, not read
+    licensee_kind: Mapped[str] = mapped_column(String(20), nullable=False, default="distribution")
     aliases: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
     active_reading_profile: Mapped[str | None] = mapped_column(String(120))
     active_reading_profile_version: Mapped[str | None] = mapped_column(String(40))
@@ -233,6 +235,10 @@ class SourceDocument(Base):
     original_filename: Mapped[str] = mapped_column(String(512), nullable=False)
     content_type: Mapped[str] = mapped_column(String(120), nullable=False, default="application/pdf")
     provenance_url: Mapped[str | None] = mapped_column(Text)
+    # what kind of instrument this is and the years/voices it decides (ARR spec section 5);
+    # chosen by the operator, never detected
+    order_type: Mapped[str | None] = mapped_column(String(32))
+    decides: Mapped[list | None] = mapped_column(JSONB)
     acquired_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     uploaded_by: Mapped[str] = mapped_column(String(320), nullable=False)
     object_key: Mapped[str] = mapped_column(String(512), nullable=False)

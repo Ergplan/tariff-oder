@@ -271,6 +271,13 @@ REGISTRY = {
             "aliases": ["NDMC"],
         },
         {
+            "code": "GETCO",
+            "name": "Gujarat Energy Transmission Corporation Limited",
+            "commission": "GERC",
+            "aliases": ["GETCO"],
+            "kind": "transmission",
+        },
+        {
             "code": "MGVCL",
             "name": "Madhya Gujarat Vij Company Limited",
             "commission": "GERC",
@@ -341,6 +348,13 @@ REGISTRY = {
             "aliases": ["LADAKH-PDD"],
         },
         {"code": "JBVNL", "name": "Jharkhand Bijli Vitran Nigam Limited", "commission": "JSERC", "aliases": ["JBVNL"]},
+        {
+            "code": "KPTCL",
+            "name": "Karnataka Power Transmission Corporation Limited",
+            "commission": "KERC",
+            "aliases": ["KPTCL"],
+            "kind": "transmission",
+        },
         {
             "code": "BESCOM",
             "name": "Bangalore Electricity Supply Company Limited",
@@ -507,6 +521,13 @@ REGISTRY = {
             "aliases": ["TSECL"],
         },
         {
+            "code": "UPPTCL",
+            "name": "Uttar Pradesh Power Transmission Corporation Limited",
+            "commission": "UPERC",
+            "aliases": ["UPPTCL"],
+            "kind": "transmission",
+        },
+        {
             "code": "NPCL",
             "name": "Noida Power Company Limited",
             "commission": "UPERC",
@@ -628,6 +649,7 @@ def seed_registry(session: Session) -> dict[str, int]:
                 aliases=u["aliases"],
                 active_reading_profile=u.get("profile"),
                 active_reading_profile_version=None,
+                licensee_kind=u.get("kind", "distribution"),
             )
             session.add(row)
             created["utilities"] += 1

@@ -109,6 +109,8 @@ def register_from_object(
     provenance_url: str | None,
     actor: str,
     utility_code: str | None = None,
+    order_type: str | None = None,
+    decides: list[dict[str, str]] | None = None,
 ) -> tuple[SourceDocument, bool, Job | None]:
     """Register a PDF that an operator already placed in the source bucket.
 
@@ -140,6 +142,8 @@ def register_from_object(
         provenance_url=provenance_url or f"gs://<source-bucket>/{object_key}",
         actor=actor,
         utility_code=utility_code,
+        order_type=order_type,
+        decides=decides,
     )
 
 
@@ -180,6 +184,8 @@ def register_upload(
     provenance_url: str | None,
     actor: str,
     utility_code: str | None = None,
+    order_type: str | None = None,
+    decides: list[dict[str, str]] | None = None,
 ) -> tuple[SourceDocument, bool, Job | None]:
     """Register bytes as a source.  Returns (source, deduplicated, inventory_job).  With a
     utility code the order belongs to that utility: its active reading profile binds now
@@ -240,6 +246,10 @@ def register_upload(
         source.manifest_check = golden.compare_inventory(entry, {"size_bytes": len(data)})
     if utility is not None:
         apply_utility(source, utility, actor=actor)
+    # what the instrument is and which years it decides: stated by the person registering
+    # it (ARR spec section 5), never inferred from the file
+    source.order_type = order_type or None
+    source.decides = decides or None
     session.add(source)
     session.flush()
     session.add(

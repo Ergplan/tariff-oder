@@ -563,6 +563,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/sources/{source_id}/classification": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Classify Source
+         * @description What the instrument is (tariff order, true-up, MYT, regulation …) and which years it
+         *     decides in which voice.  Set by an administrator, audited; never inferred.
+         */
+        put: operations["classify_source_sources__source_id__classification_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/sources/{source_id}/conditions": {
         parameters: {
             query?: never;
@@ -1271,8 +1292,12 @@ export interface components {
         Body_upload_source_sources_post: {
             /** @default real */
             dataset_kind: components["schemas"]["DatasetKind"];
+            /** Decides */
+            decides?: string | null;
             /** File */
             file: string;
+            /** Order Type */
+            order_type?: string | null;
             /** Provenance Url */
             provenance_url?: string | null;
             /** Utility Code */
@@ -1667,6 +1692,11 @@ export interface components {
             };
             /** Code */
             code: string;
+            /**
+             * Licensee Kind
+             * @default distribution
+             */
+            licensee_kind: string;
             /** Name */
             name: string;
             /** Sources */
@@ -1731,6 +1761,19 @@ export interface components {
          * @enum {string}
          */
         DatasetKind: "real" | "fixture";
+        /**
+         * Decides
+         * @description One year an order determines, in one voice (ARR spec section 1).
+         */
+        Decides: {
+            /** Fiscal Year */
+            fiscal_year: string;
+            /**
+             * Value Type
+             * @enum {string}
+             */
+            value_type: "petitioned" | "approved" | "provisional_true_up" | "final_true_up" | "actual" | "control_period";
+        };
         /** DecisionList */
         DecisionList: {
             /** Decisions */
@@ -2123,8 +2166,12 @@ export interface components {
         IngestRequest: {
             /** @default real */
             dataset_kind: components["schemas"]["DatasetKind"];
+            /** Decides */
+            decides?: components["schemas"]["Decides"][] | null;
             /** Object Key */
             object_key: string;
+            /** Order Type */
+            order_type?: string | null;
             /** Provenance Url */
             provenance_url?: string | null;
             /** Utility Code */
@@ -3059,6 +3106,16 @@ export interface components {
             /** Undone */
             undone: number;
         };
+        /**
+         * SourceClassification
+         * @description What the order is and what it decides; both optional, both set by a person.
+         */
+        SourceClassification: {
+            /** Decides */
+            decides?: components["schemas"]["Decides"][] | null;
+            /** Order Type */
+            order_type?: ("tariff_order" | "arr_true_up_order" | "myt_order" | "mid_term_review" | "regulation" | "regulation_amendment" | "other") | null;
+        };
         /** SourceDetail */
         SourceDetail: {
             /**
@@ -3082,6 +3139,8 @@ export interface components {
             /** Creator */
             creator: string | null;
             dataset_kind: components["schemas"]["DatasetKind"];
+            /** Decides */
+            decides?: components["schemas"]["Decides"][] | null;
             extraction: components["schemas"]["ExtractionSummary"] | null;
             /** Fonts Not Embedded */
             fonts_not_embedded: string[] | null;
@@ -3112,6 +3171,8 @@ export interface components {
             } | null;
             /** Object Key */
             object_key: string;
+            /** Order Type */
+            order_type?: string | null;
             /** Original Filename */
             original_filename: string;
             /** Page Count */
@@ -3287,6 +3348,8 @@ export interface components {
              */
             created_at: string;
             dataset_kind: components["schemas"]["DatasetKind"];
+            /** Decides */
+            decides?: components["schemas"]["Decides"][] | null;
             /** Golden Id */
             golden_id: string | null;
             /**
@@ -3294,6 +3357,8 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            /** Order Type */
+            order_type?: string | null;
             /** Original Filename */
             original_filename: string;
             /** Page Count */
@@ -3664,6 +3729,12 @@ export interface components {
             dataset_kind: components["schemas"]["DatasetKind"];
             /** Licensed Area */
             licensed_area?: string | null;
+            /**
+             * Licensee Kind
+             * @default distribution
+             * @enum {string}
+             */
+            licensee_kind: "distribution" | "transmission" | "generation";
             /** Name */
             name: string;
         };
@@ -3690,6 +3761,11 @@ export interface components {
             id: string;
             /** Licensed Area */
             licensed_area: string | null;
+            /**
+             * Licensee Kind
+             * @default distribution
+             */
+            licensee_kind: string;
             /** Name */
             name: string;
         };
@@ -6253,6 +6329,95 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CandidateList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    classify_source_sources__source_id__classification_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                source_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SourceClassification"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SourceSummary"];
                 };
             };
             /** @description Unauthorized */

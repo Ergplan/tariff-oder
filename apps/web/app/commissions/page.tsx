@@ -58,6 +58,7 @@ export default async function CommissionsPage() {
               {c.utilities.map((u) => (
                 <li key={u.code}>
                   <span className="mono">{u.code}</span> <span className="muted">{u.name}</span>
+                  {u.licensee_kind && u.licensee_kind !== "distribution" ? <span className="badge" data-tone="neutral" title="kind of licensee">{u.licensee_kind}</span> : null}
                   {u.active_reading_profile ? <span className="badge" data-tone="ok" title="reading profile bound at upload">profile</span> : <span className="badge" data-tone="unknown" title="no reading profile yet: the first order will need localisation cues">no profile</span>}{" "}
                   {Object.entries(u.by_state).map(([st, n]) => (
                     <span key={st} className="badge" data-tone={STATE_TONE[st] ?? "neutral"}>

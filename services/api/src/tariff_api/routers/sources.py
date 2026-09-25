@@ -34,9 +34,11 @@ from ..models import (
     Utility,
 )
 from ..schemas import (
+    ORDER_TYPES,
     AssignmentRequest,
     ClauseValueList,
     ClauseValueOut,
+    Decides,
     ExtractionSummary,
     HeadingList,
     HeadingOut,
@@ -52,6 +54,7 @@ from ..schemas import (
     ProfileAssignRequest,
     PublicationSummary,
     RegionAnnotation,
+    SourceClassification,
     SourceDetail,
     SourceList,
     SourcePageList,
@@ -69,6 +72,7 @@ from ..schemas import (
     TableRows,
     TriageSummary,
     ValidationSummary,
+    parse_decides,
 )
 from ..services import export as export_svc
 from ..services import localisation as loc
@@ -99,7 +103,35 @@ def _summary(src: SourceDocument) -> SourceSummary:
         assigned_to=src.assigned_to,
         utility_code=src.utility.code if src.utility is not None else None,
         commission_code=src.utility.commission.code if src.utility is not None and src.utility.commission else None,
+        order_type=src.order_type,
+        decides=[Decides.model_validate(d) for d in (src.decides or [])] or None,
     )
+
+
+@router.put("/{source_id}/classification", response_model=SourceSummary)
+def classify_source(
+    source_id: uuid.UUID, body: SourceClassification, principal: Principal = Depends(require_admin)
+) -> SourceSummary:
+    """What the instrument is (tariff order, true-up, MYT, regulation …) and which years it
+    decides in which voice.  Set by an administrator, audited; never inferred."""
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        before = {"order_type": src.order_type, "decides": src.decides}
+        src.order_type = body.order_type
+        src.decides = [d.model_dump() for d in body.decides] if body.decides else None
+        s.add(
+            AuditEvent(
+                actor=principal.email,
+                action="source.classify",
+                entity_type="source",
+                entity_id=str(src.id),
+                before=before,
+                after={"order_type": src.order_type, "decides": src.decides},
+                reason="order classification",
+            )
+        )
+        s.flush()
+        return _summary(src)
 
 
 @router.put("/{source_id}/assignment", response_model=SourceSummary)
@@ -173,6 +205,8 @@ def upload_source(
     dataset_kind: Annotated[DatasetKind, Form()] = DatasetKind.real,
     provenance_url: Annotated[str | None, Form()] = None,
     utility_code: Annotated[str | None, Form()] = None,
+    order_type: Annotated[str | None, Form()] = None,
+    decides: Annotated[str | None, Form()] = None,
     idempotency_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
     principal: Principal = Depends(require_admin),
 ) -> SourceRegistration:
@@ -181,6 +215,12 @@ def upload_source(
     settings = request.app.state.settings
     storage: ObjectStore = request.app.state.adapters.storage
     data = file.file.read(settings.max_upload_bytes + 1)
+    if order_type and order_type not in ORDER_TYPES:
+        raise AppError("validation_failed", f"unknown order type {order_type!r}")
+    try:
+        decided = parse_decides(decides)
+    except ValueError as e:
+        raise AppError("validation_failed", f"decides: {e}") from e
     fingerprint = hashlib.sha256(
         (
             hashlib.sha256(data).hexdigest()
@@ -190,6 +230,10 @@ def upload_source(
             + (provenance_url or "")
             + "|"
             + (utility_code or "")
+            + "|"
+            + (order_type or "")
+            + "|"
+            + json.dumps(decided or [])
         ).encode()
     ).hexdigest()
 
@@ -214,6 +258,8 @@ def upload_source(
             provenance_url=provenance_url,
             actor=principal.email,
             utility_code=utility_code or None,
+            order_type=order_type or None,
+            decides=decided,
         )
         s.flush()
         s.refresh(source)
@@ -270,6 +316,7 @@ def ingest_source(
     fingerprint = hashlib.sha256(
         (
             f"ingest|{body.object_key}|{body.dataset_kind.value}|{body.provenance_url or ''}|{body.utility_code or ''}"
+            f"|{body.order_type or ''}|{json.dumps([d.model_dump() for d in body.decides] if body.decides else [])}"
         ).encode()
     ).hexdigest()
 
@@ -293,6 +340,8 @@ def ingest_source(
             provenance_url=body.provenance_url,
             actor=principal.email,
             utility_code=body.utility_code,
+            order_type=body.order_type,
+            decides=[d.model_dump() for d in body.decides] if body.decides else None,
         )
         s.flush()
         s.refresh(source)

@@ -211,3 +211,4 @@ tr.group-row td { background: #eef0ec; font-size: 0.92rem; border-top: 2px solid
 .tt-notes > summary::before { content: "▸ "; }
 .tt-notes[open] > summary::before { content: "▾ "; }
 .tt-notes .tt-grid td { background: #fafaf8; }
+.classify { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; font-size: 0.9rem; }

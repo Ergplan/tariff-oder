@@ -12,6 +12,7 @@ import type {
 import { apiTry } from "@/lib/api";
 import { AssignForm } from "./assign-form";
 import { RerunButton } from "./rerun-button";
+import { ClassifyForm } from "./classify-form";
 import { DatasetBadge, ErrorBanner, JobBadge, StageTrack, StateBadge, UnknownBadge } from "../../components";
 import { AutoRefresh } from "./auto-refresh";
 import { LocalisationForm } from "./localisation-form";
@@ -179,6 +180,9 @@ export default async function SourceDetailPage({
           </>
         ) : null}
         <a href={`/api/sources/${id}/export`}>Download everything as JSON (zip)</a>
+      </p>
+      <p className="muted">
+        <ClassifyForm sourceId={id} orderType={s.order_type ?? null} decides={(s.decides as { fiscal_year: string; value_type: string }[] | null | undefined) ?? null} isAdmin={me.data?.role === "administrator"} />
       </p>
       {me.data?.role === "administrator" ? <RerunButton sourceId={id} /> : null}
       {s.dataset_kind === "fixture" ? (

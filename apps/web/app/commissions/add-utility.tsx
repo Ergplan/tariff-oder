@@ -13,6 +13,7 @@ export function AddUtility({ commissionCode }: { commissionCode: string }) {
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<ErrorResponse | null>(null);
+  const [kind, setKind] = useState<"distribution" | "transmission" | "generation">("distribution");
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -22,7 +23,7 @@ export function AddUtility({ commissionCode }: { commissionCode: string }) {
       const res = await fetch("/api/utilities", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ code: code.trim().toUpperCase(), name: name.trim(), commission_code: commissionCode }),
+        body: JSON.stringify({ code: code.trim().toUpperCase(), name: name.trim(), commission_code: commissionCode, licensee_kind: kind }),
       });
       if (!res.ok) setError(await readError(res));
       else {
@@ -41,13 +42,18 @@ export function AddUtility({ commissionCode }: { commissionCode: string }) {
   if (!open)
     return (
       <button type="button" className="link" onClick={() => setOpen(true)}>
-        + add a distribution company
+        + add a licensee (distribution or transmission)
       </button>
     );
   return (
     <form className="cm-add" onSubmit={submit}>
       <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="CODE (e.g. PVVNL)" size={12} required aria-label="Utility code" />
       <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" size={36} required aria-label="Utility name" />
+      <select value={kind} onChange={(e) => setKind(e.target.value as typeof kind)} aria-label="Kind of licensee">
+        <option value="distribution">distribution</option>
+        <option value="transmission">transmission</option>
+        <option value="generation">generation</option>
+      </select>
       <button type="submit" className="tt-btn primary" disabled={busy}>
         Add
       </button>

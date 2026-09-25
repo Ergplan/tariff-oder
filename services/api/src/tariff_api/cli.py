@@ -10,6 +10,7 @@ from typing import Any
 
 from .config import get_settings
 from .models import DatasetKind
+from .schemas import ORDER_TYPES, parse_decides
 
 MIGRATIONS_DIR = Path(__file__).resolve().parents[2] / "migrations"
 
@@ -286,6 +287,9 @@ def cmd_ingest(args: argparse.Namespace) -> int:
             dataset_kind=DatasetKind(args.dataset),
             provenance_url=args.provenance,
             actor=args.actor,
+            utility_code=args.utility,
+            order_type=args.order_type,
+            decides=parse_decides(args.decides),
         )
         s.flush()
         result = {
@@ -690,6 +694,11 @@ def main(argv: list[str] | None = None) -> int:
     p.set_defaults(fn=cmd_inbox)
 
     p = sub.add_parser("ingest", help="register a PDF already in the source bucket")
+    p.add_argument("--utility", default=None, help="utility code the order belongs to")
+    p.add_argument("--order-type", default=None, choices=list(ORDER_TYPES), help="what the instrument is")
+    p.add_argument(
+        "--decides", default=None, help='years and voices, e.g. "FY2024-25:final_true_up,FY2026-27:approved"'
+    )
     p.add_argument("object_key")
     p.add_argument("--dataset", choices=[k.value for k in DatasetKind], default=DatasetKind.real.value)
     p.add_argument(

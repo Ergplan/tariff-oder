@@ -48,6 +48,7 @@ def _utility_out(u: Utility) -> UtilityOut:
         commission_id=u.commission_id,
         dataset_kind=u.dataset.kind,
         licensed_area=u.licensed_area,
+        licensee_kind=u.licensee_kind,
         aliases=u.aliases,
         active_reading_profile=u.active_reading_profile,
         active_reading_profile_version=u.active_reading_profile_version,
@@ -92,6 +93,7 @@ def _summarise(s, c: Commission) -> CommissionSummary:
             CommissionUtilitySummary(
                 code=u.code,
                 name=u.name,
+                licensee_kind=u.licensee_kind,
                 active_reading_profile=u.active_reading_profile,
                 sources=len(srcs),
                 by_state=by_state,
@@ -178,6 +180,7 @@ def create_utility(body: UtilityCreate, principal: Principal = Depends(require_a
             commission_id=commission.id,
             dataset_id=ds.id,
             licensed_area=body.licensed_area,
+            licensee_kind=body.licensee_kind,
             aliases=body.aliases,
         )
         s.add(u)

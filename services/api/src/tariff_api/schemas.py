@@ -61,6 +61,59 @@ class DatasetOut(BaseModel):
     name: str
 
 
+ORDER_TYPES = (
+    "tariff_order",
+    "arr_true_up_order",
+    "myt_order",
+    "mid_term_review",
+    "regulation",
+    "regulation_amendment",
+    "other",
+)
+ARR_VALUE_TYPES = ("petitioned", "approved", "provisional_true_up", "final_true_up", "actual", "control_period")
+LICENSEE_KINDS = ("distribution", "transmission", "generation")
+
+
+class Decides(BaseModel):
+    """One year an order determines, in one voice (ARR spec section 1)."""
+
+    fiscal_year: str = Field(pattern=r"^FY\d{4}-\d{2}$")
+    value_type: Literal["petitioned", "approved", "provisional_true_up", "final_true_up", "actual", "control_period"]
+
+
+def parse_decides(text: str | None) -> list[dict[str, str]] | None:
+    """The upload form's compact form, "FY2024-25:final_true_up, FY2026-27:approved", to the
+    stored list; empty means not stated."""
+    if not text or not text.strip():
+        return None
+    out: list[dict[str, str]] = []
+    for part in text.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        fy, _, vt = part.partition(":")
+        out.append(Decides(fiscal_year=fy.strip(), value_type=vt.strip()).model_dump())  # type: ignore[arg-type]
+    return out or None
+
+
+class SourceClassification(BaseModel):
+    """What the order is and what it decides; both optional, both set by a person."""
+
+    order_type: (
+        Literal[
+            "tariff_order",
+            "arr_true_up_order",
+            "myt_order",
+            "mid_term_review",
+            "regulation",
+            "regulation_amendment",
+            "other",
+        ]
+        | None
+    ) = None
+    decides: list[Decides] | None = None
+
+
 class SourceSummary(BaseModel):
     id: uuid.UUID
     dataset_kind: DatasetKind
@@ -82,6 +135,8 @@ class SourceSummary(BaseModel):
     assigned_to: str | None = None  # the reviewer responsible (increment 19)
     utility_code: str | None = None  # increment 20: the order's utility and commission
     commission_code: str | None = None
+    order_type: str | None = None  # increment 24: the kind of instrument and what it decides
+    decides: list[Decides] | None = None
 
 
 class AssignmentRequest(BaseModel):
@@ -735,6 +790,8 @@ class IngestRequest(BaseModel):
     dataset_kind: DatasetKind = DatasetKind.real
     provenance_url: str | None = None
     utility_code: str | None = Field(default=None, max_length=32)
+    order_type: str | None = None
+    decides: list[Decides] | None = None
 
 
 class SourcePageList(BaseModel):
@@ -783,6 +840,7 @@ class UtilityOut(BaseModel):
     commission_id: uuid.UUID
     dataset_kind: DatasetKind
     licensed_area: str | None
+    licensee_kind: str = "distribution"
     aliases: list[str]
     active_reading_profile: str | None
     active_reading_profile_version: str | None
@@ -794,12 +852,14 @@ class UtilityCreate(BaseModel):
     commission_code: str
     dataset_kind: DatasetKind = DatasetKind.real
     licensed_area: str | None = None
+    licensee_kind: Literal["distribution", "transmission", "generation"] = "distribution"
     aliases: list[str] = Field(default_factory=list)
 
 
 class CommissionUtilitySummary(BaseModel):
     code: str
     name: str
+    licensee_kind: str = "distribution"
     active_reading_profile: str | None
     sources: int
     by_state: dict[str, int]

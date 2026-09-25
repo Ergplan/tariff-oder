@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { ORDER_TYPE_LABEL } from "@/app/order-types";
 import { useState } from "react";
 import type { ErrorResponse, SourceRegistration, UtilityOut } from "@tariff/contracts";
 
@@ -53,7 +54,7 @@ export function UploadForm({ utilities = [], preselect }: { utilities?: UtilityO
         <input type="file" name="file" accept="application/pdf" required disabled={busy} />
       </label>
       <label>
-        Utility (the order&apos;s distribution company; binds its reading profile and commission)
+        Licensee (the distribution or transmission company the order is for; binds its reading profile and commission)
         <select name="utility_code" defaultValue={preselect && utilities.some((u) => u.code === preselect) ? preselect : ""} disabled={busy} required>
           <option value="" disabled>
             choose a utility…
@@ -64,6 +65,21 @@ export function UploadForm({ utilities = [], preselect }: { utilities?: UtilityO
             </option>
           ))}
         </select>
+      </label>
+      <label>
+        What the instrument is (an order, an MYT order, a regulation …)
+        <select name="order_type" defaultValue="" disabled={busy}>
+          <option value="">not stated yet</option>
+          {Object.keys(ORDER_TYPE_LABEL).map((k) => (
+            <option key={k} value={k}>
+              {ORDER_TYPE_LABEL[k]}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label>
+        Years it decides, one per item as FY2026-27:approved (voices: petitioned, approved, provisional_true_up, final_true_up, actual, control_period)
+        <input type="text" name="decides" placeholder="FY2024-25:final_true_up, FY2025-26:provisional_true_up, FY2026-27:approved" disabled={busy} />
       </label>
       <label>
         Dataset

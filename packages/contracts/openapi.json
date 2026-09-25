@@ -250,10 +250,32 @@
             "$ref": "#/components/schemas/DatasetKind",
             "default": "real"
           },
+          "decides": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decides"
+          },
           "file": {
             "contentMediaType": "application/octet-stream",
             "title": "File",
             "type": "string"
+          },
+          "order_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Order Type"
           },
           "provenance_url": {
             "anyOf": [
@@ -1395,6 +1417,11 @@
             "title": "Code",
             "type": "string"
           },
+          "licensee_kind": {
+            "default": "distribution",
+            "title": "Licensee Kind",
+            "type": "string"
+          },
           "name": {
             "title": "Name",
             "type": "string"
@@ -1555,6 +1582,34 @@
         ],
         "title": "DatasetKind",
         "type": "string"
+      },
+      "Decides": {
+        "description": "One year an order determines, in one voice (ARR spec section 1).",
+        "properties": {
+          "fiscal_year": {
+            "pattern": "^FY\\d{4}-\\d{2}$",
+            "title": "Fiscal Year",
+            "type": "string"
+          },
+          "value_type": {
+            "enum": [
+              "petitioned",
+              "approved",
+              "provisional_true_up",
+              "final_true_up",
+              "actual",
+              "control_period"
+            ],
+            "title": "Value Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fiscal_year",
+          "value_type"
+        ],
+        "title": "Decides",
+        "type": "object"
       },
       "DecisionList": {
         "properties": {
@@ -2539,11 +2594,36 @@
             "$ref": "#/components/schemas/DatasetKind",
             "default": "real"
           },
+          "decides": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Decides"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decides"
+          },
           "object_key": {
             "maxLength": 512,
             "minLength": 1,
             "title": "Object Key",
             "type": "string"
+          },
+          "order_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Order Type"
           },
           "provenance_url": {
             "anyOf": [
@@ -5329,6 +5409,47 @@
         "title": "ReviewTelemetry",
         "type": "object"
       },
+      "SourceClassification": {
+        "description": "What the order is and what it decides; both optional, both set by a person.",
+        "properties": {
+          "decides": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Decides"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decides"
+          },
+          "order_type": {
+            "anyOf": [
+              {
+                "enum": [
+                  "tariff_order",
+                  "arr_true_up_order",
+                  "myt_order",
+                  "mid_term_review",
+                  "regulation",
+                  "regulation_amendment",
+                  "other"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Order Type"
+          }
+        },
+        "title": "SourceClassification",
+        "type": "object"
+      },
       "SourceDetail": {
         "properties": {
           "acquired_at": {
@@ -5387,6 +5508,20 @@
           },
           "dataset_kind": {
             "$ref": "#/components/schemas/DatasetKind"
+          },
+          "decides": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Decides"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decides"
           },
           "extraction": {
             "anyOf": [
@@ -5530,6 +5665,17 @@
           "object_key": {
             "title": "Object Key",
             "type": "string"
+          },
+          "order_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Order Type"
           },
           "original_filename": {
             "title": "Original Filename",
@@ -6241,6 +6387,20 @@
           "dataset_kind": {
             "$ref": "#/components/schemas/DatasetKind"
           },
+          "decides": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Decides"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decides"
+          },
           "golden_id": {
             "anyOf": [
               {
@@ -6256,6 +6416,17 @@
             "format": "uuid",
             "title": "Id",
             "type": "string"
+          },
+          "order_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Order Type"
           },
           "original_filename": {
             "title": "Original Filename",
@@ -7369,6 +7540,16 @@
             ],
             "title": "Licensed Area"
           },
+          "licensee_kind": {
+            "default": "distribution",
+            "enum": [
+              "distribution",
+              "transmission",
+              "generation"
+            ],
+            "title": "Licensee Kind",
+            "type": "string"
+          },
           "name": {
             "maxLength": 200,
             "minLength": 2,
@@ -7442,6 +7623,11 @@
               }
             ],
             "title": "Licensed Area"
+          },
+          "licensee_kind": {
+            "default": "distribution",
+            "title": "Licensee Kind",
+            "type": "string"
           },
           "name": {
             "title": "Name",
@@ -11249,6 +11435,120 @@
         "summary": "List Candidates",
         "tags": [
           "candidates"
+        ]
+      }
+    },
+    "/sources/{source_id}/classification": {
+      "put": {
+        "description": "What the instrument is (tariff order, true-up, MYT, regulation \u2026) and which years it\ndecides in which voice.  Set by an administrator, audited; never inferred.",
+        "operationId": "classify_source_sources__source_id__classification_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Source Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SourceClassification"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceSummary"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Classify Source",
+        "tags": [
+          "sources"
         ]
       }
     },
