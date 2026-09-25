@@ -78,7 +78,8 @@ each decides; chapter cues; year-column and voice-column patterns; label aliases
 regulation clauses per line; and the `unplaced` list.
 
 The hand-mapping pass is the first deliverable: from the exported page text of one order
-per commission, every printed ARR line is placed or listed as unplaced.  The reviewer
+per commission (`tariff-api arr-scan --exchange …`, which writes `arr-scan.json` beside the
+export), every printed ARR line is placed or listed as unplaced.  The reviewer
 decides each unplaced line (alias, new leaf, or not an ARR line).  Only then does the
 mapping's status move from skeleton to confirmed and the pipeline work start.
 
@@ -99,8 +100,11 @@ An identity never corrects a value.
 - `source_documents.order_type`: `tariff_order`, `arr_true_up_order`, `myt_order`,
   `mid_term_review`, `regulation`, `regulation_amendment`, `other`; and `decides`, the
   list of `{fiscal_year, value_type}` the order determines, chosen on the upload form.
+  **Done (increment 24, migration 0014):** upload form, ingest CLI, and
+  `PUT /sources/{id}/classification` on the source page (administrator, audited).
 - `utilities.licensee_kind`: `distribution` | `transmission` | `generation` (generation is
-  registered, not in scope).  Registry additions: UPPTCL, KPTCL, GETCO.
+  registered, not in scope).  Registry additions: UPPTCL, KPTCL, GETCO.  **Done
+  (increment 24).**
 - Regulations are sources of `order_type=regulation`: parsed into clauses with the existing
   clause-outline machinery, linked from mapping entries and facts, **never extracted for
   numbers**.

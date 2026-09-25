@@ -35,7 +35,7 @@ from ..models import (
     ValidatorFindingRecord,
 )
 
-EXPORT_VERSION = "1"
+EXPORT_VERSION = "2"  # 2: page_texts.json (every page, for hand-mapping from files)
 
 
 def _js(obj: Any) -> bytes:
@@ -100,6 +100,19 @@ def build_files(session: Session, storage: ObjectStore, settings: Settings, src:
             "extraction_summary": src.extraction_summary,
         }
     )
+    # every page's text layer, so ARR hand-mapping and diagnosis work from files alone
+    # (ARR chapters are not localised regions yet; the page dumps below cover regions only)
+    try:
+        from ..inventory import open_document
+
+        doc = open_document(storage.get(ObjectStore.SOURCES, src.object_key))
+        try:
+            texts = {str(i + 1): doc[i].get_text("text", sort=True) for i in range(doc.page_count)}
+        finally:
+            doc.close()
+        files["page_texts.json"] = _js({"page_count": len(texts), "texts": texts})
+    except (ObjectNotFound, Exception) as e:  # noqa: BLE001 - the export must not fail for want of text
+        files["page_texts.json"] = _js({"page_count": 0, "texts": {}, "error": f"{type(e).__name__}: {e}"[:300]})
     loc = session.get(LocalisationRecord, src.id)
     regions = _rows(session, LocalisationRegion, src.id, [LocalisationRegion.ordinal])
     files["localisation.json"] = _js(

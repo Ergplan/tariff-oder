@@ -1,10 +1,29 @@
 # ARR taxonomy and commission mappings
 
 Data for Milestone 12 (ARR foundation), specified in [`docs/arr-spec.md`](../../docs/arr-spec.md).
-No code reads these files yet; the loader, the candidate payload and the validators come in
-the increments that follow the specification.  Until then a unit test keeps the files
-internally consistent (codes unique, parents present, identities naming real codes, every
-mapping pointing at the taxonomy version it was written for).
+Read by `tariff_api.arr.taxonomy` (models and loader; `schema.json` is generated from them by
+`tariff-api arr-schema -o packages/arr-taxonomy/schema.json`, and a unit test fails on
+drift) and by the hand-mapping scanner `tariff-api arr-scan` (`tariff_api.arr.scan`).  No
+pipeline stage reads them; the candidate payload and the validators come after the
+hand-mapping gate.  Unit tests keep the files coherent (codes unique, parents present,
+identities naming real codes, no alias that neither the licensee kind nor the table's unit
+can resolve, every mapping on the taxonomy version it was written for).
+
+## The hand-mapping scanner
+
+```
+# from an exported order (export version 2 carries page_texts.json):
+uv run tariff-api arr-scan --exchange exchange/UPERC/NPCL_TariffOrder1-5f900540
+# or from a registered source, on dev: make admin-dev ARGS=arr-scan,<source_id>,--out,/tmp/arr-scan.json
+```
+
+It writes `arr-scan.json` next to the export: every table-like line (a label followed by
+numbers) placed on a line item, with the alias that matched, how (exact or contained),
+the pages and an example; `ambiguous` lines whose label names two items the licensee kind
+and the table's unit could not separate; `unplaced` lines with their pages; the fiscal
+years and voice words seen in headers (to fill `year_columns` and `voice_columns`); and
+the chapter headings the mapping's cues recognised.  The reviewer works the `unplaced`
+list into the mapping (`label_aliases`, a new leaf, or "not an ARR line" in `unplaced`).
 
 | File | What it is | Status |
 | --- | --- | --- |
@@ -12,7 +31,7 @@ mapping pointing at the taxonomy version it was written for).
 | `mappings/uperc-arr.v1.json` | UPERC: licensees, orders expected, chapter cues, voice words, aliases, regulation clauses, unplaced lines | skeleton |
 | `mappings/kerc-arr.v1.json` | KERC, five ESCOMs and KPTCL | skeleton |
 | `mappings/gerc-arr.v1.json` | GERC, DISCOMs and GETCO | skeleton |
-| `schema.json` | Shape of the two file kinds | hand-written for now |
+| `schema.json` | Shape of the two file kinds | generated from the models |
 
 ## Rules that hold for these files
 

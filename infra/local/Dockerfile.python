@@ -16,6 +16,7 @@ RUN mkdir -p services/api/src/tariff_api services/worker/src/tariff_worker \
 COPY services ./services
 COPY tests/golden ./tests/golden
 COPY packages/reading-profiles ./packages/reading-profiles
+COPY packages/arr-taxonomy ./packages/arr-taxonomy
 RUN uv sync --all-packages --no-dev --frozen
 ENV PATH="/app/.venv/bin:$PATH"
 RUN useradd -r -m -u 10001 app && mkdir -p /data/object-store && chown -R app:app /data

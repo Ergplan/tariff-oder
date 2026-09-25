@@ -11,6 +11,7 @@ exchange/
   UPERC/
     NPCL_TariffOrder1-5f900540/
       source.json          state, versions, utility, reviewer, stage summaries
+      page_texts.json      every page's text layer (export 2), for hand-mapping and diagnosis from files
       localisation.json    the record and every region with its reviewer note
       pages/page-0384.json the page's tables as read and its structure cells
       candidates.json      every value with its review_status (proposals, never facts)

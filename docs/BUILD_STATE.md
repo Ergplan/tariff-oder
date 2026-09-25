@@ -406,6 +406,24 @@ open-access view.
   by decision.  Everything in the taxonomy is a domain expectation, not verified against
   any order.  Gate to the next increment: the hand-mapping of one exported order per
   commission with its unplaced list reviewed.
+  **Increment 24 (2026-09-25): orders typed, transmission licensees, the ARR loader and
+  the hand-mapping scanner.**  Migration 0014: `source_documents.order_type` and
+  `decides` (the years and voices an order determines), set on the upload form, on
+  `tariff-api ingest --order-type/--decides`, or by an administrator on the source page
+  (`PUT /sources/{id}/classification`, audited); `utilities.licensee_kind` with UPPTCL,
+  KPTCL and GETCO seeded as transmission licensees and the kind shown on the Commissions
+  page and chosen when adding a licensee.  Export version 2 adds `page_texts.json` (every
+  page's text layer) so ARR hand-mapping and page diagnosis work from files.
+  `tariff_api.arr.taxonomy` loads the taxonomy and mappings through pydantic models
+  (`schema.json` is now generated); `tariff_api.arr.scan` and `tariff-api arr-scan` place
+  every table-like line of an order's text on the taxonomy by exact alias, longest
+  contained alias, licensee kind and the table's unit (a "Solar" row is energy under an
+  MU header and cost under a crore header), list the ambiguous and unplaced lines with
+  pages, and collect the fiscal years and voice words seen in headers.  Taxonomy v1
+  gained `C.TX` (transmission charges total, parent of inter/intra/SLDC/other) and lost
+  the bare "others" alias.  Twelve unit tests and two integration tests added; the
+  Python image copies `packages/arr-taxonomy`.  Not run on any real order: the scanner has
+  seen only synthetic text; the first real report needs the NPCL export in `exchange/`.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -950,6 +968,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 24 (2026-09-25): 322 passed** (ruff and format clean; web typecheck and build green).
 - **Increment 23 (2026-09-21): 313 passed** (increment 22 suite plus the four taxonomy checks).
 - **Increment 22 (2026-09-20): 309 passed, 0 failed, 0 skipped** (133 s, full suite with
   the ephemeral PostgreSQL; `ruff check` and `ruff format --check` clean; web typecheck
@@ -1097,6 +1116,13 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+0000000. **Operator (increment 24):** `git pull && make deploy-dev` (migration 0014) and
+   `make admin-dev ARGS=seed` (adds UPPTCL, KPTCL, GETCO).  On each existing order's page
+   set "what the instrument is" and the years it decides.  Export NPCL again (export 2
+   carries the page text), unzip into `exchange/UPERC/`, then
+   `uv run tariff-api arr-scan --exchange exchange/UPERC/<folder>` on the VM (or leave it
+   to the engineering session after the push): `arr-scan.json` is the first hand-mapping
+   report and its `unplaced` list the first reviewer task.
 000000. **Operator (increment 23, ARR):** upload to the bucket, under each commission's
    folder, the distribution and transmission ARR/tariff orders for the three years, the
    MYT orders and mid-term reviews, and the tariff regulations with amendments, for UPERC,

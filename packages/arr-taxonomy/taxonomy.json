@@ -446,7 +446,6 @@
       "branch": "distribution",
       "parent": "E.PP.QTY",
       "aliases": [
-        "others",
         "other sources",
         "miscellaneous purchase"
       ],
@@ -854,12 +853,29 @@
       "sign": -1
     },
     {
+      "code": "C.TX",
+      "label": "Transmission and system-operation charges (total)",
+      "unit": "INR_crore",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "C",
+      "aliases": [
+        "transmission charges",
+        "transmission and SLDC charges",
+        "transmission cost",
+        "transmission expenses"
+      ],
+      "note": "Printed as one line by some commissions; otherwise the sum of its children.",
+      "by_category": false,
+      "sign": null
+    },
+    {
       "code": "C.TX.INTER",
       "label": "Inter-state transmission charges",
       "unit": "INR_crore",
       "kind": "printed",
       "branch": "distribution",
-      "parent": "C",
+      "parent": "C.TX",
       "aliases": [
         "PGCIL charges",
         "ISTS charges",
@@ -878,7 +894,7 @@
       "unit": "INR_crore",
       "kind": "printed",
       "branch": "distribution",
-      "parent": "C",
+      "parent": "C.TX",
       "aliases": [
         "intra-state transmission charges",
         "STU charges",
@@ -897,7 +913,7 @@
       "unit": "INR_crore",
       "kind": "printed",
       "branch": "distribution",
-      "parent": "C",
+      "parent": "C.TX",
       "aliases": [
         "SLDC charges",
         "SLDC fees",
@@ -913,7 +929,7 @@
       "unit": "INR_crore",
       "kind": "printed",
       "branch": "distribution",
-      "parent": "C",
+      "parent": "C.TX",
       "aliases": [
         "RLDC charges",
         "NLDC charges",
@@ -1297,10 +1313,9 @@
       "branch": "shared",
       "parent": "C.OTHER",
       "aliases": [
-        "others",
         "any other"
       ],
-      "note": null,
+      "note": "\"Others\" alone is too common a row label to be an alias; it stays unplaced until the mapping names it.",
       "by_category": false,
       "sign": null
     },
