@@ -212,3 +212,9 @@ tr.group-row td { background: #eef0ec; font-size: 0.92rem; border-top: 2px solid
 .tt-notes[open] > summary::before { content: "▾ "; }
 .tt-notes .tt-grid td { background: #fafaf8; }
 .classify { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; font-size: 0.9rem; }
+.tt-walk { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.tt-cell[data-cursor] { outline: 2px solid var(--accent); outline-offset: -2px; }
+.arr-branch { margin-top: 1.2rem; }
+.arr-aliases { font-size: 0.8rem; max-width: 34rem; }
+.arr-expr { font-size: 0.8rem; white-space: normal; }
+tr[data-kind="group"] td { font-weight: 600; }

@@ -22,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/explorer">Explorer</Link>
             <Link href="/jobs">Jobs</Link>
             <Link href="/registry">Registry</Link>
+            <Link href="/arr">ARR</Link>
             <Link href="/admin/users">Users</Link>
           </nav>
           <span className="badge" data-tone={PROFILE === "gcp" ? "ok" : "neutral"} title="Deployment profile">

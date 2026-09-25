@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CandidateOut, CategorySummaryOut, DecisionResult, ErrorResponse } from "@tariff/contracts";
 import { networkError, readError } from "@/lib/client-errors";
 import { COMPONENT_LABEL, FAMILY_LABEL, type FindingLine, type Rec, valueWords } from "../review-workspace";
@@ -289,6 +289,43 @@ export function TariffTable({
     }
   }
 
+  /** Every open value in document order: category, block, row, component. */
+  const openOrder = useMemo(() => {
+    const out: { cell: Cell; g: Group }[] = [];
+    for (const g of groups) for (const b of g.blocks) for (const r of b.rows) for (const comp of b.components) {
+      const cell = r.cells[comp];
+      if (cell && isOpen(cell.cand)) out.push({ cell, g });
+    }
+    return out;
+  }, [groups]);
+  const [cursor, setCursor] = useState<string | null>(null);
+
+  /** Walk to the next open value: scroll to it, mark it, and show its page. */
+  const nextOpen = useCallback(
+    async (backwards = false) => {
+      if (openOrder.length === 0 || busy) return;
+      const at = openOrder.findIndex((x) => x.cell.cand.id === cursor);
+      const idx = backwards ? (at <= 0 ? openOrder.length - 1 : at - 1) : (at + 1) % openOrder.length;
+      const { cell, g } = openOrder[idx];
+      setCursor(cell.cand.id);
+      const el = document.getElementById(`cand-${cell.cand.id}`);
+      el?.closest("details")?.setAttribute("open", "");
+      el?.scrollIntoView({ block: "center", behavior: "smooth" });
+      await showPage(cell.page, g);
+    },
+    [openOrder, cursor, busy, showPage],
+  );
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const t = e.target as HTMLElement | null;
+      if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT")) return;
+      if (e.key === "n") void nextOpen(false);
+      if (e.key === "p") void nextOpen(true);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [nextOpen]);
+
   const totals = useMemo(() => {
     const t = { open: 0, approved: 0, rejected: 0, other: 0 };
     for (const c of cands) {
@@ -311,6 +348,16 @@ export function TariffTable({
           <div className="muted">
             {totals.open} open · {totals.approved} approved · {totals.rejected} rejected{totals.other ? ` · ${totals.other} undecided` : ""}
           </div>
+          {totals.open > 0 ? (
+            <div className="tt-walk">
+              <button type="button" className="tt-btn primary" onClick={() => void nextOpen(false)} disabled={!!busy} title="Scroll to the next open value and show its page (key: n)">
+                Next open value
+              </button>{" "}
+              <button type="button" className="tt-btn" onClick={() => void nextOpen(true)} disabled={!!busy} title="Back to the previous open value (key: p)">
+                Previous
+              </button>
+            </div>
+          ) : null}
         </div>
         <ol>
           {groups.map((g) => {
@@ -374,7 +421,13 @@ export function TariffTable({
               ) : null}
               {g.blocks.map((b) => (
                 <details className={b.notes ? "tt-block tt-notes" : "tt-block"} key={b.key || "default"} open={!b.notes}>
-                  <summary>
+                  <summary
+                    onClick={() => {
+                      // opening a block shows the page its first value is printed on
+                      const first = b.rows[0] && b.components.map((c) => b.rows[0].cells[c]).find(Boolean);
+                      if (first && (!pageImage || pageImage.page !== first.page)) void showPage(first.page, g);
+                    }}
+                  >
                     {b.notes ? `${b.label} (${b.rows.length})` : b.label !== "Rates" ? b.label : "Rates"}
                   </summary>
                   <div className="table-wrap">
@@ -402,7 +455,7 @@ export function TariffTable({
                               const st = c.review_status;
                               const meaning = (c.record?.assessment as { meaning?: string; grounded?: boolean } | null)?.meaning;
                               return (
-                                <td key={comp} className="tt-cell" data-status={st} data-busy={busy === c.id || undefined}>
+                                <td key={comp} id={`cand-${c.id}`} className="tt-cell" data-status={st} data-busy={busy === c.id || undefined} data-cursor={cursor === c.id || undefined}>
                                   <div className="tt-val" title={cell.rec.rationale ?? ""}>
                                     {valueWords(cell.rec)}
                                   </div>

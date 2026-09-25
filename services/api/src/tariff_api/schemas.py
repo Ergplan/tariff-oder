@@ -1261,3 +1261,39 @@ class ExplorerReleaseList(BaseModel):
     total: int
     real: int
     fixture: int
+
+
+# ------------------------------------------------------------------ ARR foundation (read-only views of the data files)
+
+
+class ArrTaxonomyOut(BaseModel):
+    id: str
+    version: int
+    status: str
+    canonical_units: dict[str, str]
+    value_types: list[dict[str, Any]]
+    reason_categories: list[dict[str, Any]]
+    line_items: list[dict[str, Any]]
+    identities: list[dict[str, Any]]
+    mappings: dict[str, list[int]]  # commission -> versions on file
+
+
+class ArrMappingOut(BaseModel):
+    id: str
+    version: int
+    taxonomy_version: int
+    commission: str
+    status: str
+    licensees: dict[str, list[str]]
+    regulations: list[dict[str, Any]]
+    return_basis: dict[str, Any]
+    gap_convention: dict[str, Any]
+    unit_convention: dict[str, Any]
+    orders_expected: list[dict[str, Any]]
+    chapter_map: list[dict[str, Any]]
+    year_columns: dict[str, Any]
+    voice_columns: dict[str, Any]
+    label_aliases: dict[str, Any]
+    regulation_clauses: dict[str, Any]
+    unplaced: dict[str, Any]
+    known_quirks: list[str]

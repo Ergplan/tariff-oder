@@ -95,3 +95,6 @@ export type CommissionUtilitySummary = components["schemas"]["CommissionUtilityS
 export type CommissionList = components["schemas"]["CommissionList"];
 export type UtilityOut = components["schemas"]["UtilityOut"];
 export type ReviewQueueItem = components["schemas"]["ReviewQueueItem"];
+export type ArrTaxonomyOut = components["schemas"]["ArrTaxonomyOut"];
+export type ArrMappingOut = components["schemas"]["ArrMappingOut"];
+export type Decides = components["schemas"]["Decides"];

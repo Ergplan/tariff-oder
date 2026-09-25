@@ -1,6 +1,211 @@
 {
   "components": {
     "schemas": {
+      "ArrMappingOut": {
+        "properties": {
+          "chapter_map": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Chapter Map",
+            "type": "array"
+          },
+          "commission": {
+            "title": "Commission",
+            "type": "string"
+          },
+          "gap_convention": {
+            "additionalProperties": true,
+            "title": "Gap Convention",
+            "type": "object"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "known_quirks": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Known Quirks",
+            "type": "array"
+          },
+          "label_aliases": {
+            "additionalProperties": true,
+            "title": "Label Aliases",
+            "type": "object"
+          },
+          "licensees": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "title": "Licensees",
+            "type": "object"
+          },
+          "orders_expected": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Orders Expected",
+            "type": "array"
+          },
+          "regulation_clauses": {
+            "additionalProperties": true,
+            "title": "Regulation Clauses",
+            "type": "object"
+          },
+          "regulations": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Regulations",
+            "type": "array"
+          },
+          "return_basis": {
+            "additionalProperties": true,
+            "title": "Return Basis",
+            "type": "object"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "taxonomy_version": {
+            "title": "Taxonomy Version",
+            "type": "integer"
+          },
+          "unit_convention": {
+            "additionalProperties": true,
+            "title": "Unit Convention",
+            "type": "object"
+          },
+          "unplaced": {
+            "additionalProperties": true,
+            "title": "Unplaced",
+            "type": "object"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "voice_columns": {
+            "additionalProperties": true,
+            "title": "Voice Columns",
+            "type": "object"
+          },
+          "year_columns": {
+            "additionalProperties": true,
+            "title": "Year Columns",
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "taxonomy_version",
+          "commission",
+          "status",
+          "licensees",
+          "regulations",
+          "return_basis",
+          "gap_convention",
+          "unit_convention",
+          "orders_expected",
+          "chapter_map",
+          "year_columns",
+          "voice_columns",
+          "label_aliases",
+          "regulation_clauses",
+          "unplaced",
+          "known_quirks"
+        ],
+        "title": "ArrMappingOut",
+        "type": "object"
+      },
+      "ArrTaxonomyOut": {
+        "properties": {
+          "canonical_units": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Canonical Units",
+            "type": "object"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "identities": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Identities",
+            "type": "array"
+          },
+          "line_items": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Line Items",
+            "type": "array"
+          },
+          "mappings": {
+            "additionalProperties": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "title": "Mappings",
+            "type": "object"
+          },
+          "reason_categories": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Reason Categories",
+            "type": "array"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "value_types": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Value Types",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "status",
+          "canonical_units",
+          "value_types",
+          "reason_categories",
+          "line_items",
+          "identities",
+          "mappings"
+        ],
+        "title": "ArrTaxonomyOut",
+        "type": "object"
+      },
       "AssignmentRequest": {
         "description": "Who reviews this order.  Null clears the assignment.",
         "properties": {
@@ -7743,6 +7948,215 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/arr/mappings/{commission}": {
+      "get": {
+        "operationId": "get_mapping_arr_mappings__commission__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commission",
+            "required": true,
+            "schema": {
+              "title": "Commission",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArrMappingOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Get Mapping",
+        "tags": [
+          "arr"
+        ]
+      }
+    },
+    "/arr/taxonomy": {
+      "get": {
+        "operationId": "get_taxonomy_arr_taxonomy_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArrTaxonomyOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Get Taxonomy",
+        "tags": [
+          "arr"
+        ]
+      }
+    },
     "/audit": {
       "get": {
         "operationId": "list_audit_audit_get",

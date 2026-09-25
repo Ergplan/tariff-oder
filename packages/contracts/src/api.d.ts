@@ -4,6 +4,40 @@
  */
 
 export interface paths {
+    "/arr/mappings/{commission}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Mapping */
+        get: operations["get_mapping_arr_mappings__commission__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/arr/taxonomy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Taxonomy */
+        get: operations["get_taxonomy_arr_taxonomy_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/audit": {
         parameters: {
             query?: never;
@@ -1206,6 +1240,102 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** ArrMappingOut */
+        ArrMappingOut: {
+            /** Chapter Map */
+            chapter_map: {
+                [key: string]: unknown;
+            }[];
+            /** Commission */
+            commission: string;
+            /** Gap Convention */
+            gap_convention: {
+                [key: string]: unknown;
+            };
+            /** Id */
+            id: string;
+            /** Known Quirks */
+            known_quirks: string[];
+            /** Label Aliases */
+            label_aliases: {
+                [key: string]: unknown;
+            };
+            /** Licensees */
+            licensees: {
+                [key: string]: string[];
+            };
+            /** Orders Expected */
+            orders_expected: {
+                [key: string]: unknown;
+            }[];
+            /** Regulation Clauses */
+            regulation_clauses: {
+                [key: string]: unknown;
+            };
+            /** Regulations */
+            regulations: {
+                [key: string]: unknown;
+            }[];
+            /** Return Basis */
+            return_basis: {
+                [key: string]: unknown;
+            };
+            /** Status */
+            status: string;
+            /** Taxonomy Version */
+            taxonomy_version: number;
+            /** Unit Convention */
+            unit_convention: {
+                [key: string]: unknown;
+            };
+            /** Unplaced */
+            unplaced: {
+                [key: string]: unknown;
+            };
+            /** Version */
+            version: number;
+            /** Voice Columns */
+            voice_columns: {
+                [key: string]: unknown;
+            };
+            /** Year Columns */
+            year_columns: {
+                [key: string]: unknown;
+            };
+        };
+        /** ArrTaxonomyOut */
+        ArrTaxonomyOut: {
+            /** Canonical Units */
+            canonical_units: {
+                [key: string]: string;
+            };
+            /** Id */
+            id: string;
+            /** Identities */
+            identities: {
+                [key: string]: unknown;
+            }[];
+            /** Line Items */
+            line_items: {
+                [key: string]: unknown;
+            }[];
+            /** Mappings */
+            mappings: {
+                [key: string]: number[];
+            };
+            /** Reason Categories */
+            reason_categories: {
+                [key: string]: unknown;
+            }[];
+            /** Status */
+            status: string;
+            /** Value Types */
+            value_types: {
+                [key: string]: unknown;
+            }[];
+            /** Version */
+            version: number;
+        };
         /**
          * AssignmentRequest
          * @description Who reviews this order.  Null clears the assignment.
@@ -3811,6 +3941,176 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    get_mapping_arr_mappings__commission__get: {
+        parameters: {
+            query?: {
+                version?: number | null;
+            };
+            header?: never;
+            path: {
+                commission: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ArrMappingOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_taxonomy_arr_taxonomy_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ArrTaxonomyOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     list_audit_audit_get: {
         parameters: {
             query?: {

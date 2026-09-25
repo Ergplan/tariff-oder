@@ -424,6 +424,16 @@ open-access view.
   the bare "others" alias.  Twelve unit tests and two integration tests added; the
   Python image copies `packages/arr-taxonomy`.  Not run on any real order: the scanner has
   seen only synthetic text; the first real report needs the NPCL export in `exchange/`.
+  **Increment 25 (2026-09-25): the taxonomy in the app; the tariff table walks open
+  values.**  `GET /arr/taxonomy` and `GET /arr/mappings/{commission}` serve the data files
+  read-only (analyst and above) and `/arr` shows every line item nested by parent with
+  unit, kind, branch and generic aliases, the voices, the reason categories and the
+  identities, so the reviewer sees the taxonomy where the hand-mapping will land.  The
+  tariff table gains "Next open value" / "Previous" (keys n and p): the next undecided
+  value scrolls into view, is outlined, and its page is shown; opening a block shows the
+  page its first value is printed on.  Reading-reliability ledger rows S22 to S29 record
+  the rules 3 and 4 failure modes and their tests.  323 passed; web typecheck and build
+  green.  Nothing deployed; no real order has been through rules 4 or the scanner.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -968,6 +978,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 25 (2026-09-25): 323 passed** (ruff and format clean; web typecheck and build green).
 - **Increment 24 (2026-09-25): 322 passed** (ruff and format clean; web typecheck and build green).
 - **Increment 23 (2026-09-21): 313 passed** (increment 22 suite plus the four taxonomy checks).
 - **Increment 22 (2026-09-20): 309 passed, 0 failed, 0 skipped** (133 s, full suite with
