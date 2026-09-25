@@ -4,6 +4,7 @@ import type { RegistryOut, SourceList, SourceState , SourceSummary } from "@tari
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, StateBadge, UnknownBadge } from "../components";
 import { UploadForm } from "./upload-form";
+import { ORDER_TYPE_LABEL } from "@/app/order-types";
 
 export const dynamic = "force-dynamic";
 
@@ -83,6 +84,14 @@ export default async function SourcesPage({ searchParams }: { searchParams: Prom
                     ) : (
                       <span className="muted">not set</span>
                     )}
+                    {s.order_type ? (
+                      <>
+                        {" "}
+                        <span className="badge" data-tone="neutral" title={ORDER_TYPE_LABEL[s.order_type] ?? s.order_type}>
+                          {s.order_type.replace(/_/g, " ")}
+                        </span>
+                      </>
+                    ) : null}
                   </td>
                   <td>{s.assigned_to ?? <span className="muted">—</span>}</td>
                   <td>{s.page_count ?? <UnknownBadge label="pages" />}</td>

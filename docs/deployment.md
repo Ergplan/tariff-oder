@@ -265,6 +265,27 @@ grids of that page as read (rows, header rows, reader, agreement), the structure
 page (value, block, row, channel agreement, whether the model channel had it, the cited
 cell).  Read-only; paste the output when a reading looks wrong.
 
+### ARR hand-mapping: the scanner (increment 24)
+
+The ARR taxonomy (`/arr` in the app, `packages/arr-taxonomy/`) is mapped to each
+commission by hand from the order's text, not by the pipeline (ARR spec section 3).  The
+scanner does the first pass:
+
+```
+# on dev, from a registered order: the report lands beside the order's export in the
+# export bucket at <COMMISSION>/<UTILITY>/<name>/arr-scan.json
+make admin-dev ARGS=arr-scan,<source_id>
+# anywhere, from an exported order folder (export version 2 carries page_texts.json):
+uv run tariff-api arr-scan --exchange exchange/UPERC/<order-folder>
+```
+
+`arr-scan.json` lists every table-like line placed on a line item (with the alias that
+matched and the pages), the ambiguous lines, the unplaced lines with pages and an example,
+and the fiscal years and voice words seen in column headers.  The reviewer works the
+unplaced list into `mappings/<commission>-arr.v<n>.json`; nothing in the report is a fact.
+Set the order's type and decided years on its page first (administrator) so the report and
+the later facts know which years and voices the order carries.
+
 ### Measuring the optional Docling reader (ADR-0009 addendum)
 
 Docling is not in the images.  Measure it on the VM, which can reach PyPI and huggingface.co:

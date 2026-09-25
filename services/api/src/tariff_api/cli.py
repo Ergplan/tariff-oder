@@ -703,6 +703,14 @@ def cmd_arr_scan(args: argparse.Namespace) -> int:
                 doc.close()
         rep = scan_texts(texts, commission=commission or "UNKNOWN", licensee_kind=kind)
         out_path = Path(args.out) if args.out else None
+        if not args.no_bucket:
+            # the admin job has no useful local disk: the report goes beside the order's export
+            from .services.export import export_prefix
+
+            key = export_prefix(src) + "arr-scan.json"
+            body = json.dumps(rep.to_dict(), indent=2, ensure_ascii=False).encode()
+            storage.put(ObjectStore.EXPORTS, key, body, "application/json")
+            print(f"report written to the export bucket at {key}")
     d = rep.to_dict()
     text = json.dumps(d, indent=2, ensure_ascii=False)
     if out_path:
@@ -839,6 +847,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--commission", default=None, help="override the commission code")
     p.add_argument("--licensee-kind", default=None, choices=["distribution", "transmission"])
     p.add_argument("--out", default=None, help="report path (default: arr-scan.json in the exchange folder, or stdout)")
+    p.add_argument(
+        "--no-bucket", action="store_true", help="for a source: do not write arr-scan.json to the export bucket"
+    )
     p.set_defaults(fn=cmd_arr_scan)
 
     p = sub.add_parser("check-config", help="validate profile and adapters")
