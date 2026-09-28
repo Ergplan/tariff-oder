@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CandidateList, CategorySummaryList, CategorySummaryOut, FindingList, SourceDetail } from "@tariff/contracts";
+import type { CandidateList, CategorySummaryList, CategorySummaryOut, FindingList, Me, SourceDetail } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { DatasetBadge, ErrorBanner, StateBadge } from "../../../../components";
 import type { FindingLine } from "../review-workspace";
@@ -26,10 +26,11 @@ export default async function TariffTablePage({ params }: { params: Promise<{ id
     );
   }
   const s = detail.data;
-  const [cands, summaryList, findingList] = await Promise.all([
+  const [cands, summaryList, findingList, me] = await Promise.all([
     apiTry<CandidateList>(`/sources/${id}/candidates?limit=2000`),
     apiTry<CategorySummaryList>(`/sources/${id}/summaries`),
     apiTry<FindingList>(`/sources/${id}/findings`),
+    apiTry<Me>("/me"),
   ]);
   const summaries: Record<string, CategorySummaryOut> = {};
   for (const sm of summaryList.data?.summaries ?? []) summaries[sm.category_code] = sm;
@@ -61,7 +62,7 @@ export default async function TariffTablePage({ params }: { params: Promise<{ id
       ) : cands.data.total === 0 ? (
         <p className="muted">No candidates yet. Extraction has not run, or produced nothing.</p>
       ) : (
-        <TariffTable sourceId={id} sourceState={s.state} initial={cands.data.candidates} summaries={summaries} findings={findings} />
+        <TariffTable sourceId={id} sourceState={s.state} initial={cands.data.candidates} summaries={summaries} findings={findings} me={me.data?.email ?? null} />
       )}
     </>
   );

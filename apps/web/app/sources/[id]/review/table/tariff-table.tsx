@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { CandidateOut, CategorySummaryOut, DecisionResult, ErrorResponse } from "@tariff/contracts";
+import type { CandidateOut, CategorySummaryOut, DecisionList, DecisionResult, ErrorResponse } from "@tariff/contracts";
 import { networkError, readError } from "@/lib/client-errors";
 import { COMPONENT_LABEL, FAMILY_LABEL, type FindingLine, type Rec, valueWords } from "../review-workspace";
 
@@ -162,12 +162,14 @@ export function TariffTable({
   initial,
   summaries,
   findings,
+  me = null,
 }: {
   sourceId: string;
   sourceState: string;
   initial: CandidateOut[];
   summaries: Record<string, CategorySummaryOut>;
   findings: Record<string, FindingLine[]>;
+  me?: string | null;
 }) {
   const [cands, setCands] = useState<CandidateOut[]>(initial);
   const [views, setViews] = useState<Record<string, string>>({});
@@ -254,6 +256,32 @@ export function TariffTable({
       setReason(null);
     } catch (e) {
       setError((e as ErrorResponse).message ? (e as ErrorResponse) : networkError("The decision"));
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  /**
+   * Reverse my own latest decision on a value (approve, reject, note or correction): the
+   * value goes back to pending and the decision stays in the history as undone.  Refused by
+   * the API once the value is published, or when the decision was someone else's.
+   */
+  async function undoMine(cell: Cell) {
+    if (busy) return;
+    setBusy(cell.cand.id);
+    setError(null);
+    try {
+      const hist = await fetch(`/api/candidates/${cell.cand.id}/decisions`, { cache: "no-store" });
+      if (!hist.ok) throw await readError(hist);
+      const list = (await hist.json()) as DecisionList;
+      const mine = [...list.decisions].reverse().find((d) => !d.undone);
+      if (!mine) throw { error_type: "not_found", message: "No decision to undo", next_step: "The value has no live decision.", severity: "error" } as ErrorResponse;
+      const res = await fetch(`/api/review/decisions/${mine.id}/undo`, { method: "POST" });
+      if (!res.ok) throw await readError(res);
+      const r = (await res.json()) as DecisionResult;
+      setCands((l) => l.map((c) => (c.id === cell.cand.id ? r.candidate : c)));
+    } catch (e) {
+      setError((e as ErrorResponse).message ? (e as ErrorResponse) : networkError("The undo"));
     } finally {
       setBusy(null);
     }
@@ -498,6 +526,13 @@ export function TariffTable({
                                       <Link className="tt-link" href={`/sources/${sourceId}/review?category=${encodeURIComponent(c.category_code ?? "")}&component=${encodeURIComponent(comp)}`} title="Change the value or its unit in the one-at-a-time workspace">
                                         Change
                                       </Link>
+                                    </div>
+                                  ) : null}
+                                  {open && !isOpen(c) && me && c.reviewed_by && c.reviewed_by.toLowerCase() === me.toLowerCase() ? (
+                                    <div className="tt-actions">
+                                      <button type="button" className="tt-btn" onClick={() => void undoMine(cell)} disabled={!!busy} title="Reverse my decision: the value goes back to pending; the decision stays in the history as undone">
+                                        Undo my decision
+                                      </button>
                                     </div>
                                   ) : null}
                                   {reasonHere ? (

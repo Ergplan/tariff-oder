@@ -434,6 +434,13 @@ open-access view.
   page its first value is printed on.  Reading-reliability ledger rows S22 to S29 record
   the rules 3 and 4 failure modes and their tests.  323 passed; web typecheck and build
   green.  Nothing deployed; no real order has been through rules 4 or the scanner.
+  **Increment 26 (2026-09-28): a reviewer reverses a decision from the tariff table.**
+  A decided value shows "Undo my decision" to the reviewer who took it: the latest live
+  decision is fetched and undone through the existing endpoint, the value returns to
+  pending, the decision stays in the history as undone; refused by the API after
+  publication or for another reviewer's decision.  Until now undo existed only in the
+  one-at-a-time workspace and only within the session that decided.  Web typecheck and
+  build green; no API change.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
