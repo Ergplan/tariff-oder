@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-09-20. Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-09-28 (local compose host ports made configurable). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -921,6 +921,7 @@ open-access view.
 ```bash
 make install                      # uv sync --all-packages && pnpm install --frozen-lockfile
 make ephemeral-postgres           # or: docker compose stack via `make dev`
+                                  # `make dev` host ports: WEB_PORT/API_PORT/POSTGRES_PORT (default 3000/8000/5432)
 export DATABASE_URL=postgresql+psycopg://postgres@127.0.0.1:5433/tariff_dev
 export LOCAL_USER_ALLOWLIST="admin@example.com:administrator,reviewer@example.com:reviewer,analyst@example.com:analyst"
 make migrate seed

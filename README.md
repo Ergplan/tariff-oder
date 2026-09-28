@@ -30,4 +30,6 @@ make test
 ```
 
 With Docker: `make dev` starts PostgreSQL, migrations, API, worker and web from
-`infra/local/docker-compose.yml`.
+`infra/local/docker-compose.yml`.  Host ports default to 3000 (web), 8000 (api) and 5432
+(postgres); if another app already uses one, set `WEB_PORT`, `API_PORT` or `POSTGRES_PORT`
+(e.g. `WEB_PORT=3100 API_PORT=8100 POSTGRES_PORT=5434 make dev`).

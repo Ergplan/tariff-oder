@@ -1,5 +1,7 @@
 # Local profile (developer machines and CI).  `make dev` starts this stack.
 # Behaviour is identical to the gcp profile except for the adapters named in the env below.
+# Host ports default to 3000 (web), 8000 (api), 5432 (postgres); override with WEB_PORT,
+# API_PORT, POSTGRES_PORT when another app already uses them, e.g. `WEB_PORT=3100 make dev`.
 name: tariff
 
 services:
@@ -10,7 +12,7 @@ services:
       POSTGRES_PASSWORD: tariff
       POSTGRES_DB: tariff
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -68,7 +70,7 @@ services:
     command: ["uvicorn", "tariff_api.asgi:app", "--host", "0.0.0.0", "--port", "8000"]
     environment: *api_env
     ports:
-      - "8000:8000"
+      - "${API_PORT:-8000}:8000"
     volumes:
       - objectstore:/data/object-store
     depends_on:
@@ -103,7 +105,7 @@ services:
       HOSTNAME: 0.0.0.0
       PORT: "3000"
     ports:
-      - "3000:3000"
+      - "${WEB_PORT:-3000}:3000"
     depends_on:
       api:
         condition: service_healthy
