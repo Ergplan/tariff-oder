@@ -890,6 +890,8 @@ open-access view.
   SYNTHETIC fixture (`SYNTHETIC_mixed_text_and_image.pdf`, dataset `fixture`) went inventory →
   triage → parse → localise and waits at the reviewer checkpoint (left for a human).  The
   operator's VM data (DB and object store) is not in this stack.
+  Postgres comes from `mirror.gcr.io/pgvector/pgvector:pg16` (Docker Hub answers 429 there),
+  which reported pgvector 0.8.7 on 2026-10-13 where the VM reports 0.8.6.
 - `gcp`: exercised on 2026-09-14 from the operator's VM: images built and pushed to Artifact
   Registry, Cloud Run services/jobs deployed, migrations applied to Cloud SQL, readiness
   green, the NPCL order ingested from the bucket by the admin job.  The identity adapter is

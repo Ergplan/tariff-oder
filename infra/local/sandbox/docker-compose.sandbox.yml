@@ -15,7 +15,7 @@ x-python-build: &python-build
 
 services:
   postgres:
-    image: ${PGVECTOR_IMAGE:-pgvector/pgvector:pg16}
+    image: ${PGVECTOR_IMAGE:-mirror.gcr.io/pgvector/pgvector:pg16}
   migrate:
     build: *python-build
   api:
