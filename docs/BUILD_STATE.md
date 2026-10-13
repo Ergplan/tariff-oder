@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-09-28 (local compose host ports made configurable). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-10-13 (full local Docker stack running in the cloud build session via `make dev-sandbox`). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -883,6 +883,13 @@ open-access view.
   filesystem object store, env secrets, local identity allow-list.  API + worker + Next.js
   web ran together end-to-end in this session (upload through the web proxy → inventory →
   detail page → authorized file reopen).
+- `local` in Docker, 2026-10-13, cloud build session: `make dev-sandbox` (sandbox Dockerfiles: Ubuntu
+  24.04 base, CPython 3.11.14 via uv, tesseract 5.3.4 — bookworm images cannot be built there:
+  Debian mirrors and the ghcr.io blob CDN are blocked, Docker Hub rate-limits).  postgres, migrate
+  (head `0014_order_type_licensee_kind`), api (`/readyz` ready), worker and web all up; one
+  SYNTHETIC fixture (`SYNTHETIC_mixed_text_and_image.pdf`, dataset `fixture`) went inventory →
+  triage → parse → localise and waits at the reviewer checkpoint (left for a human).  The
+  operator's VM data (DB and object store) is not in this stack.
 - `gcp`: exercised on 2026-09-14 from the operator's VM: images built and pushed to Artifact
   Registry, Cloud Run services/jobs deployed, migrations applied to Cloud SQL, readiness
   green, the NPCL order ingested from the bucket by the admin job.  The identity adapter is

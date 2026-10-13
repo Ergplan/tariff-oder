@@ -21,6 +21,9 @@ install: ## Install Python (uv) and Node (pnpm) dependencies
 dev: ## Start postgres, api, worker, web in containers (local profile)
 	$(COMPOSE) up --build
 
+dev-sandbox: ## As `make dev`, detached, built for egress-restricted hosts such as Claude Code cloud sessions
+	$(COMPOSE) -f infra/local/sandbox/docker-compose.sandbox.yml up -d --build
+
 dev-down: ## Stop the local stack (keeps volumes)
 	$(COMPOSE) down
 

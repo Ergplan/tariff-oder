@@ -33,3 +33,7 @@ With Docker: `make dev` starts PostgreSQL, migrations, API, worker and web from
 `infra/local/docker-compose.yml`.  Host ports default to 3000 (web), 8000 (api) and 5432
 (postgres); if another app already uses one, set `WEB_PORT`, `API_PORT` or `POSTGRES_PORT`
 (e.g. `WEB_PORT=3100 API_PORT=8100 POSTGRES_PORT=5434 make dev`).
+On a build host whose egress blocks Debian mirrors and `ghcr.io` (Claude Code cloud sessions),
+`make dev-sandbox` builds the same stack from `infra/local/sandbox/` (Ubuntu base, `uv` from PyPI,
+the TLS proxy's CA trusted at build time only); see the header of
+`infra/local/sandbox/docker-compose.sandbox.yml`.

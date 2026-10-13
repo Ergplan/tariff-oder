@@ -1,0 +1,43 @@
+# Sandbox variant of infra/local/Dockerfile.python for egress-restricted build hosts
+# (Claude Code cloud sessions): Debian mirrors and the ghcr.io blob CDN are unreachable there,
+# Ubuntu's archive, PyPI and GitHub releases are reachable through a TLS-re-terminating proxy.
+# Same Python (3.11), same lockfile, same app layout and entrypoints; OCR is Ubuntu's
+# tesseract 5.3.4 instead of bookworm's 5.3.0.  Not used for Cloud Run images.
+# Keep the steps after "app layout" in step with ../Dockerfile.python.
+FROM mirror.gcr.io/library/ubuntu:24.04 AS base
+ARG HTTPS_PROXY
+ARG NO_PROXY
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy \
+    DEBIAN_FRONTEND=noninteractive UV_PYTHON_INSTALL_DIR=/opt/python
+COPY --from=ccr ca-bundle.crt /usr/local/share/build-proxy-ca.crt
+RUN printf 'Acquire::https::Proxy "%s";\nAcquire::https::CAInfo "/usr/local/share/build-proxy-ca.crt";\n' "$HTTPS_PROXY" \
+        > /etc/apt/apt.conf.d/99build-proxy \
+    && sed -i 's|http://|https://|g' /etc/apt/sources.list.d/ubuntu.sources \
+    && apt-get update && apt-get install -y --no-install-recommends \
+        libgl1 libglib2.0-0 ca-certificates tesseract-ocr tesseract-ocr-eng python3 python3-venv \
+    && rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/99build-proxy
+# uv from PyPI (the ghcr.io image's blobs are not reachable here); same version as ../Dockerfile.python.
+RUN PIP_CERT=/usr/local/share/build-proxy-ca.crt python3 -m venv /opt/uv-bootstrap \
+    && PIP_CERT=/usr/local/share/build-proxy-ca.crt /opt/uv-bootstrap/bin/pip install -q uv==0.9.7 \
+    && cp /opt/uv-bootstrap/bin/uv /opt/uv-bootstrap/bin/uvx /bin/ && rm -rf /opt/uv-bootstrap
+RUN SSL_CERT_FILE=/usr/local/share/build-proxy-ca.crt uv python install 3.11 && chmod -R a+rX /opt/python
+# --- app layout (as ../Dockerfile.python) ---
+WORKDIR /app
+COPY pyproject.toml uv.lock ./
+COPY services/api/pyproject.toml services/api/pyproject.toml
+COPY services/worker/pyproject.toml services/worker/pyproject.toml
+RUN mkdir -p services/api/src/tariff_api services/worker/src/tariff_worker \
+    && touch services/api/src/tariff_api/__init__.py services/worker/src/tariff_worker/__init__.py \
+    && SSL_CERT_FILE=/usr/local/share/build-proxy-ca.crt uv sync --python 3.11 --all-packages --no-dev --frozen
+COPY services ./services
+COPY tests/golden ./tests/golden
+COPY packages/reading-profiles ./packages/reading-profiles
+COPY packages/arr-taxonomy ./packages/arr-taxonomy
+RUN SSL_CERT_FILE=/usr/local/share/build-proxy-ca.crt uv sync --python 3.11 --all-packages --no-dev --frozen
+# The proxy CA is trusted only by the build steps above; the running services use the system store.
+ENV PATH="/app/.venv/bin:$PATH"
+RUN useradd -r -m -u 10001 app && mkdir -p /data/object-store && chown -R app:app /data
+ENV HAYSTACK_TELEMETRY_ENABLED=False
+USER app
+EXPOSE 8000
+CMD ["uvicorn", "tariff_api.asgi:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,34 @@
+# Overlay for egress-restricted build hosts (Claude Code cloud sessions).  Use with the base file:
+#   docker compose -f infra/local/docker-compose.yml -f infra/local/sandbox/docker-compose.sandbox.yml up -d --build
+# Paths resolve against infra/local (the first file's directory).  BUILD_PROXY_CA_DIR must hold
+# ca-bundle.crt, the CA of the proxy that re-terminates TLS; builds use the host network so
+# they can reach the proxy on 127.0.0.1.
+x-python-build: &python-build
+  context: ../..
+  dockerfile: infra/local/sandbox/Dockerfile.python
+  network: host
+  additional_contexts:
+    ccr: ${BUILD_PROXY_CA_DIR:-/root/.ccr}
+  args:
+    HTTPS_PROXY: ${HTTPS_PROXY:-}
+    NO_PROXY: ${NO_PROXY:-}
+
+services:
+  postgres:
+    image: ${PGVECTOR_IMAGE:-pgvector/pgvector:pg16}
+  migrate:
+    build: *python-build
+  api:
+    build: *python-build
+  worker:
+    build: *python-build
+  web:
+    build:
+      context: ../..
+      dockerfile: infra/local/sandbox/Dockerfile.web
+      network: host
+      additional_contexts:
+        ccr: ${BUILD_PROXY_CA_DIR:-/root/.ccr}
+      args:
+        HTTPS_PROXY: ${HTTPS_PROXY:-}
+        NO_PROXY: ${NO_PROXY:-}
