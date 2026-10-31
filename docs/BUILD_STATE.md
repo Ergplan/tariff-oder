@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-10-13 (full local Docker stack running in the cloud build session via `make dev-sandbox`). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-10-31 (ARR development prompt written; no code changed). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -1143,6 +1143,11 @@ yet, internal ingress, admin Cloud Run Job · ADR-0009 PyMuPDF primary + pdfplum
 readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
+
+00000000. **Engineering (Milestone 12, ARR):** run Increment A of
+   `docs/prompts/arr-build-prompt.md` — ADR-0018, the read/formulate/file data model, module
+   interfaces and the synthetic end-to-end skeleton test.  Fixtures only; no real ARR fact.
+   Operator inputs for Increment B (NPCL orders, petition, UPERC regulations) are listed there.
 
 0000000. **Operator (increment 24):** `git pull && make deploy-dev` (migration 0014) and
    `make admin-dev ARGS=seed` (adds UPPTCL, KPTCL, GETCO).  On each existing order's page

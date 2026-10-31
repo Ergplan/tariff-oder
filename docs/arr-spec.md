@@ -7,6 +7,12 @@ what-if engine limited to the power purchase mix.  The master prompt's Milestone
 "specify ARR scope before implementing calculation or filing engines"; this is that
 specification.  Nothing here changes a tariff fact or the tariff pipeline.
 
+**Operator decisions, 2026-10-31** (development prompt: [`docs/prompts/arr-build-prompt.md`](prompts/arr-build-prompt.md)):
+the milestone's output is a **draft ARR petition** a person edits and submits (no submission
+automation), built by reading past orders, formulating the next ARR and rendering the filing;
+the **architecture is built ahead of the §9 gate** on synthetic fixtures, while approval of any
+real ARR fact still waits for the confirmed commission mapping; **UPERC / NPCL first**.
+
 Data: [`packages/arr-taxonomy/`](../packages/arr-taxonomy/README.md) (taxonomy v1,
 commission mappings v1 skeletons).  Decision record: ADR-0017.
 
