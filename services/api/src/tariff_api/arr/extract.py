@@ -31,6 +31,18 @@ class GridIn:
     rows: list[list[str]]
     header_rows: int
     caption: list[str] = field(default_factory=list)  # text lines just above the table
+    reader_note: str | None = None  # set when the cells come from the second table reader
+
+
+_MULTI_NUMBER = re.compile(r"-?\d[\d,]*\.\d+|(?<![\d.])\d{2,}(?![\d.])")
+
+
+def collapsed_grid(rows: list[list[str]]) -> bool:
+    """A table reader that merged a row's cells into one ("TPWODL 1827.481 2436.6", the rest
+    blank: OERC FY2025-26): many filled cells each holding several numbers."""
+    filled = [(c or "").strip() for r in rows for c in r if (c or "").strip()]
+    multi = [c for c in filled if len(_MULTI_NUMBER.findall(_FY.sub(" ", c))) >= 2]  # "FY 2024-25" is one year
+    return len(multi) >= 2 and len(multi) >= 0.3 * len(filled)
 
 
 @dataclass
@@ -535,6 +547,7 @@ def read_grids(
                             if row_unit
                             else ""
                         )
+                        + (f"; {g.reader_note}" if g.reader_note else "")
                     )[:600],
                 )
                 k = cand.key()

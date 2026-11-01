@@ -1033,3 +1033,37 @@ def test_a_one_word_cell_over_a_table_row_is_not_a_heading():
     }
     got = [(c.branch, c.page_start) for c in propose_chapters(pages, mapping, 5)]
     assert got == [("C.DEP", 3), ("C.RETURN", 5)], got
+
+
+def test_a_collapsed_grid_is_recognised_and_a_second_reader_cell_says_so():
+    """OERC FY2025-26 (increment 50): the first table reader merged each row into one cell;
+    the ARR reading then takes the second reader's cells and says so in each value's rationale."""
+    from tariff_api.arr.extract import collapsed_grid
+
+    merged = [
+        ["Actual OERC’s Licensee", "", "", ""],
+        ["TPCODL 1516.418 2021.891", "", "", ""],
+        ["TPNODL 2344.967 3126.623", "", "", ""],
+    ]
+    clean = [
+        ["DISCOM", "Actual Sales", "OERC’s Approval for FY 2025-26"],
+        ["TPCODL", "1516.418", "2127.529"],
+        ["TPNODL", "2344.967", "3759.089"],
+    ]
+    assert collapsed_grid(merged) and not collapsed_grid(clean)
+    assert not collapsed_grid([["Particulars", "FY 2024-25", "FY 2025-26"], ["Depreciation", "4.48", "3.99"]])
+
+    tax = load_taxonomy()
+    mapping = load_mapping("NOSUCH", fallback=True)
+    grid = GridIn(
+        9,
+        0,
+        [["Particulars", "Approved"], ["Depreciation", "103.80"]],
+        1,
+        ["Depreciation approved for FY 2025-26 (Rs. Crore)"],
+        reader_note="cell read by the second table reader: the first merged this table's cells",
+    )
+    out, _ = read_grids(
+        [grid], taxonomy=tax, mapping=mapping, placer=Placer(tax, mapping, "distribution"), source_id="s", utility="SYN"
+    )
+    assert out.candidates and "second table reader" in out.candidates[0].rationale

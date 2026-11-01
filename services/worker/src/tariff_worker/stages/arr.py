@@ -26,7 +26,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from tariff_api.adapters.storage import ObjectNotFound, ObjectStore
 from tariff_api.arr.chapters import CHAPTERS_VERSION, furniture, is_furniture, part_from_note, propose_chapters
-from tariff_api.arr.extract import ARR_RULES_VERSION, GridIn, compare, read_grids
+from tariff_api.arr.extract import ARR_RULES_VERSION, GridIn, collapsed_grid, compare, read_grids
 from tariff_api.arr.identities import EVALUATED, IDENTITIES_VERSION, Value, evaluate
 from tariff_api.arr.provider import ArrChannelUnavailable, build_arr_channel
 from tariff_api.arr.scan import scan_texts
@@ -113,6 +113,34 @@ def _artefact(s, storage: ObjectStore, src: SourceDocument, stage: str, tool_ver
 # ------------------------------------------------------------------ chapters
 
 
+SECOND_READER_NOTE = "cell read by the second table reader: the first merged this table's cells"
+
+
+def _arr_grid_keys(s, storage: ObjectStore, source_id) -> dict:  # noqa: ANN001
+    """The grid of each table the ARR reading uses: the primary reader's, unless the two
+    readers disagree on its structure and the primary merged its cells while the secondary
+    did not (OERC FY2025-26) — then the secondary's cells, under the primary's ordinal so the
+    evidence highlights the same table.  Values: (artefact key, note or None)."""
+    rows = s.execute(select(TableGridRecord).where(TableGridRecord.source_id == source_id)).scalars().all()
+    secondary = {(g.page_index, g.ordinal): g for g in rows if not g.is_primary}
+    out: dict = {}
+    for g in rows:
+        if not g.is_primary:
+            continue
+        out[(g.page_index, g.ordinal)] = (g.object_key, None)
+        twin = secondary.get((g.page_index, g.paired_ordinal)) if g.paired_ordinal is not None else None
+        if twin is None or g.agreement_class != "structure_disagreement":
+            continue
+        try:
+            mine = json.loads(storage.get(ObjectStore.ARTEFACTS, g.object_key))["grid"]["rows"]
+            theirs = json.loads(storage.get(ObjectStore.ARTEFACTS, twin.object_key))["grid"]["rows"]
+        except (ObjectNotFound, ValueError, KeyError):
+            continue
+        if collapsed_grid(mine) and not collapsed_grid(theirs):
+            out[(g.page_index, g.ordinal)] = (twin.object_key, SECOND_READER_NOTE)
+    return out
+
+
 def _chapter_grids(doc, storage: ObjectStore, grid_keys: dict, chapter_rows: list) -> dict[int, list[GridIn]]:  # noqa: ANN001
     """Each chapter's primary grids, with the lines printed above each.  A table belongs to the
     last chapter heading above it, so a page shared by two chapters splits at the second
@@ -130,7 +158,8 @@ def _chapter_grids(doc, storage: ObjectStore, grid_keys: dict, chapter_rows: lis
     for ordinal, start, end, _branch, cue_page, _cue_text in chapter_rows:
         grids: list[GridIn] = []
         later = [(o, cp) for o, _s, _e, _b, cp, _t in chapter_rows if o > ordinal]
-        for (page, g_ord), key in sorted(grid_keys.items()):
+        for (page, g_ord), value in sorted(grid_keys.items()):
+            key, note = value if isinstance(value, tuple) else (value, None)
             if not (start <= page <= end) or (page, g_ord) in seen:
                 continue
             try:
@@ -146,7 +175,7 @@ def _chapter_grids(doc, storage: ObjectStore, grid_keys: dict, chapter_rows: lis
             seen.add((page, g_ord))
             above, _below = _lines_around(doc[page - 1], g["bbox"])
             above = [ln for ln in above if not is_furniture(ln, skip)]
-            grids.append(GridIn(page, g_ord, g["rows"], int(g.get("header_rows") or 0), above))
+            grids.append(GridIn(page, g_ord, g["rows"], int(g.get("header_rows") or 0), above, note))
         out[ordinal] = grids
     return out
 
@@ -245,14 +274,7 @@ def arr_localise_source(ctx: JobContext) -> dict:
         utility_code = src.utility.code
         object_key, sha, page_count = src.object_key, src.sha256, src.page_count
         licensee_names = {u.code: [u.name, *(u.aliases or [])] for u in licensees_of(s, src)}
-        grid_keys = {
-            (g.page_index, g.ordinal): g.object_key
-            for g in s.execute(
-                select(TableGridRecord).where(
-                    TableGridRecord.source_id == source_id, TableGridRecord.is_primary.is_(True)
-                )
-            ).scalars()
-        }
+        grid_keys = _arr_grid_keys(s, storage, source_id)
     try:
         mapping = load_mapping(commission, fallback=True)
     except FileNotFoundError as e:
@@ -386,14 +408,7 @@ def arr_extract_source(ctx: JobContext) -> dict:
                 .order_by(ArrChapter.ordinal)
             ).scalars()
         ]
-        grid_keys = {
-            (g.page_index, g.ordinal): g.object_key
-            for g in s.execute(
-                select(TableGridRecord).where(
-                    TableGridRecord.source_id == source_id, TableGridRecord.is_primary.is_(True)
-                )
-            ).scalars()
-        }
+        grid_keys = _arr_grid_keys(s, storage, source_id)
     if not chapter_rows:
         raise JobFailure("validation_failed", "no confirmed chapter to read", retry=False)
     mapping = load_mapping(commission, fallback=True)
