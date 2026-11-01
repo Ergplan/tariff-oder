@@ -28,6 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <nav aria-label="Primary">
             {client ? <Link href="/client">ARR workspace</Link> : null}
             <Link href="/client/library">Library</Link>
+            <Link href="/client/benchmarks">Benchmarks</Link>
             <Link href="/arr">ARR</Link>
             <Link href="/explorer">Explorer</Link>
             {desk ? (

@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -602,6 +602,16 @@ open-access view.
   FY2026-27 tariff and FY2024-25 true-up) in 2.  The rest carry the note that stops them
   (competing copies, MYT orders for the 2026-31 control period with several documents, titles
   in short-year forms like "FY 26" which are not read as years).  All profiles are `draft`.
+
+  **Increment 34 (2026-11-01): benchmarks across licensees.**  `GET /arr/benchmarks` and
+  `/client/benchmarks` (linked from each licensee's page): for one year and voice, six ratios a
+  petition is argued with — power purchase cost per unit of input, O&M and ARR per unit sold
+  (Rs/kWh), distribution loss, the revenue gap as a share of the ARR, return on equity as a
+  share of expenditure — derived in Decimal from the current reviewed, published facts, never
+  stored; each value lists its facts (order, page) and its formula words, the peers' median,
+  minimum and maximum, and the rank (1 = lowest).  A licensee missing an input, or an input in
+  an unexpected unit, has no value and a reason.  Fixture licensees only when asked for, and
+  labelled.  No real licensee has published ARR facts yet, so the page shows fixtures only.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1156,6 +1166,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 34 (2026-11-01): 350 passed** (+1 integration: two synthetic licensees read and published; the six ratios and their inputs; fixtures only on request; a rejected petition total gives a reason, not a value).
 - **Increment 33 (2026-11-01): 349 passed** (+3 unit: a static listing with rows_only, the listing's licensee, aliases, the year floor and the title rules; following order pages to an embedded PDF; every packaged profile loads).
 - **Increment 32 (2026-11-01): 346 passed** (+4 unit: the WebForms engine against a local server that refuses what a browser would not post, proposals from its listing, a refused post reported, the UPERC profile loads; the library integration test also links a twin entry without fetching and checks the profile endpoints).
 - **Increment 31 (2026-11-01): 342 passed** (+2 integration: a true-up case from actuals to draft — grounding refusals, isolation, identity block, stale and frozen statements, trace; an APR case with an estimate).

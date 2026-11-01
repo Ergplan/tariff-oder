@@ -22,10 +22,12 @@ from ..db import session_scope
 from ..errors import AppError
 from ..models import ArrAssumptionSet, ArrFormulation, FilingDraft, SourceDocument, Utility
 from ..schemas import (
+    ARR_VALUE_TYPES,
     ArrAssumptionIn,
     ArrAssumptionOut,
     ArrAssumptionSetCreate,
     ArrAssumptionSetOut,
+    ArrBenchmarksOut,
     ArrChapterDecision,
     ArrChapterOut,
     ArrChapterUpdate,
@@ -185,6 +187,30 @@ def _utility(s, code: str) -> Utility:
     from ..arr.service import utility_by_code
 
     return utility_by_code(s, code)
+
+
+@router.get("/arr/benchmarks", response_model=ArrBenchmarksOut, dependencies=[Depends(require_analyst)])
+def benchmarks(
+    fiscal_year: str, value_type: str = "approved", include_fixtures: bool = False, commission: str | None = None
+) -> ArrBenchmarksOut:
+    """Ratios across licensees for one year and voice, each with the facts it is computed from."""
+    from ..arr import benchmarks as bm
+    from ..arr.formulate import FY_RE
+
+    if not FY_RE.match(fiscal_year):
+        raise AppError("validation_failed", "fiscal_year must look like FY2025-26")
+    if value_type not in ARR_VALUE_TYPES:
+        raise AppError("validation_failed", f"value_type is one of {', '.join(ARR_VALUE_TYPES)}")
+    with session_scope() as s:
+        return ArrBenchmarksOut(
+            **bm.compute(
+                s,
+                fiscal_year=fiscal_year,
+                value_type=value_type,
+                include_fixtures=include_fixtures,
+                commission=commission,
+            )
+        )
 
 
 @router.get("/arr/utilities/{code}/history", response_model=ArrHistoryOut, dependencies=[Depends(require_analyst)])

@@ -1602,6 +1602,19 @@ class ArrActualOut(BaseModel):
     created_at: datetime
 
 
+class ArrBenchmarksOut(BaseModel):
+    """Ratios across licensees derived from reviewed, published ARR facts (never stored)."""
+
+    fiscal_year: str
+    value_type: str
+    include_fixtures: bool
+    metrics: list[dict[str, Any]]
+    licensees: list[dict[str, Any]]
+    stats: dict[str, Any]
+    kind: Literal["derived"]
+    note: str
+
+
 class ArrCaseUpdate(BaseModel):
     title: str | None = Field(default=None, max_length=200)
     notes: str | None = None

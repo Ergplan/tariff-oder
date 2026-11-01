@@ -546,6 +546,65 @@
         "title": "ArrAssumptionSetOut",
         "type": "object"
       },
+      "ArrBenchmarksOut": {
+        "description": "Ratios across licensees derived from reviewed, published ARR facts (never stored).",
+        "properties": {
+          "fiscal_year": {
+            "title": "Fiscal Year",
+            "type": "string"
+          },
+          "include_fixtures": {
+            "title": "Include Fixtures",
+            "type": "boolean"
+          },
+          "kind": {
+            "const": "derived",
+            "title": "Kind",
+            "type": "string"
+          },
+          "licensees": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Licensees",
+            "type": "array"
+          },
+          "metrics": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Metrics",
+            "type": "array"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "stats": {
+            "additionalProperties": true,
+            "title": "Stats",
+            "type": "object"
+          },
+          "value_type": {
+            "title": "Value Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fiscal_year",
+          "value_type",
+          "include_fixtures",
+          "metrics",
+          "licensees",
+          "stats",
+          "kind",
+          "note"
+        ],
+        "title": "ArrBenchmarksOut",
+        "type": "object"
+      },
       "ArrCaseCreate": {
         "properties": {
           "base_fy": {
@@ -10516,6 +10575,145 @@
           }
         },
         "summary": "Add Assumption",
+        "tags": [
+          "arr"
+        ]
+      }
+    },
+    "/arr/benchmarks": {
+      "get": {
+        "description": "Ratios across licensees for one year and voice, each with the facts it is computed from.",
+        "operationId": "benchmarks_arr_benchmarks_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fiscal_year",
+            "required": true,
+            "schema": {
+              "title": "Fiscal Year",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "value_type",
+            "required": false,
+            "schema": {
+              "default": "approved",
+              "title": "Value Type",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "include_fixtures",
+            "required": false,
+            "schema": {
+              "default": false,
+              "title": "Include Fixtures",
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "commission",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Commission"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArrBenchmarksOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Benchmarks",
         "tags": [
           "arr"
         ]

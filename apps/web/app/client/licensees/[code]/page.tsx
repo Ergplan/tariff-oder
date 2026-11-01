@@ -26,7 +26,7 @@ export default async function LicenseePage({ params }: { params: Promise<{ code:
         {name} <span className="muted">· documents and ARR</span>
       </h1>
       <p>
-        <Link href={`/client/cases/new?utility=${encodeURIComponent(name)}`}>Start an ARR process for {name} →</Link> · <Link href={`/arr/${encodeURIComponent(name)}`}>Reviewed ARR history →</Link>
+        <Link href={`/client/cases/new?utility=${encodeURIComponent(name)}`}>Start an ARR process for {name} →</Link> · <Link href={`/arr/${encodeURIComponent(name)}`}>Reviewed ARR history →</Link> · <Link href={`/client/benchmarks?highlight=${encodeURIComponent(name)}`}>Benchmarks →</Link>
       </p>
       <h2>Documents</h2>
       {entries.length === 0 ? (
