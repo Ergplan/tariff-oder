@@ -24,7 +24,7 @@
     "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
     "note": "registered and read in the build session (increment 37 onward)"
   },
-  "status": "unverified: listed from the licensee's public website on 2026-11-01; hashes are recorded on first download (scripts/fetch_reference_filing.py), never copied",
+  "status": "downloaded 2026-11-01: 69 documents hashed, 3 not fetched, 0 differing from a recorded hash",
   "access_note": "documents are served from https://iwebapps.noidapower.com:8032 — a non-443 port the cloud build session's proxy cannot reach; download on the VM",
   "documents": [
     {
@@ -34,8 +34,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/1.%20Cover%20Letter%20ARR%20FY%202026-27.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "50c25e7adaaf45defb47c310781db6c72cd8765f15b03d80da77089d89a6ee3c",
+      "bytes": 19516
     },
     {
       "name": "2. Petition in Form-1 ARR FY 2026-27.docx",
@@ -44,8 +44,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/2.%20Petition%20in%20Form-1%20ARR%20FY%202026-27.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "8be7e378269ff7f2ca13e7d99aa95642aa2b2fad469e5220c5a21ad3cf03351e",
+      "bytes": 198802
     },
     {
       "name": "3. Petition in Form-2 ARR FY 2026-27.docx",
@@ -54,8 +54,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/3.%20Petition%20in%20Form-2%20ARR%20FY%202026-27.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "15812bb95bc0cbcb753a2a0d49b46010fa8889c111c4f643cf079485877f14e6",
+      "bytes": 19007
     },
     {
       "name": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
@@ -64,8 +64,8 @@
         "R-ACC-1 reference: the filed formats the reproduction is measured against"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/4.%20Appendix-II%20MYT%20Tariff%20Formats%20ARR%20FY%202026-27.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "1c2d132e0e824b99838dc4c62e54078101ddb5ac268af66d64be9cc3906f2365",
+      "bytes": 1464357
     },
     {
       "name": "5. Appendix-III Text of True-up FY 2024-25.docx",
@@ -75,8 +75,8 @@
         "R-PKG-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/5.%20Appendix-III%20Text%20of%20True-up%20FY%202024-25.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "616925c61730bad5f47f26913cb9fadcb57e04078ff6e65a32bb809a663b98fc",
+      "bytes": 577862
     },
     {
       "name": "6. Appendix-IV Text of APR FY 2025-26.docx",
@@ -86,8 +86,8 @@
         "R-PKG-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/6.%20Appendix-IV%20Text%20of%20APR%20FY%202025-26.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "dfa85da5067c115534a55460dd2f77ea398c0b4071b40badd2fc2fdba01bfa2c",
+      "bytes": 456682
     },
     {
       "name": "7. Appendix-V Text of ARR FY 2026-27.docx",
@@ -97,8 +97,8 @@
         "R-PKG-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/7.%20Appendix-V%20Text%20of%20ARR%20FY%202026-27.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "491ad21842a32cf1d213b994ee8d9689d6d274f3109eefa7eae2864958503624",
+      "bytes": 558392
     },
     {
       "name": "8. Appendix-VI Cost Allocation FY 2026-27.docx",
@@ -107,8 +107,8 @@
         "R-SCH-15"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/8.%20Appendix-VI%20Cost%20Allocation%20FY%202026-27.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "febd8aef28da3afc89297409dc162759069b23d25e3d1897e5e74d6387eeffe9",
+      "bytes": 122095
     },
     {
       "name": "9. Appendix-VII Compliance Hon'ble Commission's Directives FY 2026-27.docx",
@@ -117,8 +117,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/9.%20Appendix-VII%20Compliance%20Hon'ble%20Commission's%20Directives%20FY%202026-27.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "ea6976d3c5c51a32e67bd638d192ba59b8bf6c6fb5ab59beae8a86aa74026a41",
+      "bytes": 57672
     },
     {
       "name": "10. Appendix-IX Executive Summary FY 2026-27.docx",
@@ -127,8 +127,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/10.%20Appendix-IX%20Executive%20Summary%20FY%202026-27.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "11695c4e5fdd5ac2771867dc9d8d1d4db564570beda75146501a663474b2b869",
+      "bytes": 180207
     },
     {
       "name": "11. Annexure-1(a) NPCL Audited Accounts FY 2024-25.pdf",
@@ -138,8 +138,8 @@
         "R-DATA-2 reconciliation base"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/11.%20Annexure-1(a)%20NPCL%20Audited%20Accounts%20FY%202024-25.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "2a90c2b8f68215f6ec99539487e356f32f595d6228acd2ed0e8dce517d9e45d6",
+      "bytes": 22788970
     },
     {
       "name": "12. Annexure-1(b) NPCL Cost Audit Report FY 2024-25.pdf",
@@ -149,8 +149,8 @@
         "R-DATA-2 reconciliation base"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/12.%20Annexure-1(b)%20NPCL%20Cost%20Audit%20Report%20FY%202024-25.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "9bde7afe234147a4f70acbcb0cd3265b697cdb191e9c6198a13c047594e0b560",
+      "bytes": 7830657
     },
     {
       "name": "13. Annexure-2 GoUP Subsidy Letter.pdf",
@@ -159,8 +159,8 @@
         "R-SCH-13"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/13.%20Annexure-2%20GoUP%20Subsidy%20Letter.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "e9f644f0f76cb127034f786971e7c36f2ed752fa6bd7c52f4b884516f40840ef",
+      "bytes": 1238472
     },
     {
       "name": "14. Annexure-3 Company letter to GoUP for release of subsidy FY 23-24 & FY 24-25.pdf",
@@ -169,8 +169,8 @@
         "R-SCH-13"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/14.%20Annexure-3%20Company%20letter%20to%20GoUP%20for%20release%20of%20subsidy%20FY%2023-24%20&%20FY%2024-25.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "261daab7c224a4474e8861859fc1a38ea07b1565288bb051b3b6aa07bc71c4c4",
+      "bytes": 257884
     },
     {
       "name": "15. Annexure-4 Details of Saubhagya Consumer.xlsb",
@@ -180,8 +180,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/15.%20Annexure-4%20Details%20of%20Saubhagya%20Consumer.xlsb",
-      "sha256": null,
-      "bytes": null
+      "sha256": "e3bfba96ed98b3214e7bd34233db628059e4d94d92627bacc0753ca3645f7b62",
+      "bytes": 280452
     },
     {
       "name": "16. Annexure-5 Details of Lifeline Consumer.xlsx",
@@ -191,8 +191,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/16.%20Annexure-5%20Details%20of%20Lifeline%20Consumer.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "711498cfd7b1bfa7cfd1967a33d4ece4e3a61a7a93426d43d87ba964de78380e",
+      "bytes": 392849
     },
     {
       "name": "17. Annexure-6 Order dt. 02.05.24 Additional Coal FY-23 Petition No. 2005 of 2022.pdf",
@@ -201,8 +201,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/17.%20Annexure-6%20Order%20dt.%2002.05.24%20Additional%20Coal%20FY-23%20Petition%20No.%202005%20of%202022.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "0e157ecdb2a66b41148d3a1cc731a452e3f0ad3b5cf99f3d7a06ee37751ec924",
+      "bytes": 775794
     },
     {
       "name": "18. Annexure-7 Order dt. 09.12.24 Additional Coal FY-24 Petition No. 2108 of 2024.pdf",
@@ -211,8 +211,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/18.%20Annexure-7%20Order%20dt.%2009.12.24%20Additional%20Coal%20FY-24%20Petition%20No.%202108%20of%202024.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "dd1f82e63b9ca7147b19f97cff2ece90dd04894040b204a4ded44cb0f2b47623",
+      "bytes": 635264
     },
     {
       "name": "19. Annexure-8 Order dt. 12.04.24 towards Change in Law for FY 2023-24 Pt. No. 2004 of 2023.pdf",
@@ -221,8 +221,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/19.%20Annexure-8%20Order%20dt.%2012.04.24%20towards%20Change%20in%20Law%20for%20FY%202023-24%20Pt.%20No.%202004%20of%202023.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "9dd21cbac410df58aeb11a30cbe175a1a975fdb33888374c3b9468452cfa69df",
+      "bytes": 4809477
     },
     {
       "name": "20. Annexure-9 Order dt. 15.04.25 Additional Coal FY-24 Petition No. 2116 of 2025.pdf",
@@ -231,8 +231,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/20.%20Annexure-9%20Order%20dt.%2015.04.25%20Additional%20Coal%20FY-24%20Petition%20No.%202116%20of%202025.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "cceff6c26c407d079594ed4db3e63385185b2ec7733a17ae6653cddf224bb937",
+      "bytes": 7389314
     },
     {
       "name": "21. Annexure-10 Medium-term Escalated Rate - True-up-TPTCL.xlsx",
@@ -241,8 +241,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/21.%20Annexure-10%20Medium-term%20Escalated%20Rate%20-%20True-up-TPTCL.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "bc90290928f154c0d92cb767f0b01629b31add956e84071abe3c4db9f406a63b",
+      "bytes": 18403
     },
     {
       "name": "22. Annexure-11 Medium-term Escalated Rate - True-up -JIPL.xlsx",
@@ -251,8 +251,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/22.%20Annexure-11%20Medium-term%20Escalated%20Rate%20-%20True-up%20-JIPL.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "bd5e55d5985480fe147554b3afffecfecf8387dd7341710b0353421a7152237e",
+      "bytes": 18284
     },
     {
       "name": "23. Annexure-12  NPCL's Copies of Letter  dated 27th October, 2016 and 17th March, 2017 for installation of Solar Rooftop.pdf",
@@ -261,8 +261,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/23.%20Annexure-12%20%20NPCL's%20Copies%20of%20Letter%20%20dated%2027th%20October,%202016%20and%2017th%20March,%202017%20for%20installation%20of%20Solar%20Rooftop.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "332579850d5bb6346e45627eccf6a7579c38398b7a8cd6a1339e1fc24d373028",
+      "bytes": 4330085
     },
     {
       "name": "24. Annexure-13 RPO Computation in the format prescribed by the Honble Commission.xlsx",
@@ -271,8 +271,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/24.%20Annexure-13%20RPO%20Computation%20in%20the%20format%20prescribed%20by%20the%20Honble%20Commission.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "c00f96123a3bb0f85992c041432dc326dfaa8f9ba1f43b92a5bb4e5dabd56355",
+      "bytes": 389740
     },
     {
       "name": "25. Annexure-14 Reconciliation of Power Purchase Cost with Audited Accounts for FY 2024-25.xlsx",
@@ -282,8 +282,8 @@
         "R-DATA-2 reconciliation to audited accounts"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/25.%20Annexure-14%20Reconciliation%20of%20Power%20Purchase%20Cost%20with%20Audited%20Accounts%20for%20FY%202024-25.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "6fbc0a103397790b45ed4269e732be804fe49e1fd308255fb50f709068558c70",
+      "bytes": 559678
     },
     {
       "name": "26. Annexure-15 Project wise Total Capital Expenditure for FY 2024-25.xlsx",
@@ -292,8 +292,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/26.%20Annexure-15%20Project%20wise%20Total%20Capital%20Expenditure%20for%20FY%202024-25.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "e84c20e4b1c54d000fe344dd541f84c4b9dbddc5eb2e0176ec0cb156e19613fa",
+      "bytes": 332466
     },
     {
       "name": "27. Annexure-16 Project Completion Report for Pt. no. 1950 of 2023.docx",
@@ -302,8 +302,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/27.%20Annexure-16%20Project%20Completion%20Report%20for%20Pt.%20no.%201950%20of%202023.docx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "b8322aedd41d48feceb12267ab98e395e2e5636cef9d93de548542907661448b",
+      "bytes": 1590545
     },
     {
       "name": "28. Annexure-17 Project Wise Fixed Assets Additions in FY 2024-25 below Rs. 10 Crore.xlsx",
@@ -312,8 +312,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/28.%20Annexure-17%20Project%20Wise%20Fixed%20Assets%20Additions%20in%20FY%202024-25%20below%20Rs.%2010%20Crore.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "2cc2d626b79cdd15e986867a9b89ff26e1e85d58e9831a84dfbf1ec3973d6867",
+      "bytes": 301585
     },
     {
       "name": "29. Annexure-18 Sample Project Details for FY 2024-25 in prescribed formats.xlsx",
@@ -322,8 +322,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/29.%20Annexure-18%20Sample%20Project%20Details%20for%20FY%202024-25%20in%20prescribed%20formats.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "0b4518db7cf8ea71ba235e5070a56e61ade776510a81a1378c9b99b5c833001f",
+      "bytes": 94773
     },
     {
       "name": "30. Annexure-19 SBI MCLR Rates for Financial Year 2024-25.pdf",
@@ -333,8 +333,8 @@
         "R-SCH-10"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/30.%20Annexure-19%20SBI%20MCLR%20Rates%20for%20Financial%20Year%202024-25.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "b4df06f922e25edb4a471517a0b72447f81930ac821fdcfa0bc5972d1e94e2ad",
+      "bytes": 641716
     },
     {
       "name": "31. Annexure-20 Assets Retirement Details FY 2024-25.xlsx",
@@ -343,8 +343,8 @@
         "R-SCH-7"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/31.%20Annexure-20%20Assets%20Retirement%20Details%20FY%202024-25.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "5cea637899fa671624b97d38a9351fdf820e065aafcf79d4eea0f48f286a58da",
+      "bytes": 57580
     },
     {
       "name": "32. Annexure-21  Depreciation as per UPERC Method_FY24-25.xlsx",
@@ -353,8 +353,8 @@
         "R-SCH-7"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/32.%20Annexure-21%20%20Depreciation%20as%20per%20UPERC%20Method_FY24-25.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "892d988ee1e679037573ea6ed8c85f36f7789ad742f5183ac4068a1539ae6810",
+      "bytes": 131019
     },
     {
       "name": "33. Annexure-22 Tax Payment Details FY 2024-25.pdf",
@@ -363,8 +363,8 @@
         "R-SCH-9"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/33.%20Annexure-22%20Tax%20Payment%20Details%20FY%202024-25.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "9bf0ea29a3d6cc53030b0892c41e6712a05f9b836241c936e05944aac0b15a10",
+      "bytes": 1286634
     },
     {
       "name": "34. Annexure-23 List of Open Access Consumers.xlsx",
@@ -374,8 +374,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/34.%20Annexure-23%20List%20of%20Open%20Access%20Consumers.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "fc97c452223d483ed70a5809b3538faa537c62c114890fd43be6f5f9062bcd8b",
+      "bytes": 25843
     },
     {
       "name": "35. Annexure-24 Reimbursement of O&M for FY 2019 to FY 2024-DIL.pdf",
@@ -384,8 +384,8 @@
         "R-SCH-5"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/35.%20Annexure-24%20Reimbursement%20of%20O&M%20for%20FY%202019%20to%20FY%202024-DIL.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "bc6300aaffad31653509f1fd11e95658a2293332882079942eb58cabfeb36cac",
+      "bytes": 2225111
     },
     {
       "name": "36. Annexure-25 Approval Order Dated 27.03.2025 and 02.04.2025.pdf",
@@ -394,8 +394,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/36.%20Annexure-25%20Approval%20Order%20Dated%2027.03.2025%20and%2002.04.2025.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "dd0f14e93133af042a488afff7b9a478b5474475d3672c184b61ec7f76e1ee65",
+      "bytes": 3307276
     },
     {
       "name": "37. Annexure-26 Extension of GNIDA PPA  vide order 03.09.2025.pdf",
@@ -404,8 +404,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/37.%20Annexure-26%20Extension%20of%20GNIDA%20PPA%20%20vide%20order%2003.09.2025.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "de199d75710426e77c5886762ba5628592b85f49ce4684b45ced84faa64edffe",
+      "bytes": 13561219
     },
     {
       "name": "38. Annexure-27 Grant of Additional GNA by CTUIL letter dated 16th July, 2024.pdf",
@@ -414,8 +414,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/38.%20Annexure-27%20Grant%20of%20Additional%20GNA%20by%20CTUIL%20letter%20dated%2016th%20July,%202024.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "550222580ef0fa725de7103e2f2d0acb50b5d831d8305899828d82e98f6e45f4",
+      "bytes": 280963
     },
     {
       "name": "39. Annexure-28 Grant of Additional GNA by CTUIL letter dated 28th March, 2025.pdf",
@@ -424,8 +424,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/39.%20Annexure-28%20Grant%20of%20Additional%20GNA%20by%20CTUIL%20letter%20dated%2028th%20March,%202025.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "64a7dee2f152e18bc19485f657d393beebff3dd3c10d90910587f0a9b2649f0d",
+      "bytes": 1959282
     },
     {
       "name": "40. Annexure-29  Forum of Regulators Report on O&M Expenses.pdf",
@@ -434,8 +434,8 @@
         "R-SCH-5"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/40.%20Annexure-29%20%20Forum%20of%20Regulators%20Report%20on%20O&M%20Expenses.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "01cfda3971c765aa0486d6af9e842205244fa1c22c3f5ed14a3929fdc3291a62",
+      "bytes": 1780319
     },
     {
       "name": "41. Annexure-30 O&M Benchmarking for Discoms CEA Guidelines.pdf",
@@ -444,8 +444,8 @@
         "R-SCH-5"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/41.%20Annexure-30%20O&M%20Benchmarking%20for%20Discoms%20CEA%20Guidelines.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "55b40806c86531b51e44df100a4f4dd7979f171d2b7a50d43a1ab859e8656a6b",
+      "bytes": 344659
     },
     {
       "name": "42. Annexure-31 Details of CAPEX for FY 2025-26.xlsb",
@@ -454,8 +454,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/42.%20Annexure-31%20Details%20of%20CAPEX%20for%20FY%202025-26.xlsb",
-      "sha256": null,
-      "bytes": null
+      "sha256": "8eb23423f159c3f24bf7cfb740010434dad8b053fdd29bdecfc705e1dda65d1f",
+      "bytes": 734766
     },
     {
       "name": "43. Annexure 32 Order dated 25.04.25 for Approval of 5 New Substations.pdf",
@@ -464,8 +464,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/43.%20Annexure%2032%20Order%20dated%2025.04.25%20for%20Approval%20of%205%20New%20Substations.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "d6a329b5c722f864a23b7c43d0cef017fc4a5042885fd455f09e58d4a98529c4",
+      "bytes": 3384959
     },
     {
       "name": "44. Annexure-33 Computation of Estimated Consumer Contribution for FY 2025-26.xlsx",
@@ -474,8 +474,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/44.%20Annexure-33%20Computation%20of%20Estimated%20Consumer%20Contribution%20for%20FY%202025-26.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "c98d888055f7e52cb3331cdcd0375740933711e05febf4c9534cc70c10c68094",
+      "bytes": 13345
     },
     {
       "name": "45. Annexure-34 Approval Order Maa Durga and MPL.pdf",
@@ -485,7 +485,8 @@
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/45.%20Annexure-34%20Approval%20Order%20Maa%20Durga%20and%20MPL.pdf",
       "sha256": null,
-      "bytes": null
+      "bytes": null,
+      "note": "listed on the licensee's web page; absent from the operator's zip of 2026-11-01 — to be obtained"
     },
     {
       "name": "46. Annexure-35 Medium-term Escalated Rates - ARR.xlsx",
@@ -494,8 +495,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/46.%20Annexure-35%20Medium-term%20Escalated%20Rates%20-%20ARR.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "a59bc29f2c2723b0dfc3edef1119677e95087e7846d19e0fb143802d80b03074",
+      "bytes": 18751
     },
     {
       "name": "47. Annexure-36 Extension of GNIDA PPA.pdf",
@@ -504,8 +505,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/47.%20Annexure-36%20Extension%20of%20GNIDA%20PPA.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "de199d75710426e77c5886762ba5628592b85f49ce4684b45ced84faa64edffe",
+      "bytes": 13561219
     },
     {
       "name": "48. Annexure-37 Communication Letters from SJVNL, TPREL and NPCL.pdf",
@@ -514,8 +515,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/48.%20Annexure-37%20Communication%20Letters%20from%20SJVNL,%20TPREL%20and%20NPCL.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "13ceb451ffd6ea751b42d058b10d6594fbd623878df59e8c78b91604fa4b502e",
+      "bytes": 1083936
     },
     {
       "name": "49. Annexure-38- Details of CAPEX for FY 2026-27.xlsb",
@@ -524,8 +525,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/49.%20Annexure-38-%20Details%20of%20CAPEX%20for%20FY%202026-27.xlsb",
-      "sha256": null,
-      "bytes": null
+      "sha256": "73e84ff1de050c6f6b8409df3a5d389c6aa68ab52d41fd40e521e168f3061ce7",
+      "bytes": 1037237
     },
     {
       "name": "50. Annexure-39 Computation of Estimated Consumer Contribution for FY 2026-27.xlsx",
@@ -534,8 +535,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/50.%20Annexure-39%20Computation%20of%20Estimated%20Consumer%20Contribution%20for%20FY%202026-27.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "13795509904de309d0203b7e1990b5a7e05d74b2afdb16e7ae2fd6b9a6cd3ac3",
+      "bytes": 12569
     },
     {
       "name": "51. Annexure-40 Pending Adjudication before the Honâ€™ble APTEL.xlsx",
@@ -545,7 +546,8 @@
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/51.%20Annexure-40%20Pending%20Adjudication%20before%20the%20Hon%C3%A2%E2%82%AC%E2%84%A2ble%20APTEL.xlsx",
       "sha256": null,
-      "bytes": null
+      "bytes": null,
+      "note": "listed on the licensee's web page; absent from the operator's zip of 2026-11-01 — to be obtained"
     },
     {
       "name": "52. Annexure-41 Trial Balance for FY 2024-25.xlsx",
@@ -554,8 +556,8 @@
         "R-DATA-1 accounts"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/52.%20Annexure-41%20Trial%20Balance%20for%20FY%202024-25.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "85e0d04d0fb3ead6901983d2627f46337ef5445899d18c32f0517acddcd3a311",
+      "bytes": 88073
     },
     {
       "name": "53. Annexure-42 Annual Energy Audit Report FY 2024-25.pdf",
@@ -564,8 +566,20 @@
         "R-SCH-2"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/53.%20Annexure-42%20Annual%20Energy%20Audit%20Report%20FY%202024-25.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "5e1ea4622ba62224c75e898b780536b6572254e509a507a76e0af8b122c50c41",
+      "bytes": 31527681
+    },
+    {
+      "name": "54. Annexure-43 List of Open Tenders.xls",
+      "role": "supporting_authority",
+      "feeds": [
+        "R-SCH-3",
+        "R-PKG-1"
+      ],
+      "url": null,
+      "sha256": "be203bcaa1d04feb849acb3d6c2755703513bc3e8282a1107e16393efaebfb88",
+      "bytes": 2210304,
+      "note": "in the operator's copy of the package (zip, 2026-11-01); not listed on the licensee's web page"
     },
     {
       "name": "55. Annexure-44 Details of DSM for FY 2024-25.xlsx",
@@ -574,8 +588,8 @@
         "R-SCH-2"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/55.%20Annexure-44%20Details%20of%20DSM%20for%20FY%202024-25.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "460edf874744a71e305881a0dad23c1bdca73b8ab7ecdc9ada732b687e200094",
+      "bytes": 10665542
     },
     {
       "name": "56. Annexure-45 Land Lease Deed.pdf",
@@ -584,8 +598,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/56.%20Annexure-45%20Land%20Lease%20Deed.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "390657e9b5089d8781234b229fccef082d82b6974fc919928a9a1ac6e54e0754",
+      "bytes": 19251734
     },
     {
       "name": "57. Annexure-46 Details of Unutilised Land.xlsx",
@@ -594,8 +608,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/57.%20Annexure-46%20Details%20of%20Unutilised%20Land.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "75283386f463547cf827861f77966594b11c5b22d874ab00e348299e78616266",
+      "bytes": 13126
     },
     {
       "name": "58. Annexure-47 Monthwise Billing Determinants FY 2024-25.xlsb",
@@ -605,8 +619,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/58.%20Annexure-47%20Monthwise%20Billing%20Determinants%20FY%202024-25.xlsb",
-      "sha256": null,
-      "bytes": null
+      "sha256": "adfc1891d2e2cdcf06f3753debff532a28020b670102fdc42af0c39d003386f5",
+      "bytes": 358311
     },
     {
       "name": "59. Annexure-48 Reconciliation of O&M Expenses.xlsx",
@@ -616,8 +630,8 @@
         "R-DATA-2 reconciliation to audited accounts"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/59.%20Annexure-48%20Reconciliation%20of%20O&M%20Expenses.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "a3de8b23a3d30654fb4a715cf4bf59f791f8d4e7c5c85439da381568edc20486",
+      "bytes": 14496
     },
     {
       "name": "60. Annexure-49 Details of energy managed through net metering on monthly basis.xlsx",
@@ -627,8 +641,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/60.%20Annexure-49%20Details%20of%20energy%20managed%20through%20net%20metering%20on%20monthly%20basis.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "b5b7fbb526b98bdb0a4544b727506ea7a3bef03bc8be1056e88d984390f44031",
+      "bytes": 17324
     },
     {
       "name": "61. Annexure 50-Letters to GNIDA for NOC portal.pdf",
@@ -637,8 +651,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/61.%20Annexure%2050-Letters%20to%20GNIDA%20for%20NOC%20portal.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "551b99bf7dbda03d9ca0da23d5e7ba79133fd2448801b268f96660640e091908",
+      "bytes": 4098650
     },
     {
       "name": "62. Annexure 51-Green energy consumers for FY 2024-25.xlsb",
@@ -648,8 +662,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/62.%20Annexure%2051-Green%20energy%20consumers%20for%20FY%202024-25.xlsb",
-      "sha256": null,
-      "bytes": null
+      "sha256": "e1571212834f14998b90972e766fcd15cada6866ad928e67ee849cea0250c32d",
+      "bytes": 10340
     },
     {
       "name": "63. Annexure 52-Details for connections on EMI FY 2024-25.xlsx",
@@ -659,8 +673,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/63.%20Annexure%2052-Details%20for%20connections%20on%20EMI%20FY%202024-25.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "7d163222a7df8fb6b155242bfc4f93a452f3fa4aaba2d78475cbfcab0c0c53e4",
+      "bytes": 12760
     },
     {
       "name": "64. Annexure 53-List of PPA.pdf",
@@ -669,8 +683,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/64.%20Annexure%2053-List%20of%20PPA.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "6e2c918aace37b2646a8cc9f87f825da70493eb6c7607b335eff949781ee02b4",
+      "bytes": 131837
     },
     {
       "name": "65. Annexure-54-Sample of consumer bills.pdf",
@@ -680,8 +694,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/65.%20Annexure-54-Sample%20of%20consumer%20bills.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "9942dd0901bcd1c4eac14e823b8c9d415966df0606007de26ed6145f25a82846",
+      "bytes": 17723823
     },
     {
       "name": "66. Annexure 55-Intimation letter to Varroc Engg..pdf",
@@ -690,8 +704,8 @@
         "R-PKG-1"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/66.%20Annexure%2055-Intimation%20letter%20to%20Varroc%20Engg..pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "2003eafd04545565901d2ee11323791e4f6cdc5fbcb124bac19937e31f8ba944",
+      "bytes": 389346
     },
     {
       "name": "67. Annexure 56 Detailed Project Report 1 to 18.pdf",
@@ -700,8 +714,8 @@
         "R-SCH-6"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/67.%20Annexure%2056%20Detailed%20Project%20Report%201%20to%2018.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "b6a00d5d25189877c324f8ad174dfd03b6db4e1e98e8f1ecf13089ecbf80e141",
+      "bytes": 15684797
     },
     {
       "name": "68. Annexure-57 Billing Determinants FY 2025-26.xlsb",
@@ -711,8 +725,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/68.%20Annexure-57%20Billing%20Determinants%20FY%202025-26.xlsb",
-      "sha256": null,
-      "bytes": null
+      "sha256": "d42bdc968993a25c76a3185b4c95998473ee2f178ef6b32703bae53aa504c38d",
+      "bytes": 973410
     },
     {
       "name": "69. Annexure-58 Billing Determinants FY 2026-27.xlsb",
@@ -722,8 +736,8 @@
         "R-SCH-12"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/69.%20Annexure-58%20Billing%20Determinants%20FY%202026-27.xlsb",
-      "sha256": null,
-      "bytes": null
+      "sha256": "7e034370743e5a7acfcbc968324576b21888ca3897d48142d0e89035f5cb57e3",
+      "bytes": 982296
     },
     {
       "name": "70. Annexure A PPAs and Approval Order.pdf",
@@ -732,8 +746,8 @@
         "R-SCH-3"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/70.%20Annexure%20A%20PPAs%20and%20Approval%20Order.pdf",
-      "sha256": null,
-      "bytes": null
+      "sha256": "3b18279b115f3ce59eaae384f11a33904ed59909e4dbe1c3afd7d933c036313c",
+      "bytes": 294796514
     },
     {
       "name": "71. Annexure B Power Purchase Bills.pdf",
@@ -743,7 +757,8 @@
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/71.%20Annexure%20B%20Power%20Purchase%20Bills.pdf",
       "sha256": null,
-      "bytes": null
+      "bytes": null,
+      "note": "about 2.5 GB (operator, 2026-11-01): kept out of the package and of git; the power-purchase schedule (R-SCH-3) is built from Annexure-14 (power-purchase cost reconciled with the audited accounts) and Annexure-13 / -35; the bills are evidence for spot checks, held by the operator"
     },
     {
       "name": "72. Annexure C- Fixed Asset Register FY 24-25.xlsx",
@@ -752,8 +767,18 @@
         "R-SCH-7"
       ],
       "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202026-27/NPCL%20Tariff%20Petition%20FY%202026-27/72.%20Annexure%20C-%20Fixed%20Asset%20Register%20FY%2024-25.xlsx",
-      "sha256": null,
-      "bytes": null
+      "sha256": "085bdd2bb2c83ea7f440afe44fddce634587c3d5d84514da03c3e71365506d48",
+      "bytes": 6545992
     }
-  ]
+  ],
+  "copies": {
+    "operator_zip": {
+      "location": "gs://npcltariffpetition/NPCL Tariff Petition FY 2026-27 2.zip",
+      "sha256": "c8a1b9e45c0df19c9f08900ac90216da2f596dedbff5f44b90ae4929214d2ac0",
+      "bytes": 405455159,
+      "documents": 69,
+      "note": "the operator's copy; private bucket; Annexure-34, -40 and B are not in it"
+    },
+    "in_repository": "uperc-npcl-fy2026-27/ holds the reference target only: the filed MYT formats and the Word narratives and forms; the other records stay in the bucket, identified by the hashes above"
+  }
 }
