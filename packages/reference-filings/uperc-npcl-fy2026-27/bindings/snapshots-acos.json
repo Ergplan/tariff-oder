@@ -1,0 +1,97 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR snapshot",
+ "places": 4,
+ "note": "The average cost of supply (net ARR / sales) and the average billing rate (revenue / sales) the three snapshots print, for the true-up, APR (estimated and as approved) and ARR years.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "true-up claimed",
+   "inputs": {
+    "record:arr_net": [
+     "True up-snapshot!E47",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "True up-snapshot!E8",
+     "MU"
+    ],
+    "record:revenue_for_abr": [
+     "True up-snapshot!E13",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "average_cost_of_supply": "True up-snapshot!E92",
+    "average_billing_rate": "True up-snapshot!E90"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "APR estimated",
+   "inputs": {
+    "record:arr_net": [
+     "APR Snapshot!E44",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "APR Snapshot!E9",
+     "MU"
+    ],
+    "record:revenue_for_abr": [
+     "APR Snapshot!E14",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "average_cost_of_supply": "APR Snapshot!E91",
+    "average_billing_rate": "APR Snapshot!E89"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "APR approved",
+   "inputs": {
+    "record:arr_net": [
+     "APR Snapshot!D44",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "APR Snapshot!D9",
+     "MU"
+    ],
+    "record:revenue_for_abr": [
+     "APR Snapshot!D14",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "average_cost_of_supply": "APR Snapshot!D91",
+    "average_billing_rate": "APR Snapshot!D89"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ARR projected",
+   "inputs": {
+    "record:arr_net": [
+     "ARR snapshot!E43",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "ARR snapshot!E8",
+     "MU"
+    ],
+    "record:revenue_for_abr": [
+     "ARR snapshot!E12",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "average_cost_of_supply": "ARR snapshot!D90",
+    "average_billing_rate": "ARR snapshot!D88"
+   }
+  }
+ ]
+}

@@ -40981,6 +40981,99 @@
    "working": "74.75",
    "filed": "74.75",
    "result": "match"
+  },
+  {
+   "binding": "snapshots-acos.json",
+   "checks": [
+    {
+     "table": "ARR snapshot",
+     "fiscal_year": "FY2024-25",
+     "category": "true-up claimed True up-snapshot!E92",
+     "output": "average_cost_of_supply",
+     "result": "match",
+     "filed": "8.1677",
+     "computed": "8.1677",
+     "why": null,
+     "exact": "8.167681882735923750648206970"
+    },
+    {
+     "table": "ARR snapshot",
+     "fiscal_year": "FY2024-25",
+     "category": "true-up claimed True up-snapshot!E90",
+     "output": "average_billing_rate",
+     "result": "match",
+     "filed": "7.3232",
+     "computed": "7.3232",
+     "why": null,
+     "exact": "7.323163062341652694968415959"
+    },
+    {
+     "table": "ARR snapshot",
+     "fiscal_year": "FY2025-26",
+     "category": "APR estimated APR Snapshot!E91",
+     "output": "average_cost_of_supply",
+     "result": "match",
+     "filed": "8.0999",
+     "computed": "8.0999",
+     "why": null,
+     "exact": "8.099934405720088657753472454"
+    },
+    {
+     "table": "ARR snapshot",
+     "fiscal_year": "FY2025-26",
+     "category": "APR estimated APR Snapshot!E89",
+     "output": "average_billing_rate",
+     "result": "match",
+     "filed": "7.3006",
+     "computed": "7.3006",
+     "why": null,
+     "exact": "7.300554761700251537798686442"
+    },
+    {
+     "table": "ARR snapshot",
+     "fiscal_year": "FY2025-26",
+     "category": "APR approved APR Snapshot!D91",
+     "output": "average_cost_of_supply",
+     "result": "match",
+     "filed": "7.3168",
+     "computed": "7.3168",
+     "why": null,
+     "exact": "7.316787677690301568449793689"
+    },
+    {
+     "table": "ARR snapshot",
+     "fiscal_year": "FY2025-26",
+     "category": "APR approved APR Snapshot!D89",
+     "output": "average_billing_rate",
+     "result": "match",
+     "filed": "7.2532",
+     "computed": "7.2532",
+     "why": null,
+     "exact": "7.253217097449585542345695640"
+    },
+    {
+     "table": "ARR snapshot",
+     "fiscal_year": "FY2026-27",
+     "category": "ARR projected ARR snapshot!D90",
+     "output": "average_cost_of_supply",
+     "result": "match",
+     "filed": "7.9135",
+     "computed": "7.9135",
+     "why": null,
+     "exact": "7.913521994153973465532569980"
+    },
+    {
+     "table": "ARR snapshot",
+     "fiscal_year": "FY2026-27",
+     "category": "ARR projected ARR snapshot!D88",
+     "output": "average_billing_rate",
+     "result": "match",
+     "filed": "7.2549",
+     "computed": "7.2549",
+     "why": null,
+     "exact": "7.254891690402852837107460765"
+    }
+   ]
   }
  ],
  "pipeline": [
@@ -41881,21 +41974,21 @@
     "title": "True-Up Snapshot",
     "sheet": "True up-snapshot",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "APR Snapshot",
     "title": "APR Snapshot",
     "sheet": "APR Snapshot",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "ARR snapshot",
     "title": "ARR Snapshot",
     "sheet": "ARR snapshot",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "ESR1_OA",
@@ -42364,8 +42457,8 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 34,
-   "reproduced": 27,
+   "present": 31,
+   "reproduced": 30,
    "read": 10,
    "blank": 2,
    "missing": 1

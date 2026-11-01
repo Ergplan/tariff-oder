@@ -592,6 +592,82 @@
    },
    "examples": [],
    "line_code": "R.REV"
+  },
+  {
+   "id": "uperc.arr.acos",
+   "version": 1,
+   "status": "draft",
+   "title": "Average cost of supply",
+   "output": "average_cost_of_supply",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-14",
+   "formula": "arr / sales",
+   "inputs": {
+    "arr": {
+     "unit": "INR_crore",
+     "source": "record:arr_net"
+    },
+    "sales": {
+     "unit": "MU",
+     "source": "record:sales"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the net ARR over the energy sold (Rs crore over MU in Rs/kWh by the units)"
+  },
+  {
+   "id": "uperc.arr.abr",
+   "version": 1,
+   "status": "draft",
+   "title": "Average billing rate (excluding subsidy)",
+   "output": "average_billing_rate",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-14",
+   "formula": "revenue / sales",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:revenue_for_abr"
+    },
+    "sales": {
+     "unit": "MU",
+     "source": "record:sales"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the revenue at current tariff (or total receipts, as the format takes it) over the energy sold"
   }
  ]
 }

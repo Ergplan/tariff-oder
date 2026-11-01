@@ -628,3 +628,25 @@ def test_npcl_petition_computed_end_to_end_from_the_schedules():
     }
     gap = Decimal(true_up["arr_total_expenditure"]["computed"]) - Decimal(true_up["arr_total_expenditure"]["filed"])
     assert gap == Decimal("0.19")  # A40, and nothing else
+
+
+def test_npcl_average_cost_of_supply_and_billing_rate():
+    """Real data: the snapshots' average cost of supply (net ARR / sales) and average billing
+    rate (revenue / sales) for the true-up, APR (estimated and approved) and ARR years."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    b = json.loads((folder / "bindings" / "snapshots-acos.json").read_text())
+    wb = openpyxl.load_workbook(folder / b["workbook"], data_only=True)
+    checks = reproduce_cells(wb, b, load_rules("UPERC"))
+    assert [c.result for c in checks] == ["match"] * 8
+    got = {
+        (c.category.split(" ARR")[0], c.output): c.computed for c in checks if c.category.startswith("ARR projected")
+    }
+    assert got == {
+        ("ARR projected", "average_cost_of_supply"): "7.9135",
+        ("ARR projected", "average_billing_rate"): "7.2549",
+    }
