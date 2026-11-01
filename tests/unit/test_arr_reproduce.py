@@ -104,6 +104,8 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     seen = {}
     for b in sorted((folder / "bindings").glob("*.json")):
         binding = json.loads(b.read_text())
+        if binding.get("type") == "year_blocks":
+            continue  # the utility's workings: the next test
         rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
         seen[rep.sheet] = rep
         for c in rep.checks:
@@ -120,3 +122,95 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     assert seen["Energy Balance"].counts() == {"match": 55}
     assert seen["F14_CAP_Cap Cost"].counts() == {"match": 60}
     assert seen["F25_IOL"].counts()["match"] >= 21 and seen["F26_ROE"].counts()["match"] >= 22
+
+
+def test_year_blocks_are_read_by_their_headers_and_blanks_stay_absent():
+    from tariff_api.arr.blocks import read_year_blocks
+
+    rows = [
+        [None, "Depreciation for", None, "FY 2020-21", None, None, None, None, "Depreciation for", None, "FY 2021-22"],
+        [
+            None,
+            "S.No.",
+            "Particulars",
+            "Opening GFA",
+            "Addition to GFA",
+            "Depreciation Rate",
+            "Allowable Gross Dep",
+            None,
+            "S.No.",
+            "Particulars",
+            "Balance Depreciable value",
+            "Addition to GFA",
+            "Depreciation Rate",
+            "Allowable Gross Dep",
+        ],
+        [None, 1, "Lines & Cables", 0, 60.87, 0.0528, 1.607, None, 1, "Lines & Cables", 60.87, 146.6, 0.0528, 7.08],
+        [None, 2, "Vehicles", 0, None, 0.095, 0, None, 2, "Vehicles", 0, 1.58, 0.095, 0.075],
+        [
+            None,
+            10,
+            "Total Fixed Assets",
+            0,
+            60.87,
+            None,
+            1.607,
+            None,
+            10,
+            "Total Fixed Assets",
+            60.87,
+            148.18,
+            None,
+            7.155,
+        ],
+    ]
+    a, b = read_year_blocks(rows)
+    assert (a.fiscal_year, b.fiscal_year) == ("FY2020-21", "FY2021-22")
+    assert b.columns["opening_gfa"] == 11  # "Balance Depreciable value" is the opening, by its words
+    assert "additions" not in a.rows[1].values  # a blank is absent, never zero
+    assert a.totals["gross_dep"] == "1.607" and len(a.rows) == 2
+
+
+def test_npcl_depreciation_workings_reproduce_and_tie_to_the_filed_arr():
+    """Real data: NPCL's depreciation workings (Annexure-21), by vintage and asset class, own and
+    consumer-contribution assets, FY2020-21 to FY2026-27, through the draft depreciation rules.
+    Post-2020 assets reproduce in full; pre-2020 assets except land (NPCL excludes non-depreciable
+    land rights from the base — a class exception the draft rule does not have), one office-
+    equipment year, and two classes with no rate.  The net (own − contribution) equals the ARR
+    format's depreciation in every true-up year."""
+    import collections
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.blocks import read_year_blocks
+    from tariff_api.arr.reproduce import reproduce_blocks
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "records-annexure-21-depreciation.json").read_text())
+    wb = openpyxl.load_workbook(folder / binding["record"], data_only=True, read_only=True)
+    rules = load_rules("UPERC")
+    net: dict[str, Decimal] = collections.defaultdict(Decimal)
+    results = {}
+    for sh in binding["sheets"]:
+        blocks = read_year_blocks([list(r) for r in wb[sh].iter_rows(values_only=True)])
+        checks = reproduce_blocks(blocks, binding, rules)
+        results[sh] = checks
+        for bl in blocks:
+            net[bl.fiscal_year] += (-1 if "contribution" in bl.title.lower() else 1) * Decimal(bl.totals["gross_dep"])
+    after, before = results["Depreciation after 1 Apr 20-25"], results["Depreciation before 1 Apr 2020"]
+    assert all(c.result == "match" for c in after) and len(after) == 686
+    for c in before:
+        if c.result == "differs":
+            assert c.category in ("Land", "Office Equipments", "TOTAL"), c
+        elif c.result == "blocked":
+            assert "rate" in (c.why or "") or "depreciation_class" in (c.why or ""), c
+    assert sum(c.result == "match" for c in before) >= 672
+    filed = {
+        "FY2021-22": "56.37",
+        "FY2022-23": "62.09",
+        "FY2023-24": "66.33",
+        "FY2024-25": "74.75",
+    }  # ARR format, C.DEP
+    assert {fy: str(net[fy].quantize(Decimal("0.01"))) for fy in filed} == filed

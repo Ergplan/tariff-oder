@@ -253,6 +253,9 @@ class Rule(BaseModel):
     approved_by: str | None = None
     approved_at: str | None = None
     note: str | None = None
+    # evaluated once per category of this kind (e.g. "asset_class"), on the category's own
+    # values; a rule without ``per`` takes the categories' outputs only as ``sum:<output>``
+    per: str | None = None
 
 
 def rules_dir() -> Path:
@@ -299,13 +302,21 @@ class Evaluation:
     results: dict[str, Result] = field(default_factory=dict)
     blocked: dict[str, str] = field(default_factory=dict)  # output → why it could not be computed
     order: list[str] = field(default_factory=list)
+    by_category: dict[str, dict[str, Result]] = field(default_factory=dict)  # category → output → result
+    blocked_by_category: dict[str, dict[str, str]] = field(default_factory=dict)
 
     clauses_verified: bool = False
 
     @property
     def filing_ready(self) -> bool:
         """Every output computed, by approved rules on verified clauses (R-APP-4)."""
-        return not self.blocked and self.clauses_verified and all(r.status == "approved" for r in self.results.values())
+        computed = [*self.results.values(), *(r for rs in self.by_category.values() for r in rs.values())]
+        return (
+            not self.blocked
+            and not any(self.blocked_by_category.values())
+            and self.clauses_verified
+            and all(r.status == "approved" for r in computed)
+        )
 
 
 def _fy(fy: str) -> int:
@@ -378,9 +389,22 @@ class RuleSet:
         self.rules = by_output
         self.trees = {o: check_rule(r) for o, r in by_output.items()}
         self.order = self._order()
+        self._check_categories()
 
     def _deps(self, r: Rule) -> set[str]:
-        return {s.source.split(":", 1)[1] for s in r.inputs.values() if s.source.startswith("rule:")}
+        return {s.source.split(":", 1)[1] for s in r.inputs.values() if s.source.startswith(("rule:", "sum:"))}
+
+    def _check_categories(self) -> None:
+        for r in self.rules.values():
+            for name, spec in r.inputs.items():
+                kind, _, dep = spec.source.partition(":")
+                if kind not in ("rule", "sum") or dep not in self.rules:
+                    continue
+                d = self.rules[dep]
+                if kind == "sum" and not d.per:
+                    raise RuleError(f"rule {r.id}: input {name} sums {dep}, which is not computed per category")
+                if kind == "rule" and d.per and d.per != r.per:
+                    raise RuleError(f"rule {r.id}: input {name} takes {dep} per {d.per}; sum it with sum:{dep}")
 
     def _order(self) -> list[str]:
         order: list[str] = []
@@ -407,48 +431,77 @@ class RuleSet:
     def run_example(self, r: Rule, ex: Example) -> tuple[bool, Decimal]:
         return run_example(r, ex)
 
-    def evaluate(self, fiscal_year: str, values: dict[str, tuple[Decimal | str, str]]) -> Evaluation:
+    def evaluate(
+        self,
+        fiscal_year: str,
+        values: dict[str, tuple[Decimal | str, str]],
+        categories: dict[str, dict[str, tuple[Decimal | str, str]]] | None = None,
+    ) -> Evaluation:
         """Compute every rule for one year.  ``values`` holds what the rules' non-rule inputs
         refer to, keyed by the source string ("fact:C.DEP", "record:gfa_opening",
-        "assumption:roe_rate", "prior:equity_closing").  A rule missing an input is
+        "assumption:roe_rate", "prior:equity_closing").  ``categories`` holds, per category
+        (an asset class, a consumer category), the values of rules computed ``per`` category;
+        a category's value of a source overrides the shared one.  A rule missing an input is
         **blocked** with the reason — never computed from a default."""
         ev = Evaluation(fiscal_year)
         ev.clauses_verified = all(r.clause.verified for r in self.rules.values())
+        cats = categories or {}
         for o in self.order:
             r = self.rules[o]
-            env: dict[str, Q] = {}
-            used: dict[str, tuple[Decimal, str]] = {}
-            why = None
-            for name, spec in r.inputs.items():
-                if spec.source.startswith("rule:"):
-                    dep = spec.source.split(":", 1)[1]
-                    if dep in ev.blocked:
-                        why = f"needs {dep}, which is blocked"
-                        break
-                    res = ev.results[dep]
-                    v = res.rounded if self.rules[dep].rounding.feeds == "rounded" else res.value
-                    q = Q.of(v, res.unit)
-                elif spec.source == "regulation":
-                    q = Q.of(Decimal(spec.value), spec.unit)
-                elif spec.source in values:
-                    raw, unit = values[spec.source]
-                    q = Q.of(Decimal(str(raw)), unit)
-                else:
-                    why = f"input {name} ({spec.source}) has no value"
-                    break
-                try:
-                    used[name] = (q.to(spec.unit), spec.unit)
-                except RuleError as e:
-                    why = f"input {name}: {e}"
-                    break
-                env[name] = q
-            if why:
-                ev.blocked[o] = why
+            if r.per:
+                for cat, own in cats.items():
+                    res, why = self._one(r, {**values, **own}, ev, cat)
+                    if res:
+                        ev.by_category.setdefault(cat, {})[o] = res
+                    else:
+                        ev.blocked_by_category.setdefault(cat, {})[o] = why
+                if not cats:
+                    ev.blocked[o] = f"computed per {r.per}, and no {r.per} was given"
                 continue
-            v = evaluate(self.trees[o], env, r.formula).to(r.unit)
-            ev.results[o] = Result(o, r.id, r.version, r.status, v, _round(v, r.rounding), r.unit, used, r.formula)
-            ev.order.append(o)
+            res, why = self._one(r, values, ev, None)
+            if res:
+                ev.results[o] = res
+                ev.order.append(o)
+            else:
+                ev.blocked[o] = why
         return ev
+
+    def _one(
+        self, r: Rule, values: dict[str, tuple[Decimal | str, str]], ev: Evaluation, cat: str | None
+    ) -> tuple[Result | None, str | None]:
+        env: dict[str, Q] = {}
+        used: dict[str, tuple[Decimal, str]] = {}
+        for name, spec in r.inputs.items():
+            kind, _, dep = spec.source.partition(":")
+            if kind == "rule":
+                done = ev.by_category.get(cat, {}) if self.rules[dep].per else ev.results
+                if dep not in done:
+                    return None, f"needs {dep}, which is blocked"
+                res = done[dep]
+                v = res.rounded if self.rules[dep].rounding.feeds == "rounded" else res.value
+                q = Q.of(v, res.unit)
+            elif kind == "sum":
+                parts = [(c, rs.get(dep)) for c, rs in ev.by_category.items()]
+                missing = sorted(c for c, bl in ev.blocked_by_category.items() if dep in bl)
+                if missing or not parts:
+                    return None, f"needs {dep} for every category; blocked for {', '.join(missing) or 'all'}"
+                unit = self.rules[dep].unit
+                total = sum((p.value for _, p in parts if p), Decimal(0))
+                q = Q.of(total, unit)
+            elif spec.source == "regulation":
+                q = Q.of(Decimal(spec.value), spec.unit)
+            elif spec.source in values:
+                raw, unit = values[spec.source]
+                q = Q.of(Decimal(str(raw)), unit)
+            else:
+                return None, f"input {name} ({spec.source}) has no value"
+            try:
+                used[name] = (q.to(spec.unit), spec.unit)
+            except RuleError as e:
+                return None, f"input {name}: {e}"
+            env[name] = q
+        v = evaluate(self.trees[r.output], env, r.formula).to(r.unit)
+        return Result(r.output, r.id, r.version, r.status, v, _round(v, r.rounding), r.unit, used, r.formula), None
 
 
 def check_all(commission: str) -> list[str]:

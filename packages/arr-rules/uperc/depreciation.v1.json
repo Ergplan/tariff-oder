@@ -1,0 +1,209 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — depreciation (straight line on the average gross block at the asset class's rate)",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Depreciation by asset class (R-SCH-7), as NPCL's workings (Annexure-21) compute it for each vintage of assets.",
+ "rules": [
+  {
+   "id": "uperc.depreciation.gfa_closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Gross fixed assets of the class, closing",
+   "output": "gfa_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "opening + additions - deductions - grants",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:gfa_opening"
+    },
+    "additions": {
+     "unit": "INR_crore",
+     "source": "record:gfa_additions"
+    },
+    "deductions": {
+     "unit": "INR_crore",
+     "source": "record:gfa_deductions"
+    },
+    "grants": {
+     "unit": "INR_crore",
+     "source": "record:gfa_grants"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — depreciation (straight line on the average gross block at the asset class's rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "asset_class"
+  },
+  {
+   "id": "uperc.depreciation.gfa_average",
+   "version": 1,
+   "status": "draft",
+   "title": "Gross fixed assets of the class, average of the year",
+   "output": "gfa_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "avg(opening, closing)",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:gfa_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_closing"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — depreciation (straight line on the average gross block at the asset class's rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "asset_class"
+  },
+  {
+   "id": "uperc.depreciation.gross",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation of the class for the year",
+   "output": "depreciation_class",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "average * rate",
+   "inputs": {
+    "average": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_average"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "record:dep_rate",
+     "note": "the asset class's rate in the regulation's depreciation schedule, as the utility applies it"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — depreciation (straight line on the average gross block at the asset class's rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "asset_class",
+   "note": "straight line on the average gross block, as NPCL's Annexure-21 computes it; the 90 % limit and the remaining-life spread for older assets are not in this draft"
+  },
+  {
+   "id": "uperc.depreciation.acc_closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Accumulated depreciation of the class, closing",
+   "output": "acc_dep_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "opening + depreciation - retired",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:acc_dep_opening"
+    },
+    "depreciation": {
+     "unit": "INR_crore",
+     "source": "rule:depreciation_class"
+    },
+    "retired": {
+     "unit": "INR_crore",
+     "source": "record:acc_dep_retired"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — depreciation (straight line on the average gross block at the asset class's rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "asset_class"
+  },
+  {
+   "id": "uperc.depreciation.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation of the year, all classes",
+   "output": "depreciation_gross_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "classes",
+   "inputs": {
+    "classes": {
+     "unit": "INR_crore",
+     "source": "sum:depreciation_class"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — depreciation (straight line on the average gross block at the asset class's rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  }
+ ]
+}

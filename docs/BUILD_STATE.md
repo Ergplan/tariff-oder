@@ -1005,6 +1005,22 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 57 (2026-11-01): depreciation by asset class and vintage, tied to the filed ARR.**
+  The rule engine evaluates rules **per category** (`per: "asset_class"`) on each category's own
+  values and sums them with `sum:<output>`; one category missing an input blocks the sum and names
+  the category.  `arr/blocks.py` reads year-block workings (one block per year side by side;
+  columns named by their header words; blanks absent).  5 draft depreciation rules (closing and
+  average gross block, depreciation = average × class rate, accumulated depreciation, total).  On
+  NPCL's own depreciation workings (Annexure-21, added to the reference folder; its hash is the
+  one recorded for the package): **assets after 1 April 2020 — 686 of 686 figures; before 2020 —
+  672 of 686** (land: NPCL depreciates on a base excluding non-depreciable land rights, a class
+  exception the draft lacks; one office-equipment year unexplained; two classes with no rate);
+  and **the net — own assets less consumer-contribution assets, both vintages — equals the
+  depreciation in NPCL's filed ARR format and the loan repayment in F25 for every true-up year**
+  (FY2021-22 56.37, FY2022-23 62.09, FY2023-24 66.33, FY2024-25 74.75).  The workings' FY2025-26
+  and FY2026-27 blocks carry the existing assets only; the projections (90.09, 106.75) add the
+  planned capitalisation — the next link.  Ledger A30, A31.
+
   **Increment 56 (2026-11-01): the capital schedule (F14) and cross-format reconciliation.**
   The reference reader takes the label wherever the format puts it (F14 has sub-letters in column
   B and labels in C; 2,085 values now).  11 draft capital rules: gross block roll-forward,
@@ -1743,6 +1759,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 57 (2026-11-01): 409 passed** (+3 unit: year-block reading; per-category rules, sums and their guards; NPCL's depreciation workings reproduced and tied to the filed ARR).  Ruff and format clean.
 - **Increment 56 (2026-11-01): 406 passed** (the reproduction regression now covers F14 and the cross-format checks, pinning the one inconsistent column; the chain test starts from F14 records).  Ruff and format clean.
 - **Increment 55 (2026-11-01): 406 passed** (+3 unit: match / differs / blocked / not-a-value per column; Units-column words; NPCL's filed Energy Balance, F25 and F26 reproduced by the draft rules, 97 of 97).  Ruff and format clean.
 - **Increment 54 (2026-11-01): 403 passed** (+19 unit: units and dimensions, the arithmetic-only language, Decimal literals, dependency order, cycles, blocking, per-year selection, rounding feeds, filing readiness, the UPERC drafts' examples, the NPCL FY2026-27 chain from records).  Ruff and format clean.

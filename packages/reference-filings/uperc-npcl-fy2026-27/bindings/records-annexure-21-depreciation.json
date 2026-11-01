@@ -1,0 +1,52 @@
+{
+ "type": "year_blocks",
+ "record": "records/32. Annexure-21  Depreciation as per UPERC Method_FY24-25.xlsx",
+ "sheets": [
+  "Depreciation after 1 Apr 20-25",
+  "Depreciation before 1 Apr 2020"
+ ],
+ "note": "NPCL's own depreciation workings, by vintage (assets before and after 1 April 2020) and by asset class, own assets and consumer-contribution assets, FY2020-21 to FY2026-27.  Compared at 4 decimals of Rs crore (Rs 1,000): workings keep unrounded figures.",
+ "inputs": {
+  "record:gfa_opening": "opening_gfa",
+  "record:gfa_additions": "additions",
+  "record:gfa_deductions": "deductions",
+  "record:gfa_grants": "grants",
+  "record:dep_rate": "rate",
+  "record:acc_dep_opening": "opening_acc_dep",
+  "record:acc_dep_retired": "dep_retired"
+ },
+ "units": {
+  "rate": "fraction"
+ },
+ "outputs": {
+  "gfa_closing": "closing_gfa",
+  "gfa_average": "average_gfa",
+  "depreciation_class": "gross_dep",
+  "acc_dep_closing": "closing_acc_dep"
+ },
+ "totals": {
+  "depreciation_gross_total": "gross_dep"
+ },
+ "places": 4,
+ "blank_is_zero": {
+  "columns": [
+   "additions",
+   "deductions",
+   "grants",
+   "dep_retired",
+   "opening_acc_dep"
+  ],
+  "why": "NPCL's workings leave these cells blank where there is nothing (no additions, no grants, no retirement); its formulas (closing GFA = opening + additions − deductions − grants; closing acc. dep = opening + year − retired) read the blanks as zero"
+ },
+ "ties_to": {
+  "sheet": "ARR",
+  "line_code": "C.DEP",
+  "voices": [
+   "final_true_up",
+   "actual",
+   "petitioned"
+  ],
+  "why": "net depreciation = own assets (both vintages) − consumer-contribution assets (both vintages); the true-up years only: the workings' FY2025-26 and FY2026-27 blocks roll the existing assets forward without the planned capitalisation, so they are not the projection",
+  "to_fy": "FY2024-25"
+ }
+}

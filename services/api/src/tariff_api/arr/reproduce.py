@@ -161,3 +161,94 @@ def reproduce(
                 )
             )
     return out
+
+
+@dataclass
+class BlockCheck:
+    table: str
+    fiscal_year: str
+    category: str  # the row label (an asset class), or "TOTAL"
+    output: str
+    result: str  # match | differs | blocked | no_filed_value
+    filed: str | None = None
+    computed: str | None = None
+    why: str | None = None
+
+
+def reproduce_blocks(blocks: list, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
+    """Reproduce year-block workings (see :mod:`tariff_api.arr.blocks`) category by category.
+
+    ``binding``: ``{"inputs": {"record:gfa_opening": "opening_gfa", ...}, "outputs":
+    {"gfa_closing": "closing_gfa", ...}, "totals": {"depreciation_gross_total": "gross_dep"},
+    "places": 4}`` — the block columns that feed per-category rules, the columns the per-category
+    outputs are compared with, and the block totals the aggregate rules are compared with, at
+    ``places`` decimals of the stored values (workings keep unrounded figures)."""
+    places = int(binding.get("places", 4))
+    q = Decimal(1).scaleb(-places)
+    out: list[BlockCheck] = []
+    for b in blocks:
+        try:
+            rs = RuleSet(rules, b.fiscal_year)
+        except RuleError as e:
+            out.append(BlockCheck(b.title, b.fiscal_year, "*", "*", "blocked", why=str(e)))
+            continue
+        cats = {}
+        blank_zero = set(binding.get("blank_is_zero", {}).get("columns", []))
+        for r in b.rows:
+            vals = {}
+            for source, key in binding["inputs"].items():
+                unit = binding.get("units", {}).get(key, "INR_crore")
+                if key in r.values:
+                    vals[source] = (r.values[key], unit)
+                elif key in blank_zero:
+                    vals[source] = ("0", unit)  # declared by the binding with its reason; never assumed
+            cats[r.label] = vals
+        ev = rs.evaluate(b.fiscal_year, {}, cats)
+        for r in b.rows:
+            for output, key in binding["outputs"].items():
+                filed = r.values.get(key)
+                if filed is None:
+                    out.append(BlockCheck(b.title, b.fiscal_year, r.label, output, "no_filed_value"))
+                    continue
+                res = ev.by_category.get(r.label, {}).get(output)
+                if res is None:
+                    why = ev.blocked_by_category.get(r.label, {}).get(output, "not computed")
+                    out.append(BlockCheck(b.title, b.fiscal_year, r.label, output, "blocked", filed=filed, why=why))
+                    continue
+                got, want = res.value.quantize(q), Decimal(filed).quantize(q)
+                out.append(
+                    BlockCheck(
+                        b.title,
+                        b.fiscal_year,
+                        r.label,
+                        output,
+                        "match" if got == want else "differs",
+                        filed=str(want),
+                        computed=str(got),
+                    )
+                )
+        for output, key in binding.get("totals", {}).items():
+            filed = b.totals.get(key)
+            res = ev.results.get(output)
+            if filed is None:
+                out.append(BlockCheck(b.title, b.fiscal_year, "TOTAL", output, "no_filed_value"))
+            elif res is None:
+                out.append(
+                    BlockCheck(
+                        b.title, b.fiscal_year, "TOTAL", output, "blocked", filed=filed, why=ev.blocked.get(output)
+                    )
+                )
+            else:
+                got, want = res.value.quantize(q), Decimal(filed).quantize(q)
+                out.append(
+                    BlockCheck(
+                        b.title,
+                        b.fiscal_year,
+                        "TOTAL",
+                        output,
+                        "match" if got == want else "differs",
+                        filed=str(want),
+                        computed=str(got),
+                    )
+                )
+    return out

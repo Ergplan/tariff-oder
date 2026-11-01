@@ -205,3 +205,32 @@ def test_the_npcl_chain_reproduces_the_filed_formats_from_records():
     assert ev.results["return_on_equity"].rounded == Decimal("115.77")
     assert ev.results["interest_on_loan"].rounded == Decimal("83.88")
     assert not ev.filing_ready  # drafts
+
+
+def test_rules_per_category_sum_and_block_honestly():
+    per = rule(
+        "dep",
+        "dep",
+        "INR_crore",
+        "avg_gfa * rate",
+        {
+            "avg_gfa": {"unit": "INR_crore", "source": "record:avg"},
+            "rate": {"unit": "fraction", "source": "record:rate"},
+        },
+        per="asset_class",
+    )
+    total = rule("total", "total", "INR_crore", "parts", {"parts": {"unit": "INR_crore", "source": "sum:dep"}})
+    rs = RuleSet([per, total])
+    cats = {
+        "Lines": {"record:avg": ("100", "INR_crore"), "record:rate": ("0.0528", "fraction")},
+        "Vehicles": {"record:avg": ("10", "INR_crore"), "record:rate": ("0.095", "fraction")},
+    }
+    ev = rs.evaluate("FY2030-31", {}, cats)
+    assert ev.by_category["Lines"]["dep"].rounded == Decimal("5.28") and ev.results["total"].rounded == Decimal("6.23")
+    del cats["Vehicles"]["record:rate"]
+    ev = rs.evaluate("FY2030-31", {}, cats)
+    assert "total" in ev.blocked and "Vehicles" in ev.blocked["total"]  # one class missing blocks the sum, by name
+    with pytest.raises(RuleError, match="not computed per category"):
+        RuleSet([rule("s", "s", "INR_crore", "x", {"x": {"unit": "INR_crore", "source": "sum:total"}}), total, per])
+    with pytest.raises(RuleError, match="sum it"):
+        RuleSet([per, rule("t", "t", "INR_crore", "x", {"x": {"unit": "INR_crore", "source": "rule:dep"}})])
