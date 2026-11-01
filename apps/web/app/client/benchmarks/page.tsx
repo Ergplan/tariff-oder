@@ -107,7 +107,7 @@ export default async function BenchmarksPage({ searchParams }: { searchParams: P
             </thead>
             <tbody>
               {rows.map((r) => (
-                <tr key={r.code} style={r.code === highlight ? { background: "var(--highlight, #fff7d6)" } : undefined}>
+                <tr key={r.code} style={r.code === highlight ? { background: "var(--highlight)" } : undefined}>
                   <td>
                     <Link href={`/client/licensees/${encodeURIComponent(r.code)}`} className="mono">
                       {r.code}

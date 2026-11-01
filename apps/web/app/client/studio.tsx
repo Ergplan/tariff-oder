@@ -103,3 +103,21 @@ export const FILING_WORDS: Record<string, string> = {
   true_up: "True-up",
   apr: "Annual performance review",
 };
+
+/** Where the user is on the way from the map of India to a petition (increment 52). */
+export function Journey({ steps }: { steps: { label: string; href?: string }[] }) {
+  return (
+    <nav aria-label="Journey">
+      <ol className="journey">
+        {steps.map((s, i) => {
+          const last = i === steps.length - 1;
+          return (
+            <li key={`${s.label}-${i}`} aria-current={last ? "step" : undefined}>
+              {s.href && !last ? <Link href={s.href}>{s.label}</Link> : <span>{s.label}</span>}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+}

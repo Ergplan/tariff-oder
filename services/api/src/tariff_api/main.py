@@ -18,6 +18,7 @@ from .db import dispose_db, init_db
 from .errors import AppError
 from .routers import (
     arr,
+    atlas,
     candidates,
     cases,
     explorer,
@@ -130,6 +131,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(publication.router)
     app.include_router(explorer.router)
     app.include_router(arr.router)
+    app.include_router(atlas.router)
     app.include_router(organisations.router)
     app.include_router(cases.router)
     app.include_router(library.router)

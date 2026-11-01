@@ -56,6 +56,9 @@ export default async function ClientHome() {
               Start a petition <span className="arrow">→</span>
             </Link>
           ) : null}
+          <Link className="btn" href="/client/atlas">
+            Explore the map of India <span className="arrow">→</span>
+          </Link>
           <Link className="btn" href="/client/library">
             Open the library <span className="arrow">→</span>
           </Link>
@@ -139,7 +142,7 @@ export default async function ClientHome() {
         ))}
       </div>
 
-      <SectionHead num="03" title="The regulatory record, state by state" aside={<Link href="/client/library">Full library →</Link>} />
+      <SectionHead num="03" title="The regulatory record, state by state" aside={<Link href="/client/atlas">Map of India →</Link>} />
       {states.length === 0 ? (
         <p className="muted">The library is empty: an administrator seeds the expected documents and acquires them.</p>
       ) : (
@@ -155,7 +158,7 @@ export default async function ClientHome() {
                 }
               const licensees = s.commissions.reduce((a, c) => a + c.licensees.length, 0);
               return (
-                <Link key={s.code} href={`/client/library?state=${encodeURIComponent(s.code)}`}>
+                <Link key={s.code} href={`/client/states/${encodeURIComponent(s.code)}`}>
                   <span className="st">{s.name}</span>
                   <span className="sub">
                     {s.commissions.map((c) => c.code).join(" · ")} · {licensees} licensee{licensees === 1 ? "" : "s"}

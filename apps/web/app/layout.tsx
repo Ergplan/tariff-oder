@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import "./globals.css";
 import type { MeOut } from "@tariff/contracts";
 import { PROFILE, apiTry } from "@/lib/api";
 import NavMenu from "./nav-menu";
+import ThemeToggle from "./theme-toggle";
 
 export const metadata: Metadata = {
   title: "Tariff Order Studio",
@@ -21,8 +23,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const desk = role === "reviewer" || role === "administrator" || (role === "analyst" && !(me.data?.organisations ?? []).length);
   const admin = role === "administrator";
   const client = (me.data?.organisations ?? []).length > 0 || admin;
+  const chosen = (await cookies()).get("theme")?.value;
+  const theme = chosen === "light" || chosen === "dark" ? chosen : undefined;
   return (
-    <html lang="en">
+    <html lang="en" data-theme={theme}>
       <body>
         <header className="top">
           <Link href={client ? "/client" : "/"} className="brand" style={{ textDecoration: "none" }}>
@@ -30,6 +34,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           </Link>
           <nav aria-label="Primary">
             {client ? <Link href="/client">Petition studio</Link> : null}
+            <Link href="/client/atlas">Atlas</Link>
             <Link href="/client/library">Library</Link>
             <Link href="/client/benchmarks">Benchmarks</Link>
             <Link href="/arr">ARR</Link>
@@ -59,6 +64,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               />
             ) : null}
           </nav>
+          <ThemeToggle initial={theme} />
           <span className="badge" data-tone={PROFILE === "gcp" ? "ok" : "neutral"} title="Deployment profile">
             profile: {PROFILE}
           </span>

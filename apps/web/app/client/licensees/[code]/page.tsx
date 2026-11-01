@@ -2,8 +2,9 @@ import Link from "next/link";
 import type { ArrCaseOut, ArrHistoryOut, LibraryEntryOut } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../../components";
+import type { LicenseePlace, Norms } from "../../atlas/data";
 import { KIND_SHORT, Level } from "../../levels";
-import { ARR_STEPS, Eyebrow, FILING_WORDS, Panel, SegBar } from "../../studio";
+import { ARR_STEPS, Eyebrow, FILING_WORDS, Journey, Panel, SegBar } from "../../studio";
 
 export const dynamic = "force-dynamic";
 
@@ -28,23 +29,38 @@ function best(facts: Fact[]): Fact | undefined {
 export default async function LicenseePage({ params }: { params: Promise<{ code: string }> }) {
   const { code } = await params;
   const name = decodeURIComponent(code);
-  const [res, hist, cases] = await Promise.all([
+  const [res, hist, cases, where] = await Promise.all([
     apiTry<LibraryEntryOut[]>(`/library/entries?utility=${encodeURIComponent(name)}`),
     apiTry<ArrHistoryOut>(`/arr/utilities/${encodeURIComponent(name)}/history`),
     apiTry<ArrCaseOut[]>("/cases"),
+    apiTry<LicenseePlace>(`/atlas/licensees/${encodeURIComponent(name)}`),
   ]);
+  const place = where.data;
+  const norms = place ? await apiTry<Norms>(`/arr/norms/${encodeURIComponent(place.commission)}`) : undefined;
+  const n = norms?.data;
+  const applied = (n?.applied ?? []).filter((a) => a.licensee === place?.code);
   if (res.error) return <ErrorBanner error={res.error} />;
   const entries = [...(res.data ?? [])].sort((a, b) => (b.fiscal_year || "~").localeCompare(a.fiscal_year || "~") || a.document_kind.localeCompare(b.document_kind));
   const h = hist.data;
   const lines = ((h?.lines ?? []) as unknown as Line[]).filter((l) => KEY_LINES.includes(l.line_code)).sort((a, b) => KEY_LINES.indexOf(a.line_code) - KEY_LINES.indexOf(b.line_code));
   const years = (h?.years ?? []).slice(-4);
   const mine = (cases.data ?? []).filter((c) => c.utility === name);
-  const commission = mine[0]?.commission;
+  const commission = place?.commission ?? mine[0]?.commission;
   return (
     <>
-      <p>
-        <Link href="/client/library">← Library</Link>
-      </p>
+      {place ? (
+        <Journey
+          steps={[
+            { label: "India", href: "/client/atlas" },
+            { label: place.state_name, href: `/client/states/${encodeURIComponent(place.state)}` },
+            { label: place.code },
+          ]}
+        />
+      ) : (
+        <p>
+          <Link href="/client/library">← Library</Link>
+        </p>
+      )}
       <header className="case-head">
         <Eyebrow>
           Licensee{commission ? ` · ${commission}` : ""}
@@ -124,7 +140,54 @@ export default async function LicenseePage({ params }: { params: Promise<{ code:
         </p>
       </Panel>
 
-      <Panel num="02" title="Petitions" aside={`${mine.length} for ${name}`}>
+      <Panel
+        num="02"
+        title={`Tariff norms${commission ? ` · ${commission}` : ""}`}
+        aside={n ? <span className="badge" data-tone={n.plan_confirmed && n.mapping_confirmed ? "ok" : "warn"}>{n.plan_confirmed && n.mapping_confirmed ? "confirmed" : "working estimate"}</span> : null}
+      >
+        {!n ? (
+          <p className="muted" style={{ margin: 0 }}>
+            The commission of {name} is not known to the registry.
+          </p>
+        ) : (
+          <>
+            <p className="muted" style={{ marginTop: 0 }}>
+              How {n.commission}&apos;s regulations form the ARR: {n.lines.length} lines, of which {n.lines.filter((l) => l.method === "assumption").length} are entered by the petitioner and{" "}
+              {n.lines.filter((l) => l.parameters.length).length} take a rate. Below, the norms {n.commission} applied to {name} in its reviewed orders.
+            </p>
+            {applied.length ? (
+              <div className="cards">
+                {applied.map((a) => (
+                  <div key={a.line_code} className="card">
+                    <div className="eyebrow" style={{ margin: 0 }}>
+                      {a.line_code} · {a.fiscal_year}
+                    </div>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.7rem", fontWeight: 700 }}>
+                      {Number(a.value).toLocaleString("en-IN", { maximumFractionDigits: 2 })}{" "}
+                      <span className="muted" style={{ fontSize: "0.9rem" }}>
+                        {a.unit === "INR_crore" ? "Rs Cr" : a.unit === "percent" ? "%" : a.unit}
+                      </span>
+                    </div>
+                    <div className="muted" style={{ fontSize: "0.8rem" }}>
+                      {a.voice.replace(/_/g, " ")} · <Link href={`/sources/${a.source_id}`}>{a.order}</Link>
+                      {a.page !== null ? `, p.${a.page}` : ""}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="muted">No reviewed norm figure of {name} yet.</p>
+            )}
+            <p style={{ marginBottom: 0 }}>
+              <Link className="btn" href={`/client/norms/${encodeURIComponent(n.commission)}?from=${encodeURIComponent(name)}`}>
+                All {n.commission} norms <span className="arrow">→</span>
+              </Link>
+            </p>
+          </>
+        )}
+      </Panel>
+
+      <Panel num="03" title="Petitions" aside={`${mine.length} for ${name}`}>
         {mine.length === 0 ? (
           <p className="muted" style={{ margin: 0 }}>
             None yet. <Link href={`/client/cases/new?utility=${encodeURIComponent(name)}`}>Start one →</Link>
@@ -152,7 +215,7 @@ export default async function LicenseePage({ params }: { params: Promise<{ code:
         )}
       </Panel>
 
-      <Panel num="03" title="Documents" aside={`${entries.length} in the library`}>
+      <Panel num="04" title="Documents" aside={`${entries.length} in the library`}>
         {entries.length === 0 ? (
           <p className="muted" style={{ margin: 0 }}>
             No document of this licensee is in the library yet.
