@@ -80,10 +80,24 @@ class ReadReport:
         }
 
 
-def fiscal_year(text: str) -> str | None:
-    """ "FY 2025-26", "2025-26", "2025-2026" -> "FY2025-26"; None when absent or ambiguous."""
+_FY_SHORT = re.compile(r"\bFY\s?'?(\d{2})(?![\d-])", re.I)
+
+
+def _all_years(text: str) -> set[str]:
     found = {f"FY{m.group(1)}-{m.group(2)[-2:]}" for m in _FY.finditer(text or "")}
     good = {fy for fy in found if int(fy[7:9]) == (int(fy[2:6]) + 1) % 100}
+    # "FY27" is the financial year ending in March 2027 (Indian regulatory usage), only with
+    # its "FY" prefix: a bare two-digit number is never a year
+    for m in _FY_SHORT.finditer(text or ""):
+        end = 2000 + int(m.group(1))
+        good.add(f"FY{end - 1}-{m.group(1)}")
+    return good
+
+
+def fiscal_year(text: str) -> str | None:
+    """ "FY 2025-26", "2025-26", "2025-2026", "FY26" -> "FY2025-26"; None when absent or
+    ambiguous (several years named)."""
+    good = _all_years(text)
     return good.pop() if len(good) == 1 else None
 
 
@@ -146,6 +160,7 @@ _LABEL_HDR = re.compile(
     re.I,
 )
 _SKIP_HDR = re.compile(r"^\W*(?:s\.?\s*no|sl\.?\s*no|sr\.?\s*no|ref|reference|formula|units?\b|uom\b)", re.I)
+_AMOUNT_HDR = re.compile(r"^\W*(?:amount|value|rs\.?\s*(?:in\s+)?cr(?:ore)?s?\.?)\b", re.I)
 _UNIT_HDR = re.compile(r"^\W*(?:units?|uom)\b", re.I)
 _ORIGINAL_APPROVAL = re.compile(
     r"\b(?:in|as\s+per|per|vide|under)\s+(?:the\s+)?(?:t\.?\s?o\.?|tariff\s+order|mtr|myt\s+order)(?![a-z])"
@@ -210,7 +225,7 @@ def table_title(caption_lines: list[str]) -> str:
 
 
 def _years(text: str) -> set[str]:
-    return {fy for m in _FY.finditer(text or "") if (fy := fiscal_year(m.group(0)))}
+    return _all_years(text)
 
 
 def _texty(g: GridIn, j: int) -> bool:
@@ -305,8 +320,12 @@ def read_grids(
                 continue
             if fy is None:
                 # a voice-only header ("Claimed", "Approved"): the year is the caption's (or the
-                # part's) when it names exactly one
-                if not h.strip() or _SKIP_HDR.match(h) or voice(h, mapping) is None or table_fy is None:
+                # part's) when it names exactly one; a lone "Amount" column takes its voice from
+                # the title too ("Petitioner Submission - …", "… approved by the Commission")
+                amount = bool(_AMOUNT_HDR.match(h)) and voice_in_context("", caption, part, mapping) is not None
+                if not h.strip() or _SKIP_HDR.match(h) or table_fy is None:
+                    continue
+                if voice(h, mapping) is None and not amount:
                     continue
                 fy = table_fy
             vt = voice_in_context(h, caption, part, mapping)
@@ -375,6 +394,20 @@ def read_grids(
                 )
                 continue
             item_unit = taxonomy.by_code()[placed.code].unit
+            if row_unit and item_unit and _unit_class(row_unit) != item_unit:
+                # a money row is never an energy line, nor a percentage a money one: the words
+                # matched, the unit says no
+                report.unplaced.append(
+                    {
+                        "page": g.page_index,
+                        "grid": g.ordinal,
+                        "row": i,
+                        "label": label,
+                        "options": [placed.code],
+                        "reason": f"printed in {row_unit}, but {placed.code} is in {item_unit}",
+                    }
+                )
+                continue
             unit = row_unit if row_unit else _default_unit(item_unit)
             report.rows_placed += 1
             for col in columns:
@@ -446,7 +479,15 @@ def read_grids(
 
 def _unit_class(unit: str | None) -> str | None:
     """The taxonomy unit a printed unit belongs to, for resolving an energy/cost twin."""
-    return {"INR_lakh": "INR_crore", "INR_million": "INR_crore", "paise_per_kWh": "INR_per_kWh"}.get(unit or "", unit)
+    return {
+        "INR_lakh": "INR_crore",
+        "INR_million": "INR_crore",
+        "INR": "INR_crore",
+        "kWh": "MU",
+        "MWh": "MU",
+        "GWh": "MU",
+        "paise_per_kWh": "INR_per_kWh",
+    }.get(unit or "", unit)
 
 
 def _default_unit(item_unit: str | None) -> str | None:

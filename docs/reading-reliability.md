@@ -94,6 +94,8 @@ extraction exists, so most structure- and value-level rows are `n/a-yet` by desi
 | A6 | A section's own "Total Cost" placed on total expenditure | handled: the ARR's totals are placed only in an ARR or gap chapter or a table titled as the summary.  Found by identity ARR-I1 on NPCL.  Test `test_the_arr_totals_are_placed_only_in_summary_context` |
 | A7 | Combined orders: several licensees' values in one table | handled when a column or the title names the licensee; a total across licensees, or a column naming none, is reported and skipped.  Test `test_a_combined_order_is_read_and_published_per_licensee`; measured on BERC (573 values attributed) |
 | A8 | Identities that depend on a commission's convention (what the printed gap carries; which loss and which sales gross up to energy input) | **open**: ARR-I3 fails on NPCL FY2026-27 (printed gap 319.29 vs ARR less revenue 228.23), ARR-I4 on BERC (0.6–2.0 %); the mapping's `gap_convention` and loss definition must be set by a reviewer |
+| A10 | Short-form years ("FY27") and a lone "Amount" column with the voice in the title | handled (HPERC): "FY" + two digits is the year ending then; a bare number never is.  Test `test_short_year_forms_and_amount_columns`; HPERC 85 → 190 tables read |
+| A11 | A row's words match a line of another kind (a cost row on an energy line) | handled: a row whose printed unit class contradicts the line's is reported, never placed.  Test `test_a_row_whose_unit_contradicts_the_line_is_not_placed` |
 | A9 | Precision over all values of a real order | **not measured**: needs a reviewer's decisions on a confirmed mapping; spot checks of the NPCL ARR and APR summaries and BERC's per-licensee ARR table match the pages |
 
 ## Pipeline-level

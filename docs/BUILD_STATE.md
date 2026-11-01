@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 41: a reading preview at the chapter checkpoint; increment 40: the identity checks run over both real orders; increment 39: a second real order (BERC, combined), the mapping workbench; increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 42: a third real order (HPERC), short-form years, Amount columns, the unit veto; increment 41: a reading preview at the chapter checkpoint; increment 40: the identity checks run over both real orders; increment 39: a second real order (BERC, combined), the mapping workbench; increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -748,6 +748,25 @@ open-access view.
   identity failures (the gap convention of increment 40).  The extraction now uses the shared
   table-to-chapter helper; the synthetic end-to-end test asserts the preview predicts the
   reading exactly.
+
+  **Increment 42 (2026-11-01): a third real order, and three more reading rules.**  HPERC's
+  order for HPSEBL, FY2026-27 (`https://hperc.org/wp-content/uploads/2026/03/fto2627.pdf`,
+  SHA-256 `0f3d9e9d…ec74`, 525 pages; found by the HPERC discovery profile), registered locally
+  as a real source; parsed and localised in 7 minutes.  **44 chapters on first contact**, matching
+  its sections (4 final true-up, 5 true-up of uncontrollables, 6 of controllables, 8 APR, 9 ARR
+  FY2026-27), each noting its section.  The preview read only 85 of 410 tables: HPERC writes
+  years short ("ARR approved by the Commission for FY27") and prints one "Amount" column whose
+  voice is in the title ("Petitioner Submission – … for FY24").  Rules: "FY27" with its prefix is
+  FY2026-27 (Indian usage; a bare two-digit number never is); a lone Amount column takes its
+  year and voice from the title.  A spot check then showed "Cost of electricity purchase
+  including own generation" (a Rs crore row) on an MU line: **a row whose printed unit
+  contradicts the line's is now reported, never placed** (money is never energy, nor a
+  percentage money).  The workbench can also draft a commission's first mapping from the
+  generic skeleton (letters-only codes).  **Measured through the live preview, all three real
+  orders, read-only:** NPCL (UPERC) 181 of 353 tables, 508 values, 2 identity failures; NBPDCL +
+  SBPDCL (BERC) 161 of 503, 434 values, 3; HPSEBL (HPERC) 190 of 410, 618 values, 0.  The
+  spot-checked HPERC ARR table (Table 244) reads petition and approval of power purchase
+  (5,684.75 / 5,678.19), O&M (3,470.68 / 3,468.46) and SLDC charges as printed.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1318,6 +1337,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 42 (2026-11-01): 358 passed** (+2 unit: short-form years and the Amount column; a row whose unit contradicts the line is not placed; +1 integration: a commission without a mapping drafts its first version from the generic skeleton).
 - **Increment 41 (2026-11-01): 355 passed** (the end-to-end ARR test now checks the preview: one table read per chapter, the identity failure flagged before reading, and the preview's value count equal to the candidates read).
 - **Increment 40 (2026-11-01): 355 passed** (+1 unit: a power source's "Total Cost" is not placed on total expenditure outside a summary; in a table titled as the ARR summary it is).
 - **Increment 39 (2026-11-01): 354 passed** (+1 integration: the workbench lists a commission's unplaced labels; a reviewer's alias and "not a line" decisions, refused for an analyst and for an unknown code; the drafted next mapping version keeps v1's aliases, adds the decisions, says draft and not confirmed; a withdrawn decision leaves the draft).

@@ -62,3 +62,24 @@ def test_workbench_decisions_and_the_drafted_mapping(client, runner, object_stor
     )
     d = json.loads(client.get("/arr/mappings/SYNTHERC/draft", headers=headers(ADMIN)).content)
     assert not any(e["label"] == "contracted quantum" for e in d["unplaced"]["entries"])
+
+
+def test_a_commission_without_a_mapping_starts_from_the_generic_skeleton(client):
+    from tariff_api.db import session_scope
+    from tariff_api.models import Commission, Jurisdiction, JurisdictionKind
+
+    with session_scope() as s:
+        j = Jurisdiction(code="SYNB", name="SYNTHETIC jurisdiction B", kind=JurisdictionKind.state)
+        s.add(j)
+        s.flush()
+        s.add(Commission(code="SYNTHB", name="SYNTHETIC commission B", jurisdiction_id=j.id))
+    r = client.put(
+        "/arr/mappings/SYNTHB/decisions",
+        json={"label": "Units at Periphery", "kind": "alias", "code": "E.INPUT.DIST"},
+        headers=headers(REVIEWER),
+    )
+    assert r.status_code == 200, r.text
+    d = json.loads(client.get("/arr/mappings/SYNTHB/draft", headers=headers(CLIENT_A)).content)
+    assert (d["id"], d["version"], d["commission"]) == ("synthb-arr", 1, "SYNTHB")
+    assert "the generic skeleton" in d["status"] and "not confirmed" in d["status"]
+    assert any(e["label"] == "units at periphery" for e in d["label_aliases"]["entries"])

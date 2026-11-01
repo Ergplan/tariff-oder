@@ -199,10 +199,11 @@ def draft(session: Session, commission: str) -> dict[str, Any]:
     into ``label_aliases``, "not a line" into ``unplaced``.  Status ``draft``; a person commits
     it and a reviewer confirms it."""
     files = mapping_files().get(commission.upper())
-    if not files:
-        raise AppError("not_found", f"no mapping file for {commission} to build on")
-    version, path = max(files)
-    data = copy.deepcopy(json.loads(path.read_text()))
+    if files:
+        version, path = max(files)
+        data = copy.deepcopy(json.loads(path.read_text()))
+    else:
+        data, version = _first_version(session, commission), 0
     rows = (
         session.execute(
             select(MappingDecision)
@@ -232,8 +233,34 @@ def draft(session: Session, commission: str) -> dict[str, Any]:
     data["unplaced"]["entries"] = sorted(not_lines.values(), key=lambda e: str(e["label"]))
     deciders = sorted({d.decided_by for d in rows})
     data["version"] = version + 1
+    base = f"v{version}" if version else "the generic skeleton"
     data["status"] = (
-        f"draft: v{version} with {len(rows)} reviewer decision(s) by {', '.join(deciders) or 'nobody'}; "
+        f"draft: {base} with {len(rows)} reviewer decision(s) by {', '.join(deciders) or 'nobody'}; "
         "not confirmed — a reviewer confirms the whole file before real lines can be approved"
     )
+    return data
+
+
+def _first_version(session: Session, commission: str) -> dict[str, Any]:
+    """A commission without a mapping file starts from the generic skeleton, with its own id
+    and its registered licensees; every entry stays an expectation for the reviewer."""
+    if not re.fullmatch(r"[A-Z]+", commission):
+        raise AppError(
+            "validation_failed",
+            f"{commission}: a mapping file is named by letters only; create it by hand from the generic one",
+        )
+    generic = mapping_files().get("GENERIC")
+    if not generic:
+        raise AppError("not_found", "the generic mapping skeleton is missing")
+    data = copy.deepcopy(json.loads(max(generic)[1].read_text()))
+    c = session.execute(select(Commission).where(Commission.code == commission)).scalar_one_or_none()
+    if c is None:
+        raise AppError("not_found", f"commission {commission} not found")
+    data["id"], data["commission"] = f"{commission.lower()}-arr", commission
+    data["licensees"] = {
+        kind: sorted(u.code for u in c.utilities if u.licensee_kind == kind)
+        for kind in ("distribution", "transmission")
+    }
+    data["orders_expected"] = []
+    data["known_quirks"] = ["Started from the generic skeleton by the mapping workbench."]
     return data

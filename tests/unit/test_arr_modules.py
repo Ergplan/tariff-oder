@@ -514,3 +514,46 @@ def test_the_arr_totals_are_placed_only_in_summary_context():
         [summary], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="SYN", branch="C.PP"
     )
     assert {c.line_code for c in out.candidates} == {"C.TOTAL"}
+
+
+def test_short_year_forms_and_amount_columns():
+    """HPERC's layouts (increment 42): "FY27" in a title is FY2026-27; a lone "Amount" column
+    takes its voice and year from the title; a bare two-digit number is never a year."""
+    tax = load_taxonomy()
+    mapping = load_mapping("NOSUCH", fallback=True)
+    placer = Placer(tax, mapping, "distribution")
+    assert fiscal_year("ARR approved by the Commission for FY27 (Rs. Cr.)") == "FY2026-27"
+    assert fiscal_year("Table 26 of 2024") is None and fiscal_year("FY26 and FY27") is None
+    grid = GridIn(
+        188,
+        0,
+        [["Particulars", "Amount (Rs. Cr.)"], ["Depreciation", "70.10"]],
+        1,
+        ["Table 53: Petitioner Submission - Depreciation for FY24 (Rs. Cr.)"],
+    )
+    out, _ = read_grids([grid], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="SYN")
+    assert [(c.line_code, c.fiscal_year, c.value_type, c.stated_value) for c in out.candidates] == [
+        ("C.DEP", "FY2023-24", "petitioned", "70.10")
+    ]
+
+
+def test_a_row_whose_unit_contradicts_the_line_is_not_placed():
+    """A money row is never an energy line (increment 42, found on HPERC: "Cost of electricity
+    purchase including own generation" in a Rs crore table matched an MU line's words)."""
+    tax = load_taxonomy()
+    mapping = load_mapping("NOSUCH", fallback=True)
+    placer = Placer(tax, mapping, "distribution")
+    grid = GridIn(
+        9,
+        0,
+        [
+            ["Particulars", "Petition", "Approved"],
+            ["Energy Sales", "4,399.84", "4,399.84"],
+            ["Depreciation", "106.75", "103.80"],
+        ],
+        1,
+        ["Table 244: ARR approved by the Commission for FY27 (Rs. Cr.)"],
+    )
+    out, rep = read_grids([grid], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="SYN")
+    assert {c.line_code for c in out.candidates} == {"C.DEP"}
+    assert any("printed in INR_crore, but E.SALES is in MU" in u.get("reason", "") for u in rep.unplaced)
