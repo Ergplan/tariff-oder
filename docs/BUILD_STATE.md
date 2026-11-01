@@ -995,8 +995,14 @@ open-access view.
     anything), and numbered panels for data readiness, assumptions, formulation, the draft
     (watermarked "Draft · not filed") and activity.  Every action, endpoint and permission is
     unchanged.
+  - **A licensee** (`/client/licensees/<code>`): a profile — the reviewed ARR history at a
+    glance (twelve key lines by year, each the strongest reviewed figure: final true-up, else
+    provisional, approval, petition; labelled with its voice and linked to its order), the
+    licensee's petitions with their progress, and its documents in the library.
+  - **A draft petition**: the studio header with the watermark, and the DOCX narrative and XLSX
+    formats as download buttons above the trace annex.
   Checked by screenshots at 1440 px and 390 px of the home, the new-petition flow, an annual ARR
-  petition, a true-up petition, the readings board and the desk menu.  `next lint` remains broken
+  petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { FilingDraftOut } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../../../components";
+import { Eyebrow } from "../../../../client/studio";
 
 export const dynamic = "force-dynamic";
 
@@ -35,14 +36,16 @@ export default async function DraftPage({ params }: { params: Promise<{ utility:
           <Link href={`/client/cases/${d.case_id}`}>← case</Link>
         )}
       </p>
-      <h1>
-        Draft petition · {code}{" "}
-        {d.is_fixture ? (
-          <span className="badge" data-tone="fixture">
-            FIXTURE
-          </span>
-        ) : null}
-      </h1>
+      <header className="case-head">
+        <Eyebrow>
+          Draft petition · {code}
+          {d.is_fixture ? " · fixture data" : ""}
+        </Eyebrow>
+        <h1>
+          Draft petition {d.is_fixture ? <span className="badge" data-tone="fixture">FIXTURE</span> : null}
+        </h1>
+        <span className="watermark">{d.watermark}</span>
+      </header>
       <div className="banner" data-tone="warn" role="note">
         <strong>{d.watermark}</strong>
         <div>Edit the draft, check every number against its trace, and file it yourself. This application does not file, e-mail or upload petitions.</div>
@@ -59,9 +62,14 @@ export default async function DraftPage({ params }: { params: Promise<{ utility:
           The template is <strong>{d.template_status}</strong>: its formats are not yet confirmed against the formats the commission&apos;s regulations prescribe.
         </div>
       ) : null}
-      <p>
-        <a href={`/api/arr/drafts/${d.id}/petition.docx`}>Download narrative (DOCX)</a> · <a href={`/api/arr/drafts/${d.id}/formats.xlsx`}>Download formats (XLSX)</a>
-      </p>
+      <div style={{ display: "flex", gap: "0.7rem", flexWrap: "wrap", margin: "1.2rem 0 0.5rem" }}>
+        <a className="btn primary" href={`/api/arr/drafts/${d.id}/petition.docx`}>
+          Narrative · DOCX <span className="arrow">↓</span>
+        </a>
+        <a className="btn" href={`/api/arr/drafts/${d.id}/formats.xlsx`}>
+          Formats · XLSX <span className="arrow">↓</span>
+        </a>
+      </div>
       <h2>Trace annex</h2>
       <div className="table-wrap">
         <table>
