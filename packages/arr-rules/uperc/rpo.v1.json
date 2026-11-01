@@ -1,0 +1,324 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Renewable purchase obligation (UPERC format F6).",
+ "rules": [
+  {
+   "id": "uperc.rpo.periphery",
+   "version": 1,
+   "status": "draft",
+   "title": "Consumption grossed up to the distribution periphery",
+   "output": "rpo_consumption_periphery",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "sales / (1 - loss)",
+   "inputs": {
+    "sales": {
+     "unit": "MU",
+     "source": "record:rpo_sales"
+    },
+    "loss": {
+     "unit": "fraction",
+     "source": "record:rpo_distribution_loss"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rpo.state",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy at the state periphery",
+   "output": "rpo_energy_state_periphery",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "inter * (1 - t1) + intra",
+   "inputs": {
+    "inter": {
+     "unit": "MU",
+     "source": "record:rpo_inter_state"
+    },
+    "t1": {
+     "unit": "fraction",
+     "source": "assumption:rpo_loss_inter"
+    },
+    "intra": {
+     "unit": "MU",
+     "source": "record:rpo_intra_state"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rpo.discom",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy at the distribution periphery",
+   "output": "rpo_energy_discom_periphery",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "state * (1 - t2) + discom",
+   "inputs": {
+    "state": {
+     "unit": "MU",
+     "source": "record:rpo_at_state_periphery"
+    },
+    "t2": {
+     "unit": "fraction",
+     "source": "assumption:rpo_loss_intra"
+    },
+    "discom": {
+     "unit": "MU",
+     "source": "record:rpo_at_discom_bus"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rpo.base",
+   "version": 1,
+   "status": "draft",
+   "title": "Consumption for the RPO (net of hydro)",
+   "output": "rpo_base",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "periphery - hydro",
+   "inputs": {
+    "periphery": {
+     "unit": "MU",
+     "source": "record:rpo_periphery"
+    },
+    "hydro": {
+     "unit": "MU",
+     "source": "record:rpo_hydro_discom"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rpo.obligation",
+   "version": 1,
+   "status": "draft",
+   "title": "Obligation of the year",
+   "output": "rpo_obligation",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "base * share",
+   "inputs": {
+    "base": {
+     "unit": "MU",
+     "source": "record:rpo_base_mu"
+    },
+    "share": {
+     "unit": "fraction",
+     "source": "assumption:rpo_share",
+     "note": "the obligation's share for the year (solar, non-solar, hydro); the trajectory to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rpo.balance",
+   "version": 1,
+   "status": "draft",
+   "title": "Obligation not met (negative: met in excess)",
+   "output": "rpo_balance",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "obligation - met",
+   "inputs": {
+    "obligation": {
+     "unit": "MU",
+     "source": "record:rpo_obligation_mu"
+    },
+    "met": {
+     "unit": "MU",
+     "source": "record:rpo_met"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rpo.current",
+   "version": 1,
+   "status": "draft",
+   "title": "The year's obligation not met, all categories",
+   "output": "rpo_current",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "solar + non_solar + hydro",
+   "inputs": {
+    "solar": {
+     "unit": "MU",
+     "source": "record:rpo_balance_solar"
+    },
+    "non_solar": {
+     "unit": "MU",
+     "source": "record:rpo_balance_non_solar"
+    },
+    "hydro": {
+     "unit": "MU",
+     "source": "record:rpo_balance_hpo"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "NPCL nets the categories: a surplus in one offsets a shortfall in another — a treatment for the reviewer (A48)"
+  },
+  {
+   "id": "uperc.rpo.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Obligation carried to the next year",
+   "output": "rpo_closing",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "backlog + current - rec",
+   "inputs": {
+    "backlog": {
+     "unit": "MU",
+     "source": "record:rpo_backlog"
+    },
+    "current": {
+     "unit": "MU",
+     "source": "record:rpo_current_mu"
+    },
+    "rec": {
+     "unit": "MU",
+     "source": "record:rpo_rec"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Promotion of Green Energy through Renewable Purchase Obligation) Regulations — RPO as a share of consumption, net of hydro",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  }
+ ]
+}

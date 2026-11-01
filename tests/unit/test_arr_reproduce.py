@@ -754,3 +754,21 @@ def test_npcl_wheeling_supply_allocation_and_cross_subsidy_surcharge():
     assert all(c.result == "match" for c in checks if c.result != "blocked") and len(checks) == 49
     css = {c.category: c.computed for c in checks if c.output == "css_capped" and c.category.startswith("CSS row 10")}
     assert css["CSS row 107 G107"] == "1.206252" and css["CSS row 109 G109"] == "0.000000"  # HV-2 below cost: 0
+
+
+def test_npcl_renewable_purchase_obligation():
+    """Real data: F6 over three years — consumption at the periphery net of hydro, the solar,
+    non-solar and hydro obligations, purchases through the (typed, declared) transmission
+    losses, balances netted across categories and the closing obligation after RECs: 54 / 54."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    b = json.loads((folder / "bindings" / "f6-rpo.json").read_text())
+    wb = openpyxl.load_workbook(folder / b["workbook"], data_only=True)
+    checks = reproduce_cells(wb, b, load_rules("UPERC"))
+    assert [c.result for c in checks] == ["match"] * 54
+    closing = {c.fiscal_year: c.computed for c in checks if c.output == "rpo_closing"}
+    assert closing["FY2026-27"] == "-147.251651"  # a net surplus carried forward (A48)

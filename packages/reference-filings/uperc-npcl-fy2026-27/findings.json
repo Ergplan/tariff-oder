@@ -167,6 +167,17 @@
     "F33_CSS C6"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A48",
+   "kind": "inconsistency",
+   "title": "RPO: losses and sales not the filing's own; obligations netted across categories",
+   "detail": "F6 brings renewable purchases to the distribution periphery with transmission losses typed into its formulas: 3.58 % inter-state and 3.18 % intra-state for FY2025-26 and FY2026-27, where the Energy Balance has 3.55 % / 3.30 % (FY2025-26) and 3.41 % / 3.35 % (FY2026-27); for FY2024-25 3.46875 % / 3.20862 % against 3.46868 % / 3.21055 %.  Its sales differ from ESR-3 by about 0.004 MU each year (3,597.6329 against 3,597.6293 for FY2024-25).  The year's obligation adds the solar, non-solar and hydro balances, so a surplus in one category (FY2026-27 solar −154.32 MU, non-solar −134.81 MU) offsets a shortfall in another (hydro +141.88 MU), and a net surplus (−147.25 MU) is carried forward as a credit.  FY2025-26's REC purchase is typed equal to that year's obligation (215.12 MU).  The reviewer should decide whether categories are fungible and whether a surplus carries forward; the petitioner should use the Energy Balance's losses.",
+   "where": [
+    "F6_PP6_RPO rows 8, 14–15, 30–31, 41–42, 51–52, 57–60",
+    "Energy Balance rows 17, 23"
+   ],
+   "for": "reviewer"
   }
  ]
 }

@@ -23756,6 +23756,605 @@
    ]
   },
   {
+   "binding": "f6-rpo.json",
+   "checks": [
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "periphery D10",
+     "output": "rpo_consumption_periphery",
+     "result": "match",
+     "filed": "3888.459126",
+     "computed": "3888.459126",
+     "why": null,
+     "exact": "3888.459126106249842840108363"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "hydro at state periphery D14",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "16.261298",
+     "computed": "16.261298",
+     "why": null,
+     "exact": "16.261297821491318506134"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "hydro at discom periphery D15",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "15.739535",
+     "computed": "15.739535",
+     "why": null,
+     "exact": "15.73953519795408612554711939"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "solar at state periphery D30",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "211.635837",
+     "computed": "211.635837",
+     "why": null,
+     "exact": "211.6358365967901300785210634"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "solar at discom periphery D31",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "251.335032",
+     "computed": "251.335032",
+     "why": null,
+     "exact": "251.3350324479405955703209487"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "non-solar at state periphery D41",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "101.007393",
+     "computed": "101.007393",
+     "why": null,
+     "exact": "101.0073933849858945476983634"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "non-solar at discom periphery D42",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "97.766454",
+     "computed": "97.766454",
+     "why": null,
+     "exact": "97.76645387648272415778121689"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "HPO at state periphery D51",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "6.678013",
+     "computed": "6.678013",
+     "why": null,
+     "exact": "6.678012820127268116364"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "HPO at discom periphery D52",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "6.463741",
+     "computed": "6.463741",
+     "why": null,
+     "exact": "6.46374102415536829637977995"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "base D16",
+     "output": "rpo_base",
+     "result": "match",
+     "filed": "3872.719591",
+     "computed": "3872.719591",
+     "why": null,
+     "exact": "3872.719590908295917"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "solar obligation D25",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "193.635980",
+     "computed": "193.635980",
+     "why": null,
+     "exact": "193.63597954541480"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "solar balance D32",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "-57.699053",
+     "computed": "-57.699053",
+     "why": null,
+     "exact": "-57.6990529025258"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "non-solar obligation D36",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "271.090371",
+     "computed": "271.090371",
+     "why": null,
+     "exact": "271.09037136358072"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "non-solar balance D43",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "173.323917",
+     "computed": "173.323917",
+     "why": null,
+     "exact": "173.32391748709803"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "HPO obligation D46",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "116.181588",
+     "computed": "116.181588",
+     "why": null,
+     "exact": "116.18158772724888"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "HPO balance D53",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "109.717847",
+     "computed": "109.717847",
+     "why": null,
+     "exact": "109.717846703093512"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "current D57",
+     "output": "rpo_current",
+     "result": "match",
+     "filed": "225.342711",
+     "computed": "225.342711",
+     "why": null,
+     "exact": "225.34271128766575"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2024-25",
+     "category": "closing D60",
+     "output": "rpo_closing",
+     "result": "match",
+     "filed": "-5.865884",
+     "computed": "-5.865884",
+     "why": null,
+     "exact": "-5.86588398636866"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "periphery E10",
+     "output": "rpo_consumption_periphery",
+     "result": "match",
+     "filed": "4259.390000",
+     "computed": "4259.390000",
+     "why": null,
+     "exact": "4259.390000000000538967338579"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "hydro at state periphery E14",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "3.160757",
+     "computed": "3.160757",
+     "why": null,
+     "exact": "3.1607571299999992152"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "hydro at discom periphery E15",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "3.060245",
+     "computed": "3.060245",
+     "why": null,
+     "exact": "3.0602450532659990318"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "solar at state periphery E30",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "123.315818",
+     "computed": "123.315818",
+     "why": null,
+     "exact": "123.3158175211833506854"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "solar at discom periphery E31",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "202.432337",
+     "computed": "202.432337",
+     "why": null,
+     "exact": "202.432337111209799470"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "non-solar at state periphery E41",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "214.454684",
+     "computed": "214.454684",
+     "why": null,
+     "exact": "214.454683648367288790"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "non-solar at discom periphery E42",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "207.635025",
+     "computed": "207.635025",
+     "why": null,
+     "exact": "207.635024708349200496"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "HPO at state periphery E51",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "7.637219",
+     "computed": "7.637219",
+     "why": null,
+     "exact": "7.63721858750821946130"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "HPO at discom periphery E52",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "7.394355",
+     "computed": "7.394355",
+     "why": null,
+     "exact": "7.3943550364254576358"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "base E16",
+     "output": "rpo_base",
+     "result": "match",
+     "filed": "4256.329755",
+     "computed": "4256.329755",
+     "why": null,
+     "exact": "4256.329754946734001"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "solar obligation E25",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "212.816488",
+     "computed": "212.816488",
+     "why": null,
+     "exact": "212.81648774733670"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "solar balance E32",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "10.384151",
+     "computed": "10.384151",
+     "why": null,
+     "exact": "10.38415063612694"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "non-solar obligation E36",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "297.943083",
+     "computed": "297.943083",
+     "why": null,
+     "exact": "297.94308284627138"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "non-solar balance E43",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "90.308058",
+     "computed": "90.308058",
+     "why": null,
+     "exact": "90.3080581379222"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "HPO obligation E46",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "127.689893",
+     "computed": "127.689893",
+     "why": null,
+     "exact": "127.68989264840202"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "HPO balance E53",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "120.295538",
+     "computed": "120.295538",
+     "why": null,
+     "exact": "120.295537611976563"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "current E57",
+     "output": "rpo_current",
+     "result": "match",
+     "filed": "220.987746",
+     "computed": "220.987746",
+     "why": null,
+     "exact": "220.987746386025737"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2025-26",
+     "category": "closing E60",
+     "output": "rpo_closing",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "-0.000000",
+     "why": null,
+     "exact": "-1E-15"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "periphery F10",
+     "output": "rpo_consumption_periphery",
+     "result": "match",
+     "filed": "4729.490000",
+     "computed": "4729.490000",
+     "why": null,
+     "exact": "4729.49"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "hydro at state periphery F14",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0.0000"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "hydro at discom periphery F15",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0.0000"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "solar at state periphery F30",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "401.398976",
+     "computed": "401.398976",
+     "why": null,
+     "exact": "401.39897599065952314"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "solar at discom periphery F31",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "390.799435",
+     "computed": "390.799435",
+     "why": null,
+     "exact": "390.79943495415652790"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "non-solar at state periphery F41",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "481.177150",
+     "computed": "481.177150",
+     "why": null,
+     "exact": "481.1771497925093946"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "non-solar at discom periphery F42",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "465.875716",
+     "computed": "465.875716",
+     "why": null,
+     "exact": "465.87571642910760108"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "HPO at state periphery F51",
+     "output": "rpo_energy_state_periphery",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0.0000"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "HPO at discom periphery F52",
+     "output": "rpo_energy_discom_periphery",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0.0000"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "base F16",
+     "output": "rpo_base",
+     "result": "match",
+     "filed": "4729.490000",
+     "computed": "4729.490000",
+     "why": null,
+     "exact": "4729.49"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "solar obligation F25",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "236.474500",
+     "computed": "236.474500",
+     "why": null,
+     "exact": "236.4745"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "solar balance F32",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "-154.324935",
+     "computed": "-154.324935",
+     "why": null,
+     "exact": "-154.32493495415654"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "non-solar obligation F36",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "331.064300",
+     "computed": "331.064300",
+     "why": null,
+     "exact": "331.0643"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "non-solar balance F43",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "-134.811416",
+     "computed": "-134.811416",
+     "why": null,
+     "exact": "-134.81141642910757"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "HPO obligation F46",
+     "output": "rpo_obligation",
+     "result": "match",
+     "filed": "141.884700",
+     "computed": "141.884700",
+     "why": null,
+     "exact": "141.8847"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "HPO balance F53",
+     "output": "rpo_balance",
+     "result": "match",
+     "filed": "141.884700",
+     "computed": "141.884700",
+     "why": null,
+     "exact": "141.88469999999998"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "current F57",
+     "output": "rpo_current",
+     "result": "match",
+     "filed": "-147.251651",
+     "computed": "-147.251651",
+     "why": null,
+     "exact": "-147.25165138326412"
+    },
+    {
+     "table": "F6_PP6_RPO",
+     "fiscal_year": "FY2026-27",
+     "category": "closing F60",
+     "output": "rpo_closing",
+     "result": "match",
+     "filed": "-147.251651",
+     "computed": "-147.251651",
+     "why": null,
+     "exact": "-147.25165138326412"
+    }
+   ]
+  },
+  {
    "binding": "p3-bad-debts.json",
    "checks": [
     {
@@ -45842,7 +46441,7 @@
     "title": "Details of Renewable Purchase Obligation",
     "sheet": "F6_PP6_RPO",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F7_PP_Comp Bid",
@@ -46178,8 +46777,8 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 28,
-   "reproduced": 34,
+   "present": 27,
+   "reproduced": 35,
    "read": 9,
    "blank": 2,
    "missing": 1

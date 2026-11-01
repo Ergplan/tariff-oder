@@ -1,0 +1,1095 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F6_PP6_RPO",
+ "places": 6,
+ "note": "F6, the renewable purchase obligation of FY2024-25 to FY2026-27: consumption at the periphery net of hydro; solar, non-solar and hydro (HPO) obligations as a share of it; purchases brought to the state and distribution periphery through the transmission losses (typed in NPCL's formulas, declared); the balance of each; the year's obligation netted across categories; the closing obligation after RECs.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "periphery",
+   "inputs": {
+    "record:rpo_sales": [
+     "D8",
+     "MU"
+    ],
+    "record:rpo_distribution_loss": [
+     "D9",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_consumption_periphery": "D10"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "hydro at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "D12",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "D13",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0346874636631982",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "D14"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "hydro at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "D14",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0320861612194114",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "D15"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "solar at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "D27",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "D28",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0346874636631982",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "D30"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "solar at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "D30",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0320861612194114",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "cell": "D29",
+     "unit": "MU",
+     "blank_is_zero": "none bought at the discom bus; NPCL's formula reads the blank as zero"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "D31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "non-solar at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "D38",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "D39",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0346874636631982",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "D41"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "non-solar at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "D41",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0320861612194114",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "D42"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "HPO at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "D48",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "D49",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0346874636631982",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "D51"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "HPO at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "D51",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0320861612194114",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "D52"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "base",
+   "inputs": {
+    "record:rpo_periphery": [
+     "D10",
+     "MU"
+    ],
+    "record:rpo_hydro_discom": [
+     "D15",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_base": "D16"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "solar obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "D16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "D19",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "D25"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "solar balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "D25",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "D31",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "D32"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "non-solar obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "D16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "D20",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "D36"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "non-solar balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "D36",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "D42",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "D43"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "HPO obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "D16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "D21",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "D46"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "HPO balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "D46",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "D52",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "D53"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "current",
+   "inputs": {
+    "record:rpo_balance_solar": [
+     "D32",
+     "MU"
+    ],
+    "record:rpo_balance_non_solar": [
+     "D43",
+     "MU"
+    ],
+    "record:rpo_balance_hpo": [
+     "D53",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_current": "D57"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "closing",
+   "inputs": {
+    "record:rpo_backlog": [
+     "D56",
+     "MU"
+    ],
+    "record:rpo_current_mu": [
+     "D57",
+     "MU"
+    ],
+    "record:rpo_rec": [
+     "D59",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_closing": "D60"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "periphery",
+   "inputs": {
+    "record:rpo_sales": [
+     "E8",
+     "MU"
+    ],
+    "record:rpo_distribution_loss": [
+     "E9",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_consumption_periphery": "E10"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "hydro at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "E12",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "E13",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0358",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "E14"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "hydro at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "E14",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0318",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "E15"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "solar at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "E27",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "E28",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0358",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "E30"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "solar at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "E30",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0318",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "cell": "E29",
+     "unit": "MU",
+     "blank_is_zero": "none bought at the discom bus; NPCL's formula reads the blank as zero"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "E31"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "non-solar at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "E38",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "E39",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0358",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "E41"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "non-solar at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "E41",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0318",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "E42"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "HPO at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "E48",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "E49",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0358",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "E51"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "HPO at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "E51",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0318",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "E52"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "base",
+   "inputs": {
+    "record:rpo_periphery": [
+     "E10",
+     "MU"
+    ],
+    "record:rpo_hydro_discom": [
+     "E15",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_base": "E16"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "solar obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "E16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "E19",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "E25"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "solar balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "E25",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "E31",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "E32"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "non-solar obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "E16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "E20",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "E36"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "non-solar balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "E36",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "E42",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "E43"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "HPO obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "E16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "E21",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "E46"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "HPO balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "E46",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "E52",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "E53"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "current",
+   "inputs": {
+    "record:rpo_balance_solar": [
+     "E32",
+     "MU"
+    ],
+    "record:rpo_balance_non_solar": [
+     "E43",
+     "MU"
+    ],
+    "record:rpo_balance_hpo": [
+     "E53",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_current": "E57"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "closing",
+   "inputs": {
+    "record:rpo_backlog": [
+     "E56",
+     "MU"
+    ],
+    "record:rpo_current_mu": [
+     "E57",
+     "MU"
+    ],
+    "record:rpo_rec": [
+     "E59",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_closing": "E60"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "periphery",
+   "inputs": {
+    "record:rpo_sales": [
+     "F8",
+     "MU"
+    ],
+    "record:rpo_distribution_loss": [
+     "F9",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_consumption_periphery": "F10"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "hydro at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "F12",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "F13",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0358",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "F14"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "hydro at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "F14",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0318",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "F15"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "solar at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "F27",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "F28",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0358",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "F30"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "solar at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "F30",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0318",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "cell": "F29",
+     "unit": "MU",
+     "blank_is_zero": "none bought at the discom bus; NPCL's formula reads the blank as zero"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "F31"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "non-solar at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "F38",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "F39",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0358",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "F41"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "non-solar at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "F41",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0318",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "F42"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "HPO at state periphery",
+   "inputs": {
+    "record:rpo_inter_state": [
+     "F48",
+     "MU"
+    ],
+    "record:rpo_intra_state": {
+     "cell": "F49",
+     "unit": "MU",
+     "blank_is_zero": "no intra-state purchase; NPCL's formula reads the blank as zero"
+    },
+    "assumption:rpo_loss_inter": {
+     "value": "0.0358",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    }
+   },
+   "checks": {
+    "rpo_energy_state_periphery": "F51"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "HPO at discom periphery",
+   "inputs": {
+    "record:rpo_at_state_periphery": [
+     "F51",
+     "MU"
+    ],
+    "assumption:rpo_loss_intra": {
+     "value": "0.0318",
+     "unit": "fraction",
+     "why": "a literal in NPCL's F6 formula — not the Energy Balance's loss of the year (A48)"
+    },
+    "record:rpo_at_discom_bus": {
+     "value": "0",
+     "unit": "MU",
+     "why": "NPCL's formula for this row adds no discom-bus purchase"
+    }
+   },
+   "checks": {
+    "rpo_energy_discom_periphery": "F52"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "base",
+   "inputs": {
+    "record:rpo_periphery": [
+     "F10",
+     "MU"
+    ],
+    "record:rpo_hydro_discom": [
+     "F15",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_base": "F16"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "solar obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "F16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "F19",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "F25"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "solar balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "F25",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "F31",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "F32"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "non-solar obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "F16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "F20",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "F36"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "non-solar balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "F36",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "F42",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "F43"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "HPO obligation",
+   "inputs": {
+    "record:rpo_base_mu": [
+     "F16",
+     "MU"
+    ],
+    "assumption:rpo_share": [
+     "F21",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "rpo_obligation": "F46"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "HPO balance",
+   "inputs": {
+    "record:rpo_obligation_mu": [
+     "F46",
+     "MU"
+    ],
+    "record:rpo_met": [
+     "F52",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_balance": "F53"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "current",
+   "inputs": {
+    "record:rpo_balance_solar": [
+     "F32",
+     "MU"
+    ],
+    "record:rpo_balance_non_solar": [
+     "F43",
+     "MU"
+    ],
+    "record:rpo_balance_hpo": [
+     "F53",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_current": "F57"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "closing",
+   "inputs": {
+    "record:rpo_backlog": [
+     "F56",
+     "MU"
+    ],
+    "record:rpo_current_mu": [
+     "F57",
+     "MU"
+    ],
+    "record:rpo_rec": [
+     "F59",
+     "MU"
+    ]
+   },
+   "checks": {
+    "rpo_closing": "F60"
+   }
+  }
+ ]
+}
