@@ -268,7 +268,11 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
                 if _SECTION_NUMBER.match(line) and len(line.strip()) > 40:
                     numbered_prose += 1
                 if title_heading(line) and (hit := _cue(mapping, line)):
-                    titled.append((page, None, hit[0], line.strip()[:300]))
+                    nxt = lines[k + 1] if k + 1 < len(lines) else ""
+                    # a one-word line over a table row ("Expenditure" over "Cost of Power
+                    # Purchase 5528.46 5727.21 …": OERC's true-up tables) is a table's cell
+                    if not (len(line.split()) == 1 and len(_NUMBER_TOKEN.findall(_FY_TEXT.sub(" ", nxt))) >= 2):
+                        titled.append((page, None, hit[0], line.strip()[:300]))
                 continue
             m = _SECTION_NUMBER.match(line)
             number = tuple(int(x) for x in m.group(1).split(".")) if m else None

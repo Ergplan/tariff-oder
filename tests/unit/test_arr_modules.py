@@ -1012,3 +1012,24 @@ def test_a_list_of_chapters_on_one_page_is_not_a_structure_and_proposal_headings
     decided = [(c.branch, c.page_start) for c in chs if "likely not" not in (c.note or "")]
     assert decided == [("E", 6), ("C.OM", 7)], [(c.branch, c.page_start, c.note) for c in chs]
     assert any(c.cue_text.startswith("22.") and "likely not" in (c.note or "") for c in chs)
+
+
+def test_a_one_word_cell_over_a_table_row_is_not_a_heading():
+    """OERC's true-up tables open with "Expenditure" over "Cost of Power Purchase 5528.46 …"
+    (increment 50): that cell is not a Title Case heading; "Depreciation" over prose is."""
+    from tariff_api.arr.chapters import propose_chapters
+
+    mapping = load_mapping("NOSUCH", fallback=True)
+
+    def prose(n: int, w: str) -> str:
+        return f"{n}. The Commission has examined the {w} submission of the licensees in detail."
+
+    pages = {
+        1: ["A.   PROCEDURAL HISTORY", prose(2, "notice"), prose(3, "hearing"), prose(4, "filing")],
+        2: ["B.   OBJECTIONS RAISED DURING THE HEARING", prose(5, "objection"), prose(6, "reply"), prose(7, "query")],
+        3: ["C.   OBSERVATIONS AND DIRECTIONS OF THE COMMISSION", "Depreciation", prose(8, "asset"), prose(9, "rate")],
+        4: ["Expenditure", "Cost of Power Purchase 5528.46 5727.21 5828.24", prose(10, "trueup"), prose(11, "cost")],
+        5: ["Return on Equity", prose(12, "equity"), prose(13, "capital"), prose(14, "share")],
+    }
+    got = [(c.branch, c.page_start) for c in propose_chapters(pages, mapping, 5)]
+    assert got == [("C.DEP", 3), ("C.RETURN", 5)], got
