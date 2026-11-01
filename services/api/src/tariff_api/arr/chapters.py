@@ -131,6 +131,21 @@ def title_heading(line: str) -> bool:
     return sum(1 for w in sig if w[0].isupper()) / len(sig) >= 0.8
 
 
+def _cued_in_decisions(numbered: list, parts: list) -> int:
+    """How many numbered headings with a cue lie in parts that are the Commission's own (not
+    the petition, the objections or the hearing).  OERC numbers the paragraph-headings of its
+    proposal summary only; NPCL and UERC number their decision sections."""
+    firsts: dict[int, tuple] = {}
+    for c in parts:
+        firsts.setdefault(c[1][0], c)
+
+    def part_title(pg: int) -> str:
+        before = [c for c in firsts.values() if c[0] <= pg]
+        return max(before, key=lambda c: c[0])[3] if before else ""
+
+    return sum(1 for pg, _n, b, _t in numbered if b and not _NOT_DECISIONS.search(part_title(pg)))
+
+
 def lettered_parts(found: list[tuple[int, tuple[int, ...], None, str]]) -> list[tuple[int, tuple[int, ...], None, str]]:
     """Capital-lettered parts in capitals ("A. PROCEDURAL HISTORY" … "I. OBSERVATIONS AND
     DIRECTIONS OF THE COMMISSION"; "A1: ORDER" … "A8: …") are an order's parts when they run
@@ -263,19 +278,37 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
     numbered = [h for h in heads if h[1] is not None]
     if not chapters_:
         chapters_ = lettered_parts(lettered)
+    if chapters_:
+        firsts_by_part: dict[int, int] = {}
+        for c in chapters_:
+            firsts_by_part.setdefault(c[1][0], c[0])
+        on_one_page = max(list(firsts_by_part.values()).count(pg) for pg in firsts_by_part.values())
+        if len(firsts_by_part) < 2 or on_one_page * 2 > len(firsts_by_part):
+            # one "Chapter 1" line, or the order's own list of its chapters on one page (UERC),
+            # is not a structure of parts
+            chapters_ = []
     paragraphs = False
     if (
         chapters_
-        and (sum(1 for h in numbered if h[2]) < NUMBERED_MODE_MIN or numbered_prose >= 10 * len(numbered))
         and numbered_prose >= max(3, 3 * len(numbered))
+        and (
+            sum(1 for h in numbered if h[2]) < NUMBERED_MODE_MIN
+            or numbered_prose >= 10 * len(numbered)
+            or _cued_in_decisions(numbered, chapters_) < NUMBERED_MODE_MIN
+        )
     ):
         # the numbers mark paragraphs, not sections: read the order by its unnumbered headings
         # (capitals or Title Case) inside its "Chapter N" parts
+        # a numbered heading with a cue is a heading too (OERC numbers the paragraph-headings
+        # of its proposal summary, "31. Power Purchase Expenses"), read without its number
+        heads = sorted(
+            [h for h in heads if h[1] is None] + [(pg, None, b, t) for pg, _n, b, t in numbered if b] + titled,
+            key=lambda h: h[0],
+        )
         numbered, paragraphs = [], True
         firsts: dict[int, tuple] = {}
         for c in chapters_:
             firsts.setdefault(c[1][0], c)
-        heads = sorted([h for h in heads if h[1] is None] + titled, key=lambda h: h[0])
 
         def chapter_of(pg: int) -> tuple[int, ...] | None:
             before = [c for c in firsts.values() if c[0] <= pg]

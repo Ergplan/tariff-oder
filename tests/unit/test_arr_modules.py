@@ -958,3 +958,57 @@ def test_sub_rows_are_read_with_their_heading_row():
     ]
     group = {"fiscal_year": "FY2026-27", "value_type": "approved"}
     assert not [f for f in evaluate(vals, taxonomy=tax, mapping=mapping, group=group) if f.identity_id == "ARR-I1"]
+
+
+def test_a_list_of_chapters_on_one_page_is_not_a_structure_and_proposal_headings_stay_flagged():
+    """UERC lists its seven chapters in prose on one page; that is not a structure of parts
+    (increment 50).  OERC FY2025-26 numbers the paragraph-headings of its proposal summary
+    (part B) and heads its decisions (part D here) in Title Case: both are read, part B flagged."""
+    from tariff_api.arr.chapters import propose_chapters
+
+    mapping = load_mapping("NOSUCH", fallback=True)
+
+    def prose(n: int, w: str) -> str:
+        return f"{n}. The Commission has examined the {w} submission of the licensees in detail."
+
+    listed = {
+        1: [
+            "Chapter 1 - Background and Procedural History.",
+            "Chapter 2 - Stakeholders’ Objections.",
+            "Chapter 3 - Analysis.",
+        ],
+        2: ["2.4  Distribution Loss", prose(1, "loss")],
+        3: ["2.6  Power Procurement Cost", prose(2, "power")],
+    }
+    got = [(c.branch, c.page_start) for c in propose_chapters(listed, mapping, 3)]
+    assert got == [("E", 2), ("C.PP", 3)], got  # numbered sections, not paragraphs inside one list
+
+    words = [
+        "notice",
+        "hearing",
+        "sales",
+        "purchase",
+        "staff",
+        "wages",
+        "loans",
+        "equity",
+        "income",
+        "assets",
+        "meters",
+    ]
+    pages = {
+        1: ["A.   PROCEDURAL HISTORY", prose(2, words[0]), prose(3, words[1])],
+        2: ["B.   ARR PROPOSAL OF THE DISCOMs FOR THE FY 2025-26", "22.   Energy Sales", prose(23, words[2])],
+        3: ["31.   Power Purchase Expenses", prose(32, words[3]), "37.    Depreciation", prose(38, words[4])],
+        4: ["39.   Return on Equity", prose(40, words[5]), "41.    Non-Tariff Income", prose(42, words[6])],
+        5: ["C.   OBJECTIONS RAISED DURING THE HEARING", prose(72, words[7]), prose(73, words[8])],
+        6: ["D.   OBSERVATIONS AND DIRECTIONS OF THE COMMISSION", "Energy Sales", prose(178, words[9])],
+        7: ["Employee Expenses", prose(300, words[10]), prose(301, "audit")],
+    }
+    # an order numbers many more paragraphs than headings: three more sentences on each page
+    for pg in pages:
+        pages[pg] += [prose(50 + pg * 3 + k, f"matter {chr(97 + pg)}{chr(97 + k)}") for k in range(3)]
+    chs = propose_chapters(pages, mapping, 7)
+    decided = [(c.branch, c.page_start) for c in chs if "likely not" not in (c.note or "")]
+    assert decided == [("E", 6), ("C.OM", 7)], [(c.branch, c.page_start, c.note) for c in chs]
+    assert any(c.cue_text.startswith("22.") and "likely not" in (c.note or "") for c in chs)
