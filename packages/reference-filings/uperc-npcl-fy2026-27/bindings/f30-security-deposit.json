@@ -1,0 +1,313 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F30_CSD monthly",
+ "places": 4,
+ "note": "Interest on consumers' security deposit.  True-up year (FY2024-25): month by month, interest on the month's average balance at the bank rate / 12, summed — checked on F30, F30A, F25 row 16 and the ARR's row 38.  APR and ARR years: the year's average deposit (F27 row 40, the gross deposit including the part passed on to UPPCL) at 6.5 %.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ISD",
+   "categories": {
+    "Apr 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "B5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "B6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "B8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "B7",
+      "isd_interest_month": "B10"
+     }
+    },
+    "May 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "C5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "C6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "C8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "C7",
+      "isd_interest_month": "C10"
+     }
+    },
+    "Jun 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "D5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "D6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "D8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "D7",
+      "isd_interest_month": "D10"
+     }
+    },
+    "Jul 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "E5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "E6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "E8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "E7",
+      "isd_interest_month": "E10"
+     }
+    },
+    "Aug 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "F5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "F6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "F8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "F7",
+      "isd_interest_month": "F10"
+     }
+    },
+    "Sep 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "G5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "G6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "G8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "G7",
+      "isd_interest_month": "G10"
+     }
+    },
+    "Oct 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "H5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "H6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "H8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "H7",
+      "isd_interest_month": "H10"
+     }
+    },
+    "Nov 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "I5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "I6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "I8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "I7",
+      "isd_interest_month": "I10"
+     }
+    },
+    "Dec 2024": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "J5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "J6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "J8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "J7",
+      "isd_interest_month": "J10"
+     }
+    },
+    "Jan 2025": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "K5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "K6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "K8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "K7",
+      "isd_interest_month": "K10"
+     }
+    },
+    "Feb 2025": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "L5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "L6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "L8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "L7",
+      "isd_interest_month": "L10"
+     }
+    },
+    "Mar 2025": {
+     "inputs": {
+      "record:deposit_opening_month": [
+       "M5",
+       "INR_crore"
+      ],
+      "record:deposit_addition_month": [
+       "M6",
+       "INR_crore"
+      ],
+      "assumption:isd_rate": [
+       "M8",
+       "fraction"
+      ]
+     },
+     "checks": {
+      "deposit_closing_month": "M7",
+      "isd_interest_month": "M10"
+     }
+    }
+   },
+   "checks": {
+    "isd_interest_months": [
+     "N10",
+     "F30A_CSD!H22",
+     "F25_IOL!G16",
+     "ARR!J38"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "ISD",
+   "inputs": {
+    "record:deposit_opening": [
+     "F27_Work Cap!I40",
+     "INR_crore"
+    ],
+    "record:deposit_closing": [
+     "F27_Work Cap!K40",
+     "INR_crore"
+    ],
+    "assumption:isd_rate": {
+     "value": "0.065",
+     "unit": "fraction",
+     "why": "6.5 % is a literal in NPCL's F25 formula (H16, I16) — its assumption of the bank rate for the APR and ARR years"
+    }
+   },
+   "checks": {
+    "isd_interest_annual": [
+     "F25_IOL!H16",
+     "ARR!L38"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ISD",
+   "inputs": {
+    "record:deposit_opening": [
+     "F27_Work Cap!K40",
+     "INR_crore"
+    ],
+    "record:deposit_closing": [
+     "F27_Work Cap!L40",
+     "INR_crore"
+    ],
+    "assumption:isd_rate": {
+     "value": "0.065",
+     "unit": "fraction",
+     "why": "6.5 % is a literal in NPCL's F25 formula (H16, I16) — its assumption of the bank rate for the APR and ARR years"
+    }
+   },
+   "checks": {
+    "isd_interest_annual": [
+     "F25_IOL!I16",
+     "ARR!M38"
+    ]
+   }
+  }
+ ]
+}

@@ -483,7 +483,11 @@ def reproduce_cells(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list
     factors), read by cell address.  Each evaluation names its year, its input cells
     (``{"record:x": ["C9", "INR_crore"]}``; ``"Sheet!C9"`` for another sheet) and the cells its
     outputs are checked against — on this sheet, and wherever the figure is carried (the ARR
-    format).  A blank input cell blocks the evaluation's dependent outputs; it is never zero."""
+    format).  An evaluation may also have ``categories`` (the months of a year: each with its own
+    inputs and checks) whose results its aggregate rules sum.  An input may instead be a stated
+    constant (``{"value": "0.065", "unit": "fraction", "why": …}`` — a literal in the utility's
+    formula) or a cell declared blank-as-zero (``{"cell": …, "unit": …, "blank_is_zero": why}``);
+    otherwise a blank input cell blocks the outputs that need it — never zero."""
     places = int(binding.get("places", 6))
     q = Decimal(1).scaleb(-places)
 
@@ -491,28 +495,48 @@ def reproduce_cells(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list
         sheet, _, cell = ref.rpartition("!")
         return wb[sheet or binding["sheet"]][cell].value
 
+    def read(inputs: dict[str, Any]) -> dict[str, tuple[Decimal | str, str]]:
+        values: dict[str, tuple[Decimal | str, str]] = {}
+        for source, spec in inputs.items():
+            if isinstance(spec, dict):
+                if "value" in spec:
+                    if not spec.get("why"):
+                        raise ValueError(f"{source}: a stated constant needs its reason")
+                    values[source] = (str(spec["value"]), spec["unit"])
+                    continue
+                ref, unit = spec["cell"], spec["unit"]
+            else:
+                ref, unit = spec
+            v = _stored(at(ref))
+            if v is None and isinstance(spec, dict) and spec.get("blank_is_zero"):
+                v = Decimal(0)
+            if v is not None:
+                values[source] = (v, unit)
+        return values
+
+    def check(fy: str, label: str, output: str, ref: str, res: Any, why: str | None) -> BlockCheck:
+        tag = f"{label} {ref}".strip()
+        if res is None:
+            return BlockCheck(binding["sheet"], fy, tag, output, "blocked", why=why)
+        filed = _stored(at(ref))
+        if filed is None:
+            return BlockCheck(binding["sheet"], fy, tag, output, "no_filed_value", computed=str(res.value))
+        want, got = filed.quantize(q), res.value.quantize(q)
+        result = "match" if got == want else "differs"
+        return BlockCheck(binding["sheet"], fy, tag, output, result, filed=str(want), computed=str(got))
+
     out: list[BlockCheck] = []
     for e in binding["evaluations"]:
         fy = e["fiscal_year"]
-        values: dict[str, tuple[Decimal | str, str]] = {}
-        for source, (ref, unit) in e["inputs"].items():
-            v = _stored(at(ref))
-            if v is not None:
-                values[source] = (v, unit)
-        ev = RuleSet(rules, fy).evaluate(fy, values)
-        for output, refs in e["checks"].items():
+        cats = {name: read(c.get("inputs", {})) for name, c in e.get("categories", {}).items()}
+        ev = RuleSet(rules, fy).evaluate(fy, read(e.get("inputs", {})), cats or None)
+        for name, c in e.get("categories", {}).items():
+            for output, refs in c.get("checks", {}).items():
+                for ref in [refs] if isinstance(refs, str) else refs:
+                    res = ev.by_category.get(name, {}).get(output)
+                    why = ev.blocked_by_category.get(name, {}).get(output)
+                    out.append(check(fy, f"{e.get('label', '')} {name}".strip(), output, ref, res, why))
+        for output, refs in e.get("checks", {}).items():
             for ref in [refs] if isinstance(refs, str) else refs:
-                label = f"{e.get('label', '')} {ref}".strip()
-                res = ev.results.get(output)
-                if res is None:
-                    out.append(BlockCheck(binding["sheet"], fy, label, output, "blocked", why=ev.blocked.get(output)))
-                    continue
-                filed = _stored(at(ref))
-                if filed is None:
-                    computed = str(res.value)
-                    out.append(BlockCheck(binding["sheet"], fy, label, output, "no_filed_value", computed=computed))
-                    continue
-                want, got = filed.quantize(q), res.value.quantize(q)
-                result = "match" if got == want else "differs"
-                out.append(BlockCheck(binding["sheet"], fy, label, output, result, filed=str(want), computed=str(got)))
+                out.append(check(fy, e.get("label", ""), output, ref, ev.results.get(output), ev.blocked.get(output)))
     return out

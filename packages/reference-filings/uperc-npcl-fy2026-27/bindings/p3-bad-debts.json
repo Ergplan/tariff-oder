@@ -1,0 +1,315 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "P3_Bad Debts",
+ "places": 4,
+ "note": "Receivables (F31): revenue billed = receipts × NPCL's gross-up, the year-end balance at 20 days of billing, the collection.  Bad and doubtful debts (P3): the share of receivables, the provision of the APR and ARR years from the previous year's share, the claim (provision + write-off) as the ARR's row 41, the 2 % cap, the closing provision; other items (loss on retired assets, loan-swap gain, revenue from loss reduction) as the ARR's row 45.  True-up years' provisions are the petitioner's figures (given).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "receivables",
+   "inputs": {
+    "record:total_receipts": [
+     "ARR!D17",
+     "INR_crore"
+    ],
+    "assumption:billing_gross_up": {
+     "value": "1.0473",
+     "unit": "number",
+     "why": "a literal in NPCL's F31 formula D9 for FY2022-23"
+    }
+   },
+   "checks": {
+    "receivables_billed": "F31_Recievables!D9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "receivables",
+   "inputs": {
+    "record:total_receipts": [
+     "ARR!G17",
+     "INR_crore"
+    ],
+    "assumption:billing_gross_up": {
+     "value": "1.0532",
+     "unit": "number",
+     "why": "a literal in NPCL's F31 formulas (D10, D12, D13): receipts × 1.0532 as revenue billed"
+    }
+   },
+   "checks": {
+    "receivables_billed": [
+     "F31_Recievables!D10",
+     "C11"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "receivables",
+   "inputs": {
+    "record:total_receipts": [
+     "ARR!L17",
+     "INR_crore"
+    ],
+    "assumption:billing_gross_up": {
+     "value": "1.0532",
+     "unit": "number",
+     "why": "a literal in NPCL's F31 formulas (D10, D12, D13): receipts × 1.0532 as revenue billed"
+    },
+    "assumption:receivable_days": {
+     "value": "20",
+     "unit": "number",
+     "why": "a literal in NPCL's F31 formulas (F12, F13): 20 days of billing outstanding at the year end"
+    },
+    "record:receivables_opening": [
+     "F31_Recievables!C12",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "receivables_billed": [
+     "F31_Recievables!D12",
+     "E11"
+    ],
+    "receivables_closing": "F31_Recievables!F12",
+    "receivables_collection": "F31_Recievables!E12"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "receivables",
+   "inputs": {
+    "record:total_receipts": [
+     "ARR!M17",
+     "INR_crore"
+    ],
+    "assumption:billing_gross_up": {
+     "value": "1.0532",
+     "unit": "number",
+     "why": "a literal in NPCL's F31 formulas (D10, D12, D13): receipts × 1.0532 as revenue billed"
+    },
+    "assumption:receivable_days": {
+     "value": "20",
+     "unit": "number",
+     "why": "a literal in NPCL's F31 formulas (F12, F13): 20 days of billing outstanding at the year end"
+    },
+    "record:receivables_opening": [
+     "F31_Recievables!C13",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "receivables_billed": [
+     "F31_Recievables!D13",
+     "F11"
+    ],
+    "receivables_closing": "F31_Recievables!F13",
+    "receivables_collection": "F31_Recievables!E13"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "bad debts",
+   "inputs": {
+    "record:receivables_for_year": [
+     "C11",
+     "INR_crore"
+    ],
+    "record:bad_debt_provision_opening": [
+     "C7",
+     "INR_crore"
+    ],
+    "record:bad_debts_written_off": {
+     "cell": "C9",
+     "unit": "INR_crore",
+     "blank_is_zero": "no write-off is projected; NPCL's claim (row 15 = rows 8 + 9) reads the blank as zero"
+    },
+    "record:loss_on_assets_retired": [
+     "C16",
+     "INR_crore"
+    ],
+    "record:loan_swap_gain": [
+     "C17",
+     "INR_crore"
+    ],
+    "record:loss_reduction_revenue": [
+     "C18",
+     "INR_crore"
+    ],
+    "rule:bad_debt_provision": [
+     "C8",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "bad_debt_ratio": "C12",
+    "bad_debts_claimed": [
+     "C15",
+     "ARR!F41"
+    ],
+    "bad_debt_provision_closing": "C10",
+    "bad_debts_cap": "C13",
+    "other_items": "ARR!F45"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "bad debts",
+   "inputs": {
+    "record:receivables_for_year": [
+     "D11",
+     "INR_crore"
+    ],
+    "record:bad_debt_provision_opening": [
+     "D7",
+     "INR_crore"
+    ],
+    "record:bad_debts_written_off": {
+     "cell": "D9",
+     "unit": "INR_crore",
+     "blank_is_zero": "no write-off is projected; NPCL's claim (row 15 = rows 8 + 9) reads the blank as zero"
+    },
+    "record:loss_on_assets_retired": [
+     "D16",
+     "INR_crore"
+    ],
+    "record:loan_swap_gain": [
+     "D17",
+     "INR_crore"
+    ],
+    "record:loss_reduction_revenue": [
+     "D18",
+     "INR_crore"
+    ],
+    "rule:bad_debt_provision": [
+     "D8",
+     "INR_crore"
+    ],
+    "record:energy_available": [
+     "ARR!J8",
+     "MU"
+    ],
+    "record:loss_approved": [
+     "ARR!H10",
+     "fraction"
+    ],
+    "record:loss_actual": [
+     "ARR!J10",
+     "fraction"
+    ],
+    "record:total_receipts": [
+     "ARR!J17",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "ARR!J9",
+     "MU"
+    ]
+   },
+   "checks": {
+    "bad_debt_ratio": "D12",
+    "bad_debts_claimed": [
+     "D15",
+     "ARR!J41"
+    ],
+    "bad_debt_provision_closing": "D10",
+    "bad_debts_cap": "D13",
+    "other_items": "ARR!J45",
+    "loss_reduction_revenue": "D18"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "bad debts",
+   "inputs": {
+    "record:receivables_for_year": [
+     "E11",
+     "INR_crore"
+    ],
+    "record:bad_debt_provision_opening": [
+     "E7",
+     "INR_crore"
+    ],
+    "record:bad_debts_written_off": {
+     "cell": "E9",
+     "unit": "INR_crore",
+     "blank_is_zero": "no write-off is projected; NPCL's claim (row 15 = rows 8 + 9) reads the blank as zero"
+    },
+    "record:loss_on_assets_retired": [
+     "E16",
+     "INR_crore"
+    ],
+    "record:loan_swap_gain": [
+     "E17",
+     "INR_crore"
+    ],
+    "record:loss_reduction_revenue": [
+     "E18",
+     "INR_crore"
+    ],
+    "prior:bad_debt_ratio": [
+     "D12",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "bad_debt_ratio": "E12",
+    "bad_debts_claimed": [
+     "E15",
+     "ARR!L41"
+    ],
+    "bad_debt_provision_closing": "E10",
+    "bad_debts_cap": "E13",
+    "bad_debt_provision": "E8",
+    "other_items": "ARR!L45"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "bad debts",
+   "inputs": {
+    "record:receivables_for_year": [
+     "F11",
+     "INR_crore"
+    ],
+    "record:bad_debt_provision_opening": [
+     "F7",
+     "INR_crore"
+    ],
+    "record:bad_debts_written_off": {
+     "cell": "F9",
+     "unit": "INR_crore",
+     "blank_is_zero": "no write-off is projected; NPCL's claim (row 15 = rows 8 + 9) reads the blank as zero"
+    },
+    "record:loss_on_assets_retired": [
+     "F16",
+     "INR_crore"
+    ],
+    "record:loan_swap_gain": [
+     "F17",
+     "INR_crore"
+    ],
+    "record:loss_reduction_revenue": [
+     "F18",
+     "INR_crore"
+    ],
+    "prior:bad_debt_ratio": [
+     "E12",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "bad_debt_ratio": "F12",
+    "bad_debts_claimed": [
+     "F15",
+     "ARR!M41"
+    ],
+    "bad_debt_provision_closing": "F10",
+    "bad_debts_cap": "F13",
+    "bad_debt_provision": "F8",
+    "other_items": "ARR!M45"
+   }
+  }
+ ]
+}

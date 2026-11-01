@@ -11958,6 +11958,716 @@
    ]
   },
   {
+   "binding": "f30-security-deposit.json",
+   "checks": [
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Apr 2024 B7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "345.4735",
+     "computed": "345.4735",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Apr 2024 B10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "1.9361",
+     "computed": "1.9361",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD May 2024 C7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "361.6979",
+     "computed": "361.6979",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD May 2024 C10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "1.9889",
+     "computed": "1.9889",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Jun 2024 D7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "364.1596",
+     "computed": "364.1596",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Jun 2024 D10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.0415",
+     "computed": "2.0415",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Jul 2024 E7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "367.6491",
+     "computed": "367.6491",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Jul 2024 E10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.0582",
+     "computed": "2.0582",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Aug 2024 F7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "371.7527",
+     "computed": "371.7527",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Aug 2024 F10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.0796",
+     "computed": "2.0796",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Sep 2024 G7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "373.4183",
+     "computed": "373.4183",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Sep 2024 G10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.0958",
+     "computed": "2.0958",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Oct 2024 H7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "374.0910",
+     "computed": "374.0910",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Oct 2024 H10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.1024",
+     "computed": "2.1024",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Nov 2024 I7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "377.6936",
+     "computed": "377.6936",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Nov 2024 I10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.1144",
+     "computed": "2.1144",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Dec 2024 J7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "382.8621",
+     "computed": "382.8621",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Dec 2024 J10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.1391",
+     "computed": "2.1391",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Jan 2025 K7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "386.2237",
+     "computed": "386.2237",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Jan 2025 K10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.1631",
+     "computed": "2.1631",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Feb 2025 L7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "389.2263",
+     "computed": "389.2263",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Feb 2025 L10",
+     "output": "isd_interest_month",
+     "result": "match",
+     "filed": "2.1810",
+     "computed": "2.1810",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Mar 2025 M7",
+     "output": "deposit_closing_month",
+     "result": "match",
+     "filed": "350.3911",
+     "computed": "350.3911",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD Mar 2025 M10",
+     "output": "isd_interest_month",
+     "result": "differs",
+     "filed": "1.8901",
+     "computed": "2.0802",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD N10",
+     "output": "isd_interest_months",
+     "result": "differs",
+     "filed": "24.7900",
+     "computed": "24.9801",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD F30A_CSD!H22",
+     "output": "isd_interest_months",
+     "result": "differs",
+     "filed": "24.7900",
+     "computed": "24.9801",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD F25_IOL!G16",
+     "output": "isd_interest_months",
+     "result": "differs",
+     "filed": "24.7900",
+     "computed": "24.9801",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2024-25",
+     "category": "ISD ARR!J38",
+     "output": "isd_interest_months",
+     "result": "differs",
+     "filed": "24.7900",
+     "computed": "24.9801",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2025-26",
+     "category": "ISD F25_IOL!H16",
+     "output": "isd_interest_annual",
+     "result": "match",
+     "filed": "23.2629",
+     "computed": "23.2629",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2025-26",
+     "category": "ISD ARR!L38",
+     "output": "isd_interest_annual",
+     "result": "match",
+     "filed": "23.2629",
+     "computed": "23.2629",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2026-27",
+     "category": "ISD F25_IOL!I16",
+     "output": "isd_interest_annual",
+     "result": "match",
+     "filed": "24.2379",
+     "computed": "24.2379",
+     "why": null
+    },
+    {
+     "table": "F30_CSD monthly",
+     "fiscal_year": "FY2026-27",
+     "category": "ISD ARR!M38",
+     "output": "isd_interest_annual",
+     "result": "match",
+     "filed": "24.2379",
+     "computed": "24.2379",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "p3-bad-debts.json",
+   "checks": [
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2022-23",
+     "category": "receivables F31_Recievables!D9",
+     "output": "receivables_billed",
+     "result": "match",
+     "filed": "2312.2060",
+     "computed": "2312.2060",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2023-24",
+     "category": "receivables F31_Recievables!D10",
+     "output": "receivables_billed",
+     "result": "match",
+     "filed": "2444.4497",
+     "computed": "2444.4497",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2023-24",
+     "category": "receivables C11",
+     "output": "receivables_billed",
+     "result": "match",
+     "filed": "2444.4497",
+     "computed": "2444.4497",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "receivables F31_Recievables!D12",
+     "output": "receivables_billed",
+     "result": "match",
+     "filed": "3038.2340",
+     "computed": "3038.2340",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "receivables E11",
+     "output": "receivables_billed",
+     "result": "match",
+     "filed": "3038.2340",
+     "computed": "3038.2340",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "receivables F31_Recievables!F12",
+     "output": "receivables_closing",
+     "result": "match",
+     "filed": "166.4786",
+     "computed": "166.4786",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "receivables F31_Recievables!E12",
+     "output": "receivables_collection",
+     "result": "match",
+     "filed": "2986.8793",
+     "computed": "2986.8793",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "receivables F31_Recievables!D13",
+     "output": "receivables_billed",
+     "result": "match",
+     "filed": "3361.8547",
+     "computed": "3361.8547",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "receivables F11",
+     "output": "receivables_billed",
+     "result": "match",
+     "filed": "3361.8547",
+     "computed": "3361.8547",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "receivables F31_Recievables!F13",
+     "output": "receivables_closing",
+     "result": "match",
+     "filed": "184.2112",
+     "computed": "184.2112",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "receivables F31_Recievables!E13",
+     "output": "receivables_collection",
+     "result": "match",
+     "filed": "3344.1221",
+     "computed": "3344.1221",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2023-24",
+     "category": "bad debts C12",
+     "output": "bad_debt_ratio",
+     "result": "match",
+     "filed": "0.0038",
+     "computed": "0.0038",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2023-24",
+     "category": "bad debts C15",
+     "output": "bad_debts_claimed",
+     "result": "match",
+     "filed": "9.3576",
+     "computed": "9.3576",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2023-24",
+     "category": "bad debts ARR!F41",
+     "output": "bad_debts_claimed",
+     "result": "match",
+     "filed": "9.3576",
+     "computed": "9.3576",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2023-24",
+     "category": "bad debts C10",
+     "output": "bad_debt_provision_closing",
+     "result": "match",
+     "filed": "96.3779",
+     "computed": "96.3779",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2023-24",
+     "category": "bad debts C13",
+     "output": "bad_debts_cap",
+     "result": "match",
+     "filed": "48.8890",
+     "computed": "48.8890",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2023-24",
+     "category": "bad debts ARR!F45",
+     "output": "other_items",
+     "result": "match",
+     "filed": "5.1610",
+     "computed": "5.1610",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts D12",
+     "output": "bad_debt_ratio",
+     "result": "match",
+     "filed": "0.0041",
+     "computed": "0.0041",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts D15",
+     "output": "bad_debts_claimed",
+     "result": "match",
+     "filed": "11.3797",
+     "computed": "11.3797",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts ARR!J41",
+     "output": "bad_debts_claimed",
+     "result": "match",
+     "filed": "11.3797",
+     "computed": "11.3797",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts D10",
+     "output": "bad_debt_provision_closing",
+     "result": "match",
+     "filed": "96.7199",
+     "computed": "96.7199",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts D13",
+     "output": "bad_debts_cap",
+     "result": "match",
+     "filed": "55.5899",
+     "computed": "55.5899",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts ARR!J45",
+     "output": "other_items",
+     "result": "match",
+     "filed": "5.4278",
+     "computed": "5.4278",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts D18",
+     "output": "loss_reduction_revenue",
+     "result": "match",
+     "filed": "2.5818",
+     "computed": "2.5818",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "bad debts E12",
+     "output": "bad_debt_ratio",
+     "result": "match",
+     "filed": "0.0041",
+     "computed": "0.0041",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "bad debts E15",
+     "output": "bad_debts_claimed",
+     "result": "match",
+     "filed": "12.4390",
+     "computed": "12.4390",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "bad debts ARR!L41",
+     "output": "bad_debts_claimed",
+     "result": "match",
+     "filed": "12.4390",
+     "computed": "12.4390",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "bad debts E10",
+     "output": "bad_debt_provision_closing",
+     "result": "match",
+     "filed": "109.1589",
+     "computed": "109.1589",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "bad debts E13",
+     "output": "bad_debts_cap",
+     "result": "match",
+     "filed": "60.7647",
+     "computed": "60.7647",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "bad debts E8",
+     "output": "bad_debt_provision",
+     "result": "match",
+     "filed": "12.4390",
+     "computed": "12.4390",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2025-26",
+     "category": "bad debts ARR!L45",
+     "output": "other_items",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "bad debts F12",
+     "output": "bad_debt_ratio",
+     "result": "match",
+     "filed": "0.0041",
+     "computed": "0.0041",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "bad debts F15",
+     "output": "bad_debts_claimed",
+     "result": "match",
+     "filed": "13.7640",
+     "computed": "13.7640",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "bad debts ARR!M41",
+     "output": "bad_debts_claimed",
+     "result": "match",
+     "filed": "13.7640",
+     "computed": "13.7640",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "bad debts F10",
+     "output": "bad_debt_provision_closing",
+     "result": "match",
+     "filed": "122.9229",
+     "computed": "122.9229",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "bad debts F13",
+     "output": "bad_debts_cap",
+     "result": "match",
+     "filed": "67.2371",
+     "computed": "67.2371",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "bad debts F8",
+     "output": "bad_debt_provision",
+     "result": "match",
+     "filed": "13.7640",
+     "computed": "13.7640",
+     "why": null
+    },
+    {
+     "table": "P3_Bad Debts",
+     "fiscal_year": "FY2026-27",
+     "category": "bad debts ARR!M45",
+     "output": "other_items",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    }
+   ]
+  },
+  {
    "binding": "ppc-fy26.json",
    "checks": [
     {

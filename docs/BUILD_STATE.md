@@ -1005,6 +1005,29 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 68 (2026-11-01): interest on security deposit, receivables, bad debts and other
+  items.**  14 draft rules:
+  - **Security deposit:** each month's closing balance and interest (the average balance at the
+    bank rate / 12, per month, summed), and the year's interest on the average balance.
+  - **Receivables (F31):** revenue billed as receipts × NPCL's gross-up, the year-end balance at
+    20 days of billing, and the collection.
+  - **Bad and doubtful debts (P3):** the share of receivables; the APR / ARR provision from the
+    previous year's share; the claim (provision + write-off); the 2 % cap; the closing provision.
+  - **The value of beating the loss target:** energy × (approved − actual loss) × receipts ÷ sales.
+  - **Other items:** loss on retired assets, the loan-swap gain and the loss-reduction revenue.
+
+  The `cells` binding gained categories (the months of a year, summed by the aggregate rule) and
+  two input forms, each requiring its reason: a stated constant (a literal inside the utility's
+  formula, such as NPCL's 6.5 % deposit rate, 1.0532 gross-up and 20 days) and a cell declared
+  blank-as-zero.  **NPCL: P3 / F31 38 / 38 — bad debts 12.44 (APR) and 13.76 (ARR) as the ARR's row
+  41, other items 5.43 (true-up) as row 45, revenue from loss reduction 2.58.  Security deposit:
+  the APR and ARR interest (23.26, 24.24) as F25 and the ARR's row 38; the true-up year's months
+  match except March, which NPCL types (1.8901 against its formula's 2.0802).**  So the year's
+  24.79 is 0.19 below what the balances give (24.98), reproduced as *differs* and never forced.
+  It is finding A40, addressed to the reviewer: allow the amount disbursed.  Non-tariff income
+  (F28) remains a record: its projections are typed (some items exactly +2 % a year, others not)
+  and the format's totals are sums.  No rule is approved; every clause is unverified.
+
   **Increment 67 (2026-11-01): depreciation by class, five years, to the ARR's row 36.**  F24
   read as five row tables (one per year block), with 2 new draft rules: the implied rate (the
   format's identity, depreciation over the average gross block; not a regulation) and the net of
@@ -1894,6 +1917,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 68 (2026-11-01): 420 passed** (+2 unit: NPCL's security-deposit interest, receivables, bad debts and other items reproduced with the one typed March figure pinned as differs; stated constants need a reason and declared blanks are zero).  Ruff and format clean.
 - **Increment 67 (2026-11-01): 418 passed** (+1 unit: F24 by class, five years, net tied to the ARR's row 36; +1 unit: a category given in place of its computation, labelled and summed).  Ruff and format clean.
 - **Increment 66 (2026-11-01): 416 passed** (+2 unit: NPCL's 2025-regime employee, A&G and R&M of the APR and ARR years reproduced from the base-year sheet and tied to F21, F23 and the ARR; the cell reader never reads a blank as 0).  Ruff and format clean.
 - **Increment 65 (2026-11-01): 414 passed** (+2 unit: power purchase by source reproduced with its totals; division by zero blocks).  Ruff and format clean.

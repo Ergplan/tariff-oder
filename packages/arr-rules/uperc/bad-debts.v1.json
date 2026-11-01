@@ -1,0 +1,412 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Receivables (F31), bad and doubtful debts and other items (P3).",
+ "rules": [
+  {
+   "id": "uperc.baddebts.billed",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue billed for the year (receipts grossed up)",
+   "output": "receivables_billed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "receipts * factor",
+   "inputs": {
+    "receipts": {
+     "unit": "INR_crore",
+     "source": "record:total_receipts"
+    },
+    "factor": {
+     "unit": "number",
+     "source": "assumption:billing_gross_up",
+     "note": "NPCL grosses its receipts up (1.0532 from FY2023-24; 1.0473 for FY2022-23); what the factor stands for is to be stated by the petitioner"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.baddebts.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Receivables at the end of the year, projected",
+   "output": "receivables_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "billed * days / 365",
+   "inputs": {
+    "billed": {
+     "unit": "INR_crore",
+     "source": "rule:receivables_billed"
+    },
+    "days": {
+     "unit": "number",
+     "source": "assumption:receivable_days",
+     "note": "20 days of billing, NPCL's assumption"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.baddebts.collection",
+   "version": 1,
+   "status": "draft",
+   "title": "Collection for the year",
+   "output": "receivables_collection",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "opening + billed - closing",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:receivables_opening"
+    },
+    "billed": {
+     "unit": "INR_crore",
+     "source": "rule:receivables_billed"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:receivables_closing"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.baddebts.ratio",
+   "version": 1,
+   "status": "draft",
+   "title": "Bad and doubtful debts as a share of receivables",
+   "output": "bad_debt_ratio",
+   "unit": "fraction",
+   "schedule": "R-SCH-10",
+   "formula": "(provision + written_off) / receivables",
+   "inputs": {
+    "provision": {
+     "unit": "INR_crore",
+     "source": "rule:bad_debt_provision"
+    },
+    "written_off": {
+     "unit": "INR_crore",
+     "source": "record:bad_debts_written_off"
+    },
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "record:receivables_for_year"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.baddebts.provision",
+   "version": 1,
+   "status": "draft",
+   "title": "Provision for bad and doubtful debts for the year, projected",
+   "output": "bad_debt_provision",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "previous_ratio * receivables",
+   "inputs": {
+    "previous_ratio": {
+     "unit": "fraction",
+     "source": "prior:bad_debt_ratio"
+    },
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "record:receivables_for_year"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the APR and ARR years: the previous year's share of receivables applied to the year's receivables"
+  },
+  {
+   "id": "uperc.baddebts.provision_closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Provision for bad and doubtful debts at the end of the year",
+   "output": "bad_debt_provision_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "opening + provision",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:bad_debt_provision_opening"
+    },
+    "provision": {
+     "unit": "INR_crore",
+     "source": "rule:bad_debt_provision"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.baddebts.claimed",
+   "version": 1,
+   "status": "draft",
+   "title": "Bad and doubtful debts claimed",
+   "output": "bad_debts_claimed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "provision + written_off",
+   "inputs": {
+    "provision": {
+     "unit": "INR_crore",
+     "source": "rule:bad_debt_provision"
+    },
+    "written_off": {
+     "unit": "INR_crore",
+     "source": "record:bad_debts_written_off"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.BAD_DEBTS"
+  },
+  {
+   "id": "uperc.baddebts.cap",
+   "version": 1,
+   "status": "draft",
+   "title": "Bad and doubtful debts allowable under the Regulations",
+   "output": "bad_debts_cap",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "receivables * share",
+   "inputs": {
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "record:receivables_for_year"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "2",
+     "note": "2 % of receivables, as P3 prints it; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.baddebts.loss_reduction",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue from loss reduction (the value of beating the loss target)",
+   "output": "loss_reduction_revenue",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "energy * (approved_loss - actual_loss) * receipts / sales",
+   "inputs": {
+    "energy": {
+     "unit": "MU",
+     "source": "record:energy_available"
+    },
+    "approved_loss": {
+     "unit": "fraction",
+     "source": "record:loss_approved"
+    },
+    "actual_loss": {
+     "unit": "fraction",
+     "source": "record:loss_actual"
+    },
+    "receipts": {
+     "unit": "INR_crore",
+     "source": "record:total_receipts"
+    },
+    "sales": {
+     "unit": "MU",
+     "source": "record:sales"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the energy saved by the lower loss, valued at the average realisation"
+  },
+  {
+   "id": "uperc.baddebts.other_items",
+   "version": 1,
+   "status": "draft",
+   "title": "Other items (loss on retired assets, loan-swap gain, revenue from loss reduction)",
+   "output": "other_items",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "retired + swap + loss_reduction",
+   "inputs": {
+    "retired": {
+     "unit": "INR_crore",
+     "source": "record:loss_on_assets_retired"
+    },
+    "swap": {
+     "unit": "INR_crore",
+     "source": "record:loan_swap_gain"
+    },
+    "loss_reduction": {
+     "unit": "INR_crore",
+     "source": "record:loss_reduction_revenue"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — provision for bad and doubtful debts, allowed up to 2 % of receivables",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.OTHER"
+  }
+ ]
+}

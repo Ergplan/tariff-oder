@@ -1,0 +1,170 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC Electricity Supply Code / MYT Regulations — interest on consumers' security deposit at the bank rate as on 1 April, allowed as an expense",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Interest on consumers' security deposit (UPERC formats F30 monthly, F30A, F25 row 16).",
+ "rules": [
+  {
+   "id": "uperc.isd.closing_month",
+   "version": 1,
+   "status": "draft",
+   "title": "Security deposit at the end of the month",
+   "output": "deposit_closing_month",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "opening + addition",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:deposit_opening_month"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:deposit_addition_month",
+     "note": "net of refunds; may be negative"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC Electricity Supply Code / MYT Regulations — interest on consumers' security deposit at the bank rate as on 1 April, allowed as an expense",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "month"
+  },
+  {
+   "id": "uperc.isd.interest_month",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on security deposit for the month",
+   "output": "isd_interest_month",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "avg(opening, closing) * rate / 12",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:deposit_opening_month"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:deposit_closing_month"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:isd_rate",
+     "note": "the bank rate as on 1 April"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC Electricity Supply Code / MYT Regulations — interest on consumers' security deposit at the bank rate as on 1 April, allowed as an expense",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "month"
+  },
+  {
+   "id": "uperc.isd.interest_months",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on security deposit, the sum of the months",
+   "output": "isd_interest_months",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "months",
+   "inputs": {
+    "months": {
+     "unit": "INR_crore",
+     "source": "sum:isd_interest_month"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC Electricity Supply Code / MYT Regulations — interest on consumers' security deposit at the bank rate as on 1 April, allowed as an expense",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the true-up year, from the monthly balances",
+   "line_code": "C.INT.CSD"
+  },
+  {
+   "id": "uperc.isd.interest_annual",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on security deposit on the year's average balance",
+   "output": "isd_interest_annual",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "avg(opening, closing) * rate",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:deposit_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "record:deposit_closing"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:isd_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC Electricity Supply Code / MYT Regulations — interest on consumers' security deposit at the bank rate as on 1 April, allowed as an expense",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the APR and ARR years, from the projected balances",
+   "line_code": "C.INT.CSD"
+  }
+ ]
+}

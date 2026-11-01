@@ -423,3 +423,72 @@ def test_npcl_depreciation_by_class_rolls_forward_and_ties_to_the_arr():
         "FY2025-26": "90.0943",
         "FY2026-27": "106.7518",
     }
+
+
+def test_npcl_security_deposit_interest_bad_debts_and_receivables():
+    """Real data: interest on security deposit month by month (FY2024-25) and on the year's
+    average (FY2025-26, FY2026-27, at the 6.5 % stated in NPCL's formula); receivables, bad debts
+    and other items (F31, P3).  Everything matches except the true-up year's March interest, which
+    NPCL types (1.8901) where its own formula gives 2.0802 — so the year's total is 24.79, not the
+    24.98 the balances give (ledger A40, for the reviewer)."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    isd = json.loads((folder / "bindings" / "f30-security-deposit.json").read_text())
+    wb = openpyxl.load_workbook(folder / isd["workbook"], data_only=True)
+    checks = reproduce_cells(wb, isd, rules)
+    differs = [c for c in checks if c.result != "match"]
+    assert {(c.category, c.computed) for c in differs} == {
+        ("ISD Mar 2025 M10", "2.0802"),
+        ("ISD N10", "24.9801"),
+        ("ISD F30A_CSD!H22", "24.9801"),
+        ("ISD F25_IOL!G16", "24.9801"),
+        ("ISD ARR!J38", "24.9801"),
+    }
+    assert {(c.fiscal_year, c.category, c.computed) for c in checks if "ARR" in c.category and c.result == "match"} == {
+        ("FY2025-26", "ISD ARR!L38", "23.2629"),
+        ("FY2026-27", "ISD ARR!M38", "24.2379"),
+    }
+    bd = json.loads((folder / "bindings" / "p3-bad-debts.json").read_text())
+    checks = reproduce_cells(wb, bd, rules)
+    assert [c for c in checks if c.result != "match"] == []
+    arr = {(c.fiscal_year, c.output): c.computed for c in checks if "ARR!" in c.category}
+    assert arr[("FY2025-26", "bad_debts_claimed")] == "12.4390"
+    assert arr[("FY2026-27", "bad_debts_claimed")] == "13.7640"
+    assert arr[("FY2024-25", "other_items")] == "5.4278"
+
+
+def test_cells_constants_need_a_reason_and_declared_blanks_are_zero():
+    import openpyxl
+    import pytest
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "S"
+    ws["A1"], ws["C1"] = 10.0, 11.0
+    rate = {"value": "0.1", "unit": "fraction"}
+    binding = {
+        "sheet": "S",
+        "evaluations": [
+            {
+                "fiscal_year": "FY2025-26",
+                "inputs": {"prior:om25_level": ["A1", "INR_crore"], "assumption:om25_index_change": rate},
+                "checks": {"om25_escalated": "C1"},
+            }
+        ],
+    }
+    with pytest.raises(ValueError, match="reason"):
+        reproduce_cells(wb, binding, load_rules("UPERC"))
+    rate["why"] = "a literal in the utility's formula"
+    assert [c.result for c in reproduce_cells(wb, binding, load_rules("UPERC"))] == ["match"]
+    binding["evaluations"][0]["inputs"]["prior:om25_level"] = {"cell": "B1", "unit": "INR_crore"}
+    assert [c.result for c in reproduce_cells(wb, binding, load_rules("UPERC"))] == ["blocked"]
+    binding["evaluations"][0]["inputs"]["prior:om25_level"]["blank_is_zero"] = "declared"
+    assert [c.computed for c in reproduce_cells(wb, binding, load_rules("UPERC"))] == ["0.000000"]

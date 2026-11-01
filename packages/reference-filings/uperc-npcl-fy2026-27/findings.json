@@ -73,6 +73,19 @@
     "Annexure-21"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A40",
+   "kind": "typed figure",
+   "title": "Interest on security deposit, FY2024-25: March typed, not computed",
+   "detail": "F30 computes each month's interest as the month's average deposit × 6.75 % / 12; March (M10) is typed as 1.8901 where the formula gives 2.0802.  The year's total is therefore 24.79 (carried to F30A, F25 row 16 and the ARR's row 38) where the monthly balances give 24.98.  The claim is 0.19 below the computation — it reads as the interest actually disbursed with March as the balancing month; the petitioner should say so, and the reviewer should allow the amount disbursed, not the computation.",
+   "where": [
+    "F30_CSD monthly M10, N10",
+    "F30A_CSD H22",
+    "F25_IOL G16",
+    "ARR J38"
+   ],
+   "for": "reviewer"
   }
  ]
 }
