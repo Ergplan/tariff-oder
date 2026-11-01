@@ -940,6 +940,35 @@ open-access view.
   "N unplaced labels (the 50 most frequent in the workbench)" instead of a capped 50.  Live: 8
   states, 10 orders (7 real), 3,052 values previewed in the real orders, every real order at
   `chapters_proposed` waiting on a reviewer.
+
+  **Increment 50 (2026-11-01): a second year for three states.**  The FY2025-26 orders of OERC
+  (`de53fe6f…bc069fb`, 169 pp.), MPERC (`66254f46…b2693c2`, 259 pp.) and UERC (UPCL's business
+  plan and MYT order, `5fc2d18f…273bc41e`, 412 pp.), downloaded from the URLs their profiles
+  propose and read read-only.  MPERC's and UERC's earlier year read with no new rule (19 and 18
+  chapters; 282 and 286 values).  OERC's did not, twice:
+  - its proposal summary numbers its paragraph-headings ("31. Power Purchase Expenses"), which
+    kept the order in numbered mode (11 chapters).  Paragraph mode now also applies when the
+    numbered cue headings lie in parts that report the petition or the hearing, and in that mode
+    numbered cue headings are headings too: 32 → 25 chapters with part G (the Commission's
+    decisions) covered.  Removing the guard altogether was tried and broke NPCL (30 → 56) and
+    UERC (19 → 34): UERC's own prose list of its seven chapters on one page had counted as a
+    structure of parts; such a list (most parts on one page) is no longer one.  A one-word line
+    over a row of figures ("Expenditure" opening each true-up table) is a table's cell, not a
+    heading (OERC FY2026-27 40 → 26 chapters, the per-licensee adjustments no longer split).
+  - its tables came out of the primary table reader with each row merged into one cell
+    ("TPWODL 1827.481 2436.6"); the secondary reader had them right.  **Where the two readers
+    disagree on a table's structure and the primary merged its cells while the secondary did
+    not, the ARR reading takes the secondary's cells** under the primary's ordinal (the evidence
+    still highlights the same table) and each value's rationale says "cell read by the second
+    table reader".  OERC FY2025-26 44 → 238 values.  The tariff track's primary choice is
+    unchanged.
+  **Measured, ten real orders (seven states, three of them two years):** UPERC 503 values, 2
+  failures; BERC 543, 3; HPERC 643, 0; JSERC 457, 5; OERC FY2026-27 479, 0 / **FY2025-26 238,
+  0**; MPERC 264, 0 / **282, 0**; UERC 163, 2 / **286, 2**.  UERC's failures in both years are its
+  gap convention (ARR-I3), now one workbench question with 4 pieces of evidence across the two
+  orders.  Known limits: paragraph numbers of three digits ("178.") are not counted as numbered
+  prose (the orders clear the ratio on their shorter ones); one "Expenditure" cell remains in
+  OERC FY2026-27.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1482,9 +1511,18 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
   `d58d281787d4dd34e7b895add2e7cb37dbf3b9e8d5f1a1ea208dc57ceffde0ab`, 246 pp.; MP State DISCOMs
   FY2026-27 (MPERC) `77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb`, 255 pp.;
   UPCL FY2026-27 (UERC) `1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91`, 414 pp.
+- **Increment 50 adds:** TP DISCOMs FY2025-26 (OERC)
+  `de53fe6fc5afb70f9f45e2eb94a977bcbd2c791fe63eb9f713f8b9ab2fc069fb`, 169 pp.; MP State DISCOMs
+  FY2025-26 (MPERC) `66254f461e5d360d42d6216aaf824e0baa8bdab943248aeb241c34940b2693c2`, 259 pp.;
+  UPCL business plan and MYT order FY2025-26 (UERC)
+  `5fc2d18f3b19793e67ecba4fe5bfc60b3e6b9401e20c418dc89255eb273bc41e`, 412 pp.
 - Synthetic fixtures only (dataset `fixture`): `mixed_text_and_image_pdf` (6 pages), `text_only_pdf` variants, `not_a_pdf`.
 
 ## Reading reliability ledger changes
+
+Increment 50 (A22–A24): a second year for three states; parts whose numbered headings are the
+petition's; a one-page chapter list is no structure; a one-word cell over figures is no
+heading; a merged-cell table read from the second table reader.  Ten real orders measured.
 
 Increment 48 (sub-rows, A21): a value-less heading row gives its sub-rows their subject; a
 previous year's gap is not this year's.  Uncovered by dropping blank candidates: a heading row
@@ -1544,6 +1582,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 50 (2026-11-01): 377 passed** (+3 unit: a one-page list of chapters is no structure and proposal headings stay flagged; a one-word cell over a table row is no heading; a collapsed grid is recognised and a second-reader cell says so).  Ruff, format and contracts-check clean.
 - **Increment 49 (2026-11-01): 374 passed** (+2 integration: the readings board lists a reading with its dataset, review counts and next step, and refuses an unauthenticated caller; the next step names the human decision).  Ruff, format, contracts-check (regenerated) and web typecheck clean.
 - **Increment 48 (2026-11-01): 372 passed** (+1 unit: sub-rows read with their heading row and the total reconciles; the previous year's gap is not this year's).
 - **Increment 47 (2026-11-01): 371 passed** (+4 unit: lettered parts; licensee per row; a long chapter split at its three-level sections; a licensee's column keeps its own voice and a label names what precedes its qualifier; +1 integration: a mixed-case registry code resolves).  Ruff, format, contracts-check and web typecheck clean.
@@ -1726,7 +1765,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 49) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 50) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
