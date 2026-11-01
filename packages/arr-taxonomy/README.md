@@ -31,6 +31,7 @@ list into the mapping (`label_aliases`, a new leaf, or "not an ARR line" in `unp
 | `mappings/uperc-arr.v1.json` | UPERC: licensees, orders expected, chapter cues, voice words, aliases, regulation clauses, unplaced lines | skeleton |
 | `mappings/kerc-arr.v1.json` | KERC, five ESCOMs and KPTCL | skeleton |
 | `mappings/gerc-arr.v1.json` | GERC, DISCOMs and GETCO | skeleton |
+| `mappings/berc-arr.v1.json` | BERC, NBPDCL and SBPDCL (combined orders) | skeleton, from the generic one after a local read of the FY2026-27 order |
 | `schema.json` | Shape of the two file kinds | generated from the models |
 | `mappings/syntherc-arr.v1.json` | The SYNTHETIC commission of the tests (ADR-0018) | synthetic, confirmed for tests only |
 | `formulation/syntherc-plan.v1.json` | Which formula computes which line, and the base-selection rule (ADR-0018) | synthetic |
