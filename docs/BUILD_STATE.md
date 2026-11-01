@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 27: ARR Increment A — read, formulate, file — architecture on SYNTHETIC fixtures). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 28: the client application — organisations, the regulatory library, ARR cases; ADR-0019). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -481,6 +481,33 @@ open-access view.
   ACoS 7.41) frozen and reproduced identically → draft with 58 traced numbers (32 fact,
   2 assumption, 24 projection); an untraced number in a template refused.  **No real order
   has been read for ARR; no real ARR fact, assumption, formulation or draft exists.**
+  **Increment 28 (2026-11-01): the client application (ADR-0019).**  Operator request: a
+  client application holding every state's orders and MYT petitions/orders of the last three
+  years, where a client starts the ARR process.  Migration 0016: `organisations`,
+  `organisation_members` (owner/editor/viewer), `organisation_id` on assumption sets and
+  formulations (set names unique per owner), `arr_cases`, `library_entries`; order type
+  `myt_petition`.  `tariff_api.workspace` decides access: desk objects as before; an
+  organisation's objects for its members only — another organisation gets 404, a platform
+  administrator may read but not change.  ARR cases (`/cases`): annual ARR or MYT control
+  period; readiness lists the base facts present/missing (reviewed facts only) and the
+  parameters to supply per year; assumptions, formulate, freeze, draft, revise drive the
+  Increment A engine.  Library (`/library`): `seed` creates expected slots per real
+  licensee × year × kind (tariff order, ARR petition) plus control-period MYT order and
+  petition and the commission's regulations — expectations, never data; `PUT /library/entries`
+  records an official URL; the worker job `acquire_library_entry` fetches it (PDF only,
+  size-capped) and registers it exactly as an upload; failures are recorded on the entry;
+  `reconcile` links registered orders; coverage by state → commission → licensee with
+  reading levels missing / located / failed / acquired / read / reviewed / published.  Web:
+  `/client` (workspace), `/client/library` (coverage), `/client/licensees/<code>`,
+  `/client/cases/new`, `/client/cases/<id>` (step-by-step: readiness, assumptions,
+  formulation with blocked lines, freeze, draft), desk `/library` (seed, record URL, acquire)
+  and `/admin/organisations`; navigation follows the caller's role and memberships.
+  Live sandbox stack: the library seeded for FY2024-25…FY2026-27 holds **605 expected slots
+  for 72 licensees in 29 states/UTs, all `missing`** — nothing acquired yet.  Acquisition was
+  tried against UPERC from the cloud session: the site answers, but its tariff-order list is
+  a search form driven by ASP.NET postbacks (`Tariff_Order_Users.aspx`); KERC, GERC, MERC,
+  TNERC and DERC do not answer from the cloud session at all.  Found and fixed: a draft
+  download with an em dash in its name crashed the response header (RFC 5987 now).
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1035,6 +1062,9 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 28 (2026-11-01): 337 passed** (+2: organisations/cases/isolation end to end,
+  library seed/locate/acquire through a local HTTP server/coverage); web typecheck and build
+  green; contracts no drift.
 - **Increment 27 (2026-11-01): 335 passed** (323 + 12 ARR: the end-to-end gate and 11 unit
   tests; PostgreSQL 16.15 in Docker on :5432, tesseract 5.3.4; ruff and format clean; web
   typecheck and build green; contracts no drift).  All ARR numbers are SYNTHETIC fixtures.
@@ -1193,6 +1223,13 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+0000000000. **Operator (increment 28, the library):** on the VM (open egress), seed the library
+   (`/library` → Seed, or `POST /library/seed`), then record the official URL of each order and
+   petition you want first (`/library` → Record a document, or `POST /library/entries/bulk`
+   with a list) and acquire them; failures say why.  Create the client organisations
+   (`/admin/organisations`).  Engineering next: per-commission discovery of document URLs
+   (UPERC's list is a postback search form), the live ARR image channel, the ARR review
+   screen, true-up/APR case kinds.
 000000000. **Operator (increment 27, ARR Increment B inputs):** on the deployed or local
    stack, set the NPCL orders' `order_type` and `decides`; upload NPCL's last ARR petition
    (`order_type=arr_petition`) if you have it and the UPERC distribution tariff regulations

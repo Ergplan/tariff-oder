@@ -105,4 +105,10 @@ export type ArrAssumptionOut = components["schemas"]["ArrAssumptionOut"];
 export type ArrFormulationOut = components["schemas"]["ArrFormulationOut"];
 export type ArrProjectionLineOut = components["schemas"]["ArrProjectionLineOut"];
 export type FilingDraftOut = components["schemas"]["FilingDraftOut"];
+// the client application (ADR-0019)
+export type MeOut = components["schemas"]["Me"];
+export type OrganisationOut = components["schemas"]["OrganisationOut"];
+export type ArrCaseOut = components["schemas"]["ArrCaseOut"];
+export type CoverageOut = components["schemas"]["CoverageOut"];
+export type LibraryEntryOut = components["schemas"]["LibraryEntryOut"];
 export type Decides = components["schemas"]["Decides"];
