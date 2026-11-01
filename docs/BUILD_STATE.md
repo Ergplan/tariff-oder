@@ -841,6 +841,15 @@ open-access view.
   0; JSERC 470, 5 (4 posed as power purchase inclusive of transmission; 1 unexplained).  Every
   blocking failure on the four real orders is now either a convention question for a reviewer
   or recorded as unexplained; none is waved through.
+
+  **Increment 46, part 1 (2026-11-01): short-year titles in discovery.**  A listing title's
+  "FY 26" / "FY26" / "FY'26" is read as the financial year ending then (FY2025-26) before the
+  proposer's rules run; a bare two-digit number is never a year.  **Live, read-only:** the
+  HPERC profile now proposes HPSEBL's tariff orders for all three years FY2024-25 to FY2026-27
+  (3 complete of 14 proposals; increment 33 found 2).  JSERC is unchanged at 3 complete of 56:
+  its 2026 MYT/true-up order is proposed for JBVNL's control-period slot, but two documents on
+  the page compete for it, so a person chooses.  Part 2 (profiles for MPERC, OERC and UERC) is
+  in progress.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1432,6 +1441,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 46, part 1 (2026-11-01): unit suite 296 passed** (+1: short-year listing titles); ruff and format clean.  The full suite is run with part 2.
 - **Increment 45 (2026-11-01): 364 passed** (+1 unit: cross-border sales placed apart, a bare inter-state sale not; ARR-I4's hint and its pass under `loss_basis`; the integration conventions test now also answers the loss basis and drafts it).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 44 (2026-11-01): 363 passed** (+1 unit: a total printed inclusive of other lines â€” the hint when unstated, the pass when the mapping states it, no hint when no known convention explains; +1 integration: a convention question posed from a preview, answered by a reviewer only, validated, drafted into a valid mapping, withdrawn).  Ruff, format, contracts-check and web typecheck clean; migration 0020 applied on the local stack.
 - **Increment 43 (2026-11-01): 361 passed** (+3 unit: a paragraph-numbered order is read by its headings inside its "Chapter N" parts, wrapped chapter titles joined, the hearing part flagged; a label naming what a line is for is not that line (`not_when`); a cost row named like a quantity follows the table's unit, and singular/plural aliases).  Ruff, format and contracts-check clean; no web change.

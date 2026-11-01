@@ -420,6 +420,15 @@ def _text(fragment: str) -> str:
     return html_lib.unescape(re.sub(r"\s+", " ", _TAGS.sub(" ", fragment))).strip()
 
 
+_FY_SHORT = re.compile(r"\bFY\s?'?(\d{2})(?![\d-])", re.I)
+
+
+def expand_short_years(text: str) -> str:
+    """ "ARR for FY 26" -> "ARR for FY 2025-26": the financial year ending then (Indian
+    regulatory usage).  Only with its "FY" prefix; a bare two-digit number is never a year."""
+    return _FY_SHORT.sub(lambda m: f"FY {2000 + int(m.group(1)) - 1}-{m.group(1)}", text or "")
+
+
 def _fy(a: str, b: str) -> str | None:
     """FY2024-25 from ("2024", "25" | "2025"), or None when the two years do not follow."""
     if int(b[-2:]) != (int(a) + 1) % 100:
@@ -546,6 +555,7 @@ def propose_from_html(
             cells = [_text(c) for c in _CELL.findall(row[2])] if row else []
             cells = [c for c in cells if c and not c.lower().endswith(".pdf") and not c.isdigit()]
             text = max(cells, key=len) if cells else (text or fname)
+        text = expand_short_years(text)
         variant, base_title = _variant(text)
         hay = f"{text} {fname}".lower()
         kind, notes = guess_kind(text if text != fname else f"{text} {fname}")

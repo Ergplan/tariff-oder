@@ -350,6 +350,25 @@ def test_discovery_proposes_entries_from_a_listing_page_and_says_what_it_guessed
     assert alld["utility_code"] is None and "no licensee named" in alld["notes"] and not alld["complete"]
 
 
+def test_discovery_reads_short_year_titles():
+    """ "Tariff Order for FY 26" (HPERC, others) is the financial year ending in March 2026
+    (increment 46); a bare two-digit number is never a year."""
+    from tariff_api.library import expand_short_years, propose_from_html
+
+    assert (
+        expand_short_years("ARR and Tariff Order for FY26 of HPSEBL") == "ARR and Tariff Order for FY 2025-26 of HPSEBL"
+    )
+    assert expand_short_years("Order dated 26 March, page 26") == "Order dated 26 March, page 26"
+    page = '<a href="/o.pdf">Tariff Order of HPSEBL for FY 27</a>'
+    (p,) = propose_from_html(page, "https://hperc.org/", licensees={"HPSEBL": []})
+    assert (p["document_kind"], p["fiscal_year"], p["utility_code"], p["complete"]) == (
+        "tariff_order",
+        "FY2026-27",
+        "HPSEBL",
+        True,
+    )
+
+
 def test_every_state_falls_back_to_the_generic_skeletons_and_stays_gated():
     """A commission with no mapping, plan or template of its own reads and formulates with the
     generic skeletons; real lines read with the generic mapping cannot be approved."""
