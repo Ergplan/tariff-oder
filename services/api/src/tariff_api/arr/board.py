@@ -85,8 +85,11 @@ def readings(session: Session) -> dict[str, Any]:
             mapping = None
         questions = conventions(session, code, srcs)
         labels: set[str] = set()
+        most = 0  # the largest count of distinct unplaced labels one order recorded
         for s in srcs:
-            for u in ((s.arr_summary or {}).get("scan") or {}).get("unplaced") or []:
+            scan = (s.arr_summary or {}).get("scan") or {}
+            most = max(most, int(scan.get("unplaced_labels") or 0))
+            for u in scan.get("unplaced") or []:
                 labels.add(str(u.get("key") or u.get("example") or "").lower())
         orders = []
         for src in srcs:
@@ -128,7 +131,10 @@ def readings(session: Session) -> dict[str, Any]:
                 "name": com.name,
                 "mapping": mapping,
                 "mapping_confirmed": bool(mapping and mapping["status"].lower().startswith("confirmed")),
+                # the most frequent labels are kept per order: the listed count, and the true
+                # count when an order recorded it (at least that many exist)
                 "unplaced_labels": len(labels - {""}),
+                "unplaced_labels_at_least": max(most, len(labels - {""})),
                 "conventions_open": sum(1 for q in questions if not q.get("decision")),
                 "conventions": len(questions),
                 "orders": orders,

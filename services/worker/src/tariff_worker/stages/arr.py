@@ -294,6 +294,7 @@ def arr_localise_source(ctx: JobContext) -> dict:
                 "artefact": key,
                 "placed_rows": scan["placed_rows"],
                 "unplaced_rows": scan["unplaced_rows"],
+                "unplaced_labels": len(scan["unplaced"]),  # distinct labels; the 50 most frequent kept
                 "unplaced": scan["unplaced"][:50],
             },
             "preview": preview,

@@ -32,6 +32,7 @@ type Commission = {
   mapping: { id: string; version: number; status: string } | null;
   mapping_confirmed: boolean;
   unplaced_labels: number;
+  unplaced_labels_at_least: number;
   conventions_open: number;
   conventions: number;
   orders: Order[];
@@ -76,7 +77,11 @@ export default async function ReadingsBoard() {
                 <span className="badge" data-tone={c.mapping_confirmed ? "ok" : "warn"}>
                   {c.mapping_confirmed ? "confirmed" : "not confirmed"}
                 </span>{" "}
-                · {c.unplaced_labels} unplaced label(s) · {c.conventions_open} of {c.conventions} convention question(s) open ·{" "}
+                ·{" "}
+                {c.unplaced_labels_at_least > c.unplaced_labels
+                  ? `${c.unplaced_labels_at_least} unplaced labels (the ${c.unplaced_labels} most frequent in the workbench)`
+                  : `${c.unplaced_labels} unplaced label(s)`}{" "}
+                · {c.conventions_open} of {c.conventions} convention question(s) open ·{" "}
                 <Link href={`/arr/mappings/${encodeURIComponent(c.code)}`}>workbench →</Link>
               </p>
               <div className="table-wrap">

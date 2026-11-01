@@ -911,11 +911,35 @@ open-access view.
   Security Deposit") and "R&D Fund" are not placed (507.04 of East's 507.06 claimed gap) — the
   MPERC mapping's work, not a convention.  Seven states now have a real order read.
 
-  **Increment 48 (in progress): sub-rows read with their heading row.**  A row with a label and
+  **Increment 48 (2026-11-01): sub-rows read with their heading row.**  A row with a label and
   no values ("Interest & Finance Charges") is a heading, not a candidate; a following row whose
   label opens with a preposition ("On Consumer Security Deposit") is read with the heading's
-  leading words ("Interest on Consumer Security Deposit").  372 tests pass; the measurement on
-  the seven real orders is running and is recorded when it finishes.
+  leading words ("Interest on Consumer Security Deposit").  MPERC's 6 ARR-I1 failures are gone.
+  Dropping value-less rows as candidates lowered every order's count slightly (they were
+  blank candidates) and **uncovered a misplacement**: UERC's blank "Revenue" heading row had
+  stood on revenue at existing tariff and hidden the printed revenue, so ARR-I3 was never
+  evaluated; once evaluable it showed "Gap/(Surplus) of previous year" (897.38, carried into this
+  year's ARR) placed on this year's gap.  R.GAP now refuses previous-year and brought/carried-
+  forward labels; UERC's gap is read from "Adjusted Revenue (Surplus)/Gap" (307.12 approved).
+  Its 2 remaining ARR-I3 failures are UERC's gap convention, fully explained: its gap is net ARR
+  (ARR − NTI + the previous year's gap) less total revenue with additional sales (10,626.83 −
+  10,319.71 = 307.12); the identity's ARR less revenue at existing tariff misses −479.20 +
+  897.38 − 241.23 = 176.95 exactly.  The workbench poses it as UERC's gap-convention question.
+  **Measured, seven real orders:** UPERC 503 values, 2 failures; BERC 543, 3; HPERC 643, 0;
+  JSERC 457, 5; OERC 479, 0; **MPERC 264, 0**; UERC 163, 2 (convention).
+
+  **Increment 49 (2026-11-01): the ARR readings board.**  `GET /arr/readings` and `/arr/readings`
+  (nav "Readings", reviewer and administrator desks): every order whose ARR is read, by state and
+  commission, with its reading state, its chapter preview (chapters, tables read, values,
+  identity failures and how many a convention question explains), its review counts, its
+  dataset (fixture labelled), and **the next human step** in words (confirm the chapters, confirm
+  the mapping before real values can be approved, decide the pending values, publish); each
+  commission with its mapping and whether it is confirmed, its unplaced labels and its open
+  convention questions, linked to its workbench.  The localisation now records how many
+  distinct labels the scan could not place (the 50 most frequent are kept), so the board says
+  "N unplaced labels (the 50 most frequent in the workbench)" instead of a capped 50.  Live: 8
+  states, 10 orders (7 real), 3,052 values previewed in the real orders, every real order at
+  `chapters_proposed` waiting on a reviewer.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1462,6 +1486,10 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 
 ## Reading reliability ledger changes
 
+Increment 48 (sub-rows, A21): a value-less heading row gives its sub-rows their subject; a
+previous year's gap is not this year's.  Uncovered by dropping blank candidates: a heading row
+had hidden UERC's revenue.
+
 Increment 47 (three more states, A16–A20): lettered parts, a licensee per row, three-level
 sections in a long chapter, and two wrong readings found in MPERC's preview (a licensee
 column's voice; a label's qualifier) fixed; a mixed-case registry code.  Seven real orders
@@ -1516,7 +1544,8 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **Increment 48 (in progress): 372 passed** (+1 unit: sub-rows read with their heading row; the total reconciles).
+- **Increment 49 (2026-11-01): 374 passed** (+2 integration: the readings board lists a reading with its dataset, review counts and next step, and refuses an unauthenticated caller; the next step names the human decision).  Ruff, format, contracts-check (regenerated) and web typecheck clean.
+- **Increment 48 (2026-11-01): 372 passed** (+1 unit: sub-rows read with their heading row and the total reconciles; the previous year's gap is not this year's).
 - **Increment 47 (2026-11-01): 371 passed** (+4 unit: lettered parts; licensee per row; a long chapter split at its three-level sections; a licensee's column keeps its own voice and a label names what precedes its qualifier; +1 integration: a mixed-case registry code resolves).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 46 (2026-11-01): 366 passed** (+2 unit: short-year listing titles; icon links titled by their column group, a listing for a group of licensees, encoded URLs, an MYT order known by its file name, procedural documents set aside).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 45 (2026-11-01): 364 passed** (+1 unit: cross-border sales placed apart, a bare inter-state sale not; ARR-I4's hint and its pass under `loss_basis`; the integration conventions test now also answers the loss basis and drafts it).  Ruff, format, contracts-check and web typecheck clean.
@@ -1697,7 +1726,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 47) — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 49) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
