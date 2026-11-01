@@ -19,7 +19,7 @@ export default async function LibraryAdmin({ searchParams }: { searchParams: Pro
   if (sp.status) q.set("status", sp.status);
   if (sp.commission) q.set("commission", sp.commission);
   q.set("limit", "300");
-  const res = await apiTry<LibraryEntryOut[]>(`/library/entries?${q.toString()}`);
+  const [res, profiles] = await Promise.all([apiTry<LibraryEntryOut[]>(`/library/entries?${q.toString()}`), apiTry<string[]>("/library/discovery-profiles")]);
   return (
     <>
       <h1>Library administration</h1>
@@ -29,7 +29,7 @@ export default async function LibraryAdmin({ searchParams }: { searchParams: Pro
       <h2>Seed expected documents</h2>
       <SeedForm />
       <h2>Find documents on a commission&apos;s website</h2>
-      <DiscoverForm />
+      <DiscoverForm profiles={profiles.data ?? []} />
       <h2>Record a document</h2>
       <EntryForm />
       <h2>Entries</h2>

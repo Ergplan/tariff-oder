@@ -77,3 +77,14 @@ it adds no arithmetic of its own.
   audited accounts as an input source, which no case kind reads yet.
 - Organisation isolation is tested at the API (another organisation's case, assumption
   set, formulation and draft are 404).
+
+## Amendment (increment 32, 2026-11-01): discovery profiles
+
+Finding the official URL of each order is per commission and changes when a site changes, so
+it is data: `packages/discovery-profiles/<commission>.v<n>.json` lists the commission's
+listing pages and how to page through them (`static`, or `aspnet_year_select` for WebForms
+year filters), plus phrases that stand for several licensees ("State Discoms").  The engine
+behaves like a browser (posts only what a browser posts, one request at a time) and only
+**proposes**: a person ticks proposals before anything is recorded, and acquisition stays a
+separate job.  A profile is `draft` until the operator has checked it against the site.
+

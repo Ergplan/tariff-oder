@@ -725,6 +725,36 @@ def cmd_arr_scan(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_library_discover(args: argparse.Namespace) -> int:
+    """Page through a commission's listing pages with its discovery profile and write the
+    proposals (nothing is recorded).  Licensee names come from the database, or with
+    ``--registry`` from the seed registry, so it runs on a machine without the stack."""
+    from . import discovery
+    from .library import registry_names
+
+    profile = discovery.load_profile(args.commission)
+    if profile is None:
+        print(f"no discovery profile for {args.commission}", file=sys.stderr)
+        return 1
+    if args.registry:
+        out = discovery.run(profile, args.years, licensees=registry_names(profile.commission))
+    else:
+        from .db import session_scope
+        from .library import discover_with_profile
+
+        with session_scope() as s:
+            out = discover_with_profile(s, commission_code=profile.commission, fiscal_years=args.years)
+    for pg in out["pages"]:
+        print(f"{pg['listing']} {pg['fiscal_year']}: {pg['error'] or str(pg['documents']) + ' documents'}")
+    complete = sum(1 for p in out["proposals"] if p["complete"])
+    print(f"{len(out['proposals'])} proposals ({complete} complete) in {out['requests']} requests")
+    text = json.dumps(out, indent=2, ensure_ascii=False)
+    if args.out:
+        Path(args.out).write_text(text + "\n")
+        print(f"written to {args.out}")
+    return 0
+
+
 def cmd_check_config(args: argparse.Namespace) -> int:
     s = get_settings()
     from .adapters import build_adapters
@@ -851,6 +881,15 @@ def main(argv: list[str] | None = None) -> int:
         "--no-bucket", action="store_true", help="for a source: do not write arr-scan.json to the export bucket"
     )
     p.set_defaults(fn=cmd_arr_scan)
+
+    p = sub.add_parser(
+        "library-discover", help="propose library entries from a commission's listing pages (its discovery profile)"
+    )
+    p.add_argument("--commission", required=True)
+    p.add_argument("--years", nargs="+", required=True, help="financial years like FY2025-26")
+    p.add_argument("--registry", action="store_true", help="licensee names from the seed registry (no database)")
+    p.add_argument("--out", help="write the proposals as JSON here")
+    p.set_defaults(fn=cmd_library_discover)
 
     p = sub.add_parser("check-config", help="validate profile and adapters")
     p.set_defaults(fn=cmd_check_config)

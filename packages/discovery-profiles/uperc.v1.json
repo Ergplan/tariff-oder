@@ -1,0 +1,25 @@
+{
+  "id": "uperc-discovery",
+  "version": 1,
+  "commission": "UPERC",
+  "status": "draft: written against the live site on 2026-11-01; re-check when the site changes",
+  "note": "UPERC lists tariff orders on an ASP.NET page: the default view is the current financial year; 'Previous Years' (a postback) shows a year drop-down (2008-2009 onwards) and 'Show' lists the documents issued in that year. Links are relative and unquoted (App_File/...pdf); the description sits in the table row, not the link.",
+  "licensee_groups": {
+    "State Discoms": ["PVVNL", "PUVVNL", "MVVNL", "DVVNL", "KESCO"],
+    "State DISCOMs": ["PVVNL", "PUVVNL", "MVVNL", "DVVNL", "KESCO"]
+  },
+  "listings": [
+    {
+      "name": "Tariff orders",
+      "url": "https://www.uperc.org/Tariff_Order_Users.aspx",
+      "method": "aspnet_year_select",
+      "open_event": "ctl00$ContentPlaceHolder1$btnAdvancedFilter",
+      "year_field": "ctl00$ContentPlaceHolder1$ddlFYear",
+      "year_format": "{start}-{end4}",
+      "year_postback": true,
+      "submit_name": "ctl00$ContentPlaceHolder1$btnShow",
+      "submit_value": "Show",
+      "listing_year_note": "a year's list holds the documents issued in that financial year; an order for the ARR of FY N is usually issued in FY N"
+    }
+  ]
+}

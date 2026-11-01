@@ -19,6 +19,8 @@ from ..schemas import (
     LibraryDiscoverRequest,
     LibraryEntryIn,
     LibraryEntryOut,
+    LibraryProfileDiscoverOut,
+    LibraryProfileDiscoverRequest,
     LibraryProposal,
     LibrarySeedOut,
     LibrarySeedRequest,
@@ -147,3 +149,25 @@ def discover(body: LibraryDiscoverRequest, principal: Principal = Depends(requir
 
     with session_scope() as s:
         return [LibraryProposal(**p) for p in do(s, **body.model_dump())]
+
+
+@router.get("/discovery-profiles", response_model=list[str])
+def discovery_profiles(principal: Principal = Depends(require_analyst)) -> list[str]:
+    """Commissions whose listing pages the library can page through by itself."""
+    from ..discovery import profile_commissions
+
+    return profile_commissions()
+
+
+@router.post("/discover/profile", response_model=LibraryProfileDiscoverOut)
+def discover_with_profile(
+    body: LibraryProfileDiscoverRequest, principal: Principal = Depends(require_admin)
+) -> LibraryProfileDiscoverOut:
+    """Page through a commission's listing pages with its discovery profile (one request at a
+    time) for the years asked.  Nothing is recorded: the desk confirms proposals with
+    ``/entries/bulk``."""
+    from ..library import discover_with_profile as do
+
+    with session_scope() as s:
+        out = do(s, commission_code=body.commission_code, fiscal_years=body.fiscal_years)
+        return LibraryProfileDiscoverOut(**out)

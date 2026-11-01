@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 31: true-up and APR cases — sourced actuals against the reviewed approval, a frozen variance statement and its draft; ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 32: commission discovery profiles — UPERC's year-by-year listing read live; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -551,6 +551,36 @@ open-access view.
   in the live stack through the browser on SYNTH-DISCOM FY2025-26 (15 lines: one actual
   entered through the form, statement computed, frozen, drafted; 45 numbers traced).
   Synthetic data only; no real true-up has been prepared.
+
+  **Increment 32 (2026-11-01): commission discovery profiles.**  How the library finds each
+  order's official URL is now data per commission (`packages/discovery-profiles/`), followed by
+  an engine (`tariff_api/discovery.py`) for plain listing pages and ASP.NET WebForms pages with
+  a financial-year drop-down (view state carried as a browser would; disabled inputs and empty
+  drop-downs not posted, which UPERC's event validation otherwise refuses; one request at a
+  time with a pause).  `uperc.v1.json` (status draft) pages through UPERC's tariff-order list:
+  "Previous Years" postback, select the year, "Show".  **Run live from this session on
+  2026-11-01** (`tariff-api library-discover --commission UPERC --years FY2024-25 FY2025-26
+  FY2026-27 --registry`): 8 requests, 34 + 16 + 19 documents listed, 69 proposals covering a
+  tariff-order proposal for each of the seven UP licensees (NPCL, UPPTCL, PVVNL, PUVVNL,
+  MVVNL, DVVNL, KESCO) in each of the three years (21 slots); 7 complete, the rest flagged:
+  scanned twins of a listed text or digitally signed copy, corrigenda (recorded with the order
+  they correct), two documents competing for one slot (the person chooses), titles naming no
+  registry licensee (NIDP, UPSLDC), one APTEL appeal order.  Nothing was recorded or fetched:
+  proposals wait for a person.  The run found and fixed real defects in the generic
+  proposer: UPERC's links are unquoted (`href=App_File/….pdf`, previously missed), the
+  description sits in the table row (the link shows the file name), and "Tariff Order … in
+  Petition no 2039/2023" was guessed a petition.  Proposals now also carry the years and
+  voices the title says the order decides (true-up FY X, APR FY Y, ARR FY Z), the copy variant
+  and preference, and the listing; an order for "State Discoms" is proposed for each of the
+  five discoms.  An entry whose URL another entry has already acquired is linked to that
+  source without fetching again.  API `GET /library/discovery-profiles`,
+  `POST /library/discover/profile` (administrator); the library admin form switches to the
+  profile when the commission has one.  **Not done:** the sandbox containers have no
+  outbound network, so the same run through the API here reports `request failed:
+  ConnectError` per page (on the VM it reaches the site); profiles for other commissions;
+  UPERC's petitions and regulations pages; a combined order is registered once with the
+  first licensee as its source licensee (reading the other discoms' ARR from it needs a
+  source with several licensees — open).
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1105,6 +1135,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 32 (2026-11-01): 346 passed** (+4 unit: the WebForms engine against a local server that refuses what a browser would not post, proposals from its listing, a refused post reported, the UPERC profile loads; the library integration test also links a twin entry without fetching and checks the profile endpoints).
 - **Increment 31 (2026-11-01): 342 passed** (+2 integration: a true-up case from actuals to draft — grounding refusals, isolation, identity block, stale and frozen statements, trace; an APR case with an estimate).
 - **Increment 30 (2026-11-01): 340 passed** (+1 unit: generic fallbacks; the end-to-end test asserts chapter assignment).
 - **Increment 29 (2026-11-01): 339 passed** (+2 unit: the live ARR channel with mocked HTTP; discovery).
@@ -1269,6 +1300,12 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+000000000000. **Operator (increment 32):** on the VM, `uv run tariff-api library-discover
+   --commission UPERC --years FY2024-25 FY2025-26 FY2026-27 --out uperc.json` (or `/library` →
+   Find documents → UPERC), tick the proposals (prefer the digitally signed copy; choose one
+   of two for the FY2024-25 slots), record and acquire.  **Engineering next:** discovery
+   profiles for the next commissions the operator names (each needs its site's listing
+   checked live); sources with several licensees for combined orders.
 00000000000. **Engineering next (increment 31):** commission true-up formats as data (like the
    petition templates); organisation-owned sources so a client's private accounts can be
    grounded rather than stated; normative checks of actuals against regulation parameters with

@@ -1672,6 +1672,32 @@ class LibraryProposal(BaseModel):
     utility_code: str | None
     notes: list[str]
     complete: bool
+    decides: list[dict[str, Any]] = Field(default_factory=list)  # years and voices the title names
+    variant: str | None = None  # scanned | digitally_signed
+    preferred: bool = True  # false for a scanned copy whose text copy is listed too
+    listing: str | None = None  # the listing page (and year) it was found on
+
+
+class LibraryProfileDiscoverRequest(BaseModel):
+    commission_code: str
+    fiscal_years: list[str] = Field(min_length=1, max_length=6)
+
+
+class LibraryDiscoveryPage(BaseModel):
+    listing: str
+    fiscal_year: str
+    url: str
+    documents: int
+    error: str | None
+
+
+class LibraryProfileDiscoverOut(BaseModel):
+    """What a discovery profile found: the pages it read (or why not) and the proposals."""
+
+    profile: dict[str, Any]
+    pages: list[LibraryDiscoveryPage]
+    proposals: list[LibraryProposal]
+    requests: int
 
 
 class LibrarySeedOut(BaseModel):

@@ -5024,6 +5024,46 @@
         "title": "LibraryDiscoverRequest",
         "type": "object"
       },
+      "LibraryDiscoveryPage": {
+        "properties": {
+          "documents": {
+            "title": "Documents",
+            "type": "integer"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "fiscal_year": {
+            "title": "Fiscal Year",
+            "type": "string"
+          },
+          "listing": {
+            "title": "Listing",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "listing",
+          "fiscal_year",
+          "url",
+          "documents",
+          "error"
+        ],
+        "title": "LibraryDiscoveryPage",
+        "type": "object"
+      },
       "LibraryEntryIn": {
         "properties": {
           "commission_code": {
@@ -5261,6 +5301,65 @@
         "title": "LibraryEntryOut",
         "type": "object"
       },
+      "LibraryProfileDiscoverOut": {
+        "description": "What a discovery profile found: the pages it read (or why not) and the proposals.",
+        "properties": {
+          "pages": {
+            "items": {
+              "$ref": "#/components/schemas/LibraryDiscoveryPage"
+            },
+            "title": "Pages",
+            "type": "array"
+          },
+          "profile": {
+            "additionalProperties": true,
+            "title": "Profile",
+            "type": "object"
+          },
+          "proposals": {
+            "items": {
+              "$ref": "#/components/schemas/LibraryProposal"
+            },
+            "title": "Proposals",
+            "type": "array"
+          },
+          "requests": {
+            "title": "Requests",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "profile",
+          "pages",
+          "proposals",
+          "requests"
+        ],
+        "title": "LibraryProfileDiscoverOut",
+        "type": "object"
+      },
+      "LibraryProfileDiscoverRequest": {
+        "properties": {
+          "commission_code": {
+            "title": "Commission Code",
+            "type": "string"
+          },
+          "fiscal_years": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "minItems": 1,
+            "title": "Fiscal Years",
+            "type": "array"
+          }
+        },
+        "required": [
+          "commission_code",
+          "fiscal_years"
+        ],
+        "title": "LibraryProfileDiscoverRequest",
+        "type": "object"
+      },
       "LibraryProposal": {
         "description": "A guessed library entry from a listing page; a person confirms it before it is recorded.",
         "properties": {
@@ -5271,6 +5370,14 @@
           "complete": {
             "title": "Complete",
             "type": "boolean"
+          },
+          "decides": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Decides",
+            "type": "array"
           },
           "document_kind": {
             "anyOf": [
@@ -5287,12 +5394,28 @@
             "title": "Fiscal Year",
             "type": "string"
           },
+          "listing": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Listing"
+          },
           "notes": {
             "items": {
               "type": "string"
             },
             "title": "Notes",
             "type": "array"
+          },
+          "preferred": {
+            "default": true,
+            "title": "Preferred",
+            "type": "boolean"
           },
           "title": {
             "title": "Title",
@@ -5312,6 +5435,17 @@
               }
             ],
             "title": "Utility Code"
+          },
+          "variant": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Variant"
           }
         },
         "required": [
@@ -15561,6 +15695,204 @@
           }
         },
         "summary": "Discover",
+        "tags": [
+          "library"
+        ]
+      }
+    },
+    "/library/discover/profile": {
+      "post": {
+        "description": "Page through a commission's listing pages with its discovery profile (one request at a\ntime) for the years asked.  Nothing is recorded: the desk confirms proposals with\n``/entries/bulk``.",
+        "operationId": "discover_with_profile_library_discover_profile_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LibraryProfileDiscoverRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LibraryProfileDiscoverOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Discover With Profile",
+        "tags": [
+          "library"
+        ]
+      }
+    },
+    "/library/discovery-profiles": {
+      "get": {
+        "description": "Commissions whose listing pages the library can page through by itself.",
+        "operationId": "discovery_profiles_library_discovery_profiles_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Response Discovery Profiles Library Discovery Profiles Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Discovery Profiles",
         "tags": [
           "library"
         ]

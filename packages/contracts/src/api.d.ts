@@ -805,6 +805,48 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/library/discover/profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Discover With Profile
+         * @description Page through a commission's listing pages with its discovery profile (one request at a
+         *     time) for the years asked.  Nothing is recorded: the desk confirms proposals with
+         *     ``/entries/bulk``.
+         */
+        post: operations["discover_with_profile_library_discover_profile_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/library/discovery-profiles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Discovery Profiles
+         * @description Commissions whose listing pages the library can page through by itself.
+         */
+        get: operations["discovery_profiles_library_discovery_profiles_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/library/entries": {
         parameters: {
             query?: never;
@@ -3771,6 +3813,19 @@ export interface components {
             /** Page Url */
             page_url: string;
         };
+        /** LibraryDiscoveryPage */
+        LibraryDiscoveryPage: {
+            /** Documents */
+            documents: number;
+            /** Error */
+            error: string | null;
+            /** Fiscal Year */
+            fiscal_year: string;
+            /** Listing */
+            listing: string;
+            /** Url */
+            url: string;
+        };
         /** LibraryEntryIn */
         LibraryEntryIn: {
             /** Commission Code */
@@ -3838,6 +3893,29 @@ export interface components {
             utility: string | null;
         };
         /**
+         * LibraryProfileDiscoverOut
+         * @description What a discovery profile found: the pages it read (or why not) and the proposals.
+         */
+        LibraryProfileDiscoverOut: {
+            /** Pages */
+            pages: components["schemas"]["LibraryDiscoveryPage"][];
+            /** Profile */
+            profile: {
+                [key: string]: unknown;
+            };
+            /** Proposals */
+            proposals: components["schemas"]["LibraryProposal"][];
+            /** Requests */
+            requests: number;
+        };
+        /** LibraryProfileDiscoverRequest */
+        LibraryProfileDiscoverRequest: {
+            /** Commission Code */
+            commission_code: string;
+            /** Fiscal Years */
+            fiscal_years: string[];
+        };
+        /**
          * LibraryProposal
          * @description A guessed library entry from a listing page; a person confirms it before it is recorded.
          */
@@ -3846,18 +3924,31 @@ export interface components {
             commission_code: string;
             /** Complete */
             complete: boolean;
+            /** Decides */
+            decides?: {
+                [key: string]: unknown;
+            }[];
             /** Document Kind */
             document_kind: string | null;
             /** Fiscal Year */
             fiscal_year: string;
+            /** Listing */
+            listing?: string | null;
             /** Notes */
             notes: string[];
+            /**
+             * Preferred
+             * @default true
+             */
+            preferred: boolean;
             /** Title */
             title: string;
             /** Url */
             url: string;
             /** Utility Code */
             utility_code: string | null;
+            /** Variant */
+            variant?: string | null;
         };
         /** LibrarySeedOut */
         LibrarySeedOut: {
@@ -9664,6 +9755,176 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["LibraryProposal"][];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    discover_with_profile_library_discover_profile_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LibraryProfileDiscoverRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LibraryProfileDiscoverOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    discovery_profiles_library_discovery_profiles_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": string[];
                 };
             };
             /** @description Unauthorized */

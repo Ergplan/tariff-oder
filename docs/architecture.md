@@ -165,5 +165,7 @@ written by reviewers; organisation objects are open to its members only, others 
 platform administrator may read them but not write.  Endpoints: `/organisations`,
 `/cases` (and `/{id}/assumptions`, `/formulate`, `/freeze`, `/draft`, `/revise`,
 `/actuals`, `/statement`, `/statement/freeze`), `/library` (coverage, entries, seed,
-reconcile, bulk, acquire, discover).  Web: `/client` (workspace, library, licensees, cases),
+reconcile, bulk, acquire, discover, discover/profile, discovery-profiles).  Discovery profiles
+(`packages/discovery-profiles`, engine `discovery.py`) page through a commission's listing
+pages and propose entries; a person records them; `acquire_library_entry` fetches.  Web: `/client` (workspace, library, licensees, cases),
 `/library`, `/admin/organisations`.

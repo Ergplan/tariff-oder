@@ -27,6 +27,9 @@ def acquire_library_entry(ctx: JobContext) -> dict:
         url = e.url
         if not url:
             raise JobFailure("validation_failed", "the entry has no URL", retry=False)
+        twin = library.link_acquired_twin(s, e)
+        if twin is not None:
+            return {"status": "linked to the copy already acquired from the same URL", "source_id": str(twin.id)}
         e.attempts += 1
         e.last_attempt_at = datetime.now(UTC)
     try:

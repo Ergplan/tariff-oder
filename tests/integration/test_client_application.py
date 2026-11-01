@@ -260,6 +260,30 @@ def test_library_seed_locate_acquire_and_coverage(client, runner, object_store_r
     assert src["provenance_url"].endswith("/order.pdf") and src["dataset_kind"] == "real"
     assert client.post(f"/library/entries/{eid}/acquire", headers=headers(ADMIN)).status_code == 409
     run_all(runner)  # the acquired order is inventoried like any upload
+    # a combined order listed for another licensee: linked to the copy already acquired, not
+    # fetched again (the server is down by now)
+    twin = client.put("/library/entries", json={**entry, "utility_code": "KESCO"}, headers=headers(ADMIN)).json()["id"]
+    assert client.post(f"/library/entries/{twin}/acquire", headers=headers(ADMIN)).status_code == 202
+    run_all(runner)
+    t = next(e for e in client.get("/library/entries?utility=KESCO", headers=headers(ADMIN)).json() if e["id"] == twin)
+    assert t["status"] == "acquired" and t["source_id"] == got[eid]["source_id"] and t["attempts"] == 0
+
+    # discovery profiles: listed for analysts; a commission without one is told so (no fetch)
+    assert "UPERC" in client.get("/library/discovery-profiles", headers=headers(CLIENT_A)).json()
+    r = client.post(
+        "/library/discover/profile",
+        json={"commission_code": "KERC", "fiscal_years": ["FY2025-26"]},
+        headers=headers(ADMIN),
+    )
+    assert r.status_code == 422 and "no discovery profile" in r.json()["detail"]
+    assert (
+        client.post(
+            "/library/discover/profile",
+            json={"commission_code": "UPERC", "fiscal_years": ["FY2025-26"]},
+            headers=headers(CLIENT_A),
+        ).status_code
+        == 403
+    )
 
     cov = client.get("/library/coverage", headers=headers(CLIENT_A)).json()
     assert set(years) <= set(cov["fiscal_years"]) and cov["totals"]["acquired"] >= 1 and cov["totals"]["failed"] >= 1
