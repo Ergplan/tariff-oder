@@ -1,0 +1,52 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — contribution to the contingency reserve, a share of the opening gross fixed assets",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Contingency reserve (the ARR format's row 42).",
+ "rules": [
+  {
+   "id": "uperc.contingency.contribution",
+   "version": 1,
+   "status": "draft",
+   "title": "Contribution towards the contingency fund",
+   "output": "contingency_contribution",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "gfa_opening * share",
+   "inputs": {
+    "gfa_opening": {
+     "unit": "INR_crore",
+     "source": "record:gfa_opening_total",
+     "note": "the opening gross fixed assets of the year"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "0.25",
+     "note": "0.25 %, as NPCL's ARR format applies it; the clause (and its limits) to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — contribution to the contingency reserve, a share of the opening gross fixed assets",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.OTHER.CONTINGENCY",
+   "note": "NPCL claims it in the true-up years only (nil in the APR and ARR years)"
+  }
+ ]
+}

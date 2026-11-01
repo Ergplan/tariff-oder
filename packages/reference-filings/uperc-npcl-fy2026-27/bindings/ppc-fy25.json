@@ -1,0 +1,71 @@
+{
+ "type": "row_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "PPC FY 25",
+ "fiscal_year": "FY2024-25",
+ "note": "The true-up year's power purchase as billed (PPC FY 25, rows 11–58: long-term, medium-term, short-term and renewable sources, the RTM sale and DSM; subtotals skipped).  Per source: billed (P = fixed + energy + other), net of rebate (R), with transmission (V), the rate on the energy billed (L), the cost per unit at NPCL's bus (W) and the inter-state, intra-state and total losses (G, I, K).  Totals: the net cost (V60) the ARR carries as power purchase (row 20 = the grand total less transmission and arrears), the bills (P60), the rebate (Q60) and the energy at the bus (J60, the ARR's row 8).",
+ "rows": [
+  11,
+  58
+ ],
+ "label_col": "C",
+ "inputs": {
+  "record:pp_mu_exported": "F",
+  "record:pp_mu_periphery": "H",
+  "record:pp_mu_at_bus": "J",
+  "record:pp_fixed_charges": "M",
+  "record:pp_energy_charges": "N",
+  "record:pp_other_charges": "O",
+  "record:pp_rebate": "Q",
+  "record:pp_tx_pgcil": "S",
+  "record:pp_tx_upptcl": "T"
+ },
+ "units": {
+  "F": "MU",
+  "H": "MU",
+  "J": "MU",
+  "L": "INR_per_kWh",
+  "W": "INR_per_kWh",
+  "G": "fraction",
+  "I": "fraction",
+  "K": "fraction"
+ },
+ "blank_is_zero": {
+  "columns": [
+   "F",
+   "H",
+   "J",
+   "M",
+   "N",
+   "O",
+   "Q",
+   "S",
+   "T"
+  ],
+  "why": "NPCL leaves a cell blank where a source has none — a charge it does not bill, or energy for a charges-only row (the JITPL incentive, row 25); its totals (P = SUM(M:O), R = P − Q, U = S + T, V = U + R, the SUBTOTALs of F, H, J) read the blanks as zero.  A row with no energy has no rate or loss (blocked, never 0)."
+ },
+ "outputs": {
+  "pp_billed": "P",
+  "pp_net": "R",
+  "pp_tx": "U",
+  "pp_net_with_tx": "V",
+  "pp_rate_billed": "L",
+  "pp_unit_cost_bus": "W",
+  "pp_loss_inter": "G",
+  "pp_loss_intra": "I",
+  "pp_loss_total": "K"
+ },
+ "totals": {
+  "pp_net_with_tx_total": [
+   "V60",
+   "ARR!J20"
+  ],
+  "pp_billed_total": "P60",
+  "pp_rebate_total": "Q60",
+  "pp_mu_at_bus_total": [
+   "J60",
+   "ARR!J8"
+  ]
+ },
+ "places": 4
+}

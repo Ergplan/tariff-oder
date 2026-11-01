@@ -8998,6 +8998,31 @@
  ],
  "records": [
   {
+   "binding": "arr-contingency.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2023-24",
+     "category": "contingency G42",
+     "output": "contingency_contribution",
+     "result": "match",
+     "filed": "5.2324",
+     "computed": "5.2324",
+     "why": null
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "contingency J42",
+     "output": "contingency_contribution",
+     "result": "match",
+     "filed": "5.6149",
+     "computed": "5.6149",
+     "why": null
+    }
+   ]
+  },
+  {
    "binding": "esr3-revenue-fy25.json",
    "checks": [
     {
@@ -18998,6 +19023,1921 @@
      "result": "match",
      "filed": "0.0000",
      "computed": "0.0000",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "ppc-fy25-arrears.json",
+   "checks": [
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Add. Coal for FY_23 (90% Booked in FY23) (row 69)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "73.2456",
+     "computed": "73.2456",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Add. Coal for FY_23 (90% Booked in FY23) (row 69)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "73.2456",
+     "computed": "73.2456",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Add. Coal for FY_23 (10% Booked in FY25) (row 70)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "6.5532",
+     "computed": "6.5532",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Add. Coal for FY_23 (10% Booked in FY25) (row 70)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "6.5532",
+     "computed": "6.5532",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Refund against True up of  Additional Coal FY23 (row 71)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "-0.2110",
+     "computed": "-0.2110",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Refund against True up of  Additional Coal FY23 (row 71)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "-0.2110",
+     "computed": "-0.2110",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Change in Law for FY_23 (100% Booked in FY23) (row 72)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "5.2539",
+     "computed": "5.2539",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Change in Law for FY_23 (100% Booked in FY23) (row 72)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "5.2539",
+     "computed": "5.2539",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Carrying Cost on above for FY_23 (row 73)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "4.3651",
+     "computed": "4.3651",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Carrying Cost on above for FY_23 (row 73)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "4.3651",
+     "computed": "4.3651",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Add. Coal for FY_24 (90% Booked in FY24) (row 74)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "19.9582",
+     "computed": "19.9582",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Add. Coal for FY_24 (90% Booked in FY24) (row 74)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "19.9582",
+     "computed": "19.9582",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Add. Coal for FY_24 (10% Booked in FY25) (row 75)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "2.2163",
+     "computed": "2.2163",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Add. Coal for FY_24 (10% Booked in FY25) (row 75)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "2.2163",
+     "computed": "2.2163",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Change in Law for FY_24 (100% Booked in FY24) (row 76)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "4.9774",
+     "computed": "4.9774",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Change in Law for FY_24 (100% Booked in FY24) (row 76)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "4.9774",
+     "computed": "4.9774",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Carrying Cost for FY_24 (Booked in FY25) (row 77)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "11.3731",
+     "computed": "11.3731",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Carrying Cost for FY_24 (Booked in FY25) (row 77)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "11.3731",
+     "computed": "11.3731",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL V78",
+     "output": "pp_net_with_tx_total",
+     "result": "match",
+     "filed": "127.7317",
+     "computed": "127.7317",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL ARR!J22",
+     "output": "pp_net_with_tx_total",
+     "result": "match",
+     "filed": "127.7317",
+     "computed": "127.7317",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "ppc-fy25-transmission.json",
+   "checks": [
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Inter State Transmission Charges (row 61)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "194.1035",
+     "computed": "194.1035",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Inter State Transmission Charges (row 61)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "194.1035",
+     "computed": "194.1035",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Intra State Transmission Charges (row 62)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "99.5634",
+     "computed": "99.5634",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Intra State Transmission Charges (row 62)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "99.5634",
+     "computed": "99.5634",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "SLDC Application Fee (row 63)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.5235",
+     "computed": "0.5235",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "SLDC Application Fee (row 63)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "0.5235",
+     "computed": "0.5235",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Reactive Power Purchase (row 64)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.2088",
+     "computed": "0.2088",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Reactive Power Purchase (row 64)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "0.2088",
+     "computed": "0.2088",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL ARR!J23",
+     "output": "pp_net_with_tx_total",
+     "result": "match",
+     "filed": "294.3991",
+     "computed": "294.3991",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "ppc-fy25.json",
+   "checks": [
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "547.5151",
+     "computed": "547.5151",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "539.3024",
+     "computed": "539.3024",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "539.3024",
+     "computed": "539.3024",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.0675",
+     "computed": "4.0675",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "4.3594",
+     "computed": "4.3594",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0363",
+     "computed": "0.0363",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0670",
+     "computed": "0.0670",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "11.9390",
+     "computed": "11.9390",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "11.7002",
+     "computed": "11.7002",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "11.7002",
+     "computed": "11.7002",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "3.4594",
+     "computed": "3.4594",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "3.5730",
+     "computed": "3.5730",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "PTC (Wind) (row 15)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.6519",
+     "computed": "0.6519",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.6389",
+     "computed": "0.6389",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "0.6389",
+     "computed": "0.6389",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "6.9188",
+     "computed": "6.9188",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "6.9188",
+     "computed": "6.9188",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "GNIDA (Solar) (row 16)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.1742",
+     "computed": "0.1742",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.1707",
+     "computed": "0.1707",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "0.1707",
+     "computed": "0.1707",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.3802",
+     "computed": "5.3802",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "5.3802",
+     "computed": "5.3802",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "APPCPL (Solar) (row 17)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "16.6128",
+     "computed": "16.6128",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "16.2806",
+     "computed": "16.2806",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "16.2806",
+     "computed": "16.2806",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "3.0184",
+     "computed": "3.0184",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "3.1175",
+     "computed": "3.1175",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Adani (Solar) (row 18)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "14.3984",
+     "computed": "14.3984",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "14.1281",
+     "computed": "14.1281",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "14.1281",
+     "computed": "14.1281",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "3.2204",
+     "computed": "3.2204",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "3.3262",
+     "computed": "3.3262",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Tata (Solar) (row 19)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL (Solar) (row 20)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "309.6071",
+     "computed": "309.6071",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "306.5111",
+     "computed": "306.5111",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "306.5111",
+     "computed": "306.5111",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.0617",
+     "computed": "4.0617",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "4.3537",
+     "computed": "4.3537",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0364",
+     "computed": "0.0364",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) (row 24)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0671",
+     "computed": "0.0671",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) - incentive (row 25)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "1.0299",
+     "computed": "1.0299",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) - incentive (row 25)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "1.0196",
+     "computed": "1.0196",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-JITPL) - incentive (row 25)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "1.0196",
+     "computed": "1.0196",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "362.9313",
+     "computed": "362.9313",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "359.3020",
+     "computed": "359.3020",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "359.3020",
+     "computed": "359.3020",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.2185",
+     "computed": "5.2185",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "5.5940",
+     "computed": "5.5940",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0365",
+     "computed": "0.0365",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "JITPL (row 26)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0671",
+     "computed": "0.0671",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "668.1685",
+     "computed": "668.1685",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "668.1685",
+     "computed": "668.1685",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "668.1685",
+     "computed": "668.1685",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "6.2324",
+     "computed": "6.2324",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "6.6642",
+     "computed": "6.6642",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0341",
+     "computed": "0.0341",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (row 34)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0648",
+     "computed": "0.0648",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "20.0934",
+     "computed": "20.0934",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "19.6911",
+     "computed": "19.6911",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "19.6911",
+     "computed": "19.6911",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "3.9359",
+     "computed": "3.9359",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "4.2215",
+     "computed": "4.2215",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0370",
+     "computed": "0.0370",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TPTCL(Source-TPSL) (row 47)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0676",
+     "computed": "0.0676",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "86.2221",
+     "computed": "86.2221",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "86.2221",
+     "computed": "86.2221",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "86.2221",
+     "computed": "86.2221",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.6376",
+     "computed": "5.6376",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "6.0283",
+     "computed": "6.0283",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0341",
+     "computed": "0.0341",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0318",
+     "computed": "0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Power Exchange (Renewable) (row 48)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0648",
+     "computed": "0.0648",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.5942",
+     "computed": "0.5942",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.5942",
+     "computed": "0.5942",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "0.5942",
+     "computed": "0.5942",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "3.7250",
+     "computed": "3.7250",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "3.7250",
+     "computed": "3.7250",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Net Feed only (row 49)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.0793",
+     "computed": "0.0793",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.0793",
+     "computed": "0.0793",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "0.0793",
+     "computed": "0.0793",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "2.0000",
+     "computed": "2.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "2.0000",
+     "computed": "2.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "Net Metering-Energy settled (row 50)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "15.9864",
+     "computed": "15.9864",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "15.9864",
+     "computed": "15.9864",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "15.9864",
+     "computed": "15.9864",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_rate_billed",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_unit_cost_bus",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_loss_inter",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_loss_intra",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "REC Purchase (row 51)",
+     "output": "pp_loss_total",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "-12.5269",
+     "computed": "-12.5269",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "-12.5269",
+     "computed": "-12.5269",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "-12.5269",
+     "computed": "-12.5269",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.0741",
+     "computed": "5.0741",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "4.9177",
+     "computed": "4.9177",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "-0.0318",
+     "computed": "-0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "IEX (RTM Sale Market) (row 57)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "-0.0318",
+     "computed": "-0.0318",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "20.6395",
+     "computed": "20.6395",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "20.6395",
+     "computed": "20.6395",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_net_with_tx",
+     "result": "match",
+     "filed": "20.6395",
+     "computed": "20.6395",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "27.4290",
+     "computed": "27.4290",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_unit_cost_bus",
+     "result": "match",
+     "filed": "27.4290",
+     "computed": "27.4290",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_loss_inter",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_loss_intra",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DSM/UI (row 58)",
+     "output": "pp_loss_total",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL V60",
+     "output": "pp_net_with_tx_total",
+     "result": "match",
+     "filed": "2047.9078",
+     "computed": "2047.9078",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL ARR!J20",
+     "output": "pp_net_with_tx_total",
+     "result": "match",
+     "filed": "2047.9078",
+     "computed": "2047.9078",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL P60",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "2064.1163",
+     "computed": "2064.1163",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL Q60",
+     "output": "pp_rebate_total",
+     "result": "match",
+     "filed": "16.2085",
+     "computed": "16.2085",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL J60",
+     "output": "pp_mu_at_bus_total",
+     "result": "match",
+     "filed": "3888.4552",
+     "computed": "3888.4552",
+     "why": null
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL ARR!J8",
+     "output": "pp_mu_at_bus_total",
+     "result": "match",
+     "filed": "3888.4552",
+     "computed": "3888.4552",
      "why": null
     }
    ]

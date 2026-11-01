@@ -333,6 +333,516 @@
    },
    "examples": [],
    "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.billed",
+   "version": 1,
+   "status": "draft",
+   "title": "Charges billed by the source (fixed + energy + other)",
+   "output": "pp_billed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "fixed + energy + other",
+   "inputs": {
+    "fixed": {
+     "unit": "INR_crore",
+     "source": "record:pp_fixed_charges"
+    },
+    "energy": {
+     "unit": "INR_crore",
+     "source": "record:pp_energy_charges"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "record:pp_other_charges"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source",
+   "note": "the true-up year's billed format (PPC of the true-up year): the bills as paid"
+  },
+  {
+   "id": "uperc.pp.billed.net",
+   "version": 1,
+   "status": "draft",
+   "title": "Net charges after rebate",
+   "output": "pp_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "billed - rebate",
+   "inputs": {
+    "billed": {
+     "unit": "INR_crore",
+     "source": "rule:pp_billed"
+    },
+    "rebate": {
+     "unit": "INR_crore",
+     "source": "record:pp_rebate",
+     "note": "rebate for prompt payment, positive"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.with_tx",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost of the source with its transmission charges",
+   "output": "pp_net_with_tx",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "net + tx",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:pp_net"
+    },
+    "tx": {
+     "unit": "INR_crore",
+     "source": "rule:pp_tx"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.rate_billed",
+   "version": 1,
+   "status": "draft",
+   "title": "Rate on the energy billed",
+   "output": "pp_rate_billed",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "net / billed_mu",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:pp_net"
+    },
+    "billed_mu": {
+     "unit": "MU",
+     "source": "record:pp_mu_exported"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.unit_cost_bus",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost per unit received at the licensee's bus",
+   "output": "pp_unit_cost_bus",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "net / at_bus",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:pp_net"
+    },
+    "at_bus": {
+     "unit": "MU",
+     "source": "record:pp_mu_at_bus"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.loss_inter",
+   "version": 1,
+   "status": "draft",
+   "title": "Inter-state loss",
+   "output": "pp_loss_inter",
+   "unit": "fraction",
+   "schedule": "R-SCH-3",
+   "formula": "1 - periphery / billed",
+   "inputs": {
+    "periphery": {
+     "unit": "MU",
+     "source": "record:pp_mu_periphery"
+    },
+    "billed": {
+     "unit": "MU",
+     "source": "record:pp_mu_exported"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.loss_intra",
+   "version": 1,
+   "status": "draft",
+   "title": "Intra-state loss",
+   "output": "pp_loss_intra",
+   "unit": "fraction",
+   "schedule": "R-SCH-3",
+   "formula": "1 - at_bus / periphery",
+   "inputs": {
+    "at_bus": {
+     "unit": "MU",
+     "source": "record:pp_mu_at_bus"
+    },
+    "periphery": {
+     "unit": "MU",
+     "source": "record:pp_mu_periphery"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.loss_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Total loss to the licensee's bus",
+   "output": "pp_loss_total",
+   "unit": "fraction",
+   "schedule": "R-SCH-3",
+   "formula": "1 - at_bus / billed",
+   "inputs": {
+    "at_bus": {
+     "unit": "MU",
+     "source": "record:pp_mu_at_bus"
+    },
+    "billed": {
+     "unit": "MU",
+     "source": "record:pp_mu_exported"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.net_with_tx_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost of power purchase with transmission, total",
+   "output": "pp_net_with_tx_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "sources",
+   "inputs": {
+    "sources": {
+     "unit": "INR_crore",
+     "source": "sum:pp_net_with_tx"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.pp.billed.billed_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Charges billed, total",
+   "output": "pp_billed_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "sources",
+   "inputs": {
+    "sources": {
+     "unit": "INR_crore",
+     "source": "sum:pp_billed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.pp.billed.rebate_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Rebate, total",
+   "output": "pp_rebate_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "sources",
+   "inputs": {
+    "sources": {
+     "unit": "INR_crore",
+     "source": "sum:pp_rebate_source"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.pp.billed.rebate_source",
+   "version": 1,
+   "status": "draft",
+   "title": "Rebate of the source",
+   "output": "pp_rebate_source",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "rebate",
+   "inputs": {
+    "rebate": {
+     "unit": "INR_crore",
+     "source": "record:pp_rebate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.billed.mu_at_bus_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy received at the licensee's bus, total",
+   "output": "pp_mu_at_bus_total",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "sources",
+   "inputs": {
+    "sources": {
+     "unit": "MU",
+     "source": "sum:pp_mu_at_bus_source"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.pp.billed.mu_at_bus_source",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy received at the bus from the source",
+   "output": "pp_mu_at_bus_source",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "mu",
+   "inputs": {
+    "mu": {
+     "unit": "MU",
+     "source": "record:pp_mu_at_bus"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
   }
  ]
 }

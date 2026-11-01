@@ -1,0 +1,35 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "places": 4,
+ "note": "Contribution towards the contingency fund in the true-up years: 0.25 % of the opening gross block of F14 (row 8), as the ARR's row 42 (FY2023-24 audited, FY2024-25 claimed).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "contingency",
+   "inputs": {
+    "record:gfa_opening_total": [
+     "F14_CAP_Cap Cost!E8",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "contingency_contribution": "G42"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "contingency",
+   "inputs": {
+    "record:gfa_opening_total": [
+     "F14_CAP_Cap Cost!G8",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "contingency_contribution": "J42"
+   }
+  }
+ ]
+}

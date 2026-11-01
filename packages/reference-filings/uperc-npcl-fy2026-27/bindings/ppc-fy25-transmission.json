@@ -1,0 +1,36 @@
+{
+ "type": "row_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "PPC FY 25",
+ "fiscal_year": "FY2024-25",
+ "note": "PPC FY 25: inter- and intra-state transmission charges, the SLDC fee and reactive power (rows 61–64) — the ARR's transmission line (row 23).  These rows print only their billed amount (P, typed: the bill), so it is given; net of rebate (R) and with transmission (V) are computed.",
+ "rows": [
+  61,
+  64
+ ],
+ "label_col": "C",
+ "inputs": {
+  "rule:pp_billed": "P",
+  "record:pp_rebate": "Q",
+  "record:pp_tx_pgcil": "S",
+  "record:pp_tx_upptcl": "T"
+ },
+ "blank_is_zero": {
+  "columns": [
+   "Q",
+   "S",
+   "T"
+  ],
+  "why": "NPCL leaves a charge blank where a source has none; its totals (P = SUM(M:O), R = P − Q, U = S + T, V = U + R) read the blanks as zero"
+ },
+ "outputs": {
+  "pp_net": "R",
+  "pp_net_with_tx": "V"
+ },
+ "totals": {
+  "pp_net_with_tx_total": [
+   "ARR!J23"
+  ]
+ },
+ "places": 4
+}

@@ -1005,6 +1005,39 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 70 (2026-11-01): the true-up year's power purchase, as billed.**  14 draft rules
+  for the billed format, per source:
+  - billed (fixed + energy + other charges), net of the rebate, and with transmission;
+  - the rate on the energy billed and the cost per unit at the licensee's bus;
+  - the inter-state, intra-state and total losses;
+  - the totals.
+
+  PPC FY 25 is bound as three row tables, because the ARR carries three of its parts on separate
+  lines: the sources (rows 11–58), the transmission charges (61–64) and earlier years' claims
+  paid in the year (additional coal and change in law for FY2022-23 and FY2023-24, with carrying
+  cost; 69–77).  The last two print only the bill, which is taken as given.  **NPCL: every check
+  matches — power purchase 2,047.91 (the ARR's row 20), transmission 294.40 (row 23), arrears
+  127.73 (row 22), energy at the bus 3,888.46 (row 8), bills 2,064.12, rebate 16.21.**  The REC
+  purchase has no energy, so it has no rate or loss (blocked, never 0).  A charges-only incentive
+  row is declared blank-as-zero with its reason.  One more draft rule: the contribution to the
+  contingency fund, 0.25 % of the opening gross block (the ARR's row 42, true-up years only: 5.23
+  and 5.61, 2 / 2).
+
+  **Coverage of the ARR's three petition columns after increments 65–70.**
+  - **Reproduced from their schedules or tied to them:** power purchase, transmission and
+    arrears; depreciation; the APR and ARR years' O&M; interest on loan and on security
+    deposit; bad debts and other items; the contingency fund; RoE and tax (the chain); and
+    revenue from the current tariff.
+  - **Still records:**
+    - the true-up year's actual employee, R&M and A&G expenses, which are audited ledger sums;
+    - the additional O&M items;
+    - finance charges (typed in F23);
+    - non-tariff income, whose projections are typed;
+    - open-access revenue (ESR1);
+    - employee capitalisation from the capital plan (F13).
+
+  No rule is approved; every clause is unverified.
+
   **Increment 69 (2026-11-01): revenue from the current tariff, by category.**  8 draft rules
   (`revenue.v1.json`, R-SCH-12), evaluated per consumer category, slab or time-of-day block of
   ESR-3:
@@ -1933,6 +1966,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 70 (2026-11-01): 422 passed** (+1 unit: NPCL's true-up power purchase as billed, per source and in three parts, tied to the ARR's rows 20, 22, 23 and 8).  Ruff and format clean.
 - **Increment 69 (2026-11-01): 421 passed** (+1 unit: NPCL's revenue from the current tariff by category, three years, tied to the ARR's rows 15 and 9, the one typed adjustment pinned).  Ruff and format clean.
 - **Increment 68 (2026-11-01): 420 passed** (+2 unit: NPCL's security-deposit interest, receivables, bad debts and other items reproduced with the one typed March figure pinned as differs; stated constants need a reason and declared blanks are zero).  Ruff and format clean.
 - **Increment 67 (2026-11-01): 418 passed** (+1 unit: F24 by class, five years, net tied to the ARR's row 36; +1 unit: a category given in place of its computation, labelled and summed).  Ruff and format clean.

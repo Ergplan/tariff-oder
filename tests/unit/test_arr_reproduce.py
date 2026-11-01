@@ -529,3 +529,40 @@ def test_npcl_revenue_from_the_current_tariff_by_category():
         ("FY2026-27", "revenue_tariff_total"): "3192.0383",
         ("FY2026-27", "units_sold_total"): "4399.8428",
     }
+
+
+def test_npcl_true_up_power_purchase_as_billed_ties_to_the_arr():
+    """Real data: PPC FY 25, the true-up year's bills — per source billed, net of rebate, with
+    transmission, the rates and the losses; transmission and earlier years' claims bound
+    separately because the ARR carries them on their own lines.  Power purchase 2,047.91 (row 20),
+    transmission 294.40 (row 23), arrears 127.73 (row 22), energy at the bus 3,888.46 (row 8)."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    wb = None
+    arr = {}
+    for name in ("ppc-fy25.json", "ppc-fy25-transmission.json", "ppc-fy25-arrears.json"):
+        binding = json.loads((folder / "bindings" / name).read_text())
+        wb = wb or openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+        for c in reproduce_row_table(wb, binding, rules):
+            if c.result == "blocked":
+                assert c.category.startswith("REC Purchase") and c.why == "division by zero", c
+            else:
+                assert c.result == "match", c
+            if "ARR!" in c.category:
+                arr[c.category] = c.computed
+    contingency = json.loads((folder / "bindings" / "arr-contingency.json").read_text())
+    from tariff_api.arr.reproduce import reproduce_cells
+
+    got = [(c.fiscal_year, c.result, c.computed) for c in reproduce_cells(wb, contingency, rules)]
+    assert got == [("FY2023-24", "match", "5.2324"), ("FY2024-25", "match", "5.6149")]
+    assert arr == {
+        "TOTAL ARR!J20": "2047.9078",
+        "TOTAL ARR!J8": "3888.4552",
+        "TOTAL ARR!J23": "294.3991",
+        "TOTAL ARR!J22": "127.7317",
+    }
