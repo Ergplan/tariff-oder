@@ -1,0 +1,66 @@
+# Requirements matrix — ARR filing
+
+`Requirement → applicable commission / years → source → implementation → acceptance test →
+approval status`.  Requirements are defined in
+[`docs/arr-filing-requirements.md`](arr-filing-requirements.md).  A row is **done** only when
+its acceptance test passes **on real data** and its approver has signed it off.
+
+- **Approval status** is the operator's (or a named approver's) decision on the requirement
+  itself: `proposed` → `approved` → `done` (or `rejected` / `deferred`).  Nothing here is
+  marked approved or done by the build.
+- **Implementation** describes what exists today, honestly: `none`, `partial (…)`, or
+  `built (…)`.  "Built" means code and tests exist, not that the requirement is met.
+- Scope column: the first supported target is **UPERC / NPCL, ARR petition FY2026-27**
+  (with the true-up and APR years filed in the same petition).
+
+| ID | Requirement (short) | Commission / years | Source | Implementation today | Acceptance test | Approval |
+|---|---|---|---|---|---|---|
+| S-1 | Scope: approved, submission-ready package + record of the filed version; submission stays manual | all | operator review 2026-11-01 | none — exports are watermarked drafts (ADR-0018) | operator decision recorded in ADR-0021 | proposed |
+| R-APP-1 | Applicability decision per proceeding, year and regulation role, sourced and approved | UPERC FY2024-25 → FY2026-27 | §2 | partial (mapping `regulations` with control periods; no per-year decision record) | a case shows one approved decision per role per year; missing → blocked | proposed |
+| R-APP-2 | Rules selected per proceeding-year, regimes may differ within one petition | UPERC | §2 | none | a petition with true-up under one regulation and ARR under the next computes each year by its own rules | proposed |
+| R-APP-3 | Amendments as dated versions; exceptions with precedence | UPERC | §2 | none | an amended clause applies only from its effective date (test with two versions) | proposed |
+| R-APP-4 | Generic plan / unapproved mapping = exploration only; blocks `ready_for_signoff` | all | §2 | partial (UI labels "working estimate"; no gate) | a case on the generic plan cannot be signed off | proposed |
+| R-APP-5 | Applicability in the package annex; changes invalidate sign-offs | all | §2 | none | change a decision → dependent sign-offs listed as invalid | proposed |
+| R-RULE-1 | Rules as versioned data: clause, typed inputs, formula, rounding, exceptions, examples, approver | UPERC | §3 | partial (formulation plans name methods; clause grounding exists for regulation clauses) | rule schema validates; every UPERC schedule line has an approved rule | proposed |
+| R-RULE-2 | Worked examples pass before approval and run in CI | UPERC | §3 | none | CI job runs every approved rule's examples | proposed |
+| R-RULE-3 | Case records exact rule versions; frozen case recomputes identically | all | §3 | partial (formulation versions reproducible; no rule versions) | recompute a frozen case after a rule change → identical | proposed |
+| R-RULE-4 | No automated approval of rules | all | §3, AGENTS.md | n/a (no rules yet) | approval endpoint requires a human reviewer; no job can call it | proposed |
+| R-RULE-5 | Plans are forecasting heuristics, never shown as the commission's method | all | §3 | partial (norms page says "working estimate") | UI and package label every heuristic line | proposed |
+| R-SCH-1 … 15 | Financial schedules (sales, energy balance, power purchase, transmission, O&M, capex, GFA & depreciation, loans, return, IoWC, NTI, revenue, subsidy & gap, ARR & ACoS, tariff proposal) | UPERC (then per commission) | §4 | partial (taxonomy lines and identities I1–I12; projections by heuristic; no schedule computation) | each schedule reproduces NPCL FY2026-27's filed format within tolerance | proposed |
+| R-SCH-16 | Cross-schedule reconciliation report | all | §4 | partial (identities check a published reading) | report lists every shared value; all agree | proposed |
+| R-NUM-1 | Decimal arithmetic only | all | §5 | partial (formulation and true-up compute in Decimal; **the true-up XLSX export converts to float** — `arr/trueup.py` lines 212, 221, 234, 304 — a known defect against this row) | static check: no float in schedule computation | proposed |
+| R-NUM-2 | Dimensions and units on every quantity; dimensional check at rule approval | all | §5 | partial (canonical units on facts; ACoS ×10 in the plan, not checked) | a dimensionally wrong formula is refused | proposed |
+| R-NUM-3 | Rounding policy per rule | all | §5 | none | NPCL formats reproduce to printed precision | proposed |
+| R-NUM-4 | Dependency graph, cycle handling, deterministic order | all | §5 | partial (plan lines evaluated in order) | IoWC ↔ receivables iteration converges within tolerance | proposed |
+| R-NUM-5 | Recorded tolerances per check | all | §5 | partial (identity tolerances) | every reconciliation result shows its tolerance | proposed |
+| R-DATA-1 | Imports: accounts, sales, power purchase, assets, loans, capex, employee cost | UPERC / NPCL | §6 | partial (`arr_actuals` per line, manual, with source) | NPCL FY2024-25 audited accounts imported and mapped | proposed |
+| R-DATA-2 | Mapping, validation, reconciliation to audited totals | UPERC / NPCL | §6 | none | breakdown ≠ audited total → blocked with the difference | proposed |
+| R-DATA-3 | Corrections as versions with reason and author | all | §6 | partial (assumption sets versioned) | correcting an import keeps the old version and re-flags dependents | proposed |
+| R-DATA-4 | Organisation-owned private data, never in the shared corpus | all | §6 | partial (org-owned cases, assumptions, formulations; sources are shared) | isolation suite (R-SEC-1) over private sources | proposed |
+| R-TU-1 | Approved / actual / normative / claimed per line, with the claimability rule | UPERC FY2024-25 true-up | §7 | partial (approved vs actual variance statement, ADR-0020) | NPCL FY2024-25 true-up reproduces the petition's true-up formats | proposed |
+| R-TU-2 | Controllable / uncontrollable, sharing of gains and losses | UPERC | §7 | none | sharing computed per regulation on the test case | proposed |
+| R-TU-3 | Prior recoveries and adjustments; no double claim | UPERC | §7 | none | an amount allowed in APR is netted in the final true-up | proposed |
+| R-TU-4 | Carrying cost per regulation | UPERC | §7 | none | carrying cost reproduces the petition's figure | proposed |
+| R-TU-5 | One decision chain per year (ARR-I11) visible in the package | all | §7 | partial (I11 defined; history shows voices by order) | the package shows approved → APR → true-up for each year | proposed |
+| R-SIGN-1 | Case states through `approved`, `filed`, queries, order received | all | §8 | partial (setup → … → drafted) | state machine test | proposed |
+| R-SIGN-2 | Preparer / checkers / approver; delegated authority; four-eyes | all | §8 | none (org roles owner / editor / viewer only) | a preparer cannot check or approve their own work | proposed |
+| R-SIGN-3 | Sign-off records person, time, comment, content hash | all | §8 | none | sign-off stores the hash; tampering detected | proposed |
+| R-SIGN-4 | `approved` gate: checkers, checklist, no critical findings, approver | all | §8 | none | each missing condition blocks with its reason | proposed |
+| R-SIGN-5 | Change invalidates dependent sign-offs | all | §8 | none | change one assumption → exactly the dependent sign-offs invalidated | proposed |
+| R-SIGN-6 | Filed bytes, filing reference, queries, responses, order linked back | all | §8 | none | record a filing; link the later order's reading | proposed |
+| R-PKG-1 | Filing checklist per commission and proceeding as versioned data | UPERC | §9 | none (templates exist, no checklist) | UPERC checklist approved by the operator | proposed |
+| R-PKG-2 | Package view; cannot approve with a mandatory item missing | all | §9 | none | missing affidavit → approval blocked | proposed |
+| R-PKG-3 | Narrative numbers are references; reconciliation report | all | §9 | partial (draft numbers are traced to facts / assumptions / formulas) | report: narrative and formats agree | proposed |
+| R-PKG-4 | Cross-references checked | all | §9 | none | a broken format reference is reported | proposed |
+| R-SEC-1 | Isolation tested across bytes, search, exports, jobs, caches, logs | all | §10 | partial (API object lookups answer 404 across organisations; tested) | cross-tenant suite over every channel | proposed |
+| R-SEC-2 | Production identity with MFA; local identity refused with private data; demo mode | all | §10 | partial (IAP adapter written; local profile serves the public VM demo) | startup refuses local identity when private data exists | proposed |
+| R-SEC-3 | RPO ≤ 15 min, RTO ≤ 4 h; quarterly restore drill | all | §10 | partial (Cloud SQL PITR configured in Terraform; no drill run) | restore drill recorded | proposed |
+| R-SEC-4 | Monitoring and alerting to an on-call; audit export | all | §10 | partial (structured logs, Terraform monitoring) | alert fires on a failed job in `dev` | proposed |
+| R-SEC-5 | Encryption, secrets adapter, retention and deletion | all | §10 | partial (secrets adapter; GCS/Cloud SQL default encryption) | deletion request removes an org's data, audited | proposed |
+| R-ACC-1 | NPCL FY2026-27 petition reproduced from records, line by line within tolerance | UPERC / NPCL FY2026-27 | §11 | none — **blocked: the petition package and underlying records are not in the build environment** | reconciliation report: every line within tolerance or explained | proposed |
+| R-ACC-2 | Independent sign-off by a named person who did not build it | UPERC / NPCL | §11 | none — needs a named checker | signed acceptance record | proposed |
+| R-ACC-3 | 100 % of mandatory formats and attachments accounted | UPERC / NPCL | §11 | none | checklist complete | proposed |
+| R-ACC-4 | Every material output traceable to inputs and rule | UPERC / NPCL | §11 | partial (draft trace annex) | annex covers every summary line | proposed |
+| R-ACC-5 | Narrative ↔ formats reconciled; no unresolved critical findings | UPERC / NPCL | §11 | none | reconciliation report clean | proposed |
+| R-ACC-6 | Isolation suite and restore drill passed on the release environment | all | §11 | none | both recorded | proposed |
+| R-ACC-7 | Reading recall and completeness: schedule recall, line recall, attribution accuracy | the ten real orders | §11 | none (precision-side measures and identity failures only) | per-order recall against a human-keyed reference | proposed |

@@ -1875,6 +1875,17 @@ entries below are the per-increment history.**
   each as a real source with its licensees, waits for parsing and starts its ARR reading; it is
   idempotent and skips a website that does not answer.  Tested on this session's stack (HPERC,
   MPERC ×2: found by hash, readings already proposed).
+- *Milestone 13 (proposed, ADR-0021, after the operator's review of 2026-11-01):* one
+  commission, one licensee, one historical filing reproduced and independently signed off —
+  **UPERC / NPCL, ARR petition FY2026-27** — under the binding
+  `docs/arr-filing-requirements.md`, tracked in `docs/requirements-matrix.md` (every row
+  `proposed`; nothing approved by the build).  **Blocked on the operator:** (1) approve or
+  amend the requirements and scope decision S-1; (2) make the NPCL FY2026-27 petition package
+  and its underlying records available to the build (they are on the operator's computer:
+  share the folder through Remote Control, or upload to a private prefix of the sources
+  bucket); (3) name the independent checker.  The engineering that does not need them can
+  start: the rule schema with dimensional checking (R-RULE-1, R-NUM-2), the demo-mode guard
+  (R-SEC-2), the float in the true-up XLSX export (R-NUM-1 defect).
 - *The way in (increment 52):* `/client/atlas` (map of India → state → discom → norms →
   petition; see `docs/user-journey.md`).  The atlas fills as the decisions above are taken:
   documents located → orders read → values reviewed → norms applied.  On the VM it needs the

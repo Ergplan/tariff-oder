@@ -14,9 +14,17 @@
 > tariff schedules.  The product has since grown, by decisions recorded in
 > [`docs/decisions/`](decisions/) (ADR-0017 to ADR-0020) and by
 > [`docs/prompts/arr-build-prompt.md`](prompts/arr-build-prompt.md), into an ARR petition
-> product with a client application.  This document consolidates all of it.  Where it
-> disagrees with an ADR or with the code, the ADR and the code are the record; correct this
-> file.  Where the build stands today is always [`docs/BUILD_STATE.md`](BUILD_STATE.md).
+> product with a client application.  This document consolidates all of it.
+>
+> **What governs.**  Requirements are set by specifications and approved ADRs, never by
+> code: **a difference between code and an approved requirement is a defect in the code.**
+> For the ARR filing product the binding specification is
+> [`docs/arr-filing-requirements.md`](arr-filing-requirements.md) (proposed 2026-11-01,
+> ADR-0021), tracked requirement by requirement in
+> [`docs/requirements-matrix.md`](requirements-matrix.md); where this overview disagrees
+> with it, it wins.  This file is the architecture and product overview, not a standalone
+> filing specification.  Where the build stands today is always
+> [`docs/BUILD_STATE.md`](BUILD_STATE.md).
 
 ---
 
@@ -31,9 +39,13 @@ petitions.  The numbers that matter — what a consumer category pays, what the 
 allowed for power purchase, O&M, return on equity, losses, the revenue gap — are buried in
 those PDFs, in tables that are sometimes scanned, sometimes vector-drawn without a text
 layer, sometimes written as prose.  **Tariff Order Studio reads those orders, has a person
-review every number against its page, publishes only reviewed numbers as facts, and uses
-that verified regulatory history to prepare the next ARR petition** — a draft a person edits
-and files.  Reading the order correctly is the product.  An unreviewed number is never a fact.
+review every number against its page, and publishes only reviewed numbers as facts** —
+for the tariff-intelligence track, reading the order correctly is the product.  **For the ARR
+track the outcome is different (ADR-0021): a complete, reconciled, regulation-specific
+petition package prepared from the utility's own records, its regulatory history and
+approved assumptions, with every material claim reproducible and accountable.**  Historical
+orders are context and constraint for a filing, not its source.  An unreviewed number is
+never a fact.
 
 ## A2. What the product does — two products on one corpus
 
@@ -353,6 +365,11 @@ asserted: [`docs/reading-reliability.md`](reading-reliability.md) is the ledger 
 modes (detection, handling, fixture, test); [`docs/evaluation-plan.md`](evaluation-plan.md)
 defines the gates.  Per real order the build reports values read and identity failures,
 with each failure either explained (a convention question) or recorded as unexplained.
+**Not yet measured, and required (R-ACC-7):** recall and completeness — schedules found of
+those required, lines read of a human-keyed reference, correct year and licensee
+attribution.  A table can reconcile perfectly and still belong to the wrong year.  The
+release gate for filing is a reproduced, independently signed-off real petition (R-ACC-1/2),
+not a green build.
 
 ## A14. Where it stands (honest, 2026-11-01)
 
@@ -379,13 +396,20 @@ with each failure either explained (a convention question) or recorded as unexpl
 
 ## A15. Roadmap (the next increments, smallest first)
 
+**Milestone 13 comes first (ADR-0021): one commission, one licensee, one complete historical
+filing — UPERC / NPCL, ARR petition FY2026-27 — reproduced from its underlying records and
+regulations and independently signed off** (`docs/arr-filing-requirements.md` §11–12):
+executable rules with applicability decisions, financial schedules, utility data intake,
+true-up treatment, the filing checklist, the case sign-off workflow, and — in the same
+release — private data isolation and the demo-mode guard.  Everything below waits for it.
+
 1. Normative checks: compare a case's actuals and projections against the commission's
    norms (loss trajectory, O&M escalation, RoE rate) once those are confirmed parameters.
 2. Extraction precision over reviewer-confirmed real chapters — the first measured real
    precision figure.
 3. Per-commission true-up formats; per-commission formulation plans confirmed against the
    regulations (clauses as sources, parameters with their clause).
-4. Organisation-owned private sources (a client's own audited accounts).
+4. (Moved into milestone 13: organisation-owned private sources and utility records.)
 5. More discovery profiles and real orders, three years per state.
 6. Q&A over published facts with the answer contract (original §8), then voice.
 7. Scenario engine (power purchase mix only; ADR-0017), prod promotion with authorisation.
