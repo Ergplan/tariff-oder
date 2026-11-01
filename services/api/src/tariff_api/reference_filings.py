@@ -70,6 +70,7 @@ def filing(filing_id: str) -> dict[str, Any]:
         "formats": [],
         "records": [],
         "chain": None,
+        "coverage": None,
         "findings": [],
     }
     rep_path = folder / "reproduction.json"
@@ -116,6 +117,10 @@ def filing(filing_id: str) -> dict[str, Any]:
                 out["records"].append(
                     {"binding": r["binding"], "counts": dict(Counter(c["result"] for c in r["checks"]))}
                 )
+        if rep.get("coverage"):
+            # how each figure of the ARR format is established, by column (computed / tied /
+            # given / differs / record) — what the reproduction covers and what it takes on trust
+            out["coverage"] = rep["coverage"]
     fpath = folder / "findings.json"
     if fpath.exists():
         out["findings"] = json.loads(fpath.read_text())["findings"]

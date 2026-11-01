@@ -1005,6 +1005,31 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 71 (2026-11-01): how each ARR figure is established.**  The reproduction now
+  writes a **coverage map** of the ARR format: for every line and column, whether the figure is
+  - **computed** — by the chain from base records, or as the format's own identity;
+  - **tied** — a schedule's reproduction gives the figure the ARR carries;
+  - **given** — a filed figure standing in for its computation;
+  - **differs** — computed or tied, and not equal to the filed figure;
+  - **record** — an input nobody reproduces yet, taken on trust.
+
+  Each status names its source binding and output.  `GET /arr/reference-filings/{id}` serves it.
+  The desk page `/arr/reference/<id>` opens with it (panel 01): the petition's columns line by
+  line, with a legend and per-column counts.  Bindings that reproduced a figure without naming
+  the ARR cell now do: PPC FY 26 / 27 (rows 8, 20, 23), ESR-3 (row 14), the contingency fund.
+  FY2025-26's power purchase includes three claims of earlier years (incentives for FY2022-23
+  and FY2023-24, an O&M reimbursement; PPC FY 26 rows 54–56) and its arrears line is rows
+  57–60.  Three draft rules (per-claim, total, cost with claims) reproduce both (2 / 2); which
+  claims belong with power purchase is the petitioner's presentation, for the reviewer.
+  **NPCL coverage, petition columns:**
+  - FY2024-25 claimed: 15 computed, 10 tied, 2 differ (A40, A41), 14 records.
+  - FY2025-26 estimated: 15 computed, 14 tied, 17 records.
+  - FY2026-27 projected: 15 computed, 13 tied, 18 records.
+
+  The records are named on the page.  The fix in the manifest is a document name (a mis-decoded
+  apostrophe).  Checked by screenshots at 1440 and 390 px; the page does not scroll
+  horizontally.  No rule is approved; every clause is unverified.
+
   **Increment 70 (2026-11-01): the true-up year's power purchase, as billed.**  14 draft rules
   for the billed format, per source:
   - billed (fixed + energy + other charges), net of the rebate, and with transmission;
@@ -1966,6 +1991,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 71 (2026-11-01): 422 passed** (the integration test now checks the coverage map: the projected column's power purchase tied, the net ARR computed, non-tariff income a record, nothing differing; findings A39–A41 served).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 70 (2026-11-01): 422 passed** (+1 unit: NPCL's true-up power purchase as billed, per source and in three parts, tied to the ARR's rows 20, 22, 23 and 8).  Ruff and format clean.
 - **Increment 69 (2026-11-01): 421 passed** (+1 unit: NPCL's revenue from the current tariff by category, three years, tied to the ARR's rows 15 and 9, the one typed adjustment pinned).  Ruff and format clean.
 - **Increment 68 (2026-11-01): 420 passed** (+2 unit: NPCL's security-deposit interest, receivables, bad debts and other items reproduced with the one typed March figure pinned as differs; stated constants need a reason and declared blanks are zero).  Ruff and format clean.
@@ -2169,7 +2195,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 52) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 71) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2201,20 +2227,32 @@ entries below are the per-increment history.**
   each as a real source with its licensees, waits for parsing and starts its ARR reading; it is
   idempotent and skips a website that does not answer.  Tested on this session's stack (HPERC,
   MPERC ×2: found by hash, readings already proposed).
-- *Milestone 13 (proposed, ADR-0021, after the operator's review of 2026-11-01):* one
-  commission, one licensee, one historical filing reproduced and independently signed off —
-  **UPERC / NPCL, ARR petition FY2026-27** — under the binding
-  `docs/arr-filing-requirements.md`, tracked in `docs/requirements-matrix.md` (every row
-  `proposed`; nothing approved by the build).  **Blocked on the operator:** (1) approve or
-  amend the requirements and scope decision S-1; (2) download the NPCL reference packages on the VM —
-  `uv run python scripts/fetch_reference_filing.py uperc-npcl-fy2026-27` (and
-  `uperc-npcl-fy2025-26`), then commit the hashes it records.  Both petitions are public on
-  NPCL's website (listed in `packages/reference-filings/`: 71 and 87 documents, with the
-  filed formats, texts, audited accounts, trial balance, asset register, power-purchase
-  bills and billing determinants), but the documents are served on port 8032, which the
-  cloud build session's proxy does not support, so they could not be fetched here; (3) name the independent checker.  The engineering that does not need them can
-  start: the rule schema with dimensional checking (R-RULE-1, R-NUM-2), the demo-mode guard
-  (R-SEC-2), the float in the true-up XLSX export (R-NUM-1 defect).
+- *Milestone 13 (proposed, ADR-0021) — where it stands after increment 71:* one commission,
+  one licensee, one historical filing reproduced and independently signed off — **UPERC / NPCL,
+  ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
+  `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
+  operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
+  held by the operator).  ~150 draft UPERC rules reproduce the filed formats.  For the
+  petition's columns, `/arr/reference/uperc-npcl-fy2026-27` (panel 01) shows how each ARR
+  figure is established.  FY2026-27 projected: 15 computed and 13 tied to their schedules,
+  none differs; 18 still records.  Findings A29–A41 are for the petitioner and the reviewer.
+  **Blocked on people:**
+  1. **Operator:** approve or amend the requirements and scope decision S-1.
+  2. **Operator:** name the independent checker.
+  3. **Operator:** provide Annexure-34 and -40.
+  4. **Reviewer:** verify the rules' clauses against the UPERC MYT Regulations 2019 and 2025, and
+     approve or amend each rule.  No rule can be approved by the build; until then nothing is
+     `filing_ready`.
+  5. **Petitioner (through the operator):** answer the findings.  A39 asks for the working of
+     the projection years' depreciation by class.
+
+  **Engineering next, smallest first:**
+  - the ARR format's remaining identities (row 17 receipts, row 13 gross revenue) into a binding;
+  - ESR-3 for FY2023-24, whose subtotals subtract their own sub-rows;
+  - reading the tariff order's rate schedule, so revenue is computed from rates, not only
+    summed;
+  - feeding the chain from the schedule outputs instead of the ARR's own rows, so the
+    projection is computed end to end and not only tied.
 - *The way in (increment 52):* `/client/atlas` (map of India → state → discom → norms →
   petition; see `docs/user-journey.md`).  The atlas fills as the decisions above are taken:
   documents located → orders read → values reviewed → norms applied.  On the VM it needs the

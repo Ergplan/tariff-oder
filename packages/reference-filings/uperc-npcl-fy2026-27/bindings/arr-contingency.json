@@ -15,7 +15,7 @@
     ]
    },
    "checks": {
-    "contingency_contribution": "G42"
+    "contingency_contribution": "ARR!G42"
    }
   },
   {
@@ -28,7 +28,7 @@
     ]
    },
    "checks": {
-    "contingency_contribution": "J42"
+    "contingency_contribution": "ARR!J42"
    }
   }
  ]

@@ -9003,7 +9003,7 @@
     {
      "table": "ARR",
      "fiscal_year": "FY2023-24",
-     "category": "contingency G42",
+     "category": "contingency ARR!G42",
      "output": "contingency_contribution",
      "result": "match",
      "filed": "5.2324",
@@ -9013,7 +9013,7 @@
     {
      "table": "ARR",
      "fiscal_year": "FY2024-25",
-     "category": "contingency J42",
+     "category": "contingency ARR!J42",
      "output": "contingency_contribution",
      "result": "match",
      "filed": "5.6149",
@@ -11564,6 +11564,16 @@
      "filed": "-288.1762",
      "computed": "-288.1362",
      "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL ARR!J14",
+     "output": "revenue_discount_total",
+     "result": "differs",
+     "filed": "-288.1762",
+     "computed": "-288.1362",
+     "why": null
     }
    ]
   },
@@ -12604,6 +12614,16 @@
      "table": "ESR_3 Curr Tariff FY26",
      "fiscal_year": "FY2025-26",
      "category": "TOTAL N138",
+     "output": "revenue_discount_total",
+     "result": "match",
+     "filed": "-322.6380",
+     "computed": "-322.6380",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL ARR!L14",
      "output": "revenue_discount_total",
      "result": "match",
      "filed": "-322.6380",
@@ -15349,6 +15369,16 @@
      "table": "ESR_3 Curr Tariff FY27",
      "fiscal_year": "FY2026-27",
      "category": "TOTAL N138",
+     "output": "revenue_discount_total",
+     "result": "match",
+     "filed": "-357.0702",
+     "computed": "-357.0702",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL ARR!M14",
      "output": "revenue_discount_total",
      "result": "match",
      "filed": "-357.0702",
@@ -20943,6 +20973,31 @@
    ]
   },
   {
+   "binding": "ppc-fy26-claims.json",
+   "checks": [
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "power purchase with claims ARR!L20",
+     "output": "pp_cost_with_claims",
+     "result": "match",
+     "filed": "2257.1492",
+     "computed": "2257.1492",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "arrears ARR!L22",
+     "output": "pp_claims_total",
+     "result": "match",
+     "filed": "41.3343",
+     "computed": "41.3343",
+     "why": null
+    }
+   ]
+  },
+  {
    "binding": "ppc-fy26.json",
    "checks": [
     {
@@ -22508,11 +22563,41 @@
     {
      "table": "PPC FY 26",
      "fiscal_year": "FY2025-26",
+     "category": "TOTAL ARR!L23",
+     "output": "pp_tx_total",
+     "result": "match",
+     "filed": "389.77",
+     "computed": "389.77",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
      "category": "TOTAL PPC FY 26!E52",
      "output": "pp_mu_exported_total",
      "result": "match",
      "filed": "4567.05",
      "computed": "4567.05",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL PPC FY 26!I52",
+     "output": "pp_mu_at_bus_total",
+     "result": "match",
+     "filed": "4259.39",
+     "computed": "4259.39",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL ARR!L8",
+     "output": "pp_mu_at_bus_total",
+     "result": "match",
+     "filed": "4259.39",
+     "computed": "4259.39",
      "why": null
     }
    ]
@@ -23793,7 +23878,27 @@
     {
      "table": "PPC FY 27",
      "fiscal_year": "FY2026-27",
+     "category": "TOTAL ARR!M20",
+     "output": "pp_cost_total",
+     "result": "match",
+     "filed": "2448.33",
+     "computed": "2448.33",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
      "category": "TOTAL PPC FY 27!Q53",
+     "output": "pp_tx_total",
+     "result": "match",
+     "filed": "446.36",
+     "computed": "446.36",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL ARR!M23",
      "output": "pp_tx_total",
      "result": "match",
      "filed": "446.36",
@@ -23808,6 +23913,26 @@
      "result": "match",
      "filed": "5066.34",
      "computed": "5066.34",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL PPC FY 27!I53",
+     "output": "pp_mu_at_bus_total",
+     "result": "match",
+     "filed": "4729.49",
+     "computed": "4729.49",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL ARR!M8",
+     "output": "pp_mu_at_bus_total",
+     "result": "match",
+     "filed": "4729.49",
+     "computed": "4729.49",
      "why": null
     }
    ]
@@ -37600,5 +37725,3315 @@
    "filed": "74.75",
    "result": "match"
   }
- ]
+ ],
+ "coverage": {
+  "sheet": "ARR",
+  "columns": [
+   {
+    "column": "C",
+    "fiscal_year": "FY2021-22",
+    "words": "Trued- Up",
+    "voice": "final_true_up"
+   },
+   {
+    "column": "D",
+    "fiscal_year": "FY2022-23",
+    "words": "Trued- Up",
+    "voice": "final_true_up"
+   },
+   {
+    "column": "E",
+    "fiscal_year": "FY2023-24",
+    "words": "Approved\n (in TO)",
+    "voice": "approved"
+   },
+   {
+    "column": "F",
+    "fiscal_year": "FY2023-24",
+    "words": "Audited",
+    "voice": "actual"
+   },
+   {
+    "column": "G",
+    "fiscal_year": "FY2023-24",
+    "words": "Claimed",
+    "voice": "petitioned"
+   },
+   {
+    "column": "H",
+    "fiscal_year": "FY2024-25",
+    "words": "Approved\n (in TO)",
+    "voice": "approved"
+   },
+   {
+    "column": "I",
+    "fiscal_year": "FY2024-25",
+    "words": "Audited",
+    "voice": "actual"
+   },
+   {
+    "column": "J",
+    "fiscal_year": "FY2024-25",
+    "words": "Claimed",
+    "voice": "petitioned"
+   },
+   {
+    "column": "K",
+    "fiscal_year": "FY2025-26",
+    "words": "Approved\n (in TO)",
+    "voice": "approved"
+   },
+   {
+    "column": "L",
+    "fiscal_year": "FY2025-26",
+    "words": "Estimated",
+    "voice": "petitioned"
+   },
+   {
+    "column": "M",
+    "fiscal_year": "FY2026-27",
+    "words": "Projected",
+    "voice": "petitioned"
+   }
+  ],
+  "lines": [
+   {
+    "row": 8,
+    "label": "Power Purchase or Energy Available (MU) at Discom periphery",
+    "line_code": "E.PP.QTY",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2540.05"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3107.61"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3589.47"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3383.96"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3383.96"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "4007.46"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3888.46"
+     },
+     "J": {
+      "status": "tied",
+      "source": "ppc-fy25.json: pp_mu_at_bus_total",
+      "computed": "3888.4552",
+      "filed": "3888.46"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "4401.91"
+     },
+     "L": {
+      "status": "tied",
+      "source": "ppc-fy26.json: pp_mu_at_bus_total",
+      "computed": "4259.39",
+      "filed": "4259.39"
+     },
+     "M": {
+      "status": "tied",
+      "source": "ppc-fy27.json: pp_mu_at_bus_total",
+      "computed": "4729.49",
+      "filed": "4729.49"
+     }
+    }
+   },
+   {
+    "row": 9,
+    "label": "Sale of Power (MU)",
+    "line_code": "E.PP.QTY.SURPLUS_SALE",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2338.04"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2870.43"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3315.59"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3130.4"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3130.4"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3704.1"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3597.63"
+     },
+     "J": {
+      "status": "tied",
+      "source": "esr3-revenue-fy25.json: units_sold_total",
+      "computed": "3597.6293",
+      "filed": "3597.63"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "4083.65"
+     },
+     "L": {
+      "status": "tied",
+      "source": "esr3-revenue-fy26.json: units_sold_total",
+      "computed": "3951.4319",
+      "filed": "3951.43"
+     },
+     "M": {
+      "status": "tied",
+      "source": "esr3-revenue-fy27.json: units_sold_total",
+      "computed": "4399.8428",
+      "filed": "4399.84"
+     }
+    }
+   },
+   {
+    "row": 10,
+    "label": "Distribution Loss (%)",
+    "line_code": "E.LOSS.DIST_PCT",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.95"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.63"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.63"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.49"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.49"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.57"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.48"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.48"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.23"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.23"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "6.97"
+     }
+    }
+   },
+   {
+    "row": 13,
+    "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1939.66"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2344.83"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2681.37"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2575.69"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2575.69"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3028.52"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2922.78"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2922.78"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3291.07"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3207.4"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3549.11"
+     }
+    }
+   },
+   {
+    "row": 14,
+    "label": "Less: Regulatory Discount @10%",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-137.06"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-268.14"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-254.71"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-254.71"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-302.85"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-288.18"
+     },
+     "J": {
+      "status": "differs",
+      "source": "esr3-revenue-fy25.json: revenue_discount_total",
+      "computed": "-288.1362",
+      "filed": "-288.18"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-329.11"
+     },
+     "L": {
+      "status": "tied",
+      "source": "esr3-revenue-fy26.json: revenue_discount_total",
+      "computed": "-322.6380",
+      "filed": "-322.64"
+     },
+     "M": {
+      "status": "tied",
+      "source": "esr3-revenue-fy27.json: revenue_discount_total",
+      "computed": "-357.0702",
+      "filed": "-357.07"
+     }
+    }
+   },
+   {
+    "row": 15,
+    "label": "Net Revenue from Tariff and Misc. Charges at current tariff rates",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1939.66"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2207.78"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2413.23"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2320.97"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2320.97"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2725.66"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2634.6"
+     },
+     "J": {
+      "status": "tied",
+      "source": "esr3-revenue-fy25.json: revenue_tariff_total",
+      "computed": "2634.6026",
+      "filed": "2634.6"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2961.96"
+     },
+     "L": {
+      "status": "tied",
+      "source": "esr3-revenue-fy26.json: revenue_tariff_total",
+      "computed": "2884.7645",
+      "filed": "2884.76"
+     },
+     "M": {
+      "status": "tied",
+      "source": "esr3-revenue-fy27.json: revenue_tariff_total",
+      "computed": "3192.0383",
+      "filed": "3192.04"
+     }
+    }
+   },
+   {
+    "row": 17,
+    "label": "Total Receipts (A)",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1939.66"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2207.78"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2413.23"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2320.97"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2320.97"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2725.66"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2634.6"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2634.6"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2961.96"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2884.76"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3192.04"
+     }
+    }
+   },
+   {
+    "row": 20,
+    "label": "Cost of Power Procurement",
+    "line_code": "C.PP",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1399.42"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1909.06"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1816.45"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1740.92"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1740.92"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1988.1"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2047.91"
+     },
+     "J": {
+      "status": "tied",
+      "source": "ppc-fy25.json: pp_net_with_tx_total",
+      "computed": "2047.9078",
+      "filed": "2047.91"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2192.18"
+     },
+     "L": {
+      "status": "tied",
+      "source": "ppc-fy26-claims.json: pp_cost_with_claims",
+      "computed": "2257.1492",
+      "filed": "2257.15"
+     },
+     "M": {
+      "status": "tied",
+      "source": "ppc-fy27.json: pp_cost_total",
+      "computed": "2448.33",
+      "filed": "2448.33"
+     }
+    }
+   },
+   {
+    "row": 21,
+    "label": "Cost of Power Procurement Expense Profit/(Loss) Sharing",
+    "line_code": "C.PP",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 22,
+    "label": "Arrears of power purchase",
+    "line_code": "C.PP",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "8.97"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "8.97"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "88.75"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "127.73"
+     },
+     "J": {
+      "status": "tied",
+      "source": "ppc-fy25-arrears.json: pp_net_with_tx_total",
+      "computed": "127.7317",
+      "filed": "127.73"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "tied",
+      "source": "ppc-fy26-claims.json: pp_claims_total",
+      "computed": "41.3343",
+      "filed": "41.33"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 23,
+    "label": "Transmission and Load Dispatch Charges",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "149.98"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "167.26"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "280.02"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "197.01"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "197.01"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "311.78"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "294.4"
+     },
+     "J": {
+      "status": "tied",
+      "source": "ppc-fy25-transmission.json: pp_net_with_tx_total",
+      "computed": "294.3991",
+      "filed": "294.4"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "440.03"
+     },
+     "L": {
+      "status": "tied",
+      "source": "ppc-fy26.json: pp_tx_total",
+      "computed": "389.77",
+      "filed": "389.77"
+     },
+     "M": {
+      "status": "tied",
+      "source": "ppc-fy27.json: pp_tx_total",
+      "computed": "446.36",
+      "filed": "446.36"
+     }
+    }
+   },
+   {
+    "row": 24,
+    "label": "Arrears of Transmission and Load Dispatch Charges",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.35"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.35"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2.44"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 26,
+    "label": "R&M Expense",
+    "line_code": "C.OM.RM",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "53.97"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "63.26"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "49.12"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "63.4"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "63.4"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "54.72"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "64.91"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "64.91"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "83.83"
+     },
+     "L": {
+      "status": "tied",
+      "source": "f22-rm-ties.json: rm_norm_total",
+      "computed": "100.261435",
+      "filed": "100.26"
+     },
+     "M": {
+      "status": "tied",
+      "source": "f22-rm-ties.json: rm_norm_total",
+      "computed": "113.686093",
+      "filed": "113.69"
+     }
+    }
+   },
+   {
+    "row": 27,
+    "label": "Gross Employee Expenses including retiral benefit",
+    "line_code": "C.OM.EMPLOYEE",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "68.26"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "73.27"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "34.6"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "77.52"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "77.52"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "36.56"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "95.42"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "95.42"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "80.05"
+     },
+     "L": {
+      "status": "tied",
+      "source": "f19-om-base-2025.json: om25_employee",
+      "computed": "95.627439",
+      "filed": "95.63"
+     },
+     "M": {
+      "status": "tied",
+      "source": "f19-om-base-2025.json: om25_employee",
+      "computed": "99.978446",
+      "filed": "99.98"
+     }
+    }
+   },
+   {
+    "row": 28,
+    "label": "Less : Employee Expenses Capitalisation",
+    "line_code": "C.OM.EMPLOYEE",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "8.98"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "6.52"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "12"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "11.58"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "11.58"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "18"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "17.19"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "17.19"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "30.34"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "28.3"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "32.2"
+     }
+    }
+   },
+   {
+    "row": 29,
+    "label": "Net Employee Expenses including retiral benefit",
+    "line_code": "C.OM.EMPLOYEE",
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "59.29",
+      "filed": "59.29"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "66.75",
+      "filed": "66.75"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "22.6",
+      "filed": "22.6"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "65.93",
+      "filed": "65.93"
+     },
+     "G": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "65.93",
+      "filed": "65.93"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "18.56",
+      "filed": "18.56"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "78.23",
+      "filed": "78.23"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "78.23",
+      "filed": "78.23"
+     },
+     "K": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "49.71",
+      "filed": "49.71"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "67.33",
+      "filed": "67.33"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_employee_net",
+      "computed": "67.77",
+      "filed": "67.77"
+     }
+    }
+   },
+   {
+    "row": 31,
+    "label": "Net A&G Expense (included captive consumption)",
+    "line_code": "C.OM.AG",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "15.67"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "29.86"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "18.21"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "30.09"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "30.09"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "20.28"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "39.36"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "39.36"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "26.45"
+     },
+     "L": {
+      "status": "tied",
+      "source": "f19-om-base-2025.json: om25_ag",
+      "computed": "28.752731",
+      "filed": "28.75"
+     },
+     "M": {
+      "status": "tied",
+      "source": "f19-om-base-2025.json: om25_ag",
+      "computed": "29.250923",
+      "filed": "29.25"
+     }
+    }
+   },
+   {
+    "row": 32,
+    "label": "O&M Expenses Profit/(Loss) Sharing",
+    "line_code": "C.OM",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 33,
+    "label": "Addl. O&M - SOP Study, CGRF, DT Metering, Energy Audit etc.",
+    "line_code": "C.OM",
+    "cells": {
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.34"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.34"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "9.01"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "9.01"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 34,
+    "label": "Provisions",
+    "line_code": null,
+    "cells": {
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2.26"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3"
+     }
+    }
+   },
+   {
+    "row": 35,
+    "label": "Total Net O&M expenses (i+ii+\u2026vii)",
+    "line_code": "C.OM",
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "128.92",
+      "filed": "128.92"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "159.88",
+      "filed": "159.88"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "89.92",
+      "filed": "89.92"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "166.76",
+      "filed": "166.76"
+     },
+     "G": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "166.76",
+      "filed": "166.76"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "93.55",
+      "filed": "93.55"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "191.51",
+      "filed": "191.51"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "191.51",
+      "filed": "191.51"
+     },
+     "K": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "159.99",
+      "filed": "159.99"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "198.6",
+      "filed": "198.6"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_om_total",
+      "computed": "213.71",
+      "filed": "213.71"
+     }
+    }
+   },
+   {
+    "row": 36,
+    "label": "Depreciation",
+    "line_code": "C.DEP",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "56.37"
+     },
+     "D": {
+      "status": "tied",
+      "source": "f24-dep-fy23.json: depreciation_net",
+      "computed": "62.0887",
+      "filed": "62.09"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "52.5"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "66.33"
+     },
+     "G": {
+      "status": "tied",
+      "source": "f24-dep-fy24.json: depreciation_net",
+      "computed": "66.3275",
+      "filed": "66.33"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "62.21"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "74.75"
+     },
+     "J": {
+      "status": "tied",
+      "source": "f24-dep-fy25.json: depreciation_net",
+      "computed": "74.7480",
+      "filed": "74.75"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "70.69"
+     },
+     "L": {
+      "status": "tied",
+      "source": "f24-dep-fy26.json: depreciation_net",
+      "computed": "90.0943",
+      "filed": "90.09"
+     },
+     "M": {
+      "status": "tied",
+      "source": "f24-dep-fy27.json: depreciation_net",
+      "computed": "106.7518",
+      "filed": "106.75"
+     }
+    }
+   },
+   {
+    "row": 37,
+    "label": "Interest on long term Loan",
+    "line_code": "C.INT.LOAN",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "52.08"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "52.3"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "45.82"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "50.67"
+     },
+     "G": {
+      "status": "differs",
+      "source": "chain: interest_on_loan",
+      "computed": "50.85",
+      "filed": "50.67"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "52.93"
+     },
+     "I": {
+      "status": "computed",
+      "source": "chain: interest_on_loan",
+      "computed": "53.62",
+      "filed": "53.62"
+     },
+     "J": {
+      "status": "computed",
+      "source": "chain: interest_on_loan",
+      "computed": "53.62",
+      "filed": "53.62"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "55.78"
+     },
+     "L": {
+      "status": "computed",
+      "source": "chain: interest_on_loan",
+      "computed": "65.69",
+      "filed": "65.69"
+     },
+     "M": {
+      "status": "computed",
+      "source": "chain: interest_on_loan",
+      "computed": "83.88",
+      "filed": "83.88"
+     }
+    }
+   },
+   {
+    "row": 38,
+    "label": "Interest on Security Deposit from Consumers and Distribution system Users",
+    "line_code": "C.INT.CSD",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "12.23"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "13.47"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "14.39"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "24.21"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "24.21"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "23.94"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "24.79"
+     },
+     "J": {
+      "status": "differs",
+      "source": "f30-security-deposit.json: isd_interest_months",
+      "computed": "24.9801",
+      "filed": "24.79"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "23.41"
+     },
+     "L": {
+      "status": "tied",
+      "source": "f30-security-deposit.json: isd_interest_annual",
+      "computed": "23.2629",
+      "filed": "23.26"
+     },
+     "M": {
+      "status": "tied",
+      "source": "f30-security-deposit.json: isd_interest_annual",
+      "computed": "24.2379",
+      "filed": "24.24"
+     }
+    }
+   },
+   {
+    "row": 39,
+    "label": "Finance Charges",
+    "line_code": "C.INT.LOAN",
+    "cells": {
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1.76"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3.96"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "4.32"
+     }
+    }
+   },
+   {
+    "row": 40,
+    "label": "Interest on Working Capital",
+    "line_code": "C.INT.WC",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "differs",
+      "source": "chain: interest_on_working_capital",
+      "computed": "1.07",
+      "filed": "1.09"
+     },
+     "E": {
+      "status": "computed",
+      "source": "chain: interest_on_working_capital",
+      "computed": "0",
+      "filed": "0"
+     },
+     "F": {
+      "status": "computed",
+      "source": "chain: interest_on_working_capital",
+      "computed": "0.16",
+      "filed": "0.16"
+     },
+     "G": {
+      "status": "computed",
+      "source": "chain: interest_on_working_capital",
+      "computed": "0.16",
+      "filed": "0.16"
+     },
+     "H": {
+      "status": "computed",
+      "source": "chain: interest_on_working_capital",
+      "computed": "0.96",
+      "filed": "0.96"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "3.81"
+     },
+     "J": {
+      "status": "computed",
+      "source": "chain: interest_on_working_capital",
+      "computed": "3.81",
+      "filed": "3.81"
+     },
+     "K": {
+      "status": "computed",
+      "source": "chain: interest_on_working_capital",
+      "computed": "0",
+      "filed": "0"
+     },
+     "L": {
+      "status": "computed",
+      "source": "chain: interest_on_working_capital",
+      "computed": "4.1",
+      "filed": "4.1"
+     },
+     "M": {
+      "status": "computed",
+      "source": "chain: interest_on_working_capital",
+      "computed": "6.88",
+      "filed": "6.88"
+     }
+    }
+   },
+   {
+    "row": 41,
+    "label": "Bad and Doubtful debts",
+    "line_code": "C.BAD_DEBT",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "18.31"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "8.73"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "21.75"
+     },
+     "F": {
+      "status": "tied",
+      "source": "p3-bad-debts.json: bad_debts_claimed",
+      "computed": "9.3576",
+      "filed": "9.36"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "9.36"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "10.3"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "11.38"
+     },
+     "J": {
+      "status": "tied",
+      "source": "p3-bad-debts.json: bad_debts_claimed",
+      "computed": "11.3797",
+      "filed": "11.38"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "11.32"
+     },
+     "L": {
+      "status": "tied",
+      "source": "p3-bad-debts.json: bad_debts_claimed",
+      "computed": "12.4390",
+      "filed": "12.44"
+     },
+     "M": {
+      "status": "tied",
+      "source": "p3-bad-debts.json: bad_debts_claimed",
+      "computed": "13.7640",
+      "filed": "13.76"
+     }
+    }
+   },
+   {
+    "row": 42,
+    "label": "Contribution towards Contingency Fund",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "5.23"
+     },
+     "G": {
+      "status": "tied",
+      "source": "arr-contingency.json: contingency_contribution",
+      "computed": "5.2324",
+      "filed": "5.23"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "5.61"
+     },
+     "J": {
+      "status": "tied",
+      "source": "arr-contingency.json: contingency_contribution",
+      "computed": "5.6149",
+      "filed": "5.61"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 43,
+    "label": "Return on Equity",
+    "line_code": "C.RETURN.ROE",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "71.64"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "75.6"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "62.17"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "78.67"
+     },
+     "G": {
+      "status": "computed",
+      "source": "chain: return_on_equity",
+      "computed": "78.67",
+      "filed": "78.67"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "70.19"
+     },
+     "I": {
+      "status": "computed",
+      "source": "chain: return_on_equity",
+      "computed": "84.98",
+      "filed": "84.98"
+     },
+     "J": {
+      "status": "computed",
+      "source": "chain: return_on_equity",
+      "computed": "84.98",
+      "filed": "84.98"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "79.23"
+     },
+     "L": {
+      "status": "computed",
+      "source": "chain: return_on_equity",
+      "computed": "98.07",
+      "filed": "98.07"
+     },
+     "M": {
+      "status": "computed",
+      "source": "chain: return_on_equity",
+      "computed": "115.77",
+      "filed": "115.77"
+     }
+    }
+   },
+   {
+    "row": 44,
+    "label": "Income Tax",
+    "line_code": "C.TAX",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "24.1"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "25.43"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "20.91"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "26.46"
+     },
+     "G": {
+      "status": "computed",
+      "source": "chain: tax_recoverable",
+      "computed": "26.46",
+      "filed": "26.46"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "23.61"
+     },
+     "I": {
+      "status": "computed",
+      "source": "chain: tax_recoverable",
+      "computed": "28.58",
+      "filed": "28.58"
+     },
+     "J": {
+      "status": "computed",
+      "source": "chain: tax_recoverable",
+      "computed": "28.58",
+      "filed": "28.58"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "26.65"
+     },
+     "L": {
+      "status": "computed",
+      "source": "chain: tax_recoverable",
+      "computed": "32.98",
+      "filed": "32.98"
+     },
+     "M": {
+      "status": "computed",
+      "source": "chain: tax_recoverable",
+      "computed": "38.94",
+      "filed": "38.94"
+     }
+    }
+   },
+   {
+    "row": 45,
+    "label": "Other items",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2.92"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2.66"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "tied",
+      "source": "p3-bad-debts.json: other_items",
+      "computed": "5.1610",
+      "filed": "5.16"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "5.16"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "5.43"
+     },
+     "J": {
+      "status": "tied",
+      "source": "p3-bad-debts.json: other_items",
+      "computed": "5.4278",
+      "filed": "5.43"
+     },
+     "L": {
+      "status": "tied",
+      "source": "p3-bad-debts.json: other_items",
+      "computed": "0.0000",
+      "filed": "0"
+     },
+     "M": {
+      "status": "tied",
+      "source": "p3-bad-debts.json: other_items",
+      "computed": "0.0000",
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 46,
+    "label": "Total Expenditure (B)",
+    "line_code": "C.TOTAL",
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "1915.97",
+      "filed": "1915.97"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "2477.57",
+      "filed": "2477.57"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "2403.93",
+      "filed": "2403.93"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "2380.27",
+      "filed": "2380.27"
+     },
+     "G": {
+      "status": "differs",
+      "source": "chain: arr_total_expenditure",
+      "computed": "2380.45",
+      "filed": "2380.27"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "2728.77",
+      "filed": "2728.77"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "2954.51",
+      "filed": "2954.51"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "2954.51",
+      "filed": "2954.51"
+     },
+     "K": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "3061.04",
+      "filed": "3061.04"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "3217.45",
+      "filed": "3217.45"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_total_expenditure",
+      "computed": "3502.93",
+      "filed": "3502.93"
+     }
+    }
+   },
+   {
+    "row": 49,
+    "label": "Income from other Business (incl. Income from Telecom Business)",
+    "line_code": "L.OTHER_BUSINESS",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.04"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.04"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.04"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.2"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.98"
+     }
+    }
+   },
+   {
+    "row": 50,
+    "label": "Non tariff income",
+    "line_code": "L.NTI",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "8.75"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "11.76"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "36.9"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "16.32"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "16.32"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "53.01"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "10.66"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "10.66"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "63.99"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "9.52"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "10.29"
+     }
+    }
+   },
+   {
+    "row": 51,
+    "label": "Revenue from Open Access Customers",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.1"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0.72"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2.41"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "2.41"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "5.37"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "5.37"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "9.13"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "7.08"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "9.84"
+     }
+    }
+   },
+   {
+    "row": 52,
+    "label": "Total Other Deductions (C)",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "8.85",
+      "filed": "8.85"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "12.48",
+      "filed": "12.48"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "36.9",
+      "filed": "36.9"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "18.73",
+      "filed": "18.73"
+     },
+     "G": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "18.78",
+      "filed": "18.78"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "53.01",
+      "filed": "53.01"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "16.08",
+      "filed": "16.08"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "16.08",
+      "filed": "16.08"
+     },
+     "K": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "73.12",
+      "filed": "73.12"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "16.81",
+      "filed": "16.81"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_deductions",
+      "computed": "21.1",
+      "filed": "21.1"
+     }
+    }
+   },
+   {
+    "row": 53,
+    "label": "Net Annual Revenue Requirement of Licensee(B-C)",
+    "line_code": "R.ARR",
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "1907.12",
+      "filed": "1907.12"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "2465.08",
+      "filed": "2465.08"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "2367.03",
+      "filed": "2367.03"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "2361.54",
+      "filed": "2361.54"
+     },
+     "G": {
+      "status": "differs",
+      "source": "chain: arr_net",
+      "computed": "2361.7",
+      "filed": "2361.5"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "2675.76",
+      "filed": "2675.76"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "2938.43",
+      "filed": "2938.43"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "2938.43",
+      "filed": "2938.43"
+     },
+     "K": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "2987.92",
+      "filed": "2987.92"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "3200.63",
+      "filed": "3200.63"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_net",
+      "computed": "3481.83",
+      "filed": "3481.83"
+     }
+    }
+   },
+   {
+    "row": 54,
+    "label": "(Shortfall)/Excess before tariff revision impact (A-D)",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "32.54",
+      "filed": "32.54"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "-257.3",
+      "filed": "-257.3"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "46.2",
+      "filed": "46.2"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "-40.56",
+      "filed": "-40.56"
+     },
+     "G": {
+      "status": "differs",
+      "source": "chain: arr_gap",
+      "computed": "-40.70",
+      "filed": "-40.52"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "49.9",
+      "filed": "49.9"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "-303.83",
+      "filed": "-303.83"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "-303.83",
+      "filed": "-303.83"
+     },
+     "K": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "-25.96",
+      "filed": "-25.97"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "-315.87",
+      "filed": "-315.87"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap",
+      "computed": "-289.79",
+      "filed": "-289.79"
+     }
+    }
+   },
+   {
+    "row": 55,
+    "label": "Tariff Revision Impact",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 56,
+    "label": "(Shortfall)/Excess after tariff revision impact (E+F)",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "32.54",
+      "filed": "32.54"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "-257.3",
+      "filed": "-257.3"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "46.2",
+      "filed": "46.2"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "-40.56",
+      "filed": "-40.56"
+     },
+     "G": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "-40.52",
+      "filed": "-40.52"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "49.9",
+      "filed": "49.9"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "-303.83",
+      "filed": "-303.83"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "-303.83",
+      "filed": "-303.83"
+     },
+     "K": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "-25.96",
+      "filed": "-25.97"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "-315.87",
+      "filed": "-315.87"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_revision",
+      "computed": "-289.79",
+      "filed": "-289.79"
+     }
+    }
+   },
+   {
+    "row": 57,
+    "label": "Govt. Subsidy Received/Declared",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "0"
+     }
+    }
+   },
+   {
+    "row": 58,
+    "label": "(Shortfall)/Excess (G-H)",
+    "line_code": null,
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "32.54",
+      "filed": "32.54"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "-257.3",
+      "filed": "-257.3"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "46.2",
+      "filed": "46.2"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "-40.56",
+      "filed": "-40.56"
+     },
+     "G": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "-40.52",
+      "filed": "-40.52"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "49.9",
+      "filed": "49.9"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "-303.83",
+      "filed": "-303.83"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "-303.83",
+      "filed": "-303.83"
+     },
+     "K": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "-25.96",
+      "filed": "-25.97"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "-315.87",
+      "filed": "-315.87"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_after_subsidy",
+      "computed": "-289.79",
+      "filed": "-289.79"
+     }
+    }
+   },
+   {
+    "row": 59,
+    "label": "Accumulated Revenue (Gap)/ Surplus from Preceding Years",
+    "line_code": "R.GAP",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "293.43"
+     },
+     "D": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "335.85"
+     },
+     "E": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1161.62"
+     },
+     "F": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "85.15"
+     },
+     "G": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "85.15"
+     },
+     "H": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1082.18"
+     },
+     "I": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "47.92"
+     },
+     "J": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "47.92"
+     },
+     "K": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "1242.59"
+     },
+     "L": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-267.74"
+     },
+     "M": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "-629.37"
+     }
+    }
+   },
+   {
+    "row": 61,
+    "label": "Total Unrecovered Revenue (Gap)/ Surplus before Carrying Cost (I+J+K)",
+    "line_code": "C.RA.CARRYING",
+    "cells": {
+     "C": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "325.98",
+      "filed": "325.98"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "78.55",
+      "filed": "78.55"
+     },
+     "E": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "1207.82",
+      "filed": "1207.82"
+     },
+     "F": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "44.59",
+      "filed": "44.59"
+     },
+     "G": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "44.63",
+      "filed": "44.63"
+     },
+     "H": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "1132.09",
+      "filed": "1132.09"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "-255.9",
+      "filed": "-255.9"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "-255.9",
+      "filed": "-255.9"
+     },
+     "K": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "1216.63",
+      "filed": "1216.62"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "-583.61",
+      "filed": "-583.61"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_unrecovered",
+      "computed": "-919.16",
+      "filed": "-919.16"
+     }
+    }
+   },
+   {
+    "row": 62,
+    "label": "Carrying Cost on Regulatory Asset",
+    "line_code": "C.RA.CARRYING",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "9.87"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "6.6",
+      "filed": "6.6"
+     },
+     "E": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "59.98",
+      "filed": "120.84"
+     },
+     "F": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "3.28",
+      "filed": "3.29"
+     },
+     "G": {
+      "status": "differs",
+      "source": "chain: arr_carrying_cost",
+      "computed": "3.28",
+      "filed": "3.29"
+     },
+     "H": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "56.05",
+      "filed": "122.34"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "-11.84",
+      "filed": "-11.84"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "-11.84",
+      "filed": "-11.84"
+     },
+     "K": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "62.2",
+      "filed": "77.3"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "-45.76",
+      "filed": "-45.76"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_carrying_cost",
+      "computed": "-83.23",
+      "filed": "-83.23"
+     }
+    }
+   },
+   {
+    "row": 63,
+    "label": "Cumulative Revenue (Gap)/Surplus ( L+M)",
+    "line_code": "R.GAP.CUMULATIVE",
+    "cells": {
+     "C": {
+      "status": "record",
+      "source": null,
+      "computed": null,
+      "filed": "335.85"
+     },
+     "D": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "85.15",
+      "filed": "85.15"
+     },
+     "E": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "1267.80",
+      "filed": "1328.66"
+     },
+     "F": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "47.87",
+      "filed": "47.88"
+     },
+     "G": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "47.91",
+      "filed": "47.92"
+     },
+     "H": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "1188.14",
+      "filed": "1254.43"
+     },
+     "I": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "-267.74",
+      "filed": "-267.74"
+     },
+     "J": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "-267.74",
+      "filed": "-267.74"
+     },
+     "K": {
+      "status": "differs",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "1278.88",
+      "filed": "1293.92"
+     },
+     "L": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "-629.37",
+      "filed": "-629.37"
+     },
+     "M": {
+      "status": "computed",
+      "source": "arr-summary.json: arr_gap_cumulative",
+      "computed": "-1002.39",
+      "filed": "-1002.39"
+     }
+    }
+   }
+  ],
+  "summary": {
+   "C": {
+    "record": 34,
+    "computed": 9
+   },
+   "D": {
+    "record": 30,
+    "computed": 11,
+    "tied": 1,
+    "differs": 1
+   },
+   "E": {
+    "record": 32,
+    "computed": 10,
+    "differs": 2
+   },
+   "F": {
+    "record": 30,
+    "computed": 10,
+    "tied": 2,
+    "differs": 2
+   },
+   "G": {
+    "record": 26,
+    "computed": 9,
+    "tied": 2,
+    "differs": 6
+   },
+   "H": {
+    "record": 30,
+    "computed": 10,
+    "differs": 2
+   },
+   "I": {
+    "record": 30,
+    "computed": 14
+   },
+   "J": {
+    "tied": 10,
+    "record": 14,
+    "differs": 2,
+    "computed": 15
+   },
+   "K": {
+    "record": 28,
+    "computed": 6,
+    "differs": 6
+   },
+   "L": {
+    "tied": 14,
+    "record": 17,
+    "computed": 15
+   },
+   "M": {
+    "tied": 13,
+    "record": 18,
+    "computed": 15
+   }
+  }
+ }
 }

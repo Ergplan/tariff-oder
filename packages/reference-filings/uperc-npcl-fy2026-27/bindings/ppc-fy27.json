@@ -42,9 +42,19 @@
   "pp_unit_cost": "S"
  },
  "totals": {
-  "pp_cost_total": "PPC FY 27!N53",
-  "pp_tx_total": "PPC FY 27!Q53",
-  "pp_mu_exported_total": "PPC FY 27!E53"
+  "pp_cost_total": [
+   "PPC FY 27!N53",
+   "ARR!M20"
+  ],
+  "pp_tx_total": [
+   "PPC FY 27!Q53",
+   "ARR!M23"
+  ],
+  "pp_mu_exported_total": "PPC FY 27!E53",
+  "pp_mu_at_bus_total": [
+   "PPC FY 27!I53",
+   "ARR!M8"
+  ]
  },
  "places": 2
 }

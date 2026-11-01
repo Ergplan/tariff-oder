@@ -79,6 +79,76 @@ def records(folder, name, binding, rules, sheets, report, verbose) -> None:
                 )
 
 
+def coverage(ref_sheet: dict, report: dict) -> dict:
+    """How each figure of the ARR format is established, column by column: **computed** by the
+    chain from base records, **tied** (a schedule's binding reproduces the figure the ARR
+    carries), **given** (a filed figure standing in), **differs** (a computation or tie that does
+    not match), or **record** (an input nobody reproduces yet).  For the reviewer and the
+    independent checker: what the reproduction covers, and what it takes on trust."""
+    import collections
+    import re
+
+    letter = {(c["fiscal_year"], c["words"]): chr(65 + c["index"]) for c in ref_sheet["columns"]}
+    status: dict[tuple[int, str], dict] = {}
+    rank = {"differs": 4, "computed": 3, "tied": 2, "given": 1}
+
+    def put(row: int, col: str, st: str, source: str, computed: str | None = None) -> None:
+        old = status.get((row, col))
+        if old and rank[old["status"]] >= rank[st]:
+            return
+        status[(row, col)] = {"status": st, "source": source, "computed": computed}
+
+    for f in report["formats"]:
+        if f["sheet"] != ref_sheet["sheet"]:
+            continue  # the chain and the format's own identities (from the format's input rows)
+        what = "chain" if f["binding"] == "chain-arr.json" else f["binding"]
+        for c in f["checks"]:
+            if not isinstance(c["row"], int):
+                continue
+            col = letter.get((c["fiscal_year"], c["words"]))
+            st = {"match": "computed", "differs": "differs", "given": "given"}.get(c["result"])
+            if col and st:
+                put(c["row"], col, st, f"{what}: {c['output']}", c.get("computed"))
+    for r in report["records"]:
+        for c in r.get("checks", []):
+            m = re.search(r"ARR!([A-Z])(\d+)", c.get("category", ""))
+            if m and c["result"] in ("match", "differs"):
+                st = "tied" if c["result"] == "match" else "differs"
+                put(int(m.group(2)), m.group(1), st, f"{r['binding']}: {c['output']}", c.get("computed"))
+    lines = []
+    summary: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
+    for row in ref_sheet["rows"]:
+        cells = {}
+        for cell in row["cells"]:
+            col = letter.get((cell["fiscal_year"], cell["words"]))
+            if not col:
+                continue
+            st = status.get((row["row"], col))
+            if st is None:
+                if cell.get("state") != "value":
+                    continue
+                st = {"status": "record", "source": None, "computed": None}
+            cells[col] = {**st, "filed": cell.get("displayed")}
+            summary[col][st["status"]] += 1
+        if cells:
+            lines.append({"row": row["row"], "label": row["label"], "line_code": row.get("line_code"), "cells": cells})
+    columns = [
+        {
+            "column": chr(65 + c["index"]),
+            "fiscal_year": c["fiscal_year"],
+            "words": c["words"].strip(),
+            "voice": c["voice"],
+        }
+        for c in ref_sheet["columns"]
+    ]
+    return {
+        "sheet": ref_sheet["sheet"],
+        "columns": columns,
+        "lines": lines,
+        "summary": {k: dict(v) for k, v in summary.items()},
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("package")
@@ -154,6 +224,12 @@ def main() -> int:
                 if c.result != "match":
                     what = f"{c.fiscal_year} {c.voice:13} {c.output:26}"
                     print(f"   {c.result:12} {what} filed {c.filed} computed {c.computed}  {c.why or ''}")
+    if "ARR" in sheets:
+        report["coverage"] = coverage(sheets["ARR"], report)
+        for c in report["coverage"]["columns"]:
+            if c["voice"] in ("petitioned", "actual"):
+                got = report["coverage"]["summary"].get(c["column"], {})
+                print(f"coverage {c['fiscal_year']} {c['words'][:12]:12} {got}")
     (folder / "reproduction.json").write_text(json.dumps(report, indent=1) + "\n")
     return 0
 

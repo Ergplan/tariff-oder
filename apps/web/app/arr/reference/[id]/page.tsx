@@ -17,10 +17,34 @@ type Filing = {
   formats: { binding: string; sheet: string; columns: number; counts: Counts; not_matching: Check[] }[];
   records: { binding?: string; sheet?: string; counts?: Counts; tie?: string; fiscal_year?: string; working?: string; filed?: string; result?: string }[];
   chain: { by_column: Record<string, Counts>; computed: Check[] } | null;
+  coverage: {
+    sheet: string;
+    columns: { column: string; fiscal_year: string; words: string; voice: string }[];
+    lines: { row: number; label: string; line_code: string | null; cells: Record<string, { status: string; source: string | null; filed: string | null }> }[];
+    summary: Record<string, Counts>;
+  } | null;
   findings: { id: string; kind: string; title: string; detail: string; where: string[]; for: string }[];
 };
 
-const TONE: Record<string, string> = { match: "ok", differs: "bad", blocked: "warn", given: "neutral", no_filed_value: "neutral", not_a_value: "neutral" };
+const TONE: Record<string, string> = {
+  match: "ok",
+  computed: "ok",
+  tied: "ok",
+  differs: "bad",
+  blocked: "warn",
+  given: "neutral",
+  record: "neutral",
+  no_filed_value: "neutral",
+  not_a_value: "neutral",
+};
+
+const STATUS_HELP: Record<string, string> = {
+  computed: "computed by the rules from base records (the chain) or from the format's own lines",
+  tied: "a schedule's reproduction gives the figure the ARR carries",
+  given: "a filed figure standing in for its computation — never counted as reproduced",
+  differs: "computed or tied, and not equal to the filed figure — see the findings",
+  record: "an input nobody reproduces yet — taken on trust",
+};
 
 function CountBadges({ counts }: { counts: Counts }) {
   return (
@@ -69,7 +93,94 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
         {f.documents.missing.length ? <p className="muted">Not in the copy received: {f.documents.missing.join("; ")}</p> : null}
       </header>
 
-      <Panel num="01" title="The chain, from base records" aside="one evaluation per column of the ARR format, through every schedule rule">
+      <Panel num="01" title="How each figure is established" aside="the ARR format's petition columns, line by line — what the reproduction covers and what it takes on trust">
+        {!f.coverage ? (
+          <p className="muted">Not reproduced yet.</p>
+        ) : (
+          (() => {
+            const cov = f.coverage;
+            const cols = cov.columns.filter((c) => c.voice === "petitioned");
+            return (
+              <>
+                <p className="muted" style={{ fontSize: "0.85rem" }}>
+                  {Object.entries(STATUS_HELP).map(([k, v]) => (
+                    <span key={k} style={{ marginRight: "0.9rem", display: "inline-block" }}>
+                      <span className="badge" data-tone={TONE[k]}>
+                        {k}
+                      </span>{" "}
+                      {v}
+                    </span>
+                  ))}
+                </p>
+                <div className="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Line</th>
+                        {cols.map((c) => (
+                          <th key={c.column} style={{ textAlign: "right" }}>
+                            {c.fiscal_year}
+                            <div className="muted" style={{ fontWeight: 400 }}>
+                              {c.words}
+                            </div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="muted">All lines</td>
+                        {cols.map((c) => (
+                          <td key={c.column} style={{ textAlign: "right" }}>
+                            <CountBadges counts={cov.summary[c.column] ?? {}} />
+                          </td>
+                        ))}
+                      </tr>
+                      {cov.lines
+                        .filter((l) => cols.some((c) => l.cells[c.column]))
+                        .map((l) => (
+                          <tr key={l.row}>
+                            <td>
+                              {l.label}
+                              <div className="mono muted">
+                                row {l.row}
+                                {l.line_code ? ` · ${l.line_code}` : ""}
+                              </div>
+                            </td>
+                            {cols.map((c) => {
+                              const cell = l.cells[c.column];
+                              return (
+                                <td key={c.column} style={{ textAlign: "right" }} title={cell?.source ?? undefined}>
+                                  {cell ? (
+                                    <>
+                                      <span className="mono">{cell.filed ?? "—"}</span>{" "}
+                                      <span className="badge" data-tone={TONE[cell.status] ?? "neutral"}>
+                                        {cell.status}
+                                      </span>
+                                      {cell.source ? (
+                                        <div className="mono muted" style={{ fontSize: "0.72rem" }}>
+                                          {cell.source}
+                                        </div>
+                                      ) : null}
+                                    </>
+                                  ) : (
+                                    <span className="muted">—</span>
+                                  )}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            );
+          })()
+        )}
+      </Panel>
+
+      <Panel num="02" title="The chain, from base records" aside="one evaluation per column of the ARR format, through every schedule rule">
         {!f.chain ? (
           <p className="muted">Not reproduced yet.</p>
         ) : (
@@ -132,7 +243,7 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
         )}
       </Panel>
 
-      <Panel num="02" title="Findings" aside="for the petitioner and the reviewer — none resolved by the build">
+      <Panel num="03" title="Findings" aside="for the petitioner and the reviewer — none resolved by the build">
         {f.findings.map((x) => (
           <div key={x.id} style={{ padding: "0.7rem 0", borderBottom: "1px solid var(--line)" }}>
             <div className="eyebrow" style={{ margin: 0 }}>
@@ -147,7 +258,7 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
         ))}
       </Panel>
 
-      <Panel num="03" title="Each format, reproduced" aside="from its own input rows through the rules of each year">
+      <Panel num="04" title="Each format, reproduced" aside="from its own input rows through the rules of each year">
         <div className="table-wrap">
           <table>
             <thead>
@@ -187,7 +298,7 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
         </div>
       </Panel>
 
-      <Panel num="04" title="The utility's workings" aside="records reproduced and tied to the filed formats">
+      <Panel num="05" title="The utility's workings" aside="records reproduced and tied to the filed formats">
         <div className="table-wrap">
           <table>
             <tbody>

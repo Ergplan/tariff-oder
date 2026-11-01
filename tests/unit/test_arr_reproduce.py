@@ -516,10 +516,12 @@ def test_npcl_revenue_from_the_current_tariff_by_category():
             if c.result == "blocked":
                 assert c.output in ("revenue_energy_rate", "revenue_fixed_rate") and c.why == "division by zero", c
             elif c.result == "differs":
-                assert (yy, c.category, c.filed, c.computed) == ("25", "TOTAL N136", "-288.1762", "-288.1362"), c
+                # the typed 0.04 (A41), in the format's total and where the ARR carries it (row 14)
+                assert yy == "25" and c.category in ("TOTAL N136", "TOTAL ARR!J14"), c
+                assert (c.filed, c.computed) == ("-288.1762", "-288.1362"), c
             else:
                 assert c.result == "match", c
-            if "ARR!" in c.category:
+            if "ARR!" in c.category and c.output != "revenue_discount_total":
                 arr[(binding["fiscal_year"], c.output)] = c.computed
     assert arr == {
         ("FY2024-25", "revenue_tariff_total"): "2634.6026",

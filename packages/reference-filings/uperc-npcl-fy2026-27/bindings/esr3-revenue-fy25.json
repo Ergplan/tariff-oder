@@ -47,7 +47,10 @@
    "F136",
    "ARR!J9"
   ],
-  "revenue_discount_total": "N136"
+  "revenue_discount_total": [
+   "N136",
+   "ARR!J14"
+  ]
  },
  "places": 4
 }

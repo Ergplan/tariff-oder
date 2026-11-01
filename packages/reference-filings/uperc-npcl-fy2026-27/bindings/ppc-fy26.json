@@ -43,8 +43,15 @@
  },
  "totals": {
   "pp_cost_total": "PPC FY 26!N52",
-  "pp_tx_total": "PPC FY 26!Q52",
-  "pp_mu_exported_total": "PPC FY 26!E52"
+  "pp_tx_total": [
+   "PPC FY 26!Q52",
+   "ARR!L23"
+  ],
+  "pp_mu_exported_total": "PPC FY 26!E52",
+  "pp_mu_at_bus_total": [
+   "PPC FY 26!I52",
+   "ARR!L8"
+  ]
  },
  "places": 2
 }

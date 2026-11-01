@@ -1,0 +1,89 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "PPC FY 26",
+ "places": 4,
+ "note": "PPC FY 26's additional claims (rows 54–60), as the ARR splits them: the incentives for FY2022-23 and FY2023-24 and the reimbursement of O&M expenses (rows 54–56) are booked with the year's power purchase (the ARR's row 20 = the sources' total N52 + these); additional coal, change in law and the incentive for FY2024-25 with their carrying cost (rows 57–60) are the arrears line (row 22).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "power purchase with claims",
+   "inputs": {
+    "record:pp_cost_sources": [
+     "N52",
+     "INR_crore"
+    ]
+   },
+   "categories": {
+    "row 54": {
+     "inputs": {
+      "record:pp_claim_amount": [
+       "R54",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 55": {
+     "inputs": {
+      "record:pp_claim_amount": [
+       "R55",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 56": {
+     "inputs": {
+      "record:pp_claim_amount": [
+       "R56",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "pp_cost_with_claims": "ARR!L20"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "arrears",
+   "categories": {
+    "row 57": {
+     "inputs": {
+      "record:pp_claim_amount": [
+       "R57",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 58": {
+     "inputs": {
+      "record:pp_claim_amount": [
+       "R58",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:pp_claim_amount": [
+       "R59",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 60": {
+     "inputs": {
+      "record:pp_claim_amount": [
+       "R60",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "pp_claims_total": "ARR!L22"
+   }
+  }
+ ]
+}

@@ -843,6 +843,113 @@
    },
    "examples": [],
    "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.claims.claim",
+   "version": 1,
+   "status": "draft",
+   "title": "A claim of an earlier year paid in this one (incentive, reimbursement, additional coal, change in law, carrying cost)",
+   "output": "pp_claim",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "claim",
+   "inputs": {
+    "claim": {
+     "unit": "INR_crore",
+     "source": "record:pp_claim_amount"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_claim"
+  },
+  {
+   "id": "uperc.pp.claims.claims_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Claims of earlier years, total",
+   "output": "pp_claims_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "claims",
+   "inputs": {
+    "claims": {
+     "unit": "INR_crore",
+     "source": "sum:pp_claim"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.pp.claims.with_claims",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost of power procurement including the claims of earlier years the petitioner books with it",
+   "output": "pp_cost_with_claims",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "sources + claims",
+   "inputs": {
+    "sources": {
+     "unit": "INR_crore",
+     "source": "record:pp_cost_sources",
+     "note": "the year's sources (the PPC summary's total)"
+    },
+    "claims": {
+     "unit": "INR_crore",
+     "source": "rule:pp_claims_total"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.PP",
+   "note": "which claims are booked with power purchase and which as arrears is the petitioner's presentation; the reviewer decides their treatment"
   }
  ]
 }
