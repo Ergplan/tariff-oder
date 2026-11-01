@@ -6,6 +6,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends
 
 from .. import atlas as atlas_
+from .. import reference_filings as rf
 from ..auth import require_analyst
 from ..db import session_scope
 
@@ -40,3 +41,23 @@ def arr_norms(commission: str) -> dict:
     values of a regulation's norms are never invented here; a plan that is not confirmed says so."""
     with session_scope() as s:
         return atlas_.norms(s, commission)
+
+
+@router.get("/arr/rules/{commission}", response_model=dict, dependencies=[Depends(require_analyst)])
+def arr_rules(commission: str) -> dict:
+    """A commission's executable calculation rules with their status: draft or approved, the
+    clause and whether a person verified it, the years each applies to (ADR-0021)."""
+    return rf.rules(commission)
+
+
+@router.get("/arr/reference-filings", response_model=list[dict], dependencies=[Depends(require_analyst)])
+def reference_filings() -> list[dict]:
+    """Filed petitions kept as reference targets for reproduction (milestone 13)."""
+    return rf.filings()
+
+
+@router.get("/arr/reference-filings/{filing_id}", response_model=dict, dependencies=[Depends(require_analyst)])
+def reference_filing(filing_id: str) -> dict:
+    """One reference filing: its documents, the reproduction of each format through the rules,
+    the chain from base records, and the findings — for the reviewer."""
+    return rf.filing(filing_id)

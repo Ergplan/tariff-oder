@@ -1005,6 +1005,18 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 64 (2026-11-01): the reproduction in the product, for the reviewer.**  API (read-only,
+  analyst and above): `GET /arr/rules/{commission}` (every calculation rule with its status, clause,
+  verification, years and examples — UPERC: 68 rules, **0 approved, 0 clauses verified**),
+  `GET /arr/reference-filings` and `GET /arr/reference-filings/{id}` (documents and hashes, each
+  format's reproduction with what does not match, the chain by column with FY2026-27 computed
+  against filed, the utility's workings and their ties, and the findings — `findings.json`, five,
+  each addressed to the petitioner or the reviewer).  Desk pages `/arr/reference`,
+  `/arr/reference/<id>`, `/arr/rules/<commission>` (a warning banner while nothing is approved);
+  "Reference filings" in the Desk menu.  Both Dockerfiles now ship `packages/arr-rules` and
+  `packages/reference-filings` (the sandbox one had been missed — found by the screenshot).
+  Checked by screenshots at 1440 and 390 px (no horizontal scroll).  2 integration tests.
+
   **Increment 63 (2026-11-01): the chain — NPCL's petition computed end to end.**  One binding
   (`chain-arr.json`) evaluates, for every column of the ARR format, the whole rule set from base
   records only: capital (F14) → normative equity and return (F26) and normative loan and interest
@@ -1832,6 +1844,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 64 (2026-11-01): 412 passed** (+2 integration: rules listed with their status and nothing approved; the NPCL reference filing with its chain and findings; unknown ids 404; unauthenticated refused).  Ruff, format, contracts (regenerated) and web typecheck clean.
 - **Increment 63 (2026-11-01): 410 passed** (the regression pins the chain: the petition's three columns, 36 of 36; no Commission column fed a petitioner's figure).  Ruff and format clean.
 - **Increment 62 (2026-11-01): 410 passed** (the regression pins F29, 24 of 24).  Ruff and format clean.
 - **Increment 61 (2026-11-01): 410 passed** (the reproduction regression pins the ARR summary: the petition's own columns match in full).  Ruff and format clean.

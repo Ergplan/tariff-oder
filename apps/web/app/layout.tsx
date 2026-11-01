@@ -45,6 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 links={[
                   { href: "/", label: "Status" },
                   { href: "/arr/readings", label: "ARR readings" },
+                  { href: "/arr/reference", label: "Reference filings" },
                   { href: "/review", label: "Review" },
                   { href: "/sources", label: "Source inbox" },
                   { href: "/commissions", label: "Commissions" },

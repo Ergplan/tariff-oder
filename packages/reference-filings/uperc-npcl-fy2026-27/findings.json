@@ -1,0 +1,20 @@
+{
+ "status": "found by reproducing the filing in the build session; each is a question for the petitioner and the reviewer — none is resolved by the build",
+ "findings": [
+  {"id": "A29", "kind": "inconsistency", "title": "F25 / F26 FY2023-24 do not use F14's capitalisation",
+   "detail": "F26 adds equity of 21.21 and F25 a normative loan of 49.49 in the FY2023-24 \"Claimed\" column; the same filing's F14 gives 30 % / 70 % of its net capitalisation, 22.73 / 53.04.  F26 retires no equity that year; F14 retires 1.53.",
+   "where": ["F14_CAP_Cap Cost rows 29–30, 41", "F25_IOL row 10", "F26_ROE rows 9–10"], "for": "petitioner"},
+  {"id": "A32", "kind": "convention", "title": "Receivables: the Commission and the petitioner use different bases",
+   "detail": "NPCL's projection takes 1.5 months of tariff and open-access revenue; the Commission's FY2025-26 approval (as F27 restates it) takes tariff revenue alone (370.25 × 12 / 1.5 = 2,962.0).  True-up years use billing (FY2022-23 grossed up by 1.0473).",
+   "where": ["F27_Work Cap row 10"], "for": "reviewer"},
+  {"id": "A33", "kind": "header", "title": "F18 prints its ARR column as FY 2025-26",
+   "detail": "The WPI format's last column is headed \"FY 2025-26\" like the APR column before it; F17 heads the same column \"FY 2026-27\".",
+   "where": ["F18_O&M_WPI I6"], "for": "petitioner"},
+  {"id": "A35", "kind": "treatment", "title": "Carrying cost on a surplus: full rate (Commission) or 75 % of a deposit rate (NPCL)",
+   "detail": "The Commission's approvals, as NPCL restates them, carry a surplus at the full carrying rate (FY2024-25: × 11.05 %, Rs 122.34 crore); NPCL's own columns at 75 % of a deposit rate (6.75 %; 6.5 % for FY2026-27) — Rs 56.05 crore for the same base.",
+   "where": ["ARR row 62"], "for": "reviewer"},
+  {"id": "A31", "kind": "exception", "title": "Depreciation: land on a base excluding land rights; one office-equipment year",
+   "detail": "NPCL depreciates land at 3.34 % of the average gross block less the non-depreciable land rights (3.99); FY2024-25 office equipment (pre-2020 assets) is 0.5373 where the class rate gives 0.5073.",
+   "where": ["Annexure-21, Depreciation before 1 Apr 2020"], "for": "reviewer"}
+ ]
+}
