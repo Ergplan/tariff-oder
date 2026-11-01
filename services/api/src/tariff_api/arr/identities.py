@@ -96,6 +96,10 @@ def _finding(
     if abs(diff) <= _tol(identity.tolerance, unit, expected):
         return None
     lines = sorted({u.line_code for u in used} | {printed.line_code})
+    # a computed side can carry many places (sales grossed up by a loss percentage does not
+    # terminate): the finding states it to four places
+    if expected != expected.quantize(Decimal("0.0001")):
+        expected, diff = expected.quantize(Decimal("0.0001")), diff.quantize(Decimal("0.0001"))
     return IdentityFinding(
         identity_id=identity.id,
         severity=identity.severity,

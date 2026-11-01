@@ -188,6 +188,13 @@ def label_unit(label: str) -> str | None:
     return unit_from_text(tail.group(1)) if tail else None
 
 
+# the ARR's own totals: a "Total Cost" row of one power source's table is not total expenditure
+_SUMMARY_LINES = frozenset({"C.TOTAL", "R.ARR", "R.GAP", "R.REV.EXISTING"})
+_SUMMARY_TITLE = re.compile(
+    r"summary|aggregate\s+revenue\s+requirement|annual\s+revenue\s+requirement|\barr\b|revenue\s+gap|"
+    r"gap\s*/\s*\(?\s*surplus",
+    re.I,
+)
 _TITLE = re.compile(r"^\s*(?:table|statement|format|annexure|schedule)\b", re.I)
 
 
@@ -239,6 +246,7 @@ def read_grids(
     utility: str | None,
     licensees: dict[str, list[str]] | None = None,
     part: str | None = None,
+    branch: str | None = None,
 ) -> tuple[ArrExtractionOutput, ReadReport]:
     """Candidates from a chapter's grids.  ``utility`` is the order's licensee; a combined
     order passes its ``licensees`` (code -> names) instead, and each value is attributed to the
@@ -247,7 +255,9 @@ def read_grids(
 
     ``part`` is the running header of the part the chapter sits in ("TRUING-UP OF FY
     2024-25"): it gives a column the year when neither its header nor the caption does, and
-    the voice of an approval inside a true-up or an APR."""
+    the voice of an approval inside a true-up or an APR.  ``branch`` is the chapter's: the
+    ARR's own totals are placed only in an ARR or gap chapter, or in a table titled as the
+    summary."""
     combined = bool(licensees and len(licensees) > 1)
     # a running header that names no part ("NBPDCL & SBPDCL Tariff Order for FY 2026-27") is
     # not context: its year is the order's, not the table's
@@ -344,6 +354,23 @@ def read_grids(
                         "row": i,
                         "label": label,
                         "options": placer.options(label),
+                    }
+                )
+                continue
+            if (
+                placed.code in _SUMMARY_LINES
+                and branch is not None
+                and branch not in ("R", "C")
+                and not _SUMMARY_TITLE.search(caption)
+            ):
+                report.unplaced.append(
+                    {
+                        "page": g.page_index,
+                        "grid": g.ordinal,
+                        "row": i,
+                        "label": label,
+                        "options": [placed.code],
+                        "reason": f"a total of a {branch} table, not the ARR's {placed.code}",
                     }
                 )
                 continue

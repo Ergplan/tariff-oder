@@ -307,6 +307,7 @@ def arr_extract_source(ctx: JobContext) -> dict:
             utility=utility_code,
             licensees=licensee_names if len(licensee_names) > 1 else None,
             part=parts.get(ordinal),
+            branch=branch,
         )
         for c in structure.candidates:
             c.chapter = ordinal

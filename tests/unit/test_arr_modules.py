@@ -494,3 +494,23 @@ def test_real_order_table_layouts_are_read():
     )
     assert label_unit("Maintenance spares @ 40% of the R&M Expenses") is None
     assert label_unit("Distribution Loss (%)") == "percent" and label_unit("ACoS (Rs./kWh)") == "INR_per_kWh"
+
+
+def test_the_arr_totals_are_placed_only_in_summary_context():
+    """A "Total Cost" row of one power source's table (a power-purchase chapter) is not total
+    expenditure: reported unplaced with the reason.  In a table titled as the ARR summary, the
+    same words are (increment 40, found on a real order by identity ARR-I1)."""
+    tax = load_taxonomy()
+    mapping = load_mapping("NOSUCH", fallback=True)
+    placer = Placer(tax, mapping, "distribution")
+    rows = [["Particulars", "Claimed", "Approved"], ["Total Cost", "539.30", "534.52"]]
+    source = GridIn(5, 0, rows, 1, ["TABLE 4-26 MEDIUM TERM POWER PURCHASE COST FOR FY 2024-25 (IN RS. CR.)"])
+    out, rep = read_grids(
+        [source], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="SYN", branch="C.PP"
+    )
+    assert out.candidates == [] and "not the ARR's C.TOTAL" in rep.unplaced[0]["reason"]
+    summary = GridIn(9, 0, rows, 1, ["TABLE 6-81 SUMMARY OF ARR AS APPROVED BY THE COMMISSION FOR FY 2026-27"])
+    out, _ = read_grids(
+        [summary], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="SYN", branch="C.PP"
+    )
+    assert {c.line_code for c in out.candidates} == {"C.TOTAL"}
