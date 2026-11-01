@@ -386,3 +386,40 @@ def test_cells_a_blank_input_blocks_and_a_blank_filed_cell_is_no_value():
     assert got[0] == ("C1", "differs", "11.000000")
     assert got[1] == ("B1", "no_filed_value", "11.00")
     assert got[2][:2] == ("C1", "blocked")
+
+
+def test_npcl_depreciation_by_class_rolls_forward_and_ties_to_the_arr():
+    """Real data: F24 by asset class, five years.  FY2022-23 prints each class's rate, so its
+    depreciation is computed (average gross block × rate); later years type the year's figure,
+    taken as given (ledger A39: the projection years' working is not in the filing).  Every
+    closing gross block and accumulated depreciation, the implied rate, the total and the net of
+    consumer contribution match, and the net is the ARR's row 36 in every year.  A class with no
+    gross block has no rate: blocked, never 0."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    wb = None
+    net = {}
+    for yy in ("23", "24", "25", "26", "27"):
+        binding = json.loads((folder / "bindings" / f"f24-dep-fy{yy}.json").read_text())
+        wb = wb or openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+        checks = reproduce_row_table(wb, binding, rules)
+        for c in checks:
+            if c.result == "blocked":
+                assert c.output == "depreciation_rate_implied" and c.why == "division by zero", c
+            else:
+                assert c.result == "match", c
+        if yy == "23":
+            assert sum(1 for c in checks if c.output == "depreciation_class" and c.result == "match") == 17
+        net[binding["fiscal_year"]] = {c.category: c.computed for c in checks if c.output == "depreciation_net"}
+    assert {fy: v[next(k for k in v if "ARR" in k)] for fy, v in net.items()} == {
+        "FY2022-23": "62.0887",
+        "FY2023-24": "66.3275",
+        "FY2024-25": "74.7480",
+        "FY2025-26": "90.0943",
+        "FY2026-27": "106.7518",
+    }

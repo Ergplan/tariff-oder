@@ -1,20 +1,78 @@
 {
  "status": "found by reproducing the filing in the build session; each is a question for the petitioner and the reviewer — none is resolved by the build",
  "findings": [
-  {"id": "A29", "kind": "inconsistency", "title": "F25 / F26 FY2023-24 do not use F14's capitalisation",
+  {
+   "id": "A29",
+   "kind": "inconsistency",
+   "title": "F25 / F26 FY2023-24 do not use F14's capitalisation",
    "detail": "F26 adds equity of 21.21 and F25 a normative loan of 49.49 in the FY2023-24 \"Claimed\" column; the same filing's F14 gives 30 % / 70 % of its net capitalisation, 22.73 / 53.04.  F26 retires no equity that year; F14 retires 1.53.",
-   "where": ["F14_CAP_Cap Cost rows 29–30, 41", "F25_IOL row 10", "F26_ROE rows 9–10"], "for": "petitioner"},
-  {"id": "A32", "kind": "convention", "title": "Receivables: the Commission and the petitioner use different bases",
+   "where": [
+    "F14_CAP_Cap Cost rows 29–30, 41",
+    "F25_IOL row 10",
+    "F26_ROE rows 9–10"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A32",
+   "kind": "convention",
+   "title": "Receivables: the Commission and the petitioner use different bases",
    "detail": "NPCL's projection takes 1.5 months of tariff and open-access revenue; the Commission's FY2025-26 approval (as F27 restates it) takes tariff revenue alone (370.25 × 12 / 1.5 = 2,962.0).  True-up years use billing (FY2022-23 grossed up by 1.0473).",
-   "where": ["F27_Work Cap row 10"], "for": "reviewer"},
-  {"id": "A33", "kind": "header", "title": "F18 prints its ARR column as FY 2025-26",
+   "where": [
+    "F27_Work Cap row 10"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A33",
+   "kind": "header",
+   "title": "F18 prints its ARR column as FY 2025-26",
    "detail": "The WPI format's last column is headed \"FY 2025-26\" like the APR column before it; F17 heads the same column \"FY 2026-27\".",
-   "where": ["F18_O&M_WPI I6"], "for": "petitioner"},
-  {"id": "A35", "kind": "treatment", "title": "Carrying cost on a surplus: full rate (Commission) or 75 % of a deposit rate (NPCL)",
+   "where": [
+    "F18_O&M_WPI I6"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A35",
+   "kind": "treatment",
+   "title": "Carrying cost on a surplus: full rate (Commission) or 75 % of a deposit rate (NPCL)",
    "detail": "The Commission's approvals, as NPCL restates them, carry a surplus at the full carrying rate (FY2024-25: × 11.05 %, Rs 122.34 crore); NPCL's own columns at 75 % of a deposit rate (6.75 %; 6.5 % for FY2026-27) — Rs 56.05 crore for the same base.",
-   "where": ["ARR row 62"], "for": "reviewer"},
-  {"id": "A31", "kind": "exception", "title": "Depreciation: land on a base excluding land rights; one office-equipment year",
+   "where": [
+    "ARR row 62"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A31",
+   "kind": "exception",
+   "title": "Depreciation: land on a base excluding land rights; one office-equipment year",
    "detail": "NPCL depreciates land at 3.34 % of the average gross block less the non-depreciable land rights (3.99); FY2024-25 office equipment (pre-2020 assets) is 0.5373 where the class rate gives 0.5073.",
-   "where": ["Annexure-21, Depreciation before 1 Apr 2020"], "for": "reviewer"}
+   "where": [
+    "Annexure-21, Depreciation before 1 Apr 2020"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A38",
+   "kind": "inconsistency",
+   "title": "F24 FY2023-24: the rate column divides by the net block",
+   "detail": "The FY2023-24 block's \"Applicable rate\" (J38:J56) is G / ((B − F) + (C − D) / 2) — the year's depreciation over the opening gross block less accumulated depreciation; the FY2024-25 to FY2026-27 blocks divide by the gross block (B + (C − D) / 2), and FY2022-23 prints the rate itself.  Land therefore shows 3.67 % in FY2023-24 against 3.34 % in the other years.  The depreciation figures are unaffected; the printed rates are not comparable across years.",
+   "where": [
+    "F24_Dep J38:J56"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A39",
+   "kind": "missing working",
+   "title": "Depreciation of the APR and ARR years: the computation is not in the filing",
+   "detail": "F24 types each class's depreciation for FY2025-26 and FY2026-27.  Annexure-21 rolls only the existing assets forward (gross 111.39 for FY2025-26 against F24's 121.04).  The excess fits half a year at the class rate on the year's additions for land, buildings, vehicles and metering (0.50), but about 0.40 for lines & cables, plant & machinery and communication equipment in FY2025-26, and no single fraction in FY2026-27.  Consumer-contribution depreciation is 30.94 in F24 against 29.65 in the workings.  The totals reproduce from F24's class figures (net 90.09 and 106.75, as the ARR carries); the class figures themselves cannot be derived from what was filed.  Ask for the working, e.g. additions by month or by funding source.",
+   "where": [
+    "F24_Dep G94:G110, G116, G122:G138, G144",
+    "Annexure-21"
+   ],
+   "for": "petitioner"
+  }
  ]
 }

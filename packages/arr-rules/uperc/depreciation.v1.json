@@ -204,6 +204,84 @@
     "feeds": "unrounded"
    },
    "examples": []
+  },
+  {
+   "id": "uperc.depreciation.rate_implied",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation rate the year's figure implies (the format's check column)",
+   "output": "depreciation_rate_implied",
+   "unit": "fraction",
+   "schedule": "R-SCH-7",
+   "formula": "depreciation / average",
+   "inputs": {
+    "depreciation": {
+     "unit": "INR_crore",
+     "source": "rule:depreciation_class"
+    },
+    "average": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_average"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — depreciation (straight line on the average gross block at the asset class's rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "asset_class",
+   "note": "Not a regulation: the identity UPERC's F24 prints beside each class (depreciation over the average gross block), to show a class's depreciation agrees with its rate.  A class with no gross block has no rate (blocked, never 0)."
+  },
+  {
+   "id": "uperc.depreciation.net",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation, net of the depreciation on assets from consumer contribution",
+   "output": "depreciation_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "gross - contribution",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:depreciation_gross_total"
+    },
+    "contribution": {
+     "unit": "INR_crore",
+     "source": "record:dep_contribution",
+     "note": "the depreciation on assets created from consumer contribution, grants and subsidy, which the consumers have already paid for"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — depreciation (straight line on the average gross block at the asset class's rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.DEP"
   }
  ]
 }

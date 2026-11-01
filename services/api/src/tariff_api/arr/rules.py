@@ -459,6 +459,13 @@ class RuleSet:
             r = self.rules[o]
             if r.per:
                 for cat, own in cats.items():
+                    if f"rule:{o}" in own:
+                        # given for this category (a filed figure standing in for the computation)
+                        raw, unit = own[f"rule:{o}"]
+                        v = Q.of(Decimal(str(raw)), unit).to(r.unit)
+                        given = Result(o, "given", 0, "given", v, _round(v, r.rounding), r.unit, {}, "given")
+                        ev.by_category.setdefault(cat, {})[o] = given
+                        continue
                     res, why = self._one(r, {**values, **own}, ev, cat)
                     if res:
                         ev.by_category.setdefault(cat, {})[o] = res

@@ -410,7 +410,19 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
         key = f"{label} (row {r})"
         cats[key], rows_of[key] = vals, r
     fy = binding["fiscal_year"]
-    ev = RuleSet(rules, fy).evaluate(fy, {}, cats)
+    shared: dict[str, tuple[Decimal | str, str]] = {}
+    for source, spec in binding.get("shared", {}).items():
+        # a value for every row: a cell of the sheet (a deduction printed below the total), or a
+        # stated constant — each with its reason in the binding
+        if "cell" in spec:
+            raw = ws[spec["cell"]].value
+            if not isinstance(raw, int | float) or isinstance(raw, bool):
+                continue  # blank: absent, never 0
+            v = Decimal(repr(raw) if isinstance(raw, float) else str(raw))
+            shared[source] = (-v if spec.get("negate") else v, spec.get("unit", "INR_crore"))
+        else:
+            shared[source] = (str(spec["value"]), spec.get("unit", "INR_crore"))
+    ev = RuleSet(rules, fy).evaluate(fy, shared, cats)
     for cat, r in rows_of.items():
         for output, col in binding.get("outputs", {}).items():
             filed = ws.cell(r, col_of(col)).value
@@ -434,26 +446,22 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
                     computed=str(got),
                 )
             )
-    for output, ref in binding.get("totals", {}).items():
-        sheet, _, cell = ref.rpartition("!")
-        filed = wb[sheet][cell].value
-        res = ev.results.get(output)
-        if res is None:
-            out.append(BlockCheck(binding["sheet"], fy, "TOTAL", output, "blocked", why=ev.blocked.get(output)))
-            continue
-        want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q)
-        got = res.value.quantize(q)
-        out.append(
-            BlockCheck(
-                binding["sheet"],
-                fy,
-                f"TOTAL {ref}",
-                output,
-                "match" if got == want else "differs",
-                filed=str(want),
-                computed=str(got),
-            )
-        )
+    for output, refs in binding.get("totals", {}).items():
+        for ref in [refs] if isinstance(refs, str) else refs:
+            sheet, _, cell = ref.rpartition("!")
+            filed = wb[sheet or binding["sheet"]][cell].value
+            res = ev.results.get(output)
+            label = f"TOTAL {ref}"
+            if res is None:
+                out.append(BlockCheck(binding["sheet"], fy, label, output, "blocked", why=ev.blocked.get(output)))
+                continue
+            if not isinstance(filed, int | float) or isinstance(filed, bool):
+                out.append(BlockCheck(binding["sheet"], fy, label, output, "no_filed_value", computed=str(res.value)))
+                continue
+            want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q)
+            got = res.value.quantize(q)
+            result = "match" if got == want else "differs"
+            out.append(BlockCheck(binding["sheet"], fy, label, output, result, filed=str(want), computed=str(got)))
     return out
 
 

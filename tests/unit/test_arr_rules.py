@@ -246,3 +246,28 @@ def test_division_by_zero_blocks_the_output_and_never_prints_zero():
     )
     ev = RuleSet([r]).evaluate("FY2030-31", {"record:a": ("5", "INR_crore"), "record:m": ("0", "MU")})
     assert ev.blocked == {"rate": "division by zero"} and not ev.results
+
+
+def test_a_category_can_be_given_and_is_labelled_so():
+    """A filed figure can stand in for one category's computation (F24 types the projection years'
+    depreciation by class): labelled "given", it feeds the sum like a computed one."""
+    per = rule(
+        "dep",
+        "dep",
+        "INR_crore",
+        "avg_gfa * rate",
+        {
+            "avg_gfa": {"unit": "INR_crore", "source": "record:avg"},
+            "rate": {"unit": "fraction", "source": "record:rate"},
+        },
+        per="asset_class",
+    )
+    total = rule("total", "total", "INR_crore", "parts", {"parts": {"unit": "INR_crore", "source": "sum:dep"}})
+    cats = {
+        "Lines": {"record:avg": ("100", "INR_crore"), "record:rate": ("0.0528", "fraction")},
+        "Vehicles": {"rule:dep": ("0.9", "INR_crore")},  # no rate needed: given
+    }
+    ev = RuleSet([per, total]).evaluate("FY2030-31", {}, cats)
+    assert ev.by_category["Vehicles"]["dep"].status == "given"
+    assert ev.by_category["Lines"]["dep"].status != "given"
+    assert ev.results["total"].value == Decimal("6.18")

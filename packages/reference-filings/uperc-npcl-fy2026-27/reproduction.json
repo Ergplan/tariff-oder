@@ -9448,6 +9448,2471 @@
    ]
   },
   {
+   "binding": "f24-dep-fy23.json",
+   "checks": [
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Land (row 10)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "152.3514",
+     "computed": "152.3514",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Land (row 10)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "14.5708",
+     "computed": "14.5708",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Land (row 10)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "5.0400",
+     "computed": "5.0400",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Buildings (row 11)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "217.3769",
+     "computed": "217.3769",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Buildings (row 11)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "20.7843",
+     "computed": "20.7843",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Buildings (row 11)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "7.1875",
+     "computed": "7.1875",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Hydraulic works (row 12)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Hydraulic works (row 12)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Hydraulic works (row 12)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Other Civil Works (row 13)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Other Civil Works (row 13)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Other Civil Works (row 13)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Plant & Machinery (row 14)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "58.3874",
+     "computed": "58.3874",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Plant & Machinery (row 14)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "7.7144",
+     "computed": "7.7144",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Plant & Machinery (row 14)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "3.0021",
+     "computed": "3.0021",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Lines & Cables (row 15)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "943.7413",
+     "computed": "943.7413",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Lines & Cables (row 15)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "125.7255",
+     "computed": "125.7255",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Lines & Cables (row 15)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "47.7458",
+     "computed": "47.7458",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Vehicles (row 16)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "6.1772",
+     "computed": "6.1772",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Vehicles (row 16)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "1.2387",
+     "computed": "1.2387",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Vehicles (row 16)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.5363",
+     "computed": "0.5363",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Furniture & Fixtures (row 17)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "22.4494",
+     "computed": "22.4494",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Furniture & Fixtures (row 17)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "4.2334",
+     "computed": "4.2334",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Furniture & Fixtures (row 17)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "1.4190",
+     "computed": "1.4190",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Office Equipments (row 18)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "11.2600",
+     "computed": "11.2600",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Office Equipments (row 18)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "1.6796",
+     "computed": "1.6796",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Office Equipments (row 18)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.6264",
+     "computed": "0.6264",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Metering Equipment (row 19)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "92.9599",
+     "computed": "92.9599",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Metering Equipment (row 19)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "9.8903",
+     "computed": "9.8903",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Metering Equipment (row 19)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "4.2378",
+     "computed": "4.2378",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Communication Equipment (row 20)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "27.1656",
+     "computed": "27.1656",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Communication Equipment (row 20)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "3.0032",
+     "computed": "3.0032",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Communication Equipment (row 20)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "1.2382",
+     "computed": "1.2382",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Intangible Assets (row 21)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "45.2968",
+     "computed": "45.2968",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Intangible Assets (row 21)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "15.5842",
+     "computed": "15.5842",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Intangible Assets (row 21)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "6.4090",
+     "computed": "6.4090",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Assets taken over & pending final valuation (row 22)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1.2005",
+     "computed": "1.2005",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Assets taken over & pending final valuation (row 22)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.5402",
+     "computed": "0.5402",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Assets taken over & pending final valuation (row 22)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.1801",
+     "computed": "0.1801",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Solar Power Generation Equipments (row 23)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.1825",
+     "computed": "0.1825",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Solar Power Generation Equipments (row 23)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0289",
+     "computed": "0.0289",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Solar Power Generation Equipments (row 23)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.0096",
+     "computed": "0.0096",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 24)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 24)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 24)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Spare Units (row 25)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Spare Units (row 25)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Spare Units (row 25)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Capital Spares (row 26)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Capital Spares (row 26)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "Capital Spares (row 26)",
+     "output": "depreciation_class",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "TOTAL F24_Dep!G29",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "77.6318",
+     "computed": "77.6318",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "TOTAL F24_Dep!G33",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "62.0887",
+     "computed": "62.0887",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2022-23",
+     "category": "TOTAL ARR!D36",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "62.0887",
+     "computed": "62.0887",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "f24-dep-fy24.json",
+   "checks": [
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Land (row 38)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "167.8474",
+     "computed": "167.8474",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Land (row 38)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "19.9182",
+     "computed": "19.9182",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Buildings (row 39)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "219.6430",
+     "computed": "219.6430",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Buildings (row 39)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "28.0826",
+     "computed": "28.0826",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Hydraulic works (row 40)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Hydraulic works (row 40)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Other Civil Works (row 41)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Other Civil Works (row 41)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Plant & Machinery (row 42)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "59.9142",
+     "computed": "59.9142",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Plant & Machinery (row 42)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "10.8376",
+     "computed": "10.8376",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Lines & Cables (row 43)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1033.7145",
+     "computed": "1033.7145",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Lines & Cables (row 43)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "177.5678",
+     "computed": "177.5678",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Vehicles (row 44)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "7.7460",
+     "computed": "7.7460",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Vehicles (row 44)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "1.7070",
+     "computed": "1.7070",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Furniture & Fixtures (row 45)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "22.5455",
+     "computed": "22.5455",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Furniture & Fixtures (row 45)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "5.6575",
+     "computed": "5.6575",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Office Equipments (row 46)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "15.7453",
+     "computed": "15.7453",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Office Equipments (row 46)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "2.5344",
+     "computed": "2.5344",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Metering Equipment (row 47)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "116.2411",
+     "computed": "116.2411",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Metering Equipment (row 47)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "15.1932",
+     "computed": "15.1932",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Communication Equipment (row 48)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "40.6334",
+     "computed": "40.6334",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Communication Equipment (row 48)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "4.7903",
+     "computed": "4.7903",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Intangible Assets (row 49)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "51.2753",
+     "computed": "51.2753",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Intangible Assets (row 49)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "22.8271",
+     "computed": "22.8271",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Assets taken over & pending final valuation (row 50)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1.2005",
+     "computed": "1.2005",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Assets taken over & pending final valuation (row 50)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.7203",
+     "computed": "0.7203",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Solar Power Generation Equipments (row 51)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.1825",
+     "computed": "0.1825",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Solar Power Generation Equipments (row 51)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0385",
+     "computed": "0.0385",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 52)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 52)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Spare Units (row 53)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Spare Units (row 53)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Capital Spares (row 54)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "Capital Spares (row 54)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL F24_Dep!G57",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "85.6591",
+     "computed": "85.6591",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL F24_Dep!G61",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "66.3275",
+     "computed": "66.3275",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL ARR!G36",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "66.3275",
+     "computed": "66.3275",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "f24-dep-fy25.json",
+   "checks": [
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Land (row 66)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "169.6892",
+     "computed": "169.6892",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Land (row 66)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "25.5550",
+     "computed": "25.5550",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Land (row 66)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0334",
+     "computed": "0.0334",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Buildings (row 67)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "250.6553",
+     "computed": "250.6553",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Buildings (row 67)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "35.9366",
+     "computed": "35.9366",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Buildings (row 67)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0334",
+     "computed": "0.0334",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Hydraulic works (row 68)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Hydraulic works (row 68)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Hydraulic works (row 68)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Other Civil Works (row 69)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Other Civil Works (row 69)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Other Civil Works (row 69)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Plant & Machinery (row 70)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "83.3184",
+     "computed": "83.3184",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Plant & Machinery (row 70)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "14.6138",
+     "computed": "14.6138",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Plant & Machinery (row 70)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0528",
+     "computed": "0.0528",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Lines & Cables (row 71)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1226.8424",
+     "computed": "1226.8424",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Lines & Cables (row 71)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "237.1131",
+     "computed": "237.1131",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Lines & Cables (row 71)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0528",
+     "computed": "0.0528",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Vehicles (row 72)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "9.4013",
+     "computed": "9.4013",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Vehicles (row 72)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "1.8683",
+     "computed": "1.8683",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Vehicles (row 72)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0950",
+     "computed": "0.0950",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Furniture & Fixtures (row 73)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "22.6486",
+     "computed": "22.6486",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Furniture & Fixtures (row 73)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "7.0879",
+     "computed": "7.0879",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Furniture & Fixtures (row 73)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0633",
+     "computed": "0.0633",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Office Equipments (row 74)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "16.9092",
+     "computed": "16.9092",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Office Equipments (row 74)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "3.5979",
+     "computed": "3.5979",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Office Equipments (row 74)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0651",
+     "computed": "0.0651",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Metering Equipment (row 75)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "140.6091",
+     "computed": "140.6091",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Metering Equipment (row 75)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "21.2917",
+     "computed": "21.2917",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Metering Equipment (row 75)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0528",
+     "computed": "0.0528",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Communication Equipment (row 76)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "43.4269",
+     "computed": "43.4269",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Communication Equipment (row 76)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "6.8539",
+     "computed": "6.8539",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Communication Equipment (row 76)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0528",
+     "computed": "0.0528",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Intangible Assets (row 77)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "68.3077",
+     "computed": "68.3077",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Intangible Assets (row 77)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "31.7959",
+     "computed": "31.7959",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Intangible Assets (row 77)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.1500",
+     "computed": "0.1500",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Assets taken over & pending final valuation (row 78)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1.2005",
+     "computed": "1.2005",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Assets taken over & pending final valuation (row 78)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.9004",
+     "computed": "0.9004",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Assets taken over & pending final valuation (row 78)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.1500",
+     "computed": "0.1500",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Solar Power Generation Equipments (row 79)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.1825",
+     "computed": "0.1825",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Solar Power Generation Equipments (row 79)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0482",
+     "computed": "0.0482",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Solar Power Generation Equipments (row 79)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0528",
+     "computed": "0.0528",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 80)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 80)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 80)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Spare Units (row 81)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Spare Units (row 81)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Spare Units (row 81)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Capital Spares (row 82)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Capital Spares (row 82)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "Capital Spares (row 82)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL F24_Dep!G85",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "98.4178",
+     "computed": "98.4178",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL F24_Dep!G89",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "74.7480",
+     "computed": "74.7480",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL ARR!J36",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "74.7480",
+     "computed": "74.7480",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "f24-dep-fy26.json",
+   "checks": [
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Land (row 94)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "180.7648",
+     "computed": "180.7648",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Land (row 94)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "31.4078",
+     "computed": "31.4078",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Land (row 94)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0334",
+     "computed": "0.0334",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Buildings (row 95)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "264.4721",
+     "computed": "264.4721",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Buildings (row 95)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "44.5395",
+     "computed": "44.5395",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Buildings (row 95)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0334",
+     "computed": "0.0334",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Hydraulic works (row 96)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Hydraulic works (row 96)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Hydraulic works (row 96)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Other Civil Works (row 97)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Other Civil Works (row 97)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Other Civil Works (row 97)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Plant & Machinery (row 98)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "84.8181",
+     "computed": "84.8181",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Plant & Machinery (row 98)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "19.0447",
+     "computed": "19.0447",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Plant & Machinery (row 98)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0527",
+     "computed": "0.0527",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Lines & Cables (row 99)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1574.7521",
+     "computed": "1574.7521",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Lines & Cables (row 99)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "308.0551",
+     "computed": "308.0551",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Lines & Cables (row 99)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0515",
+     "computed": "0.0515",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Vehicles (row 100)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "13.1907",
+     "computed": "13.1907",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Vehicles (row 100)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "2.8849",
+     "computed": "2.8849",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Vehicles (row 100)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0900",
+     "computed": "0.0900",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Furniture & Fixtures (row 101)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "22.6486",
+     "computed": "22.6486",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Furniture & Fixtures (row 101)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "8.5216",
+     "computed": "8.5216",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Furniture & Fixtures (row 101)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0633",
+     "computed": "0.0633",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Office Equipments (row 102)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "14.2874",
+     "computed": "14.2874",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Office Equipments (row 102)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "2.9060",
+     "computed": "2.9060",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Office Equipments (row 102)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0633",
+     "computed": "0.0633",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Metering Equipment (row 103)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "145.5589",
+     "computed": "145.5589",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Metering Equipment (row 103)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "28.8303",
+     "computed": "28.8303",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Metering Equipment (row 103)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0900",
+     "computed": "0.0900",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Communication Equipment (row 104)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "89.0922",
+     "computed": "89.0922",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Communication Equipment (row 104)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "10.1104",
+     "computed": "10.1104",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Communication Equipment (row 104)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0491",
+     "computed": "0.0491",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Intangible Assets (row 105)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "68.3077",
+     "computed": "68.3077",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Intangible Assets (row 105)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "42.0420",
+     "computed": "42.0420",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Intangible Assets (row 105)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.1500",
+     "computed": "0.1500",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Assets taken over & pending final valuation (row 106)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1.2005",
+     "computed": "1.2005",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Assets taken over & pending final valuation (row 106)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "1.0805",
+     "computed": "1.0805",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Assets taken over & pending final valuation (row 106)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.1500",
+     "computed": "0.1500",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Solar Power Generation Equipments (row 107)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.1825",
+     "computed": "0.1825",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Solar Power Generation Equipments (row 107)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0578",
+     "computed": "0.0578",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Solar Power Generation Equipments (row 107)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0528",
+     "computed": "0.0528",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 108)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 108)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Spare Units (row 109)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL F24_Dep!G113",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "121.0370",
+     "computed": "121.0370",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL F24_Dep!G117",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "90.0943",
+     "computed": "90.0943",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL ARR!L36",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "90.0943",
+     "computed": "90.0943",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "f24-dep-fy27.json",
+   "checks": [
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Land (row 122)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "180.7648",
+     "computed": "180.7648",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Land (row 122)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "37.4458",
+     "computed": "37.4458",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Land (row 122)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0334",
+     "computed": "0.0334",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Buildings (row 123)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "300.6233",
+     "computed": "300.6233",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Buildings (row 123)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "53.9778",
+     "computed": "53.9778",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Buildings (row 123)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0334",
+     "computed": "0.0334",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Hydraulic works (row 124)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Hydraulic works (row 124)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Hydraulic works (row 124)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Other Civil Works (row 125)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Other Civil Works (row 125)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Other Civil Works (row 125)",
+     "output": "depreciation_rate_implied",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Plant & Machinery (row 126)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "84.8181",
+     "computed": "84.8181",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Plant & Machinery (row 126)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "23.5072",
+     "computed": "23.5072",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Plant & Machinery (row 126)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0526",
+     "computed": "0.0526",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Lines & Cables (row 127)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1930.7855",
+     "computed": "1930.7855",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Lines & Cables (row 127)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "393.5895",
+     "computed": "393.5895",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Lines & Cables (row 127)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0496",
+     "computed": "0.0496",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Vehicles (row 128)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "16.8143",
+     "computed": "16.8143",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Vehicles (row 128)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "4.2351",
+     "computed": "4.2351",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Vehicles (row 128)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0900",
+     "computed": "0.0900",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Furniture & Fixtures (row 129)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "22.6486",
+     "computed": "22.6486",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Furniture & Fixtures (row 129)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "9.9552",
+     "computed": "9.9552",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Furniture & Fixtures (row 129)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0633",
+     "computed": "0.0633",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Office Equipments (row 130)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "17.5446",
+     "computed": "17.5446",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Office Equipments (row 130)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "2.6381",
+     "computed": "2.6381",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Office Equipments (row 130)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0633",
+     "computed": "0.0633",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Metering Equipment (row 131)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "164.1085",
+     "computed": "164.1085",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Metering Equipment (row 131)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "37.1583",
+     "computed": "37.1583",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Metering Equipment (row 131)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0900",
+     "computed": "0.0900",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Communication Equipment (row 132)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "119.3022",
+     "computed": "119.3022",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Communication Equipment (row 132)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "14.9678",
+     "computed": "14.9678",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Communication Equipment (row 132)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0466",
+     "computed": "0.0466",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Intangible Assets (row 133)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "68.3077",
+     "computed": "68.3077",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Intangible Assets (row 133)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "52.2881",
+     "computed": "52.2881",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Intangible Assets (row 133)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.1500",
+     "computed": "0.1500",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Assets taken over & pending final valuation (row 134)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "1.2005",
+     "computed": "1.2005",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Assets taken over & pending final valuation (row 134)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "1.2605",
+     "computed": "1.2605",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Assets taken over & pending final valuation (row 134)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.1500",
+     "computed": "0.1500",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Solar Power Generation Equipments (row 135)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.1825",
+     "computed": "0.1825",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Solar Power Generation Equipments (row 135)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0674",
+     "computed": "0.0674",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Solar Power Generation Equipments (row 135)",
+     "output": "depreciation_rate_implied",
+     "result": "match",
+     "filed": "0.0528",
+     "computed": "0.0528",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 136)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Capital Expenditure on Assets not belonging to utility (row 136)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Spare Units (row 137)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Spare Units (row 137)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Capital Spares (row 138)",
+     "output": "gfa_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "Capital Spares (row 138)",
+     "output": "acc_dep_closing",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL F24_Dep!G141",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "139.9306",
+     "computed": "139.9306",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL F24_Dep!G145",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "106.7518",
+     "computed": "106.7518",
+     "why": null
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL ARR!M36",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "106.7518",
+     "computed": "106.7518",
+     "why": null
+    }
+   ]
+  },
+  {
    "binding": "f27-mclr-rates.json",
    "checks": [
     {

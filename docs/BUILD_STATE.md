@@ -1005,6 +1005,25 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 67 (2026-11-01): depreciation by class, five years, to the ARR's row 36.**  F24
+  read as five row tables (one per year block), with 2 new draft rules: the implied rate (the
+  format's identity, depreciation over the average gross block; not a regulation) and the net of
+  consumer-contribution depreciation (C.DEP).  The engine can now take a **given figure for one
+  category** (labelled `given`, feeding sums like a computed one).  Row tables gained shared
+  inputs (a deduction printed below the total, or a stated constant, each with its reason), and a
+  total can be checked against several cells.  **NPCL: FY2022-23 prints each class's rate, so its
+  depreciation is computed (17 / 17, 54 / 54 in all).  For the later years the class figures are
+  given and every roll-forward, implied rate, total and net matches.  The net equals the ARR's row
+  36 in all five years: 62.09, 66.33, 74.75, 90.09 (APR), 106.75 (ARR).**  Two findings for the
+  petitioner (`findings.json`):
+  - **A38:** FY2023-24's rate column divides by the net block, unlike the other years.
+  - **A39:** the projection years' class depreciation cannot be derived from what was filed.
+    Annexure-21 rolls only the existing assets forward (111.39 against F24's 121.04 for
+    FY2025-26).  The excess fits half a year on the additions for some classes (0.50) but not
+    others (about 0.40), and no single fraction in FY2026-27.
+  So the APR and ARR depreciation reproduces from F24's class figures but not yet from the
+  capital plan.  No rule is approved; every clause is unverified.
+
   **Increment 66 (2026-11-01): O&M of the APR and ARR years under the 2025 regime.**  12 draft
   rules: R&M as a share of the opening gross block by vintage (5 % on Part A, assets to
   31.03.2020, and Part B, 01.04.2020â€“31.03.2025; 3 % on Part C, new assets, and on the GNIDA
@@ -1875,6 +1894,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 67 (2026-11-01): 418 passed** (+1 unit: F24 by class, five years, net tied to the ARR's row 36; +1 unit: a category given in place of its computation, labelled and summed).  Ruff and format clean.
 - **Increment 66 (2026-11-01): 416 passed** (+2 unit: NPCL's 2025-regime employee, A&G and R&M of the APR and ARR years reproduced from the base-year sheet and tied to F21, F23 and the ARR; the cell reader never reads a blank as 0).  Ruff and format clean.
 - **Increment 65 (2026-11-01): 414 passed** (+2 unit: power purchase by source reproduced with its totals; division by zero blocks).  Ruff and format clean.
 - **Increment 64 (2026-11-01): 412 passed** (+2 integration: rules listed with their status and nothing approved; the NPCL reference filing with its chain and findings; unknown ids 404; unauthenticated refused).  Ruff, format, contracts (regenerated) and web typecheck clean.

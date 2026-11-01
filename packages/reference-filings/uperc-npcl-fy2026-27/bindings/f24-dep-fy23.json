@@ -1,0 +1,58 @@
+{
+ "type": "row_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F24_Dep",
+ "fiscal_year": "FY2022-23",
+ "note": "F24 depreciation by asset class, FY2022-23 (rows 10–28): the depreciation of each class computed from its average gross block and the rate printed beside it (J); closing gross block (E) and closing accumulated depreciation (I) from the opening, additions and deductions; the total (G29), less the depreciation on consumer-contribution assets (G32, printed negative), is the net (G33) the ARR format carries (ARR!D36).",
+ "rows": [
+  10,
+  28
+ ],
+ "label_col": "A",
+ "inputs": {
+  "record:gfa_opening": "B",
+  "record:gfa_additions": "C",
+  "record:gfa_deductions": "D",
+  "record:acc_dep_opening": "F",
+  "record:acc_dep_retired": "H",
+  "record:dep_rate": "J"
+ },
+ "units": {
+  "J": "fraction"
+ },
+ "blank_is_zero": {
+  "columns": [
+   "B",
+   "C",
+   "D",
+   "F",
+   "G",
+   "H"
+  ],
+  "why": "classes with nothing (capital spares, spare units, assets not belonging to the utility) leave cells blank; NPCL's SUMs read the blanks as zero"
+ },
+ "shared": {
+  "record:gfa_grants": {
+   "value": "0",
+   "why": "F24 has no grants column per class; grants would be deducted below the total ('Less: Grants', blank)"
+  },
+  "record:dep_contribution": {
+   "cell": "G32",
+   "negate": true,
+   "why": "the format prints the deduction negative"
+  }
+ },
+ "outputs": {
+  "gfa_closing": "E",
+  "acc_dep_closing": "I",
+  "depreciation_class": "G"
+ },
+ "totals": {
+  "depreciation_gross_total": "F24_Dep!G29",
+  "depreciation_net": [
+   "F24_Dep!G33",
+   "ARR!D36"
+  ]
+ },
+ "places": 4
+}
