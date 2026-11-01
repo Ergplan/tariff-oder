@@ -757,3 +757,88 @@ def test_discovery_titles_icon_links_by_their_column_group_and_listing_groups():
     ):
         assert guess_kind(title)[0] is None, title
     assert guess_kind("Tariff Orders for FY 2025-26. 1. UPCL")[0] == "tariff_order"
+
+
+def test_lettered_parts_structure_a_paragraph_numbered_order():
+    """OERC (increment 47): parts lettered "A." to "I." in capitals, paragraphs numbered "45.",
+    sections under Title Case headings; the proposal and hearing parts are flagged; a table's
+    lone "A." row is not a part."""
+    from tariff_api.arr.chapters import lettered_parts
+
+    mapping = load_mapping("NOSUCH", fallback=True)
+
+    def prose(n: int) -> str:  # distinct sentences (a line on every page is a running header)
+        topic = {2: "notice", 3: "hearing", 21: "sales", 72: "objection", 73: "reply", 178: "forecast"}.get(n, "staff")
+        return f"{n}. The Commission has examined the {topic} submission of the licensees in detail."
+
+    pages = {
+        1: ["A.   PROCEDURAL HISTORY (PARA 2 TO 20)", prose(2), prose(3)],
+        2: [
+            "B.   ARR & RETAIL SUPPLY TARIFF PROPOSAL OF THE DISCOMs FOR FY",
+            "2026-27",
+            "Energy Sales",
+            prose(21),
+        ],
+        3: ["C.   OBJECTIONS RAISED DURING THE HEARING", prose(72), prose(73)],
+        4: ["D.   OBSERVATIONS AND DIRECTIONS OF THE COMMISSION", "Energy Sales", prose(178)],
+        5: ["Employee Expenses", prose(300), prose(301).replace("staff", "wages")],
+    }
+    chs = propose_chapters(pages, mapping, 5)
+    got = [(c.branch, c.cue_text, c.page_start) for c in chs]
+    assert got == [("E", "Energy Sales", 2), ("E", "Energy Sales", 4), ("C.OM", "Employee Expenses", 5)], got
+    assert "likely not the Commission's decisions" in (chs[0].note or "")
+    assert "D. OBSERVATIONS AND DIRECTIONS" in (chs[1].note or "") and "likely not" not in (chs[1].note or "")
+    assert lettered_parts([(3, (1,), None, "A. ENERGY REQUIREMENT")]) == []
+
+
+def test_a_combined_order_naming_the_licensee_per_row_is_attributed_per_row():
+    """OERC's tables (increment 47), SYNTHETIC figures: a "DISCOM" column carried down its
+    blank cells, and a licensee's name alone on a row above its block; a total row belongs to
+    no licensee and is never attributed."""
+    tax = load_taxonomy()
+    mapping = load_mapping("NOSUCH", fallback=True)
+    placer = Placer(tax, mapping, "distribution")
+    lic = {"NORTHCO": ["North Company"], "SOUTHCO": ["South Company"]}
+
+    def read(grid: GridIn) -> dict:
+        out, _ = read_grids(
+            [grid], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="NORTHCO", licensees=lic
+        )
+        return {(c.utility, c.line_code, c.value_type): c.stated_value for c in out.candidates}
+
+    by_column = GridIn(
+        101,
+        1,
+        [
+            ["DISCOM", "Description", "Proposed by the DISCOM", "Approved by the Commission"],
+            ["NORTHCO", "Total Sales", "1,240.50", "1,240.00"],
+            ["", "Power Purchase", "1,500.00", "1,480.00"],
+            ["SOUTHCO", "Total Sales", "800.00", "790.00"],
+            ["All State", "Total Sales", "2,040.50", "2,030.00"],
+        ],
+        1,
+        ["Table-37 Quantum of Power Purchase and Sales approved for FY 2026-27 (MU)"],
+    )
+    got = read(by_column)
+    assert got[("NORTHCO", "E.SALES", "approved")] == "1240.00"
+    assert got[("NORTHCO", "E.PP.QTY", "petitioned")] == "1500.00"
+    assert got[("SOUTHCO", "E.SALES", "approved")] == "790.00"
+    assert not [k for k in got if k[0] not in lic]  # the state total is no licensee's
+    assert len([k for k in got if k[1] == "E.SALES"]) == 4
+
+    by_heading = GridIn(
+        100,
+        1,
+        [
+            ["Description", "Proposed by licensees for FY 2026-27", "Approved by the Commission for FY 2026-27"],
+            ["NORTHCO", "", ""],
+            ["Distribution Loss", "15.15%", "14.00%"],
+            ["SOUTHCO", "", ""],
+            ["Distribution Loss", "20.00%", "18.50%"],
+        ],
+        1,
+        ["Table-36 Losses Proposed by the Licensees and Approved by the Commission"],
+    )
+    got = read(by_heading)
+    assert got[("NORTHCO", "E.LOSS.DIST_PCT", "approved")] == "14.00"
+    assert got[("SOUTHCO", "E.LOSS.DIST_PCT", "approved")] == "18.50"

@@ -39,10 +39,15 @@ _PROSE_START = re.compile(
 )
 _CHAPTER = re.compile(r"^\s*chapter\s+(\d{1,2})\s*[:.\-–]\s*(?:\S|$)", re.I)
 NUMBERED_MODE_MIN = 5
+# a lettered part in capitals: "B.   ARR & RETAIL SUPPLY TARIFF PROPOSAL OF THE DISCOMs" (OERC),
+# "A2: AGGREGATE REVENUE REQUIREMENT FOR PETITIONERS" (MPERC, ordered by its number)
+_PART_LETTER = re.compile(r"^\s*([A-Z])(\d{1,2})?\s*[.:]\s+(\S.{3,})$")
 # a part that reports the petition or the hearing, not the Commission's decisions
 _NOT_DECISIONS = re.compile(
     r"public\s+(?:hearing|consultation)|objection|suggestions?\s+(?:and|&)|stakeholder|brief\s+facts|"
-    r"procedural\s+history|petitioner'?s?\s+submissions?\s*$|summary\s+of\s+(?:the\s+)?petition",
+    r"procedural\s+history|petitioner'?s?\s+submissions?\s*$|summary\s+of\s+(?:the\s+)?petition|"
+    r"proposals?\s+of\s+(?:the\s+)?(?:licensees?|discoms?|petitioners?)|tariff\s+proposal\s+of|"
+    r"observations\s+of\s+(?:the\s+)?(?:consumer\s+counsel|state\s+advisory)|views\s+of\s+(?:the\s+)?government",
     re.I,
 )
 
@@ -121,6 +126,23 @@ def title_heading(line: str) -> bool:
     return sum(1 for w in sig if w[0].isupper()) / len(sig) >= 0.8
 
 
+def lettered_parts(found: list[tuple[int, tuple[int, ...], None, str]]) -> list[tuple[int, tuple[int, ...], None, str]]:
+    """Capital-lettered parts in capitals ("A. PROCEDURAL HISTORY" … "I. OBSERVATIONS AND
+    DIRECTIONS OF THE COMMISSION"; "A1: ORDER" … "A8: …") are an order's parts when they run
+    in order of their letters (or numbers) and pages: the first of each, kept only while both go
+    forward, from the first.  Fewer than three such parts are not a structure (a table's "A."
+    row is not a part)."""
+    firsts: dict[int, tuple[int, tuple[int, ...], None, str]] = {}
+    for f in found:
+        firsts.setdefault(f[1][0], f)
+    out: list[tuple[int, tuple[int, ...], None, str]] = []
+    for n in sorted(firsts):
+        if (not out and n != 1) or (out and (n > out[-1][1][0] + 2 or firsts[n][0] < out[-1][0])):
+            break
+        out.append(firsts[n])
+    return out if len(out) >= 3 else []
+
+
 def chapter_title(lines: list[str], k: int) -> str:
     """A "Chapter N:" line with the capitalised lines its title wraps onto ("Chapter 5: TRUE-UP
     FOR FY" over "2024-25"; "Chapter 5:" over "TRUE-UP FOR FY 2024-25")."""
@@ -188,6 +210,7 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
     titled: list[tuple[int, None, str, str]] = []  # Title Case headings with a cue
     chapters_: list[tuple[int, tuple[int, ...], None, str]] = []  # "Chapter 5: TRUE-UP FOR FY 2024-25"
     numbered_prose = 0  # numbered lines that are sentences: the mark of paragraph numbering
+    lettered: list[tuple[int, tuple[int, ...], None, str]] = []  # "A.  PROCEDURAL HISTORY" parts
     part_of: dict[int, str] = {}
     for page in sorted(page_lines):
         lines = page_lines[page]
@@ -203,6 +226,12 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
             cm = _CHAPTER.match(line)
             if cm and len(line.strip()) <= 120:
                 chapters_.append((page, (int(cm.group(1)),), None, chapter_title(lines, k)[:300]))
+            lm = _PART_LETTER.match(line)
+            if lm and len(line.strip()) <= 120:
+                body = [c for c in lm.group(3) if c.isalpha()]
+                if body and sum(c.isupper() for c in body) / len(body) > 0.8:
+                    n = int(lm.group(2)) if lm.group(2) else ord(lm.group(1)) - 64
+                    lettered.append((page, (n,), None, chapter_title(lines, k)[:300]))
             if not looks_like_heading(line):
                 if _SECTION_NUMBER.match(line) and len(line.strip()) > 40:
                     numbered_prose += 1
@@ -215,10 +244,12 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
             if number is not None or hit:
                 heads.append((page, number, hit[0] if hit else None, line.strip()[:300]))
     numbered = [h for h in heads if h[1] is not None]
+    if not chapters_:
+        chapters_ = lettered_parts(lettered)
     paragraphs = False
     if (
         chapters_
-        and sum(1 for h in numbered if h[2]) < NUMBERED_MODE_MIN
+        and (sum(1 for h in numbered if h[2]) < NUMBERED_MODE_MIN or numbered_prose >= 10 * len(numbered))
         and numbered_prose >= max(3, 3 * len(numbered))
     ):
         # the numbers mark paragraphs, not sections: read the order by its unnumbered headings

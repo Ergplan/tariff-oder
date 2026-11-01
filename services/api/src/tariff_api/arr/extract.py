@@ -49,6 +49,43 @@ def _skip(report: ReadReport, g: GridIn, j: int, h: str, reason: str) -> None:
     report.columns_skipped.append({"page": g.page_index, "grid": g.ordinal, "col": j, "header": h, "reason": reason})
 
 
+_LICENSEE_HDR = re.compile(r"^\W*(?:discoms?|licensees?|name\s+of\s+(?:the\s+)?licensee|utility|company)\W*$", re.I)
+_BY_ROW = "*row*"  # a column whose values belong to the licensee of each row
+
+
+def row_licensees(
+    g: GridIn, headers: list[str], licensees: dict[str, list[str]]
+) -> tuple[int | None, dict[int, str | None], set[int]]:
+    """A combined order's table that names the licensee per row (OERC): a licensee column
+    ("DISCOM": TPCODL, then blank cells carried down), or a licensee's name alone on a row
+    above its block.  Returns the licensee column (or None), each body row's licensee, and the
+    rows that only name one.  A cell naming no licensee ("Total", "All Odisha") ends the
+    carry: its rows belong to none."""
+    start = max(1, g.header_rows)
+    body = [[(c or "").strip() for c in r] for r in g.rows[start:]]
+    lic_col = next((j for j, h in enumerate(headers) if _LICENSEE_HDR.match(h)), None)
+    if lic_col is None:
+        for j in range(min(2, len(headers))):
+            named = {licensee_named(r[j], licensees) for r in body if j < len(r) and r[j]}
+            if len(named - {None}) >= 2 and None not in named:
+                lic_col = j
+                break
+    owner: dict[int, str | None] = {}
+    heading_rows: set[int] = set()
+    current: str | None = None
+    for i, cells in enumerate(body, start=start):
+        filled = [(j, c) for j, c in enumerate(cells) if c]
+        if lic_col is not None and lic_col < len(cells) and cells[lic_col]:
+            current = licensee_named(cells[lic_col], licensees)
+        elif len(filled) == 1 and (named := licensee_named(filled[0][1], licensees)):
+            current = named
+            heading_rows.add(i)
+        owner[i] = current
+    if lic_col is None and not heading_rows:
+        return None, {}, set()
+    return lic_col, owner, heading_rows
+
+
 def licensee_named(text: str, licensees: dict[str, list[str]]) -> str | None:
     """The one licensee a header or caption names (by code or name), or None (none, or several)."""
     t = (text or "").lower()
@@ -303,8 +340,13 @@ def read_grids(
             else (fiscal_year(part) if part and not title_years else None)
         )
         table_licensee = licensee_named(caption, licensees) if combined and licensees else None
+        lic_col, row_owner, heading_rows = (
+            row_licensees(g, headers, licensees) if combined and licensees and not table_licensee else (None, {}, set())
+        )
 
         for j, h in enumerate(headers):
+            if j == lic_col:
+                continue
             fy = fiscal_year(h)
             col_licensee = licensee_named(h, licensees) if combined and licensees else None
             if combined and _TOTAL_COL.match(h) and (columns or fy):
@@ -333,6 +375,8 @@ def read_grids(
                 _skip(report, g, j, h, "no voice word")
                 continue
             owner = col_licensee or table_licensee or (None if combined else utility)
+            if combined and owner is None and row_owner:
+                owner = _BY_ROW  # each row names its licensee
             if combined and owner is None:
                 _skip(report, g, j, h, "no licensee named in the column or the table's caption (combined order)")
                 continue
@@ -340,7 +384,7 @@ def read_grids(
         if not columns:
             continue
         value_cols = {c.col for c in columns}
-        others = [j for j in range(len(headers)) if j not in value_cols]
+        others = [j for j in range(len(headers)) if j not in value_cols and j != lic_col]
         label_col = next(
             (
                 j
@@ -357,6 +401,8 @@ def read_grids(
         report.grids_read += 1
         for i, row in enumerate(g.rows[max(1, g.header_rows) :], start=max(1, g.header_rows)):
             cells = [(c or "").strip() for c in row]
+            if i in heading_rows:
+                continue  # a licensee's name above its rows
             label = cells[label_col] if label_col < len(cells) else ""
             if _ROW_NUMBER.match(label) and label_col + 1 < len(cells):
                 label = cells[label_col + 1]  # an S.No. column before the particulars
@@ -411,6 +457,9 @@ def read_grids(
             unit = row_unit if row_unit else _default_unit(item_unit)
             report.rows_placed += 1
             for col in columns:
+                owner = row_owner.get(i) if col.utility == _BY_ROW else col.utility
+                if owner is None:
+                    continue  # a row of no licensee (a total across them) in a per-row table
                 raw = cells[col.col] if col.col < len(cells) else ""
                 state, value = parse_value(raw)
                 canonical, cunit, conversion = (None, None, "not_a_value")
@@ -422,7 +471,7 @@ def read_grids(
                     fiscal_year=col.fiscal_year,
                     value_type=col.value_type,  # type: ignore[arg-type]
                     as_of_order=source_id,
-                    utility=col.utility,
+                    utility=owner,
                     value_state=state,  # type: ignore[arg-type]
                     stated_value=value,
                     stated_unit=unit,
