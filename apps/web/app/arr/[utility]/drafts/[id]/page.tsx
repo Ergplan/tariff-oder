@@ -29,7 +29,11 @@ export default async function DraftPage({ params }: { params: Promise<{ utility:
   return (
     <>
       <p>
-        <Link href={`/arr/${encodeURIComponent(code)}/formulations/${d.formulation_id}`}>← formulation</Link>
+        {d.formulation_id ? (
+          <Link href={`/arr/${encodeURIComponent(code)}/formulations/${d.formulation_id}`}>← formulation</Link>
+        ) : (
+          <Link href={`/client/cases/${d.case_id}`}>← case</Link>
+        )}
       </p>
       <h1>
         Draft petition · {code}{" "}
@@ -76,7 +80,7 @@ export default async function DraftPage({ params }: { params: Promise<{ utility:
                 <td className="mono">{e.id}</td>
                 <td className="mono">{e.where}</td>
                 <td>
-                  <span className="badge" data-tone={e.kind === "fact" ? "ok" : e.kind === "projection" ? "warn" : "neutral"}>
+                  <span className="badge" data-tone={e.kind === "fact" ? "ok" : e.kind === "projection" || e.kind === "variance" ? "warn" : "neutral"}>
                     {e.kind}
                   </span>
                 </td>
@@ -95,6 +99,7 @@ export default async function DraftPage({ params }: { params: Promise<{ utility:
 
 function origin(e: Entry): string {
   const o = e.origin as Record<string, string | number | null>;
+  if (typeof o.words === "string") return o.words; // true-up and APR drafts carry their own words
   if (e.kind === "fact") return `${o.line_code} ${o.fiscal_year} ${o.value_type} — ${o.order}, p.${o.page}: "${o.excerpt}"`;
   if (e.kind === "assumption") return `${o.key} — ${o.source_kind === "regulation_clause" ? "regulation clause" : "user"} (${o.entered_by}): ${o.rationale}`;
   return `${o.line_code} ${o.fiscal_year} — ${o.formula_words}`;

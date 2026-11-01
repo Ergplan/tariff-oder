@@ -1,6 +1,8 @@
 """ARR cases (ADR-0019): a client organisation's ARR process for a licensee — create, see
 what is ready and missing, enter assumptions, formulate, freeze, draft the petition, revise.
-Every case is private to its organisation; another organisation's case is not found."""
+True-up and APR cases (ADR-0020) enter actuals with their sources and compute, freeze and
+draft a variance statement instead of a formulation.  Every case is private to its
+organisation; another organisation's case is not found."""
 
 from __future__ import annotations
 
@@ -16,6 +18,8 @@ from ..db import session_scope
 from ..errors import AppError
 from ..models import ArrCase, Organisation, Utility
 from ..schemas import (
+    ArrActualIn,
+    ArrActualOut,
     ArrAssumptionIn,
     ArrAssumptionOut,
     ArrCaseCreate,
@@ -53,6 +57,7 @@ def _out(s, case: ArrCase, *, with_readiness: bool = False) -> ArrCaseOut:
         created_at=case.created_at,
         updated_at=case.updated_at,
         readiness=readiness(s, case) if with_readiness else None,
+        statement=case.statement,
     )
 
 
@@ -198,5 +203,66 @@ def revise(case_id: uuid.UUID, principal: Principal = Depends(require_analyst)) 
 
     with session_scope() as s:
         case = cases.revise(s, _case(s, case_id, principal, "write"), actor=principal.email)
+        s.flush()
+        return _out(s, case, with_readiness=True)
+
+
+# ------------------------------------------------------------------ true-up and APR (ADR-0020)
+
+
+@router.get("/{case_id}/actuals", response_model=list[ArrActualOut])
+def list_actuals(case_id: uuid.UUID, principal: Principal = Depends(require_analyst)) -> list[ArrActualOut]:
+    from ..arr import cases
+
+    with session_scope() as s:
+        case = _case(s, case_id, principal)
+        return [ArrActualOut.model_validate(a, from_attributes=True) for a in cases.actuals_of(s, case)]
+
+
+@router.post("/{case_id}/actuals", response_model=ArrActualOut, status_code=201)
+def add_actual(
+    case_id: uuid.UUID, body: ArrActualIn, request: Request, principal: Principal = Depends(require_analyst)
+) -> ArrActualOut:
+    from ..arr import cases
+
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        a = cases.add_actual(
+            s, storage, _case(s, case_id, principal, "write"), actor=principal.email, **body.model_dump()
+        )
+        s.flush()
+        s.refresh(a)
+        return ArrActualOut.model_validate(a, from_attributes=True)
+
+
+@router.delete("/{case_id}/actuals/{actual_id}", status_code=204)
+def remove_actual(
+    case_id: uuid.UUID, actual_id: uuid.UUID, principal: Principal = Depends(require_analyst)
+) -> Response:
+    from ..arr import cases
+
+    with session_scope() as s:
+        cases.remove_actual(s, _case(s, case_id, principal, "write"), actual_id, actor=principal.email)
+    return Response(status_code=204)
+
+
+@router.post("/{case_id}/statement", response_model=ArrCaseOut)
+def compute_statement(case_id: uuid.UUID, principal: Principal = Depends(require_analyst)) -> ArrCaseOut:
+    from ..arr import cases
+
+    with session_scope() as s:
+        case = _case(s, case_id, principal, "write")
+        cases.compute_statement(s, case, actor=principal.email)
+        s.flush()
+        return _out(s, case, with_readiness=True)
+
+
+@router.post("/{case_id}/statement/freeze", response_model=ArrCaseOut)
+def freeze_statement(case_id: uuid.UUID, principal: Principal = Depends(require_analyst)) -> ArrCaseOut:
+    from ..arr import cases
+
+    with session_scope() as s:
+        case = _case(s, case_id, principal, "write")
+        cases.freeze_statement(s, case, actor=principal.email)
         s.flush()
         return _out(s, case, with_readiness=True)

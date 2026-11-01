@@ -407,7 +407,17 @@ def _draft(s, draft_id: uuid.UUID, principal: Principal) -> FilingDraft:
     d = s.get(FilingDraft, draft_id)
     if d is None:
         raise AppError("not_found", f"filing draft {draft_id} not found")
-    _formulation(s, d.formulation_id, principal)  # a draft is visible to whoever sees its formulation
+    if d.formulation_id is not None:
+        _formulation(s, d.formulation_id, principal)  # a draft is visible to whoever sees its formulation
+    else:
+        # a true-up or APR draft is visible to whoever sees its case (ADR-0020)
+        from .. import workspace as ws
+        from ..models import ArrCase
+
+        case = s.get(ArrCase, d.case_id)
+        if case is None:
+            raise AppError("not_found", f"filing draft {draft_id} not found")
+        ws.require(s, principal, case.organisation_id, "read", what="filing draft")
     return d
 
 
@@ -444,7 +454,12 @@ def draft_file(
     with session_scope() as s:
         d = _draft(s, draft_id, principal)
         key = getattr(d, attr)
-        name = s.get(ArrFormulation, d.formulation_id).name
+        if d.formulation_id is not None:
+            name = s.get(ArrFormulation, d.formulation_id).name
+        else:
+            from ..models import ArrCase
+
+            name = s.get(ArrCase, d.case_id).title
     try:
         data = storage.get(ObjectStore.ARTEFACTS, key)
     except ObjectNotFound as e:

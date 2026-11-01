@@ -1477,7 +1477,8 @@ class FilingDraftOut(BaseModel):
     """A draft petition: never filed (the schema allows no other status)."""
 
     id: uuid.UUID
-    formulation_id: uuid.UUID
+    formulation_id: uuid.UUID | None = None  # an ARR or MYT draft
+    case_id: uuid.UUID | None = None  # a true-up or APR draft (ADR-0020)
     template_id: str
     template_version: int
     template_status: str
@@ -1533,9 +1534,10 @@ class ArrCaseCreate(BaseModel):
     organisation_id: uuid.UUID
     utility_code: str
     title: str = Field(min_length=1, max_length=200)
-    filing_kind: Literal["annual_arr", "myt"] = "annual_arr"
+    filing_kind: Literal["annual_arr", "myt", "true_up", "apr"] = "annual_arr"
     base_fy: str
-    # annual_arr: one target (the next year); myt: every year of the control period
+    # annual_arr: one target (the next year); myt: every year of the control period;
+    # true_up / apr: the year trued up, which is also base_fy
     target_years: list[str] = Field(min_length=1, max_length=10)
     copy_assumptions_from: uuid.UUID | None = None
     notes: str | None = None
@@ -1561,6 +1563,43 @@ class ArrCaseOut(BaseModel):
     created_at: datetime
     updated_at: datetime
     readiness: dict[str, Any] | None = None
+    statement: dict[str, Any] | None = None  # true-up / APR: the computed or frozen statement
+
+
+class ArrActualIn(BaseModel):
+    """An actual of a true-up or APR case, with its source (ADR-0020)."""
+
+    line_code: str = Field(pattern=r"^[A-Z][A-Z0-9_.]*$", max_length=40)
+    source_kind: Literal["fact", "document", "statement", "estimate"]
+    stated_value: str | None = Field(default=None, max_length=40)  # as written in the source
+    stated_unit: str | None = Field(default=None, max_length=24)  # INR_crore, INR_lakh, MU, percent, ...
+    fact_id: uuid.UUID | None = None  # fact: a reviewed fact of voice actual
+    source_id: uuid.UUID | None = None  # document: a registered source
+    page_index: int | None = Field(default=None, ge=1)
+    excerpt: str | None = Field(default=None, max_length=600)
+    document_name: str | None = Field(default=None, max_length=300)  # statement / estimate
+    rationale: str | None = Field(default=None, max_length=2000)
+
+
+class ArrActualOut(BaseModel):
+    id: uuid.UUID
+    case_id: uuid.UUID
+    line_code: str
+    fiscal_year: str
+    stated_value: str
+    stated_unit: str
+    canonical_value: str | None
+    canonical_unit: str | None
+    conversion: str
+    source_kind: str
+    fact_id: uuid.UUID | None
+    source_id: uuid.UUID | None
+    page_index: int | None
+    excerpt: str | None
+    document_name: str | None
+    rationale: str | None
+    entered_by: str
+    created_at: datetime
 
 
 class ArrCaseUpdate(BaseModel):

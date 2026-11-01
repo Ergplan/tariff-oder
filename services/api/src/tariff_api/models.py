@@ -1177,10 +1177,16 @@ class FilingDraft(Base):
     schema allows; nothing in the application files, e-mails or uploads it."""
 
     __tablename__ = "filing_drafts"
-    __table_args__ = (CheckConstraint("status = 'draft'", name="ck_filing_draft_only_draft"),)
+    __table_args__ = (
+        CheckConstraint("status = 'draft'", name="ck_filing_draft_only_draft"),
+        CheckConstraint("formulation_id is not null or case_id is not null", name="ck_filing_draft_origin"),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
-    formulation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("arr_formulations.id"), nullable=False)
+    # an ARR or MYT draft comes from a frozen formulation; a true-up or APR draft from a
+    # frozen case statement (ADR-0020)
+    formulation_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("arr_formulations.id"))
+    case_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("arr_cases.id"))
     template_id: Mapped[str] = mapped_column(String(60), nullable=False)
     template_version: Mapped[int] = mapped_column(Integer, nullable=False)
     template_status: Mapped[str] = mapped_column(String(16), nullable=False)
@@ -1247,7 +1253,7 @@ class ArrCase(Base):
 
     __tablename__ = "arr_cases"
     __table_args__ = (
-        CheckConstraint("filing_kind in ('annual_arr', 'myt')", name="ck_arr_case_kind"),
+        CheckConstraint("filing_kind in ('annual_arr', 'myt', 'true_up', 'apr')", name="ck_arr_case_kind"),
         CheckConstraint(
             "status in ('setup', 'assumptions', 'formulated', 'frozen', 'drafted', 'closed')",
             name="ck_arr_case_status",
@@ -1264,13 +1270,59 @@ class ArrCase(Base):
     status: Mapped[str] = mapped_column(String(16), nullable=False, default="setup")
     assumption_set_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("arr_assumption_sets.id"), nullable=False)
     formulation_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("arr_formulations.id"))
-    draft_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("filing_drafts.id"))
+    draft_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("filing_drafts.id", use_alter=True))
+    statement: Mapped[dict | None] = mapped_column(JSONB)  # true-up / APR: the computed variance statement
     notes: Mapped[str | None] = mapped_column(Text)
     created_by: Mapped[str] = mapped_column(String(320), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
     )
+
+
+class ArrActual(Base):
+    """One actual of a true-up or APR case (ADR-0020): what the licensee's own records say a
+    line came to in a year, with where that is written.  ``fact`` copies a reviewed fact of
+    voice ``actual``; ``document`` is grounded on a page of a registered source (the excerpt is
+    on the page and the value is printed in it); ``statement`` names a document the
+    application cannot see and is labelled unchecked everywhere; ``estimate`` (APR only) is a
+    projection of the rest of a running year with its rationale.  Never a fact."""
+
+    __tablename__ = "arr_actuals"
+    __table_args__ = (
+        UniqueConstraint("case_id", "line_code", "fiscal_year", name="uq_arr_actual"),
+        CheckConstraint(
+            "source_kind in ('fact', 'document', 'statement', 'estimate')", name="ck_arr_actual_source_kind"
+        ),
+        CheckConstraint("source_kind <> 'fact' or fact_id is not null", name="ck_arr_actual_fact"),
+        CheckConstraint(
+            "source_kind <> 'document' or (source_id is not null and page_index is not null and excerpt is not null)",
+            name="ck_arr_actual_document",
+        ),
+        CheckConstraint(
+            "source_kind not in ('statement', 'estimate') or (rationale is not null and document_name is not null)",
+            name="ck_arr_actual_statement",
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    case_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("arr_cases.id", ondelete="CASCADE"), nullable=False)
+    line_code: Mapped[str] = mapped_column(String(40), nullable=False)
+    fiscal_year: Mapped[str] = mapped_column(String(12), nullable=False)
+    stated_value: Mapped[str] = mapped_column(String(40), nullable=False)
+    stated_unit: Mapped[str] = mapped_column(String(24), nullable=False)
+    canonical_value: Mapped[str | None] = mapped_column(String(40))
+    canonical_unit: Mapped[str | None] = mapped_column(String(24))
+    conversion: Mapped[str] = mapped_column(String(80), nullable=False)
+    source_kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    fact_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("arr_facts.id"))
+    source_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("source_documents.id"))
+    page_index: Mapped[int | None] = mapped_column(Integer)
+    excerpt: Mapped[str | None] = mapped_column(Text)
+    document_name: Mapped[str | None] = mapped_column(String(300))
+    rationale: Mapped[str | None] = mapped_column(Text)
+    entered_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
 
 class LibraryEntry(Base):

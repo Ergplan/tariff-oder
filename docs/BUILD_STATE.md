@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 28: the client application — organisations, the regulatory library, ARR cases; ADR-0019). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 31: true-up and APR cases — sourced actuals against the reviewed approval, a frozen variance statement and its draft; ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -532,7 +532,25 @@ open-access view.
   publish when no blocking identity is open.  Found in the live stack and fixed: a page
   shared by two chapters put the next chapter's table in the previous one; tables are now
   assigned to the last chapter heading above them on the page, and every ARR candidate
-  records its chapter.
+  records its chapter.  The review screen also approves, in one step, the values of one page
+  that both readings agree on and no identity check or risk tag flags (each still gets its
+  own decision citing the reviewer's view of the page).
+
+  **Increment 31 (2026-11-01): true-up and APR cases (ADR-0020, migration 0017).**  A client
+  starts a true-up of a past year or an APR of the running year from the case wizard.  The
+  approved figure of each line is the current reviewed fact of voice `approved` for the year;
+  the client enters each actual with its source — a reviewed fact of voice `actual`, a page
+  of a registered document (excerpt found on the page, value printed in it: mechanical), a
+  statement naming a document the application cannot see (labelled unchecked everywhere),
+  or, for an APR only, an estimate.  The statement sets approved against actual with the
+  variance (actual less approved; never an allowed amount), runs the ARR identities over the
+  actuals (a total that does not add up blocks the freeze), and hashes its inputs; freeze and
+  draft re-check the hash.  The draft (DOCX + XLSX, built-in layout) names every unchecked
+  figure, leaves the reasons for each variance to the licensee, and traces every number
+  (approved → order and page; actual → its source; variance → the two trace ids).  Exercised
+  in the live stack through the browser on SYNTH-DISCOM FY2025-26 (15 lines: one actual
+  entered through the form, statement computed, frozen, drafted; 45 numbers traced).
+  Synthetic data only; no real true-up has been prepared.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1087,6 +1105,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 31 (2026-11-01): 342 passed** (+2 integration: a true-up case from actuals to draft — grounding refusals, isolation, identity block, stale and frozen statements, trace; an APR case with an estimate).
 - **Increment 30 (2026-11-01): 340 passed** (+1 unit: generic fallbacks; the end-to-end test asserts chapter assignment).
 - **Increment 29 (2026-11-01): 339 passed** (+2 unit: the live ARR channel with mocked HTTP; discovery).
 - **Increment 28 (2026-11-01): 337 passed** (+2: organisations/cases/isolation end to end,
@@ -1250,6 +1269,12 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+00000000000. **Engineering next (increment 31):** commission true-up formats as data (like the
+   petition templates); organisation-owned sources so a client's private accounts can be
+   grounded rather than stated; normative checks of actuals against regulation parameters with
+   the clause cited; per-commission document discovery (UPERC's list is a postback form).
+   **Operator:** a true-up needs the year's approval read and reviewed first — read the order
+   that approved the year (`/sources/<id>/arr`) before starting the case.
 0000000000. **Operator (increment 28, the library):** on the VM (open egress), seed the library
    (`/library` → Seed, or `POST /library/seed`), then record the official URL of each order and
    petition you want first (`/library` → Record a document, or `POST /library/entries/bulk`

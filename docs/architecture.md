@@ -149,3 +149,21 @@ can be both a tariff schedule and an ARR order.  Endpoints: `/sources/{id}/arr`,
 assumption-sets`, `/arr/assumption-sets/{id}/assumptions`, `/arr/utilities/{code}/formulations`,
 `/arr/formulations/{id}` (`/freeze`, `/reproduce`, `/drafts`), `/arr/drafts/{id}` (and
 `/petition.docx`, `/formats.xlsx`).  Web: `/arr`, `/arr/<licensee>`, its formulations and drafts.
+
+## The client application and true-up cases (ADR-0019, ADR-0020)
+
+```
+organisation (owner / editor / viewer) ──► arr_cases
+   annual_arr / myt:  readiness ─► assumptions ─► formulation ─► freeze ─► filing draft
+   true_up / apr:     approved facts of the year + arr_actuals (fact | document | statement | estimate)
+                      ─► statement (variance, identities over actuals, input hash) ─► freeze ─► draft
+library_entries (expected → located → acquired) ──► sources ──► ARR reading ──► arr_facts
+```
+
+`workspace.py` decides access: desk objects (no organisation) are read by analysts and
+written by reviewers; organisation objects are open to its members only, others get 404; a
+platform administrator may read them but not write.  Endpoints: `/organisations`,
+`/cases` (and `/{id}/assumptions`, `/formulate`, `/freeze`, `/draft`, `/revise`,
+`/actuals`, `/statement`, `/statement/freeze`), `/library` (coverage, entries, seed,
+reconcile, bulk, acquire, discover).  Web: `/client` (workspace, library, licensees, cases),
+`/library`, `/admin/organisations`.

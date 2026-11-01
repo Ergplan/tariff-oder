@@ -74,7 +74,7 @@ export default async function ClientHome() {
                   <td>
                     {c.utility_name} <span className="mono muted">{c.utility}</span>
                   </td>
-                  <td>{c.filing_kind === "myt" ? "MYT control period" : "Annual ARR"}</td>
+                  <td>{({ myt: "MYT control period", true_up: "True-up", apr: "Annual performance review" } as Record<string, string>)[c.filing_kind] ?? "Annual ARR"}</td>
                   <td className="mono">
                     {c.base_fy} → {(c.targets as { fiscal_year: string }[]).map((t) => t.fiscal_year).join(", ")}
                   </td>

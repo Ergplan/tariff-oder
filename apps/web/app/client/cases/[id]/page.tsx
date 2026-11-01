@@ -4,6 +4,7 @@ import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../../components";
 import { ActionButton } from "../../actions";
 import AssumptionForm from "./assumption-form";
+import TrueUpCase from "./true-up";
 
 export const dynamic = "force-dynamic";
 
@@ -38,6 +39,7 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
   const c = res.data;
   const role = (me.data?.organisations ?? []).find((o) => o.id === c.organisation_id)?.role;
   const canEdit = role === "editor" || role === "owner";
+  if (c.filing_kind === "true_up" || c.filing_kind === "apr") return <TrueUpCase c={c} role={role} />;
   const r = c.readiness as unknown as Readiness;
   const [aset, form] = await Promise.all([
     apiTry<ArrAssumptionSetOut>(`/arr/assumption-sets/${c.assumption_set_id}`),

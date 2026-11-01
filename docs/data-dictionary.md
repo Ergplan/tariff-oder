@@ -327,6 +327,25 @@ Append-only (UPDATE/DELETE raise via trigger): `actor`, `action`, `entity_type`,
 | `arr_projection_lines` | Line, year, `computed`/`blocked`, value, unit, formula id/version, inputs (facts, assumptions, lines), regulation clause, blocked reason |
 | `filing_drafts` | Formulation, template id/version/status, DOCX and XLSX keys and hashes, trace; status `draft` only (check constraint) |
 
+## Client application tables (migration 0016, ADR-0019)
+
+| Table / column | Meaning |
+| --- | --- |
+| `organisations` | A client: code, name, active, who created it |
+| `organisation_members` | Email and role (`viewer` / `editor` / `owner`) per organisation; the last owner cannot be removed |
+| `arr_assumption_sets.organisation_id`, `arr_formulations.organisation_id` | The owning organisation; null for the desk's own objects.  Assumption sets are unique per (licensee, owner, name, version) |
+| `arr_cases` | An organisation's ARR process for a licensee: title, `filing_kind`, base year, targets, `status` (`setup`, `assumptions`, `formulated`, `frozen`, `drafted`, `closed`), its assumption set, formulation and draft |
+| `library_entries` | An expected or held document: commission, licensee (empty for commission-wide), kind, fiscal year, `status` (`expected`/`located`/`acquired`/`failed`), URL, source once acquired, last error; one per slot |
+
+## True-up and APR (migration 0017, ADR-0020)
+
+| Table / column | Meaning |
+| --- | --- |
+| `arr_cases.filing_kind` | Adds `true_up` (a past year's audited actuals) and `apr` (the running year) |
+| `arr_cases.statement` | The computed (then frozen) variance statement: rows (approved, actual, variance, status), identity findings over the actuals, summary, input hash, computed/frozen by and when |
+| `arr_actuals` | One actual per line per case: stated value and unit as written, canonical value and unit, conversion; `source_kind` `fact` (with `fact_id`), `document` (source, page, excerpt — checked on the page), `statement` (document name, rationale — unchecked) or `estimate` (APR only, rationale); who entered it |
+| `filing_drafts.case_id` | A true-up or APR draft's case (then `formulation_id` is null); one of the two is always set |
+
 ## Reserved for later milestones (not created yet)
 Regulatory order, schedule version, effective rule, category/version, option group, category
 mapping, charge component, slab/time band, condition/rule, evidence span, table grid,

@@ -109,6 +109,7 @@ export type FilingDraftOut = components["schemas"]["FilingDraftOut"];
 export type MeOut = components["schemas"]["Me"];
 export type OrganisationOut = components["schemas"]["OrganisationOut"];
 export type ArrCaseOut = components["schemas"]["ArrCaseOut"];
+export type ArrActualOut = components["schemas"]["ArrActualOut"];
 export type CoverageOut = components["schemas"]["CoverageOut"];
 export type LibraryEntryOut = components["schemas"]["LibraryEntryOut"];
 export type Decides = components["schemas"]["Decides"];

@@ -413,6 +413,29 @@ def arr_order_pdf(licensee: str = ARR_LICENSEE) -> bytes:
     return _finalise(doc, {"title": "SYNTHETIC ARR order"})
 
 
+def accounts_extract_pdf(licensee: str = ARR_LICENSEE) -> bytes:
+    """Two pages in the shape of an extract of a SYNTHETIC licensee's audited accounts for
+    FY 2025-26, in Rs. lakh: the document a true-up actual is grounded on (ADR-0020)."""
+    doc = pymupdf.open()
+    for label in (1, 2):
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        _footer(page, str(label), 2)
+        if label == 1:
+            _lines(page, 120, [f"{licensee}: audited annual accounts FY 2025-26 (extract)"], 13, 24)
+        else:
+            _lines(
+                page,
+                100,
+                [
+                    "Note 24: Operation and maintenance expenses (Rs. Lakh)",
+                    "Operation and maintenance expenses for the year 61,250.00",
+                    "Previous year 56,000.00",
+                ],
+            )
+    return _finalise(doc, {"title": "SYNTHETIC audited accounts extract"})
+
+
 def arr_regulation_pdf() -> bytes:
     """Two pages of SYNTHETIC tariff regulations whose clauses carry the two parameters the
     ARR tests confirm against a clause: O&M escalation 5.00 per cent (Regulation 23) and the
