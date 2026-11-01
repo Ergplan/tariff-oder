@@ -117,6 +117,27 @@ def _finding(
     )
 
 
+# Lines commissions are known to print inclusive of others.  When the mapping states nothing
+# and ARR-I1 fails, each is tried; one that reconciles is named in the finding as the convention
+# for the mapping reviewer to confirm.  The finding stays blocking: a guess is never a pass.
+KNOWN_INCLUSIONS: list[tuple[str, tuple[str, ...], str]] = [
+    ("C.PP", ("C.TX",), "power purchase printed inclusive of transmission charges"),
+]
+
+
+def _hint_inclusion(f, g, s: Decimal, total: Value, identity, group, stated: set[str]) -> None:  # noqa: ANN001
+    for tot, inc, why in KNOWN_INCLUSIONS:
+        if tot in stated or g.rollup(tot, []) is None:
+            continue
+        inner = sum((g.rollup(c, []) or Decimal(0)) for c in inc)
+        if inner and _finding(identity, group, s - inner, total, [], "INR_crore", "") is None:
+            f.detail["reconciles_if"] = {"total": tot, "includes": list(inc), "why": why}
+            f.message += (
+                f"; it reconciles if {tot} includes {', '.join(inc)} ({why}): a convention for the mapping reviewer"
+            )
+            return
+
+
 def evaluate(
     values: list[Value],
     *,
@@ -130,22 +151,29 @@ def evaluate(
     ids = {i.id: i for i in taxonomy.identities}
     out: list[IdentityFinding] = []
 
-    # I1: C.TOTAL = sum of the printed components of C
+    # I1: C.TOTAL = sum of the printed components of C, a line the commission prints inside
+    # another (the mapping's ``total_includes``) counted once
     total = g.get("C.TOTAL")
     if total is not None:
+        stated = [t for t in (mapping.total_includes if mapping else []) if g.rollup(t.total, []) is not None]
+        inside = {code for t in stated for code in t.includes}
         used: list[Value] = []
         parts = 0
         s = Decimal(0)
         for child in g.children.get("C", []):
-            if child == "C.TOTAL":
+            if child == "C.TOTAL" or child in inside:
                 continue
             cv = g.rollup(child, used)
             if cv is not None:
                 parts += 1
                 s += (g.items[child].sign or 1) * cv
         if parts >= 2:
-            f = _finding(ids["ARR-I1"], group, s, total, used, "INR_crore", "the sum of its components")
+            what = "the sum of its components" + (
+                " (" + "; ".join(f"{t.total} includes {', '.join(t.includes)}" for t in stated) + ")" if stated else ""
+            )
+            f = _finding(ids["ARR-I1"], group, s, total, used, "INR_crore", what)
             if f:
+                _hint_inclusion(f, g, s, total, ids["ARR-I1"], group, {t.total for t in stated})
                 out.append(f)
 
     # I2: R.ARR = C.TOTAL - less items

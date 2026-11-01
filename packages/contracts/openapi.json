@@ -1581,6 +1581,17 @@
             "title": "Chapters",
             "type": "array"
           },
+          "commission": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commission"
+          },
           "findings": {
             "items": {
               "$ref": "#/components/schemas/FindingOut"
@@ -5987,6 +5998,41 @@
           "approved_schedule_pages"
         ],
         "title": "LocalisationSummary",
+        "type": "object"
+      },
+      "MappingConventionIn": {
+        "description": "A reviewer's answer to a convention question of a commission's mapping (increment 44):\n``convention:gap_convention`` is before_subsidy or after_subsidy;\n``convention:total_includes:<TOTAL>:<LINE>[+<LINE>]`` applies or does_not_apply.",
+        "properties": {
+          "key": {
+            "maxLength": 300,
+            "minLength": 12,
+            "title": "Key",
+            "type": "string"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "maxLength": 1000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "value": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "title": "MappingConventionIn",
         "type": "object"
       },
       "MappingDecisionIn": {
@@ -11665,6 +11711,121 @@
           }
         },
         "summary": "Get Mapping",
+        "tags": [
+          "arr"
+        ]
+      }
+    },
+    "/arr/mappings/{commission}/conventions": {
+      "put": {
+        "description": "A reviewer's answer to one convention question (increment 44); written into the next\nmapping version by the draft, never applied to the identities until that file is committed.",
+        "operationId": "mapping_convention_arr_mappings__commission__conventions_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "commission",
+            "required": true,
+            "schema": {
+              "title": "Commission",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MappingConventionIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Mapping Convention Arr Mappings  Commission  Conventions Put",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Mapping Convention",
         "tags": [
           "arr"
         ]

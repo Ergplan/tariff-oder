@@ -178,6 +178,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/arr/mappings/{commission}/conventions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Mapping Convention
+         * @description A reviewer's answer to one convention question (increment 44); written into the next
+         *     mapping version by the draft, never applied to the identities until that file is committed.
+         */
+        put: operations["mapping_convention_arr_mappings__commission__conventions_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/arr/mappings/{commission}/decisions": {
         parameters: {
             query?: never;
@@ -2709,6 +2730,8 @@ export interface components {
             };
             /** Chapters */
             chapters: components["schemas"]["ArrChapterOut"][];
+            /** Commission */
+            commission?: string | null;
             /** Findings */
             findings: components["schemas"]["FindingOut"][];
             /** Mapping Confirmed */
@@ -4269,6 +4292,20 @@ export interface components {
             rules_version: string;
             /** Status */
             status: string;
+        };
+        /**
+         * MappingConventionIn
+         * @description A reviewer's answer to a convention question of a commission's mapping (increment 44):
+         *     ``convention:gap_convention`` is before_subsidy or after_subsidy;
+         *     ``convention:total_includes:<TOTAL>:<LINE>[+<LINE>]`` applies or does_not_apply.
+         */
+        MappingConventionIn: {
+            /** Key */
+            key: string;
+            /** Note */
+            note?: string | null;
+            /** Value */
+            value: string;
         };
         /**
          * MappingDecisionIn
@@ -6611,6 +6648,97 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ArrMappingOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    mapping_convention_arr_mappings__commission__conventions_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                commission: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MappingConventionIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
                 };
             };
             /** @description Unauthorized */

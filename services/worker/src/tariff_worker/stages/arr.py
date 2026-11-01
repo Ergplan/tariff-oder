@@ -191,12 +191,13 @@ def _preview(
                 groups.setdefault((c.fiscal_year, c.value_type, c.utility), []).append(
                     Value(c.line_code, Decimal(c.canonical_value), c.canonical_unit, "preview")
                 )
-        blocking = sum(
-            1
+        found = [
+            f
             for (fy, vt, _u), vals in groups.items()
             for f in evaluate(vals, taxonomy=tax, mapping=mapping, group={"fiscal_year": fy, "value_type": vt})
             if f.severity == "blocking"
-        )
+        ]
+        blocking = len(found)
         unplaced: dict[str, int] = {}
         for u in rep.unplaced:
             unplaced[u["label"][:60]] = unplaced.get(u["label"][:60], 0) + 1
@@ -208,6 +209,18 @@ def _preview(
                 "values": len(res.candidates),
                 "by_year_voice": dict(sorted(voices.items())),
                 "identity_blocking": blocking,
+                # the failures themselves, for the reviewer and the mapping workbench's convention
+                # questions (a hint is a question, never a decision)
+                "findings": [
+                    {
+                        "identity_id": f.identity_id,
+                        "fiscal_year": f.group.get("fiscal_year"),
+                        "value_type": f.group.get("value_type"),
+                        "message": f.message[:400],
+                        "reconciles_if": f.detail.get("reconciles_if"),
+                    }
+                    for f in found[:8]
+                ],
                 "unplaced_top": sorted(unplaced.items(), key=lambda x: -x[1])[:3],
             }
         )

@@ -1349,6 +1349,7 @@ class ArrReadingOut(BaseModel):
     findings: list[FindingOut]
     mapping_confirmed: bool
     mapping_note: str
+    commission: str | None = None  # the commission whose mapping reads this order
 
 
 class ArrPublishOut(BaseModel):
@@ -1610,6 +1611,16 @@ class MappingDecisionIn(BaseModel):
     code: str | None = Field(default=None, max_length=40)
     note: str | None = Field(default=None, max_length=1000)
     example: str | None = Field(default=None, max_length=500)
+
+
+class MappingConventionIn(BaseModel):
+    """A reviewer's answer to a convention question of a commission's mapping (increment 44):
+    ``convention:gap_convention`` is before_subsidy or after_subsidy;
+    ``convention:total_includes:<TOTAL>:<LINE>[+<LINE>]`` applies or does_not_apply."""
+
+    key: str = Field(min_length=12, max_length=300)
+    value: str = Field(min_length=1, max_length=40)
+    note: str | None = Field(default=None, max_length=1000)
 
 
 class SourceLicenseesIn(BaseModel):

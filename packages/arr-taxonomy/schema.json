@@ -576,6 +576,43 @@
           "title": "Regulation",
           "type": "object"
         },
+        "TotalIncludes": {
+          "additionalProperties": false,
+          "description": "A commission prints one line inclusive of others the taxonomy keeps apart (JSERC's\n\"Total Power Purchase Expense\" includes the transmission charges): the identities then\ncount the included lines once, inside the total.  A reviewer's convention, never inferred.",
+          "properties": {
+            "total": {
+              "pattern": "^[A-Z][A-Z0-9_.]*$",
+              "title": "Total",
+              "type": "string"
+            },
+            "includes": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Includes",
+              "type": "array"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Note"
+            }
+          },
+          "required": [
+            "total",
+            "includes"
+          ],
+          "title": "TotalIncludes",
+          "type": "object"
+        },
         "UnitConvention": {
           "additionalProperties": false,
           "properties": {
@@ -652,6 +689,13 @@
         },
         "gap_convention": {
           "$ref": "#/$defs/Noted"
+        },
+        "total_includes": {
+          "items": {
+            "$ref": "#/$defs/TotalIncludes"
+          },
+          "title": "Total Includes",
+          "type": "array"
         },
         "unit_convention": {
           "$ref": "#/$defs/UnitConvention"

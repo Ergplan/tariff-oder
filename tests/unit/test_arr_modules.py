@@ -636,3 +636,32 @@ def test_a_cost_row_named_like_a_quantity_follows_the_table_unit_and_number_agre
     assert code("Operations and Maintenance Expenses", "INR_crore") == "C.OM"
     assert code("Sale of surplus power", "INR_crore") != "E.SALES"
     assert not placer.collisions()
+
+
+def test_a_total_printed_inclusive_of_other_lines_is_a_convention_question():
+    """ARR-I1 when power purchase is printed inclusive of transmission (JSERC, increment 44):
+    with no convention stated the finding stays blocking and names the reconciliation; with the
+    mapping's ``total_includes`` the included lines are counted once and it passes."""
+    from tariff_api.arr.taxonomy import TotalIncludes
+
+    vals = [
+        Value("C.TOTAL", Decimal("100"), "INR_crore", "p.1"),
+        Value("C.PP", Decimal("80"), "INR_crore", "p.1"),  # includes the 10 of transmission
+        Value("C.TX", Decimal("10"), "INR_crore", "p.1"),
+        Value("C.OM", Decimal("20"), "INR_crore", "p.1"),
+    ]
+    group = {"fiscal_year": "FY2024-25", "value_type": "approved"}
+    (f,) = [x for x in evaluate(vals, taxonomy=TAX, mapping=SYN, group=group) if x.identity_id == "ARR-I1"]
+    assert f.severity == "blocking"
+    assert f.detail["reconciles_if"] == {
+        "total": "C.PP",
+        "includes": ["C.TX"],
+        "why": "power purchase printed inclusive of transmission charges",
+    }
+    assert "reconciles if C.PP includes C.TX" in f.message
+    stated = SYN.model_copy(update={"total_includes": [TotalIncludes(total="C.PP", includes=["C.TX"])]})
+    assert not [x for x in evaluate(vals, taxonomy=TAX, mapping=stated, group=group) if x.identity_id == "ARR-I1"]
+    # a failure no known convention explains carries no hint
+    off = [*vals[:1], Value("C.PP", Decimal("50"), "INR_crore", "p.1"), *vals[2:]]
+    (g,) = [x for x in evaluate(off, taxonomy=TAX, mapping=SYN, group=group) if x.identity_id == "ARR-I1"]
+    assert "reconciles_if" not in g.detail

@@ -23,7 +23,16 @@ export default async function SourceArrPage({ params }: { params: Promise<{ id: 
   if (rd.error || !rd.data) return <ErrorBanner error={rd.error!} />;
   const r = rd.data;
   const role = me.data?.role;
-  type Preview = { chapter: number; tables: number; tables_read: number; values: number; by_year_voice: Record<string, number>; identity_blocking: number; unplaced_top: [string, number][] };
+  type Preview = {
+    chapter: number;
+    tables: number;
+    tables_read: number;
+    values: number;
+    by_year_voice: Record<string, number>;
+    identity_blocking: number;
+    unplaced_top: [string, number][];
+    findings?: { identity_id: string; message: string; reconciles_if: { total: string; includes: string[] } | null }[];
+  };
   const summary = (r.arr_summary ?? {}) as {
     scan?: { unplaced_rows?: number; unplaced?: { key: string; count: number }[] };
     mapping?: { id: string; status: string };
@@ -83,7 +92,32 @@ export default async function SourceArrPage({ params }: { params: Promise<{ id: 
                               .join(" · ")
                           : ""}
                       </td>
-                      <td>{p ? (p.identity_blocking ? <span className="badge" data-tone="bad">{p.identity_blocking}</span> : <span className="badge" data-tone="ok">0</span>) : null}</td>
+                      <td>
+                        {p ? (
+                          p.identity_blocking ? (
+                            <details>
+                              <summary>
+                                <span className="badge" data-tone="bad">
+                                  {p.identity_blocking}
+                                </span>
+                              </summary>
+                              {(p.findings ?? []).map((f, i) => (
+                                <div key={i} className="muted">
+                                  {f.message}
+                                  {f.reconciles_if ? (
+                                    <>
+                                      {" "}
+                                      <Link href={`/arr/mappings/${encodeURIComponent(r.commission ?? "")}`}>a convention question for the {r.commission} mapping →</Link>
+                                    </>
+                                  ) : null}
+                                </div>
+                              ))}
+                            </details>
+                          ) : (
+                            <span className="badge" data-tone="ok">0</span>
+                          )
+                        ) : null}
+                      </td>
                       <td className="muted">{p ? p.unplaced_top.map(([l, n]) => `${l} (${n})`).join("; ") : ""}</td>
                     </tr>
                   );

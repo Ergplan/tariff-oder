@@ -6,7 +6,13 @@ confirms it, real lines can be read and reviewed but not approved.  The workbenc
 scan's unplaced row labels (with how often and on which pages of which orders), suggests
 taxonomy codes by word overlap (a suggestion, never a placement), records the reviewer's
 decisions, and renders the next version of the mapping file with them for a person to commit.
-The rendered file says ``draft``; confirming it is a separate human act."""
+The rendered file says ``draft``; confirming it is a separate human act.
+
+Increment 44 adds the commission's *conventions*: how its printed totals are composed (whether
+the printed gap is after subsidy; whether a line such as power purchase is printed inclusive of
+others).  The identity failures of the read orders' previews pose them as questions, with the
+reconciliation a known convention would give; the reviewer answers, and the draft writes the
+answer into the mapping.  A hint is never an answer."""
 
 from __future__ import annotations
 
@@ -100,6 +106,7 @@ def unplaced(session: Session, commission: str) -> dict[str, Any]:
     decisions = {
         d.label: d
         for d in session.execute(select(MappingDecision).where(MappingDecision.commission_code == c.code)).scalars()
+        if d.kind != "convention"
     }
     rows = sorted(agg.values(), key=lambda r: (-r["count"], r["label"]))
     for r in rows:
@@ -118,6 +125,7 @@ def unplaced(session: Session, commission: str) -> dict[str, Any]:
     return {
         "commission": c.code,
         "mapping": mapping,
+        "conventions": conventions(session, c.code, sources),
         "orders": [{"source_id": str(s.id), "order": s.original_filename, "arr_state": s.arr_state} for s in sources],
         "labels": rows,
         "decided": sum(1 for r in rows if r["decision"]),
@@ -126,6 +134,118 @@ def unplaced(session: Session, commission: str) -> dict[str, Any]:
             "a person writes the next version of the mapping file and a reviewer confirms it."
         ),
     }
+
+
+CONVENTION_PREFIX = "convention:"
+GAP_VALUES = ("before_subsidy", "after_subsidy")
+INCLUSION_VALUES = ("applies", "does_not_apply")
+
+
+def conventions(session: Session, commission: str, sources: list[SourceDocument]) -> list[dict[str, Any]]:
+    """The convention questions the read orders pose, with their evidence and the decision
+    taken: a line printed inclusive of others (ARR-I1 reconciles only with it) and the gap
+    convention (ARR-I3 fails both ways, or the mapping does not state it)."""
+    questions: dict[str, dict[str, Any]] = {}
+
+    def ask(key: str, **info: Any) -> dict[str, Any]:
+        return questions.setdefault(key, {"key": key, "evidence": [], **info})
+
+    for src in sources:
+        preview = (src.arr_summary or {}).get("preview") or {}
+        for ch in preview.get("chapters") or []:
+            for f in ch.get("findings") or []:
+                hint = f.get("reconciles_if")
+                if hint:
+                    key = f"{CONVENTION_PREFIX}total_includes:{hint['total']}:{'+'.join(hint['includes'])}"
+                    q = ask(
+                        key,
+                        kind="total_includes",
+                        question=f"Does {commission} print {hint['total']} inclusive of {', '.join(hint['includes'])}?",
+                        why=hint.get("why"),
+                        values=list(INCLUSION_VALUES),
+                    )
+                elif f.get("identity_id") == "ARR-I3":
+                    q = ask(
+                        f"{CONVENTION_PREFIX}gap_convention",
+                        kind="gap_convention",
+                        question=f"Is {commission}'s printed revenue gap before or after the subsidy?",
+                        why="ARR-I3 fails with both conventions on these values: check the order's gap table",
+                        values=list(GAP_VALUES),
+                    )
+                else:
+                    continue
+                if len(q["evidence"]) < 8:
+                    q["evidence"].append(
+                        {
+                            "source_id": str(src.id),
+                            "order": src.original_filename,
+                            "chapter": ch.get("chapter"),
+                            "message": f.get("message"),
+                        }
+                    )
+    decided = {
+        d.label: d
+        for d in session.execute(
+            select(MappingDecision).where(
+                MappingDecision.commission_code == commission, MappingDecision.kind == "convention"
+            )
+        ).scalars()
+    }
+    for key in decided:
+        if key not in questions:  # decided earlier; the evidence may have gone with a re-read
+            kind = key.removeprefix(CONVENTION_PREFIX).split(":")[0]
+            values = list(GAP_VALUES if kind == "gap_convention" else INCLUSION_VALUES)
+            ask(key, kind=kind, question=key.removeprefix(CONVENTION_PREFIX), why=None, values=values)
+    out = []
+    for key, q in sorted(questions.items()):
+        d = decided.get(key)
+        q["decision"] = (
+            {"value": d.code, "note": d.note, "by": d.decided_by, "at": d.decided_at.isoformat()} if d else None
+        )
+        out.append(q)
+    return out
+
+
+def decide_convention(
+    session: Session, commission: str, *, key: str, value: str, note: str | None, actor: str
+) -> MappingDecision:
+    """A reviewer's answer to a convention question.  ``key`` is ``convention:gap_convention``
+    or ``convention:total_includes:<TOTAL>:<LINE>[+<LINE>…]``."""
+    body = key.removeprefix(CONVENTION_PREFIX)
+    if not key.startswith(CONVENTION_PREFIX):
+        raise AppError("validation_failed", "a convention key starts with 'convention:'")
+    if body == "gap_convention":
+        if value not in GAP_VALUES:
+            raise AppError("validation_failed", f"the gap convention is one of {', '.join(GAP_VALUES)}")
+    else:
+        m = re.fullmatch(r"total_includes:([A-Z][A-Z0-9_.]*):([A-Z][A-Z0-9_.+]*)", body)
+        codes = load_taxonomy().by_code()
+        if not m or any(c not in codes for c in [m.group(1), *m.group(2).split("+")]):
+            raise AppError("validation_failed", f"{key!r} names no lines of the ARR taxonomy")
+        if value not in INCLUSION_VALUES:
+            raise AppError("validation_failed", f"an inclusion is one of {', '.join(INCLUSION_VALUES)}")
+    d = session.execute(
+        select(MappingDecision).where(MappingDecision.commission_code == commission, MappingDecision.label == key)
+    ).scalar_one_or_none()
+    before = {"kind": d.kind, "code": d.code} if d else None
+    if d is None:
+        d = MappingDecision(commission_code=commission, label=key, kind="convention", code=value, decided_by=actor)
+        session.add(d)
+    d.kind, d.code, d.note, d.decided_by = "convention", value, (note or None), actor
+    session.add(
+        AuditEvent(
+            actor=actor,
+            action="arr.mapping_convention",
+            entity_type="mapping",
+            entity_id=commission,
+            before=before,
+            after={"key": key, "value": value},
+            reason=note,
+            request_id=request_id_var.get(),
+        )
+    )
+    session.flush()
+    return d
 
 
 def decide(
@@ -175,7 +295,7 @@ def decide(
 
 
 def withdraw(session: Session, commission: str, label: str, *, actor: str) -> None:
-    key = norm_label(label)
+    key = label if label.startswith(CONVENTION_PREFIX) else norm_label(label)
     d = session.execute(
         select(MappingDecision).where(MappingDecision.commission_code == commission, MappingDecision.label == key)
     ).scalar_one_or_none()
@@ -231,6 +351,22 @@ def draft(session: Session, commission: str) -> dict[str, Any]:
                 "note": f"decided by {d.decided_by}" + (f": {d.note}" if d.note else ""),
             }
     data["unplaced"]["entries"] = sorted(not_lines.values(), key=lambda e: str(e["label"]))
+    includes = {(str(t["total"]), tuple(t["includes"])): t for t in data.get("total_includes") or []}
+    for d in rows:
+        if d.kind != "convention":
+            continue
+        who = f"decided by {d.decided_by}" + (f": {d.note}" if d.note else "")
+        body = d.label.removeprefix(CONVENTION_PREFIX)
+        if body == "gap_convention":
+            data["gap_convention"] = {"value": d.code, "note": who}
+            continue
+        _kind, total, inc = body.split(":")
+        k = (total, tuple(inc.split("+")))
+        if d.code == "applies":
+            includes[k] = {"total": total, "includes": list(k[1]), "note": who}
+        else:
+            includes.pop(k, None)
+    data["total_includes"] = [includes[k] for k in sorted(includes)]
     deciders = sorted({d.decided_by for d in rows})
     data["version"] = version + 1
     base = f"v{version}" if version else "the generic skeleton"

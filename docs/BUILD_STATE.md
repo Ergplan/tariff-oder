@@ -801,6 +801,27 @@ open-access view.
   column): JSERC's "Total Power Purchase Expense" includes transmission, a convention for the
   reviewer's JSERC mapping.  Before the placement rules the JSERC preview was 290 values with
   the true-up's years wrong (FY2026-27 from the running header) and 12 failures.
+
+  **Increment 44 (2026-11-01): mapping conventions — the identity failures become reviewer
+  questions.**  A commission's mapping can now state `total_includes` (a line printed
+  inclusive of others: JSERC's power purchase includes transmission), and ARR-I1 counts the
+  included lines once.  With nothing stated, a failing ARR-I1 is re-tried with the known
+  inclusions; one that reconciles is named in the finding ("it reconciles if C.PP includes
+  C.TX … a convention for the mapping reviewer") and **the finding stays blocking**.  The
+  chapter preview now keeps its blocking findings (up to 8 per chapter, with the hint), shown
+  under the failure count on the order's ARR page with a link to the commission's workbench.
+  The workbench gains a **Conventions** section: the questions the read orders pose (an
+  inclusion an ARR-I1 hint names; the gap convention where ARR-I3 fails both ways), each with
+  its evidence (order, chapter, finding); a reviewer answers (`PUT
+  /arr/mappings/{c}/conventions`, reviewer role; migration 0020 adds the `convention` decision
+  kind) and the drafted mapping writes the answer into `gap_convention` or `total_includes`
+  (a valid mapping file, status draft, not confirmed).  **Live, on the real orders' previews:**
+  JSERC poses "Does JSERC print C.PP inclusive of C.TX?" with 4 pieces of evidence (FY2024-25
+  APR, petition and true-up; FY2025-26 petition); its fifth failure (FY2025-26 APR column,
+  −380.56) reconciles under no known convention and stays unexplained.  UPERC poses its gap
+  convention (2 pieces of evidence, FY2026-27 petition and approval).  **No convention has been
+  answered:** that is the reviewer's decision.  ARR-I4 (BERC's loss definition) poses no
+  mapping question yet: the mapping has no field for it.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1343,6 +1364,11 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 
 ## Reading reliability ledger changes
 
+Increment 44 (ARR conventions): A8 and A14 now pose their questions to the reviewer in the
+mapping workbench, with the failing values as evidence; ARR-I1 honours a stated
+`total_includes`.  JSERC's power purchase convention explains 4 of its 5 failures; the fifth is
+unexplained.  No answer has been given: the conventions stay open until a reviewer decides.
+
 Increment 43 (ARR, fourth real order): JSERC's paragraph-numbered layout (A12) — 74 chapters by
 its "Chapter N" parts; running headers as captions, contained aliases naming another thing and
 a unit-dependent alias (A13) — found by ARR-I4, which now passes on JSERC's energy balance; a
@@ -1383,6 +1409,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 44 (2026-11-01): 363 passed** (+1 unit: a total printed inclusive of other lines — the hint when unstated, the pass when the mapping states it, no hint when no known convention explains; +1 integration: a convention question posed from a preview, answered by a reviewer only, validated, drafted into a valid mapping, withdrawn).  Ruff, format, contracts-check and web typecheck clean; migration 0020 applied on the local stack.
 - **Increment 43 (2026-11-01): 361 passed** (+3 unit: a paragraph-numbered order is read by its headings inside its "Chapter N" parts, wrapped chapter titles joined, the hearing part flagged; a label naming what a line is for is not that line (`not_when`); a cost row named like a quantity follows the table's unit, and singular/plural aliases).  Ruff, format and contracts-check clean; no web change.
 - **Increment 42 (2026-11-01): 358 passed** (+2 unit: short-form years and the Amount column; a row whose unit contradicts the line is not placed; +1 integration: a commission without a mapping drafts its first version from the generic skeleton).
 - **Increment 41 (2026-11-01): 355 passed** (the end-to-end ARR test now checks the preview: one table read per chapter, the identity failure flagged before reading, and the preview's value count equal to the candidates read).
@@ -1559,7 +1586,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 43) — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 44) — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -1571,7 +1598,8 @@ entries below are the per-increment history.**
      directives, open-access annexes — flagged in the chapter notes), set the capped last
      chapter's end, confirm.
   2. **Reviewer, mappings:** decide the unplaced labels in `/arr/mappings/UPERC`, `/BERC`,
-     `/HPERC`; set each mapping's `gap_convention` and loss definition (identities ARR-I3 on
+     `/HPERC`, `/JSERC`; answer each workbench's **Conventions** questions (UPERC's gap
+     convention; JSERC's power purchase inclusive of transmission) and set the loss definition (identities ARR-I3 on
      UPERC and ARR-I4 on BERC fail on convention, increment 40; ARR-I1 on JSERC because its
      power purchase total includes transmission, increment 43); draft with `tariff-api
      mapping-draft`, commit, confirm.  Until a mapping is confirmed, real lines of that
@@ -1585,8 +1613,8 @@ entries below are the per-increment history.**
 - *Engineering next:* the extraction over confirmed real chapters (measure precision against
   the reviewer's decisions — the first real precision figure); per-commission true-up formats;
   organisation-owned sources for private documents; normative checks of actuals against
-  regulation parameters; a mapping-level way to state "this total includes those lines" (the
-  JSERC convention) so ARR-I1 checks it instead of failing; more real orders (the profiles list
+  regulation parameters; a mapping field for the loss definition behind ARR-I4 (BERC) so it
+  becomes a workbench question too; more real orders (the profiles list
   JSERC's FY2024-25 and FY2025-26 orders and JERC Goa & UTs).
 
 000000000000000. **Reviewer (increment 39):** open `/arr/mappings/UPERC` (and `/arr/mappings/BERC`

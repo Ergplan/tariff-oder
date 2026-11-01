@@ -1282,15 +1282,17 @@ class ArrCase(Base):
 
 class MappingDecision(Base):
     """A reviewer's decision on one unplaced row label of a commission (increment 39): an
-    alias to a taxonomy code, or "not a line" (a sub-heading, a schedule row).  Decisions are
+    alias to a taxonomy code, or "not a line" (a sub-heading, a schedule row); or on one of
+    its conventions (increment 44: label ``convention:…``, the decided value in ``code``).  Decisions are
     written into the next version of the mapping file by a person; the file's status says
     whether it is confirmed, never this table."""
 
     __tablename__ = "mapping_decisions"
     __table_args__ = (
         UniqueConstraint("commission_code", "label", name="uq_mapping_decision"),
-        CheckConstraint("kind in ('alias', 'not_a_line')", name="ck_mapping_decision_kind"),
+        CheckConstraint("kind in ('alias', 'not_a_line', 'convention')", name="ck_mapping_decision_kind"),
         CheckConstraint("kind <> 'alias' or code is not null", name="ck_mapping_decision_alias_code"),
+        CheckConstraint("kind <> 'convention' or code is not null", name="ck_mapping_decision_convention_value"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)

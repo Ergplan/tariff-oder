@@ -45,6 +45,7 @@ from ..schemas import (
     FilingDraftOut,
     FindingOut,
     JobSummary,
+    MappingConventionIn,
     MappingDecisionIn,
 )
 
@@ -106,6 +107,7 @@ def _reading(s, src: SourceDocument) -> ArrReadingOut:
         findings=[FindingOut.model_validate(f, from_attributes=True) for f in arr.arr_findings(s, src.id)],
         mapping_confirmed=ok,
         mapping_note=why or "confirmed",
+        commission=src.utility.commission.code if src.utility and src.utility.commission else None,
     )
 
 
@@ -207,6 +209,19 @@ def mapping_decide(commission: str, body: MappingDecisionIn, principal: Principa
     with session_scope() as s:
         d = wb.decide(s, commission.upper(), actor=principal.email, **body.model_dump())
         return {"label": d.label, "kind": d.kind, "code": d.code, "note": d.note, "decided_by": d.decided_by}
+
+
+@router.put("/arr/mappings/{commission}/conventions", response_model=dict)
+def mapping_convention(
+    commission: str, body: MappingConventionIn, principal: Principal = Depends(require_reviewer)
+) -> dict:
+    """A reviewer's answer to one convention question (increment 44); written into the next
+    mapping version by the draft, never applied to the identities until that file is committed."""
+    from ..arr import workbench as wb
+
+    with session_scope() as s:
+        d = wb.decide_convention(s, commission.upper(), actor=principal.email, **body.model_dump())
+        return {"key": d.label, "value": d.code, "note": d.note, "decided_by": d.decided_by}
 
 
 @router.delete("/arr/mappings/{commission}/decisions", status_code=204)

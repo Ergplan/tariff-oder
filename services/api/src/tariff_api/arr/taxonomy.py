@@ -92,6 +92,17 @@ class Noted(BaseModel):
     note: str | None = None
 
 
+class TotalIncludes(BaseModel):
+    """A commission prints one line inclusive of others the taxonomy keeps apart (JSERC's
+    "Total Power Purchase Expense" includes the transmission charges): the identities then
+    count the included lines once, inside the total.  A reviewer's convention, never inferred."""
+
+    model_config = ConfigDict(extra="forbid")
+    total: str = Field(pattern=r"^[A-Z][A-Z0-9_.]*$")
+    includes: list[str] = Field(min_length=1)
+    note: str | None = None
+
+
 class UnitConvention(BaseModel):
     model_config = ConfigDict(extra="forbid")
     money: str = "INR_crore"
@@ -142,6 +153,7 @@ class Mapping(BaseModel):
     regulations: list[Regulation]
     return_basis: Noted
     gap_convention: Noted
+    total_includes: list[TotalIncludes] = Field(default_factory=list)
     unit_convention: UnitConvention
     orders_expected: list[OrderExpected] = Field(default_factory=list)
     chapter_map: list[ChapterCue]

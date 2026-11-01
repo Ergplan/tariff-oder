@@ -356,7 +356,7 @@ Append-only (UPDATE/DELETE raise via trigger): `actor`, `action`, `entity_type`,
 
 | Table / column | Meaning |
 | --- | --- |
-| `mapping_decisions` | A reviewer's decision on one unplaced row label of a commission: `kind` `alias` (with the taxonomy `code`) or `not_a_line`, the normalised label, one printed example, note, who and when; unique per commission and label.  Written into the next mapping file version by a person; never confirms a mapping |
+| `mapping_decisions` | A reviewer's decision on one unplaced row label of a commission: `kind` `alias` (with the taxonomy `code`) or `not_a_line`, the normalised label, one printed example, note, who and when; unique per commission and label.  Written into the next mapping file version by a person; never confirms a mapping.  Migration 0020 adds `kind` `convention`: the label is the question's key (`convention:gap_convention`, or `convention:total_includes:<TOTAL>:<LINE>[+<LINE>]`) and `code` the answer (`before_subsidy` / `after_subsidy`, `applies` / `does_not_apply`, required); the draft writes it into the mapping's `gap_convention` or `total_includes` |
 
 ## Reserved for later milestones (not created yet)
 Regulatory order, schedule version, effective rule, category/version, option group, category
