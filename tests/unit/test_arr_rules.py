@@ -171,18 +171,22 @@ def test_the_uperc_drafts_check_and_their_examples_pass():
 
 
 def test_the_npcl_chain_reproduces_the_filed_formats_from_records():
-    """FY2026-27, from the openings and the year's records only: the chain reproduces NPCL's
-    filed return on equity (F26) and interest on the normative loan (F25) to the paisa-crore."""
+    """FY2026-27, from the openings and the year's capital records only (F14: capitalisation,
+    consumer contribution, assets retired): the chain — 70:30 split, retirement, roll-forwards —
+    reproduces NPCL's filed return on equity (F26) and interest on the normative loan (F25)."""
     rs = RuleSet(load_rules("UPERC"), "FY2026-27")
     ev = rs.evaluate(
         "FY2026-27",
         {
             "prior:equity_closing": ("709.6218015004636", "INR_crore"),
-            "record:equity_reduction_on_retirement": ("4.5", "INR_crore"),
-            "record:equity_addition": ("128.82140427628835", "INR_crore"),
             "prior:normative_loan_closing": ("757.768934543932", "INR_crore"),
-            "record:loan_reduction_on_retirement": ("2.180055014745463", "INR_crore"),
-            "record:normative_loan_addition": ("300.5832766446728", "INR_crore"),
+            # the year's capital records (F14 column FY2026-27): additions and reductions follow
+            "record:capitalisation": ("493.69077628216064", "INR_crore"),
+            "record:consumer_contribution": ("64.28609536119946", "INR_crore"),
+            "record:retired_gross": ("15", "INR_crore"),
+            "record:retired_grants": ("0", "INR_crore"),
+            "record:retired_acc_dep": ("8.319944985254537", "INR_crore"),
+            "record:retired_acc_dep_adjustment": ("0", "INR_crore"),
             "record:depreciation": ("106.75180844074569", "INR_crore"),
             "assumption:loan_interest_rate": ("0.0982616438356164", "fraction"),
         },

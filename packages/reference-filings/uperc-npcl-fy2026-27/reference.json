@@ -92,7 +92,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "A",
+     "serial": "A MU",
      "label": "Total Energy Sales",
      "line_code": "E.SALES",
      "matched": "energy sales",
@@ -235,7 +235,7 @@
     },
     {
      "row": 11,
-     "serial": "B",
+     "serial": "B %",
      "label": "Percentage",
      "line_code": null,
      "matched": null,
@@ -378,8 +378,8 @@
     },
     {
      "row": 12,
-     "serial": "C",
-     "label": "Quantum",
+     "serial": "C MU",
+     "label": "C=(A/(1-B)-A)",
      "line_code": null,
      "matched": null,
      "unit": "MU",
@@ -521,7 +521,7 @@
     },
     {
      "row": 14,
-     "serial": "D",
+     "serial": "D MU",
      "label": "Energy requirement at Discom Periphery",
      "line_code": "E.INPUT.DIST",
      "matched": "energy requirement at discom periphery",
@@ -664,7 +664,7 @@
     },
     {
      "row": 17,
-     "serial": "E",
+     "serial": "E %",
      "label": "Percentage",
      "line_code": null,
      "matched": null,
@@ -807,8 +807,8 @@
     },
     {
      "row": 18,
-     "serial": "F",
-     "label": "Quantum",
+     "serial": "F MU",
+     "label": "F=(D/(1-E)-D)",
      "line_code": null,
      "matched": null,
      "unit": "MU",
@@ -950,7 +950,7 @@
     },
     {
      "row": 20,
-     "serial": "G",
+     "serial": "G MU",
      "label": "Total Energy requirement at UPPTCL Periphery",
      "line_code": null,
      "matched": null,
@@ -1093,7 +1093,7 @@
     },
     {
      "row": 21,
-     "serial": "H",
+     "serial": "H MU",
      "label": "Energy Purchase from Stations connected to Intra State Transmission network (UPPTCL)",
      "line_code": "C.TX.INTRA",
      "matched": "intra state transmission",
@@ -1224,7 +1224,7 @@
     },
     {
      "row": 22,
-     "serial": "I",
+     "serial": "I MU",
      "label": "Energy Purchase from Stations connected to Inter State Transmission network",
      "line_code": null,
      "matched": null,
@@ -1367,7 +1367,7 @@
     },
     {
      "row": 23,
-     "serial": "J",
+     "serial": "J %",
      "label": "Inter State Transmission Losses",
      "line_code": null,
      "matched": null,
@@ -1510,7 +1510,7 @@
     },
     {
      "row": 24,
-     "serial": "K",
+     "serial": "K MU",
      "label": "Net Energy Received from Stations connected to Inter State Transmission network at UPPTCL Periphery",
      "line_code": null,
      "matched": null,
@@ -1653,7 +1653,7 @@
     },
     {
      "row": 25,
-     "serial": "L",
+     "serial": "L MU",
      "label": "Total Energy Purchased at UPPCL Periphery",
      "line_code": "E.PP.QTY",
      "matched": "energy purchased",
@@ -1797,9 +1797,9 @@
    ],
    "unplaced": [
     "Percentage",
-    "Quantum",
+    "C=(A/(1-B)-A)",
     "Percentage",
-    "Quantum",
+    "F=(D/(1-E)-D)",
     "Total Energy requirement at UPPTCL Periphery",
     "Energy Purchase from Stations connected to Inter State Transmission network",
     "Inter State Transmission Losses",
@@ -8874,8 +8874,8 @@
    "rows": [
     {
      "row": 9,
-     "serial": "April",
-     "label": "167.945783557743",
+     "serial": "",
+     "label": "April",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -8920,150 +8920,9 @@
      "flags": []
     },
     {
-     "row": 10,
-     "serial": "May",
-     "label": "168.94120480465722",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2024-25",
-       "voice": "petitioned",
-       "words": "Estimated Long Term",
-       "restated": false,
-       "value": "168.94120480465722",
-       "displayed": "169",
-       "state": "value",
-       "printed": "168.94120480465722",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2025-26",
-       "voice": "petitioned",
-       "words": "Projected Long Term",
-       "restated": false,
-       "value": "165.6682742428361",
-       "displayed": "166",
-       "state": "value",
-       "printed": "165.6682742428361",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2026-27",
-       "voice": "petitioned",
-       "words": "Projected Long Term",
-       "restated": false,
-       "value": "245.50471562727523",
-       "displayed": "246",
-       "state": "value",
-       "printed": "245.50471562727523",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
-     "row": 11,
-     "serial": "June",
-     "label": "175.45567972726386",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2024-25",
-       "voice": "petitioned",
-       "words": "Estimated Long Term",
-       "restated": false,
-       "value": "175.45567972726386",
-       "displayed": "175",
-       "state": "value",
-       "printed": "175.45567972726386",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2025-26",
-       "voice": "petitioned",
-       "words": "Projected Long Term",
-       "restated": false,
-       "value": "167.13427688651956",
-       "displayed": "167",
-       "state": "value",
-       "printed": "167.13427688651956",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2026-27",
-       "voice": "petitioned",
-       "words": "Projected Long Term",
-       "restated": false,
-       "value": "256.38359606205785",
-       "displayed": "256",
-       "state": "value",
-       "printed": "256.38359606205785",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
-     "row": 12,
-     "serial": "July",
-     "label": "169.0900977463985",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2024-25",
-       "voice": "petitioned",
-       "words": "Estimated Long Term",
-       "restated": false,
-       "value": "169.0900977463985",
-       "displayed": "169",
-       "state": "value",
-       "printed": "169.0900977463985",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2025-26",
-       "voice": "petitioned",
-       "words": "Projected Long Term",
-       "restated": false,
-       "value": "162.66553111592853",
-       "displayed": "163",
-       "state": "value",
-       "printed": "162.66553111592853",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2026-27",
-       "voice": "petitioned",
-       "words": "Projected Long Term",
-       "restated": false,
-       "value": "257.61771925046367",
-       "displayed": "258",
-       "state": "value",
-       "printed": "257.61771925046367",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
      "row": 13,
-     "serial": "August",
-     "label": "168.13821427471768",
+     "serial": "",
+     "label": "August",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9109,8 +8968,8 @@
     },
     {
      "row": 14,
-     "serial": "September",
-     "label": "165.72533530556942",
+     "serial": "",
+     "label": "September",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9156,8 +9015,8 @@
     },
     {
      "row": 15,
-     "serial": "October",
-     "label": "157.58960884120293",
+     "serial": "",
+     "label": "October",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9203,8 +9062,8 @@
     },
     {
      "row": 16,
-     "serial": "November",
-     "label": "72.38037658536109",
+     "serial": "",
+     "label": "November",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9250,8 +9109,8 @@
     },
     {
      "row": 17,
-     "serial": "December",
-     "label": "145.826887671129",
+     "serial": "",
+     "label": "December",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9297,8 +9156,8 @@
     },
     {
      "row": 18,
-     "serial": "January",
-     "label": "158.97942259152552",
+     "serial": "",
+     "label": "January",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9344,8 +9203,8 @@
     },
     {
      "row": 19,
-     "serial": "February",
-     "label": "159.9305721118395",
+     "serial": "",
+     "label": "February",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9391,8 +9250,8 @@
     },
     {
      "row": 20,
-     "serial": "March",
-     "label": "159.9526754428696",
+     "serial": "",
+     "label": "March",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9438,8 +9297,8 @@
     },
     {
      "row": 21,
-     "serial": "Average",
-     "label": "155.82965488835643",
+     "serial": "",
+     "label": "Average",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -9485,19 +9344,16 @@
     }
    ],
    "unplaced": [
-    "167.945783557743",
-    "168.94120480465722",
-    "175.45567972726386",
-    "169.0900977463985",
-    "168.13821427471768",
-    "165.72533530556942",
-    "157.58960884120293",
-    "72.38037658536109",
-    "145.826887671129",
-    "158.97942259152552",
-    "159.9305721118395",
-    "159.9526754428696",
-    "155.82965488835643"
+    "April",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+    "January",
+    "February",
+    "March",
+    "Average"
    ],
    "notes": [
     "column 3 (FY2024-25, Medium Term): no voice; skipped",
@@ -9547,7 +9403,7 @@
    "rows": [
     {
      "row": 9,
-     "serial": "1",
+     "serial": "",
      "label": "Consumer Contribution Towards Cost of Capital Assets",
      "line_code": "K.FUNDING.GRANT",
      "matched": "consumer contribution",
@@ -9735,8 +9591,8 @@
    "rows": [
     {
      "row": 8,
-     "serial": "A",
-     "label": "a",
+     "serial": "A a",
+     "label": "Opening Gross Block Amount as per books",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -9818,8 +9674,8 @@
     },
     {
      "row": 9,
-     "serial": "",
-     "label": "b",
+     "serial": "b",
+     "label": "Amount of IDC, FC, FERV & Hedging cost included in A(a) above",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -9901,8 +9757,8 @@
     },
     {
      "row": 11,
-     "serial": "B",
-     "label": "a",
+     "serial": "B a",
+     "label": "Additions in Gross Block Amount as per books",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -9984,8 +9840,8 @@
     },
     {
      "row": 12,
-     "serial": "",
-     "label": "b",
+     "serial": "b",
+     "label": "Amount of IDC, FC, FERV & Hedging cost included in B(a) above",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -10055,8 +9911,8 @@
     },
     {
      "row": 13,
-     "serial": "",
-     "label": "c",
+     "serial": "c",
+     "label": "Deletion in Gross Block Amount as per books",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -10138,8 +9994,8 @@
     },
     {
      "row": 15,
-     "serial": "C",
-     "label": "a",
+     "serial": "C a",
+     "label": "Closing Gross Block Amount as per books",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -10221,8 +10077,8 @@
     },
     {
      "row": 16,
-     "serial": "",
-     "label": "b",
+     "serial": "b",
+     "label": "Amount of IDC, FC, FERV & Hedging cost included in C(a) above",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -10304,8 +10160,8 @@
     },
     {
      "row": 19,
-     "serial": "",
-     "label": "a",
+     "serial": "a",
+     "label": "Opening Gross Block Amount",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -10387,8 +10243,8 @@
     },
     {
      "row": 20,
-     "serial": "",
-     "label": "b",
+     "serial": "b",
+     "label": "Additions in Gross Block Amount",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -10470,8 +10326,8 @@
     },
     {
      "row": 21,
-     "serial": "",
-     "label": "c",
+     "serial": "c",
+     "label": "Deletion in Gross Block",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -10552,9 +10408,92 @@
      "flags": []
     },
     {
+     "row": 22,
+     "serial": "",
+     "label": "Closing Gross Block",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "391.06360321000005",
+       "displayed": "391.06",
+       "state": "value",
+       "printed": "391.06360321000005",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "391.06360321000005",
+       "displayed": "391.06",
+       "state": "value",
+       "printed": "391.06360321000005",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "399.99729138900005",
+       "displayed": "400",
+       "state": "value",
+       "printed": "399.99729138900005",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "399.99729138900005",
+       "displayed": "400",
+       "state": "value",
+       "printed": "399.99729138900005",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "413.99729138900005",
+       "displayed": "414",
+       "state": "value",
+       "printed": "413.99729138900005",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "414.99729138900005",
+       "displayed": "415",
+       "state": "value",
+       "printed": "414.99729138900005",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
      "row": 24,
-     "serial": "E",
-     "label": "C+D",
+     "serial": "E C+D",
+     "label": "Total Closing Gross Block",
      "line_code": null,
      "matched": null,
      "unit": "INR_crore",
@@ -10633,20 +10572,1235 @@
       }
      ],
      "flags": []
+    },
+    {
+     "row": 26,
+     "serial": "",
+     "label": "Assets Put to use during the year*",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "162.05822900999988",
+       "displayed": "162.06",
+       "state": "value",
+       "printed": "162.05822900999988",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "162.05822900999988",
+       "displayed": "162.06",
+       "state": "value",
+       "printed": "162.05822900999988",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "302.59494229300014",
+       "displayed": "302.59",
+       "state": "value",
+       "printed": "302.59494229300014",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "302.59494229300014",
+       "displayed": "302.59",
+       "state": "value",
+       "printed": "302.59494229300014",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "448.4885975588145",
+       "displayed": "448.49",
+       "state": "value",
+       "printed": "448.4885975588145",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "493.69077628216064",
+       "displayed": "493.69",
+       "state": "value",
+       "printed": "493.69077628216064",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 27,
+     "serial": "",
+     "label": "Less : Capital Contribution from Consumers#",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "86.290023863",
+       "displayed": "86.29",
+       "state": "value",
+       "printed": "86.290023863",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "86.290023863",
+       "displayed": "86.29",
+       "state": "value",
+       "printed": "86.290023863",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "86.70403161399994",
+       "displayed": "86.7",
+       "state": "value",
+       "printed": "86.70403161399994",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "86.70403161399994",
+       "displayed": "86.7",
+       "state": "value",
+       "printed": "86.70403161399994",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "61.39487164324996",
+       "displayed": "61.39",
+       "state": "value",
+       "printed": "61.39487164324996",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "64.28609536119946",
+       "displayed": "64.29",
+       "state": "value",
+       "printed": "64.28609536119946",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 28,
+     "serial": "",
+     "label": "Net Capital Expenditure",
+     "line_code": "K.CAPEX",
+     "matched": "capital expenditure",
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "75.76820514699988",
+       "displayed": "75.77",
+       "state": "value",
+       "printed": "75.76820514699988",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "75.76820514699988",
+       "displayed": "75.77",
+       "state": "value",
+       "printed": "75.76820514699988",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "215.8909106790002",
+       "displayed": "215.89",
+       "state": "value",
+       "printed": "215.8909106790002",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "215.8909106790002",
+       "displayed": "215.89",
+       "state": "value",
+       "printed": "215.8909106790002",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "387.0937259155645",
+       "displayed": "387.09",
+       "state": "value",
+       "printed": "387.0937259155645",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "429.4046809209612",
+       "displayed": "429.4",
+       "state": "value",
+       "printed": "429.4046809209612",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "K.CAPEX proposed for 2 rows"
+     ]
+    },
+    {
+     "row": 29,
+     "serial": "",
+     "label": "Debt Required for Capex Funding @70%",
+     "line_code": "K.CAPEX",
+     "matched": "capex",
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "53.03774360289991",
+       "displayed": "53.04",
+       "state": "value",
+       "printed": "53.03774360289991",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "53.03774360289991",
+       "displayed": "53.04",
+       "state": "value",
+       "printed": "53.03774360289991",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "151.12363747530014",
+       "displayed": "151.12",
+       "state": "value",
+       "printed": "151.12363747530014",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "151.12363747530014",
+       "displayed": "151.12",
+       "state": "value",
+       "printed": "151.12363747530014",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "270.96560814089514",
+       "displayed": "270.97",
+       "state": "value",
+       "printed": "270.96560814089514",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "300.5832766446728",
+       "displayed": "300.58",
+       "state": "value",
+       "printed": "300.5832766446728",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "K.CAPEX proposed for 2 rows"
+     ]
+    },
+    {
+     "row": 30,
+     "serial": "",
+     "label": "Equity Required for Capex Funding @30%",
+     "line_code": "K.FUNDING.EQUITY",
+     "matched": "equity",
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "22.730461544099963",
+       "displayed": "22.73",
+       "state": "value",
+       "printed": "22.730461544099963",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "22.730461544099963",
+       "displayed": "22.73",
+       "state": "value",
+       "printed": "22.730461544099963",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "64.76727320370006",
+       "displayed": "64.77",
+       "state": "value",
+       "printed": "64.76727320370006",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "64.76727320370006",
+       "displayed": "64.77",
+       "state": "value",
+       "printed": "64.76727320370006",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "116.12811777466935",
+       "displayed": "116.13",
+       "state": "value",
+       "printed": "116.12811777466935",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "128.82140427628835",
+       "displayed": "128.82",
+       "state": "value",
+       "printed": "128.82140427628835",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "K.FUNDING.EQUITY proposed for 2 rows"
+     ]
+    },
+    {
+     "row": 32,
+     "serial": "",
+     "label": "Gross block of Assets retired during the year",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "9.083530905",
+       "displayed": "9.08",
+       "state": "value",
+       "printed": "9.083530905",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "9.083530905",
+       "displayed": "9.08",
+       "state": "value",
+       "printed": "9.083530905",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "11.736183706",
+       "displayed": "11.74",
+       "state": "value",
+       "printed": "11.736183706",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "11.736183706",
+       "displayed": "11.74",
+       "state": "value",
+       "printed": "11.736183706",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "15",
+       "displayed": "15",
+       "state": "value",
+       "printed": "15",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "15",
+       "displayed": "15",
+       "state": "value",
+       "printed": "15",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 33,
+     "serial": "",
+     "label": "Less :  Gross block retired from Consumer Contribution",
+     "line_code": "K.FUNDING.GRANT",
+     "matched": "consumer contribution",
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "4.01",
+       "displayed": "4.01",
+       "state": "value",
+       "printed": "4.01",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "4.01",
+       "displayed": "4.01",
+       "state": "value",
+       "printed": "4.01",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "4.978507862",
+       "displayed": "4.98",
+       "state": "value",
+       "printed": "4.978507862",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "4.978507862",
+       "displayed": "4.98",
+       "state": "value",
+       "printed": "4.978507862",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "0",
+       "displayed": "0",
+       "state": "value",
+       "printed": "0",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "0",
+       "displayed": "0",
+       "state": "value",
+       "printed": "0",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 34,
+     "serial": "",
+     "label": "Gross block of Assets retired during the year (net of Consumer Contribution)",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "5.073530905",
+       "displayed": "5.07",
+       "state": "value",
+       "printed": "5.073530905",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "5.073530905",
+       "displayed": "5.07",
+       "state": "value",
+       "printed": "5.073530905",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "6.757675844",
+       "displayed": "6.76",
+       "state": "value",
+       "printed": "6.757675844",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "6.757675844",
+       "displayed": "6.76",
+       "state": "value",
+       "printed": "6.757675844",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "15",
+       "displayed": "15",
+       "state": "value",
+       "printed": "15",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "15",
+       "displayed": "15",
+       "state": "value",
+       "printed": "15",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 35,
+     "serial": "",
+     "label": "Less :  Accumulated depreciaiton of Assets retired during the year",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "3.54",
+       "displayed": "3.54",
+       "state": "value",
+       "printed": "3.54",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "3.54",
+       "displayed": "3.54",
+       "state": "value",
+       "printed": "3.54",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "7.7069781200000005",
+       "displayed": "7.71",
+       "state": "value",
+       "printed": "7.7069781200000005",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "7.7069781200000005",
+       "displayed": "7.71",
+       "state": "value",
+       "printed": "7.7069781200000005",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "8.21924309492435",
+       "displayed": "8.22",
+       "state": "value",
+       "printed": "8.21924309492435",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "8.319944985254537",
+       "displayed": "8.32",
+       "state": "value",
+       "printed": "8.319944985254537",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 36,
+     "serial": "",
+     "label": "Less :  Accumulated depreciaiton of consumer Assets retired during the year",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "2.800043684",
+       "displayed": "2.8",
+       "state": "value",
+       "printed": "2.800043684",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "2.800043684",
+       "displayed": "2.8",
+       "state": "value",
+       "printed": "2.800043684",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 37,
+     "serial": "",
+     "label": "Accumulated depreciaiton on assets retired during the year (net of Consumer Contribution)",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "3.54",
+       "displayed": "3.54",
+       "state": "value",
+       "printed": "3.54",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "3.54",
+       "displayed": "3.54",
+       "state": "value",
+       "printed": "3.54",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "4.906934436",
+       "displayed": "4.91",
+       "state": "value",
+       "printed": "4.906934436",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "4.906934436",
+       "displayed": "4.91",
+       "state": "value",
+       "printed": "4.906934436",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "8.21924309492435",
+       "displayed": "8.22",
+       "state": "value",
+       "printed": "8.21924309492435",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "8.319944985254537",
+       "displayed": "8.32",
+       "state": "value",
+       "printed": "8.319944985254537",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 38,
+     "serial": "",
+     "label": "Written Down Value (WDV)",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "1.533530905",
+       "displayed": "1.53",
+       "state": "value",
+       "printed": "1.533530905",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "1.533530905",
+       "displayed": "1.53",
+       "state": "value",
+       "printed": "1.533530905",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "1.8507414080000002",
+       "displayed": "1.85",
+       "state": "value",
+       "printed": "1.8507414080000002",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "1.8507414080000002",
+       "displayed": "1.85",
+       "state": "value",
+       "printed": "1.8507414080000002",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "6.78075690507565",
+       "displayed": "6.78",
+       "state": "value",
+       "printed": "6.78075690507565",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "6.680055014745463",
+       "displayed": "6.68",
+       "state": "value",
+       "printed": "6.680055014745463",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 39,
+     "serial": "",
+     "label": "Written Down Value (WDV) (% of GFA)",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "30.226107492292886",
+       "displayed": "30",
+       "state": "value",
+       "printed": "0.30226107492292886",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "30.226107492292886",
+       "displayed": "30",
+       "state": "value",
+       "printed": "0.30226107492292886",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "27.38724749047019",
+       "displayed": "27",
+       "state": "value",
+       "printed": "0.2738724749047019",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "27.38724749047019",
+       "displayed": "27",
+       "state": "value",
+       "printed": "0.2738724749047019",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "45.20504603383767",
+       "displayed": "45",
+       "state": "value",
+       "printed": "0.4520504603383767",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "44.533700098303086",
+       "displayed": "45",
+       "state": "value",
+       "printed": "0.44533700098303086",
+       "unit": "percent",
+       "percent_from_fraction": true
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 40,
+     "serial": "",
+     "label": "Retired from Normative Loan",
+     "line_code": "K.FUNDING.DEBT",
+     "matched": "normative loan",
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "0.011471633500000135",
+       "displayed": "0.01",
+       "state": "value",
+       "printed": "0.011471633500000135",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "0.011471633500000135",
+       "displayed": "0.01",
+       "state": "value",
+       "printed": "0.011471633500000135",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "0",
+       "displayed": "0",
+       "state": "value",
+       "printed": "0",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "0",
+       "displayed": "0",
+       "state": "value",
+       "printed": "0",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "2.2807569050756507",
+       "displayed": "2.28",
+       "state": "value",
+       "printed": "2.2807569050756507",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "2.180055014745463",
+       "displayed": "2.18",
+       "state": "value",
+       "printed": "2.180055014745463",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 41,
+     "serial": "",
+     "label": "Retired from Equity",
+     "line_code": "K.FUNDING.EQUITY",
+     "matched": "equity",
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "1.533530905",
+       "displayed": "1.53",
+       "state": "value",
+       "printed": "1.533530905",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "1.533530905",
+       "displayed": "1.53",
+       "state": "value",
+       "printed": "1.533530905",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": "1.8507414080000002",
+       "displayed": "1.85",
+       "state": "value",
+       "printed": "1.8507414080000002",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "1.8507414080000002",
+       "displayed": "1.85",
+       "state": "value",
+       "printed": "1.8507414080000002",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "4.5",
+       "displayed": "4.5",
+       "state": "value",
+       "printed": "4.5",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": "4.5",
+       "displayed": "4.5",
+       "state": "value",
+       "printed": "4.5",
+       "unit": "INR_crore",
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "K.FUNDING.EQUITY proposed for 2 rows"
+     ]
     }
    ],
    "unplaced": [
-    "a",
-    "b",
-    "a",
-    "b",
-    "c",
-    "a",
-    "b",
-    "a",
-    "b",
-    "c",
-    "C+D"
+    "Opening Gross Block Amount as per books",
+    "Amount of IDC, FC, FERV & Hedging cost included in A(a) above",
+    "Additions in Gross Block Amount as per books",
+    "Amount of IDC, FC, FERV & Hedging cost included in B(a) above",
+    "Deletion in Gross Block Amount as per books",
+    "Closing Gross Block Amount as per books",
+    "Amount of IDC, FC, FERV & Hedging cost included in C(a) above",
+    "Opening Gross Block Amount",
+    "Additions in Gross Block Amount",
+    "Deletion in Gross Block",
+    "Closing Gross Block",
+    "Total Closing Gross Block",
+    "Assets Put to use during the year*",
+    "Less : Capital Contribution from Consumers#",
+    "Gross block of Assets retired during the year",
+    "Gross block of Assets retired during the year (net of Consumer Contribution)",
+    "Less :  Accumulated depreciaiton of Assets retired during the year",
+    "Less :  Accumulated depreciaiton of consumer Assets retired during the year",
+    "Accumulated depreciaiton on assets retired during the year (net of Consumer Contribution)",
+    "Written Down Value (WDV)",
+    "Written Down Value (WDV) (% of GFA)"
    ],
    "notes": [
     "column 10 (FY2026-27, no words): no voice; skipped",
@@ -10654,7 +11808,7 @@
     "column 12 (FY2026-27, no words): no voice; skipped",
     "column 13 (FY2026-27, no words): no voice; skipped"
    ],
-   "placed": 0
+   "placed": 6
   },
   {
    "sheet": "F15_CAP_CWIP",
@@ -11170,8 +12324,8 @@
    "rows": [
     {
      "row": 8,
-     "serial": "April",
-     "label": "312",
+     "serial": "",
+     "label": "April",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -11240,222 +12394,9 @@
      "flags": []
     },
     {
-     "row": 9,
-     "serial": "May",
-     "label": "314",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2019-20",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "314",
-       "displayed": "314",
-       "state": "value",
-       "printed": "314",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2020-21",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "330",
-       "displayed": "330",
-       "state": "value",
-       "printed": "330",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2021-22",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "347.328",
-       "displayed": "347.33",
-       "state": "value",
-       "printed": "347.328",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2022-23",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "371.52",
-       "displayed": "371.52",
-       "state": "value",
-       "printed": "371.52",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "387.936",
-       "displayed": "387.94",
-       "state": "value",
-       "printed": "387.936",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
-     "row": 10,
-     "serial": "June",
-     "label": "316",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2019-20",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "316",
-       "displayed": "316",
-       "state": "value",
-       "printed": "316",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2020-21",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "332",
-       "displayed": "332",
-       "state": "value",
-       "printed": "332",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2021-22",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "350.496",
-       "displayed": "350.5",
-       "state": "value",
-       "printed": "350.496",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2022-23",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "372.09599999999995",
-       "displayed": "372.1",
-       "state": "value",
-       "printed": "372.09599999999995",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "392.832",
-       "displayed": "392.83",
-       "state": "value",
-       "printed": "392.832",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
-     "row": 11,
-     "serial": "July",
-     "label": "319",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2019-20",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "319",
-       "displayed": "319",
-       "state": "value",
-       "printed": "319",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2020-21",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "336",
-       "displayed": "336",
-       "state": "value",
-       "printed": "336",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2021-22",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "353.664",
-       "displayed": "353.66",
-       "state": "value",
-       "printed": "353.664",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2022-23",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "374.112",
-       "displayed": "374.11",
-       "state": "value",
-       "printed": "374.112",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "402.33599999999996",
-       "displayed": "402.34",
-       "state": "value",
-       "printed": "402.33599999999996",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
      "row": 12,
-     "serial": "August",
-     "label": "320",
+     "serial": "",
+     "label": "August",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -11525,8 +12466,8 @@
     },
     {
      "row": 13,
-     "serial": "September",
-     "label": "322",
+     "serial": "",
+     "label": "September",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -11596,8 +12537,8 @@
     },
     {
      "row": 14,
-     "serial": "October",
-     "label": "325",
+     "serial": "",
+     "label": "October",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -11667,8 +12608,8 @@
     },
     {
      "row": 15,
-     "serial": "November",
-     "label": "328",
+     "serial": "",
+     "label": "November",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -11738,8 +12679,8 @@
     },
     {
      "row": 16,
-     "serial": "December",
-     "label": "330",
+     "serial": "",
+     "label": "December",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -11809,8 +12750,8 @@
     },
     {
      "row": 17,
-     "serial": "January",
-     "label": "330",
+     "serial": "",
+     "label": "January",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -11880,8 +12821,8 @@
     },
     {
      "row": 18,
-     "serial": "February",
-     "label": "328",
+     "serial": "",
+     "label": "February",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -11951,8 +12892,8 @@
     },
     {
      "row": 19,
-     "serial": "March",
-     "label": "326",
+     "serial": "",
+     "label": "March",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12022,8 +12963,8 @@
     },
     {
      "row": 21,
-     "serial": "Annual Average CPI Index",
-     "label": "322.5",
+     "serial": "",
+     "label": "Annual Average CPI Index",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12090,22 +13031,187 @@
       }
      ],
      "flags": []
+    },
+    {
+     "row": 22,
+     "serial": "",
+     "label": "% increase (%)",
+     "line_code": null,
+     "matched": null,
+     "unit": "percent",
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "5.021395348837197",
+       "displayed": "5.02",
+       "state": "value",
+       "printed": "0.05021395348837197",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "5.12852309164026",
+       "displayed": "5.13",
+       "state": "value",
+       "printed": "0.0512852309164026",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "6.0528444324615696",
+       "displayed": "6.05",
+       "state": "value",
+       "printed": "0.060528444324615696",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "5.186220922842268",
+       "displayed": "5.19",
+       "state": "value",
+       "printed": "0.05186220922842268",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Estimated",
+       "restated": false,
+       "value": "4.874250385302679",
+       "displayed": "4.87",
+       "state": "value",
+       "printed": "0.04874250385302679",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Projected",
+       "restated": false,
+       "value": "4.481385702916382",
+       "displayed": "4.48",
+       "state": "value",
+       "printed": "0.04481385702916382",
+       "unit": "percent",
+       "percent_from_fraction": true
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 23,
+     "serial": "",
+     "label": "Average of 3 Years",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "5.353420216784325",
+       "displayed": "5.35",
+       "state": "value",
+       "printed": "0.05353420216784325",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "6.000338569749183",
+       "displayed": "6",
+       "state": "value",
+       "printed": "0.06000338569749183",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "5.893262616215463",
+       "displayed": "5.89",
+       "state": "value",
+       "printed": "0.05893262616215463",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "5.4009209576463414",
+       "displayed": "5.4",
+       "state": "value",
+       "printed": "0.054009209576463414",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Estimated",
+       "restated": false,
+       "value": "4.874250385302679",
+       "displayed": "4.87",
+       "state": "value",
+       "printed": "0.04874250385302679",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Projected",
+       "restated": false,
+       "value": "4.481385702916382",
+       "displayed": "4.48",
+       "state": "value",
+       "printed": "0.04481385702916382",
+       "unit": "percent",
+       "percent_from_fraction": true
+      }
+     ],
+     "flags": []
     }
    ],
    "unplaced": [
-    "312",
-    "314",
-    "316",
-    "319",
-    "320",
-    "322",
-    "325",
-    "328",
-    "330",
-    "330",
-    "328",
-    "326",
-    "322.5"
+    "April",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+    "January",
+    "February",
+    "March",
+    "Annual Average CPI Index",
+    "% increase (%)",
+    "Average of 3 Years"
    ],
    "notes": [
     "column 7 (FY2024-25, True -Up): no voice; skipped",
@@ -12175,8 +13281,8 @@
    "rows": [
     {
      "row": 8,
-     "serial": "April",
-     "label": "121.1",
+     "serial": "",
+     "label": "April",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12245,222 +13351,9 @@
      "flags": []
     },
     {
-     "row": 9,
-     "serial": "May",
-     "label": "121.6",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2019-20",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "121.6",
-       "displayed": "121.6",
-       "state": "value",
-       "printed": "121.6",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2020-21",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "117.5",
-       "displayed": "117.5",
-       "state": "value",
-       "printed": "117.5",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2021-22",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "132.9",
-       "displayed": "132.9",
-       "state": "value",
-       "printed": "132.9",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2022-23",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "155",
-       "displayed": "155",
-       "state": "value",
-       "printed": "155",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "149.4",
-       "displayed": "149.4",
-       "state": "value",
-       "printed": "149.4",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
-     "row": 10,
-     "serial": "June",
-     "label": "121.5",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2019-20",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "121.5",
-       "displayed": "121.5",
-       "state": "value",
-       "printed": "121.5",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2020-21",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "119.3",
-       "displayed": "119.3",
-       "state": "value",
-       "printed": "119.3",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2021-22",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "133.7",
-       "displayed": "133.7",
-       "state": "value",
-       "printed": "133.7",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2022-23",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "155.4",
-       "displayed": "155.4",
-       "state": "value",
-       "printed": "155.4",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "148.9",
-       "displayed": "148.9",
-       "state": "value",
-       "printed": "148.9",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
-     "row": 11,
-     "serial": "July",
-     "label": "121.3",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2019-20",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "121.3",
-       "displayed": "121.3",
-       "state": "value",
-       "printed": "121.3",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2020-21",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "121",
-       "displayed": "121",
-       "state": "value",
-       "printed": "121",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2021-22",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "135",
-       "displayed": "135",
-       "state": "value",
-       "printed": "135",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2022-23",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "154",
-       "displayed": "154",
-       "state": "value",
-       "printed": "154",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": "152.1",
-       "displayed": "152.1",
-       "state": "value",
-       "printed": "152.1",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
      "row": 12,
-     "serial": "August",
-     "label": "121.5",
+     "serial": "",
+     "label": "August",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12530,8 +13423,8 @@
     },
     {
      "row": 13,
-     "serial": "September",
-     "label": "121.3",
+     "serial": "",
+     "label": "September",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12601,8 +13494,8 @@
     },
     {
      "row": 14,
-     "serial": "October",
-     "label": "122",
+     "serial": "",
+     "label": "October",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12672,8 +13565,8 @@
     },
     {
      "row": 15,
-     "serial": "November",
-     "label": "122.3",
+     "serial": "",
+     "label": "November",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12743,8 +13636,8 @@
     },
     {
      "row": 16,
-     "serial": "December",
-     "label": "123",
+     "serial": "",
+     "label": "December",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12814,8 +13707,8 @@
     },
     {
      "row": 17,
-     "serial": "January",
-     "label": "123.4",
+     "serial": "",
+     "label": "January",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12885,8 +13778,8 @@
     },
     {
      "row": 18,
-     "serial": "February",
-     "label": "122.2",
+     "serial": "",
+     "label": "February",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -12956,8 +13849,8 @@
     },
     {
      "row": 19,
-     "serial": "March",
-     "label": "120.39999999999999",
+     "serial": "",
+     "label": "March",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -13027,8 +13920,8 @@
     },
     {
      "row": 21,
-     "serial": "Annual Average WPI Index",
-     "label": "121.80000000000001",
+     "serial": "",
+     "label": "Annual Average WPI Index",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -13095,22 +13988,187 @@
       }
      ],
      "flags": []
+    },
+    {
+     "row": 22,
+     "serial": "",
+     "label": "% increase (%)",
+     "line_code": null,
+     "matched": null,
+     "unit": "percent",
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "1.2931034482758527",
+       "displayed": "1.29",
+       "state": "value",
+       "printed": "0.012931034482758527",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "12.99560959135427",
+       "displayed": "13",
+       "state": "value",
+       "printed": "0.1299560959135427",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "9.408811046685402",
+       "displayed": "9.41",
+       "state": "value",
+       "printed": "0.09408811046685402",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "-0.72665683221330825",
+       "displayed": "-0.73",
+       "state": "value",
+       "printed": "-0.0072665683221330825",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Estimated",
+       "restated": false,
+       "value": "3.651710549935026",
+       "displayed": "3.65",
+       "state": "value",
+       "printed": "0.03651710549935026",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Projected",
+       "restated": false,
+       "value": "1.7326770510182336",
+       "displayed": "1.73",
+       "state": "value",
+       "printed": "0.017326770510182336",
+       "unit": "percent",
+       "percent_from_fraction": true
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 23,
+     "serial": "",
+     "label": "Average of 3 Years",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "2.9585846025852385",
+       "displayed": "2.96",
+       "state": "value",
+       "printed": "0.029585846025852385",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "2.4165465653100144",
+       "displayed": "2.42",
+       "state": "value",
+       "printed": "0.024165465653100144",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "5.32174492625351",
+       "displayed": "5.32",
+       "state": "value",
+       "printed": "0.0532174492625351",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "7.899174695438509",
+       "displayed": "7.9",
+       "state": "value",
+       "printed": "0.07899174695438509",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Estimated",
+       "restated": false,
+       "value": "3.651710549935026",
+       "displayed": "3.65",
+       "state": "value",
+       "printed": "0.03651710549935026",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Projected",
+       "restated": false,
+       "value": "1.7326770510182336",
+       "displayed": "1.73",
+       "state": "value",
+       "printed": "0.017326770510182336",
+       "unit": "percent",
+       "percent_from_fraction": true
+      }
+     ],
+     "flags": []
     }
    ],
    "unplaced": [
-    "121.1",
-    "121.6",
-    "121.5",
-    "121.3",
-    "121.5",
-    "121.3",
-    "122",
-    "122.3",
-    "123",
-    "123.4",
-    "122.2",
-    "120.39999999999999",
-    "121.80000000000001"
+    "April",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+    "January",
+    "February",
+    "March",
+    "Annual Average WPI Index",
+    "% increase (%)",
+    "Average of 3 Years"
    ],
    "notes": [
     "column 7 (FY2024-25, True- Up): no voice; skipped",
@@ -13213,7 +14271,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "1",
+     "serial": "",
      "label": "Salaries",
      "line_code": null,
      "matched": null,
@@ -13344,7 +14402,7 @@
     },
     {
      "row": 15,
-     "serial": "8",
+     "serial": "",
      "label": "Bonus/ Exgratia To Employees",
      "line_code": null,
      "matched": null,
@@ -13451,7 +14509,7 @@
     },
     {
      "row": 16,
-     "serial": "9",
+     "serial": "",
      "label": "Medical Expenses Reimbursement",
      "line_code": null,
      "matched": null,
@@ -13558,7 +14616,7 @@
     },
     {
      "row": 17,
-     "serial": "10",
+     "serial": "",
      "label": "Travelling Allowance(Conveyance Allowance)",
      "line_code": null,
      "matched": null,
@@ -13665,7 +14723,7 @@
     },
     {
      "row": 18,
-     "serial": "11",
+     "serial": "",
      "label": "Leave Travel Assistance",
      "line_code": null,
      "matched": null,
@@ -13688,7 +14746,7 @@
     },
     {
      "row": 19,
-     "serial": "12",
+     "serial": "",
      "label": "Earned Leave Encashment",
      "line_code": null,
      "matched": null,
@@ -13795,7 +14853,7 @@
     },
     {
      "row": 20,
-     "serial": "13",
+     "serial": "",
      "label": "Payment Under Workman's Compensation And Gratuity",
      "line_code": null,
      "matched": null,
@@ -13902,7 +14960,7 @@
     },
     {
      "row": 23,
-     "serial": "16",
+     "serial": "",
      "label": "Staff Welfare Expenses",
      "line_code": null,
      "matched": null,
@@ -14009,7 +15067,7 @@
     },
     {
      "row": 26,
-     "serial": "19",
+     "serial": "",
      "label": "Provident Fund Contribution",
      "line_code": null,
      "matched": null,
@@ -14273,7 +15331,7 @@
     },
     {
      "row": 30,
-     "serial": "22",
+     "serial": "",
      "label": "Less: Employee expenses capitalised",
      "line_code": "C.OM.EMPLOYEE",
      "matched": "employee expenses",
@@ -14666,7 +15724,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "1",
+     "serial": "",
      "label": "Repair & Maintenance Expenses",
      "line_code": "C.OM.RM",
      "matched": "repair and maintenance",
@@ -14775,7 +15833,7 @@
     },
     {
      "row": 9,
-     "serial": "2",
+     "serial": "",
      "label": "Less : GST impact Claimed Separately",
      "line_code": null,
      "matched": null,
@@ -14858,7 +15916,7 @@
     },
     {
      "row": 10,
-     "serial": "3",
+     "serial": "",
      "label": "Repair & Maintenance Expenses",
      "line_code": "C.OM.RM",
      "matched": "repair and maintenance",
@@ -14967,7 +16025,7 @@
     },
     {
      "row": 12,
-     "serial": "4",
+     "serial": "",
      "label": "SOP Compliance",
      "line_code": null,
      "matched": null,
@@ -15038,7 +16096,7 @@
     },
     {
      "row": 13,
-     "serial": "5",
+     "serial": "",
      "label": "DT Meter Monitoring",
      "line_code": null,
      "matched": null,
@@ -15109,7 +16167,7 @@
     },
     {
      "row": 14,
-     "serial": "6",
+     "serial": "",
      "label": "Insurance- Cyber Security",
      "line_code": null,
      "matched": null,
@@ -15180,7 +16238,7 @@
     },
     {
      "row": 15,
-     "serial": "7",
+     "serial": "",
      "label": "CGRF Expenses",
      "line_code": null,
      "matched": null,
@@ -15251,7 +16309,7 @@
     },
     {
      "row": 16,
-     "serial": "8",
+     "serial": "",
      "label": "Subtotal",
      "line_code": null,
      "matched": null,
@@ -15322,7 +16380,7 @@
     },
     {
      "row": 17,
-     "serial": "9",
+     "serial": "",
      "label": "Net Repair & Maintenance Expenses",
      "line_code": "C.OM.RM",
      "matched": "repair and maintenance",
@@ -15465,7 +16523,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "1",
+     "serial": "",
      "label": "Opening GFA (Part A)",
      "line_code": "K.GFA.OPEN",
      "matched": "opening gfa",
@@ -15502,7 +16560,7 @@
     },
     {
      "row": 9,
-     "serial": "2",
+     "serial": "",
      "label": "Norm for R&M (5% of GFA)",
      "line_code": "C.OM.RM",
      "matched": "r and m",
@@ -15539,7 +16597,7 @@
     },
     {
      "row": 10,
-     "serial": "3",
+     "serial": "",
      "label": "Opening GFA (Part B)",
      "line_code": "K.GFA.OPEN",
      "matched": "opening gfa",
@@ -15576,7 +16634,7 @@
     },
     {
      "row": 11,
-     "serial": "4",
+     "serial": "",
      "label": "Norm for R&M (5% of GFA)",
      "line_code": "C.OM.RM",
      "matched": "r and m",
@@ -15613,7 +16671,7 @@
     },
     {
      "row": 12,
-     "serial": "5",
+     "serial": "",
      "label": "Opening GFA (Part C) - NPCL",
      "line_code": "K.GFA.OPEN",
      "matched": "opening gfa",
@@ -15650,7 +16708,7 @@
     },
     {
      "row": 13,
-     "serial": "6",
+     "serial": "",
      "label": "Norm for R&M (3% of GFA)",
      "line_code": "C.OM.RM",
      "matched": "r and m",
@@ -15687,7 +16745,7 @@
     },
     {
      "row": 14,
-     "serial": "7",
+     "serial": "",
      "label": "Opening GFA (Part C) - GNIDA",
      "line_code": "K.GFA.OPEN",
      "matched": "opening gfa",
@@ -15724,7 +16782,7 @@
     },
     {
      "row": 15,
-     "serial": "8",
+     "serial": "",
      "label": "Norm for R&M (3% of GFA)",
      "line_code": "C.OM.RM",
      "matched": "r and m",
@@ -15761,7 +16819,7 @@
     },
     {
      "row": 16,
-     "serial": "9",
+     "serial": "",
      "label": "Total R&M Expenses",
      "line_code": "C.OM.RM",
      "matched": "r and m",
@@ -15798,8 +16856,8 @@
     },
     {
      "row": 24,
-     "serial": "NPCL Assets",
-     "label": "Claimed",
+     "serial": "",
+     "label": "NPCL Assets",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -15973,8 +17031,8 @@
     },
     {
      "row": 30,
-     "serial": "GNIDA Handover Assets",
-     "label": "Claimed",
+     "serial": "",
+     "label": "GNIDA Handover Assets",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -16112,12 +17170,12 @@
     }
    ],
    "unplaced": [
-    "Claimed",
+    "NPCL Assets",
     "Opening",
     "Addition NPCL",
     "Retirement NPCL",
     "Closing",
-    "Claimed",
+    "GNIDA Handover Assets",
     "Opening",
     "Addition NPCL",
     "Retirement NPCL",
@@ -16208,7 +17266,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "1",
+     "serial": "",
      "label": "Lease/ Rent",
      "line_code": null,
      "matched": null,
@@ -16315,7 +17373,7 @@
     },
     {
      "row": 9,
-     "serial": "2",
+     "serial": "",
      "label": "Insurance",
      "line_code": null,
      "matched": null,
@@ -16398,7 +17456,7 @@
     },
     {
      "row": 10,
-     "serial": "3",
+     "serial": "",
      "label": "Revenue Stamp Expenses Account",
      "line_code": null,
      "matched": null,
@@ -16481,7 +17539,7 @@
     },
     {
      "row": 11,
-     "serial": "4",
+     "serial": "",
      "label": "Telephone, Postage, Telegram & Telex Charges",
      "line_code": null,
      "matched": null,
@@ -16564,7 +17622,7 @@
     },
     {
      "row": 12,
-     "serial": "5",
+     "serial": "",
      "label": "Incentive & Award To Employees/Outsiders",
      "line_code": "C.LOSS_SHARING",
      "matched": "incentive",
@@ -16647,7 +17705,7 @@
     },
     {
      "row": 13,
-     "serial": "6",
+     "serial": "",
      "label": "Consultancy Charges",
      "line_code": null,
      "matched": null,
@@ -16730,7 +17788,7 @@
     },
     {
      "row": 14,
-     "serial": "7",
+     "serial": "",
      "label": "Technical Fees",
      "line_code": null,
      "matched": null,
@@ -16813,7 +17871,7 @@
     },
     {
      "row": 15,
-     "serial": "8",
+     "serial": "",
      "label": "Other Professional Charges",
      "line_code": null,
      "matched": null,
@@ -16896,7 +17954,7 @@
     },
     {
      "row": 16,
-     "serial": "9",
+     "serial": "",
      "label": "Conveyance And Travelling",
      "line_code": null,
      "matched": null,
@@ -16979,7 +18037,7 @@
     },
     {
      "row": 17,
-     "serial": "10",
+     "serial": "",
      "label": "License and Registration Fees",
      "line_code": null,
      "matched": null,
@@ -17062,7 +18120,7 @@
     },
     {
      "row": 18,
-     "serial": "11",
+     "serial": "",
      "label": "Vehicle Expenses",
      "line_code": null,
      "matched": null,
@@ -17145,7 +18203,7 @@
     },
     {
      "row": 19,
-     "serial": "12",
+     "serial": "",
      "label": "Security / Service Charges Paid To Outside Agencies",
      "line_code": null,
      "matched": null,
@@ -17228,7 +18286,7 @@
     },
     {
      "row": 20,
-     "serial": "13",
+     "serial": "",
      "label": "Fee And Subscriptions Books And Periodicals",
      "line_code": null,
      "matched": null,
@@ -17311,7 +18369,7 @@
     },
     {
      "row": 21,
-     "serial": "14",
+     "serial": "",
      "label": "Printing And Stationery",
      "line_code": null,
      "matched": null,
@@ -17394,7 +18452,7 @@
     },
     {
      "row": 22,
-     "serial": "15",
+     "serial": "",
      "label": "Advertisement Expenses",
      "line_code": null,
      "matched": null,
@@ -17477,7 +18535,7 @@
     },
     {
      "row": 23,
-     "serial": "16",
+     "serial": "",
      "label": "Contributions/Donations To Outside Institutes / Associations",
      "line_code": null,
      "matched": null,
@@ -17560,7 +18618,7 @@
     },
     {
      "row": 24,
-     "serial": "17",
+     "serial": "",
      "label": "Electricity Charges To Offices",
      "line_code": null,
      "matched": null,
@@ -17643,7 +18701,7 @@
     },
     {
      "row": 25,
-     "serial": "18",
+     "serial": "",
      "label": "Water Charges",
      "line_code": null,
      "matched": null,
@@ -17726,7 +18784,7 @@
     },
     {
      "row": 26,
-     "serial": "19",
+     "serial": "",
      "label": "Entertainment Charges",
      "line_code": null,
      "matched": null,
@@ -17809,7 +18867,7 @@
     },
     {
      "row": 27,
-     "serial": "20",
+     "serial": "",
      "label": "Miscellaneous Expenses",
      "line_code": "C.OTHER",
      "matched": "miscellaneous expenses",
@@ -17892,7 +18950,7 @@
     },
     {
      "row": 28,
-     "serial": "21",
+     "serial": "",
      "label": "Legal Charges",
      "line_code": null,
      "matched": null,
@@ -17975,7 +19033,7 @@
     },
     {
      "row": 29,
-     "serial": "22",
+     "serial": "",
      "label": "Auditor's Fee",
      "line_code": null,
      "matched": null,
@@ -18058,7 +19116,7 @@
     },
     {
      "row": 30,
-     "serial": "23",
+     "serial": "",
      "label": "Freight On Capital Equipments",
      "line_code": null,
      "matched": null,
@@ -18141,7 +19199,7 @@
     },
     {
      "row": 31,
-     "serial": "24",
+     "serial": "",
      "label": "Purchase Related Advertisement Expenses",
      "line_code": null,
      "matched": null,
@@ -18224,7 +19282,7 @@
     },
     {
      "row": 32,
-     "serial": "25",
+     "serial": "",
      "label": "Vehicle Running Expenses Truck / Delivery Van",
      "line_code": null,
      "matched": null,
@@ -18307,7 +19365,7 @@
     },
     {
      "row": 33,
-     "serial": "26",
+     "serial": "",
      "label": "Vehicle Hiring Expenses Truck / Delivery Van",
      "line_code": null,
      "matched": null,
@@ -18390,7 +19448,7 @@
     },
     {
      "row": 34,
-     "serial": "27",
+     "serial": "",
      "label": "Other Freight",
      "line_code": null,
      "matched": null,
@@ -18473,7 +19531,7 @@
     },
     {
      "row": 35,
-     "serial": "28",
+     "serial": "",
      "label": "Transit Insurance",
      "line_code": null,
      "matched": null,
@@ -18556,7 +19614,7 @@
     },
     {
      "row": 36,
-     "serial": "29",
+     "serial": "",
      "label": "Octroi",
      "line_code": null,
      "matched": null,
@@ -18639,7 +19697,7 @@
     },
     {
      "row": 37,
-     "serial": "30",
+     "serial": "",
      "label": "Incidental Stores Expenses",
      "line_code": null,
      "matched": null,
@@ -18722,7 +19780,7 @@
     },
     {
      "row": 38,
-     "serial": "31",
+     "serial": "",
      "label": "Finance Charges",
      "line_code": "C.INT.LOAN",
      "matched": "finance charges",
@@ -19491,7 +20549,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "1",
+     "serial": "",
      "label": "Opening Balance of Normative Loan",
      "line_code": "K.FUNDING.DEBT",
      "matched": "normative loan",
@@ -19588,7 +20646,7 @@
     },
     {
      "row": 9,
-     "serial": "2",
+     "serial": "",
      "label": "Less: Reduction of Normative Loan due to retirement or replacement of assets",
      "line_code": "K.FUNDING.DEBT",
      "matched": "normative loan",
@@ -19685,7 +20743,7 @@
     },
     {
      "row": 10,
-     "serial": "3",
+     "serial": "",
      "label": "Addition of Normative Loan due to capitalisation during the year",
      "line_code": "K.CAPITALISATION",
      "matched": "capitalisation",
@@ -19780,7 +20838,7 @@
     },
     {
      "row": 11,
-     "serial": "4",
+     "serial": "",
      "label": "Repayment of Normative loan during the year",
      "line_code": "K.FUNDING.DEBT",
      "matched": "normative loan",
@@ -19877,7 +20935,7 @@
     },
     {
      "row": 12,
-     "serial": "5",
+     "serial": "",
      "label": "Closing Balance of Normative Loan",
      "line_code": "K.FUNDING.DEBT",
      "matched": "normative loan",
@@ -19974,7 +21032,7 @@
     },
     {
      "row": 13,
-     "serial": "6",
+     "serial": "",
      "label": "Average Balance of Normative Loan",
      "line_code": "K.FUNDING.DEBT",
      "matched": "normative loan",
@@ -20071,7 +21129,7 @@
     },
     {
      "row": 14,
-     "serial": "7",
+     "serial": "",
      "label": "Weighted average Rate of Interest on actual Loans (%)",
      "line_code": "K.RATE.INTEREST_PCT",
      "matched": "rate of interest",
@@ -20166,7 +21224,7 @@
     },
     {
      "row": 15,
-     "serial": "8",
+     "serial": "",
      "label": "Interest on Long-Term Loan",
      "line_code": "C.INT.LOAN",
      "matched": "interest on long term loan",
@@ -20263,7 +21321,7 @@
     },
     {
      "row": 16,
-     "serial": "9",
+     "serial": "",
      "label": "Interest on Security Deposit from Consumers and Distribution system Users",
      "line_code": "C.INT.CSD",
      "matched": "interest on security deposit",
@@ -20358,7 +21416,7 @@
     },
     {
      "row": 17,
-     "serial": "10",
+     "serial": "",
      "label": "Total Interest Expenses",
      "line_code": "C.INT.LOAN",
      "matched": "interest expenses",
@@ -20522,7 +21580,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "1",
+     "serial": "",
      "label": "Equity (Opening Balance)",
      "line_code": "K.FUNDING.EQUITY",
      "matched": "equity",
@@ -20619,7 +21677,7 @@
     },
     {
      "row": 9,
-     "serial": "2",
+     "serial": "",
      "label": "Less: Reduction in equity due to retirement or replacement of assets",
      "line_code": "K.FUNDING.EQUITY",
      "matched": "equity",
@@ -20716,7 +21774,7 @@
     },
     {
      "row": 10,
-     "serial": "3",
+     "serial": "",
      "label": "Additions during the year",
      "line_code": null,
      "matched": null,
@@ -20811,7 +21869,7 @@
     },
     {
      "row": 11,
-     "serial": "4",
+     "serial": "",
      "label": "Equity (Closing Balance)",
      "line_code": "K.FUNDING.EQUITY",
      "matched": "equity",
@@ -20908,7 +21966,7 @@
     },
     {
      "row": 12,
-     "serial": "5",
+     "serial": "",
      "label": "Average Equity",
      "line_code": "K.FUNDING.EQUITY",
      "matched": "equity",
@@ -21005,7 +22063,7 @@
     },
     {
      "row": 13,
-     "serial": "6",
+     "serial": "",
      "label": "Rate of Return on Equity",
      "line_code": "K.RATE.ROE_PCT",
      "matched": "rate of return on equity",
@@ -21100,7 +22158,7 @@
     },
     {
      "row": 14,
-     "serial": "7",
+     "serial": "",
      "label": "Return on Equity",
      "line_code": "C.RETURN.ROE",
      "matched": "return on equity",
@@ -21280,7 +22338,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "1",
+     "serial": "",
      "label": "O&M expenses for 1 month",
      "line_code": "C.OM",
      "matched": "o and m expenses",
@@ -21411,7 +22469,7 @@
     },
     {
      "row": 9,
-     "serial": "2",
+     "serial": "",
      "label": "Maintenance spares @ 40% of the of the R&M expenses for two months",
      "line_code": "C.OM.RM",
      "matched": "r and m",
@@ -21542,7 +22600,7 @@
     },
     {
      "row": 10,
-     "serial": "3",
+     "serial": "",
      "label": "One and a half month equivalent of expected revenue from Distribution tariff",
      "line_code": null,
      "matched": null,
@@ -21673,7 +22731,7 @@
     },
     {
      "row": 11,
-     "serial": "4",
+     "serial": "",
      "label": "Less:    Security deposits from consumers, if any",
      "line_code": null,
      "matched": null,
@@ -21804,7 +22862,7 @@
     },
     {
      "row": 12,
-     "serial": "5",
+     "serial": "",
      "label": "Total Working Capital",
      "line_code": "K.WC",
      "matched": "working capital",
@@ -21937,7 +22995,7 @@
     },
     {
      "row": 13,
-     "serial": "6",
+     "serial": "",
      "label": "Less: Surplus at the beginning of the year",
      "line_code": "R.GAP",
      "matched": "surplus",
@@ -22056,7 +23114,7 @@
     },
     {
      "row": 14,
-     "serial": "7",
+     "serial": "",
      "label": "Net total working capital",
      "line_code": "K.WC",
      "matched": "working capital",
@@ -22189,7 +23247,7 @@
     },
     {
      "row": 15,
-     "serial": "8",
+     "serial": "",
      "label": "Weighted average SBI MCLR (one year) +200 basis points",
      "line_code": null,
      "matched": null,
@@ -22320,7 +23378,7 @@
     },
     {
      "row": 16,
-     "serial": "9",
+     "serial": "",
      "label": "Interest on Working Capital",
      "line_code": "C.INT.WC",
      "matched": "interest on working capital",
@@ -22466,101 +23524,6 @@
        "displayed": null,
        "state": "text",
        "printed": "Revision Date",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
-     "row": 20,
-     "serial": "",
-     "label": "From",
-     "line_code": null,
-     "matched": null,
-     "unit": "INR_crore",
-     "cells": [
-      {
-       "fiscal_year": "FY2022-23",
-       "voice": "final_true_up",
-       "words": "Trued- Up",
-       "restated": true,
-       "value": null,
-       "displayed": null,
-       "state": "text",
-       "printed": "To",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "approved",
-       "words": "Approved (in TO)",
-       "restated": true,
-       "value": null,
-       "displayed": null,
-       "state": "text",
-       "printed": "Days",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "actual",
-       "words": "Audited",
-       "restated": false,
-       "value": null,
-       "displayed": null,
-       "state": "text",
-       "printed": "1 Yr SBI MCLR",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2024-25",
-       "voice": "approved",
-       "words": "Approved (in TO)",
-       "restated": true,
-       "value": null,
-       "displayed": null,
-       "state": "text",
-       "printed": "From",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2024-25",
-       "voice": "petitioned",
-       "words": "Claimed",
-       "restated": false,
-       "value": null,
-       "displayed": null,
-       "state": "text",
-       "printed": "To",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2025-26",
-       "voice": "petitioned",
-       "words": "Estimated",
-       "restated": false,
-       "value": null,
-       "displayed": null,
-       "state": "text",
-       "printed": "Days",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2026-27",
-       "voice": "petitioned",
-       "words": "Projected",
-       "restated": false,
-       "value": null,
-       "displayed": null,
-       "state": "text",
-       "printed": "1 Yr SBI MCLR",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -24306,7 +25269,6 @@
     "Less:    Security deposits from consumers, if any",
     "Weighted average SBI MCLR (one year) +200 basis points",
     "Revision Date",
-    "From",
     "2025-03-15 00:00:00",
     "2025-02-15 00:00:00",
     "2025-01-15 00:00:00",
@@ -24393,7 +25355,7 @@
    "rows": [
     {
      "row": 8,
-     "serial": "1",
+     "serial": "",
      "label": "Income from rent of land or buildings;",
      "line_code": null,
      "matched": null,
@@ -24416,7 +25378,7 @@
     },
     {
      "row": 10,
-     "serial": "3",
+     "serial": "",
      "label": "Income from investments*;",
      "line_code": null,
      "matched": null,
@@ -24475,7 +25437,7 @@
     },
     {
      "row": 16,
-     "serial": "9",
+     "serial": "",
      "label": "Income from delayed payment surcharge, supervision charges, etc.;",
      "line_code": null,
      "matched": null,
@@ -24534,7 +25496,7 @@
     },
     {
      "row": 19,
-     "serial": "12",
+     "serial": "",
      "label": "Income from advertisements**",
      "line_code": null,
      "matched": null,
@@ -24569,7 +25531,7 @@
     },
     {
      "row": 23,
-     "serial": "16",
+     "serial": "",
      "label": "Miscellaneous receipts; and",
      "line_code": null,
      "matched": null,
@@ -24628,7 +25590,7 @@
     },
     {
      "row": 24,
-     "serial": "17",
+     "serial": "",
      "label": "Any other Non-Tariff Income:",
      "line_code": "L.NTI",
      "matched": "non tariff income",
@@ -24786,7 +25748,7 @@
     },
     {
      "row": 26,
-     "serial": "18",
+     "serial": "",
      "label": "Income from Telecom Business**",
      "line_code": null,
      "matched": null,
@@ -24869,7 +25831,7 @@
     },
     {
      "row": 27,
-     "serial": "19",
+     "serial": "",
      "label": "Income from other Business",
      "line_code": "L.OTHER_BUSINESS",
      "matched": "income from other business",
@@ -25913,7 +26875,7 @@
     {
      "row": 9,
      "serial": "",
-     "label": "1",
+     "label": "Energy received into the system",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -25972,9 +26934,9 @@
     {
      "row": 10,
      "serial": "",
-     "label": "2",
-     "line_code": null,
-     "matched": null,
+     "label": "Energy sold at this voltage level",
+     "line_code": "E.SALES",
+     "matched": "energy sold",
      "unit": null,
      "cells": [
       {
@@ -26026,14 +26988,16 @@
        "percent_from_fraction": false
       }
      ],
-     "flags": []
+     "flags": [
+      "E.SALES proposed for 4 rows"
+     ]
     },
     {
      "row": 11,
      "serial": "",
-     "label": "3",
-     "line_code": null,
-     "matched": null,
+     "label": "Energy transmitted to the next (lower) voltage level",
+     "line_code": "T.ENERGY_HANDLED",
+     "matched": "energy transmitted",
      "unit": null,
      "cells": [
       {
@@ -26085,12 +27049,14 @@
        "percent_from_fraction": false
       }
      ],
-     "flags": []
+     "flags": [
+      "T.ENERGY_HANDLED proposed for 3 rows"
+     ]
     },
     {
      "row": 12,
      "serial": "",
-     "label": "4",
+     "label": "Energy Lost",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26149,7 +27115,7 @@
     {
      "row": 13,
      "serial": "",
-     "label": "5",
+     "label": "Total Loss in the system (4/1)*100%",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26208,7 +27174,7 @@
     {
      "row": 16,
      "serial": "",
-     "label": "1",
+     "label": "Energy received into the system",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26267,9 +27233,9 @@
     {
      "row": 17,
      "serial": "",
-     "label": "2",
-     "line_code": null,
-     "matched": null,
+     "label": "Energy sold at this voltage level",
+     "line_code": "E.SALES",
+     "matched": "energy sold",
      "unit": null,
      "cells": [
       {
@@ -26321,14 +27287,16 @@
        "percent_from_fraction": false
       }
      ],
-     "flags": []
+     "flags": [
+      "E.SALES proposed for 4 rows"
+     ]
     },
     {
      "row": 18,
      "serial": "",
-     "label": "3",
-     "line_code": null,
-     "matched": null,
+     "label": "Energy transmitted to the next (lower) voltage level",
+     "line_code": "T.ENERGY_HANDLED",
+     "matched": "energy transmitted",
      "unit": null,
      "cells": [
       {
@@ -26380,12 +27348,14 @@
        "percent_from_fraction": false
       }
      ],
-     "flags": []
+     "flags": [
+      "T.ENERGY_HANDLED proposed for 3 rows"
+     ]
     },
     {
      "row": 19,
      "serial": "",
-     "label": "4",
+     "label": "Energy Lost",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26444,7 +27414,7 @@
     {
      "row": 20,
      "serial": "",
-     "label": "5",
+     "label": "Total Loss in the system (4/1)*100%",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26503,7 +27473,7 @@
     {
      "row": 23,
      "serial": "",
-     "label": "1",
+     "label": "Energy received into the system",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26562,9 +27532,9 @@
     {
      "row": 24,
      "serial": "",
-     "label": "2",
-     "line_code": null,
-     "matched": null,
+     "label": "Energy sold at this voltage level",
+     "line_code": "E.SALES",
+     "matched": "energy sold",
      "unit": null,
      "cells": [
       {
@@ -26616,14 +27586,16 @@
        "percent_from_fraction": false
       }
      ],
-     "flags": []
+     "flags": [
+      "E.SALES proposed for 4 rows"
+     ]
     },
     {
      "row": 25,
      "serial": "",
-     "label": "3",
-     "line_code": null,
-     "matched": null,
+     "label": "Energy transmitted to the next (lower) voltage level",
+     "line_code": "T.ENERGY_HANDLED",
+     "matched": "energy transmitted",
      "unit": null,
      "cells": [
       {
@@ -26675,12 +27647,14 @@
        "percent_from_fraction": false
       }
      ],
-     "flags": []
+     "flags": [
+      "T.ENERGY_HANDLED proposed for 3 rows"
+     ]
     },
     {
      "row": 26,
      "serial": "",
-     "label": "4",
+     "label": "Energy Lost",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26739,7 +27713,7 @@
     {
      "row": 27,
      "serial": "",
-     "label": "5",
+     "label": "Total Loss in the system (4/1)*100%",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26798,7 +27772,7 @@
     {
      "row": 30,
      "serial": "",
-     "label": "1",
+     "label": "Energy received into the system",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26857,9 +27831,9 @@
     {
      "row": 31,
      "serial": "",
-     "label": "2",
-     "line_code": null,
-     "matched": null,
+     "label": "Energy sold at this voltage level",
+     "line_code": "E.SALES",
+     "matched": "energy sold",
      "unit": null,
      "cells": [
       {
@@ -26911,12 +27885,14 @@
        "percent_from_fraction": false
       }
      ],
-     "flags": []
+     "flags": [
+      "E.SALES proposed for 4 rows"
+     ]
     },
     {
      "row": 32,
      "serial": "",
-     "label": "3",
+     "label": "Energy Lost",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -26975,7 +27951,7 @@
     {
      "row": 33,
      "serial": "",
-     "label": "4",
+     "label": "Total Loss in the system (3/1)*100%",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27034,7 +28010,7 @@
     {
      "row": 36,
      "serial": "",
-     "label": "1",
+     "label": "Energy In (A1)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27093,7 +28069,7 @@
     {
      "row": 37,
      "serial": "",
-     "label": "2",
+     "label": "Energy Out (A2+B2+C2+D2))",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27152,9 +28128,9 @@
     {
      "row": 38,
      "serial": "",
-     "label": "3",
-     "line_code": null,
-     "matched": null,
+     "label": "Total Distribution Loss ((1-2)/1)*100%",
+     "line_code": "E.LOSS.DIST_PCT",
+     "matched": "distribution loss",
      "unit": null,
      "cells": [
       {
@@ -27210,28 +28186,20 @@
     }
    ],
    "unplaced": [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "1",
-    "2",
-    "3",
-    "4",
-    "1",
-    "2",
-    "3"
+    "Energy received into the system",
+    "Energy Lost",
+    "Total Loss in the system (4/1)*100%",
+    "Energy received into the system",
+    "Energy Lost",
+    "Total Loss in the system (4/1)*100%",
+    "Energy received into the system",
+    "Energy Lost",
+    "Total Loss in the system (4/1)*100%",
+    "Energy received into the system",
+    "Energy Lost",
+    "Total Loss in the system (3/1)*100%",
+    "Energy In (A1)",
+    "Energy Out (A2+B2+C2+D2))"
    ],
    "notes": [
     "column 8 (FY2026-27, no words): no voice; skipped",
@@ -27240,7 +28208,7 @@
     "column 11 (FY2026-27, no words): no voice; skipped",
     "column 12 (FY2026-27, no words): no voice; skipped"
    ],
-   "placed": 0
+   "placed": 8
   },
   {
    "sheet": "P2_AVG Supply HRS",
@@ -27280,8 +28248,8 @@
    "rows": [
     {
      "row": 11,
-     "serial": "Dom: Rural Schedule (metered) other than BPL",
-     "label": "19-23",
+     "serial": "",
+     "label": "Dom: Rural Schedule (metered) other than BPL",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27339,8 +28307,8 @@
     },
     {
      "row": 13,
-     "serial": "Dom: Supply at Single Point for Bulk Load",
-     "label": "24",
+     "serial": "",
+     "label": "Dom: Supply at Single Point for Bulk Load",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27398,8 +28366,8 @@
     },
     {
      "row": 15,
-     "serial": "Other Metered Domestic Consumers other than BPL",
-     "label": "24",
+     "serial": "",
+     "label": "Other Metered Domestic Consumers other than BPL",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27457,8 +28425,8 @@
     },
     {
      "row": 17,
-     "serial": "BPL (Rural )",
-     "label": "19-23",
+     "serial": "",
+     "label": "BPL (Rural )",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27516,8 +28484,8 @@
     },
     {
      "row": 18,
-     "serial": "BPL (Urban)",
-     "label": "24",
+     "serial": "",
+     "label": "BPL (Urban)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27575,8 +28543,8 @@
     },
     {
      "row": 24,
-     "serial": "Non Dom: Rural Schedule (unmetered)",
-     "label": "NA",
+     "serial": "",
+     "label": "Non Dom: Rural Schedule (unmetered)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27634,8 +28602,8 @@
     },
     {
      "row": 25,
-     "serial": "Non Dom: Rural Schedule (metered)",
-     "label": "24",
+     "serial": "",
+     "label": "Non Dom: Rural Schedule (metered)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27693,8 +28661,8 @@
     },
     {
      "row": 26,
-     "serial": "Non Dom: Private Advertising/SignPost/SignBoard/GlowSign",
-     "label": "24",
+     "serial": "",
+     "label": "Non Dom: Private Advertising/SignPost/SignBoard/GlowSign",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27752,8 +28720,8 @@
     },
     {
      "row": 27,
-     "serial": "Non Dom: Other Metered Non-Domestic Supply",
-     "label": "24",
+     "serial": "",
+     "label": "Non Dom: Other Metered Non-Domestic Supply",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27811,8 +28779,8 @@
     },
     {
      "row": 37,
-     "serial": "SUBTOTAL (LMV-3)",
-     "label": "24",
+     "serial": "",
+     "label": "SUBTOTAL (LMV-3)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27870,8 +28838,8 @@
     },
     {
      "row": 40,
-     "serial": "Inst: Public",
-     "label": "24",
+     "serial": "",
+     "label": "Inst: Public",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27929,8 +28897,8 @@
     },
     {
      "row": 41,
-     "serial": "Inst: Private",
-     "label": "24",
+     "serial": "",
+     "label": "Inst: Private",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -27988,8 +28956,8 @@
     },
     {
      "row": 46,
-     "serial": "PTW: Rural Schedule (unmetered)",
-     "label": "17-22",
+     "serial": "",
+     "label": "PTW: Rural Schedule (unmetered)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28047,8 +29015,8 @@
     },
     {
      "row": 47,
-     "serial": "PTW: Rural Schedule (metered)",
-     "label": "17-22",
+     "serial": "",
+     "label": "PTW: Rural Schedule (metered)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28106,8 +29074,8 @@
     },
     {
      "row": 48,
-     "serial": "PTW: Urban Schedule (metered)",
-     "label": "24",
+     "serial": "",
+     "label": "PTW: Urban Schedule (metered)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28165,8 +29133,8 @@
     },
     {
      "row": 52,
-     "serial": "Power Loom: Rural schedule",
-     "label": "NA",
+     "serial": "",
+     "label": "Power Loom: Rural schedule",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28224,8 +29192,8 @@
     },
     {
      "row": 53,
-     "serial": "Power Loom: Urban schedule",
-     "label": "NA",
+     "serial": "",
+     "label": "Power Loom: Urban schedule",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28283,8 +29251,8 @@
     },
     {
      "row": 54,
-     "serial": "Other than power loom: Rural schedule",
-     "label": "24",
+     "serial": "",
+     "label": "Other than power loom: Rural schedule",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28342,8 +29310,8 @@
     },
     {
      "row": 55,
-     "serial": "Other than power loom: Urban schedule",
-     "label": "24",
+     "serial": "",
+     "label": "Other than power loom: Urban schedule",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28401,8 +29369,8 @@
     },
     {
      "row": 59,
-     "serial": "Rural Schedule: Jal Nigam",
-     "label": "NA",
+     "serial": "",
+     "label": "Rural Schedule: Jal Nigam",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28460,8 +29428,8 @@
     },
     {
      "row": 60,
-     "serial": "Rural Schedule: Jal Sansthan",
-     "label": "NA",
+     "serial": "",
+     "label": "Rural Schedule: Jal Sansthan",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28519,8 +29487,8 @@
     },
     {
      "row": 61,
-     "serial": "Rural Schedule: Other PWWs",
-     "label": "NA",
+     "serial": "",
+     "label": "Rural Schedule: Other PWWs",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28578,8 +29546,8 @@
     },
     {
      "row": 62,
-     "serial": "Urban Schedule: Jal Nigam",
-     "label": "24",
+     "serial": "",
+     "label": "Urban Schedule: Jal Nigam",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28637,8 +29605,8 @@
     },
     {
      "row": 63,
-     "serial": "Urban Schedule: Jal Sansthan",
-     "label": "24",
+     "serial": "",
+     "label": "Urban Schedule: Jal Sansthan",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28696,8 +29664,8 @@
     },
     {
      "row": 64,
-     "serial": "Urban Schedule: Other PWWs",
-     "label": "24",
+     "serial": "",
+     "label": "Urban Schedule: Other PWWs",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28755,8 +29723,8 @@
     },
     {
      "row": 68,
-     "serial": "Metered STW",
-     "label": "NA",
+     "serial": "",
+     "label": "Metered STW",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28814,8 +29782,8 @@
     },
     {
      "row": 69,
-     "serial": "Unmetered: STW/Panch.Raj/WB/ID/P.Canals/LI upto 100 BHP",
-     "label": "NA",
+     "serial": "",
+     "label": "Unmetered: STW/Panch.Raj/WB/ID/P.Canals/LI upto 100 BHP",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28873,8 +29841,8 @@
     },
     {
      "row": 70,
-     "serial": "Unmetered: Laghu Dal Nahar above 100 BHP",
-     "label": "NA",
+     "serial": "",
+     "label": "Unmetered: Laghu Dal Nahar above 100 BHP",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28932,8 +29900,8 @@
     },
     {
      "row": 74,
-     "serial": "Metered TS: Individual residential consumers",
-     "label": "24",
+     "serial": "",
+     "label": "Metered TS: Individual residential consumers",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -28991,8 +29959,8 @@
     },
     {
      "row": 75,
-     "serial": "Metered TS: Others",
-     "label": "24",
+     "serial": "",
+     "label": "Metered TS: Others",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29050,8 +30018,8 @@
     },
     {
      "row": 76,
-     "serial": "Unmetered TS: Ceremonies",
-     "label": "24",
+     "serial": "",
+     "label": "Unmetered TS: Ceremonies",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29109,8 +30077,8 @@
     },
     {
      "row": 77,
-     "serial": "Unmetered TS: Temp shops",
-     "label": "24",
+     "serial": "",
+     "label": "Unmetered TS: Temp shops",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29168,8 +30136,8 @@
     },
     {
      "row": 81,
-     "serial": "Serving: Class IV Employees",
-     "label": "NA",
+     "serial": "",
+     "label": "Serving: Class IV Employees",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29227,8 +30195,8 @@
     },
     {
      "row": 82,
-     "serial": "Serving: Class III Employees",
-     "label": "NA",
+     "serial": "",
+     "label": "Serving: Class III Employees",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29286,8 +30254,8 @@
     },
     {
      "row": 83,
-     "serial": "Serving: Junior Engineers & Equivalent",
-     "label": "NA",
+     "serial": "",
+     "label": "Serving: Junior Engineers & Equivalent",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29345,8 +30313,8 @@
     },
     {
      "row": 84,
-     "serial": "Serving: Assistant Engineers & Equivalent",
-     "label": "NA",
+     "serial": "",
+     "label": "Serving: Assistant Engineers & Equivalent",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29404,8 +30372,8 @@
     },
     {
      "row": 85,
-     "serial": "Serving: Executive Engineers & Equivalent",
-     "label": "NA",
+     "serial": "",
+     "label": "Serving: Executive Engineers & Equivalent",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29463,8 +30431,8 @@
     },
     {
      "row": 86,
-     "serial": "Serving: Deputy General Manager & Equivalent",
-     "label": "NA",
+     "serial": "",
+     "label": "Serving: Deputy General Manager & Equivalent",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29522,8 +30490,8 @@
     },
     {
      "row": 87,
-     "serial": "Serving: CGM/GM & Equivalent posts and above",
-     "label": "NA",
+     "serial": "",
+     "label": "Serving: CGM/GM & Equivalent posts and above",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29581,8 +30549,8 @@
     },
     {
      "row": 88,
-     "serial": "Pensioners",
-     "label": "NA",
+     "serial": "",
+     "label": "Pensioners",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29640,8 +30608,8 @@
     },
     {
      "row": 92,
-     "serial": "HV1 Urban Schedule: Supply at 11 kV",
-     "label": "24",
+     "serial": "",
+     "label": "HV1 Urban Schedule: Supply at 11 kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29699,8 +30667,8 @@
     },
     {
      "row": 93,
-     "serial": "HV1 Urban Schedule: Supply above 11 kV & above",
-     "label": "24",
+     "serial": "",
+     "label": "HV1 Urban Schedule: Supply above 11 kV & above",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29758,8 +30726,8 @@
     },
     {
      "row": 94,
-     "serial": "HV1 Rural Schedule: Supply at 11 kV",
-     "label": "NA",
+     "serial": "",
+     "label": "HV1 Rural Schedule: Supply at 11 kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29817,8 +30785,8 @@
     },
     {
      "row": 95,
-     "serial": "HV1 Rural Schedule: Supply above 11 kV & above",
-     "label": "NA",
+     "serial": "",
+     "label": "HV1 Rural Schedule: Supply above 11 kV & above",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29876,8 +30844,8 @@
     },
     {
      "row": 99,
-     "serial": "HV2 Urban Schedule: Supply at 11 kV",
-     "label": "24",
+     "serial": "",
+     "label": "HV2 Urban Schedule: Supply at 11 kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29935,8 +30903,8 @@
     },
     {
      "row": 100,
-     "serial": "HV2 Urban Schedule: Supply above 11 kV & upto 66 kV",
-     "label": "24",
+     "serial": "",
+     "label": "HV2 Urban Schedule: Supply above 11 kV & upto 66 kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -29994,8 +30962,8 @@
     },
     {
      "row": 101,
-     "serial": "HV2 Urban Schedule: Supply above 66 kV & upto 132 kV",
-     "label": "24",
+     "serial": "",
+     "label": "HV2 Urban Schedule: Supply above 66 kV & upto 132 kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30053,8 +31021,8 @@
     },
     {
      "row": 102,
-     "serial": "HV2 Urban Schedule: Supply above 132 kV",
-     "label": "24",
+     "serial": "",
+     "label": "HV2 Urban Schedule: Supply above 132 kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30112,8 +31080,8 @@
     },
     {
      "row": 103,
-     "serial": "HV2 Rural Schedule: Supply at 11 kV",
-     "label": "NA",
+     "serial": "",
+     "label": "HV2 Rural Schedule: Supply at 11 kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30171,8 +31139,8 @@
     },
     {
      "row": 104,
-     "serial": "HV2 Rural Schedule: Supply above 11 kV & upto 66 kV",
-     "label": "NA",
+     "serial": "",
+     "label": "HV2 Rural Schedule: Supply above 11 kV & upto 66 kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30230,8 +31198,8 @@
     },
     {
      "row": 108,
-     "serial": "SUBTOTAL (HV-3)",
-     "label": "NA",
+     "serial": "",
+     "label": "SUBTOTAL (HV-3)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30289,8 +31257,8 @@
     },
     {
      "row": 111,
-     "serial": "HV4 Supply at 11kV",
-     "label": "NA",
+     "serial": "",
+     "label": "HV4 Supply at 11kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30348,8 +31316,8 @@
     },
     {
      "row": 112,
-     "serial": "HV4 Supply above 11kV & upto 66kV",
-     "label": "NA",
+     "serial": "",
+     "label": "HV4 Supply above 11kV & upto 66kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30407,8 +31375,8 @@
     },
     {
      "row": 113,
-     "serial": "HV4 Supply above 66 kV & upto 132kV",
-     "label": "NA",
+     "serial": "",
+     "label": "HV4 Supply above 66 kV & upto 132kV",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30466,8 +31434,8 @@
     },
     {
      "row": 117,
-     "serial": "Bulk Supply",
-     "label": "NA",
+     "serial": "",
+     "label": "Bulk Supply",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30525,8 +31493,8 @@
     },
     {
      "row": 123,
-     "serial": "Multi Story Buildings (Covered under LMV-1b)",
-     "label": "24",
+     "serial": "",
+     "label": "Multi Story Buildings (Covered under LMV-1b)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30584,8 +31552,8 @@
     },
     {
      "row": 124,
-     "serial": "Multi Story Buildings (Covered under HV-1b)",
-     "label": "24",
+     "serial": "",
+     "label": "Multi Story Buildings (Covered under HV-1b)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30643,8 +31611,8 @@
     },
     {
      "row": 126,
-     "serial": "Public Charging Station (LT)",
-     "label": "24",
+     "serial": "",
+     "label": "Public Charging Station (LT)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30702,8 +31670,8 @@
     },
     {
      "row": 127,
-     "serial": "Public Charging Station (HT)",
-     "label": "24",
+     "serial": "",
+     "label": "Public Charging Station (HT)",
      "line_code": null,
      "matched": null,
      "unit": null,
@@ -30761,65 +31729,65 @@
     }
    ],
    "unplaced": [
-    "19-23",
-    "24",
-    "24",
-    "19-23",
-    "24",
-    "NA",
-    "24",
-    "24",
-    "24",
-    "24",
-    "24",
-    "24",
-    "17-22",
-    "17-22",
-    "24",
-    "NA",
-    "NA",
-    "24",
-    "24",
-    "NA",
-    "NA",
-    "NA",
-    "24",
-    "24",
-    "24",
-    "NA",
-    "NA",
-    "NA",
-    "24",
-    "24",
-    "24",
-    "24",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "24",
-    "24",
-    "NA",
-    "NA",
-    "24",
-    "24",
-    "24",
-    "24",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "24",
-    "24",
-    "24",
-    "24"
+    "Dom: Rural Schedule (metered) other than BPL",
+    "Dom: Supply at Single Point for Bulk Load",
+    "Other Metered Domestic Consumers other than BPL",
+    "BPL (Rural )",
+    "BPL (Urban)",
+    "Non Dom: Rural Schedule (unmetered)",
+    "Non Dom: Rural Schedule (metered)",
+    "Non Dom: Private Advertising/SignPost/SignBoard/GlowSign",
+    "Non Dom: Other Metered Non-Domestic Supply",
+    "SUBTOTAL (LMV-3)",
+    "Inst: Public",
+    "Inst: Private",
+    "PTW: Rural Schedule (unmetered)",
+    "PTW: Rural Schedule (metered)",
+    "PTW: Urban Schedule (metered)",
+    "Power Loom: Rural schedule",
+    "Power Loom: Urban schedule",
+    "Other than power loom: Rural schedule",
+    "Other than power loom: Urban schedule",
+    "Rural Schedule: Jal Nigam",
+    "Rural Schedule: Jal Sansthan",
+    "Rural Schedule: Other PWWs",
+    "Urban Schedule: Jal Nigam",
+    "Urban Schedule: Jal Sansthan",
+    "Urban Schedule: Other PWWs",
+    "Metered STW",
+    "Unmetered: STW/Panch.Raj/WB/ID/P.Canals/LI upto 100 BHP",
+    "Unmetered: Laghu Dal Nahar above 100 BHP",
+    "Metered TS: Individual residential consumers",
+    "Metered TS: Others",
+    "Unmetered TS: Ceremonies",
+    "Unmetered TS: Temp shops",
+    "Serving: Class IV Employees",
+    "Serving: Class III Employees",
+    "Serving: Junior Engineers & Equivalent",
+    "Serving: Assistant Engineers & Equivalent",
+    "Serving: Executive Engineers & Equivalent",
+    "Serving: Deputy General Manager & Equivalent",
+    "Serving: CGM/GM & Equivalent posts and above",
+    "Pensioners",
+    "HV1 Urban Schedule: Supply at 11 kV",
+    "HV1 Urban Schedule: Supply above 11 kV & above",
+    "HV1 Rural Schedule: Supply at 11 kV",
+    "HV1 Rural Schedule: Supply above 11 kV & above",
+    "HV2 Urban Schedule: Supply at 11 kV",
+    "HV2 Urban Schedule: Supply above 11 kV & upto 66 kV",
+    "HV2 Urban Schedule: Supply above 66 kV & upto 132 kV",
+    "HV2 Urban Schedule: Supply above 132 kV",
+    "HV2 Rural Schedule: Supply at 11 kV",
+    "HV2 Rural Schedule: Supply above 11 kV & upto 66 kV",
+    "SUBTOTAL (HV-3)",
+    "HV4 Supply at 11kV",
+    "HV4 Supply above 11kV & upto 66kV",
+    "HV4 Supply above 66 kV & upto 132kV",
+    "Bulk Supply",
+    "Multi Story Buildings (Covered under LMV-1b)",
+    "Multi Story Buildings (Covered under HV-1b)",
+    "Public Charging Station (LT)",
+    "Public Charging Station (HT)"
    ],
    "notes": [
     "column 6 (FY2026-27, no words): no voice; skipped",
@@ -30852,7 +31820,7 @@
    "rows": [
     {
      "row": 7,
-     "serial": "1",
+     "serial": "",
      "label": "Opening Balance of Provision for bad and doubtful debts",
      "line_code": "C.BAD_DEBT",
      "matched": "provision for bad and doubtful debts",
@@ -30877,7 +31845,7 @@
     },
     {
      "row": 8,
-     "serial": "2",
+     "serial": "",
      "label": "Provision for bad & doubtful debts during the year",
      "line_code": "C.BAD_DEBT",
      "matched": "provision for bad and doubtful debts",
@@ -30902,7 +31870,7 @@
     },
     {
      "row": 10,
-     "serial": "4",
+     "serial": "",
      "label": "Closing Balance of Provision for bad and doubtful debts",
      "line_code": "C.BAD_DEBT",
      "matched": "provision for bad and doubtful debts",
@@ -30927,7 +31895,7 @@
     },
     {
      "row": 11,
-     "serial": "5",
+     "serial": "",
      "label": "Receivables for the year",
      "line_code": null,
      "matched": null,
@@ -30950,7 +31918,7 @@
     },
     {
      "row": 12,
-     "serial": "6",
+     "serial": "",
      "label": "Bad and doubtful debt as  % of Receivables (%)",
      "line_code": "C.BAD_DEBT",
      "matched": "bad and doubtful debt",
@@ -30975,7 +31943,7 @@
     },
     {
      "row": 13,
-     "serial": "7",
+     "serial": "",
      "label": "Bad and doubtful debts as per Regulations @2%",
      "line_code": "C.BAD_DEBT",
      "matched": "bad and doubtful debts",
@@ -31000,7 +31968,7 @@
     },
     {
      "row": 15,
-     "serial": "9",
+     "serial": "",
      "label": "Bad debt claimed (including Elect.Duty)",
      "line_code": "C.BAD_DEBT",
      "matched": "bad debt",
@@ -31025,7 +31993,7 @@
     },
     {
      "row": 16,
-     "serial": "10",
+     "serial": "",
      "label": "Loss on Assets retired",
      "line_code": null,
      "matched": null,
@@ -31048,7 +32016,7 @@
     },
     {
      "row": 17,
-     "serial": "11",
+     "serial": "",
      "label": "Efficiency Gain on Loan Swapping (50%)",
      "line_code": "C.LOSS_SHARING",
      "matched": "efficiency gain",
@@ -31071,7 +32039,7 @@
     },
     {
      "row": 18,
-     "serial": "12",
+     "serial": "",
      "label": "Revenue from Loss Reduction",
      "line_code": null,
      "matched": null,
@@ -31094,7 +32062,7 @@
     },
     {
      "row": 19,
-     "serial": "13",
+     "serial": "",
      "label": "Total",
      "line_code": null,
      "matched": null,
@@ -31284,65 +32252,6 @@
      "flags": []
     },
     {
-     "row": 13,
-     "serial": "",
-     "label": "- LT",
-     "line_code": null,
-     "matched": null,
-     "unit": null,
-     "cells": [
-      {
-       "fiscal_year": "FY2023-24",
-       "voice": "petitioned",
-       "words": "Claimed Additions during the year",
-       "restated": false,
-       "value": "219.76",
-       "displayed": "219.76",
-       "state": "value",
-       "printed": "219.76",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2024-25",
-       "voice": "petitioned",
-       "words": "Claimed Additions during the year",
-       "restated": false,
-       "value": "219.91",
-       "displayed": "219.91",
-       "state": "value",
-       "printed": "219.91",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2025-26",
-       "voice": "petitioned",
-       "words": "Estimated Additions during the year",
-       "restated": false,
-       "value": "234",
-       "displayed": "234",
-       "state": "value",
-       "printed": "234",
-       "unit": null,
-       "percent_from_fraction": false
-      },
-      {
-       "fiscal_year": "FY2026-27",
-       "voice": "petitioned",
-       "words": "Projected Additions during the year",
-       "restated": false,
-       "value": "351.15000000000003",
-       "displayed": "351.15",
-       "state": "value",
-       "printed": "351.15000000000003",
-       "unit": null,
-       "percent_from_fraction": false
-      }
-     ],
-     "flags": []
-    },
-    {
      "row": 14,
      "serial": "",
      "label": "Total",
@@ -31403,7 +32312,7 @@
     },
     {
      "row": 21,
-     "serial": "2",
+     "serial": "",
      "label": "Number of 33/11kV substations",
      "line_code": null,
      "matched": null,
@@ -31462,7 +32371,7 @@
     },
     {
      "row": 23,
-     "serial": "3",
+     "serial": "",
      "label": "No. of Power Transformers",
      "line_code": null,
      "matched": null,
@@ -31580,7 +32489,7 @@
     },
     {
      "row": 26,
-     "serial": "3",
+     "serial": "",
      "label": "Number of Distribution Transformers (separately for each capacity)",
      "line_code": null,
      "matched": null,
@@ -32172,7 +33081,6 @@
    "unplaced": [
     "- 33kV",
     "- 11kV",
-    "- LT",
     "Total",
     "Number of 33/11kV substations",
     "No. of Power Transformers",
@@ -32600,7 +33508,7 @@
     },
     {
      "row": 17,
-     "serial": "3",
+     "serial": "",
      "label": "Peak Availability Assessed",
      "line_code": "T.AVAILABILITY_PCT",
      "matched": "availability",

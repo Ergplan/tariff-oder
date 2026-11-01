@@ -36,7 +36,7 @@ def main() -> int:
     report = {"package": args.package, "reference_status": ref["status"], "formats": []}
     for b in sorted((folder / "bindings").glob("*.json")):
         binding = json.loads(b.read_text())
-        rep = reproduce(sheets[binding["sheet"]], binding, rules)
+        rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
         report["formats"].append(
             {
                 "binding": b.name,

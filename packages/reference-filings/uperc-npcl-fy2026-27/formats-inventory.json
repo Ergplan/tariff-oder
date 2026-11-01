@@ -546,8 +546,8 @@
    "title": "Power Procurement (in MWs)",
    "unit": null,
    "read_by_generic_reader": true,
-   "rows": 13,
-   "values": 39,
+   "rows": 10,
+   "values": 30,
    "years": [
     "FY2024-25",
     "FY2025-26",
@@ -692,8 +692,8 @@
    "title": "Statement of Capital Cost",
    "unit": "INR_crore",
    "read_by_generic_reader": true,
-   "rows": 11,
-   "values": 65,
+   "rows": 27,
+   "values": 157,
    "years": [
     "FY2023-24",
     "FY2024-25",
@@ -771,8 +771,8 @@
    "title": "Consumer Price Inflation",
    "unit": null,
    "read_by_generic_reader": true,
-   "rows": 13,
-   "values": 65,
+   "rows": 12,
+   "values": 62,
    "years": [
     "FY2019-20",
     "FY2020-21",
@@ -796,8 +796,8 @@
    "title": "OFFICE OF THE ECONOMIC ADVISER",
    "unit": null,
    "read_by_generic_reader": true,
-   "rows": 13,
-   "values": 65,
+   "rows": 12,
+   "values": 62,
    "years": [
     "FY2019-20",
     "FY2020-21",
@@ -1015,7 +1015,7 @@
    "title": "Working Capital Requirements",
    "unit": "INR_crore",
    "read_by_generic_reader": true,
-   "rows": 30,
+   "rows": 29,
    "values": 170,
    "years": [
     "FY2022-23",
@@ -1210,8 +1210,8 @@
    "title": "Details of Physical statistics of the network",
    "unit": null,
    "read_by_generic_reader": true,
-   "rows": 17,
-   "values": 68,
+   "rows": 16,
+   "values": 64,
    "years": [
     "FY2023-24",
     "FY2024-25",

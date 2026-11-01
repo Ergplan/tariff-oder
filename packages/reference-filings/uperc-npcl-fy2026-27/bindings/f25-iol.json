@@ -1,7 +1,29 @@
 {
  "sheet": "F25_IOL",
  "unit": "INR_crore",
- "note": "The format states no unit; NPCL's ARR summary carries these lines in Rs crore.  Opening (8), reduction (9), additions (10), repayment = depreciation (11), rate (14) are inputs; closing (12), average (13), interest (15) are reproduced.",
- "inputs": {"prior:normative_loan_closing": 8, "record:loan_reduction_on_retirement": 9, "record:normative_loan_addition": 10, "record:depreciation": 11, "assumption:loan_interest_rate": 14},
- "outputs": {"normative_loan_closing": 12, "normative_loan_average": 13, "interest_on_loan": 15}
+ "note": "The format states no unit; NPCL's ARR summary carries these lines in Rs crore.  Opening (8), reduction (9), additions (10), repayment = depreciation (11), rate (14) are inputs; closing (12), average (13), interest (15) are reproduced.  The additions and reductions (rows 9–10) are now computed from F14's inputs and checked against what this format carries.",
+ "inputs": {
+  "prior:normative_loan_closing": 8,
+  "record:depreciation": 11,
+  "assumption:loan_interest_rate": 14,
+  "record:capitalisation": "F14_CAP_Cap Cost!11",
+  "record:consumer_contribution": "F14_CAP_Cap Cost!27",
+  "record:retired_gross": "F14_CAP_Cap Cost!32",
+  "record:retired_grants": "F14_CAP_Cap Cost!33",
+  "record:retired_acc_dep": "F14_CAP_Cap Cost!35",
+  "record:retired_acc_dep_adjustment": "F14_CAP_Cap Cost!36"
+ },
+ "outputs": {
+  "loan_reduction_on_retirement": 9,
+  "normative_loan_addition": 10,
+  "normative_loan_closing": 12,
+  "normative_loan_average": 13,
+  "interest_on_loan": 15
+ },
+ "blank_is_zero": {
+  "rows": [
+   "F14_CAP_Cap Cost!36"
+  ],
+  "why": "as in the F14 binding"
+ }
 }

@@ -244,12 +244,19 @@ def read_sheet(
         None,
     )
     placer = Placer(taxonomy, mapping)
+    first_data = min((c.index for c in columns), default=2)
     out: list[Row] = []
     unplaced: list[str] = []
     for i in range(last + 1, len(rows)):
         r = rows[i]
-        serial = _text(r[0]) if r else ""
-        label = _text(r[1]) if len(r) > 1 else ""
+        # the cells before the first data column: short ones are serials ("A", "a", "1."), the
+        # longest text is the label — wherever the format puts it (column B, or C after a sub-letter)
+        lead = [_text(v) for v in r[:first_data] if _text(v) and _number(v) is None]
+        if not lead and r and _number(r[0]) is not None:
+            lead = []
+        serial = " ".join(t for t in lead if len(t) <= 4)
+        texts = [t for t in lead if len(t) > 4]
+        label = max(texts, key=len) if texts else ""
         if not label:
             continue
         lu = unit_word(_text(r[units_col])) if units_col is not None and units_col < len(r) else None

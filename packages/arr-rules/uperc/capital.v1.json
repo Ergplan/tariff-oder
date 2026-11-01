@@ -1,0 +1,465 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Statement of capital cost (UPERC format F14): gross block, capitalisation net of consumer contribution, the normative 70:30 debt and equity added, and the debt and equity retired with assets.",
+ "rules": [
+  {
+   "id": "uperc.capital.gross_block",
+   "version": 1,
+   "status": "draft",
+   "title": "Gross block, closing",
+   "output": "gross_block_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "opening + additions - deletions",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "prior:gross_block_closing"
+    },
+    "additions": {
+     "unit": "INR_crore",
+     "source": "record:capitalisation",
+     "note": "assets put to use in the year (F13 / F16)"
+    },
+    "deletions": {
+     "unit": "INR_crore",
+     "source": "record:gross_block_deletion",
+     "note": "assets retired or not in use (F11)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capital.net_capitalisation",
+   "version": 1,
+   "status": "draft",
+   "title": "Capitalisation net of consumer contribution",
+   "output": "net_capitalisation",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "capitalised - contributions",
+   "inputs": {
+    "capitalised": {
+     "unit": "INR_crore",
+     "source": "record:capitalisation"
+    },
+    "contributions": {
+     "unit": "INR_crore",
+     "source": "record:consumer_contribution",
+     "note": "capital contribution from consumers, grants (F12)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capital.debt_addition",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative loan added with the capitalisation",
+   "output": "normative_loan_addition",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "net * debt_share",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:net_capitalisation"
+    },
+    "debt_share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "70",
+     "note": "normative debt of 70 %, as NPCL's F14 applies it; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "net": "429.41"
+     },
+     "expected": "300.59",
+     "source": "NPCL FY2026-27 petition, filed formats, F14_CAP_Cap Cost FY2026-27, row 29 (from the rounded net) (the petitioner's application)"
+    }
+   ]
+  },
+  {
+   "id": "uperc.capital.equity_addition",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative equity added with the capitalisation",
+   "output": "equity_addition",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "net * equity_share",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:net_capitalisation"
+    },
+    "equity_share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "30",
+     "note": "normative equity of 30 %, as NPCL's F14 applies it; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capital.retired_gross_net",
+   "version": 1,
+   "status": "draft",
+   "title": "Gross block retired, net of the part funded by grants",
+   "output": "retired_gross_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "retired - from_grants",
+   "inputs": {
+    "retired": {
+     "unit": "INR_crore",
+     "source": "record:retired_gross"
+    },
+    "from_grants": {
+     "unit": "INR_crore",
+     "source": "record:retired_grants"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capital.retired_dep_net",
+   "version": 1,
+   "status": "draft",
+   "title": "Accumulated depreciation on the assets retired",
+   "output": "retired_acc_dep_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "acc_dep - adjustment",
+   "inputs": {
+    "acc_dep": {
+     "unit": "INR_crore",
+     "source": "record:retired_acc_dep"
+    },
+    "adjustment": {
+     "unit": "INR_crore",
+     "source": "record:retired_acc_dep_adjustment"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capital.retired_wdv",
+   "version": 1,
+   "status": "draft",
+   "title": "Written-down value of the assets retired",
+   "output": "retired_wdv",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "gross - dep",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:retired_gross_net"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "rule:retired_acc_dep_net"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capital.retired_wdv_share",
+   "version": 1,
+   "status": "draft",
+   "title": "Written-down value as a share of the gross block retired",
+   "output": "retired_wdv_share",
+   "unit": "fraction",
+   "schedule": "R-SCH-6",
+   "formula": "wdv / gross",
+   "inputs": {
+    "wdv": {
+     "unit": "INR_crore",
+     "source": "rule:retired_wdv"
+    },
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:retired_gross_net"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capital.loan_reduction",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative loan retired with the assets",
+   "output": "loan_reduction_on_retirement",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "(share - min(share, cap)) * gross",
+   "inputs": {
+    "share": {
+     "unit": "fraction",
+     "source": "rule:retired_wdv_share"
+    },
+    "cap": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "30",
+     "note": "the equity share of 30 %"
+    },
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:retired_gross_net"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — capitalisation, normative debt:equity, retirement",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "share": "0.4453",
+      "gross": "15"
+     },
+     "expected": "2.18",
+     "source": "NPCL FY2026-27 petition, filed formats, F14_CAP_Cap Cost FY2026-27, row 40 (the petitioner's application)"
+    }
+   ],
+   "note": "the written-down value beyond the equity share is taken out of the normative loan"
+  },
+  {
+   "id": "uperc.capital.equity_reduction_2025",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative equity retired with the assets",
+   "output": "equity_reduction_on_retirement",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "min(share, cap) * gross",
+   "inputs": {
+    "share": {
+     "unit": "fraction",
+     "source": "rule:retired_wdv_share"
+    },
+    "cap": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "30"
+    },
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:retired_gross_net"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "share": "0.4453",
+      "gross": "15"
+     },
+     "expected": "4.50",
+     "source": "NPCL FY2026-27 petition, filed formats, F14_CAP_Cap Cost FY2026-27, row 41 (the petitioner's application)"
+    }
+   ]
+  },
+  {
+   "id": "uperc.capital.equity_reduction_2019",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative equity retired with the assets",
+   "output": "equity_reduction_on_retirement",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "wdv",
+   "inputs": {
+    "wdv": {
+     "unit": "INR_crore",
+     "source": "rule:retired_wdv"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "for FY2023-24 and FY2024-25 NPCL takes the whole written-down value out of equity (F14 E41 = E38, G41 = G38); whether the 2019 Regulations say so is to be confirmed"
+  }
+ ]
+}

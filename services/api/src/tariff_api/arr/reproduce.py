@@ -30,7 +30,7 @@ from .rules import Q, Rule, RuleError, RuleSet
 @dataclass
 class OutputCheck:
     output: str
-    row: int
+    row: int | str
     label: str
     fiscal_year: str
     voice: str
@@ -60,12 +60,30 @@ def _places(displayed: str) -> int:
     return max(0, -Decimal(displayed).as_tuple().exponent)
 
 
-def reproduce(sheet: dict[str, Any], binding: dict[str, Any], rules: list[Rule]) -> FormatReproduction:
-    """``sheet`` is one sheet of a reference (as `scripts/build_reference.py` writes it)."""
+def reproduce(
+    sheet: dict[str, Any], binding: dict[str, Any], rules: list[Rule], sheets: dict[str, dict] | None = None
+) -> FormatReproduction:
+    """``sheet`` is one sheet of a reference (as `scripts/build_reference.py` writes it).  A bound
+    row is a row number of that sheet, or ``"<other sheet>!<row>"`` — an input or a check taken
+    from another format (``sheets`` holds them), matched to the column by year and voice: a
+    figure carried from one format to another is the same figure (R-SCH-16)."""
     rows = {r["row"]: r for r in sheet["rows"]}
+    others = {name: {r["row"]: r for r in sh["rows"]} for name, sh in (sheets or {}).items()}
+
+    def where(ref: int | str) -> tuple[dict[int, dict], int, bool]:
+        if isinstance(ref, int):
+            return rows, ref, True
+        name, _, n = str(ref).rpartition("!")
+        if name not in others:
+            raise RuleError(f"{sheet['sheet']}: bound sheet {name!r} is not in the reference")
+        return others[name], int(n), False
+
     # the unit of rows the sheet leaves unstated (a format with no unit line), declared by the binding
     default_unit = binding.get("unit")
-    missing = [n for n in [*binding["inputs"].values(), *binding["outputs"].values()] if n not in rows]
+    blank_is_zero = set(binding.get("blank_is_zero", {}).get("rows", []))
+    missing = [
+        ref for ref in [*binding["inputs"].values(), *binding["outputs"].values()] if where(ref)[1] not in where(ref)[0]
+    ]
     if missing:
         raise RuleError(f"{sheet['sheet']}: bound rows {missing} are not rows the reference read")
     columns: list[tuple[str, str, str]] = []
@@ -75,11 +93,17 @@ def reproduce(sheet: dict[str, Any], binding: dict[str, Any], rules: list[Rule])
             if key not in columns:
                 columns.append(key)
 
-    def cell(row: int, col: tuple[str, str, str]) -> dict | None:
-        return next(
-            (c for c in rows[row]["cells"] if (c["fiscal_year"], c["voice"], c["words"]) == col),
-            None,
-        )
+    def cell(ref: int | str, col: tuple[str, str, str]) -> dict | None:
+        table, n, own = where(ref)
+        cells = table[n]["cells"]
+        exact = next((c for c in cells if (c["fiscal_year"], c["voice"], c["words"]) == col), None)
+        if exact or own:
+            return exact
+        return next((c for c in cells if (c["fiscal_year"], c["voice"]) == col[:2]), None)
+
+    def row_of(ref: int | str) -> dict:
+        table, n, _ = where(ref)
+        return table[n]
 
     out = FormatReproduction(sheet["sheet"], len(columns))
     sets: dict[str, RuleSet | RuleError] = {}
@@ -95,11 +119,15 @@ def reproduce(sheet: dict[str, Any], binding: dict[str, Any], rules: list[Rule])
         for source, row in binding["inputs"].items():
             c = cell(row, col)
             if c and c["state"] == "value":
-                values[source] = (c["value"], c["unit"] or rows[row]["unit"] or default_unit)
+                values[source] = (c["value"], c["unit"] or row_of(row)["unit"] or default_unit)
+            elif c is None and row in blank_is_zero:
+                # declared by the binding, with its reason: the petitioner's formula reads this
+                # blank cell as zero.  Never assumed: an undeclared blank blocks.
+                values[source] = ("0", row_of(row)["unit"] or default_unit)
         ev = rs.evaluate(fy, values) if isinstance(rs, RuleSet) else None
         for output, row in binding["outputs"].items():
             c = cell(row, col)
-            base = dict(output=output, row=row, label=rows[row]["label"], fiscal_year=fy, voice=voice, words=words)
+            base = dict(output=output, row=row, label=row_of(row)["label"], fiscal_year=fy, voice=voice, words=words)
             if c is None:
                 out.checks.append(OutputCheck(**base, result="no_filed_value"))
                 continue
@@ -114,7 +142,7 @@ def reproduce(sheet: dict[str, Any], binding: dict[str, Any], rules: list[Rule])
                 out.checks.append(OutputCheck(**base, result="blocked", filed=c["displayed"], why=why))
                 continue
             res = ev.results[output]
-            unit = c["unit"] or rows[row]["unit"] or default_unit or res.unit
+            unit = c["unit"] or row_of(row)["unit"] or default_unit or res.unit
             places = _places(c["displayed"])
             try:
                 got = Q.of(res.value, res.unit).to(unit).quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP)

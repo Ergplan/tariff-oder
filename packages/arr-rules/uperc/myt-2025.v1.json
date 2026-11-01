@@ -9,7 +9,7 @@
  "rules": [
   {
    "id": "uperc.myt2025.equity.closing",
-   "version": 1,
+   "version": 2,
    "status": "draft",
    "title": "Normative equity, closing balance",
    "output": "equity_closing",
@@ -24,13 +24,13 @@
     },
     "reduction": {
      "unit": "INR_crore",
-     "source": "record:equity_reduction_on_retirement",
-     "note": "equity portion of assets retired (F14)"
+     "source": "rule:equity_reduction_on_retirement",
+     "note": "from the capital rules (F14)"
     },
     "additions": {
      "unit": "INR_crore",
-     "source": "record:equity_addition",
-     "note": "equity portion of capitalisation (F14); a rule of its own in the capital schedule, next"
+     "source": "rule:equity_addition",
+     "note": "from the capital rules (F14)"
     }
    },
    "clause": {
@@ -145,7 +145,7 @@
   },
   {
    "id": "uperc.myt2025.loan.closing",
-   "version": 1,
+   "version": 2,
    "status": "draft",
    "title": "Normative loan, closing balance",
    "output": "normative_loan_closing",
@@ -159,12 +159,13 @@
     },
     "reduction": {
      "unit": "INR_crore",
-     "source": "record:loan_reduction_on_retirement"
+     "source": "rule:loan_reduction_on_retirement",
+     "note": "from the capital rules (F14)"
     },
     "additions": {
      "unit": "INR_crore",
-     "source": "record:normative_loan_addition",
-     "note": "debt portion of capitalisation (F14)"
+     "source": "rule:normative_loan_addition",
+     "note": "from the capital rules (F14)"
     },
     "repayment": {
      "unit": "INR_crore",

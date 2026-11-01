@@ -1,0 +1,10 @@
+{
+ "sheet": "F14_CAP_Cap Cost",
+ "note": "Statement of capital cost.  Inputs: opening gross block (8), additions (11), deletions (13), consumer contribution (27), gross retired (32), retired from grants (33), accumulated depreciation on retired assets (35) and its adjustment (36).  Reproduced: closing gross block (15), net capitalisation (28), debt (29) and equity (30) added, and the retirement chain (34, 37–41).",
+ "inputs": {"prior:gross_block_closing": 8, "record:capitalisation": 11, "record:gross_block_deletion": 13, "record:consumer_contribution": 27,
+            "record:retired_gross": 32, "record:retired_grants": 33, "record:retired_acc_dep": 35, "record:retired_acc_dep_adjustment": 36},
+ "blank_is_zero": {"rows": [36], "why": "row 36 is blank except in FY2024-25; NPCL's formula (row 37 = row 35 − row 36) reads the blank as zero"},
+ "outputs": {"gross_block_closing": 15, "net_capitalisation": 28, "normative_loan_addition": 29, "equity_addition": 30,
+             "retired_gross_net": 34, "retired_acc_dep_net": 37, "retired_wdv": 38, "retired_wdv_share": 39,
+             "loan_reduction_on_retirement": 40, "equity_reduction_on_retirement": 41}
+}

@@ -1005,6 +1005,24 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 56 (2026-11-01): the capital schedule (F14) and cross-format reconciliation.**
+  The reference reader takes the label wherever the format puts it (F14 has sub-letters in column
+  B and labels in C; 2,085 values now).  11 draft capital rules: gross block roll-forward,
+  capitalisation net of consumer contribution, the normative **70:30** debt and equity, and the
+  retirement chain (written-down value, its share, equity retired up to 30 % and the rest from the
+  loan from FY2025-26; for FY2023-24/24-25 NPCL retires the whole WDV from equity — two regimes,
+  as the filing applies them).  The equity and loan roll-forwards (v2) now take their additions and
+  reductions from these rules.  Bindings can name a row of **another format** (`"F14_CAP_Cap
+  Cost!27"`, matched by year and voice) and can declare, with a reason, a blank the petitioner's
+  formula reads as zero (never assumed).  **Results:** F14 reproduced in full (60 of 60); the
+  Energy Balance still 55 of 55; F25/F26 computed from F14's inputs match in every column F14
+  covers **except FY2023-24 "Claimed", where NPCL's own formats disagree** — F26 adds equity of
+  21.21 and F25 a loan of 49.49 where F14 gives 30 % / 70 % of its net capitalisation (22.73 /
+  53.04), and F26 retires no equity where F14 retires 1.53 (ledger A29; a question for the
+  petitioner and the reviewer, not resolved by the build).  Columns F14 does not have (FY2022-23,
+  the Commission's approval) are blocked.  From the openings and the year's F14 records alone the
+  chain reproduces NPCL's FY2026-27 RoE (115.77) and interest on loan (83.88).
+
   **Increment 55 (2026-11-01): reproducing filed formats through the rules — the energy balance
   and the capital chain.**  `arr/reproduce.py` + `scripts/reproduce_formats.py`: a **binding**
   per filed format (`packages/reference-filings/<filing>/bindings/`) names its input rows and its
@@ -1725,6 +1743,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 56 (2026-11-01): 406 passed** (the reproduction regression now covers F14 and the cross-format checks, pinning the one inconsistent column; the chain test starts from F14 records).  Ruff and format clean.
 - **Increment 55 (2026-11-01): 406 passed** (+3 unit: match / differs / blocked / not-a-value per column; Units-column words; NPCL's filed Energy Balance, F25 and F26 reproduced by the draft rules, 97 of 97).  Ruff and format clean.
 - **Increment 54 (2026-11-01): 403 passed** (+19 unit: units and dimensions, the arithmetic-only language, Decimal literals, dependency order, cycles, blocking, per-year selection, rounding feeds, filing readiness, the UPERC drafts' examples, the NPCL FY2026-27 chain from records).  Ruff and format clean.
 - **Increment 53 (2026-11-01): 384 passed** (+3 unit: a format header carries a year over its group and maps column words to voices; stored vs displayed values, percentages from fractions, states never zero, a rate in a label is not a unit, restated columns marked).  Evaluation run on real data: the order-vs-petition comparison above.
