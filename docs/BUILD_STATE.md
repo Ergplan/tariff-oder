@@ -1826,6 +1826,13 @@ entries below are the per-increment history.**
      session).
   4. **Operator, model channel:** an `ANTHROPIC_API_KEY` in the secrets adapter to run the
      live ARR image channel (written and mock-tested, increment 29; never run on a real order).
+- *Loading the real orders on another stack* (the VM, after `make dev`):
+  `docker compose -f infra/local/docker-compose.yml exec api tariff-api seed` (licensee aliases),
+  then `uv run python scripts/load_real_orders.py` — downloads the ten orders from the commission
+  websites, checks each SHA-256 against the hashes above (a different file is skipped), registers
+  each as a real source with its licensees, waits for parsing and starts its ARR reading; it is
+  idempotent and skips a website that does not answer.  Tested on this session's stack (HPERC,
+  MPERC ×2: found by hash, readings already proposed).
 - *Engineering next:* the extraction over confirmed real chapters (measure precision against
   the reviewer's decisions — the first real precision figure); per-commission true-up formats;
   organisation-owned sources for private documents; normative checks of actuals against
