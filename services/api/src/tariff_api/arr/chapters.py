@@ -6,7 +6,7 @@ reviewer confirms, corrects or excludes them before anything is read."""
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 from .taxonomy import Mapping
 
@@ -39,6 +39,11 @@ _PROSE_START = re.compile(
 )
 _CHAPTER = re.compile(r"^\s*chapter\s+(\d{1,2})\s*[:.\-–]\s*(?:\S|$)", re.I)
 NUMBERED_MODE_MIN = 5
+# a chapter this long in a numbered order is looked into for three-level section headings
+# ("3.1.3 Power Purchase Expenses" under "3. … Truing Up for FY 2024-25": UERC)
+DEEPEN_MIN_PAGES = 40
+_DEEP_NUMBER = re.compile(r"^\s*(\d{1,2})\.(\d{1,2})\.(\d{1,2})\.?\s+\S")
+_TOP_NUMBER = re.compile(r"^\s*(\d{1,2})\.\s+[A-Z]")
 # a lettered part in capitals: "B.   ARR & RETAIL SUPPLY TARIFF PROPOSAL OF THE DISCOMs" (OERC),
 # "A2: AGGREGATE REVENUE REQUIREMENT FOR PETITIONERS" (MPERC, ordered by its number)
 _PART_LETTER = re.compile(r"^\s*([A-Z])(\d{1,2})?\s*[.:]\s+(\S.{3,})$")
@@ -187,7 +192,8 @@ def _cue(mapping: Mapping, line: str) -> tuple[str, str] | None:
     for ch in mapping.chapter_map:
         for pat in ch.heading_patterns:
             p = pat.lower()
-            if re.search(rf"(?<![a-z0-9]){re.escape(p)}(?![a-z0-9])", body):
+            # a cue also names its plural ("distribution loss" in "Distribution Losses")
+            if re.search(rf"(?<![a-z0-9]){re.escape(p)}(?:e?s)?(?![a-z0-9])", body):
                 # the longest matching pattern wins ("power purchase cost" over "cost")
                 if best is None or len(p) > best[0]:
                     best = (len(p), ch.branch, pat)
@@ -211,6 +217,8 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
     chapters_: list[tuple[int, tuple[int, ...], None, str]] = []  # "Chapter 5: TRUE-UP FOR FY 2024-25"
     numbered_prose = 0  # numbered lines that are sentences: the mark of paragraph numbering
     lettered: list[tuple[int, tuple[int, ...], None, str]] = []  # "A.  PROCEDURAL HISTORY" parts
+    deep: list[tuple[int, tuple[int, ...], str, str]] = []  # three-level headings with a cue
+    top_lines: list[tuple[int, int, str]] = []  # every "3. …" line, with its wrapped continuation
     part_of: dict[int, str] = {}
     for page in sorted(page_lines):
         lines = page_lines[page]
@@ -226,6 +234,15 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
             cm = _CHAPTER.match(line)
             if cm and len(line.strip()) <= 120:
                 chapters_.append((page, (int(cm.group(1)),), None, chapter_title(lines, k)[:300]))
+            dm = _DEEP_NUMBER.match(line)
+            if dm and looks_like_heading(line) and (dhit := _cue(mapping, line)):
+                deep.append((page, tuple(int(x) for x in dm.groups()), dhit[0], line.strip()[:300]))
+            tm = _TOP_NUMBER.match(line)
+            # a part's heading, not a table row ("3. A&G expenses 62.43 106.57 …")
+            if tm and len(line.strip()) <= 120 and len(_NUMBER_TOKEN.findall(_FY_TEXT.sub(" ", line))) < 2:
+                nxt = lines[k + 1].strip() if k + 1 < len(lines) else ""
+                wrap = nxt if nxt and not re.match(r"^\d", nxt) and len(nxt) <= 80 else ""
+                top_lines.append((page, int(tm.group(1)), re.sub(r"\s+", " ", f"{line.strip()} {wrap}").strip()))
             lm = _PART_LETTER.match(line)
             if lm and len(line.strip()) <= 120:
                 body = [c for c in lm.group(3) if c.isalpha()]
@@ -328,7 +345,47 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
         if part_of.get(page):
             notes.append(f"in the part headed: {part_of[page]}")
         out.append(ChapterProposal(i + 1, branch, text, page, page, end, "; ".join(notes) or None))
+    if numbered and not paragraphs and deep:
+        out = _deepen(out, deep, top_lines, part_of)
     return out
+
+
+def _deepen(
+    out: list[ChapterProposal],
+    deep: list[tuple[int, tuple[int, ...], str, str]],
+    top_lines: list[tuple[int, int, str]],
+    part_of: dict[int, str],
+) -> list[ChapterProposal]:
+    """A chapter of ``DEEPEN_MIN_PAGES`` or more is split at the three-level section headings
+    with a cue inside it (those whose numbers never go backwards), each noting its top-level
+    section ("3. … Conclusion on Truing Up for FY 2024-25") so its year and voice reach the
+    reader.  An order that numbers its sections in three levels keeps its two-level chapters
+    elsewhere; a long chapter with no such heading inside stays as it is."""
+    result: list[ChapterProposal] = []
+    for ch in out:
+        span = ch.page_end - ch.page_start + 1
+        inside = [d for d in deep if ch.page_start < d[0] <= ch.page_end] if span >= DEEPEN_MIN_PAGES else []
+        inside = _longest_run(inside)
+        kept: list[tuple[int, tuple[int, ...], str, str]] = []
+        for d in inside:
+            if not kept or kept[-1][2] != d[2]:
+                kept.append(d)
+        if not kept:
+            result.append(ch)
+            continue
+        result.append(replace(ch, page_end=kept[0][0]))
+        for j, (pg, num, branch, text) in enumerate(kept):
+            end = kept[j + 1][0] if j + 1 < len(kept) else ch.page_end
+            notes = [f"a section inside the {span}-page chapter “{ch.cue_text[:60]}”"]
+            top = [t for t in top_lines if t[1] == num[0] and t[0] <= pg]
+            if top:
+                notes.append(f"in section: {top[-1][2][:150]}")
+            if _NOT_DECISIONS.search(" ".join([top[-1][2] if top else "", part_of.get(pg, "")])):
+                notes.append("this part reports the petition or the hearing: likely not the Commission's decisions")
+            if part_of.get(pg):
+                notes.append(f"in the part headed: {part_of[pg]}")
+            result.append(ChapterProposal(0, branch, text, pg, pg, end, "; ".join(notes)))
+    return [replace(c, ordinal=i + 1) for i, c in enumerate(result)]
 
 
 def part_from_note(note: str | None) -> str | None:

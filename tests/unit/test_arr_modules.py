@@ -842,3 +842,39 @@ def test_a_combined_order_naming_the_licensee_per_row_is_attributed_per_row():
     got = read(by_heading)
     assert got[("NORTHCO", "E.LOSS.DIST_PCT", "approved")] == "14.00"
     assert got[("SOUTHCO", "E.LOSS.DIST_PCT", "approved")] == "18.50"
+
+
+def test_a_long_chapter_is_split_at_its_three_level_sections():
+    """UERC (increment 47): the true-up part's sections are numbered in three levels ("3.1.3
+    Power Purchase Expenses") under "3. … Conclusion on Truing Up for FY 2024-25"; a chapter of
+    40 pages or more is split at them, each noting its part (so its year reaches the reader)."""
+    from tariff_api.arr.chapters import part_from_note
+
+    mapping = load_mapping("NOSUCH", fallback=True)
+    pages: dict[int, list[str]] = {
+        p: [f"Paragraph text of page {p} about the matter {p * 7} in hand."] for p in range(1, 61)
+    }
+    pages[1] = ["2.4  Distribution Loss", *pages[1]]
+    pages[3] = ["2.9  Return on Equity", *pages[3]]
+    pages[30] = [
+        "3. Petitioner’s Submissions, Commission’s Analysis, Scrutiny and",
+        "Conclusion on Truing Up for FY 2024-25",
+        "3.1.3  Power Purchase Expenses",
+        *pages[30],
+    ]
+    pages[40] = ["3.1.4  Operation and Maintenance (O&M) Expenses", *pages[40]]
+    pages[50] = ["3.2.7  Return on Equity", *pages[50]]
+    pages[59] = ["4.2  Sales", *pages[59]]
+    chs = propose_chapters(pages, mapping, 60)
+    got = [(c.branch, c.page_start, c.page_end) for c in chs]
+    assert got == [
+        ("E", 1, 3),
+        ("C.RETURN", 3, 30),  # the 57-page chapter, now ending where its first section begins
+        ("C.PP", 30, 40),
+        ("C.OM", 40, 50),
+        ("C.RETURN", 50, 59),
+        ("E", 59, 60),
+    ], got
+    assert part_from_note(chs[2].note) == (
+        "3. Petitioner’s Submissions, Commission’s Analysis, Scrutiny and Conclusion on Truing Up for FY 2024-25"
+    )
