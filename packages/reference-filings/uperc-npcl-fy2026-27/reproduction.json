@@ -9455,6 +9455,28 @@
      "computed": "2.85",
      "why": "1 accounts",
      "exact": "2.8459271159999173"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "R&M: repairs (T&D and others), security, insurance, power and fuel formats::F22_O&M_R&M till FY25!J10",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "72.36",
+     "computed": "72.36",
+     "why": "25 accounts",
+     "exact": "72.36293243000000191"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "A&G: legal and professional, miscellaneous, auditors, rent, rates, travel, directors' fees, finance charges formats::F23_O&M_A&G!J41",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "40.91",
+     "computed": "40.91",
+     "why": "44 accounts",
+     "exact": "40.91217731145454362"
     }
    ]
   },
@@ -42428,7 +42450,7 @@
     "title": "R&M Expenses - Till FY 25",
     "sheet": "F22_O&M_R&M till FY25",
     "alias_why": null,
-    "status": "read"
+    "status": "reproduced"
    },
    {
     "format": "F22_O&M_R&M - FY 26 and FY 27",
@@ -42611,8 +42633,8 @@
   ],
   "counts": {
    "present": 31,
-   "reproduced": 30,
-   "read": 10,
+   "reproduced": 31,
+   "read": 9,
    "blank": 2,
    "missing": 1
   }

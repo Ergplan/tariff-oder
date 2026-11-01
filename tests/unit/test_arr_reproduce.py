@@ -680,8 +680,9 @@ def test_npcl_true_up_reconciled_to_the_trial_balance():
     """Real data across three workbooks: the trial balance's profit-and-loss accounts (rupees),
     summed by their own financial-statement groupings through the rules (to Rs crore by the
     units), against the true-up claims.  Power purchase, transmission, deposit interest, finance
-    charges, bad debts, loss on retired assets and employee capitalisation agree; employee
-    benefits differ by exactly 0.0105 crore (ledger A46)."""
+    charges, bad debts, loss on retired assets, employee capitalisation, R&M (five groupings) and
+    A&G (seven groupings and finance charges; CSR not claimed) agree; employee benefits differ by
+    exactly 0.0105 crore (ledger A46)."""
     from decimal import Decimal
 
     import openpyxl
@@ -695,7 +696,10 @@ def test_npcl_true_up_reconciled_to_the_trial_balance():
     others = {k: openpyxl.load_workbook(folder / v, data_only=True) for k, v in b["workbooks"].items()}
     checks = reproduce_ledger(wb, b, load_rules("UPERC"), others)
     differs = [c for c in checks if c.result != "match"]
-    assert len(checks) == 11 and len(differs) == 2
+    assert len(checks) == 13 and len(differs) == 2
+    # the true-up's R&M and A&G, records until now, agree with the books by their groupings
+    agree = {c.category.split(":")[0] for c in checks if c.result == "match"}
+    assert {"R&M", "A&G"} <= agree
     assert {c.category.split(" formats")[0] for c in differs} == {
         "employee benefits, before capitalisation",
         "employee benefits, net",

@@ -104,6 +104,46 @@
    },
    "target": "formats::P3_Bad Debts!D16",
    "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "R&M: repairs (T&D and others), security, insurance, power and fuel",
+   "fiscal_year": "FY2024-25",
+   "where": {
+    "G": "Note - 33 Other expenses",
+    "H": [
+     "Repairs and maintenance - transmission and distribution system",
+     "Repairs and maintenance - others",
+     "Security expenses",
+     "Insurance",
+     "Power and fuel"
+    ]
+   },
+   "target": "formats::F22_O&M_R&M till FY25!J10",
+   "why": "NPCL's R&M before SOP / CGRF items (F22 row 10) groups these five sub-groupings of Note 33"
+  },
+  {
+   "label": "A&G: legal and professional, miscellaneous, auditors, rent, rates, travel, directors' fees, finance charges",
+   "fiscal_year": "FY2024-25",
+   "where": [
+    {
+     "G": "Note - 33 Other expenses",
+     "H": [
+      "Legal and professional charges",
+      "Miscellaneous expenses",
+      "Payment to auditors",
+      "Rent",
+      "Rates and taxes",
+      "Travelling and conveyance",
+      "Directors fees"
+     ]
+    },
+    {
+     "G": "Note - 31 Finance costs",
+     "H": "Other borrowing costs"
+    }
+   ],
+   "target": "formats::F23_O&M_A&G!J41",
+   "why": "NPCL's A&G (F23 row 41) is these seven sub-groupings of Note 33 and the finance charges of Note 31 (other borrowing costs); CSR expenditure (4.23) is not claimed"
   }
  ]
 }

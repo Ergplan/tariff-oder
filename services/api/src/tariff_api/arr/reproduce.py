@@ -628,7 +628,7 @@ def reproduce_ledger(
 ) -> list[BlockCheck]:
     """A utility's trial balance reconciled to its claim (R-DATA): for each comparison, the
     accounts whose grouping columns match (``{"G": "Note - 30 …"}``, or ``{"H": {"not": "…"}}``)
-    are the categories, their amounts summed by the rules (``ledger_amount`` per account in the
+    — or one of a list — are the categories, their amounts summed by the rules (``ledger_amount`` per account in the
     ledger's unit, ``ledger_total`` in Rs crore — the units convert, no hand-written factor), and
     compared with the claimed cell at the precision it is filed (``places``).  A ledger account
     is never moved between groups by resemblance: the binding names the groups."""
@@ -652,6 +652,8 @@ def reproduce_ledger(
         text = str(value or "").strip()
         if isinstance(cond, dict):
             return text != str(cond["not"]).strip()
+        if isinstance(cond, list):  # one of the named groupings
+            return text in {str(c).strip() for c in cond}
         return text == str(cond).strip()
 
     out: list[BlockCheck] = []
@@ -663,7 +665,9 @@ def reproduce_ledger(
             amount = _stored(ws.cell(r, col(binding["amount_col"])).value)
             if amount is None:
                 continue
-            if all(matches(ws.cell(r, col(c)).value, cond) for c, cond in comp["where"].items()):
+            # one condition set, or several (an account in any of them counts once)
+            sets = comp["where"] if isinstance(comp["where"], list) else [comp["where"]]
+            if any(all(matches(ws.cell(r, col(c)).value, cond) for c, cond in w.items()) for w in sets):
                 key = f"{ws.cell(r, col(binding['account_col'])).value} (row {r})"
                 cats[key] = {"record:ledger_amount": (sign * amount, unit)}
         places = int(comp.get("places", binding.get("places", 2)))
