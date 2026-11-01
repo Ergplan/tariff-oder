@@ -1,0 +1,19 @@
+{
+  "id": "mperc-discovery",
+  "version": 1,
+  "commission": "MPERC",
+  "status": "draft: written against the live site on 2026-11-01; re-check when the site changes",
+  "note": "MPERC lists the three State DISCOMs' orders (always one order for all three) in one table: Period | Tariff Order (date, label, view, download) | True Up Order (date, view, download); the links are icons, so a link's title is its column group's header with the row's period.  A true-up shares the row of the year it trues up.  The 2022-27 MYT order sits in the FY-2022-23 row.  Transmission (MPPTCL) orders are complete only in the petition database (a form search), not covered here.",
+  "licensee_groups": {
+    "State DISCOMs": ["MPPKVVCL", "MPMKVVCL", "MPPaKVVCL"]
+  },
+  "listings": [
+    {
+      "name": "Distribution tariff orders",
+      "url": "https://mperc.in/page/distribution-tariff-orders",
+      "method": "static",
+      "rows_only": true,
+      "licensee": "State DISCOMs"
+    }
+  ]
+}

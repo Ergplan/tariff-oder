@@ -1,0 +1,30 @@
+{
+  "id": "uerc-discovery",
+  "version": 1,
+  "commission": "UERC",
+  "status": "draft: written against the live site on 2026-11-01; re-check when the site changes",
+  "note": "UERC (S3WaaS) lists each year's documents on a category page: Title | Date | View, the PDFs on a CDN under numeric names, so the title comes from the row.  One order a year per licensee covers the true-up, the APR and the ARR; the curated 2026-27 page links UPCL's order through SharePoint (not a PDF), so the category pages are used.  Admittance orders, press notes and salient features are listed beside the orders.",
+  "licensee_aliases": {
+    "UPCL": ["Uttarakhand Power Corporation Ltd"]
+  },
+  "listings": [
+    {
+      "name": "Documents FY2024-25",
+      "url": "https://uerc.uk.gov.in/document-category/2024-25/",
+      "method": "static",
+      "rows_only": true
+    },
+    {
+      "name": "Documents FY2025-26",
+      "url": "https://uerc.uk.gov.in/document-category/2025-26/",
+      "method": "static",
+      "rows_only": true
+    },
+    {
+      "name": "Documents FY2026-27",
+      "url": "https://uerc.uk.gov.in/document-category/2026-27/",
+      "method": "static",
+      "rows_only": true
+    }
+  ]
+}

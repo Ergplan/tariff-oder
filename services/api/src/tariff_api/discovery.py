@@ -46,7 +46,9 @@ class Listing(BaseModel):
     max_follow: int = Field(default=40, ge=1, le=200)
     url_pattern: str | None = None
     rows_only: bool = False  # only PDFs inside table rows (site menus link PDFs too)
-    licensee: str | None = None  # the listing is one licensee's: a title naming none is for it
+    # the listing is one licensee's (a code) or a group's (a key of the profile's
+    # licensee_groups): a title naming none is for it, or for each of the group
+    licensee: str | None = None
 
 
 class Profile(BaseModel):
@@ -164,9 +166,17 @@ class Fetcher:
             time.sleep(self.pause)
         self.requests += 1
 
-    def get(self, url: str) -> tuple[str, str]:
-        self._wait()
-        r = self.client.get(url)
+    def get(self, url: str, *, tries: int = 3) -> tuple[str, str]:
+        """A GET; a dropped connection (UERC's site resets some) is tried again after a pause."""
+        for attempt in range(tries):
+            self._wait()
+            try:
+                r = self.client.get(url)
+                break
+            except (httpx.ConnectError, httpx.ReadError, httpx.RemoteProtocolError):
+                if attempt == tries - 1:
+                    raise
+                time.sleep(self.pause * (attempt + 2))
         if r.status_code != 200:
             raise DiscoveryError(f"{url} answered {r.status_code}")
         return r.text, str(r.url)
@@ -301,29 +311,45 @@ def _static(f: Fetcher, listing: Listing, page: str, url: str) -> list[dict[str,
         from .library import _HREF, _ROW
 
         for pg, pu in pages:
-            # a PDF link inside a table row keeps its row, so the proposer finds the row's title
+            # a PDF link inside a table row keeps its row, and the row its table's header rows,
+            # so the proposer finds the row's title and the column group a link sits under
             in_rows: set[str] = set()
+            tables = [(t.start(), t.end()) for t in re.finditer(r"<table\b.*?</table>", pg, re.I | re.S)]
+            heads: dict[int, list[str]] = {}
+            rows_of: dict[int, list[str]] = {}
             for row in _ROW.finditer(pg):
+                ti = next((i for i, (a, b) in enumerate(tables) if a <= row.start() < b), -1)
+                inner = row.group(1)
+                if re.search(r"<th\b", inner, re.I) and not re.search(r"<td\b", inner, re.I):
+                    heads.setdefault(ti, []).append("<tr>" + _absolute(inner, pu) + "</tr>")
+                    continue
                 links = [
                     urljoin(pu, html_lib.unescape(m.group(1) or m.group(2) or m.group(3) or ""))
-                    for m in _HREF.finditer(row.group(1))
+                    for m in _HREF.finditer(inner)
                 ]
                 pdfs = [x for x in links if re.search(r"\.pdf(\?|#|$)", x, re.I)]
                 if not pdfs or not any(keep(x) for x in pdfs):
                     continue
                 in_rows.update(pdfs)
-                body.append("<tr>" + _absolute(row.group(1), pu) + "</tr>")
+                rows_of.setdefault(ti, []).append("<tr>" + _absolute(inner, pu) + "</tr>")
+            for ti, rows in rows_of.items():
+                body.append("<table>" + "".join(heads.get(ti, [])) + "".join(rows) + "</table>")
+            loose = []
             for m in [] if listing.rows_only else _HREF.finditer(pg):
                 full = urljoin(pu, html_lib.unescape(m.group(1) or m.group(2) or m.group(3) or ""))
                 if re.search(r"\.pdf(\?|#|$)", full, re.I) and full not in in_rows and keep(full):
                     in_rows.add(full)
-                    body.append(link_row(_text(m.group(4)), full))
+                    loose.append(link_row(_text(m.group(4)), full))
+            if loose:
+                body.append("<table>" + "".join(loose) + "</table>")
+    if listing.follow:
+        body = ["<table>" + "".join(body) + "</table>"]
     return [
         {
             "listing": listing.name,
             "fiscal_year": "",
             "url": url,
-            "html": "<table>" + "".join(body) + "</table>",
+            "html": "".join(body),
             "error": "; ".join(errors) or None,
         }
     ]
@@ -382,6 +408,7 @@ def run(
                         groups=profile.licensee_groups,
                         listing=label,
                         default_licensee=listing.licensee if listing.licensee in licensees else None,
+                        default_group=profile.licensee_groups.get(listing.licensee or "") or None,
                         since=min(fiscal_years, key=lambda y: int(y[2:6])) if fiscal_years else None,
                     ):
                         key = (p["url"], p["utility_code"])

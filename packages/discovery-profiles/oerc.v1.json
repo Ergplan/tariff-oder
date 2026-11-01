@@ -1,0 +1,19 @@
+{
+  "id": "oerc-discovery",
+  "version": 1,
+  "commission": "OERC",
+  "status": "draft: written against the live site on 2026-11-01; re-check when the site changes",
+  "note": "OERC issues one combined order a year for the four TP DISCOMs (ARR, wheeling and retail supply tariff, with the truing up inside it); the listing's titles name no licensee.  GRIDCO (bulk supply) and OPTCL (transmission) have pages of their own (Tariff_GRIDCO.aspx, Tariff_OPTCL.aspx) but are not in the registry yet.  The listing page carries a hidden off-site block: only rows inside tables are read.",
+  "licensee_groups": {
+    "TP DISCOMs": ["TPCODL", "TPWODL", "TPSODL", "TPNODL"]
+  },
+  "listings": [
+    {
+      "name": "Distribution retail supply orders",
+      "url": "https://www.orierc.org/Distribution_Retail_Supply.aspx",
+      "method": "static",
+      "rows_only": true,
+      "licensee": "TP DISCOMs"
+    }
+  ]
+}

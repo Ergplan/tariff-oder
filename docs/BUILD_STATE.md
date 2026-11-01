@@ -848,8 +848,28 @@ open-access view.
   HPERC profile now proposes HPSEBL's tariff orders for all three years FY2024-25 to FY2026-27
   (3 complete of 14 proposals; increment 33 found 2).  JSERC is unchanged at 3 complete of 56:
   its 2026 MYT/true-up order is proposed for JBVNL's control-period slot, but two documents on
-  the page compete for it, so a person chooses.  Part 2 (profiles for MPERC, OERC and UERC) is
-  in progress.
+  the page compete for it, so a person chooses.
+
+  **Increment 46, part 2: discovery profiles for Madhya Pradesh, Odisha and Uttarakhand.**  The
+  three sites were mapped read-only (about 60 requests in all) and profiles written
+  (`mperc.v1.json`, `oerc.v1.json`, `uerc.v1.json`, status draft).  The engine gained what they
+  need: **titles for icon links from the table header** (MPERC links each order through an icon
+  under a two-level header, "Tariff Order" and "True Up Order" column groups, with a true-up in
+  the row of the year it trues up: the title is the group's name with the row's period); a
+  file name made of words also tells the kind when the link shows none (MPERC's MYT order);
+  **a listing may stand for a group of licensees** (MPERC's three State DISCOMs, OERC's four TP
+  DISCOMs share one order a year); URLs have dot segments resolved and spaces encoded, and the
+  same file under another letter case is one document (OERC); a dropped connection is retried
+  (UERC); salient features, highlights, admittance, interim and daily orders, and a "petition
+  for review of the Commission's Order" are set aside with the reason; "Tariff Orders" (plural)
+  is an order.  **Live, FY2024-25 to FY2026-27, nothing recorded:** MPERC 15 of 15 proposals
+  complete (tariff orders of three years, the FY2024-25 true-up, the 2022-27 MYT order, each for
+  the three discoms); OERC 12 of 12 (the combined order of each year for each of the four
+  discoms); UERC 4 of 71 (UPCL's orders of the three years and its MYT petition; the rest are
+  generators, PTCUL and SLDC, which the registry does not hold, or procedural documents set
+  aside).  The five earlier profiles re-run unchanged (UPERC 15, BERC 2, HPERC 3, JSERC 3, JERC
+  4 complete).  Ten commissions now have profiles; MPPTCL's orders (only in MPERC's petition
+  search form) and OERC's GRIDCO and OPTCL pages are not covered.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1441,7 +1461,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **Increment 46, part 1 (2026-11-01): unit suite 296 passed** (+1: short-year listing titles); ruff and format clean.  The full suite is run with part 2.
+- **Increment 46 (2026-11-01): 366 passed** (+2 unit: short-year listing titles; icon links titled by their column group, a listing for a group of licensees, encoded URLs, an MYT order known by its file name, procedural documents set aside).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 45 (2026-11-01): 364 passed** (+1 unit: cross-border sales placed apart, a bare inter-state sale not; ARR-I4's hint and its pass under `loss_basis`; the integration conventions test now also answers the loss basis and drafts it).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 44 (2026-11-01): 363 passed** (+1 unit: a total printed inclusive of other lines — the hint when unstated, the pass when the mapping states it, no hint when no known convention explains; +1 integration: a convention question posed from a preview, answered by a reviewer only, validated, drafted into a valid mapping, withdrawn).  Ruff, format, contracts-check and web typecheck clean; migration 0020 applied on the local stack.
 - **Increment 43 (2026-11-01): 361 passed** (+3 unit: a paragraph-numbered order is read by its headings inside its "Chapter N" parts, wrapped chapter titles joined, the hearing part flagged; a label naming what a line is for is not that line (`not_when`); a cost row named like a quantity follows the table's unit, and singular/plural aliases).  Ruff, format and contracts-check clean; no web change.
@@ -1620,7 +1640,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 45) — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 46) — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -1640,7 +1660,7 @@ entries below are the per-increment history.**
      mapping-draft`, commit, confirm.  Until a mapping is confirmed, real lines of that
      commission can be read and reviewed but not approved.
   3. **Operator, documents:** run the discovery profiles (UPERC, BERC, HPERC, JSERC, JERC Goa &
-     UTs) on the VM for FY2024-25 to FY2026-27, tick proposals in `/library`, acquire; name the
+     UTs, MPERC, OERC, UERC) on the VM for FY2024-25 to FY2026-27, tick proposals in `/library`, acquire; name the
      next commissions for profiles (most other commission sites did not answer from the build
      session).
   4. **Operator, model channel:** an `ANTHROPIC_API_KEY` in the secrets adapter to run the

@@ -715,3 +715,45 @@ def test_the_loss_basis_is_a_convention_question():
     assert f.severity == "blocking" and f.detail["reconciles_if"]["loss_basis"] == "sales_within_state"
     stated = SYN.model_copy(update={"loss_basis": SYN.loss_basis.model_copy(update={"value": "sales_within_state"})})
     assert not [x for x in evaluate(vals, taxonomy=TAX, mapping=stated, group=group) if x.identity_id == "ARR-I4"]
+
+
+def test_discovery_titles_icon_links_by_their_column_group_and_listing_groups():
+    """MPERC (increment 46): icon links under a two-level header — "Tariff Order" and "True Up
+    Order" groups — take their group's name and the row's period; a listing for a group of
+    licensees proposes each; a file name of words tells an MYT order whose row says nothing."""
+    from tariff_api.library import guess_kind, propose_from_html
+
+    page = """<table>
+      <tr><th colspan="7">Distribution Tariff Orders</th></tr>
+      <tr><th rowspan="2">Period</th><th colspan="3">Tariff Order</th><th colspan="3">True Up Order</th></tr>
+      <tr><th>Date of Order</th><th>Label</th><th>Download</th><th>Date of Order</th><th colspan="2">Download</th></tr>
+      <tr><td>FY-2024-25</td><td>06/03/2024</td><td>Tariff order 2024-25</td>
+          <td><a href="/u/ARR_Order_2024-25.pdf"><img src="i.png"></a></td>
+          <td>25/03/2026</td><td colspan="2"><a href="/u/TU 2024 25.pdf"><img src="i.png"></a></td></tr>
+      <tr><td>FY-2022-23</td><td>31/03/2022</td><td>English</td>
+          <td><a href="/u/DISCOM-MYT-Order-FY-2022-23-to-FY-2026-27.pdf"></a></td><td></td><td colspan="2"></td></tr>
+    </table>"""
+    group = ["MPPKVVCL", "MPMKVVCL"]
+    props = propose_from_html(
+        page, "https://mperc.in/page/x", licensees={c: [] for c in group}, default_group=group, since="FY2024-25"
+    )
+    got = {(p["url"].rsplit("/", 1)[-1], p["document_kind"], p["fiscal_year"], p["utility_code"]) for p in props}
+    assert got == {
+        ("ARR_Order_2024-25.pdf", "tariff_order", "FY2024-25", "MPPKVVCL"),
+        ("ARR_Order_2024-25.pdf", "tariff_order", "FY2024-25", "MPMKVVCL"),
+        ("TU%202024%2025.pdf", "arr_true_up_order", "FY2024-25", "MPPKVVCL"),  # spaces encoded
+        ("TU%202024%2025.pdf", "arr_true_up_order", "FY2024-25", "MPMKVVCL"),
+        ("DISCOM-MYT-Order-FY-2022-23-to-FY-2026-27.pdf", "myt_order", "", "MPPKVVCL"),
+        ("DISCOM-MYT-Order-FY-2022-23-to-FY-2026-27.pdf", "myt_order", "", "MPMKVVCL"),
+    }, got
+    tu = next(p for p in props if "TU" in p["url"])
+    assert tu["title"].startswith("True Up Order FY-2024-25")
+    # what is listed beside orders and is not one (UERC)
+    for title in (
+        "Salient features of Tariff Orders for FY 2024-25. 1. UPCL",
+        "Admittance Order in the matter of UPCL's Petition for True up of FY 2022-23",
+        "Order in the matter of Petition for review of the Commission's Order dated 28.03.2024",
+        "Interim Order on the ARR petition of UPCL",
+    ):
+        assert guess_kind(title)[0] is None, title
+    assert guess_kind("Tariff Orders for FY 2025-26. 1. UPCL")[0] == "tariff_order"

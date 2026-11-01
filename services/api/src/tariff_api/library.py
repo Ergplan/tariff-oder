@@ -15,7 +15,7 @@ import html as html_lib
 import re
 import uuid
 from typing import Any
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin
 
 import httpx
 from sqlalchemy import func, select
@@ -436,6 +436,75 @@ def _fy(a: str, b: str) -> str | None:
     return f"FY{a}-{b[-2:]}"
 
 
+_CELL_ATTR = re.compile(r"<t([dh])\b([^>]*)>(.*?)</t[dh]>", re.I | re.S)
+_GENERIC_HEAD = re.compile(
+    r"^(?:view|download|attach?ments?|date(?:\s+of\s+order)?|s\.?\s*no\.?|sl\.?\s*no\.?|link|file|pdf|)$", re.I
+)
+
+
+def _span(attrs: str, name: str) -> int:
+    m = re.search(rf'{name}\s*=\s*["\']?(\d+)', attrs, re.I)
+    return max(1, min(int(m.group(1)), 50)) if m else 1
+
+
+def header_title(page_html: str, pos: int) -> str | None:
+    """The title of a link that shows no text (an icon), from its table's header: when the
+    link's column sits under a header spanning several columns ("Tariff Order" over Date |
+    View | Download; "True Up Order" over its own), the title is that header, the row's cells
+    under single-column headers ("Period": "FY-2024-25") and the row's cells under the same
+    header.  A true-up linked in a tariff order's row is then a true-up.  None when the table
+    has no such header."""
+    t0 = page_html.rfind("<table", 0, pos)
+    t1 = page_html.find("</table", pos)
+    if t0 < 0:
+        return None
+    table = page_html[t0 : t1 if t1 > 0 else len(page_html)]
+    rel = pos - t0
+    grid: dict[tuple[int, int], tuple[str, int]] = {}
+    head_rows = [
+        r.group(1)
+        for r in _ROW.finditer(table)
+        if re.search(r"<th\b", r.group(1), re.I) and not re.search(r"<td\b", r.group(1), re.I)
+    ]
+    for ri, inner in enumerate(head_rows):
+        col = 0
+        for c in _CELL_ATTR.finditer(inner):
+            while (ri, col) in grid:
+                col += 1
+            cs, rs = _span(c.group(2), "colspan"), _span(c.group(2), "rowspan")
+            for dr in range(rs):
+                for dc in range(cs):
+                    grid[(ri + dr, col + dc)] = (_text(c.group(3)), cs)
+            col += cs
+    if not grid:
+        return None
+    ncols = max(c for _, c in grid) + 1
+    name: dict[int, tuple[str, int]] = {}
+    for c in range(ncols):
+        for ri in range(len(head_rows)):
+            label, cs = grid.get((ri, c), ("", 1))
+            if (cs >= ncols and ncols > 1) or _GENERIC_HEAD.match(label.strip()):
+                continue
+            name[c] = (label, cs)
+            break
+    row = next((r for r in _ROW.finditer(table) if r.start(1) <= rel < r.end(1)), None)
+    if row is None:
+        return None
+    cells: list[tuple[int, str, bool]] = []
+    col = 0
+    for c in _CELL_ATTR.finditer(row.group(1)):
+        here = row.start(1) + c.start() <= rel < row.start(1) + c.end()
+        cells.append((col, _text(c.group(3)), here))
+        col += _span(c.group(2), "colspan")
+    at = next((c for c, _t, here in cells if here), None)
+    if at is None or at not in name or name[at][1] < 2:
+        return None
+    group = name[at][0]
+    shared = [t for c, t, _h in cells if t and c in name and name[c][1] == 1]
+    own = [t for c, t, _h in cells if t and c in name and name[c][0] == group and t.lower() not in _LINK_WORDS]
+    return " ".join([group, *shared, *own])
+
+
 def guess_kind(text: str) -> tuple[str | None, list[str]]:
     """The library kind a listing title names, with notes.  An order that cites the petition
     it decides ("Tariff Order ... in Petition no 2039/2023") is an order; a corrigendum is
@@ -444,19 +513,23 @@ def guess_kind(text: str) -> tuple[str | None, list[str]]:
     notes: list[str] = []
     if re.search(
         r"press\s+(?:release|note)|tariff\s+(?:chart|card|schedule\s+summary)|public\s+notice|"
-        r"schedule\s+of\s+hearing|\bhearing\s+notice|\bsummary\s+of\b",
+        r"schedule\s+of\s+hearing|\bhearing\s+notice|\bsummary\s+of\b|salient\s+features|\bhighlights\b",
         t,
     ):
-        return None, ["not the order itself (a press release, chart, notice or summary)"]
+        return None, ["not the order itself (a press release, chart, notice, summary or salient features)"]
+    if re.search(r"\badmittance\s+order|\binterim\s+order|\bdaily\s+order|\brecord\s+of\s+proceedings", t):
+        return None, ["a procedural order (admittance, interim, daily), not the decision"]
     if re.search(r"\border\s+(?:along\s+)?with\s+(?:the\s+)?(?:corrigend|addend|errat)", t):
         notes.append("the order with its corrigendum")
     elif re.search(r"\bcorrigend|\baddend|\berrat", t):
         return None, ["corrigendum or addendum: record it with the order it corrects"]
     if re.search(
-        r"^\W*review\s+(?:order|petition)\b|\breview\s+(?:of|against)\s+(?:the\s+)?order\b|seeking\s+review", t
+        r"^\W*review\s+(?:order|petition)\b|\breview\s+(?:of|against)\s+(?:the\s+)?(?:\w+.s\s+|impugned\s+)?order\b|"
+        r"seeking\s+review|petition\s+for\s+review",
+        t,
     ):
         return None, ["a review of an order: record it with the order it reviews"]
-    order = re.search(r"\border\b|^\W*(?:approval|determination)\b|\bapproval\s+(?:of|for)\b", t)
+    order = re.search(r"\borders?\b|^\W*(?:approval|determination)\b|\bapproval\s+(?:of|for)\b", t)
     if re.search(r"\bregulations?\b", t) and not order:
         return ("regulation_amendment" if re.search(r"amend", t) else "regulation"), []
     if re.search(r"\bmid[- ]?term\b|\bmtr\b", t):
@@ -531,6 +604,7 @@ def propose_from_html(
     groups: dict[str, list[str]] | None = None,
     listing: str | None = None,
     default_licensee: str | None = None,
+    default_group: list[str] | None = None,
     since: str | None = None,
 ) -> list[dict[str, Any]]:
     """Proposed library entries from a listing page: every link to a PDF with its title (the
@@ -544,21 +618,32 @@ def propose_from_html(
     seen: set[str] = set()
     for m in _HREF.finditer(page_html):
         href = m.group(1) or m.group(2) or m.group(3) or ""
-        url = urljoin(base_url, html_lib.unescape(href.strip()))
-        if not re.search(r"\.pdf(\?|#|$)", url, re.I) or url in seen:
+        # dot segments resolved, spaces and other unsafe characters percent-encoded once
+        url = quote(urljoin(base_url, html_lib.unescape(href.strip())), safe=":/?&=%#~+@;,!$'()*[]")
+        # the same file under another letter case (servers that ignore case) is one document
+        if not re.search(r"\.pdf(\?|#|$)", url, re.I) or url.lower() in seen:
             continue
-        seen.add(url)
+        seen.add(url.lower())
         fname = url.rsplit("/", 1)[-1]
         text = _text(m.group(4))
         if not text or text.lower().endswith(".pdf") or text.lower() in _LINK_WORDS or len(text) < 6:
             row = next((r for r in rows if r[0] <= m.start() < r[1]), None)
             cells = [_text(c) for c in _CELL.findall(row[2])] if row else []
             cells = [c for c in cells if c and not c.lower().endswith(".pdf") and not c.isdigit()]
-            text = max(cells, key=len) if cells else (text or fname)
+            text = header_title(page_html, m.start()) or (max(cells, key=len) if cells else (text or fname))
         text = expand_short_years(text)
         variant, base_title = _variant(text)
         hay = f"{text} {fname}".lower()
-        kind, notes = guess_kind(text if text != fname else f"{text} {fname}")
+        # a link showing no words of its own (an icon, "View") is also known by its file name
+        # ("DISCOM-MYT-Order-FY-2022-23-to-FY-2026-27.pdf") when the name is made of words
+        own = _text(m.group(4))
+        wordy = re.sub(r"[_\-.]+", " ", fname.rsplit(".", 1)[0]) if re.search(r"[a-z]{4}", fname, re.I) else ""
+        if text == fname:
+            kind, notes = guess_kind(f"{text} {fname}")
+        elif (not own or own.lower() in _LINK_WORDS) and wordy:
+            kind, notes = guess_kind(f"{text} {wordy}")
+        else:
+            kind, notes = guess_kind(text)
         named = decides(text, kind)
         years = sorted({fy for mm in _FY_ANY.finditer(hay) if (fy := _fy(mm.group(1), mm.group(2)))})
         main = [d["fy"] for d in named if d["value_type"] in ("approved", "petitioned")]
@@ -596,6 +681,11 @@ def propose_from_html(
         elif len(hits) > 1 and kind in ("tariff_order", "arr_true_up_order", "myt_order", "mid_term_review"):
             targets = list(hits)
             notes.append(f"one order for {len(hits)} licensees ({', '.join(hits)}); proposed for each")
+        elif not hits and default_group and kind not in ("regulation", "regulation_amendment", None):
+            targets = [c for c in default_group if c in licensees] or [None]
+            notes.append(
+                f"licensees {', '.join(c for c in targets if c)} taken from the listing page (one order for them all)"
+            )
         elif not hits and default_licensee and kind not in ("regulation", "regulation_amendment", None):
             targets = [default_licensee]
             notes.append(f"licensee {default_licensee} taken from the listing page (the title names none)")
