@@ -192,6 +192,16 @@ def _utility(s, code: str) -> Utility:
     return utility_by_code(s, code)
 
 
+@router.get("/arr/readings", response_model=dict, dependencies=[Depends(require_analyst)])
+def arr_readings() -> dict:
+    """Every order whose ARR is being read, by state and commission, with its preview, its
+    review counts and the next human step (increment 49).  Read-only."""
+    from ..arr import board
+
+    with session_scope() as s:
+        return board.readings(s)
+
+
 @router.get("/arr/mappings/{commission}/workbench", response_model=dict, dependencies=[Depends(require_analyst)])
 def mapping_workbench(commission: str) -> dict:
     """What the commission's mapping does not place yet, across its read orders, with the
