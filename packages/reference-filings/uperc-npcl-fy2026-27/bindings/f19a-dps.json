@@ -1,0 +1,12 @@
+{
+ "sheet": "F19A-O&M Normative",
+ "unit": "INR_crore",
+ "note": "Normative dps (row 13): last year's figure (row 13@-1) escalated by the year's WPI escalation factor (F18_O&M_WPI row 23).",
+ "inputs": {
+  "prior:om_component": "13@-1",
+  "assumption:om_escalation": "F18_O&M_WPI!23"
+ },
+ "outputs": {
+  "om_component": 13
+ }
+}

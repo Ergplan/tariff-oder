@@ -1,0 +1,21 @@
+{
+ "sheet": "F19A-O&M Normative",
+ "unit": "INR_crore",
+ "note": "Totals: A&G (15) from rows 10–14, gross (19) from employee (9), A&G and R&M (18), net (21) after expenses capitalised (20), the additional R&M (22), the total normative O&M (23).",
+ "inputs": {
+  "record:om_employee": 9,
+  "record:om_ag": 10,
+  "record:om_finance_charges": 12,
+  "record:om_dps_carrying": 13,
+  "record:om_gst": 14,
+  "record:om_rm": 18,
+  "record:om_capitalised": 20
+ },
+ "outputs": {
+  "om_ag_total": 15,
+  "om_gross": 19,
+  "om_net": 21,
+  "om_additional_rm": 22,
+  "om_total_normative": 23
+ }
+}

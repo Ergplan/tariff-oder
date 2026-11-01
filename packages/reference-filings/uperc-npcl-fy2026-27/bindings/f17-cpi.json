@@ -1,0 +1,29 @@
+{
+ "sheet": "F17_O&M_CPI",
+ "unit": "number",
+ "note": "The CPI index: the twelve months (8–19) give the annual average (21); with last year's average (21@-1) its increase (22); the three preceding increases (22@-1..-3) the escalation factor (23).",
+ "inputs": {
+  "record:index_apr": 8,
+  "record:index_may": 9,
+  "record:index_jun": 10,
+  "record:index_jul": 11,
+  "record:index_aug": 12,
+  "record:index_sep": 13,
+  "record:index_oct": 14,
+  "record:index_nov": 15,
+  "record:index_dec": 16,
+  "record:index_jan": 17,
+  "record:index_feb": 18,
+  "record:index_mar": 19,
+  "prior:index_annual_average": "21@-1",
+  "record:index_increase_lag1": "22@-1",
+  "record:index_increase_lag2": "22@-2",
+  "record:index_increase_lag3": "22@-3"
+ },
+ "units": "the increases are fractions printed as percentages; the cells carry their own unit",
+ "outputs": {
+  "index_annual_average": 21,
+  "index_increase": 22,
+  "om_escalation": 23
+ }
+}

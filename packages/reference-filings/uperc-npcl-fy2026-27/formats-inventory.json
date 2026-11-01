@@ -546,8 +546,8 @@
    "title": "Power Procurement (in MWs)",
    "unit": null,
    "read_by_generic_reader": true,
-   "rows": 10,
-   "values": 30,
+   "rows": 13,
+   "values": 39,
    "years": [
     "FY2024-25",
     "FY2025-26",
@@ -771,19 +771,19 @@
    "title": "Consumer Price Inflation",
    "unit": null,
    "read_by_generic_reader": true,
-   "rows": 12,
-   "values": 62,
+   "rows": 15,
+   "values": 92,
    "years": [
     "FY2019-20",
     "FY2020-21",
     "FY2021-22",
     "FY2022-23",
     "FY2023-24",
+    "FY2024-25",
     "FY2025-26",
     "FY2026-27"
    ],
    "notes": [
-    "column 7 (FY2024-25, True -Up): no voice; skipped",
     "column 10 (FY2026-27, no words): no voice; skipped",
     "column 11 (FY2026-27, no words): no voice; skipped",
     "column 12 (FY2026-27, no words): no voice; skipped",
@@ -796,18 +796,18 @@
    "title": "OFFICE OF THE ECONOMIC ADVISER",
    "unit": null,
    "read_by_generic_reader": true,
-   "rows": 12,
-   "values": 62,
+   "rows": 15,
+   "values": 92,
    "years": [
     "FY2019-20",
     "FY2020-21",
     "FY2021-22",
     "FY2022-23",
     "FY2023-24",
+    "FY2024-25",
     "FY2025-26"
    ],
    "notes": [
-    "column 7 (FY2024-25, True- Up): no voice; skipped",
     "column 10 (FY2025-26, no words): no voice; skipped",
     "column 11 (FY2025-26, no words): no voice; skipped"
    ]
@@ -817,10 +817,16 @@
    "form": null,
    "title": "F19A-O&M Normative",
    "unit": null,
-   "read_by_generic_reader": false,
-   "rows": 0,
-   "values": 0,
-   "years": [],
+   "read_by_generic_reader": true,
+   "rows": 12,
+   "values": 60,
+   "years": [
+    "FY2020-21",
+    "FY2021-22",
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25"
+   ],
    "notes": [
     "column 3 (FY2015-16, (a)): no voice; skipped",
     "column 4 (FY2016-17, (b)): no voice; skipped",
@@ -830,11 +836,6 @@
     "column 8 (FY2017-18, (f) = [(a)+(b)+(c)+ (d)+(e)]/5 \n(Average of Gross O&M expenses)): no voice; skipped",
     "column 9 (FY2018-19, g= f*(1+escalation factor for FY 2018-19)): no voice; skipped",
     "column 10 (FY2019-20, h= g*(1+escalation factor for FY 2019-20)): no voice; skipped",
-    "column 11 (FY2020-21, Normative): no voice; skipped",
-    "column 12 (FY2021-22, Normative): no voice; skipped",
-    "column 13 (FY2022-23, Normative): no voice; skipped",
-    "column 14 (FY2023-24, Normative): no voice; skipped",
-    "column 15 (FY2024-25, Normative): no voice; skipped",
     "column 16 (FY2024-25, no words): no voice; skipped"
    ]
   },
@@ -1015,7 +1016,7 @@
    "title": "Working Capital Requirements",
    "unit": "INR_crore",
    "read_by_generic_reader": true,
-   "rows": 29,
+   "rows": 30,
    "values": 170,
    "years": [
     "FY2022-23",
@@ -1210,8 +1211,8 @@
    "title": "Details of Physical statistics of the network",
    "unit": null,
    "read_by_generic_reader": true,
-   "rows": 16,
-   "values": 64,
+   "rows": 17,
+   "values": 68,
    "years": [
     "FY2023-24",
     "FY2024-25",

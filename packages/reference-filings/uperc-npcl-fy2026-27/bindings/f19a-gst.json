@@ -1,0 +1,12 @@
+{
+ "sheet": "F19A-O&M Normative",
+ "unit": "INR_crore",
+ "note": "Normative gst (row 14): last year's figure (row 14@-1) escalated by the year's WPI escalation factor (F18_O&M_WPI row 23).",
+ "inputs": {
+  "prior:om_component": "14@-1",
+  "assumption:om_escalation": "F18_O&M_WPI!23"
+ },
+ "outputs": {
+  "om_component": 14
+ }
+}

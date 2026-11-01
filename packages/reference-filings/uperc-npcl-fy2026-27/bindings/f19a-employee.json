@@ -1,0 +1,12 @@
+{
+ "sheet": "F19A-O&M Normative",
+ "unit": "INR_crore",
+ "note": "Normative employee (row 9): last year's figure (row 9@-1) escalated by the year's CPI escalation factor (F17_O&M_CPI row 23).",
+ "inputs": {
+  "prior:om_component": "9@-1",
+  "assumption:om_escalation": "F17_O&M_CPI!23"
+ },
+ "outputs": {
+  "om_component": 9
+ }
+}

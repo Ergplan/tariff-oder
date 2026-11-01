@@ -1005,6 +1005,19 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 60 (2026-11-01): normative O&M — the CPI / WPI escalation chain.**  9 draft rules:
+  the annual price index (average of twelve months), its increase, the escalation factor (average
+  of the three preceding increases), each O&M component escalated from the previous year (employee
+  on CPI; A&G, finance charges, DPS carrying cost, GST and R&M on WPI), the A&G total, gross and net
+  O&M, the additional R&M for standards of performance (50 %) and the total.  Bindings can reach
+  earlier columns (`"22@-1"`: the same row a year before) and, across formats, match a year printed
+  in another voice when that format has one column for it.  **NPCL: F17 CPI 15 / 15 and F18 WPI 15 /
+  15 of what the sheets can compute; F19A's six components 24 / 24 escalations and its totals 25 /
+  25 — nothing differs.**  Blocked only where the sheet lacks the inputs.  Two findings: NPCL's F18
+  prints its ARR column as "FY 2025-26" (A33, kept as printed, never guessed); and the reader's
+  displayed value rounded half-to-even where spreadsheets show half-up (A34, fixed — found by this
+  reproduction).  The reader also tells a serial by its shape, not its length ("May" is a label).
+
   **Increment 59 (2026-11-01): the reference rates from the SBI MCLR revisions.**  5 draft rules:
   per MCLR period (a category) its days and rate × days; the year's day-weighted MCLR; the true-up
   working-capital rate (+2.5 %, to FY2024-25) and the normative-loan rate (+1 %, from FY2025-26).
@@ -1782,6 +1795,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 60 (2026-11-01): 410 passed** (the reproduction regression pins F17, F18 and F19A).  Ruff and format clean.
 - **Increment 59 (2026-11-01): 410 passed** (+1 unit: the reference rates from NPCL's MCLR revisions).  Ruff and format clean.
 - **Increment 58 (2026-11-01): 409 passed** (the reproduction regression now pins F27's results column by column).  Ruff and format clean.
 - **Increment 57 (2026-11-01): 409 passed** (+3 unit: year-block reading; per-category rules, sums and their guards; NPCL's depreciation workings reproduced and tied to the filed ARR).  Ruff and format clean.

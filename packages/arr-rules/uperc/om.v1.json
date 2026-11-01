@@ -1,0 +1,406 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Normative O&M (UPERC formats F17 CPI, F18 WPI, F19A): the index, its increase, the escalation factor, each component escalated from the previous year, and the totals.",
+ "rules": [
+  {
+   "id": "uperc.om.index_average",
+   "version": 1,
+   "status": "draft",
+   "title": "Price index, average of the year's twelve months",
+   "output": "index_annual_average",
+   "unit": "number",
+   "schedule": "R-SCH-5",
+   "formula": "avg(apr, may, jun, jul, aug, sep, oct, nov, dec, jan, feb, mar)",
+   "inputs": {
+    "apr": {
+     "unit": "number",
+     "source": "record:index_apr"
+    },
+    "may": {
+     "unit": "number",
+     "source": "record:index_may"
+    },
+    "jun": {
+     "unit": "number",
+     "source": "record:index_jun"
+    },
+    "jul": {
+     "unit": "number",
+     "source": "record:index_jul"
+    },
+    "aug": {
+     "unit": "number",
+     "source": "record:index_aug"
+    },
+    "sep": {
+     "unit": "number",
+     "source": "record:index_sep"
+    },
+    "oct": {
+     "unit": "number",
+     "source": "record:index_oct"
+    },
+    "nov": {
+     "unit": "number",
+     "source": "record:index_nov"
+    },
+    "dec": {
+     "unit": "number",
+     "source": "record:index_dec"
+    },
+    "jan": {
+     "unit": "number",
+     "source": "record:index_jan"
+    },
+    "feb": {
+     "unit": "number",
+     "source": "record:index_feb"
+    },
+    "mar": {
+     "unit": "number",
+     "source": "record:index_mar"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the monthly CPI (industrial workers) or WPI as published, April to March"
+  },
+  {
+   "id": "uperc.om.index_increase",
+   "version": 1,
+   "status": "draft",
+   "title": "Price index, increase over the previous year",
+   "output": "index_increase",
+   "unit": "fraction",
+   "schedule": "R-SCH-5",
+   "formula": "(average - previous) / previous",
+   "inputs": {
+    "average": {
+     "unit": "number",
+     "source": "rule:index_annual_average"
+    },
+    "previous": {
+     "unit": "number",
+     "source": "prior:index_annual_average"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om.escalation",
+   "version": 1,
+   "status": "draft",
+   "title": "Escalation factor: the average increase of the three preceding years",
+   "output": "om_escalation",
+   "unit": "fraction",
+   "schedule": "R-SCH-5",
+   "formula": "avg(lag1, lag2, lag3)",
+   "inputs": {
+    "lag1": {
+     "unit": "fraction",
+     "source": "record:index_increase_lag1"
+    },
+    "lag2": {
+     "unit": "fraction",
+     "source": "record:index_increase_lag2"
+    },
+    "lag3": {
+     "unit": "fraction",
+     "source": "record:index_increase_lag3"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "as NPCL's F17 / F18 compute it; in a projected year the increase is taken as the escalation itself"
+  },
+  {
+   "id": "uperc.om.escalated",
+   "version": 1,
+   "status": "draft",
+   "title": "A normative O&M component escalated from the previous year",
+   "output": "om_component",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "previous * (1 + escalation)",
+   "inputs": {
+    "previous": {
+     "unit": "INR_crore",
+     "source": "prior:om_component"
+    },
+    "escalation": {
+     "unit": "fraction",
+     "source": "assumption:om_escalation",
+     "note": "CPI-based for employee expenses, WPI-based for A&G, finance charges, DPS carrying cost, GST and R&M"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om.ag_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Total A&G expenses",
+   "output": "om_ag_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "ag + finance + dps + gst",
+   "inputs": {
+    "ag": {
+     "unit": "INR_crore",
+     "source": "record:om_ag"
+    },
+    "finance": {
+     "unit": "INR_crore",
+     "source": "record:om_finance_charges"
+    },
+    "dps": {
+     "unit": "INR_crore",
+     "source": "record:om_dps_carrying"
+    },
+    "gst": {
+     "unit": "INR_crore",
+     "source": "record:om_gst"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om.gross",
+   "version": 1,
+   "status": "draft",
+   "title": "Gross O&M expenses",
+   "output": "om_gross",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "employee + ag_total + rm",
+   "inputs": {
+    "employee": {
+     "unit": "INR_crore",
+     "source": "record:om_employee"
+    },
+    "ag_total": {
+     "unit": "INR_crore",
+     "source": "rule:om_ag_total"
+    },
+    "rm": {
+     "unit": "INR_crore",
+     "source": "record:om_rm"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om.net",
+   "version": 1,
+   "status": "draft",
+   "title": "Net O&M expenses, after expenses capitalised",
+   "output": "om_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "gross + capitalised",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:om_gross"
+    },
+    "capitalised": {
+     "unit": "INR_crore",
+     "source": "record:om_capitalised",
+     "note": "the employee and A&G expenses capitalised, printed negative"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om.additional_rm",
+   "version": 1,
+   "status": "draft",
+   "title": "Additional R&M for standards of performance",
+   "output": "om_additional_rm",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "rm * share",
+   "inputs": {
+    "rm": {
+     "unit": "INR_crore",
+     "source": "record:om_rm"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "50",
+     "note": "50 % of the normative R&M, as NPCL's F19A applies it from FY2020-21; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Total normative O&M expenses",
+   "output": "om_total_normative",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "net + additional",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:om_net"
+    },
+    "additional": {
+     "unit": "INR_crore",
+     "source": "rule:om_additional_rm"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — normative O&M expenses escalated by the CPI / WPI index",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.OM"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "sheet": "F19A-O&M Normative",
+ "unit": "INR_crore",
+ "note": "Normative finance (row 12): last year's figure (row 12@-1) escalated by the year's WPI escalation factor (F18_O&M_WPI row 23).",
+ "inputs": {
+  "prior:om_component": "12@-1",
+  "assumption:om_escalation": "F18_O&M_WPI!23"
+ },
+ "outputs": {
+  "om_component": 12
+ }
+}

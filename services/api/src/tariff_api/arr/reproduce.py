@@ -70,7 +70,16 @@ def reproduce(
     rows = {r["row"]: r for r in sheet["rows"]}
     others = {name: {r["row"]: r for r in sh["rows"]} for name, sh in (sheets or {}).items()}
 
+    def offset_of(ref: int | str) -> tuple[int | str, int]:
+        """``"22@-1"`` / ``"F17_O&M_CPI!23@-2"``: the row, and how many columns to the left (the
+        same row of an earlier year: last year's closing, the three years an average spans)."""
+        if isinstance(ref, str) and "@" in ref:
+            base, _, k = ref.rpartition("@")
+            return (int(base) if base.isdigit() else base), int(k)
+        return ref, 0
+
     def where(ref: int | str) -> tuple[dict[int, dict], int, bool]:
+        ref, _ = offset_of(ref)
         if isinstance(ref, int):
             return rows, ref, True
         name, _, n = str(ref).rpartition("!")
@@ -96,11 +105,29 @@ def reproduce(
 
     def cell(ref: int | str, col: tuple[str, str, str]) -> dict | None:
         table, n, own = where(ref)
+        _, k = offset_of(ref)
+        if k:
+            # the column ``k`` places from this one, in the sheet's own column order
+            ordered = sheet_columns if own else other_columns(ref)
+            if col not in ordered and not own:
+                col = next((c for c in ordered if c[:2] == col[:2]), col)
+            if col not in ordered or not 0 <= ordered.index(col) + k < len(ordered):
+                return None
+            col = ordered[ordered.index(col) + k]
+            own = True if own else own
+            cells = table[n]["cells"]
+            return next((c for c in cells if (c["fiscal_year"], c["voice"], c["words"]) == col), None)
         cells = table[n]["cells"]
         exact = next((c for c in cells if (c["fiscal_year"], c["voice"], c["words"]) == col), None)
         if exact or own:
             return exact
-        return next((c for c in cells if (c["fiscal_year"], c["voice"]) == col[:2]), None)
+        same_voice = next((c for c in cells if (c["fiscal_year"], c["voice"]) == col[:2]), None)
+        if same_voice:
+            return same_voice
+        # another format may print the same year in another voice (F17's index "Trued-Up" beside
+        # F19A's "Normative"): the year alone, only when the other format has one column for it
+        of_year = [c for c in cells if c["fiscal_year"] == col[0]]
+        return of_year[0] if len(of_year) == 1 else None
 
     def row_of(ref: int | str) -> dict:
         table, n, _ = where(ref)
@@ -110,6 +137,19 @@ def reproduce(
         """The non-rule sources the year's rule for ``output`` read directly."""
         rule = next((r for r in rules if r.output == output and r.id == ev.results[output].rule), None)
         return {s.source for s in rule.inputs.values()} if rule else set()
+
+    sheet_columns = columns
+
+    def other_columns(ref: int | str) -> list[tuple[str, str, str]]:
+        base, _ = offset_of(ref)
+        name = str(base).rpartition("!")[0]
+        seen: list[tuple[str, str, str]] = []
+        for r in (sheets or {})[name]["rows"]:
+            for c in r["cells"]:
+                key = (c["fiscal_year"], c["voice"], c["words"])
+                if key not in seen:
+                    seen.append(key)
+        return seen
 
     out = FormatReproduction(sheet["sheet"], len(columns))
     sets: dict[str, RuleSet | RuleError] = {}

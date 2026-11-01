@@ -24,7 +24,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from decimal import Decimal, InvalidOperation
+from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 from typing import Any
 
 from .taxonomy import Mapping, Placer, Taxonomy
@@ -35,10 +35,15 @@ _FY = re.compile(r"(?:FY\s*'?)?((?:20)?\d{2})\s*[-–/]\s*(\d{2}|20\d{2})\b", re
 # printed column words → (voice, restated?).  Order matters: the first match wins.
 COLUMN_VOICES: list[tuple[re.Pattern[str], str, bool]] = [
     (re.compile(r"trued\s*-?\s*up", re.I), "final_true_up", True),
+    # "True-Up" printed over a true-up year's own column (F17: the index values of that year) — the
+    # year's actuals; the restated decision reads "Trued-Up"
+    (re.compile(r"^\s*true\s*-?\s*up\s*$", re.I), "actual", False),
     (re.compile(r"provisional", re.I), "provisional_true_up", True),
     (re.compile(r"approved", re.I), "approved", True),
     (re.compile(r"audited|actual", re.I), "actual", False),
     (re.compile(r"claimed|estimated|projected|proposed|petitioned", re.I), "petitioned", False),
+    # the norm as the petitioner computes it (UPERC F19A "Normative"): the petitioner's figure
+    (re.compile(r"normative", re.I), "petitioned", False),
 ]
 INCLUDED = re.compile(r"^\s*incl(uded)?\.?\b", re.I)
 NOT_APPLICABLE = re.compile(r"^\s*(na|n\.a\.?|not applicable|-+)\s*$", re.I)
@@ -87,6 +92,11 @@ def column_voice(words: str) -> tuple[str | None, bool]:
         if pat.search(words or ""):
             return v, restated
     return None, False
+
+
+_SERIAL = re.compile(
+    r"^(?:[A-Za-z]{1,2}\.?|\d{1,3}[.)]?|[ivxIVX]{1,5}[.)]?|[A-Z]\s+[a-z]|[A-Z]\s*\+\s*[A-Z]|\(?[a-z]\))$"
+)
 
 
 def _text(v: Any) -> str:
@@ -254,8 +264,10 @@ def read_sheet(
         lead = [_text(v) for v in r[:first_data] if _text(v) and _number(v) is None]
         if not lead and r and _number(r[0]) is not None:
             lead = []
-        serial = " ".join(t for t in lead if len(t) <= 4)
-        texts = [t for t in lead if len(t) > 4]
+        # a serial by its shape ("A", "1.", "ii", "B a", "C+D"), not its length: "May" is a label
+        serials = [t for t in lead if _SERIAL.match(t)]
+        texts = [t for t in lead if not _SERIAL.match(t)]
+        serial = " ".join(serials)
         label = max(texts, key=len) if texts else ""
         if not label:
             continue
@@ -271,7 +283,12 @@ def read_sheet(
                 pct = "%" in fmt
                 v = n * 100 if pct else n
                 places = decimals_of(fmt)
-                shown = _plain(v.quantize(Decimal(1).scaleb(-places))) if places is not None else None
+                # as the spreadsheet displays it: half away from zero (152.525 shows as 152.53)
+                shown = (
+                    _plain(v.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP))
+                    if places is not None
+                    else None
+                )
                 u = "percent" if pct else (lu or unit)
                 cells.append(
                     Cell(

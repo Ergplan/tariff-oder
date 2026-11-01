@@ -235,7 +235,7 @@
     },
     {
      "row": 11,
-     "serial": "B %",
+     "serial": "B",
      "label": "Percentage",
      "line_code": null,
      "matched": null,
@@ -664,7 +664,7 @@
     },
     {
      "row": 17,
-     "serial": "E %",
+     "serial": "E",
      "label": "Percentage",
      "line_code": null,
      "matched": null,
@@ -1367,7 +1367,7 @@
     },
     {
      "row": 23,
-     "serial": "J %",
+     "serial": "J",
      "label": "Inter State Transmission Losses",
      "line_code": null,
      "matched": null,
@@ -3044,7 +3044,7 @@
     },
     {
      "row": 21,
-     "serial": "aii",
+     "serial": "",
      "label": "Cost of Power Procurement Expense Profit/(Loss) Sharing",
      "line_code": "C.PP",
      "matched": "cost of power",
@@ -3153,7 +3153,7 @@
     },
     {
      "row": 22,
-     "serial": "aiii",
+     "serial": "",
      "label": "Arrears of power purchase",
      "line_code": "C.PP",
      "matched": "power purchase",
@@ -3441,7 +3441,7 @@
     },
     {
      "row": 24,
-     "serial": "bii",
+     "serial": "",
      "label": "Arrears of Transmission and Load Dispatch Charges",
      "line_code": null,
      "matched": null,
@@ -8920,6 +8920,147 @@
      "flags": []
     },
     {
+     "row": 10,
+     "serial": "",
+     "label": "May",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Estimated Long Term",
+       "restated": false,
+       "value": "168.94120480465722",
+       "displayed": "169",
+       "state": "value",
+       "printed": "168.94120480465722",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Projected Long Term",
+       "restated": false,
+       "value": "165.6682742428361",
+       "displayed": "166",
+       "state": "value",
+       "printed": "165.6682742428361",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Projected Long Term",
+       "restated": false,
+       "value": "245.50471562727523",
+       "displayed": "246",
+       "state": "value",
+       "printed": "245.50471562727523",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 11,
+     "serial": "",
+     "label": "June",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Estimated Long Term",
+       "restated": false,
+       "value": "175.45567972726386",
+       "displayed": "175",
+       "state": "value",
+       "printed": "175.45567972726386",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Projected Long Term",
+       "restated": false,
+       "value": "167.13427688651956",
+       "displayed": "167",
+       "state": "value",
+       "printed": "167.13427688651956",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Projected Long Term",
+       "restated": false,
+       "value": "256.38359606205785",
+       "displayed": "256",
+       "state": "value",
+       "printed": "256.38359606205785",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 12,
+     "serial": "",
+     "label": "July",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Estimated Long Term",
+       "restated": false,
+       "value": "169.0900977463985",
+       "displayed": "169",
+       "state": "value",
+       "printed": "169.0900977463985",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Projected Long Term",
+       "restated": false,
+       "value": "162.66553111592853",
+       "displayed": "163",
+       "state": "value",
+       "printed": "162.66553111592853",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Projected Long Term",
+       "restated": false,
+       "value": "257.61771925046367",
+       "displayed": "258",
+       "state": "value",
+       "printed": "257.61771925046367",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
      "row": 13,
      "serial": "",
      "label": "August",
@@ -9345,6 +9486,9 @@
    ],
    "unplaced": [
     "April",
+    "May",
+    "June",
+    "July",
     "August",
     "September",
     "October",
@@ -12307,6 +12451,13 @@
      "restated": true
     },
     {
+     "index": 6,
+     "fiscal_year": "FY2024-25",
+     "words": "True -Up",
+     "voice": "actual",
+     "restated": false
+    },
+    {
      "index": 7,
      "fiscal_year": "FY2025-26",
      "words": "Estimated",
@@ -12389,6 +12540,267 @@
        "printed": "386.496",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "401.472",
+       "displayed": "401.47",
+       "state": "value",
+       "printed": "401.472",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 9,
+     "serial": "",
+     "label": "May",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2019-20",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "314",
+       "displayed": "314",
+       "state": "value",
+       "printed": "314",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "330",
+       "displayed": "330",
+       "state": "value",
+       "printed": "330",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "347.328",
+       "displayed": "347.33",
+       "state": "value",
+       "printed": "347.328",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "371.52",
+       "displayed": "371.52",
+       "state": "value",
+       "printed": "371.52",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "387.936",
+       "displayed": "387.94",
+       "state": "value",
+       "printed": "387.936",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "402.912",
+       "displayed": "402.91",
+       "state": "value",
+       "printed": "402.912",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 10,
+     "serial": "",
+     "label": "June",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2019-20",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "316",
+       "displayed": "316",
+       "state": "value",
+       "printed": "316",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "332",
+       "displayed": "332",
+       "state": "value",
+       "printed": "332",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "350.496",
+       "displayed": "350.5",
+       "state": "value",
+       "printed": "350.496",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "372.09599999999995",
+       "displayed": "372.1",
+       "state": "value",
+       "printed": "372.09599999999995",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "392.832",
+       "displayed": "392.83",
+       "state": "value",
+       "printed": "392.832",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "407.232",
+       "displayed": "407.23",
+       "state": "value",
+       "printed": "407.232",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 11,
+     "serial": "",
+     "label": "July",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2019-20",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "319",
+       "displayed": "319",
+       "state": "value",
+       "printed": "319",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "336",
+       "displayed": "336",
+       "state": "value",
+       "printed": "336",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "353.664",
+       "displayed": "353.66",
+       "state": "value",
+       "printed": "353.664",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "374.112",
+       "displayed": "374.11",
+       "state": "value",
+       "printed": "374.112",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "402.33599999999996",
+       "displayed": "402.34",
+       "state": "value",
+       "printed": "402.33599999999996",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "410.97599999999994",
+       "displayed": "410.98",
+       "state": "value",
+       "printed": "410.97599999999994",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -12458,6 +12870,18 @@
        "displayed": "400.9",
        "state": "value",
        "printed": "400.89599999999996",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "410.688",
+       "displayed": "410.69",
+       "state": "value",
+       "printed": "410.688",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -12531,6 +12955,18 @@
        "printed": "396",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "412.704",
+       "displayed": "412.7",
+       "state": "value",
+       "printed": "412.704",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -12600,6 +13036,18 @@
        "displayed": "398.59",
        "state": "value",
        "printed": "398.592",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "416.15999999999997",
+       "displayed": "416.16",
+       "state": "value",
+       "printed": "416.15999999999997",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -12673,6 +13121,18 @@
        "printed": "400.60799999999995",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "416.15999999999997",
+       "displayed": "416.16",
+       "state": "value",
+       "printed": "416.15999999999997",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -12742,6 +13202,18 @@
        "displayed": "399.74",
        "state": "value",
        "printed": "399.744",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "413.85599999999994",
+       "displayed": "413.86",
+       "state": "value",
+       "printed": "413.85599999999994",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -12815,6 +13287,18 @@
        "printed": "400.032",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "412.41599999999994",
+       "displayed": "412.42",
+       "state": "value",
+       "printed": "412.41599999999994",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -12884,6 +13368,18 @@
        "displayed": "400.9",
        "state": "value",
        "printed": "400.89599999999996",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "411.264",
+       "displayed": "411.26",
+       "state": "value",
+       "printed": "411.264",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -12957,6 +13453,18 @@
        "printed": "400.032",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "411.84",
+       "displayed": "411.84",
+       "state": "value",
+       "printed": "411.84",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -13028,6 +13536,18 @@
        "printed": "397.20000000000005",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "410.63999999999993",
+       "displayed": "410.64",
+       "state": "value",
+       "printed": "410.63999999999993",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -13085,6 +13605,18 @@
        "displayed": "5.19",
        "state": "value",
        "printed": "0.05186220922842268",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "3.3836858006042",
+       "displayed": "3.38",
+       "state": "value",
+       "printed": "0.033836858006042",
        "unit": "percent",
        "percent_from_fraction": true
       },
@@ -13172,6 +13704,18 @@
        "percent_from_fraction": true
       },
       {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True -Up",
+       "restated": false,
+       "value": "5.455862815648033",
+       "displayed": "5.46",
+       "state": "value",
+       "printed": "0.05455862815648033",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
        "fiscal_year": "FY2025-26",
        "voice": "petitioned",
        "words": "Estimated",
@@ -13201,6 +13745,9 @@
    ],
    "unplaced": [
     "April",
+    "May",
+    "June",
+    "July",
     "August",
     "September",
     "October",
@@ -13214,7 +13761,6 @@
     "Average of 3 Years"
    ],
    "notes": [
-    "column 7 (FY2024-25, True -Up): no voice; skipped",
     "column 10 (FY2026-27, no words): no voice; skipped",
     "column 11 (FY2026-27, no words): no voice; skipped",
     "column 12 (FY2026-27, no words): no voice; skipped",
@@ -13262,6 +13808,13 @@
      "words": "Trued- Up",
      "voice": "final_true_up",
      "restated": true
+    },
+    {
+     "index": 6,
+     "fiscal_year": "FY2024-25",
+     "words": "True- Up",
+     "voice": "actual",
+     "restated": false
     },
     {
      "index": 7,
@@ -13346,6 +13899,267 @@
        "printed": "151.1",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "152.9",
+       "displayed": "152.9",
+       "state": "value",
+       "printed": "152.9",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 9,
+     "serial": "",
+     "label": "May",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2019-20",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "121.6",
+       "displayed": "121.6",
+       "state": "value",
+       "printed": "121.6",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "117.5",
+       "displayed": "117.5",
+       "state": "value",
+       "printed": "117.5",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "132.9",
+       "displayed": "132.9",
+       "state": "value",
+       "printed": "132.9",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "155",
+       "displayed": "155",
+       "state": "value",
+       "printed": "155",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "149.4",
+       "displayed": "149.4",
+       "state": "value",
+       "printed": "149.4",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "153.5",
+       "displayed": "153.5",
+       "state": "value",
+       "printed": "153.5",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 10,
+     "serial": "",
+     "label": "June",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2019-20",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "121.5",
+       "displayed": "121.5",
+       "state": "value",
+       "printed": "121.5",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "119.3",
+       "displayed": "119.3",
+       "state": "value",
+       "printed": "119.3",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "133.7",
+       "displayed": "133.7",
+       "state": "value",
+       "printed": "133.7",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "155.4",
+       "displayed": "155.4",
+       "state": "value",
+       "printed": "155.4",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "148.9",
+       "displayed": "148.9",
+       "state": "value",
+       "printed": "148.9",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "154",
+       "displayed": "154",
+       "state": "value",
+       "printed": "154",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 11,
+     "serial": "",
+     "label": "July",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2019-20",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "121.3",
+       "displayed": "121.3",
+       "state": "value",
+       "printed": "121.3",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "121",
+       "displayed": "121",
+       "state": "value",
+       "printed": "121",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "135",
+       "displayed": "135",
+       "state": "value",
+       "printed": "135",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "154",
+       "displayed": "154",
+       "state": "value",
+       "printed": "154",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": "152.1",
+       "displayed": "152.1",
+       "state": "value",
+       "printed": "152.1",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "155.3",
+       "displayed": "155.3",
+       "state": "value",
+       "printed": "155.3",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -13415,6 +14229,18 @@
        "displayed": "152.5",
        "state": "value",
        "printed": "152.5",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "154.4",
+       "displayed": "154.4",
+       "state": "value",
+       "printed": "154.4",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -13488,6 +14314,18 @@
        "printed": "151.8",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "154.7",
+       "displayed": "154.7",
+       "state": "value",
+       "printed": "154.7",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -13557,6 +14395,18 @@
        "displayed": "152.5",
        "state": "value",
        "printed": "152.5",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "156.7",
+       "displayed": "156.7",
+       "state": "value",
+       "printed": "156.7",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -13630,6 +14480,18 @@
        "printed": "153.1",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "156.4",
+       "displayed": "156.4",
+       "state": "value",
+       "printed": "156.4",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -13699,6 +14561,18 @@
        "displayed": "151.8",
        "state": "value",
        "printed": "151.8",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "155.7",
+       "displayed": "155.7",
+       "state": "value",
+       "printed": "155.7",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -13772,6 +14646,18 @@
        "printed": "151.2",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "155",
+       "displayed": "155",
+       "state": "value",
+       "printed": "155",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -13841,6 +14727,18 @@
        "displayed": "151.2",
        "state": "value",
        "printed": "151.2",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "154.9",
+       "displayed": "154.9",
+       "state": "value",
+       "printed": "154.9",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -13914,6 +14812,18 @@
        "printed": "151.4",
        "unit": null,
        "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "154.8",
+       "displayed": "154.8",
+       "state": "value",
+       "printed": "154.8",
+       "unit": null,
+       "percent_from_fraction": false
       }
      ],
      "flags": []
@@ -13968,7 +14878,7 @@
        "words": "Trued- Up",
        "restated": true,
        "value": "152.525",
-       "displayed": "152.52",
+       "displayed": "152.53",
        "state": "value",
        "printed": "152.525",
        "unit": null,
@@ -13983,6 +14893,18 @@
        "displayed": "151.42",
        "state": "value",
        "printed": "151.41666666666666",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "154.85833333333335",
+       "displayed": "154.86",
+       "state": "value",
+       "printed": "154.85833333333335",
        "unit": null,
        "percent_from_fraction": false
       }
@@ -14042,6 +14964,18 @@
        "displayed": "-0.73",
        "state": "value",
        "printed": "-0.0072665683221330825",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "2.272977435332983",
+       "displayed": "2.27",
+       "state": "value",
+       "printed": "0.02272977435332983",
        "unit": "percent",
        "percent_from_fraction": true
       },
@@ -14129,6 +15063,18 @@
        "percent_from_fraction": true
       },
       {
+       "fiscal_year": "FY2024-25",
+       "voice": "actual",
+       "words": "True- Up",
+       "restated": false,
+       "value": "7.225921268608788",
+       "displayed": "7.23",
+       "state": "value",
+       "printed": "0.07225921268608788",
+       "unit": "percent",
+       "percent_from_fraction": true
+      },
+      {
        "fiscal_year": "FY2025-26",
        "voice": "petitioned",
        "words": "Estimated",
@@ -14158,6 +15104,9 @@
    ],
    "unplaced": [
     "April",
+    "May",
+    "June",
+    "July",
     "August",
     "September",
     "October",
@@ -14171,11 +15120,937 @@
     "Average of 3 Years"
    ],
    "notes": [
-    "column 7 (FY2024-25, True- Up): no voice; skipped",
     "column 10 (FY2025-26, no words): no voice; skipped",
     "column 11 (FY2025-26, no words): no voice; skipped"
    ],
    "placed": 0
+  },
+  {
+   "sheet": "F19A-O&M Normative",
+   "form": null,
+   "title": "F19A-O&M Normative",
+   "unit": null,
+   "columns": [
+    {
+     "index": 10,
+     "fiscal_year": "FY2020-21",
+     "words": "Normative",
+     "voice": "petitioned",
+     "restated": false
+    },
+    {
+     "index": 11,
+     "fiscal_year": "FY2021-22",
+     "words": "Normative",
+     "voice": "petitioned",
+     "restated": false
+    },
+    {
+     "index": 12,
+     "fiscal_year": "FY2022-23",
+     "words": "Normative",
+     "voice": "petitioned",
+     "restated": false
+    },
+    {
+     "index": 13,
+     "fiscal_year": "FY2023-24",
+     "words": "Normative",
+     "voice": "petitioned",
+     "restated": false
+    },
+    {
+     "index": 14,
+     "fiscal_year": "FY2024-25",
+     "words": "Normative",
+     "voice": "petitioned",
+     "restated": false
+    }
+   ],
+   "rows": [
+    {
+     "row": 9,
+     "serial": "",
+     "label": "Employee Expenses",
+     "line_code": "C.OM.EMPLOYEE",
+     "matched": "employee expenses",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "31.20421295882331",
+       "displayed": "31.2",
+       "state": "value",
+       "printed": "31.20421295882331",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "33.076571384378255",
+       "displayed": "33.08",
+       "state": "value",
+       "printed": "33.076571384378255",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "35.02586060049964",
+       "displayed": "35.03",
+       "state": "value",
+       "printed": "35.02586060049964",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "36.917579646268024",
+       "displayed": "36.92",
+       "state": "value",
+       "printed": "36.917579646268024",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "38.931752146626",
+       "displayed": "38.93",
+       "state": "value",
+       "printed": "38.931752146626",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 10,
+     "serial": "",
+     "label": "A&G Expenses",
+     "line_code": "C.OM.AG",
+     "matched": "a and g",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "12.670502830723697",
+       "displayed": "12.67",
+       "state": "value",
+       "printed": "12.670502830723697",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "12.976691431687058",
+       "displayed": "12.98",
+       "state": "value",
+       "printed": "12.976691431687058",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "13.667277849548437",
+       "displayed": "13.67",
+       "state": "value",
+       "printed": "13.667277849548437",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "14.746880002995239",
+       "displayed": "14.75",
+       "state": "value",
+       "printed": "14.746880002995239",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "15.812477941587888",
+       "displayed": "15.81",
+       "state": "value",
+       "printed": "15.812477941587888",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "C.OM.AG proposed for 2 rows"
+     ]
+    },
+    {
+     "row": 12,
+     "serial": "",
+     "label": "Finance Charges",
+     "line_code": "C.INT.LOAN",
+     "matched": "finance charges",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "2.2438884014358345",
+       "displayed": "2.24",
+       "state": "value",
+       "printed": "2.2438884014358345",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "2.298113009530122",
+       "displayed": "2.3",
+       "state": "value",
+       "printed": "2.298113009530122",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "2.4204127220143627",
+       "displayed": "2.42",
+       "state": "value",
+       "printed": "2.4204127220143627",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "2.6116053512768955",
+       "displayed": "2.61",
+       "state": "value",
+       "printed": "2.6116053512768955",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "2.8003178978069383",
+       "displayed": "2.8",
+       "state": "value",
+       "printed": "2.8003178978069383",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 13,
+     "serial": "",
+     "label": "Carrying Cost of DPS",
+     "line_code": "C.RA.CARRYING",
+     "matched": "carrying cost",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.206141319851362",
+       "displayed": "3.21",
+       "state": "value",
+       "printed": "3.206141319851362",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.283619217795215",
+       "displayed": "3.28",
+       "state": "value",
+       "printed": "3.283619217795215",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.4583650569157167",
+       "displayed": "3.46",
+       "state": "value",
+       "printed": "3.4583650569157167",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.7315473543674904",
+       "displayed": "3.73",
+       "state": "value",
+       "printed": "3.7315473543674904",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "4.001186028294939",
+       "displayed": "4",
+       "state": "value",
+       "printed": "4.001186028294939",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 14,
+     "serial": "",
+     "label": "S.Tax / GST",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.0514999402790806",
+       "displayed": "3.05",
+       "state": "value",
+       "printed": "3.0514999402790806",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.1252408572763315",
+       "displayed": "3.13",
+       "state": "value",
+       "printed": "3.1252408572763315",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.2915582040316362",
+       "displayed": "3.29",
+       "state": "value",
+       "printed": "3.2915582040316362",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.5515641367701334",
+       "displayed": "3.55",
+       "state": "value",
+       "printed": "3.5515641367701334",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "3.8081973650972887",
+       "displayed": "3.81",
+       "state": "value",
+       "printed": "3.8081973650972887",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 15,
+     "serial": "",
+     "label": "Total  A&G Expenses",
+     "line_code": "C.OM.AG",
+     "matched": "a and g",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "21.172032492289972",
+       "displayed": "21.17",
+       "state": "value",
+       "printed": "21.172032492289972",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "21.683664516288726",
+       "displayed": "21.68",
+       "state": "value",
+       "printed": "21.683664516288726",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "22.83761383251015",
+       "displayed": "22.84",
+       "state": "value",
+       "printed": "22.83761383251015",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "24.641596845409754",
+       "displayed": "24.64",
+       "state": "value",
+       "printed": "24.641596845409754",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "26.422179232787055",
+       "displayed": "26.42",
+       "state": "value",
+       "printed": "26.422179232787055",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "C.OM.AG proposed for 2 rows"
+     ]
+    },
+    {
+     "row": 18,
+     "serial": "",
+     "label": "R & M Expenses",
+     "line_code": "C.OM.RM",
+     "matched": "r and m",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "43.71762143787766",
+       "displayed": "43.72",
+       "state": "value",
+       "printed": "43.71762143787766",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "44.77407811716992",
+       "displayed": "44.77",
+       "state": "value",
+       "printed": "44.77407811716992",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "47.15684034764719",
+       "displayed": "47.16",
+       "state": "value",
+       "printed": "47.15684034764719",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "50.881841547556874",
+       "displayed": "50.88",
+       "state": "value",
+       "printed": "50.881841547556874",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "54.55852335780161",
+       "displayed": "54.56",
+       "state": "value",
+       "printed": "54.55852335780161",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "C.OM.RM proposed for 2 rows"
+     ]
+    },
+    {
+     "row": 19,
+     "serial": "",
+     "label": "Gross O&M Expenses",
+     "line_code": "C.OM",
+     "matched": "o and m expenses",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "96.09386688899093",
+       "displayed": "96.09",
+       "state": "value",
+       "printed": "96.09386688899093",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "99.5343140178369",
+       "displayed": "99.53",
+       "state": "value",
+       "printed": "99.5343140178369",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "105.02031478065697",
+       "displayed": "105.02",
+       "state": "value",
+       "printed": "105.02031478065697",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "112.44101803923465",
+       "displayed": "112.44",
+       "state": "value",
+       "printed": "112.44101803923465",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "119.91245473721466",
+       "displayed": "119.91",
+       "state": "value",
+       "printed": "119.91245473721466",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "C.OM proposed for 3 rows"
+     ]
+    },
+    {
+     "row": 20,
+     "serial": "",
+     "label": "Expenses Capitalised",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "-9.821077884",
+       "displayed": "-9.82",
+       "state": "value",
+       "printed": "-9.821077884",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "-8.979000206999999",
+       "displayed": "-8.98",
+       "state": "value",
+       "printed": "-8.979000206999999",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "-6.516592006000001",
+       "displayed": "-6.52",
+       "state": "value",
+       "printed": "-6.516592006000001",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "-11.583958448999999",
+       "displayed": "-11.58",
+       "state": "value",
+       "printed": "-11.583958448999999",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "-17.19",
+       "displayed": "-17.19",
+       "state": "value",
+       "printed": "-17.19",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
+     "row": 21,
+     "serial": "",
+     "label": "Net O&M Expenses",
+     "line_code": "C.OM",
+     "matched": "o and m expenses",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "86.27278900499093",
+       "displayed": "86.27",
+       "state": "value",
+       "printed": "86.27278900499093",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "90.5553138108369",
+       "displayed": "90.56",
+       "state": "value",
+       "printed": "90.5553138108369",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "98.50372277465698",
+       "displayed": "98.5",
+       "state": "value",
+       "printed": "98.50372277465698",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "100.85705959023466",
+       "displayed": "100.86",
+       "state": "value",
+       "printed": "100.85705959023466",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "102.72245473721466",
+       "displayed": "102.72",
+       "state": "value",
+       "printed": "102.72245473721466",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "C.OM proposed for 3 rows"
+     ]
+    },
+    {
+     "row": 22,
+     "serial": "",
+     "label": "Additional R&M for SOP Compliance etc. @ 50%",
+     "line_code": "C.OM.RM",
+     "matched": "r and m",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "21.85881071893883",
+       "displayed": "21.86",
+       "state": "value",
+       "printed": "21.85881071893883",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "22.38703905858496",
+       "displayed": "22.39",
+       "state": "value",
+       "printed": "22.38703905858496",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "23.578420173823595",
+       "displayed": "23.58",
+       "state": "value",
+       "printed": "23.578420173823595",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "25.440920773778437",
+       "displayed": "25.44",
+       "state": "value",
+       "printed": "25.440920773778437",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "27.279261678900806",
+       "displayed": "27.28",
+       "state": "value",
+       "printed": "27.279261678900806",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "C.OM.RM proposed for 2 rows"
+     ]
+    },
+    {
+     "row": 23,
+     "serial": "",
+     "label": "Total Normative O&M Expenses",
+     "line_code": "C.OM",
+     "matched": "o and m expenses",
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2020-21",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "108.13159972392975",
+       "displayed": "108.13",
+       "state": "value",
+       "printed": "108.13159972392975",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2021-22",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "112.94235286942187",
+       "displayed": "112.94",
+       "state": "value",
+       "printed": "112.94235286942187",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "122.08214294848057",
+       "displayed": "122.08",
+       "state": "value",
+       "printed": "122.08214294848057",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "126.29798036401309",
+       "displayed": "126.3",
+       "state": "value",
+       "printed": "126.29798036401309",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Normative",
+       "restated": false,
+       "value": "130.00171641611547",
+       "displayed": "130",
+       "state": "value",
+       "printed": "130.00171641611547",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": [
+      "C.OM proposed for 3 rows"
+     ]
+    }
+   ],
+   "unplaced": [
+    "S.Tax / GST",
+    "Expenses Capitalised"
+   ],
+   "notes": [
+    "column 3 (FY2015-16, (a)): no voice; skipped",
+    "column 4 (FY2016-17, (b)): no voice; skipped",
+    "column 5 (FY2017-18, (c)): no voice; skipped",
+    "column 6 (FY2018-19, (d)): no voice; skipped",
+    "column 7 (FY2019-20, (e)): no voice; skipped",
+    "column 8 (FY2017-18, (f) = [(a)+(b)+(c)+ (d)+(e)]/5 \n(Average of Gross O&M expenses)): no voice; skipped",
+    "column 9 (FY2018-19, g= f*(1+escalation factor for FY 2018-19)): no voice; skipped",
+    "column 10 (FY2019-20, h= g*(1+escalation factor for FY 2019-20)): no voice; skipped",
+    "column 16 (FY2024-25, no words): no voice; skipped"
+   ],
+   "placed": 10
   },
   {
    "sheet": "F21_O&M_EE (A)",
@@ -23531,6 +25406,101 @@
      "flags": []
     },
     {
+     "row": 20,
+     "serial": "",
+     "label": "From",
+     "line_code": null,
+     "matched": null,
+     "unit": "INR_crore",
+     "cells": [
+      {
+       "fiscal_year": "FY2022-23",
+       "voice": "final_true_up",
+       "words": "Trued- Up",
+       "restated": true,
+       "value": null,
+       "displayed": null,
+       "state": "text",
+       "printed": "To",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "approved",
+       "words": "Approved (in TO)",
+       "restated": true,
+       "value": null,
+       "displayed": null,
+       "state": "text",
+       "printed": "Days",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "actual",
+       "words": "Audited",
+       "restated": false,
+       "value": null,
+       "displayed": null,
+       "state": "text",
+       "printed": "1 Yr SBI MCLR",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "approved",
+       "words": "Approved (in TO)",
+       "restated": true,
+       "value": null,
+       "displayed": null,
+       "state": "text",
+       "printed": "From",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed",
+       "restated": false,
+       "value": null,
+       "displayed": null,
+       "state": "text",
+       "printed": "To",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Estimated",
+       "restated": false,
+       "value": null,
+       "displayed": null,
+       "state": "text",
+       "printed": "Days",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Projected",
+       "restated": false,
+       "value": null,
+       "displayed": null,
+       "state": "text",
+       "printed": "1 Yr SBI MCLR",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
      "row": 21,
      "serial": "",
      "label": "2025-03-15 00:00:00",
@@ -25269,6 +27239,7 @@
     "Less:    Security deposits from consumers, if any",
     "Weighted average SBI MCLR (one year) +200 basis points",
     "Revision Date",
+    "From",
     "2025-03-15 00:00:00",
     "2025-02-15 00:00:00",
     "2025-01-15 00:00:00",
@@ -32252,6 +34223,65 @@
      "flags": []
     },
     {
+     "row": 13,
+     "serial": "",
+     "label": "- LT",
+     "line_code": null,
+     "matched": null,
+     "unit": null,
+     "cells": [
+      {
+       "fiscal_year": "FY2023-24",
+       "voice": "petitioned",
+       "words": "Claimed Additions during the year",
+       "restated": false,
+       "value": "219.76",
+       "displayed": "219.76",
+       "state": "value",
+       "printed": "219.76",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2024-25",
+       "voice": "petitioned",
+       "words": "Claimed Additions during the year",
+       "restated": false,
+       "value": "219.91",
+       "displayed": "219.91",
+       "state": "value",
+       "printed": "219.91",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2025-26",
+       "voice": "petitioned",
+       "words": "Estimated Additions during the year",
+       "restated": false,
+       "value": "234",
+       "displayed": "234",
+       "state": "value",
+       "printed": "234",
+       "unit": null,
+       "percent_from_fraction": false
+      },
+      {
+       "fiscal_year": "FY2026-27",
+       "voice": "petitioned",
+       "words": "Projected Additions during the year",
+       "restated": false,
+       "value": "351.15000000000003",
+       "displayed": "351.15",
+       "state": "value",
+       "printed": "351.15000000000003",
+       "unit": null,
+       "percent_from_fraction": false
+      }
+     ],
+     "flags": []
+    },
+    {
      "row": 14,
      "serial": "",
      "label": "Total",
@@ -32454,7 +34484,7 @@
        "words": "Claimed Additions during the year",
        "restated": false,
        "value": "112.5",
-       "displayed": "112",
+       "displayed": "113",
        "state": "value",
        "printed": "112.5",
        "unit": null,
@@ -32478,7 +34508,7 @@
        "words": "Projected Additions during the year",
        "restated": false,
        "value": "126.5",
-       "displayed": "126",
+       "displayed": "127",
        "state": "value",
        "printed": "126.5",
        "unit": null,
@@ -33081,6 +35111,7 @@
    "unplaced": [
     "- 33kV",
     "- 11kV",
+    "- LT",
     "Total",
     "Number of 33/11kV substations",
     "No. of Power Transformers",
