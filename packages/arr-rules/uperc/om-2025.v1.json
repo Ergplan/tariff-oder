@@ -1,0 +1,341 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+ "applies": {
+  "commission": "UPERC",
+  "from_fy": "FY2020-21"
+ },
+ "note": "Employee and A&G expenses under the 2025 regulations as NPCL's F19 (EE and A&G base) computes them: a base year from five years' actuals, escalated year by year; the from_fy is the first actual year the base reads, not the regulation's commencement.",
+ "rules": [
+  {
+   "id": "uperc.om2025.ag_excl_fc",
+   "version": 1,
+   "status": "draft",
+   "title": "A&G expenses excluding finance charges, actual",
+   "output": "om25_ag_excl_fc",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "ag - fc",
+   "inputs": {
+    "ag": {
+     "unit": "INR_crore",
+     "source": "record:om25_ag_actual"
+    },
+    "fc": {
+     "unit": "INR_crore",
+     "source": "record:om25_finance_charges_actual"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2020-21"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "finance charges are left out of the base and claimed on their own"
+  },
+  {
+   "id": "uperc.om2025.base_average",
+   "version": 1,
+   "status": "draft",
+   "title": "Base: the average of five years' actuals, taken as the middle year",
+   "output": "om25_base_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "avg(y1, y2, y3, y4, y5)",
+   "inputs": {
+    "y1": {
+     "unit": "INR_crore",
+     "source": "record:om25_actual_y1"
+    },
+    "y2": {
+     "unit": "INR_crore",
+     "source": "record:om25_actual_y2"
+    },
+    "y3": {
+     "unit": "INR_crore",
+     "source": "record:om25_actual_y3"
+    },
+    "y4": {
+     "unit": "INR_crore",
+     "source": "record:om25_actual_y4"
+    },
+    "y5": {
+     "unit": "INR_crore",
+     "source": "record:om25_actual_y5"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2020-21"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "NPCL takes FY2020-21 to FY2024-25 as the five years and FY2022-23 as the middle year; the clause to be confirmed"
+  },
+  {
+   "id": "uperc.om2025.escalated",
+   "version": 1,
+   "status": "draft",
+   "title": "Base escalated to the year by the price index",
+   "output": "om25_escalated",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "previous * (1 + change)",
+   "inputs": {
+    "previous": {
+     "unit": "INR_crore",
+     "source": "prior:om25_level",
+     "note": "the base, or the previous year's escalated figure"
+    },
+    "change": {
+     "unit": "fraction",
+     "source": "assumption:om25_index_change",
+     "note": "the year's CPI (employee) or WPI (A&G) increase; for the estimated and projected years NPCL uses the average of three years"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2020-21"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om2025.growth_sales",
+   "version": 1,
+   "status": "draft",
+   "title": "Growth factor based on sales",
+   "output": "om25_growth_sales",
+   "unit": "fraction",
+   "schedule": "R-SCH-5",
+   "formula": "(current - previous) / previous",
+   "inputs": {
+    "current": {
+     "unit": "MU",
+     "source": "record:om25_sales"
+    },
+    "previous": {
+     "unit": "MU",
+     "source": "prior:om25_sales"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2020-21"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om2025.growth_consumers",
+   "version": 1,
+   "status": "draft",
+   "title": "Growth factor based on consumers",
+   "output": "om25_growth_consumers",
+   "unit": "fraction",
+   "schedule": "R-SCH-5",
+   "formula": "(current - previous) / previous",
+   "inputs": {
+    "current": {
+     "unit": "number",
+     "source": "record:om25_consumers"
+    },
+    "previous": {
+     "unit": "number",
+     "source": "prior:om25_consumers"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2020-21"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om2025.growth_employees",
+   "version": 1,
+   "status": "draft",
+   "title": "Growth factor based on employees",
+   "output": "om25_growth_employees",
+   "unit": "fraction",
+   "schedule": "R-SCH-5",
+   "formula": "(current - previous) / previous",
+   "inputs": {
+    "current": {
+     "unit": "number",
+     "source": "record:om25_employees"
+    },
+    "previous": {
+     "unit": "number",
+     "source": "prior:om25_employees"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2020-21"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.om2025.employee",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses, normative (before capitalisation)",
+   "output": "om25_employee",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "escalated * (1 + avg(gs, gc, ge))",
+   "inputs": {
+    "escalated": {
+     "unit": "INR_crore",
+     "source": "rule:om25_escalated"
+    },
+    "gs": {
+     "unit": "fraction",
+     "source": "rule:om25_growth_sales"
+    },
+    "gc": {
+     "unit": "fraction",
+     "source": "rule:om25_growth_consumers"
+    },
+    "ge": {
+     "unit": "fraction",
+     "source": "rule:om25_growth_employees"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2020-21"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.OM.EMPLOYEE"
+  },
+  {
+   "id": "uperc.om2025.ag",
+   "version": 1,
+   "status": "draft",
+   "title": "A&G expenses, normative (excluding finance charges, including captive consumption)",
+   "output": "om25_ag",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "ag_escalated + captive_escalated",
+   "inputs": {
+    "ag_escalated": {
+     "unit": "INR_crore",
+     "source": "record:om25_ag_excl_fc_escalated"
+    },
+    "captive_escalated": {
+     "unit": "INR_crore",
+     "source": "record:om25_captive_escalated"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — employee and A&G expenses from a base year (the average of five years' actuals as the middle year), escalated by CPI / WPI, employee expenses grown by the average growth of sales, consumers and employees",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2020-21"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.OM.AG"
+  }
+ ]
+}

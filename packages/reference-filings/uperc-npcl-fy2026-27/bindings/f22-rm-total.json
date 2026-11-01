@@ -1,0 +1,20 @@
+{
+ "sheet": "F22_O&M_R&M after FY25",
+ "unit": "INR_crore",
+ "note": "Total R&M (16) from the opening gross block of Part A (8), Part B (10), Part C (12) and the GNIDA hand-over (14).",
+ "inputs": {
+  "record:rm_gfa_part_a": 8,
+  "record:rm_gfa_part_b": 10,
+  "record:rm_gfa_part_c": 12,
+  "record:rm_gfa_gnida": 14
+ },
+ "blank_is_zero": {
+  "rows": [
+   14
+  ],
+  "why": "no GNIDA hand-over assets in FY2025-26; NPCL's total reads the blank as zero"
+ },
+ "outputs": {
+  "rm_norm_total": 16
+ }
+}

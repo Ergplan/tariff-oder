@@ -1,0 +1,65 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F22_O&M_R&M after FY25",
+ "places": 6,
+ "note": "R&M of the APR and ARR years from the opening gross block by vintage (F22 after FY25), checked where the ARR format carries it (row 26).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "R&M",
+   "inputs": {
+    "record:rm_gfa_part_a": [
+     "G8",
+     "INR_crore"
+    ],
+    "record:rm_gfa_part_b": [
+     "G10",
+     "INR_crore"
+    ],
+    "record:rm_gfa_part_c": [
+     "G12",
+     "INR_crore"
+    ],
+    "record:rm_gfa_gnida": [
+     "G14",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "rm_norm_total": [
+     "G16",
+     "ARR!L26"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "R&M",
+   "inputs": {
+    "record:rm_gfa_part_a": [
+     "H8",
+     "INR_crore"
+    ],
+    "record:rm_gfa_part_b": [
+     "H10",
+     "INR_crore"
+    ],
+    "record:rm_gfa_part_c": [
+     "H12",
+     "INR_crore"
+    ],
+    "record:rm_gfa_gnida": [
+     "H14",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "rm_norm_total": [
+     "H16",
+     "ARR!M26"
+    ]
+   }
+  }
+ ]
+}

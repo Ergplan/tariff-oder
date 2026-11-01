@@ -104,7 +104,7 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     seen = {}
     for b in sorted((folder / "bindings").glob("*.json")):
         binding = json.loads(b.read_text())
-        if binding.get("type") in ("year_blocks", "period_table", "row_table"):
+        if binding.get("type") in ("year_blocks", "period_table", "row_table", "cells"):
             continue  # the utility's workings and the rate table: their own tests
         rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
         seen["chain" if b.name == "chain-arr.json" else rep.sheet] = rep
@@ -153,6 +153,10 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
                     assert col == ("FY2024-25", "actual"), c
                 else:
                     assert c.result in ("match", "given"), c
+                continue
+            if rep.sheet == "F22_O&M_R&M after FY25" and c.result == "not_a_value":
+                # no GNIDA hand-over assets yet in FY2025-26: NPCL prints a dash, read as no value
+                assert (c.fiscal_year, c.row, c.filed) == ("FY2025-26", 15, "-"), c
                 continue
             if c.result == "differs":
                 assert rep.sheet in ("F25_IOL", "F26_ROE") and col == ("FY2023-24", "petitioned"), (rep.sheet, c)
@@ -314,3 +318,71 @@ def test_npcl_power_purchase_by_source_reproduces_the_totals():
                 assert c.output == "pp_rate" and c.why == "division by zero", c
         totals = {c.output: c.computed for c in checks if c.category.startswith("TOTAL")}
         assert {k: totals[k] for k in expect_totals} == expect_totals
+
+
+def test_npcl_om_of_the_apr_and_arr_years_from_the_2025_base_year():
+    """Real data: NPCL's base-year determination (F19 EE n AG base) through the draft 2025-regime
+    rules — A&G less finance charges, the five-year average as the middle year, the CPI / WPI
+    escalation year by year, the growth factors and the employee and A&G expenses of FY2025-26
+    and FY2026-27, each checked on the sheet and where F21, F23 and the ARR format carry it; the
+    R&M of the same years ties to the ARR's row 26."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    base = json.loads((folder / "bindings" / "f19-om-base-2025.json").read_text())
+    wb = openpyxl.load_workbook(folder / base["workbook"], data_only=True)
+    checks = reproduce_cells(wb, base, rules)
+    assert [c for c in checks if c.result != "match"] == []
+    assert len(checks) == 40
+    arr = {(c.fiscal_year, c.output): c.computed for c in checks if c.category.endswith(("27", "31"))}
+    assert arr == {
+        ("FY2025-26", "om25_employee"): "95.627439",
+        ("FY2026-27", "om25_employee"): "99.978446",
+        ("FY2025-26", "om25_ag"): "28.752731",
+        ("FY2026-27", "om25_ag"): "29.250923",
+    }
+    ties = json.loads((folder / "bindings" / "f22-rm-ties.json").read_text())
+    rm = reproduce_cells(wb, ties, rules)
+    assert [(c.fiscal_year, c.category, c.result) for c in rm] == [
+        ("FY2025-26", "R&M G16", "match"),
+        ("FY2025-26", "R&M ARR!L26", "match"),
+        ("FY2026-27", "R&M H16", "match"),
+        ("FY2026-27", "R&M ARR!M26", "match"),
+    ]
+
+
+def test_cells_a_blank_input_blocks_and_a_blank_filed_cell_is_no_value():
+    """The cell reader: a blank input is absent (the output blocks with its reason), never 0."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "S"
+    ws["A1"], ws["B1"], ws["C1"] = 10.0, None, 9.0
+    ws["A2"] = 0.1
+    binding = {
+        "sheet": "S",
+        "evaluations": [
+            {
+                "fiscal_year": "FY2025-26",
+                "inputs": {"prior:om25_level": ["A1", "INR_crore"], "assumption:om25_index_change": ["A2", "fraction"]},
+                "checks": {"om25_escalated": ["C1", "B1"]},
+            },
+            {
+                "fiscal_year": "FY2025-26",
+                "inputs": {"prior:om25_level": ["B1", "INR_crore"], "assumption:om25_index_change": ["A2", "fraction"]},
+                "checks": {"om25_escalated": "C1"},
+            },
+        ],
+    }
+    got = [(c.category, c.result, c.computed) for c in reproduce_cells(wb, binding, load_rules("UPERC"))]
+    assert got[0] == ("C1", "differs", "11.000000")
+    assert got[1] == ("B1", "no_filed_value", "11.00")
+    assert got[2][:2] == ("C1", "blocked")

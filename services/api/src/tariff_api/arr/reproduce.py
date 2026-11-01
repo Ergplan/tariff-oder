@@ -455,3 +455,56 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
             )
         )
     return out
+
+
+def _stored(value: Any) -> Decimal | None:
+    """A stored cell value as Decimal (the binary value's shortest repr), or None when blank or
+    not a number — never zero."""
+    if isinstance(value, bool) or value is None:
+        return None
+    if isinstance(value, float):
+        return Decimal(repr(value))
+    if isinstance(value, int):
+        return Decimal(value)
+    return None
+
+
+def reproduce_cells(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
+    """Workings laid out freely on a sheet (e.g. NPCL's base-year determination of employee and
+    A&G expenses: five years' actuals, their average, the year-by-year escalation, the growth
+    factors), read by cell address.  Each evaluation names its year, its input cells
+    (``{"record:x": ["C9", "INR_crore"]}``; ``"Sheet!C9"`` for another sheet) and the cells its
+    outputs are checked against — on this sheet, and wherever the figure is carried (the ARR
+    format).  A blank input cell blocks the evaluation's dependent outputs; it is never zero."""
+    places = int(binding.get("places", 6))
+    q = Decimal(1).scaleb(-places)
+
+    def at(ref: str) -> Any:
+        sheet, _, cell = ref.rpartition("!")
+        return wb[sheet or binding["sheet"]][cell].value
+
+    out: list[BlockCheck] = []
+    for e in binding["evaluations"]:
+        fy = e["fiscal_year"]
+        values: dict[str, tuple[Decimal | str, str]] = {}
+        for source, (ref, unit) in e["inputs"].items():
+            v = _stored(at(ref))
+            if v is not None:
+                values[source] = (v, unit)
+        ev = RuleSet(rules, fy).evaluate(fy, values)
+        for output, refs in e["checks"].items():
+            for ref in [refs] if isinstance(refs, str) else refs:
+                label = f"{e.get('label', '')} {ref}".strip()
+                res = ev.results.get(output)
+                if res is None:
+                    out.append(BlockCheck(binding["sheet"], fy, label, output, "blocked", why=ev.blocked.get(output)))
+                    continue
+                filed = _stored(at(ref))
+                if filed is None:
+                    computed = str(res.value)
+                    out.append(BlockCheck(binding["sheet"], fy, label, output, "no_filed_value", computed=computed))
+                    continue
+                want, got = filed.quantize(q), res.value.quantize(q)
+                result = "match" if got == want else "differs"
+                out.append(BlockCheck(binding["sheet"], fy, label, output, result, filed=str(want), computed=str(got)))
+    return out

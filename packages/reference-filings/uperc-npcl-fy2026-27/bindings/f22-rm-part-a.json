@@ -1,0 +1,11 @@
+{
+ "sheet": "F22_O&M_R&M after FY25",
+ "unit": "INR_crore",
+ "note": "R&M norm (row 9) on the opening gross block (row 8).",
+ "inputs": {
+  "record:rm_gfa_existing": 8
+ },
+ "outputs": {
+  "rm_norm_existing": 9
+ }
+}

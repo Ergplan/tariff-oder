@@ -1,0 +1,493 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F19_O&M_EE n AG base",
+ "places": 6,
+ "note": "Employee and A&G expenses of the APR (FY2025-26) and ARR (FY2026-27) years under the 2025 regulations, as NPCL's F19 base sheet computes them: A&G less finance charges each actual year; the five-year average of FY2020-21 to FY2024-25 as the middle year FY2022-23; escalated by the CPI (employee) or WPI (A&G, captive consumption) increase of each year; employee expenses grown by the average growth of sales, consumers and employees; each result also checked where F21, F23 and the ARR format carry it.  The sheet is not among the formats the reference reads, so its cells are read by address.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2020-21",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "record:om25_ag_actual": [
+     "C22",
+     "INR_crore"
+    ],
+    "record:om25_finance_charges_actual": [
+     "C23",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_ag_excl_fc": "C24"
+   }
+  },
+  {
+   "fiscal_year": "FY2021-22",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "record:om25_ag_actual": [
+     "D22",
+     "INR_crore"
+    ],
+    "record:om25_finance_charges_actual": [
+     "D23",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_ag_excl_fc": "D24"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "record:om25_ag_actual": [
+     "E22",
+     "INR_crore"
+    ],
+    "record:om25_finance_charges_actual": [
+     "E23",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_ag_excl_fc": "E24"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "record:om25_ag_actual": [
+     "F22",
+     "INR_crore"
+    ],
+    "record:om25_finance_charges_actual": [
+     "F23",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_ag_excl_fc": "F24"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "record:om25_ag_actual": [
+     "G22",
+     "INR_crore"
+    ],
+    "record:om25_finance_charges_actual": [
+     "G23",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_ag_excl_fc": "G24"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "employee base",
+   "inputs": {
+    "record:om25_actual_y1": [
+     "C9",
+     "INR_crore"
+    ],
+    "record:om25_actual_y2": [
+     "D9",
+     "INR_crore"
+    ],
+    "record:om25_actual_y3": [
+     "E9",
+     "INR_crore"
+    ],
+    "record:om25_actual_y4": [
+     "F9",
+     "INR_crore"
+    ],
+    "record:om25_actual_y5": [
+     "G9",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_base_average": "H9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "employee",
+   "inputs": {
+    "prior:om25_level": [
+     "H9",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F17_O&M_CPI!F22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "I9"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "employee",
+   "inputs": {
+    "prior:om25_level": [
+     "I9",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F17_O&M_CPI!G22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "J9"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "employee",
+   "inputs": {
+    "prior:om25_level": [
+     "J9",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F17_O&M_CPI!H22",
+     "fraction"
+    ],
+    "record:om25_sales": [
+     "K10",
+     "MU"
+    ],
+    "prior:om25_sales": [
+     "J10",
+     "MU"
+    ],
+    "record:om25_consumers": [
+     "K11",
+     "number"
+    ],
+    "prior:om25_consumers": [
+     "J11",
+     "number"
+    ],
+    "record:om25_employees": [
+     "K12",
+     "number"
+    ],
+    "prior:om25_employees": [
+     "J12",
+     "number"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "K9",
+    "om25_growth_sales": "K14",
+    "om25_growth_consumers": "K15",
+    "om25_growth_employees": "K16",
+    "om25_employee": [
+     "K18",
+     "F21_O&M_EE (A)!M29",
+     "ARR!L27"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "employee",
+   "inputs": {
+    "prior:om25_level": [
+     "K9",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F17_O&M_CPI!I22",
+     "fraction"
+    ],
+    "record:om25_sales": [
+     "L10",
+     "MU"
+    ],
+    "prior:om25_sales": [
+     "K10",
+     "MU"
+    ],
+    "record:om25_consumers": [
+     "L11",
+     "number"
+    ],
+    "prior:om25_consumers": [
+     "K11",
+     "number"
+    ],
+    "record:om25_employees": [
+     "L12",
+     "number"
+    ],
+    "prior:om25_employees": [
+     "K12",
+     "number"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "L9",
+    "om25_growth_sales": "L14",
+    "om25_growth_consumers": "L15",
+    "om25_growth_employees": "L16",
+    "om25_employee": [
+     "L18",
+     "F21_O&M_EE (A)!N29",
+     "ARR!M27"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "A&G excl. FC base",
+   "inputs": {
+    "record:om25_actual_y1": [
+     "C24",
+     "INR_crore"
+    ],
+    "record:om25_actual_y2": [
+     "D24",
+     "INR_crore"
+    ],
+    "record:om25_actual_y3": [
+     "E24",
+     "INR_crore"
+    ],
+    "record:om25_actual_y4": [
+     "F24",
+     "INR_crore"
+    ],
+    "record:om25_actual_y5": [
+     "G24",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_base_average": "H24"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "prior:om25_level": [
+     "H24",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F18_O&M_WPI!F22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "I24"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "prior:om25_level": [
+     "I24",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F18_O&M_WPI!G22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "J24"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "prior:om25_level": [
+     "J24",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F18_O&M_WPI!H22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "K24"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "A&G excl. FC",
+   "inputs": {
+    "prior:om25_level": [
+     "K24",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F18_O&M_WPI!I22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "L24"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "captive consumption base",
+   "inputs": {
+    "record:om25_actual_y1": [
+     "C25",
+     "INR_crore"
+    ],
+    "record:om25_actual_y2": [
+     "D25",
+     "INR_crore"
+    ],
+    "record:om25_actual_y3": [
+     "E25",
+     "INR_crore"
+    ],
+    "record:om25_actual_y4": [
+     "F25",
+     "INR_crore"
+    ],
+    "record:om25_actual_y5": [
+     "G25",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_base_average": "H25"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "captive consumption",
+   "inputs": {
+    "prior:om25_level": [
+     "H25",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F18_O&M_WPI!F22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "I25"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "captive consumption",
+   "inputs": {
+    "prior:om25_level": [
+     "I25",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F18_O&M_WPI!G22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "J25"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "captive consumption",
+   "inputs": {
+    "prior:om25_level": [
+     "J25",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F18_O&M_WPI!H22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "K25"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "captive consumption",
+   "inputs": {
+    "prior:om25_level": [
+     "K25",
+     "INR_crore"
+    ],
+    "assumption:om25_index_change": [
+     "F18_O&M_WPI!I22",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "om25_escalated": "L25"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "A&G",
+   "inputs": {
+    "record:om25_ag_excl_fc_escalated": [
+     "K24",
+     "INR_crore"
+    ],
+    "record:om25_captive_escalated": [
+     "K25",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_ag": [
+     "K26",
+     "F23_O&M_A&G!K41",
+     "F23_O&M_A&G!K47",
+     "ARR!L31"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "A&G",
+   "inputs": {
+    "record:om25_ag_excl_fc_escalated": [
+     "L24",
+     "INR_crore"
+    ],
+    "record:om25_captive_escalated": [
+     "L25",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "om25_ag": [
+     "L26",
+     "F23_O&M_A&G!L41",
+     "F23_O&M_A&G!L47",
+     "ARR!M31"
+    ]
+   }
+  }
+ ]
+}

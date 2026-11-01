@@ -23,6 +23,7 @@ from tariff_api.arr.blocks import read_year_blocks  # noqa: E402
 from tariff_api.arr.reproduce import (  # noqa: E402
     reproduce,
     reproduce_blocks,
+    reproduce_cells,
     reproduce_period_table,
     reproduce_row_table,
 )
@@ -108,6 +109,22 @@ def main() -> int:
                 for c in checks:
                     if c.result != "match" or c.category.startswith("TOTAL"):
                         what = f"{c.category[:44]:44} {c.output:20}"
+                        print(f"   {c.result:8} {what} filed {c.filed} computed {c.computed} {c.why or ''}")
+            report["records"].append({"binding": b.name, "checks": [asdict(c) for c in checks]})
+            continue
+        if binding.get("type") == "cells":
+            import collections
+
+            import openpyxl
+
+            wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True, read_only=False)
+            checks = reproduce_cells(wb, binding, rules)
+            counts = dict(collections.Counter(c.result for c in checks))
+            print(f"{binding['sheet'][:24]:24} cells {counts}")
+            if args.verbose:
+                for c in checks:
+                    if c.result != "match":
+                        what = f"{c.fiscal_year} {c.category[:40]:40} {c.output:22}"
                         print(f"   {c.result:8} {what} filed {c.filed} computed {c.computed} {c.why or ''}")
             report["records"].append({"binding": b.name, "checks": [asdict(c) for c in checks]})
             continue

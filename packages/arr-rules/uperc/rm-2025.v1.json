@@ -1,0 +1,152 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — R&M expenses as a share of the opening gross fixed assets",
+ "applies": {
+  "commission": "UPERC",
+  "from_fy": "FY2025-26"
+ },
+ "note": "R&M expenses from FY2025-26 (UPERC format F22, after FY2025): a share of the opening gross block by vintage.",
+ "rules": [
+  {
+   "id": "uperc.rm2025.existing",
+   "version": 1,
+   "status": "draft",
+   "title": "R&M norm on the gross block approved before 1 April 2025",
+   "output": "rm_norm_existing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "gfa * share",
+   "inputs": {
+    "gfa": {
+     "unit": "INR_crore",
+     "source": "record:rm_gfa_existing",
+     "note": "opening GFA of Part A (to 31.03.2020) or Part B (01.04.2020–31.03.2025)"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "5",
+     "note": "5 % of the opening gross block, as NPCL's F22 applies it; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — R&M expenses as a share of the opening gross fixed assets",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rm2025.new",
+   "version": 1,
+   "status": "draft",
+   "title": "R&M norm on the gross block added from 1 April 2025",
+   "output": "rm_norm_new",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "gfa * share",
+   "inputs": {
+    "gfa": {
+     "unit": "INR_crore",
+     "source": "record:rm_gfa_new",
+     "note": "opening GFA of Part C, NPCL's own or handed over by GNIDA"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "3",
+     "note": "3 % of the opening gross block of new assets, as NPCL's F22 applies it; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — R&M expenses as a share of the opening gross fixed assets",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rm2025.total",
+   "version": 1,
+   "status": "draft",
+   "title": "R&M expenses, normative",
+   "output": "rm_norm_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "(part_a + part_b) * share_existing + (part_c + gnida) * share_new",
+   "inputs": {
+    "part_a": {
+     "unit": "INR_crore",
+     "source": "record:rm_gfa_part_a"
+    },
+    "part_b": {
+     "unit": "INR_crore",
+     "source": "record:rm_gfa_part_b"
+    },
+    "part_c": {
+     "unit": "INR_crore",
+     "source": "record:rm_gfa_part_c"
+    },
+    "gnida": {
+     "unit": "INR_crore",
+     "source": "record:rm_gfa_gnida"
+    },
+    "share_existing": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "5",
+     "note": "as above"
+    },
+    "share_new": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "3",
+     "note": "as above"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — R&M expenses as a share of the opening gross fixed assets",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.OM.RM"
+  }
+ ]
+}

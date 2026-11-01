@@ -1005,6 +1005,26 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 66 (2026-11-01): O&M of the APR and ARR years under the 2025 regime.**  12 draft
+  rules: R&M as a share of the opening gross block by vintage (5 % on Part A, assets to
+  31.03.2020, and Part B, 01.04.2020–31.03.2025; 3 % on Part C, new assets, and on the GNIDA
+  hand-over — as NPCL's F22 applies them, the clauses to be confirmed); and employee and A&G
+  expenses from a **base year**.  The base year is the average of five years' actuals
+  (FY2020-21 to FY2024-25) as the middle year (FY2022-23), escalated year by year by the CPI
+  (employee) or WPI (A&G and captive consumption) increase.  Employee expenses then grow by the
+  average growth of sales, consumers and employees; A&G excludes finance charges and includes
+  captive consumption.  NPCL computes this on a sheet the reference reader does not cover
+  (`F19_O&M_EE n AG base`), so a new **`cells` binding** reads workings by cell address.  Each
+  evaluation names its year, its input cells and every cell its result is checked against, on
+  the sheet and wherever the figure is carried.  A blank input is absent and blocks; it is never 0.
+  **NPCL: F19 base 40 / 40 — employee 95.63 (FY2025-26) and 99.98 (FY2026-27), A&G 28.75 and
+  29.25, each equal to F21, F23 and the ARR's rows 27 and 31; F22 R&M 100.26 and 113.69, equal to
+  ARR row 26 (4 / 4); F22's parts 2 / 2 each.**  The chain still takes these lines as records;
+  the ties show that the records equal what the draft rules compute.  The true-up year's F21 and
+  F23 totals are sums of audited ledger lines — records by nature, not normative computations.
+  Employee capitalisation of the APR and ARR years comes from the capital plan (F13, rows 97 and
+  125), still a record.  No rule is approved; every clause is unverified.
+
   **Increment 65 (2026-11-01): power purchase by source.**  9 draft rules evaluated per source
   (amount = fixed + energy charges, transmission = PGCIL + UPPTCL, total, the rate at the bus bar
   and the cost per unit at NPCL's bus — Rs crore over MU in Rs/kWh by the units, no hand-written
@@ -1855,6 +1875,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 66 (2026-11-01): 416 passed** (+2 unit: NPCL's 2025-regime employee, A&G and R&M of the APR and ARR years reproduced from the base-year sheet and tied to F21, F23 and the ARR; the cell reader never reads a blank as 0).  Ruff and format clean.
 - **Increment 65 (2026-11-01): 414 passed** (+2 unit: power purchase by source reproduced with its totals; division by zero blocks).  Ruff and format clean.
 - **Increment 64 (2026-11-01): 412 passed** (+2 integration: rules listed with their status and nothing approved; the NPCL reference filing with its chain and findings; unknown ids 404; unauthenticated refused).  Ruff, format, contracts (regenerated) and web typecheck clean.
 - **Increment 63 (2026-11-01): 410 passed** (the regression pins the chain: the petition's three columns, 36 of 36; no Commission column fed a petitioner's figure).  Ruff and format clean.
