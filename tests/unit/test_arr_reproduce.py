@@ -110,6 +110,23 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
         seen[rep.sheet] = rep
         for c in rep.checks:
             col = (c.fiscal_year, c.voice)
+            if rep.sheet == "ARR":
+                # the petition's own columns (estimated, projected) reproduce in full; differences
+                # are the Commission's restated approvals (a surplus carried at the full rate —
+                # ledger A35 — and figures typed from rounded parts), NPCL's audited FY2023-24
+                # carrying cost copied from the claimed column, and one half-boundary rounding
+                if c.result == "differs":
+                    assert c.voice in ("approved", "actual") or (c.fiscal_year, c.output) == (
+                        "FY2023-24",
+                        "arr_gap_cumulative",
+                    ), c
+                elif c.result == "blocked":
+                    assert c.fiscal_year == "FY2021-22", c
+                else:
+                    assert c.result == "match", c
+                if c.fiscal_year in ("FY2025-26", "FY2026-27") and c.voice == "petitioned":
+                    assert c.result == "match", c
+                continue
             if rep.sheet in ("F17_O&M_CPI", "F18_O&M_WPI", "F19A-O&M Normative"):
                 # O&M: nothing differs; blocked only where the sheet lacks the inputs (escalations
                 # before three increases exist, projected years without a monthly index, and the
@@ -140,6 +157,7 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     assert seen["Energy Balance"].counts() == {"match": 55}
     assert seen["F14_CAP_Cap Cost"].counts() == {"match": 60}
     assert seen["F27_Work Cap"].counts()["match"] >= 34
+    assert seen["ARR"].counts()["match"] >= 106
     assert seen["F17_O&M_CPI"].counts()["match"] >= 15 and seen["F18_O&M_WPI"].counts()["match"] >= 15
     assert seen["F25_IOL"].counts()["match"] >= 21 and seen["F26_ROE"].counts()["match"] >= 22
 

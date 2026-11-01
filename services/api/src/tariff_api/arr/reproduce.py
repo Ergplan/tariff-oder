@@ -91,6 +91,11 @@ def reproduce(
     default_unit = binding.get("unit")
     blank_is_zero = set(binding.get("blank_is_zero", {}).get("rows", []))
     negate = set(binding.get("negate", {}).get("rows", []))
+    states_as_zero = set(binding.get("states_as_zero", {}).get("states", []))
+    # a row the binding declares blank-as-zero may be blank in every column, hence not read at all
+    for ref in binding.get("blank_is_zero", {}).get("rows", []):
+        if isinstance(ref, int) and ref not in rows:
+            rows[ref] = {"row": ref, "label": "(blank in every column)", "unit": None, "cells": []}
     missing = [
         ref for ref in [*binding["inputs"].values(), *binding["outputs"].values()] if where(ref)[1] not in where(ref)[0]
     ]
@@ -169,10 +174,17 @@ def reproduce(
                 if row in negate:  # a deduction the format prints negative, declared by the binding
                     v = str(-Decimal(v))
                 values[source] = (v, c["unit"] or row_of(row)["unit"] or default_unit)
+            elif c and c["state"] in states_as_zero:
+                # declared by the binding with its reason: "Incl. in A&G" / "NA" add nothing to a sum
+                values[source] = ("0", c["unit"] or row_of(row)["unit"] or default_unit)
             elif c is None and row in blank_is_zero:
                 # declared by the binding, with its reason: the petitioner's formula reads this
                 # blank cell as zero.  Never assumed: an undeclared blank blocks.
                 values[source] = ("0", row_of(row)["unit"] or default_unit)
+        # per-year constants the binding declares, with their source (a rate typed inside the
+        # petitioner's formula, not printed in any cell)
+        for source, (v, unit) in binding.get("constants", {}).get(fy, {}).items():
+            values.setdefault(source, (v, unit))
         ev = rs.evaluate(fy, values) if isinstance(rs, RuleSet) else None
         for output, row in binding["outputs"].items():
             c = cell(row, col)

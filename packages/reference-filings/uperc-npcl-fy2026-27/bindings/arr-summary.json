@@ -1,0 +1,111 @@
+{
+ "sheet": "ARR",
+ "note": "NPCL's ARR summary reproduced from its own component lines: O&M (29, 35), total expenditure (46), deductions (52), net ARR (53), the gap before and after revision and subsidy (54, 56, 58), the unrecovered gap (61), its carrying cost (62) and the cumulative gap (63).  The component lines are inputs here; each is reproduced from its own schedule by the other bindings.",
+ "inputs": {
+  "record:total_receipts": 17,
+  "record:pp": 20,
+  "record:pp_sharing": 21,
+  "record:pp_arrears": 22,
+  "record:tx": 23,
+  "record:tx_arrears": 24,
+  "record:rm": 26,
+  "record:employee_gross": 27,
+  "record:employee_capitalised": 28,
+  "record:ag_net": 31,
+  "record:om_additional": 33,
+  "record:provisions": 34,
+  "record:dep": 36,
+  "record:iol": 37,
+  "record:csd": 38,
+  "record:finance": 39,
+  "record:iowc": 40,
+  "record:bad_debts": 41,
+  "record:contingency": 42,
+  "record:roe": 43,
+  "record:tax": 44,
+  "record:other": 45,
+  "record:income_other_business": 49,
+  "record:nti": 50,
+  "record:open_access_revenue": 51,
+  "record:tariff_revision_impact": 55,
+  "record:subsidy": 57,
+  "record:gap_accumulated_opening": 59,
+  "record:regulatory_surcharge_recovery": 60,
+  "assumption:gap_carrying_rate": "F27_Work Cap!15"
+ },
+ "blank_is_zero": {
+  "rows": [
+   21,
+   24,
+   32,
+   33,
+   34,
+   42,
+   45,
+   55,
+   57,
+   60
+  ],
+  "why": "NPCL's SUM formulas read these blank cells as zero"
+ },
+ "states_as_zero": {
+  "states": [
+   "included",
+   "not_applicable"
+  ],
+  "why": "NPCL's SUM formulas skip text: \"Incl. above\" / \"Incl. in A&G\" is counted in another line, \"NA\" does not apply"
+ },
+ "constants": {
+  "FY2021-22": {
+   "assumption:surplus_carrying_rate": [
+    "0.0425",
+    "fraction"
+   ]
+  },
+  "FY2022-23": {
+   "assumption:surplus_carrying_rate": [
+    "0.0425",
+    "fraction"
+   ]
+  },
+  "FY2023-24": {
+   "assumption:surplus_carrying_rate": [
+    "0.0675",
+    "fraction"
+   ]
+  },
+  "FY2024-25": {
+   "assumption:surplus_carrying_rate": [
+    "0.0675",
+    "fraction"
+   ]
+  },
+  "FY2025-26": {
+   "assumption:surplus_carrying_rate": [
+    "0.0675",
+    "fraction"
+   ]
+  },
+  "FY2026-27": {
+   "assumption:surplus_carrying_rate": [
+    "0.065",
+    "fraction"
+   ]
+  }
+ },
+ "constants_source": "the deposit rates NPCL types into its carrying-cost formulas (ARR row 62); a surplus carries 75 % of them",
+ "outputs": {
+  "arr_employee_net": 29,
+  "arr_om_total": 35,
+  "arr_total_expenditure": 46,
+  "arr_deductions": 52,
+  "arr_net": 53,
+  "arr_gap": 54,
+  "arr_gap_after_revision": 56,
+  "arr_gap_after_subsidy": 58,
+  "arr_gap_unrecovered": 61,
+  "arr_carrying_cost": 62,
+  "arr_gap_cumulative": 63
+ },
+ "unit": "INR_crore"
+}

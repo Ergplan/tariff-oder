@@ -1,0 +1,516 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "The ARR summary (UPERC format ARR): O&M, total expenditure, deductions, net ARR, the gap, and its carrying cost, as NPCL's format computes them.",
+ "rules": [
+  {
+   "id": "uperc.arr.employee_net",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses net of capitalisation",
+   "output": "arr_employee_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "gross - capitalised",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "record:employee_gross"
+    },
+    "capitalised": {
+     "unit": "INR_crore",
+     "source": "record:employee_capitalised"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.arr.om",
+   "version": 1,
+   "status": "draft",
+   "title": "Net O&M expenses",
+   "output": "arr_om_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "rm + employee + ag + additional + provisions",
+   "inputs": {
+    "rm": {
+     "unit": "INR_crore",
+     "source": "record:rm"
+    },
+    "employee": {
+     "unit": "INR_crore",
+     "source": "rule:arr_employee_net"
+    },
+    "ag": {
+     "unit": "INR_crore",
+     "source": "record:ag_net"
+    },
+    "additional": {
+     "unit": "INR_crore",
+     "source": "record:om_additional"
+    },
+    "provisions": {
+     "unit": "INR_crore",
+     "source": "record:provisions"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "as NPCL's ARR format sums it (rows 26, 29, 31, 33, 34); the O&M profit/loss sharing (row 32) is not in the sum"
+  },
+  {
+   "id": "uperc.arr.expenditure",
+   "version": 1,
+   "status": "draft",
+   "title": "Total expenditure",
+   "output": "arr_total_expenditure",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "pp + pp_sharing + pp_arrears + tx + tx_arrears + om + dep + iol + csd + finance + iowc + bad_debts + contingency + roe + tax + other",
+   "inputs": {
+    "pp": {
+     "unit": "INR_crore",
+     "source": "record:pp"
+    },
+    "pp_sharing": {
+     "unit": "INR_crore",
+     "source": "record:pp_sharing"
+    },
+    "pp_arrears": {
+     "unit": "INR_crore",
+     "source": "record:pp_arrears"
+    },
+    "tx": {
+     "unit": "INR_crore",
+     "source": "record:tx"
+    },
+    "tx_arrears": {
+     "unit": "INR_crore",
+     "source": "record:tx_arrears"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:dep"
+    },
+    "iol": {
+     "unit": "INR_crore",
+     "source": "record:iol"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "record:csd"
+    },
+    "finance": {
+     "unit": "INR_crore",
+     "source": "record:finance"
+    },
+    "iowc": {
+     "unit": "INR_crore",
+     "source": "record:iowc"
+    },
+    "bad_debts": {
+     "unit": "INR_crore",
+     "source": "record:bad_debts"
+    },
+    "contingency": {
+     "unit": "INR_crore",
+     "source": "record:contingency"
+    },
+    "roe": {
+     "unit": "INR_crore",
+     "source": "record:roe"
+    },
+    "tax": {
+     "unit": "INR_crore",
+     "source": "record:tax"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "record:other"
+    },
+    "om": {
+     "unit": "INR_crore",
+     "source": "rule:arr_om_total"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.TOTAL"
+  },
+  {
+   "id": "uperc.arr.deductions",
+   "version": 1,
+   "status": "draft",
+   "title": "Total other deductions",
+   "output": "arr_deductions",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "other_business + nti + oa_revenue",
+   "inputs": {
+    "other_business": {
+     "unit": "INR_crore",
+     "source": "record:income_other_business"
+    },
+    "nti": {
+     "unit": "INR_crore",
+     "source": "record:nti"
+    },
+    "oa_revenue": {
+     "unit": "INR_crore",
+     "source": "record:open_access_revenue"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.arr.net_arr",
+   "version": 1,
+   "status": "draft",
+   "title": "Net annual revenue requirement",
+   "output": "arr_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "expenditure - deductions",
+   "inputs": {
+    "expenditure": {
+     "unit": "INR_crore",
+     "source": "rule:arr_total_expenditure"
+    },
+    "deductions": {
+     "unit": "INR_crore",
+     "source": "rule:arr_deductions"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "R.ARR"
+  },
+  {
+   "id": "uperc.arr.gap",
+   "version": 1,
+   "status": "draft",
+   "title": "Excess / (shortfall) before tariff revision",
+   "output": "arr_gap",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "receipts - arr",
+   "inputs": {
+    "receipts": {
+     "unit": "INR_crore",
+     "source": "record:total_receipts"
+    },
+    "arr": {
+     "unit": "INR_crore",
+     "source": "rule:arr_net"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "NPCL's sign: a shortfall is negative"
+  },
+  {
+   "id": "uperc.arr.gap_revised",
+   "version": 1,
+   "status": "draft",
+   "title": "Excess / (shortfall) after the tariff revision",
+   "output": "arr_gap_after_revision",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "gap + revision",
+   "inputs": {
+    "gap": {
+     "unit": "INR_crore",
+     "source": "rule:arr_gap"
+    },
+    "revision": {
+     "unit": "INR_crore",
+     "source": "record:tariff_revision_impact"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.arr.gap_subsidy",
+   "version": 1,
+   "status": "draft",
+   "title": "Excess / (shortfall) after the government subsidy",
+   "output": "arr_gap_after_subsidy",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "gap - subsidy",
+   "inputs": {
+    "gap": {
+     "unit": "INR_crore",
+     "source": "rule:arr_gap_after_revision"
+    },
+    "subsidy": {
+     "unit": "INR_crore",
+     "source": "record:subsidy"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.arr.unrecovered",
+   "version": 1,
+   "status": "draft",
+   "title": "Total unrecovered gap / surplus before carrying cost",
+   "output": "arr_gap_unrecovered",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "gap + accumulated + recovery",
+   "inputs": {
+    "gap": {
+     "unit": "INR_crore",
+     "source": "rule:arr_gap_after_subsidy"
+    },
+    "accumulated": {
+     "unit": "INR_crore",
+     "source": "record:gap_accumulated_opening",
+     "note": "the cumulative gap of the previous year"
+    },
+    "recovery": {
+     "unit": "INR_crore",
+     "source": "record:regulatory_surcharge_recovery"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.arr.carrying",
+   "version": 1,
+   "status": "draft",
+   "title": "Carrying cost on the regulatory asset / surplus",
+   "output": "arr_carrying_cost",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "ifneg(accumulated + gap / 2, (accumulated + gap / 2) * gap_rate, (accumulated + gap / 2) * surplus_rate * surplus_share)",
+   "inputs": {
+    "accumulated": {
+     "unit": "INR_crore",
+     "source": "record:gap_accumulated_opening"
+    },
+    "gap": {
+     "unit": "INR_crore",
+     "source": "rule:arr_gap_after_subsidy"
+    },
+    "gap_rate": {
+     "unit": "fraction",
+     "source": "assumption:gap_carrying_rate",
+     "note": "on a gap: the working-capital rate of the year (F27 row 15), as NPCL applies it"
+    },
+    "surplus_rate": {
+     "unit": "fraction",
+     "source": "assumption:surplus_carrying_rate",
+     "note": "on a surplus: a deposit rate NPCL types into its formula (4.25 %, 6.75 %, 6.5 %)"
+    },
+    "surplus_share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "75",
+     "note": "75 % of the deposit rate on a surplus, as NPCL's formula applies it; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "half-year convention: the accumulated gap plus half of the year's; a shortfall (negative) carries the working-capital rate, a surplus 75 % of a deposit rate"
+  },
+  {
+   "id": "uperc.arr.cumulative",
+   "version": 1,
+   "status": "draft",
+   "title": "Cumulative revenue gap / surplus",
+   "output": "arr_gap_cumulative",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "unrecovered + carrying",
+   "inputs": {
+    "unrecovered": {
+     "unit": "INR_crore",
+     "source": "rule:arr_gap_unrecovered"
+    },
+    "carrying": {
+     "unit": "INR_crore",
+     "source": "rule:arr_carrying_cost"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "R.GAP.CUMULATIVE"
+  }
+ ]
+}

@@ -1005,6 +1005,21 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 61 (2026-11-01): the ARR summary itself.**  11 draft rules for UPERC's ARR format:
+  net employee expenses, net O&M, total expenditure, deductions, **net ARR**, the gap before and
+  after the tariff revision and the subsidy, the unrecovered gap, its **carrying cost** (half-year
+  convention: accumulated gap + half the year's; a shortfall carries the working-capital rate, a
+  surplus 75 % of a deposit rate — the rule language gained one conditional, `ifneg(test, then,
+  otherwise)`, both branches of one dimension) and the cumulative gap.  Bindings can declare
+  per-year constants with their source (rates typed inside the petitioner's formulas) and states
+  that add nothing to a sum ("Incl. in A&G", "NA"), each with its reason.  **NPCL's ARR format: 106
+  of 121 figures reproduced from its component lines; the petition's own columns — FY2025-26
+  estimated and FY2026-27 projected, net ARR 3,481.83 and gap 289.79 — in full.**  What differs:
+  the Commission's restated approvals carry a **surplus at the full carrying rate** (FY2024-25:
+  × 11.05 %, Rs 122.34 crore) where NPCL's columns use 75 % of a deposit rate (Rs 56.05 crore) —
+  a regulatory-treatment question for the reviewer (ledger A35); NPCL's audited FY2023-24 carrying
+  cost copied from the claimed column; typed restated figures 0.01 off; one sum on a half.
+
   **Increment 60 (2026-11-01): normative O&M — the CPI / WPI escalation chain.**  9 draft rules:
   the annual price index (average of twelve months), its increase, the escalation factor (average
   of the three preceding increases), each O&M component escalated from the previous year (employee
@@ -1795,6 +1810,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 61 (2026-11-01): 410 passed** (the reproduction regression pins the ARR summary: the petition's own columns match in full).  Ruff and format clean.
 - **Increment 60 (2026-11-01): 410 passed** (the reproduction regression pins F17, F18 and F19A).  Ruff and format clean.
 - **Increment 59 (2026-11-01): 410 passed** (+1 unit: the reference rates from NPCL's MCLR revisions).  Ruff and format clean.
 - **Increment 58 (2026-11-01): 409 passed** (the reproduction regression now pins F27's results column by column).  Ruff and format clean.

@@ -13,9 +13,9 @@ Guarantees (each tested):
   converted to the rule's declared output unit or refused.  ACoS (Rs/kWh) from ARR (Rs crore) and
   sales (MU) therefore needs no hand-written ``× 10``: the units do it.
 - **A restricted language.**  Formulas are parsed with :mod:`ast` and only numbers, input names,
-  ``+ - * /``, unary minus, parentheses and the functions ``avg``, ``min``, ``max``, ``sum`` are
-  accepted.  No attribute access, subscripts, comparisons or other calls: a formula cannot do
-  anything but arithmetic.
+  ``+ - * /``, unary minus, parentheses and the functions ``avg``, ``min``, ``max``, ``sum`` and
+  ``ifneg(test, then, otherwise)`` are accepted.  No attribute access, subscripts, comparisons or
+  other calls: a formula cannot do anything but arithmetic.
 - **Dependency order** (R-NUM-4).  Rules referring to other rules' outputs are evaluated
   topologically; a cycle is refused with its members named.
 - **Rounding policy per rule** (R-NUM-3): places, mode (half-up as orders print, unless a rule
@@ -96,7 +96,7 @@ def _combine(a: tuple, b: tuple, sign: int) -> tuple:
 
 # ---------------------------------------------------------------- the formula language
 
-_FUNCS = {"avg", "min", "max", "sum"}
+_FUNCS = {"avg", "min", "max", "sum", "ifneg"}
 
 
 def parse(formula: str) -> ast.Expression:
@@ -160,6 +160,15 @@ def evaluate(tree: ast.Expression, env: dict[str, Q], source: str) -> Q:
             if b.value == 0:
                 raise RuleError("division by zero")
             return Q(a.value / b.value, _combine(a.dims, b.dims, -1))
+        if isinstance(node, ast.Call) and node.func.id == "ifneg":
+            # ifneg(test, then, otherwise): "then" when test < 0 — the one conditional (a gap
+            # carries one rate, a surplus another); both branches must be the same dimension
+            if len(node.args) != 3:
+                raise RuleError("ifneg() takes (test, then, otherwise)")
+            test, a, b = (ev(x) for x in node.args)
+            if a.dims != b.dims:
+                raise RuleError("ifneg() branches of different dimensions")
+            return a if test.value < 0 else b
         if isinstance(node, ast.Call):
             args = [ev(x) for x in node.args]
             if not args:
