@@ -417,3 +417,80 @@ def test_chapters_of_a_long_order_follow_its_numbered_sections():
     assert not looks_like_heading("17.06.2026   GFA") and not looks_like_heading("TABLE 4-25 MEDIUM TERM POWER")
     assert not looks_like_heading("4.4.12. Accordingly, the total cost of long-term power purchase claimed by the")
     assert looks_like_heading("6.6. Operation and Maintenance Expenses")
+
+
+def test_real_order_table_layouts_are_read():
+    """Table layouts of a real ARR order (increment 38) in SYNTHETIC figures: the year only in
+    the caption, the voice from the part, an earlier order's approval, reference and unit
+    columns beside the label, a second header row, footnote marks, a percentage in a label."""
+    from tariff_api.arr.extract import label_unit, voice_in_context
+
+    tax = load_taxonomy()
+    mapping = load_mapping("NOSUCH", fallback=True)
+    placer = Placer(tax, mapping, "distribution")
+
+    def read(grid: GridIn, part: str | None):
+        out, rep = read_grids(
+            [grid], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="SYN", part=part
+        )
+        return {(c.line_code, c.fiscal_year, c.value_type): c.stated_value for c in out.candidates}, rep
+
+    summary = GridIn(
+        9,
+        0,
+        [
+            ["S. No.", "Particulars", "Ref.", "Units", "Claimed", "Approved"],
+            ["1", "Power Purchase Expenses", "A", "Rs. Cr.", "2,448.33", "2,477.36*"],
+            ["2", "Depreciation", "B", "Rs. Cr.", "106.75", "103.80"],
+            ["3", "Energy Sales", "C", "MU", "4,399.84", "4,399.84"],
+        ],
+        1,
+        ["TABLE 6-81 SUMMARY OF ARR AS APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.)"],
+    )
+    got, _ = read(summary, "AGGREGATE REVENUE REQUIREMENT OF FY 2026-27")
+    assert got[("C.PP", "FY2026-27", "petitioned")] == "2448.33"
+    assert got[("C.PP", "FY2026-27", "approved")] == "2477.36"  # the footnote mark is not part of it
+    assert got[("E.SALES", "FY2026-27", "approved")] == "4399.84"  # the units column gives MU
+
+    trued = GridIn(
+        4,
+        0,
+        [
+            ["Sl. No.", "Particulars", "Approved in TO dated 10.10.2024", "Claimed", "Approved"],
+            ["1", "Depreciation", "70.00", "75.00", "72.00"],
+        ],
+        1,
+        ["TABLE 4-100 DEPRECIATION APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.)"],
+    )
+    got, _ = read(trued, "TRUING-UP OF FY 2024-25")
+    assert got == {
+        ("C.DEP", "FY2024-25", "approved"): "70.00",  # the earlier order's approval
+        ("C.DEP", "FY2024-25", "petitioned"): "75.00",
+        ("C.DEP", "FY2024-25", "final_true_up"): "72.00",  # an approval inside the true-up
+    }
+    got, _ = read(trued, "ANNUAL PERFORMANCE REVIEW OF FY 2024-25")
+    assert got[("C.DEP", "FY2024-25", "provisional_true_up")] == "72.00"
+
+    two_rows = GridIn(
+        8,
+        0,
+        [
+            ["Particulars", "FY 2024-25 (True-Up)", "", "FY 2025-26 (APR)", ""],
+            ["", "Claimed", "Approved", "Claimed", "Computed"],
+            ["Depreciation", "75.00", "72.00", "80.00", "78.00"],
+        ],
+        1,
+        ["TABLE 8-3: CUMULATIVE GAP / (SURPLUS) (IN RS. CR.)"],
+    )
+    got, rep = read(two_rows, None)
+    assert got[("C.DEP", "FY2024-25", "final_true_up")] == "72.00"
+    assert got[("C.DEP", "FY2025-26", "petitioned")] == "80.00"
+    assert got[("C.DEP", "FY2025-26", "provisional_true_up")] == "78.00"  # "(APR)" over "Computed"
+    assert not rep.columns_skipped
+
+    assert (
+        voice_in_context("Approved as per TO dtd 22.11.2025", "", "ANNUAL PERFORMANCE REVIEW OF FY 2025-26", mapping)
+        == "approved"
+    )
+    assert label_unit("Maintenance spares @ 40% of the R&M Expenses") is None
+    assert label_unit("Distribution Loss (%)") == "percent" and label_unit("ACoS (Rs./kWh)") == "INR_per_kWh"

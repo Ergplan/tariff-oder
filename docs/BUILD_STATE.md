@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -664,6 +664,34 @@ open-access view.
   1,939 unplaced (top unplaced keys: the running headers, "Total", tariff-category rows such as
   "LMV-1: Domestic Light, Fan & Power", "Grand Total") — the hand-mapping list for the
   reviewer.  The order is in the local stack only; nothing was deployed.
+
+  **Increment 38 (2026-11-01): the value reader measured on the real order's tables.**  A
+  read-only evaluation (the structure channel's rules over the 384 primary grids of the 30
+  proposed chapters, nothing recorded, no chapter confirmed) found the reader read **30 of 384
+  tables and 53 values**: real ARR tables put the year in the caption and only the voice in
+  the header ("TABLE 6-81 SUMMARY OF ARR AS APPROVED BY THE COMMISSION FOR FY 2026-27" over
+  "Claimed | Approved"), print an earlier order's approval beside the claim and the decision
+  ("Approved in TO dated 10.10.2024 | Claimed | Approved"), put reference, formula and unit
+  columns beside the label ("A", "C=A+B", "Rs. Cr."), split headers over two rows ("FY 2024-25
+  (True-Up)" over "Claimed | Approved"), and mark values with footnotes ("517.23*").  Rules
+  arr-rules-2: the year from the caption (or the part's running header) when the header names
+  only a voice; the voice of an approval from the nearest words — the header, then the part,
+  then the caption — so an approval inside the true-up is the trued-up value, inside the APR
+  the provisional one, and "Approved as per TO dtd …" stays the earlier approval; the label
+  column chosen by its header or its text, never a reference, formula or S. No. column; a
+  units column gives the row's unit; a second header row is recognised; footnote marks and a
+  trailing per cent sign are not part of a value; a label's unit only from brackets or its end
+  ("@ 40% of R&M" is not a unit).  **Measured again: 188 of 384 tables read, 657 values, 714
+  rows placed.**  Spot-checked against the page text: the FY2026-27 ARR summary (p. 294) reads
+  claimed/approved power purchase 2,448.33/2,477.36, ARR 3,387.16/3,420.27, revenue gap
+  289.79/319.29 Rs crore, sales 4,399.84 MU; the APR summary (p. 207) reads the earlier
+  approval, the APR claim and the provisionally considered value in their own voices.  The
+  other 196 tables are mostly schedules that are not line × voice (asset classes × GFA, months
+  × units, plants × availability) and stay unread; 965 rows stay unplaced, now genuine line
+  labels for the UPERC mapping ("Inter-State Losses", "Units at UP Periphery", "Contracted
+  Quantum").  These are proposals of a real order measured outside the pipeline: none is a
+  candidate or a fact, and none can be approved until a reviewer confirms the chapters and the
+  UPERC mapping.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1201,6 +1229,11 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 
 ## Reading reliability ledger changes
 
+Increment 38 (ARR, real order): the structure channel read 30 of 384 tables of the real order
+(year in captions, voice by part, reference/unit columns, two-row headers, footnote marks);
+rules arr-rules-2 read 188 with spot checks matching the printed summaries.  Not measured:
+precision over all 657 values (needs the reviewer's decisions), any second real order.
+
 Increment 37 (ARR, real order): chapter localisation over-fragmented a real 423-page order
 (229 proposals for about 30 sections) — running headers, contents entries, captions, rows and
 numbered prose read as headings.  Chapter rules v2 handle each; measured on that order: 30
@@ -1223,6 +1256,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 38 (2026-11-01): 353 passed** (+1 unit: the real order's table layouts in synthetic figures — year in the caption, voice from the part, an earlier order's approval, reference and unit columns, a two-row header, footnote marks, a percentage inside a label).
 - **Increment 37 (2026-11-01): 352 passed** (+1 unit: the real order's heading patterns reproduced in synthetic page text — contents page, running headers, captions, rows, numbered prose, an out-of-sequence list item, an uncued part heading — and the exact chapters and part notes expected).
 - **Increment 36 (2026-11-01): 351 passed** (the true-up test now checks the case activity and its isolation; the benchmarks test downloads the history workbook and checks one row per fact with order, page and fact id, and the derived disallowance).  The run took 8 min 46 s because the local stack was parsing a 423-page real order at the same time.
 - **Increment 35 (2026-11-01): 351 passed** (+1 integration: a synthetic combined order, licensees set by an administrator, values attributed per column and per caption, the total column skipped, identities per licensee, facts published per licensee, benchmarks per licensee; the library test also checks that acquiring one document for a second licensee records a combined order).

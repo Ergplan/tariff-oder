@@ -16,7 +16,7 @@ from ..tariff_schema import EvidenceRef
 from .schema import ArrCandidate, ArrExtractionOutput, to_canonical, unit_from_text
 from .taxonomy import Mapping, Placer, Taxonomy
 
-ARR_RULES_VERSION = "arr-rules-1"
+ARR_RULES_VERSION = "arr-rules-2"
 _FY = re.compile(r"(?:FY\s*)?(20\d{2})\s*[-–/]\s*(\d{2}|20\d{2})\b", re.I)
 _ABSENT = {"-", "–", "—", "na", "n.a.", "n/a", "nil*", ""}
 _ZERO = {"nil", "0", "0.0", "0.00", "zero"}
@@ -119,6 +119,9 @@ def parse_value(raw: str) -> tuple[str, str | None]:
     """(value_state, decimal string) for one cell, exactly as printed: commas removed,
     brackets as negative.  Nil, -, NA and blanks are states, never the number 0."""
     t = (raw or "").strip()
+    # a footnote mark ("517.23*") or a percent sign printed with the value
+    t = re.sub(r"(?<=[0-9)])\s*[*#^@†]+$", "", t)
+    t = re.sub(r"(?<=[0-9])\s*%$", "", t)
     low = t.lower()
     if low in _ZERO:
         return "zero", "0"
@@ -137,6 +140,74 @@ def parse_value(raw: str) -> tuple[str, str | None]:
     return "value", ("-" if neg else "") + digits
 
 
+_LABEL_HDR = re.compile(
+    r"particular|description|\bitems?\b|\bhead\b|nature|component|computation|parameter|\bsources?\b|category|"
+    r"expense|\bline\b",
+    re.I,
+)
+_SKIP_HDR = re.compile(r"^\W*(?:s\.?\s*no|sl\.?\s*no|sr\.?\s*no|ref|reference|formula|units?\b|uom\b)", re.I)
+_UNIT_HDR = re.compile(r"^\W*(?:units?|uom)\b", re.I)
+_ORIGINAL_APPROVAL = re.compile(
+    r"\b(?:in|as\s+per|per|vide|under)\s+(?:the\s+)?(?:t\.?\s?o\.?|tariff\s+order|mtr|myt\s+order)(?![a-z])"
+    r"|\bt\.?\s?o\.?\s+(?:dated|dtd|of)\b",
+    re.I,
+)
+_TRUE_UP = re.compile(r"tru(?:e|ing)[- ]?up|trued[- ]?up", re.I)
+_APR = re.compile(r"\bapr\b|annual\s+performance\s+review", re.I)
+
+
+def voice_in_context(header: str, caption: str, part: str | None, mapping: Mapping) -> str | None:
+    """The voice of a value column: the header's own word, else the caption's; an approval
+    inside a true-up is the trued-up value and inside an APR the provisional one, unless the
+    header says it is the approval of an earlier order ("Approved in TO dated 10.10.2024")."""
+    vt = voice(header, mapping) or voice(caption, mapping)
+    if vt != "approved" or _ORIGINAL_APPROVAL.search(header):
+        return vt
+    # the nearest words decide: the header's own, then the part the chapter sits in, then
+    # the caption
+    for text in (header, part or "", caption):
+        apr, tu = _APR.search(text), _TRUE_UP.search(text)
+        if apr and not tu:
+            return "provisional_true_up"
+        if tu and not apr:
+            return "final_true_up"
+    return vt
+
+
+def label_unit(label: str) -> str | None:
+    """The unit a row label states for itself: in brackets ("Sales (MU)") or at its end
+    ("ACoS Rs./kWh"); a percentage inside the words ("@ 40% of R&M") is not the row's unit."""
+    for inner in re.findall(r"\(([^()]{1,30})\)", label or ""):
+        u = unit_from_text(inner)
+        if u:
+            return u
+    tail = re.search(r"(?:in\s+)?(rs\.?\s*(?:cr(?:ore)?\.?|lakh|/\s*kwh)|mu|%|kwh|mw)\s*$", label or "", re.I)
+    return unit_from_text(tail.group(1)) if tail else None
+
+
+def _texty(g: GridIn, j: int) -> bool:
+    body = [(r[j] if j < len(r) else "").strip() for r in g.rows[max(1, g.header_rows) :]]
+    body = [c for c in body if c]
+    if not body:
+        return False
+    words = [c for c in body if re.search(r"[A-Za-z]{3,}", c) and not _NUMBER.match(c)]
+    return len(words) / len(body) >= 0.5
+
+
+def _with_second_header(g: GridIn, mapping: Mapping) -> GridIn:
+    """A header printed on two rows ("FY 2024-25 (True-Up)" over "Claimed | Approved") whose
+    second row the grid stage counted as data: no number in it and a voice word in it."""
+    from dataclasses import replace
+
+    h = max(1, g.header_rows)
+    if len(g.rows) <= h + 1:
+        return g
+    nxt = [(c or "").strip() for c in g.rows[h]]
+    if any(_NUMBER.match(c) for c in nxt if c) or not any(voice(c, mapping) for c in nxt if c):
+        return g
+    return replace(g, header_rows=h + 1)
+
+
 def read_grids(
     grids: list[GridIn],
     *,
@@ -146,11 +217,16 @@ def read_grids(
     source_id: str,
     utility: str | None,
     licensees: dict[str, list[str]] | None = None,
+    part: str | None = None,
 ) -> tuple[ArrExtractionOutput, ReadReport]:
     """Candidates from a chapter's grids.  ``utility`` is the order's licensee; a combined
     order passes its ``licensees`` (code -> names) instead, and each value is attributed to the
     licensee its column header or its table's caption names.  A total across licensees, or a
-    column no licensee can be read for, is reported and skipped, never attributed."""
+    column no licensee can be read for, is reported and skipped, never attributed.
+
+    ``part`` is the running header of the part the chapter sits in ("TRUING-UP OF FY
+    2024-25"): it gives a column the year when neither its header nor the caption does, and
+    the voice of an approval inside a true-up or an APR."""
     combined = bool(licensees and len(licensees) > 1)
     report = ReadReport()
     out = ArrExtractionOutput()
@@ -158,11 +234,12 @@ def read_grids(
     for g in grids:
         if not g.rows:
             continue
+        g = _with_second_header(g, mapping)
         headers = _header_texts(g)
         caption = " ".join(g.caption)
         table_unit = unit_from_text(caption) or next((unit_from_text(h) for h in headers if unit_from_text(h)), None)
         columns: list[ColumnSpec] = []
-        label_col = 0
+        table_fy = fiscal_year(caption) or (fiscal_year(part) if part else None)
         table_licensee = licensee_named(caption, licensees) if combined and licensees else None
 
         for j, h in enumerate(headers):
@@ -180,10 +257,12 @@ def read_grids(
                 columns.append(ColumnSpec(j, fy, vt, f"{h} | {caption}"[:200], col_licensee))
                 continue
             if fy is None:
-                if not columns:
-                    label_col = j
-                continue
-            vt = voice(h, mapping) or voice(caption, mapping)
+                # a voice-only header ("Claimed", "Approved"): the year is the caption's (or the
+                # part's) when it names exactly one
+                if not h.strip() or _SKIP_HDR.match(h) or voice(h, mapping) is None or table_fy is None:
+                    continue
+                fy = table_fy
+            vt = voice_in_context(h, caption, part, mapping)
             if vt is None:
                 _skip(report, g, j, h, "no voice word")
                 continue
@@ -194,6 +273,21 @@ def read_grids(
             columns.append(ColumnSpec(j, fy, vt, h, owner))
         if not columns:
             continue
+        value_cols = {c.col for c in columns}
+        others = [j for j in range(len(headers)) if j not in value_cols]
+        label_col = next(
+            (
+                j
+                for j in others
+                if headers[j].strip() and _LABEL_HDR.search(headers[j]) and not _SKIP_HDR.match(headers[j])
+            ),
+            None,
+        )
+        if label_col is None:
+            label_col = next(
+                (j for j in others if not _SKIP_HDR.match(headers[j]) and _texty(g, j)), others[0] if others else 0
+            )
+        unit_col = next((j for j in others if _UNIT_HDR.match(headers[j])), None)
         report.grids_read += 1
         for i, row in enumerate(g.rows[max(1, g.header_rows) :], start=max(1, g.header_rows)):
             cells = [(c or "").strip() for c in row]
@@ -202,7 +296,8 @@ def read_grids(
                 label = cells[label_col + 1]  # an S.No. column before the particulars
             if not label or label.lower() in ("particulars", "s. no.", "sl. no."):
                 continue
-            row_unit = unit_from_text(label) or table_unit
+            unit_cell = cells[unit_col] if unit_col is not None and unit_col < len(cells) else ""
+            row_unit = label_unit(label) or unit_from_text(unit_cell) or table_unit
             placed = placer.place(label, unit_hint=_unit_class(row_unit))
             if placed is None:
                 report.unplaced.append(

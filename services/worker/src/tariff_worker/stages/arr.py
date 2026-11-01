@@ -25,7 +25,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from tariff_api.adapters.storage import ObjectNotFound, ObjectStore
-from tariff_api.arr.chapters import CHAPTERS_VERSION, propose_chapters
+from tariff_api.arr.chapters import CHAPTERS_VERSION, part_from_note, propose_chapters
 from tariff_api.arr.extract import ARR_RULES_VERSION, GridIn, compare, read_grids
 from tariff_api.arr.identities import EVALUATED, IDENTITIES_VERSION, Value, evaluate
 from tariff_api.arr.provider import ArrChannelUnavailable, build_arr_channel
@@ -274,6 +274,11 @@ def arr_extract_source(ctx: JobContext) -> dict:
     # where each chapter heading sits on its page: a table belongs to the last heading above
     # it, so a page shared by two chapters splits at the second heading
     cue_y = {ordinal: _heading_y(doc, cue_page, cue_text) for ordinal, _s, _e, _b, cue_page, cue_text in chapter_rows}
+    with session_scope() as s:
+        parts = {
+            c.ordinal: part_from_note(c.note)
+            for c in s.execute(select(ArrChapter).where(ArrChapter.source_id == source_id)).scalars()
+        }
     for ordinal, start, end, branch, cue_page, _cue_text in chapter_rows:
         grids: list[GridIn] = []
         later = [(o, cp) for o, _s, _e, _b, cp, _t in chapter_rows if o > ordinal]
@@ -301,6 +306,7 @@ def arr_extract_source(ctx: JobContext) -> dict:
             source_id=str(source_id),
             utility=utility_code,
             licensees=licensee_names if len(licensee_names) > 1 else None,
+            part=parts.get(ordinal),
         )
         for c in structure.candidates:
             c.chapter = ordinal

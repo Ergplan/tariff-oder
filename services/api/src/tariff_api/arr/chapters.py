@@ -183,3 +183,9 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
             notes.append(f"in the part headed: {part_of[page]}")
         out.append(ChapterProposal(i + 1, branch, text, page, page, end, "; ".join(notes) or None))
     return out
+
+
+def part_from_note(note: str | None) -> str | None:
+    """The part a chapter sits in, as its proposal recorded it ("in the part headed: …")."""
+    m = re.search(r"in the part headed:\s*(.+?)\s*(?:;|$)", note or "")
+    return m.group(1) if m else None
