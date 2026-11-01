@@ -4681,6 +4681,35 @@
         "title": "JurisdictionOut",
         "type": "object"
       },
+      "LibraryDiscoverRequest": {
+        "properties": {
+          "commission_code": {
+            "title": "Commission Code",
+            "type": "string"
+          },
+          "page_html": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page Html"
+          },
+          "page_url": {
+            "title": "Page Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "commission_code",
+          "page_url"
+        ],
+        "title": "LibraryDiscoverRequest",
+        "type": "object"
+      },
       "LibraryEntryIn": {
         "properties": {
           "commission_code": {
@@ -4916,6 +4945,72 @@
           "updated_at"
         ],
         "title": "LibraryEntryOut",
+        "type": "object"
+      },
+      "LibraryProposal": {
+        "description": "A guessed library entry from a listing page; a person confirms it before it is recorded.",
+        "properties": {
+          "commission_code": {
+            "title": "Commission Code",
+            "type": "string"
+          },
+          "complete": {
+            "title": "Complete",
+            "type": "boolean"
+          },
+          "document_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Kind"
+          },
+          "fiscal_year": {
+            "title": "Fiscal Year",
+            "type": "string"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "utility_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility Code"
+          }
+        },
+        "required": [
+          "commission_code",
+          "url",
+          "title",
+          "document_kind",
+          "fiscal_year",
+          "utility_code",
+          "notes",
+          "complete"
+        ],
+        "title": "LibraryProposal",
         "type": "object"
       },
       "LibrarySeedOut": {
@@ -14516,6 +14611,112 @@
           }
         },
         "summary": "Coverage",
+        "tags": [
+          "library"
+        ]
+      }
+    },
+    "/library/discover": {
+      "post": {
+        "description": "Proposals from a commission's listing page (fetched, or pasted when the list sits behind\na search form).  Nothing is recorded: the desk confirms proposals with ``/entries/bulk``.",
+        "operationId": "discover_library_discover_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LibraryDiscoverRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LibraryProposal"
+                  },
+                  "title": "Response Discover Library Discover Post",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Discover",
         "tags": [
           "library"
         ]

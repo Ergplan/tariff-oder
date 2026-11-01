@@ -4,7 +4,7 @@ import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../components";
 import { ActionButton } from "../client/actions";
 import { KIND_SHORT, Level } from "../client/levels";
-import { EntryForm, SeedForm } from "./library-admin";
+import { DiscoverForm, EntryForm, SeedForm } from "./library-admin";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +28,8 @@ export default async function LibraryAdmin({ searchParams }: { searchParams: Pro
       </p>
       <h2>Seed expected documents</h2>
       <SeedForm />
+      <h2>Find documents on a commission&apos;s website</h2>
+      <DiscoverForm />
       <h2>Record a document</h2>
       <EntryForm />
       <h2>Entries</h2>

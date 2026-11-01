@@ -218,7 +218,7 @@ def _candidate_row(
 
 def arr_extract_source(ctx: JobContext) -> dict:
     storage: ObjectStore = ctx.adapters.storage
-    channel = build_arr_channel(ctx.settings)
+    channel = build_arr_channel(ctx.settings, ctx.adapters.secrets)
     tax = load_taxonomy()
     with session_scope() as s:
         src = _load(ctx, s, ("chapters_confirmed", "extracted", "awaiting_review"))
@@ -295,7 +295,20 @@ def arr_extract_source(ctx: JobContext) -> dict:
         runs.append(s_run)
         images = [doc[p - 1].get_pixmap(dpi=IMAGE_DPI).tobytes("png") for p in range(start, end + 1)]
         try:
-            res = channel.read_chapter(structure, images)
+            res = channel.read_chapter(
+                structure,
+                images,
+                {
+                    "pages": list(range(start, end + 1)),
+                    "source_id": str(source_id),
+                    "utility": utility_code,
+                    "commission": commission,
+                    "branch": branch,
+                    "voices": [v.code for v in tax.value_types],
+                    "line_items": [(i.code, i.label) for i in tax.line_items if i.kind != "group"],
+                    "conversions": tax.unit_conversions,
+                },
+            )
         except ArrChannelUnavailable as e:
             raise JobFailure("provider_unavailable", str(e), retry=e.retry) from e
         i_run = ExtractionRun(

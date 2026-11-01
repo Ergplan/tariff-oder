@@ -16,8 +16,10 @@ from ..models import Commission, LibraryEntry, Utility
 from ..schemas import (
     CoverageOut,
     JobSummary,
+    LibraryDiscoverRequest,
     LibraryEntryIn,
     LibraryEntryOut,
+    LibraryProposal,
     LibrarySeedOut,
     LibrarySeedRequest,
 )
@@ -135,3 +137,13 @@ def acquire(entry_id: uuid.UUID, request: Request, principal: Principal = Depend
         job = request_acquisition(s, request.app.state.settings, e, actor=principal.email)
         s.flush()
         return JobSummary.model_validate(job, from_attributes=True)
+
+
+@router.post("/discover", response_model=list[LibraryProposal])
+def discover(body: LibraryDiscoverRequest, principal: Principal = Depends(require_admin)) -> list[LibraryProposal]:
+    """Proposals from a commission's listing page (fetched, or pasted when the list sits behind
+    a search form).  Nothing is recorded: the desk confirms proposals with ``/entries/bulk``."""
+    from ..library import discover as do
+
+    with session_scope() as s:
+        return [LibraryProposal(**p) for p in do(s, **body.model_dump())]

@@ -106,3 +106,112 @@ export function EntryForm() {
     </form>
   );
 }
+
+type Proposal = {
+  commission_code: string;
+  url: string;
+  title: string;
+  document_kind: string | null;
+  fiscal_year: string;
+  utility_code: string | null;
+  notes: string[];
+  complete: boolean;
+};
+
+/** Propose entries from a commission's listing page (fetched, or its HTML pasted when the list
+ * sits behind a search form); the desk ticks what is right and records it. */
+export function DiscoverForm() {
+  const router = useRouter();
+  const [v, setV] = useState({ commission_code: "", page_url: "", page_html: "" });
+  const [props, setProps] = useState<Proposal[]>([]);
+  const [pick, setPick] = useState<Record<string, boolean>>({});
+  const [msg, setMsg] = useState<string | null>(null);
+  const [error, setError] = useState<ErrorResponse | null>(null);
+  return (
+    <>
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          setError(null);
+          setMsg(null);
+          const r = await call("library/discover", "POST", { ...v, page_html: v.page_html.trim() ? v.page_html : null });
+          if (!r.ok) return setError(r.error);
+          const list = r.data as Proposal[];
+          setProps(list);
+          setPick(Object.fromEntries(list.map((p) => [p.url, p.complete])));
+        }}
+      >
+        <div className="form-grid">
+          <label>
+            Commission
+            <input value={v.commission_code} onChange={(e) => setV({ ...v, commission_code: e.target.value.trim() })} required placeholder="UPERC" />
+          </label>
+          <label style={{ gridColumn: "span 2" }}>
+            Listing page URL
+            <input value={v.page_url} onChange={(e) => setV({ ...v, page_url: e.target.value.trim() })} required type="url" />
+          </label>
+          <label style={{ gridColumn: "1 / -1" }}>
+            Page source (optional: paste it when the list sits behind a search form)
+            <textarea rows={3} value={v.page_html} onChange={(e) => setV({ ...v, page_html: e.target.value })} />
+          </label>
+        </div>
+        <button type="submit">Find documents</button>
+      </form>
+      {error ? <ErrorBanner error={error} /> : null}
+      {props.length ? (
+        <>
+          <p className="muted">{props.length} PDF links found. Guesses only: tick the right ones.</p>
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th />
+                  <th>Link text</th>
+                  <th>Kind</th>
+                  <th>Year</th>
+                  <th>Licensee</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {props.map((p) => (
+                  <tr key={p.url}>
+                    <td>
+                      <input type="checkbox" checked={!!pick[p.url]} disabled={!p.document_kind} onChange={(e) => setPick({ ...pick, [p.url]: e.target.checked })} />
+                    </td>
+                    <td>
+                      <a href={p.url} target="_blank" rel="noreferrer noopener">
+                        {p.title}
+                      </a>
+                    </td>
+                    <td>{p.document_kind ?? "?"}</td>
+                    <td className="mono">{p.fiscal_year || "—"}</td>
+                    <td>{p.utility_code ?? "—"}</td>
+                    <td className="muted">{p.notes.join("; ")}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <button
+            type="button"
+            onClick={async () => {
+              const chosen = props.filter((p) => pick[p.url] && p.document_kind);
+              const r = await call(
+                "library/entries/bulk",
+                "POST",
+                chosen.map((p) => ({ commission_code: p.commission_code, utility_code: p.utility_code, document_kind: p.document_kind, fiscal_year: p.fiscal_year, title: p.title, url: p.url })),
+              );
+              if (!r.ok) return setError(r.error);
+              setMsg(`${chosen.length} entries recorded as located; acquire them from the list below.`);
+              router.refresh();
+            }}
+          >
+            Record selected
+          </button>
+          {msg ? <p className="muted">{msg}</p> : null}
+        </>
+      ) : null}
+    </>
+  );
+}

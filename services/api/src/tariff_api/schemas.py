@@ -1616,6 +1616,25 @@ class LibrarySeedRequest(BaseModel):
     commission_codes: list[str] | None = None  # None = every commission
 
 
+class LibraryDiscoverRequest(BaseModel):
+    commission_code: str
+    page_url: str
+    page_html: str | None = None  # pasted page source, for listings behind search forms
+
+
+class LibraryProposal(BaseModel):
+    """A guessed library entry from a listing page; a person confirms it before it is recorded."""
+
+    commission_code: str
+    url: str
+    title: str
+    document_kind: str | None
+    fiscal_year: str
+    utility_code: str | None
+    notes: list[str]
+    complete: bool
+
+
 class LibrarySeedOut(BaseModel):
     created: int
     existing: int

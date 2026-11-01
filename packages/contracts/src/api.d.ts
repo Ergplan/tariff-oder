@@ -715,6 +715,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/library/discover": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Discover
+         * @description Proposals from a commission's listing page (fetched, or pasted when the list sits behind
+         *     a search form).  Nothing is recorded: the desk confirms proposals with ``/entries/bulk``.
+         */
+        post: operations["discover_library_discover_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/library/entries": {
         parameters: {
             query?: never;
@@ -3592,6 +3613,15 @@ export interface components {
             /** Name */
             name: string;
         };
+        /** LibraryDiscoverRequest */
+        LibraryDiscoverRequest: {
+            /** Commission Code */
+            commission_code: string;
+            /** Page Html */
+            page_html?: string | null;
+            /** Page Url */
+            page_url: string;
+        };
         /** LibraryEntryIn */
         LibraryEntryIn: {
             /** Commission Code */
@@ -3657,6 +3687,28 @@ export interface components {
             url: string | null;
             /** Utility */
             utility: string | null;
+        };
+        /**
+         * LibraryProposal
+         * @description A guessed library entry from a listing page; a person confirms it before it is recorded.
+         */
+        LibraryProposal: {
+            /** Commission Code */
+            commission_code: string;
+            /** Complete */
+            complete: boolean;
+            /** Document Kind */
+            document_kind: string | null;
+            /** Fiscal Year */
+            fiscal_year: string;
+            /** Notes */
+            notes: string[];
+            /** Title */
+            title: string;
+            /** Url */
+            url: string;
+            /** Utility Code */
+            utility_code: string | null;
         };
         /** LibrarySeedOut */
         LibrarySeedOut: {
@@ -8948,6 +9000,93 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CoverageOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    discover_library_discover_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LibraryDiscoverRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LibraryProposal"][];
                 };
             };
             /** @description Unauthorized */

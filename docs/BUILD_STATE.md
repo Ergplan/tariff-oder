@@ -508,6 +508,17 @@ open-access view.
   a search form driven by ASP.NET postbacks (`Tariff_Order_Users.aspx`); KERC, GERC, MERC,
   TNERC and DERC do not answer from the cloud session at all.  Found and fixed: a draft
   download with an em dash in its name crashed the response header (RFC 5987 now).
+  **Increment 29 (2026-11-01): the live ARR reading channel and document discovery.**
+  `AnthropicArrImageChannel` reads a confirmed chapter's page images six pages per call with
+  the ARR candidate schema as its only tool; each candidate is validated on its own (a bad
+  row is dropped with its reason), the order and licensee are set by code, the canonical value
+  is recomputed from the printed one, cost comes from the configured prices; the stage passes
+  the pages, licensee, commission, voices and taxonomy codes.  Tested with the HTTP call
+  mocked; **never run against a real order or with a real key**.  Library discovery
+  (`POST /library/discover`, desk `/library` â†’ Find documents): from a commission's listing
+  page, fetched or pasted (for lists behind search forms such as UPERC's), every PDF link
+  with a guessed kind, year and licensee and the reasons it is incomplete; the desk ticks
+  and records them (`/library/entries/bulk`), nothing is saved without a person.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1062,6 +1073,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 29 (2026-11-01): 339 passed** (+2 unit: the live ARR channel with mocked HTTP; discovery).
 - **Increment 28 (2026-11-01): 337 passed** (+2: organisations/cases/isolation end to end,
   library seed/locate/acquire through a local HTTP server/coverage); web typecheck and build
   green; contracts no drift.

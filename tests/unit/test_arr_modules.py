@@ -252,3 +252,99 @@ def test_shipped_plans_and_templates_load_and_name_known_codes():
         for fmt in t.formats:
             assert all(r in codes for r in fmt.rows)
     assert fm.load_plan("UPERC").status.startswith("skeleton") and fl.load_template("UPERC").status == "skeleton"
+
+
+def test_live_arr_channel_shapes_validates_and_never_trusts_the_model_on_identity(monkeypatch):
+    """The Anthropic ARR channel with the HTTP call mocked: pages go in chunks, each
+    candidate is validated one by one, the order and licensee are set by code, the canonical
+    value is recomputed from the printed one, cost comes from the configured prices."""
+    import httpx
+
+    from tariff_api.arr import provider as pv
+
+    calls = []
+
+    def fake_post(url, headers, json, timeout):  # noqa: A002
+        calls.append(json)
+        tool_input = {
+            "candidates": [
+                {
+                    "line_code": "C.OM",
+                    "fiscal_year": "FY2025-26",
+                    "value_type": "approved",
+                    "as_of_order": "the model guessed this",
+                    "utility": "SOMEONE-ELSE",
+                    "value_state": "value",
+                    "stated_value": "1,234.50",
+                    "stated_unit": "INR_lakh",
+                    "canonical_value": "999",  # the model's arithmetic is ignored
+                    "original_text": "O&M Expenses",
+                    "evidence": [{"page_index": 3, "excerpt": "1,234.50"}],
+                },
+                {"line_code": "C.OM", "fiscal_year": "2025-26", "value_type": "approved", "value_state": "value"},
+            ],
+            "missing": ["row 'Misc' fits no code"],
+        }
+        body = {
+            "id": f"msg_{len(calls)}",
+            "stop_reason": "tool_use",
+            "content": [{"type": "tool_use", "name": "return_arr_candidates", "input": tool_input}],
+            "usage": {"input_tokens": 1000, "output_tokens": 200},
+        }
+        return httpx.Response(200, json=body, request=httpx.Request("POST", url))
+
+    monkeypatch.setattr(httpx, "post", fake_post)
+    with pytest.raises(pv.ArrChannelUnavailable):
+        pv.AnthropicArrImageChannel("", "m", 3.0, 15.0)
+    ch = pv.AnthropicArrImageChannel("k", "claude-test", 3.0, 15.0)
+    ctx = {
+        "pages": list(range(1, 9)),
+        "source_id": "SRC",
+        "utility": "NPCL",
+        "commission": "UPERC",
+        "voices": ["approved"],
+        "line_items": [("C.OM", "O&M")],
+        "conversions": TAX.unit_conversions,
+    }
+    res = ch.read_chapter(pv.ArrExtractionOutput(), [b"img"] * 8, ctx)
+    assert len(calls) == 2  # 8 pages in chunks of 6
+    assert "IGNORE" not in calls[0]["system"] and "document data" in calls[0]["system"]
+    assert calls[0]["tool_choice"] == {"type": "tool", "name": "return_arr_candidates"}
+    c = res.output.candidates[0]
+    assert (c.as_of_order, c.utility, c.stated_value) == ("SRC", "NPCL", "1234.50")
+    assert (c.canonical_value, c.canonical_unit) == ("12.345", "INR_crore")
+    assert len(res.output.candidates) == 2 and len(res.raw["rejected"]) == 2  # one bad row per call
+    assert res.input_tokens == 2000 and res.cost_usd == round(2000 / 1e6 * 3 + 400 / 1e6 * 15, 6)
+    assert not res.is_fixture and "row 'Misc' fits no code" in res.output.missing
+
+
+def test_discovery_proposes_entries_from_a_listing_page_and_says_what_it_guessed():
+    from tariff_api.library import propose_from_html
+
+    page = """
+    <table>
+      <tr><td><a href="/Orders/NPCL_TO.pdf">Tariff Order of NPCL for FY 2025-26</a></td></tr>
+      <tr><td><a href='docs/tu.PDF'>True-up order of PVVNL for FY 2023-24</a></td></tr>
+      <tr><td><a href="https://x.example/myt.pdf">MYT Petition filed by KESCO for Control Period FY 2025-26 to FY 2029-30</a></td></tr>
+      <tr><td><a href="/regs/2025.pdf">UPERC (Multi Year Distribution Tariff) Regulations, 2025</a></td></tr>
+      <tr><td><a href="/all.pdf">Order on ARR of all DISCOMs &amp; licensees FY 2026-27</a></td></tr>
+      <tr><td><a href="/Orders/NPCL_TO.pdf">duplicate link</a> <a href="/page.aspx">not a PDF</a></td></tr>
+    </table>"""
+    lic = {"NPCL": ["Noida Power Company Ltd"], "PVVNL": [], "KESCO": ["Kanpur Electricity Supply Company"]}
+    props = {p["title"][:20]: p for p in propose_from_html(page, "https://www.uperc.org/list.aspx", licensees=lic)}
+    assert len(props) == 5
+    to = props["Tariff Order of NPCL"]
+    assert (to["url"], to["document_kind"], to["fiscal_year"], to["utility_code"], to["complete"]) == (
+        "https://www.uperc.org/Orders/NPCL_TO.pdf",
+        "tariff_order",
+        "FY2025-26",
+        "NPCL",
+        True,
+    )
+    assert props["True-up order of PVV"]["document_kind"] == "arr_true_up_order"
+    assert props["True-up order of PVV"]["url"] == "https://www.uperc.org/docs/tu.PDF"
+    myt = props["MYT Petition filed b"]
+    assert (myt["document_kind"], myt["fiscal_year"], myt["utility_code"]) == ("myt_petition", "", "KESCO")
+    assert props["UPERC (Multi Year Di"]["document_kind"] == "regulation"
+    alld = props["Order on ARR of all "]
+    assert alld["utility_code"] is None and "no licensee named" in alld["notes"] and not alld["complete"]

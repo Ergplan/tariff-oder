@@ -11,8 +11,11 @@ the registry; they hold no number."""
 
 from __future__ import annotations
 
+import html as html_lib
+import re
 import uuid
 from typing import Any
+from urllib.parse import urljoin
 
 import httpx
 from sqlalchemy import func, select
@@ -351,3 +354,106 @@ def coverage(session: Session, *, fiscal_years: list[str], kinds: list[str]) -> 
         if comms:
             states.append({"code": j.code, "name": j.name, "commissions": comms})
     return {"fiscal_years": fiscal_years, "kinds": kinds, "totals": totals, "states": states}
+
+
+# ------------------------------------------------------------------ discovery
+
+
+_KIND_RULES: tuple[tuple[str, str], ...] = (
+    (r"\bmid[- ]?term\b|\bmtr\b", "mid_term_review"),
+    (r"amend\w*.*regulation|regulation\w*.*amend", "regulation_amendment"),
+    (r"\bregulations?\b", "regulation"),
+    (
+        r"(\bmyt\b|multi[- ]?year|control period).*petition|petition.*(\bmyt\b|multi[- ]?year|control period)",
+        "myt_petition",
+    ),
+    (r"\bmyt\b|multi[- ]?year|control period", "myt_order"),
+    (r"true[- ]?up", "arr_true_up_order"),
+    (r"petition", "arr_petition"),
+    (r"tariff order|tariff for|\barr\b|aggregate revenue|retail tariff", "tariff_order"),
+)
+_HREF = re.compile(r"<a\b[^>]*?href\s*=\s*[\"']([^\"']+)[\"'][^>]*>(.*?)</a>", re.I | re.S)
+_TAGS = re.compile(r"<[^>]+>")
+_FY_ANY = re.compile(r"(?:FY\s*)?(20\d{2})\s*[-–/]\s*(\d{2}|20\d{2})\b", re.I)
+
+
+def _text(fragment: str) -> str:
+    return html_lib.unescape(re.sub(r"\s+", " ", _TAGS.sub(" ", fragment))).strip()
+
+
+def propose_from_html(page_html: str, base_url: str, *, licensees: dict[str, list[str]]) -> list[dict[str, Any]]:
+    """Proposed library entries from a listing page: every link to a PDF with its link text,
+    a guessed kind, year and licensee, and why.  Guesses only: a person confirms each one
+    before it is recorded.  ``licensees`` maps a licensee code to its names and aliases."""
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for href, inner in _HREF.findall(page_html):
+        url = urljoin(base_url, html_lib.unescape(href.strip()))
+        if not re.search(r"\.pdf(\?|#|$)", url, re.I) or url in seen:
+            continue
+        seen.add(url)
+        text = _text(inner) or url.rsplit("/", 1)[-1]
+        hay = f"{text} {url.rsplit('/', 1)[-1]}".lower()
+        kind = next((k for rx, k in _KIND_RULES if re.search(rx, hay, re.I)), None)
+        years = sorted(
+            {
+                f"FY{m.group(1)}-{m.group(2)[-2:]}"
+                for m in _FY_ANY.finditer(hay)
+                if int(m.group(2)[-2:]) == (int(m.group(1)) + 1) % 100
+            }
+        )
+        hits = sorted(
+            code
+            for code, names in licensees.items()
+            if any(re.search(rf"(?<![a-z0-9]){re.escape(n.lower())}(?![a-z0-9])", hay) for n in [code, *names] if n)
+        )
+        notes = []
+        if kind is None:
+            notes.append("kind not recognised")
+        if len(years) > 1:
+            notes.append(f"several years named ({', '.join(years)}): the latest is proposed")
+        if not years and kind not in ("regulation", "regulation_amendment", "myt_order", "myt_petition"):
+            notes.append("no financial year in the link text")
+        if len(hits) > 1:
+            notes.append(f"several licensees named ({', '.join(hits)})")
+        if not hits and kind not in ("regulation", "regulation_amendment"):
+            notes.append("no licensee named")
+        out.append(
+            {
+                "url": url,
+                "title": text[:300],
+                "document_kind": kind,
+                "fiscal_year": years[-1] if years and kind not in ("myt_order", "myt_petition") else "",
+                "utility_code": hits[0] if len(hits) == 1 else None,
+                "notes": notes,
+                "complete": kind is not None and not [n for n in notes if "several" in n or "no " in n],
+            }
+        )
+    return out
+
+
+def discover(session: Session, *, commission_code: str, page_url: str, page_html: str | None) -> list[dict[str, Any]]:
+    """Fetch (or take the pasted HTML of) a commission's listing page and propose entries."""
+    c = session.execute(select(Commission).where(Commission.code == commission_code)).scalar_one_or_none()
+    if c is None:
+        raise AppError("validation_failed", f"unknown commission {commission_code}")
+    if not (page_url.startswith("https://") or page_url.startswith("http://")):
+        raise AppError("validation_failed", "the page URL must be http(s)")
+    if page_html is None:
+        try:
+            with httpx.Client(follow_redirects=True, timeout=60, trust_env=True) as cl:
+                r = cl.get(page_url, headers={"User-Agent": "tariff-order-studio/1 (library discovery)"})
+        except httpx.HTTPError as e:
+            raise AppError("provider_unavailable", f"could not fetch {page_url}: {type(e).__name__}") from e
+        if r.status_code != 200:
+            raise AppError("provider_unavailable", f"{page_url} answered {r.status_code}")
+        page_html, page_url = r.text, str(r.url)
+    names = {
+        u.code: [u.name, *(u.aliases or [])]
+        for u in c.utilities
+        if u.licensee_kind in ("distribution", "transmission") and u.dataset.kind == DatasetKind.real
+    }
+    props = propose_from_html(page_html[:5_000_000], page_url, licensees=names)
+    for p in props:
+        p["commission_code"] = c.code
+    return props
