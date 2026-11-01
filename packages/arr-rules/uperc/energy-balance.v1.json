@@ -1,0 +1,220 @@
+{
+ "status": "draft — the energy balance as definitions; clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations (definitions of loss)",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "The arithmetic NPCL's Energy Balance format writes (C=(A/(1-B)-A), D=A+C, F=(D/(1-E)-D), G=D+F, J=1-G/I).  Definitions rather than norms; the loss levels themselves are the norms (trajectory) and come in as assumptions with their source.",
+ "rules": [
+  {
+   "id": "uperc.energy.dist_loss_quantum",
+   "version": 1,
+   "status": "draft",
+   "title": "Distribution loss, quantum",
+   "output": "dist_loss_mu",
+   "unit": "MU",
+   "schedule": "R-SCH-2",
+   "formula": "sales / (1 - loss) - sales",
+   "inputs": {
+    "sales": {
+     "unit": "MU",
+     "source": "fact:E.SALES",
+     "note": "retail sales within the licence area (R-SCH-1)"
+    },
+    "loss": {
+     "unit": "fraction",
+     "source": "assumption:dist_loss",
+     "note": "the loss level: approved trajectory, or the petitioner's claim / estimate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — the definitions of distribution and transmission loss",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "sales": "4399.8428195000015",
+      "loss": "0.06970036526137036"
+     },
+     "expected": "329.65",
+     "source": "NPCL FY2026-27 petition, filed formats, Energy Balance FY2026-27 projected, row C (the petitioner's application)"
+    }
+   ]
+  },
+  {
+   "id": "uperc.energy.input_dist",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy requirement at the distribution periphery",
+   "output": "energy_input_dist",
+   "unit": "MU",
+   "line_code": "E.INPUT.DIST",
+   "schedule": "R-SCH-2",
+   "formula": "sales + loss_quantum",
+   "inputs": {
+    "sales": {
+     "unit": "MU",
+     "source": "fact:E.SALES"
+    },
+    "loss_quantum": {
+     "unit": "MU",
+     "source": "rule:dist_loss_mu"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — the definitions of distribution and transmission loss",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "sales": "4399.8428195000015",
+      "loss_quantum": "329.6464"
+     },
+     "expected": "4729.49",
+     "source": "NPCL FY2026-27 petition, filed formats, Energy Balance FY2026-27 projected, row D (the petitioner's application)"
+    }
+   ],
+   "note": "energy input = sales ÷ (1 − loss): identity ARR-I4"
+  },
+  {
+   "id": "uperc.energy.intra_loss_quantum",
+   "version": 1,
+   "status": "draft",
+   "title": "Intra-state transmission loss, quantum",
+   "output": "intra_loss_mu",
+   "unit": "MU",
+   "schedule": "R-SCH-2",
+   "formula": "requirement / (1 - loss) - requirement",
+   "inputs": {
+    "requirement": {
+     "unit": "MU",
+     "source": "rule:energy_input_dist"
+    },
+    "loss": {
+     "unit": "fraction",
+     "source": "assumption:intra_state_loss",
+     "note": "from the power-purchase schedule (PPC): 1 − energy at the distribution periphery ÷ energy at the state periphery"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — the definitions of distribution and transmission loss",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.energy.state_requirement",
+   "version": 1,
+   "status": "draft",
+   "title": "Total energy requirement at the state periphery",
+   "output": "energy_requirement_state",
+   "unit": "MU",
+   "schedule": "R-SCH-2",
+   "formula": "requirement + loss_quantum",
+   "inputs": {
+    "requirement": {
+     "unit": "MU",
+     "source": "rule:energy_input_dist"
+    },
+    "loss_quantum": {
+     "unit": "MU",
+     "source": "rule:intra_loss_mu"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — the definitions of distribution and transmission loss",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.energy.inter_loss",
+   "version": 1,
+   "status": "draft",
+   "title": "Inter-state transmission loss, implied",
+   "output": "inter_state_loss",
+   "unit": "fraction",
+   "schedule": "R-SCH-2",
+   "formula": "1 - requirement / purchase",
+   "inputs": {
+    "requirement": {
+     "unit": "MU",
+     "source": "rule:energy_requirement_state"
+    },
+    "purchase": {
+     "unit": "MU",
+     "source": "record:energy_purchase_outside_state",
+     "note": "energy purchased from outside the state (PPC)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations (2019 / 2025) — the definitions of distribution and transmission loss",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "implied, not a norm: the loss that closes the balance (ARR-I6)"
+  }
+ ]
+}

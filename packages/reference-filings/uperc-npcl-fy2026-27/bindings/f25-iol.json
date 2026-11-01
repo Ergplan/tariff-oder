@@ -1,0 +1,7 @@
+{
+ "sheet": "F25_IOL",
+ "unit": "INR_crore",
+ "note": "The format states no unit; NPCL's ARR summary carries these lines in Rs crore.  Opening (8), reduction (9), additions (10), repayment = depreciation (11), rate (14) are inputs; closing (12), average (13), interest (15) are reproduced.",
+ "inputs": {"prior:normative_loan_closing": 8, "record:loan_reduction_on_retirement": 9, "record:normative_loan_addition": 10, "record:depreciation": 11, "assumption:loan_interest_rate": 14},
+ "outputs": {"normative_loan_closing": 12, "normative_loan_average": 13, "interest_on_loan": 15}
+}

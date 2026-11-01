@@ -1,0 +1,6 @@
+{
+ "sheet": "Energy Balance",
+ "note": "Rows of NPCL's filed Energy Balance format: A sales (8), B distribution loss % (11), E intra-state loss % (17), I energy purchased outside the state (22) are inputs; C (12), D (14), F (18), G (20), J (23) are reproduced.",
+ "inputs": {"fact:E.SALES": 8, "assumption:dist_loss": 11, "assumption:intra_state_loss": 17, "record:energy_purchase_outside_state": 22},
+ "outputs": {"dist_loss_mu": 12, "energy_input_dist": 14, "intra_loss_mu": 18, "energy_requirement_state": 20, "inter_state_loss": 23}
+}

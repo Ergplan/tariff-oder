@@ -1,0 +1,6 @@
+{
+ "sheet": "F26_ROE",
+ "note": "Opening equity (8), reduction on retirement (9), additions (10) are inputs; closing (11), average (12), return on equity (14) are reproduced at the regulation's 15 %.",
+ "inputs": {"prior:equity_closing": 8, "record:equity_reduction_on_retirement": 9, "record:equity_addition": 10},
+ "outputs": {"equity_closing": 11, "equity_average": 12, "return_on_equity": 14}
+}

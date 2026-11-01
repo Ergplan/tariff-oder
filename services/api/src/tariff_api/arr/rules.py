@@ -336,7 +336,10 @@ def check_rule(r: Rule) -> ast.Expression:
             raise RuleError(f"rule {r.id}: input {name}: a value is given exactly when the regulation fixes it")
     if r.unit not in UNITS:
         raise RuleError(f"rule {r.id}: unknown output unit {r.unit!r}")
-    env = {n: Q.of(1, s.unit) for n, s in r.inputs.items()}
+    # the check is about units, not values: distinct small probes keep "1 - loss" from being zero
+    env = {
+        n: Q.of(Decimal("0.137") + Decimal("0.0731") * i, s.unit) for i, (n, s) in enumerate(sorted(r.inputs.items()))
+    }
     try:
         evaluate(tree, env, r.formula).to(r.unit)
     except RuleError as e:

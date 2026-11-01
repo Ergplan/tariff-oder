@@ -187,7 +187,17 @@ def test_the_npcl_chain_reproduces_the_filed_formats_from_records():
             "assumption:loan_interest_rate": ("0.0982616438356164", "fraction"),
         },
     )
-    assert not ev.blocked
+    chain = {
+        "equity_closing",
+        "equity_average",
+        "return_on_equity",
+        "normative_loan_closing",
+        "normative_loan_average",
+        "interest_on_loan",
+    }
+    assert chain <= set(ev.results) and not chain & set(ev.blocked)
+    # the year's other rules (the energy balance) are blocked for want of their inputs, and say so
+    assert ev.blocked["dist_loss_mu"] == "input sales (fact:E.SALES) has no value"
     assert ev.results["return_on_equity"].rounded == Decimal("115.77")
     assert ev.results["interest_on_loan"].rounded == Decimal("83.88")
     assert not ev.filing_ready  # drafts

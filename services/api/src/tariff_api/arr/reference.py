@@ -54,6 +54,22 @@ SHEET_UNITS = [
 ]
 
 
+UNIT_WORDS = [
+    (re.compile(r"^MU$", re.I), "MU"),
+    (re.compile(r"^%$"), "percent"),
+    (re.compile(r"^Rs\.?\s*(in\s*)?(crores?|cr\.?)$", re.I), "INR_crore"),
+    (re.compile(r"^Rs\.?\s*lakhs?$", re.I), "INR_lakh"),
+    (re.compile(r"^Rs\.?\s*/\s*kWh$", re.I), "INR_per_kWh"),
+    (re.compile(r"^paise\s*/\s*kWh$", re.I), "paise_per_kWh"),
+    (re.compile(r"^MW$", re.I), "MW"),
+]
+
+
+def unit_word(text: str) -> str | None:
+    """A unit as a Units column prints it ("MU", "%", "Rs. Crore") → the canonical unit."""
+    return next((u for pat, u in UNIT_WORDS if pat.match(text.strip())), None) if text else None
+
+
 def fiscal_year(text: str) -> str | None:
     """'FY 21-22' → 'FY2021-22'; None when the text names no year or several."""
     found = set()
@@ -222,6 +238,11 @@ def read_sheet(
         "",
     )
     last, columns, notes = read_columns(rows)
+    # a "Units" column in the header gives each row its unit (the Energy Balance format)
+    units_col = next(
+        (j for r in rows[: max(last + 1, 0)] for j, v in enumerate(r) if re.fullmatch(r"units?", _text(v), re.I)),
+        None,
+    )
     placer = Placer(taxonomy, mapping)
     out: list[Row] = []
     unplaced: list[str] = []
@@ -231,7 +252,8 @@ def read_sheet(
         label = _text(r[1]) if len(r) > 1 else ""
         if not label:
             continue
-        lu = next((u for pat, u in UNIT_IN_LABEL if pat.search(label)), None)
+        lu = unit_word(_text(r[units_col])) if units_col is not None and units_col < len(r) else None
+        lu = lu or next((u for pat, u in UNIT_IN_LABEL if pat.search(label)), None)
         cells = []
         for c in columns:
             raw = r[c.index] if c.index < len(r) else None

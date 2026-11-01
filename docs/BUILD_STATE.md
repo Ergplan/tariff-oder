@@ -1005,6 +1005,23 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 55 (2026-11-01): reproducing filed formats through the rules — the energy balance
+  and the capital chain.**  `arr/reproduce.py` + `scripts/reproduce_formats.py`: a **binding**
+  per filed format (`packages/reference-filings/<filing>/bindings/`) names its input rows and its
+  output rows; every column (year × voice) is computed from the input rows through that year's
+  rules and each output compared with the filed figure at its printed precision — `match`,
+  `differs`, `blocked` (with the reason), or `not_a_value`.  The reference reader now uses a
+  sheet's own **Units column** (the Energy Balance prints MU / % per row).  5 draft energy-balance
+  rules (definitions: loss quanta, requirement at the distribution and state periphery, implied
+  inter-state loss).  **Result on NPCL's FY2026-27 filing: 97 of 97 bound figures match** — the
+  Energy Balance in all 11 columns (FY2021-22 to FY2026-27, the Commission's restated approvals
+  and NPCL's claims alike), F25 interest on the normative loan and F26 return on equity in all 7.
+  What this proves and what it does not: the draft rules compute what the petitioner computed
+  from the format's own input rows; the inputs' derivation from NPCL's records (billing
+  determinants, PPC, F14 capitalisation, F24 depreciation) is the next stage, and no rule is
+  approved.  A unit test reproduces the real formats as a regression (no database: the reference
+  and the rules are files).
+
   **Increment 54 (2026-11-01): the rule engine — regulations as executable, versioned rules.**
   `arr/rules.py` + `packages/arr-rules/` (R-RULE-1..4, R-NUM-1..4).  A rule is data: one output,
   typed inputs (fact / record / assumption / another rule / last year / a regulation parameter
@@ -1708,6 +1725,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 55 (2026-11-01): 406 passed** (+3 unit: match / differs / blocked / not-a-value per column; Units-column words; NPCL's filed Energy Balance, F25 and F26 reproduced by the draft rules, 97 of 97).  Ruff and format clean.
 - **Increment 54 (2026-11-01): 403 passed** (+19 unit: units and dimensions, the arithmetic-only language, Decimal literals, dependency order, cycles, blocking, per-year selection, rounding feeds, filing readiness, the UPERC drafts' examples, the NPCL FY2026-27 chain from records).  Ruff and format clean.
 - **Increment 53 (2026-11-01): 384 passed** (+3 unit: a format header carries a year over its group and maps column words to voices; stored vs displayed values, percentages from fractions, states never zero, a rate in a label is not a unit, restated columns marked).  Evaluation run on real data: the order-vs-petition comparison above.
 - **Increment 52 (2026-11-01): 381 passed** (+4 integration: the atlas lists states with commissions and counts and refuses an unauthenticated caller; a state lists its licensees, a licensee finds its state, unknown codes are 404; the norms describe methods and name parameters without values, a skeleton plan is never confirmed, a commission without a plan falls back to the generic plan; reviewed facts are counted per licensee and the applied norms are reviewed approved/trued-up figures with order and source, fixture-labelled).  Ruff, format, contracts-check (regenerated) and web typecheck clean.
