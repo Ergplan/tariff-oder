@@ -276,9 +276,9 @@ def norms(session: Session, commission: str) -> dict[str, Any]:
     return {
         "commission": com.code,
         "commission_name": com.name,
-        "plan": {"id": plan.id, "version": plan.version, "status": plan.status.split(";")[0][:80]},
+        "plan": {"id": plan.id, "version": plan.version, "status": plan.status.split(";")[0]},
         "plan_confirmed": plan.status.lower().startswith("confirmed"),
-        "mapping": {"id": mapping.id, "version": mapping.version, "status": mapping.status.split(";")[0][:80]},
+        "mapping": {"id": mapping.id, "version": mapping.version, "status": mapping.status.split(";")[0]},
         "mapping_confirmed": confirmed,
         "regulations": [
             {

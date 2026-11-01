@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../../components";
-import { type Norms, type StateDetail, CONVENTION_WORDS } from "../../atlas/data";
+import { type Norms, type StateDetail, CONVENTION_WORDS, statusWord } from "../../atlas/data";
 import { Eyebrow, Journey, Panel } from "../../studio";
 
 export const dynamic = "force-dynamic";
@@ -58,7 +58,7 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
             No licensee of {st.name} is in the registry yet.
           </p>
         ) : (
-          <div className="petitions">
+          <div className="petitions lic">
             {licensees.map((l) => (
               <Link key={l.code} href={`/client/licensees/${encodeURIComponent(l.code)}`} className="petition" style={{ minHeight: "10rem" }}>
                 <span className="eyebrow" style={{ margin: 0 }}>
@@ -117,7 +117,7 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
                 <dd>{n.conventions.gap_convention.value ? CONVENTION_WORDS[n.conventions.gap_convention.value] : <span className="muted">to be confirmed</span>}</dd>
                 <dt>ARR lines</dt>
                 <dd>
-                  {n.lines.length} lines, plan <span className="mono">{n.plan.id}</span> ({n.plan.status})
+                  {n.lines.length} lines, plan <span className="mono">{n.plan.id}</span> <span className="muted" title={n.plan.status}>({statusWord(n.plan.status)})</span>
                 </dd>
                 <dt>Applied</dt>
                 <dd>{n.applied?.length ? `${n.applied.length} reviewed norm figures from its orders` : <span className="muted">no reviewed norm figure yet</span>}</dd>

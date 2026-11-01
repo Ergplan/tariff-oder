@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../../components";
-import { type Norms, CONVENTION_WORDS } from "../../atlas/data";
+import { type Norms, CONVENTION_WORDS, statusWord } from "../../atlas/data";
 import { Level } from "../../levels";
 import { Eyebrow, Journey, Panel } from "../../studio";
 
@@ -55,10 +55,10 @@ export default async function NormsPage({ params, searchParams }: { params: Prom
         <h1>{n.commission_name}</h1>
         <div className="case-meta">
           <span>
-            Mapping <b>{n.mapping.id} v{n.mapping.version}</b> · {n.mapping.status}
+            Mapping <b>{n.mapping.id} v{n.mapping.version}</b> · <span title={n.mapping.status}>{statusWord(n.mapping.status)}</span>
           </span>
           <span>
-            Formulation plan <b>{n.plan.id} v{n.plan.version}</b> · {n.plan.status}
+            Formulation plan <b>{n.plan.id} v{n.plan.version}</b> · <span title={n.plan.status}>{statusWord(n.plan.status)}</span>
           </span>
         </div>
       </header>

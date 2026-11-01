@@ -63,7 +63,7 @@ export type Norms = {
 
 // [column, row, short label] on a 9 x 7 grid, north at the top
 export const TILES: Record<string, [number, number, string]> = {
-  JKL: [3, 0, "J&K·LA"],
+  JKL: [3, 0, "J&K"],
   PB: [2, 1, "PB"],
   HP: [3, 1, "HP"],
   UK: [4, 1, "UK"],
@@ -85,7 +85,7 @@ export const TILES: Record<string, [number, number, string]> = {
   TG: [3, 4, "TG"],
   OD: [4, 4, "OD"],
   ML: [7, 4, "ML"],
-  MNMZ: [8, 4, "MN·MZ"],
+  MNMZ: [8, 4, "MNMZ"],
   GOAUT: [1, 5, "GOA"],
   KA: [2, 5, "KA"],
   AP: [3, 5, "AP"],
@@ -116,3 +116,8 @@ export const CONVENTION_WORDS: Record<string, string> = {
   applies: "applies",
   does_not_apply: "does not apply",
 };
+
+/** "skeleton", "synthetic" or "confirmed": the first word of a mapping's or plan's status line. */
+export function statusWord(status: string): string {
+  return status.split(/[\s(;,]/)[0] || status;
+}

@@ -1004,6 +1004,47 @@ open-access view.
   Checked by screenshots at 1440 px and 390 px of the home, the new-petition flow, an annual ARR
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
+
+  **Increment 52 (2026-11-01): the atlas — from the map of India to a petition — and day mode**
+  (operator request: start with a map of India, then clickable states, then discoms, then the
+  discom's tariff norms, then the steps to draft a petition; add a day mode).  The journey is
+  written down in [`docs/user-journey.md`](user-journey.md).
+  - **API** (read-only, analyst and above): `GET /atlas` (every state and union territory: its
+    commissions, licensees, library documents located of those expected, real orders whose ARR is
+    being read, reviewed ARR facts, and whether it is fixture data); `GET /atlas/states/{code}`
+    (its commissions and each licensee with the same counts and the latest reviewed year);
+    `GET /atlas/licensees/{code}` (where a licensee sits, for the way back up); `GET
+    /arr/norms/{commission}` — the regulations the commission's ARR mapping names and those in
+    the library with their reading level; the conventions (return basis, gap convention, loss
+    basis, inclusive totals) as the mapping states them **and** as a reviewer has decided them;
+    the method of every ARR line of the formulation plan in words, with the parameters the
+    petitioner supplies (named, never valued); and **the norms as the orders applied them** —
+    per licensee, the latest reviewed approved / trued-up figure of the distribution loss, O&M,
+    RoE, interest on working capital, depreciation and loan interest, each with its order and
+    page.  Only published reviewed facts; nothing is derived or invented.  A plan or mapping a
+    reviewer has not confirmed is reported as such (`plan_confirmed`, `mapping_confirmed`), and
+    a commission without its own plan shows the generic plan by its id.
+  - **Web:** `/client/atlas` — India as a **tile map** (one equal tile per state/UT in its
+    approximate place, coloured: reviewed facts / orders being read / documents located /
+    nothing yet; deliberately not a boundary map — official boundaries need the Survey of
+    India's) beside a list of states; the headline counts are of real records only and the
+    synthetic jurisdiction is listed last, labelled fixture.  `/client/states/<code>` — the
+    licensees as cards, a norms summary per commission, the five drafting steps with "Start for
+    <discom>".  `/client/norms/<commission>` — the full norms with a **working estimate**
+    banner while unconfirmed.  The licensee page gains the journey trail and a **Tariff norms**
+    panel (the applied norms of that licensee).  Every atlas page shows the trail India → state
+    → discom → norms.  The studio home links to the atlas and its state grid opens the state.
+  - **Day mode:** a light token set (`:root[data-theme="light"]`, and the system's preference
+    when no choice is made); the accent stays a fill and turns deep olive where it is text
+    (`--accent-text`), all tones re-tinted for white.  A Day/Night toggle in the top bar sets a
+    `theme` cookie that the server reads, so the first paint is in the chosen theme.  The last
+    hard-coded colours (header glass, menu shadow, benchmark highlight) became tokens.
+  Checked by screenshots of the atlas, two states, a licensee, a norms page and the home at
+  1440 px and 390 px in both themes; no horizontal scroll measured at 390 px.  **What it shows
+  today is honest and thin:** in the build session's stack all 605 library slots are
+  `expected` (no URL located), the ten real orders are being read (none reviewed, a human
+  boundary), so every real state shows 0 reviewed facts and every norm is a working estimate;
+  the 44 reviewed facts are the synthetic fixture's.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1617,6 +1658,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 52 (2026-11-01): 381 passed** (+4 integration: the atlas lists states with commissions and counts and refuses an unauthenticated caller; a state lists its licensees, a licensee finds its state, unknown codes are 404; the norms describe methods and name parameters without values, a skeleton plan is never confirmed, a commission without a plan falls back to the generic plan; reviewed facts are counted per licensee and the applied norms are reviewed approved/trued-up figures with order and source, fixture-labelled).  Ruff, format, contracts-check (regenerated) and web typecheck clean.
 - **Increment 51 (2026-11-01): web only** — `pnpm --filter @tariff/web typecheck` clean; no API change (the 377 Python tests of increment 50 stand); screenshots of six pages at desktop and phone width.
 - **Increment 50 (2026-11-01): 377 passed** (+3 unit: a one-page list of chapters is no structure and proposal headings stay flagged; a one-word cell over a table row is no heading; a collapsed grid is recognised and a second-reader cell says so).  Ruff, format and contracts-check clean.
 - **Increment 49 (2026-11-01): 374 passed** (+2 integration: the readings board lists a reading with its dataset, review counts and next step, and refuses an unauthenticated caller; the next step names the human decision).  Ruff, format, contracts-check (regenerated) and web typecheck clean.
@@ -1801,7 +1843,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 50) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 52) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -1833,6 +1875,10 @@ entries below are the per-increment history.**
   each as a real source with its licensees, waits for parsing and starts its ARR reading; it is
   idempotent and skips a website that does not answer.  Tested on this session's stack (HPERC,
   MPERC ×2: found by hash, readings already proposed).
+- *The way in (increment 52):* `/client/atlas` (map of India → state → discom → norms →
+  petition; see `docs/user-journey.md`).  The atlas fills as the decisions above are taken:
+  documents located → orders read → values reviewed → norms applied.  On the VM it needs the
+  same rebuild as any web change (`git pull && make dev` or the sandbox compose `up -d --build`).
 - *Engineering next:* the extraction over confirmed real chapters (measure precision against
   the reviewer's decisions — the first real precision figure); per-commission true-up formats;
   organisation-owned sources for private documents; normative checks of actuals against

@@ -25,7 +25,10 @@ export default async function AtlasPage() {
   const states = res.data.states.filter((s) => !s.fixture || s.reviewed_facts > 0 || s.orders_reading > 0);
   const byCode = Object.fromEntries(states.map((s) => [s.code, s]));
   const placed = Object.entries(TILES).filter(([code]) => byCode[code]);
-  const totals = states.reduce(
+  // the headline counts are of real records only; a fixture jurisdiction is listed, labelled, last
+  const real = states.filter((s) => !s.fixture);
+  const listed = [...real, ...states.filter((s) => s.fixture)];
+  const totals = real.reduce(
     (a, s) => ({ facts: a.facts + s.reviewed_facts, reading: a.reading + s.orders_reading, lic: a.lic + s.licensees, docs: a.docs + s.documents_located }),
     { facts: 0, reading: 0, lic: 0, docs: 0 },
   );
@@ -33,7 +36,7 @@ export default async function AtlasPage() {
     <>
       <Journey steps={[{ label: "India" }]} />
       <header className="case-head" style={{ paddingTop: 0 }}>
-        <Eyebrow>Atlas · {states.length} states and union territories</Eyebrow>
+        <Eyebrow>Atlas · {real.length} states and union territories</Eyebrow>
         <h1>Choose a state.</h1>
         <p className="muted" style={{ margin: 0, maxWidth: "44rem", fontSize: "1.02rem" }}>
           Every state&apos;s commission, its distribution licensees, their regulatory record and the commission&apos;s ARR norms — then the petition, prepared step by step.
@@ -55,12 +58,12 @@ export default async function AtlasPage() {
         </div>
         <div>
           <div className="num">{totals.facts}</div>
-          <div className="cap">Reviewed ARR facts</div>
+          <div className="cap">Reviewed ARR facts (real orders)</div>
         </div>
       </div>
 
       <div className="atlas">
-        <div>
+        <div className="atlas-map">
           <div className="tilemap" role="list" aria-label="Map of India by state">
             {Array.from({ length: 7 }, (_, row) =>
               Array.from({ length: 9 }, (_, col) => {
@@ -106,9 +109,9 @@ export default async function AtlasPage() {
         </div>
 
         <div>
-          <SectionHead title="States" aside={`${states.length} · by name`} />
+          <SectionHead title="States" aside={`${real.length} · by name`} />
           <ul className="statelist">
-            {states.map((s) => (
+            {listed.map((s) => (
               <li key={s.code}>
                 <Link href={`/client/states/${encodeURIComponent(s.code)}`}>
                   <span className="ab">{TILES[s.code]?.[2] ?? s.code}</span>

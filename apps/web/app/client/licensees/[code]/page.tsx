@@ -83,7 +83,7 @@ export default async function LicenseePage({ params }: { params: Promise<{ code:
         </div>
       </header>
 
-      <Panel num="01" title="Reviewed ARR history" aside={h ? <span className="badge" data-tone="ok">fact</span> : null}>
+      <Panel num="01" title="Reviewed ARR history" aside={h && lines.length ? <span className="badge" data-tone="ok">fact</span> : null}>
         {!h || lines.length === 0 ? (
           <p className="muted" style={{ margin: 0 }}>
             No reviewed ARR fact of {name} yet: its orders must be read and reviewed first. A petition can still be started; the studio lists what is missing.
