@@ -364,3 +364,56 @@ def test_every_state_falls_back_to_the_generic_skeletons_and_stays_gated():
     src = SimpleNamespace(utility=SimpleNamespace(commission=SimpleNamespace(code="MERC")))
     ok, why = arr_mapping_confirmed(None, src)
     assert not ok and "generic" in why.lower() or "not confirmed" in why
+
+
+def test_chapters_of_a_long_order_follow_its_numbered_sections():
+    """Patterns found in a real 423-page ARR order (increment 37), reproduced in SYNTHETIC text:
+    a contents page with dotted leaders, a running header on every page of a part, table
+    captions, table rows, numbered paragraphs, list items numbered out of sequence, and a
+    top-level part heading without a cue.  Only the numbered sections open chapters, each
+    ends at the next section or part, and the running header names the part."""
+    mapping = load_mapping("NOSUCH", fallback=True)  # the generic skeleton's cues
+    part1, part2 = "TRUING-UP OF FY 2024-25", "AGGREGATE REVENUE REQUIREMENT OF FY 2026-27"
+    pages: dict[int, list[str]] = {
+        1: [
+            "CONTENTS",
+            "4.4. POWER PURCHASE ........................ 3",
+            "TABLE 4-1 ENERGY SALES ......... 3",
+            "6.6. OPERATION AND MAINTENANCE EXPENSES ......... 9",
+            "6.9. INTEREST CHARGES ............ 10",
+        ],
+        2: ["4. TRUE UP OF FY 2024-25", "4.1. The Petitioner has submitted the true-up of the year below."],
+    }
+    for p in range(3, 8):
+        pages[p] = [part1, "Page text", f"Page {p} of 13"]
+    pages[3] += [
+        "4.4. POWER PURCHASE",
+        "TABLE 4-25 MEDIUM TERM POWER PURCHASE COST FOR TPTCL",
+        "4.4.12. Accordingly, the total cost of long-term power purchase claimed by the Petitioner is",
+        "1        Sales (MU)                                 3.53  Included in",
+    ]
+    pages[5] += ["5.1    Interest on Bank deposits", "3.   Interest on Security Deposit with Exchange"]
+    pages[6] += ["4.8. FIXED ASSET AND DEPRECIATION", "17.06.2026   GFA"]
+    pages[8] = ["6. DETERMINATION FOR FY 2026-27"]
+    for p in range(9, 14):
+        pages[p] = [part2, "Page text", f"Page {p} of 13"]
+    pages[9] += ["6.6. OPERATION AND MAINTENANCE EXPENSES", "TRANSMISSION CHARGES"]
+    pages[10] += [
+        "6.9. INTEREST ON WORKING CAPITAL",
+        "d.  safeguarding consumers' interest and at the same time, recovery of",
+    ]
+    chs = propose_chapters(pages, mapping, 13)
+    got = [(c.branch, c.cue_text.split()[0], c.page_start, c.page_end) for c in chs]
+    branches = {ch.branch for ch in mapping.chapter_map}
+    assert {"C.PP", "C.DEP", "C.OM", "C.INT"} <= branches
+    assert got == [
+        ("C.PP", "4.4.", 3, 6),
+        ("C.DEP", "4.8.", 6, 8),  # ends at the next part's heading, which has no cue of its own
+        ("C.OM", "6.6.", 9, 10),
+        ("C.INT", "6.9.", 10, 13),
+    ], got
+    assert chs[0].note and part1 in chs[0].note and part2 in chs[2].note
+    assert not [c for c in chs if "of 13" in (c.note or "")]  # a page-number footer is not a part
+    assert not looks_like_heading("17.06.2026   GFA") and not looks_like_heading("TABLE 4-25 MEDIUM TERM POWER")
+    assert not looks_like_heading("4.4.12. Accordingly, the total cost of long-term power purchase claimed by the")
+    assert looks_like_heading("6.6. Operation and Maintenance Expenses")

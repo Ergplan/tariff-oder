@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -636,6 +636,34 @@ open-access view.
   licensee's reviewed, published ARR facts as a workbook, one row per fact with its order, page,
   excerpt and fact id, plus a "Disallowance (derived)" sheet that says it is derived; linked
   from the history page as "Download as Excel".
+
+  **Increment 37 (2026-11-01): the first real ARR order through the reader.**  UPERC's NPCL
+  tariff order for FY2026-27 (true-up FY2024-25, APR FY2025-26, ARR FY2026-27; issued 02/07/26)
+  was downloaded from `https://www.uperc.org/App_File/NPCL_TariffOrder-pdf72202631759PM.pdf`
+  (SHA-256 `ff36813e…a1b`, 423 pages, 6.3 MB) and registered in the local stack as a real source
+  for NPCL.  Triage, OCR (17 near-textless pages), parse and localisation ran in about 12 minutes.
+  **`POST /sources/{id}/arr/read` proposed 229 chapters** — the chapter proposer, written against
+  synthetic orders, took the running header printed on every page of a part ("AGGREGATE REVENUE
+  REQUIREMENT OF FY 2026-27"), contents entries, table captions ("TABLE 4-99 …"), table rows
+  ("1 Sales (MU) 3.53 …"), numbered paragraphs ("4.4.12. Accordingly, …") and dates
+  ("17.06.2026 GFA") for headings.  Chapter rules v2: running headers and footers (a line in the
+  first or last three lines of five or more pages) are page furniture and name the part a
+  chapter sits in; contents pages and lines with dotted leaders, captions, table rows (two or
+  more numbers, or cells set apart by wide gaps), numbered prose and dates are not headings; when
+  an order numbers its sections, only the heaviest never-decreasing run of section numbers
+  opens and closes chapters (a list item "5.1" inside section 4.16 is not a section), and a
+  top-level part heading without a cue ("4. TRUE UP OF FY 2024-25") ends the chapter before it.
+  **Re-proposed through the real pipeline: 30 chapters**, matching the order's own sections —
+  4.3–4.19 of the true-up (pp. 52–168), 5.3–5.18 of the APR (pp. 171–209), 6.3–6.18 of the ARR
+  for FY2026-27 (pp. 214–295), 8 Revenue Gap (pp. 306–310) — each with its part in the note;
+  plus 3.4 and 3.6 of the public-hearing chapter (stakeholders' submissions, to be excluded by
+  the reviewer) and 9.1 open-access charges (capped, to be ended by the reviewer).  **Stopped
+  there:** confirming the chapters of a real order is a reviewer's decision, and the UPERC
+  mapping is still a skeleton (`mapping_confirmed: false`), so real lines could not be
+  approved anyway.  The scan of the same order placed 617 table rows on the taxonomy and left
+  1,939 unplaced (top unplaced keys: the running headers, "Total", tariff-category rows such as
+  "LMV-1: Domestic Light, Fan & Power", "Grand Total") — the hand-mapping list for the
+  reviewer.  The order is in the local stack only; nothing was deployed.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1173,6 +1201,11 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 
 ## Reading reliability ledger changes
 
+Increment 37 (ARR, real order): chapter localisation over-fragmented a real 423-page order
+(229 proposals for about 30 sections) — running headers, contents entries, captions, rows and
+numbered prose read as headings.  Chapter rules v2 handle each; measured on that order: 30
+proposals matching its numbered sections.  Not yet measured: any second real order.
+
 `docs/reading-reliability.md` created with every Section 6.1 failure mode as a row.
 Handled+tested: D5 (printed-label maps), P4, P6, P7, P8, P9, P10, P11, P12, P13–P15
 (ingest, reproducible fixtures), P16 (immutable versioned artefacts), P17 (unknown is visible).
@@ -1190,6 +1223,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 37 (2026-11-01): 352 passed** (+1 unit: the real order's heading patterns reproduced in synthetic page text — contents page, running headers, captions, rows, numbered prose, an out-of-sequence list item, an uncued part heading — and the exact chapters and part notes expected).
 - **Increment 36 (2026-11-01): 351 passed** (the true-up test now checks the case activity and its isolation; the benchmarks test downloads the history workbook and checks one row per fact with order, page and fact id, and the derived disallowance).  The run took 8 min 46 s because the local stack was parsing a 423-page real order at the same time.
 - **Increment 35 (2026-11-01): 351 passed** (+1 integration: a synthetic combined order, licensees set by an administrator, values attributed per column and per caption, the total column skipped, identities per licensee, facts published per licensee, benchmarks per licensee; the library test also checks that acquiring one document for a second licensee records a combined order).
 - **Increment 34 (2026-11-01): 350 passed** (+1 integration: two synthetic licensees read and published; the six ratios and their inputs; fixtures only on request; a rejected petition total gives a reason, not a value).
@@ -1359,6 +1393,14 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+00000000000000. **Reviewer (increment 37):** in the local stack (or after `git pull && make
+   deploy-dev` on the VM, re-registering the NPCL FY2026-27 order), open `/sources/<id>/arr`,
+   exclude chapters 1–2 (public hearing) and set chapter 30's end, confirm the rest, and take the
+   scan's unplaced list to the UPERC mapping (`packages/arr-taxonomy/mappings/uperc-arr.v1.json`);
+   until a reviewer confirms that mapping, real NPCL lines can be read and reviewed but not
+   approved.  **Engineering next:** run the extraction over the confirmed chapters and measure
+   the structure channel on the real tables (column headings like "Approved in T.O." / "Claimed
+   in Petition" / "Approved in True-up" must map to voices).
 0000000000000. **Operator (increment 33):** run `tariff-api library-discover --commission <BERC |
    HPERC | JSERC | JERC-GOA-UT | UPERC> --years FY2024-25 FY2025-26 FY2026-27` on the VM and
    tick proposals in `/library`; tell engineering which commissions come next (MERC, TNERC,
