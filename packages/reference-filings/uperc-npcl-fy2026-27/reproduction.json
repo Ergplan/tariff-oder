@@ -16333,6 +16333,99 @@
    ]
   },
   {
+   "binding": "f16-capitalisation.json",
+   "checks": [
+    {
+     "table": "F16_CAP_CAPEX & CAP. after FY25",
+     "fiscal_year": "FY2025-26",
+     "category": "capitalisation C32",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "475.6352",
+     "computed": "475.6352",
+     "why": null,
+     "exact": "475.6351592053644130"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. after FY25",
+     "fiscal_year": "FY2025-26",
+     "category": "capitalisation C33",
+     "output": "cwip_movement",
+     "result": "match",
+     "filed": "-27.1466",
+     "computed": "-27.1466",
+     "why": null,
+     "exact": "-27.146561646549995"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. after FY25",
+     "fiscal_year": "FY2025-26",
+     "category": "capitalisation C34",
+     "output": "capitalisation_planned",
+     "result": "match",
+     "filed": "448.4886",
+     "computed": "448.4886",
+     "why": null,
+     "exact": "448.4885975588144180"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. after FY25",
+     "fiscal_year": "FY2025-26",
+     "category": "capitalisation F14_CAP_Cap Cost!H11",
+     "output": "capitalisation_planned",
+     "result": "match",
+     "filed": "448.4886",
+     "computed": "448.4886",
+     "why": null,
+     "exact": "448.4885975588144180"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. after FY25",
+     "fiscal_year": "FY2026-27",
+     "category": "capitalisation E32",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "503.2102",
+     "computed": "503.2102",
+     "why": null,
+     "exact": "503.2101621042075102"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. after FY25",
+     "fiscal_year": "FY2026-27",
+     "category": "capitalisation E33",
+     "output": "cwip_movement",
+     "result": "match",
+     "filed": "-9.5194",
+     "computed": "-9.5194",
+     "why": null,
+     "exact": "-9.51938582204687"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. after FY25",
+     "fiscal_year": "FY2026-27",
+     "category": "capitalisation E34",
+     "output": "capitalisation_planned",
+     "result": "match",
+     "filed": "493.6908",
+     "computed": "493.6908",
+     "why": null,
+     "exact": "493.6907762821606402"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. after FY25",
+     "fiscal_year": "FY2026-27",
+     "category": "capitalisation F14_CAP_Cap Cost!I11",
+     "output": "capitalisation_planned",
+     "result": "match",
+     "filed": "493.6908",
+     "computed": "493.6908",
+     "why": null,
+     "exact": "493.6907762821606402"
+    }
+   ]
+  },
+  {
    "binding": "f19-om-base-2025.json",
    "checks": [
     {
@@ -40964,6 +41057,11 @@
        "output": "loan_rate_reference",
        "value": "0.09826164383561643835616438356",
        "fiscal_year": "FY2025-26"
+      },
+      "record:capitalisation": {
+       "binding": "f16-capitalisation.json",
+       "output": "capitalisation_planned",
+       "value": "493.6907762821606402"
       }
      },
      "not_fed": [],
@@ -40974,7 +41072,6 @@
       "assumption:wc_interest_rate",
       "prior:equity_closing",
       "prior:normative_loan_closing",
-      "record:capitalisation",
       "record:consumer_contribution",
       "record:contingency",
       "record:employee_capitalised",
@@ -41248,6 +41345,11 @@
        "binding": "f27-mclr-rates.json",
        "output": "loan_rate_reference",
        "value": "0.09826164383561643835616438356"
+      },
+      "record:capitalisation": {
+       "binding": "f16-capitalisation.json",
+       "output": "capitalisation_planned",
+       "value": "448.4885975588144180"
       }
      },
      "not_fed": [],
@@ -41258,7 +41360,6 @@
       "assumption:wc_interest_rate",
       "prior:equity_closing",
       "prior:normative_loan_closing",
-      "record:capitalisation",
       "record:consumer_contribution",
       "record:contingency",
       "record:employee_capitalised",

@@ -612,6 +612,11 @@ def test_npcl_petition_computed_end_to_end_from_the_schedules():
         # the loan rate from the MCLR revisions (the ARR year carries the APR year's, as NPCL does)
         assert cols[fy]["fed"]["assumption:loan_interest_rate"]["output"] == "loan_rate_reference"
     assert cols["FY2026-27"]["fed"]["assumption:loan_interest_rate"]["fiscal_year"] == "FY2025-26"
+    # capitalisation from the capital plan's schemes and the CWIP movement (F16 after FY25)
+    assert Decimal(cols["FY2026-27"]["fed"]["record:capitalisation"]["value"]).quantize(Decimal("0.01")) == Decimal(
+        "493.69"
+    )
+    assert [c.result for c in results["f16-capitalisation.json"]] == ["match"] * 8
     assert {c["output"]: c["computed"] for c in cols["FY2026-27"]["checks"]}["arr_net"] == "3481.83"
     true_up = {c["output"]: c for c in cols["FY2024-25"]["checks"]}
     assert {o for o, c in true_up.items() if c["result"] == "differs"} == {

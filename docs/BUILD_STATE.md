@@ -1005,6 +1005,20 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 75 (2026-11-01): capitalisation of the APR and ARR years from the capital plan.**
+  4 draft rules (`capex.v1.json`):
+  - each scheme's capitalisation (per scheme) and their total;
+  - the movement in capital work in progress (opening less closing);
+  - the year's planned capitalisation, the schemes plus that movement.
+
+  A `cells` binding reads F16 after FY25 (26 schemes, each carried from F13) and F15's CWIP.
+  **NPCL: 8 / 8 — capitalisation 448.49 (FY2025-26) and 493.69 (FY2026-27), as F14's row 11
+  carries them.**  The pipeline now feeds it, so the capital chain of the APR and ARR years
+  (equity and loan additions, RoE, interest on loan, tax) starts from the capital plan, not
+  from F14's row.  Still 12 / 12 in both years, with 15 and 14 inputs fed.  Consumer-contribution
+  additions (F12) and retirements (F11, F14 row 13) are typed by NPCL and stay records.  No rule
+  is approved.
+
   **Increment 74 (2026-11-01): the rates fed from their reproduction.**  The pipeline now feeds
   two rates from the MCLR revisions' reproduction (F27):
   - the APR year's normative-loan rate (the weighted MCLR + 1 %), carried to the ARR year as
@@ -2035,6 +2049,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 75 (2026-11-01): 423 passed** (the end-to-end test checks the capitalisation fed from the capital plan, 8 / 8).  Ruff and format clean.
 - **Increment 74 (2026-11-01): 423 passed** (the end-to-end test checks the loan rate fed from the MCLR revisions, the ARR year's taken from the APR year with its reason).  Ruff and format clean.
 - **Increment 73 (2026-11-01): 423 passed** (+1 unit: the petition computed end to end from its schedules — ARR and APR years 12 / 12, the true-up year differing by exactly A40's 0.19; the integration test checks the projected column's end-to-end net ARR).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 72 (2026-11-01): 422 passed** (the regression pins the ARR summary at 128 matches).  Ruff and format clean.
@@ -2297,8 +2312,6 @@ entries below are the per-increment history.**
   - ESR-3 for FY2023-24, whose subtotals subtract their own sub-rows;
   - reading the tariff order's rate schedule, so revenue is computed from rates, not only
     summed;
-  - the capital inputs of the APR and ARR years (F14's capitalisation, contributions and
-    retirements) from the capital plan (F13 / F16);
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

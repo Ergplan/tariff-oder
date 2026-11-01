@@ -1,0 +1,473 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F16_CAP_CAPEX & CAP. after FY25",
+ "places": 4,
+ "note": "Capitalisation of the APR (FY2025-26) and ARR (FY2026-27) years: the capital plan's 26 schemes as capitalised (F16 rows 6–31, each taken from F13), plus the movement in capital work in progress (F15: opening less closing), as F14's capitalisation (row 11) carries it.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "capitalisation",
+   "inputs": {
+    "record:cwip_opening": [
+     "F15_CAP_CWIP!I8",
+     "INR_crore"
+    ],
+    "record:cwip_closing": [
+     "F15_CAP_CWIP!I11",
+     "INR_crore"
+    ]
+   },
+   "categories": {
+    "row 6": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C6",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 7": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C7",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 8": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C8",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C9",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C10",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C11",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C12",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C13",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C14",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C15",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C16",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C17",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C18",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C19",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C20",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C21",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C22",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C23",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C24",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C25",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C26",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C27",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C28",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C29",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C30",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "C31",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "capex_schemes_total": "C32",
+    "cwip_movement": "C33",
+    "capitalisation_planned": [
+     "C34",
+     "F14_CAP_Cap Cost!H11"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "capitalisation",
+   "inputs": {
+    "record:cwip_opening": [
+     "F15_CAP_CWIP!J8",
+     "INR_crore"
+    ],
+    "record:cwip_closing": [
+     "F15_CAP_CWIP!J11",
+     "INR_crore"
+    ]
+   },
+   "categories": {
+    "row 6": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E6",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 7": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E7",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 8": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E8",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E9",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E10",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E11",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E12",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E13",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E14",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E15",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E16",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E17",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E18",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E19",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E20",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E21",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E22",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E23",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E24",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E25",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E26",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E27",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E28",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E29",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E30",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E31",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "capex_schemes_total": "E32",
+    "cwip_movement": "E33",
+    "capitalisation_planned": [
+     "E34",
+     "F14_CAP_Cap Cost!I11"
+    ]
+   }
+  }
+ ]
+}

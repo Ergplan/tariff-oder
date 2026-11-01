@@ -1,7 +1,7 @@
 {
  "type": "pipeline",
  "chain": "chain-arr.json",
- "note": "The petition's columns computed end to end: the chain (chain-arr.json) evaluated with its record inputs replaced by what the schedules' reproductions compute — power purchase, transmission and arrears (PPC), R&M (F22) and employee / A&G (F19 base) of the APR and ARR years, depreciation (F24), interest on security deposit (F30), bad debts and other items (P3), revenue (ESR-3), the contingency fund.  Total receipts are fed the revenue from the current tariff: captive consumption (row 16) is blank in every column.  What is not fed stays the ARR's own row (a record, listed).  A schedule figure that differs from the filed one (A40: the true-up year's security-deposit interest) is fed as computed, so its effect shows on the net ARR and the gap.  Rates: the normative-loan rate of the APR year (the weighted MCLR + 1 %, carried to the ARR year as NPCL does) and the true-up year's working-capital rate (weighted MCLR + 2.5 %) are fed from the MCLR revisions' reproduction; the APR and ARR years' working-capital rate is one MCLR NPCL picks (+ 2 %) and stays a record.",
+ "note": "The petition's columns computed end to end: the chain (chain-arr.json) evaluated with its record inputs replaced by what the schedules' reproductions compute — power purchase, transmission and arrears (PPC), R&M (F22) and employee / A&G (F19 base) of the APR and ARR years, depreciation (F24), interest on security deposit (F30), bad debts and other items (P3), revenue (ESR-3), the contingency fund.  Total receipts are fed the revenue from the current tariff: captive consumption (row 16) is blank in every column.  What is not fed stays the ARR's own row (a record, listed).  A schedule figure that differs from the filed one (A40: the true-up year's security-deposit interest) is fed as computed, so its effect shows on the net ARR and the gap.  Rates: the normative-loan rate of the APR year (the weighted MCLR + 1 %, carried to the ARR year as NPCL does) and the true-up year's working-capital rate (weighted MCLR + 2.5 %) are fed from the MCLR revisions' reproduction; the APR and ARR years' working-capital rate is one MCLR NPCL picks (+ 2 %) and stays a record.  Capitalisation of the APR and ARR years is fed from the capital plan's reproduction (F16: schemes + CWIP movement).",
  "columns": {
   "FY2026-27|petitioned": {
    "record:depreciation": {
@@ -57,6 +57,10 @@
     "output": "loan_rate_reference",
     "fiscal_year": "FY2025-26",
     "why": "NPCL's F25 carries the FY2025-26 rate to FY2026-27 (I14 = H14): the weighted MCLR of FY2025-26 + 1 %"
+   },
+   "record:capitalisation": {
+    "binding": "f16-capitalisation.json",
+    "output": "capitalisation_planned"
    }
   },
   "FY2025-26|petitioned": {
@@ -115,6 +119,10 @@
    "assumption:loan_interest_rate": {
     "binding": "f27-mclr-rates.json",
     "output": "loan_rate_reference"
+   },
+   "record:capitalisation": {
+    "binding": "f16-capitalisation.json",
+    "output": "capitalisation_planned"
    }
   },
   "FY2024-25|petitioned": {

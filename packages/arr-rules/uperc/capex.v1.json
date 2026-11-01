@@ -1,0 +1,154 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — capital expenditure and capitalisation of the approved investment plan",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Capitalisation of the APR and ARR years from the capital plan (F13 → F16 after FY25) and the CWIP movement (F15).",
+ "rules": [
+  {
+   "id": "uperc.capex.scheme",
+   "version": 1,
+   "status": "draft",
+   "title": "Capitalisation of a scheme of the plan",
+   "output": "capex_scheme",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "amount",
+   "inputs": {
+    "amount": {
+     "unit": "INR_crore",
+     "source": "record:capex_scheme_amount",
+     "note": "the scheme's capitalisation in the capital plan (F13)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — capital expenditure and capitalisation of the approved investment plan",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "capex_scheme"
+  },
+  {
+   "id": "uperc.capex.schemes_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Capitalisation of the plan's schemes, total",
+   "output": "capex_schemes_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "schemes",
+   "inputs": {
+    "schemes": {
+     "unit": "INR_crore",
+     "source": "sum:capex_scheme"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — capital expenditure and capitalisation of the approved investment plan",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capex.cwip_movement",
+   "version": 1,
+   "status": "draft",
+   "title": "Movement in capital work in progress (a reduction is positive)",
+   "output": "cwip_movement",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "opening - closing",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:cwip_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "record:cwip_closing"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — capital expenditure and capitalisation of the approved investment plan",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.capex.capitalisation",
+   "version": 1,
+   "status": "draft",
+   "title": "Capitalisation of the year, planned",
+   "output": "capitalisation_planned",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "schemes + cwip",
+   "inputs": {
+    "schemes": {
+     "unit": "INR_crore",
+     "source": "rule:capex_schemes_total"
+    },
+    "cwip": {
+     "unit": "INR_crore",
+     "source": "rule:cwip_movement"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — capital expenditure and capitalisation of the approved investment plan",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "K.CAP.ADD",
+   "note": "the APR and ARR years: the plan's schemes as capitalised, adjusted by the movement in CWIP (an increase in CWIP is not yet capitalised)"
+  }
+ ]
+}
