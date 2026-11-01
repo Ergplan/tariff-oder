@@ -730,3 +730,27 @@ def test_npcl_revenue_fy2023_24_in_the_earlier_layout():
             assert c.result == "match", c
     arr = {c.category: c.computed for c in checks if "ARR!" in c.category}
     assert arr == {"TOTAL ARR!G15": "2320.9739", "TOTAL ARR!G9": "3130.4048"}
+
+
+def test_npcl_wheeling_supply_allocation_and_cross_subsidy_surcharge():
+    """Real data: F32 splits each ARR item between wheeling and supply by its share (34 / 34);
+    F33 computes per-unit charges, the cost of supply by voltage, each category's ABR, the
+    surcharge capped at 20 % of the tariff and never negative, and the petitioner's proposal
+    (the lower of computed and its own) — all match; a category with no sales has no ABR."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells, reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    f32 = json.loads((folder / "bindings" / "f32-allocation.json").read_text())
+    wb = openpyxl.load_workbook(folder / f32["workbook"], data_only=True)
+    assert [c.result for c in reproduce_row_table(wb, f32, rules)] == ["match"] * 34
+    f33 = json.loads((folder / "bindings" / "f33-css.json").read_text())
+    checks = reproduce_cells(wb, f33, rules)
+    blocked = [c for c in checks if c.result == "blocked"]
+    assert [(c.category, c.why) for c in blocked] == [("ABR row 112 D112", "division by zero")]
+    assert all(c.result == "match" for c in checks if c.result != "blocked") and len(checks) == 49
+    css = {c.category: c.computed for c in checks if c.output == "css_capped" and c.category.startswith("CSS row 10")}
+    assert css["CSS row 107 G107"] == "1.206252" and css["CSS row 109 G109"] == "0.000000"  # HV-2 below cost: 0

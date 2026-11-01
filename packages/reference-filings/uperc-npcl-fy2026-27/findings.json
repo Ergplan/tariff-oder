@@ -156,6 +156,17 @@
     "ARR J29"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A47",
+   "kind": "inconsistency",
+   "title": "F32: the ARR summary column double-counts interest; the allocation base is not the net ARR",
+   "detail": "F32's 'ARR summary' column (L) adds the net interest line (L16 = ARR rows 37–40, 119.31) and also its parts (L17, L18): its ARR is 3,692.18 where the allocated columns give 3,572.87 — 119.31 counted twice.  Only the allocated columns (F, H) feed the cross-subsidy surcharge (F33), so the double count does not reach it.  The allocated base itself is not the net ARR (3,481.83): it adds the regulatory assets' carrying cost (83.23, F33's R), leaves out provisions (3.00) and does not deduct other-business income and open-access revenue (10.82).  The reviewer should decide the base the cost of supply for the surcharge is computed on.",
+   "where": [
+    "F32_Wheeling-Supply L16:L29, I11:I29",
+    "F33_CSS C6"
+   ],
+   "for": "reviewer"
   }
  ]
 }

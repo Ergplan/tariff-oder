@@ -1,0 +1,88 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC Distribution Tariff / MYT Regulations — allocation of the ARR between the wheeling and the retail supply business",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Wheeling / supply allocation of the ARR (UPERC format F32).",
+ "rules": [
+  {
+   "id": "uperc.alloc.wheeling",
+   "version": 1,
+   "status": "draft",
+   "title": "An ARR item allocated to the wheeling business",
+   "output": "alloc_wheeling",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "per": "arr_item",
+   "formula": "total * share",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "record:arr_item_total"
+    },
+    "share": {
+     "unit": "fraction",
+     "source": "record:wheeling_share",
+     "note": "the share of the item allocated to the wheeling business, as F32 states it (the Regulations' allocation matrix; to be confirmed)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC Distribution Tariff / MYT Regulations — allocation of the ARR between the wheeling and the retail supply business",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.alloc.supply",
+   "version": 1,
+   "status": "draft",
+   "title": "An ARR item allocated to the retail supply business",
+   "output": "alloc_supply",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "per": "arr_item",
+   "formula": "total * (1 - share)",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "record:arr_item_total"
+    },
+    "share": {
+     "unit": "fraction",
+     "source": "record:wheeling_share",
+     "note": "the share of the item allocated to the wheeling business, as F32 states it (the Regulations' allocation matrix; to be confirmed)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC Distribution Tariff / MYT Regulations — allocation of the ARR between the wheeling and the retail supply business",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  }
+ ]
+}

@@ -1,0 +1,804 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F33_CSS",
+ "places": 6,
+ "note": "F33, the cross-subsidy surcharge for FY2026-27: the per-unit distribution, transmission and wheeling charges, the average power purchase cost and the regulatory assets' carrying cost per unit; the cost of supply at each voltage; each category's average billing rate; the surcharge computed, capped at 20 % of the tariff and never negative; and the petitioner's proposal (the lower of the computed and its own figure).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "DC",
+   "inputs": {
+    "record:charge_amount": [
+     "C6",
+     "INR_crore"
+    ],
+    "record:charge_energy": [
+     "C7",
+     "MU"
+    ]
+   },
+   "checks": {
+    "charge_per_unit": "C8"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "TC",
+   "inputs": {
+    "record:charge_amount": [
+     "C11",
+     "INR_crore"
+    ],
+    "record:charge_energy": [
+     "C12",
+     "MU"
+    ]
+   },
+   "checks": {
+    "charge_per_unit": "C13"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "PC",
+   "inputs": {
+    "record:charge_amount": [
+     "C16",
+     "INR_crore"
+    ],
+    "record:charge_energy": [
+     "C17",
+     "MU"
+    ]
+   },
+   "checks": {
+    "charge_per_unit": "C18"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "WC",
+   "inputs": {
+    "record:charge_amount": [
+     "C21",
+     "INR_crore"
+    ],
+    "record:charge_energy": [
+     "C22",
+     "MU"
+    ]
+   },
+   "checks": {
+    "charge_per_unit": "C23"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "power purchase fixed cost",
+   "inputs": {
+    "record:charge_amount": [
+     "PPC FY 27!L53",
+     "INR_crore"
+    ],
+    "record:charge_energy": [
+     "PPC FY 27!E53",
+     "MU"
+    ]
+   },
+   "checks": {
+    "charge_per_unit": "C67"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "power purchase variable cost",
+   "inputs": {
+    "record:charge_amount": [
+     "PPC FY 27!M53",
+     "INR_crore"
+    ],
+    "record:charge_energy": [
+     "PPC FY 27!E53",
+     "MU"
+    ]
+   },
+   "checks": {
+    "charge_per_unit": "D67"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "regulatory assets",
+   "inputs": {
+    "record:charge_amount": [
+     "F32_Wheeling-Supply!I20",
+     "INR_crore"
+    ],
+    "record:charge_energy": [
+     "D43",
+     "MU"
+    ]
+   },
+   "checks": {
+    "charge_per_unit": "I67"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply row 67",
+   "inputs": {
+    "record:pp_cost_per_unit": [
+     "E67",
+     "INR_per_kWh"
+    ],
+    "record:loss_inter": [
+     "F67",
+     "fraction"
+    ],
+    "record:loss_intra": [
+     "G67",
+     "fraction"
+    ],
+    "record:loss_distribution_voltage": [
+     "H67",
+     "fraction"
+    ],
+    "record:wheeling_voltage": [
+     "B67",
+     "INR_per_kWh"
+    ],
+    "record:regulatory_asset_per_unit": [
+     "I67",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "J67",
+     "J98"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply row 68",
+   "inputs": {
+    "record:pp_cost_per_unit": [
+     "E68",
+     "INR_per_kWh"
+    ],
+    "record:loss_inter": [
+     "F68",
+     "fraction"
+    ],
+    "record:loss_intra": [
+     "G68",
+     "fraction"
+    ],
+    "record:loss_distribution_voltage": [
+     "H68",
+     "fraction"
+    ],
+    "record:wheeling_voltage": [
+     "B68",
+     "INR_per_kWh"
+    ],
+    "record:regulatory_asset_per_unit": [
+     "I68",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "J68",
+     "J99"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply row 69",
+   "inputs": {
+    "record:pp_cost_per_unit": [
+     "E69",
+     "INR_per_kWh"
+    ],
+    "record:loss_inter": [
+     "F69",
+     "fraction"
+    ],
+    "record:loss_intra": [
+     "G69",
+     "fraction"
+    ],
+    "record:loss_distribution_voltage": [
+     "H69",
+     "fraction"
+    ],
+    "record:wheeling_voltage": [
+     "B69",
+     "INR_per_kWh"
+    ],
+    "record:regulatory_asset_per_unit": [
+     "I69",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "J69",
+     "J100"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply row 70",
+   "inputs": {
+    "record:pp_cost_per_unit": [
+     "E70",
+     "INR_per_kWh"
+    ],
+    "record:loss_inter": [
+     "F70",
+     "fraction"
+    ],
+    "record:loss_intra": [
+     "G70",
+     "fraction"
+    ],
+    "record:loss_distribution_voltage": [
+     "H70",
+     "fraction"
+    ],
+    "record:wheeling_voltage": [
+     "B70",
+     "INR_per_kWh"
+    ],
+    "record:regulatory_asset_per_unit": [
+     "I70",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "J70",
+     "J101"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply row 71",
+   "inputs": {
+    "record:pp_cost_per_unit": [
+     "E71",
+     "INR_per_kWh"
+    ],
+    "record:loss_inter": [
+     "F71",
+     "fraction"
+    ],
+    "record:loss_intra": [
+     "G71",
+     "fraction"
+    ],
+    "record:loss_distribution_voltage": [
+     "H71",
+     "fraction"
+    ],
+    "record:wheeling_voltage": [
+     "B71",
+     "INR_per_kWh"
+    ],
+    "record:regulatory_asset_per_unit": [
+     "I71",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "J71",
+     "J102"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 107",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B107",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C107",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D107"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 108",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B108",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C108",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D108"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 109",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B109",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C109",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D109"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 110",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B110",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C110",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D110"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 111",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B111",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C111",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D111"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 112",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B112",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C112",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D112"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 119",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B119",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C119",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D119"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 120",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B120",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C120",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D120"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 121",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B121",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C121",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D121"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 122",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B122",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C122",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D122"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 123",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B123",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C123",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D123"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 124",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B124",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C124",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D124"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 125",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B125",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C125",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D125"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 126",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B126",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C126",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D126"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ABR row 127",
+   "inputs": {
+    "record:revenue_for_abr": [
+     "B127",
+     "INR_crore"
+    ],
+    "record:sales": [
+     "C127",
+     "MU"
+    ]
+   },
+   "checks": {
+    "average_billing_rate": "D127"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 107",
+   "inputs": {
+    "record:tariff_abr": [
+     "D107",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "E107",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "G107"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 108",
+   "inputs": {
+    "record:tariff_abr": [
+     "D108",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "E108",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "G108"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 109",
+   "inputs": {
+    "record:tariff_abr": [
+     "D109",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "E109",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "G109"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 110",
+   "inputs": {
+    "record:tariff_abr": [
+     "D110",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "E110",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "G110"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 111",
+   "inputs": {
+    "record:tariff_abr": [
+     "D111",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "E111",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "G111"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 75",
+   "inputs": {
+    "record:tariff_abr": [
+     "C75",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "D75",
+     "INR_per_kWh"
+    ],
+    "record:css_computed": [
+     "G75",
+     "INR_per_kWh"
+    ],
+    "record:css_petitioner": [
+     "H75",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "F75",
+    "css_proposed": "I75"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 76",
+   "inputs": {
+    "record:tariff_abr": [
+     "C76",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "D76",
+     "INR_per_kWh"
+    ],
+    "record:css_computed": [
+     "G76",
+     "INR_per_kWh"
+    ],
+    "record:css_petitioner": [
+     "H76",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "F76",
+    "css_proposed": "I76"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 77",
+   "inputs": {
+    "record:tariff_abr": [
+     "C77",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "D77",
+     "INR_per_kWh"
+    ],
+    "record:css_computed": [
+     "G77",
+     "INR_per_kWh"
+    ],
+    "record:css_petitioner": [
+     "H77",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "F77",
+    "css_proposed": "I77"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 78",
+   "inputs": {
+    "record:tariff_abr": [
+     "C78",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "D78",
+     "INR_per_kWh"
+    ],
+    "record:css_computed": [
+     "G78",
+     "INR_per_kWh"
+    ],
+    "record:css_petitioner": [
+     "H78",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "F78",
+    "css_proposed": "I78"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 79",
+   "inputs": {
+    "record:tariff_abr": [
+     "C79",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "D79",
+     "INR_per_kWh"
+    ],
+    "record:css_computed": [
+     "G79",
+     "INR_per_kWh"
+    ],
+    "record:css_petitioner": [
+     "H79",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "F79",
+    "css_proposed": "I79"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS row 80",
+   "inputs": {
+    "record:tariff_abr": [
+     "C80",
+     "INR_per_kWh"
+    ],
+    "record:cost_of_supply": [
+     "D80",
+     "INR_per_kWh"
+    ],
+    "record:css_computed": [
+     "G80",
+     "INR_per_kWh"
+    ],
+    "record:css_petitioner": [
+     "H80",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "css_capped": "F80",
+    "css_proposed": "I80"
+   }
+  }
+ ]
+}

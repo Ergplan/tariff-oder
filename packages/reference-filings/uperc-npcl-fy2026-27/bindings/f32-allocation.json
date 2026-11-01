@@ -1,0 +1,39 @@
+{
+ "type": "row_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F32_Wheeling-Supply",
+ "fiscal_year": "FY2026-27",
+ "note": "F32: each ARR item of FY2026-27 (I) split between the wheeling (F) and retail supply (H) businesses by the wheeling share (C); the supply share is 1 − C (E).  Subtotal rows skipped.",
+ "rows": [
+  7,
+  28
+ ],
+ "label_col": "B",
+ "skip_rows": {
+  "rows": [
+   11,
+   16,
+   21,
+   24
+  ],
+  "why": "subtotals (net O&M, net interest, gross expenditure, total with provisions)"
+ },
+ "inputs": {
+  "record:arr_item_total": "I",
+  "record:wheeling_share": "C"
+ },
+ "units": {
+  "C": "fraction"
+ },
+ "blank_is_zero": {
+  "columns": [
+   "C"
+  ],
+  "why": "the 'other item' row leaves its share blank; NPCL's allocation formula reads it as zero"
+ },
+ "outputs": {
+  "alloc_wheeling": "F",
+  "alloc_supply": "H"
+ },
+ "places": 4
+}

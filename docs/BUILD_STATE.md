@@ -2049,6 +2049,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 82 (2026-11-01): 429 passed** (+1 unit: F32 allocation 34 / 34 and F33 cross-subsidy surcharge 48 / 48).  Ruff and format clean.
 - **Increment 81 (2026-11-01): 428 passed** (+1 unit: ESR-3 FY2023-24 in the seven-column layout, tied to the ARR's rows 15 and 9).  Ruff and format clean.
 - **Increment 80 (2026-11-01): 427 passed** (the trial-balance test now pins R&M and A&G agreeing with the books, 13 comparisons).  Ruff and format clean.
 - **Increment 79 (2026-11-01): 427 passed** (+2 unit: power purchase reconciled to the audited accounts across two workbooks, differing by A44's 1.50; the trial balance against the true-up claims, 9 of 11 agreeing and employee benefits off by exactly 0.0105 crore).  Ruff and format clean.

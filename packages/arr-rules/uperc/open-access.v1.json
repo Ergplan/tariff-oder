@@ -1,0 +1,187 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Open access: per-unit charges, the cost of supply by voltage and the cross-subsidy surcharge (UPERC format F33).",
+ "rules": [
+  {
+   "id": "uperc.oa.per_unit",
+   "version": 1,
+   "status": "draft",
+   "title": "A cost spread over the energy (per-unit charge)",
+   "output": "charge_per_unit",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "amount / energy",
+   "inputs": {
+    "amount": {
+     "unit": "INR_crore",
+     "source": "record:charge_amount"
+    },
+    "energy": {
+     "unit": "MU",
+     "source": "record:charge_energy"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "distribution (DC), intra-state (TC) and inter-state (PC) transmission and wheeling (WC) charges; the average fixed and variable power purchase cost; the regulatory assets' carrying cost (R) — each a cost in Rs crore over the energy in MU"
+  },
+  {
+   "id": "uperc.oa.cos_voltage",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost of supply at a voltage",
+   "output": "cost_of_supply_voltage",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "c / ((1 - l1) * (1 - l2) * (1 - l3)) + d + r",
+   "inputs": {
+    "c": {
+     "unit": "INR_per_kWh",
+     "source": "record:pp_cost_per_unit",
+     "note": "the weighted average power purchase cost (fixed + variable)"
+    },
+    "l1": {
+     "unit": "fraction",
+     "source": "record:loss_inter"
+    },
+    "l2": {
+     "unit": "fraction",
+     "source": "record:loss_intra"
+    },
+    "l3": {
+     "unit": "fraction",
+     "source": "record:loss_distribution_voltage",
+     "note": "the distribution loss down to the voltage"
+    },
+    "d": {
+     "unit": "INR_per_kWh",
+     "source": "record:wheeling_voltage",
+     "note": "the transmission, distribution and wheeling charges applicable at the voltage"
+    },
+    "r": {
+     "unit": "INR_per_kWh",
+     "source": "record:regulatory_asset_per_unit"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.oa.css",
+   "version": 1,
+   "status": "draft",
+   "title": "Cross-subsidy surcharge, computed and capped",
+   "output": "css_capped",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "ifneg(t - cos, t - t, min(cap * t, t - cos))",
+   "inputs": {
+    "t": {
+     "unit": "INR_per_kWh",
+     "source": "record:tariff_abr",
+     "note": "the tariff payable by the category: its average billing rate (with any regulatory surcharge)"
+    },
+    "cos": {
+     "unit": "INR_per_kWh",
+     "source": "record:cost_of_supply"
+    },
+    "cap": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "20",
+     "note": "20 % of the tariff, as F33 applies it; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "never negative; never more than the cap"
+  },
+  {
+   "id": "uperc.oa.css_proposed",
+   "version": 1,
+   "status": "draft",
+   "title": "Cross-subsidy surcharge proposed (the lower of the computed and the petitioner's own figure)",
+   "output": "css_proposed",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "min(computed, petitioner)",
+   "inputs": {
+    "computed": {
+     "unit": "INR_per_kWh",
+     "source": "record:css_computed"
+    },
+    "petitioner": {
+     "unit": "INR_per_kWh",
+     "source": "record:css_petitioner",
+     "note": "NPCL's own figure, typed in F33"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  }
+ ]
+}

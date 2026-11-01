@@ -401,9 +401,10 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
     out: list[BlockCheck] = []
     cats: dict[str, dict] = {}
     rows_of: dict[str, int] = {}
+    skip_rows = set(binding.get("skip_rows", {}).get("rows", []))  # subtotal rows, with the reason
     for r in range(first, last + 1):
         label = str(ws.cell(r, label_col).value or "").strip()
-        if not label or skip.search(label):
+        if not label or skip.search(label) or r in skip_rows:
             continue
         vals = {}
         for source, col in binding["inputs"].items():
