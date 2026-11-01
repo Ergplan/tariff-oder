@@ -1005,6 +1005,37 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 53 (2026-11-01): milestone 13 begins — the NPCL FY2026-27 reference filing, and
+  the first measurement of an order reading against a filed petition.**  After the operator's
+  review of the master prompt: the binding `docs/arr-filing-requirements.md` (proposed),
+  `docs/requirements-matrix.md` and ADR-0021 (proposed).  The operator supplied NPCL's
+  FY2026-27 petition package (zip in `gs://npcltariffpetition`, 405 MB; read through a
+  2-hour signed link they generated): **69 documents hashed** into
+  `packages/reference-filings/uperc-npcl-fy2026-27.json` (Annexure-34, -40 absent; Annexure B,
+  power-purchase bills, ~2.5 GB, held by the operator); the repository keeps the filed formats
+  workbook and the Word narratives (5 MB).  The FY2025-26 petition is listed too (87
+  documents, not downloaded: served on port 8032, unreachable from the cloud session).
+  - **Reference reader** (`arr/reference.py`): a filed format sheet → rows with proposed
+    taxonomy placements; per column the year and voice (a year printed once carries over its
+    group; "Trued-Up" / "Approved (in TO)" are the petitioner's **restatement**, never commission
+    facts from this source); per cell the stored value, the displayed value (its number
+    format; a percentage stored as a fraction converted and said so), or a state ("Incl. in
+    A&G" → included, "NA" → not applicable — never zero).  Several rows proposed for one code
+    are flagged.  `scripts/build_reference.py` wrote `reference.json` (24 of 74 forms read by
+    the generic reader, 2,012 values; the other 50 — station-wise power purchase, tariff
+    schedules, snapshots, depreciation — need their own readers, in the pipeline sequence) and
+    `formats-inventory.json` (the 74 forms as observed in this filing).
+  - **Measurement** (`tests/evals/reference_vs_order.py`, read-only, inside the worker): the
+    UPERC FY2026-27 order's reading against NPCL's filed ARR format, the three years the order
+    decides — **129 figures: 57 exact (44 %); 18 explained** (6 combined totals: the order's
+    power purchase = NPCL's procurement + arrears; 6 opposite signs on the gap; 1 voice; 5 where
+    the *reference* placement was wrong — "Sale of Power" proposed as surplus sale, the order
+    reading had it right as retail sales); **21 differ** (revised claims or misplaced rows, to
+    investigate); **33 not read** (net ARR, total expenditure and NTI in some years — a recall
+    gap or lines the order does not print).  Placements are unreviewed on both sides: an
+    indicator, not an accuracy figure.  Ledger rows A25–A28.
+  - 3 unit tests (synthetic rows in the format's shape).
+
   **Increment 52 (2026-11-01): the atlas — from the map of India to a petition — and day mode**
   (operator request: start with a map of India, then clickable states, then discoms, then the
   discom's tariff norms, then the steps to draft a petition; add a day mode).  The journey is
@@ -1658,6 +1689,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 53 (2026-11-01): 384 passed** (+3 unit: a format header carries a year over its group and maps column words to voices; stored vs displayed values, percentages from fractions, states never zero, a rate in a label is not a unit, restated columns marked).  Evaluation run on real data: the order-vs-petition comparison above.
 - **Increment 52 (2026-11-01): 381 passed** (+4 integration: the atlas lists states with commissions and counts and refuses an unauthenticated caller; a state lists its licensees, a licensee finds its state, unknown codes are 404; the norms describe methods and name parameters without values, a skeleton plan is never confirmed, a commission without a plan falls back to the generic plan; reviewed facts are counted per licensee and the applied norms are reviewed approved/trued-up figures with order and source, fixture-labelled).  Ruff, format, contracts-check (regenerated) and web typecheck clean.
 - **Increment 51 (2026-11-01): web only** — `pnpm --filter @tariff/web typecheck` clean; no API change (the 377 Python tests of increment 50 stand); screenshots of six pages at desktop and phone width.
 - **Increment 50 (2026-11-01): 377 passed** (+3 unit: a one-page list of chapters is no structure and proposal headings stay flagged; a one-word cell over a table row is no heading; a collapsed grid is recognised and a second-reader cell says so).  Ruff, format and contracts-check clean.

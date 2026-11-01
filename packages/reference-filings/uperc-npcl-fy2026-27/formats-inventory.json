@@ -1,0 +1,1359 @@
+{
+ "package": "uperc-npcl-fy2026-27",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "workbook_sha256": "1c2d132e0e824b99838dc4c62e54078101ddb5ac268af66d64be9cc3906f2365",
+ "mapping": "uperc-arr v1 (skeleton)",
+ "status": "unreviewed: machine reading of the petitioner's own spreadsheet; placements are proposals",
+ "forms": [
+  {
+   "sheet": "Index",
+   "form": "ATS FOR TRUE-UP, APR and ARR/ TARIFF FILING BY NOIDA POWER COMPANY LIMITED",
+   "title": "Profit & Loss Account",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "BS1",
+   "form": "BS1",
+   "title": "Profit & Loss Account",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 3 (FY2022-23, no words): no voice; skipped",
+    "column 4 (FY2023-24, no words): no voice; skipped",
+    "column 5 (FY2024-25, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "BS2",
+   "form": "BS2",
+   "title": "Balance Sheet",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 3 (FY2022-23, no words): no voice; skipped",
+    "column 4 (FY2023-24, no words): no voice; skipped",
+    "column 5 (FY2024-25, no words): no voice; skipped",
+    "column 6 (FY2024-25, no words): no voice; skipped",
+    "column 7 (FY2024-25, no words): no voice; skipped",
+    "column 8 (FY2024-25, no words): no voice; skipped",
+    "column 9 (FY2024-25, no words): no voice; skipped",
+    "column 10 (FY2024-25, no words): no voice; skipped",
+    "column 11 (FY2024-25, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "BS3",
+   "form": "BS3",
+   "title": "Cash Flow Statement",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 4 (FY2022-23, no words): no voice; skipped",
+    "column 5 (FY2023-24, no words): no voice; skipped",
+    "column 6 (FY2024-25, no words): no voice; skipped",
+    "column 7 (FY2024-25, no words): no voice; skipped",
+    "column 8 (FY2024-25, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "Energy Balance",
+   "form": "Energy Balance",
+   "title": "Energy Balance",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 12,
+   "values": 131,
+   "years": [
+    "FY2021-22",
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 16 (FY2026-27, no words): no voice; skipped",
+    "column 17 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "ARR",
+   "form": "ARR",
+   "title": "Annual Revenue Requirement",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 46,
+   "values": 476,
+   "years": [
+    "FY2021-22",
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": []
+  },
+  {
+   "sheet": "True up-snapshot",
+   "form": null,
+   "title": "True-Up Snapshot",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "APR Snapshot",
+   "form": null,
+   "title": "Approved in Tariff Order",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "ARR snapshot",
+   "form": null,
+   "title": "Approved in Tariff Order",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "ESR1_OA",
+   "form": "ESR1_OA",
+   "title": "Revenue from Open Access Customers",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 1,
+   "values": 4,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 4 (FY2023-24, Total Consumption(MU)): no voice; skipped",
+    "column 5 (FY2023-24, Consumption from open Access (MU)): no voice; skipped",
+    "column 6 (FY2023-24, Wheeling Charges): no voice; skipped",
+    "column 7 (FY2023-24, Cross Subsidy Surcharge): no voice; skipped",
+    "column 8 (FY2023-24, Additional Surcharge): no voice; skipped",
+    "column 9 (FY2023-24, Any Other Charges): no voice; skipped",
+    "column 10 (FY2023-24, Total): no voice; skipped",
+    "column 12 (FY2024-25, Total Consumption(MU)): no voice; skipped",
+    "column 13 (FY2024-25, Consumption from open Access (MU)): no voice; skipped",
+    "column 14 (FY2024-25, Wheeling Charges): no voice; skipped",
+    "column 15 (FY2024-25, Cross Subsidy Surcharge): no voice; skipped",
+    "column 16 (FY2024-25, Additional Surcharge): no voice; skipped",
+    "column 17 (FY2024-25, Any Other Charges): no voice; skipped",
+    "column 18 (FY2024-25, Total): no voice; skipped",
+    "column 20 (FY2025-26, Total Consumption(MU)): no voice; skipped",
+    "column 21 (FY2025-26, Consumption from open Access (MU)): no voice; skipped",
+    "column 22 (FY2025-26, Wheeling Charges): no voice; skipped",
+    "column 23 (FY2025-26, Cross Subsidy Surcharge): no voice; skipped",
+    "column 24 (FY2025-26, Additional Surcharge): no voice; skipped",
+    "column 25 (FY2025-26, Any Other Charges): no voice; skipped",
+    "column 26 (FY2025-26, Total): no voice; skipped",
+    "column 28 (FY2026-27, Total Consumption(MU)): no voice; skipped",
+    "column 29 (FY2026-27, Consumption from open Access (MU)): no voice; skipped",
+    "column 30 (FY2026-27, Wheeling Charges): no voice; skipped",
+    "column 31 (FY2026-27, Cross Subsidy Surcharge): no voice; skipped",
+    "column 32 (FY2026-27, Additional Surcharge): no voice; skipped",
+    "column 33 (FY2026-27, Any Other Charges): no voice; skipped",
+    "column 34 (FY2026-27, Total): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "form": "ESR2_Sales Forecast",
+   "title": "Determination of CAGR of Energy Sales Forecast",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 3,
+   "values": 17,
+   "years": [
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 3 (FY2017-18, No. of consumers (in '000)): no voice; skipped",
+    "column 4 (FY2017-18, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 5 (FY2017-18, Total Energy Sales (in MU)): no voice; skipped",
+    "column 6 (FY2018-19, No. of consumers (in '000)): no voice; skipped",
+    "column 7 (FY2018-19, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 8 (FY2018-19, Total Energy Sales (in MU)): no voice; skipped",
+    "column 9 (FY2019-20, No. of consumers (in '000)): no voice; skipped",
+    "column 10 (FY2019-20, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 11 (FY2019-20, Total Energy Sales (in MU)): no voice; skipped",
+    "column 12 (FY2020-21, No. of consumers (in '000)): no voice; skipped",
+    "column 13 (FY2020-21, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 14 (FY2020-21, Total Energy Sales (in MU)): no voice; skipped",
+    "column 15 (FY2021-22, No. of consumers (in '000)): no voice; skipped",
+    "column 16 (FY2021-22, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 17 (FY2021-22, Total Energy Sales (in MU)): no voice; skipped",
+    "column 18 (FY2022-23, No. of consumers (in '000)): no voice; skipped",
+    "column 19 (FY2022-23, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 20 (FY2022-23, Total Energy Sales (in MU)): no voice; skipped",
+    "column 21 (FY2023-24, No. of consumers (in '000)): no voice; skipped",
+    "column 22 (FY2023-24, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 23 (FY2023-24, Total Energy Sales (in MU)): no voice; skipped",
+    "column 24 (FY2024-25, No. of consumers (in '000)): no voice; skipped",
+    "column 25 (FY2024-25, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 26 (FY2024-25, Total Energy Sales (in MU)): no voice; skipped",
+    "column 27 (FY2025-26, No. of consumers (in '000)): no voice; skipped",
+    "column 28 (FY2025-26, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 29 (FY2025-26, Total Energy Sales (in MU)): no voice; skipped",
+    "column 30 (FY2026-27, No. of consumers (in '000)): no voice; skipped",
+    "column 31 (FY2026-27, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 32 (FY2026-27, Total Energy Sales (in MU)): no voice; skipped",
+    "column 33 (FY2026-27, No. of consumers (in '000)): no voice; skipped",
+    "column 34 (FY2026-27, Connected load/ contracted demand (in KW)): no voice; skipped",
+    "column 35 (FY2026-27, Total Energy Sales (in MU)): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY24",
+   "form": "ESR3_Curr Tariff",
+   "title": "Revenue from Current Tariffs in Ensuing Year",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY25",
+   "form": "ESR3_Curr Tariff",
+   "title": "Revenue from Current Tariffs in Ensuing Year",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY26",
+   "form": "ESR3_Curr Tariff",
+   "title": "Revenue from Current Tariffs in Ensuing Year",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY27",
+   "form": "ESR3_Curr Tariff",
+   "title": "Revenue from Current Tariffs in Ensuing Year",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "ESR4_Prop Tariff",
+   "form": "ESR4_Prop Tariff",
+   "title": "Revenue from Proposed Tariffs",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "ESR4A_Prop Tariff Rate Sch.",
+   "form": null,
+   "title": "ESR4A_Prop Tariff Rate Sch.",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "ESR5_BD&Rev",
+   "form": null,
+   "title": "Consumer No., Connected Load, Sales & Revenue Details",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 2 (FY2022-23, A): no voice; skipped",
+    "column 3 (FY2022-23, B): no voice; skipped",
+    "column 4 (FY2022-23, C): no voice; skipped",
+    "column 5 (FY2022-23, D): no voice; skipped",
+    "column 6 (FY2023-24, no words): no voice; skipped",
+    "column 7 (FY2023-24, no words): no voice; skipped",
+    "column 8 (FY2023-24, no words): no voice; skipped",
+    "column 9 (FY2023-24, no words): no voice; skipped",
+    "column 10 (FY2023-24, no words): no voice; skipped",
+    "column 11 (FY2023-24, no words): no voice; skipped",
+    "column 12 (FY2023-24, no words): no voice; skipped",
+    "column 13 (FY2023-24, no words): no voice; skipped",
+    "column 14 (FY2024-25, E): no voice; skipped",
+    "column 15 (FY2024-25, no words): no voice; skipped",
+    "column 16 (FY2024-25, G): no voice; skipped",
+    "column 17 (FY2024-25, no words): no voice; skipped",
+    "column 18 (FY2024-25, I): no voice; skipped",
+    "column 19 (FY2024-25, no words): no voice; skipped",
+    "column 20 (FY2024-25, K): no voice; skipped",
+    "column 21 (FY2024-25, L=(K-D)/D): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "ESR6_Subsidy",
+   "form": "ESR6_Subsidy",
+   "title": "Revenue from Tariff Subsidy",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F1_PP_Annual",
+   "form": "F1_PP_Annual",
+   "title": "Summary of Power Purchase from Own Stations and Other Sources",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F2_PP_Assump",
+   "form": "F2_PP_Assump",
+   "title": "Assumptions For Power Purchase",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F3_PP_Monthly FY2025",
+   "form": "F3_PP_Monthly, True-up, FY2024-25",
+   "title": "Power Purchase & Monthly Appropriation of Power Purchase",
+   "unit": "MU",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F3_PP_Monthly FY2026",
+   "form": "F3_PP_Monthly: APR, FY 2025-26",
+   "title": "Power Purchase & Monthly Appropriation of Power Purchase",
+   "unit": "MU",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F3_PP_Monthly FY2027",
+   "form": "F3_PP_Monthly: APR, FY 2026-27",
+   "title": "Power Purchase & Monthly Appropriation of Power Purchase",
+   "unit": "MU",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F4_PP_MOD",
+   "form": "F4_PP_MOD",
+   "title": "Merit Order Despatch",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 4 (FY2024-25, Units (MU)): no voice; skipped",
+    "column 5 (FY2024-25, Fixed Charges (Rs.Crore)): no voice; skipped",
+    "column 6 (FY2024-25, Per Unit FC (Rs. /kWh)): no voice; skipped",
+    "column 7 (FY2024-25, Energy/ Variable Charges (Rs.Crore)): no voice; skipped",
+    "column 8 (FY2024-25, Per Unit EC/VC (Rs. kWh)): no voice; skipped",
+    "column 9 (FY2024-25, Other Cost (Rs.Crore)): no voice; skipped",
+    "column 10 (FY2024-25, Per Unit Other Cost (Rs. /kWh)): no voice; skipped",
+    "column 11 (FY2024-25, Total Cost (Rs. Crore)): no voice; skipped",
+    "column 12 (FY2024-25, Per Unit Total Cost (Rs. /kWh)): no voice; skipped",
+    "column 13 (FY2025-26, Units (MU)): no voice; skipped",
+    "column 14 (FY2025-26, Fixed Charges (Rs.Crore)): no voice; skipped",
+    "column 15 (FY2025-26, Per Unit FC (Rs. /kWh)): no voice; skipped",
+    "column 16 (FY2025-26, Energy/ Variable Charges (Rs.Crore)): no voice; skipped",
+    "column 17 (FY2025-26, Per Unit EC/VC (Rs. kWh)): no voice; skipped",
+    "column 18 (FY2025-26, Other Cost (Rs.Crore)): no voice; skipped",
+    "column 19 (FY2025-26, Per Unit Other Cost (Rs. /kWh)): no voice; skipped",
+    "column 20 (FY2025-26, Total Cost (Rs. Crore)): no voice; skipped",
+    "column 21 (FY2025-26, Per Unit Total Cost (Rs. /kWh)): no voice; skipped",
+    "column 22 (FY2026-27, Units (MU)): no voice; skipped",
+    "column 23 (FY2026-27, Fixed Charges (Rs.Crore)): no voice; skipped",
+    "column 24 (FY2026-27, Per Unit FC (Rs. /kWh)): no voice; skipped",
+    "column 25 (FY2026-27, Energy/ Variable Charges (Rs.Crore)): no voice; skipped",
+    "column 26 (FY2026-27, Per Unit EC/VC (Rs. kWh)): no voice; skipped",
+    "column 27 (FY2026-27, Other Cost (Rs.Crore)): no voice; skipped",
+    "column 28 (FY2026-27, Per Unit Other Cost (Rs. /kWh)): no voice; skipped",
+    "column 29 (FY2026-27, Total Cost (Rs. Crore)): no voice; skipped",
+    "column 30 (FY2026-27, Per Unit Total Cost (Rs. /kWh)): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F5_PP_Renew",
+   "form": "F5_PP_Renew",
+   "title": "PPA-wise renewable energy procured",
+   "unit": "MU",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F6_PP6_RPO",
+   "form": "F6_PP6_RPO",
+   "title": "Details of Renewable Purchase Obligation",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 4 (FY2024-25, Quantum (MU)): no voice; skipped",
+    "column 5 (FY2025-26, Quantum (MU)): no voice; skipped",
+    "column 6 (FY2026-27, Quantum (MU)): no voice; skipped",
+    "column 7 (FY2026-27, no words): no voice; skipped",
+    "column 8 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F7_PP_Comp Bid",
+   "form": "F7_PP_Comp Bid",
+   "title": "Details for power procured via competitive bidding for True-up Year : FY 2024-25",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F8_PP_Short Term",
+   "form": "F8_PP_Short Term",
+   "title": "Information on short-term power procurement",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 2 (FY2024-25, no words): no voice; skipped",
+    "column 3 (FY2024-25, RTC): no voice; skipped",
+    "column 4 (FY2024-25, no words): no voice; skipped",
+    "column 5 (FY2024-25, 00:00-24:00): no voice; skipped",
+    "column 6 (FY2024-25, 48.6366528095): no voice; skipped",
+    "column 7 (FY2024-25, 20.364529844151257): no voice; skipped",
+    "column 8 (FY2024-25, 4.187074699386701): no voice; skipped",
+    "column 9 (FY2024-25, no words): no voice; skipped",
+    "column 10 (FY2024-25, no words): no voice; skipped",
+    "column 11 (FY2024-25, no words): no voice; skipped",
+    "column 12 (FY2024-25, no words): no voice; skipped",
+    "column 13 (FY2024-25, no words): no voice; skipped",
+    "column 14 (FY2024-25, no words): no voice; skipped",
+    "column 15 (FY2024-25, no words): no voice; skipped",
+    "column 16 (FY2024-25, no words): no voice; skipped",
+    "column 17 (FY2024-25, no words): no voice; skipped",
+    "column 18 (FY2024-25, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F9_PP_plan",
+   "form": "F9_PP_plan",
+   "title": "Power Procurement (in MWs)",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 13,
+   "values": 39,
+   "years": [
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 3 (FY2024-25, Medium Term): no voice; skipped",
+    "column 4 (FY2024-25, Short Term): no voice; skipped",
+    "column 6 (FY2025-26, Medium Term): no voice; skipped",
+    "column 7 (FY2025-26, Short Term): no voice; skipped",
+    "column 9 (FY2026-27, Medium Term): no voice; skipped",
+    "column 10 (FY2026-27, Short Term): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F10_PP_BST",
+   "form": "F10_PP_BST",
+   "title": "Bulk Supply Tariff Details",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 10 (FY2025-26, Estimates): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "PPC FY 24",
+   "form": null,
+   "title": "Summary of Power Purchase from Own Stations and Other Sources",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "PPC FY 25",
+   "form": null,
+   "title": "Summary of Power Purchase from Own Stations and Other Sources",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "PPC FY 26",
+   "form": null,
+   "title": "Summary of Power Purchase from Own Stations and Other Sources",
+   "unit": "MU",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "PPC FY 27",
+   "form": null,
+   "title": "Summary of Power Purchase from Own Stations and Other Sources",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F11_CAP_Asset not in use",
+   "form": "F11_CAP_Asset not in use",
+   "title": "Statement of Assets Not in Use",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F12_CAP_Cons Contri",
+   "form": "F12_CAP_Cons Contribution",
+   "title": "Consumer contributions and grants towards cost of capital assets",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 2,
+   "values": 8,
+   "years": [
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 4 (FY2024-25, Amortisation): no voice; skipped",
+    "column 5 (FY2024-25, Retirement of assets): no voice; skipped",
+    "column 6 (FY2024-25, Balance at the end of the Year): no voice; skipped",
+    "column 8 (FY2024-25, Amortisation): no voice; skipped",
+    "column 9 (FY2024-25, Retirement of assets): no voice; skipped",
+    "column 10 (FY2024-25, Balance at the end of the Year): no voice; skipped",
+    "column 12 (FY2025-26, Amortisation): no voice; skipped",
+    "column 13 (FY2025-26, Retirement of assets): no voice; skipped",
+    "column 14 (FY2025-26, Balance at the end of the Year): no voice; skipped",
+    "column 16 (FY2026-27, Amortisation): no voice; skipped",
+    "column 17 (FY2026-27, Retirement of assets): no voice; skipped",
+    "column 18 (FY2026-27, Balance at the end of the Year): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F13_CAP_Plan",
+   "form": "F13_CAP_Plan",
+   "title": "Investment Plan - Master",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F14_CAP_Cap Cost",
+   "form": "F14_CAP_Cap Cost",
+   "title": "Statement of Capital Cost",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 11,
+   "values": 65,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 10 (FY2026-27, no words): no voice; skipped",
+    "column 11 (FY2026-27, no words): no voice; skipped",
+    "column 12 (FY2026-27, no words): no voice; skipped",
+    "column 13 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F15_CAP_CWIP",
+   "form": "F15_CAP_CWIP",
+   "title": "Statement of Capital Works in Progress",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 4,
+   "values": 28,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 10 (FY2026-27, Projection): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F16_CAP_CAPEX & CAP. till 25 ",
+   "form": "F16_CAP_CAPEX n CAPT",
+   "title": "Capex and Capitalisation Details",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 2 (FY2023-24, Investment): no voice; skipped",
+    "column 3 (FY2023-24, Capitalisation): no voice; skipped",
+    "column 4 (FY2024-25, Investment): no voice; skipped",
+    "column 5 (FY2024-25, Capitalisation): no voice; skipped",
+    "column 6 (FY2024-25, no words): no voice; skipped",
+    "column 7 (FY2024-25, no words): no voice; skipped",
+    "column 8 (FY2024-25, no words): no voice; skipped",
+    "column 9 (FY2024-25, no words): no voice; skipped",
+    "column 10 (FY2024-25, no words): no voice; skipped",
+    "column 11 (FY2024-25, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F16_CAP_CAPEX & CAP. after FY25",
+   "form": "F16_CAP_CAPEX n CAPT",
+   "title": "Capex and Capitalisation Details",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 2 (FY2025-26, Investment): no voice; skipped",
+    "column 3 (FY2025-26, Capitalisation): no voice; skipped",
+    "column 4 (FY2026-27, Investment): no voice; skipped",
+    "column 5 (FY2026-27, Capitalisation): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F17_O&M_CPI",
+   "form": "F17_O&M_CPI",
+   "title": "Consumer Price Inflation",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 13,
+   "values": 65,
+   "years": [
+    "FY2019-20",
+    "FY2020-21",
+    "FY2021-22",
+    "FY2022-23",
+    "FY2023-24",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 7 (FY2024-25, True -Up): no voice; skipped",
+    "column 10 (FY2026-27, no words): no voice; skipped",
+    "column 11 (FY2026-27, no words): no voice; skipped",
+    "column 12 (FY2026-27, no words): no voice; skipped",
+    "column 13 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F18_O&M_WPI",
+   "form": "F18_O&M_WPI",
+   "title": "OFFICE OF THE ECONOMIC ADVISER",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 13,
+   "values": 65,
+   "years": [
+    "FY2019-20",
+    "FY2020-21",
+    "FY2021-22",
+    "FY2022-23",
+    "FY2023-24",
+    "FY2025-26"
+   ],
+   "notes": [
+    "column 7 (FY2024-25, True- Up): no voice; skipped",
+    "column 10 (FY2025-26, no words): no voice; skipped",
+    "column 11 (FY2025-26, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F19A-O&M Normative",
+   "form": null,
+   "title": "F19A-O&M Normative",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 3 (FY2015-16, (a)): no voice; skipped",
+    "column 4 (FY2016-17, (b)): no voice; skipped",
+    "column 5 (FY2017-18, (c)): no voice; skipped",
+    "column 6 (FY2018-19, (d)): no voice; skipped",
+    "column 7 (FY2019-20, (e)): no voice; skipped",
+    "column 8 (FY2017-18, (f) = [(a)+(b)+(c)+ (d)+(e)]/5 \n(Average of Gross O&M expenses)): no voice; skipped",
+    "column 9 (FY2018-19, g= f*(1+escalation factor for FY 2018-19)): no voice; skipped",
+    "column 10 (FY2019-20, h= g*(1+escalation factor for FY 2019-20)): no voice; skipped",
+    "column 11 (FY2020-21, Normative): no voice; skipped",
+    "column 12 (FY2021-22, Normative): no voice; skipped",
+    "column 13 (FY2022-23, Normative): no voice; skipped",
+    "column 14 (FY2023-24, Normative): no voice; skipped",
+    "column 15 (FY2024-25, Normative): no voice; skipped",
+    "column 16 (FY2024-25, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "form": "F19_O&M_EE n AG base",
+   "title": "Base year determination for Employee and A&G expenses",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 3 (FY2020-21, (a)): no voice; skipped",
+    "column 4 (FY2021-22, (b)): no voice; skipped",
+    "column 5 (FY2022-23, (c)): no voice; skipped",
+    "column 6 (FY2023-24, (d)): no voice; skipped",
+    "column 7 (FY2024-25, (e)): no voice; skipped",
+    "column 8 (FY2022-23, (f) = [(a)+(b)+(c)+ (d)+(e)]/5): no voice; skipped",
+    "column 9 (FY2023-24, g): no voice; skipped",
+    "column 10 (FY2024-25, h): no voice; skipped",
+    "column 11 (FY2024-25, APR FY2025-26 i): no voice; skipped",
+    "column 12 (FY2024-25, ARR FY 2026-27 j): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F20_O&M_EE",
+   "form": "F20_O&M_EE",
+   "title": "Employee Expenses",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 2 (FY2020-21, No. of Employees): no voice; skipped",
+    "column 3 (FY2020-21, Expenses (Rs. Cr.)): no voice; skipped",
+    "column 4 (FY2021-22, No. of Employees): no voice; skipped",
+    "column 5 (FY2021-22, Expenses (Rs. Cr.)): no voice; skipped",
+    "column 6 (FY2022-23, No. of Employees): no voice; skipped",
+    "column 7 (FY2022-23, Expenses (Rs. Cr.)): no voice; skipped",
+    "column 8 (FY2023-24, No. of Employees): no voice; skipped",
+    "column 9 (FY2023-24, Expenses (Rs. Cr.)): no voice; skipped",
+    "column 10 (FY2024-25, No. of Employees): no voice; skipped",
+    "column 11 (FY2024-25, Expenses (Rs. Cr.)): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F21_O&M_EE (A)",
+   "form": "F21_O&M_EE (A)",
+   "title": "Component wise Details of Employee Expenses",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 12,
+   "values": 103,
+   "years": [
+    "FY2019-20",
+    "FY2020-21",
+    "FY2021-22",
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": []
+  },
+  {
+   "sheet": "F22_O&M_R&M till FY25",
+   "form": "F22_O&M_R&M",
+   "title": "R&M Expenses - Till FY 25",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 9,
+   "values": 55,
+   "years": [
+    "FY2021-22",
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25"
+   ],
+   "notes": []
+  },
+  {
+   "sheet": "F22_O&M_R&M after FY25",
+   "form": "F22_O&M_R&M",
+   "title": "R&M Expenses - FY 26 and FY 27",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 19,
+   "values": 30,
+   "years": [
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 9 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F23_O&M_A&G",
+   "form": "F23_O&M_A&G",
+   "title": "Componentwise Details of Administration & General Expenses",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 38,
+   "values": 230,
+   "years": [
+    "FY2021-22",
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 13 (FY2026-27, no words): no voice; skipped",
+    "column 14 (FY2026-27, no words): no voice; skipped",
+    "column 15 (FY2026-27, no words): no voice; skipped",
+    "column 16 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F24_Dep",
+   "form": "F24_Dep",
+   "title": "Calculation of Depreciation Rate",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F25_IOL",
+   "form": "F:F25_IOL",
+   "title": "Interest on Normative Loan",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 10,
+   "values": 70,
+   "years": [
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 10 (FY2026-27, Remarks): no voice; skipped",
+    "column 11 (FY2026-27, no words): no voice; skipped",
+    "column 12 (FY2026-27, no words): no voice; skipped",
+    "column 13 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F26_ROE",
+   "form": "F26_ROE",
+   "title": "Return of Equity",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 7,
+   "values": 49,
+   "years": [
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": []
+  },
+  {
+   "sheet": "F27_Work Cap",
+   "form": "F27_Work Cap",
+   "title": "Working Capital Requirements",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 30,
+   "values": 170,
+   "years": [
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 13 (FY2026-27, no words): no voice; skipped",
+    "column 14 (FY2026-27, no words): no voice; skipped",
+    "column 15 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F28_NTI",
+   "form": "F28_NTI",
+   "title": "Details of Non-tariff Income",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 10,
+   "values": 45,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 10 (FY2026-27, no words): no voice; skipped",
+    "column 11 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F29_Income Tax",
+   "form": "F29_Income Tax",
+   "title": "Income Tax Provisions",
+   "unit": "INR_crore",
+   "read_by_generic_reader": true,
+   "rows": 9,
+   "values": 54,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 9 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "F30_CSD monthly",
+   "form": "F30_CSD monthly",
+   "title": "Monthly details of Consumer Security Deposit for True up year",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F30A_CSD",
+   "form": "F30A_CSD",
+   "title": "Consumer Security Deposit",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F31_Recievables",
+   "form": "F31_Recievables",
+   "title": "Statement of Receivables",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F32_Wheeling-Supply",
+   "form": "Wheeling-Supply",
+   "title": "Allocation of Wheeling & Retail Supply and Cross Subsidy Surcharge",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "F33_CSS",
+   "form": "F33_CSS",
+   "title": "Details of Cross Subsidy Surchage",
+   "unit": "INR_crore",
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "P1_DL",
+   "form": "P1_DL",
+   "title": "Distribution Loss",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "P1A_DL HT-LT",
+   "form": "P1A_DL HT-LT",
+   "title": "Distribution Losses in LT and HT system",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 22,
+   "values": 88,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 8 (FY2026-27, no words): no voice; skipped",
+    "column 9 (FY2026-27, no words): no voice; skipped",
+    "column 10 (FY2026-27, no words): no voice; skipped",
+    "column 11 (FY2026-27, no words): no voice; skipped",
+    "column 12 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "P2_AVG Supply HRS",
+   "form": "P2_AVG Supply HRS",
+   "title": "Avg. No. of Hour Supply Per day",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 59,
+   "values": 116,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 6 (FY2026-27, no words): no voice; skipped",
+    "column 7 (FY2026-27, no words): no voice; skipped",
+    "column 8 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "P3_Bad Debts",
+   "form": "P3",
+   "title": "Bad Debts, Debits, Write-offs and any other items",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 11,
+   "values": 11,
+   "years": [
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 3 (FY2023-24, no words): no voice; skipped",
+    "column 4 (FY2024-25, no words): no voice; skipped",
+    "column 5 (FY2025-26, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "P4_Phy Stat",
+   "form": "P4_Phy Stat",
+   "title": "Details of Physical statistics of the network",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 17,
+   "values": 68,
+   "years": [
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 4 (FY2023-24, Withdrawal from service): no voice; skipped",
+    "column 5 (FY2023-24, At the end of year): no voice; skipped",
+    "column 7 (FY2024-25, Withdrawal from service): no voice; skipped",
+    "column 8 (FY2024-25, At the end of year): no voice; skipped",
+    "column 10 (FY2025-26, Withdrawal from service): no voice; skipped",
+    "column 11 (FY2025-26, At the end of year): no voice; skipped",
+    "column 13 (FY2026-27, Withdrawal from service): no voice; skipped",
+    "column 14 (FY2026-27, At the end of year): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "P5_Arrear",
+   "form": "P5_Arrear",
+   "title": "Analysis of  Revenue Arrears",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "P6_Cons Complaints",
+   "form": "P6",
+   "title": "Consumer Complaint",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 3 (FY2022-23, First six months): no voice; skipped",
+    "column 4 (FY2022-23, Second six months): no voice; skipped",
+    "column 5 (FY2023-24, First six months): no voice; skipped",
+    "column 6 (FY2023-24, Second six months): no voice; skipped",
+    "column 7 (FY2024-25, First six months): no voice; skipped",
+    "column 8 (FY2024-25, Second six months): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "P7_Trans Failure",
+   "form": "P7_Trans Failure",
+   "title": "Failure of Transformers",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 3 (FY2022-23, Total  numbers of Transformers): no voice; skipped",
+    "column 4 (FY2022-23, Transformers damaged): no voice; skipped",
+    "column 5 (FY2022-23, %): no voice; skipped",
+    "column 6 (FY2023-24, Total  numbers of Transformers): no voice; skipped",
+    "column 7 (FY2023-24, Transformers damaged): no voice; skipped",
+    "column 8 (FY2023-24, %): no voice; skipped",
+    "column 9 (FY2024-25, Total  numbers of Transformers): no voice; skipped",
+    "column 10 (FY2024-25, Transformers damaged): no voice; skipped",
+    "column 11 (FY2024-25, %): no voice; skipped",
+    "column 12 (FY2024-25, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "P8_Elec Accidents",
+   "form": null,
+   "title": "P8_Elec Accidents",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "column 3 (FY2022-23, Fatal* Human): no voice; skipped",
+    "column 4 (FY2022-23, Animal): no voice; skipped",
+    "column 5 (FY2022-23, Non-Fatal Human): no voice; skipped",
+    "column 6 (FY2022-23, Animal): no voice; skipped",
+    "column 7 (FY2022-23, Total): no voice; skipped",
+    "column 8 (FY2023-24, Fatal* Human): no voice; skipped",
+    "column 9 (FY2023-24, Animal): no voice; skipped",
+    "column 10 (FY2023-24, Non-Fatal Human): no voice; skipped",
+    "column 11 (FY2023-24, Animal): no voice; skipped",
+    "column 12 (FY2023-24, Total): no voice; skipped",
+    "column 13 (FY2024-25, Fatal* Human): no voice; skipped",
+    "column 14 (FY2024-25, Animal): no voice; skipped",
+    "column 15 (FY2024-25, Non-Fatal Human): no voice; skipped",
+    "column 16 (FY2024-25, Animal): no voice; skipped",
+    "column 17 (FY2024-25, Total): no voice; skipped",
+    "column 18 (FY2024-25, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "P9_Peak Demand",
+   "form": "P9",
+   "title": "Peak Demand in MW",
+   "unit": null,
+   "read_by_generic_reader": true,
+   "rows": 8,
+   "values": 25,
+   "years": [
+    "FY2022-23",
+    "FY2023-24",
+    "FY2024-25",
+    "FY2025-26",
+    "FY2026-27"
+   ],
+   "notes": [
+    "column 8 (FY2026-27, no words): no voice; skipped"
+   ]
+  },
+  {
+   "sheet": "P10_Pending Cases",
+   "form": "P10_Pending Cases",
+   "title": "Name of Distribution Licensee",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  },
+  {
+   "sheet": "P11_Land",
+   "form": "P11_Land",
+   "title": "Details of Land Assets",
+   "unit": null,
+   "read_by_generic_reader": false,
+   "rows": 0,
+   "values": 0,
+   "years": [],
+   "notes": [
+    "no header naming two or more fiscal years"
+   ]
+  }
+ ]
+}
