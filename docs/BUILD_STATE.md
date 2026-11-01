@@ -1005,6 +1005,22 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 69 (2026-11-01): revenue from the current tariff, by category.**  8 draft rules
+  (`revenue.v1.json`, R-SCH-12), evaluated per consumer category, slab or time-of-day block of
+  ESR-3:
+  - the row's revenue (fixed + energy + minimum + other charges + regulatory discount);
+  - the energy and fixed charge per unit it implies, which is not a regulation;
+  - the totals: revenue (R.REV.EXISTING), units sold and the discount.
+
+  The rate schedule of the tariff order is not read yet, so the implied rates are shown for the
+  reviewer to compare; NPCL's revenues are its own billing figures.  **NPCL: FY2024-25 231
+  match, FY2025-26 104, FY2026-27 238.  Revenue 2,634.60, 2,884.76 and 3,192.04 and units sold
+  3,597.63, 3,951.43 and 4,399.84 are the ARR's rows 15 and 9 in the true-up, APR and ARR years.**
+  The one difference is FY2024-25's regulatory-discount total, whose formula subtracts a typed 0.04
+  (finding A41, for the petitioner).  Slabs with no units have no implied rate (blocked, never 0).
+  FY2023-24's ESR-3 has subtotal rows that subtract their own sub-rows, so it is not yet bound.
+  No rule is approved; every clause is unverified.
+
   **Increment 68 (2026-11-01): interest on security deposit, receivables, bad debts and other
   items.**  14 draft rules:
   - **Security deposit:** each month's closing balance and interest (the average balance at the
@@ -1917,6 +1933,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 69 (2026-11-01): 421 passed** (+1 unit: NPCL's revenue from the current tariff by category, three years, tied to the ARR's rows 15 and 9, the one typed adjustment pinned).  Ruff and format clean.
 - **Increment 68 (2026-11-01): 420 passed** (+2 unit: NPCL's security-deposit interest, receivables, bad debts and other items reproduced with the one typed March figure pinned as differs; stated constants need a reason and declared blanks are zero).  Ruff and format clean.
 - **Increment 67 (2026-11-01): 418 passed** (+1 unit: F24 by class, five years, net tied to the ARR's row 36; +1 unit: a category given in place of its computation, labelled and summed).  Ruff and format clean.
 - **Increment 66 (2026-11-01): 416 passed** (+2 unit: NPCL's 2025-regime employee, A&G and R&M of the APR and ARR years reproduced from the base-year sheet and tied to F21, F23 and the ARR; the cell reader never reads a blank as 0).  Ruff and format clean.

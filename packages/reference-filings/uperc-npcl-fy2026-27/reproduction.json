@@ -8998,6 +8998,6341 @@
  ],
  "records": [
   {
+   "binding": "esr3-revenue-fy25.json",
+   "checks": [
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 14)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.3660",
+     "computed": "1.3660",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 14)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 14)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Lifeline 1KW 0-100kWh/Month (row 15)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.1385",
+     "computed": "0.1385",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Lifeline 1KW 0-100kWh/Month (row 15)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "3.0000",
+     "computed": "3.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Lifeline 1KW 0-100kWh/Month (row 15)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  Upto 100 kWh/Month (row 16)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.3141",
+     "computed": "6.3141",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  Upto 100 kWh/Month (row 16)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "3.5681",
+     "computed": "3.5681",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  Upto 100 kWh/Month (row 16)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  between 101-150 kWh/Month (row 17)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.7080",
+     "computed": "2.7080",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  between 101-150 kWh/Month (row 17)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "4.0646",
+     "computed": "4.0646",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  between 101-150 kWh/Month (row 17)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  between 151-300 kWh/Month (row 18)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.8509",
+     "computed": "6.8509",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  between 151-300 kWh/Month (row 18)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.2408",
+     "computed": "5.2408",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  between 151-300 kWh/Month (row 18)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  Above 300 kWh/Month (row 19)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "10.5170",
+     "computed": "10.5170",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  Above 300 kWh/Month (row 19)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.6798",
+     "computed": "5.6798",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural  Above 300 kWh/Month (row 19)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Un Metered (row 20)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.7819",
+     "computed": "0.7819",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Un Metered (row 20)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Un Metered (row 20)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "3.4145",
+     "computed": "3.4145",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Registered Societies (row 21)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "324.6227",
+     "computed": "324.6227",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Registered Societies (row 21)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.2546",
+     "computed": "6.2546",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Registered Societies (row 21)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.3535",
+     "computed": "0.3535",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other Metered (row 22)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "19.5807",
+     "computed": "19.5807",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other Metered (row 22)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other Metered (row 22)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Lifeline 1KW 0-100 kWh/Month (row 23)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.1580",
+     "computed": "0.1580",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Lifeline 1KW 0-100 kWh/Month (row 23)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "3.0000",
+     "computed": "3.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Lifeline 1KW 0-100 kWh/Month (row 23)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Upto     0-100 kWh/Month (row 24)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "74.5423",
+     "computed": "74.5423",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Upto     0-100 kWh/Month (row 24)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.4167",
+     "computed": "5.4167",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Upto     0-100 kWh/Month (row 24)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Upto     101-150 kWh/Month (row 25)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "29.5088",
+     "computed": "29.5088",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Upto     101-150 kWh/Month (row 25)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.4171",
+     "computed": "5.4171",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Upto     101-150 kWh/Month (row 25)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "From     151-300 kWh/Month (row 26)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "67.7264",
+     "computed": "67.7264",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "From     151-300 kWh/Month (row 26)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.9126",
+     "computed": "5.9126",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "From     151-300 kWh/Month (row 26)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above  300 kWh/Month (row 27)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "206.8291",
+     "computed": "206.8291",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above  300 kWh/Month (row 27)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.4137",
+     "computed": "6.4137",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above  300 kWh/Month (row 27)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural Metered (row 30)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.1679",
+     "computed": "1.1679",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural Metered (row 30)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.8048",
+     "computed": "5.8048",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural Metered (row 30)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.6879",
+     "computed": "0.6879",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other Metered (row 31)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "15.2571",
+     "computed": "15.2571",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load  up to 4 kW (row 32)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load  up to 4 kW (row 32)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load  up to 4 kW (row 32)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "upto 4KW- upto 300 kWh (row 33)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.4995",
+     "computed": "1.4995",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "upto 4KW- upto 300 kWh (row 33)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.8845",
+     "computed": "6.8845",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "upto 4KW- upto 300 kWh (row 33)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "upto 4KW- Above 300 kWh (row 34)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.8961",
+     "computed": "3.8961",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "upto 4KW- Above 300 kWh (row 34)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.7020",
+     "computed": "7.7020",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "upto 4KW- Above 300 kWh (row 34)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load Above 4 kW (row 35)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load Above 4 kW (row 35)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load Above 4 kW (row 35)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above 4KW-upto1000 kWh (row 36)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.1839",
+     "computed": "4.1839",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above 4KW-upto1000 kWh (row 36)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.8850",
+     "computed": "6.8850",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above 4KW-upto1000 kWh (row 36)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above 4KW-Above 1000 kWh (row 37)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "65.2477",
+     "computed": "65.2477",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above 4KW-Above 1000 kWh (row 37)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.0262",
+     "computed": "8.0262",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Above 4KW-Above 1000 kWh (row 37)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Public Lamps (LMV-3) (row 39)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "22.7736",
+     "computed": "22.7736",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Public Lamps (LMV-3) (row 39)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.3856",
+     "computed": "8.3856",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Public Lamps (LMV-3) (row 39)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.3630",
+     "computed": "1.3630",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Public Institution (row 42)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.4337",
+     "computed": "4.4337",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Public Institution (row 42)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.6770",
+     "computed": "5.6770",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Public Institution (row 42)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.2227",
+     "computed": "1.2227",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Private Institution (row 43)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "11.1035",
+     "computed": "11.1035",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Private Institution (row 43)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.4740",
+     "computed": "7.4740",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Private Institution (row 43)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.8895",
+     "computed": "1.8895",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Un Metered (row 47)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.1419",
+     "computed": "0.1419",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Un Metered (row 47)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Un Metered (row 47)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.7112",
+     "computed": "0.7112",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 48)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.9318",
+     "computed": "2.9318",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 48)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "2.1101",
+     "computed": "2.1101",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 48)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.8766",
+     "computed": "0.8766",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other metered (row 49)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.4965",
+     "computed": "0.4965",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other metered (row 49)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.4309",
+     "computed": "7.4309",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other metered (row 49)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "3.0006",
+     "computed": "3.0006",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load Upto 20 kW (row 53)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.7369",
+     "computed": "3.7369",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load Upto 20 kW (row 53)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load Upto 20 kW (row 53)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Non TOD unit (row 54)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Non TOD unit (row 54)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Non TOD unit (row 54)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 55)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.5862",
+     "computed": "4.5862",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 55)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.5522",
+     "computed": "6.5522",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 55)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 56)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.2638",
+     "computed": "3.2638",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 56)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.5348",
+     "computed": "7.5348",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 56)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 57)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.6341",
+     "computed": "1.6341",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 58)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.3007",
+     "computed": "2.3007",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 59)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.8989",
+     "computed": "0.8989",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 60)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.2697",
+     "computed": "0.2697",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 61)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.2196",
+     "computed": "0.2196",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 62)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.2631",
+     "computed": "0.2631",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 63)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0908",
+     "computed": "0.0908",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 64)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.3067",
+     "computed": "0.3067",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Load Above 20 kW (row 65)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "12.1279",
+     "computed": "12.1279",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Non TOD unit (row 66)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Non TOD unit (row 66)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Non TOD unit (row 66)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 67)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "29.7279",
+     "computed": "29.7279",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 67)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.2786",
+     "computed": "7.2786",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 67)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 68)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "21.1938",
+     "computed": "21.1938",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 68)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.3705",
+     "computed": "8.3705",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 68)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 69)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "10.5715",
+     "computed": "10.5715",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 69)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.8670",
+     "computed": "6.8670",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 69)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 70)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "15.0146",
+     "computed": "15.0146",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 71)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.9669",
+     "computed": "6.9669",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 72)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.0910",
+     "computed": "2.0910",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 73)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.7031",
+     "computed": "1.7031",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 74)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.0408",
+     "computed": "2.0408",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 75)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.7047",
+     "computed": "0.7047",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 76)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.3796",
+     "computed": "2.3796",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Rural Schedule (row 77)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0504",
+     "computed": "0.0504",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 80)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "34.8941",
+     "computed": "34.8941",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 80)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "9.1651",
+     "computed": "9.1651",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Metered (row 80)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "2.0851",
+     "computed": "2.0851",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Individual Residential Consumer (IRC) (row 83)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.8133",
+     "computed": "4.8133",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Individual Residential Consumer (IRC) (row 83)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.2039",
+     "computed": "8.2039",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Individual Residential Consumer (IRC) (row 83)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.8945",
+     "computed": "1.8945",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other (row 84)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "62.4111",
+     "computed": "62.4111",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other (row 84)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "11.3071",
+     "computed": "11.3071",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other (row 84)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.4831",
+     "computed": "1.4831",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "LMV11 (PCS-LT) (row 89)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.1400",
+     "computed": "0.1400",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "LMV11 (PCS-LT) (row 89)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.7174",
+     "computed": "7.7174",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "LMV11 (PCS-LT) (row 89)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.1893",
+     "computed": "0.1893",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV Commercial (row 94)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "158.3193",
+     "computed": "158.3193",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV Commercial (row 94)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.5567",
+     "computed": "7.5567",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV Commercial (row 94)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.9293",
+     "computed": "1.9293",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 33kV Commercial (row 95)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "170.4305",
+     "computed": "170.4305",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 33kV Commercial (row 95)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "9.5718",
+     "computed": "9.5718",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 33kV Commercial (row 95)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.9440",
+     "computed": "1.9440",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV Public (row 97)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "11.9889",
+     "computed": "11.9889",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV Public (row 97)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.8538",
+     "computed": "7.8538",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV Public (row 97)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "2.3882",
+     "computed": "2.3882",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 33kV Public (row 98)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "17.5148",
+     "computed": "17.5148",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 33kV Public (row 98)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.1559",
+     "computed": "8.1559",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 33kV Public (row 98)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.6668",
+     "computed": "1.6668",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other than Rural Schedule (row 101)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other than Rural Schedule (row 101)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "Other than Rural Schedule (row 101)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV (row 102)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "21.4153",
+     "computed": "21.4153",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV (row 102)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply at 11kV (row 102)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 103)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "171.1682",
+     "computed": "171.1682",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 103)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3442",
+     "computed": "7.3442",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 103)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 104)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "162.2397",
+     "computed": "162.2397",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 104)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.4450",
+     "computed": "8.4450",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 104)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 105)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "113.8958",
+     "computed": "113.8958",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 105)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.9417",
+     "computed": "6.9417",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 105)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 106)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "121.4728",
+     "computed": "121.4728",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 106)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.6285",
+     "computed": "6.6285",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 106)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 107)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "50.2537",
+     "computed": "50.2537",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 107)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3807",
+     "computed": "7.3807",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 107)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 108)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "16.2400",
+     "computed": "16.2400",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 108)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.4886",
+     "computed": "8.4886",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 108)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 109)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "17.8625",
+     "computed": "17.8625",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 109)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3794",
+     "computed": "7.3794",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 109)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 110)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "27.9331",
+     "computed": "27.9331",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 110)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.2787",
+     "computed": "6.2787",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 110)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 111)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "10.2085",
+     "computed": "10.2085",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 111)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3868",
+     "computed": "7.3868",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 111)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 112)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "26.0721",
+     "computed": "26.0721",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 112)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.4939",
+     "computed": "8.4939",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 112)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply above 11 kV - up to 66 kV (row 113)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.0725",
+     "computed": "2.0725",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply above 11 kV - up to 66 kV (row 113)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply above 11 kV - up to 66 kV (row 113)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 114)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "77.2129",
+     "computed": "77.2129",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 114)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.0029",
+     "computed": "7.0029",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 114)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 115)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "99.0863",
+     "computed": "99.0863",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 115)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.0585",
+     "computed": "8.0585",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 115)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 116)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "73.2480",
+     "computed": "73.2480",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 116)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.6418",
+     "computed": "6.6418",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 116)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 117)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "67.7365",
+     "computed": "67.7365",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 117)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.3044",
+     "computed": "6.3044",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 117)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 118)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "17.3784",
+     "computed": "17.3784",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 118)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.8919",
+     "computed": "6.8919",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 118)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 119)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "8.3298",
+     "computed": "8.3298",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 119)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.9069",
+     "computed": "7.9069",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 119)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 120)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "10.7650",
+     "computed": "10.7650",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 120)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.8721",
+     "computed": "6.8721",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 120)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 121)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "16.7540",
+     "computed": "16.7540",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 121)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.8462",
+     "computed": "5.8462",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 121)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 122)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.2890",
+     "computed": "6.2890",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 122)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.8793",
+     "computed": "6.8793",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 122)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 123)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "13.8433",
+     "computed": "13.8433",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 123)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.9256",
+     "computed": "7.9256",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 123)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply above 66 kV - up to 132 kV (row 124)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.5962",
+     "computed": "1.5962",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply above 66 kV - up to 132 kV (row 124)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "For supply above 66 kV - up to 132 kV (row 124)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 125)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.7717",
+     "computed": "7.7717",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 125)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.3806",
+     "computed": "6.3806",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "11:00-17:00 (hrs) (row 125)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 126)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "8.3200",
+     "computed": "8.3200",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 126)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3738",
+     "computed": "7.3738",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-23:00 (hrs) (row 126)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 127)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.4004",
+     "computed": "6.4004",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 127)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.9981",
+     "computed": "5.9981",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "23:00-05:00 (hrs) (row 127)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 128)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.2884",
+     "computed": "6.2884",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 128)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.7735",
+     "computed": "5.7735",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "05:00-11:00 (hrs) (row 128)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 129)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.7374",
+     "computed": "1.7374",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 129)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.5731",
+     "computed": "6.5731",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "10:00-17:00 (hrs) (row 129)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 130)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.4722",
+     "computed": "0.4722",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 130)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.5592",
+     "computed": "7.5592",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "17:00-19:00 (hrs) (row 130)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 131)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.6330",
+     "computed": "0.6330",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 131)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.5732",
+     "computed": "6.5732",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "19:00-22:00 (hrs) (row 131)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 132)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.1265",
+     "computed": "1.1265",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 132)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.5873",
+     "computed": "5.5873",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "22:00-04:00 (hrs) (row 132)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 133)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.4143",
+     "computed": "0.4143",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 133)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.5734",
+     "computed": "6.5734",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "04:00-06:00 (hrs) (row 133)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 134)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.9326",
+     "computed": "0.9326",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 134)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.5591",
+     "computed": "7.5591",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "06:00-10:00 (hrs) (row 134)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL O136",
+     "output": "revenue_tariff_total",
+     "result": "match",
+     "filed": "2634.6026",
+     "computed": "2634.6026",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL ARR!J15",
+     "output": "revenue_tariff_total",
+     "result": "match",
+     "filed": "2634.6026",
+     "computed": "2634.6026",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL F136",
+     "output": "units_sold_total",
+     "result": "match",
+     "filed": "3597.6293",
+     "computed": "3597.6293",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL ARR!J9",
+     "output": "units_sold_total",
+     "result": "match",
+     "filed": "3597.6293",
+     "computed": "3597.6293",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY25",
+     "fiscal_year": "FY2024-25",
+     "category": "TOTAL N136",
+     "output": "revenue_discount_total",
+     "result": "differs",
+     "filed": "-288.1762",
+     "computed": "-288.1362",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "esr3-revenue-fy26.json",
+   "checks": [
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Domestic Rural Metered (row 13)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.7632",
+     "computed": "0.7632",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Load upto 1 kW      Upto     0-100 kWh/Month (row 14)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.1665",
+     "computed": "0.1665",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Rural  Upto 100 kWh/Month (row 15)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.2916",
+     "computed": "6.2916",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Rural  between 101-150 kWh/Month (row 16)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.6446",
+     "computed": "2.6446",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Rural  between 151-300 kWh/Month (row 17)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.5640",
+     "computed": "6.5640",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Rural  Above 300 kWh/Month (row 18)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "9.6113",
+     "computed": "9.6113",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Un Metered (row 19)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Registered Societies (row 20)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "340.4899",
+     "computed": "340.4899",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Domestic Other Metered (row 21)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "19.7904",
+     "computed": "19.7904",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Load upto 1 kW      Upto     0-100 kWh/Month (row 22)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.1931",
+     "computed": "0.1931",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Upto     0-100 kWh/Month (row 23)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "88.7199",
+     "computed": "88.7199",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "From     100-150 kWh/Month (row 24)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "34.9278",
+     "computed": "34.9278",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "From     150-300 kWh/Month (row 25)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "79.5006",
+     "computed": "79.5006",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Above  300 kWh/Month (row 26)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "239.2183",
+     "computed": "239.2183",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Rural Metered (row 29)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.2794",
+     "computed": "1.2794",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Load  up to 4 kW (row 31)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.3349",
+     "computed": "1.3349",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Load Above 4 kW (row 32)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "10.0384",
+     "computed": "10.0384",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "upto4KW-upto300 (row 33)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.0369",
+     "computed": "2.0369",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "upto4KW-above300 (row 34)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.1473",
+     "computed": "5.1473",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Above4KW-upto1000 (row 35)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.7067",
+     "computed": "5.7067",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Above4KW-Above1000 (row 36)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "87.3338",
+     "computed": "87.3338",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Public Lamps (LMV-3) (row 38)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "20.1863",
+     "computed": "20.1863",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Public Institution (row 41)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.4496",
+     "computed": "5.4496",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Private Institution* (row 42)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "16.8190",
+     "computed": "16.8190",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Metered (row 47)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.9451",
+     "computed": "1.9451",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Other metered (row 48)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.5813",
+     "computed": "0.5813",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Load Upto 20 kW (Summer) (row 52)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.7211",
+     "computed": "3.7211",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (07:00-16:00) (row 53)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.3408",
+     "computed": "4.3408",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (16:00-19:00) (row 54)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.6097",
+     "computed": "1.6097",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-02:00) (row 55)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.8190",
+     "computed": "2.8190",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (02:00-07:00) (row 56)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.4116",
+     "computed": "1.4116",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Load Above 20 kW (Summer) (row 57)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "12.8199",
+     "computed": "12.8199",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (07:00-16:00) (row 58)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "22.0617",
+     "computed": "22.0617",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (16:00-19:00) (row 59)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "9.0292",
+     "computed": "9.0292",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-02:00) (row 60)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "11.5535",
+     "computed": "11.5535",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (02:00-07:00) (row 61)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.1467",
+     "computed": "6.1467",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Load Upto 20 kW (Winter) (row 62)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (10:00-17:00) (row 63)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.0315",
+     "computed": "3.0315",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (17:00-19:00) (row 64)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.6570",
+     "computed": "0.6570",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-22:00) (row 65)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.8569",
+     "computed": "0.8569",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (22:00-04:00) (row 66)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.8748",
+     "computed": "0.8748",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD5 (04:00-06:00) (row 67)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.3874",
+     "computed": "0.3874",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD6 (06:00-10:00) (row 68)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.0980",
+     "computed": "1.0980",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Load Above 20 kW (Winter) (row 69)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (10:00-17:00) (row 70)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "18.9362",
+     "computed": "18.9362",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (17:00-19:00) (row 71)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.6769",
+     "computed": "7.6769",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-22:00) (row 72)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.2054",
+     "computed": "5.2054",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (22:00-04:00) (row 73)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.4540",
+     "computed": "6.4540",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD5 (04:00-06:00) (row 74)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.3705",
+     "computed": "1.3705",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD6 (06:00-10:00) (row 75)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.6972",
+     "computed": "4.6972",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Rural Schedule (row 76)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0335",
+     "computed": "0.0335",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Public Water Works  (LMV-7) (row 78)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "33.2266",
+     "computed": "33.2266",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "LMV-9  B IRC (row 81)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.7141",
+     "computed": "5.7141",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "LMV-9  B Other (row 82)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "63.4199",
+     "computed": "63.4199",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "LMV11 (LMV-1b) (row 85)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0007",
+     "computed": "0.0007",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "LMV11 (HV-1b) (row 86)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0048",
+     "computed": "0.0048",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "LMV11 (PCS-LT) (row 87)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.5987",
+     "computed": "0.5987",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "LMV11 (PCS-HT) (row 88)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.2185",
+     "computed": "0.2185",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply at 11kV Commercial (row 92)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "185.9573",
+     "computed": "185.9573",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply at 33kV Commercial (row 93)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "168.8883",
+     "computed": "168.8883",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "Public Institution/Registered Society (row 94)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply at 11kV Public (row 95)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "12.7420",
+     "computed": "12.7420",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply at 33kV Public (row 96)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "18.9822",
+     "computed": "18.9822",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply at 11kV (Summer) (row 100)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "27.2035",
+     "computed": "27.2035",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (07:00-16:00) (row 101)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "141.8180",
+     "computed": "141.8180",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (16:00-19:00) (row 102)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "53.2714",
+     "computed": "53.2714",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-02:00) (row 103)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "121.0201",
+     "computed": "121.0201",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (02:00-07:00) (row 104)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "71.6913",
+     "computed": "71.6913",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply at 11kV (Winter) (row 105)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (10:00-17:00) (row 106)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "135.9549",
+     "computed": "135.9549",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (17:00-19:00) (row 107)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "37.6329",
+     "computed": "37.6329",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-22:00) (row 108)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "49.0864",
+     "computed": "49.0864",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (22:00-04:00) (row 109)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "71.8846",
+     "computed": "71.8846",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD5 (04:00-06:00) (row 110)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "29.1347",
+     "computed": "29.1347",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD6 (06:00-10:00) (row 111)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "71.2683",
+     "computed": "71.2683",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply above 11 kV - up to 66 kV  (Summer) (row 112)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.1630",
+     "computed": "2.1630",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (07:00-16:00) (row 113)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "72.7692",
+     "computed": "72.7692",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (16:00-19:00) (row 114)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "28.8664",
+     "computed": "28.8664",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-02:00) (row 115)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "73.8212",
+     "computed": "73.8212",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (02:00-07:00) (row 116)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "44.2853",
+     "computed": "44.2853",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply above 11 kV - up to 66 kV (Winter) (row 117)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (10:00-17:00) (row 118)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "63.0351",
+     "computed": "63.0351",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (17:00-19:00) (row 119)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "20.8364",
+     "computed": "20.8364",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-22:00) (row 120)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "27.1780",
+     "computed": "27.1780",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (22:00-04:00) (row 121)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "43.2026",
+     "computed": "43.2026",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD5 (04:00-06:00) (row 122)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "16.7852",
+     "computed": "16.7852",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD6 (06:00-10:00) (row 123)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "38.7861",
+     "computed": "38.7861",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply above 66 kV - up to 132 kV  (Summer) (row 124)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.1279",
+     "computed": "1.1279",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (07:00-16:00) (row 125)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.2318",
+     "computed": "7.2318",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (16:00-19:00) (row 126)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.8375",
+     "computed": "2.8375",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-02:00) (row 127)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.4405",
+     "computed": "7.4405",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (02:00-07:00) (row 128)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.5678",
+     "computed": "4.5678",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "For supply above 66 kV - up to 132 kV (Winter) (row 129)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD1 (10:00-17:00) (row 130)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.0926",
+     "computed": "5.0926",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD2 (17:00-19:00) (row 131)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.5478",
+     "computed": "1.5478",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD3 (19:00-22:00) (row 132)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.0188",
+     "computed": "2.0188",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD4 (22:00-04:00) (row 133)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.4796",
+     "computed": "3.4796",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD5 (04:00-06:00) (row 134)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.3549",
+     "computed": "1.3549",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOD6 (06:00-10:00) (row 135)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.0854",
+     "computed": "3.0854",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL O138",
+     "output": "revenue_tariff_total",
+     "result": "match",
+     "filed": "2884.7645",
+     "computed": "2884.7645",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL ARR!L15",
+     "output": "revenue_tariff_total",
+     "result": "match",
+     "filed": "2884.7645",
+     "computed": "2884.7645",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL F138",
+     "output": "units_sold_total",
+     "result": "match",
+     "filed": "3951.4319",
+     "computed": "3951.4319",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL ARR!L9",
+     "output": "units_sold_total",
+     "result": "match",
+     "filed": "3951.4319",
+     "computed": "3951.4319",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL N138",
+     "output": "revenue_discount_total",
+     "result": "match",
+     "filed": "-322.6380",
+     "computed": "-322.6380",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "esr3-revenue-fy27.json",
+   "checks": [
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Domestic Rural Metered (row 13)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.6711",
+     "computed": "0.6711",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Domestic Rural Metered (row 13)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Domestic Rural Metered (row 13)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load upto 1 kW      Upto     0-100 kWh/Month (row 14)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.1855",
+     "computed": "0.1855",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load upto 1 kW      Upto     0-100 kWh/Month (row 14)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "3.0000",
+     "computed": "3.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load upto 1 kW      Upto     0-100 kWh/Month (row 14)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  Upto 100 kWh/Month (row 15)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.2046",
+     "computed": "7.2046",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  Upto 100 kWh/Month (row 15)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "3.3500",
+     "computed": "3.3500",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  Upto 100 kWh/Month (row 15)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  between 101-150 kWh/Month (row 16)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.0534",
+     "computed": "3.0534",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  between 101-150 kWh/Month (row 16)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "3.8500",
+     "computed": "3.8500",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  between 101-150 kWh/Month (row 16)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  between 151-300 kWh/Month (row 17)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.6336",
+     "computed": "7.6336",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  between 151-300 kWh/Month (row 17)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.0000",
+     "computed": "5.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  between 151-300 kWh/Month (row 17)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  Above 300 kWh/Month (row 18)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "11.3607",
+     "computed": "11.3607",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  Above 300 kWh/Month (row 18)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.5000",
+     "computed": "5.5000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural  Above 300 kWh/Month (row 18)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Un Metered (row 19)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Un Metered (row 19)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Un Metered (row 19)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Registered Societies (row 20)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "369.3512",
+     "computed": "369.3512",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Registered Societies (row 20)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.3465",
+     "computed": "6.3465",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Registered Societies (row 20)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.3786",
+     "computed": "0.3786",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Domestic Other Metered (row 21)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "25.2238",
+     "computed": "25.2238",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Domestic Other Metered (row 21)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Domestic Other Metered (row 21)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load upto 1 kW      Upto     0-100 kWh/Month (row 22)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.2398",
+     "computed": "0.2398",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load upto 1 kW      Upto     0-100 kWh/Month (row 22)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "3.0000",
+     "computed": "3.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load upto 1 kW      Upto     0-100 kWh/Month (row 22)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Upto     0-100 kWh/Month (row 23)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "108.6854",
+     "computed": "108.6854",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Upto     0-100 kWh/Month (row 23)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.3961",
+     "computed": "5.3961",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Upto     0-100 kWh/Month (row 23)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "From     100-150 kWh/Month (row 24)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "42.6614",
+     "computed": "42.6614",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "From     100-150 kWh/Month (row 24)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.3979",
+     "computed": "5.3979",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "From     100-150 kWh/Month (row 24)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "From     150-300 kWh/Month (row 25)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "96.7187",
+     "computed": "96.7187",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "From     150-300 kWh/Month (row 25)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.8913",
+     "computed": "5.8913",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "From     150-300 kWh/Month (row 25)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above  300 kWh/Month (row 26)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "289.4981",
+     "computed": "289.4981",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above  300 kWh/Month (row 26)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.3857",
+     "computed": "6.3857",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above  300 kWh/Month (row 26)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural Metered (row 29)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.4913",
+     "computed": "1.4913",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural Metered (row 29)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.5000",
+     "computed": "5.5000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural Metered (row 29)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.4740",
+     "computed": "0.4740",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other Metered (row 30)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other Metered (row 30)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other Metered (row 30)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load  up to 4 kW (row 31)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.5429",
+     "computed": "1.5429",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load  up to 4 kW (row 31)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load  up to 4 kW (row 31)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Above 4 kW (row 32)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "11.5931",
+     "computed": "11.5931",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Above 4 kW (row 32)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Above 4 kW (row 32)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "upto4KW-upto300 (row 33)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.3640",
+     "computed": "2.3640",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "upto4KW-upto300 (row 33)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.5000",
+     "computed": "7.5000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "upto4KW-upto300 (row 33)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "upto4KW-above300 (row 34)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.0211",
+     "computed": "6.0211",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "upto4KW-above300 (row 34)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.4000",
+     "computed": "8.4000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "upto4KW-above300 (row 34)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above4KW-upto1000 (row 35)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.6179",
+     "computed": "6.6179",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above4KW-upto1000 (row 35)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.5000",
+     "computed": "7.5000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above4KW-upto1000 (row 35)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above4KW-Above1000 (row 36)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "101.6957",
+     "computed": "101.6957",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above4KW-Above1000 (row 36)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.7500",
+     "computed": "8.7500",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Above4KW-Above1000 (row 36)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Lamps (LMV-3) (row 38)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "20.1493",
+     "computed": "20.1493",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Lamps (LMV-3) (row 38)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.5000",
+     "computed": "8.5000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Lamps (LMV-3) (row 38)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.8711",
+     "computed": "0.8711",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Light Fan and Power for Public Institutions and Private institutions (LMV-4) (row 40)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Light Fan and Power for Public Institutions and Private institutions (LMV-4) (row 40)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Institution (row 41)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.7857",
+     "computed": "5.7857",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Institution (row 41)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.2500",
+     "computed": "8.2500",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Institution (row 41)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.0217",
+     "computed": "1.0217",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Private Institution* (row 42)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "17.8674",
+     "computed": "17.8674",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Private Institution* (row 42)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "9.0000",
+     "computed": "9.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Private Institution* (row 42)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.7713",
+     "computed": "1.7713",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural Schedule (row 45)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural Schedule (row 45)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural Schedule (row 45)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Un Metered (row 46)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Un Metered (row 46)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Un Metered (row 46)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Metered (row 47)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.7702",
+     "computed": "1.7702",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Metered (row 47)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "2.0000",
+     "computed": "2.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Metered (row 47)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.7324",
+     "computed": "0.7324",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other metered (row 48)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.5675",
+     "computed": "0.5675",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other metered (row 48)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.0000",
+     "computed": "6.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other metered (row 48)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "5.1125",
+     "computed": "5.1125",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other than Rural Schedule (row 51)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other than Rural Schedule (row 51)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other than Rural Schedule (row 51)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Upto 20 kW (Summer) (row 52)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.0993",
+     "computed": "4.0993",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Upto 20 kW (Summer) (row 52)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Upto 20 kW (Summer) (row 52)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 53)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.5301",
+     "computed": "4.5301",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 53)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.2050",
+     "computed": "6.2050",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 53)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 54)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.6803",
+     "computed": "1.6803",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 54)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3000",
+     "computed": "7.3000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 54)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 55)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.9429",
+     "computed": "2.9429",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 55)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.3950",
+     "computed": "8.3950",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 55)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 56)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.4733",
+     "computed": "1.4733",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Above 20 kW (Summer) (row 57)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "13.8199",
+     "computed": "13.8199",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 58)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "22.9703",
+     "computed": "22.9703",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 59)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "9.4137",
+     "computed": "9.4137",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 60)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "12.0544",
+     "computed": "12.0544",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 61)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.3928",
+     "computed": "6.3928",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Upto 20 kW (Winter) (row 62)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 63)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.5890",
+     "computed": "3.5890",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 64)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.7748",
+     "computed": "0.7748",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 64)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.3950",
+     "computed": "8.3950",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 64)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 65)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.0107",
+     "computed": "1.0107",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 65)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3000",
+     "computed": "7.3000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 65)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 66)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.0384",
+     "computed": "1.0384",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 66)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.2050",
+     "computed": "6.2050",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 66)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 67)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.4562",
+     "computed": "0.4562",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 67)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3000",
+     "computed": "7.3000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 67)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 68)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.2844",
+     "computed": "1.2844",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 68)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.3950",
+     "computed": "8.3950",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 68)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Load Above 20 kW (Winter) (row 69)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 70)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "22.3449",
+     "computed": "22.3449",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 71)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "8.5922",
+     "computed": "8.5922",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 72)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.0108",
+     "computed": "6.0108",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 73)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.4244",
+     "computed": "7.4244",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 74)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.7257",
+     "computed": "1.7257",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 75)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.9120",
+     "computed": "5.9120",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Rural Schedule (row 76)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0361",
+     "computed": "0.0361",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Water Works  (LMV-7) (row 78)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "35.8365",
+     "computed": "35.8365",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Water Works  (LMV-7) (row 78)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "9.2458",
+     "computed": "9.2458",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Water Works  (LMV-7) (row 78)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.9468",
+     "computed": "1.9468",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV-9  B IRC (row 81)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "6.0525",
+     "computed": "6.0525",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV-9  B IRC (row 81)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.9265",
+     "computed": "8.9265",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV-9  B IRC (row 81)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.1154",
+     "computed": "1.1154",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV-9  B Other (row 82)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "64.0812",
+     "computed": "64.0812",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV-9  B Other (row 82)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "10.7102",
+     "computed": "10.7102",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV-9  B Other (row 82)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.2608",
+     "computed": "1.2608",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (LMV-1b) (row 85)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0205",
+     "computed": "0.0205",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (LMV-1b) (row 85)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.2000",
+     "computed": "6.2000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (LMV-1b) (row 85)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (HV-1b) (row 86)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0204",
+     "computed": "0.0204",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (HV-1b) (row 86)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.9000",
+     "computed": "5.9000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (HV-1b) (row 86)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (PCS-LT) (row 87)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.6714",
+     "computed": "0.6714",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (PCS-LT) (row 87)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.7000",
+     "computed": "7.7000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (PCS-LT) (row 87)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.1633",
+     "computed": "0.1633",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (PCS-HT) (row 88)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.3800",
+     "computed": "0.3800",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (PCS-HT) (row 88)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.3000",
+     "computed": "7.3000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "LMV11 (PCS-HT) (row 88)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.7047",
+     "computed": "0.7047",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV Commercial (row 92)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "199.9354",
+     "computed": "199.9354",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV Commercial (row 92)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.6096",
+     "computed": "8.6096",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV Commercial (row 92)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.8016",
+     "computed": "1.8016",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 33kV Commercial (row 93)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "183.2008",
+     "computed": "183.2008",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 33kV Commercial (row 93)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.2170",
+     "computed": "8.2170",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 33kV Commercial (row 93)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "2.1962",
+     "computed": "2.1962",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Institution/Registered Society (row 94)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Public Institution/Registered Society (row 94)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV Public (row 95)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "13.7080",
+     "computed": "13.7080",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV Public (row 95)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.0148",
+     "computed": "8.0148",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV Public (row 95)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "1.8246",
+     "computed": "1.8246",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 33kV Public (row 96)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "20.4985",
+     "computed": "20.4985",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 33kV Public (row 96)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.7095",
+     "computed": "7.7095",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 33kV Public (row 96)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "2.0047",
+     "computed": "2.0047",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other than Rural Schedule (row 99)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other than Rural Schedule (row 99)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "Other than Rural Schedule (row 99)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV (Summer) (row 100)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "26.4712",
+     "computed": "26.4712",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV (Summer) (row 100)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV (Summer) (row 100)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 101)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "150.1123",
+     "computed": "150.1123",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 101)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.2931",
+     "computed": "6.2931",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 101)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 102)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "56.3866",
+     "computed": "56.3866",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 102)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.4037",
+     "computed": "7.4037",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 102)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 103)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "128.1040",
+     "computed": "128.1040",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 103)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.5142",
+     "computed": "8.5142",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 103)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 104)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "75.8906",
+     "computed": "75.8906",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply at 11kV (Winter) (row 105)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 106)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "151.9871",
+     "computed": "151.9871",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 107)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "42.0835",
+     "computed": "42.0835",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 108)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "54.8915",
+     "computed": "54.8915",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 109)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "80.3794",
+     "computed": "80.3794",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 110)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "32.5754",
+     "computed": "32.5754",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 110)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.4249",
+     "computed": "7.4249",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 110)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 111)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "79.6814",
+     "computed": "79.6814",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 111)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "8.5386",
+     "computed": "8.5386",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 111)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 11 kV - up to 66 kV  (Summer) (row 112)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "-0.4906",
+     "computed": "-0.4906",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 11 kV - up to 66 kV  (Summer) (row 112)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 11 kV - up to 66 kV  (Summer) (row 112)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 113)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "84.3627",
+     "computed": "84.3627",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 113)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.8972",
+     "computed": "5.8972",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 113)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 114)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "33.4624",
+     "computed": "33.4624",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 114)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.9379",
+     "computed": "6.9379",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 114)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 115)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "85.5953",
+     "computed": "85.5953",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 115)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.9786",
+     "computed": "7.9786",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 115)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 116)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "51.3594",
+     "computed": "51.3594",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 116)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.9379",
+     "computed": "6.9379",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 116)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 11 kV - up to 66 kV (Winter) (row 117)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 11 kV - up to 66 kV (Winter) (row 117)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 11 kV - up to 66 kV (Winter) (row 117)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 118)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "63.8523",
+     "computed": "63.8523",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 118)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.9194",
+     "computed": "6.9194",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 118)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 119)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "21.0926",
+     "computed": "21.0926",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 119)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.9565",
+     "computed": "7.9565",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 119)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 120)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "27.5121",
+     "computed": "27.5121",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 120)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.9187",
+     "computed": "6.9187",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 120)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 121)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "43.7381",
+     "computed": "43.7381",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 121)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.8811",
+     "computed": "5.8811",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 121)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 122)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "16.9936",
+     "computed": "16.9936",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 122)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.9190",
+     "computed": "6.9190",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 122)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 123)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "39.2677",
+     "computed": "39.2677",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 123)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.9568",
+     "computed": "7.9568",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 123)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 66 kV - up to 132 kV  (Summer) (row 124)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.7277",
+     "computed": "0.7277",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 66 kV - up to 132 kV  (Summer) (row 124)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 66 kV - up to 132 kV  (Summer) (row 124)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 125)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.7445",
+     "computed": "7.7445",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 125)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.6253",
+     "computed": "5.6253",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (07:00-16:00) (row 125)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 126)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.0387",
+     "computed": "3.0387",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 126)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.6181",
+     "computed": "6.6181",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (16:00-19:00) (row 126)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 127)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "7.9677",
+     "computed": "7.9677",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 127)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.6107",
+     "computed": "7.6107",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-02:00) (row 127)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 128)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "4.8914",
+     "computed": "4.8914",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 128)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.6179",
+     "computed": "6.6179",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (02:00-07:00) (row 128)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 66 kV - up to 132 kV (Winter) (row 129)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 66 kV - up to 132 kV (Winter) (row 129)",
+     "output": "revenue_energy_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "For supply above 66 kV - up to 132 kV (Winter) (row 129)",
+     "output": "revenue_fixed_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 130)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "5.6594",
+     "computed": "5.6594",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 130)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.5753",
+     "computed": "6.5753",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD1 (10:00-17:00) (row 130)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 131)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.7201",
+     "computed": "1.7201",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 131)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.5617",
+     "computed": "7.5617",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD2 (17:00-19:00) (row 131)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 132)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "2.2436",
+     "computed": "2.2436",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 132)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.5754",
+     "computed": "6.5754",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD3 (19:00-22:00) (row 132)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 133)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.8669",
+     "computed": "3.8669",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 133)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "5.5892",
+     "computed": "5.5892",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD4 (22:00-04:00) (row 133)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 134)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "1.5057",
+     "computed": "1.5057",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 134)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "6.5755",
+     "computed": "6.5755",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD5 (04:00-06:00) (row 134)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 135)",
+     "output": "revenue_category",
+     "result": "match",
+     "filed": "3.4288",
+     "computed": "3.4288",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 135)",
+     "output": "revenue_energy_rate",
+     "result": "match",
+     "filed": "7.5617",
+     "computed": "7.5617",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOD6 (06:00-10:00) (row 135)",
+     "output": "revenue_fixed_rate",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL O138",
+     "output": "revenue_tariff_total",
+     "result": "match",
+     "filed": "3192.0383",
+     "computed": "3192.0383",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL ARR!M15",
+     "output": "revenue_tariff_total",
+     "result": "match",
+     "filed": "3192.0383",
+     "computed": "3192.0383",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL F138",
+     "output": "units_sold_total",
+     "result": "match",
+     "filed": "4399.8428",
+     "computed": "4399.8428",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL ARR!M9",
+     "output": "units_sold_total",
+     "result": "match",
+     "filed": "4399.8428",
+     "computed": "4399.8428",
+     "why": null
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL N138",
+     "output": "revenue_discount_total",
+     "result": "match",
+     "filed": "-357.0702",
+     "computed": "-357.0702",
+     "why": null
+    }
+   ]
+  },
+  {
    "binding": "f19-om-base-2025.json",
    "checks": [
     {

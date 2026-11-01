@@ -1,0 +1,53 @@
+{
+ "type": "row_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ESR_3 Curr Tariff FY25",
+ "fiscal_year": "FY2024-25",
+ "note": "Revenue from the current tariff, FY2024-25: one row per consumer category, slab or time-of-day block (rows 12–135); per row the total (fixed + energy + minimum + other charges + regulatory discount, O) and the energy and fixed charges per unit it implies (G, H) — for the reviewer to compare with the tariff order's rate schedule, which is not read yet.  Totals: the revenue (O136) the ARR carries as row 15 (J15), the units sold as row 9, the regulatory discount (N136). NPCL's N136 subtracts a typed 0.04 from the sum of its rows (ledger A41).",
+ "rows": [
+  12,
+  135
+ ],
+ "label_col": "C",
+ "inputs": {
+  "record:units_sold": "F",
+  "record:rev_fixed": "J",
+  "record:rev_energy": "K",
+  "record:rev_minimum": "L",
+  "record:rev_other": "M",
+  "record:rev_discount": "N"
+ },
+ "units": {
+  "F": "MU",
+  "G": "INR_per_kWh",
+  "H": "INR_per_kWh"
+ },
+ "blank_is_zero": {
+  "columns": [
+   "F",
+   "J",
+   "K",
+   "L",
+   "M",
+   "N"
+  ],
+  "why": "NPCL leaves a charge blank where a slab has none (a time-of-day block has no fixed charge); its row total (O = J + K + L + M + N) and its column sums read the blanks as zero"
+ },
+ "outputs": {
+  "revenue_category": "O",
+  "revenue_energy_rate": "G",
+  "revenue_fixed_rate": "H"
+ },
+ "totals": {
+  "revenue_tariff_total": [
+   "O136",
+   "ARR!J15"
+  ],
+  "units_sold_total": [
+   "F136",
+   "ARR!J9"
+  ],
+  "revenue_discount_total": "N136"
+ },
+ "places": 4
+}

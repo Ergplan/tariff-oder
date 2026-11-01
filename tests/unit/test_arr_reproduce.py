@@ -492,3 +492,40 @@ def test_cells_constants_need_a_reason_and_declared_blanks_are_zero():
     assert [c.result for c in reproduce_cells(wb, binding, load_rules("UPERC"))] == ["blocked"]
     binding["evaluations"][0]["inputs"]["prior:om25_level"]["blank_is_zero"] = "declared"
     assert [c.computed for c in reproduce_cells(wb, binding, load_rules("UPERC"))] == ["0.000000"]
+
+
+def test_npcl_revenue_from_the_current_tariff_by_category():
+    """Real data: ESR-3 for the true-up, APR and ARR years, one row per category / slab / ToD
+    block: every row total and implied rate matches; the revenue and units totals are the ARR's
+    rows 15 and 9 in all three years.  The one difference is NPCL's FY2024-25 regulatory-discount
+    total, whose formula subtracts a typed 0.04 from the sum of its rows (ledger A41).  A slab with
+    no units has no implied rate: blocked, never 0."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    wb = None
+    arr = {}
+    for yy in ("25", "26", "27"):
+        binding = json.loads((folder / "bindings" / f"esr3-revenue-fy{yy}.json").read_text())
+        wb = wb or openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+        for c in reproduce_row_table(wb, binding, rules):
+            if c.result == "blocked":
+                assert c.output in ("revenue_energy_rate", "revenue_fixed_rate") and c.why == "division by zero", c
+            elif c.result == "differs":
+                assert (yy, c.category, c.filed, c.computed) == ("25", "TOTAL N136", "-288.1762", "-288.1362"), c
+            else:
+                assert c.result == "match", c
+            if "ARR!" in c.category:
+                arr[(binding["fiscal_year"], c.output)] = c.computed
+    assert arr == {
+        ("FY2024-25", "revenue_tariff_total"): "2634.6026",
+        ("FY2024-25", "units_sold_total"): "3597.6293",
+        ("FY2025-26", "revenue_tariff_total"): "2884.7645",
+        ("FY2025-26", "units_sold_total"): "3951.4319",
+        ("FY2026-27", "revenue_tariff_total"): "3192.0383",
+        ("FY2026-27", "units_sold_total"): "4399.8428",
+    }

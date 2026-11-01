@@ -86,6 +86,16 @@
     "ARR J38"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A41",
+   "kind": "typed adjustment",
+   "title": "ESR-3 FY2024-25: a typed 0.04 in the regulatory-discount total",
+   "detail": "The total regulatory discount N136 is SUM(N12:N135) − 0.04 (−288.18 against the rows' −288.14), while the revenue total O136 sums the rows' totals, which carry no such adjustment.  So the discount column and the revenue total disagree by Rs 0.04 crore; the revenue the ARR carries (2,634.60) is the rows' sum.  The petitioner should say what the 0.04 is.",
+   "where": [
+    "ESR_3 Curr Tariff FY25 N136, O136"
+   ],
+   "for": "petitioner"
   }
  ]
 }

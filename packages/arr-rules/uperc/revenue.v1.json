@@ -1,0 +1,307 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Revenue from the current tariff (UPERC format ESR-3): by consumer category and slab, its total and the rates it implies.  The rates themselves are the tariff order's; until the rate schedule is read, the implied rates are shown for the reviewer to compare.",
+ "rules": [
+  {
+   "id": "uperc.revenue.category_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue of a category at the current tariff (excluding duty and cess)",
+   "output": "revenue_category",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "fixed + energy + minimum + other + discount",
+   "inputs": {
+    "fixed": {
+     "unit": "INR_crore",
+     "source": "record:rev_fixed"
+    },
+    "energy": {
+     "unit": "INR_crore",
+     "source": "record:rev_energy"
+    },
+    "minimum": {
+     "unit": "INR_crore",
+     "source": "record:rev_minimum"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "record:rev_other",
+     "note": "other charges and rebates, negative when a rebate"
+    },
+    "discount": {
+     "unit": "INR_crore",
+     "source": "record:rev_discount",
+     "note": "the regulatory discount, negative"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category"
+  },
+  {
+   "id": "uperc.revenue.energy_rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy charge the category's revenue implies",
+   "output": "revenue_energy_rate",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-12",
+   "formula": "energy / units",
+   "inputs": {
+    "energy": {
+     "unit": "INR_crore",
+     "source": "record:rev_energy"
+    },
+    "units": {
+     "unit": "MU",
+     "source": "record:units_sold"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category",
+   "note": "not a regulation: to compare with the rate schedule of the tariff order; a category billed no energy has no rate (blocked, never 0)"
+  },
+  {
+   "id": "uperc.revenue.fixed_rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Fixed charge per unit the category's revenue implies",
+   "output": "revenue_fixed_rate",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-12",
+   "formula": "fixed / units",
+   "inputs": {
+    "fixed": {
+     "unit": "INR_crore",
+     "source": "record:rev_fixed"
+    },
+    "units": {
+     "unit": "MU",
+     "source": "record:units_sold"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category"
+  },
+  {
+   "id": "uperc.revenue.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue from the current tariff",
+   "output": "revenue_tariff_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "categories",
+   "inputs": {
+    "categories": {
+     "unit": "INR_crore",
+     "source": "sum:revenue_category"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "R.REV.EXISTING"
+  },
+  {
+   "id": "uperc.revenue.units",
+   "version": 1,
+   "status": "draft",
+   "title": "Units sold",
+   "output": "units_sold_total",
+   "unit": "MU",
+   "schedule": "R-SCH-12",
+   "formula": "categories",
+   "inputs": {
+    "categories": {
+     "unit": "MU",
+     "source": "sum:units_sold_category"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.revenue.units_category",
+   "version": 1,
+   "status": "draft",
+   "title": "Units sold by the category",
+   "output": "units_sold_category",
+   "unit": "MU",
+   "schedule": "R-SCH-12",
+   "formula": "units",
+   "inputs": {
+    "units": {
+     "unit": "MU",
+     "source": "record:units_sold"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category"
+  },
+  {
+   "id": "uperc.revenue.discount_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Regulatory discount, total",
+   "output": "revenue_discount_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "categories",
+   "inputs": {
+    "categories": {
+     "unit": "INR_crore",
+     "source": "sum:revenue_discount_category"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.revenue.discount_category",
+   "version": 1,
+   "status": "draft",
+   "title": "Regulatory discount of the category",
+   "output": "revenue_discount_category",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "discount",
+   "inputs": {
+    "discount": {
+     "unit": "INR_crore",
+     "source": "record:rev_discount"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category"
+  }
+ ]
+}
