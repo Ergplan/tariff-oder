@@ -120,6 +120,42 @@
     "F19A-O&M Normative"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A44",
+   "kind": "reconciliation",
+   "title": "Power purchase: the claim is 1.50 below the reconciliation with the audited accounts",
+   "detail": "Annexure-14 bridges the audited accounts (Note 46(b): net charges 2,093.62, transmission 294.40) to the true-up claim: less 36.94 booked in FY2024-25 but claimed in another year, plus 120.46 of earlier years' claims = 2,471.54.  PPC FY 25 claims 2,470.04 (the ARR's rows 20 + 22 + 23).  The 1.50 is the carrying cost for FY2023-24: 12.88 in the reconciliation, 11.37 in PPC FY 25 (row 77).  The split between the year's sources and the arrears also differs by 8.77 — the 10 % of FY2022-23 and FY2023-24 additional coal booked in FY2024-25, inside the accounts' base in the annexure and among the arrears in PPC — which nets to nothing.  Which carrying cost is right?",
+   "where": [
+    "Annexure-14 D22, J24",
+    "PPC FY 25 row 77, V79",
+    "ARR J20, J22, J23"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A45",
+   "kind": "evidence",
+   "title": "BS1 (profit and loss) is built from the ARR format, not taken from the audited accounts",
+   "detail": "Every figure of BS1 is a formula over the ARR format (revenue = ARR row 17, power purchase = rows 20–24, employee = row 29, finance costs = rows 37–40 and 45 less 62, depreciation = row 36, tax = row 44) or over F22 / F23.  It restates the claim as a profit and loss account; it is not evidence that the claim agrees with the audited accounts.  The reviewer should reconcile the true-up year to the audited accounts (Annexure-1(a)) and the trial balance (Annexure-41) themselves.  Annexure-14 does so for power purchase only (A44).",
+   "where": [
+    "BS1",
+    "BS2",
+    "BS3"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A46",
+   "kind": "reconciliation",
+   "title": "Employee expenses claimed exceed the trial balance by exactly Rs 0.0105 crore",
+   "detail": "The trial balance's employee benefits expense (Note 30, 19 accounts before capitalisation) is 95.409346859 crore; F21 claims 95.419846859 — exactly 0.0105 crore (Rs 1.05 lakh) more, every other digit equal, so one typed component differs by that amount.  Capitalisation agrees (17.19), so net employee expenses (the ARR's row 29) are 78.23 claimed against 78.22 in the books.  Everything else checked against the trial balance agrees to the paisa of a crore: power purchase and transmission net of rebate, interest on security deposit (24.79, which supports A40's reading), finance charges, bad debts written off, loss on retired assets.  Which F21 line carries the 0.0105?",
+   "where": [
+    "Annexure-41 Note 30",
+    "F21_O&M_EE (A) L29",
+    "ARR J29"
+   ],
+   "for": "petitioner"
   }
  ]
 }

@@ -2049,6 +2049,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 79 (2026-11-01): 427 passed** (+2 unit: power purchase reconciled to the audited accounts across two workbooks, differing by A44's 1.50; the trial balance against the true-up claims, 9 of 11 agreeing and employee benefits off by exactly 0.0105 crore).  Ruff and format clean.
 - **Increment 78 (2026-11-01): 425 passed** (+1 unit: ACoS and ABR on the three snapshots, 8 / 8).  Ruff and format clean.
 - **Increment 77 (2026-11-01): 424 passed** (the integration test checks the formats accounting: 74 accounted, the missing ESR7 named, F19A not indexed).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 76 (2026-11-01): 424 passed** (+1 integration: a sign-off needs the attestation, a reason for a reservation, a scope the filing has and the current reproduction's hash â€” 409 on a stale one; an analyst cannot sign; every scope starts open).  Ruff, format, contracts (regenerated) and web typecheck clean; migration 0021 applied on the local stack.

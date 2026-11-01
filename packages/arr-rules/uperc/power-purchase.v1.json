@@ -950,6 +950,56 @@
    "examples": [],
    "line_code": "C.PP",
    "note": "which claims are booked with power purchase and which as arrears is the petitioner's presentation; the reviewer decides their treatment"
+  },
+  {
+   "id": "uperc.pp.reconciled",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase of the true-up year reconciled from the audited accounts",
+   "output": "pp_reconciled_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "accounts_net + accounts_tx_net - booked_elsewhere + claims_added",
+   "inputs": {
+    "accounts_net": {
+     "unit": "INR_crore",
+     "source": "record:pp_accounts_net",
+     "note": "energy, fixed and other charges net of rebate, as the audited accounts book them"
+    },
+    "accounts_tx_net": {
+     "unit": "INR_crore",
+     "source": "record:pp_accounts_tx_net",
+     "note": "transmission and other charges net of rebate, as booked"
+    },
+    "booked_elsewhere": {
+     "unit": "INR_crore",
+     "source": "record:pp_booked_elsewhere",
+     "note": "booked in the year but claimed in another (carrying costs of earlier years; the year's additional coal, change in law and incentive claimed in the APR)"
+    },
+    "claims_added": {
+     "unit": "INR_crore",
+     "source": "record:pp_claims_added",
+     "note": "claims of earlier years booked in their own years and claimed in this true-up"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the bridge from the audited accounts to the power purchase claimed; it must equal the claim, line for line"
   }
  ]
 }

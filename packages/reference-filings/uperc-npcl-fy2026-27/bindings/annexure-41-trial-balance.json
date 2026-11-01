@@ -1,0 +1,109 @@
+{
+ "type": "ledger",
+ "workbook": "records/52. Annexure-41 Trial Balance for FY 2024-25.xlsx",
+ "workbooks": {
+  "formats": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+  "annexure14": "records/25. Annexure-14 Reconciliation of Power Purchase Cost with Audited Accounts for FY 2024-25.xlsx"
+ },
+ "sheet": "Trail Balance FY 2024-25",
+ "rows": [
+  5,
+  478
+ ],
+ "account_col": "A",
+ "amount_col": "F",
+ "unit": "INR",
+ "places": 2,
+ "note": "The true-up year's claims reconciled to NPCL's trial balance (Annexure-41): the profit-and-loss accounts (closing balance = the year's amount, in rupees) summed by their grouping in the financial statements (note, sub-grouping), compared at the precision each claim is filed (2 decimals of Rs crore).  The groupings are the trial balance's own; the binding only names which group answers which claim.",
+ "comparisons": [
+  {
+   "label": "employee benefits, before capitalisation",
+   "where": {
+    "G": "Note - 30 Employee benefits expense",
+    "H": {
+     "not": "Capitalisation of expenses"
+    }
+   },
+   "target": "formats::F21_O&M_EE (A)!L29",
+   "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "employee expenses capitalised",
+   "where": {
+    "G": "Note - 30 Employee benefits expense",
+    "H": "Capitalisation of expenses"
+   },
+   "negate": true,
+   "target": "formats::F21_O&M_EE (A)!L30",
+   "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "employee benefits, net",
+   "where": {
+    "G": "Note - 30 Employee benefits expense"
+   },
+   "target": "formats::ARR!J29",
+   "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "power purchase: energy, fixed and other charges, net of rebate",
+   "where": {
+    "G": "Note - 29 Cost of electrical energy purchased",
+    "H": "Energy charges"
+   },
+   "target": "annexure14::Power Purchase Reconciliation !F5",
+   "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "transmission charges, net of rebate",
+   "where": {
+    "G": "Note - 29 Cost of electrical energy purchased",
+    "H": "Transmission charges"
+   },
+   "target": [
+    "formats::ARR!J23",
+    "annexure14::Power Purchase Reconciliation !I5"
+   ],
+   "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "interest on consumers' security deposit",
+   "where": {
+    "G": "Note - 31 Finance costs",
+    "H": "Interest on consumers' security deposit"
+   },
+   "target": "formats::ARR!J38",
+   "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "finance charges (other borrowing costs)",
+   "where": {
+    "G": "Note - 31 Finance costs",
+    "H": "Other borrowing costs"
+   },
+   "target": "formats::F23_O&M_A&G!J38",
+   "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "bad debts written off (net)",
+   "where": {
+    "G": "Note - 33 Other expenses",
+    "H": "Bad debts written off (net)"
+   },
+   "target": [
+    "formats::P3_Bad Debts!D15",
+    "formats::ARR!J41"
+   ],
+   "fiscal_year": "FY2024-25"
+  },
+  {
+   "label": "loss on retirement of assets",
+   "where": {
+    "G": "Note - 33 Other expenses",
+    "H": "Loss on retirement of property, plant and equipment/ intangibles assets"
+   },
+   "target": "formats::P3_Bad Debts!D16",
+   "fiscal_year": "FY2024-25"
+  }
+ ]
+}

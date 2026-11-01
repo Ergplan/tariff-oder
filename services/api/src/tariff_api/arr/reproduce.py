@@ -487,7 +487,9 @@ def _stored(value: Any) -> Decimal | None:
     return None
 
 
-def reproduce_cells(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
+def reproduce_cells(
+    wb: Any, binding: dict[str, Any], rules: list[Rule], others: dict[str, Any] | None = None
+) -> list[BlockCheck]:
     """Workings laid out freely on a sheet (e.g. NPCL's base-year determination of employee and
     A&G expenses: five years' actuals, their average, the year-by-year escalation, the growth
     factors), read by cell address.  Each evaluation names its year, its input cells
@@ -497,13 +499,21 @@ def reproduce_cells(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list
     inputs and checks) whose results its aggregate rules sum.  An input may instead be a stated
     constant (``{"value": "0.065", "unit": "fraction", "why": …}`` — a literal in the utility's
     formula) or a cell declared blank-as-zero (``{"cell": …, "unit": …, "blank_is_zero": why}``);
-    otherwise a blank input cell blocks the outputs that need it — never zero."""
+    otherwise a blank input cell blocks the outputs that need it — never zero.  A reference
+    ``"<name>::Sheet!A1"`` reads another workbook of the filing (``others``: name → workbook,
+    as the binding's ``workbooks`` names them) — a utility's record checked against the formats."""
     places = int(binding.get("places", 6))
     q = Decimal(1).scaleb(-places)
 
     def at(ref: str) -> Any:
+        book = wb
+        if "::" in ref:
+            name, _, ref = ref.partition("::")
+            if not others or name not in others:
+                raise RuleError(f"{binding['sheet']}: workbook {name!r} is not loaded")
+            book = others[name]
         sheet, _, cell = ref.rpartition("!")
-        return wb[sheet or binding["sheet"]][cell].value
+        return book[sheet or binding["sheet"]][cell].value
 
     def read(inputs: dict[str, Any]) -> dict[str, tuple[Decimal | str, str]]:
         values: dict[str, tuple[Decimal | str, str]] = {}
@@ -610,4 +620,71 @@ def reproduce_pipeline(
                 "checks": checks,
             }
         )
+    return out
+
+
+def reproduce_ledger(
+    wb: Any, binding: dict[str, Any], rules: list[Rule], others: dict[str, Any] | None = None
+) -> list[BlockCheck]:
+    """A utility's trial balance reconciled to its claim (R-DATA): for each comparison, the
+    accounts whose grouping columns match (``{"G": "Note - 30 …"}``, or ``{"H": {"not": "…"}}``)
+    are the categories, their amounts summed by the rules (``ledger_amount`` per account in the
+    ledger's unit, ``ledger_total`` in Rs crore — the units convert, no hand-written factor), and
+    compared with the claimed cell at the precision it is filed (``places``).  A ledger account
+    is never moved between groups by resemblance: the binding names the groups."""
+    from openpyxl.utils import column_index_from_string as col
+
+    ws = wb[binding["sheet"]]
+    first, last = binding["rows"]
+    unit = binding.get("unit", "INR")
+
+    def at(ref: str) -> Any:
+        book = wb
+        if "::" in ref:
+            name, _, ref = ref.partition("::")
+            if not others or name not in others:
+                raise RuleError(f"{binding['sheet']}: workbook {name!r} is not loaded")
+            book = others[name]
+        sheet, _, cell = ref.rpartition("!")
+        return book[sheet or binding["sheet"]][cell].value
+
+    def matches(value: Any, cond: Any) -> bool:
+        text = str(value or "").strip()
+        if isinstance(cond, dict):
+            return text != str(cond["not"]).strip()
+        return text == str(cond).strip()
+
+    out: list[BlockCheck] = []
+    for comp in binding["comparisons"]:
+        fy = comp["fiscal_year"]
+        sign = Decimal(-1) if comp.get("negate") else Decimal(1)
+        cats: dict[str, dict[str, tuple[Decimal | str, str]]] = {}
+        for r in range(first, last + 1):
+            amount = _stored(ws.cell(r, col(binding["amount_col"])).value)
+            if amount is None:
+                continue
+            if all(matches(ws.cell(r, col(c)).value, cond) for c, cond in comp["where"].items()):
+                key = f"{ws.cell(r, col(binding['account_col'])).value} (row {r})"
+                cats[key] = {"record:ledger_amount": (sign * amount, unit)}
+        places = int(comp.get("places", binding.get("places", 2)))
+        q = Decimal(1).scaleb(-places)
+        ev = RuleSet(rules, fy).evaluate(fy, {}, cats or None)
+        res = ev.results.get("ledger_total")
+        for ref in [comp["target"]] if isinstance(comp["target"], str) else comp["target"]:
+            tag = f"{comp['label']} {ref}"
+            if res is None:
+                out.append(
+                    BlockCheck(binding["sheet"], fy, tag, "ledger_total", "blocked", why=ev.blocked.get("ledger_total"))
+                )
+                continue
+            filed = _stored(at(ref))
+            got = res.value.quantize(q, rounding=ROUND_HALF_UP)
+            if filed is None:
+                out.append(BlockCheck(binding["sheet"], fy, tag, "ledger_total", "no_filed_value", computed=str(got)))
+                continue
+            want = filed.quantize(q, rounding=ROUND_HALF_UP)
+            result = "match" if got == want else "differs"
+            check = BlockCheck(binding["sheet"], fy, tag, "ledger_total", result, filed=str(want), computed=str(got))
+            check.exact, check.why = str(res.value), f"{len(cats)} accounts"
+            out.append(check)
     return out

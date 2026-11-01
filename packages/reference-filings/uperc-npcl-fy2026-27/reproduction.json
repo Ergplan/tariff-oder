@@ -9306,6 +9306,159 @@
  ],
  "records": [
   {
+   "binding": "annexure-14-pp-reconciliation.json",
+   "checks": [
+    {
+     "table": "Power Purchase Reconciliation ",
+     "fiscal_year": "FY2024-25",
+     "category": "reconciliation J24",
+     "output": "pp_reconciled_total",
+     "result": "match",
+     "filed": "2471.5409",
+     "computed": "2471.5409",
+     "why": null,
+     "exact": "2471.54087174358206"
+    },
+    {
+     "table": "Power Purchase Reconciliation ",
+     "fiscal_year": "FY2024-25",
+     "category": "reconciliation formats::PPC FY 25!V79",
+     "output": "pp_reconciled_total",
+     "result": "differs",
+     "filed": "2470.0387",
+     "computed": "2471.5409",
+     "why": null,
+     "exact": "2471.54087174358206"
+    }
+   ]
+  },
+  {
+   "binding": "annexure-41-trial-balance.json",
+   "checks": [
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "employee benefits, before capitalisation formats::F21_O&M_EE (A)!L29",
+     "output": "ledger_total",
+     "result": "differs",
+     "filed": "95.42",
+     "computed": "95.41",
+     "why": "19 accounts",
+     "exact": "95.409346859"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "employee expenses capitalised formats::F21_O&M_EE (A)!L30",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "17.19",
+     "computed": "17.19",
+     "why": "1 accounts",
+     "exact": "17.189433696"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "employee benefits, net formats::ARR!J29",
+     "output": "ledger_total",
+     "result": "differs",
+     "filed": "78.23",
+     "computed": "78.22",
+     "why": "20 accounts",
+     "exact": "78.219913163"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "power purchase: energy, fixed and other charges, net of rebate annexure14::Power Purchase Reconciliation !F5",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "2093.62",
+     "computed": "2093.62",
+     "why": "9 accounts",
+     "exact": "2093.61587396038830006"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "transmission charges, net of rebate formats::ARR!J23",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "294.40",
+     "computed": "294.40",
+     "why": "3 accounts",
+     "exact": "294.3991366096117"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "transmission charges, net of rebate annexure14::Power Purchase Reconciliation !I5",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "294.40",
+     "computed": "294.40",
+     "why": "3 accounts",
+     "exact": "294.3991366096117"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "interest on consumers' security deposit formats::ARR!J38",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "24.79",
+     "computed": "24.79",
+     "why": "1 accounts",
+     "exact": "24.793576017"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "finance charges (other borrowing costs) formats::F23_O&M_A&G!J38",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "4.81",
+     "computed": "4.81",
+     "why": "3 accounts",
+     "exact": "4.814779460454545"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts written off (net) formats::P3_Bad Debts!D15",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "11.38",
+     "computed": "11.38",
+     "why": "3 accounts",
+     "exact": "11.3796996839161648"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "bad debts written off (net) formats::ARR!J41",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "11.38",
+     "computed": "11.38",
+     "why": "3 accounts",
+     "exact": "11.3796996839161648"
+    },
+    {
+     "table": "Trail Balance FY 2024-25",
+     "fiscal_year": "FY2024-25",
+     "category": "loss on retirement of assets formats::P3_Bad Debts!D16",
+     "output": "ledger_total",
+     "result": "match",
+     "filed": "2.85",
+     "computed": "2.85",
+     "why": "1 accounts",
+     "exact": "2.8459271159999173"
+    }
+   ]
+  },
+  {
    "binding": "arr-contingency.json",
    "checks": [
     {
@@ -43296,8 +43449,8 @@
      },
      "J": {
       "status": "tied",
-      "source": "ppc-fy25-transmission.json: pp_net_with_tx_total",
-      "computed": "294.3991",
+      "source": "annexure-41-trial-balance.json: ledger_total",
+      "computed": "294.40",
       "filed": "294.4"
      },
      "K": {
@@ -43654,9 +43807,9 @@
       "filed": "78.23"
      },
      "J": {
-      "status": "computed",
-      "source": "arr-summary.json: arr_employee_net",
-      "computed": "78.23",
+      "status": "differs",
+      "source": "annexure-41-trial-balance.json: ledger_total",
+      "computed": "78.22",
       "filed": "78.23"
      },
      "K": {
@@ -44338,8 +44491,8 @@
      },
      "J": {
       "status": "tied",
-      "source": "p3-bad-debts.json: bad_debts_claimed",
-      "computed": "11.3797",
+      "source": "annexure-41-trial-balance.json: ledger_total",
+      "computed": "11.38",
       "filed": "11.38"
      },
      "K": {
@@ -45754,8 +45907,8 @@
    "J": {
     "tied": 10,
     "record": 12,
-    "computed": 17,
-    "differs": 2
+    "computed": 16,
+    "differs": 3
    },
    "K": {
     "record": 26,

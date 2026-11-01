@@ -24,6 +24,7 @@ from tariff_api.arr.reproduce import (  # noqa: E402
     reproduce,
     reproduce_blocks,
     reproduce_cells,
+    reproduce_ledger,
     reproduce_period_table,
     reproduce_pipeline,
     reproduce_row_table,
@@ -255,13 +256,35 @@ def main() -> int:
                         print(f"   {c.result:8} {what} filed {c.filed} computed {c.computed} {c.why or ''}")
             report["records"].append({"binding": b.name, "checks": [asdict(c) for c in checks]})
             continue
+        if binding.get("type") == "ledger":
+            import collections
+
+            import openpyxl
+
+            wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True, read_only=False)
+            others = {
+                name: openpyxl.load_workbook(folder / path, data_only=True, read_only=False)
+                for name, path in binding.get("workbooks", {}).items()
+            }
+            checks = reproduce_ledger(wb, binding, rules, others)
+            results[b.name] = checks
+            print(f"{binding['sheet'][:24]:24} ledger {dict(collections.Counter(c.result for c in checks))}")
+            if args.verbose:
+                for c in checks:
+                    print(f"   {c.result:8} {c.category[:70]:70} filed {c.filed} books {c.computed} ({c.why})")
+            report["records"].append({"binding": b.name, "checks": [asdict(c) for c in checks]})
+            continue
         if binding.get("type") == "cells":
             import collections
 
             import openpyxl
 
             wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True, read_only=False)
-            checks = reproduce_cells(wb, binding, rules)
+            others = {
+                name: openpyxl.load_workbook(folder / path, data_only=True, read_only=False)
+                for name, path in binding.get("workbooks", {}).items()
+            }
+            checks = reproduce_cells(wb, binding, rules, others)
             results[b.name] = checks
             counts = dict(collections.Counter(c.result for c in checks))
             print(f"{binding['sheet'][:24]:24} cells {counts}")

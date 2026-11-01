@@ -1,0 +1,78 @@
+{
+ "status": "draft — not a regulation; identities of reconciliation",
+ "regulation": "Regulatory accounts reconciled to the audited accounts (R-DATA): a trial balance summed by its financial-statement groupings",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Trial balance reconciliation (Annexure-41).",
+ "rules": [
+  {
+   "id": "uperc.ledger.account",
+   "version": 1,
+   "status": "draft",
+   "title": "An account of the trial balance",
+   "output": "ledger_amount",
+   "unit": "INR",
+   "schedule": "R-DATA",
+   "per": "gl_account",
+   "formula": "amount",
+   "inputs": {
+    "amount": {
+     "unit": "INR",
+     "source": "record:ledger_amount"
+    }
+   },
+   "clause": {
+    "regulation": "Regulatory accounts reconciled to the audited accounts (R-DATA): a trial balance summed by its financial-statement groupings",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.ledger.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Accounts of a grouping, total (Rs crore)",
+   "output": "ledger_total",
+   "unit": "INR_crore",
+   "schedule": "R-DATA",
+   "formula": "accounts",
+   "inputs": {
+    "accounts": {
+     "unit": "INR",
+     "source": "sum:ledger_amount"
+    }
+   },
+   "clause": {
+    "regulation": "Regulatory accounts reconciled to the audited accounts (R-DATA): a trial balance summed by its financial-statement groupings",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "not a regulation: the identity that ties a claim to the books"
+  }
+ ]
+}

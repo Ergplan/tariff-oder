@@ -104,7 +104,7 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     seen = {}
     for b in sorted((folder / "bindings").glob("*.json")):
         binding = json.loads(b.read_text())
-        if binding.get("type") in ("year_blocks", "period_table", "row_table", "cells", "pipeline"):
+        if binding.get("type") in ("year_blocks", "period_table", "row_table", "cells", "pipeline", "ledger"):
             continue  # the utility's workings and the rate table: their own tests
         rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
         seen["chain" if b.name == "chain-arr.json" else rep.sheet] = rep
@@ -650,3 +650,57 @@ def test_npcl_average_cost_of_supply_and_billing_rate():
         ("ARR projected", "average_cost_of_supply"): "7.9135",
         ("ARR projected", "average_billing_rate"): "7.2549",
     }
+
+
+def test_npcl_power_purchase_reconciled_to_the_audited_accounts():
+    """Real data across two workbooks: Annexure-14 bridges the audited accounts to the true-up
+    power purchase.  Its own total reproduces; against the claim (PPC FY 25, the ARR's rows
+    20 + 22 + 23) it differs by 1.50 — the FY2023-24 carrying cost (ledger A44)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    b = json.loads((folder / "bindings" / "annexure-14-pp-reconciliation.json").read_text())
+    wb = openpyxl.load_workbook(folder / b["workbook"], data_only=True)
+    others = {k: openpyxl.load_workbook(folder / v, data_only=True) for k, v in b["workbooks"].items()}
+    own, claim = reproduce_cells(wb, b, load_rules("UPERC"), others)
+    assert (own.category, own.result) == ("reconciliation J24", "match")
+    assert claim.result == "differs" and Decimal(claim.computed) - Decimal(claim.filed) == Decimal("1.5022")
+    import pytest
+
+    with pytest.raises(Exception, match="not loaded"):
+        reproduce_cells(wb, b, load_rules("UPERC"))
+
+
+def test_npcl_true_up_reconciled_to_the_trial_balance():
+    """Real data across three workbooks: the trial balance's profit-and-loss accounts (rupees),
+    summed by their own financial-statement groupings through the rules (to Rs crore by the
+    units), against the true-up claims.  Power purchase, transmission, deposit interest, finance
+    charges, bad debts, loss on retired assets and employee capitalisation agree; employee
+    benefits differ by exactly 0.0105 crore (ledger A46)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_ledger
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    b = json.loads((folder / "bindings" / "annexure-41-trial-balance.json").read_text())
+    wb = openpyxl.load_workbook(folder / b["workbook"], data_only=True)
+    others = {k: openpyxl.load_workbook(folder / v, data_only=True) for k, v in b["workbooks"].items()}
+    checks = reproduce_ledger(wb, b, load_rules("UPERC"), others)
+    differs = [c for c in checks if c.result != "match"]
+    assert len(checks) == 11 and len(differs) == 2
+    assert {c.category.split(" formats")[0] for c in differs} == {
+        "employee benefits, before capitalisation",
+        "employee benefits, net",
+    }
+    for c in differs:
+        assert Decimal(c.filed) - Decimal(c.computed) == Decimal("0.01")  # 0.0105 at 2 decimals
+    gross = next(c for c in differs if "before" in c.category)
+    assert Decimal("95.419846859") - Decimal(gross.exact) == Decimal("0.0105")

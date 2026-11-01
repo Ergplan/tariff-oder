@@ -1,0 +1,40 @@
+{
+ "type": "cells",
+ "workbook": "records/25. Annexure-14 Reconciliation of Power Purchase Cost with Audited Accounts for FY 2024-25.xlsx",
+ "workbooks": {
+  "formats": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx"
+ },
+ "sheet": "Power Purchase Reconciliation ",
+ "places": 4,
+ "note": "The true-up year's power purchase reconciled from the audited accounts (Annexure-14, Note 46(b)): the accounts' net energy and transmission charges, less what was booked in the year but is claimed in another, plus earlier years' claims claimed now — checked against the annexure's own total and against the claim (PPC FY 25 grand total, the ARR's rows 20 + 22 + 23).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "reconciliation",
+   "inputs": {
+    "record:pp_accounts_net": [
+     "F5",
+     "INR_crore"
+    ],
+    "record:pp_accounts_tx_net": [
+     "I5",
+     "INR_crore"
+    ],
+    "record:pp_booked_elsewhere": [
+     "J12",
+     "INR_crore"
+    ],
+    "record:pp_claims_added": [
+     "J23",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "pp_reconciled_total": [
+     "J24",
+     "formats::PPC FY 25!V79"
+    ]
+   }
+  }
+ ]
+}
