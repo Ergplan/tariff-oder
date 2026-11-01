@@ -17,6 +17,15 @@ type Filing = {
   formats: { binding: string; sheet: string; columns: number; counts: Counts; not_matching: Check[] }[];
   records: { binding?: string; sheet?: string; counts?: Counts; tie?: string; fiscal_year?: string; working?: string; filed?: string; result?: string }[];
   chain: { by_column: Record<string, Counts>; computed: Check[] } | null;
+  pipeline: {
+    fiscal_year: string;
+    voice: string;
+    counts: Counts;
+    fed: Record<string, { binding: string; output: string; value: string }>;
+    not_fed: string[];
+    records: string[];
+    checks: { output: string; label: string; filed: string | null; computed: string | null; result: string }[];
+  }[];
   coverage: {
     sheet: string;
     columns: { column: string; fiscal_year: string; words: string; voice: string }[];
@@ -205,6 +214,68 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                 </tbody>
               </table>
             </div>
+            {f.pipeline.length ? (
+              <>
+                <h3 style={{ marginTop: "1.4rem" }}>End to end: the chain fed by the schedules</h3>
+                <p className="muted" style={{ fontSize: "0.85rem" }}>
+                  The same chain, with its record inputs replaced by what each schedule&apos;s reproduction computes (power purchase, O&amp;M, depreciation, interest on security deposit, bad debts, revenue…). What is not fed stays the format&apos;s own figure, listed.
+                </p>
+                <div className="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Column</th>
+                        <th>Fed by schedules</th>
+                        <th>Still records</th>
+                        <th>Net ARR · gap (computed)</th>
+                        <th>Result</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {f.pipeline.map((p) => {
+                        const v = Object.fromEntries(p.checks.map((c) => [c.output, c]));
+                        return (
+                          <tr key={p.fiscal_year + p.voice}>
+                            <td className="mono">{p.fiscal_year}</td>
+                            <td>
+                              <details>
+                                <summary>{Object.keys(p.fed).length} inputs</summary>
+                                <ul className="mono" style={{ fontSize: "0.75rem", margin: "0.3rem 0" }}>
+                                  {Object.entries(p.fed).map(([k, x]) => (
+                                    <li key={k}>
+                                      {k} ← {x.binding}: {x.output}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </details>
+                            </td>
+                            <td>
+                              <details>
+                                <summary>{p.records.length} inputs</summary>
+                                <ul className="mono" style={{ fontSize: "0.75rem", margin: "0.3rem 0" }}>
+                                  {p.records.map((k) => (
+                                    <li key={k}>{k}</li>
+                                  ))}
+                                </ul>
+                              </details>
+                            </td>
+                            <td className="mono">
+                              {v.arr_net?.computed ?? "—"} · {v.arr_gap?.computed ?? "—"}
+                              <div className="muted">
+                                filed {v.arr_net?.filed ?? "—"} · {v.arr_gap?.filed ?? "—"}
+                              </div>
+                            </td>
+                            <td>
+                              <CountBadges counts={p.counts} />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : null}
             <h3 style={{ marginTop: "1.4rem" }}>FY2026-27, computed against filed</h3>
             <div className="table-wrap">
               <table>

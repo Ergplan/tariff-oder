@@ -25,6 +25,7 @@ from tariff_api.arr.reproduce import (  # noqa: E402
     reproduce_blocks,
     reproduce_cells,
     reproduce_period_table,
+    reproduce_pipeline,
     reproduce_row_table,
 )
 from tariff_api.arr.rules import load_rules  # noqa: E402
@@ -77,6 +78,11 @@ def records(folder, name, binding, rules, sheets, report, verbose) -> None:
                         "result": "match" if ok else "differs",
                     }
                 )
+
+
+def pipeline(name: str, binding: dict, folder: Path, rules: list, sheets: dict, results: dict) -> dict:
+    chain = json.loads((folder / "bindings" / binding["chain"]).read_text())
+    return {"binding": name, **reproduce_pipeline(binding, chain, rules, sheets, results)}
 
 
 def coverage(ref_sheet: dict, report: dict) -> dict:
@@ -161,8 +167,13 @@ def main() -> int:
     rules = load_rules(args.commission)
     report = {"package": args.package, "reference_status": ref["status"], "formats": []}
     report["records"] = []
+    results: dict[str, list] = {}  # binding → its checks, for a pipeline to feed from
+    pipelines = []
     for b in sorted((folder / "bindings").glob("*.json")):
         binding = json.loads(b.read_text())
+        if binding.get("type") == "pipeline":
+            pipelines.append((b.name, binding))
+            continue
         if binding.get("type") == "year_blocks":
             records(folder, b.name, binding, rules, sheets, report, args.verbose)
             continue
@@ -173,6 +184,7 @@ def main() -> int:
 
             wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True, read_only=False)
             checks = reproduce_row_table(wb, binding, rules)
+            results[b.name] = checks
             counts = dict(collections.Counter(c.result for c in checks))
             print(f"{binding['sheet'][:16]:16} {binding['fiscal_year']} {counts}")
             if args.verbose:
@@ -189,6 +201,7 @@ def main() -> int:
 
             wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True, read_only=False)
             checks = reproduce_cells(wb, binding, rules)
+            results[b.name] = checks
             counts = dict(collections.Counter(c.result for c in checks))
             print(f"{binding['sheet'][:24]:24} cells {counts}")
             if args.verbose:
@@ -224,6 +237,13 @@ def main() -> int:
                 if c.result != "match":
                     what = f"{c.fiscal_year} {c.voice:13} {c.output:26}"
                     print(f"   {c.result:12} {what} filed {c.filed} computed {c.computed}  {c.why or ''}")
+    report["pipeline"] = [pipeline(name, p, folder, rules, sheets, results) for name, p in pipelines]
+    for p in report["pipeline"]:
+        for col in p["columns"]:
+            print(f"pipeline {col['fiscal_year']} {col['voice']:10} fed {len(col['fed'])} {col['counts']}")
+            if args.verbose:
+                for c in col["checks"]:
+                    print(f"   {c['result']:8} {c['output']:28} filed {c['filed']} computed {c['computed']}")
     if "ARR" in sheets:
         report["coverage"] = coverage(sheets["ARR"], report)
         for c in report["coverage"]["columns"]:

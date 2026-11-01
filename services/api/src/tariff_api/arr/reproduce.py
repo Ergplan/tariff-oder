@@ -62,12 +62,20 @@ def _places(displayed: str) -> int:
 
 
 def reproduce(
-    sheet: dict[str, Any], binding: dict[str, Any], rules: list[Rule], sheets: dict[str, dict] | None = None
+    sheet: dict[str, Any],
+    binding: dict[str, Any],
+    rules: list[Rule],
+    sheets: dict[str, dict] | None = None,
+    fed: dict[tuple[str, str], dict[str, tuple[Decimal | str, str]]] | None = None,
 ) -> FormatReproduction:
     """``sheet`` is one sheet of a reference (as `scripts/build_reference.py` writes it).  A bound
     row is a row number of that sheet, or ``"<other sheet>!<row>"`` — an input or a check taken
     from another format (``sheets`` holds them), matched to the column by year and voice: a
-    figure carried from one format to another is the same figure (R-SCH-16)."""
+    figure carried from one format to another is the same figure (R-SCH-16).
+
+    ``fed`` holds, per column (fiscal year, voice), values computed by other bindings (a
+    schedule's reproduction): they replace the inputs they name, so the format is computed from
+    the schedules rather than from its own rows.  Only those columns are evaluated."""
     rows = {r["row"]: r for r in sheet["rows"]}
     others = {name: {r["row"]: r for r in sh["rows"]} for name, sh in (sheets or {}).items()}
 
@@ -166,6 +174,8 @@ def reproduce(
     sets: dict[str, RuleSet | RuleError] = {}
     for col in columns:
         fy, voice, words = col
+        if fed is not None and (fy, voice) not in fed:
+            continue
         if fy not in sets:
             try:
                 sets[fy] = RuleSet(rules, fy)
@@ -191,6 +201,8 @@ def reproduce(
         # petitioner's formula, not printed in any cell)
         for source, (v, unit) in binding.get("constants", {}).get(fy, {}).items():
             values.setdefault(source, (v, unit))
+        if fed is not None:
+            values.update(fed[(fy, voice)])
         ev = rs.evaluate(fy, values) if isinstance(rs, RuleSet) else None
         for output, row in binding["outputs"].items():
             c = cell(row, col)
@@ -244,6 +256,7 @@ class BlockCheck:
     filed: str | None = None
     computed: str | None = None
     why: str | None = None
+    exact: str | None = None  # the computed value unrounded, in the rule's unit (to feed another binding)
 
 
 def reproduce_blocks(blocks: list, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
@@ -461,7 +474,9 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
             want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q)
             got = res.value.quantize(q)
             result = "match" if got == want else "differs"
-            out.append(BlockCheck(binding["sheet"], fy, label, output, result, filed=str(want), computed=str(got)))
+            check = BlockCheck(binding["sheet"], fy, label, output, result, filed=str(want), computed=str(got))
+            check.exact = str(res.value)
+            out.append(check)
     return out
 
 
@@ -523,7 +538,9 @@ def reproduce_cells(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list
             return BlockCheck(binding["sheet"], fy, tag, output, "no_filed_value", computed=str(res.value))
         want, got = filed.quantize(q), res.value.quantize(q)
         result = "match" if got == want else "differs"
-        return BlockCheck(binding["sheet"], fy, tag, output, result, filed=str(want), computed=str(got))
+        check = BlockCheck(binding["sheet"], fy, tag, output, result, filed=str(want), computed=str(got))
+        check.exact = str(res.value)
+        return check
 
     out: list[BlockCheck] = []
     for e in binding["evaluations"]:
@@ -539,4 +556,56 @@ def reproduce_cells(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list
         for output, refs in e.get("checks", {}).items():
             for ref in [refs] if isinstance(refs, str) else refs:
                 out.append(check(fy, e.get("label", ""), output, ref, ev.results.get(output), ev.blocked.get(output)))
+    return out
+
+
+def reproduce_pipeline(
+    binding: dict[str, Any],
+    chain: dict[str, Any],
+    rules: list[Rule],
+    sheets: dict[str, dict],
+    results: dict[str, list[BlockCheck]],
+) -> dict[str, Any]:
+    """The chain computed end to end for the columns a pipeline binding names
+    (``{"columns": {"FY2026-27|petitioned": {"record:pp": {"binding": …, "output": …}}}}``): each
+    fed input is the value a schedule's binding computed for that year (``results``: binding →
+    its checks; the unrounded result, in the rule's unit), not the format's own row.  A feed whose
+    schedule computed nothing is listed as not fed; every input not fed stays a record, listed."""
+    from collections import Counter
+    from dataclasses import asdict
+
+    unit_of = {r.output: r.unit for r in rules}
+    out: dict[str, Any] = {"chain": binding["chain"], "columns": []}
+    for key, feeds in binding["columns"].items():
+        fy, voice = key.split("|")
+        fed: dict[str, tuple[Decimal | str, str]] = {}
+        sources: dict[str, dict[str, str]] = {}
+        missing: list[str] = []
+        for source, f in feeds.items():
+            got = next(
+                (
+                    c
+                    for c in results.get(f["binding"], [])
+                    if c.fiscal_year == fy and c.output == f["output"] and c.exact is not None
+                ),
+                None,
+            )
+            if got is None or got.exact is None:
+                missing.append(source)
+                continue
+            fed[source] = (got.exact, unit_of[f["output"]])
+            sources[source] = {"binding": f["binding"], "output": f["output"], "value": got.exact}
+        rep = reproduce(sheets[chain["sheet"]], chain, rules, sheets, fed={(fy, voice): fed})
+        checks = [asdict(c) for c in rep.checks if c.result != "no_filed_value"]
+        out["columns"].append(
+            {
+                "fiscal_year": fy,
+                "voice": voice,
+                "fed": sources,
+                "not_fed": missing,
+                "records": sorted(s for s in chain["inputs"] if s not in fed),
+                "counts": dict(Counter(c["result"] for c in checks)),
+                "checks": checks,
+            }
+        )
     return out

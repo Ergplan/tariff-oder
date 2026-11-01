@@ -1005,6 +1005,32 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 73 (2026-11-01): the petition computed end to end from its schedules.**  A
+  `pipeline` binding (`pipeline-petition.json`) evaluates the chain for the petition's columns
+  with its record inputs **replaced by what each schedule's reproduction computes**: power
+  purchase, transmission and arrears (PPC), R&M (F22) and employee / A&G (F19 base) of the APR and
+  ARR years, depreciation (F24), interest on security deposit (F30), bad debts and other items
+  (P3), revenue (ESR-3) and the contingency fund.  A fed value is the schedule rule's unrounded
+  result in its unit (`BlockCheck.exact`), never the rounded display.  `reproduce()` takes the
+  fed values per column; `reproduce_pipeline()` lists, per column, what was fed (binding and
+  output), what was not, and every input that stays a record.  Served by the API; shown on the
+  reference page (panel 02).  **NPCL:**
+  - **FY2026-27 (ARR): 12 / 12**, 12 inputs fed — net ARR 3,481.83, gap −289.79.
+  - **FY2025-26 (APR): 12 / 12**, 13 inputs fed — net ARR 3,200.63, gap −315.87.
+  - **FY2024-25 (true-up): 7 match, 5 differ** — total expenditure, net ARR, gap, carrying cost
+    and cumulative gap, each by exactly 0.19.  That is the security-deposit interest NPCL types
+    for March (A40), carried through.  The computation shows the finding's effect instead of
+    hiding it.
+
+  **Inputs still records in the ARR year:**
+  - capital additions and retirements (F14's inputs), prior-year closings and the rates
+    (assumptions);
+  - employee capitalisation, finance charges, provisions, additional O&M;
+  - non-tariff and other-business income, open-access revenue;
+  - the accumulated gap brought forward.
+
+  No rule is approved; every clause is unverified.
+
   **Increment 72 (2026-11-01): the ARR format's revenue identities.**  Two draft rules: gross
   revenue at the current tariff (net less the regulatory discount, row 13) and total receipts
   (net + captive consumption, row 17; captive is blank in NPCL's format and its formula reads it
@@ -1997,6 +2023,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 73 (2026-11-01): 423 passed** (+1 unit: the petition computed end to end from its schedules — ARR and APR years 12 / 12, the true-up year differing by exactly A40's 0.19; the integration test checks the projected column's end-to-end net ARR).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 72 (2026-11-01): 422 passed** (the regression pins the ARR summary at 128 matches).  Ruff and format clean.
 - **Increment 71 (2026-11-01): 422 passed** (the integration test now checks the coverage map: the projected column's power purchase tied, the net ARR computed, non-tariff income a record, nothing differing; findings A39–A41 served).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 70 (2026-11-01): 422 passed** (+1 unit: NPCL's true-up power purchase as billed, per source and in three parts, tied to the ARR's rows 20, 22, 23 and 8).  Ruff and format clean.
@@ -2242,7 +2269,7 @@ entries below are the per-increment history.**
   held by the operator).  ~150 draft UPERC rules reproduce the filed formats.  For the
   petition's columns, `/arr/reference/uperc-npcl-fy2026-27` (panel 01) shows how each ARR
   figure is established.  FY2026-27 projected: 15 computed and 13 tied to their schedules,
-  none differs; 16 still records (increment 72).  Findings A29–A41 are for the petitioner and the reviewer.
+  none differs; 16 still records (increment 72).  **End to end (increment 73):** the chain fed by the schedules reproduces the ARR and APR years 12 / 12 (net ARR 3,481.83 and 3,200.63).  Findings A29–A41 are for the petitioner and the reviewer.
   **Blocked on people:**
   1. **Operator:** approve or amend the requirements and scope decision S-1.
   2. **Operator:** name the independent checker.
@@ -2257,8 +2284,10 @@ entries below are the per-increment history.**
   - ESR-3 for FY2023-24, whose subtotals subtract their own sub-rows;
   - reading the tariff order's rate schedule, so revenue is computed from rates, not only
     summed;
-  - feeding the chain from the schedule outputs instead of the ARR's own rows, so the
-    projection is computed end to end and not only tied.
+  - feeding the pipeline's remaining rate assumptions from their reproductions (the MCLR
+    revisions, F27) and the capital inputs from the capital plan (F13 / F16);
+  - the same end-to-end computation for the second reference filing (FY2025-26), to show the
+    bindings are not fitted to one petition.
 - *The way in (increment 52):* `/client/atlas` (map of India → state → discom → norms →
   petition; see `docs/user-journey.md`).  The atlas fills as the decisions above are taken:
   documents located → orders read → values reviewed → norms applied.  On the VM it needs the

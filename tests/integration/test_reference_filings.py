@@ -38,4 +38,8 @@ def test_the_npcl_reference_filing_and_its_reproduction(client):
     by_row = {line["row"]: line["cells"].get(col, {}).get("status") for line in cov["lines"]}
     assert by_row[20] == "tied" and by_row[53] == "computed" and by_row[50] == "record"
     assert cov["summary"][col].get("differs", 0) == 0
+    # end to end: the projected column's chain fed by the schedules reproduces the net ARR
+    (end,) = [p for p in f["pipeline"] if p["fiscal_year"] == "FY2026-27"]
+    assert end["counts"] == {"match": 12} and len(end["fed"]) >= 12
+    assert {c["output"]: c["computed"] for c in end["checks"]}["arr_net"] == "3481.83"
     assert client.get("/arr/reference-filings/nope", headers=headers(CLIENT_A)).status_code == 404

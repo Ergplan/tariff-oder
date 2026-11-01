@@ -71,6 +71,7 @@ def filing(filing_id: str) -> dict[str, Any]:
         "records": [],
         "chain": None,
         "coverage": None,
+        "pipeline": [],
         "findings": [],
     }
     rep_path = folder / "reproduction.json"
@@ -117,6 +118,13 @@ def filing(filing_id: str) -> dict[str, Any]:
                 out["records"].append(
                     {"binding": r["binding"], "counts": dict(Counter(c["result"] for c in r["checks"]))}
                 )
+        # the petition's columns computed end to end: the chain fed by the schedules' results
+        out["pipeline"] = [
+            {k: col[k] for k in ("fiscal_year", "voice", "counts", "fed", "not_fed", "records")}
+            | {"checks": [{k: c[k] for k in ("output", "label", "filed", "computed", "result")} for c in col["checks"]]}
+            for p in rep.get("pipeline", [])
+            for col in p["columns"]
+        ]
         if rep.get("coverage"):
             # how each figure of the ARR format is established, by column (computed / tied /
             # given / differs / record) — what the reproduction covers and what it takes on trust

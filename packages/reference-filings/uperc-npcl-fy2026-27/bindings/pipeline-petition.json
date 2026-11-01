@@ -1,0 +1,157 @@
+{
+ "type": "pipeline",
+ "chain": "chain-arr.json",
+ "note": "The petition's columns computed end to end: the chain (chain-arr.json) evaluated with its record inputs replaced by what the schedules' reproductions compute — power purchase, transmission and arrears (PPC), R&M (F22) and employee / A&G (F19 base) of the APR and ARR years, depreciation (F24), interest on security deposit (F30), bad debts and other items (P3), revenue (ESR-3), the contingency fund.  Total receipts are fed the revenue from the current tariff: captive consumption (row 16) is blank in every column.  What is not fed stays the ARR's own row (a record, listed).  A schedule figure that differs from the filed one (A40: the true-up year's security-deposit interest) is fed as computed, so its effect shows on the net ARR and the gap.",
+ "columns": {
+  "FY2026-27|petitioned": {
+   "record:depreciation": {
+    "binding": "f24-dep-fy27.json",
+    "output": "depreciation_net"
+   },
+   "record:dep": {
+    "binding": "f24-dep-fy27.json",
+    "output": "depreciation_net"
+   },
+   "record:bad_debts": {
+    "binding": "p3-bad-debts.json",
+    "output": "bad_debts_claimed"
+   },
+   "record:other": {
+    "binding": "p3-bad-debts.json",
+    "output": "other_items"
+   },
+   "fact:R.REV.EXISTING": {
+    "binding": "esr3-revenue-fy27.json",
+    "output": "revenue_tariff_total"
+   },
+   "record:total_receipts": {
+    "binding": "esr3-revenue-fy27.json",
+    "output": "revenue_tariff_total"
+   },
+   "record:pp": {
+    "binding": "ppc-fy27.json",
+    "output": "pp_cost_total"
+   },
+   "record:tx": {
+    "binding": "ppc-fy27.json",
+    "output": "pp_tx_total"
+   },
+   "record:rm": {
+    "binding": "f22-rm-ties.json",
+    "output": "rm_norm_total"
+   },
+   "record:employee_gross": {
+    "binding": "f19-om-base-2025.json",
+    "output": "om25_employee"
+   },
+   "record:ag_net": {
+    "binding": "f19-om-base-2025.json",
+    "output": "om25_ag"
+   },
+   "record:csd": {
+    "binding": "f30-security-deposit.json",
+    "output": "isd_interest_annual"
+   }
+  },
+  "FY2025-26|petitioned": {
+   "record:depreciation": {
+    "binding": "f24-dep-fy26.json",
+    "output": "depreciation_net"
+   },
+   "record:dep": {
+    "binding": "f24-dep-fy26.json",
+    "output": "depreciation_net"
+   },
+   "record:bad_debts": {
+    "binding": "p3-bad-debts.json",
+    "output": "bad_debts_claimed"
+   },
+   "record:other": {
+    "binding": "p3-bad-debts.json",
+    "output": "other_items"
+   },
+   "fact:R.REV.EXISTING": {
+    "binding": "esr3-revenue-fy26.json",
+    "output": "revenue_tariff_total"
+   },
+   "record:total_receipts": {
+    "binding": "esr3-revenue-fy26.json",
+    "output": "revenue_tariff_total"
+   },
+   "record:pp": {
+    "binding": "ppc-fy26-claims.json",
+    "output": "pp_cost_with_claims"
+   },
+   "record:pp_arrears": {
+    "binding": "ppc-fy26-claims.json",
+    "output": "pp_claims_total"
+   },
+   "record:tx": {
+    "binding": "ppc-fy26.json",
+    "output": "pp_tx_total"
+   },
+   "record:rm": {
+    "binding": "f22-rm-ties.json",
+    "output": "rm_norm_total"
+   },
+   "record:employee_gross": {
+    "binding": "f19-om-base-2025.json",
+    "output": "om25_employee"
+   },
+   "record:ag_net": {
+    "binding": "f19-om-base-2025.json",
+    "output": "om25_ag"
+   },
+   "record:csd": {
+    "binding": "f30-security-deposit.json",
+    "output": "isd_interest_annual"
+   }
+  },
+  "FY2024-25|petitioned": {
+   "record:depreciation": {
+    "binding": "f24-dep-fy25.json",
+    "output": "depreciation_net"
+   },
+   "record:dep": {
+    "binding": "f24-dep-fy25.json",
+    "output": "depreciation_net"
+   },
+   "record:bad_debts": {
+    "binding": "p3-bad-debts.json",
+    "output": "bad_debts_claimed"
+   },
+   "record:other": {
+    "binding": "p3-bad-debts.json",
+    "output": "other_items"
+   },
+   "fact:R.REV.EXISTING": {
+    "binding": "esr3-revenue-fy25.json",
+    "output": "revenue_tariff_total"
+   },
+   "record:total_receipts": {
+    "binding": "esr3-revenue-fy25.json",
+    "output": "revenue_tariff_total"
+   },
+   "record:pp": {
+    "binding": "ppc-fy25.json",
+    "output": "pp_net_with_tx_total"
+   },
+   "record:tx": {
+    "binding": "ppc-fy25-transmission.json",
+    "output": "pp_net_with_tx_total"
+   },
+   "record:pp_arrears": {
+    "binding": "ppc-fy25-arrears.json",
+    "output": "pp_net_with_tx_total"
+   },
+   "record:csd": {
+    "binding": "f30-security-deposit.json",
+    "output": "isd_interest_months"
+   },
+   "record:contingency": {
+    "binding": "arr-contingency.json",
+    "output": "contingency_contribution"
+   }
+  }
+ }
+}

@@ -104,7 +104,7 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     seen = {}
     for b in sorted((folder / "bindings").glob("*.json")):
         binding = json.loads(b.read_text())
-        if binding.get("type") in ("year_blocks", "period_table", "row_table", "cells"):
+        if binding.get("type") in ("year_blocks", "period_table", "row_table", "cells", "pipeline"):
             continue  # the utility's workings and the rate table: their own tests
         rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
         seen["chain" if b.name == "chain-arr.json" else rep.sheet] = rep
@@ -568,3 +568,48 @@ def test_npcl_true_up_power_purchase_as_billed_ties_to_the_arr():
         "TOTAL ARR!J23": "294.3991",
         "TOTAL ARR!J22": "127.7317",
     }
+
+
+def test_npcl_petition_computed_end_to_end_from_the_schedules():
+    """Real data, the milestone's point: the chain for the petition's columns fed not by the ARR
+    format's own rows but by what each schedule's reproduction computes (PPC, F22, F19 base, F24,
+    F30, P3, ESR-3, the contingency fund).  The ARR year (FY2026-27) and the APR year
+    (FY2025-26) reproduce in full, net ARR and gap included.  The true-up year differs by exactly
+    the security-deposit interest NPCL types for March (A40: 0.19), carried to the net ARR and
+    the gap — the computation shows the finding's effect instead of hiding it."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells, reproduce_pipeline, reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    ref = json.loads((folder / "reference.json").read_text())
+    sheets = {s["sheet"]: s for s in ref["sheets"]}
+    rules = load_rules("UPERC")
+    pipe = json.loads((folder / "bindings" / "pipeline-petition.json").read_text())
+    chain = json.loads((folder / "bindings" / pipe["chain"]).read_text())
+    wb = None
+    results = {}
+    for name in sorted({f["binding"] for feeds in pipe["columns"].values() for f in feeds.values()}):
+        binding = json.loads((folder / "bindings" / name).read_text())
+        wb = wb or openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+        fn = reproduce_cells if binding["type"] == "cells" else reproduce_row_table
+        results[name] = fn(wb, binding, rules)
+    out = reproduce_pipeline(pipe, chain, rules, sheets, results)
+    cols = {c["fiscal_year"]: c for c in out["columns"]}
+    for fy in ("FY2026-27", "FY2025-26"):
+        assert cols[fy]["counts"] == {"match": 12}, cols[fy]["checks"]
+        assert not cols[fy]["not_fed"]
+    assert {c["output"]: c["computed"] for c in cols["FY2026-27"]["checks"]}["arr_net"] == "3481.83"
+    true_up = {c["output"]: c for c in cols["FY2024-25"]["checks"]}
+    assert {o for o, c in true_up.items() if c["result"] == "differs"} == {
+        "arr_total_expenditure",
+        "arr_net",
+        "arr_gap",
+        "arr_carrying_cost",
+        "arr_gap_cumulative",
+    }
+    gap = Decimal(true_up["arr_total_expenditure"]["computed"]) - Decimal(true_up["arr_total_expenditure"]["filed"])
+    assert gap == Decimal("0.19")  # A40, and nothing else
