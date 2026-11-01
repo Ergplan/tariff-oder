@@ -1005,6 +1005,10 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 62 (2026-11-01): income tax (F29).**  4 draft rules: the return on equity grossed
+  up for tax, the tax on the net taxable income, the tax on the grossed-up RoE, and the tax
+  recoverable as the lesser of the two.  **NPCL's F29: 24 of 24**, every column.
+
   **Increment 61 (2026-11-01): the ARR summary itself.**  11 draft rules for UPERC's ARR format:
   net employee expenses, net O&M, total expenditure, deductions, **net ARR**, the gap before and
   after the tariff revision and the subsidy, the unrecovered gap, its **carrying cost** (half-year
@@ -1810,6 +1814,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 62 (2026-11-01): 410 passed** (the regression pins F29, 24 of 24).  Ruff and format clean.
 - **Increment 61 (2026-11-01): 410 passed** (the reproduction regression pins the ARR summary: the petition's own columns match in full).  Ruff and format clean.
 - **Increment 60 (2026-11-01): 410 passed** (the reproduction regression pins F17, F18 and F19A).  Ruff and format clean.
 - **Increment 59 (2026-11-01): 410 passed** (+1 unit: the reference rates from NPCL's MCLR revisions).  Ruff and format clean.

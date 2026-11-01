@@ -1,0 +1,162 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — income tax on the return on equity (grossed up), recoverable up to the tax paid",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Income tax (UPERC format F29), as NPCL's format computes it.",
+ "rules": [
+  {
+   "id": "uperc.tax.grossed_income",
+   "version": 1,
+   "status": "draft",
+   "title": "Income of the year: the return on equity grossed up for tax",
+   "output": "tax_grossed_income",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "roe / (1 - rate)",
+   "inputs": {
+    "roe": {
+     "unit": "INR_crore",
+     "source": "record:roe_for_tax",
+     "note": "the return on equity (F26)"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:tax_rate_roe",
+     "note": "the effective corporate tax rate (25.168 %: 22 % with surcharge and cess), as NPCL applies it"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — income tax on the return on equity (grossed up), recoverable up to the tax paid",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.tax.on_income",
+   "version": 1,
+   "status": "draft",
+   "title": "Tax on the net taxable income",
+   "output": "tax_on_income",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "taxable * rate",
+   "inputs": {
+    "taxable": {
+     "unit": "INR_crore",
+     "source": "record:taxable_income"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:tax_rate_income"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — income tax on the return on equity (grossed up), recoverable up to the tax paid",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.tax.on_roe",
+   "version": 1,
+   "status": "draft",
+   "title": "Tax on the return on equity, grossed up",
+   "output": "tax_on_roe",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "roe / (1 - rate) * rate",
+   "inputs": {
+    "roe": {
+     "unit": "INR_crore",
+     "source": "record:roe_for_tax"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:tax_rate_roe"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — income tax on the return on equity (grossed up), recoverable up to the tax paid",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.tax.recoverable",
+   "version": 1,
+   "status": "draft",
+   "title": "Income tax recoverable from consumers",
+   "output": "tax_recoverable",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "min(on_income, on_roe)",
+   "inputs": {
+    "on_income": {
+     "unit": "INR_crore",
+     "source": "rule:tax_on_income"
+    },
+    "on_roe": {
+     "unit": "INR_crore",
+     "source": "rule:tax_on_roe"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — income tax on the return on equity (grossed up), recoverable up to the tax paid",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the lesser of the tax on the year's taxable income and the tax on the grossed-up return on equity",
+   "line_code": "C.TAX"
+  }
+ ]
+}
