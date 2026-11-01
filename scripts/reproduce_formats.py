@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "services" / "api" / "src"))
 
 from tariff_api.arr.blocks import read_year_blocks  # noqa: E402
-from tariff_api.arr.reproduce import reproduce, reproduce_blocks  # noqa: E402
+from tariff_api.arr.reproduce import reproduce, reproduce_blocks, reproduce_period_table  # noqa: E402
 from tariff_api.arr.rules import load_rules  # noqa: E402
 
 
@@ -89,6 +89,16 @@ def main() -> int:
         binding = json.loads(b.read_text())
         if binding.get("type") == "year_blocks":
             records(folder, b.name, binding, rules, sheets, report, args.verbose)
+            continue
+        if binding.get("type") == "period_table":
+            import openpyxl
+
+            wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True, read_only=False)
+            checks = reproduce_period_table(wb, binding, rules)
+            for c in checks:
+                what = f"{binding['sheet'][:16]:16} {c.fiscal_year} {c.output:22} {c.result:8}"
+                print(f"{what} filed {c.filed} computed {c.computed}")
+            report["records"].append({"binding": b.name, "checks": [asdict(c) for c in checks]})
             continue
         rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
         report["formats"].append(

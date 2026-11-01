@@ -104,8 +104,8 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     seen = {}
     for b in sorted((folder / "bindings").glob("*.json")):
         binding = json.loads(b.read_text())
-        if binding.get("type") == "year_blocks":
-            continue  # the utility's workings: the next test
+        if binding.get("type") in ("year_blocks", "period_table"):
+            continue  # the utility's workings and the rate table: their own tests
         rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
         seen[rep.sheet] = rep
         for c in rep.checks:
@@ -227,3 +227,24 @@ def test_npcl_depreciation_workings_reproduce_and_tie_to_the_filed_arr():
         "FY2024-25": "74.75",
     }  # ARR format, C.DEP
     assert {fy: str(net[fy].quantize(Decimal("0.01"))) for fy in filed} == filed
+
+
+def test_npcl_reference_rates_from_the_mclr_revisions():
+    """Real data: the SBI MCLR revisions NPCL lists under F27, weighted by days, give the
+    weighted MCLR it prints (FY2024-25, FY2025-26), the true-up working-capital rate (+2.5 %) and
+    the normative-loan rate F25 uses (+1 %), to six decimals."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_period_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "f27-mclr-rates.json").read_text())
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_period_table(wb, binding, load_rules("UPERC"))
+    assert [(c.fiscal_year, c.output, c.result) for c in checks] == [
+        ("FY2024-25", "mclr_weighted", "match"),
+        ("FY2024-25", "wc_rate_trueup", "match"),
+        ("FY2025-26", "mclr_weighted", "match"),
+        ("FY2025-26", "loan_rate_reference", "match"),
+    ]

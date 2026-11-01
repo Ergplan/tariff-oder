@@ -1,0 +1,13 @@
+{
+ "type": "period_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F27_Work Cap",
+ "note": "The SBI one-year MCLR revisions NPCL lists under F27 (period from, to, days, rate), FY2024-25 (columns B–E) and FY2025-26 (G–L).  Checked: the day-weighted MCLR (E34, L34), the true-up working-capital rate (E35, weighted + 2.5 %) and the normative-loan rate (F25 H14, weighted + 1 %).  6 decimals of the rate.",
+ "tables": [
+  {"fiscal_year": "FY2024-25", "rows": [21, 33], "from_col": "B", "days_col": "D", "rate_col": "E",
+   "checks": {"mclr_weighted": "F27_Work Cap!E34", "wc_rate_trueup": "F27_Work Cap!E35"}},
+  {"fiscal_year": "FY2025-26", "rows": [21, 33], "from_col": "G", "days_col": "K", "rate_col": "L",
+   "checks": {"mclr_weighted": "F27_Work Cap!L34", "loan_rate_reference": "F25_IOL!H14"}}
+ ],
+ "places": 6
+}

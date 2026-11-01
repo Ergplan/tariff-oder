@@ -1005,6 +1005,15 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 59 (2026-11-01): the reference rates from the SBI MCLR revisions.**  5 draft rules:
+  per MCLR period (a category) its days and rate × days; the year's day-weighted MCLR; the true-up
+  working-capital rate (+2.5 %, to FY2024-25) and the normative-loan rate (+1 %, from FY2025-26).
+  A `period_table` binding reads a table of periods by cell address from the filed workbook and
+  checks the derived rates against the cells the formats print them in.  **NPCL: the weighted MCLR
+  of FY2024-25 (0.088822) and FY2025-26 (0.088262), the true-up rate (0.113822, F27 E35) and the
+  loan rate F25 applies (0.098262, F25 H14) — 4 of 4 to six decimals.**  Margins are as NPCL
+  applies them; the clauses are to be confirmed.
+
   **Increment 58 (2026-11-01): interest on working capital (F27) — where the conventions part.**
   6 draft rules: O&M for a month; receivables of 1.5 months (NPCL's projection basis, tariff +
   open-access revenue, from FY2025-26; in a true-up year the receivables are the petitioner's
@@ -1773,6 +1782,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 59 (2026-11-01): 410 passed** (+1 unit: the reference rates from NPCL's MCLR revisions).  Ruff and format clean.
 - **Increment 58 (2026-11-01): 409 passed** (the reproduction regression now pins F27's results column by column).  Ruff and format clean.
 - **Increment 57 (2026-11-01): 409 passed** (+3 unit: year-block reading; per-category rules, sums and their guards; NPCL's depreciation workings reproduced and tied to the filed ARR).  Ruff and format clean.
 - **Increment 56 (2026-11-01): 406 passed** (the reproduction regression now covers F14 and the cross-format checks, pinning the one inconsistent column; the chain test starts from F14 records).  Ruff and format clean.

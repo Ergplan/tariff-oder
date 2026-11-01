@@ -265,3 +265,52 @@ def reproduce_blocks(blocks: list, binding: dict[str, Any], rules: list[Rule]) -
                     )
                 )
     return out
+
+
+def reproduce_period_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
+    """A table of periods within a year (e.g. the SBI MCLR revisions of F27: from, to, days,
+    rate), each period a category, read by cell address from the filed workbook, and the derived
+    figures checked against the cells the format prints them in (``"Sheet!E34"``)."""
+    from openpyxl.utils import column_index_from_string
+
+    places = int(binding.get("places", 6))
+    q = Decimal(1).scaleb(-places)
+    ws = wb[binding["sheet"]]
+    out: list[BlockCheck] = []
+    for t in binding["tables"]:
+        cats = {}
+        first, last = t["rows"]
+        for r in range(first, last + 1):
+            days = ws.cell(r, column_index_from_string(t["days_col"])).value
+            rate = ws.cell(r, column_index_from_string(t["rate_col"])).value
+            start = ws.cell(r, column_index_from_string(t["from_col"])).value
+            if days is None or rate is None:
+                continue
+            cats[str(start)[:10]] = {
+                "record:mclr_days": (str(days), "number"),
+                "record:mclr_rate": (repr(rate) if isinstance(rate, float) else str(rate), "fraction"),
+            }
+        ev = RuleSet(rules, t["fiscal_year"]).evaluate(t["fiscal_year"], {}, cats)
+        for output, ref in t["checks"].items():
+            sheet, _, cell = ref.rpartition("!")
+            filed = wb[sheet][cell].value
+            res = ev.results.get(output)
+            if res is None:
+                out.append(
+                    BlockCheck(binding["sheet"], t["fiscal_year"], ref, output, "blocked", why=ev.blocked.get(output))
+                )
+                continue
+            want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q)
+            got = res.value.quantize(q)
+            out.append(
+                BlockCheck(
+                    binding["sheet"],
+                    t["fiscal_year"],
+                    ref,
+                    output,
+                    "match" if got == want else "differs",
+                    filed=str(want),
+                    computed=str(got),
+                )
+            )
+    return out

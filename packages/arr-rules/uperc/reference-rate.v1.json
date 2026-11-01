@@ -1,0 +1,199 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — reference rate (SBI MCLR) for working capital and loans",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "The reference rates of F27 and F25 from the SBI MCLR revisions of the year, weighted by days.",
+ "rules": [
+  {
+   "id": "uperc.rate.period_days",
+   "version": 1,
+   "status": "draft",
+   "title": "Days of an MCLR period",
+   "output": "mclr_period_days",
+   "unit": "number",
+   "schedule": "R-SCH-10",
+   "formula": "days",
+   "inputs": {
+    "days": {
+     "unit": "number",
+     "source": "record:mclr_days"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — reference rate (SBI MCLR) for working capital and loans",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 0,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "mclr_period"
+  },
+  {
+   "id": "uperc.rate.period_weight",
+   "version": 1,
+   "status": "draft",
+   "title": "MCLR of a period weighted by its days",
+   "output": "mclr_rate_days",
+   "unit": "number",
+   "schedule": "R-SCH-10",
+   "formula": "rate * days",
+   "inputs": {
+    "rate": {
+     "unit": "fraction",
+     "source": "record:mclr_rate"
+    },
+    "days": {
+     "unit": "number",
+     "source": "record:mclr_days"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — reference rate (SBI MCLR) for working capital and loans",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "mclr_period"
+  },
+  {
+   "id": "uperc.rate.weighted",
+   "version": 1,
+   "status": "draft",
+   "title": "SBI one-year MCLR, weighted by days over the year",
+   "output": "mclr_weighted",
+   "unit": "fraction",
+   "schedule": "R-SCH-10",
+   "formula": "rate_days / days",
+   "inputs": {
+    "rate_days": {
+     "unit": "number",
+     "source": "sum:mclr_rate_days"
+    },
+    "days": {
+     "unit": "number",
+     "source": "sum:mclr_period_days"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — reference rate (SBI MCLR) for working capital and loans",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rate.wc_trueup",
+   "version": 1,
+   "status": "draft",
+   "title": "Rate of interest on working capital, true-up",
+   "output": "wc_rate_trueup",
+   "unit": "fraction",
+   "schedule": "R-SCH-10",
+   "formula": "mclr + margin",
+   "inputs": {
+    "mclr": {
+     "unit": "fraction",
+     "source": "rule:mclr_weighted"
+    },
+    "margin": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "2.5",
+     "note": "250 basis points over the weighted MCLR, as NPCL's F27 applies it for FY2024-25 (\"Applicable ROI for True up\"); the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — reference rate (SBI MCLR) for working capital and loans",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.rate.loan",
+   "version": 1,
+   "status": "draft",
+   "title": "Rate of interest on the normative loan",
+   "output": "loan_rate_reference",
+   "unit": "fraction",
+   "schedule": "R-SCH-10",
+   "formula": "mclr + margin",
+   "inputs": {
+    "mclr": {
+     "unit": "fraction",
+     "source": "rule:mclr_weighted"
+    },
+    "margin": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "1",
+     "note": "100 basis points over the weighted MCLR, as NPCL's F25 applies it from FY2025-26; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — reference rate (SBI MCLR) for working capital and loans",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  }
+ ]
+}

@@ -3352,6 +3352,51 @@
  ],
  "records": [
   {
+   "binding": "f27-mclr-rates.json",
+   "checks": [
+    {
+     "table": "F27_Work Cap",
+     "fiscal_year": "FY2024-25",
+     "category": "F27_Work Cap!E34",
+     "output": "mclr_weighted",
+     "result": "match",
+     "filed": "0.088822",
+     "computed": "0.088822",
+     "why": null
+    },
+    {
+     "table": "F27_Work Cap",
+     "fiscal_year": "FY2024-25",
+     "category": "F27_Work Cap!E35",
+     "output": "wc_rate_trueup",
+     "result": "match",
+     "filed": "0.113822",
+     "computed": "0.113822",
+     "why": null
+    },
+    {
+     "table": "F27_Work Cap",
+     "fiscal_year": "FY2025-26",
+     "category": "F27_Work Cap!L34",
+     "output": "mclr_weighted",
+     "result": "match",
+     "filed": "0.088262",
+     "computed": "0.088262",
+     "why": null
+    },
+    {
+     "table": "F27_Work Cap",
+     "fiscal_year": "FY2025-26",
+     "category": "F25_IOL!H14",
+     "output": "loan_rate_reference",
+     "result": "match",
+     "filed": "0.098262",
+     "computed": "0.098262",
+     "why": null
+    }
+   ]
+  },
+  {
    "binding": "records-annexure-21-depreciation.json",
    "sheet": "Depreciation after 1 Apr 20-25",
    "counts": {
