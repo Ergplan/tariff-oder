@@ -1,0 +1,916 @@
+{
+  "id": "uperc-npcl-fy2025-26",
+  "commission": "UPERC",
+  "licensee": "NPCL",
+  "title": "NPCL tariff petition dated 28.11.2024: true-up FY2023-24, APR FY2024-25, ARR FY2025-26",
+  "proceedings": [
+    {
+      "kind": "true_up",
+      "fiscal_year": "FY2023-24"
+    },
+    {
+      "kind": "apr",
+      "fiscal_year": "FY2024-25"
+    },
+    {
+      "kind": "annual_arr",
+      "fiscal_year": "FY2025-26"
+    }
+  ],
+  "listing_page": "https://noidapower.com/NPCL-Tariff-Petition-ARR-2025-26",
+  "resulting_order": {
+    "title": "UPERC tariff order for NPCL FY2025-26 (dated 22.11.2025, as named in the FY2026-27 order)",
+    "url": null,
+    "sha256": null,
+    "note": "not yet located"
+  },
+  "status": "unverified: listed from the licensee's public website on 2026-11-01; hashes are recorded on first download (scripts/fetch_reference_filing.py), never copied",
+  "access_note": "documents are served from https://iwebapps.noidapower.com:8032 — a non-443 port the cloud build session's proxy cannot reach; download on the VM",
+  "documents": [
+    {
+      "name": "0. Cover Letter ARR FY 2025-26.pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/0.%20Cover%20Letter%20ARR%20FY%202025-26.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "0. Index Page - Tariff Petition FY 2025-26.xlsx",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/0.%20Index%20Page%20-%20Tariff%20Petition%20FY%202025-26.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "0. Petition Fee ARR 2025-26.pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/0.%20Petition%20Fee%20ARR%202025-26.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "1. Petition in Form-1 ARR FY 2025-26.pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/1.%20Petition%20in%20Form-1%20ARR%20FY%202025-26.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "2. Petition in Form-2.pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/2.%20Petition%20in%20Form-2.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "3. Appendix-I(a)  Power of Attorney.pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/3.%20Appendix-I(a)%20%20Power%20of%20Attorney.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "4. Appendix-I(b) Board Resulotion dt. 28th August 2024.pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/4.%20Appendix-I(b)%20Board%20Resulotion%20dt.%2028th%20August%202024.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "5. Appendix-II MYT Tariff Formats ARR FY 2025-26 .xlsx",
+      "role": "formats",
+      "feeds": [
+        "R-ACC-1 reference: the filed formats the reproduction is measured against"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/5.%20Appendix-II%20MYT%20Tariff%20Formats%20ARR%20FY%202025-26%20.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "6. Appendix-III Text of True UP FY 2023-24 .pdf",
+      "role": "narrative",
+      "feeds": [
+        "R-TU",
+        "R-PKG-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/6.%20Appendix-III%20Text%20of%20True%20UP%20FY%202023-24%20.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "7. Appendix-IV Text of APR FY 2024-25.pdf",
+      "role": "narrative",
+      "feeds": [
+        "R-TU",
+        "R-PKG-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/7.%20Appendix-IV%20Text%20of%20APR%20FY%202024-25.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "8. Appendix-V Text of ARR FY 2025-26.pdf",
+      "role": "narrative",
+      "feeds": [
+        "R-SCH",
+        "R-PKG-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/8.%20Appendix-V%20Text%20of%20ARR%20FY%202025-26.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "9. Appendix-VI  Cost Allocation .pdf",
+      "role": "narrative",
+      "feeds": [
+        "R-SCH-15"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/9.%20Appendix-VI%20%20Cost%20Allocation%20.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "10. Appendix-VII Compliance Hon'ble Commission's Directives.pdf",
+      "role": "narrative",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/10.%20Appendix-VII%20Compliance%20Hon'ble%20Commission's%20Directives.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "11. Appendix-VIII Additional MYT Format-I.xlsx",
+      "role": "formats",
+      "feeds": [
+        "R-ACC-1 reference: the filed formats the reproduction is measured against"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/11.%20Appendix-VIII%20Additional%20MYT%20Format-I.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "12. Appendix-IX Additional MYT  Formats - II.pdf",
+      "role": "formats",
+      "feeds": [
+        "R-ACC-1 reference: the filed formats the reproduction is measured against"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/12.%20Appendix-IX%20Additional%20MYT%20%20Formats%20-%20II.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "13. Appendix-X(a) Draft Public Notice (English).pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/13.%20Appendix-X(a)%20Draft%20Public%20Notice%20(English).pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "14. Appendix-X(b) Draft Public Notice (Hindi).pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/14.%20Appendix-X(b)%20Draft%20Public%20Notice%20(Hindi).pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "15. Appendix-XI Executive Summary.pdf",
+      "role": "narrative",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/15.%20Appendix-XI%20Executive%20Summary.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "16. Appendix-XII Soft Copy of Petition.pdf",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/16.%20Appendix-XII%20Soft%20Copy%20of%20Petition.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "17. Annexure-1(a) NPCL Audited Accounts FY 2023-24.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-DATA-1 accounts",
+        "R-DATA-2 reconciliation base"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/17.%20Annexure-1(a)%20NPCL%20Audited%20Accounts%20FY%202023-24.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "18. Annexure-1(b) NPCL Cost Audit Report FY 2023-24.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-DATA-1 accounts",
+        "R-DATA-2 reconciliation base"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/18.%20Annexure-1(b)%20NPCL%20Cost%20Audit%20Report%20FY%202023-24.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "19. Annexure-2 GoUP Subsidy Letter.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-13"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/19.%20Annexure-2%20GoUP%20Subsidy%20Letter.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "20. Annexure-3 Company letter to GoUP for release of subsidy FY 23-24 & FY 24-25.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-13"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/20.%20Annexure-3%20Company%20letter%20to%20GoUP%20for%20release%20of%20subsidy%20FY%2023-24%20&%20FY%2024-25.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "21. Annexure-4 Details of Saubhagya Consumer.xlsb",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-1",
+        "R-SCH-12"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/21.%20Annexure-4%20Details%20of%20Saubhagya%20Consumer.xlsb",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "22. Annexure-5 Details of Lifeline Consumer.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-1",
+        "R-SCH-12"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/22.%20Annexure-5%20Details%20of%20Lifeline%20Consumer.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "23. Annexure-6 Details of energy managed through net metering on monthly basis.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-1",
+        "R-SCH-12"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/23.%20Annexure-6%20Details%20of%20energy%20managed%20through%20net%20metering%20on%20monthly%20basis.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "24. Annexure-7 GNIDA Letters reagrding NOC before granting electricity connection.pdf",
+      "role": "supporting_authority",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/24.%20Annexure-7%20GNIDA%20Letters%20reagrding%20NOC%20before%20granting%20electricity%20connection.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "25. Annexure-8 Order related to auxiliary consumption revised  from 15% to 8.5%.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/25.%20Annexure-8%20Order%20related%20to%20auxiliary%20consumption%20revised%20%20from%2015%%20to%208.5%.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "26. Annexure-9  Order dt. 06.05.20 Additional Coal FY-19 Petition No. 1438 of 2019.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/26.%20Annexure-9%20%20Order%20dt.%2006.05.20%20Additional%20Coal%20FY-19%20Petition%20No.%201438%20of%202019.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "27. Annexure-10 Order dt. 29.05.20 Change in Law FY 19 Petition No. - 1440 of 2019.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/27.%20Annexure-10%20Order%20dt.%2029.05.20%20Change%20in%20Law%20FY%2019%20Petition%20No.%20-%201440%20of%202019.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "28. Annexure-11 Order dt. 21.09.22 towards Change in Law for FY 2023-24 .pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/28.%20Annexure-11%20Order%20dt.%2021.09.22%20towards%20Change%20in%20Law%20for%20FY%202023-24%20.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "29. Annexure-12 Order dt. 02.05.24 towards Additional Coal for FY 2022-23.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/29.%20Annexure-12%20Order%20dt.%2002.05.24%20towards%20Additional%20Coal%20for%20FY%202022-23.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "30. Annexure-13 Order dt. 13.06.23 towards Additional Coal for FY 2021-22.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/30.%20Annexure-13%20Order%20dt.%2013.06.23%20towards%20Additional%20Coal%20for%20FY%202021-22.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "31. Annexure-14 Order dt. 12.05.23 towards Change in Law for FY 2020-21.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/31.%20Annexure-14%20Order%20dt.%2012.05.23%20towards%20Change%20in%20Law%20for%20FY%202020-21.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "32. Annexure-15 Order dt. 13.06.23 towards Change in Law for FY 2021-22.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/32.%20Annexure-15%20Order%20dt.%2013.06.23%20towards%20Change%20in%20Law%20for%20FY%202021-22.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "33. Annexure-16  NPCL's Copies of Letter  dated 27th October, 2016 and 17th March, 2017 for installation of Solar Rooftop.pdf",
+      "role": "supporting_authority",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/33.%20Annexure-16%20%20NPCL's%20Copies%20of%20Letter%20%20dated%2027th%20October,%202016%20and%2017th%20March,%202017%20for%20installation%20of%20Solar%20Rooftop.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "34. Annexure-17 RPO Computation in the format prescribed by the Hon'ble Commission.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/34.%20Annexure-17%20RPO%20Computation%20in%20the%20format%20prescribed%20by%20the%20Hon'ble%20Commission.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "35. Annexure-18 Reconciliation of Power Purchase FY 23-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3",
+        "R-DATA-2 reconciliation to audited accounts"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/35.%20Annexure-18%20Reconciliation%20of%20Power%20Purchase%20FY%2023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "36. Annexure-19 Project Progress Report for Pt. no. 1950 of 2023.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/36.%20Annexure-19%20Project%20Progress%20Report%20for%20Pt.%20no.%201950%20of%202023.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "37. Annexure-20 Project Wise Fixed Assets Additions in FY 2023-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/37.%20Annexure-20%20Project%20Wise%20Fixed%20Assets%20Additions%20in%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "38. Annexure-21 Sample Project Details for FY 2023-24 in prescribed formats.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/38.%20Annexure-21%20Sample%20Project%20Details%20for%20FY%202023-24%20in%20prescribed%20formats.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "39. Annexure-22 SBI MCLR Rates for Finacial Year 2023-24.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-8",
+        "R-SCH-10"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/39.%20Annexure-22%20SBI%20MCLR%20Rates%20for%20Finacial%20Year%202023-24.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "40. Annexure-23 Assets Retirement Details FY 2023-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-7"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/40.%20Annexure-23%20Assets%20Retirement%20Details%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "41. Annexure-24 Depreciation as per UPERC Method.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-7"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/41.%20Annexure-24%20Depreciation%20as%20per%20UPERC%20Method.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "42. Annexure 24(b)- Additional Depreciation FY 2023-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-7"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/42.%20Annexure%2024(b)-%20Additional%20Depreciation%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "43. Annexure-25 Tax Payment Details FY 2023-24.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-9"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/43.%20Annexure-25%20Tax%20Payment%20Details%20FY%202023-24.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "44. Annexure-26 Open Access consumer List along with their Consumption & Charges.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-1",
+        "R-SCH-12"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/44.%20Annexure-26%20Open%20Access%20consumer%20List%20along%20with%20their%20Consumption%20&%20Charges.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "45. Annexure-27 Grant of Additional GNA by CTUIL letter dated 16th July, 2024.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/45.%20Annexure-27%20Grant%20of%20Additional%20GNA%20by%20CTUIL%20letter%20dated%2016th%20July,%202024.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "46. Annexure-28 5 Substation Petition no. 2089 of 2024 dated 14th May 2024.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/46.%20Annexure-28%205%20Substation%20Petition%20no.%202089%20of%202024%20dated%2014th%20May%202024.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "46. Annexure-28 5 Substation Petition no. 2089 of 2024 dated 14th May 2024.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/46.%20Annexure-28%205%20Substation%20Petition%20no.%202089%20of%202024%20dated%2014th%20May%202024.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "48. Annexure-29(b) APR FY 24-25 Capital Expenditure Plan  (Less than Rs. 10 Cr).xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/48.%20Annexure-29(b)%20APR%20FY%2024-25%20Capital%20Expenditure%20Plan%20%20(Less%20than%20Rs.%2010%20Cr).xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "49. Annexure-30 DIL email dated 15.10.2024.pdf",
+      "role": "supporting_authority",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/49.%20Annexure-30%20DIL%20email%20dated%2015.10.2024.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "50. Annexure-31(a) ARR FY 25-26 Capital Expenditure Plan  (Approved,petitioned Above Rs. 10 Cr).xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/50.%20Annexure-31(a)%20ARR%20FY%2025-26%20Capital%20Expenditure%20Plan%20%20(Approved,petitioned%20Above%20Rs.%2010%20Cr).xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "51. Annexure-31(b) ARR FY 25-26 Capital Expenditure Plan  (Proposed Above Rs. 10 Cr).xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/51.%20Annexure-31(b)%20ARR%20FY%2025-26%20Capital%20Expenditure%20Plan%20%20(Proposed%20Above%20Rs.%2010%20Cr).xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "52. Annexure-31(c) ARR FY 25-26 Capital Expenditure Plan  (Less than Rs. 10 Cr).xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/52.%20Annexure-31(c)%20ARR%20FY%2025-26%20Capital%20Expenditure%20Plan%20%20(Less%20than%20Rs.%2010%20Cr).xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "53. Annexure-32 Estimation of Consumer Contribution.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-6"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/53.%20Annexure-32%20Estimation%20of%20Consumer%20Contribution.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "54. Annexure-33 Details of disallowances in Appeal against Tariff Orders.xlsx",
+      "role": "supporting_authority",
+      "feeds": [
+        "R-APP-3",
+        "R-TU-5"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/54.%20Annexure-33%20Details%20of%20disallowances%20in%20Appeal%20against%20Tariff%20Orders.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "55. Annexure-34 Trial Balance for FY 2023-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-DATA-1 accounts"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/55.%20Annexure-34%20Trial%20Balance%20for%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "56. Annexure-35 Annual Energy Audit Report FY 2023-24.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-2"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/56.%20Annexure-35%20Annual%20Energy%20Audit%20Report%20FY%202023-24.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "57. Annexure-36 Land Lease Deed.pdf",
+      "role": "supporting_authority",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/57.%20Annexure-36%20Land%20Lease%20Deed.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "58. Annexure-37 Details of Unutilised Land.xlsx",
+      "role": "supporting_authority",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/58.%20Annexure-37%20Details%20of%20Unutilised%20Land.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "59. Annexure-38 Monthwise Billing Determinants FY 2023-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-1",
+        "R-SCH-12"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/59.%20Annexure-38%20Monthwise%20Billing%20Determinants%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "60. Annexure-39 Load Curve FY 2023-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-2"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/60.%20Annexure-39%20Load%20Curve%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "61. Annexure-40 Reconciliation of O&M Expenses.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-5",
+        "R-DATA-2 reconciliation to audited accounts"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/61.%20Annexure-40%20Reconciliation%20of%20O&M%20Expenses.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "62. Annexure-41 Last five years Billing determinants.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-1",
+        "R-SCH-12"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/62.%20Annexure-41%20Last%20five%20years%20Billing%20determinants.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "63. Annexure-42 Month Wise Power Purchase Details FY 2023-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/63.%20Annexure-42%20Month%20Wise%20Power%20Purchase%20Details%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "64. Annexure-43 Energy Balance.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-2"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/64.%20Annexure-43%20Energy%20Balance.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "65. Annexure-44 List of HPO Generators.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/65.%20Annexure-44%20List%20of%20HPO%20Generators.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "66. Annexure-45 Evidence of Rate of Interest for CSD for FY 2023-24.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-10"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/66.%20Annexure-45%20Evidence%20of%20Rate%20of%20Interest%20for%20CSD%20for%20FY%202023-24.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "67. Annexure-46 (a) Soft Copy of NPCL Audited Accounts FY 2023-24.xlsx",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/67.%20Annexure-46%20(a)%20Soft%20Copy%20of%20NPCL%20Audited%20Accounts%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "68. Annexure-46 (b) Soft Copy of NPCL Cost Audit Report FY 2023-24.xlsx",
+      "role": "filing_document",
+      "feeds": [
+        "R-PKG-1"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/68.%20Annexure-46%20(b)%20Soft%20Copy%20of%20NPCL%20Cost%20Audit%20Report%20FY%202023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "69.Annexure-A Copies of Approved Orders,PPA.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/69.Annexure-A%20Copies%20of%20Approved%20Orders,PPA.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_1.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_1.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_2.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_2.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_3.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_3.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_4.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_4.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_5.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_5.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_6.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_6.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_7.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_7.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_8.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_8.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_9.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_9.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_10.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_10.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_11.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_11.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_12.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_12.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "70.Annexure-B Power Purchase Bills FInal_13.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-3"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/70.Annexure-B%20Power%20Purchase%20Bills%20FInal_13.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "89.Annexure C- Fixed Asset Register FY 23-24.pdf",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-7"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/89.Annexure%20C-%20Fixed%20Asset%20Register%20FY%2023-24.pdf",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "name": "89-90. Annexure C- Fixed Asset Register FY 23-24.xlsx",
+      "role": "utility_record",
+      "feeds": [
+        "R-SCH-7"
+      ],
+      "url": "https://iwebapps.noidapower.com:8032/download/NPCL%20Tariff%20Petition%20for%20ARR%202025-26/1.%20Tariff%20Petition%20dated%2028.11.2024/89-90.%20Annexure%20C-%20Fixed%20Asset%20Register%20FY%2023-24.xlsx",
+      "sha256": null,
+      "bytes": null
+    }
+  ]
+}

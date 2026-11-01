@@ -1880,10 +1880,13 @@ entries below are the per-increment history.**
   **UPERC / NPCL, ARR petition FY2026-27** — under the binding
   `docs/arr-filing-requirements.md`, tracked in `docs/requirements-matrix.md` (every row
   `proposed`; nothing approved by the build).  **Blocked on the operator:** (1) approve or
-  amend the requirements and scope decision S-1; (2) make the NPCL FY2026-27 petition package
-  and its underlying records available to the build (they are on the operator's computer:
-  share the folder through Remote Control, or upload to a private prefix of the sources
-  bucket); (3) name the independent checker.  The engineering that does not need them can
+  amend the requirements and scope decision S-1; (2) download the NPCL reference packages on the VM —
+  `uv run python scripts/fetch_reference_filing.py uperc-npcl-fy2026-27` (and
+  `uperc-npcl-fy2025-26`), then commit the hashes it records.  Both petitions are public on
+  NPCL's website (listed in `packages/reference-filings/`: 71 and 87 documents, with the
+  filed formats, texts, audited accounts, trial balance, asset register, power-purchase
+  bills and billing determinants), but the documents are served on port 8032, which the
+  cloud build session's proxy does not support, so they could not be fetched here; (3) name the independent checker.  The engineering that does not need them can
   start: the rule schema with dimensional checking (R-RULE-1, R-NUM-2), the demo-mode guard
   (R-SEC-2), the float in the true-up XLSX export (R-NUM-1 defect).
 - *The way in (increment 52):* `/client/atlas` (map of India → state → discom → norms →

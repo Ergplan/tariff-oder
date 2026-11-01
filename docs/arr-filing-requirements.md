@@ -259,8 +259,12 @@ release gate is:
 **One commission, one licensee, one complete historical filing, reproduced and
 independently signed off** — before more states, Q&A, voice or interface work.
 
-1. Obtain the NPCL FY2026-27 petition package and its underlying records; register them as
-   organisation-private sources (R-DATA-4).
+1. Obtain the NPCL FY2026-27 petition package and its underlying records.  **Located
+   (2026-11-01):** NPCL publishes both the FY2026-27 and the FY2025-26 petitions in full,
+   with their records, on its website; the documents are listed in
+   `packages/reference-filings/` and downloaded and hashed with
+   `scripts/fetch_reference_filing.py` on the VM.  Being public, they are real shared
+   sources; a client's unpublished records remain organisation-private (R-DATA-4).
 2. Key the petition's formats as the **reference** (human-keyed, reviewed) — the target the
    reproduction is measured against.
 3. Register the applicable UPERC regulations (all versions and amendments in force for the
