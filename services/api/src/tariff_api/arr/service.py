@@ -824,3 +824,93 @@ def generate_draft(
         after={"numbers": trace["numbers"], "template": f"{template.id} v{template.version} ({template.status})"},
     )
     return draft
+
+
+# ------------------------------------------------------------------ exports (increment 36)
+
+
+def history_workbook(session: Session, utility: Utility) -> bytes:
+    """A licensee's reviewed, published ARR facts as a workbook: one row per fact with the
+    order, page and excerpt it is printed on.  The disallowance sheet is derived (petitioned
+    less approved, same order) and says so; nothing in it is a fact of its own."""
+    import io
+
+    from openpyxl import Workbook
+    from openpyxl.styles import Font
+
+    h = history(session, utility)
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Facts"
+    ws.append([f"{utility.name} ({utility.code}): reviewed, published ARR facts"])
+    ws["A1"].font = Font(bold=True)
+    ws.append(
+        [
+            "FIXTURE: synthetic data, not a real licensee"
+            if h["is_fixture"]
+            else "Each row is a value a person reviewed against the order's page and published."
+        ]
+    )
+    ws.append(
+        [
+            "Line",
+            "Particulars",
+            "Fiscal year",
+            "Voice",
+            "Category",
+            "Value",
+            "Unit",
+            "As printed",
+            "Printed unit",
+            "Order",
+            "Page",
+            "Excerpt",
+            "Fact id",
+        ]
+    )
+    for c in ws[3]:
+        c.font = Font(bold=True)
+    for line in h["lines"]:
+        for cell in line["cells"]:
+            for f in cell["facts"]:
+                v = f["canonical_value"]
+                ws.append(
+                    [
+                        line["line_code"],
+                        line["label"],
+                        cell["fiscal_year"],
+                        f["value_type"],
+                        f["category_code"] or "",
+                        float(Decimal(v)) if v is not None else f["value_state"],
+                        f["canonical_unit"],
+                        f["stated_value"],
+                        f["stated_unit"],
+                        f["order"],
+                        f["page"],
+                        f["excerpt"],
+                        f["fact_id"],
+                    ]
+                )
+                if v is not None:
+                    ws.cell(row=ws.max_row, column=6).number_format = "#,##0.00"
+    for col, width in zip("ABCDEFGHIJKLM", (16, 40, 12, 18, 10, 14, 12, 14, 12, 40, 6, 40, 38), strict=True):
+        ws.column_dimensions[col].width = width
+    ds = wb.create_sheet("Disallowance (derived)")
+    ds.append(["Derived: petitioned less approved in the same order, money lines only. Not a fact."])
+    ds.append(["Line", "Particulars", "Fiscal year", "Disallowance", "Unit", "Order (source id)"])
+    for line in h["lines"]:
+        for cell in line["cells"]:
+            for d in cell["disallowance"]:
+                ds.append(
+                    [
+                        line["line_code"],
+                        line["label"],
+                        cell["fiscal_year"],
+                        float(Decimal(d["value"])),
+                        d["unit"],
+                        d["source_id"],
+                    ]
+                )
+    buf = io.BytesIO()
+    wb.save(buf)
+    return buf.getvalue()

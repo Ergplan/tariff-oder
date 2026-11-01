@@ -266,3 +266,39 @@ def freeze_statement(case_id: uuid.UUID, principal: Principal = Depends(require_
         cases.freeze_statement(s, case, actor=principal.email)
         s.flush()
         return _out(s, case, with_readiness=True)
+
+
+@router.get("/{case_id}/activity", response_model=list[dict])
+def activity(case_id: uuid.UUID, principal: Principal = Depends(require_analyst)) -> list[dict]:
+    """Who did what in the case, newest first: the case's own events and those of the
+    assumptions and actuals entered in it (from the audit trail)."""
+    from ..models import ArrAssumption, ArrAssumptionSet, AuditEvent
+
+    with session_scope() as s:
+        case = _case(s, case_id, principal)
+        sets, nxt = [], case.assumption_set_id
+        while nxt is not None and nxt not in sets:
+            sets.append(nxt)
+            aset = s.get(ArrAssumptionSet, nxt)
+            nxt = aset.based_on_id if aset is not None else None
+        ids = [str(a) for (a,) in s.execute(select(ArrAssumption.id).where(ArrAssumption.set_id.in_(sets))).all()]
+        q = (
+            select(AuditEvent)
+            .where(
+                ((AuditEvent.entity_type == "arr_case") & (AuditEvent.entity_id == str(case.id)))
+                | ((AuditEvent.entity_type == "arr_assumption") & AuditEvent.entity_id.in_(ids or ["-"]))
+            )
+            .order_by(AuditEvent.at.desc(), AuditEvent.id.desc())
+            .limit(200)
+        )
+        return [
+            {
+                "at": e.at.isoformat(),
+                "actor": e.actor,
+                "action": e.action,
+                "after": e.after,
+                "before": e.before,
+                "reason": e.reason,
+            }
+            for e in s.execute(q).scalars()
+        ]

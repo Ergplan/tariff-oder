@@ -51,3 +51,22 @@ def test_benchmarks_are_derived_from_published_facts_with_their_inputs(client, r
     roe = {r["code"]: r for r in p["licensees"]}["SYNTH-BM-A"]["values"]["roe_share_of_expenditure"]
     assert roe["value"] is None and "C.TOTAL" in roe["reason"]
     assert {r["code"]: r for r in p["licensees"]}["SYNTH-BM-A"]["values"]["pp_cost_per_unit_input"]["value"] == "5.150"
+
+    # a licensee's reviewed history as a workbook: one row per fact, with its order and page
+    r = client.get("/arr/utilities/SYNTH-BM-A/history.xlsx", headers=headers(CLIENT_A))
+    assert r.status_code == 200 and "ARR-history-SYNTH-BM-A.xlsx" in r.headers["content-disposition"]
+    import io
+
+    from openpyxl import load_workbook
+
+    wb = load_workbook(io.BytesIO(r.content))
+    assert wb.sheetnames == ["Facts", "Disallowance (derived)"]
+    ws = wb["Facts"]
+    assert "FIXTURE" in ws["A2"].value
+    rows = [row for row in ws.iter_rows(min_row=4, values_only=True)]
+    pp = next(x for x in rows if x[0] == "C.PP" and x[2] == "FY2025-26" and x[3] == "approved")
+    assert pp[5] == 5000.0 and pp[9].startswith("SYNTHETIC_arr_order") and pp[10] == 3 and pp[12]
+    assert len(rows) == len({x[12] for x in rows})  # one row per fact
+    dis = [x for x in wb["Disallowance (derived)"].iter_rows(min_row=3, values_only=True)]
+    # petitioned 5,150 less approved 5,000 in the same order
+    assert any(d[0] == "C.PP" and d[2] == "FY2025-26" and d[3] == 150.0 for d in dis)

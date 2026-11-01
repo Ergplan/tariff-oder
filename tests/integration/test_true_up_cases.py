@@ -226,6 +226,14 @@ def test_true_up_case_from_actuals_to_draft(client, runner, object_store_root):
     assert "could not check" in text and "not an amount the Commission has allowed" in text
     assert client.get(f"/cases/{cid}", headers=headers(CLIENT_A)).json()["status"] == "drafted"
 
+    # ---- the case's activity: who did what, newest first; private to the organisation
+    act = client.get(f"/cases/{cid}/activity", headers=headers(CLIENT_A_VIEWER)).json()
+    actions = [a["action"] for a in act]
+    assert actions[0] == "arr_case.drafted" and "arr_case.frozen" in actions and "arr_case.created" == actions[-1]
+    assert actions.count("arr_case.actual_added") == len(approved) + 1 and "arr_case.actual_removed" in actions
+    assert all(a["actor"] == CLIENT_A for a in act)
+    assert client.get(f"/cases/{cid}/activity", headers=headers(CLIENT_B)).status_code == 404
+
     # ---- revise: the statement thaws, the draft stays on record
     r = client.post(f"/cases/{cid}/revise", headers=headers(CLIENT_A))
     assert r.status_code == 200 and r.json()["status"] == "assumptions" and r.json()["draft_id"] is None

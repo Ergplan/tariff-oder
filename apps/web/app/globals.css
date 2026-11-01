@@ -249,3 +249,6 @@ button[data-tone="plain"] { background: white; color: var(--accent); border: 1px
 .arr-page { position: sticky; top: 0.5rem; }
 .arr-grid td[data-flag="identity"] { background: #fde3e3; }
 @media (max-width: 1100px) { .arr-review { grid-template-columns: 1fr; } }
+
+.activity { margin: 0.5rem 0 0; padding-left: 1.2rem; font-size: 0.9rem; }
+.activity li { margin: 0.2rem 0; }

@@ -49,6 +49,11 @@ export default async function ArrHistoryPage({ params }: { params: Promise<{ uti
         </span>{" "}
         Reviewed and published numbers as the commission printed them (canonical units: Rs crore, MU, percent). Each cell names the order and page. No projection appears in this grid.
       </p>
+      {lines.length ? (
+        <p>
+          <a href={`/api/client/arr/utilities/${encodeURIComponent(h.utility)}/history.xlsx`}>Download as Excel</a> <span className="muted">(one row per fact, with its order, page and excerpt)</span>
+        </p>
+      ) : null}
       {lines.length === 0 ? (
         <div className="banner" data-tone="neutral">
           No ARR fact is published for this licensee yet. Read an order&apos;s ARR from its source page, have the chapters and lines reviewed, then publish.

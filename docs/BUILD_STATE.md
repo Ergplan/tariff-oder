@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -628,6 +628,14 @@ open-access view.
   identity failure).  **Not yet seen on a real combined order:** the UPERC and BERC orders lay
   out per-discom figures in ways this has not been checked against (a separate table per
   discom, annexures per discom, discoms as rows) — the first real read will tell.
+
+  **Increment 36 (2026-11-01): case activity and the history workbook.**  `GET
+  /cases/{id}/activity`: who did what in a case, newest first (the case's own audit events and
+  those of the assumptions in its set chain), private to the organisation; shown as an
+  "Activity" panel on both case screens.  `GET /arr/utilities/{code}/history.xlsx`: a
+  licensee's reviewed, published ARR facts as a workbook, one row per fact with its order, page,
+  excerpt and fact id, plus a "Disallowance (derived)" sheet that says it is derived; linked
+  from the history page as "Download as Excel".
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1182,6 +1190,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 36 (2026-11-01): 351 passed** (the true-up test now checks the case activity and its isolation; the benchmarks test downloads the history workbook and checks one row per fact with order, page and fact id, and the derived disallowance).  The run took 8 min 46 s because the local stack was parsing a 423-page real order at the same time.
 - **Increment 35 (2026-11-01): 351 passed** (+1 integration: a synthetic combined order, licensees set by an administrator, values attributed per column and per caption, the total column skipped, identities per licensee, facts published per licensee, benchmarks per licensee; the library test also checks that acquiring one document for a second licensee records a combined order).
 - **Increment 34 (2026-11-01): 350 passed** (+1 integration: two synthetic licensees read and published; the six ratios and their inputs; fixtures only on request; a rejected petition total gives a reason, not a value).
 - **Increment 33 (2026-11-01): 349 passed** (+3 unit: a static listing with rows_only, the listing's licensee, aliases, the year floor and the title rules; following order pages to an embedded PDF; every packaged profile loads).

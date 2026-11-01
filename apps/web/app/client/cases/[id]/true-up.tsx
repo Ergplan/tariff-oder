@@ -3,6 +3,7 @@ import type { ArrActualOut, ArrCaseOut } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { ActionButton } from "../../actions";
 import ActualForm from "./actual-form";
+import CaseActivity from "./activity";
 
 const STEPS = [
   { key: "setup", label: "1 Setup" },
@@ -240,6 +241,7 @@ export default async function TrueUpCase({ c, role }: { c: ArrCaseOut; role: str
           <ActionButton path={`cases/${c.id}/revise`} label="Revise (unfreeze the actuals)" tone="plain" confirm="The frozen statement and its drafts stay on record. Continue?" />
         </p>
       ) : null}
+      <CaseActivity caseId={c.id} />
     </>
   );
 }

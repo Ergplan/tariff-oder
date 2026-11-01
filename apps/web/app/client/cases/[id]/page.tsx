@@ -5,6 +5,7 @@ import { ErrorBanner } from "../../../components";
 import { ActionButton } from "../../actions";
 import AssumptionForm from "./assumption-form";
 import TrueUpCase from "./true-up";
+import CaseActivity from "./activity";
 
 export const dynamic = "force-dynamic";
 
@@ -264,6 +265,7 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
           <ActionButton path={`cases/${c.id}/revise`} label="Revise (new assumptions version)" tone="plain" confirm="The frozen version and its drafts stay on record. Continue?" />
         </p>
       ) : null}
+      <CaseActivity caseId={c.id} />
     </>
   );
 }

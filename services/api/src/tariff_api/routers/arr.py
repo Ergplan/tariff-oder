@@ -221,6 +221,25 @@ def history(code: str) -> ArrHistoryOut:
         return ArrHistoryOut(**arr.history(s, _utility(s, code)))
 
 
+@router.get(
+    "/arr/utilities/{code}/history.xlsx",
+    dependencies=[Depends(require_analyst)],
+    responses={200: {"description": "the licensee's reviewed ARR facts as a workbook, each with its order and page"}},
+)
+def history_xlsx(code: str) -> Response:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        u = _utility(s, code)
+        body = arr.history_workbook(s, u)
+        name = f"ARR-history-{u.code}.xlsx"
+    return Response(
+        body,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        headers={"Content-Disposition": _disposition(name)},
+    )
+
+
 def _set_out(s, aset: ArrAssumptionSet) -> ArrAssumptionSetOut:
     from ..arr import service as arr
 
