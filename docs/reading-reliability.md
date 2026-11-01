@@ -82,6 +82,20 @@ extraction exists, so most structure- and value-level rows are `n/a-yet` by desi
 | N10 | Two distribution-loss numbers with different roles | handled by VAL-08 loss-role separation: an `oa_loss` must cite a `network_charges` region, a `distribution_loss_approved` a `loss_trajectory` region, and one evidence span never supports both (`test_val08_loss_roles_are_never_fungible`); no loss candidate is produced yet (n/a-yet for extraction) |
 | N11 | Green tariff as a premium with category-specific values and exclusions | handled: `green_tariff_prose` reads `Rs 0.34 per unit for HV categories and Rs 0.17 per unit for LMV categories` into two scoped `green_premium` candidates with the regulatory-discount exclusion attached as a condition; paise forms too (`test_green_tariff_prose_yields_scoped_premiums_with_the_exclusion_condition`) |
 
+## ARR reading (ADR-0018; measured on real orders from increment 37)
+
+| Id | Failure mode | Status |
+| --- | --- | --- |
+| A1 | Running headers, contents entries, table captions, table rows and numbered prose read as chapter headings | handled (chapter rules v2): page furniture (a line in the first or last three lines of five or more pages), dotted leaders, captions, rows (two or more numbers, or wide gaps), numbered prose and dates are not headings; a numbered order follows the heaviest never-decreasing run of its section numbers.  **Measured:** NPCL FY2026-27 (UPERC, 423 pp.) 229 → 30 chapters matching its sections; BERC FY2026-27 combined (612 pp.) 36 on first contact.  Test `test_chapters_of_a_long_order_follow_its_numbered_sections` |
+| A2 | Year only in the table's title; only the voice in the column header | handled (arr-rules-2): the year from the title, else from the part heading when the part names a true-up, APR or ARR.  Test `test_real_order_table_layouts_are_read` |
+| A3 | The same word "Approved" means the ARR approval, the trued-up value or the provisional APR value depending on the part; "Approved in TO dated …" is an earlier order's approval | handled: the nearest words decide — the header, then the part, then the title; an earlier order's approval stays `approved`.  Same test |
+| A4 | Reference, formula, S. No. and unit columns taken as the row label | handled: the label column by its header or its text; a units column gives the row's unit.  Same test |
+| A5 | Paragraphs above a table taken as its caption (years and voices from prose) | handled: only the table's own title (its "Table …" line and continuation, else the line right above) gives a year or a voice; a title naming several years is ambiguous.  Found on BERC |
+| A6 | A section's own "Total Cost" placed on total expenditure | handled: the ARR's totals are placed only in an ARR or gap chapter or a table titled as the summary.  Found by identity ARR-I1 on NPCL.  Test `test_the_arr_totals_are_placed_only_in_summary_context` |
+| A7 | Combined orders: several licensees' values in one table | handled when a column or the title names the licensee; a total across licensees, or a column naming none, is reported and skipped.  Test `test_a_combined_order_is_read_and_published_per_licensee`; measured on BERC (573 values attributed) |
+| A8 | Identities that depend on a commission's convention (what the printed gap carries; which loss and which sales gross up to energy input) | **open**: ARR-I3 fails on NPCL FY2026-27 (printed gap 319.29 vs ARR less revenue 228.23), ARR-I4 on BERC (0.6–2.0 %); the mapping's `gap_convention` and loss definition must be set by a reviewer |
+| A9 | Precision over all values of a real order | **not measured**: needs a reviewer's decisions on a confirmed mapping; spot checks of the NPCL ARR and APR summaries and BERC's per-licensee ARR table match the pages |
+
 ## Pipeline-level
 
 | # | Failure mode | Detection | Handling | Fixture | Test | Status |
