@@ -1,6 +1,6 @@
 # ARR specification (Milestone 12 — ARR foundation)
 
-Status: **specification and taxonomy only** (2026-09-21).  Authorised scope: distribution
+Status: specification and taxonomy (2026-09-21); **Increment A built on SYNTHETIC fixtures (2026-11-01, ADR-0018)**: sections 10 and 11 below.  Authorised scope: distribution
 and transmission licensees; UPERC, KERC and GERC first; three financial years plus the
 multi-year (MYT) control-period orders; the tariff regulations mapped to every line; a
 what-if engine limited to the power purchase mix.  The master prompt's Milestone 12 says
@@ -169,3 +169,41 @@ average tariff change needed to close the gap over approved sales.  Rules:
 The specification is accepted when the three hand-mappings exist with their unplaced lists
 reviewed; that gate needs the three exported orders in `exchange/` and a reviewer day per
 commission.  Pipeline code starts only after that gate.
+
+## 10. Formulation (Increment A, ADR-0018)
+
+A **formulation** computes the ARR for target years from reviewed facts, assumptions and
+regulation parameters.  It is a projection: its own tables, labelled everywhere, never a
+fact, never in the history grid.
+
+- **Plan** (`packages/arr-taxonomy/formulation/<commission>-plan.v<n>.json`): which formula
+  computes which line, the inputs and parameter keys, the unit, the rounding precision and
+  the **base-selection rule** (the order of voices taken as the base year's value: final
+  true-up, else provisional, else approved).  `syntherc` is synthetic; `uperc` is a skeleton.
+- **Formula library** (`tariff_api.arr.formulate`, `lib-1`): `carry_forward`, `escalate`,
+  `assumption`, `sum`, `net`, `energy_input`, `quantity_x_rate`, `rate_on`, `acos`.  Decimal
+  arithmetic, each line rounded half-up to the plan's precision.
+- **Parameters are assumptions**: `user` (a named person and a rationale) or
+  `regulation_clause` (the regulation must be a registered source of type regulation, the
+  excerpt must be on the cited page, the value must be printed in the excerpt; the
+  confirming reviewer is recorded).  A missing parameter blocks its line and every line that
+  depends on it, with the reason; nothing is defaulted.
+- **Versions**: a formulation records the facts and assumptions it used by id and an input
+  hash; freezing it freezes its assumption set; `reproduce` recomputes from the recorded
+  inputs and must match line for line and hash for hash.
+- The identities of section 4 run over each year's projections.
+
+## 11. Filing draft (Increment A, ADR-0018)
+
+A **filing draft** renders a frozen formulation into the commission's petition formats
+(XLSX) and a narrative (DOCX).  Templates are data in `packages/filing-templates/<commission>/`.
+
+- Numbers enter only through placeholders (`{proj:…}`, `{fact:…}`, `{assumption:…}`); each
+  gets a trace id in the trace annex (DOCX table, XLSX sheet, a comment on each format
+  cell).  `{fy:…}`, `{formula:…}` and `{clause:…}` add words.
+- Refused: a literal digit in template text, a placeholder that does not resolve, a number
+  with no origin.  A blocked projection renders as `[blocked: reason]`.
+- Watermark on every page and sheet: "DRAFT — prepared with software assistance; not
+  filed".  `filing_drafts.status` can only be `draft`.  No submission automation.
+- Model-drafted narrative prose (marked for human editing, numbers still bound to trace
+  ids) and the UPERC formats confirmed against the regulation are Increment E.

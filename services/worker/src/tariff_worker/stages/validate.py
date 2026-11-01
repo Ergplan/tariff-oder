@@ -50,7 +50,15 @@ def validate_source(ctx: JobContext) -> dict:
                 "invalid_transition", f"source in state {src.state.value}; validate needs extracted", retry=False
             )
         profile = load_profile(src.reading_profile_id, src.reading_profile_version)
-        rows = s.execute(select(CandidateRecord).where(CandidateRecord.source_id == source_id)).scalars().all()
+        rows = (
+            s.execute(
+                select(CandidateRecord).where(
+                    CandidateRecord.source_id == source_id, CandidateRecord.payload_kind == "tariff"
+                )
+            )
+            .scalars()
+            .all()
+        )
         # reviewer corrections are the effective proposal; the extractor's record stays as read
         cands = [Candidate.model_validate(r.effective_record) for r in rows]
         by_key: dict[str, list[CandidateRecord]] = {}

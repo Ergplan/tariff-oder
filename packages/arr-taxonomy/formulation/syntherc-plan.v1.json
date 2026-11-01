@@ -1,0 +1,160 @@
+{
+  "id": "syntherc-plan",
+  "version": 1,
+  "commission": "SYNTHERC",
+  "status": "synthetic",
+  "precision": "0.01",
+  "base_rule": {
+    "version": 1,
+    "prefer": [
+      "final_true_up",
+      "provisional_true_up",
+      "approved",
+      "control_period"
+    ],
+    "note": "The base year's value: the final true-up where one exists, else the provisional, else the approval."
+  },
+  "lines": [
+    {
+      "line_code": "E.SALES",
+      "formula": "assumption",
+      "params": {
+        "value": "E.SALES"
+      },
+      "unit": "MU",
+      "note": "sales forecast entered by the user"
+    },
+    {
+      "line_code": "E.LOSS.DIST_PCT",
+      "formula": "assumption",
+      "params": {
+        "value": "E.LOSS.DIST_PCT"
+      },
+      "unit": "percent",
+      "note": "loss trajectory: a regulation clause or a user assumption"
+    },
+    {
+      "line_code": "E.INPUT.DIST",
+      "formula": "energy_input",
+      "inputs": {
+        "sales": "E.SALES",
+        "loss_pct": "E.LOSS.DIST_PCT"
+      },
+      "unit": "MU"
+    },
+    {
+      "line_code": "C.PP",
+      "formula": "quantity_x_rate",
+      "inputs": {
+        "quantity": "E.INPUT.DIST"
+      },
+      "params": {
+        "rate_inr_per_kwh": "param.pp_rate_inr_per_kwh"
+      },
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "C.TX",
+      "formula": "escalate",
+      "params": {
+        "rate_pct": "param.tx_growth_pct"
+      },
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "C.OM",
+      "formula": "escalate",
+      "params": {
+        "rate_pct": "param.om_escalation_pct"
+      },
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "C.DEP",
+      "formula": "carry_forward",
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "C.INT.LOAN",
+      "formula": "carry_forward",
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "C.INT.WC",
+      "formula": "escalate",
+      "params": {
+        "rate_pct": "param.iwc_growth_pct"
+      },
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "C.RETURN.ROE",
+      "formula": "carry_forward",
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "C.TOTAL",
+      "formula": "sum",
+      "inputs": {
+        "of": [
+          "C.PP",
+          "C.TX",
+          "C.OM",
+          "C.DEP",
+          "C.INT.LOAN",
+          "C.INT.WC",
+          "C.RETURN.ROE"
+        ]
+      },
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "L.NTI",
+      "formula": "carry_forward",
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "R.ARR",
+      "formula": "net",
+      "inputs": {
+        "from": "C.TOTAL",
+        "less": [
+          "L.NTI"
+        ]
+      },
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "R.REV.EXISTING",
+      "formula": "quantity_x_rate",
+      "inputs": {
+        "quantity": "E.SALES"
+      },
+      "params": {
+        "rate_inr_per_kwh": "param.avg_realisation_inr_per_kwh"
+      },
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "R.GAP",
+      "formula": "net",
+      "inputs": {
+        "from": "R.ARR",
+        "less": [
+          "R.REV.EXISTING"
+        ]
+      },
+      "unit": "INR_crore"
+    },
+    {
+      "line_code": "R.ACOS",
+      "formula": "acos",
+      "inputs": {
+        "arr": "R.ARR",
+        "sales": "E.SALES"
+      },
+      "unit": "INR_per_kWh"
+    }
+  ],
+  "note": "SYNTHETIC fixture plan for tests; not a regulation."
+}

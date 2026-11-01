@@ -1,20 +1,51 @@
-"""ARR foundation, read-only: the taxonomy and the commission mappings as the app sees them
-(ARR spec sections 2 and 3).  Data files served through the models; nothing here writes."""
+"""ARR (ARR spec, ADR-0017, ADR-0018): the taxonomy and commission mappings as the app sees
+them; the ARR reading track of an order (chapters, candidates, identity findings,
+publication); the reviewed ARR history of a licensee; assumption sets, formulations and
+filing drafts.  Facts, assumptions and projections are separate resources and every
+response names its kind.  Nothing here approves a candidate or files a petition."""
 
 from __future__ import annotations
 
+import uuid
+from collections import Counter
 from typing import Any
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request, Response
+from sqlalchemy import select
 
-from ..auth import require_analyst
+from ..adapters.storage import ObjectNotFound, ObjectStore
+from ..auth import Principal, require_admin, require_analyst, require_reviewer
+from ..db import session_scope
 from ..errors import AppError
-from ..schemas import ArrMappingOut, ArrTaxonomyOut
+from ..models import ArrAssumptionSet, ArrFormulation, FilingDraft, SourceDocument, Utility
+from ..schemas import (
+    ArrAssumptionIn,
+    ArrAssumptionOut,
+    ArrAssumptionSetCreate,
+    ArrAssumptionSetOut,
+    ArrChapterDecision,
+    ArrChapterOut,
+    ArrChapterUpdate,
+    ArrFormulationCreate,
+    ArrFormulationOut,
+    ArrHistoryOut,
+    ArrMappingOut,
+    ArrProjectionLineOut,
+    ArrPublishOut,
+    ArrReadingOut,
+    ArrReproduceOut,
+    ArrTaxonomyOut,
+    CandidateList,
+    CandidateOut,
+    FilingDraftOut,
+    FindingOut,
+    JobSummary,
+)
 
-router = APIRouter(prefix="/arr", tags=["arr"], dependencies=[Depends(require_analyst)])
+router = APIRouter(tags=["arr"])
 
 
-@router.get("/taxonomy", response_model=ArrTaxonomyOut)
+@router.get("/arr/taxonomy", response_model=ArrTaxonomyOut, dependencies=[Depends(require_analyst)])
 def get_taxonomy() -> ArrTaxonomyOut:
     from ..arr.taxonomy import load_taxonomy, mapping_files
 
@@ -32,7 +63,7 @@ def get_taxonomy() -> ArrTaxonomyOut:
     )
 
 
-@router.get("/mappings/{commission}", response_model=ArrMappingOut)
+@router.get("/arr/mappings/{commission}", response_model=ArrMappingOut, dependencies=[Depends(require_analyst)])
 def get_mapping(commission: str, version: int | None = None) -> ArrMappingOut:
     from ..arr.taxonomy import load_mapping
 
@@ -42,3 +73,370 @@ def get_mapping(commission: str, version: int | None = None) -> ArrMappingOut:
         raise AppError("not_found", f"no ARR mapping for {commission}") from e
     d: dict[str, Any] = m.model_dump()
     return ArrMappingOut(**d)
+
+
+# ------------------------------------------------------------------ reading track of an order
+
+
+def _source(s, source_id: uuid.UUID) -> SourceDocument:
+    src = s.get(SourceDocument, source_id)
+    if src is None:
+        raise AppError("not_found", f"source {source_id} not found")
+    return src
+
+
+def _reading(s, src: SourceDocument) -> ArrReadingOut:
+    from ..arr import service as arr
+    from ..services.review import arr_mapping_confirmed
+
+    ok, why = arr_mapping_confirmed(s, src)
+    counts = Counter(c.review_status for c in arr.arr_candidates(s, src.id))
+    return ArrReadingOut(
+        source_id=src.id,
+        arr_state=src.arr_state,
+        arr_summary=src.arr_summary,
+        chapters=[ArrChapterOut.model_validate(c, from_attributes=True) for c in arr.chapters(s, src.id)],
+        candidates_by_status=dict(counts),
+        findings=[FindingOut.model_validate(f, from_attributes=True) for f in arr.arr_findings(s, src.id)],
+        mapping_confirmed=ok,
+        mapping_note=why or "confirmed",
+    )
+
+
+@router.post("/sources/{source_id}/arr/read", response_model=JobSummary, status_code=202)
+def read_arr(source_id: uuid.UUID, request: Request, principal: Principal = Depends(require_admin)) -> JobSummary:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        src = _source(s, source_id)
+        job = arr.start_reading(s, request.app.state.settings, src, actor=principal.email)
+        s.flush()
+        return JobSummary.model_validate(job, from_attributes=True)
+
+
+@router.get("/sources/{source_id}/arr", response_model=ArrReadingOut, dependencies=[Depends(require_analyst)])
+def get_reading(source_id: uuid.UUID) -> ArrReadingOut:
+    with session_scope() as s:
+        return _reading(s, _source(s, source_id))
+
+
+@router.put("/sources/{source_id}/arr/chapters/{chapter_id}", response_model=ArrChapterOut)
+def update_chapter(
+    source_id: uuid.UUID,
+    chapter_id: uuid.UUID,
+    body: ArrChapterUpdate,
+    principal: Principal = Depends(require_reviewer),
+) -> ArrChapterOut:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        src = _source(s, source_id)
+        ch = arr.update_chapter(s, src, chapter_id, actor=principal.email, **body.model_dump())
+        s.flush()
+        return ArrChapterOut.model_validate(ch, from_attributes=True)
+
+
+@router.post("/sources/{source_id}/arr/chapters/decision", response_model=ArrReadingOut)
+def confirm_chapters(
+    source_id: uuid.UUID, body: ArrChapterDecision, request: Request, principal: Principal = Depends(require_reviewer)
+) -> ArrReadingOut:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        src = _source(s, source_id)
+        arr.confirm_chapters(s, request.app.state.settings, src, actor=principal.email, rationale=body.rationale)
+        s.flush()
+        return _reading(s, src)
+
+
+@router.get(
+    "/sources/{source_id}/arr/candidates", response_model=CandidateList, dependencies=[Depends(require_analyst)]
+)
+def list_arr_candidates(source_id: uuid.UUID) -> CandidateList:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        _source(s, source_id)
+        rows = arr.arr_candidates(s, source_id)
+        return CandidateList(
+            candidates=[CandidateOut.model_validate(r, from_attributes=True) for r in rows],
+            total=len(rows),
+            limit=len(rows),
+            offset=0,
+        )
+
+
+@router.post("/sources/{source_id}/arr/publish", response_model=ArrPublishOut)
+def publish_arr(source_id: uuid.UUID, principal: Principal = Depends(require_reviewer)) -> ArrPublishOut:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        out = arr.publish(s, _source(s, source_id), actor=principal.email)
+        return ArrPublishOut(**out)
+
+
+# ------------------------------------------------------------------ licensee: history, assumptions, formulations
+
+
+def _utility(s, code: str) -> Utility:
+    from ..arr.service import utility_by_code
+
+    return utility_by_code(s, code)
+
+
+@router.get("/arr/utilities/{code}/history", response_model=ArrHistoryOut, dependencies=[Depends(require_analyst)])
+def history(code: str) -> ArrHistoryOut:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        return ArrHistoryOut(**arr.history(s, _utility(s, code)))
+
+
+def _set_out(s, aset: ArrAssumptionSet) -> ArrAssumptionSetOut:
+    from ..arr import service as arr
+
+    u = s.get(Utility, aset.utility_id)
+    return ArrAssumptionSetOut(
+        id=aset.id,
+        utility=u.code,
+        name=aset.name,
+        version=aset.version,
+        status=aset.status,
+        based_on_id=aset.based_on_id,
+        created_by=aset.created_by,
+        created_at=aset.created_at,
+        frozen_at=aset.frozen_at,
+        assumptions=[ArrAssumptionOut.model_validate(a, from_attributes=True) for a in arr.assumptions_of(s, aset.id)],
+    )
+
+
+@router.post("/arr/utilities/{code}/assumption-sets", response_model=ArrAssumptionSetOut, status_code=201)
+def create_assumption_set(
+    code: str, body: ArrAssumptionSetCreate, principal: Principal = Depends(require_reviewer)
+) -> ArrAssumptionSetOut:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        aset = arr.create_assumption_set(
+            s, _utility(s, code), body.name, actor=principal.email, based_on=body.based_on_id
+        )
+        s.flush()
+        s.refresh(aset)
+        return _set_out(s, aset)
+
+
+@router.get(
+    "/arr/utilities/{code}/assumption-sets",
+    response_model=list[ArrAssumptionSetOut],
+    dependencies=[Depends(require_analyst)],
+)
+def list_assumption_sets(code: str) -> list[ArrAssumptionSetOut]:
+    with session_scope() as s:
+        u = _utility(s, code)
+        rows = s.execute(
+            select(ArrAssumptionSet)
+            .where(ArrAssumptionSet.utility_id == u.id)
+            .order_by(ArrAssumptionSet.name, ArrAssumptionSet.version.desc())
+        ).scalars()
+        return [_set_out(s, a) for a in rows]
+
+
+def _aset(s, set_id: uuid.UUID) -> ArrAssumptionSet:
+    aset = s.get(ArrAssumptionSet, set_id)
+    if aset is None:
+        raise AppError("not_found", f"assumption set {set_id} not found")
+    return aset
+
+
+@router.get(
+    "/arr/assumption-sets/{set_id}", response_model=ArrAssumptionSetOut, dependencies=[Depends(require_analyst)]
+)
+def get_assumption_set(set_id: uuid.UUID) -> ArrAssumptionSetOut:
+    with session_scope() as s:
+        return _set_out(s, _aset(s, set_id))
+
+
+@router.post("/arr/assumption-sets/{set_id}/assumptions", response_model=ArrAssumptionOut, status_code=201)
+def add_assumption(
+    set_id: uuid.UUID, body: ArrAssumptionIn, request: Request, principal: Principal = Depends(require_reviewer)
+) -> ArrAssumptionOut:
+    from ..arr import service as arr
+
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        a = arr.add_assumption(s, storage, _aset(s, set_id), actor=principal.email, **body.model_dump())
+        s.flush()
+        s.refresh(a)
+        return ArrAssumptionOut.model_validate(a, from_attributes=True)
+
+
+def _formulation_out(s, f: ArrFormulation, *, with_lines: bool = True) -> ArrFormulationOut:
+    from ..arr import service as arr
+
+    u = s.get(Utility, f.utility_id)
+    lines = (
+        [ArrProjectionLineOut.model_validate(p, from_attributes=True) for p in arr.projection_lines(s, f.id)]
+        if with_lines
+        else []
+    )
+    d = {c: getattr(f, c) for c in ArrFormulationOut.model_fields if hasattr(f, c) and c not in ("lines", "kind")}
+    return ArrFormulationOut(**{**d, "utility": u.code, "lines": lines})
+
+
+def _formulation(s, formulation_id: uuid.UUID) -> ArrFormulation:
+    f = s.get(ArrFormulation, formulation_id)
+    if f is None:
+        raise AppError("not_found", f"formulation {formulation_id} not found")
+    return f
+
+
+@router.post("/arr/utilities/{code}/formulations", response_model=ArrFormulationOut, status_code=201)
+def create_formulation(
+    code: str, body: ArrFormulationCreate, principal: Principal = Depends(require_reviewer)
+) -> ArrFormulationOut:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        f = arr.create_formulation(
+            s,
+            _utility(s, code),
+            name=body.name,
+            base_fy=body.base_fy,
+            targets=[t.model_dump() for t in body.targets],
+            assumption_set_id=body.assumption_set_id,
+            actor=principal.email,
+        )
+        s.flush()
+        s.refresh(f)
+        return _formulation_out(s, f)
+
+
+@router.get(
+    "/arr/utilities/{code}/formulations",
+    response_model=list[ArrFormulationOut],
+    dependencies=[Depends(require_analyst)],
+)
+def list_formulations(code: str) -> list[ArrFormulationOut]:
+    with session_scope() as s:
+        u = _utility(s, code)
+        rows = s.execute(
+            select(ArrFormulation).where(ArrFormulation.utility_id == u.id).order_by(ArrFormulation.created_at.desc())
+        ).scalars()
+        return [_formulation_out(s, f, with_lines=False) for f in rows]
+
+
+@router.get(
+    "/arr/formulations/{formulation_id}", response_model=ArrFormulationOut, dependencies=[Depends(require_analyst)]
+)
+def get_formulation(formulation_id: uuid.UUID) -> ArrFormulationOut:
+    with session_scope() as s:
+        return _formulation_out(s, _formulation(s, formulation_id))
+
+
+@router.post("/arr/formulations/{formulation_id}/freeze", response_model=ArrFormulationOut)
+def freeze_formulation(
+    formulation_id: uuid.UUID, principal: Principal = Depends(require_reviewer)
+) -> ArrFormulationOut:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        f = arr.freeze_formulation(s, _formulation(s, formulation_id), actor=principal.email)
+        s.flush()
+        return _formulation_out(s, f)
+
+
+@router.post(
+    "/arr/formulations/{formulation_id}/reproduce",
+    response_model=ArrReproduceOut,
+    dependencies=[Depends(require_analyst)],
+)
+def reproduce_formulation(formulation_id: uuid.UUID) -> ArrReproduceOut:
+    from ..arr import service as arr
+
+    with session_scope() as s:
+        return ArrReproduceOut(**arr.reproduce(s, _formulation(s, formulation_id)))
+
+
+# ------------------------------------------------------------------ filing drafts
+
+
+def _draft_out(d: FilingDraft) -> FilingDraftOut:
+    from ..arr.filing import WATERMARK
+
+    return FilingDraftOut(
+        **{c: getattr(d, c) for c in FilingDraftOut.model_fields if c != "watermark"}, watermark=WATERMARK
+    )
+
+
+@router.post("/arr/formulations/{formulation_id}/drafts", response_model=FilingDraftOut, status_code=201)
+def generate_draft(
+    formulation_id: uuid.UUID, request: Request, principal: Principal = Depends(require_reviewer)
+) -> FilingDraftOut:
+    from ..arr import service as arr
+
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        d = arr.generate_draft(s, storage, _formulation(s, formulation_id), actor=principal.email)
+        s.flush()
+        s.refresh(d)
+        return _draft_out(d)
+
+
+@router.get(
+    "/arr/formulations/{formulation_id}/drafts",
+    response_model=list[FilingDraftOut],
+    dependencies=[Depends(require_analyst)],
+)
+def list_drafts(formulation_id: uuid.UUID) -> list[FilingDraftOut]:
+    with session_scope() as s:
+        _formulation(s, formulation_id)
+        rows = s.execute(
+            select(FilingDraft)
+            .where(FilingDraft.formulation_id == formulation_id)
+            .order_by(FilingDraft.generated_at.desc())
+        ).scalars()
+        return [_draft_out(d) for d in rows]
+
+
+def _draft(s, draft_id: uuid.UUID) -> FilingDraft:
+    d = s.get(FilingDraft, draft_id)
+    if d is None:
+        raise AppError("not_found", f"filing draft {draft_id} not found")
+    return d
+
+
+@router.get("/arr/drafts/{draft_id}", response_model=FilingDraftOut, dependencies=[Depends(require_analyst)])
+def get_draft(draft_id: uuid.UUID) -> FilingDraftOut:
+    with session_scope() as s:
+        return _draft_out(_draft(s, draft_id))
+
+
+_FILES = {
+    "petition.docx": ("docx_key", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+    "formats.xlsx": ("xlsx_key", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
+}
+
+
+@router.get(
+    "/arr/drafts/{draft_id}/{filename}",
+    dependencies=[Depends(require_analyst)],
+    responses={200: {"description": "the draft's DOCX narrative or XLSX formats"}},
+)
+def draft_file(draft_id: uuid.UUID, filename: str, request: Request) -> Response:
+    if filename not in _FILES:
+        raise AppError("not_found", "petition.docx or formats.xlsx")
+    attr, ctype = _FILES[filename]
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        d = _draft(s, draft_id)
+        key = getattr(d, attr)
+        prefix = f"DRAFT-{s.get(ArrFormulation, d.formulation_id).name}"[:60].replace(" ", "_")
+    try:
+        data = storage.get(ObjectStore.ARTEFACTS, key)
+    except ObjectNotFound as e:
+        raise AppError("storage_unavailable", "the draft's file is missing") from e
+    return Response(
+        content=data,
+        media_type=ctype,
+        headers={"Content-Disposition": f'attachment; filename="{prefix}-{filename}"'},
+    )

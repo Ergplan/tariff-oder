@@ -66,6 +66,7 @@ ORDER_TYPES = (
     "arr_true_up_order",
     "myt_order",
     "mid_term_review",
+    "arr_petition",
     "regulation",
     "regulation_amendment",
     "other",
@@ -105,6 +106,7 @@ class SourceClassification(BaseModel):
             "arr_true_up_order",
             "myt_order",
             "mid_term_review",
+            "arr_petition",
             "regulation",
             "regulation_amendment",
             "other",
@@ -498,6 +500,7 @@ class CandidateOut(BaseModel):
     id: uuid.UUID
     source_id: uuid.UUID
     candidate_key: str
+    payload_kind: str = "tariff"  # tariff | arr (ADR-0018)
     family: str
     category_code: str | None
     component_type: str
@@ -1297,3 +1300,186 @@ class ArrMappingOut(BaseModel):
     regulation_clauses: dict[str, Any]
     unplaced: dict[str, Any]
     known_quirks: list[str]
+
+
+# ------------------------------------------------------------------ ARR read, formulate, file (ADR-0018)
+
+
+class ArrChapterOut(BaseModel):
+    id: uuid.UUID
+    ordinal: int
+    branch: str
+    cue_text: str
+    cue_page: int
+    page_start: int
+    page_end: int
+    origin: str
+    status: str
+    mapping_id: str
+    mapping_version: int
+    decided_by: str | None
+    decided_at: datetime | None
+    note: str | None
+
+
+class ArrChapterUpdate(BaseModel):
+    page_start: int | None = Field(default=None, ge=1)
+    page_end: int | None = Field(default=None, ge=1)
+    status: Literal["proposed", "excluded"] | None = None
+    branch: str | None = None
+    note: str | None = None
+
+
+class ArrChapterDecision(BaseModel):
+    rationale: str = Field(min_length=1)
+
+
+class ArrReadingOut(BaseModel):
+    """The ARR track of one order: chapters, the counts of its candidates by review status,
+    and the identity findings.  Candidates are proposals, never facts."""
+
+    source_id: uuid.UUID
+    arr_state: str | None
+    arr_summary: dict[str, Any] | None
+    chapters: list[ArrChapterOut]
+    candidates_by_status: dict[str, int]
+    findings: list[FindingOut]
+    mapping_confirmed: bool
+    mapping_note: str
+
+
+class ArrPublishOut(BaseModel):
+    published: int
+    superseded: int
+    pending: int
+    published_at: str
+
+
+class ArrHistoryOut(BaseModel):
+    """Reviewed ARR facts of a licensee: line x year x voice x order.  ``kind`` is always
+    ``fact``; disallowance is computed for display, never stored."""
+
+    utility: str
+    utility_name: str
+    kind: Literal["fact"]
+    is_fixture: bool
+    years: list[str]
+    lines: list[dict[str, Any]]
+
+
+class ArrAssumptionIn(BaseModel):
+    key: str = Field(min_length=1, max_length=80)
+    fiscal_year: str = ""  # empty = every year
+    value: str
+    unit: str = Field(min_length=1, max_length=24)
+    source_kind: Literal["user", "regulation_clause"] = "user"
+    rationale: str = Field(min_length=1)
+    clause_ref: dict[str, Any] | None = None
+
+
+class ArrAssumptionOut(BaseModel):
+    id: uuid.UUID
+    key: str
+    fiscal_year: str
+    value: str
+    unit: str
+    source_kind: str
+    clause_ref: dict[str, Any] | None
+    rationale: str
+    entered_by: str
+    created_at: datetime
+    kind: Literal["assumption"] = "assumption"
+
+
+class ArrAssumptionSetCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=120)
+    based_on_id: uuid.UUID | None = None
+
+
+class ArrAssumptionSetOut(BaseModel):
+    id: uuid.UUID
+    utility: str
+    name: str
+    version: int
+    status: str
+    based_on_id: uuid.UUID | None
+    created_by: str
+    created_at: datetime
+    frozen_at: datetime | None
+    assumptions: list[ArrAssumptionOut]
+
+
+class ArrTarget(BaseModel):
+    fiscal_year: str
+    value_type: Literal["petitioned", "provisional_true_up", "final_true_up"] = "petitioned"
+
+
+class ArrFormulationCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=120)
+    base_fy: str
+    targets: list[ArrTarget] = Field(min_length=1)
+    assumption_set_id: uuid.UUID
+
+
+class ArrProjectionLineOut(BaseModel):
+    line_code: str
+    fiscal_year: str
+    status: str
+    value: str | None
+    unit: str | None
+    formula_id: str
+    formula_version: str
+    inputs: dict[str, Any]
+    regulation_clause: dict[str, Any] | None
+    blocked_reason: str | None
+    kind: Literal["projection"] = "projection"
+
+
+class ArrFormulationOut(BaseModel):
+    id: uuid.UUID
+    utility: str
+    name: str
+    base_fy: str
+    targets: list[dict[str, Any]]
+    plan_id: str
+    plan_version: int
+    library_version: str
+    base_rule: dict[str, Any]
+    assumption_set_id: uuid.UUID
+    inputs: dict[str, Any]
+    input_hash: str
+    summary: dict[str, Any]
+    status: str
+    is_fixture: bool
+    created_by: str
+    created_at: datetime
+    frozen_by: str | None
+    frozen_at: datetime | None
+    lines: list[ArrProjectionLineOut] = Field(default_factory=list)
+    kind: Literal["projection"] = "projection"
+
+
+class ArrReproduceOut(BaseModel):
+    identical: bool
+    input_hash: str
+    recomputed_hash: str
+    differences: list[dict[str, Any]]
+    library_version: str
+
+
+class FilingDraftOut(BaseModel):
+    """A draft petition: never filed (the schema allows no other status)."""
+
+    id: uuid.UUID
+    formulation_id: uuid.UUID
+    template_id: str
+    template_version: int
+    template_status: str
+    docx_sha256: str
+    xlsx_sha256: str
+    trace: dict[str, Any]
+    status: Literal["draft"]
+    is_fixture: bool
+    generated_by: str
+    generated_at: datetime
+    watermark: str

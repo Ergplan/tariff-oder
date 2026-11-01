@@ -12,6 +12,7 @@ from tariff_api.db import init_db
 from tariff_api.telemetry import configure_logging
 
 from .runner import Runner
+from .stages.arr import arr_extract_source, arr_localise_source, arr_validate_source
 from .stages.extract import extract_source
 from .stages.grid import grid_source
 from .stages.inventory import inventory_source
@@ -28,6 +29,10 @@ HANDLERS = {
     "grid_source": grid_source,
     "extract_source": extract_source,
     "validate_source": validate_source,
+    # the ARR track (ADR-0018), beside the tariff state machine
+    "arr_localise_source": arr_localise_source,
+    "arr_extract_source": arr_extract_source,
+    "arr_validate_source": arr_validate_source,
 }
 
 

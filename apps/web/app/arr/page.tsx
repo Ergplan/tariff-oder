@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ArrTaxonomyOut } from "@tariff/contracts";
+import type { ArrTaxonomyOut, RegistryOut } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../components";
 
@@ -25,7 +25,7 @@ const BRANCH_TITLE: Record<string, string> = {
  * hand-mapping, not here.
  */
 export default async function ArrTaxonomyPage() {
-  const res = await apiTry<ArrTaxonomyOut>("/arr/taxonomy");
+  const [res, reg] = await Promise.all([apiTry<ArrTaxonomyOut>("/arr/taxonomy"), apiTry<RegistryOut>("/registry")]);
   if (res.error || !res.data) {
     return (
       <>
@@ -85,6 +85,20 @@ export default async function ArrTaxonomyPage() {
         The specification is <code>docs/arr-spec.md</code>; the files are <code>packages/arr-taxonomy/</code>. A printed line that the generic aliases do not place goes to the commission mapping&apos;s
         unplaced list from <code>tariff-api arr-scan</code>, where a reviewer decides.
       </p>
+      <h2>Licensees</h2>
+      <p className="muted">The reviewed ARR history of a licensee, its formulations (projections) and its draft petitions.</p>
+      {reg.data ? (
+        <p>
+          {reg.data.utilities
+            .filter((u) => u.licensee_kind !== "generation")
+            .map((u, i) => (
+              <span key={u.code}>
+                {i ? " · " : ""}
+                <Link href={`/arr/${encodeURIComponent(u.code)}`}>{u.code}</Link>
+              </span>
+            ))}
+        </p>
+      ) : null}
       <h2>Voices and reasons</h2>
       <p>
         <strong>Value types:</strong> {t.value_types.map((v) => `${v.code} (${v.label})`).join("; ")}.

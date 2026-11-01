@@ -1,0 +1,96 @@
+{
+  "id": "syntherc-petition",
+  "version": 1,
+  "commission": "SYNTHERC",
+  "status": "synthetic",
+  "title": "SYNTHETIC petition for determination of the ARR for {fy:T0}",
+  "formats": [
+    {
+      "code": "F-1",
+      "title": "Aggregate revenue requirement for {fy:T0}",
+      "unit_note": "Rs crore unless stated",
+      "columns": [
+        {
+          "header": "{fy:B-1} final true-up",
+          "cell": "{fact:{code}:final_true_up:B-1}"
+        },
+        {
+          "header": "{fy:B} approved",
+          "cell": "{fact:{code}:approved:B}"
+        },
+        {
+          "header": "{fy:T0} claimed (projection)",
+          "cell": "{proj:{code}:T0}"
+        }
+      ],
+      "rows": [
+        "C.PP",
+        "C.TX",
+        "C.OM",
+        "C.DEP",
+        "C.INT.LOAN",
+        "C.INT.WC",
+        "C.RETURN.ROE",
+        "C.TOTAL",
+        "L.NTI",
+        "R.ARR",
+        "R.REV.EXISTING",
+        "R.GAP"
+      ]
+    },
+    {
+      "code": "F-2",
+      "title": "Energy balance for {fy:T0}",
+      "unit_note": "MU; distribution loss in percent",
+      "columns": [
+        {
+          "header": "{fy:B-1} final true-up",
+          "cell": "{fact:{code}:final_true_up:B-1}"
+        },
+        {
+          "header": "{fy:B} approved",
+          "cell": "{fact:{code}:approved:B}"
+        },
+        {
+          "header": "{fy:T0} claimed (projection)",
+          "cell": "{proj:{code}:T0}"
+        }
+      ],
+      "rows": [
+        "E.SALES",
+        "E.LOSS.DIST_PCT",
+        "E.INPUT.DIST"
+      ]
+    }
+  ],
+  "narrative": [
+    {
+      "title": "Summary of the claim",
+      "paragraphs": [
+        "The licensee claims an aggregate revenue requirement of {proj:R.ARR:T0} for {fy:T0}, against {fact:R.ARR:approved:B} approved for {fy:B}.",
+        "At the existing tariff the revenue for {fy:T0} is estimated at {proj:R.REV.EXISTING:T0}, leaving a revenue gap of {proj:R.GAP:T0}."
+      ]
+    },
+    {
+      "title": "Energy sales and power purchase",
+      "paragraphs": [
+        "Sales of {proj:E.SALES:T0} with a distribution loss of {proj:E.LOSS.DIST_PCT:T0} need an energy input of {proj:E.INPUT.DIST:T0}: {formula:E.INPUT.DIST}.",
+        "Power purchase cost is {proj:C.PP:T0}: {formula:C.PP}, at {assumption:param.pp_rate_inr_per_kwh:T0}."
+      ]
+    },
+    {
+      "title": "Operation and maintenance expenses",
+      "paragraphs": [
+        "O&M expenses for {fy:T0} are {proj:C.OM:T0}: {formula:C.OM}, relying on {clause:C.OM:T0}; the escalation applied is {assumption:param.om_escalation_pct:T0}.",
+        "The commission approved {fact:C.OM:approved:B} for {fy:B}."
+      ]
+    },
+    {
+      "title": "Interest on working capital",
+      "paragraphs": [
+        "Interest on working capital is {proj:C.INT.WC:T0}: {formula:C.INT.WC}."
+      ]
+    }
+  ],
+  "note": "SYNTHETIC fixture template for tests."
+}

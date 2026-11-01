@@ -32,6 +32,9 @@ list into the mapping (`label_aliases`, a new leaf, or "not an ARR line" in `unp
 | `mappings/kerc-arr.v1.json` | KERC, five ESCOMs and KPTCL | skeleton |
 | `mappings/gerc-arr.v1.json` | GERC, DISCOMs and GETCO | skeleton |
 | `schema.json` | Shape of the two file kinds | generated from the models |
+| `mappings/syntherc-arr.v1.json` | The SYNTHETIC commission of the tests (ADR-0018) | synthetic, confirmed for tests only |
+| `formulation/syntherc-plan.v1.json` | Which formula computes which line, and the base-selection rule (ADR-0018) | synthetic |
+| `formulation/uperc-plan.v1.json` | The same shape for UPERC | skeleton: no parameter values; confirmed in Increment D |
 
 ## Rules that hold for these files
 

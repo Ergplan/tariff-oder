@@ -4,6 +4,7 @@ export const ORDER_TYPE_LABEL: Record<string, string> = {
   arr_true_up_order: "ARR / true-up order (no tariff schedule)",
   myt_order: "Multi-year tariff (control period) order",
   mid_term_review: "Mid-term review of a control period",
+  arr_petition: "ARR petition filed by the licensee (petitioned figures)",
   regulation: "Tariff regulations",
   regulation_amendment: "Amendment to tariff regulations",
   other: "Other instrument",

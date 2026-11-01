@@ -1,4 +1,4 @@
-# Architecture (as implemented through Milestone 4b)
+# Architecture (as implemented through Milestone 5 and ARR Increment A)
 
 The governing design is Section 4 of the specification.  This document records what exists.
 
@@ -126,3 +126,26 @@ code: `/explorer/releases`, `/explorer/sources/{id}/tariff`, `/explorer/sources/
 
 Prohibited and enforced by review: branching on hostname/platform, cloud SDK use outside
 `adapters/`, a second schema definition.
+
+## ARR: read → formulate → file (ADR-0018, ARR Increment A)
+
+```
+order (parsed) ── arr_localise_source ──► arr_chapters (proposed) ── reviewer confirms
+                  └─ hand-mapping scan (unplaced list)            │
+             arr_extract_source ◄────────────────────────────────┘
+               rules over primary grids + model channel over page images (fixture in A)
+               ──► candidates (payload_kind = arr) ── arr_validate_source (ARR-I*)
+               ──► review (shared machinery; real approvals gated on a confirmed mapping)
+               ──► publish ──► arr_facts ──► history
+arr_facts + arr_assumptions (user | regulation clause) + plan ──► arr_formulations
+               (projection lines, blocked with reasons, frozen, reproducible)
+frozen formulation + template ──► filing_drafts (DOCX + XLSX + trace; draft only)
+```
+
+The ARR track (`source_documents.arr_state`) runs beside the tariff state machine; an order
+can be both a tariff schedule and an ARR order.  Endpoints: `/sources/{id}/arr`,
+`/sources/{id}/arr/read`, `/sources/{id}/arr/chapters/…`, `/sources/{id}/arr/candidates`,
+`/sources/{id}/arr/publish`, `/arr/utilities/{code}/history`, `/arr/utilities/{code}/
+assumption-sets`, `/arr/assumption-sets/{id}/assumptions`, `/arr/utilities/{code}/formulations`,
+`/arr/formulations/{id}` (`/freeze`, `/reproduce`, `/drafts`), `/arr/drafts/{id}` (and
+`/petition.docx`, `/formats.xlsx`).  Web: `/arr`, `/arr/<licensee>`, its formulations and drafts.

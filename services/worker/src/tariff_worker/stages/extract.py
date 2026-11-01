@@ -600,7 +600,9 @@ def extract_source(ctx: JobContext) -> dict:
         # a re-run replaces pending candidates; reviewed ones are never overwritten silently
         s.execute(
             delete(CandidateRecord).where(
-                CandidateRecord.source_id == source_id, CandidateRecord.review_status == "pending"
+                CandidateRecord.source_id == source_id,
+                CandidateRecord.payload_kind == "tariff",
+                CandidateRecord.review_status == "pending",
             )
         )
         for row in candidate_rows:
@@ -619,7 +621,9 @@ def extract_source(ctx: JobContext) -> dict:
         new_keys = {r["candidate_key"] for r in candidate_rows}
         for old in s.execute(
             select(CandidateRecord).where(
-                CandidateRecord.source_id == source_id, CandidateRecord.extraction_version != extraction_version[:80]
+                CandidateRecord.source_id == source_id,
+                CandidateRecord.payload_kind == "tariff",
+                CandidateRecord.extraction_version != extraction_version[:80],
             )
         ).scalars():
             if old.candidate_key not in new_keys and "stale_reading" not in (old.risk_tags or []):

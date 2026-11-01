@@ -1,0 +1,142 @@
+{
+  "id": "syntherc-arr",
+  "version": 1,
+  "taxonomy_version": 1,
+  "commission": "SYNTHERC",
+  "status": "confirmed (SYNTHETIC fixture commission for tests; never a real mapping)",
+  "licensees": {
+    "distribution": [
+      "SYNTH-DISCOM"
+    ],
+    "transmission": [
+      "SYNTH-TRANSCO"
+    ]
+  },
+  "regulations": [
+    {
+      "role": "distribution_tariff",
+      "title": "SYNTHETIC Tariff Regulations (test fixture)",
+      "year": null,
+      "amendments": [],
+      "control_periods": [],
+      "source_id": null,
+      "note": "The synthetic regulation PDF of tests/fixtures/synthetic_pdfs.py."
+    }
+  ],
+  "return_basis": {
+    "value": "roe",
+    "note": "synthetic"
+  },
+  "gap_convention": {
+    "value": "before_subsidy",
+    "note": "synthetic"
+  },
+  "unit_convention": {
+    "money": "INR_crore",
+    "energy": "MU",
+    "note": "synthetic"
+  },
+  "orders_expected": [
+    {
+      "order_type": "tariff_order",
+      "decides": [
+        {
+          "fy": "FY2024-25",
+          "value_type": "final_true_up"
+        },
+        {
+          "fy": "FY2025-26",
+          "value_type": "petitioned"
+        },
+        {
+          "fy": "FY2025-26",
+          "value_type": "approved"
+        }
+      ],
+      "note": "The synthetic ARR order."
+    }
+  ],
+  "chapter_map": [
+    {
+      "branch": "E",
+      "heading_patterns": [
+        "energy sales",
+        "sales and losses",
+        "energy balance"
+      ],
+      "note": "synthetic"
+    },
+    {
+      "branch": "C",
+      "heading_patterns": [
+        "aggregate revenue requirement",
+        "expenditure"
+      ],
+      "note": "synthetic"
+    },
+    {
+      "branch": "R",
+      "heading_patterns": [
+        "revenue gap",
+        "revenue at existing tariff"
+      ],
+      "note": "synthetic"
+    }
+  ],
+  "year_columns": {
+    "note": "synthetic headers carry 'FY 2025-26 <voice>'",
+    "patterns": []
+  },
+  "voice_columns": {
+    "note": "Column-header words to value types; the generic set applies until the commission's own words are confirmed.",
+    "patterns": [
+      {
+        "pattern": "petition|claimed|proposed|submitted|as per petitioner",
+        "value_type": "petitioned"
+      },
+      {
+        "pattern": "approved|allowed|commission",
+        "value_type": "approved"
+      },
+      {
+        "pattern": "provisional|APR|revised estimate|RE\\b",
+        "value_type": "provisional_true_up"
+      },
+      {
+        "pattern": "true[- ]?up|trued[- ]?up|final",
+        "value_type": "final_true_up"
+      },
+      {
+        "pattern": "actual|audited",
+        "value_type": "actual"
+      }
+    ]
+  },
+  "label_aliases": {
+    "note": "The commission's own words, decided by the (synthetic) reviewer from the scan's unplaced list.",
+    "entries": [
+      {
+        "label": "interest on loan",
+        "code": "C.INT.LOAN",
+        "note": "unplaced by the generic aliases"
+      }
+    ]
+  },
+  "regulation_clauses": {
+    "note": "synthetic",
+    "entries": [
+      {
+        "code": "C.OM",
+        "clause": "Regulation 23",
+        "note": "O&M escalation"
+      }
+    ]
+  },
+  "unplaced": {
+    "note": "synthetic",
+    "entries": []
+  },
+  "known_quirks": [
+    "SYNTHETIC: one printed total in the petition column does not add up, so ARR-I1 has something to find."
+  ]
+}

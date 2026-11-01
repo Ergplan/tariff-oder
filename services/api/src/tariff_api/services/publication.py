@@ -78,7 +78,15 @@ def preview(
     unknown_f = sorted(fams - set(NETWORK_FAMILIES))
     if unknown_f:
         raise AppError("validation_failed", f"unknown charge families: {', '.join(unknown_f)}")
-    rows = session.execute(select(CandidateRecord).where(CandidateRecord.source_id == source.id)).scalars().all()
+    rows = (
+        session.execute(
+            select(CandidateRecord).where(
+                CandidateRecord.source_id == source.id, CandidateRecord.payload_kind == "tariff"
+            )
+        )
+        .scalars()
+        .all()
+    )
     known_categories = {c.category_code for c in rows if c.category_code}
     checklist = rv.checklist(session, source)
     inventory = set(checklist["inventory_categories"])

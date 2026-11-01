@@ -15,6 +15,7 @@ from datetime import datetime
 from sqlalchemy import (
     BigInteger,
     Boolean,
+    CheckConstraint,
     DateTime,
     Enum,
     Float,
@@ -301,6 +302,10 @@ class SourceDocument(Base):
     validation_summary: Mapped[dict | None] = mapped_column(JSONB)
     # Milestone 5b: the current data release, denormalised for the detail page
     publication_summary: Mapped[dict | None] = mapped_column(JSONB)
+    # ARR track (ADR-0018), beside the tariff state machine: chapters_proposed ->
+    # chapters_confirmed -> extracted -> awaiting_review -> published; null = not read for ARR
+    arr_state: Mapped[str | None] = mapped_column(String(24))
+    arr_summary: Mapped[dict | None] = mapped_column(JSONB)
 
     # Golden-corpus reconciliation (tests/golden/manifest.json); never copied, always re-verified
     golden_id: Mapped[str | None] = mapped_column(String(80))
@@ -698,6 +703,9 @@ class CandidateRecord(Base):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
     candidate_key: Mapped[str] = mapped_column(String(400), nullable=False)
+    # tariff | arr (ADR-0018): an ARR candidate's ``record`` is an ``arr.schema.ArrCandidate``;
+    # every tariff stage, queue, checklist and publication reads only ``tariff`` rows
+    payload_kind: Mapped[str] = mapped_column(String(16), nullable=False, default="tariff", server_default="tariff")
     family: Mapped[str] = mapped_column(String(32), nullable=False)
     category_code: Mapped[str | None] = mapped_column(String(80))
     component_type: Mapped[str] = mapped_column(String(24), nullable=False)
@@ -986,3 +994,199 @@ class PublishedEvidence(Base):
     row_path: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
     clause_path: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
     excerpt: Mapped[str] = mapped_column(String(400), nullable=False)
+
+
+# ------------------------------------------------------------------ ARR (ADR-0018)
+
+
+class ArrChapter(Base):
+    """One ARR chapter of a source: a page span the mapping's heading cues found, serving one
+    taxonomy branch.  ``status`` is proposed until a reviewer confirms or excludes it; only
+    confirmed chapters are read."""
+
+    __tablename__ = "arr_chapters"
+    __table_args__ = (UniqueConstraint("source_id", "ordinal", name="uq_arr_chapter"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id", ondelete="CASCADE"), nullable=False)
+    ordinal: Mapped[int] = mapped_column(Integer, nullable=False)
+    branch: Mapped[str] = mapped_column(String(32), nullable=False)
+    cue_text: Mapped[str] = mapped_column(String(300), nullable=False)
+    cue_page: Mapped[int] = mapped_column(Integer, nullable=False)
+    page_start: Mapped[int] = mapped_column(Integer, nullable=False)
+    page_end: Mapped[int] = mapped_column(Integer, nullable=False)
+    origin: Mapped[str] = mapped_column(String(16), nullable=False, default="detected")  # detected | reviewer
+    status: Mapped[str] = mapped_column(
+        String(16), nullable=False, default="proposed"
+    )  # proposed | confirmed | excluded
+    mapping_id: Mapped[str] = mapped_column(String(40), nullable=False)
+    mapping_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    decided_by: Mapped[str | None] = mapped_column(String(320))
+    decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    note: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class ArrFact(Base):
+    """A published ARR fact: what the commission printed for this licensee, line, year and
+    voice in this order (ARR spec section 1).  Later readings supersede, never overwrite; the
+    identity is unique among current rows.  A projection is never stored here."""
+
+    __tablename__ = "arr_facts"
+    __table_args__ = (Index("ix_arr_facts_history", "utility_id", "line_code", "fiscal_year"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    utility_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("utilities.id"), nullable=False)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("source_documents.id"), nullable=False)
+    candidate_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("candidates.id"), nullable=False)
+    line_code: Mapped[str] = mapped_column(String(64), nullable=False)
+    fiscal_year: Mapped[str] = mapped_column(String(12), nullable=False)
+    value_type: Mapped[str] = mapped_column(String(24), nullable=False)
+    category_code: Mapped[str] = mapped_column(String(80), nullable=False, default="", server_default="")
+    value_state: Mapped[str] = mapped_column(String(24), nullable=False)
+    stated_value: Mapped[str | None] = mapped_column(String(40))
+    stated_unit: Mapped[str | None] = mapped_column(String(24))
+    column_label: Mapped[str | None] = mapped_column(String(200))
+    canonical_value: Mapped[str | None] = mapped_column(String(40))
+    canonical_unit: Mapped[str | None] = mapped_column(String(24))
+    conversion: Mapped[str | None] = mapped_column(String(60))
+    basis: Mapped[str | None] = mapped_column(String(16))
+    reason_category: Mapped[str | None] = mapped_column(String(24))
+    reasoning_quote: Mapped[dict | None] = mapped_column(JSONB)
+    regulation_clause: Mapped[dict | None] = mapped_column(JSONB)
+    evidence: Mapped[list] = mapped_column(JSONB, nullable=False)
+    record: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    review_status: Mapped[str] = mapped_column(String(24), nullable=False)
+    is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    published_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    published_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    superseded_by_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    superseded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class ArrAssumptionSet(Base):
+    """A versioned set of assumptions for one licensee.  Frozen with the formulation that
+    uses it; a change after that is a new version (``based_on_id``)."""
+
+    __tablename__ = "arr_assumption_sets"
+    __table_args__ = (
+        UniqueConstraint("utility_id", "name", "version", name="uq_arr_assumption_set"),
+        CheckConstraint("status in ('draft', 'frozen')", name="ck_arr_assumption_set_status"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    utility_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("utilities.id"), nullable=False)
+    name: Mapped[str] = mapped_column(String(120), nullable=False)
+    version: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[str] = mapped_column(String(12), nullable=False, default="draft")
+    based_on_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    created_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    frozen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class ArrAssumption(Base):
+    """One assumption: a value for a key (a line code or a ``param.*`` name) and a year,
+    entered by a named user with a rationale (``user``) or confirmed by a reviewer against a
+    regulation clause (``regulation_clause``, with the citation).  Never a fact."""
+
+    __tablename__ = "arr_assumptions"
+    __table_args__ = (
+        UniqueConstraint("set_id", "key", "fiscal_year", name="uq_arr_assumption"),
+        CheckConstraint("source_kind in ('user', 'regulation_clause')", name="ck_arr_assumption_source_kind"),
+        CheckConstraint(
+            "source_kind <> 'regulation_clause' or clause_ref is not null", name="ck_arr_assumption_clause"
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    set_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("arr_assumption_sets.id", ondelete="CASCADE"), nullable=False)
+    key: Mapped[str] = mapped_column(String(80), nullable=False)
+    fiscal_year: Mapped[str] = mapped_column(String(12), nullable=False, default="", server_default="")
+    value: Mapped[str] = mapped_column(String(40), nullable=False)
+    unit: Mapped[str] = mapped_column(String(24), nullable=False)
+    source_kind: Mapped[str] = mapped_column(String(24), nullable=False)
+    clause_ref: Mapped[dict | None] = mapped_column(JSONB)
+    rationale: Mapped[str] = mapped_column(Text, nullable=False)
+    entered_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class ArrFormulation(Base):
+    """One formulation version: the ARR computed for target years from facts, assumptions and
+    regulation parameters by a versioned plan and formula library.  ``inputs`` names every
+    fact and assumption used; ``input_hash`` covers them with the plan, library and base
+    rule, so a frozen version is reproducible."""
+
+    __tablename__ = "arr_formulations"
+    __table_args__ = (CheckConstraint("status in ('draft', 'frozen')", name="ck_arr_formulation_status"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    utility_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("utilities.id"), nullable=False)
+    name: Mapped[str] = mapped_column(String(120), nullable=False)
+    base_fy: Mapped[str] = mapped_column(String(12), nullable=False)
+    targets: Mapped[list] = mapped_column(JSONB, nullable=False)
+    plan_id: Mapped[str] = mapped_column(String(40), nullable=False)
+    plan_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    library_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    base_rule: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    assumption_set_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("arr_assumption_sets.id"), nullable=False)
+    inputs: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    input_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    summary: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    status: Mapped[str] = mapped_column(String(12), nullable=False, default="draft")
+    is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    created_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    frozen_by: Mapped[str | None] = mapped_column(String(320))
+    frozen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class ArrProjectionLine(Base):
+    """One computed (or blocked) line of a formulation: a projection, labelled as such
+    everywhere, never a fact."""
+
+    __tablename__ = "arr_projection_lines"
+    __table_args__ = (
+        UniqueConstraint("formulation_id", "line_code", "fiscal_year", name="uq_arr_projection_line"),
+        CheckConstraint("status in ('computed', 'blocked')", name="ck_arr_projection_status"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    formulation_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("arr_formulations.id", ondelete="CASCADE"), nullable=False
+    )
+    line_code: Mapped[str] = mapped_column(String(64), nullable=False)
+    fiscal_year: Mapped[str] = mapped_column(String(12), nullable=False)
+    status: Mapped[str] = mapped_column(String(12), nullable=False)
+    value: Mapped[str | None] = mapped_column(String(40))
+    unit: Mapped[str | None] = mapped_column(String(24))
+    formula_id: Mapped[str] = mapped_column(String(40), nullable=False)
+    formula_version: Mapped[str] = mapped_column(String(16), nullable=False)
+    inputs: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    regulation_clause: Mapped[dict | None] = mapped_column(JSONB)
+    blocked_reason: Mapped[str | None] = mapped_column(Text)
+
+
+class FilingDraft(Base):
+    """A rendered draft petition for a frozen formulation: DOCX narrative and XLSX formats in
+    the artefact store, with the trace of every number.  ``draft`` is the only status the
+    schema allows; nothing in the application files, e-mails or uploads it."""
+
+    __tablename__ = "filing_drafts"
+    __table_args__ = (CheckConstraint("status = 'draft'", name="ck_filing_draft_only_draft"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    formulation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("arr_formulations.id"), nullable=False)
+    template_id: Mapped[str] = mapped_column(String(60), nullable=False)
+    template_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    template_status: Mapped[str] = mapped_column(String(16), nullable=False)
+    docx_key: Mapped[str] = mapped_column(String(512), nullable=False)
+    docx_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    xlsx_key: Mapped[str] = mapped_column(String(512), nullable=False)
+    xlsx_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    trace: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    status: Mapped[str] = mapped_column(String(12), nullable=False, default="draft")
+    is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    generated_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

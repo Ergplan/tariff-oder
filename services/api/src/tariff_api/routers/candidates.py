@@ -62,7 +62,9 @@ def list_candidates(
 ) -> CandidateList:
     with session_scope() as s:
         svc.get_source(s, source_id)
-        q = select(CandidateRecord).where(CandidateRecord.source_id == source_id)
+        q = select(CandidateRecord).where(
+            CandidateRecord.source_id == source_id, CandidateRecord.payload_kind == "tariff"
+        )
         if family:
             q = q.where(CandidateRecord.family == family)
         if category:

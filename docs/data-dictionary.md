@@ -313,6 +313,20 @@ Append-only (UPDATE/DELETE raise via trigger): `actor`, `action`, `entity_type`,
 ## `idempotency_records`
 `(key, actor)` → request fingerprint, stored status and body, for `Idempotency-Key` replays.
 
+## ARR tables (migration 0015, ADR-0018)
+
+| Table / column | Meaning |
+| --- | --- |
+| `candidates.payload_kind` | `tariff` (default) or `arr`; an ARR candidate's `record` is an `ArrCandidate`; `category_code` holds the line code, `period` the fiscal year, `decision_status` the voice |
+| `source_documents.arr_state`, `arr_summary` | The ARR track: `chapters_proposed`, `chapters_confirmed`, `extracted`, `awaiting_review`, `published`; summary of chapters, scan, extraction, identities, publication |
+| `arr_chapters` | Page span, branch, heading cue, status (`proposed`/`confirmed`/`excluded`), mapping id and version, who decided |
+| `arr_facts` | Published ARR fact: utility, line, fiscal year, voice, order, category; stated and canonical value and unit, conversion, evidence, record; `superseded_by_id` (identity unique among current rows) |
+| `arr_assumption_sets` | Versioned set per licensee (`draft`/`frozen`, `based_on_id`) |
+| `arr_assumptions` | Key (line code or `param.*`), year (empty = every year), value, unit, `source_kind` (`user` / `regulation_clause`), `clause_ref` (source, page, citation, excerpt, confirming reviewer), rationale, who |
+| `arr_formulations` | Licensee, base year, targets, plan id/version, library version, base rule, assumption set, recorded inputs, input hash, summary (blocked lines, identity findings), `draft`/`frozen` |
+| `arr_projection_lines` | Line, year, `computed`/`blocked`, value, unit, formula id/version, inputs (facts, assumptions, lines), regulation clause, blocked reason |
+| `filing_drafts` | Formulation, template id/version/status, DOCX and XLSX keys and hashes, trace; status `draft` only (check constraint) |
+
 ## Reserved for later milestones (not created yet)
 Regulatory order, schedule version, effective rule, category/version, option group, category
 mapping, charge component, slab/time band, condition/rule, evidence span, table grid,

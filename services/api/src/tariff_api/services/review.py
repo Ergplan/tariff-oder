@@ -21,6 +21,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from ..adapters.storage import ObjectNotFound, ObjectStore
+from ..arr.schema import ARR_CORRECTABLE_FIELDS, ArrCandidate
 from ..config import Settings
 from ..errors import AppError
 from ..inventory import NotAPdf, open_document
@@ -105,10 +106,53 @@ _COMPONENT_ORDER = {
 # ------------------------------------------------------------------ policy
 
 
-def second_review_reasons(cand: CandidateRecord, record: Candidate, *, outcome: str, settings: Settings) -> list[str]:
+def parse_record(cand: CandidateRecord, record: dict[str, Any] | None = None) -> Candidate | ArrCandidate:
+    """The candidate's record as its model: a tariff ``Candidate`` or an ``ArrCandidate``
+    (ADR-0018), chosen by the envelope's ``payload_kind``, never by sniffing the record."""
+    data = record if record is not None else cand.effective_record
+    if cand.payload_kind == "arr":
+        return ArrCandidate.model_validate(data)
+    return Candidate.model_validate(data)
+
+
+ARR_DECIDABLE_STATES = ("awaiting_review", "published")
+
+
+def arr_mapping_confirmed(session: Session, source: SourceDocument) -> tuple[bool, str]:
+    """Whether the ARR mapping of the source's commission is confirmed by a reviewer.  Until
+    it is, no real ARR candidate may be approved or corrected (operator decision of
+    2026-10-31, ADR-0018)."""
+    from ..arr.taxonomy import load_mapping
+
+    if source.utility is None:
+        return False, "the source has no licensee; set it before reading the ARR"
+    code = source.utility.commission.code
+    try:
+        m = load_mapping(code)
+    except FileNotFoundError:
+        return False, f"no ARR mapping for {code}"
+    if not m.status.lower().startswith("confirmed"):
+        return False, f"the {code} ARR mapping v{m.version} is not confirmed by a reviewer (status: {m.status[:60]})"
+    return True, ""
+
+
+def second_review_reasons(
+    cand: CandidateRecord, record: Candidate | ArrCandidate, *, outcome: str, settings: Settings
+) -> list[str]:
     """Why a first-round approval or correction needs a second reviewer (Section 7.2).  An
     empty list means the first decision is final."""
     reasons: list[str] = []
+    if isinstance(record, ArrCandidate):
+        # ARR: a corrected disagreement and a line carrying an identity failure need a second
+        # reviewer; the first order read for a licensee does too, as for tariffs
+        if settings.second_review_material:
+            if outcome == "correct" and cand.channel_agreement == "disagree":
+                reasons.append("corrected_channel_disagreement")
+            if "identity_failure" in (cand.risk_tags or []):
+                reasons.append("identity_failure")
+        if settings.second_review_first_order and "new_profile" in (cand.risk_tags or []):
+            reasons.append("first_order_from_utility")
+        return reasons
     if settings.second_review_material:
         if record.component_type == "condition":
             reasons.append("material_condition")
@@ -150,7 +194,15 @@ def ordered_queue(
     charge, then the open-access and network families in page order — the way a reviewer
     reads the order.  ``risk``: blocking findings, findings, channel disagreement, risk tags,
     then coverage impact, then confidence (low first).  Filters of Section 7.2."""
-    rows = session.execute(select(CandidateRecord).where(CandidateRecord.source_id == source.id)).scalars().all()
+    rows = (
+        session.execute(
+            select(CandidateRecord).where(
+                CandidateRecord.source_id == source.id, CandidateRecord.payload_kind == "tariff"
+            )
+        )
+        .scalars()
+        .all()
+    )
     approved_categories = {
         r.category_code for r in rows if r.review_status in ("approved", "corrected") and r.category_code
     }
@@ -255,7 +307,15 @@ def checklist(session: Session, source: SourceDocument) -> dict[str, Any]:
     category and component, every charge family and every material condition with its
     status.  ``expected_from`` says whether the inventory or only the extraction expects
     the item; an inventory category with no candidate is a visible gap, never silence."""
-    rows = session.execute(select(CandidateRecord).where(CandidateRecord.source_id == source.id)).scalars().all()
+    rows = (
+        session.execute(
+            select(CandidateRecord).where(
+                CandidateRecord.source_id == source.id, CandidateRecord.payload_kind == "tariff"
+            )
+        )
+        .scalars()
+        .all()
+    )
     inventory: list[str] = []
     if source.reading_profile_id:
         profile = load_profile(source.reading_profile_id, source.reading_profile_version)
@@ -385,7 +445,7 @@ def render_evidence(
 ) -> tuple[bytes, EvidenceView, dict[str, Any]]:
     """Render the cited page with the cited table outlined and record that this viewer saw
     it.  The view row is the only thing a decision can cite as evidence viewed."""
-    record = Candidate.model_validate(cand.effective_record)
+    record = parse_record(cand)
     if evidence_index < 0 or evidence_index >= len(record.evidence):
         raise AppError("not_found", f"candidate has {len(record.evidence)} evidence reference(s)")
     ref = record.evidence[evidence_index]
@@ -491,7 +551,7 @@ def render_page_for(
     skipped: list[str] = []
     shape = page.new_shape()
     for cand in cands:
-        record = Candidate.model_validate(cand.effective_record)
+        record = parse_record(cand)
         ref = record.evidence[0]
         if ref.page_index != page_index:
             skipped.append(str(cand.id))
@@ -604,7 +664,8 @@ def _check_views(
 def _build_correction(cand: CandidateRecord, body: ReviewDecisionRequest) -> tuple[dict[str, Any], list[str]]:
     base = dict(cand.effective_record)
     patch = body.correction or {}
-    unknown = sorted(set(patch) - CORRECTABLE_FIELDS)
+    allowed = ARR_CORRECTABLE_FIELDS if cand.payload_kind == "arr" else CORRECTABLE_FIELDS
+    unknown = sorted(set(patch) - allowed)
     if unknown:
         raise AppError("validation_failed", f"fields cannot be corrected: {', '.join(unknown)}")
     if not patch and not body.evidence and not body.evidence_indices:
@@ -621,7 +682,7 @@ def _build_correction(cand: CandidateRecord, body: ReviewDecisionRequest) -> tup
     else:
         raise AppError("validation_failed", "a correction must select its evidence (evidence_indices or evidence)")
     try:
-        record = Candidate.model_validate(merged)
+        record = parse_record(cand, merged)
     except ValidationError as e:
         raise AppError(
             "validation_failed",
@@ -643,7 +704,17 @@ def decide(
 ) -> ReviewDecision:
     src = session.get(SourceDocument, cand.source_id)
     assert src is not None
-    if src.state not in (SourceState.awaiting_review, SourceState.published):
+    if cand.payload_kind == "arr":
+        # the ARR track has its own state beside the tariff one (ADR-0018)
+        if src.arr_state not in ARR_DECIDABLE_STATES:
+            raise AppError(
+                "invalid_transition", f"the ARR reading is {src.arr_state}; decisions are taken while it awaits review"
+            )
+        if body.outcome in ("approve", "correct") and not cand.is_fixture:
+            ok, why = arr_mapping_confirmed(session, src)
+            if not ok:
+                raise AppError("arr_mapping_unconfirmed", why)
+    elif src.state not in (SourceState.awaiting_review, SourceState.published):
         raise AppError("invalid_transition", f"source is {src.state.value}; decisions are taken while it awaits review")
     if cand.published_release_id is not None:
         raise AppError("invalid_transition", "this candidate is published; its decision is no longer changeable")
@@ -683,7 +754,7 @@ def decide(
         corrected, changed = _build_correction(cand, body)
 
     before = _snapshot(cand)
-    record = Candidate.model_validate(corrected or cand.effective_record)
+    record = parse_record(cand, corrected or cand.effective_record)
     reasons: list[str] = []
     if body.outcome in ("approve", "correct"):
         if review_round == 1:
@@ -712,8 +783,10 @@ def decide(
     cand.version += 1
     seq = cand.decision_count
     revalidation_job = None
-    if corrected is not None:
-        revalidation_job = enqueue_stage(session, settings, src, "validate_source", actor=actor)
+    # a rejected ARR line leaves the identities it took part in: they are re-run as well
+    if corrected is not None or (cand.payload_kind == "arr" and body.outcome == "reject"):
+        stage = "arr_validate_source" if cand.payload_kind == "arr" else "validate_source"
+        revalidation_job = enqueue_stage(session, settings, src, stage, actor=actor)
     after = _snapshot(cand)
     after["second_review_reasons"] = reasons
     after["revalidation_job_id"] = str(revalidation_job.id) if revalidation_job else None

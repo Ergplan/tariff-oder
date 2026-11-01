@@ -38,7 +38,6 @@ from ..schemas import (
 )
 from ..services import review as rv
 from ..services import sources as svc
-from ..tariff_schema import Candidate
 
 router = APIRouter(tags=["review"])
 
@@ -152,7 +151,7 @@ def candidate_evidence(
     """The candidate's evidence references and the views already issued to the caller."""
     with session_scope() as s:
         cand = rv.get_candidate(s, candidate_id)
-        record = Candidate.model_validate(cand.effective_record)
+        record = rv.parse_record(cand)
         views = rv.views_for(s, cand, principal.email)
         return CandidateEvidenceOut(
             candidate_id=cand.id,

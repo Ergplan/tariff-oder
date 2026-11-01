@@ -88,6 +88,27 @@ ERROR_TAXONOMY: dict[str, ErrorSpec] = {
             "Reload the record and reapply your change.",
         ),
         ErrorSpec(
+            "arr_mapping_unconfirmed",
+            409,
+            "warning",
+            "This ARR line cannot be approved yet: the commission's ARR mapping is not confirmed by a reviewer.",
+            "Review the unplaced lines of the hand-mapping scan and confirm the mapping, then decide again.",
+        ),
+        ErrorSpec(
+            "arr_parameter_missing",
+            422,
+            "warning",
+            "A formula needs a parameter that has no source.",
+            "Add the parameter as an assumption with a rationale, or confirm it against a regulation clause.",
+        ),
+        ErrorSpec(
+            "filing_untraced_number",
+            422,
+            "error",
+            "The filing draft was not generated: a number in it has no traced origin.",
+            "Fix the template so every number comes from a fact, an assumption or a projection.",
+        ),
+        ErrorSpec(
             "invalid_transition",
             409,
             "error",

@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-10-31 (ARR development prompt written; no code changed). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 27: ARR Increment A — read, formulate, file — architecture on SYNTHETIC fixtures). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -441,6 +441,46 @@ open-access view.
   publication or for another reviewer's decision.  Until now undo existed only in the
   one-at-a-time workspace and only within the session that decided.  Web typecheck and
   build green; no API change.
+  **Increment 27 (2026-11-01): ARR Increment A — read, formulate, file (architecture,
+  fixtures only).**  Operator decisions of 2026-10-31 (`docs/prompts/arr-build-prompt.md`):
+  the output is a draft petition a person edits and files; architecture ahead of the
+  hand-mapping gate; UPERC / NPCL first.  ADR-0018.  Migration 0015: `candidates.payload_kind`
+  (tariff | arr; every tariff stage, queue, checklist and publication now filters on
+  `tariff`), `source_documents.arr_state` / `arr_summary` (the ARR track beside the tariff
+  state machine), `arr_chapters`, `arr_facts` (identity unique among current rows,
+  superseded never overwritten), `arr_assumption_sets` / `arr_assumptions` (user with a
+  rationale, or regulation clause with a citation), `arr_formulations` /
+  `arr_projection_lines`, `filing_drafts` (a check constraint allows only `draft`); order
+  type `arr_petition`.  Modules `tariff_api.arr.{schema,chapters,extract,provider,identities,
+  formulate,filing,service}`; worker stages `arr_localise_source` (chapters from the
+  mapping's heading cues + the hand-mapping scan), `arr_extract_source` (rules over the
+  primary grids + the model channel over page images, fixture-only in A; compared field by
+  field), `arr_validate_source` (ARR-I1, I2, I3, I4, I7, I8, I12; I5, I6, I9–I11 not evaluated
+  yet).  Review reuses the tariff machinery (evidence views, second review, undo) through
+  `review.parse_record`; **a real ARR candidate cannot be approved or corrected while its
+  commission's mapping is not confirmed** (`arr_mapping_unconfirmed`, 409).  Formulation:
+  a versioned formula library (`lib-1`), per-commission plans as data
+  (`packages/arr-taxonomy/formulation/`), base-selection rule in the plan, missing
+  parameters block their line and its dependants, frozen versions reproduce bit for bit.
+  Filing: templates as data (`packages/filing-templates/`), numbers only through
+  placeholders with a trace annex, literal digits and untraced numbers refuse generation,
+  DOCX + XLSX watermarked "not filed".  Web: `/arr/<licensee>` (facts), its formulations
+  (projections, blocked first, the "why" of every line) and drafts (trace annex, downloads);
+  `/arr` lists licensees.  Data: `syntherc-arr.v1.json`, `syntherc-plan.v1.json`,
+  `syntherc/petition.v1.json` (SYNTHETIC commission for tests); `uperc-plan.v1.json` and
+  `uperc/petition.v1.json` are **skeletons** with no parameter values.  Found on the way and
+  fixed: the mapping's voice word `RE\b` matched the end of "Crore" in a caption (voice words
+  now match from a word start); the Python images did not copy `packages/filing-templates`
+  (both Dockerfiles fixed).  Gate (synthetic, end to end, also run in the live sandbox
+  stack): 5-page SYNTHETIC order → 3 chapters → 45 candidates, both channels agreeing →
+  one blocking ARR-I1 on the petition's total (the deliberate break) → harness reviewers
+  approve 44 with second review and reject the bad total → 44 facts published → history
+  with disallowances → assumption set (one parameter grounded on the SYNTHETIC
+  regulation's clause; a wrong excerpt and a value not in the excerpt refused) →
+  formulation with 5 blocked lines → complete formulation (ARR 6,889.88 crore, gap 193.88,
+  ACoS 7.41) frozen and reproduced identically → draft with 58 traced numbers (32 fact,
+  2 assumption, 24 projection); an untraced number in a template refused.  **No real order
+  has been read for ARR; no real ARR fact, assumption, formulation or draft exists.**
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -995,6 +1035,9 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 27 (2026-11-01): 335 passed** (323 + 12 ARR: the end-to-end gate and 11 unit
+  tests; PostgreSQL 16.15 in Docker on :5432, tesseract 5.3.4; ruff and format clean; web
+  typecheck and build green; contracts no drift).  All ARR numbers are SYNTHETIC fixtures.
 - **Increment 25 (2026-09-25): 323 passed** (ruff and format clean; web typecheck and build green).
 - **Increment 24 (2026-09-25): 322 passed** (ruff and format clean; web typecheck and build green).
 - **Increment 23 (2026-09-21): 313 passed** (increment 22 suite plus the four taxonomy checks).
@@ -1132,6 +1175,12 @@ the three PDFs to upload, and the budget to confirm and its account id to paste 
 - Grids from OCR word boxes are not built (`grid_from_ocr_pending`); the KERC vector-drawn
   charge tables will reach a reviewer OCR'd but un-gridded until then.
 - Docling unmeasured; PyMuPDF is primary by decision (ADR-0009), to be revisited on real pages.
+- **ARR (increment 27):** the ARR image channel is fixture-only (the live provider refuses
+  rather than fall back); chapter localisation reads the text layer only (no OCR text);
+  identities I5, I6, I9, I10, I11 are not evaluated; no ARR batch approval; the review
+  screen of spec section 7 is Increment C; the UPERC plan and petition template are
+  skeletons; reasoning quotes and reason categories are not extracted yet.  Real ARR
+  approvals are gated on the confirmed UPERC mapping (operator decision).
 
 ## Architecture decisions and rationale
 
@@ -1144,10 +1193,15 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-00000000. **Engineering (Milestone 12, ARR):** run Increment A of
-   `docs/prompts/arr-build-prompt.md` — ADR-0018, the read/formulate/file data model, module
-   interfaces and the synthetic end-to-end skeleton test.  Fixtures only; no real ARR fact.
-   Operator inputs for Increment B (NPCL orders, petition, UPERC regulations) are listed there.
+000000000. **Operator (increment 27, ARR Increment B inputs):** on the deployed or local
+   stack, set the NPCL orders' `order_type` and `decides`; upload NPCL's last ARR petition
+   (`order_type=arr_petition`) if you have it and the UPERC distribution tariff regulations
+   with amendments (`order_type=regulation`); then `POST /sources/<NPCL id>/arr/read` (or
+   `tariff-api arr-scan` on its export) and hand the scan's `unplaced` list to a reviewer.
+   Until a reviewer confirms `uperc-arr.v1.json`, real ARR lines can be read and reviewed
+   but not approved.  Engineering then writes the Anthropic ARR image channel (Increment B)
+   against the real NPCL pages.
+00000000. **Engineering (Milestone 12, ARR):** Increment A done (increment 27).
 
 0000000. **Operator (increment 24):** `git pull && make deploy-dev` (migration 0014) and
    `make admin-dev ARGS=seed` (adds UPPTCL, KPTCL, GETCO).  On each existing order's page

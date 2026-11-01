@@ -97,4 +97,12 @@ export type UtilityOut = components["schemas"]["UtilityOut"];
 export type ReviewQueueItem = components["schemas"]["ReviewQueueItem"];
 export type ArrTaxonomyOut = components["schemas"]["ArrTaxonomyOut"];
 export type ArrMappingOut = components["schemas"]["ArrMappingOut"];
+// ARR read -> formulate -> file (ADR-0018): facts, assumptions and projections stay distinct types
+export type ArrReadingOut = components["schemas"]["ArrReadingOut"];
+export type ArrHistoryOut = components["schemas"]["ArrHistoryOut"];
+export type ArrAssumptionSetOut = components["schemas"]["ArrAssumptionSetOut"];
+export type ArrAssumptionOut = components["schemas"]["ArrAssumptionOut"];
+export type ArrFormulationOut = components["schemas"]["ArrFormulationOut"];
+export type ArrProjectionLineOut = components["schemas"]["ArrProjectionLineOut"];
+export type FilingDraftOut = components["schemas"]["FilingDraftOut"];
 export type Decides = components["schemas"]["Decides"];
