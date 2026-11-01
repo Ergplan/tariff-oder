@@ -1,0 +1,16 @@
+{
+  "id": "hperc-discovery",
+  "version": 1,
+  "commission": "HPERC",
+  "status": "draft: written against the live site on 2026-11-01; re-check when the site changes",
+  "note": "HPERC (WordPress) lists HPSEBL's tariff orders in a table on the distribution page; the site menu links Acts and policies as PDFs too, hence rows_only.",
+  "listings": [
+    {
+      "name": "Distribution tariff orders",
+      "url": "https://hperc.org/order_type/distribution/",
+      "method": "static",
+      "rows_only": true,
+      "licensee": "HPSEBL"
+    }
+  ]
+}

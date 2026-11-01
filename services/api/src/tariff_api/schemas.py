@@ -1673,6 +1673,7 @@ class LibraryProposal(BaseModel):
     notes: list[str]
     complete: bool
     decides: list[dict[str, Any]] = Field(default_factory=list)  # years and voices the title names
+    years: list[str] = Field(default_factory=list)  # every financial year the title names
     variant: str | None = None  # scanned | digitally_signed
     preferred: bool = True  # false for a scanned copy whose text copy is listed too
     listing: str | None = None  # the listing page (and year) it was found on

@@ -1,0 +1,30 @@
+{
+  "id": "berc-discovery",
+  "version": 1,
+  "commission": "BERC",
+  "status": "draft: written against the live site on 2026-11-01; re-check when the site changes",
+  "note": "BERC (Joomla) lists each order on its own page; the PDF is embedded through a viewer link (viewer.html?file=...pdf). The distribution list carries the combined orders of NBPDCL and SBPDCL.",
+  "listings": [
+    {
+      "name": "Distribution tariff orders (SBPDCL)",
+      "url": "https://berc.co.in/orders/tariff/distribution/sbpdcl",
+      "method": "static",
+      "follow": "^/orders/tariff/distribution/sbpdcl/\\d+-",
+      "max_follow": 12
+    },
+    {
+      "name": "Truing-up orders",
+      "url": "https://berc.co.in/orders/truing-up",
+      "method": "static",
+      "follow": "^/orders/truing-up/\\d+-",
+      "max_follow": 12
+    },
+    {
+      "name": "ARR and tariff petitions",
+      "url": "https://berc.co.in/arr-tariff-petitions",
+      "method": "static",
+      "follow": "^/arr-tariff-petitions/\\d+-",
+      "max_follow": 12
+    }
+  ]
+}

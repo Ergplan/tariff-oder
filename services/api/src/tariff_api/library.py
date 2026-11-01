@@ -389,7 +389,7 @@ _FY_ANY = re.compile(r"(?:FY\s*)?(20\d{2})\s*[-–/]\s*(\d{2}|20\d{2})\b", re.I)
 _FY_TAIL = r"(?:of\s+|for\s+)?(?:the\s+)?(?:FY\s*|financial\s+year\s*)?(20\d{2})\s*[-–]\s*(\d{2}|20\d{2})\b"
 # what an order or a petition says it decides: (pattern, voice in an order, voice in a petition)
 _DECIDES: tuple[tuple[re.Pattern, str, str], ...] = (
-    (re.compile(r"true[- ]?up\s+" + _FY_TAIL, re.I), "final_true_up", "final_true_up"),
+    (re.compile(r"tru(?:e|ing)[- ]?up\s+" + _FY_TAIL, re.I), "final_true_up", "final_true_up"),
     (
         re.compile(r"(?:\bapr\b|annual\s+performance\s+review)\s+" + _FY_TAIL, re.I),
         "provisional_true_up",
@@ -425,33 +425,56 @@ def guess_kind(text: str) -> tuple[str | None, list[str]]:
     recorded with the order it corrects, not as a slot of its own."""
     t = text.lower()
     notes: list[str] = []
+    if re.search(
+        r"press\s+(?:release|note)|tariff\s+(?:chart|card|schedule\s+summary)|public\s+notice|"
+        r"schedule\s+of\s+hearing|\bhearing\s+notice|\bsummary\s+of\b",
+        t,
+    ):
+        return None, ["not the order itself (a press release, chart, notice or summary)"]
     if re.search(r"\border\s+(?:along\s+)?with\s+(?:the\s+)?(?:corrigend|addend|errat)", t):
         notes.append("the order with its corrigendum")
     elif re.search(r"\bcorrigend|\baddend|\berrat", t):
         return None, ["corrigendum or addendum: record it with the order it corrects"]
-    order = re.search(r"\border\b", t)
+    if re.search(
+        r"^\W*review\s+(?:order|petition)\b|\breview\s+(?:of|against)\s+(?:the\s+)?order\b|seeking\s+review", t
+    ):
+        return None, ["a review of an order: record it with the order it reviews"]
+    order = re.search(r"\border\b|^\W*(?:approval|determination)\b|\bapproval\s+(?:of|for)\b", t)
     if re.search(r"\bregulations?\b", t) and not order:
         return ("regulation_amendment" if re.search(r"amend", t) else "regulation"), []
     if re.search(r"\bmid[- ]?term\b|\bmtr\b", t):
         return "mid_term_review", []
-    myt = re.search(r"\bmyt\b|multi[- ]?year|control period", t)
+    # an annual order names one tariff year ("ARR and Tariff for FY 2026-27"); a mention of the
+    # control period it falls in ("final true-up for the 4th MYT control period") does not make
+    # it the MYT order
+    annual = re.search(
+        r"(?:\barr\b|revenue\s+requirements?|tariff)(?:\s*(?:and|&)\s*tariff)?\s+for\s+(?:the\s+)?(?:fy\s*)?"
+        r"(?:20\d{2})\s*[-–]\s*(?:\d{2}|20\d{2})\b(?!\s*(?:to|-|–)\s*(?:fy\s*)?20\d{2})",
+        t,
+    )
+    myt = re.search(r"\bmyt\b|multi[- ]?year|control period|business plan", t) and not annual
     money = re.search(r"tariff|\barr\b|aggregate revenue|annual revenue|revenue requirement", t)
+    trueup = re.search(r"tru(?:e|ing)[- ]?up", t)
     if order:
         if myt:
             return "myt_order", notes
+        if trueup and not re.search(r"tariff|retail supply", t):
+            return "arr_true_up_order", notes
         if money:
             return "tariff_order", notes
-        if re.search(r"true[- ]?up", t):
+        if trueup:
             return "arr_true_up_order", notes
         return None, ["an order of another kind (not a tariff, ARR, MYT or true-up order)"]
     if re.search(r"\bpetition\b(?!\s*(?:no|nos|number)\b)", t):
         if myt:
             return "myt_petition", []
-        if money or re.search(r"true[- ]?up|\bapr\b|annual performance", t):
+        if money or re.search(r"tru(?:e|ing)[- ]?up|\bapr\b|annual performance", t):
             return "arr_petition", []
-    if money or re.search(r"true[- ]?up", t):
+    if myt and (money or trueup):
+        return "myt_order", ["neither order nor petition named: kind guessed from its subject"]
+    if money or trueup:
         # a bare "ARR ... FY 2026-27" with neither order nor petition named
-        return ("arr_true_up_order" if re.search(r"true[- ]?up", t) and not money else "tariff_order"), [
+        return ("arr_true_up_order" if trueup and not re.search(r"tariff|retail supply", t) else "tariff_order"), [
             "neither order nor petition named: kind guessed from its subject"
         ]
     return None, []
@@ -490,6 +513,8 @@ def propose_from_html(
     licensees: dict[str, list[str]],
     groups: dict[str, list[str]] | None = None,
     listing: str | None = None,
+    default_licensee: str | None = None,
+    since: str | None = None,
 ) -> list[dict[str, Any]]:
     """Proposed library entries from a listing page: every link to a PDF with its title (the
     link text, or the table row's description when the link shows only a file name), a guessed
@@ -536,7 +561,11 @@ def propose_from_html(
                 if code in licensees
             }
         )
-        if len(years) > 1 and not main:
+        if since and years and max(int(y[2:6]) for y in years) < int(since[2:6]):
+            continue  # every year it names is before the years asked
+        if kind in ("myt_order", "myt_petition") and len(years) > 1:
+            notes.append(f"control period {years[0]} to {years[-1]} (the control-period slot)")
+        elif len(years) > 1 and not main:
             notes.append(f"several years named ({', '.join(years)}): the latest is proposed")
         if not years and kind not in ("regulation", "regulation_amendment", "myt_order", "myt_petition"):
             notes.append("no financial year in the title")
@@ -546,6 +575,12 @@ def propose_from_html(
         if group_hits and not hits:
             targets = list(group_hits)
             notes.append(f"one order for {len(group_hits)} licensees ({', '.join(group_hits)}); proposed for each")
+        elif len(hits) > 1 and kind in ("tariff_order", "arr_true_up_order", "myt_order", "mid_term_review"):
+            targets = list(hits)
+            notes.append(f"one order for {len(hits)} licensees ({', '.join(hits)}); proposed for each")
+        elif not hits and default_licensee and kind not in ("regulation", "regulation_amendment", None):
+            targets = [default_licensee]
+            notes.append(f"licensee {default_licensee} taken from the listing page (the title names none)")
         else:
             targets = [hits[0]] if len(hits) == 1 else [None]
             if len(hits) > 1:
@@ -561,6 +596,7 @@ def propose_from_html(
                     "fiscal_year": fy,
                     "utility_code": code,
                     "decides": named,
+                    "years": years,
                     "variant": variant,
                     "preferred": True,
                     "listing": listing,
@@ -586,7 +622,7 @@ def propose_from_html(
             )
     slots: dict[tuple, int] = {}
     for p in out:
-        if p["preferred"] and p["document_kind"]:
+        if p["preferred"] and p["document_kind"] and p["utility_code"]:
             k = (p["document_kind"], p["fiscal_year"], p["utility_code"])
             slots[k] = slots.get(k, 0) + 1
     for p in out:

@@ -1,0 +1,21 @@
+{
+  "id": "jserc-discovery",
+  "version": 1,
+  "commission": "JSERC",
+  "status": "draft: written against the live site on 2026-11-01; re-check when the site changes",
+  "note": "JSERC lists all tariff orders (generation, transmission and distribution) in one table; most titles name the company in full.",
+  "licensee_aliases": {
+    "JBVNL": [
+      "Jharkhand Bijli Vitran Nigam Limited",
+      "Jharkhand Bijli Vitran Nigam Ltd"
+    ]
+  },
+  "listings": [
+    {
+      "name": "Tariff orders",
+      "url": "https://jserc.org/tariff.aspx",
+      "method": "static",
+      "rows_only": true
+    }
+  ]
+}

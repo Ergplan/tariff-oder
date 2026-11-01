@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 32: commission discovery profiles — UPERC's year-by-year listing read live; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -581,6 +581,27 @@ open-access view.
   UPERC's petitions and regulations pages; a combined order is registered once with the
   first licensee as its source licensee (reading the other discoms' ARR from it needs a
   source with several licensees — open).
+
+  **Increment 33 (2026-11-01): discovery profiles for BERC, HPERC, JSERC and JERC (Goa & UTs).**
+  Of 24 commission sites tried from this session, 8 answer (MPERC, BERC, OERC, JSERC, HPERC,
+  UERC, JERC, CERC); the others time out here (they may answer from the VM).  Profiles were
+  written for four of the reachable ones and run live; the engine gained what their sites
+  need: following a page per order to its PDF, including a PDF embedded through a viewer link
+  (BERC), pagination, `rows_only` (only PDFs in the orders table, not the site menu: HPERC),
+  a listing's own licensee for titles that name none (HPERC → HPSEBL, JERC's Goa page →
+  GOA-ED), and profile-level licensee aliases the registry lacks (EDG, PED, the full JBVNL
+  name).  The proposer now drops documents whose every named year is before the years asked,
+  sets aside press releases, tariff charts, notices and review orders, reads "Approval of …"
+  and "Determination of …" as orders and "truing up" as a true-up, proposes an order naming
+  several licensees once per licensee, and tells an annual order that mentions its control
+  period ("ARR and Tariff for FY 2026-27 & final true-up of the 4th MYT control period") from
+  the MYT order.  **Live run, FY2024-25 to FY2026-27, nothing recorded:** UPERC 69 proposals
+  (15 complete) in 8 requests; BERC 31 (2 complete: the FY2026-27 order for NBPDCL and SBPDCL)
+  in 30 requests; HPERC 29 (2: HPSEBL FY2024-25 and FY2026-27) in 1; JSERC 56 (3: JBVNL
+  FY2024-25 and FY2025-26, a regulation) in 1; JERC Goa & UTs 23 (4: GOA-ED and PED-PY
+  FY2026-27 tariff and FY2024-25 true-up) in 2.  The rest carry the note that stops them
+  (competing copies, MYT orders for the 2026-31 control period with several documents, titles
+  in short-year forms like "FY 26" which are not read as years).  All profiles are `draft`.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1135,6 +1156,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 33 (2026-11-01): 349 passed** (+3 unit: a static listing with rows_only, the listing's licensee, aliases, the year floor and the title rules; following order pages to an embedded PDF; every packaged profile loads).
 - **Increment 32 (2026-11-01): 346 passed** (+4 unit: the WebForms engine against a local server that refuses what a browser would not post, proposals from its listing, a refused post reported, the UPERC profile loads; the library integration test also links a twin entry without fetching and checks the profile endpoints).
 - **Increment 31 (2026-11-01): 342 passed** (+2 integration: a true-up case from actuals to draft — grounding refusals, isolation, identity block, stale and frozen statements, trace; an APR case with an estimate).
 - **Increment 30 (2026-11-01): 340 passed** (+1 unit: generic fallbacks; the end-to-end test asserts chapter assignment).
@@ -1300,6 +1322,11 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+0000000000000. **Operator (increment 33):** run `tariff-api library-discover --commission <BERC |
+   HPERC | JSERC | JERC-GOA-UT | UPERC> --years FY2024-25 FY2025-26 FY2026-27` on the VM and
+   tick proposals in `/library`; tell engineering which commissions come next (MERC, TNERC,
+   KERC, GERC and others did not answer from the build session, so their listings need the
+   VM or a pasted page).
 000000000000. **Operator (increment 32):** on the VM, `uv run tariff-api library-discover
    --commission UPERC --years FY2024-25 FY2025-26 FY2026-27 --out uperc.json` (or `/library` →
    Find documents → UPERC), tick the proposals (prefer the digitally signed copy; choose one

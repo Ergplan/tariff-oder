@@ -193,3 +193,114 @@ def test_the_uperc_profile_loads():
     assert p is not None and p.listings[0].method == "aspnet_year_select"
     assert set(p.licensee_groups["State Discoms"]) == {"PVVNL", "PUVVNL", "MVVNL", "DVVNL", "KESCO"}
     assert load_profile("NOSUCH") is None
+
+
+STATIC = {
+    "/list": """<html><body>
+      <ul class="menu"><li><a href="/uploads/act.pdf">Electricity Act 2003</a></li></ul>
+      <table>
+        <tr><td>1</td><td>Determination of Aggregate Revenue Requirement and Tariff for FY 2026-27 &amp; Final True-up for the 4th MYT Control Period</td><td><a href="/uploads/to2627.pdf">to2627.pdf</a></td></tr>
+        <tr><td>2</td><td>Press Release of the Tariff Order for FY 2026-27</td><td><a href="/uploads/press.pdf">press.pdf</a></td></tr>
+        <tr><td>3</td><td>Approval for True-up of FY 2024-25 for EDS</td><td><a href="/uploads/tu2425.pdf">Download</a></td></tr>
+        <tr><td>4</td><td>Tariff Order for FY 2012-13</td><td><a href="/uploads/to1213.pdf">to1213.pdf</a></td></tr>
+        <tr><td>5</td><td>Review order seeking review of the order dated 28.03.2025</td><td><a href="/uploads/rev.pdf">rev.pdf</a></td></tr>
+        <tr><td>6</td><td>Order on Business Plan and Multi Year Tariff for FY 2026-27 to FY 2030-31</td><td><a href="/uploads/myt.pdf">myt.pdf</a></td></tr>
+      </table></body></html>""",
+    "/orders": """<html><body><table>
+        <tr><td><a href="/orders/101-tariff-order-fy-2026-27">Tariff Order of DISCOMS (SYN-B &amp; SYN-C) for FY 2026-27</a></td></tr>
+        <tr><td><a href="/orders/102-tariff-chart-fy-2026-27">Tariff Chart of SYN-B &amp; SYN-C for FY 2026-27</a></td></tr>
+        <tr><td><a href="/about">About</a></td></tr>
+      </table></body></html>""",
+    "/orders/101-tariff-order-fy-2026-27": """<iframe src="/viewer/web/viewer.html?file=https://site.example/images/pdf/TO_2627.pdf"></iframe>""",
+    "/orders/102-tariff-chart-fy-2026-27": """<a href="/images/pdf/chart_2627.pdf">chart</a>""",
+}
+
+
+class _Static(BaseHTTPRequestHandler):
+    def log_message(self, *a):
+        pass
+
+    def do_GET(self):  # noqa: N802
+        body = STATIC.get(self.path)
+        self.send_response(200 if body else 404)
+        self.send_header("content-type", "text/html")
+        self.end_headers()
+        self.wfile.write((body or "not found").encode())
+
+
+@pytest.fixture()
+def static_server():
+    httpd = HTTPServer(("127.0.0.1", 0), _Static)
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    yield f"http://127.0.0.1:{httpd.server_address[1]}"
+    httpd.shutdown()
+
+
+def test_static_listing_rows_only_licensee_from_page_aliases_and_year_floor(static_server):
+    prof = Profile(
+        id="t",
+        version=1,
+        commission="SYNTHERC",
+        status="test",
+        licensee_aliases={"SYN-S": ["EDS"]},
+        listings=[
+            Listing(
+                name="One licensee's orders",
+                url=f"{static_server}/list",
+                method="static",
+                rows_only=True,
+                licensee="SYN-A",
+            )
+        ],
+    )
+    out = run(
+        prof, ["FY2024-25", "FY2025-26", "FY2026-27"], licensees={"SYN-A": [], "SYN-S": []}, fetcher=Fetcher(pause=0)
+    )
+    by = {p["url"].rsplit("/", 1)[-1]: p for p in out["proposals"]}
+    assert "act.pdf" not in by  # the site menu, not the table
+    assert "to1213.pdf" not in by  # every year it names is before the years asked
+    to = by["to2627.pdf"]
+    # an annual order that mentions its control period is the annual order
+    assert (to["document_kind"], to["fiscal_year"], to["utility_code"], to["complete"]) == (
+        "tariff_order",
+        "FY2026-27",
+        "SYN-A",
+        True,
+    )
+    assert "taken from the listing page" in " ".join(to["notes"])
+    assert by["press.pdf"]["document_kind"] is None and "press release" in by["press.pdf"]["notes"][0]
+    tu = by["tu2425.pdf"]  # "Approval for ..." is an order; the alias names the licensee
+    assert (tu["document_kind"], tu["fiscal_year"], tu["utility_code"]) == ("arr_true_up_order", "FY2024-25", "SYN-S")
+    assert by["rev.pdf"]["document_kind"] is None and "review" in by["rev.pdf"]["notes"][0]
+    myt = by["myt.pdf"]
+    assert (myt["document_kind"], myt["fiscal_year"]) == ("myt_order", "")
+    assert "control period FY2026-27 to FY2030-31" in " ".join(myt["notes"])
+
+
+def test_static_listing_follows_order_pages_to_their_pdfs(static_server):
+    prof = Profile(
+        id="t",
+        version=1,
+        commission="SYNTHERC",
+        status="test",
+        listings=[Listing(name="Orders", url=f"{static_server}/orders", method="static", follow=r"^/orders/\d+-")],
+    )
+    out = run(prof, ["FY2026-27"], licensees={"SYN-B": [], "SYN-C": []}, fetcher=Fetcher(pause=0))
+    assert out["requests"] == 3  # the list and the two order pages; /about is not followed
+    props = out["proposals"]
+    order = [p for p in props if p["url"] == "https://site.example/images/pdf/TO_2627.pdf"]
+    # the PDF inside the viewer link, with the list's title; one order for two licensees
+    assert {p["utility_code"] for p in order} == {"SYN-B", "SYN-C"}
+    assert all(p["complete"] and p["title"].startswith("Tariff Order of DISCOMS") for p in order)
+    chart = [p for p in props if p["url"].endswith("chart_2627.pdf")]
+    assert chart and all(p["document_kind"] is None for p in chart)
+
+
+def test_every_profile_in_the_package_loads():
+    from tariff_api.discovery import profile_commissions
+
+    codes = profile_commissions()
+    assert {"UPERC", "BERC", "HPERC", "JSERC", "JERC-GOA-UT"} <= set(codes)
+    for c in codes:
+        p = load_profile(c)
+        assert p is not None and p.commission == c and p.status.startswith("draft")

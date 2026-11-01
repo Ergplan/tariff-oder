@@ -5446,6 +5446,13 @@
               }
             ],
             "title": "Variant"
+          },
+          "years": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Years",
+            "type": "array"
           }
         },
         "required": [

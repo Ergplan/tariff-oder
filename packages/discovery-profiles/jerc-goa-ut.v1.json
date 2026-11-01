@@ -1,0 +1,35 @@
+{
+  "id": "jerc-goa-ut-discovery",
+  "version": 1,
+  "commission": "JERC-GOA-UT",
+  "status": "draft: written against the live site on 2026-11-01; re-check when the site changes",
+  "note": "JERC for Goa and the Union Territories lists orders per territory; titles call the licensees 'Electricity Department' with abbreviations (EDG, PED).",
+  "licensee_aliases": {
+    "GOA-ED": [
+      "EDG",
+      "Electricity Department, Goa",
+      "Electricity Department, Government of Goa"
+    ],
+    "PED-PY": [
+      "PED",
+      "Electricity Department, Puducherry",
+      "Puducherry Electricity Department"
+    ]
+  },
+  "listings": [
+    {
+      "name": "Tariff orders (Goa)",
+      "url": "https://jercuts.gov.in/order_category/goa/",
+      "method": "static",
+      "rows_only": true,
+      "licensee": "GOA-ED"
+    },
+    {
+      "name": "Tariff orders (Puducherry)",
+      "url": "https://jercuts.gov.in/order_category/puducherry/",
+      "method": "static",
+      "rows_only": true,
+      "licensee": "PED-PY"
+    }
+  ]
+}

@@ -36,6 +36,17 @@ class Listing(BaseModel):
     submit_name: str | None = None
     submit_value: str | None = None
     listing_year_note: str | None = None
+    # static listings: more pages ("{url}?start={offset}", offset = n x page_step), detail
+    # pages to follow when the list links to a page per order rather than to the PDF, and a
+    # pattern every proposed PDF URL must match (to leave navigation links out)
+    page_template: str | None = None
+    page_step: int = 0
+    pages: int = Field(default=1, ge=1, le=20)
+    follow: str | None = None
+    max_follow: int = Field(default=40, ge=1, le=200)
+    url_pattern: str | None = None
+    rows_only: bool = False  # only PDFs inside table rows (site menus link PDFs too)
+    licensee: str | None = None  # the listing is one licensee's: a title naming none is for it
 
 
 class Profile(BaseModel):
@@ -46,6 +57,8 @@ class Profile(BaseModel):
     status: str
     note: str | None = None
     licensee_groups: dict[str, list[str]] = Field(default_factory=dict)
+    # names the site uses for a licensee that the registry does not ("EDG" for GOA-ED)
+    licensee_aliases: dict[str, list[str]] = Field(default_factory=dict)
     listings: list[Listing]
 
 
@@ -200,7 +213,7 @@ def fetch_listing(f: Fetcher, listing: Listing, fiscal_years: list[str]) -> list
     except (httpx.HTTPError, DiscoveryError) as e:
         return [{"listing": listing.name, "fiscal_year": "", "url": listing.url, "html": None, "error": _err(e)}]
     if listing.method == "static":
-        return [{"listing": listing.name, "fiscal_year": "", "url": url, "html": page, "error": None}]
+        return _static(f, listing, page, url)
     assert listing.year_field
     try:
         if listing.open_event:
@@ -228,6 +241,112 @@ def fetch_listing(f: Fetcher, listing: Listing, fiscal_years: list[str]) -> list
     return out
 
 
+_ATTR_URL = re.compile(r"""(?:href|src|data)\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>"']+))""", re.I)
+_A = re.compile(r"""<a\b[^>]*?href\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>"']+))[^>]*>(.*?)</a>""", re.I | re.S)
+
+
+def pdf_links(page: str, url: str) -> list[str]:
+    """Every PDF a page links or embeds, including a viewer's ``file=`` parameter."""
+    out: list[str] = []
+    for m in _ATTR_URL.finditer(page):
+        v = html_lib.unescape(m.group(1) or m.group(2) or m.group(3) or "")
+        inner = re.search(r"[?&]file=([^&#]+\.pdf)", v, re.I)
+        v = inner.group(1) if inner else v
+        if re.search(r"\.pdf(\?|#|$)", v, re.I):
+            full = urljoin(url, v)
+            if full not in out:
+                out.append(full)
+    return out
+
+
+def _static(f: Fetcher, listing: Listing, page: str, url: str) -> list[dict[str, Any]]:
+    """A plain listing, its further pages, and — when it links to a page per order — those
+    pages followed for their PDFs.  The result is one page of rows (title, PDF link) for the
+    proposer; ``url_pattern`` leaves out PDFs that are not orders (site navigation)."""
+    pages = [(page, url)]
+    errors: list[str] = []
+    if listing.page_template:
+        for n in range(1, listing.pages):
+            nxt = listing.page_template.format(url=listing.url, offset=n * listing.page_step, n=n + 1)
+            try:
+                pages.append(f.get(nxt))
+            except (httpx.HTTPError, DiscoveryError) as e:
+                errors.append(_err(e))
+                break
+    body: list[str] = []
+
+    def keep(link: str) -> bool:
+        return not listing.url_pattern or bool(re.search(listing.url_pattern, link))
+
+    def link_row(title: str, link: str) -> str:
+        name = html_lib.escape(link.rsplit("/", 1)[-1])
+        return f'<tr><td>{html_lib.escape(title)}</td><td><a href="{html_lib.escape(link)}">{name}</a></td></tr>'
+
+    if listing.follow:
+        details: list[tuple[str, str]] = []
+        for pg, pu in pages:
+            for m in _A.finditer(pg):
+                href = html_lib.unescape(m.group(1) or m.group(2) or m.group(3) or "")
+                full = urljoin(pu, href)
+                if re.search(listing.follow, href) and full not in [d[1] for d in details]:
+                    details.append((_text(m.group(4)), full))
+        for title, durl in details[: listing.max_follow]:
+            try:
+                dpage, dfinal = f.get(durl)
+            except (httpx.HTTPError, DiscoveryError) as e:
+                errors.append(f"{durl}: {_err(e)}")
+                continue
+            body += [link_row(title, pdf) for pdf in pdf_links(dpage, dfinal) if keep(pdf)]
+    else:
+        from .library import _HREF, _ROW
+
+        for pg, pu in pages:
+            # a PDF link inside a table row keeps its row, so the proposer finds the row's title
+            in_rows: set[str] = set()
+            for row in _ROW.finditer(pg):
+                links = [
+                    urljoin(pu, html_lib.unescape(m.group(1) or m.group(2) or m.group(3) or ""))
+                    for m in _HREF.finditer(row.group(1))
+                ]
+                pdfs = [x for x in links if re.search(r"\.pdf(\?|#|$)", x, re.I)]
+                if not pdfs or not any(keep(x) for x in pdfs):
+                    continue
+                in_rows.update(pdfs)
+                body.append("<tr>" + _absolute(row.group(1), pu) + "</tr>")
+            for m in [] if listing.rows_only else _HREF.finditer(pg):
+                full = urljoin(pu, html_lib.unescape(m.group(1) or m.group(2) or m.group(3) or ""))
+                if re.search(r"\.pdf(\?|#|$)", full, re.I) and full not in in_rows and keep(full):
+                    in_rows.add(full)
+                    body.append(link_row(_text(m.group(4)), full))
+    return [
+        {
+            "listing": listing.name,
+            "fiscal_year": "",
+            "url": url,
+            "html": "<table>" + "".join(body) + "</table>",
+            "error": "; ".join(errors) or None,
+        }
+    ]
+
+
+_HREF_ATTR = re.compile(r"""href\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>"']+))""", re.I)
+
+
+def _absolute(fragment: str, base: str) -> str:
+    """The fragment with every href made absolute (rows are gathered from several pages)."""
+
+    def repl(m: re.Match) -> str:
+        return (
+            'href="' + html_lib.escape(urljoin(base, html_lib.unescape(m.group(1) or m.group(2) or m.group(3)))) + '"'
+        )
+
+    return _HREF_ATTR.sub(repl, fragment)
+
+
+def _text(fragment: str) -> str:
+    return html_lib.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", fragment))).strip()
+
+
 def _err(e: Exception) -> str:
     return str(e) if isinstance(e, DiscoveryError) else f"request failed: {type(e).__name__}"
 
@@ -246,6 +365,7 @@ def run(
 
     propose = propose or propose_from_html
     f = fetcher or Fetcher()
+    licensees = {code: [*names, *profile.licensee_aliases.get(code, [])] for code, names in licensees.items()}
     pages: list[dict[str, Any]] = []
     proposals: list[dict[str, Any]] = []
     seen: set[tuple[str, str | None]] = set()
@@ -261,6 +381,8 @@ def run(
                         licensees=licensees,
                         groups=profile.licensee_groups,
                         listing=label,
+                        default_licensee=listing.licensee if listing.licensee in licensees else None,
+                        since=min(fiscal_years, key=lambda y: int(y[2:6])) if fiscal_years else None,
                     ):
                         key = (p["url"], p["utility_code"])
                         if key in seen:

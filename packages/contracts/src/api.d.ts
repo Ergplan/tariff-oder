@@ -3949,6 +3949,8 @@ export interface components {
             utility_code: string | null;
             /** Variant */
             variant?: string | null;
+            /** Years */
+            years?: string[];
         };
         /** LibrarySeedOut */
         LibrarySeedOut: {
