@@ -241,7 +241,7 @@ def test_real_arr_approval_waits_for_a_confirmed_mapping():
 
 def test_shipped_plans_and_templates_load_and_name_known_codes():
     codes = TAX.by_code()
-    for commission in ("SYNTHERC", "UPERC"):
+    for commission in ("SYNTHERC", "UPERC", "GENERIC"):
         plan = fm.load_plan(commission)
         for pl in plan.lines:
             assert pl.line_code in codes, pl.line_code
@@ -348,3 +348,19 @@ def test_discovery_proposes_entries_from_a_listing_page_and_says_what_it_guessed
     assert props["UPERC (Multi Year Di"]["document_kind"] == "regulation"
     alld = props["Order on ARR of all "]
     assert alld["utility_code"] is None and "no licensee named" in alld["notes"] and not alld["complete"]
+
+
+def test_every_state_falls_back_to_the_generic_skeletons_and_stays_gated():
+    """A commission with no mapping, plan or template of its own reads and formulates with the
+    generic skeletons; real lines read with the generic mapping cannot be approved."""
+    from tariff_api.services.review import arr_mapping_confirmed
+
+    with pytest.raises(FileNotFoundError):
+        load_mapping("MERC")  # strict by default: the API's mapping endpoint says "not found"
+    assert load_mapping("MERC", fallback=True).id == "generic-arr"
+    assert fm.load_plan("MERC").id == "generic-plan" and fm.load_plan("UPERC").id == "uperc-plan"
+    assert fm.load_plan_id("generic-plan").status.startswith("skeleton")
+    assert fl.load_template("MERC").id == "generic-petition"
+    src = SimpleNamespace(utility=SimpleNamespace(commission=SimpleNamespace(code="MERC")))
+    ok, why = arr_mapping_confirmed(None, src)
+    assert not ok and "generic" in why.lower() or "not confirmed" in why

@@ -1,0 +1,167 @@
+{
+  "id": "generic-arr",
+  "version": 1,
+  "taxonomy_version": 1,
+  "commission": "GENERIC",
+  "status": "skeleton (generic fallback for a commission with no mapping of its own; never confirmed: real ARR lines read with it cannot be approved)",
+  "licensees": {
+    "distribution": [
+      "(any)"
+    ],
+    "transmission": [
+      "(any)"
+    ]
+  },
+  "regulations": [
+    {
+      "role": "distribution_tariff",
+      "title": "the commission's tariff regulations on file",
+      "year": null,
+      "amendments": [],
+      "control_periods": [],
+      "source_id": null,
+      "note": "generic"
+    }
+  ],
+  "return_basis": {
+    "value": null,
+    "note": "unknown for a generic commission"
+  },
+  "gap_convention": {
+    "value": null,
+    "note": "unknown: identity ARR-I3 tries both conventions"
+  },
+  "unit_convention": {
+    "money": "INR_crore",
+    "energy": "MU",
+    "note": "Overridden per table when a printed unit line says otherwise; the printed unit always stays on the fact."
+  },
+  "orders_expected": [],
+  "chapter_map": [
+    {
+      "branch": "E",
+      "heading_patterns": [
+        "energy sales",
+        "sales forecast",
+        "energy balance",
+        "energy requirement",
+        "distribution loss",
+        "t&d loss"
+      ],
+      "note": "generic"
+    },
+    {
+      "branch": "C.PP",
+      "heading_patterns": [
+        "power purchase",
+        "cost of power",
+        "power procurement"
+      ],
+      "note": "generic"
+    },
+    {
+      "branch": "C.OM",
+      "heading_patterns": [
+        "operation and maintenance",
+        "o&m expenses",
+        "employee expenses"
+      ],
+      "note": "generic"
+    },
+    {
+      "branch": "C.DEP",
+      "heading_patterns": [
+        "depreciation"
+      ],
+      "note": "generic"
+    },
+    {
+      "branch": "C.INT",
+      "heading_patterns": [
+        "interest on loan",
+        "interest and finance charges",
+        "interest on working capital"
+      ],
+      "note": "generic"
+    },
+    {
+      "branch": "C.RETURN",
+      "heading_patterns": [
+        "return on equity",
+        "return on capital"
+      ],
+      "note": "generic"
+    },
+    {
+      "branch": "C",
+      "heading_patterns": [
+        "aggregate revenue requirement",
+        "annual revenue requirement",
+        "expenditure"
+      ],
+      "note": "generic"
+    },
+    {
+      "branch": "L",
+      "heading_patterns": [
+        "non-tariff income",
+        "non tariff income"
+      ],
+      "note": "generic"
+    },
+    {
+      "branch": "R",
+      "heading_patterns": [
+        "revenue gap",
+        "revenue at existing tariff",
+        "gap/surplus",
+        "regulatory asset"
+      ],
+      "note": "generic"
+    }
+  ],
+  "year_columns": {
+    "note": "Column-header patterns to the fiscal year and voice; filled from the exported tables.",
+    "patterns": []
+  },
+  "voice_columns": {
+    "note": "Column-header words to value types; the generic set applies until the commission's own words are confirmed.",
+    "patterns": [
+      {
+        "pattern": "petition|claimed|proposed|submitted|as per petitioner",
+        "value_type": "petitioned"
+      },
+      {
+        "pattern": "approved|allowed|commission",
+        "value_type": "approved"
+      },
+      {
+        "pattern": "provisional|APR|revised estimate|RE\\b",
+        "value_type": "provisional_true_up"
+      },
+      {
+        "pattern": "true[- ]?up|trued[- ]?up|final",
+        "value_type": "final_true_up"
+      },
+      {
+        "pattern": "actual|audited",
+        "value_type": "actual"
+      }
+    ]
+  },
+  "label_aliases": {
+    "note": "generic: only the taxonomy's aliases apply",
+    "entries": []
+  },
+  "regulation_clauses": {
+    "note": "generic",
+    "entries": []
+  },
+  "unplaced": {
+    "note": "generic",
+    "entries": []
+  },
+  "known_quirks": [
+    "Generic fallback: chapter cues and voice words are the common English ones; a commission's own words go in its own mapping."
+  ]
+}

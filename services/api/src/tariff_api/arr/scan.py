@@ -93,7 +93,7 @@ def scan_texts(
     tax = taxonomy or load_taxonomy()
     if mapping is None:
         try:
-            mapping = load_mapping(commission)
+            mapping = load_mapping(commission, fallback=True)
         except FileNotFoundError:
             mapping = None
     placer = Placer(tax, mapping, licensee_kind)

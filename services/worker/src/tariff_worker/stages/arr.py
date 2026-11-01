@@ -80,6 +80,15 @@ def _document(storage: ObjectStore, object_key: str, sha: str):
         raise JobFailure("source_unreadable", str(e), retry=False) from e
 
 
+def _heading_y(doc, page: int, text: str) -> float | None:
+    """The top of a chapter heading on its page, or None when the text cannot be found."""
+    try:
+        rects = doc[page - 1].search_for(text[:80])
+    except Exception:  # noqa: BLE001 - a heading we cannot locate leaves the page undivided
+        return None
+    return float(rects[0].y0) if rects else None
+
+
 def _artefact(s, storage: ObjectStore, src: SourceDocument, stage: str, tool_version: str, payload: dict) -> str:
     body = json.dumps(payload, sort_keys=True, default=str).encode()
     key = f"{src.sha256}/{stage}/{tool_version}/{hashlib.sha256(body).hexdigest()[:16]}.json"
@@ -117,7 +126,7 @@ def arr_localise_source(ctx: JobContext) -> dict:
         kind = src.utility.licensee_kind
         object_key, sha, page_count = src.object_key, src.sha256, src.page_count
     try:
-        mapping = load_mapping(commission)
+        mapping = load_mapping(commission, fallback=True)
     except FileNotFoundError as e:
         raise JobFailure("validation_failed", f"no ARR mapping for {commission}", retry=False) from e
     doc = _document(storage, object_key, sha)
@@ -235,7 +244,7 @@ def arr_extract_source(ctx: JobContext) -> dict:
             is None
         )
         chapter_rows = [
-            (c.ordinal, c.page_start, c.page_end, c.branch)
+            (c.ordinal, c.page_start, c.page_end, c.branch, c.cue_page, c.cue_text)
             for c in s.execute(
                 select(ArrChapter)
                 .where(ArrChapter.source_id == source_id, ArrChapter.status == "confirmed")
@@ -252,7 +261,7 @@ def arr_extract_source(ctx: JobContext) -> dict:
         }
     if not chapter_rows:
         raise JobFailure("validation_failed", "no confirmed chapter to read", retry=False)
-    mapping = load_mapping(commission)
+    mapping = load_mapping(commission, fallback=True)
     placer = Placer(tax, mapping, kind)
     doc = _document(storage, object_key, sha)
     extraction_version = f"{ARR_RULES_VERSION}+{channel.name}:{channel.model}+schema:{ARR_SCHEMA_VERSION}"
@@ -260,22 +269,33 @@ def arr_extract_source(ctx: JobContext) -> dict:
     rows: list[CandidateRecord] = []
     runs: list[ExtractionRun] = []
     chapter_reports: list[dict[str, Any]] = []
-    for ordinal, start, end, branch in chapter_rows:
+    # where each chapter heading sits on its page: a table belongs to the last heading above
+    # it, so a page shared by two chapters splits at the second heading
+    cue_y = {ordinal: _heading_y(doc, cue_page, cue_text) for ordinal, _s, _e, _b, cue_page, cue_text in chapter_rows}
+    for ordinal, start, end, branch, cue_page, _cue_text in chapter_rows:
         grids: list[GridIn] = []
+        later = [(o, cp) for o, _s, _e, _b, cp, _t in chapter_rows if o > ordinal]
         for (page, g_ord), key in sorted(grid_keys.items()):
             if not (start <= page <= end) or (page, g_ord) in seen_grids:
                 continue
-            seen_grids.add((page, g_ord))
             try:
                 payload = json.loads(storage.get(ObjectStore.ARTEFACTS, key))
             except (ObjectNotFound, ValueError):
                 continue
             g = payload["grid"]
+            top = float(g["bbox"][1])
+            if page == cue_page and cue_y[ordinal] is not None and top < cue_y[ordinal]:
+                continue  # above this chapter's own heading: the previous chapter's table
+            if any(cp == page and cue_y[o] is not None and top >= cue_y[o] for o, cp in later):
+                continue  # below a later chapter's heading on this page: that chapter's table
+            seen_grids.add((page, g_ord))
             above, _below = _lines_around(doc[page - 1], g["bbox"])
             grids.append(GridIn(page, g_ord, g["rows"], int(g.get("header_rows") or 0), above))
         structure, report = read_grids(
             grids, taxonomy=tax, mapping=mapping, placer=placer, source_id=str(source_id), utility=utility_code
         )
+        for c in structure.candidates:
+            c.chapter = ordinal
         s_run = ExtractionRun(
             id=uuid.uuid4(),
             source_id=source_id,
@@ -396,7 +416,7 @@ def arr_validate_source(ctx: JobContext) -> dict:
     with session_scope() as s:
         src = _load(ctx, s, ("extracted", "awaiting_review", "published"))
         try:
-            mapping = load_mapping(src.utility.commission.code)
+            mapping = load_mapping(src.utility.commission.code, fallback=True)
         except FileNotFoundError:
             mapping = None
         rows = (

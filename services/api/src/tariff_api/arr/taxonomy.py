@@ -175,8 +175,12 @@ def mapping_files() -> dict[str, list[tuple[int, Path]]]:
     return out
 
 
-def load_mapping(commission: str, version: int | None = None) -> Mapping:
+def load_mapping(commission: str, version: int | None = None, *, fallback: bool = False) -> Mapping:
+    """The commission's mapping; with ``fallback`` the generic skeleton when it has none (its
+    status is never confirmed, so real lines read with it cannot be approved)."""
     files = mapping_files().get(commission.upper())
+    if not files and fallback and commission.upper() != "GENERIC":
+        return load_mapping("GENERIC")
     if not files:
         raise FileNotFoundError(f"no ARR mapping for commission {commission!r}")
     chosen = max(files)[1] if version is None else next(p for v, p in files if v == version)

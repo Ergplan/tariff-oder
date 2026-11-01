@@ -9,7 +9,8 @@ import { ErrorBanner } from "../components";
 /** POST/PUT/DELETE through the client proxy, then refresh or go somewhere; errors shown inline. */
 export async function call(path: string, method: string, body?: unknown): Promise<{ ok: true; data: unknown } | { ok: false; error: ErrorResponse }> {
   try {
-    const res = await fetch(`/api/client/${path}`, {
+    // a path starting with "/" is a same-origin route of its own; otherwise the client proxy
+    const res = await fetch(path.startsWith("/") ? path : `/api/client/${path}`, {
       method,
       headers: { "content-type": "application/json" },
       body: body === undefined ? undefined : JSON.stringify(body),

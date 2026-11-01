@@ -127,6 +127,9 @@ def test_arr_read_formulate_file_end_to_end(client, runner, object_store_root, m
     assert len(cands) == rows * 3, [c["candidate_key"] for c in cands]
     assert all(c["payload_kind"] == "arr" and c["is_fixture"] and c["channel_agreement"] == "agree" for c in cands)
     by = {(c["record"]["line_code"], c["record"]["fiscal_year"], c["record"]["value_type"]): c for c in cands}
+    # a page shared by two chapters splits at the second heading: each table in one chapter
+    chapters = {code: by[(code, "FY2025-26", "approved")]["record"]["chapter"] for code in ("E.SALES", "C.OM", "R.GAP")}
+    assert chapters == {"E.SALES": 1, "C.OM": 2, "R.GAP": 3}
     loan = by[("C.INT.LOAN", "FY2025-26", "approved")]["record"]
     assert loan["stated_value"] == "150.00" and loan["stated_unit"] == "INR_crore"  # the mapping's alias placed it
     loss = by[("E.LOSS.DIST_PCT", "FY2024-25", "final_true_up")]["record"]

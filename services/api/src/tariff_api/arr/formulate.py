@@ -68,8 +68,21 @@ def plans_dir() -> Path:
     return taxonomy_dir() / "formulation"
 
 
-@lru_cache(maxsize=16)
-def load_plan(commission: str, version: int | None = None) -> Plan:
+@lru_cache(maxsize=32)
+def load_plan(commission: str, version: int | None = None, *, fallback: bool = True) -> Plan:
+    """The commission's plan, or the generic skeleton plan when it has none (``fallback``)."""
+    try:
+        return load_plan_id(f"{commission.lower()}-plan", version)
+    except FileNotFoundError:
+        if fallback and commission.upper() != "GENERIC":
+            return load_plan_id("generic-plan", version)
+        raise
+
+
+@lru_cache(maxsize=32)
+def load_plan_id(plan_id: str, version: int | None = None) -> Plan:
+    """A plan by its id (``uperc-plan``), as recorded on a formulation."""
+    commission = plan_id.removesuffix("-plan")
     files: list[tuple[int, Path]] = []
     for p in plans_dir().glob(f"{commission.lower()}-plan.v*.json"):
         m = re.fullmatch(rf"{commission.lower()}-plan\.v(\d+)\.json", p.name)

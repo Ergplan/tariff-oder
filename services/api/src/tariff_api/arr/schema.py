@@ -99,6 +99,7 @@ class ArrCandidate(BaseModel):
     ambiguous: list[str] = Field(default_factory=list)
     notes: str | None = None
     rationale: str | None = None
+    chapter: int | None = None  # the ARR chapter (ordinal) the value was read in; not part of the identity
 
     @field_validator("fiscal_year")
     @classmethod

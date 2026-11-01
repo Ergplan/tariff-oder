@@ -79,7 +79,7 @@ def start_reading(session: Session, settings: Settings, src: SourceDocument, *, 
     if src.parse_version is None or src.page_count is None:
         raise AppError("invalid_transition", "the order is not parsed yet; ARR reading starts after the parse stage")
     try:
-        load_mapping(src.utility.commission.code)
+        load_mapping(src.utility.commission.code, fallback=True)
     except FileNotFoundError as e:
         raise AppError("validation_failed", f"no ARR mapping for {src.utility.commission.code}") from e
     job = enqueue_stage(session, settings, src, "arr_localise_source", actor=actor)
@@ -569,7 +569,7 @@ def create_formulation(
     lines, h = _run(plan, base_fy, targets, base, assumptions)
     tax = load_taxonomy()
     try:
-        mapping = load_mapping(commission)
+        mapping = load_mapping(commission, fallback=True)
     except FileNotFoundError:
         mapping = None
     findings = []
@@ -676,7 +676,7 @@ def reproduce(session: Session, f: ArrFormulation) -> dict[str, Any]:
     assumption set) and compare line by line and hash for hash."""
     utility = session.get(Utility, f.utility_id)
     assert utility is not None
-    plan = fm.load_plan(utility.commission.code, f.plan_version)
+    plan = fm.load_plan_id(f.plan_id, f.plan_version)
     rule = fm.BaseRule.model_validate(f.base_rule)
     base = fm.select_base(_facts_by_id(session, f.inputs.get("base_facts", [])), rule, f.base_fy)
     assumptions = _assumption_inputs(
@@ -712,7 +712,7 @@ def generate_draft(
     commission = utility.commission.code
     try:
         template = fl.load_template(commission, template_version)
-        plan = fm.load_plan(commission, f.plan_version)
+        plan = fm.load_plan_id(f.plan_id, f.plan_version)
     except (FileNotFoundError, StopIteration) as e:
         raise AppError("validation_failed", f"no petition template or plan for {commission}") from e
     tax = load_taxonomy().by_code()

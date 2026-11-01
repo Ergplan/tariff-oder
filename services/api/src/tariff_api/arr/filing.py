@@ -96,7 +96,10 @@ def templates_dir() -> Path:
 
 @lru_cache(maxsize=16)
 def load_template(commission: str, version: int | None = None) -> Template:
+    """The commission's petition template, or the generic skeleton when it has none."""
     folder = templates_dir() / commission.lower()
+    if not folder.is_dir() and commission.upper() != "GENERIC":
+        folder = templates_dir() / "generic"
     files = []
     for p in folder.glob("petition.v*.json"):
         m = re.fullmatch(r"petition\.v(\d+)\.json", p.name)

@@ -519,6 +519,20 @@ open-access view.
   page, fetched or pasted (for lists behind search forms such as UPERC's), every PDF link
   with a guessed kind, year and licensee and the reasons it is incomplete; the desk ticks
   and records them (`/library/entries/bulk`), nothing is saved without a person.
+  **Increment 30 (2026-11-01): every state readable; the ARR review screen.**  A commission with
+  no mapping, plan or petition template of its own falls back to generic skeletons
+  (`mappings/generic-arr.v1.json`, `formulation/generic-plan.v1.json`,
+  `filing-templates/generic/`): any state's licensee can be read, formulated and drafted; the
+  generic mapping is never confirmed, so real lines read with it cannot be approved.
+  Formulations record their plan id and are reproduced and drafted with exactly that plan.
+  The ARR review screen `/sources/<id>/arr` (spec section 7): read the order, confirm its
+  chapters (with the scan's unplaced rows shown), a chapter rail with progress and identity
+  failures, a grid of line items Ã— year/voice per chapter, the cited page rendered beside it
+  before any value can be approved (shared evidence-view gate), approve/reject per value,
+  publish when no blocking identity is open.  Found in the live stack and fixed: a page
+  shared by two chapters put the next chapter's table in the previous one; tables are now
+  assigned to the last chapter heading above them on the page, and every ARR candidate
+  records its chapter.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1073,6 +1087,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 30 (2026-11-01): 340 passed** (+1 unit: generic fallbacks; the end-to-end test asserts chapter assignment).
 - **Increment 29 (2026-11-01): 339 passed** (+2 unit: the live ARR channel with mocked HTTP; discovery).
 - **Increment 28 (2026-11-01): 337 passed** (+2: organisations/cases/isolation end to end,
   library seed/locate/acquire through a local HTTP server/coverage); web typecheck and build

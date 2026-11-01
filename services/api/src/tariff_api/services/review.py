@@ -128,7 +128,7 @@ def arr_mapping_confirmed(session: Session, source: SourceDocument) -> tuple[boo
         return False, "the source has no licensee; set it before reading the ARR"
     code = source.utility.commission.code
     try:
-        m = load_mapping(code)
+        m = load_mapping(code, fallback=True)
     except FileNotFoundError:
         return False, f"no ARR mapping for {code}"
     if not m.status.lower().startswith("confirmed"):

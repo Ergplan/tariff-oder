@@ -173,6 +173,9 @@ export default async function SourceDetailPage({
       <h1>
         {s.original_filename} <DatasetBadge kind={s.dataset_kind} /> <StateBadge state={s.state} />
       </h1>
+      <p>
+        <Link href={`/sources/${id}/arr`}>ARR reading of this order →</Link> <span className="muted">(chapters, values against their pages, identities, publication)</span>
+      </p>
       <p className="muted">
         {s.commission_code ? (
           <>

@@ -241,3 +241,10 @@ tr[data-kind="group"] td { font-weight: 600; }
 .action { display: inline-flex; flex-direction: column; gap: 0.3rem; margin-right: 0.5rem; }
 button[data-tone="plain"] { background: white; color: var(--accent); border: 1px solid var(--accent); }
 .card .cov-table td { white-space: normal; }
+.arr-review { display: grid; grid-template-columns: 15rem minmax(0, 1fr) 24rem; gap: 1rem; align-items: start; }
+.arr-rail { display: flex; flex-direction: column; gap: 0.4rem; position: sticky; top: 0.5rem; }
+.arr-rail button.link { text-align: left; text-decoration: none; color: var(--text); padding: 0.4rem; border: 1px solid #deded8; border-radius: 4px; background: white; }
+.arr-rail button.link[data-current="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.arr-page { position: sticky; top: 0.5rem; }
+.arr-grid td[data-flag="identity"] { background: #fde3e3; }
+@media (max-width: 1100px) { .arr-review { grid-template-columns: 1fr; } }
