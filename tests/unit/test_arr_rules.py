@@ -1,0 +1,193 @@
+"""The rule engine (ADR-0021; R-RULE-1..4, R-NUM-1..4).  SYNTHETIC rules except the last two
+tests, which check the real UPERC drafts in packages/arr-rules and their worked examples."""
+
+from __future__ import annotations
+
+from decimal import Decimal
+
+import pytest
+
+from tariff_api.arr.rules import Q, Rule, RuleError, RuleSet, check_all, load_rules, parse
+
+
+def rule(id, output, unit, formula, inputs, **kw) -> Rule:  # noqa: A002
+    return Rule.model_validate(
+        {
+            "id": id,
+            "version": 1,
+            "title": id,
+            "output": output,
+            "unit": unit,
+            "formula": formula,
+            "inputs": inputs,
+            "clause": {"regulation": "Synthetic Regulations, 2030"},
+            "applies": {"commission": "SYNTHERC", **kw.pop("applies", {})},
+            **kw,
+        }
+    )
+
+
+def test_units_convert_exactly_and_refuse_wrong_dimensions():
+    assert Q.of("1", "INR_crore").to("INR_lakh") == Decimal(100)
+    assert Q.of("15", "percent").to("fraction") == Decimal("0.15")
+    with pytest.raises(RuleError, match="cannot be expressed"):
+        Q.of("1", "MU").to("INR_crore")
+
+
+@pytest.mark.parametrize(
+    "bad", ["__import__('os')", "a.b", "a[0]", "a if b else c", "a ** 2", "a < b", "open(a)", "avg(x=a)"]
+)
+def test_the_language_is_arithmetic_only(bad):
+    with pytest.raises(RuleError):
+        parse(bad)
+
+
+def test_acos_needs_no_hand_written_factor():
+    # Rs crore / MU in Rs/kWh: the units carry the 10
+    r = rule(
+        "acos",
+        "acos",
+        "INR_per_kWh",
+        "arr / sales",
+        {"arr": {"unit": "INR_crore", "source": "fact:R.ARR"}, "sales": {"unit": "MU", "source": "fact:E.SALES"}},
+    )
+    ev = RuleSet([r]).evaluate("FY2030-31", {"fact:R.ARR": ("3481.83", "INR_crore"), "fact:E.SALES": ("4399.84", "MU")})
+    assert ev.results["acos"].rounded == Decimal("7.91")
+
+
+def test_adding_money_to_energy_is_refused_at_load():
+    bad = rule(
+        "bad",
+        "x",
+        "INR_crore",
+        "a + b",
+        {"a": {"unit": "INR_crore", "source": "record:a"}, "b": {"unit": "MU", "source": "record:b"}},
+    )
+    with pytest.raises(RuleError, match="cannot add"):
+        RuleSet([bad])
+
+
+def test_literals_are_decimal_not_float():
+    r = rule(
+        "third",
+        "x",
+        "INR_crore",
+        "a * 0.1 + a * 0.2",
+        {"a": {"unit": "INR_crore", "source": "record:a"}},
+        rounding={"places": 20},
+    )
+    ev = RuleSet([r]).evaluate("FY2030-31", {"record:a": ("1", "INR_crore")})
+    assert ev.results["x"].value == Decimal("0.3")  # 0.30000000000000004 in binary float
+
+
+def test_dependency_order_cycles_and_missing_producers():
+    a = rule(
+        "a",
+        "a",
+        "INR_crore",
+        "b + x",
+        {"b": {"unit": "INR_crore", "source": "rule:b"}, "x": {"unit": "INR_crore", "source": "record:x"}},
+    )
+    b = rule("b", "b", "INR_crore", "y * 2", {"y": {"unit": "INR_crore", "source": "record:y"}})
+    assert RuleSet([a, b]).order == ["b", "a"]
+    c = rule("b", "b", "INR_crore", "a2 * 2", {"a2": {"unit": "INR_crore", "source": "rule:a"}})
+    with pytest.raises(RuleError, match="cycle"):
+        RuleSet([a, c])
+    with pytest.raises(RuleError, match="no rule produces"):
+        RuleSet([a])
+
+
+def test_a_missing_input_blocks_and_never_defaults():
+    a = rule(
+        "a",
+        "a",
+        "INR_crore",
+        "b + x",
+        {"b": {"unit": "INR_crore", "source": "rule:b"}, "x": {"unit": "INR_crore", "source": "record:x"}},
+    )
+    b = rule("b", "b", "INR_crore", "y * 2", {"y": {"unit": "INR_crore", "source": "record:y"}})
+    ev = RuleSet([a, b]).evaluate("FY2030-31", {"record:x": ("1", "INR_crore")})
+    assert ev.blocked == {"b": "input y (record:y) has no value", "a": "needs b, which is blocked"}
+    assert not ev.results and not ev.filing_ready
+
+
+def test_rules_are_chosen_per_year_and_overlaps_refused():
+    old = rule(
+        "old", "r", "INR_crore", "x", {"x": {"unit": "INR_crore", "source": "record:x"}}, applies={"to_fy": "FY2024-25"}
+    )
+    new = rule(
+        "new",
+        "r",
+        "INR_crore",
+        "x * 2",
+        {"x": {"unit": "INR_crore", "source": "record:x"}},
+        applies={"from_fy": "FY2025-26"},
+    )
+    vals = {"record:x": ("10", "INR_crore")}
+    assert RuleSet([old, new], "FY2024-25").evaluate("FY2024-25", vals).results["r"].rounded == Decimal("10.00")
+    assert RuleSet([old, new], "FY2026-27").evaluate("FY2026-27", vals).results["r"].rounded == Decimal("20.00")
+    both = rule("both", "r", "INR_crore", "x", {"x": {"unit": "INR_crore", "source": "record:x"}})
+    with pytest.raises(RuleError, match="several rules apply"):
+        RuleSet([old, both], "FY2024-25")
+
+
+def test_rounding_policy_and_what_feeds_dependants():
+    half = rule(
+        "h",
+        "h",
+        "INR_crore",
+        "x / 2",
+        {"x": {"unit": "INR_crore", "source": "record:x"}},
+        rounding={"places": 0, "feeds": "rounded"},
+    )
+    dbl = rule("d", "d", "INR_crore", "h * 2", {"h": {"unit": "INR_crore", "source": "rule:h"}}, rounding={"places": 2})
+    ev = RuleSet([half, dbl]).evaluate("FY2030-31", {"record:x": ("5", "INR_crore")})
+    assert ev.results["h"].rounded == Decimal("3")  # half-up: 2.5 → 3
+    assert ev.results["d"].rounded == Decimal("6.00")  # fed the rounded 3, as the rule says
+
+
+def test_filing_ready_needs_approved_rules_on_verified_clauses():
+    r = rule("a", "a", "INR_crore", "x", {"x": {"unit": "INR_crore", "source": "record:x"}})
+    ev = RuleSet([r]).evaluate("FY2030-31", {"record:x": ("1", "INR_crore")})
+    assert not ev.filing_ready  # a draft on an unverified clause
+    ok = rule(
+        "a",
+        "a",
+        "INR_crore",
+        "x",
+        {"x": {"unit": "INR_crore", "source": "record:x"}},
+        status="approved",
+        approved_by="reviewer@example.com",
+        approved_at="2030-01-01",
+        clause={"regulation": "Synthetic Regulations, 2030", "clause": "5.1", "verified": True},
+    )
+    assert RuleSet([ok]).evaluate("FY2030-31", {"record:x": ("1", "INR_crore")}).filing_ready
+
+
+def test_the_uperc_drafts_check_and_their_examples_pass():
+    assert check_all("UPERC") == []
+    rules = load_rules("UPERC")
+    assert rules and all(r.status == "draft" and not r.clause.verified for r in rules)  # nothing approved by the build
+
+
+def test_the_npcl_chain_reproduces_the_filed_formats_from_records():
+    """FY2026-27, from the openings and the year's records only: the chain reproduces NPCL's
+    filed return on equity (F26) and interest on the normative loan (F25) to the paisa-crore."""
+    rs = RuleSet(load_rules("UPERC"), "FY2026-27")
+    ev = rs.evaluate(
+        "FY2026-27",
+        {
+            "prior:equity_closing": ("709.6218015004636", "INR_crore"),
+            "record:equity_reduction_on_retirement": ("4.5", "INR_crore"),
+            "record:equity_addition": ("128.82140427628835", "INR_crore"),
+            "prior:normative_loan_closing": ("757.768934543932", "INR_crore"),
+            "record:loan_reduction_on_retirement": ("2.180055014745463", "INR_crore"),
+            "record:normative_loan_addition": ("300.5832766446728", "INR_crore"),
+            "record:depreciation": ("106.75180844074569", "INR_crore"),
+            "assumption:loan_interest_rate": ("0.0982616438356164", "fraction"),
+        },
+    )
+    assert not ev.blocked
+    assert ev.results["return_on_equity"].rounded == Decimal("115.77")
+    assert ev.results["interest_on_loan"].rounded == Decimal("83.88")
+    assert not ev.filing_ready  # drafts

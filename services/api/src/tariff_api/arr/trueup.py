@@ -209,7 +209,7 @@ def render(st: dict[str, Any], *, utility_code: str, utility_name: str, case_tit
             tid = trace.add(
                 f"TU-1!{code}!approved", "fact", ap["value"], ap["unit"], {**ap, "words": _approved_words(ap)}
             )
-            cells.append(float(Decimal(ap["value"])))
+            cells.append(Decimal(ap["value"]))
             ids.append(tid)
         else:
             cells.append("no approved figure")
@@ -218,7 +218,7 @@ def render(st: dict[str, Any], *, utility_code: str, utility_name: str, case_tit
             tid = trace.add(
                 f"TU-1!{code}!actual", "actual", ac["value"], ac["unit"], {**ac, "words": _actual_words(ac)}
             )
-            cells.append(float(Decimal(ac["value"])))
+            cells.append(Decimal(ac["value"]))
             ids.append(tid)
         else:
             cells.append("not entered")
@@ -231,7 +231,7 @@ def render(st: dict[str, Any], *, utility_code: str, utility_name: str, case_tit
                 r["unit"],
                 {"words": f"actual {ids[1]} less approved {ids[0]}", "of": [ids[1], ids[0]]},
             )
-            cells.append(float(Decimal(r["variance"])))
+            cells.append(Decimal(r["variance"]))
             ids.append(tid)
         else:
             cells.append("—")
@@ -301,7 +301,7 @@ def render(st: dict[str, Any], *, utility_code: str, utility_name: str, case_tit
         cells[0].text, cells[1].text = e["id"], e["where"]
         cells[2].text = f"{e['value']} {_unit_words(e['unit'])}".strip()
         cells[3].text = e["origin"]["words"]
-        ts.append([e["id"], e["where"], e["kind"], float(Decimal(e["value"])), e["unit"], e["origin"]["words"]])
+        ts.append([e["id"], e["where"], e["kind"], Decimal(e["value"]), e["unit"], e["origin"]["words"]])
     docx_buf, xlsx_buf = io.BytesIO(), io.BytesIO()
     doc.save(docx_buf)
     wb.save(xlsx_buf)

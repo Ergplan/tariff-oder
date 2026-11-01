@@ -1005,6 +1005,25 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 54 (2026-11-01): the rule engine — regulations as executable, versioned rules.**
+  `arr/rules.py` + `packages/arr-rules/` (R-RULE-1..4, R-NUM-1..4).  A rule is data: one output,
+  typed inputs (fact / record / assumption / another rule / last year / a regulation parameter
+  with its value), a formula in a restricted language (parsed with `ast`; only numbers, names,
+  `+ - * /`, `avg min max sum`), rounding policy, clause (regulation, clause, page, excerpt,
+  `verified`), applicability by year, worked examples, approver.  Evaluation is in Decimal with
+  units and dimensions (Rs crore / MU gives Rs/kWh with no hand-written factor; money + energy is
+  refused at load), in dependency order (cycles refused), choosing rules **per year** (two
+  regimes in one petition), and a missing input **blocks with its reason** — never a default.
+  `filing_ready` only when every rule used is approved on a verified clause.  **First UPERC
+  drafts** (12 rules: normative equity, return on equity, normative loan, interest on it) for
+  the two regimes UPERC's FY2026-27 NPCL order names (p.12): the 2019 MYT Regulations (to
+  FY2024-25; RoE 15 % cited from the order's quotation of Regulation 22, p.151) and the 2025 MYT
+  Regulations (from FY2025-26, applicability a draft assumption; 15 % as applied in the order,
+  p.204).  Worked examples are NPCL's exact stored values; **from openings and the year's
+  records the chain reproduces NPCL's filed FY2026-27 RoE (115.77) and interest on loan (83.88)**.
+  Every rule is a draft, every clause unverified.  Also: the float defect in the XLSX exports
+  (R-NUM-1) is fixed — Decimals written as exact numbers.  19 unit tests.
+
   **Increment 53 (2026-11-01): milestone 13 begins — the NPCL FY2026-27 reference filing, and
   the first measurement of an order reading against a filed petition.**  After the operator's
   review of the master prompt: the binding `docs/arr-filing-requirements.md` (proposed),
@@ -1689,6 +1708,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 54 (2026-11-01): 403 passed** (+19 unit: units and dimensions, the arithmetic-only language, Decimal literals, dependency order, cycles, blocking, per-year selection, rounding feeds, filing readiness, the UPERC drafts' examples, the NPCL FY2026-27 chain from records).  Ruff and format clean.
 - **Increment 53 (2026-11-01): 384 passed** (+3 unit: a format header carries a year over its group and maps column words to voices; stored vs displayed values, percentages from fractions, states never zero, a rate in a label is not a unit, restated columns marked).  Evaluation run on real data: the order-vs-petition comparison above.
 - **Increment 52 (2026-11-01): 381 passed** (+4 integration: the atlas lists states with commissions and counts and refuses an unauthenticated caller; a state lists its licensees, a licensee finds its state, unknown codes are 404; the norms describe methods and name parameters without values, a skeleton plan is never confirmed, a commission without a plan falls back to the generic plan; reviewed facts are counted per licensee and the applied norms are reviewed approved/trued-up figures with order and source, fixture-labelled).  Ruff, format, contracts-check (regenerated) and web typecheck clean.
 - **Increment 51 (2026-11-01): web only** — `pnpm --filter @tariff/web typecheck` clean; no API change (the 377 Python tests of increment 50 stand); screenshots of six pages at desktop and phone width.

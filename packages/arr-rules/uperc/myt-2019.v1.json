@@ -1,0 +1,287 @@
+{
+ "status": "draft — every rule below is a draft: the clauses are not verified against the regulation and nobody has approved them",
+ "regulation": "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019",
+ "applies": {
+  "commission": "UPERC",
+  "to_fy": "FY2024-25"
+ },
+ "note": "Named in UPERC's FY2026-27 order for NPCL (p.12) for the true-up of FY2024-25.  The years it covers before FY2024-25 are not stated here; R-APP-1 records them when the regulation is on file.",
+ "rules": [
+  {
+   "id": "uperc.myt2019.equity.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative equity, closing balance",
+   "output": "equity_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "opening - reduction + additions",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "prior:equity_closing",
+     "note": "last year's closing; the first year from the order that approved it"
+    },
+    "reduction": {
+     "unit": "INR_crore",
+     "source": "record:equity_reduction_on_retirement",
+     "note": "equity portion of assets retired (F14)"
+    },
+    "additions": {
+     "unit": "INR_crore",
+     "source": "record:equity_addition",
+     "note": "equity portion of capitalisation (F14); a rule of its own in the capital schedule, next"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "opening": "535.0771519300941",
+      "reduction": "1.8507414080000002",
+      "additions": "64.76727320370006"
+     },
+     "expected": "597.99",
+     "source": "NPCL FY2026-27 petition, filed formats, F26_ROE FY2024-25 claimed (the petitioner's application; not the regulation)"
+    }
+   ]
+  },
+  {
+   "id": "uperc.myt2019.equity.average",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative equity, average of the year",
+   "output": "equity_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "avg(opening, closing)",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "prior:equity_closing"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:equity_closing"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "opening": "535.0771519300941",
+      "closing": "597.9936837257942"
+     },
+     "expected": "566.54",
+     "source": "NPCL FY2026-27 petition, filed formats, F26_ROE FY2024-25 claimed (the petitioner's application; not the regulation)"
+    }
+   ]
+  },
+  {
+   "id": "uperc.myt2019.roe",
+   "version": 1,
+   "status": "draft",
+   "title": "Return on equity",
+   "output": "return_on_equity",
+   "unit": "INR_crore",
+   "line_code": "C.RETURN.ROE",
+   "schedule": "R-SCH-9",
+   "formula": "average_equity * rate",
+   "inputs": {
+    "average_equity": {
+     "unit": "INR_crore",
+     "source": "rule:equity_average"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "15",
+     "note": "15 % as the order quotes Regulation 22 (UPERC FY2026-27 order for NPCL, p.151); the regulation itself is not on file"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019",
+    "clause": "Regulation 22",
+    "source_id": "77d3a4cc-d080-47f4-9a66-92132e186a63",
+    "page": 151,
+    "excerpt": "Regulation 22 of MYT Regulations, 2019 provides for RoE @15% for the Distribution Utilities.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "average_equity": "566.5354178279442"
+     },
+     "expected": "84.98",
+     "source": "NPCL FY2026-27 petition, filed formats, F26_ROE FY2024-25 claimed (the petitioner's application; not the regulation)"
+    }
+   ]
+  },
+  {
+   "id": "uperc.myt2019.loan.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative loan, closing balance",
+   "output": "normative_loan_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "opening - reduction + additions - repayment",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "prior:normative_loan_closing"
+    },
+    "reduction": {
+     "unit": "INR_crore",
+     "source": "record:loan_reduction_on_retirement"
+    },
+    "additions": {
+     "unit": "INR_crore",
+     "source": "record:normative_loan_addition",
+     "note": "debt portion of capitalisation (F14)"
+    },
+    "repayment": {
+     "unit": "INR_crore",
+     "source": "record:depreciation",
+     "note": "repayment taken equal to the year's depreciation, as NPCL's F25 does; the clause to be confirmed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "opening": "502.8027136366657",
+      "reduction": "0",
+      "additions": "151.12363747530014",
+      "repayment": "74.74797975854594"
+     },
+     "expected": "579.18",
+     "source": "NPCL FY2026-27 petition, filed formats, F25_IOL FY2024-25 claimed (the petitioner's application; not the regulation)"
+    }
+   ]
+  },
+  {
+   "id": "uperc.myt2019.loan.average",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative loan, average of the year",
+   "output": "normative_loan_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "avg(opening, closing)",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "prior:normative_loan_closing"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:normative_loan_closing"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "opening": "502.8027136366657",
+      "closing": "579.17837135342"
+     },
+     "expected": "540.99",
+     "source": "NPCL FY2026-27 petition, filed formats, F25_IOL FY2024-25 claimed (the petitioner's application; not the regulation)"
+    }
+   ]
+  },
+  {
+   "id": "uperc.myt2019.loan.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on the normative long-term loan",
+   "output": "interest_on_loan",
+   "unit": "INR_crore",
+   "line_code": "C.INT.LOAN",
+   "schedule": "R-SCH-8",
+   "formula": "average_loan * rate",
+   "inputs": {
+    "average_loan": {
+     "unit": "INR_crore",
+     "source": "rule:normative_loan_average"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:loan_interest_rate",
+     "note": "weighted average rate on actual loans, or the regulation's reference rate; the petitioner's, with its source"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "average_loan": "540.9905424950429",
+      "rate": "0.09912253089595828"
+     },
+     "expected": "53.62",
+     "source": "NPCL FY2026-27 petition, filed formats, F25_IOL FY2024-25 claimed (the petitioner's application; not the regulation)"
+    }
+   ]
+  }
+ ]
+}

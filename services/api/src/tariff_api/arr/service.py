@@ -881,7 +881,7 @@ def history_workbook(session: Session, utility: Utility) -> bytes:
                         cell["fiscal_year"],
                         f["value_type"],
                         f["category_code"] or "",
-                        float(Decimal(v)) if v is not None else f["value_state"],
+                        Decimal(v) if v is not None else f["value_state"],
                         f["canonical_unit"],
                         f["stated_value"],
                         f["stated_unit"],
@@ -906,7 +906,7 @@ def history_workbook(session: Session, utility: Utility) -> bytes:
                         line["line_code"],
                         line["label"],
                         cell["fiscal_year"],
-                        float(Decimal(d["value"])),
+                        Decimal(d["value"]),
                         d["unit"],
                         d["source_id"],
                     ]

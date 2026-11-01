@@ -333,7 +333,7 @@ def _cell(text: str, ctx: DraftContext, trace: Trace, where: str, code: str) -> 
     rendered, ids = resolve(text, ctx, trace, where)
     if ids:
         entry = trace.entries[before]
-        return float(Decimal(entry["value"])), ids[0]
+        return Decimal(entry["value"]), ids[0]
     return rendered, None
 
 
@@ -414,7 +414,7 @@ def render(template: Template, ctx: DraftContext) -> tuple[bytes, bytes, dict[st
         cells[0].text, cells[1].text, cells[2].text = e["id"], e["where"], e["kind"]
         cells[3].text = f"{e['value']} {_unit_words(e['unit'])}".strip()
         cells[4].text = _origin_words(e)
-        ts.append([e["id"], e["where"], e["kind"], float(Decimal(e["value"])), e["unit"], _origin_words(e)])
+        ts.append([e["id"], e["where"], e["kind"], Decimal(e["value"]), e["unit"], _origin_words(e)])
     # --- final check: every number in a format sheet carries a trace id
     for fmt in template.formats:
         ws = wb[fmt.code]
