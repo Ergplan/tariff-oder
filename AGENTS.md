@@ -2,6 +2,8 @@
 
 Read this first, then `docs/BUILD_STATE.md` (where the build is), then the milestone you are
 asked to implement in `docs/spec/master-build-prompt.md` (the governing specification).
+For the whole product in one document — tariff reading, ARR, petitions, client application,
+atlas — read `docs/product-master-prompt.md` (consolidated; the specification and ADRs win).
 
 ## What this is
 

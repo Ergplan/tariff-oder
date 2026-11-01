@@ -5,6 +5,11 @@ The governing build specification is committed verbatim at
 "Master build prompt: Reliable Tariff Order Intelligence" (Parts A–F, including the verified
 reading hazards for the NPCL, KERC and GERC orders).
 
+**To understand the whole product as built** — tariff reading, the ARR track, petitions,
+the client application and the atlas — read
+[`docs/product-master-prompt.md`](product-master-prompt.md), the consolidated master build
+prompt (it summarises this specification and ADR-0017 … 0020; it does not replace them).
+
 This file is the stable path other documents and prompts reference; the spec file itself is
 never edited, so that what the build was measured against stays auditable.  Where any summary
 in this repository differs from the master prompt, **the master prompt wins**.
