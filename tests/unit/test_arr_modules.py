@@ -637,6 +637,9 @@ def test_a_label_naming_what_a_line_is_for_is_not_that_line():
     assert code("Total energy sold (MU)") == "E.SALES"
     assert code("Energy Sales") == "E.SALES"
     assert code("Energy input at DISCOM periphery") == "E.INPUT.DIST"
+    # the previous year's gap carried into this ARR is not this year's gap (UERC, increment 48)
+    assert placer.place("Gap/(Surplus) of previous year", "INR_crore") is None
+    assert placer.place("Adjusted Revenue (Surplus)/Gap", "INR_crore").code == "R.GAP"
 
 
 def test_a_cost_row_named_like_a_quantity_follows_the_table_unit_and_number_agrees():

@@ -1630,6 +1630,14 @@
         "surplus",
         "revenue surplus"
       ],
+      "not_when": [
+        "previous year",
+        "previous years",
+        "earlier year",
+        "earlier years",
+        "brought forward",
+        "carried forward"
+      ],
       "note": "R.ARR - R.REV.EXISTING - R.REV.SUBSIDY for the ensuing year; a surplus prints as a negative gap.",
       "by_category": false,
       "sign": null
