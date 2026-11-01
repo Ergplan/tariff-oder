@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 40: the identity checks run over both real orders; increment 39: a second real order (BERC, combined), the mapping workbench; increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 41: a reading preview at the chapter checkpoint; increment 40: the identity checks run over both real orders; increment 39: a second real order (BERC, combined), the mapping workbench; increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -736,6 +736,18 @@ open-access view.
   for four year-voice-licensee groups — energy input differs from sales grossed up by the
   distribution loss by 0.6–2.0 %, a definitional difference (which loss, which sales) the BERC
   mapping must state.  Identity messages now state a computed side to four places.
+
+  **Increment 41 (2026-11-01): a reading preview at the chapter checkpoint.**  When chapters are
+  proposed, the localisation stage now also runs the reading rules over each proposed chapter's
+  tables (the same table-to-chapter assignment the extraction uses) and stores, per chapter,
+  the tables read of the tables found, the values by year and voice, the blocking identity
+  failures and the commonest unplaced rows — recorded nowhere but in the summary, never as
+  candidates.  The ARR screen shows it beside each proposed chapter, so a reviewer sees what
+  confirming a chapter would read: on the real NPCL order (re-proposed in about 10 s) the two
+  public-hearing chapters would read nothing, the true-up, APR and ARR chapters 493 values, two
+  identity failures (the gap convention of increment 40).  The extraction now uses the shared
+  table-to-chapter helper; the synthetic end-to-end test asserts the preview predicts the
+  reading exactly.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1306,6 +1318,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 41 (2026-11-01): 355 passed** (the end-to-end ARR test now checks the preview: one table read per chapter, the identity failure flagged before reading, and the preview's value count equal to the candidates read).
 - **Increment 40 (2026-11-01): 355 passed** (+1 unit: a power source's "Total Cost" is not placed on total expenditure outside a summary; in a table titled as the ARR summary it is).
 - **Increment 39 (2026-11-01): 354 passed** (+1 integration: the workbench lists a commission's unplaced labels; a reviewer's alias and "not a line" decisions, refused for an analyst and for an unknown code; the drafted next mapping version keeps v1's aliases, adds the decisions, says draft and not confirmed; a withdrawn decision leaves the draft).
 - **Increment 38 (2026-11-01): 353 passed** (+1 unit: the real order's table layouts in synthetic figures — year in the caption, voice from the part, an earlier order's approval, reference and unit columns, a two-row header, footnote marks, a percentage inside a label).

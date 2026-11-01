@@ -109,6 +109,11 @@ def test_arr_read_formulate_file_end_to_end(client, runner, object_store_root, m
     assert reading["mapping_confirmed"] is True  # the SYNTHETIC mapping is confirmed
     # the page-5 sentence that reads like an instruction opened no chapter: document text is data
     assert all("IGNORE" not in c["cue_text"] for c in reading["chapters"])
+    # the preview says what reading each chapter would yield, before anything is read
+    preview = {p["chapter"]: p for p in reading["arr_summary"]["preview"]["chapters"]}
+    assert set(preview) == {1, 2, 3} and all(p["tables_read"] == 1 for p in preview.values())
+    preview_values = sum(p["values"] for p in preview.values())
+    assert preview[2]["identity_blocking"] >= 1  # the petition's printed total that does not add up
     r = client.post(f"/sources/{order}/arr/chapters/decision", json={"rationale": "  "}, headers=headers(REVIEWER))
     assert r.status_code == 422
     r = client.post(
@@ -125,6 +130,7 @@ def test_arr_read_formulate_file_end_to_end(client, runner, object_store_root, m
     rows = len(ARR_ENERGY) + len(ARR_COSTS) + len(ARR_GAP)
     cands = client.get(f"/sources/{order}/arr/candidates", headers=headers(ANALYST)).json()["candidates"]
     assert len(cands) == rows * 3, [c["candidate_key"] for c in cands]
+    assert preview_values == len(cands)  # the preview predicted the reading exactly
     assert all(c["payload_kind"] == "arr" and c["is_fixture"] and c["channel_agreement"] == "agree" for c in cands)
     by = {(c["record"]["line_code"], c["record"]["fiscal_year"], c["record"]["value_type"]): c for c in cands}
     # a page shared by two chapters splits at the second heading: each table in one chapter

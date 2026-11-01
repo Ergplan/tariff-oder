@@ -23,7 +23,13 @@ export default async function SourceArrPage({ params }: { params: Promise<{ id: 
   if (rd.error || !rd.data) return <ErrorBanner error={rd.error!} />;
   const r = rd.data;
   const role = me.data?.role;
-  const summary = (r.arr_summary ?? {}) as { scan?: { unplaced_rows?: number; unplaced?: { key: string; count: number }[] }; mapping?: { id: string; status: string } };
+  type Preview = { chapter: number; tables: number; tables_read: number; values: number; by_year_voice: Record<string, number>; identity_blocking: number; unplaced_top: [string, number][] };
+  const summary = (r.arr_summary ?? {}) as {
+    scan?: { unplaced_rows?: number; unplaced?: { key: string; count: number }[] };
+    mapping?: { id: string; status: string };
+    preview?: { rules: string; chapters: Preview[]; note: string };
+  };
+  const preview = new Map((summary.preview?.chapters ?? []).map((p) => [p.chapter, p]));
   const blocking = r.findings.filter((f) => f.severity === "blocking").length;
   const counts = r.candidates_by_status;
   const decided = Object.entries(counts).filter(([k]) => !["pending", "awaiting_second_review"].includes(k)).reduce((a, [, v]) => a + v, 0);
@@ -45,13 +51,46 @@ export default async function SourceArrPage({ params }: { params: Promise<{ id: 
       {r.arr_state === "chapters_proposed" ? (
         <>
           <h2>Chapters proposed</h2>
-          <ul>
-            {r.chapters.map((c) => (
-              <li key={c.id}>
-                {c.ordinal}. <strong>{c.branch}</strong> “{c.cue_text}” pages {c.page_start}–{c.page_end} {c.note ? <span className="muted">({c.note})</span> : null}
-              </li>
-            ))}
-          </ul>
+          {summary.preview ? <p className="muted">{summary.preview.note} (rules {summary.preview.rules})</p> : null}
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Chapter</th>
+                  <th>Pages</th>
+                  <th>Would read</th>
+                  <th>Years and voices</th>
+                  <th>Identity failures</th>
+                  <th>Commonest unplaced rows</th>
+                </tr>
+              </thead>
+              <tbody>
+                {r.chapters.map((c) => {
+                  const p = preview.get(c.ordinal);
+                  return (
+                    <tr key={c.id}>
+                      <td>
+                        {c.ordinal}. <strong>{c.branch}</strong> “{c.cue_text}”{c.note ? <div className="muted">{c.note}</div> : null}
+                      </td>
+                      <td className="mono">
+                        {c.page_start}–{c.page_end}
+                      </td>
+                      <td className="mono">{p ? `${p.values} values from ${p.tables_read} of ${p.tables} tables` : "—"}</td>
+                      <td className="muted">
+                        {p
+                          ? Object.entries(p.by_year_voice)
+                              .map(([k, n]) => `${k.replace(/_/g, " ")} ${n}`)
+                              .join(" · ")
+                          : ""}
+                      </td>
+                      <td>{p ? (p.identity_blocking ? <span className="badge" data-tone="bad">{p.identity_blocking}</span> : <span className="badge" data-tone="ok">0</span>) : null}</td>
+                      <td className="muted">{p ? p.unplaced_top.map(([l, n]) => `${l} (${n})`).join("; ") : ""}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
           {summary.scan?.unplaced_rows ? (
             <p className="muted">
               The hand-mapping scan found {summary.scan.unplaced_rows} table rows the taxonomy cannot place, e.g.{" "}

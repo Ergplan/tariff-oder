@@ -113,6 +113,103 @@ def _artefact(s, storage: ObjectStore, src: SourceDocument, stage: str, tool_ver
 # ------------------------------------------------------------------ chapters
 
 
+def _chapter_grids(doc, storage: ObjectStore, grid_keys: dict, chapter_rows: list) -> dict[int, list[GridIn]]:  # noqa: ANN001
+    """Each chapter's primary grids, with the lines printed above each.  A table belongs to the
+    last chapter heading above it, so a page shared by two chapters splits at the second
+    heading; a table is read once."""
+    cue_y = {ordinal: _heading_y(doc, cue_page, cue_text) for ordinal, _s, _e, _b, cue_page, cue_text in chapter_rows}
+    seen: set[tuple[int, int]] = set()
+    out: dict[int, list[GridIn]] = {}
+    for ordinal, start, end, _branch, cue_page, _cue_text in chapter_rows:
+        grids: list[GridIn] = []
+        later = [(o, cp) for o, _s, _e, _b, cp, _t in chapter_rows if o > ordinal]
+        for (page, g_ord), key in sorted(grid_keys.items()):
+            if not (start <= page <= end) or (page, g_ord) in seen:
+                continue
+            try:
+                payload = json.loads(storage.get(ObjectStore.ARTEFACTS, key))
+            except (ObjectNotFound, ValueError):
+                continue
+            g = payload["grid"]
+            top = float(g["bbox"][1])
+            if page == cue_page and cue_y[ordinal] is not None and top < cue_y[ordinal]:
+                continue  # above this chapter's own heading: the previous chapter's table
+            if any(cp == page and cue_y[o] is not None and top >= cue_y[o] for o, cp in later):
+                continue  # below a later chapter's heading on this page: that chapter's table
+            seen.add((page, g_ord))
+            above, _below = _lines_around(doc[page - 1], g["bbox"])
+            grids.append(GridIn(page, g_ord, g["rows"], int(g.get("header_rows") or 0), above))
+        out[ordinal] = grids
+    return out
+
+
+def _preview(
+    doc,
+    storage: ObjectStore,
+    grid_keys: dict,
+    proposals: list,
+    *,
+    mapping,
+    kind: str,
+    utility: str,
+    licensees: dict,  # noqa: ANN001
+) -> dict[str, Any]:
+    """What reading each proposed chapter would yield — tables read, values by year and voice,
+    identity failures, the commonest unplaced labels — computed with the reading rules and
+    recorded nowhere but here: a reviewer's aid for confirming chapters, not a reading."""
+    tax = load_taxonomy()
+    placer = Placer(tax, mapping, kind)
+    rows = [(p.ordinal, p.page_start, p.page_end, p.branch, p.cue_page, p.cue_text) for p in proposals]
+    by_chapter = _chapter_grids(doc, storage, grid_keys, rows)
+    out = []
+    for p in proposals:
+        grids = by_chapter.get(p.ordinal, [])
+        res, rep = read_grids(
+            grids,
+            taxonomy=tax,
+            mapping=mapping,
+            placer=placer,
+            source_id="preview",
+            utility=utility,
+            licensees=licensees if len(licensees) > 1 else None,
+            part=part_from_note(p.note),
+            branch=p.branch,
+        )
+        groups: dict[tuple, list[Value]] = {}
+        voices: dict[str, int] = {}
+        for c in res.candidates:
+            voices[f"{c.fiscal_year} {c.value_type}"] = voices.get(f"{c.fiscal_year} {c.value_type}", 0) + 1
+            if c.canonical_value is not None:
+                groups.setdefault((c.fiscal_year, c.value_type, c.utility), []).append(
+                    Value(c.line_code, Decimal(c.canonical_value), c.canonical_unit, "preview")
+                )
+        blocking = sum(
+            1
+            for (fy, vt, _u), vals in groups.items()
+            for f in evaluate(vals, taxonomy=tax, mapping=mapping, group={"fiscal_year": fy, "value_type": vt})
+            if f.severity == "blocking"
+        )
+        unplaced: dict[str, int] = {}
+        for u in rep.unplaced:
+            unplaced[u["label"][:60]] = unplaced.get(u["label"][:60], 0) + 1
+        out.append(
+            {
+                "chapter": p.ordinal,
+                "tables": len(grids),
+                "tables_read": rep.grids_read,
+                "values": len(res.candidates),
+                "by_year_voice": dict(sorted(voices.items())),
+                "identity_blocking": blocking,
+                "unplaced_top": sorted(unplaced.items(), key=lambda x: -x[1])[:3],
+            }
+        )
+    return {
+        "rules": ARR_RULES_VERSION,
+        "chapters": out,
+        "note": "What reading each chapter would yield, before anything is read; nothing here is a candidate.",
+    }
+
+
 def arr_localise_source(ctx: JobContext) -> dict:
     storage: ObjectStore = ctx.adapters.storage
     with session_scope() as s:
@@ -124,7 +221,17 @@ def arr_localise_source(ctx: JobContext) -> dict:
             raise JobFailure("invalid_transition", "ARR reading needs a parsed order with a licensee", retry=False)
         commission = src.utility.commission.code
         kind = src.utility.licensee_kind
+        utility_code = src.utility.code
         object_key, sha, page_count = src.object_key, src.sha256, src.page_count
+        licensee_names = {u.code: [u.name, *(u.aliases or [])] for u in licensees_of(s, src)}
+        grid_keys = {
+            (g.page_index, g.ordinal): g.object_key
+            for g in s.execute(
+                select(TableGridRecord).where(
+                    TableGridRecord.source_id == source_id, TableGridRecord.is_primary.is_(True)
+                )
+            ).scalars()
+        }
     try:
         mapping = load_mapping(commission, fallback=True)
     except FileNotFoundError as e:
@@ -134,6 +241,9 @@ def arr_localise_source(ctx: JobContext) -> dict:
     lines = {p: [ln for ln in t.splitlines() if ln.strip()] for p, t in texts.items()}
     proposals = propose_chapters(lines, mapping, page_count)
     scan = scan_texts(texts, commission=commission, licensee_kind=kind, mapping=mapping).to_dict()
+    preview = _preview(
+        doc, storage, grid_keys, proposals, mapping=mapping, kind=kind, utility=utility_code, licensees=licensee_names
+    )
     with session_scope() as s:
         src = s.get(SourceDocument, source_id)
         assert src is not None
@@ -165,6 +275,7 @@ def arr_localise_source(ctx: JobContext) -> dict:
                 "unplaced_rows": scan["unplaced_rows"],
                 "unplaced": scan["unplaced"][:50],
             },
+            "preview": preview,
             "localised_at": datetime.now(UTC).isoformat(),
         }
     return {"chapters": len(proposals), "unplaced_rows": scan["unplaced_rows"]}
@@ -267,37 +378,17 @@ def arr_extract_source(ctx: JobContext) -> dict:
     placer = Placer(tax, mapping, kind)
     doc = _document(storage, object_key, sha)
     extraction_version = f"{ARR_RULES_VERSION}+{channel.name}:{channel.model}+schema:{ARR_SCHEMA_VERSION}"
-    seen_grids: set[tuple[int, int]] = set()
     rows: list[CandidateRecord] = []
     runs: list[ExtractionRun] = []
     chapter_reports: list[dict[str, Any]] = []
-    # where each chapter heading sits on its page: a table belongs to the last heading above
-    # it, so a page shared by two chapters splits at the second heading
-    cue_y = {ordinal: _heading_y(doc, cue_page, cue_text) for ordinal, _s, _e, _b, cue_page, cue_text in chapter_rows}
+    grids_by_chapter = _chapter_grids(doc, storage, grid_keys, chapter_rows)
     with session_scope() as s:
         parts = {
             c.ordinal: part_from_note(c.note)
             for c in s.execute(select(ArrChapter).where(ArrChapter.source_id == source_id)).scalars()
         }
-    for ordinal, start, end, branch, cue_page, _cue_text in chapter_rows:
-        grids: list[GridIn] = []
-        later = [(o, cp) for o, _s, _e, _b, cp, _t in chapter_rows if o > ordinal]
-        for (page, g_ord), key in sorted(grid_keys.items()):
-            if not (start <= page <= end) or (page, g_ord) in seen_grids:
-                continue
-            try:
-                payload = json.loads(storage.get(ObjectStore.ARTEFACTS, key))
-            except (ObjectNotFound, ValueError):
-                continue
-            g = payload["grid"]
-            top = float(g["bbox"][1])
-            if page == cue_page and cue_y[ordinal] is not None and top < cue_y[ordinal]:
-                continue  # above this chapter's own heading: the previous chapter's table
-            if any(cp == page and cue_y[o] is not None and top >= cue_y[o] for o, cp in later):
-                continue  # below a later chapter's heading on this page: that chapter's table
-            seen_grids.add((page, g_ord))
-            above, _below = _lines_around(doc[page - 1], g["bbox"])
-            grids.append(GridIn(page, g_ord, g["rows"], int(g.get("header_rows") or 0), above))
+    for ordinal, start, end, branch, _cue_page, _cue_text in chapter_rows:
+        grids = grids_by_chapter.get(ordinal, [])
         structure, report = read_grids(
             grids,
             taxonomy=tax,
