@@ -1,0 +1,50 @@
+{
+ "type": "row_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "PPC FY 27",
+ "fiscal_year": "FY2026-27",
+ "note": "NPCL's power purchase summary for FY2026-27, one row per source (rows 11–52; subtotals skipped).  Per source: amount = fixed + energy charges (N), transmission (Q), total (R), rate at the bus bar (K), cost per unit at NPCL's bus (S).  Totals: the cost of power procurement (N53) and transmission (Q53), as the ARR format carries them (ARR M20, M23).",
+ "rows": [
+  11,
+  52
+ ],
+ "label_col": "B",
+ "inputs": {
+  "record:pp_mu_exported": "E",
+  "record:pp_mu_at_bus": "I",
+  "record:pp_fixed_charges": "L",
+  "record:pp_energy_charges": "M",
+  "record:pp_tx_pgcil": "O",
+  "record:pp_tx_upptcl": "P"
+ },
+ "units": {
+  "E": "MU",
+  "I": "MU",
+  "K": "INR_per_kWh",
+  "S": "INR_per_kWh"
+ },
+ "blank_is_zero": {
+  "columns": [
+   "L",
+   "M",
+   "O",
+   "P",
+   "E",
+   "I"
+  ],
+  "why": "a row with transmission charges only (GNA, UPPTCL, UPSLDC) prints no energy and no purchase charges; NPCL's sums read the blanks as zero"
+ },
+ "outputs": {
+  "pp_amount": "N",
+  "pp_tx": "Q",
+  "pp_total_cost": "R",
+  "pp_rate": "K",
+  "pp_unit_cost": "S"
+ },
+ "totals": {
+  "pp_cost_total": "PPC FY 27!N53",
+  "pp_tx_total": "PPC FY 27!Q53",
+  "pp_mu_exported_total": "PPC FY 27!E53"
+ },
+ "places": 2
+}

@@ -234,3 +234,15 @@ def test_rules_per_category_sum_and_block_honestly():
         RuleSet([rule("s", "s", "INR_crore", "x", {"x": {"unit": "INR_crore", "source": "sum:total"}}), total, per])
     with pytest.raises(RuleError, match="sum it"):
         RuleSet([per, rule("t", "t", "INR_crore", "x", {"x": {"unit": "INR_crore", "source": "rule:dep"}})])
+
+
+def test_division_by_zero_blocks_the_output_and_never_prints_zero():
+    r = rule(
+        "rate",
+        "rate",
+        "INR_per_kWh",
+        "amount / mu",
+        {"amount": {"unit": "INR_crore", "source": "record:a"}, "mu": {"unit": "MU", "source": "record:m"}},
+    )
+    ev = RuleSet([r]).evaluate("FY2030-31", {"record:a": ("5", "INR_crore"), "record:m": ("0", "MU")})
+    assert ev.blocked == {"rate": "division by zero"} and not ev.results

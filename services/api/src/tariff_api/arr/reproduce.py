@@ -20,6 +20,7 @@ computes what the petitioner computed — not that either is what the regulation
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Any
@@ -370,4 +371,87 @@ def reproduce_period_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) 
                     computed=str(got),
                 )
             )
+    return out
+
+
+def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
+    """A table whose rows are categories and whose columns are fixed attributes (UPERC's power
+    purchase summary: one row per source; MU, charges, rates), read by cell address.  Each row with
+    a label and at least one bound value is a category; per-category outputs are checked against
+    their columns, aggregate outputs against the table's total cells.  A blank cell is absent
+    unless the binding declares its column blank-as-zero, with the reason."""
+    from openpyxl.utils import column_index_from_string as col_of
+
+    places = int(binding.get("places", 2))
+    q = Decimal(1).scaleb(-places)
+    ws = wb[binding["sheet"]]
+    first, last = binding["rows"]
+    label_col = col_of(binding["label_col"])
+    skip = re.compile(binding.get("skip_labels", r"^(sub\s*total|grand\s*total|total)\b"), re.I)
+    blank_zero = set(binding.get("blank_is_zero", {}).get("columns", []))
+    units = binding.get("units", {})
+    out: list[BlockCheck] = []
+    cats: dict[str, dict] = {}
+    rows_of: dict[str, int] = {}
+    for r in range(first, last + 1):
+        label = str(ws.cell(r, label_col).value or "").strip()
+        if not label or skip.search(label):
+            continue
+        vals = {}
+        for source, col in binding["inputs"].items():
+            v = ws.cell(r, col_of(col)).value
+            if isinstance(v, int | float) and not isinstance(v, bool):
+                vals[source] = (repr(v) if isinstance(v, float) else str(v), units.get(col, "INR_crore"))
+        if not vals:
+            continue  # a heading row ("Medium Term Power")
+        for source, col in binding["inputs"].items():
+            if source not in vals and col in blank_zero:
+                vals[source] = ("0", units.get(col, "INR_crore"))
+        key = f"{label} (row {r})"
+        cats[key], rows_of[key] = vals, r
+    fy = binding["fiscal_year"]
+    ev = RuleSet(rules, fy).evaluate(fy, {}, cats)
+    for cat, r in rows_of.items():
+        for output, col in binding.get("outputs", {}).items():
+            filed = ws.cell(r, col_of(col)).value
+            if not isinstance(filed, int | float):
+                continue
+            res = ev.by_category.get(cat, {}).get(output)
+            if res is None:
+                why = ev.blocked_by_category.get(cat, {}).get(output)
+                out.append(BlockCheck(binding["sheet"], fy, cat, output, "blocked", why=why))
+                continue
+            want = Decimal(repr(filed)).quantize(q)
+            got = Q.of(res.value, res.unit).to(units.get(col, res.unit)).quantize(q)
+            out.append(
+                BlockCheck(
+                    binding["sheet"],
+                    fy,
+                    cat,
+                    output,
+                    "match" if got == want else "differs",
+                    filed=str(want),
+                    computed=str(got),
+                )
+            )
+    for output, ref in binding.get("totals", {}).items():
+        sheet, _, cell = ref.rpartition("!")
+        filed = wb[sheet][cell].value
+        res = ev.results.get(output)
+        if res is None:
+            out.append(BlockCheck(binding["sheet"], fy, "TOTAL", output, "blocked", why=ev.blocked.get(output)))
+            continue
+        want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q)
+        got = res.value.quantize(q)
+        out.append(
+            BlockCheck(
+                binding["sheet"],
+                fy,
+                f"TOTAL {ref}",
+                output,
+                "match" if got == want else "differs",
+                filed=str(want),
+                computed=str(got),
+            )
+        )
     return out

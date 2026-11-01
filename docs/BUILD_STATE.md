@@ -1005,6 +1005,17 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 65 (2026-11-01): power purchase by source.**  9 draft rules evaluated per source
+  (amount = fixed + energy charges, transmission = PGCIL + UPPTCL, total, the rate at the bus bar
+  and the cost per unit at NPCL's bus — Rs crore over MU in Rs/kWh by the units, no hand-written
+  factor) and their totals, which are the ARR's power purchase (C.PP) and transmission (C.TX) lines.
+  A `row_table` binding reads a table whose rows are categories (one per source) by cell address,
+  declaring with its reason the blanks of charges-only rows.  The engine now **blocks** an output
+  whose formula divides by zero (a REC purchase has no energy, so no rate) instead of failing —
+  never a 0.  **NPCL: PPC FY 27 129 / 129 — cost of power procurement 2,448.33, transmission
+  446.36, energy 5,066.34 MU (the Energy Balance's purchase); PPC FY 26 156 / 157.**  The true-up
+  year's summary (PPC FY 25) is a billed format with other charges and a rebate — next.
+
   **Increment 64 (2026-11-01): the reproduction in the product, for the reviewer.**  API (read-only,
   analyst and above): `GET /arr/rules/{commission}` (every calculation rule with its status, clause,
   verification, years and examples — UPERC: 68 rules, **0 approved, 0 clauses verified**),
@@ -1844,6 +1855,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 65 (2026-11-01): 414 passed** (+2 unit: power purchase by source reproduced with its totals; division by zero blocks).  Ruff and format clean.
 - **Increment 64 (2026-11-01): 412 passed** (+2 integration: rules listed with their status and nothing approved; the NPCL reference filing with its chain and findings; unknown ids 404; unauthenticated refused).  Ruff, format, contracts (regenerated) and web typecheck clean.
 - **Increment 63 (2026-11-01): 410 passed** (the regression pins the chain: the petition's three columns, 36 of 36; no Commission column fed a petitioner's figure).  Ruff and format clean.
 - **Increment 62 (2026-11-01): 410 passed** (the regression pins F29, 24 of 24).  Ruff and format clean.

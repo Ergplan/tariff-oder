@@ -1,0 +1,338 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Power purchase by source (UPERC's PPC summary): amount, transmission, total, rates, and the totals that are the ARR's power purchase and transmission lines.",
+ "rules": [
+  {
+   "id": "uperc.pp.amount",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase amount of a source",
+   "output": "pp_amount",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "fixed + energy",
+   "inputs": {
+    "fixed": {
+     "unit": "INR_crore",
+     "source": "record:pp_fixed_charges"
+    },
+    "energy": {
+     "unit": "INR_crore",
+     "source": "record:pp_energy_charges"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.tx",
+   "version": 1,
+   "status": "draft",
+   "title": "Transmission charges of a source",
+   "output": "pp_tx",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "pgcil + upptcl",
+   "inputs": {
+    "pgcil": {
+     "unit": "INR_crore",
+     "source": "record:pp_tx_pgcil",
+     "note": "inter-state (PGCIL / GNA)"
+    },
+    "upptcl": {
+     "unit": "INR_crore",
+     "source": "record:pp_tx_upptcl",
+     "note": "intra-state (UPPTCL, UPSLDC)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Total cost of a source, with transmission",
+   "output": "pp_total_cost",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "amount + tx",
+   "inputs": {
+    "amount": {
+     "unit": "INR_crore",
+     "source": "rule:pp_amount"
+    },
+    "tx": {
+     "unit": "INR_crore",
+     "source": "rule:pp_tx"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Rate of a source at its bus bar",
+   "output": "pp_rate",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "amount / exported",
+   "inputs": {
+    "amount": {
+     "unit": "INR_crore",
+     "source": "rule:pp_amount"
+    },
+    "exported": {
+     "unit": "MU",
+     "source": "record:pp_mu_exported"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source",
+   "note": "Rs crore over MU in Rs/kWh: the units give the factor 10 NPCL writes by hand"
+  },
+  {
+   "id": "uperc.pp.unit_cost",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost per unit received at NPCL's bus",
+   "output": "pp_unit_cost",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "total / at_bus",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "rule:pp_total_cost"
+    },
+    "at_bus": {
+     "unit": "MU",
+     "source": "record:pp_mu_at_bus"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.pp.cost_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost of power procurement (all sources)",
+   "output": "pp_cost_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "amounts",
+   "inputs": {
+    "amounts": {
+     "unit": "INR_crore",
+     "source": "sum:pp_amount"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.PP"
+  },
+  {
+   "id": "uperc.pp.tx_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Transmission and load dispatch charges (all sources)",
+   "output": "pp_tx_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "charges",
+   "inputs": {
+    "charges": {
+     "unit": "INR_crore",
+     "source": "sum:pp_tx"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.TX"
+  },
+  {
+   "id": "uperc.pp.mu_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy purchased (all sources), MU exported",
+   "output": "pp_mu_exported_total",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "mu",
+   "inputs": {
+    "mu": {
+     "unit": "MU",
+     "source": "sum:pp_mu_exported_source"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.pp.mu_source",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy purchased from a source, MU exported",
+   "output": "pp_mu_exported_source",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "mu",
+   "inputs": {
+    "mu": {
+     "unit": "MU",
+     "source": "record:pp_mu_exported"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "pp_source"
+  }
+ ]
+}

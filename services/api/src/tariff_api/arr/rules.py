@@ -517,7 +517,10 @@ class RuleSet:
             except RuleError as e:
                 return None, f"input {name}: {e}"
             env[name] = q
-        v = evaluate(self.trees[r.output], env, r.formula).to(r.unit)
+        try:
+            v = evaluate(self.trees[r.output], env, r.formula).to(r.unit)
+        except RuleError as e:  # e.g. a rate over zero units: blocked with the reason, never a 0
+            return None, str(e)
         return Result(r.output, r.id, r.version, r.status, v, _round(v, r.rounding), r.unit, used, r.formula), None
 
 

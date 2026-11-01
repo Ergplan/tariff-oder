@@ -104,7 +104,7 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     seen = {}
     for b in sorted((folder / "bindings").glob("*.json")):
         binding = json.loads(b.read_text())
-        if binding.get("type") in ("year_blocks", "period_table"):
+        if binding.get("type") in ("year_blocks", "period_table", "row_table"):
             continue  # the utility's workings and the rate table: their own tests
         rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
         seen["chain" if b.name == "chain-arr.json" else rep.sheet] = rep
@@ -284,3 +284,33 @@ def test_npcl_reference_rates_from_the_mclr_revisions():
         ("FY2025-26", "mclr_weighted", "match"),
         ("FY2025-26", "loan_rate_reference", "match"),
     ]
+
+
+def test_npcl_power_purchase_by_source_reproduces_the_totals():
+    """Real data: NPCL's power purchase summaries (PPC FY 26, FY 27), one row per source, through
+    the draft rules: every per-source figure and the totals that are the ARR's power purchase and
+    transmission lines; a source with no energy (REC certificates) has no rate — blocked, not 0."""
+    import collections
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    wb = None
+    for name, expect_totals in (
+        ("ppc-fy27.json", {"pp_cost_total": "2448.33", "pp_tx_total": "446.36"}),
+        ("ppc-fy26.json", {"pp_cost_total": "2239.68", "pp_tx_total": "389.77"}),
+    ):
+        binding = json.loads((folder / "bindings" / name).read_text())
+        wb = wb or openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+        checks = reproduce_row_table(wb, binding, rules)
+        counts = collections.Counter(c.result for c in checks)
+        assert counts["differs"] == 0, [c for c in checks if c.result == "differs"][:3]
+        for c in checks:
+            if c.result == "blocked":
+                assert c.output == "pp_rate" and c.why == "division by zero", c
+        totals = {c.output: c.computed for c in checks if c.category.startswith("TOTAL")}
+        assert {k: totals[k] for k in expect_totals} == expect_totals

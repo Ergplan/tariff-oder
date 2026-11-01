@@ -20,7 +20,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "services" / "api" / "src"))
 
 from tariff_api.arr.blocks import read_year_blocks  # noqa: E402
-from tariff_api.arr.reproduce import reproduce, reproduce_blocks, reproduce_period_table  # noqa: E402
+from tariff_api.arr.reproduce import (  # noqa: E402
+    reproduce,
+    reproduce_blocks,
+    reproduce_period_table,
+    reproduce_row_table,
+)
 from tariff_api.arr.rules import load_rules  # noqa: E402
 
 
@@ -89,6 +94,22 @@ def main() -> int:
         binding = json.loads(b.read_text())
         if binding.get("type") == "year_blocks":
             records(folder, b.name, binding, rules, sheets, report, args.verbose)
+            continue
+        if binding.get("type") == "row_table":
+            import collections
+
+            import openpyxl
+
+            wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True, read_only=False)
+            checks = reproduce_row_table(wb, binding, rules)
+            counts = dict(collections.Counter(c.result for c in checks))
+            print(f"{binding['sheet'][:16]:16} {binding['fiscal_year']} {counts}")
+            if args.verbose:
+                for c in checks:
+                    if c.result != "match" or c.category.startswith("TOTAL"):
+                        what = f"{c.category[:44]:44} {c.output:20}"
+                        print(f"   {c.result:8} {what} filed {c.filed} computed {c.computed} {c.why or ''}")
+            report["records"].append({"binding": b.name, "checks": [asdict(c) for c in checks]})
             continue
         if binding.get("type") == "period_table":
             import openpyxl

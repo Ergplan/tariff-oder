@@ -8852,6 +8852,2876 @@
    ]
   },
   {
+   "binding": "ppc-fy26.json",
+   "checks": [
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Long Term Power from DIL (row 8)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "534.52",
+     "computed": "534.52",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Long Term Power from DIL (row 8)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Long Term Power from DIL (row 8)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "534.52",
+     "computed": "534.52",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Long Term Power from DIL (row 8)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "4.20",
+     "computed": "4.20",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Long Term Power from DIL (row 8)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "4.50",
+     "computed": "4.50",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term (TPTCL) (row 10)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "309.76",
+     "computed": "309.76",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term (TPTCL) (row 10)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term (TPTCL) (row 10)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "309.76",
+     "computed": "309.76",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term (TPTCL) (row 10)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "4.16",
+     "computed": "4.16",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term (TPTCL) (row 10)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "4.46",
+     "computed": "4.46",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (JITPL) (row 11)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "370.66",
+     "computed": "370.66",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (JITPL) (row 11)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (JITPL) (row 11)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "370.66",
+     "computed": "370.66",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (JITPL) (row 11)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.24",
+     "computed": "5.24",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (JITPL) (row 11)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.61",
+     "computed": "5.61",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (Maa Durga) (row 12)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "103.09",
+     "computed": "103.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (Maa Durga) (row 12)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (Maa Durga) (row 12)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "103.09",
+     "computed": "103.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (Maa Durga) (row 12)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.54",
+     "computed": "5.54",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (Maa Durga) (row 12)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.93",
+     "computed": "5.93",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-BLA Power) (row 13)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "103.09",
+     "computed": "103.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-BLA Power) (row 13)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-BLA Power) (row 13)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "103.09",
+     "computed": "103.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-BLA Power) (row 13)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.54",
+     "computed": "5.54",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-BLA Power) (row 13)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.93",
+     "computed": "5.93",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 14)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "95.10",
+     "computed": "95.10",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 14)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 14)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "95.10",
+     "computed": "95.10",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 14)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.45",
+     "computed": "5.45",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 14)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.84",
+     "computed": "5.84",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (DIL) (row 15)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "101.60",
+     "computed": "101.60",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (DIL) (row 15)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (DIL) (row 15)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "101.60",
+     "computed": "101.60",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (DIL) (row 15)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.46",
+     "computed": "5.46",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Medium Term Power (DIL) (row 15)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.85",
+     "computed": "5.85",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Apr'25-Sep'25) (row 19)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "177.35",
+     "computed": "177.35",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Apr'25-Sep'25) (row 19)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Apr'25-Sep'25) (row 19)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "177.35",
+     "computed": "177.35",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Apr'25-Sep'25) (row 19)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "6.56",
+     "computed": "6.56",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Apr'25-Sep'25) (row 19)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "7.03",
+     "computed": "7.03",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "AEL (Adani Power, Chhattisgarh) (row 20)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "82.43",
+     "computed": "82.43",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "AEL (Adani Power, Chhattisgarh) (row 20)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "AEL (Adani Power, Chhattisgarh) (row 20)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "82.43",
+     "computed": "82.43",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "AEL (Adani Power, Chhattisgarh) (row 20)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.31",
+     "computed": "5.31",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "AEL (Adani Power, Chhattisgarh) (row 20)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.69",
+     "computed": "5.69",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Instinct Infra (JPL, Raigarh) (row 21)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "16.58",
+     "computed": "16.58",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Instinct Infra (JPL, Raigarh) (row 21)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Instinct Infra (JPL, Raigarh) (row 21)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "16.58",
+     "computed": "16.58",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Instinct Infra (JPL, Raigarh) (row 21)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.58",
+     "computed": "5.58",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Instinct Infra (JPL, Raigarh) (row 21)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.97",
+     "computed": "5.97",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (BLA, MP) (row 22)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "8.12",
+     "computed": "8.12",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (BLA, MP) (row 22)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (BLA, MP) (row 22)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "8.12",
+     "computed": "8.12",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (BLA, MP) (row 22)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.18",
+     "computed": "5.18",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (BLA, MP) (row 22)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.56",
+     "computed": "5.56",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (DB Power, Chhattisgarh) (row 23)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "2.05",
+     "computed": "2.05",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (DB Power, Chhattisgarh) (row 23)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (DB Power, Chhattisgarh) (row 23)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "2.05",
+     "computed": "2.05",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (DB Power, Chhattisgarh) (row 23)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.64",
+     "computed": "5.64",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (DB Power, Chhattisgarh) (row 23)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "6.04",
+     "computed": "6.04",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (MSPL, Raipur) (row 24)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "15.08",
+     "computed": "15.08",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (MSPL, Raipur) (row 24)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (MSPL, Raipur) (row 24)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "15.08",
+     "computed": "15.08",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (MSPL, Raipur) (row 24)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.27",
+     "computed": "5.27",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (MSPL, Raipur) (row 24)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.65",
+     "computed": "5.65",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (Thanush, Karnataka) (row 25)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "6.33",
+     "computed": "6.33",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (Thanush, Karnataka) (row 25)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (Thanush, Karnataka) (row 25)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "6.33",
+     "computed": "6.33",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (Thanush, Karnataka) (row 25)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.19",
+     "computed": "5.19",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "MPL (Thanush, Karnataka) (row 25)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.56",
+     "computed": "5.56",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (CSPL, Chhattisgarh) (row 26)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "13.98",
+     "computed": "13.98",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (CSPL, Chhattisgarh) (row 26)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (CSPL, Chhattisgarh) (row 26)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "13.98",
+     "computed": "13.98",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (CSPL, Chhattisgarh) (row 26)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.29",
+     "computed": "5.29",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (CSPL, Chhattisgarh) (row 26)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.67",
+     "computed": "5.67",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Inter State Power - from Trader / Generator / Power Exchange (row 27)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "133.12",
+     "computed": "133.12",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Inter State Power - from Trader / Generator / Power Exchange (row 27)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Inter State Power - from Trader / Generator / Power Exchange (row 27)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "133.12",
+     "computed": "133.12",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Inter State Power - from Trader / Generator / Power Exchange (row 27)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "4.50",
+     "computed": "4.50",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Inter State Power - from Trader / Generator / Power Exchange (row 27)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "4.82",
+     "computed": "4.82",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (LT Wind Power) (row 31)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "11.44",
+     "computed": "11.44",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (LT Wind Power) (row 31)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (LT Wind Power) (row 31)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "11.44",
+     "computed": "11.44",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (LT Wind Power) (row 31)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.53",
+     "computed": "3.53",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (LT Wind Power) (row 31)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.65",
+     "computed": "3.65",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 32)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "16.94",
+     "computed": "16.94",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 32)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 32)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "16.94",
+     "computed": "16.94",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 32)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.08",
+     "computed": "3.08",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 32)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.18",
+     "computed": "3.18",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 33)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "13.55",
+     "computed": "13.55",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 33)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 33)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "13.55",
+     "computed": "13.55",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 33)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.08",
+     "computed": "3.08",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 33)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.18",
+     "computed": "3.18",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 34)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "0.82",
+     "computed": "0.82",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 34)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 34)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "0.82",
+     "computed": "0.82",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 34)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "7.06",
+     "computed": "7.06",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 34)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "7.06",
+     "computed": "7.06",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (APPCPL LT Solar) (row 35)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "0.26",
+     "computed": "0.26",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (APPCPL LT Solar) (row 35)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (APPCPL LT Solar) (row 35)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "0.26",
+     "computed": "0.26",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (APPCPL LT Solar) (row 35)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.49",
+     "computed": "5.49",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Renewable Power (APPCPL LT Solar) (row 35)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.49",
+     "computed": "5.49",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Khalez Khola, Sikkim) (row 36)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "5.96",
+     "computed": "5.96",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Khalez Khola, Sikkim) (row 36)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Khalez Khola, Sikkim) (row 36)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "5.96",
+     "computed": "5.96",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Khalez Khola, Sikkim) (row 36)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.59",
+     "computed": "5.59",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Khalez Khola, Sikkim) (row 36)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.98",
+     "computed": "5.98",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Lower lagyap, Sikkim) (row 37)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "19.05",
+     "computed": "19.05",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Lower lagyap, Sikkim) (row 37)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Lower lagyap, Sikkim) (row 37)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "19.05",
+     "computed": "19.05",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Lower lagyap, Sikkim) (row 37)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.59",
+     "computed": "5.59",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Lower lagyap, Sikkim) (row 37)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.98",
+     "computed": "5.98",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Meyong Chu, Sikkim) (row 38)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "6.75",
+     "computed": "6.75",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Meyong Chu, Sikkim) (row 38)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Meyong Chu, Sikkim) (row 38)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "6.75",
+     "computed": "6.75",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Meyong Chu, Sikkim) (row 38)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.59",
+     "computed": "5.59",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Meyong Chu, Sikkim) (row 38)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.98",
+     "computed": "5.98",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Rabaom Chu, Sikkim) (row 39)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "10.71",
+     "computed": "10.71",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Rabaom Chu, Sikkim) (row 39)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Rabaom Chu, Sikkim) (row 39)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "10.71",
+     "computed": "10.71",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Rabaom Chu, Sikkim) (row 39)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.59",
+     "computed": "5.59",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC (Rabaom Chu, Sikkim) (row 39)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.98",
+     "computed": "5.98",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC(GoHP-NJHPS, Himachal Pradesh) (row 40)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "44.14",
+     "computed": "44.14",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC(GoHP-NJHPS, Himachal Pradesh) (row 40)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC(GoHP-NJHPS, Himachal Pradesh) (row 40)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "44.14",
+     "computed": "44.14",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC(GoHP-NJHPS, Himachal Pradesh) (row 40)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.50",
+     "computed": "5.50",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "PTC(GoHP-NJHPS, Himachal Pradesh) (row 40)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.89",
+     "computed": "5.89",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Renewable) (row 41)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "43.71",
+     "computed": "43.71",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Renewable) (row 41)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Renewable) (row 41)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "43.71",
+     "computed": "43.71",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Renewable) (row 41)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "6.05",
+     "computed": "6.05",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Power Exchange (Renewable) (row 41)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "6.48",
+     "computed": "6.48",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "REC Purchase (row 45)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "13.57",
+     "computed": "13.57",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "REC Purchase (row 45)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "REC Purchase (row 45)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "13.57",
+     "computed": "13.57",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "REC Purchase (row 45)",
+     "output": "pp_rate",
+     "result": "blocked",
+     "filed": null,
+     "computed": null,
+     "why": "division by zero"
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Exchange Sale (row 46)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "-29.09",
+     "computed": "-29.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Exchange Sale (row 46)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Exchange Sale (row 46)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "-29.09",
+     "computed": "-29.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Exchange Sale (row 46)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.80",
+     "computed": "3.80",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Exchange Sale (row 46)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.68",
+     "computed": "3.68",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Sale of Power / Unscheduled Interchange (row 47)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "9.03",
+     "computed": "9.03",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Sale of Power / Unscheduled Interchange (row 47)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Sale of Power / Unscheduled Interchange (row 47)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "9.03",
+     "computed": "9.03",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "Sale of Power / Unscheduled Interchange (row 47)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "-6.85",
+     "computed": "-6.85",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "GNA & TGNA Charges (row 49)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "230.18",
+     "computed": "230.18",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "GNA & TGNA Charges (row 49)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "230.18",
+     "computed": "230.18",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "UPPTCL Charges (row 50)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "158.70",
+     "computed": "158.70",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "UPPTCL Charges (row 50)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "158.70",
+     "computed": "158.70",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "UPSLDC Charges & Application Charges (row 51)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.89",
+     "computed": "0.89",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "UPSLDC Charges & Application Charges (row 51)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "0.89",
+     "computed": "0.89",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL PPC FY 26!N52",
+     "output": "pp_cost_total",
+     "result": "match",
+     "filed": "2239.68",
+     "computed": "2239.68",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL PPC FY 26!Q52",
+     "output": "pp_tx_total",
+     "result": "match",
+     "filed": "389.77",
+     "computed": "389.77",
+     "why": null
+    },
+    {
+     "table": "PPC FY 26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL PPC FY 26!E52",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "4567.05",
+     "computed": "4567.05",
+     "why": null
+    }
+   ]
+  },
+  {
+   "binding": "ppc-fy27.json",
+   "checks": [
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "534.39",
+     "computed": "534.39",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "534.39",
+     "computed": "534.39",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "4.20",
+     "computed": "4.20",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Long Term Power from DIL (row 11)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "4.50",
+     "computed": "4.50",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (JITPL) (row 13)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "370.66",
+     "computed": "370.66",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (JITPL) (row 13)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (JITPL) (row 13)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "370.66",
+     "computed": "370.66",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (JITPL) (row 13)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.24",
+     "computed": "5.24",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (JITPL) (row 13)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.61",
+     "computed": "5.61",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (Maa Durga) (row 14)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "103.09",
+     "computed": "103.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (Maa Durga) (row 14)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (Maa Durga) (row 14)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "103.09",
+     "computed": "103.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (Maa Durga) (row 14)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.54",
+     "computed": "5.54",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (Maa Durga) (row 14)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.93",
+     "computed": "5.93",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 15)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "101.60",
+     "computed": "101.60",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 15)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 15)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "101.60",
+     "computed": "101.60",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 15)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.46",
+     "computed": "5.46",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-Sai Lilagar) (row 15)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.85",
+     "computed": "5.85",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-BLA Power) (row 16)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "103.09",
+     "computed": "103.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-BLA Power) (row 16)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-BLA Power) (row 16)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "103.09",
+     "computed": "103.09",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-BLA Power) (row 16)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.54",
+     "computed": "5.54",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (MPL-BLA Power) (row 16)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.93",
+     "computed": "5.93",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (DIL) (row 17)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "101.60",
+     "computed": "101.60",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (DIL) (row 17)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (DIL) (row 17)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "101.60",
+     "computed": "101.60",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (DIL) (row 17)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.46",
+     "computed": "5.46",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Medium Term Power (DIL) (row 17)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.85",
+     "computed": "5.85",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX-Peak (row 22)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "258.03",
+     "computed": "258.03",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX-Peak (row 22)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX-Peak (row 22)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "258.03",
+     "computed": "258.03",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX-Peak (row 22)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "7.44",
+     "computed": "7.44",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX-Peak (row 22)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "7.97",
+     "computed": "7.97",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX-Night (row 23)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "83.61",
+     "computed": "83.61",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX-Night (row 23)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX-Night (row 23)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "83.61",
+     "computed": "83.61",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX-Night (row 23)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "4.13",
+     "computed": "4.13",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX-Night (row 23)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "4.42",
+     "computed": "4.42",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX -Off Peak (row 24)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "158.45",
+     "computed": "158.45",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX -Off Peak (row 24)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX -Off Peak (row 24)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "158.45",
+     "computed": "158.45",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX -Off Peak (row 24)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.58",
+     "computed": "3.58",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator / PX -Off Peak (row 24)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.83",
+     "computed": "3.83",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX- RTC (row 25)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "167.74",
+     "computed": "167.74",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX- RTC (row 25)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX- RTC (row 25)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "167.74",
+     "computed": "167.74",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX- RTC (row 25)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "4.88",
+     "computed": "4.88",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Inter State Power - from Trader / Generator/ PX- RTC (row 25)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.23",
+     "computed": "5.23",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - RTC (row 26)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "105.76",
+     "computed": "105.76",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - RTC (row 26)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - RTC (row 26)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "105.76",
+     "computed": "105.76",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - RTC (row 26)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.44",
+     "computed": "5.44",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - RTC (row 26)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.62",
+     "computed": "5.62",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-1 (row 27)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "8.26",
+     "computed": "8.26",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-1 (row 27)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-1 (row 27)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "8.26",
+     "computed": "8.26",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-1 (row 27)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "9.03",
+     "computed": "9.03",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-1 (row 27)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "9.33",
+     "computed": "9.33",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-2 (row 28)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "28.67",
+     "computed": "28.67",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-2 (row 28)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-2 (row 28)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "28.67",
+     "computed": "28.67",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-2 (row 28)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "9.21",
+     "computed": "9.21",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TPTCL - Peak-2 (row 28)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "9.51",
+     "computed": "9.51",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "SJVNL (row 34)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "271.16",
+     "computed": "271.16",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "SJVNL (row 34)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "SJVNL (row 34)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "271.16",
+     "computed": "271.16",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "SJVNL (row 34)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "4.45",
+     "computed": "4.45",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "SJVNL (row 34)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "4.77",
+     "computed": "4.77",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (LT Wind Power) (row 35)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "12.38",
+     "computed": "12.38",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (LT Wind Power) (row 35)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (LT Wind Power) (row 35)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "12.38",
+     "computed": "12.38",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (LT Wind Power) (row 35)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.53",
+     "computed": "3.53",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (LT Wind Power) (row 35)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.65",
+     "computed": "3.65",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 36)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "1.11",
+     "computed": "1.11",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 36)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 36)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "1.11",
+     "computed": "1.11",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 36)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "7.06",
+     "computed": "7.06",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (GNIDA LT Solar Power) (row 36)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "7.06",
+     "computed": "7.06",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 37)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "16.53",
+     "computed": "16.53",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 37)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 37)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "16.53",
+     "computed": "16.53",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 37)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.08",
+     "computed": "3.08",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)- Adani Energy (row 37)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.18",
+     "computed": "3.18",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 38)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "16.53",
+     "computed": "16.53",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 38)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 38)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "16.53",
+     "computed": "16.53",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 38)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.08",
+     "computed": "3.08",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (Solar Power)-Tata Power (row 38)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.18",
+     "computed": "3.18",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (APPCPL LT Solar) (row 39)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "0.32",
+     "computed": "0.32",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (APPCPL LT Solar) (row 39)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (APPCPL LT Solar) (row 39)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "0.32",
+     "computed": "0.32",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (APPCPL LT Solar) (row 39)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.49",
+     "computed": "5.49",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Renewable Power (APPCPL LT Solar) (row 39)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.49",
+     "computed": "5.49",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Solar (row 40)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "25.94",
+     "computed": "25.94",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Solar (row 40)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Solar (row 40)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "25.94",
+     "computed": "25.94",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Solar (row 40)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "3.15",
+     "computed": "3.15",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Solar (row 40)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "3.37",
+     "computed": "3.37",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar -1 (row 41)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "17.81",
+     "computed": "17.81",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar -1 (row 41)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar -1 (row 41)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "17.81",
+     "computed": "17.81",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar -1 (row 41)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.38",
+     "computed": "5.38",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar -1 (row 41)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.76",
+     "computed": "5.76",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar-2 (row 42)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "23.74",
+     "computed": "23.74",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar-2 (row 42)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar-2 (row 42)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "23.74",
+     "computed": "23.74",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar-2 (row 42)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.38",
+     "computed": "5.38",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "EEPTPL - Non-Solar-2 (row 42)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "5.76",
+     "computed": "5.76",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Exchange Sale (row 47)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "-59.72",
+     "computed": "-59.72",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Exchange Sale (row 47)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Exchange Sale (row 47)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "-59.72",
+     "computed": "-59.72",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Exchange Sale (row 47)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "5.06",
+     "computed": "5.06",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "Exchange Sale (row 47)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "4.90",
+     "computed": "4.90",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "DSM/UI (row 48)",
+     "output": "pp_amount",
+     "result": "match",
+     "filed": "-2.44",
+     "computed": "-2.44",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "DSM/UI (row 48)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "DSM/UI (row 48)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "-2.44",
+     "computed": "-2.44",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "DSM/UI (row 48)",
+     "output": "pp_rate",
+     "result": "match",
+     "filed": "1.00",
+     "computed": "1.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "DSM/UI (row 48)",
+     "output": "pp_unit_cost",
+     "result": "match",
+     "filed": "1.00",
+     "computed": "1.00",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "GNA & TGNA Charges (row 50)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "257.21",
+     "computed": "257.21",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "GNA & TGNA Charges (row 50)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "257.21",
+     "computed": "257.21",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "UPPTCL Charges (row 51)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "188.50",
+     "computed": "188.50",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "UPPTCL Charges (row 51)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "188.50",
+     "computed": "188.50",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "UPSLDC Charges & Application Charges (row 52)",
+     "output": "pp_tx",
+     "result": "match",
+     "filed": "0.65",
+     "computed": "0.65",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "UPSLDC Charges & Application Charges (row 52)",
+     "output": "pp_total_cost",
+     "result": "match",
+     "filed": "0.65",
+     "computed": "0.65",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL PPC FY 27!N53",
+     "output": "pp_cost_total",
+     "result": "match",
+     "filed": "2448.33",
+     "computed": "2448.33",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL PPC FY 27!Q53",
+     "output": "pp_tx_total",
+     "result": "match",
+     "filed": "446.36",
+     "computed": "446.36",
+     "why": null
+    },
+    {
+     "table": "PPC FY 27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL PPC FY 27!E53",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "5066.34",
+     "computed": "5066.34",
+     "why": null
+    }
+   ]
+  },
+  {
    "binding": "records-annexure-21-depreciation.json",
    "sheet": "Depreciation after 1 Apr 20-25",
    "counts": {
