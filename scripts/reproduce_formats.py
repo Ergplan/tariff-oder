@@ -85,6 +85,67 @@ def pipeline(name: str, binding: dict, folder: Path, rules: list, sheets: dict, 
     return {"binding": name, **reproduce_pipeline(binding, chain, rules, sheets, results)}
 
 
+def accounting(folder: Path, sheets: dict) -> dict | None:
+    """Every format the filing's index lists, accounted for (R-ACC-3): **missing** (no sheet),
+    **blank** (a sheet with no number), **present** (numbers, not read), **read** (the reference
+    reads it), **reproduced** (a binding computes from or checks it) — and the sheets the index
+    does not list.  Names are matched exactly or through the declared aliases, each with its
+    reason; never by resemblance."""
+    import re
+
+    import openpyxl
+
+    path = folder / "formats-index.json"
+    if not path.exists():
+        return None
+    cfg = json.loads(path.read_text())
+    wb = openpyxl.load_workbook(folder / cfg["workbook"], data_only=True, read_only=True)
+    idx = wb[cfg["index_sheet"]]
+    col = openpyxl.utils.column_index_from_string
+    entries = []
+    for r in idx.iter_rows(min_row=cfg["first_row"], values_only=True):
+        name, title = r[col(cfg["name_col"]) - 1], r[col(cfg["title_col"]) - 1]
+        if name:
+            entries.append((str(name).strip(), str(title or "").strip()))
+    norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower().replace("fy 20", "fy").replace("fy20", "fy"))  # noqa: E731
+    by_norm = {norm(n): n for n in wb.sheetnames}
+    used: set[str] = set()
+    for b in (folder / "bindings").glob("*.json"):
+        text = b.read_text()
+        for n in wb.sheetnames:
+            if json.dumps(n)[1:-1] in text:
+                used.add(n)
+    numbers = {}
+    for n in wb.sheetnames:
+        numbers[n] = any(
+            isinstance(v, int | float) and not isinstance(v, bool)
+            for row in wb[n].iter_rows(values_only=True)
+            for v in row
+        )
+    out, listed = [], set()
+    for name, title in entries:
+        alias = cfg.get("aliases", {}).get(name)
+        sheet = alias["sheet"] if alias else by_norm.get(norm(name))
+        if sheet:
+            listed.add(sheet)
+        if not sheet or sheet not in wb.sheetnames:
+            status = "missing"
+        elif sheet in used:
+            status = "reproduced"
+        elif sheet in sheets:
+            status = "read"
+        else:
+            status = "present" if numbers[sheet] else "blank"
+        out.append(
+            {"format": name, "title": title, "sheet": sheet, "alias_why": alias and alias["why"], "status": status}
+        )
+    extra = [n for n in wb.sheetnames if n not in listed and n != cfg["index_sheet"]]
+    counts: dict[str, int] = {}
+    for e in out:
+        counts[e["status"]] = counts.get(e["status"], 0) + 1
+    return {"list": cfg["list"], "formats": out, "not_in_index": extra, "counts": counts}
+
+
 def coverage(ref_sheet: dict, report: dict) -> dict:
     """How each figure of the ARR format is established, column by column: **computed** by the
     chain from base records, **tied** (a schedule's binding reproduces the figure the ARR
@@ -245,6 +306,9 @@ def main() -> int:
             if args.verbose:
                 for c in col["checks"]:
                     print(f"   {c['result']:8} {c['output']:28} filed {c['filed']} computed {c['computed']}")
+    report["accounting"] = accounting(folder, sheets)
+    if report["accounting"]:
+        print("formats accounted", report["accounting"]["counts"], "not in index", report["accounting"]["not_in_index"])
     if "ARR" in sheets:
         report["coverage"] = coverage(sheets["ARR"], report)
         for c in report["coverage"]["columns"]:

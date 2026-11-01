@@ -37,9 +37,20 @@ type Filing = {
     summary: Record<string, Counts>;
   } | null;
   findings: { id: string; kind: string; title: string; detail: string; where: string[]; for: string }[];
+  accounting: {
+    list: string;
+    counts: Counts;
+    not_in_index: string[];
+    formats: { format: string; title: string; sheet: string | null; alias_why: string | null; status: string }[];
+  } | null;
 };
 
 const TONE: Record<string, string> = {
+  reproduced: "ok",
+  read: "neutral",
+  present: "neutral",
+  blank: "warn",
+  missing: "bad",
   match: "ok",
   computed: "ok",
   tied: "ok",
@@ -405,7 +416,56 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
           </table>
         </div>
       </Panel>
-      <Panel num="06" title="Independent sign-off" aside="by a named checker who did not build it — pinned to this reproduction; the build signs nothing">
+      <Panel num="06" title="Every format accounted for" aside="each format the filing lists — reproduced, read, present, blank or missing">
+        {!f.accounting ? (
+          <p className="muted">No index of formats.</p>
+        ) : (
+          <>
+            <p>
+              <CountBadges counts={f.accounting.counts} />
+            </p>
+            <p className="muted" style={{ fontSize: "0.85rem" }}>
+              Against {f.accounting.list}.
+              {f.accounting.not_in_index.length ? ` Filed but not in the index: ${f.accounting.not_in_index.join(", ")}.` : ""}
+            </p>
+            <details>
+              <summary>All {f.accounting.formats.length} formats</summary>
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Format</th>
+                      <th>Sheet</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {f.accounting.formats.map((x, i) => (
+                      <tr key={i}>
+                        <td>
+                          {x.format}
+                          <div className="muted">{x.title}</div>
+                        </td>
+                        <td className="mono">
+                          {x.sheet ?? "—"}
+                          {x.alias_why ? <div className="muted">{x.alias_why}</div> : null}
+                        </td>
+                        <td>
+                          <span className="badge" data-tone={TONE[x.status] ?? "neutral"}>
+                            {x.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </>
+        )}
+      </Panel>
+
+      <Panel num="07" title="Independent sign-off" aside="by a named checker who did not build it — pinned to this reproduction; the build signs nothing">
         {!acc.data ? (
           <p className="muted">No reproduction to sign off.</p>
         ) : (

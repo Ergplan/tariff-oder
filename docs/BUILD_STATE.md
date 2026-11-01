@@ -2049,6 +2049,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 77 (2026-11-01): 424 passed** (the integration test checks the formats accounting: 74 accounted, the missing ESR7 named, F19A not indexed).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 76 (2026-11-01): 424 passed** (+1 integration: a sign-off needs the attestation, a reason for a reservation, a scope the filing has and the current reproduction's hash â€” 409 on a stale one; an analyst cannot sign; every scope starts open).  Ruff, format, contracts (regenerated) and web typecheck clean; migration 0021 applied on the local stack.
 - **Increment 75 (2026-11-01): 423 passed** (the end-to-end test checks the capitalisation fed from the capital plan, 8 / 8).  Ruff and format clean.
 - **Increment 74 (2026-11-01): 423 passed** (the end-to-end test checks the loan rate fed from the MCLR revisions, the ARR year's taken from the APR year with its reason).  Ruff and format clean.
@@ -2307,7 +2308,9 @@ entries below are the per-increment history.**
   4. **Reviewer:** verify the rules' clauses against the UPERC MYT Regulations 2019 and 2025, and
      approve or amend each rule.  No rule can be approved by the build; until then nothing is
      `filing_ready`.
-  5. **Petitioner (through the operator):** answer the findings.  A39 asks for the working of
+  5. **Operator:** provide the Commission's list of mandatory formats (the UPERC MYT
+     Regulations' appendix), so completeness is measured against it, not the petitioner's index.
+  6. **Petitioner (through the operator):** answer the findings.  A39 asks for the working of
      the projection years' depreciation by class.
 
   **Engineering next, smallest first:**

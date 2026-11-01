@@ -107,6 +107,19 @@
     "ESR4A_Prop Tariff Rate Sch. C16:C20, C34:C37"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A43",
+   "kind": "completeness",
+   "title": "Formats: one listed and not filed, two blank, one indexed twice, one not indexed",
+   "detail": "The workbook's own index lists 74 formats.  ESR7 (BD monthly — the monthly billing determinants) has no sheet in the workbook.  ESR6 (revenue from tariff subsidy) and F10 (bulk supply tariff details) are blank: the petitioner should say whether they are nil or omitted.  F22 for FY2026-27 is listed twice ('FY 26' and 'FY 26 and FY 27'); one sheet covers both.  F19A (normative O&M) is filed but not in the index.  This accounts against the petitioner's index, not yet against the Commission's list of mandatory formats, which is not among the documents.",
+   "where": [
+    "Index",
+    "ESR6_Subsidy",
+    "F10_PP_BST",
+    "F19A-O&M Normative"
+   ],
+   "for": "petitioner"
   }
  ]
 }

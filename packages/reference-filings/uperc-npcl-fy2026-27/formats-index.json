@@ -1,0 +1,26 @@
+{
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "index_sheet": "Index",
+ "name_col": "B",
+ "title_col": "C",
+ "first_row": 3,
+ "list": "the petitioner's own index of the formats workbook — a proxy: the Commission's list of mandatory formats (the Regulations' appendix) is not among the documents yet",
+ "aliases": {
+  "F16_CAP_CAPEX & CAPITALISATION - Till FY 25": {
+   "sheet": "F16_CAP_CAPEX & CAP. till 25 ",
+   "why": "the sheet is named in short"
+  },
+  "F16_CAP_CAPEX & CAPITALISATION - FY 26": {
+   "sheet": "F16_CAP_CAPEX & CAP. after FY25",
+   "why": "the sheet covers FY2025-26 and FY2026-27 under the name 'after FY25'"
+  },
+  "F22_O&M_R&M - FY 26 and FY 27": {
+   "sheet": "F22_O&M_R&M after FY25",
+   "why": "the sheet covers FY2025-26 and FY2026-27 under the name 'after FY25'"
+  },
+  "F22_O&M_R&M - FY 26": {
+   "sheet": "F22_O&M_R&M after FY25",
+   "why": "listed twice in the index (also as 'FY 26 and FY 27'); one sheet covers both"
+  }
+ }
+}

@@ -42,6 +42,11 @@ def test_the_npcl_reference_filing_and_its_reproduction(client):
     (end,) = [p for p in f["pipeline"] if p["fiscal_year"] == "FY2026-27"]
     assert end["counts"] == {"match": 12} and len(end["fed"]) >= 12
     assert {c["output"]: c["computed"] for c in end["checks"]}["arr_net"] == "3481.83"
+    # every format of the filing's index accounted for; the one listed and not filed is named
+    acc = f["accounting"]
+    assert sum(acc["counts"].values()) == 74
+    assert [e["format"] for e in acc["formats"] if e["status"] == "missing"] == ["ESR7_BD monthly"]
+    assert acc["counts"]["reproduced"] >= 27 and acc["not_in_index"] == ["F19A-O&M Normative"]
     assert client.get("/arr/reference-filings/nope", headers=headers(CLIENT_A)).status_code == 404
 
 

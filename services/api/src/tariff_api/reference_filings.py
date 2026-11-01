@@ -73,6 +73,7 @@ def filing(filing_id: str) -> dict[str, Any]:
         "chain": None,
         "coverage": None,
         "pipeline": [],
+        "accounting": None,
         "findings": [],
     }
     rep_path = folder / "reproduction.json"
@@ -126,6 +127,8 @@ def filing(filing_id: str) -> dict[str, Any]:
             for p in rep.get("pipeline", [])
             for col in p["columns"]
         ]
+        # every format the filing's index lists, accounted for (R-ACC-3)
+        out["accounting"] = rep.get("accounting")
         if rep.get("coverage"):
             # how each figure of the ARR format is established, by column (computed / tied /
             # given / differs / record) — what the reproduction covers and what it takes on trust

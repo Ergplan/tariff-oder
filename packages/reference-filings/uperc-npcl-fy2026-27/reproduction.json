@@ -41838,6 +41838,539 @@
    ]
   }
  ],
+ "accounting": {
+  "list": "the petitioner's own index of the formats workbook \u2014 a proxy: the Commission's list of mandatory formats (the Regulations' appendix) is not among the documents yet",
+  "formats": [
+   {
+    "format": "BS1",
+    "title": "Profit & Loss Account",
+    "sheet": "BS1",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "BS2",
+    "title": "Balance Sheet",
+    "sheet": "BS2",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "BS3",
+    "title": "Cash Flow Statement",
+    "sheet": "BS3",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "Energy Balance",
+    "title": "Energy Balance",
+    "sheet": "Energy Balance",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "ARR",
+    "title": "Annual Revenue Requirement",
+    "sheet": "ARR",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "True up-snapshot",
+    "title": "True-Up Snapshot",
+    "sheet": "True up-snapshot",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "APR Snapshot",
+    "title": "APR Snapshot",
+    "sheet": "APR Snapshot",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "ARR snapshot",
+    "title": "ARR Snapshot",
+    "sheet": "ARR snapshot",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "ESR1_OA",
+    "title": "Revenue from Open Access Customers",
+    "sheet": "ESR1_OA",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "ESR2_Sales Forecast",
+    "title": "Determination of CAGR of Energy Sales Forecast",
+    "sheet": "ESR2_Sales Forecast",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "ESR3_Curr Tariff - FY24",
+    "title": "Revenue from Current Tariffs in Ensuing Year",
+    "sheet": "ESR_3 Curr Tariff FY24",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "ESR3_Curr Tariff - FY25",
+    "title": "Revenue from Current Tariffs in Ensuing Year",
+    "sheet": "ESR_3 Curr Tariff FY25",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "ESR3_Curr Tariff - FY26",
+    "title": "Revenue from Current Tariffs in Ensuing Year",
+    "sheet": "ESR_3 Curr Tariff FY26",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "ESR3_Curr Tariff - FY27",
+    "title": "Revenue from Current Tariffs in Ensuing Year",
+    "sheet": "ESR_3 Curr Tariff FY27",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "ESR4_Prop Tariff",
+    "title": "Revenue from Proposed Tariffs",
+    "sheet": "ESR4_Prop Tariff",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "ESR4A_Prop Tariff Rate Sch.",
+    "title": "Rate Schedule for Proposed Tariff",
+    "sheet": "ESR4A_Prop Tariff Rate Sch.",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "ESR5_BD&Rev",
+    "title": "Consumer No., Connected Load, Sales & Revenue Details",
+    "sheet": "ESR5_BD&Rev",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "ESR6_Subsidy",
+    "title": "Revenue from Tariff Subsidy",
+    "sheet": "ESR6_Subsidy",
+    "alias_why": null,
+    "status": "blank"
+   },
+   {
+    "format": "ESR7_BD monthly",
+    "title": "BD monthly",
+    "sheet": null,
+    "alias_why": null,
+    "status": "missing"
+   },
+   {
+    "format": "F1_PP_Annual",
+    "title": "Summary of Power Purchase from Own Stations and Other Sources",
+    "sheet": "F1_PP_Annual",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F2_PP_Assump",
+    "title": "Assumptions For Power Purchase",
+    "sheet": "F2_PP_Assump",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F3_PP_Monthly - FY 25",
+    "title": "Power Purchase & Monthly Appropriation of Power Purchase",
+    "sheet": "F3_PP_Monthly FY2025",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F3_PP_Monthly - FY 26",
+    "title": "Power Purchase & Monthly Appropriation of Power Purchase",
+    "sheet": "F3_PP_Monthly FY2026",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F3_PP_Monthly - FY 27",
+    "title": "Power Purchase & Monthly Appropriation of Power Purchase",
+    "sheet": "F3_PP_Monthly FY2027",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F4_PP_MOD",
+    "title": "Merit Order Despatch",
+    "sheet": "F4_PP_MOD",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F5_PP_Renew",
+    "title": "PPA-wise renewable energy procured",
+    "sheet": "F5_PP_Renew",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F6_PP6_RPO",
+    "title": "Details of Renewable Purchase Obligation",
+    "sheet": "F6_PP6_RPO",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F7_PP_Comp Bid",
+    "title": "Details for power procured via competitive bidding for True-up Year : FY 2024-25",
+    "sheet": "F7_PP_Comp Bid",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F8_PP_Short Term",
+    "title": "Information on short-term power procurement",
+    "sheet": "F8_PP_Short Term",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F9_PP_plan",
+    "title": "Power Procurement (in MWs)",
+    "sheet": "F9_PP_plan",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "F10_PP_BST",
+    "title": "Bulk Supply Tariff Details",
+    "sheet": "F10_PP_BST",
+    "alias_why": null,
+    "status": "blank"
+   },
+   {
+    "format": "PPC FY 24",
+    "title": "Financial Year 2023-24",
+    "sheet": "PPC FY 24",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "PPC FY 25",
+    "title": "Financial Year 2024-25",
+    "sheet": "PPC FY 25",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "PPC FY 26",
+    "title": "Financial Year 2025-26",
+    "sheet": "PPC FY 26",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "PPC FY 27",
+    "title": "Financial Year 2026-27",
+    "sheet": "PPC FY 27",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F11_CAP_Asset not in use",
+    "title": "Statement of Assets Not in Use",
+    "sheet": "F11_CAP_Asset not in use",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F12_CAP_Cons Contri",
+    "title": "Consumer contributions and grants towards cost of capital assets",
+    "sheet": "F12_CAP_Cons Contri",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "F13_CAP_Plan",
+    "title": "Investment Plan - Master",
+    "sheet": "F13_CAP_Plan",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F14_CAP_Cap Cost",
+    "title": "Statement of Capital Cost",
+    "sheet": "F14_CAP_Cap Cost",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F15_CAP_CWIP",
+    "title": "Statement of Capital Works in Progress",
+    "sheet": "F15_CAP_CWIP",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F16_CAP_CAPEX & CAPITALISATION - Till FY 25",
+    "title": "Capex and Capitalisation Details",
+    "sheet": "F16_CAP_CAPEX & CAP. till 25 ",
+    "alias_why": "the sheet is named in short",
+    "status": "present"
+   },
+   {
+    "format": "F16_CAP_CAPEX & CAPITALISATION - FY 26",
+    "title": "Capex and Capitalisation Details",
+    "sheet": "F16_CAP_CAPEX & CAP. after FY25",
+    "alias_why": "the sheet covers FY2025-26 and FY2026-27 under the name 'after FY25'",
+    "status": "reproduced"
+   },
+   {
+    "format": "F17_O&M_CPI",
+    "title": "Consumer Price Inflation",
+    "sheet": "F17_O&M_CPI",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F18_O&M_WPI",
+    "title": "Wholesale Price Inflation",
+    "sheet": "F18_O&M_WPI",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F19_O&M_EE n AG base",
+    "title": "Base year determination for Employee and A&G expenses",
+    "sheet": "F19_O&M_EE n AG base",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F20_O&M_EE",
+    "title": "Employee Expenses",
+    "sheet": "F20_O&M_EE",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F21_O&M_EE (A)",
+    "title": "Component wise Details of Employee Expenses",
+    "sheet": "F21_O&M_EE (A)",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F22_O&M_R&M - FY 26",
+    "title": "R&M Expenses - FY 26 and FY 27",
+    "sheet": "F22_O&M_R&M after FY25",
+    "alias_why": "listed twice in the index (also as 'FY 26 and FY 27'); one sheet covers both",
+    "status": "reproduced"
+   },
+   {
+    "format": "F22_O&M_R&M - till FY 25",
+    "title": "R&M Expenses - Till FY 25",
+    "sheet": "F22_O&M_R&M till FY25",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "F22_O&M_R&M - FY 26 and FY 27",
+    "title": "R&M Expenses - FY 26 and FY 27",
+    "sheet": "F22_O&M_R&M after FY25",
+    "alias_why": "the sheet covers FY2025-26 and FY2026-27 under the name 'after FY25'",
+    "status": "reproduced"
+   },
+   {
+    "format": "F23_O&M_A&G",
+    "title": "Componentwise Details of Administration & General Expenses",
+    "sheet": "F23_O&M_A&G",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F24_Dep",
+    "title": "Calculation of Depreciation Rate",
+    "sheet": "F24_Dep",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F25_IOL",
+    "title": "Interest on Normative Loan",
+    "sheet": "F25_IOL",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F26_ROE",
+    "title": "Return of Equity",
+    "sheet": "F26_ROE",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F27_Work Cap",
+    "title": "Working Capital Requirements",
+    "sheet": "F27_Work Cap",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F28_NTI",
+    "title": "Details of Non-tariff Income",
+    "sheet": "F28_NTI",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "F29_Income Tax",
+    "title": "Income Tax Provisions",
+    "sheet": "F29_Income Tax",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F30_CSD monthly",
+    "title": "Monthly details of Consumer Security Deposit for True up year",
+    "sheet": "F30_CSD monthly",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F30A_CSD",
+    "title": "Consumer Security Deposit",
+    "sheet": "F30A_CSD",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F31_Recievables",
+    "title": "Statement of Receivables",
+    "sheet": "F31_Recievables",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "F32_Wheeling-Supply",
+    "title": "Allocation of Wheeling & Retail Supply and Cross Subsidy Surcharge",
+    "sheet": "F32_Wheeling-Supply",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "F33_CSS",
+    "title": "Details of Cross Subsidy Surchage",
+    "sheet": "F33_CSS",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "P1_DL",
+    "title": "Distribution Loss",
+    "sheet": "P1_DL",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "P1A_DL HT-LT",
+    "title": "Distribution Losses in LT and HT system",
+    "sheet": "P1A_DL HT-LT",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "P2_AVG Supply HRS",
+    "title": "Avg. No. of Hour Supply Per day",
+    "sheet": "P2_AVG Supply HRS",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "P3_Bad Debts",
+    "title": "Bad Debts, Debits, Write-offs and any other items",
+    "sheet": "P3_Bad Debts",
+    "alias_why": null,
+    "status": "reproduced"
+   },
+   {
+    "format": "P4_Phy Stat",
+    "title": "Details of Physical statistics of the network",
+    "sheet": "P4_Phy Stat",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "P5_Arrear",
+    "title": "Analysis of  Revenue Arrears",
+    "sheet": "P5_Arrear",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "P6_Cons Complaints",
+    "title": "Consumer Complaint",
+    "sheet": "P6_Cons Complaints",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "P7_Trans Failure",
+    "title": "Failure of Transformers",
+    "sheet": "P7_Trans Failure",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "P8_Elec Accidents",
+    "title": "Electrical Accidents",
+    "sheet": "P8_Elec Accidents",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "P9_Peak Demand",
+    "title": "Peak Demand in MW",
+    "sheet": "P9_Peak Demand",
+    "alias_why": null,
+    "status": "read"
+   },
+   {
+    "format": "P10_Pending Cases",
+    "title": "Details of Pending Cases as on date of filing",
+    "sheet": "P10_Pending Cases",
+    "alias_why": null,
+    "status": "present"
+   },
+   {
+    "format": "P11_Land",
+    "title": "Details of Land Assets",
+    "sheet": "P11_Land",
+    "alias_why": null,
+    "status": "present"
+   }
+  ],
+  "not_in_index": [
+   "F19A-O&M Normative"
+  ],
+  "counts": {
+   "present": 34,
+   "reproduced": 27,
+   "read": 10,
+   "blank": 2,
+   "missing": 1
+  }
+ },
  "coverage": {
   "sheet": "ARR",
   "columns": [
