@@ -2,10 +2,14 @@ import Link from "next/link";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../../components";
 import { Eyebrow, Panel } from "../../../client/studio";
+import SignOff from "./sign-off";
 
 export const dynamic = "force-dynamic";
 
 type Counts = Record<string, number>;
+type MeOut = { role: string };
+type SignRecord = { id: string; scope: string; decision: string; note: string | null; signed_by: string; signed_at: string; current: boolean };
+type Acceptance = { reproduction_sha256: string; scopes: string[]; open: string[]; latest: Record<string, SignRecord>; records: SignRecord[] };
 type Check = { fiscal_year: string; voice?: string; words: string; output: string; label?: string; filed: string | null; computed: string | null; result: string; why?: string | null };
 type Filing = {
   id: string;
@@ -73,9 +77,14 @@ function CountBadges({ counts }: { counts: Counts }) {
  */
 export default async function ReferenceFiling({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const res = await apiTry<Filing>(`/arr/reference-filings/${encodeURIComponent(id)}`);
+  const [res, acc, me] = await Promise.all([
+    apiTry<Filing>(`/arr/reference-filings/${encodeURIComponent(id)}`),
+    apiTry<Acceptance>(`/arr/reference-filings/${encodeURIComponent(id)}/acceptance`),
+    apiTry<MeOut>("/me"),
+  ]);
   if (res.error || !res.data) return <ErrorBanner error={res.error!} />;
   const f = res.data;
+  const reviewer = ["reviewer", "administrator"].includes(me.data?.role ?? "");
   return (
     <>
       <p>
@@ -395,6 +404,65 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
             </tbody>
           </table>
         </div>
+      </Panel>
+      <Panel num="06" title="Independent sign-off" aside="by a named checker who did not build it — pinned to this reproduction; the build signs nothing">
+        {!acc.data ? (
+          <p className="muted">No reproduction to sign off.</p>
+        ) : (
+          <>
+            <p>
+              <b>{acc.data.scopes.length - acc.data.open.length}</b> of <b>{acc.data.scopes.length}</b> scopes signed off on the current reproduction.{" "}
+              {acc.data.open.includes("filing") ? (
+                <span className="badge" data-tone="warn">
+                  the filing is not signed off
+                </span>
+              ) : null}
+            </p>
+            {acc.data.records.length ? (
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Scope</th>
+                      <th>Decision</th>
+                      <th>By · when</th>
+                      <th>Reproduction</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {acc.data.records.map((r) => (
+                      <tr key={r.id}>
+                        <td className="mono">{r.scope}</td>
+                        <td>
+                          <span className="badge" data-tone={r.decision === "rejected" ? "bad" : r.decision === "accepted" ? "ok" : "warn"}>
+                            {r.decision.replace(/_/g, " ")}
+                          </span>
+                          {r.note ? <div className="muted">{r.note}</div> : null}
+                        </td>
+                        <td>
+                          {r.signed_by}
+                          <div className="mono muted">{r.signed_at.slice(0, 16).replace("T", " ")}</div>
+                        </td>
+                        <td>
+                          <span className="badge" data-tone={r.current ? "ok" : "warn"}>
+                            {r.current ? "current" : "stale — changed since"}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="muted">Nobody has signed anything off yet.</p>
+            )}
+            {reviewer ? (
+              <SignOff filingId={f.id} scopes={acc.data.scopes} sha={acc.data.reproduction_sha256} />
+            ) : (
+              <p className="muted">A reviewer who did not build the reproduction signs it off here.</p>
+            )}
+          </>
+        )}
       </Panel>
       <p className="muted" style={{ fontSize: "0.82rem" }}>
         {f.status}

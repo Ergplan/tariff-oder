@@ -1396,3 +1396,31 @@ class LibraryEntry(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
     )
+
+
+class AcceptanceRecord(Base):
+    """An independent checker's sign-off on a reference filing's reproduction (milestone 13,
+    R-ACC-2): the whole filing, one petition column, or the treatment of one finding — accepted,
+    accepted with reservations, or rejected — by a named person who attests they did not build
+    it, pinned to the reproduction it was given (its SHA-256).  Append-only: the latest record of
+    a scope counts; a record whose reproduction has since changed is stale, never carried
+    forward.  The build never writes one."""
+
+    __tablename__ = "acceptance_records"
+    __table_args__ = (
+        CheckConstraint(
+            "decision in ('accepted', 'accepted_with_reservations', 'rejected')", name="ck_acceptance_decision"
+        ),
+        CheckConstraint("decision = 'accepted' or note is not null", name="ck_acceptance_note"),
+        CheckConstraint("independent", name="ck_acceptance_independent"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    filing_id: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    scope: Mapped[str] = mapped_column(String(120), nullable=False)
+    decision: Mapped[str] = mapped_column(String(32), nullable=False)
+    note: Mapped[str | None] = mapped_column(Text)
+    reproduction_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    independent: Mapped[bool] = mapped_column(nullable=False)
+    signed_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    signed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

@@ -1,6 +1,51 @@
 {
   "components": {
     "schemas": {
+      "AcceptanceIn": {
+        "properties": {
+          "decision": {
+            "title": "Decision",
+            "type": "string"
+          },
+          "independent": {
+            "description": "the checker attests they did not build the reproduction",
+            "title": "Independent",
+            "type": "boolean"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "maxLength": 4000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "reproduction_sha256": {
+            "description": "the reproduction the checker was shown",
+            "maxLength": 64,
+            "minLength": 64,
+            "title": "Reproduction Sha256",
+            "type": "string"
+          },
+          "scope": {
+            "maxLength": 120,
+            "title": "Scope",
+            "type": "string"
+          }
+        },
+        "required": [
+          "scope",
+          "decision",
+          "independent",
+          "reproduction_sha256"
+        ],
+        "title": "AcceptanceIn",
+        "type": "object"
+      },
       "ArrActualIn": {
         "description": "An actual of a true-up or APR case, with its source (ADR-0020).",
         "properties": {
@@ -12648,6 +12693,224 @@
           }
         },
         "summary": "Reference Filing",
+        "tags": [
+          "atlas"
+        ]
+      }
+    },
+    "/arr/reference-filings/{filing_id}/acceptance": {
+      "get": {
+        "description": "The independent sign-offs of a reference filing (R-ACC-2): every record, current or stale\nagainst the reproduction as it stands, the latest per scope and the scopes still open.",
+        "operationId": "reference_acceptance_arr_reference_filings__filing_id__acceptance_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filing_id",
+            "required": true,
+            "schema": {
+              "title": "Filing Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Reference Acceptance Arr Reference Filings  Filing Id  Acceptance Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Reference Acceptance",
+        "tags": [
+          "atlas"
+        ]
+      },
+      "post": {
+        "description": "A named checker's sign-off of one scope \u2014 refused without the attestation of\nindependence, a reason for anything short of acceptance, or the hash of the reproduction\nthe checker was shown.  Append-only; the build never signs.",
+        "operationId": "reference_sign_arr_reference_filings__filing_id__acceptance_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filing_id",
+            "required": true,
+            "schema": {
+              "title": "Filing Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptanceIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Reference Sign Arr Reference Filings  Filing Id  Acceptance Post",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Reference Sign",
         "tags": [
           "atlas"
         ]

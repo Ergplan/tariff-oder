@@ -96,6 +96,17 @@
     "ESR_3 Curr Tariff FY25 N136, O136"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A42",
+   "kind": "question",
+   "title": "Urban domestic revenue implies rates 1.8–1.9 % below the schedule in force",
+   "detail": "ESR-3 FY2026-27's rural domestic slabs bill exactly the existing tariff of ESR4A (3.35, 3.85, 5.00, 5.50 Rs/kWh).  The urban domestic slabs imply 5.396, 5.398, 5.891 and 6.386 Rs/kWh against 5.50, 5.50, 6.00 and 6.50, i.e. 1.76–1.89 % lower, by a different fraction in each slab.  Fixed charges do not reduce to load × rate either: rural metered, 49.46 MW × Rs 90 / kW / month × 12 = 5.34 crore against 4.10 billed.  The revenue at current tariff (the ARR's row 15) therefore cannot be computed from the rate schedule alone.  Ask the petitioner for the rebates, the load basis and the slab mix behind ESR-3.",
+   "where": [
+    "ESR_3 Curr Tariff FY27 G23:G26, J13",
+    "ESR4A_Prop Tariff Rate Sch. C16:C20, C34:C37"
+   ],
+   "for": "petitioner"
   }
  ]
 }

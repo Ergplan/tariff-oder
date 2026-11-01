@@ -43,3 +43,41 @@ def test_the_npcl_reference_filing_and_its_reproduction(client):
     assert end["counts"] == {"match": 12} and len(end["fed"]) >= 12
     assert {c["output"]: c["computed"] for c in end["checks"]}["arr_net"] == "3481.83"
     assert client.get("/arr/reference-filings/nope", headers=headers(CLIENT_A)).status_code == 404
+
+
+def test_independent_sign_off_is_pinned_to_the_reproduction_and_never_automatic(client):
+    """R-ACC-2: a reviewer signs a scope off only with the attestation of independence, a reason
+    for anything short of acceptance, and the hash of the reproduction they were shown; an
+    analyst cannot sign; nothing is signed until someone does (every scope starts open)."""
+    from conftest import ANALYST, REVIEWER
+
+    url = "/arr/reference-filings/uperc-npcl-fy2026-27/acceptance"
+    a = client.get(url, headers=headers(ANALYST)).json()
+    assert a["records"] == [] or all(r["signed_by"] for r in a["records"])
+    assert "filing" in a["scopes"] and "column:FY2026-27|petitioned" in a["scopes"] and "finding:A40" in a["scopes"]
+    assert "filing" in a["open"]  # the build signs nothing
+    sha = a["reproduction_sha256"]
+    body = {
+        "scope": "finding:A40",
+        "decision": "accepted_with_reservations",
+        "independent": True,
+        "reproduction_sha256": sha,
+    }
+    assert client.post(url, json=body, headers=headers(ANALYST)).status_code == 403
+    r = client.post(url, json={**body, "independent": False, "note": "x"}, headers=headers(REVIEWER))
+    assert r.status_code == 422 and "did not build" in r.text
+    assert client.post(url, json=body, headers=headers(REVIEWER)).status_code == 422  # a reservation needs its reason
+    assert (
+        client.post(
+            url, json={**body, "scope": "column:FY2099-00|petitioned", "note": "x"}, headers=headers(REVIEWER)
+        ).status_code
+        == 422
+    )
+    stale = {**body, "note": "allow the amount disbursed", "reproduction_sha256": "0" * 64}
+    assert client.post(url, json=stale, headers=headers(REVIEWER)).status_code == 409
+    r = client.post(url, json={**body, "note": "allow the amount disbursed, 24.79"}, headers=headers(REVIEWER))
+    assert r.status_code == 201, r.text
+    a = client.get(url, headers=headers(ANALYST)).json()
+    latest = a["latest"]["finding:A40"]
+    assert latest["decision"] == "accepted_with_reservations" and latest["current"] and latest["signed_by"]
+    assert "finding:A40" not in a["open"] and "filing" in a["open"]

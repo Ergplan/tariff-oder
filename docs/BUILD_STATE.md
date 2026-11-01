@@ -2049,6 +2049,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 76 (2026-11-01): 424 passed** (+1 integration: a sign-off needs the attestation, a reason for a reservation, a scope the filing has and the current reproduction's hash — 409 on a stale one; an analyst cannot sign; every scope starts open).  Ruff, format, contracts (regenerated) and web typecheck clean; migration 0021 applied on the local stack.
 - **Increment 75 (2026-11-01): 423 passed** (the end-to-end test checks the capitalisation fed from the capital plan, 8 / 8).  Ruff and format clean.
 - **Increment 74 (2026-11-01): 423 passed** (the end-to-end test checks the loan rate fed from the MCLR revisions, the ARR year's taken from the APR year with its reason).  Ruff and format clean.
 - **Increment 73 (2026-11-01): 423 passed** (+1 unit: the petition computed end to end from its schedules — ARR and APR years 12 / 12, the true-up year differing by exactly A40's 0.19; the integration test checks the projected column's end-to-end net ARR).  Ruff, format, contracts-check and web typecheck clean.
@@ -2300,7 +2301,8 @@ entries below are the per-increment history.**
   none differs; 16 still records (increment 72).  **End to end (increment 73):** the chain fed by the schedules reproduces the ARR and APR years 12 / 12 (net ARR 3,481.83 and 3,200.63).  Findings A29–A41 are for the petitioner and the reviewer.
   **Blocked on people:**
   1. **Operator:** approve or amend the requirements and scope decision S-1.
-  2. **Operator:** name the independent checker.
+  2. **Operator:** name the independent checker, who signs off in panel 06 of the reference page
+     (increment 76) with a reviewer account.
   3. **Operator:** provide Annexure-34 and -40.
   4. **Reviewer:** verify the rules' clauses against the UPERC MYT Regulations 2019 and 2025, and
      approve or amend each rule.  No rule can be approved by the build; until then nothing is
