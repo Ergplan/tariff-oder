@@ -1005,6 +1005,12 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 72 (2026-11-01): the ARR format's revenue identities.**  Two draft rules: gross
+  revenue at the current tariff (net less the regulatory discount, row 13) and total receipts
+  (net + captive consumption, row 17; captive is blank in NPCL's format and its formula reads it
+  as zero, declared).  **NPCL: the ARR summary's checks 106 → 128 match, none new differs; the
+  projected column's coverage: 17 computed, 13 tied, 16 records.**  No rule is approved.
+
   **Increment 71 (2026-11-01): how each ARR figure is established.**  The reproduction now
   writes a **coverage map** of the ARR format: for every line and column, whether the figure is
   - **computed** — by the chain from base records, or as the format's own identity;
@@ -1991,6 +1997,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 72 (2026-11-01): 422 passed** (the regression pins the ARR summary at 128 matches).  Ruff and format clean.
 - **Increment 71 (2026-11-01): 422 passed** (the integration test now checks the coverage map: the projected column's power purchase tied, the net ARR computed, non-tariff income a record, nothing differing; findings A39–A41 served).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 70 (2026-11-01): 422 passed** (+1 unit: NPCL's true-up power purchase as billed, per source and in three parts, tied to the ARR's rows 20, 22, 23 and 8).  Ruff and format clean.
 - **Increment 69 (2026-11-01): 421 passed** (+1 unit: NPCL's revenue from the current tariff by category, three years, tied to the ARR's rows 15 and 9, the one typed adjustment pinned).  Ruff and format clean.
@@ -2235,7 +2242,7 @@ entries below are the per-increment history.**
   held by the operator).  ~150 draft UPERC rules reproduce the filed formats.  For the
   petition's columns, `/arr/reference/uperc-npcl-fy2026-27` (panel 01) shows how each ARR
   figure is established.  FY2026-27 projected: 15 computed and 13 tied to their schedules,
-  none differs; 18 still records.  Findings A29–A41 are for the petitioner and the reviewer.
+  none differs; 16 still records (increment 72).  Findings A29–A41 are for the petitioner and the reviewer.
   **Blocked on people:**
   1. **Operator:** approve or amend the requirements and scope decision S-1.
   2. **Operator:** name the independent checker.
@@ -2247,7 +2254,6 @@ entries below are the per-increment history.**
      the projection years' depreciation by class.
 
   **Engineering next, smallest first:**
-  - the ARR format's remaining identities (row 17 receipts, row 13 gross revenue) into a binding;
   - ESR-3 for FY2023-24, whose subtotals subtract their own sub-rows;
   - reading the tariff order's rate schedule, so revenue is computed from rates, not only
     summed;

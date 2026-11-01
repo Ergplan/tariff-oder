@@ -1,6 +1,6 @@
 {
  "sheet": "ARR",
- "note": "NPCL's ARR summary reproduced from its own component lines: O&M (29, 35), total expenditure (46), deductions (52), net ARR (53), the gap before and after revision and subsidy (54, 56, 58), the unrecovered gap (61), its carrying cost (62) and the cumulative gap (63).  The component lines are inputs here; each is reproduced from its own schedule by the other bindings.  The schedule lines (RoE, interest on loan, working capital, tax) are given here; the chain binding computes them.",
+ "note": "NPCL's ARR summary reproduced from its own component lines: gross revenue (13) and total receipts (17); O&M (29, 35), total expenditure (46), deductions (52), net ARR (53), the gap before and after revision and subsidy (54, 56, 58), the unrecovered gap (61), its carrying cost (62) and the cumulative gap (63).  The component lines are inputs here; each is reproduced from its own schedule by the other bindings.  The schedule lines (RoE, interest on loan, working capital, tax) are given here; the chain binding computes them.",
  "inputs": {
   "record:total_receipts": 17,
   "record:pp": 20,
@@ -31,7 +31,10 @@
   "rule:return_on_equity": 43,
   "rule:interest_on_loan": 37,
   "rule:interest_on_working_capital": 40,
-  "rule:tax_recoverable": 44
+  "rule:tax_recoverable": 44,
+  "record:revenue_net": 15,
+  "record:revenue_discount": 14,
+  "record:revenue_captive": 16
  },
  "blank_is_zero": {
   "rows": [
@@ -44,7 +47,8 @@
    45,
    55,
    57,
-   60
+   60,
+   16
   ],
   "why": "NPCL's SUM formulas read these blank cells as zero"
  },
@@ -105,7 +109,9 @@
   "arr_gap_after_subsidy": 58,
   "arr_gap_unrecovered": 61,
   "arr_carrying_cost": 62,
-  "arr_gap_cumulative": 63
+  "arr_gap_cumulative": 63,
+  "revenue_gross_current_tariff": 13,
+  "receipts_total": 17
  },
  "unit": "INR_crore"
 }

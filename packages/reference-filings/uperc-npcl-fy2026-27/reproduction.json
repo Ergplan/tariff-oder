@@ -7,7 +7,7 @@
    "sheet": "ARR",
    "columns": 11,
    "counts": {
-    "match": 106,
+    "match": 128,
     "blocked": 2,
     "differs": 13
    },
@@ -167,6 +167,34 @@
      "rule": null
     },
     {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2021-22",
+     "voice": "final_true_up",
+     "words": "Trued- Up",
+     "result": "match",
+     "filed": "1939.66",
+     "computed": "1939.66",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2021-22",
+     "voice": "final_true_up",
+     "words": "Trued- Up",
+     "result": "match",
+     "filed": "1939.66",
+     "computed": "1939.66",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
+    },
+    {
      "output": "arr_employee_net",
      "row": 29,
      "label": "Net Employee Expenses including retiral benefit",
@@ -319,6 +347,34 @@
      "unit": "INR_crore",
      "why": null,
      "rule": "uperc.arr.cumulative v1 (draft)"
+    },
+    {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2022-23",
+     "voice": "final_true_up",
+     "words": "Trued- Up",
+     "result": "match",
+     "filed": "2344.83",
+     "computed": "2344.83",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2022-23",
+     "voice": "final_true_up",
+     "words": "Trued- Up",
+     "result": "match",
+     "filed": "2207.78",
+     "computed": "2207.78",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
     },
     {
      "output": "arr_employee_net",
@@ -475,6 +531,34 @@
      "rule": "uperc.arr.cumulative v1 (draft)"
     },
     {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2023-24",
+     "voice": "approved",
+     "words": "Approved\n (in TO)",
+     "result": "match",
+     "filed": "2681.37",
+     "computed": "2681.37",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2023-24",
+     "voice": "approved",
+     "words": "Approved\n (in TO)",
+     "result": "match",
+     "filed": "2413.23",
+     "computed": "2413.23",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
+    },
+    {
      "output": "arr_employee_net",
      "row": 29,
      "label": "Net Employee Expenses including retiral benefit",
@@ -627,6 +711,34 @@
      "unit": "INR_crore",
      "why": null,
      "rule": "uperc.arr.cumulative v1 (draft)"
+    },
+    {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2023-24",
+     "voice": "actual",
+     "words": "Audited",
+     "result": "match",
+     "filed": "2575.69",
+     "computed": "2575.69",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2023-24",
+     "voice": "actual",
+     "words": "Audited",
+     "result": "match",
+     "filed": "2320.97",
+     "computed": "2320.97",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
     },
     {
      "output": "arr_employee_net",
@@ -783,6 +895,34 @@
      "rule": "uperc.arr.cumulative v1 (draft)"
     },
     {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2023-24",
+     "voice": "petitioned",
+     "words": "Claimed",
+     "result": "match",
+     "filed": "2575.69",
+     "computed": "2575.69",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2023-24",
+     "voice": "petitioned",
+     "words": "Claimed",
+     "result": "match",
+     "filed": "2320.97",
+     "computed": "2320.97",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
+    },
+    {
      "output": "arr_employee_net",
      "row": 29,
      "label": "Net Employee Expenses including retiral benefit",
@@ -937,6 +1077,34 @@
      "rule": "uperc.arr.cumulative v1 (draft)"
     },
     {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2024-25",
+     "voice": "approved",
+     "words": "Approved\n (in TO)",
+     "result": "match",
+     "filed": "3028.52",
+     "computed": "3028.52",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2024-25",
+     "voice": "approved",
+     "words": "Approved\n (in TO)",
+     "result": "match",
+     "filed": "2725.66",
+     "computed": "2725.66",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
+    },
+    {
      "output": "arr_employee_net",
      "row": 29,
      "label": "Net Employee Expenses including retiral benefit",
@@ -1091,6 +1259,34 @@
      "rule": "uperc.arr.cumulative v1 (draft)"
     },
     {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2024-25",
+     "voice": "actual",
+     "words": "Audited",
+     "result": "match",
+     "filed": "2922.78",
+     "computed": "2922.78",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2024-25",
+     "voice": "actual",
+     "words": "Audited",
+     "result": "match",
+     "filed": "2634.6",
+     "computed": "2634.6",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
+    },
+    {
      "output": "arr_employee_net",
      "row": 29,
      "label": "Net Employee Expenses including retiral benefit",
@@ -1243,6 +1439,34 @@
      "unit": "INR_crore",
      "why": null,
      "rule": "uperc.arr.cumulative v1 (draft)"
+    },
+    {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2024-25",
+     "voice": "petitioned",
+     "words": "Claimed",
+     "result": "match",
+     "filed": "2922.78",
+     "computed": "2922.78",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2024-25",
+     "voice": "petitioned",
+     "words": "Claimed",
+     "result": "match",
+     "filed": "2634.6",
+     "computed": "2634.6",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
     },
     {
      "output": "arr_employee_net",
@@ -1399,6 +1623,34 @@
      "rule": "uperc.arr.cumulative v1 (draft)"
     },
     {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2025-26",
+     "voice": "approved",
+     "words": "Approved\n (in TO)",
+     "result": "match",
+     "filed": "3291.07",
+     "computed": "3291.07",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2025-26",
+     "voice": "approved",
+     "words": "Approved\n (in TO)",
+     "result": "match",
+     "filed": "2961.96",
+     "computed": "2961.96",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
+    },
+    {
      "output": "arr_employee_net",
      "row": 29,
      "label": "Net Employee Expenses including retiral benefit",
@@ -1553,6 +1805,34 @@
      "rule": "uperc.arr.cumulative v1 (draft)"
     },
     {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2025-26",
+     "voice": "petitioned",
+     "words": "Estimated",
+     "result": "match",
+     "filed": "3207.4",
+     "computed": "3207.4",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2025-26",
+     "voice": "petitioned",
+     "words": "Estimated",
+     "result": "match",
+     "filed": "2884.76",
+     "computed": "2884.76",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
+    },
+    {
      "output": "arr_employee_net",
      "row": 29,
      "label": "Net Employee Expenses including retiral benefit",
@@ -1705,6 +1985,34 @@
      "unit": "INR_crore",
      "why": null,
      "rule": "uperc.arr.cumulative v1 (draft)"
+    },
+    {
+     "output": "revenue_gross_current_tariff",
+     "row": 13,
+     "label": "Gross Revenue from Tariff and Misc. Charges at current tariff rates",
+     "fiscal_year": "FY2026-27",
+     "voice": "petitioned",
+     "words": "Projected",
+     "result": "match",
+     "filed": "3549.11",
+     "computed": "3549.11",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.revenue_gross v1 (draft)"
+    },
+    {
+     "output": "receipts_total",
+     "row": 17,
+     "label": "Total Receipts (A)",
+     "fiscal_year": "FY2026-27",
+     "voice": "petitioned",
+     "words": "Projected",
+     "result": "match",
+     "filed": "3192.04",
+     "computed": "3192.04",
+     "unit": "INR_crore",
+     "why": null,
+     "rule": "uperc.arr.receipts v1 (draft)"
     }
    ]
   },
@@ -38022,69 +38330,69 @@
     "line_code": null,
     "cells": {
      "C": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "1939.66",
       "filed": "1939.66"
      },
      "D": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "2344.83",
       "filed": "2344.83"
      },
      "E": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "2681.37",
       "filed": "2681.37"
      },
      "F": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "2575.69",
       "filed": "2575.69"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "2575.69",
       "filed": "2575.69"
      },
      "H": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "3028.52",
       "filed": "3028.52"
      },
      "I": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "2922.78",
       "filed": "2922.78"
      },
      "J": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "2922.78",
       "filed": "2922.78"
      },
      "K": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "3291.07",
       "filed": "3291.07"
      },
      "L": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "3207.4",
       "filed": "3207.4"
      },
      "M": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: revenue_gross_current_tariff",
+      "computed": "3549.11",
       "filed": "3549.11"
      }
     }
@@ -38241,69 +38549,69 @@
     "line_code": null,
     "cells": {
      "C": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "1939.66",
       "filed": "1939.66"
      },
      "D": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2207.78",
       "filed": "2207.78"
      },
      "E": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2413.23",
       "filed": "2413.23"
      },
      "F": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2320.97",
       "filed": "2320.97"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2320.97",
       "filed": "2320.97"
      },
      "H": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2725.66",
       "filed": "2725.66"
      },
      "I": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2634.6",
       "filed": "2634.6"
      },
      "J": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2634.6",
       "filed": "2634.6"
      },
      "K": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2961.96",
       "filed": "2961.96"
      },
      "L": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "2884.76",
       "filed": "2884.76"
      },
      "M": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "computed",
+      "source": "arr-summary.json: receipts_total",
+      "computed": "3192.04",
       "filed": "3192.04"
      }
     }
@@ -40978,61 +41286,61 @@
   ],
   "summary": {
    "C": {
-    "record": 34,
-    "computed": 9
+    "record": 32,
+    "computed": 11
    },
    "D": {
-    "record": 30,
-    "computed": 11,
+    "record": 28,
+    "computed": 13,
     "tied": 1,
     "differs": 1
    },
    "E": {
-    "record": 32,
-    "computed": 10,
+    "record": 30,
+    "computed": 12,
     "differs": 2
    },
    "F": {
-    "record": 30,
-    "computed": 10,
+    "record": 28,
+    "computed": 12,
     "tied": 2,
     "differs": 2
    },
    "G": {
-    "record": 26,
-    "computed": 9,
+    "record": 24,
+    "computed": 11,
     "tied": 2,
     "differs": 6
    },
    "H": {
-    "record": 30,
-    "computed": 10,
+    "record": 28,
+    "computed": 12,
     "differs": 2
    },
    "I": {
-    "record": 30,
-    "computed": 14
+    "record": 28,
+    "computed": 16
    },
    "J": {
     "tied": 10,
-    "record": 14,
-    "differs": 2,
-    "computed": 15
+    "record": 12,
+    "computed": 17,
+    "differs": 2
    },
    "K": {
-    "record": 28,
-    "computed": 6,
+    "record": 26,
+    "computed": 8,
     "differs": 6
    },
    "L": {
     "tied": 14,
-    "record": 17,
-    "computed": 15
+    "record": 15,
+    "computed": 17
    },
    "M": {
     "tied": 13,
-    "record": 18,
-    "computed": 15
+    "record": 16,
+    "computed": 17
    }
   }
  }

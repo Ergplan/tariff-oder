@@ -515,6 +515,83 @@
    },
    "examples": [],
    "line_code": "R.GAP.CUMULATIVE"
+  },
+  {
+   "id": "uperc.arr.revenue_gross",
+   "version": 1,
+   "status": "draft",
+   "title": "Gross revenue from tariff and miscellaneous charges at current tariff (before the regulatory discount)",
+   "output": "revenue_gross_current_tariff",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "net - discount",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "record:revenue_net"
+    },
+    "discount": {
+     "unit": "INR_crore",
+     "source": "record:revenue_discount",
+     "note": "the regulatory discount, printed negative"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.arr.receipts",
+   "version": 1,
+   "status": "draft",
+   "title": "Total receipts",
+   "output": "receipts_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "net + captive",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "record:revenue_net"
+    },
+    "captive": {
+     "unit": "INR_crore",
+     "source": "record:revenue_captive",
+     "note": "revenue from captive consumption"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — the ARR, the revenue gap and its carrying cost",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "R.REV"
   }
  ]
 }
