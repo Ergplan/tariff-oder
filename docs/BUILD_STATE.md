@@ -969,6 +969,35 @@ open-access view.
   orders.  Known limits: paragraph numbers of three digits ("178.") are not counted as numbered
   prose (the orders clear the ratio on their shorter ones); one "Expenditure" cell remains in
   OERC FY2026-27.
+
+  **Increment 51 (2026-11-01): the Petition Studio — a modern interface for preparing an ARR
+  petition** (operator request: a modern UI in the visual language of anduril.com for the users
+  who prepare petitions; the language only — no brand, name, logo or asset of that company is
+  used).  A dark, high-contrast design system in `apps/web/app/globals.css`: every colour is a
+  token (near-black surfaces, hairline rules, ok/warn/bad/info/fixture tints, one signal accent);
+  condensed uppercase display type, monospace labels, square controls; system font stacks only
+  (the build has no network for web fonts).  All 40 hard-coded light colours of the existing
+  pages were mapped to tokens, so the regulatory desk's pages (review, readings, workbench) take
+  the same theme legibly.  The top bar is "Tariff Order Studio" with the client links first and
+  the desk and administration links in two dropdowns that close on navigation; on a phone the
+  links wrap under the brand (no horizontal scroll at 390 px, measured).  For the petition user:
+  - **Home** (`/client`): a headline and the call to start a petition; a stat line (states in
+    the library, documents located of those expected, documents with reviewed facts, your
+    petitions, drafts ready); your petitions as cards with a five-segment progress bar; the five
+    steps of preparing a petition; the regulatory record state by state with a bar of how far
+    each state's documents have come.
+  - **New petition**: the filing as four tiles (annual ARR, MYT control period, true-up, APR),
+    the licensee and years, and a live summary of what will be created (the target years as you
+    type).
+  - **A petition** (ARR/MYT and true-up/APR): a header block, a numbered stepper, a **Next**
+    banner naming the one thing to do now (supply the missing inputs, unblock the blocked lines,
+    freeze, draft, edit and file the draft — derived from the case's own state, never deciding
+    anything), and numbered panels for data readiness, assumptions, formulation, the draft
+    (watermarked "Draft · not filed") and activity.  Every action, endpoint and permission is
+    unchanged.
+  Checked by screenshots at 1440 px and 390 px of the home, the new-petition flow, an annual ARR
+  petition, a true-up petition, the readings board and the desk menu.  `next lint` remains broken
+  under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1582,6 +1611,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 51 (2026-11-01): web only** — `pnpm --filter @tariff/web typecheck` clean; no API change (the 377 Python tests of increment 50 stand); screenshots of six pages at desktop and phone width.
 - **Increment 50 (2026-11-01): 377 passed** (+3 unit: a one-page list of chapters is no structure and proposal headings stay flagged; a one-word cell over a table row is no heading; a collapsed grid is recognised and a second-reader cell says so).  Ruff, format and contracts-check clean.
 - **Increment 49 (2026-11-01): 374 passed** (+2 integration: the readings board lists a reading with its dataset, review counts and next step, and refuses an unauthenticated caller; the next step names the human decision).  Ruff, format, contracts-check (regenerated) and web typecheck clean.
 - **Increment 48 (2026-11-01): 372 passed** (+1 unit: sub-rows read with their heading row and the total reconciles; the previous year's gap is not this year's).

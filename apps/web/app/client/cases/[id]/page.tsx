@@ -6,16 +6,9 @@ import { ActionButton } from "../../actions";
 import AssumptionForm from "./assumption-form";
 import TrueUpCase from "./true-up";
 import CaseActivity from "./activity";
+import { ARR_STEPS, Eyebrow, NextAction, Panel, Stepper } from "../../studio";
 
 export const dynamic = "force-dynamic";
-
-const STEPS = [
-  { key: "setup", label: "1 Setup" },
-  { key: "assumptions", label: "2 Data and assumptions" },
-  { key: "formulated", label: "3 Formulate" },
-  { key: "frozen", label: "4 Freeze" },
-  { key: "drafted", label: "5 Draft petition" },
-];
 
 type Readiness = {
   plan: { id: string; version: number; status: string };
@@ -47,39 +40,62 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
     c.formulation_id ? apiTry<ArrFormulationOut>(`/arr/formulations/${c.formulation_id}`) : Promise.resolve({ data: undefined, error: undefined }),
   ]);
   const years = (c.targets as { fiscal_year: string }[]).map((t) => t.fiscal_year);
-  const idx = STEPS.findIndex((s) => s.key === c.status);
   const frozen = ["frozen", "drafted", "closed"].includes(c.status);
   const f = form.data;
   const summary = (f?.summary ?? {}) as { blocked?: number; blocked_lines?: string[]; identity_findings?: { message: string; severity: string }[] };
   const keyLines = ["E.SALES", "E.INPUT.DIST", "C.PP", "C.OM", "C.TOTAL", "R.ARR", "R.REV.EXISTING", "R.GAP", "R.ACOS"];
+  const next = (() => {
+    if (c.status === "drafted") return { what: "Edit and file the draft", why: "The draft is watermarked; a person edits it, signs it and files it with the Commission." };
+    if (c.status === "frozen") return { what: "Draft the petition", why: "The formulation is frozen: draft the petition and its formats from it." };
+    if (f && summary.blocked) return { what: `Unblock ${summary.blocked} line(s)`, why: "Supply the missing inputs below, then formulate again." };
+    if (c.status === "formulated") return { what: "Review and freeze", why: "Check the projected lines, then freeze this version to draft from it." };
+    if (!r.ready_to_formulate)
+      return {
+        what: `Supply ${r.missing_parameters.length + r.missing_base_facts.length} input(s)`,
+        why: r.missing_base_facts.length ? `Reviewed base facts missing: ${r.missing_base_facts.slice(0, 4).join(", ")}.` : "Enter the parameters the regulations leave to you.",
+      };
+    return { what: "Formulate", why: "Every input is in place: project the years of this filing." };
+  })();
   return (
     <>
       <p>
-        <Link href="/client">← ARR workspace</Link>
+        <Link href="/client">← Petition studio</Link>
       </p>
-      <h1>
-        {c.title} <span className="badge" data-tone="neutral">{c.filing_kind === "myt" ? "MYT control period" : "annual ARR"}</span>
-      </h1>
-      <p className="muted">
-        {c.utility_name} ({c.utility}, {c.commission}) · base {c.base_fy} → {years.join(", ")} · {c.organisation} · plan {r.plan.id} v{r.plan.version} ({r.plan.status})
-        {role ? ` · your role: ${role}` : ""}
-      </p>
+      <header className="case-head">
+        <Eyebrow>
+          {c.filing_kind === "myt" ? "MYT control period" : "Annual ARR"} · {c.commission} · {c.organisation}
+        </Eyebrow>
+        <h1>{c.title}</h1>
+        <div className="case-meta">
+          <span>
+            Licensee <b>{c.utility_name}</b> ({c.utility})
+          </span>
+          <span>
+            Base <b>{c.base_fy}</b> → <b>{years.join(", ")}</b>
+          </span>
+          <span>
+            Plan <b>{r.plan.id} v{r.plan.version}</b> ({r.plan.status.split(";")[0]})
+          </span>
+          {role ? (
+            <span>
+              Your role <b>{role}</b>
+            </span>
+          ) : null}
+        </div>
+      </header>
       {r.plan.status !== "confirmed" ? (
         <div className="banner" data-tone="neutral">
           The formulation plan for {c.commission} is <strong>{r.plan.status.split(";")[0]}</strong>: its formulas are not yet confirmed against the commission&apos;s regulations. Treat every result as a working
           estimate.
         </div>
       ) : null}
-      <ol className="steps" aria-label="Case steps">
-        {STEPS.map((s, i) => (
-          <li key={s.key} data-done={i < idx} data-current={i === idx}>
-            {s.label}
-          </li>
-        ))}
-      </ol>
+      <Stepper steps={ARR_STEPS} current={c.status} />
+      {canEdit ? <NextAction what={next.what} why={next.why} /> : null}
 
-      <h2>Data readiness</h2>
-      <p className="muted">{r.note}</p>
+      <Panel num="01" title="Data readiness" aside={r.ready_to_formulate ? "ready to formulate" : "inputs missing"}>
+      <p className="muted" style={{ marginTop: 0 }}>
+        {r.note}
+      </p>
       <div className="cards">
         <div className="card">
           <h3>Base facts ({c.base_fy})</h3>
@@ -149,10 +165,9 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
           <Link href={`/client/licensees/${encodeURIComponent(c.utility)}`}>All documents →</Link>
         </div>
       </div>
+      </Panel>
 
-      <h2>
-        Assumptions <span className="badge" data-tone="neutral">assumption</span>
-      </h2>
+      <Panel num="02" title="Assumptions" aside={<span className="badge" data-tone="neutral">assumption</span>}>
       {aset.data ? (
         <div className="table-wrap">
           <table>
@@ -187,10 +202,9 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
         </div>
       ) : null}
       {canEdit && !frozen ? <AssumptionForm caseId={c.id} keys={r.missing_parameters.length ? r.missing_parameters : r.parameters.map((p) => p.key)} years={years} /> : null}
+      </Panel>
 
-      <h2>
-        Formulation <span className="badge" data-tone="warn">projection</span>
-      </h2>
+      <Panel num="03" title="Formulation" aside={<span className="badge" data-tone="warn">projection</span>}>
       {canEdit && !frozen ? (
         <p>
           <ActionButton path={`cases/${c.id}/formulate`} label={f ? "Formulate again" : "Formulate"} />
@@ -246,8 +260,9 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
       ) : (
         <p className="muted">Not formulated yet.</p>
       )}
+      </Panel>
 
-      <h2>Draft petition</h2>
+      <Panel num="04" title="Draft petition" aside={<span className="watermark">Draft · not filed</span>}>
       {c.draft_id ? (
         <p>
           <span className="badge" data-tone="warn">
@@ -265,7 +280,10 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
           <ActionButton path={`cases/${c.id}/revise`} label="Revise (new assumptions version)" tone="plain" confirm="The frozen version and its drafts stay on record. Continue?" />
         </p>
       ) : null}
-      <CaseActivity caseId={c.id} />
+      </Panel>
+      <Panel num="05" title="Activity">
+        <CaseActivity caseId={c.id} />
+      </Panel>
     </>
   );
 }

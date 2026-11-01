@@ -4,14 +4,7 @@ import { apiTry } from "@/lib/api";
 import { ActionButton } from "../../actions";
 import ActualForm from "./actual-form";
 import CaseActivity from "./activity";
-
-const STEPS = [
-  { key: "setup", label: "1 Setup" },
-  { key: "assumptions", label: "2 Actuals" },
-  { key: "formulated", label: "3 Statement" },
-  { key: "frozen", label: "4 Freeze" },
-  { key: "drafted", label: "5 Draft petition" },
-];
+import { Eyebrow, NextAction, Panel, Stepper, TRUE_UP_STEPS } from "../../studio";
 
 type Ref = Record<string, string | number | boolean | null | Record<string, unknown>>;
 type Row = {
@@ -70,27 +63,44 @@ export default async function TrueUpCase({ c, role }: { c: ArrCaseOut; role: str
   const computed = (c.statement as unknown as Statement | null) ?? null;
   const st = computed ?? r.statement;
   const fy = r.statement.fiscal_year;
-  const idx = STEPS.findIndex((s) => s.key === c.status);
   const word = c.filing_kind === "apr" ? "Annual performance review" : "True-up";
+  const missing = st.rows.filter((x) => !x.actual).length;
+  const next =
+    c.status === "drafted"
+      ? { what: "Edit and file the draft", why: "A person edits, signs and files the petition." }
+      : c.status === "frozen"
+        ? { what: "Draft the petition", why: "The statement is frozen: draft from it." }
+        : computed && st.summary.ready
+          ? { what: "Freeze the statement", why: "Every line has its actual and the identities hold." }
+          : missing
+            ? { what: `Enter ${missing} actual(s)`, why: "Each actual with its source: a reviewed fact, a document, a statement or an estimate." }
+            : { what: "Compute the statement", why: "Set the actuals against the Commission's approval, line by line." };
   return (
     <>
       <p>
-        <Link href="/client">← ARR workspace</Link>
+        <Link href="/client">← Petition studio</Link>
       </p>
-      <h1>
-        {c.title} <span className="badge" data-tone="neutral">{word}</span>
-      </h1>
-      <p className="muted">
-        {c.utility_name} ({c.utility}, {c.commission}) · {fy} · {c.organisation}
-        {role ? ` · your role: ${role}` : ""}
-      </p>
-      <ol className="steps" aria-label="Case steps">
-        {STEPS.map((s, i) => (
-          <li key={s.key} data-done={i < idx} data-current={i === idx}>
-            {s.label}
-          </li>
-        ))}
-      </ol>
+      <header className="case-head">
+        <Eyebrow>
+          {word} · {c.commission} · {c.organisation}
+        </Eyebrow>
+        <h1>{c.title}</h1>
+        <div className="case-meta">
+          <span>
+            Licensee <b>{c.utility_name}</b> ({c.utility})
+          </span>
+          <span>
+            Year <b>{fy}</b>
+          </span>
+          {role ? (
+            <span>
+              Your role <b>{role}</b>
+            </span>
+          ) : null}
+        </div>
+      </header>
+      <Stepper steps={TRUE_UP_STEPS} current={c.status} />
+      {canEdit ? <NextAction what={next.what} why={next.why} /> : null}
       <p className="muted">{r.note}</p>
       {r.documents.length ? (
         <p className="muted">
@@ -109,15 +119,20 @@ export default async function TrueUpCase({ c, role }: { c: ArrCaseOut; role: str
         </div>
       )}
 
-      <h2>
-        Approved and actual{" "}
-        <span className="badge" data-tone="ok">
-          fact
-        </span>{" "}
-        <span className="badge" data-tone="neutral">
-          actual
-        </span>
-      </h2>
+      <Panel
+        num="01"
+        title="Approved and actual"
+        aside={
+          <>
+            <span className="badge" data-tone="ok">
+              fact
+            </span>{" "}
+            <span className="badge" data-tone="neutral">
+              actual
+            </span>
+          </>
+        }
+      >
       <p className="muted">{st.note}</p>
       {computed ? (
         <p className="muted">
@@ -205,9 +220,9 @@ export default async function TrueUpCase({ c, role }: { c: ArrCaseOut; role: str
         </p>
       ) : null}
 
+      </Panel>
       {canEdit && !frozen ? (
-        <>
-          <h2>Enter an actual</h2>
+        <Panel num="02" title="Enter an actual">
           <ActualForm
             caseId={c.id}
             kind={c.filing_kind}
@@ -220,10 +235,10 @@ export default async function TrueUpCase({ c, role }: { c: ArrCaseOut; role: str
               <ActionButton path={`cases/${c.id}/statement/freeze`} label="Freeze the statement" confirm="Freezing locks the actuals of this case. Continue?" />
             ) : null}
           </p>
-        </>
+        </Panel>
       ) : null}
 
-      <h2>Draft petition</h2>
+      <Panel num="03" title="Draft petition" aside={<span className="watermark">Draft · not filed</span>}>
       {c.draft_id ? (
         <p>
           <span className="badge" data-tone="warn">
@@ -241,7 +256,10 @@ export default async function TrueUpCase({ c, role }: { c: ArrCaseOut; role: str
           <ActionButton path={`cases/${c.id}/revise`} label="Revise (unfreeze the actuals)" tone="plain" confirm="The frozen statement and its drafts stay on record. Continue?" />
         </p>
       ) : null}
-      <CaseActivity caseId={c.id} />
+      </Panel>
+      <Panel num="04" title="Activity">
+        <CaseActivity caseId={c.id} />
+      </Panel>
     </>
   );
 }

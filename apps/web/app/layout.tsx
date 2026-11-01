@@ -3,10 +3,11 @@ import Link from "next/link";
 import "./globals.css";
 import type { MeOut } from "@tariff/contracts";
 import { PROFILE, apiTry } from "@/lib/api";
+import NavMenu from "./nav-menu";
 
 export const metadata: Metadata = {
-  title: "Tariff Order Intelligence",
-  description: "Evidence-backed Indian electricity tariff facts",
+  title: "Tariff Order Studio",
+  description: "Evidence-backed Indian electricity tariff facts and ARR petitions",
 };
 
 /**
@@ -24,30 +25,38 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body>
         <header className="top">
-          <span className="brand">Tariff Order Intelligence</span>
+          <Link href={client ? "/client" : "/"} className="brand" style={{ textDecoration: "none" }}>
+            Tariff Order Studio
+          </Link>
           <nav aria-label="Primary">
-            {client ? <Link href="/client">ARR workspace</Link> : null}
+            {client ? <Link href="/client">Petition studio</Link> : null}
             <Link href="/client/library">Library</Link>
             <Link href="/client/benchmarks">Benchmarks</Link>
             <Link href="/arr">ARR</Link>
             <Link href="/explorer">Explorer</Link>
             {desk ? (
-              <>
-                <Link href="/">Status</Link>
-                <Link href="/commissions">Commissions</Link>
-                <Link href="/sources">Source inbox</Link>
-                <Link href="/review">Review</Link>
-                <Link href="/arr/readings">Readings</Link>
-                <Link href="/jobs">Jobs</Link>
-                <Link href="/registry">Registry</Link>
-              </>
+              <NavMenu
+                label="Desk"
+                links={[
+                  { href: "/", label: "Status" },
+                  { href: "/arr/readings", label: "ARR readings" },
+                  { href: "/review", label: "Review" },
+                  { href: "/sources", label: "Source inbox" },
+                  { href: "/commissions", label: "Commissions" },
+                  { href: "/jobs", label: "Jobs" },
+                  { href: "/registry", label: "Registry" },
+                ]}
+              />
             ) : null}
             {admin ? (
-              <>
-                <Link href="/library">Library admin</Link>
-                <Link href="/admin/organisations">Organisations</Link>
-                <Link href="/admin/users">Users</Link>
-              </>
+              <NavMenu
+                label="Admin"
+                links={[
+                  { href: "/library", label: "Library admin" },
+                  { href: "/admin/organisations", label: "Organisations" },
+                  { href: "/admin/users", label: "Users" },
+                ]}
+              />
             ) : null}
           </nav>
           <span className="badge" data-tone={PROFILE === "gcp" ? "ok" : "neutral"} title="Deployment profile">

@@ -2,6 +2,7 @@ import type { MeOut, RegistryOut } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../../components";
 import NewCaseForm from "./new-case-form";
+import { Eyebrow } from "../../studio";
 
 export const dynamic = "force-dynamic";
 
@@ -18,11 +19,13 @@ export default async function NewCasePage({ searchParams }: { searchParams: Prom
     .sort((a, b) => a.code.localeCompare(b.code));
   return (
     <>
-      <h1>Start an ARR process</h1>
-      <p className="muted">
-        A case prepares one filing for one licensee: the ARR of the year after the base year, or every year of a multi-year control period. The base year is the last year with reviewed figures
-        (its final true-up, else its approval).
-      </p>
+      <header className="case-head">
+        <Eyebrow>Petition studio · New petition</Eyebrow>
+        <h1>Start a petition</h1>
+        <p className="muted" style={{ maxWidth: "46rem", margin: 0 }}>
+          One petition prepares one filing for one licensee: the next year&apos;s ARR, every year of a control period, a past year&apos;s true-up or the running year&apos;s review.
+        </p>
+      </header>
       {orgs.length === 0 ? (
         <div className="banner" data-tone="warn">
           You need the editor or owner role in a client organisation to start a case.
