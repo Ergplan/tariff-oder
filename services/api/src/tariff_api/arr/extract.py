@@ -152,6 +152,9 @@ _ORIGINAL_APPROVAL = re.compile(
     r"|\bt\.?\s?o\.?\s+(?:dated|dtd|of)\b",
     re.I,
 )
+_PART_WORDS = re.compile(
+    r"tru(?:e|ing)[- ]?up|trued[- ]?up|\bapr\b|annual\s+performance|revenue\s+requirement|\barr\b", re.I
+)
 _TRUE_UP = re.compile(r"tru(?:e|ing)[- ]?up|trued[- ]?up", re.I)
 _APR = re.compile(r"\bapr\b|annual\s+performance\s+review", re.I)
 
@@ -183,6 +186,24 @@ def label_unit(label: str) -> str | None:
             return u
     tail = re.search(r"(?:in\s+)?(rs\.?\s*(?:cr(?:ore)?\.?|lakh|/\s*kwh)|mu|%|kwh|mw)\s*$", label or "", re.I)
     return unit_from_text(tail.group(1)) if tail else None
+
+
+_TITLE = re.compile(r"^\s*(?:table|statement|format|annexure|schedule)\b", re.I)
+
+
+def table_title(caption_lines: list[str]) -> str:
+    """A table's own title among the lines printed above it: from its last "Table …" line to
+    the table (a title wraps), else only the line right above.  The paragraphs of analysis
+    above a table are not its title: their years and voices are not the table's."""
+    lines = [ln for ln in caption_lines if ln.strip()]
+    idx = next((i for i in range(len(lines) - 1, -1, -1) if _TITLE.match(lines[i])), None)
+    if idx is not None:
+        return " ".join(lines[idx:])
+    return lines[-1] if lines else ""
+
+
+def _years(text: str) -> set[str]:
+    return {fy for m in _FY.finditer(text or "") if (fy := fiscal_year(m.group(0)))}
 
 
 def _texty(g: GridIn, j: int) -> bool:
@@ -228,6 +249,10 @@ def read_grids(
     2024-25"): it gives a column the year when neither its header nor the caption does, and
     the voice of an approval inside a true-up or an APR."""
     combined = bool(licensees and len(licensees) > 1)
+    # a running header that names no part ("NBPDCL & SBPDCL Tariff Order for FY 2026-27") is
+    # not context: its year is the order's, not the table's
+    if part and not _PART_WORDS.search(part):
+        part = None
     report = ReadReport()
     out = ArrExtractionOutput()
     seen: dict[str, ArrCandidate] = {}
@@ -236,10 +261,22 @@ def read_grids(
             continue
         g = _with_second_header(g, mapping)
         headers = _header_texts(g)
-        caption = " ".join(g.caption)
-        table_unit = unit_from_text(caption) or next((unit_from_text(h) for h in headers if unit_from_text(h)), None)
+        # the unit may be printed anywhere above the table; the year and the voice only in its title
+        above = " ".join(g.caption)
+        caption = table_title(g.caption)
+        table_unit = (
+            unit_from_text(caption)
+            or next((unit_from_text(h) for h in headers if unit_from_text(h)), None)
+            or unit_from_text(above)
+        )
         columns: list[ColumnSpec] = []
-        table_fy = fiscal_year(caption) or (fiscal_year(part) if part else None)
+        # the title's one year; a title naming several is ambiguous and never filled from the part
+        title_years = _years(caption)
+        table_fy = (
+            next(iter(title_years))
+            if len(title_years) == 1
+            else (fiscal_year(part) if part and not title_years else None)
+        )
         table_licensee = licensee_named(caption, licensees) if combined and licensees else None
 
         for j, h in enumerate(headers):
@@ -250,7 +287,7 @@ def read_grids(
                 continue
             if fy is None and col_licensee is not None:
                 # a column per licensee: the year and the voice come from the caption
-                fy, vt = fiscal_year(caption), voice(caption, mapping)
+                fy, vt = table_fy, voice_in_context("", caption, part, mapping)
                 if fy is None or vt is None:
                     _skip(report, g, j, h, "a licensee's column without a year and a voice in the caption")
                     continue

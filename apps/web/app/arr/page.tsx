@@ -76,9 +76,16 @@ export default async function ArrTaxonomyPage() {
       <h1>ARR taxonomy</h1>
       <p className="muted">
         Version {t.version} · {leaves} line items · {t.identities.length} identities · canonical units {Object.values(t.canonical_units).join(", ")} · mappings on file:{" "}
-        {Object.entries(t.mappings)
-          .map(([c, v]) => `${c} v${v[v.length - 1]}`)
-          .join(", ") || "none"}
+        {Object.entries(t.mappings).length
+          ? Object.entries(t.mappings).map(([c, v], i) => (
+              <span key={c}>
+                {i ? ", " : ""}
+                <Link href={`/arr/mappings/${encodeURIComponent(c)}`} title="the mapping workbench">
+                  {c} v{v[v.length - 1]}
+                </Link>
+              </span>
+            ))
+          : "none"}
         . <span title={t.status}>Status: {t.status}</span>
       </p>
       <p className="muted">

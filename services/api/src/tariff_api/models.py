@@ -1280,6 +1280,30 @@ class ArrCase(Base):
     )
 
 
+class MappingDecision(Base):
+    """A reviewer's decision on one unplaced row label of a commission (increment 39): an
+    alias to a taxonomy code, or "not a line" (a sub-heading, a schedule row).  Decisions are
+    written into the next version of the mapping file by a person; the file's status says
+    whether it is confirmed, never this table."""
+
+    __tablename__ = "mapping_decisions"
+    __table_args__ = (
+        UniqueConstraint("commission_code", "label", name="uq_mapping_decision"),
+        CheckConstraint("kind in ('alias', 'not_a_line')", name="ck_mapping_decision_kind"),
+        CheckConstraint("kind <> 'alias' or code is not null", name="ck_mapping_decision_alias_code"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    commission_code: Mapped[str] = mapped_column(String(32), nullable=False)
+    label: Mapped[str] = mapped_column(String(300), nullable=False)
+    example: Mapped[str | None] = mapped_column(Text)
+    kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    code: Mapped[str | None] = mapped_column(String(40))
+    note: Mapped[str | None] = mapped_column(Text)
+    decided_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    decided_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
 class SourceLicensee(Base):
     """A further licensee of a combined order (increment 35): the order's licensees are its
     primary licensee and these.  ARR values are attributed to one of them by the column or

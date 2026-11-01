@@ -45,6 +45,7 @@ from ..schemas import (
     FilingDraftOut,
     FindingOut,
     JobSummary,
+    MappingDecisionIn,
 )
 
 router = APIRouter(tags=["arr"])
@@ -187,6 +188,54 @@ def _utility(s, code: str) -> Utility:
     from ..arr.service import utility_by_code
 
     return utility_by_code(s, code)
+
+
+@router.get("/arr/mappings/{commission}/workbench", response_model=dict, dependencies=[Depends(require_analyst)])
+def mapping_workbench(commission: str) -> dict:
+    """What the commission's mapping does not place yet, across its read orders, with the
+    reviewer's decisions and word-overlap suggestions (increment 39)."""
+    from ..arr import workbench as wb
+
+    with session_scope() as s:
+        return wb.unplaced(s, commission.upper())
+
+
+@router.put("/arr/mappings/{commission}/decisions", response_model=dict)
+def mapping_decide(commission: str, body: MappingDecisionIn, principal: Principal = Depends(require_reviewer)) -> dict:
+    from ..arr import workbench as wb
+
+    with session_scope() as s:
+        d = wb.decide(s, commission.upper(), actor=principal.email, **body.model_dump())
+        return {"label": d.label, "kind": d.kind, "code": d.code, "note": d.note, "decided_by": d.decided_by}
+
+
+@router.delete("/arr/mappings/{commission}/decisions", status_code=204)
+def mapping_withdraw(commission: str, label: str, principal: Principal = Depends(require_reviewer)) -> Response:
+    from ..arr import workbench as wb
+
+    with session_scope() as s:
+        wb.withdraw(s, commission.upper(), label, actor=principal.email)
+    return Response(status_code=204)
+
+
+@router.get(
+    "/arr/mappings/{commission}/draft",
+    dependencies=[Depends(require_analyst)],
+    responses={200: {"description": "the next version of the mapping file with the decisions, status draft"}},
+)
+def mapping_draft(commission: str) -> Response:
+    import json as _json
+
+    from ..arr import workbench as wb
+
+    with session_scope() as s:
+        data = wb.draft(s, commission.upper())
+    name = f"{data['id']}.v{data['version']}.json"
+    return Response(
+        _json.dumps(data, indent=2, ensure_ascii=False) + "\n",
+        media_type="application/json",
+        headers={"Content-Disposition": _disposition(name)},
+    )
 
 
 @router.get("/arr/benchmarks", response_model=ArrBenchmarksOut, dependencies=[Depends(require_analyst)])

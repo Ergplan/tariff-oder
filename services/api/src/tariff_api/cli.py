@@ -755,6 +755,23 @@ def cmd_library_discover(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_mapping_draft(args: argparse.Namespace) -> int:
+    """Write the next version of a commission's mapping file with the reviewers' workbench
+    decisions (status draft).  Committing it, and confirming it, are a person's acts."""
+    from .arr.workbench import draft
+    from .db import session_scope
+
+    with session_scope() as s:
+        data = draft(s, args.commission.upper())
+    text = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+    if args.out:
+        Path(args.out).write_text(text)
+        print(f"{data['id']} v{data['version']} written to {args.out}: {data['status']}")
+    else:
+        print(text)
+    return 0
+
+
 def cmd_check_config(args: argparse.Namespace) -> int:
     s = get_settings()
     from .adapters import build_adapters
@@ -890,6 +907,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--registry", action="store_true", help="licensee names from the seed registry (no database)")
     p.add_argument("--out", help="write the proposals as JSON here")
     p.set_defaults(fn=cmd_library_discover)
+
+    p = sub.add_parser("mapping-draft", help="the next mapping version with the workbench decisions (draft)")
+    p.add_argument("--commission", required=True)
+    p.add_argument("--out", help="write the file here (for example packages/arr-taxonomy/mappings/uperc-arr.v2.json)")
+    p.set_defaults(fn=cmd_mapping_draft)
 
     p = sub.add_parser("check-config", help="validate profile and adapters")
     p.set_defaults(fn=cmd_check_config)

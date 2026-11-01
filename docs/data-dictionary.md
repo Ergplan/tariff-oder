@@ -352,6 +352,12 @@ Append-only (UPDATE/DELETE raise via trigger): `actor`, `action`, `entity_type`,
 | --- | --- |
 | `source_licensees` | Further licensees of a combined order (source, utility, who added it and why); the order's licensees are its primary `source_documents.utility_id` and these |
 
+## Mapping workbench (migration 0019)
+
+| Table / column | Meaning |
+| --- | --- |
+| `mapping_decisions` | A reviewer's decision on one unplaced row label of a commission: `kind` `alias` (with the taxonomy `code`) or `not_a_line`, the normalised label, one printed example, note, who and when; unique per commission and label.  Written into the next mapping file version by a person; never confirms a mapping |
+
 ## Reserved for later milestones (not created yet)
 Regulatory order, schedule version, effective rule, category/version, option group, category
 mapping, charge component, slab/time band, condition/rule, evidence span, table grid,

@@ -152,9 +152,19 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
         sections = _longest_run(numbered)
         cues = [(pg, branch, text, num) for pg, num, branch, text in sections if branch]
         boundaries = [(pg, num) for pg, num, _b, _t in sections if num is not None and len(num) == 1]
+        # a part's own heading ("4.  Truing-up for FY 2024-25"): a one-level section that names
+        # a year or a part, looked up among every heading (not only the run, which a stray
+        # earlier "4.2" can push it out of)
+        tops = [
+            (pg, num[0], text)
+            for pg, num, _b, text in numbered
+            if len(num) == 1
+            and (_FY_TEXT.search(text) or re.search(r"tru(?:e|ing)[- ]?up|performance|revenue", text, re.I))
+        ]
     else:
         cues = [(pg, branch, text, None) for pg, _n, branch, text in heads if branch]
         boundaries = []
+        tops = []
     merged: list[tuple[int, str, str, tuple[int, ...] | None]] = []
     for c in cues:
         if merged and merged[-1][1] == c[1]:
@@ -179,6 +189,10 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
             end = min(page_count, page + MAX_TAIL_PAGES - 1)
             if end < page_count:
                 notes.append(f"last chapter capped at {MAX_TAIL_PAGES} pages; set its true end page")
+        this = merged[i][3]
+        top = [t for t in tops if this is not None and t[1] == this[0] and t[0] <= page]
+        if top and top[-1][2] != text:
+            notes.append(f"in section: {top[-1][2][:120]}")
         if part_of.get(page):
             notes.append(f"in the part headed: {part_of[page]}")
         out.append(ChapterProposal(i + 1, branch, text, page, page, end, "; ".join(notes) or None))
@@ -186,6 +200,10 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
 
 
 def part_from_note(note: str | None) -> str | None:
-    """The part a chapter sits in, as its proposal recorded it ("in the part headed: …")."""
-    m = re.search(r"in the part headed:\s*(.+?)\s*(?:;|$)", note or "")
-    return m.group(1) if m else None
+    """The part a chapter sits in, as its proposal recorded it: its top-level section ("in
+    section: 4. Truing-up for FY 2024-25"), else the running header of its pages."""
+    for key in ("in section", "in the part headed"):
+        m = re.search(rf"{key}:\s*(.+?)\s*(?:;|$)", note or "")
+        if m:
+            return m.group(1)
+    return None

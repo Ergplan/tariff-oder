@@ -1602,6 +1602,16 @@ class ArrActualOut(BaseModel):
     created_at: datetime
 
 
+class MappingDecisionIn(BaseModel):
+    """A reviewer's decision on an unplaced row label (increment 39)."""
+
+    label: str = Field(min_length=1, max_length=300)
+    kind: Literal["alias", "not_a_line"]
+    code: str | None = Field(default=None, max_length=40)
+    note: str | None = Field(default=None, max_length=1000)
+    example: str | None = Field(default=None, max_length=500)
+
+
 class SourceLicenseesIn(BaseModel):
     """A combined order's licensees: the primary licensee and every other one it decides for."""
 

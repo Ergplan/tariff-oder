@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-01 (increment 39: a second real order (BERC, combined), the mapping workbench; increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -692,6 +692,36 @@ open-access view.
   Quantum").  These are proposals of a real order measured outside the pipeline: none is a
   candidate or a fact, and none can be approved until a reviewer confirms the chapters and the
   UPERC mapping.
+
+  **Increment 39 (2026-11-01): a second real order, and the mapping workbench.**  BERC's combined
+  tariff order for NBPDCL and SBPDCL, FY2026-27 (true-up FY2024-25, APR FY2025-26, ARR FY2026-27;
+  case nos. 50/2025 & 51/2025; `https://berc.co.in/images/pdf/tariff-order/2026-27/DISCOMs_FO_
+  TARIFF_CN_50_51_DT_180326.pdf`, SHA-256 `a247053b…4794`, 612 pages), found through the BERC
+  discovery profile, was registered locally as a real source for NBPDCL with SBPDCL as its second
+  licensee (no BERC mapping exists, so the generic skeleton reads it).  Parsed and localised in
+  9 minutes.  **Chapters, first try with the v2 rules: 36**, matching sections 4.2–4.25 (true-up),
+  5.2–5.22 (APR) and 6.3–6.28 (ARR), each now noting its top-level section ("in section: 4.
+  Truing-up for FY 2024-25").  The read-only evaluation found two defects of the reader on it,
+  both fixed: the prose above a table was taken as its caption (a per-licensee column took its
+  voice from "The Commission, accordingly, considers …"; a table whose title names two years
+  took the part's year) — a table's year and voice now come only from its own title (its last
+  "Table …" line and continuation, else the line right above it), a title naming several years
+  is ambiguous and never filled from the part, and a running header that names no part ("NBPDCL &
+  SBPDCL Tariff Order for FY 2026-27") is no context.  **Measured (read-only, nothing
+  recorded):** NPCL 183 of 384 tables, 650 values; BERC 177 of 548 tables, 573 values, each
+  attributed to NBPDCL or SBPDCL by its column ("Approved for NBPDCL for FY 2026-27").  The
+  title rule costs about a quarter of BERC's previous count; the dropped ones were the
+  unreliable ones.  Placement errors of the generic mapping remain (a working-capital row "Less:
+  (i) Power purchase cost …" placed on C.TX) — the mapping's job.
+
+  The **mapping workbench** (migration 0019, `/arr/mappings/<commission>`, linked from the ARR
+  taxonomy page): every label a commission's read orders leave unplaced, most frequent first,
+  with the orders and pages, word-overlap suggestions (never placements), and a reviewer's
+  decision on each (an alias to a taxonomy line, or "not a line"), audited and withdrawable;
+  `GET /arr/mappings/{c}/draft` and `tariff-api mapping-draft --commission C --out …` render the
+  next mapping version with the decisions written in, status `draft … not confirmed` — a person
+  commits it and a reviewer confirms it.  The ARR scan now drops page furniture too (running
+  headers and "Page n of m" no longer top the unplaced list).
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1229,6 +1259,12 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 
 ## Reading reliability ledger changes
 
+Increment 39 (ARR, second real order): BERC's 612-page combined order — 36 chapters matching its
+sections on first contact with rules v2; the reader took paragraphs above tables for captions
+(years and voices from prose) — now only a table's own title counts.  Measured: 177 of 548
+tables, 573 values attributed per licensee.  Two real orders measured; precision still needs
+reviewer decisions.
+
 Increment 38 (ARR, real order): the structure channel read 30 of 384 tables of the real order
 (year in captions, voice by part, reference/unit columns, two-row headers, footnote marks);
 rules arr-rules-2 read 188 with spot checks matching the printed summaries.  Not measured:
@@ -1256,6 +1292,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 39 (2026-11-01): 354 passed** (+1 integration: the workbench lists a commission's unplaced labels; a reviewer's alias and "not a line" decisions, refused for an analyst and for an unknown code; the drafted next mapping version keeps v1's aliases, adds the decisions, says draft and not confirmed; a withdrawn decision leaves the draft).
 - **Increment 38 (2026-11-01): 353 passed** (+1 unit: the real order's table layouts in synthetic figures — year in the caption, voice from the part, an earlier order's approval, reference and unit columns, a two-row header, footnote marks, a percentage inside a label).
 - **Increment 37 (2026-11-01): 352 passed** (+1 unit: the real order's heading patterns reproduced in synthetic page text — contents page, running headers, captions, rows, numbered prose, an out-of-sequence list item, an uncued part heading — and the exact chapters and part notes expected).
 - **Increment 36 (2026-11-01): 351 passed** (the true-up test now checks the case activity and its isolation; the benchmarks test downloads the history workbook and checks one row per fact with order, page and fact id, and the derived disallowance).  The run took 8 min 46 s because the local stack was parsing a 423-page real order at the same time.
@@ -1427,6 +1464,12 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+000000000000000. **Reviewer (increment 39):** open `/arr/mappings/UPERC` (and `/arr/mappings/BERC`
+   once a BERC mapping file exists — today BERC reads with the generic skeleton) and decide the
+   unplaced labels; then `tariff-api mapping-draft --commission UPERC --out
+   packages/arr-taxonomy/mappings/uperc-arr.v2.json`, review the diff, commit, and confirm the
+   file's status when it is right.  **Engineering next:** a BERC mapping skeleton from the
+   generic one; the extraction over confirmed chapters once a reviewer confirms them.
 00000000000000. **Reviewer (increment 37):** in the local stack (or after `git pull && make
    deploy-dev` on the VM, re-registering the NPCL FY2026-27 order), open `/sources/<id>/arr`,
    exclude chapters 1–2 (public hearing) and set chapter 30's end, confirm the rest, and take the

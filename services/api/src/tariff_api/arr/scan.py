@@ -111,6 +111,12 @@ def scan_texts(
         row["count"] += 1
         row["pages"].add(page)
 
+    # running headers and footers ("TRUING-UP OF FY 2024-25", "Page 3 of 423") are page
+    # furniture: neither a row nor a heading (the same rule as the chapter proposer's)
+    from .chapters import _norm, furniture
+
+    page_lines = {p: [ln for ln in (t or "").splitlines() if ln.strip()] for p, t in page_texts.items()}
+    skip = furniture(page_lines)
     for page in sorted(page_texts):
         text = page_texts[page] or ""
         if not text.strip():
@@ -119,7 +125,7 @@ def scan_texts(
         table_unit: str | None = None  # from the most recent header-like line naming a unit
         for raw in text.splitlines():
             line = raw.strip()
-            if not line:
+            if not line or _norm(line) in skip or re.match(r"^page\s+\d+\s*(?:of\s+\d+)?$", line, re.I):
                 continue
             row_match = _ROW.match(line)
             if row_match is None and (u := unit_context(line)):
