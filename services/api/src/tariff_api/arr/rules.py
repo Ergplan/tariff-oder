@@ -324,7 +324,7 @@ class Evaluation:
             not self.blocked
             and not any(self.blocked_by_category.values())
             and self.clauses_verified
-            and all(r.status == "approved" for r in computed)
+            and all(r.status == "approved" for r in computed)  # a "given" result is not approved
         )
 
 
@@ -466,6 +466,14 @@ class RuleSet:
                         ev.blocked_by_category.setdefault(cat, {})[o] = why
                 if not cats:
                     ev.blocked[o] = f"computed per {r.per}, and no {r.per} was given"
+                continue
+            if f"rule:{o}" in values:
+                # the output is given (a filed figure standing in for its schedule): not computed,
+                # and labelled so — a given result never counts as reproduced
+                raw, unit = values[f"rule:{o}"]
+                v = Q.of(Decimal(str(raw)), unit).to(r.unit)
+                ev.results[o] = Result(o, "given", 0, "given", v, _round(v, r.rounding), r.unit, {}, "given")
+                ev.order.append(o)
                 continue
             res, why = self._one(r, values, ev, None)
             if res:

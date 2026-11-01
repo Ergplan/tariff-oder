@@ -92,6 +92,7 @@ def reproduce(
     blank_is_zero = set(binding.get("blank_is_zero", {}).get("rows", []))
     negate = set(binding.get("negate", {}).get("rows", []))
     states_as_zero = set(binding.get("states_as_zero", {}).get("states", []))
+    year_only = set(binding.get("match_year_only", {}).get("sheets", []))
     # a row the binding declares blank-as-zero may be blank in every column, hence not read at all
     for ref in binding.get("blank_is_zero", {}).get("rows", []):
         if isinstance(ref, int) and ref not in rows:
@@ -129,8 +130,12 @@ def reproduce(
         same_voice = next((c for c in cells if (c["fiscal_year"], c["voice"]) == col[:2]), None)
         if same_voice:
             return same_voice
-        # another format may print the same year in another voice (F17's index "Trued-Up" beside
-        # F19A's "Normative"): the year alone, only when the other format has one column for it
+        # a format whose columns are a data series, not voices (a price index), may be matched by the
+        # year alone — only when the binding declares that format so, and it has one column for the
+        # year.  Never otherwise: a Commission's approval must not be fed a petitioner's estimate.
+        name = str(offset_of(ref)[0]).rpartition("!")[0]
+        if name not in year_only:
+            return None
         of_year = [c for c in cells if c["fiscal_year"] == col[0]]
         return of_year[0] if len(of_year) == 1 else None
 

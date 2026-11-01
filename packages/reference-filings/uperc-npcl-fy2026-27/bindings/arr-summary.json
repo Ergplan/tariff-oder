@@ -1,6 +1,6 @@
 {
  "sheet": "ARR",
- "note": "NPCL's ARR summary reproduced from its own component lines: O&M (29, 35), total expenditure (46), deductions (52), net ARR (53), the gap before and after revision and subsidy (54, 56, 58), the unrecovered gap (61), its carrying cost (62) and the cumulative gap (63).  The component lines are inputs here; each is reproduced from its own schedule by the other bindings.",
+ "note": "NPCL's ARR summary reproduced from its own component lines: O&M (29, 35), total expenditure (46), deductions (52), net ARR (53), the gap before and after revision and subsidy (54, 56, 58), the unrecovered gap (61), its carrying cost (62) and the cumulative gap (63).  The component lines are inputs here; each is reproduced from its own schedule by the other bindings.  The schedule lines (RoE, interest on loan, working capital, tax) are given here; the chain binding computes them.",
  "inputs": {
   "record:total_receipts": 17,
   "record:pp": 20,
@@ -15,14 +15,10 @@
   "record:om_additional": 33,
   "record:provisions": 34,
   "record:dep": 36,
-  "record:iol": 37,
   "record:csd": 38,
   "record:finance": 39,
-  "record:iowc": 40,
   "record:bad_debts": 41,
   "record:contingency": 42,
-  "record:roe": 43,
-  "record:tax": 44,
   "record:other": 45,
   "record:income_other_business": 49,
   "record:nti": 50,
@@ -31,7 +27,11 @@
   "record:subsidy": 57,
   "record:gap_accumulated_opening": 59,
   "record:regulatory_surcharge_recovery": 60,
-  "assumption:gap_carrying_rate": "F27_Work Cap!15"
+  "assumption:gap_carrying_rate": "F27_Work Cap!15",
+  "rule:return_on_equity": 43,
+  "rule:interest_on_loan": 37,
+  "rule:interest_on_working_capital": 40,
+  "rule:tax_recoverable": 44
  },
  "blank_is_zero": {
   "rows": [

@@ -95,7 +95,7 @@
   },
   {
    "id": "uperc.arr.expenditure",
-   "version": 1,
+   "version": 2,
    "status": "draft",
    "title": "Total expenditure",
    "output": "arr_total_expenditure",
@@ -129,7 +129,8 @@
     },
     "iol": {
      "unit": "INR_crore",
-     "source": "record:iol"
+     "source": "rule:interest_on_loan",
+     "note": "F25"
     },
     "csd": {
      "unit": "INR_crore",
@@ -141,7 +142,8 @@
     },
     "iowc": {
      "unit": "INR_crore",
-     "source": "record:iowc"
+     "source": "rule:interest_on_working_capital",
+     "note": "F27"
     },
     "bad_debts": {
      "unit": "INR_crore",
@@ -153,11 +155,13 @@
     },
     "roe": {
      "unit": "INR_crore",
-     "source": "record:roe"
+     "source": "rule:return_on_equity",
+     "note": "F26"
     },
     "tax": {
      "unit": "INR_crore",
-     "source": "record:tax"
+     "source": "rule:tax_recoverable",
+     "note": "F29"
     },
     "other": {
      "unit": "INR_crore",

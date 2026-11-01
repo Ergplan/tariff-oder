@@ -2,14 +2,14 @@
  "sheet": "F27_Work Cap",
  "note": "Inputs: O&M (the ARR summary, row 35), maintenance spares (9), net revenue and open-access revenue (ARR rows 15 and 51), the average security deposit (11, shown negative: entered as its magnitude by the formula's minus), the surplus (13), the rate (15).  Reproduced: O&M for a month (8), receivables (10), total (12), net (14), interest (16).  For true-up years the receivables (10) are the petitioner's record, an input; the check on that row is then `given`, not a match.",
  "inputs": {
-  "fact:C.OM": "ARR!35",
   "record:maintenance_spares": 9,
   "fact:R.REV.EXISTING": "ARR!15",
   "record:open_access_revenue": "ARR!51",
   "record:security_deposit_average": 11,
   "record:surplus_at_beginning": 13,
   "assumption:wc_interest_rate": 15,
-  "record:wc_receivables_actual": 10
+  "record:wc_receivables_actual": 10,
+  "rule:arr_om_total": "ARR!35"
  },
  "negate": {
   "rows": [

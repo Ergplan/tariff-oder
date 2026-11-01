@@ -1005,6 +1005,24 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 63 (2026-11-01): the chain — NPCL's petition computed end to end.**  One binding
+  (`chain-arr.json`) evaluates, for every column of the ARR format, the whole rule set from base
+  records only: capital (F14) → normative equity and return (F26) and normative loan and interest
+  (F25); O&M → working capital and its interest (F27); RoE → income tax (F29); everything → the
+  ARR summary, the gap and its carrying cost.  The engine gained **given outputs** (a filed figure
+  standing in for a schedule, labelled `given`, never counted as reproduced), so the per-format
+  bindings keep working beside the chain; the ARR summary (v2), income tax (v2) and working capital
+  (v2) take their components from the schedule rules.  **Result: the petition's three columns —
+  FY2024-25 claimed (true-up), FY2025-26 estimated (APR), FY2026-27 projected (ARR) — reproduce in
+  full, 36 of 36, net ARR 3,481.83 and gap 289.79 included.**  FY2023-24 carries the filing's own
+  F14 / F25 / F26 inconsistency (A29); the Commission's columns are blocked for want of their own
+  inputs.  The chain found a defect of mine: matching another format by the year alone had fed the
+  Commission's FY2025-26 approval with NPCL's estimate — now opt-in for data-series formats only
+  (A36).  **Still inputs, not yet computed:** power purchase and transmission (F1–F10, PPC), the
+  O&M components of the APR / ARR years (F20–F23), depreciation of the projected years (F16 → F24),
+  revenue (ESR), bad debts, interest on security deposit.  No rule is approved; every clause is
+  unverified.
+
   **Increment 62 (2026-11-01): income tax (F29).**  4 draft rules: the return on equity grossed
   up for tax, the tax on the net taxable income, the tax on the grossed-up RoE, and the tax
   recoverable as the lesser of the two.  **NPCL's F29: 24 of 24**, every column.
@@ -1814,6 +1832,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 63 (2026-11-01): 410 passed** (the regression pins the chain: the petition's three columns, 36 of 36; no Commission column fed a petitioner's figure).  Ruff and format clean.
 - **Increment 62 (2026-11-01): 410 passed** (the regression pins F29, 24 of 24).  Ruff and format clean.
 - **Increment 61 (2026-11-01): 410 passed** (the reproduction regression pins the ARR summary: the petition's own columns match in full).  Ruff and format clean.
 - **Increment 60 (2026-11-01): 410 passed** (the reproduction regression pins F17, F18 and F19A).  Ruff and format clean.

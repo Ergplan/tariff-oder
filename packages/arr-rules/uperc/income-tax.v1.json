@@ -8,7 +8,7 @@
  "rules": [
   {
    "id": "uperc.tax.grossed_income",
-   "version": 1,
+   "version": 2,
    "status": "draft",
    "title": "Income of the year: the return on equity grossed up for tax",
    "output": "tax_grossed_income",
@@ -18,7 +18,7 @@
    "inputs": {
     "roe": {
      "unit": "INR_crore",
-     "source": "record:roe_for_tax",
+     "source": "rule:return_on_equity",
      "note": "the return on equity (F26)"
     },
     "rate": {
@@ -84,7 +84,7 @@
   },
   {
    "id": "uperc.tax.on_roe",
-   "version": 1,
+   "version": 2,
    "status": "draft",
    "title": "Tax on the return on equity, grossed up",
    "output": "tax_on_roe",
@@ -94,7 +94,8 @@
    "inputs": {
     "roe": {
      "unit": "INR_crore",
-     "source": "record:roe_for_tax"
+     "source": "rule:return_on_equity",
+     "note": "the return on equity (F26)"
     },
     "rate": {
      "unit": "fraction",

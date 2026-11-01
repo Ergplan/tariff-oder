@@ -1,0 +1,35 @@
+{
+ "sheet": "ARR",
+ "unit": "INR_crore",
+ "note": "The chain: one evaluation per column of the ARR format, from base records only, through every schedule rule — capital (F14) → normative equity and RoE (F26) and normative loan and interest (F25); O&M → working capital and its interest (F27); RoE → income tax (F29); all → the ARR summary, the gap and its carrying cost.  Every derived figure is checked where NPCL files it.  Still taken as records here (their schedules come next): power purchase and transmission, the O&M components, depreciation, interest on security deposit, bad debts, revenue, the rates.",
+ "inputs": {
+  "prior:equity_closing": "F26_ROE!8", "prior:normative_loan_closing": "F25_IOL!8",
+  "record:capitalisation": "F14_CAP_Cap Cost!11", "record:consumer_contribution": "F14_CAP_Cap Cost!27",
+  "record:retired_gross": "F14_CAP_Cap Cost!32", "record:retired_grants": "F14_CAP_Cap Cost!33",
+  "record:retired_acc_dep": "F14_CAP_Cap Cost!35", "record:retired_acc_dep_adjustment": "F14_CAP_Cap Cost!36",
+  "record:depreciation": 36, "record:dep": 36, "assumption:loan_interest_rate": "F25_IOL!14",
+  "record:maintenance_spares": "F27_Work Cap!9", "fact:R.REV.EXISTING": 15, "record:open_access_revenue": 51,
+  "record:security_deposit_average": "F27_Work Cap!11", "record:surplus_at_beginning": "F27_Work Cap!13",
+  "assumption:wc_interest_rate": "F27_Work Cap!15", "record:wc_receivables_actual": "F27_Work Cap!10",
+  "record:taxable_income": "F29_Income Tax!13", "assumption:tax_rate_income": "F29_Income Tax!14", "assumption:tax_rate_roe": "F29_Income Tax!21",
+  "record:total_receipts": 17, "record:pp": 20, "record:pp_sharing": 21, "record:pp_arrears": 22, "record:tx": 23, "record:tx_arrears": 24,
+  "record:rm": 26, "record:employee_gross": 27, "record:employee_capitalised": 28, "record:ag_net": 31, "record:om_additional": 33, "record:provisions": 34,
+  "record:csd": 38, "record:finance": 39, "record:bad_debts": 41, "record:contingency": 42, "record:other": 45,
+  "record:income_other_business": 49, "record:nti": 50,
+  "record:tariff_revision_impact": 55, "record:subsidy": 57, "record:gap_accumulated_opening": 59, "record:regulatory_surcharge_recovery": 60,
+  "assumption:gap_carrying_rate": "F27_Work Cap!15"
+ },
+ "negate": {"rows": ["F27_Work Cap!11"], "why": "the format prints the security-deposit deduction negative"},
+ "blank_is_zero": {"rows": [21, 24, 32, 33, 34, 42, 45, 55, 57, 60, "F14_CAP_Cap Cost!36"], "why": "NPCL's formulas read these blank cells as zero"},
+ "states_as_zero": {"states": ["included", "not_applicable"], "why": "NPCL's SUM formulas skip text"},
+ "constants": {
+   "FY2023-24": {"assumption:surplus_carrying_rate": ["0.0675", "fraction"]},
+   "FY2024-25": {"assumption:surplus_carrying_rate": ["0.0675", "fraction"]},
+   "FY2025-26": {"assumption:surplus_carrying_rate": ["0.0675", "fraction"]},
+   "FY2026-27": {"assumption:surplus_carrying_rate": ["0.065", "fraction"]}},
+ "outputs": {
+  "equity_addition": "F26_ROE!10", "return_on_equity": 43, "normative_loan_addition": "F25_IOL!10", "interest_on_loan": 37,
+  "interest_on_working_capital": 40, "tax_recoverable": 44, "arr_om_total": 35,
+  "arr_total_expenditure": 46, "arr_net": 53, "arr_gap": 54, "arr_carrying_cost": 62, "arr_gap_cumulative": 63
+ }
+}

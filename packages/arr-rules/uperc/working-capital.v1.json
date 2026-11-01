@@ -8,7 +8,7 @@
  "rules": [
   {
    "id": "uperc.iowc.om_month",
-   "version": 1,
+   "version": 2,
    "status": "draft",
    "title": "O&M expenses for one month",
    "output": "wc_om_month",
@@ -18,7 +18,7 @@
    "inputs": {
     "om": {
      "unit": "INR_crore",
-     "source": "fact:C.OM",
+     "source": "rule:arr_om_total",
      "note": "the year's net O&M expenses (ARR summary)"
     },
     "months_in_year": {

@@ -2,6 +2,16 @@
  "sheet": "F29_Income Tax",
  "unit": "INR_crore",
  "note": "Inputs: net taxable income (13), its tax rate (14), the return on equity (20) and its tax rate (21).  Reproduced: the income of the year as grossed-up RoE (8), the tax on income (15), the tax on RoE (22), the tax recoverable (24).",
- "inputs": {"record:taxable_income": 13, "assumption:tax_rate_income": 14, "record:roe_for_tax": 20, "assumption:tax_rate_roe": 21},
- "outputs": {"tax_grossed_income": 8, "tax_on_income": 15, "tax_on_roe": 22, "tax_recoverable": 24}
+ "inputs": {
+  "record:taxable_income": 13,
+  "assumption:tax_rate_income": 14,
+  "assumption:tax_rate_roe": 21,
+  "rule:return_on_equity": 20
+ },
+ "outputs": {
+  "tax_grossed_income": 8,
+  "tax_on_income": 15,
+  "tax_on_roe": 22,
+  "tax_recoverable": 24
+ }
 }

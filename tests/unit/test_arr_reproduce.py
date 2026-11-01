@@ -107,9 +107,18 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
         if binding.get("type") in ("year_blocks", "period_table"):
             continue  # the utility's workings and the rate table: their own tests
         rep = reproduce(sheets[binding["sheet"]], binding, rules, sheets)
-        seen[rep.sheet] = rep
+        seen["chain" if b.name == "chain-arr.json" else rep.sheet] = rep
         for c in rep.checks:
             col = (c.fiscal_year, c.voice)
+            if b.name == "chain-arr.json":
+                # the chain from base records: the petition's three columns in full (12 / 12 each);
+                # FY2023-24 carries the filing's own F14 / F25 / F26 inconsistency (A29); a Commission
+                # column is never fed a petitioner's figure (blocked, never differs — A36)
+                if col in (("FY2024-25", "petitioned"), ("FY2025-26", "petitioned"), ("FY2026-27", "petitioned")):
+                    assert c.result == "match", c
+                elif col[1] == "approved":
+                    assert c.result in ("blocked", "no_filed_value", "match"), c
+                continue
             if rep.sheet == "ARR":
                 # the petition's own columns (estimated, projected) reproduce in full; differences
                 # are the Commission's restated approvals (a surplus carried at the full rate —
@@ -159,6 +168,7 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
     assert seen["F27_Work Cap"].counts()["match"] >= 34
     assert seen["ARR"].counts()["match"] >= 106
     assert seen["F29_Income Tax"].counts() == {"match": 24}
+    assert seen["chain"].counts()["match"] >= 56
     assert seen["F17_O&M_CPI"].counts()["match"] >= 15 and seen["F18_O&M_WPI"].counts()["match"] >= 15
     assert seen["F25_IOL"].counts()["match"] >= 21 and seen["F26_ROE"].counts()["match"] >= 22
 

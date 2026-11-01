@@ -8,5 +8,12 @@
  },
  "outputs": {
   "om_component": 10
+ },
+ "match_year_only": {
+  "sheets": [
+   "F17_O&M_CPI",
+   "F18_O&M_WPI"
+  ],
+  "why": "the index formats' columns are a data series (the index of each year), not voices"
  }
 }
