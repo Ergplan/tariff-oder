@@ -213,3 +213,17 @@ def test_reprocess_and_cancel(client, runner):
     rp = client.post(f"/sources/{src_id}/reprocess", headers=headers(ADMIN))
     assert rp.status_code == 409
     assert rp.json()["error_type"] == "invalid_transition"
+
+
+def test_a_registry_code_in_mixed_case_resolves_whatever_the_case(client):
+    """MPERC's West DISCOM is "MPPaKVVCL" in the registry (increment 47): an upload or a
+    licensee list naming it in any case finds it.  SYNTHETIC licensee."""
+    from arr_helpers import ensure_licensee
+
+    from tariff_api.db import session_scope
+    from tariff_api.services.sources import resolve_utility
+
+    ensure_licensee("SYN-MiXed")
+    with session_scope() as s:
+        assert resolve_utility(s, "SYN-MiXed").code == "SYN-MiXed"
+        assert resolve_utility(s, "syn-mixed").code == "SYN-MiXed"

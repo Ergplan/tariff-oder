@@ -878,3 +878,42 @@ def test_a_long_chapter_is_split_at_its_three_level_sections():
     assert part_from_note(chs[2].note) == (
         "3. Petitioner’s Submissions, Commission’s Analysis, Scrutiny and Conclusion on Truing Up for FY 2024-25"
     )
+
+
+def test_a_licensee_column_keeps_its_own_voice_and_a_label_names_what_precedes_its_qualifier():
+    """MPERC's ARR summary (increment 47), SYNTHETIC figures: "East DISCOM" over "Claimed |
+    Admitted" — each licensee's column takes its voice from its own header, never the caption's;
+    "Power Purchase Cost including Inter-State Transmission Charges" is the power purchase."""
+    tax = load_taxonomy()
+    mapping = load_mapping("NOSUCH", fallback=True)
+    placer = Placer(tax, mapping, "distribution")
+    lic = {"EASTCO": ["East DISCOM"], "WESTCO": ["West DISCOM"]}
+    grid = GridIn(
+        15,
+        0,
+        [
+            ["Particulars", "East DISCOM", "", "West DISCOM", "", "State", ""],
+            ["", "Claimed", "Admitted", "Claimed", "Admitted", "Claimed", "Admitted"],
+            [
+                "Power Purchase Cost including Inter-State Transmission Charges",
+                "110.25",
+                "108.55",
+                "198.87",
+                "176.47",
+                "309.12",
+                "285.02",
+            ],
+            ["Depreciation", "4.48", "3.99", "3.44", "1.84", "7.92", "5.83"],
+        ],
+        1,
+        ["Table 3: Aggregate Revenue Requirement admitted by the Commission for FY 2026-27 (Rs. Crore)"],
+    )
+    out, _ = read_grids(
+        [grid], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="EASTCO", licensees=lic
+    )
+    got = {(c.utility, c.line_code, c.value_type): c.stated_value for c in out.candidates}
+    assert got[("EASTCO", "C.PP", "petitioned")] == "110.25"
+    assert got[("EASTCO", "C.PP", "approved")] == "108.55"
+    assert got[("WESTCO", "C.DEP", "approved")] == "1.84"
+    assert not [k for k in got if k[1].startswith("C.TX")]  # the qualifier is not the line
+    assert not [k for k in got if k[0] not in lic]  # the State columns are a total

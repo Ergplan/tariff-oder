@@ -133,7 +133,7 @@
         "value_type": "petitioned"
       },
       {
-        "pattern": "approved|allowed|commission",
+        "pattern": "approved|allowed|admitted|commission",
         "value_type": "approved"
       },
       {

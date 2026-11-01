@@ -7,7 +7,7 @@ import re
 import uuid
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from .. import golden
@@ -73,7 +73,8 @@ def inventory_idempotency_key(sha256: str, attempt_series: int = 1) -> str:
 
 
 def resolve_utility(session: Session, code: str) -> Utility:
-    u = session.execute(select(Utility).where(Utility.code == code.strip().upper())).scalar_one_or_none()
+    # registry codes are not all capitals ("MPPaKVVCL"): a code matches whatever its case
+    u = session.execute(select(Utility).where(func.upper(Utility.code) == code.strip().upper())).scalar_one_or_none()
     if u is None:
         raise AppError("validation_failed", f"unknown utility {code!r}; add it to the registry first")
     return u

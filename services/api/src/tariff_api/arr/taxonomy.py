@@ -297,10 +297,13 @@ class Placer:
         if n in self._exact:
             code = self._pick(self._exact[n], unit_hint)
             return Placement(code, n, "exact") if code else None
+        # "Power Purchase Cost including Inter-State Transmission": a label names what comes
+        # before its qualifying clause; the words after it are not the line
+        head = re.split(r"\b(?:including|inclusive\s+of|incl|net\s+of|excluding|after\s+adjusting)\b", n)[0].strip()
         for alias in self._by_len:
             if len(alias) < 4:
                 continue
-            if re.search(rf"(?<![a-z0-9]){re.escape(alias)}(?![a-z0-9])", n):
+            if re.search(rf"(?<![a-z0-9]){re.escape(alias)}(?![a-z0-9])", head):
                 code = self._pick(self._exact[alias], unit_hint)
                 if code and any(
                     re.search(rf"(?<![a-z0-9]){re.escape(p)}(?![a-z0-9])", n) for p in self._not_when.get(code, [])

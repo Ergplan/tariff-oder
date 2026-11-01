@@ -154,14 +154,25 @@ def _header_texts(grid: GridIn) -> list[str]:
     n = max((len(r) for r in grid.rows), default=0)
     hdr = max(1, grid.header_rows)
     cols = ["" for _ in range(n)]
-    for r in grid.rows[:hdr]:
+    rows = grid.rows[:hdr]
+    for ri, r in enumerate(rows):
         carried = ""
+        below = rows[ri + 1] if ri + 1 < len(rows) else None
         for j in range(n):
             cell = (r[j] if j < len(r) else "").strip()
             if cell:
                 carried = cell
             elif j > 0 and fiscal_year(carried):
                 cell = carried  # a merged year heading over its voice sub-columns
+            elif (
+                j > 0
+                and carried
+                and below is not None
+                and (below[j] if j < len(below) else "").strip()
+                and not _LABEL_HDR.search(carried)
+                and not _SKIP_HDR.match(carried)
+            ):
+                cell = carried  # a merged group heading ("East DISCOM") over "Claimed | Admitted"
             cols[j] = f"{cols[j]} {cell}".strip()
     return cols
 
@@ -353,8 +364,10 @@ def read_grids(
                 _skip(report, g, j, h, "a total across licensees, not one licensee's value")
                 continue
             if fy is None and col_licensee is not None:
-                # a column per licensee: the year and the voice come from the caption
-                fy, vt = table_fy, voice_in_context("", caption, part, mapping)
+                # a column per licensee: the year comes from the caption; the voice from the
+                # header's own words first ("East DISCOM Claimed" over "Admitted": MPERC), then
+                # the part and the caption
+                fy, vt = table_fy, voice_in_context(h, caption, part, mapping)
                 if fy is None or vt is None:
                     _skip(report, g, j, h, "a licensee's column without a year and a voice in the caption")
                     continue

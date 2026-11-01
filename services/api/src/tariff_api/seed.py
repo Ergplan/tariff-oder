@@ -400,19 +400,20 @@ REGISTRY = {
             "code": "MPPKVVCL",
             "name": "Madhya Pradesh Poorv Kshetra Vidyut Vitaran Company Limited (Jabalpur)",
             "commission": "MPERC",
-            "aliases": ["MPPKVVCL"],
+            # the order's own short names ("East DISCOM"), as its first page defines them
+            "aliases": ["MPPKVVCL", "East DISCOM", "MP Poorv Kshetra Vidyut Vitaran Company Limited"],
         },
         {
             "code": "MPMKVVCL",
             "name": "Madhya Pradesh Madhya Kshetra Vidyut Vitaran Company Limited (Bhopal)",
             "commission": "MPERC",
-            "aliases": ["MPMKVVCL"],
+            "aliases": ["MPMKVVCL", "Central DISCOM", "MP Madhya Kshetra Vidyut Vitaran Company Limited"],
         },
         {
             "code": "MPPaKVVCL",
             "name": "Madhya Pradesh Paschim Kshetra Vidyut Vitaran Company Limited (Indore)",
             "commission": "MPERC",
-            "aliases": ["MPPaKVVCL"],
+            "aliases": ["MPPaKVVCL", "West DISCOM", "MP Paschim Kshetra Vidyut Vitaran Company Limited"],
         },
         {
             "code": "MSEDCL",
@@ -653,5 +654,10 @@ def seed_registry(session: Session) -> dict[str, int]:
             )
             session.add(row)
             created["utilities"] += 1
+        else:
+            # a registered licensee gains the aliases added since (never loses one)
+            missing = [a for a in u["aliases"] if a not in (row.aliases or [])]
+            if missing:
+                row.aliases = [*(row.aliases or []), *missing]
     session.flush()
     return created

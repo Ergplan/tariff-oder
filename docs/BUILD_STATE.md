@@ -870,6 +870,46 @@ open-access view.
   aside).  The five earlier profiles re-run unchanged (UPERC 15, BERC 2, HPERC 3, JSERC 3, JERC
   4 complete).  Ten commissions now have profiles; MPPTCL's orders (only in MPERC's petition
   search form) and OERC's GRIDCO and OPTCL pages are not covered.
+
+  **Increment 47 (2026-11-01): three more states read — Odisha, Madhya Pradesh,
+  Uttarakhand.**  Each FY2026-27 order was downloaded from the URL its new discovery profile
+  proposed and registered locally as a real source, read-only to `chapters_proposed`:
+  OERC's combined order for the four TP DISCOMs (`DISCOM_TARIFF_ORDER_FY_2026-27.pdf`, SHA-256
+  `d58d2817…ffde0ab`, 246 pp.), MPERC's order for the three State DISCOMs (petition 140/2025,
+  `77ffe9d2…79f91afb`, 255 pp.) and UERC's order for UPCL (`1a929917…99eb91`, 414 pp.).  Each
+  had a layout the rules had not met:
+  - **Lettered parts** (A16): OERC structures its order "A. PROCEDURAL HISTORY" … "I.
+    OBSERVATIONS AND DIRECTIONS OF THE COMMISSION" with numbered paragraphs, MPERC "A1: ORDER"
+    … "A8: PUBLIC SUGGESTIONS"; read like JSERC's "Chapter N" parts (increment 43), with the
+    proposal, objection and advisory parts flagged.  OERC 5 → 36 chapters, MPERC 0 → 21.
+  - **Licensee per row** (A17): OERC's tables carry a "DISCOM" column (TPCODL, then blank cells
+    for its rows) or a licensee's name on a row above its block; rows are attributed to it and a
+    total row to none.  OERC 340 → 488 values.  Tables whose rows *are* the licensees are not read.
+  - **Three-level sections in one part** (A18): UERC numbers its true-up part "3.1.3 Power
+    Purchase Expenses"; a chapter of 40+ pages is now split at such headings, each noting its
+    part ("3. … Conclusion on Truing Up for FY 2024-25").  Accepting three levels everywhere
+    was tried first and removed NPCL's true-up and APR chapters (its list items), so it is
+    limited to long chapters.  UERC 13 → 19 chapters.  Cues now also name their plurals
+    ("Distribution Losses"), and "sales" is a generic energy cue: BERC 36 → 40 chapters (its
+    interest on loans now apart from depreciation in each part), HPERC 42 → 45, JSERC 74 → 79.
+  - **Wrong values caught in MPERC's preview** (A19): East DISCOM's *claimed* ARR was read as
+    *approved* (the licensee's column took the caption's voice, ignoring "Claimed" on the
+    second header row), and "Power Purchase Cost including Inter-State Transmission" was placed
+    on inter-state transmission.  A group heading is now carried over its sub-columns, a
+    licensee's column takes its own voice word first, and a label names what precedes
+    "including / net of / excluding".  The carry also reads BERC's licensee-over-voice headers:
+    BERC 442 → 559 values, its failures unchanged.
+  - **Registry** (A20): MPERC's West DISCOM is "MPPaKVVCL"; codes were matched upper-cased and
+    never found.  Codes now match whatever their case; the three MP discoms carry the order's
+    own short names ("East DISCOM" …) as aliases, and re-seeding adds new aliases to existing
+    licensees.  "admitted" is an approval voice.
+  **Measured through the live preview, seven real orders, read-only:** UPERC 517 values (181 of
+  353 tables), 2 failures; BERC 559 (203/503), 3; HPERC 657 (204/469), 0; JSERC 467 (128/294),
+  5; **OERC 488 (44/166), 0; MPERC 249 (31/140), 6; UERC 164 (77/149), 0.**  MPERC's 6 are
+  ARR-I1 on its summary, one per discom and voice: the interest sub-rows printed under
+  "Interest & Finance Charges" ("On Project Loans", "On Working Capital Loans", "On Consumer
+  Security Deposit") and "R&D Fund" are not placed (507.04 of East's 507.06 claimed gap) — the
+  MPERC mapping's work, not a convention.  Seven states now have a real order read.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1408,9 +1448,18 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
   pp.; NBPDCL + SBPDCL FY2026-27 (BERC) `a247053b…`, 612 pp.; HPSEBL FY2026-27 (HPERC)
   `0f3d9e9d…ec74`, 525 pp.; JBVNL MYT/true-up/APR 2026 (JSERC)
   `0391dd2701c7bbb7a962923212ef5a8ed6c9cdfbfea601df692d7ce4aa119108`, 372 pp.
+- **Increment 47 adds:** TP DISCOMs FY2026-27 (OERC)
+  `d58d281787d4dd34e7b895add2e7cb37dbf3b9e8d5f1a1ea208dc57ceffde0ab`, 246 pp.; MP State DISCOMs
+  FY2026-27 (MPERC) `77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb`, 255 pp.;
+  UPCL FY2026-27 (UERC) `1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91`, 414 pp.
 - Synthetic fixtures only (dataset `fixture`): `mixed_text_and_image_pdf` (6 pages), `text_only_pdf` variants, `not_a_pdf`.
 
 ## Reading reliability ledger changes
+
+Increment 47 (three more states, A16–A20): lettered parts, a licensee per row, three-level
+sections in a long chapter, and two wrong readings found in MPERC's preview (a licensee
+column's voice; a label's qualifier) fixed; a mixed-case registry code.  Seven real orders
+measured; precision still needs reviewer decisions.
 
 Increment 45 (loss basis, A15): BERC's within-state loss basis posed; a generic "inter-state
 sales" alias was tried, found wrong on HPERC and NPCL by measurement, and narrowed to
@@ -1461,6 +1510,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 47 (2026-11-01): 371 passed** (+4 unit: lettered parts; licensee per row; a long chapter split at its three-level sections; a licensee's column keeps its own voice and a label names what precedes its qualifier; +1 integration: a mixed-case registry code resolves).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 46 (2026-11-01): 366 passed** (+2 unit: short-year listing titles; icon links titled by their column group, a listing for a group of licensees, encoded URLs, an MYT order known by its file name, procedural documents set aside).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 45 (2026-11-01): 364 passed** (+1 unit: cross-border sales placed apart, a bare inter-state sale not; ARR-I4's hint and its pass under `loss_basis`; the integration conventions test now also answers the loss basis and drafts it).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 44 (2026-11-01): 363 passed** (+1 unit: a total printed inclusive of other lines — the hint when unstated, the pass when the mapping states it, no hint when no known convention explains; +1 integration: a convention question posed from a preview, answered by a reviewer only, validated, drafted into a valid mapping, withdrawn).  Ruff, format, contracts-check and web typecheck clean; migration 0020 applied on the local stack.
@@ -1640,15 +1690,15 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 46) — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 47) — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
-  1. **Reviewer, chapters:** the four real orders read in the build session (NPCL FY2026-27 /
-     UPERC, NBPDCL+SBPDCL FY2026-27 / BERC, HPSEBL FY2026-27 / HPERC, JBVNL 2026 / JSERC) sit
-     at `chapters_proposed` with a per-chapter preview.  Re-register them on the deployed stack
-     (the build session's local stack is ephemeral; URLs and hashes are in increments 37, 39,
-     42, 43), exclude the non-ARR chapters (public hearing, brief facts of the petition,
+  1. **Reviewer, chapters:** the seven real orders read in the build session (NPCL / UPERC,
+     NBPDCL+SBPDCL / BERC, HPSEBL / HPERC, JBVNL / JSERC, the four TP DISCOMs / OERC, the three
+     MP DISCOMs / MPERC, UPCL / UERC; all FY2026-27) sit at `chapters_proposed` with a
+     per-chapter preview.  Re-register them on the deployed stack (the build session's local
+     stack is ephemeral; URLs and hashes are in increments 37, 39, 42, 43, 47), exclude the non-ARR chapters (public hearing, brief facts of the petition,
      directives, open-access annexes — flagged in the chapter notes), set the capped last
      chapter's end, confirm.
   2. **Reviewer, mappings:** decide the unplaced labels in `/arr/mappings/UPERC`, `/BERC`,
