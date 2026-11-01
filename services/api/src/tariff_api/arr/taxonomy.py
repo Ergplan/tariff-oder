@@ -154,6 +154,9 @@ class Mapping(BaseModel):
     return_basis: Noted
     gap_convention: Noted
     total_includes: list[TotalIncludes] = Field(default_factory=list)
+    # which sales the distribution loss grosses up (ARR-I4): "retail_sales" (all, the default
+    # reading) or "sales_within_state" (retail sales less E.SALES.INTERSTATE, BERC's table)
+    loss_basis: Noted = Field(default_factory=Noted)
     unit_convention: UnitConvention
     orders_expected: list[OrderExpected] = Field(default_factory=list)
     chapter_map: list[ChapterCue]

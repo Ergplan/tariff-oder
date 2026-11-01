@@ -53,6 +53,11 @@ def _pose_questions() -> None:
                         },
                         {"identity_id": "ARR-I3", "message": "ARR-I3 Revenue gap …", "reconciles_if": None},
                         {"identity_id": "ARR-I4", "message": "ARR-I4 …", "reconciles_if": None},
+                        {
+                            "identity_id": "ARR-I4",
+                            "message": "ARR-I4 … reconciles if the loss applies to the sales within the state",
+                            "reconciles_if": {"loss_basis": "sales_within_state", "why": "inter-state sales excluded"},
+                        },
                     ],
                 }
             ],
@@ -65,7 +70,8 @@ def test_a_convention_question_is_answered_and_drafted(client, runner, object_st
     _pose_questions()
     wb = client.get("/arr/mappings/SYNTHERC/workbench", headers=headers(CLIENT_A)).json()
     qs = {q["key"]: q for q in wb["conventions"]}
-    assert set(qs) == {KEY, "convention:gap_convention"}, qs  # ARR-I4 poses no mapping question yet
+    # an ARR-I4 failure no convention explains poses no question; one the loss basis explains does
+    assert set(qs) == {KEY, "convention:gap_convention", "convention:loss_basis"}, qs
     assert qs[KEY]["values"] == ["applies", "does_not_apply"] and qs[KEY]["decision"] is None
     assert qs[KEY]["evidence"][0]["chapter"] == 1
 
@@ -79,17 +85,22 @@ def test_a_convention_question_is_answered_and_drafted(client, runner, object_st
     assert r.status_code == 200 and r.json()["value"] == "applies", r.text
     gap = {"key": "convention:gap_convention", "value": "after_subsidy"}
     assert client.put(base, json=gap, headers=headers(REVIEWER)).status_code == 200
+    loss = {"key": "convention:loss_basis", "value": "sales_within_state", "note": "Table 4.5 rows 1-6"}
+    assert client.put(base, json={**loss, "value": "most"}, headers=headers(REVIEWER)).status_code == 422
+    assert client.put(base, json=loss, headers=headers(REVIEWER)).status_code == 200
 
     wb = client.get("/arr/mappings/SYNTHERC/workbench", headers=headers(CLIENT_A)).json()
     assert {q["key"]: (q["decision"] or {}).get("value") for q in wb["conventions"]} == {
         KEY: "applies",
         "convention:gap_convention": "after_subsidy",
+        "convention:loss_basis": "sales_within_state",
     }
     assert all(not x["label"].startswith("convention:") for x in wb["labels"])
 
     d = json.loads(client.get("/arr/mappings/SYNTHERC/draft", headers=headers(CLIENT_A)).content)
     assert d["status"].startswith("draft") and "not confirmed" in d["status"]
     assert d["gap_convention"]["value"] == "after_subsidy"
+    assert d["loss_basis"]["value"] == "sales_within_state"
     assert [(t["total"], t["includes"]) for t in d["total_includes"]] == [("C.PP", ["C.TX"])]
     from tariff_api.arr.taxonomy import Mapping
 

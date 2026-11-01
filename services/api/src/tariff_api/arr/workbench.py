@@ -139,6 +139,7 @@ def unplaced(session: Session, commission: str) -> dict[str, Any]:
 CONVENTION_PREFIX = "convention:"
 GAP_VALUES = ("before_subsidy", "after_subsidy")
 INCLUSION_VALUES = ("applies", "does_not_apply")
+LOSS_BASIS_VALUES = ("sales_within_state", "retail_sales")
 
 
 def conventions(session: Session, commission: str, sources: list[SourceDocument]) -> list[dict[str, Any]]:
@@ -155,7 +156,15 @@ def conventions(session: Session, commission: str, sources: list[SourceDocument]
         for ch in preview.get("chapters") or []:
             for f in ch.get("findings") or []:
                 hint = f.get("reconciles_if")
-                if hint:
+                if hint and hint.get("loss_basis"):
+                    q = ask(
+                        f"{CONVENTION_PREFIX}loss_basis",
+                        kind="loss_basis",
+                        question=f"Does {commission}'s distribution loss apply to the sales within the state only?",
+                        why=hint.get("why"),
+                        values=list(LOSS_BASIS_VALUES),
+                    )
+                elif hint:
                     key = f"{CONVENTION_PREFIX}total_includes:{hint['total']}:{'+'.join(hint['includes'])}"
                     q = ask(
                         key,
@@ -194,7 +203,7 @@ def conventions(session: Session, commission: str, sources: list[SourceDocument]
     for key in decided:
         if key not in questions:  # decided earlier; the evidence may have gone with a re-read
             kind = key.removeprefix(CONVENTION_PREFIX).split(":")[0]
-            values = list(GAP_VALUES if kind == "gap_convention" else INCLUSION_VALUES)
+            values = list({"gap_convention": GAP_VALUES, "loss_basis": LOSS_BASIS_VALUES}.get(kind, INCLUSION_VALUES))
             ask(key, kind=kind, question=key.removeprefix(CONVENTION_PREFIX), why=None, values=values)
     out = []
     for key, q in sorted(questions.items()):
@@ -209,14 +218,17 @@ def conventions(session: Session, commission: str, sources: list[SourceDocument]
 def decide_convention(
     session: Session, commission: str, *, key: str, value: str, note: str | None, actor: str
 ) -> MappingDecision:
-    """A reviewer's answer to a convention question.  ``key`` is ``convention:gap_convention``
-    or ``convention:total_includes:<TOTAL>:<LINE>[+<LINE>…]``."""
+    """A reviewer's answer to a convention question.  ``key`` is ``convention:gap_convention``,
+    ``convention:loss_basis`` or ``convention:total_includes:<TOTAL>:<LINE>[+<LINE>…]``."""
     body = key.removeprefix(CONVENTION_PREFIX)
     if not key.startswith(CONVENTION_PREFIX):
         raise AppError("validation_failed", "a convention key starts with 'convention:'")
     if body == "gap_convention":
         if value not in GAP_VALUES:
             raise AppError("validation_failed", f"the gap convention is one of {', '.join(GAP_VALUES)}")
+    elif body == "loss_basis":
+        if value not in LOSS_BASIS_VALUES:
+            raise AppError("validation_failed", f"the loss basis is one of {', '.join(LOSS_BASIS_VALUES)}")
     else:
         m = re.fullmatch(r"total_includes:([A-Z][A-Z0-9_.]*):([A-Z][A-Z0-9_.+]*)", body)
         codes = load_taxonomy().by_code()
@@ -357,8 +369,8 @@ def draft(session: Session, commission: str) -> dict[str, Any]:
             continue
         who = f"decided by {d.decided_by}" + (f": {d.note}" if d.note else "")
         body = d.label.removeprefix(CONVENTION_PREFIX)
-        if body == "gap_convention":
-            data["gap_convention"] = {"value": d.code, "note": who}
+        if body in ("gap_convention", "loss_basis"):
+            data[body] = {"value": d.code, "note": who}
             continue
         _kind, total, inc = body.split(":")
         k = (total, tuple(inc.split("+")))

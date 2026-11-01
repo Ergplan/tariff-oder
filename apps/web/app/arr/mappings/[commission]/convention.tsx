@@ -11,6 +11,8 @@ const WORDS: Record<string, string> = {
   does_not_apply: "No",
   before_subsidy: "Before subsidy",
   after_subsidy: "After subsidy",
+  sales_within_state: "Sales within the state",
+  retail_sales: "All retail sales",
 };
 
 /** A reviewer's answer to one convention question of the mapping (increment 44); withdrawn

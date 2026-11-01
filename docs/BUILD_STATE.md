@@ -822,6 +822,25 @@ open-access view.
   convention (2 pieces of evidence, FY2026-27 petition and approval).  **No convention has been
   answered:** that is the reviewer's decision.  ARR-I4 (BERC's loss definition) poses no
   mapping question yet: the mapping has no field for it.
+
+  **Increment 45 (2026-11-01): the loss basis, the last convention behind a real-order
+  failure.**  BERC's energy balance (Table 4.5) grosses up the sales *within the state*: retail
+  sales 16,993.71 MU less inter-state sales to Nepal 196.49 = 16,797.22, at 11.46 % loss, give
+  the printed 18,971.33 MU.  A taxonomy line `E.SALES.INTERSTATE` (cross-border sales counted
+  in retail sales: "inter-state sales (Nepal)", "sales to Bangladesh"); a mapping
+  `loss_basis` (`retail_sales` or `sales_within_state`) that ARR-I4 honours; unstated, a
+  failing ARR-I4 that the within-state basis reconciles names it (still blocking) and the
+  workbench asks "Does BERC's distribution loss apply to the sales within the state only?".
+  **A first attempt was wrong and was measured wrong:** the generic aliases "inter-state
+  sales" also caught HPSEBL's "Inter State Sale" (2,540.44 MU of surplus power sold to other
+  states, not retail sales) and refusing "excluding" on the sales dropped NPCL's "sales
+  excluding inter-state sales" (its retail sales, 3 values); both were reverted, so a bare
+  inter-state sale stays unplaced for each commission's mapping to decide.  **Measured, all four
+  real orders:** UPERC 515 values, 2 failures (gap convention, posed); BERC 440, 3 (1 posed as the
+  loss basis; 2 — FY2025-26, which deducts "Nepal + SLDC Deviation" — unexplained); HPERC 648,
+  0; JSERC 470, 5 (4 posed as power purchase inclusive of transmission; 1 unexplained).  Every
+  blocking failure on the four real orders is now either a convention question for a reviewer
+  or recorded as unexplained; none is waved through.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1364,6 +1383,10 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
 
 ## Reading reliability ledger changes
 
+Increment 45 (loss basis, A15): BERC's within-state loss basis posed; a generic "inter-state
+sales" alias was tried, found wrong on HPERC and NPCL by measurement, and narrowed to
+cross-border sales.
+
 Increment 44 (ARR conventions): A8 and A14 now pose their questions to the reviewer in the
 mapping workbench, with the failing values as evidence; ARR-I1 honours a stated
 `total_includes`.  JSERC's power purchase convention explains 4 of its 5 failures; the fifth is
@@ -1409,6 +1432,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 45 (2026-11-01): 364 passed** (+1 unit: cross-border sales placed apart, a bare inter-state sale not; ARR-I4's hint and its pass under `loss_basis`; the integration conventions test now also answers the loss basis and drafts it).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 44 (2026-11-01): 363 passed** (+1 unit: a total printed inclusive of other lines — the hint when unstated, the pass when the mapping states it, no hint when no known convention explains; +1 integration: a convention question posed from a preview, answered by a reviewer only, validated, drafted into a valid mapping, withdrawn).  Ruff, format, contracts-check and web typecheck clean; migration 0020 applied on the local stack.
 - **Increment 43 (2026-11-01): 361 passed** (+3 unit: a paragraph-numbered order is read by its headings inside its "Chapter N" parts, wrapped chapter titles joined, the hearing part flagged; a label naming what a line is for is not that line (`not_when`); a cost row named like a quantity follows the table's unit, and singular/plural aliases).  Ruff, format and contracts-check clean; no web change.
 - **Increment 42 (2026-11-01): 358 passed** (+2 unit: short-form years and the Amount column; a row whose unit contradicts the line is not placed; +1 integration: a commission without a mapping drafts its first version from the generic skeleton).
@@ -1586,7 +1610,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 44) — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 45) — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -1599,7 +1623,8 @@ entries below are the per-increment history.**
      chapter's end, confirm.
   2. **Reviewer, mappings:** decide the unplaced labels in `/arr/mappings/UPERC`, `/BERC`,
      `/HPERC`, `/JSERC`; answer each workbench's **Conventions** questions (UPERC's gap
-     convention; JSERC's power purchase inclusive of transmission) and set the loss definition (identities ARR-I3 on
+     convention; JSERC's power purchase inclusive of transmission; BERC's loss basis), look at
+     the three failures no convention explains (BERC FY2025-26 ×2, JSERC FY2025-26 APR) (identities ARR-I3 on
      UPERC and ARR-I4 on BERC fail on convention, increment 40; ARR-I1 on JSERC because its
      power purchase total includes transmission, increment 43); draft with `tariff-api
      mapping-draft`, commit, confirm.  Until a mapping is confirmed, real lines of that
@@ -1613,8 +1638,7 @@ entries below are the per-increment history.**
 - *Engineering next:* the extraction over confirmed real chapters (measure precision against
   the reviewer's decisions — the first real precision figure); per-commission true-up formats;
   organisation-owned sources for private documents; normative checks of actuals against
-  regulation parameters; a mapping field for the loss definition behind ARR-I4 (BERC) so it
-  becomes a workbench question too; more real orders (the profiles list
+  regulation parameters; more real orders (the profiles list
   JSERC's FY2024-25 and FY2025-26 orders and JERC Goa & UTs).
 
 000000000000000. **Reviewer (increment 39):** open `/arr/mappings/UPERC` (and `/arr/mappings/BERC`

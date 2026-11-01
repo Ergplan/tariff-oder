@@ -665,3 +665,34 @@ def test_a_total_printed_inclusive_of_other_lines_is_a_convention_question():
     off = [*vals[:1], Value("C.PP", Decimal("50"), "INR_crore", "p.1"), *vals[2:]]
     (g,) = [x for x in evaluate(off, taxonomy=TAX, mapping=SYN, group=group) if x.identity_id == "ARR-I1"]
     assert "reconciles_if" not in g.detail
+
+
+def test_the_loss_basis_is_a_convention_question():
+    """BERC's energy balance (increment 45): the loss grosses up the sales within the state
+    (retail sales less inter-state sales to Nepal).  The rows are placed apart; with no
+    convention stated ARR-I4 stays blocking and names it; with ``loss_basis`` it passes."""
+    placer = Placer(TAX, load_mapping("NOSUCH", fallback=True), "distribution")
+
+    def code(label: str) -> str | None:
+        p = placer.place(label, "MU")
+        return p.code if p else None
+
+    assert code("Energy sales (retail sales only)") == "E.SALES"
+    assert code("Less: Inter-state sales (Nepal)") == "E.SALES.INTERSTATE"
+    # a bare inter-state sale is ambiguous (HPSEBL's is surplus power sold to other states)
+    assert code("Inter State Sale(MU)") != "E.SALES.INTERSTATE"
+    # the sales within the state are no inter-state sales (and, as NPCL prints its retail sales
+    # this way, they stay a reading of the sales: the first printed sales value is the one used)
+    assert code("Energy sales excluding Inter-state sales") == "E.SALES"
+
+    vals = [
+        Value("E.SALES", Decimal("16993.71"), "MU", "p.141"),
+        Value("E.SALES.INTERSTATE", Decimal("196.49"), "MU", "p.141"),
+        Value("E.LOSS.DIST_PCT", Decimal("11.46"), "percent", "p.141"),
+        Value("E.INPUT.DIST", Decimal("18971.33"), "MU", "p.141"),
+    ]
+    group = {"fiscal_year": "FY2024-25", "value_type": "actual"}
+    (f,) = [x for x in evaluate(vals, taxonomy=TAX, mapping=SYN, group=group) if x.identity_id == "ARR-I4"]
+    assert f.severity == "blocking" and f.detail["reconciles_if"]["loss_basis"] == "sales_within_state"
+    stated = SYN.model_copy(update={"loss_basis": SYN.loss_basis.model_copy(update={"value": "sales_within_state"})})
+    assert not [x for x in evaluate(vals, taxonomy=TAX, mapping=stated, group=group) if x.identity_id == "ARR-I4"]

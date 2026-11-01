@@ -115,6 +115,27 @@
       "sign": null
     },
     {
+      "code": "E.SALES.INTERSTATE",
+      "label": "Sales across the border (to Nepal, Bangladesh) counted in the retail sales",
+      "unit": "MU",
+      "kind": "printed",
+      "branch": "distribution",
+      "parent": "E",
+      "aliases": [
+        "inter-state sales (Nepal)",
+        "inter-state sale (Nepal)",
+        "cross-border sales",
+        "sales to Nepal",
+        "sales to Bangladesh"
+      ],
+      "not_when": [
+        "excluding"
+      ],
+      "note": "Part of the retail sales; some commissions apply the distribution loss to the sales within the state only (the mapping's loss_basis).  A bare \"inter-state sale\" is not this line by default: HPSEBL's is surplus power sold to other states; a commission's mapping decides.",
+      "by_category": false,
+      "sign": null
+    },
+    {
       "code": "E.SALES.OA",
       "label": "Open-access drawal wheeled through the network",
       "unit": "MU",

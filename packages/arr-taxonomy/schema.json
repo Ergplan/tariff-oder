@@ -697,6 +697,9 @@
           "title": "Total Includes",
           "type": "array"
         },
+        "loss_basis": {
+          "$ref": "#/$defs/Noted"
+        },
         "unit_convention": {
           "$ref": "#/$defs/UnitConvention"
         },

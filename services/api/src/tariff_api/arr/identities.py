@@ -207,12 +207,24 @@ def evaluate(
                 f.detail["gap_convention"] = "unconfirmed: both conventions tried"
             out.append(f)
 
-    # I4: E.INPUT.DIST = E.SALES / (1 - loss / 100)
+    # I4: E.INPUT.DIST = E.SALES / (1 - loss / 100), the sales within the state when the
+    # mapping's loss_basis says the loss applies to them
     inp, sales, loss = g.get("E.INPUT.DIST"), g.get("E.SALES"), g.get("E.LOSS.DIST_PCT")
     if inp is not None and sales is not None and loss is not None and loss.value < 100:
-        e = sales.value / (1 - loss.value / 100)
-        f = _finding(ids["ARR-I4"], group, e, inp, [sales, loss], "MU", "sales grossed up by the loss")
+        basis = (mapping.loss_basis.value if mapping else None) or None
+        inter = g.get("E.SALES.INTERSTATE")
+        within = basis == "sales_within_state" and inter is not None
+        base = sales.value - inter.value if within and inter is not None else sales.value
+        used = [sales, loss, *([inter] if within and inter is not None else [])]
+        what = "sales within the state grossed up by the loss" if within else "sales grossed up by the loss"
+        f = _finding(ids["ARR-I4"], group, base / (1 - loss.value / 100), inp, used, "MU", what)
         if f:
+            if basis is None and inter is not None and inter.value:
+                alt = (sales.value - inter.value) / (1 - loss.value / 100)
+                if _finding(ids["ARR-I4"], group, alt, inp, [], "MU", "") is None:
+                    why = "the distribution loss applies to the sales within the state, inter-state sales excluded"
+                    f.detail["reconciles_if"] = {"loss_basis": "sales_within_state", "why": why}
+                    f.message += f"; it reconciles if {why}: a convention for the mapping reviewer"
             out.append(f)
 
     # I7: R.ACOS = R.ARR / E.SALES * 10 (Rs/kWh from crore and MU)
