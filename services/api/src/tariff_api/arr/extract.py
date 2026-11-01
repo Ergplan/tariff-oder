@@ -86,6 +86,19 @@ def row_licensees(
     return lic_col, owner, heading_rows
 
 
+_SUB_ROW = re.compile(r"^\W*(?:on|for|towards|of|to)\s+\S", re.I)
+
+
+def sub_row_label(label: str, heading: str | None) -> str:
+    """A sub-row read with its heading row ("Interest & Finance Charges", values blank) when its
+    label opens with a preposition: "On Consumer Security Deposit" is "Interest on Consumer
+    Security Deposit" — the heading's leading words, up to its first "&" or "and"."""
+    if not heading or not _SUB_ROW.match(label):
+        return label
+    lead = re.split(r"\s*(?:&|\band\b|,|\()\s*", heading.strip(), maxsplit=1)[0].strip()
+    return f"{lead} {label.strip()}" if lead else label
+
+
 def licensee_named(text: str, licensees: dict[str, list[str]]) -> str | None:
     """The one licensee a header or caption names (by code or name), or None (none, or several)."""
     t = (text or "").lower()
@@ -412,6 +425,7 @@ def read_grids(
             )
         unit_col = next((j for j in others if _UNIT_HDR.match(headers[j])), None)
         report.grids_read += 1
+        group_heading: str | None = None  # the last row with a label and no values
         for i, row in enumerate(g.rows[max(1, g.header_rows) :], start=max(1, g.header_rows)):
             cells = [(c or "").strip() for c in row]
             if i in heading_rows:
@@ -421,6 +435,13 @@ def read_grids(
                 label = cells[label_col + 1]  # an S.No. column before the particulars
             if not label or label.lower() in ("particulars", "s. no.", "sl. no."):
                 continue
+            if all(not (cells[c.col] if c.col < len(cells) else "") for c in columns):
+                group_heading = label  # a heading row with no values: its sub-rows follow
+                continue
+            elif _SUB_ROW.match(label):
+                label = sub_row_label(label, group_heading)
+            else:
+                group_heading = None
             unit_cell = cells[unit_col] if unit_col is not None and unit_col < len(cells) else ""
             row_unit = label_unit(label) or unit_from_text(unit_cell) or table_unit
             placed = placer.place(label, unit_hint=_unit_class(row_unit))

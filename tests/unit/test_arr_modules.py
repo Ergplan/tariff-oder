@@ -917,3 +917,41 @@ def test_a_licensee_column_keeps_its_own_voice_and_a_label_names_what_precedes_i
     assert got[("WESTCO", "C.DEP", "approved")] == "1.84"
     assert not [k for k in got if k[1].startswith("C.TX")]  # the qualifier is not the line
     assert not [k for k in got if k[0] not in lic]  # the State columns are a total
+
+
+def test_sub_rows_are_read_with_their_heading_row():
+    """MPERC's ARR summary (increment 48), SYNTHETIC figures: "Interest & Finance Charges" with
+    no values, then "On Project Loans", "On Working Capital Loans", "On Consumer Security
+    Deposit"; each sub-row is the heading's interest of that kind, and the total reconciles."""
+    tax = load_taxonomy()
+    mapping = load_mapping("NOSUCH", fallback=True)
+    grid = GridIn(
+        15,
+        0,
+        [
+            ["Particulars", "Claimed", "Admitted"],
+            ["Power Purchase Cost", "100.00", "90.00"],
+            ["Interest & Finance Charges", "", ""],
+            ["On Project Loans", "3.43", "3.58"],
+            ["On Working Capital Loans", "0.45", "0.71"],
+            ["On Consumer Security Deposit", "1.16", "1.08"],
+            ["Return on Equity", "3.13", "2.90"],
+            ["Total Expenses", "108.17", "98.27"],
+        ],
+        1,
+        ["Table 3: Aggregate Revenue Requirement for FY 2026-27 (Rs. Crore)"],
+    )
+    out, _ = read_grids(
+        [grid], taxonomy=tax, mapping=mapping, placer=Placer(tax, mapping, "distribution"), source_id="s", utility="SYN"
+    )
+    got = {(c.line_code, c.value_type): c.stated_value for c in out.candidates if c.stated_value}
+    assert got[("C.INT.LOAN", "petitioned")] == "3.43"
+    assert got[("C.INT.WC", "approved")] == "0.71"
+    assert got[("C.INT.CSD", "approved")] == "1.08"
+    vals = [
+        Value(c.line_code, Decimal(c.canonical_value), c.canonical_unit, "p.15")
+        for c in out.candidates
+        if c.value_type == "approved" and c.canonical_value is not None
+    ]
+    group = {"fiscal_year": "FY2026-27", "value_type": "approved"}
+    assert not [f for f in evaluate(vals, taxonomy=tax, mapping=mapping, group=group) if f.identity_id == "ARR-I1"]

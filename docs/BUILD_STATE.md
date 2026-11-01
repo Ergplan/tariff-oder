@@ -910,6 +910,12 @@ open-access view.
   "Interest & Finance Charges" ("On Project Loans", "On Working Capital Loans", "On Consumer
   Security Deposit") and "R&D Fund" are not placed (507.04 of East's 507.06 claimed gap) â€” the
   MPERC mapping's work, not a convention.  Seven states now have a real order read.
+
+  **Increment 48 (in progress): sub-rows read with their heading row.**  A row with a label and
+  no values ("Interest & Finance Charges") is a heading, not a candidate; a following row whose
+  label opens with a preposition ("On Consumer Security Deposit") is read with the heading's
+  leading words ("Interest on Consumer Security Deposit").  372 tests pass; the measurement on
+  the seven real orders is running and is recorded when it finishes.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1510,6 +1516,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 48 (in progress): 372 passed** (+1 unit: sub-rows read with their heading row; the total reconciles).
 - **Increment 47 (2026-11-01): 371 passed** (+4 unit: lettered parts; licensee per row; a long chapter split at its three-level sections; a licensee's column keeps its own voice and a label names what precedes its qualifier; +1 integration: a mixed-case registry code resolves).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 46 (2026-11-01): 366 passed** (+2 unit: short-year listing titles; icon links titled by their column group, a listing for a group of licensees, encoded URLs, an MYT order known by its file name, procedural documents set aside).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 45 (2026-11-01): 364 passed** (+1 unit: cross-border sales placed apart, a bare inter-state sale not; ARR-I4's hint and its pass under `loss_basis`; the integration conventions test now also answers the loss basis and drafts it).  Ruff, format, contracts-check and web typecheck clean.
