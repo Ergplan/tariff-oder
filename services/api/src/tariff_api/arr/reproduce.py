@@ -373,17 +373,12 @@ def reproduce_period_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) 
                 continue
             want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q)
             got = res.value.quantize(q)
-            out.append(
-                BlockCheck(
-                    binding["sheet"],
-                    t["fiscal_year"],
-                    ref,
-                    output,
-                    "match" if got == want else "differs",
-                    filed=str(want),
-                    computed=str(got),
-                )
+            result = "match" if got == want else "differs"
+            check = BlockCheck(
+                binding["sheet"], t["fiscal_year"], ref, output, result, filed=str(want), computed=str(got)
             )
+            check.exact = str(res.value)
+            out.append(check)
     return out
 
 
@@ -582,11 +577,16 @@ def reproduce_pipeline(
         sources: dict[str, dict[str, str]] = {}
         missing: list[str] = []
         for source, f in feeds.items():
+            # a feed may take another year's value — the petitioner carries a rate forward
+            # (NPCL's FY2026-27 loan rate is its FY2025-26 rate) — only with the binding's reason
+            year = f.get("fiscal_year", fy)
+            if year != fy and not f.get("why"):
+                raise RuleError(f"{key}: {source} is fed from {year} without a reason")
             got = next(
                 (
                     c
                     for c in results.get(f["binding"], [])
-                    if c.fiscal_year == fy and c.output == f["output"] and c.exact is not None
+                    if c.fiscal_year == year and c.output == f["output"] and c.exact is not None
                 ),
                 None,
             )
@@ -595,6 +595,8 @@ def reproduce_pipeline(
                 continue
             fed[source] = (got.exact, unit_of[f["output"]])
             sources[source] = {"binding": f["binding"], "output": f["output"], "value": got.exact}
+            if year != fy:
+                sources[source]["fiscal_year"] = year
         rep = reproduce(sheets[chain["sheet"]], chain, rules, sheets, fed={(fy, voice): fed})
         checks = [asdict(c) for c in rep.checks if c.result != "no_filed_value"]
         out["columns"].append(

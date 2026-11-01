@@ -581,7 +581,12 @@ def test_npcl_petition_computed_end_to_end_from_the_schedules():
 
     import openpyxl
 
-    from tariff_api.arr.reproduce import reproduce_cells, reproduce_pipeline, reproduce_row_table
+    from tariff_api.arr.reproduce import (
+        reproduce_cells,
+        reproduce_period_table,
+        reproduce_pipeline,
+        reproduce_row_table,
+    )
     from tariff_api.arr.rules import load_rules
 
     folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
@@ -595,13 +600,18 @@ def test_npcl_petition_computed_end_to_end_from_the_schedules():
     for name in sorted({f["binding"] for feeds in pipe["columns"].values() for f in feeds.values()}):
         binding = json.loads((folder / "bindings" / name).read_text())
         wb = wb or openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
-        fn = reproduce_cells if binding["type"] == "cells" else reproduce_row_table
+        fn = {"cells": reproduce_cells, "period_table": reproduce_period_table}.get(
+            binding["type"], reproduce_row_table
+        )
         results[name] = fn(wb, binding, rules)
     out = reproduce_pipeline(pipe, chain, rules, sheets, results)
     cols = {c["fiscal_year"]: c for c in out["columns"]}
     for fy in ("FY2026-27", "FY2025-26"):
         assert cols[fy]["counts"] == {"match": 12}, cols[fy]["checks"]
         assert not cols[fy]["not_fed"]
+        # the loan rate from the MCLR revisions (the ARR year carries the APR year's, as NPCL does)
+        assert cols[fy]["fed"]["assumption:loan_interest_rate"]["output"] == "loan_rate_reference"
+    assert cols["FY2026-27"]["fed"]["assumption:loan_interest_rate"]["fiscal_year"] == "FY2025-26"
     assert {c["output"]: c["computed"] for c in cols["FY2026-27"]["checks"]}["arr_net"] == "3481.83"
     true_up = {c["output"]: c for c in cols["FY2024-25"]["checks"]}
     assert {o for o, c in true_up.items() if c["result"] == "differs"} == {

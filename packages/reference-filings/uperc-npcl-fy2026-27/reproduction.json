@@ -19547,7 +19547,7 @@
      "filed": "0.088822",
      "computed": "0.088822",
      "why": null,
-     "exact": null
+     "exact": "0.08882191780821917808219178082"
     },
     {
      "table": "F27_Work Cap",
@@ -19558,7 +19558,7 @@
      "filed": "0.113822",
      "computed": "0.113822",
      "why": null,
-     "exact": null
+     "exact": "0.1138219178082191780821917808"
     },
     {
      "table": "F27_Work Cap",
@@ -19569,7 +19569,7 @@
      "filed": "0.088262",
      "computed": "0.088262",
      "why": null,
-     "exact": null
+     "exact": "0.08826164383561643835616438356"
     },
     {
      "table": "F27_Work Cap",
@@ -19580,7 +19580,7 @@
      "filed": "0.098262",
      "computed": "0.098262",
      "why": null,
-     "exact": null
+     "exact": "0.09826164383561643835616438356"
     }
    ]
   },
@@ -40958,12 +40958,17 @@
        "binding": "f30-security-deposit.json",
        "output": "isd_interest_annual",
        "value": "24.23792157455499090"
+      },
+      "assumption:loan_interest_rate": {
+       "binding": "f27-mclr-rates.json",
+       "output": "loan_rate_reference",
+       "value": "0.09826164383561643835616438356",
+       "fiscal_year": "FY2025-26"
       }
      },
      "not_fed": [],
      "records": [
       "assumption:gap_carrying_rate",
-      "assumption:loan_interest_rate",
       "assumption:tax_rate_income",
       "assumption:tax_rate_roe",
       "assumption:wc_interest_rate",
@@ -41238,12 +41243,16 @@
        "binding": "f30-security-deposit.json",
        "output": "isd_interest_annual",
        "value": "23.26292157455499090"
+      },
+      "assumption:loan_interest_rate": {
+       "binding": "f27-mclr-rates.json",
+       "output": "loan_rate_reference",
+       "value": "0.09826164383561643835616438356"
       }
      },
      "not_fed": [],
      "records": [
       "assumption:gap_carrying_rate",
-      "assumption:loan_interest_rate",
       "assumption:tax_rate_income",
       "assumption:tax_rate_roe",
       "assumption:wc_interest_rate",
@@ -41507,6 +41516,11 @@
        "binding": "arr-contingency.json",
        "output": "contingency_contribution",
        "value": "5.614872560766400"
+      },
+      "assumption:wc_interest_rate": {
+       "binding": "f27-mclr-rates.json",
+       "output": "wc_rate_trueup",
+       "value": "0.1138219178082191780821917808"
       }
      },
      "not_fed": [],
@@ -41515,7 +41529,6 @@
       "assumption:loan_interest_rate",
       "assumption:tax_rate_income",
       "assumption:tax_rate_roe",
-      "assumption:wc_interest_rate",
       "prior:equity_closing",
       "prior:normative_loan_closing",
       "record:ag_net",

@@ -216,6 +216,7 @@ def main() -> int:
 
             wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True, read_only=False)
             checks = reproduce_period_table(wb, binding, rules)
+            results[b.name] = checks
             for c in checks:
                 what = f"{binding['sheet'][:16]:16} {c.fiscal_year} {c.output:22} {c.result:8}"
                 print(f"{what} filed {c.filed} computed {c.computed}")

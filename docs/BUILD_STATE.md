@@ -1005,6 +1005,18 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 74 (2026-11-01): the rates fed from their reproduction.**  The pipeline now feeds
+  two rates from the MCLR revisions' reproduction (F27):
+  - the APR year's normative-loan rate (the weighted MCLR + 1 %), carried to the ARR year as
+    NPCL's F25 does (I14 = H14);
+  - the true-up year's working-capital rate (the weighted MCLR + 2.5 %).
+
+  A feed may take another year's value only with the binding's stated reason; without one it is
+  refused.  The APR and ARR years' working-capital rate is one MCLR NPCL picks from the list
+  (+ 2 %), a choice rather than a computation, so it stays a record.  **NPCL: unchanged results
+  with more of the inputs computed — ARR year 12 / 12 (13 fed), APR year 12 / 12 (14 fed),
+  true-up year 7 + 5 (A40's 0.19).**  No rule is approved.
+
   **Increment 73 (2026-11-01): the petition computed end to end from its schedules.**  A
   `pipeline` binding (`pipeline-petition.json`) evaluates the chain for the petition's columns
   with its record inputs **replaced by what each schedule's reproduction computes**: power
@@ -2023,6 +2035,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 74 (2026-11-01): 423 passed** (the end-to-end test checks the loan rate fed from the MCLR revisions, the ARR year's taken from the APR year with its reason).  Ruff and format clean.
 - **Increment 73 (2026-11-01): 423 passed** (+1 unit: the petition computed end to end from its schedules — ARR and APR years 12 / 12, the true-up year differing by exactly A40's 0.19; the integration test checks the projected column's end-to-end net ARR).  Ruff, format, contracts-check and web typecheck clean.
 - **Increment 72 (2026-11-01): 422 passed** (the regression pins the ARR summary at 128 matches).  Ruff and format clean.
 - **Increment 71 (2026-11-01): 422 passed** (the integration test now checks the coverage map: the projected column's power purchase tied, the net ARR computed, non-tariff income a record, nothing differing; findings A39–A41 served).  Ruff, format, contracts-check and web typecheck clean.
@@ -2284,10 +2297,12 @@ entries below are the per-increment history.**
   - ESR-3 for FY2023-24, whose subtotals subtract their own sub-rows;
   - reading the tariff order's rate schedule, so revenue is computed from rates, not only
     summed;
-  - feeding the pipeline's remaining rate assumptions from their reproductions (the MCLR
-    revisions, F27) and the capital inputs from the capital plan (F13 / F16);
+  - the capital inputs of the APR and ARR years (F14's capitalisation, contributions and
+    retirements) from the capital plan (F13 / F16);
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
-    bindings are not fitted to one petition.
+    bindings are not fitted to one petition — **blocked on the operator**: its documents
+    (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this
+    session; the FY2026-27 zip was the only copy provided.
 - *The way in (increment 52):* `/client/atlas` (map of India → state → discom → norms →
   petition; see `docs/user-journey.md`).  The atlas fills as the decisions above are taken:
   documents located → orders read → values reviewed → norms applied.  On the VM it needs the
