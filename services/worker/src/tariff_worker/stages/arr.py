@@ -25,7 +25,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from tariff_api.adapters.storage import ObjectNotFound, ObjectStore
-from tariff_api.arr.chapters import CHAPTERS_VERSION, part_from_note, propose_chapters
+from tariff_api.arr.chapters import CHAPTERS_VERSION, furniture, is_furniture, part_from_note, propose_chapters
 from tariff_api.arr.extract import ARR_RULES_VERSION, GridIn, compare, read_grids
 from tariff_api.arr.identities import EVALUATED, IDENTITIES_VERSION, Value, evaluate
 from tariff_api.arr.provider import ArrChannelUnavailable, build_arr_channel
@@ -116,7 +116,14 @@ def _artefact(s, storage: ObjectStore, src: SourceDocument, stage: str, tool_ver
 def _chapter_grids(doc, storage: ObjectStore, grid_keys: dict, chapter_rows: list) -> dict[int, list[GridIn]]:  # noqa: ANN001
     """Each chapter's primary grids, with the lines printed above each.  A table belongs to the
     last chapter heading above it, so a page shared by two chapters splits at the second
-    heading; a table is read once."""
+    heading; a table is read once.  The running headers and footers are not a table's caption:
+    "…Tariff determination for FY 2026-27" above a continued table names no year of it."""
+    skip = furniture(
+        {
+            i + 1: [ln for ln in doc[i].get_text("text", sort=True).splitlines() if ln.strip()]
+            for i in range(doc.page_count)
+        }
+    )
     cue_y = {ordinal: _heading_y(doc, cue_page, cue_text) for ordinal, _s, _e, _b, cue_page, cue_text in chapter_rows}
     seen: set[tuple[int, int]] = set()
     out: dict[int, list[GridIn]] = {}
@@ -138,6 +145,7 @@ def _chapter_grids(doc, storage: ObjectStore, grid_keys: dict, chapter_rows: lis
                 continue  # below a later chapter's heading on this page: that chapter's table
             seen.add((page, g_ord))
             above, _below = _lines_around(doc[page - 1], g["bbox"])
+            above = [ln for ln in above if not is_furniture(ln, skip)]
             grids.append(GridIn(page, g_ord, g["rows"], int(g.get("header_rows") or 0), above))
         out[ordinal] = grids
     return out

@@ -767,6 +767,40 @@ open-access view.
   SBPDCL (BERC) 161 of 503, 434 values, 3; HPSEBL (HPERC) 190 of 410, 618 values, 0.  The
   spot-checked HPERC ARR table (Table 244) reads petition and approval of power purchase
   (5,684.75 / 5,678.19), O&M (3,470.68 / 3,468.46) and SLDC charges as printed.
+
+  **Increment 43 (2026-11-01): a fourth real order with another layout — paragraph-numbered
+  orders.**  JSERC's MYT, true-up and APR order for JBVNL (`https://jserc.org/pdf/tariff_order/JBVNL-2026.pdf`,
+  SHA-256 `0391dd27…119108`, 3,665,495 bytes, 372 pages), registered locally as a real source.
+  JSERC numbers every *paragraph* ("5.13 Based on the information provided above…", up to
+  5.131) and heads its sections with unnumbered Title Case lines inside "Chapter N:" parts, so
+  the numbered rules proposed nothing useful.  **Chapter rules:** when an order has "Chapter N"
+  parts, fewer than five numbered headings with a cue, and numbered sentences outnumbering them
+  three to one, the numbers mark paragraphs: chapters follow the Title Case and capitals
+  headings, each noting its "Chapter N" part, a part's own page ends the chapter before it, and
+  the same line in two parts is two chapters.  A "Chapter N:" title that wraps ("TRUE-UP FOR FY"
+  over "2024-25") is joined with its capitalised continuation (a page number never).  A part
+  that reports the petition or the hearing ("Brief facts of the petition", "Public consultation")
+  is noted as likely not the Commission's decisions.  **74 chapters**, structured by Chapter 5
+  (true-up FY2024-25), 6 (APR FY2025-26), 7–8 (business plan and MYT FY2026-27 to FY2030-31), 9
+  (gap); chapters 1–36 are the petition and hearing parts for the reviewer to exclude.  UPERC
+  30, BERC 36 and HPERC 42 chapters are unchanged (a numbered order without "Chapter N" parts
+  never enters the new mode).  **Reading rules:** running headers and footers are no longer a
+  table's caption (a continued table under "…Tariff determination for FY 2026-27" took that
+  year); a taxonomy line can list `not_when` phrases that refuse a match inside a longer label
+  ("Total Energy Available for Sales" is not the sales, "Energy Input Directly to State
+  Transmission System" and "Direct Input Energy from State Solar System" are not the input at
+  the distribution periphery); "power purchase" in a crore table is the cost, in an MU table the
+  quantity; a multi-word alias matches its singular or plural.  **Measured through the live
+  preview, all four real orders, read-only:** NPCL (UPERC) 181 of 353 tables, 515 values, 2
+  identity failures (gap convention, A8); NBPDCL + SBPDCL (BERC) 160 of 503, 434 values, 3
+  (loss definition, A8); HPSEBL (HPERC) 195 of 434, 648 values, 0; **JBVNL (JSERC) 128 of 292,
+  470 values, 5.**  On JSERC the energy balance now satisfies ARR-I4 for FY2024-25 and FY2025-26
+  in every voice (sales 11,055.39 MU at 13 % loss gives the printed 12,707.34 MU requirement); the
+  5 failures are all ARR-I1 on the two ARR summaries, and each differs by exactly the inter-state
+  plus intra-state transmission charges (558.56 + 382.02 = 940.58 for the FY2024-25 APR
+  column): JSERC's "Total Power Purchase Expense" includes transmission, a convention for the
+  reviewer's JSERC mapping.  Before the placement rules the JSERC preview was 290 values with
+  the true-up's years wrong (FY2026-27 from the running header) and 12 failures.
   **Still open in the M1 gate:** Cloud Logging
   is visible (worker logs read through `gcloud logging read`); the backup/restore drill on
   Cloud SQL (Milestone 8) and the post-deploy integration run remain.
@@ -1300,9 +1334,21 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
   `ff36813e…174b1a` NPCL, `d84997a4…95fcf50` KERC, `1c4697f8…95925e1a` GERC.
 - The console-made folder placeholder `inbox/` (a zero-byte object) is now skipped by the
   inbox listing and refused by ingest before any bytes are read (found in that listing; tested).
+- **Real orders read in the build session's local stack (dataset `real`, read-only to
+  `chapters_proposed`; the local stack is ephemeral):** NPCL FY2026-27 (UPERC) `ff36813e…`, 423
+  pp.; NBPDCL + SBPDCL FY2026-27 (BERC) `a247053b…`, 612 pp.; HPSEBL FY2026-27 (HPERC)
+  `0f3d9e9d…ec74`, 525 pp.; JBVNL MYT/true-up/APR 2026 (JSERC)
+  `0391dd2701c7bbb7a962923212ef5a8ed6c9cdfbfea601df692d7ce4aa119108`, 372 pp.
 - Synthetic fixtures only (dataset `fixture`): `mixed_text_and_image_pdf` (6 pages), `text_only_pdf` variants, `not_a_pdf`.
 
 ## Reading reliability ledger changes
+
+Increment 43 (ARR, fourth real order): JSERC's paragraph-numbered layout (A12) — 74 chapters by
+its "Chapter N" parts; running headers as captions, contained aliases naming another thing and
+a unit-dependent alias (A13) — found by ARR-I4, which now passes on JSERC's energy balance; a
+total that includes transmission (A14, open, a reviewer's mapping convention).  Measured:
+128 of 292 tables, 470 values; four real orders measured; precision still needs reviewer
+decisions.
 
 Increment 39 (ARR, second real order): BERC's 612-page combined order — 36 chapters matching its
 sections on first contact with rules v2; the reader took paragraphs above tables for captions
@@ -1337,6 +1383,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 43 (2026-11-01): 361 passed** (+3 unit: a paragraph-numbered order is read by its headings inside its "Chapter N" parts, wrapped chapter titles joined, the hearing part flagged; a label naming what a line is for is not that line (`not_when`); a cost row named like a quantity follows the table's unit, and singular/plural aliases).  Ruff, format and contracts-check clean; no web change.
 - **Increment 42 (2026-11-01): 358 passed** (+2 unit: short-form years and the Amount column; a row whose unit contradicts the line is not placed; +1 integration: a commission without a mapping drafts its first version from the generic skeleton).
 - **Increment 41 (2026-11-01): 355 passed** (the end-to-end ARR test now checks the preview: one table read per chapter, the identity failure flagged before reading, and the preview's value count equal to the candidates read).
 - **Increment 40 (2026-11-01): 355 passed** (+1 unit: a power source's "Total Cost" is not placed on total expenditure outside a summary; in a table titled as the ARR summary it is).
@@ -1512,19 +1559,21 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 42) — read this entry first; the numbered
+**Where things stand (2026-11-01, after increment 43) — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
-  1. **Reviewer, chapters:** the three real orders read in the build session (NPCL FY2026-27 /
-     UPERC, NBPDCL+SBPDCL FY2026-27 / BERC, HPSEBL FY2026-27 / HPERC) sit at
-     `chapters_proposed` with a per-chapter preview.  Re-register them on the deployed stack
+  1. **Reviewer, chapters:** the four real orders read in the build session (NPCL FY2026-27 /
+     UPERC, NBPDCL+SBPDCL FY2026-27 / BERC, HPSEBL FY2026-27 / HPERC, JBVNL 2026 / JSERC) sit
+     at `chapters_proposed` with a per-chapter preview.  Re-register them on the deployed stack
      (the build session's local stack is ephemeral; URLs and hashes are in increments 37, 39,
-     42), exclude the non-ARR chapters (public hearing, directives, open-access annexes), set
-     the capped last chapter's end, confirm.
+     42, 43), exclude the non-ARR chapters (public hearing, brief facts of the petition,
+     directives, open-access annexes — flagged in the chapter notes), set the capped last
+     chapter's end, confirm.
   2. **Reviewer, mappings:** decide the unplaced labels in `/arr/mappings/UPERC`, `/BERC`,
      `/HPERC`; set each mapping's `gap_convention` and loss definition (identities ARR-I3 on
-     UPERC and ARR-I4 on BERC fail on convention, increment 40); draft with `tariff-api
+     UPERC and ARR-I4 on BERC fail on convention, increment 40; ARR-I1 on JSERC because its
+     power purchase total includes transmission, increment 43); draft with `tariff-api
      mapping-draft`, commit, confirm.  Until a mapping is confirmed, real lines of that
      commission can be read and reviewed but not approved.
   3. **Operator, documents:** run the discovery profiles (UPERC, BERC, HPERC, JSERC, JERC Goa &
@@ -1536,7 +1585,9 @@ entries below are the per-increment history.**
 - *Engineering next:* the extraction over confirmed real chapters (measure precision against
   the reviewer's decisions — the first real precision figure); per-commission true-up formats;
   organisation-owned sources for private documents; normative checks of actuals against
-  regulation parameters; a fourth real order from a commission with yet another layout.
+  regulation parameters; a mapping-level way to state "this total includes those lines" (the
+  JSERC convention) so ARR-I1 checks it instead of failing; more real orders (the profiles list
+  JSERC's FY2024-25 and FY2025-26 orders and JERC Goa & UTs).
 
 000000000000000. **Reviewer (increment 39):** open `/arr/mappings/UPERC` (and `/arr/mappings/BERC`
    once a BERC mapping file exists — today BERC reads with the generic skeleton) and decide the

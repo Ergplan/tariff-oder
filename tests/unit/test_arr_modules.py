@@ -557,3 +557,82 @@ def test_a_row_whose_unit_contradicts_the_line_is_not_placed():
     out, rep = read_grids([grid], taxonomy=tax, mapping=mapping, placer=placer, source_id="s", utility="SYN")
     assert {c.line_code for c in out.candidates} == {"C.DEP"}
     assert any("printed in INR_crore, but E.SALES is in MU" in u.get("reason", "") for u in rep.unplaced)
+
+
+def test_an_order_whose_numbers_mark_paragraphs_is_read_by_its_headings():
+    """JSERC's layout (increment 43): every paragraph numbered "5.13", sections under Title Case
+    headings inside "Chapter N:" parts.  Numbered prose is no heading; the chapters follow the
+    Title Case headings, each in its part; a hearing part is flagged."""
+    mapping = load_mapping("NOSUCH", fallback=True)
+    pages = {
+        1: ["Chapter 4: PUBLIC CONSULTATION", "Power Purchase Cost", "4.12 The Petitioner has stated that the cost of"],
+        2: ["Chapter 5: TRUE-UP FOR FY 2024-25", "Energy Sales", "5.13 Based on the information provided above, the"],
+        3: ["5.14 Accordingly, the Commission approves the energy sales as", "Power Purchase Cost"],
+        4: ["5.40 The Petitioner has claimed the power purchase cost of", "Depreciation"],
+        5: [
+            "5.81 The Petitioner has claimed depreciation of Rs. 450.33 Crore",
+            "5.82 The Commission has considered the",
+        ],
+        6: ["Chapter 6: ANNUAL PERFORMANCE REVIEW FOR FY 2025-26", "Depreciation"],
+    }
+    chs = propose_chapters(pages, mapping, 6)
+    got = [(c.branch, c.cue_text, c.page_start, c.page_end) for c in chs]
+    assert got == [
+        ("C.PP", "Power Purchase Cost", 1, 1),
+        ("E", "Energy Sales", 2, 3),
+        ("C.PP", "Power Purchase Cost", 3, 4),
+        ("C.DEP", "Depreciation", 4, 5),  # ends where Chapter 6 begins
+        ("C.DEP", "Depreciation", 6, 6),
+    ], got
+    assert "Chapter 5" in (chs[1].note or "") and "Chapter 6" in (chs[4].note or "")
+    assert "likely not the Commission's decisions" in (chs[0].note or "")
+    assert not looks_like_heading("5.13 Based on the information provided above, the")
+    # a chapter title wraps its year onto the next line; its continuation is part of it
+    from tariff_api.arr.chapters import chapter_title
+
+    assert (
+        chapter_title(["Chapter 5: TRUE-UP FOR FY", "2024-25", "Energy Sales"], 0)
+        == "Chapter 5: TRUE-UP FOR FY 2024-25"
+    )
+    assert chapter_title(["Chapter 5:", "TRUE-UP FOR FY 2024-25", "5.1 The Petitioner has"], 0) == (
+        "Chapter 5: TRUE-UP FOR FY 2024-25"
+    )
+    assert chapter_title(["Chapter 9: REVENUE GAP", "Treatment of Revenue Gap"], 0) == "Chapter 9: REVENUE GAP"
+    assert chapter_title(["Chapter 9:", "REVENUE GAP", "299"], 0) == "Chapter 9: REVENUE GAP"
+
+
+def test_a_label_naming_what_a_line_is_for_is_not_that_line():
+    """JSERC's energy balance (increment 43): "Total Energy Available for Sales" contains
+    "sales" and "Energy Input Directly to State Transmission System" contains "energy input",
+    yet neither is the line; a taxonomy line's ``not_when`` phrases refuse such matches."""
+    placer = Placer(load_taxonomy(), load_mapping("NOSUCH", fallback=True), "distribution")
+
+    def code(label: str) -> str | None:
+        p = placer.place(label, "MU")
+        return p.code if p else None
+
+    assert code("Total Energy Available for Sales (MU)") != "E.SALES"
+    assert code("Energy Input Directly to State Transmission System (MU)") != "E.INPUT.DIST"
+    assert code("Direct Input Energy from State Solar System (MUs)") != "E.INPUT.DIST"
+    assert code("Energy Required for distribution (MU)") == "E.INPUT.DIST"
+    assert code("Total energy sold (MU)") == "E.SALES"
+    assert code("Energy Sales") == "E.SALES"
+    assert code("Energy input at DISCOM periphery") == "E.INPUT.DIST"
+
+
+def test_a_cost_row_named_like_a_quantity_follows_the_table_unit_and_number_agrees():
+    """ "Power Purchase Expense" in a crore table is the cost, in an MU table the quantity;
+    a multi-word alias matches its singular and plural (increment 43, JSERC's summary)."""
+    placer = Placer(load_taxonomy(), load_mapping("NOSUCH", fallback=True), "distribution")
+
+    def code(label: str, unit: str) -> str | None:
+        p = placer.place(label, unit)
+        return p.code if p else None
+
+    assert code("Power Purchase Expense", "INR_crore") == "C.PP"
+    assert code("Power Purchase", "MU") == "E.PP.QTY"
+    assert code("Employee Expense", "INR_crore") == "C.OM.EMPLOYEE"
+    assert code("Interest on Long Term Loan", "INR_crore") == "C.INT.LOAN"
+    assert code("Operations and Maintenance Expenses", "INR_crore") == "C.OM"
+    assert code("Sale of surplus power", "INR_crore") != "E.SALES"
+    assert not placer.collisions()

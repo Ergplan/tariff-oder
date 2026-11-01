@@ -26,6 +26,25 @@ _CAPTION = re.compile(r"^\s*(?:table|annexure|figure|format|statement)\s*(?:no\.
 _FY_TEXT = re.compile(r"(?:FY\s*)?20\d{2}\s*[-–/]\s*(?:20)?\d{2}", re.I)
 _NUMBER_TOKEN = re.compile(r"(?<![A-Za-z])\(?-?\d[\d,]*(?:\.\d+)?%?\)?(?![A-Za-z])")
 FURNITURE_MIN_PAGES = 5
+_SMALL = {"and", "of", "the", "for", "in", "on", "to", "by", "a", "an", "or", "as", "at", "with", "from", "under"}
+# a numbered sentence broken at the line's end, or opening like prose, is a paragraph
+_PROSE_END = re.compile(
+    r"\b(?:to|the|of|and|for|in|on|by|with|a|an|as|that|is|are|was|were|be|has|have|its|their|this|which)\s*$",
+    re.I,
+)
+_PROSE_START = re.compile(
+    r"^(?:the|this|these|it|its|in\s+(?:the|view|this)|on|as|based|accordingly|further|furthermore|hence|thus|"
+    r"therefore|however|since|considering|regarding|with|while|after|before|during|petitioner|commission)\b",
+    re.I,
+)
+_CHAPTER = re.compile(r"^\s*chapter\s+(\d{1,2})\s*[:.\-–]\s*(?:\S|$)", re.I)
+NUMBERED_MODE_MIN = 5
+# a part that reports the petition or the hearing, not the Commission's decisions
+_NOT_DECISIONS = re.compile(
+    r"public\s+(?:hearing|consultation)|objection|suggestions?\s+(?:and|&)|stakeholder|brief\s+facts|"
+    r"procedural\s+history|petitioner'?s?\s+submissions?\s*$|summary\s+of\s+(?:the\s+)?petition",
+    re.I,
+)
 
 
 @dataclass(frozen=True)
@@ -52,6 +71,8 @@ def looks_like_heading(line: str) -> bool:
         return False
     if _HEADING_NUMBER.match(t):
         if _SENTENCE_END.search(t) or not body or body[0].islower():
+            return False
+        if _PROSE_END.search(body) or _PROSE_START.match(body):
             return False
         words = re.findall(r"[A-Za-z][A-Za-z'&-]*", body)
         small = {"and", "of", "the", "for", "in", "on", "to", "by", "a", "an", "or", "as", "at", "with", "from"}
@@ -82,6 +103,43 @@ def _longest_run(heads: list) -> list:
         out.append(heads[i])
         i = prev[i]
     return out[::-1]
+
+
+def title_heading(line: str) -> bool:
+    """An unnumbered Title Case heading ("Interest on Working Capital", "Operation & Maintenance
+    Expenses"): short, every significant word capitalised, no sentence end, no number but a
+    year.  Used only for orders whose numbers mark paragraphs, not sections."""
+    t = line.strip()
+    if not t or len(t) > 80 or _LEADER.search(t) or _CAPTION.match(t) or re.search(r"\S\s{3,}\S", t):
+        return False
+    if _SENTENCE_END.search(t) or not t[0].isupper() or _NUMBER_TOKEN.search(_FY_TEXT.sub(" ", t)):
+        return False
+    words = re.findall(r"[A-Za-z][A-Za-z'’&/()-]*", t)
+    sig = [w for w in words if w.lower() not in _SMALL]
+    if not 1 <= len(words) <= 10 or not sig:
+        return False
+    return sum(1 for w in sig if w[0].isupper()) / len(sig) >= 0.8
+
+
+def chapter_title(lines: list[str], k: int) -> str:
+    """A "Chapter N:" line with the capitalised lines its title wraps onto ("Chapter 5: TRUE-UP
+    FOR FY" over "2024-25"; "Chapter 5:" over "TRUE-UP FOR FY 2024-25")."""
+    parts = [lines[k].strip()]
+    for nxt in lines[k + 1 : k + 4]:
+        t = nxt.strip()
+        letters = [c for c in t if c.isalpha()]
+        upper = not letters or sum(c.isupper() for c in letters) / len(letters) > 0.8
+        if re.fullmatch(r"[\d\s.]+", t):
+            break  # a page number, not a year ("2024-25") of the title
+        if not t or len(t) > 80 or not upper or _SECTION_NUMBER.match(t) or _CHAPTER.match(t) or _LEADER.search(t):
+            break
+        parts.append(t)
+    return re.sub(r"\s+", " ", " ".join(parts)).strip()
+
+
+def is_furniture(line: str, skip: set[str]) -> bool:
+    """Whether a line is a running header or footer of the order (see :func:`furniture`)."""
+    return _norm(line) in skip
 
 
 def furniture(page_lines: dict[int, list[str]]) -> set[str]:
@@ -127,6 +185,9 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
     skip = furniture(page_lines)
     # every heading in document order: (page, section number or None, branch cue or None, text)
     heads: list[tuple[int, tuple[int, ...] | None, str | None, str]] = []
+    titled: list[tuple[int, None, str, str]] = []  # Title Case headings with a cue
+    chapters_: list[tuple[int, tuple[int, ...], None, str]] = []  # "Chapter 5: TRUE-UP FOR FY 2024-25"
+    numbered_prose = 0  # numbered lines that are sentences: the mark of paragraph numbering
     part_of: dict[int, str] = {}
     for page in sorted(page_lines):
         lines = page_lines[page]
@@ -136,8 +197,17 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
             n = _norm(ln)
             if n in skip and len(ln.strip()) > 12 and not re.search(r"^[#\s/|-]+$|\bpage\b|# of #", n):
                 part_of.setdefault(page, ln.strip()[:120])
-        for line in lines:
-            if _norm(line) in skip or not looks_like_heading(line):
+        for k, line in enumerate(lines):
+            if _norm(line) in skip:
+                continue
+            cm = _CHAPTER.match(line)
+            if cm and len(line.strip()) <= 120:
+                chapters_.append((page, (int(cm.group(1)),), None, chapter_title(lines, k)[:300]))
+            if not looks_like_heading(line):
+                if _SECTION_NUMBER.match(line) and len(line.strip()) > 40:
+                    numbered_prose += 1
+                if title_heading(line) and (hit := _cue(mapping, line)):
+                    titled.append((page, None, hit[0], line.strip()[:300]))
                 continue
             m = _SECTION_NUMBER.match(line)
             number = tuple(int(x) for x in m.group(1).split(".")) if m else None
@@ -145,7 +215,28 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
             if number is not None or hit:
                 heads.append((page, number, hit[0] if hit else None, line.strip()[:300]))
     numbered = [h for h in heads if h[1] is not None]
-    if numbered:
+    paragraphs = False
+    if (
+        chapters_
+        and sum(1 for h in numbered if h[2]) < NUMBERED_MODE_MIN
+        and numbered_prose >= max(3, 3 * len(numbered))
+    ):
+        # the numbers mark paragraphs, not sections: read the order by its unnumbered headings
+        # (capitals or Title Case) inside its "Chapter N" parts
+        numbered, paragraphs = [], True
+        firsts: dict[int, tuple] = {}
+        for c in chapters_:
+            firsts.setdefault(c[1][0], c)
+        heads = sorted([h for h in heads if h[1] is None] + titled, key=lambda h: h[0])
+
+        def chapter_of(pg: int) -> tuple[int, ...] | None:
+            before = [c for c in firsts.values() if c[0] <= pg]
+            return max(before, key=lambda c: c[0])[1] if before else None
+
+        cues = [(pg, branch, text, chapter_of(pg)) for pg, _n, branch, text in heads if branch]
+        boundaries = [(c[0], c[1]) for c in firsts.values()]
+        tops = [(c[0], c[1][0], c[3]) for c in firsts.values()]
+    elif numbered:
         # the order numbers its sections: keep the longest run of section numbers that never
         # goes backwards (a list item "5.1" inside section 4.16, or "3." inside a section, is
         # not a section), and only those open or close chapters
@@ -167,8 +258,8 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
         tops = []
     merged: list[tuple[int, str, str, tuple[int, ...] | None]] = []
     for c in cues:
-        if merged and merged[-1][1] == c[1]:
-            continue
+        if merged and merged[-1][1] == c[1] and (not paragraphs or merged[-1][3] == c[3]):
+            continue  # the same line again (in the same part, when the parts are "Chapter N")
         merged.append(c)
     out: list[ChapterProposal] = []
     for i, (page, branch, text, _numbered) in enumerate(merged):
@@ -183,6 +274,13 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
                 for b_page, b_num in boundaries
                 if page < b_page < end and this is not None and b_num[0] > this[0]
             ]
+            if paragraphs:
+                # a "Chapter N" part opens on its own page: the chapter before ends a page earlier
+                stop = [
+                    b_page - 1
+                    for b_page, b_num in boundaries
+                    if page < b_page <= end and (this is None or b_num[0] > this[0])
+                ]
             if stop:
                 end = min(stop)
         else:
@@ -193,6 +291,9 @@ def propose_chapters(page_lines: dict[int, list[str]], mapping: Mapping, page_co
         top = [t for t in tops if this is not None and t[1] == this[0] and t[0] <= page]
         if top and top[-1][2] != text:
             notes.append(f"in section: {top[-1][2][:120]}")
+        context = " ".join([top[-1][2] if top else "", part_of.get(page, "")])
+        if _NOT_DECISIONS.search(context):
+            notes.append("this part reports the petition or the hearing: likely not the Commission's decisions")
         if part_of.get(page):
             notes.append(f"in the part headed: {part_of[page]}")
         out.append(ChapterProposal(i + 1, branch, text, page, page, end, "; ".join(notes) or None))

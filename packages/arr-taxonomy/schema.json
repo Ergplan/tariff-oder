@@ -202,6 +202,14 @@
               ],
               "default": null,
               "title": "Sign"
+            },
+            "not_when": {
+              "description": "Phrases that, found in a row label, refuse a match on one of this line's aliases inside a longer label: \"Total energy available for sales\" contains \"sales\" but is not the sales.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Not When",
+              "type": "array"
             }
           },
           "required": [

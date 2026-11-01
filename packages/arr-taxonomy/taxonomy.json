@@ -103,6 +103,13 @@
         "sales to consumers",
         "energy sold"
       ],
+      "not_when": [
+        "available for sale",
+        "available for sales",
+        "required for sale",
+        "required for sales",
+        "energy available"
+      ],
       "note": "Printed by consumer category; the categories are the tariff categories already in the registry, so a sales row cites the same category code as the rate schedule.",
       "by_category": true,
       "sign": null
@@ -154,6 +161,13 @@
         "energy requirement at DISCOM periphery",
         "energy required",
         "input energy"
+      ],
+      "not_when": [
+        "transmission system",
+        "state transmission",
+        "to stu",
+        "to transmission",
+        "direct input"
       ],
       "note": "Printed by most commissions and recomputed: E.SALES / (1 - E.LOSS.DIST_PCT).",
       "by_category": false,
@@ -639,6 +653,7 @@
         "power purchase cost",
         "cost of power purchase",
         "power purchase expenses",
+        "power purchase (Rs crore)",
         "PPC",
         "cost of power"
       ],
@@ -951,6 +966,7 @@
       "aliases": [
         "O&M expenses",
         "operation and maintenance",
+        "operations and maintenance",
         "O and M",
         "O&M"
       ],

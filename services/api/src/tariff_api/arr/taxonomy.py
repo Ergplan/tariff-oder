@@ -31,6 +31,13 @@ class LineItem(BaseModel):
     note: str | None = None
     by_category: bool = False
     sign: Literal[-1, 1] | None = None
+    not_when: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Phrases that, found in a row label, refuse a match on one of this line's aliases inside a longer "
+            'label: "Total energy available for sales" contains "sales" but is not the sales.'
+        ),
+    )
 
 
 class Identity(BaseModel):
@@ -226,6 +233,7 @@ class Placer:
         self.kind = licensee_kind
         self._unit: dict[str, str | None] = {i.code: i.unit for i in taxonomy.line_items}
         self._exact: dict[str, list[tuple[str, str]]] = {}  # norm alias -> [(code, branch)]
+        self._not_when = {i.code: [norm_label(p) for p in i.not_when] for i in taxonomy.line_items if i.not_when}
         for item in taxonomy.line_items:
             if item.kind == "group":
                 continue
@@ -233,6 +241,13 @@ class Placer:
                 n = norm_label(alias)
                 if n and (item.code, item.branch) not in self._exact.setdefault(n, []):
                     self._exact[n].append((item.code, item.branch))
+        # a multi-word alias also matches its last word's singular or plural ("employee
+        # expense", "interest on long term loan"); a variant never displaces an alias of its own
+        for alias, opts in list(self._exact.items()):
+            if " " not in alias or not alias[-1].isalpha():
+                continue
+            variant = alias[:-1] if alias.endswith("s") and not alias.endswith("ss") else alias + "s"
+            self._exact.setdefault(variant, list(opts))
         if mapping is not None:
             for e in mapping.label_aliases.entries:
                 n = norm_label(str(e.get("label") or ""))
@@ -272,6 +287,10 @@ class Placer:
                 continue
             if re.search(rf"(?<![a-z0-9]){re.escape(alias)}(?![a-z0-9])", n):
                 code = self._pick(self._exact[alias], unit_hint)
+                if code and any(
+                    re.search(rf"(?<![a-z0-9]){re.escape(p)}(?![a-z0-9])", n) for p in self._not_when.get(code, [])
+                ):
+                    continue  # the label names what the line is for, not the line
                 if code:
                     return Placement(code, alias, "contains")
         return None
