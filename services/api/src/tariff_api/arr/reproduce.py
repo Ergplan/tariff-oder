@@ -35,7 +35,7 @@ class OutputCheck:
     fiscal_year: str
     voice: str
     words: str
-    result: str  # match | differs | blocked | not_a_value | no_filed_value
+    result: str  # match | differs | blocked | not_a_value | no_filed_value | given (an input, not reproduced)
     filed: str | None = None
     computed: str | None = None
     unit: str | None = None
@@ -81,6 +81,7 @@ def reproduce(
     # the unit of rows the sheet leaves unstated (a format with no unit line), declared by the binding
     default_unit = binding.get("unit")
     blank_is_zero = set(binding.get("blank_is_zero", {}).get("rows", []))
+    negate = set(binding.get("negate", {}).get("rows", []))
     missing = [
         ref for ref in [*binding["inputs"].values(), *binding["outputs"].values()] if where(ref)[1] not in where(ref)[0]
     ]
@@ -105,6 +106,11 @@ def reproduce(
         table, n, _ = where(ref)
         return table[n]
 
+    def res_sources(output: str, ev: Any) -> set[str]:
+        """The non-rule sources the year's rule for ``output`` read directly."""
+        rule = next((r for r in rules if r.output == output and r.id == ev.results[output].rule), None)
+        return {s.source for s in rule.inputs.values()} if rule else set()
+
     out = FormatReproduction(sheet["sheet"], len(columns))
     sets: dict[str, RuleSet | RuleError] = {}
     for col in columns:
@@ -119,7 +125,10 @@ def reproduce(
         for source, row in binding["inputs"].items():
             c = cell(row, col)
             if c and c["state"] == "value":
-                values[source] = (c["value"], c["unit"] or row_of(row)["unit"] or default_unit)
+                v = c["value"]
+                if row in negate:  # a deduction the format prints negative, declared by the binding
+                    v = str(-Decimal(v))
+                values[source] = (v, c["unit"] or row_of(row)["unit"] or default_unit)
             elif c is None and row in blank_is_zero:
                 # declared by the binding, with its reason: the petitioner's formula reads this
                 # blank cell as zero.  Never assumed: an undeclared blank blocks.
@@ -142,6 +151,10 @@ def reproduce(
                 out.checks.append(OutputCheck(**base, result="blocked", filed=c["displayed"], why=why))
                 continue
             res = ev.results[output]
+            if any(row == r and src in res_sources(output, ev) for src, r in binding["inputs"].items()):
+                # the year's rule took this very row as its input: nothing was reproduced
+                out.checks.append(OutputCheck(**base, result="given", filed=c["displayed"], rule=res.rule))
+                continue
             unit = c["unit"] or row_of(row)["unit"] or default_unit or res.unit
             places = _places(c["displayed"])
             try:

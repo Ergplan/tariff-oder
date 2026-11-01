@@ -1,0 +1,272 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — interest on working capital (normative working capital at the reference rate)",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Interest on working capital (UPERC format F27), the arithmetic as NPCL's format writes it.",
+ "rules": [
+  {
+   "id": "uperc.iowc.om_month",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M expenses for one month",
+   "output": "wc_om_month",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "om / months_in_year",
+   "inputs": {
+    "om": {
+     "unit": "INR_crore",
+     "source": "fact:C.OM",
+     "note": "the year's net O&M expenses (ARR summary)"
+    },
+    "months_in_year": {
+     "unit": "number",
+     "source": "regulation",
+     "value": "12"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — interest on working capital (normative working capital at the reference rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.iowc.receivables",
+   "version": 1,
+   "status": "draft",
+   "title": "Receivables of one and a half months",
+   "output": "wc_receivables",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "(revenue + oa_revenue) * months / months_in_year",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "fact:R.REV.EXISTING",
+     "note": "net revenue from tariff at the current tariff"
+    },
+    "oa_revenue": {
+     "unit": "INR_crore",
+     "source": "record:open_access_revenue"
+    },
+    "months": {
+     "unit": "number",
+     "source": "regulation",
+     "value": "1.5",
+     "note": "one and a half months, as NPCL's F27 applies it; the clause to be confirmed"
+    },
+    "months_in_year": {
+     "unit": "number",
+     "source": "regulation",
+     "value": "12"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — interest on working capital (normative working capital at the reference rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "NPCL's projection (FY2025-26, FY2026-27): net tariff revenue plus open-access revenue.  The Commission's FY2025-26 approval (as F27 restates it) takes tariff revenue only; NPCL's true-up years use another base (FY2022-23 grossed up by 1.0473; FY2024-25 from billing) — not encoded: the receivables of a true-up year are the petitioner's, from its records"
+  },
+  {
+   "id": "uperc.iowc.receivables_trueup",
+   "version": 1,
+   "status": "draft",
+   "title": "Receivables of a true-up year, from the petitioner's records",
+   "output": "wc_receivables",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "receivables",
+   "inputs": {
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "record:wc_receivables_actual",
+     "note": "the petitioner's figure from its records (billing), with its source"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — interest on working capital (normative working capital at the reference rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "not computed for a true-up year: NPCL's base there is its billing (FY2022-23 grossed up by 1.0473; FY2024-25 from P3) — a record, not a norm"
+  },
+  {
+   "id": "uperc.iowc.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative working capital",
+   "output": "wc_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "max(om_month + spares + receivables - security_deposit, floor)",
+   "inputs": {
+    "om_month": {
+     "unit": "INR_crore",
+     "source": "rule:wc_om_month"
+    },
+    "spares": {
+     "unit": "INR_crore",
+     "source": "record:maintenance_spares",
+     "note": "maintenance spares (a share of R&M; F22)"
+    },
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "rule:wc_receivables"
+    },
+    "security_deposit": {
+     "unit": "INR_crore",
+     "source": "record:security_deposit_average",
+     "note": "consumers' security deposit held, average of the year (F30A)"
+    },
+    "floor": {
+     "unit": "INR_crore",
+     "source": "regulation",
+     "value": "0",
+     "note": "working capital is never negative (NPCL's MAX(…, 0))"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — interest on working capital (normative working capital at the reference rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.iowc.net",
+   "version": 1,
+   "status": "draft",
+   "title": "Working capital net of a surplus at the beginning of the year",
+   "output": "wc_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "total - surplus",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "rule:wc_total"
+    },
+    "surplus": {
+     "unit": "INR_crore",
+     "source": "record:surplus_at_beginning",
+     "note": "the accumulated surplus, when there is one"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — interest on working capital (normative working capital at the reference rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.iowc.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on working capital",
+   "output": "interest_on_working_capital",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "max(net * rate, floor)",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:wc_net"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:wc_interest_rate",
+     "note": "the reference rate (SBI MCLR, weighted over the year for a true-up, plus the regulation's margin); its derivation is the next rule"
+    },
+    "floor": {
+     "unit": "INR_crore",
+     "source": "regulation",
+     "value": "0",
+     "note": "no interest on a negative working capital (the Commission's MAX(…, 0), FY2025-26 approval in F27)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — interest on working capital (normative working capital at the reference rate)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "C.INT.WC"
+  }
+ ]
+}

@@ -1005,6 +1005,20 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 58 (2026-11-01): interest on working capital (F27) — where the conventions part.**
+  6 draft rules: O&M for a month; receivables of 1.5 months (NPCL's projection basis, tariff +
+  open-access revenue, from FY2025-26; in a true-up year the receivables are the petitioner's
+  record, an input); normative working capital floored at zero; net of an opening surplus; interest
+  floored at zero.  The harness now reports `given` when a year's rule takes the very row it would
+  check as its input (nothing reproduced, nothing counted), and a binding can declare a deduction
+  printed negative.  **NPCL's F27: 34 match, 7 given, 7 differ, 2 blocked** — the ARR and APR years
+  in full; the differences are explained: the restated FY2022-23 true-up uses a monthly O&M (13.46)
+  the ARR format's trued-up O&M does not give (159.88 / 12 = 13.32); **the Commission's FY2025-26
+  approval takes receivables on tariff revenue alone, NPCL adds open-access revenue** (370.25 ×
+  12 / 1.5 = 2,962.0, the approved net revenue); the FY2024-25 audited surplus is blank in the
+  filing.  Ledger A32.  The reference rate (SBI MCLR weighted by days for a true-up + 2.5 %; the
+  MCLR on a date + 2 % for the ARR; + 1 % for the loan) is the next rule.
+
   **Increment 57 (2026-11-01): depreciation by asset class and vintage, tied to the filed ARR.**
   The rule engine evaluates rules **per category** (`per: "asset_class"`) on each category's own
   values and sums them with `sum:<output>`; one category missing an input blocks the sum and names
@@ -1759,6 +1773,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 58 (2026-11-01): 409 passed** (the reproduction regression now pins F27's results column by column).  Ruff and format clean.
 - **Increment 57 (2026-11-01): 409 passed** (+3 unit: year-block reading; per-category rules, sums and their guards; NPCL's depreciation workings reproduced and tied to the filed ARR).  Ruff and format clean.
 - **Increment 56 (2026-11-01): 406 passed** (the reproduction regression now covers F14 and the cross-format checks, pinning the one inconsistent column; the chain test starts from F14 records).  Ruff and format clean.
 - **Increment 55 (2026-11-01): 406 passed** (+3 unit: match / differs / blocked / not-a-value per column; Units-column words; NPCL's filed Energy Balance, F25 and F26 reproduced by the draft rules, 97 of 97).  Ruff and format clean.

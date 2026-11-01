@@ -110,6 +110,18 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
         seen[rep.sheet] = rep
         for c in rep.checks:
             col = (c.fiscal_year, c.voice)
+            if rep.sheet == "F27_Work Cap":
+                # receivables of a true-up year are the petitioner's record (given); the restated
+                # FY2022-23 true-up uses an O&M the ARR format does not (13.46 vs 159.88 / 12); the
+                # Commission's FY2025-26 approval takes receivables on tariff revenue alone; the
+                # FY2024-25 audited surplus is blank in the filing (ledger A32)
+                if c.result == "differs":
+                    assert col in (("FY2022-23", "final_true_up"), ("FY2025-26", "approved")), c
+                elif c.result == "blocked":
+                    assert col == ("FY2024-25", "actual"), c
+                else:
+                    assert c.result in ("match", "given"), c
+                continue
             if c.result == "differs":
                 assert rep.sheet in ("F25_IOL", "F26_ROE") and col == ("FY2023-24", "petitioned"), (rep.sheet, c)
             elif c.result == "blocked":
@@ -121,6 +133,7 @@ def test_npcl_filed_formats_are_reproduced_by_the_draft_rules():
                 assert c.result == "match", (rep.sheet, c)
     assert seen["Energy Balance"].counts() == {"match": 55}
     assert seen["F14_CAP_Cap Cost"].counts() == {"match": 60}
+    assert seen["F27_Work Cap"].counts()["match"] >= 34
     assert seen["F25_IOL"].counts()["match"] >= 21 and seen["F26_ROE"].counts()["match"] >= 22
 
 
