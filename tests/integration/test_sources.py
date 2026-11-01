@@ -117,7 +117,7 @@ def test_unauthenticated_and_role_enforcement(client):
     assert client.get("/users", headers=headers(REVIEWER)).status_code == 403
     assert client.get("/audit", headers=headers(ANALYST)).status_code == 403
     me = client.get("/me", headers=headers(REVIEWER)).json()
-    assert me == {"email": REVIEWER, "role": "reviewer", "provider": "local"}
+    assert me == {"email": REVIEWER, "role": "reviewer", "provider": "local", "organisations": []}
 
 
 def test_idempotent_upload(client):

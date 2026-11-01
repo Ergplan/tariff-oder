@@ -331,20 +331,37 @@ def history(session: Session, utility: Utility) -> dict[str, Any]:
 # ------------------------------------------------------------------ assumptions
 
 
-def create_assumption_set(session: Session, utility: Utility, name: str, *, actor: str, based_on: uuid.UUID | None):
+def create_assumption_set(
+    session: Session,
+    utility: Utility,
+    name: str,
+    *,
+    actor: str,
+    based_on: uuid.UUID | None,
+    organisation_id: uuid.UUID | None = None,
+):
     latest = session.execute(
         select(func.max(ArrAssumptionSet.version)).where(
-            ArrAssumptionSet.utility_id == utility.id, ArrAssumptionSet.name == name
+            ArrAssumptionSet.utility_id == utility.id,
+            ArrAssumptionSet.name == name,
+            ArrAssumptionSet.organisation_id.is_(None)
+            if organisation_id is None
+            else ArrAssumptionSet.organisation_id == organisation_id,
         )
     ).scalar_one()
     s = ArrAssumptionSet(
-        utility_id=utility.id, name=name, version=(latest or 0) + 1, created_by=actor, based_on_id=based_on
+        utility_id=utility.id,
+        organisation_id=organisation_id,
+        name=name,
+        version=(latest or 0) + 1,
+        created_by=actor,
+        based_on_id=based_on,
     )
     session.add(s)
     session.flush()
     if based_on is not None:
         base = session.get(ArrAssumptionSet, based_on)
-        if base is None or base.utility_id != utility.id:
+        if base is None or base.utility_id != utility.id or base.organisation_id != organisation_id:
             raise AppError("not_found", "the assumption set to copy is not this licensee's")
         for a in assumptions_of(session, base.id):
             session.add(
@@ -569,6 +586,7 @@ def create_formulation(
     blocked = [r for r in lines if r.status == "blocked"]
     formulation = ArrFormulation(
         utility_id=utility.id,
+        organisation_id=aset.organisation_id,  # a formulation belongs to whoever owns its assumptions
         name=name,
         base_fy=base_fy,
         targets=targets,

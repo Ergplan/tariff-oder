@@ -20,6 +20,10 @@ TEST_DB = os.environ.get("TARIFF_TEST_DATABASE_URL", "postgresql+psycopg://postg
 ADMIN = "admin@example.com"
 REVIEWER = "reviewer@example.com"
 ANALYST = "analyst@example.com"
+# client users (ADR-0019): platform analysts whose work is decided by organisation roles
+CLIENT_A = "client-a@example.com"
+CLIENT_A_VIEWER = "client-a-viewer@example.com"
+CLIENT_B = "client-b@example.com"
 
 
 def _configure_env(tmp_root: Path) -> None:
@@ -30,7 +34,10 @@ def _configure_env(tmp_root: Path) -> None:
     os.environ["OBJECT_STORE_ROOT"] = str(tmp_root / "object-store")
     os.environ["SECRETS_BACKEND"] = "env"
     os.environ["IDENTITY_BACKEND"] = "local"
-    os.environ["LOCAL_USER_ALLOWLIST"] = f"{ADMIN}:administrator,{REVIEWER}:reviewer,{ANALYST}:analyst"
+    os.environ["LOCAL_USER_ALLOWLIST"] = (
+        f"{ADMIN}:administrator,{REVIEWER}:reviewer,{ANALYST}:analyst,"
+        f"{CLIENT_A}:analyst,{CLIENT_A_VIEWER}:analyst,{CLIENT_B}:analyst"
+    )
     os.environ["GOLDEN_MANIFEST_PATH"] = str(ROOT / "tests" / "golden" / "manifest.json")
     os.environ["JOB_LEASE_SECONDS"] = os.environ.get("JOB_LEASE_SECONDS", "3")
     os.environ["JOB_HEARTBEAT_SECONDS"] = "1"

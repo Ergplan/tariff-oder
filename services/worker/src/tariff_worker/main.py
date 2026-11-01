@@ -12,6 +12,7 @@ from tariff_api.db import init_db
 from tariff_api.telemetry import configure_logging
 
 from .runner import Runner
+from .stages.acquire import acquire_library_entry
 from .stages.arr import arr_extract_source, arr_localise_source, arr_validate_source
 from .stages.extract import extract_source
 from .stages.grid import grid_source
@@ -33,6 +34,8 @@ HANDLERS = {
     "arr_localise_source": arr_localise_source,
     "arr_extract_source": arr_extract_source,
     "arr_validate_source": arr_validate_source,
+    # the regulatory library (ADR-0019)
+    "acquire_library_entry": acquire_library_entry,
 }
 
 

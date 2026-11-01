@@ -360,7 +360,7 @@ ARR_GAP = [
 ]
 
 
-def arr_order_pdf() -> bytes:
+def arr_order_pdf(licensee: str = ARR_LICENSEE) -> bytes:
     """Five pages in the shape of an ARR order of the SYNTHETIC commission (SYNTHERC) for the
     SYNTHETIC licensee SYNTH-DISCOM: three ARR chapters, each a numbered heading over a ruled
     table with an S. No. column, years and voices in the column headings and the unit in the
@@ -385,7 +385,7 @@ def arr_order_pdf() -> bytes:
         120,
         [
             "SYNTHETIC ELECTRICITY REGULATORY COMMISSION",
-            f"Order on the Aggregate Revenue Requirement of {ARR_LICENSEE}",
+            f"Order on the Aggregate Revenue Requirement of {licensee}",
             "True-up, petition and approval (synthetic figures)",
         ],
         13,

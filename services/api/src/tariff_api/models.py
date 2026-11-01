@@ -1070,12 +1070,14 @@ class ArrAssumptionSet(Base):
 
     __tablename__ = "arr_assumption_sets"
     __table_args__ = (
-        UniqueConstraint("utility_id", "name", "version", name="uq_arr_assumption_set"),
+        # unique per (licensee, owner, name, version): index uq_arr_assumption_set_owner (migration 0016)
         CheckConstraint("status in ('draft', 'frozen')", name="ck_arr_assumption_set_status"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     utility_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("utilities.id"), nullable=False)
+    # the client organisation that owns it (ADR-0019); null = a regulatory-desk object
+    organisation_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("organisations.id"))
     name: Mapped[str] = mapped_column(String(120), nullable=False)
     version: Mapped[int] = mapped_column(Integer, nullable=False)
     status: Mapped[str] = mapped_column(String(12), nullable=False, default="draft")
@@ -1123,6 +1125,7 @@ class ArrFormulation(Base):
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     utility_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("utilities.id"), nullable=False)
+    organisation_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("organisations.id"))
     name: Mapped[str] = mapped_column(String(120), nullable=False)
     base_fy: Mapped[str] = mapped_column(String(12), nullable=False)
     targets: Mapped[list] = mapped_column(JSONB, nullable=False)
@@ -1190,3 +1193,112 @@ class FilingDraft(Base):
     is_fixture: Mapped[bool] = mapped_column(Boolean, nullable=False)
     generated_by: Mapped[str] = mapped_column(String(320), nullable=False)
     generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+# ------------------------------------------------------------------ client application (ADR-0019)
+
+ORG_ROLES = ("viewer", "editor", "owner")  # in rank order
+LIBRARY_KINDS = (
+    "tariff_order",
+    "arr_true_up_order",
+    "myt_order",
+    "mid_term_review",
+    "arr_petition",
+    "myt_petition",
+    "regulation",
+    "regulation_amendment",
+)
+
+
+class Organisation(Base):
+    """A client organisation.  Its members see the published corpus and own their ARR
+    cases, assumption sets, formulations and drafts."""
+
+    __tablename__ = "organisations"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    code: Mapped[str] = mapped_column(String(40), nullable=False, unique=True)
+    name: Mapped[str] = mapped_column(String(200), nullable=False)
+    active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    created_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class OrganisationMember(Base):
+    __tablename__ = "organisation_members"
+    __table_args__ = (
+        UniqueConstraint("organisation_id", "email", name="uq_organisation_member"),
+        CheckConstraint("role in ('owner', 'editor', 'viewer')", name="ck_organisation_member_role"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    organisation_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("organisations.id", ondelete="CASCADE"), nullable=False
+    )
+    email: Mapped[str] = mapped_column(String(320), nullable=False)
+    role: Mapped[str] = mapped_column(String(12), nullable=False)
+    added_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
+class ArrCase(Base):
+    """A client's ARR process for one licensee (ADR-0019): the filing it prepares, its
+    assumption set, and the formulation and draft it reached."""
+
+    __tablename__ = "arr_cases"
+    __table_args__ = (
+        CheckConstraint("filing_kind in ('annual_arr', 'myt')", name="ck_arr_case_kind"),
+        CheckConstraint(
+            "status in ('setup', 'assumptions', 'formulated', 'frozen', 'drafted', 'closed')",
+            name="ck_arr_case_status",
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    organisation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("organisations.id"), nullable=False)
+    utility_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("utilities.id"), nullable=False)
+    title: Mapped[str] = mapped_column(String(200), nullable=False)
+    filing_kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    base_fy: Mapped[str] = mapped_column(String(12), nullable=False)
+    targets: Mapped[list] = mapped_column(JSONB, nullable=False)
+    status: Mapped[str] = mapped_column(String(16), nullable=False, default="setup")
+    assumption_set_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("arr_assumption_sets.id"), nullable=False)
+    formulation_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("arr_formulations.id"))
+    draft_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("filing_drafts.id"))
+    notes: Mapped[str | None] = mapped_column(Text)
+    created_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+
+class LibraryEntry(Base):
+    """One expected or known regulatory document (ADR-0019).  ``expected`` slots are
+    expectations seeded from the registry, never data; ``located`` has an official URL;
+    ``acquired`` is registered as a source; ``failed`` records why acquisition did not work."""
+
+    __tablename__ = "library_entries"
+    __table_args__ = (
+        CheckConstraint("status in ('expected', 'located', 'acquired', 'failed')", name="ck_library_entry_status"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    commission_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("commissions.id"), nullable=False)
+    utility_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("utilities.id"))
+    document_kind: Mapped[str] = mapped_column(String(32), nullable=False)
+    fiscal_year: Mapped[str] = mapped_column(String(12), nullable=False, default="", server_default="")
+    title: Mapped[str | None] = mapped_column(String(300))
+    url: Mapped[str | None] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(12), nullable=False, default="expected")
+    origin: Mapped[str] = mapped_column(String(12), nullable=False, default="seeded")  # seeded | operator | linked
+    source_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("source_documents.id"))
+    attempts: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    last_error: Mapped[str | None] = mapped_column(Text)
+    last_attempt_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    note: Mapped[str | None] = mapped_column(Text)
+    updated_by: Mapped[str | None] = mapped_column(String(320))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )

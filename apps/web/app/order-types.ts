@@ -5,6 +5,7 @@ export const ORDER_TYPE_LABEL: Record<string, string> = {
   myt_order: "Multi-year tariff (control period) order",
   mid_term_review: "Mid-term review of a control period",
   arr_petition: "ARR petition filed by the licensee (petitioned figures)",
+  myt_petition: "MYT (control period) petition filed by the licensee",
   regulation: "Tariff regulations",
   regulation_amendment: "Amendment to tariff regulations",
   other: "Other instrument",

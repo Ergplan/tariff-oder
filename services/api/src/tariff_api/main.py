@@ -16,8 +16,22 @@ from .adapters import build_adapters
 from .config import Settings, get_settings
 from .db import dispose_db, init_db
 from .errors import AppError
-from .routers import arr, candidates, explorer, health, jobs, profiles, publication, registry, review, sources
-from .schemas import ErrorResponse, Me
+from .routers import (
+    arr,
+    candidates,
+    cases,
+    explorer,
+    health,
+    jobs,
+    library,
+    organisations,
+    profiles,
+    publication,
+    registry,
+    review,
+    sources,
+)
+from .schemas import ErrorResponse, Me, MeOrganisation
 from .telemetry import actor_var, configure_logging, request_id_var
 
 log = logging.getLogger(__name__)
@@ -116,6 +130,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(publication.router)
     app.include_router(explorer.router)
     app.include_router(arr.router)
+    app.include_router(organisations.router)
+    app.include_router(cases.router)
+    app.include_router(library.router)
 
     from fastapi import Depends
 
@@ -123,7 +140,20 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.get("/me", response_model=Me, tags=["identity"])
     def me(principal=Depends(current_principal)) -> Me:
-        return Me(email=principal.email, role=principal.role, provider=principal.provider)
+        from sqlalchemy import select
+
+        from .db import session_scope
+        from .models import Organisation, OrganisationMember
+
+        with session_scope() as s:
+            rows = s.execute(
+                select(Organisation, OrganisationMember.role)
+                .join(OrganisationMember, OrganisationMember.organisation_id == Organisation.id)
+                .where(OrganisationMember.email == principal.email.lower(), Organisation.active.is_(True))
+                .order_by(Organisation.name)
+            ).all()
+            orgs = [MeOrganisation(id=o.id, code=o.code, name=o.name, role=r) for o, r in rows]
+        return Me(email=principal.email, role=principal.role, provider=principal.provider, organisations=orgs)
 
     return app
 

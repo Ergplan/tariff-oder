@@ -53,6 +53,7 @@ class Me(BaseModel):
     email: str
     role: UserRole
     provider: str
+    organisations: list[MeOrganisation] = Field(default_factory=list)
 
 
 class DatasetOut(BaseModel):
@@ -67,6 +68,7 @@ ORDER_TYPES = (
     "myt_order",
     "mid_term_review",
     "arr_petition",
+    "myt_petition",
     "regulation",
     "regulation_amendment",
     "other",
@@ -107,6 +109,7 @@ class SourceClassification(BaseModel):
             "myt_order",
             "mid_term_review",
             "arr_petition",
+            "myt_petition",
             "regulation",
             "regulation_amendment",
             "other",
@@ -1394,11 +1397,13 @@ class ArrAssumptionOut(BaseModel):
 class ArrAssumptionSetCreate(BaseModel):
     name: str = Field(min_length=1, max_length=120)
     based_on_id: uuid.UUID | None = None
+    organisation_id: uuid.UUID | None = None  # null = a regulatory-desk set (ADR-0019)
 
 
 class ArrAssumptionSetOut(BaseModel):
     id: uuid.UUID
     utility: str
+    organisation_id: uuid.UUID | None = None
     name: str
     version: int
     status: str
@@ -1411,7 +1416,7 @@ class ArrAssumptionSetOut(BaseModel):
 
 class ArrTarget(BaseModel):
     fiscal_year: str
-    value_type: Literal["petitioned", "provisional_true_up", "final_true_up"] = "petitioned"
+    value_type: Literal["petitioned", "provisional_true_up", "final_true_up", "control_period"] = "petitioned"
 
 
 class ArrFormulationCreate(BaseModel):
@@ -1438,6 +1443,7 @@ class ArrProjectionLineOut(BaseModel):
 class ArrFormulationOut(BaseModel):
     id: uuid.UUID
     utility: str
+    organisation_id: uuid.UUID | None = None
     name: str
     base_fy: str
     targets: list[dict[str, Any]]
@@ -1483,3 +1489,147 @@ class FilingDraftOut(BaseModel):
     generated_by: str
     generated_at: datetime
     watermark: str
+
+
+# ------------------------------------------------------------------ client application (ADR-0019)
+
+
+class OrganisationCreate(BaseModel):
+    code: str = Field(min_length=2, max_length=40, pattern=r"^[A-Za-z0-9][A-Za-z0-9_-]*$")
+    name: str = Field(min_length=2, max_length=200)
+    owner_email: str = Field(min_length=3, max_length=320)
+
+
+class OrganisationMemberIn(BaseModel):
+    email: str = Field(min_length=3, max_length=320)
+    role: Literal["owner", "editor", "viewer"] = "editor"
+
+
+class OrganisationMemberOut(BaseModel):
+    email: str
+    role: str
+    added_by: str
+    created_at: datetime
+
+
+class OrganisationOut(BaseModel):
+    id: uuid.UUID
+    code: str
+    name: str
+    active: bool
+    created_at: datetime
+    my_role: str | None = None
+    members: list[OrganisationMemberOut] = Field(default_factory=list)
+
+
+class MeOrganisation(BaseModel):
+    id: uuid.UUID
+    code: str
+    name: str
+    role: str
+
+
+class ArrCaseCreate(BaseModel):
+    organisation_id: uuid.UUID
+    utility_code: str
+    title: str = Field(min_length=1, max_length=200)
+    filing_kind: Literal["annual_arr", "myt"] = "annual_arr"
+    base_fy: str
+    # annual_arr: one target (the next year); myt: every year of the control period
+    target_years: list[str] = Field(min_length=1, max_length=10)
+    copy_assumptions_from: uuid.UUID | None = None
+    notes: str | None = None
+
+
+class ArrCaseOut(BaseModel):
+    id: uuid.UUID
+    organisation_id: uuid.UUID
+    organisation: str
+    utility: str
+    utility_name: str
+    commission: str
+    title: str
+    filing_kind: str
+    base_fy: str
+    targets: list[dict[str, Any]]
+    status: str
+    assumption_set_id: uuid.UUID
+    formulation_id: uuid.UUID | None
+    draft_id: uuid.UUID | None
+    notes: str | None
+    created_by: str
+    created_at: datetime
+    updated_at: datetime
+    readiness: dict[str, Any] | None = None
+
+
+class ArrCaseUpdate(BaseModel):
+    title: str | None = Field(default=None, max_length=200)
+    notes: str | None = None
+    status: Literal["closed"] | None = None
+
+
+class LibraryEntryIn(BaseModel):
+    commission_code: str
+    utility_code: str | None = None
+    document_kind: Literal[
+        "tariff_order",
+        "arr_true_up_order",
+        "myt_order",
+        "mid_term_review",
+        "arr_petition",
+        "myt_petition",
+        "regulation",
+        "regulation_amendment",
+    ]
+    fiscal_year: str = ""
+    title: str | None = Field(default=None, max_length=300)
+    url: str | None = None
+    note: str | None = None
+
+
+class LibraryEntryOut(BaseModel):
+    id: uuid.UUID
+    commission: str
+    utility: str | None
+    document_kind: str
+    fiscal_year: str
+    title: str | None
+    url: str | None
+    status: str
+    origin: str
+    source_id: uuid.UUID | None
+    attempts: int
+    last_error: str | None
+    last_attempt_at: datetime | None
+    note: str | None
+    updated_by: str | None
+    updated_at: datetime
+    reading: str | None = None  # missing | located | acquired | read | reviewed | published (computed)
+
+
+class LibrarySeedRequest(BaseModel):
+    fiscal_years: list[str] = Field(min_length=1, max_length=6)
+    kinds: list[str] = Field(default_factory=lambda: ["tariff_order", "arr_petition"])
+    control_period_kinds: list[str] = Field(default_factory=lambda: ["myt_order", "myt_petition"])
+    commission_kinds: list[str] = Field(default_factory=lambda: ["regulation"])
+    commission_codes: list[str] | None = None  # None = every commission
+
+
+class LibrarySeedOut(BaseModel):
+    created: int
+    existing: int
+    linked: int
+
+
+class CoverageOut(BaseModel):
+    """Documents known per state, commission, licensee, year and kind, with the reading level
+    each has reached.  Expected slots are expectations, not data."""
+
+    fiscal_years: list[str]
+    kinds: list[str]
+    totals: dict[str, int]
+    states: list[dict[str, Any]]
+
+
+Me.model_rebuild()
