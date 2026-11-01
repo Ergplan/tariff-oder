@@ -3,6 +3,7 @@ import type { CoverageOut } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../components";
 import { KIND_SHORT, LEVELS, Level } from "../levels";
+import { Eyebrow } from "../studio";
 
 export const dynamic = "force-dynamic";
 
@@ -38,11 +39,14 @@ export default async function LibraryPage({ searchParams }: { searchParams: Prom
   const usedCols = cols.filter((c) => shown.some((s) => s.commissions.some((cm) => cm.licensees.some((l) => l.cells[c.key]))));
   return (
     <>
-      <h1>Regulatory library</h1>
-      <p className="muted">
-        Every state&apos;s tariff orders, true-ups, ARR petitions, MYT orders and petitions, and regulations, by licensee and year. A number from a document becomes a fact only after it is read and reviewed; the
-        level says how far each document has come.
-      </p>
+      <header className="case-head">
+        <Eyebrow>Library · {states.length} states · {years.join(", ")}</Eyebrow>
+        <h1>The regulatory record</h1>
+        <p className="muted" style={{ maxWidth: "52rem", margin: 0 }}>
+          Every state&apos;s tariff orders, true-ups, ARR petitions, MYT orders and petitions, and regulations, by licensee and year. A number from a document becomes a fact only after it is read and
+          reviewed; the level says how far each document has come.
+        </p>
+      </header>
       <div className="cov-legend">
         {LEVELS.map((l) => (
           <span key={l}>

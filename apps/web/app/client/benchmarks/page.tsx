@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { components } from "@tariff/contracts";
 import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../components";
+import { Eyebrow } from "../studio";
 
 export const dynamic = "force-dynamic";
 
@@ -46,15 +47,22 @@ export default async function BenchmarksPage({ searchParams }: { searchParams: P
   return (
     <>
       <p>
-        <Link href="/client">← ARR workspace</Link>
+        <Link href="/client">← Petition studio</Link>
       </p>
-      <h1>
-        Benchmarks{" "}
-        <span className="badge" data-tone="warn">
-          derived
-        </span>
-      </h1>
-      <p className="muted">{b.note}</p>
+      <header className="case-head">
+        <Eyebrow>
+          Benchmarks · {fy} · {voice}
+        </Eyebrow>
+        <h1>
+          How the licensee compares{" "}
+          <span className="badge" data-tone="warn">
+            derived
+          </span>
+        </h1>
+        <p className="muted" style={{ maxWidth: "52rem", margin: 0 }}>
+          {b.note}
+        </p>
+      </header>
       <form className="form-grid" method="get" action="/client/benchmarks">
         <label>
           Financial year
