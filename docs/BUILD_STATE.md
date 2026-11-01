@@ -1512,6 +1512,32 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
+**Where things stand (2026-11-01, after increment 42) — read this entry first; the numbered
+entries below are the per-increment history.**
+
+- *Human decisions that now gate real data* (nothing below can be done by engineering):
+  1. **Reviewer, chapters:** the three real orders read in the build session (NPCL FY2026-27 /
+     UPERC, NBPDCL+SBPDCL FY2026-27 / BERC, HPSEBL FY2026-27 / HPERC) sit at
+     `chapters_proposed` with a per-chapter preview.  Re-register them on the deployed stack
+     (the build session's local stack is ephemeral; URLs and hashes are in increments 37, 39,
+     42), exclude the non-ARR chapters (public hearing, directives, open-access annexes), set
+     the capped last chapter's end, confirm.
+  2. **Reviewer, mappings:** decide the unplaced labels in `/arr/mappings/UPERC`, `/BERC`,
+     `/HPERC`; set each mapping's `gap_convention` and loss definition (identities ARR-I3 on
+     UPERC and ARR-I4 on BERC fail on convention, increment 40); draft with `tariff-api
+     mapping-draft`, commit, confirm.  Until a mapping is confirmed, real lines of that
+     commission can be read and reviewed but not approved.
+  3. **Operator, documents:** run the discovery profiles (UPERC, BERC, HPERC, JSERC, JERC Goa &
+     UTs) on the VM for FY2024-25 to FY2026-27, tick proposals in `/library`, acquire; name the
+     next commissions for profiles (most other commission sites did not answer from the build
+     session).
+  4. **Operator, model channel:** an `ANTHROPIC_API_KEY` in the secrets adapter to run the
+     live ARR image channel (written and mock-tested, increment 29; never run on a real order).
+- *Engineering next:* the extraction over confirmed real chapters (measure precision against
+  the reviewer's decisions — the first real precision figure); per-commission true-up formats;
+  organisation-owned sources for private documents; normative checks of actuals against
+  regulation parameters; a fourth real order from a commission with yet another layout.
+
 000000000000000. **Reviewer (increment 39):** open `/arr/mappings/UPERC` (and `/arr/mappings/BERC`
    once a BERC mapping file exists — today BERC reads with the generic skeleton) and decide the
    unplaced labels; then `tariff-api mapping-draft --commission UPERC --out
