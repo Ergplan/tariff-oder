@@ -2049,6 +2049,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 81 (2026-11-01): 428 passed** (+1 unit: ESR-3 FY2023-24 in the seven-column layout, tied to the ARR's rows 15 and 9).  Ruff and format clean.
 - **Increment 80 (2026-11-01): 427 passed** (the trial-balance test now pins R&M and A&G agreeing with the books, 13 comparisons).  Ruff and format clean.
 - **Increment 79 (2026-11-01): 427 passed** (+2 unit: power purchase reconciled to the audited accounts across two workbooks, differing by A44's 1.50; the trial balance against the true-up claims, 9 of 11 agreeing and employee benefits off by exactly 0.0105 crore).  Ruff and format clean.
 - **Increment 78 (2026-11-01): 425 passed** (+1 unit: ACoS and ABR on the three snapshots, 8 / 8).  Ruff and format clean.
@@ -2317,7 +2318,6 @@ entries below are the per-increment history.**
      the projection years' depreciation by class.
 
   **Engineering next, smallest first:**
-  - ESR-3 for FY2023-24, whose subtotals subtract their own sub-rows;
   - reading the tariff order's rate schedule, so revenue is computed from rates, not only
     summed;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the

@@ -302,6 +302,99 @@
    },
    "examples": [],
    "per": "consumer_category"
+  },
+  {
+   "id": "uperc.revenue.category_billed",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue of a category as billed, in the seven-column layout (FY2023-24 ESR-3)",
+   "output": "revenue_category_billed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "fixed + energy + minimum + other + surcharge + minimum_total + discount",
+   "inputs": {
+    "fixed": {
+     "unit": "INR_crore",
+     "source": "record:rev_fixed"
+    },
+    "energy": {
+     "unit": "INR_crore",
+     "source": "record:rev_energy"
+    },
+    "minimum": {
+     "unit": "INR_crore",
+     "source": "record:rev_minimum"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "record:rev_other"
+    },
+    "surcharge": {
+     "unit": "INR_crore",
+     "source": "record:rev_regulatory_surcharge"
+    },
+    "minimum_total": {
+     "unit": "INR_crore",
+     "source": "record:rev_minimum_total",
+     "note": "the format's 'Total Minimum Charges' column, summed with the others as NPCL's total does"
+    },
+    "discount": {
+     "unit": "INR_crore",
+     "source": "record:rev_discount"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category"
+  },
+  {
+   "id": "uperc.revenue.billed_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue as billed, total (seven-column layout)",
+   "output": "revenue_billed_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "categories",
+   "inputs": {
+    "categories": {
+     "unit": "INR_crore",
+     "source": "sum:revenue_category_billed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "R.REV.EXISTING"
   }
  ]
 }

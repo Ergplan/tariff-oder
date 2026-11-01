@@ -1,0 +1,57 @@
+{
+ "type": "row_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ESR_3 Curr Tariff FY24",
+ "fiscal_year": "FY2023-24",
+ "note": "Revenue as billed, FY2023-24 (ESR-3 in its earlier, seven-column layout: fixed, energy, minimum, other charges, regulatory surcharge, total minimum charges, regulatory discount; P = their sum).  Rows 10–138; the eleven 'Total Category' rows skipped.  Their formulas subtract rows (17, 26, 32, 40, 52, 58, 60, 62, 79, 81, 91, 113) that are blank in every column, so the grand total (P140) is the sum of the category rows — the ARR's row 15 (G15); units sold the ARR's row 9.",
+ "rows": [
+  10,
+  138
+ ],
+ "label_col": "B",
+ "skip_labels": "^(sub\\s*total|grand\\s*total|total)",
+ "inputs": {
+  "record:units_sold": "E",
+  "record:rev_fixed": "I",
+  "record:rev_energy": "J",
+  "record:rev_minimum": "K",
+  "record:rev_other": "L",
+  "record:rev_regulatory_surcharge": "M",
+  "record:rev_minimum_total": "N",
+  "record:rev_discount": "O"
+ },
+ "units": {
+  "E": "MU",
+  "F": "INR_per_kWh",
+  "G": "INR_per_kWh"
+ },
+ "blank_is_zero": {
+  "columns": [
+   "E",
+   "I",
+   "J",
+   "K",
+   "L",
+   "M",
+   "N",
+   "O"
+  ],
+  "why": "a charge a slab does not bill is left blank; NPCL's row total (P = SUM(I:O)) and its column sums read the blanks as zero"
+ },
+ "outputs": {
+  "revenue_category_billed": "P",
+  "revenue_energy_rate": "F",
+  "revenue_fixed_rate": "G"
+ },
+ "totals": {
+  "revenue_billed_total": [
+   "P140",
+   "ARR!G15"
+  ],
+  "units_sold_total": [
+   "E140",
+   "ARR!G9"
+  ]
+ },
+ "places": 4
+}

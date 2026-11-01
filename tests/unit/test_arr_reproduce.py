@@ -708,3 +708,25 @@ def test_npcl_true_up_reconciled_to_the_trial_balance():
         assert Decimal(c.filed) - Decimal(c.computed) == Decimal("0.01")  # 0.0105 at 2 decimals
     gross = next(c for c in differs if "before" in c.category)
     assert Decimal("95.419846859") - Decimal(gross.exact) == Decimal("0.0105")
+
+
+def test_npcl_revenue_fy2023_24_in_the_earlier_layout():
+    """Real data: ESR-3 FY2023-24 (seven charge columns; category subtotals that subtract rows
+    blank in every column): every row's revenue matches, and the totals are the ARR's rows 15
+    and 9 (2,320.97, 3,130.40 MU).  A slab with no units has no implied rate (blocked)."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    b = json.loads((folder / "bindings" / "esr3-revenue-fy24.json").read_text())
+    wb = openpyxl.load_workbook(folder / b["workbook"], data_only=True)
+    checks = reproduce_row_table(wb, b, load_rules("UPERC"))
+    for c in checks:
+        if c.result == "blocked":
+            assert c.why == "division by zero" and c.output.endswith("_rate"), c
+        else:
+            assert c.result == "match", c
+    arr = {c.category: c.computed for c in checks if "ARR!" in c.category}
+    assert arr == {"TOTAL ARR!G15": "2320.9739", "TOTAL ARR!G9": "3130.4048"}
