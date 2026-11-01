@@ -346,6 +346,12 @@ Append-only (UPDATE/DELETE raise via trigger): `actor`, `action`, `entity_type`,
 | `arr_actuals` | One actual per line per case: stated value and unit as written, canonical value and unit, conversion; `source_kind` `fact` (with `fact_id`), `document` (source, page, excerpt — checked on the page), `statement` (document name, rationale — unchecked) or `estimate` (APR only, rationale); who entered it |
 | `filing_drafts.case_id` | A true-up or APR draft's case (then `formulation_id` is null); one of the two is always set |
 
+## Combined orders (migration 0018)
+
+| Table / column | Meaning |
+| --- | --- |
+| `source_licensees` | Further licensees of a combined order (source, utility, who added it and why); the order's licensees are its primary `source_documents.utility_id` and these |
+
 ## Reserved for later milestones (not created yet)
 Regulatory order, schedule version, effective rule, category/version, option group, category
 mapping, charge component, slab/time band, condition/rule, evidence span, table grid,

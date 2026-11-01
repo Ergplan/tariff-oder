@@ -7,7 +7,7 @@ import { ErrorBanner } from "../../../components";
 
 type Chapter = { id: string; ordinal: number; branch: string; cue_text: string; page_start: number; page_end: number; status: string };
 type Finding = { validator_id: string; severity: string; message: string; candidate_ids: string[] };
-type Rec = { chapter?: number | null; line_code: string; fiscal_year: string; value_type: string; stated_value: string | null; stated_unit: string | null; original_text: string; evidence: { page_index: number; excerpt: string }[] };
+type Rec = { chapter?: number | null; utility?: string | null; line_code: string; fiscal_year: string; value_type: string; stated_value: string | null; stated_unit: string | null; original_text: string; evidence: { page_index: number; excerpt: string }[] };
 
 const VOICE_ORDER = ["petitioned", "approved", "control_period", "provisional_true_up", "final_true_up", "actual"];
 const BRANCH_ORDER = "ECLRTKX";
@@ -49,12 +49,15 @@ export function ArrReview({ sourceId, open, chapters, initial, findings }: { sou
 
   const list = byChapter.get(current) ?? [];
   const lines = [...new Set(list.map((c) => rec(c).line_code))].sort((a, b) => BRANCH_ORDER.indexOf(a[0]) - BRANCH_ORDER.indexOf(b[0]) || a.localeCompare(b));
-  const cols = [...new Set(list.map((c) => `${rec(c).fiscal_year}|${rec(c).value_type}`))].sort((a, b) => {
-    const [fa, va] = a.split("|");
-    const [fb, vb] = b.split("|");
-    return fa.localeCompare(fb) || VOICE_ORDER.indexOf(va) - VOICE_ORDER.indexOf(vb);
+  // a combined order's values belong to one licensee each: a column per licensee, year and voice
+  const colOf = (c: CandidateOut) => `${rec(c).fiscal_year}|${rec(c).value_type}|${rec(c).utility ?? ""}`;
+  const combined = new Set(list.map((c) => rec(c).utility ?? "")).size > 1;
+  const cols = [...new Set(list.map(colOf))].sort((a, b) => {
+    const [fa, va, ua] = a.split("|");
+    const [fb, vb, ub] = b.split("|");
+    return fa.localeCompare(fb) || VOICE_ORDER.indexOf(va) - VOICE_ORDER.indexOf(vb) || ua.localeCompare(ub);
   });
-  const cell = (line: string, col: string) => list.find((c) => rec(c).line_code === line && `${rec(c).fiscal_year}|${rec(c).value_type}` === col);
+  const cell = (line: string, col: string) => list.find((c) => rec(c).line_code === line && colOf(c) === col);
   const chFindings = findings.filter((f) => f.candidate_ids.some((id) => list.some((c) => c.id === id)));
 
   async function showPage(page: number): Promise<Record<string, string>> {
@@ -173,6 +176,7 @@ export function ArrReview({ sourceId, open, chapters, initial, findings }: { sou
                     <th key={col}>
                       {col.split("|")[0]}
                       <div className="muted">{col.split("|")[1].replace(/_/g, " ")}</div>
+                      {combined ? <div className="mono">{col.split("|")[2]}</div> : null}
                     </th>
                   ))}
                 </tr>

@@ -1280,6 +1280,22 @@ class ArrCase(Base):
     )
 
 
+class SourceLicensee(Base):
+    """A further licensee of a combined order (increment 35): the order's licensees are its
+    primary licensee and these.  ARR values are attributed to one of them by the column or
+    the caption that names it, never guessed."""
+
+    __tablename__ = "source_licensees"
+
+    source_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("source_documents.id", ondelete="CASCADE"), primary_key=True
+    )
+    utility_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("utilities.id"), primary_key=True)
+    added_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    reason: Mapped[str | None] = mapped_column(String(300))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+
 class ArrActual(Base):
     """One actual of a true-up or APR case (ADR-0020): what the licensee's own records say a
     line came to in a year, with where that is written.  ``fact`` copies a reviewed fact of

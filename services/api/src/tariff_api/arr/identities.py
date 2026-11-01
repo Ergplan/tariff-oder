@@ -102,6 +102,7 @@ def _finding(
         message=(
             f"{identity.id} {identity.name}: {printed.line_code} is {printed.value} but {what} gives "
             f"{expected} (difference {diff}) for {group.get('fiscal_year')} {group.get('value_type')}"
+            + (f" of {group['utility']}" if group.get("utility") else "")
         ),
         group=group,
         expected=str(expected),

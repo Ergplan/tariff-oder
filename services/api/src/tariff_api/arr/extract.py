@@ -39,6 +39,26 @@ class ColumnSpec:
     fiscal_year: str
     value_type: str
     label: str
+    utility: str | None = None
+
+
+_TOTAL_COL = re.compile(r"^\W*(?:total|state|all\s+discoms?|grand\s+total|combined|consolidated)\b", re.I)
+
+
+def _skip(report: ReadReport, g: GridIn, j: int, h: str, reason: str) -> None:
+    report.columns_skipped.append({"page": g.page_index, "grid": g.ordinal, "col": j, "header": h, "reason": reason})
+
+
+def licensee_named(text: str, licensees: dict[str, list[str]]) -> str | None:
+    """The one licensee a header or caption names (by code or name), or None (none, or several)."""
+    t = (text or "").lower()
+    hits = {
+        code
+        for code, names in licensees.items()
+        for n in [code, *names]
+        if n and re.search(rf"(?<![a-z0-9]){re.escape(n.lower())}(?![a-z0-9])", t)
+    }
+    return hits.pop() if len(hits) == 1 else None
 
 
 @dataclass
@@ -125,7 +145,13 @@ def read_grids(
     placer: Placer,
     source_id: str,
     utility: str | None,
+    licensees: dict[str, list[str]] | None = None,
 ) -> tuple[ArrExtractionOutput, ReadReport]:
+    """Candidates from a chapter's grids.  ``utility`` is the order's licensee; a combined
+    order passes its ``licensees`` (code -> names) instead, and each value is attributed to the
+    licensee its column header or its table's caption names.  A total across licensees, or a
+    column no licensee can be read for, is reported and skipped, never attributed."""
+    combined = bool(licensees and len(licensees) > 1)
     report = ReadReport()
     out = ArrExtractionOutput()
     seen: dict[str, ArrCandidate] = {}
@@ -137,19 +163,35 @@ def read_grids(
         table_unit = unit_from_text(caption) or next((unit_from_text(h) for h in headers if unit_from_text(h)), None)
         columns: list[ColumnSpec] = []
         label_col = 0
+        table_licensee = licensee_named(caption, licensees) if combined and licensees else None
+
         for j, h in enumerate(headers):
             fy = fiscal_year(h)
+            col_licensee = licensee_named(h, licensees) if combined and licensees else None
+            if combined and _TOTAL_COL.match(h) and (columns or fy):
+                _skip(report, g, j, h, "a total across licensees, not one licensee's value")
+                continue
+            if fy is None and col_licensee is not None:
+                # a column per licensee: the year and the voice come from the caption
+                fy, vt = fiscal_year(caption), voice(caption, mapping)
+                if fy is None or vt is None:
+                    _skip(report, g, j, h, "a licensee's column without a year and a voice in the caption")
+                    continue
+                columns.append(ColumnSpec(j, fy, vt, f"{h} | {caption}"[:200], col_licensee))
+                continue
             if fy is None:
                 if not columns:
                     label_col = j
                 continue
             vt = voice(h, mapping) or voice(caption, mapping)
             if vt is None:
-                report.columns_skipped.append(
-                    {"page": g.page_index, "grid": g.ordinal, "col": j, "header": h, "reason": "no voice word"}
-                )
+                _skip(report, g, j, h, "no voice word")
                 continue
-            columns.append(ColumnSpec(j, fy, vt, h))
+            owner = col_licensee or table_licensee or (None if combined else utility)
+            if combined and owner is None:
+                _skip(report, g, j, h, "no licensee named in the column or the table's caption (combined order)")
+                continue
+            columns.append(ColumnSpec(j, fy, vt, h, owner))
         if not columns:
             continue
         report.grids_read += 1
@@ -188,7 +230,7 @@ def read_grids(
                     fiscal_year=col.fiscal_year,
                     value_type=col.value_type,  # type: ignore[arg-type]
                     as_of_order=source_id,
-                    utility=utility,
+                    utility=col.utility,
                     value_state=state,  # type: ignore[arg-type]
                     stated_value=value,
                     stated_unit=unit,

@@ -278,7 +278,15 @@ def link_acquired_twin(session: Session, entry: LibraryEntry) -> SourceDocument 
         return None
     entry.source_id, entry.status, entry.last_error = twin.source_id, "acquired", None
     _audit(session, "library-acquisition", "library.linked_twin", entry, after={"source_id": str(twin.source_id)})
-    return session.get(SourceDocument, twin.source_id)
+    src = session.get(SourceDocument, twin.source_id)
+    if src is not None and entry.utility_id is not None and src.utility_id not in (None, entry.utility_id):
+        # the same order listed for another licensee: a combined order for both
+        from .services.sources import add_licensee
+
+        u = session.get(Utility, entry.utility_id)
+        if u is not None and src.utility is not None and u.commission_id == src.utility.commission_id:
+            add_licensee(session, src, u, actor="library-acquisition", reason="listed for this licensee too")
+    return src
 
 
 def fetch(url: str, *, timeout: float = 60.0) -> tuple[bytes, str]:

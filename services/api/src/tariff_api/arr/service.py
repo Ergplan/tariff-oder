@@ -186,17 +186,29 @@ def publish(session: Session, src: SourceDocument, *, actor: str) -> dict[str, A
             f"{len(blocking)} blocking identity finding(s) open: correct or reject the lines involved first",
             extra={"findings": [f.message for f in blocking][:10]},
         )
+    from ..services.sources import licensees_of
+
     rows = arr_candidates(session, src.id)
     publishable = [c for c in rows if c.review_status in ("approved", "corrected") and c.published_release_id is None]
     pending = [c for c in rows if c.review_status in ("pending", "awaiting_second_review")]
+    # each fact belongs to the licensee its value was read for: one of the order's licensees
+    owners = {u.code: u.id for u in licensees_of(session, src)}
+    stray = [c for c in publishable if (c.effective_record.get("utility") or src.utility.code) not in owners]
+    if stray:
+        raise AppError(
+            "validation_failed",
+            f"{len(stray)} approved value(s) belong to a licensee that is not one of this order's: "
+            "add the licensee to the order or correct the values",
+        )
     now = datetime.now(UTC)
     created = superseded = 0
     for c in publishable:
         rec = c.effective_record
         cat = rec.get("category_code") or ""
+        owner = owners[rec.get("utility") or src.utility.code]
         prior = session.execute(
             select(ArrFact).where(
-                ArrFact.utility_id == src.utility_id,
+                ArrFact.utility_id == owner,
                 ArrFact.line_code == rec["line_code"],
                 ArrFact.fiscal_year == rec["fiscal_year"],
                 ArrFact.value_type == rec["value_type"],
@@ -206,7 +218,7 @@ def publish(session: Session, src: SourceDocument, *, actor: str) -> dict[str, A
             )
         ).scalar_one_or_none()
         fact = ArrFact(
-            utility_id=src.utility_id,
+            utility_id=owner,
             source_id=src.id,
             candidate_id=c.id,
             line_code=rec["line_code"],

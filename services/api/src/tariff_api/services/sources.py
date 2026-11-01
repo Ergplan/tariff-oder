@@ -386,3 +386,79 @@ def get_source(session: Session, source_id: uuid.UUID) -> SourceDocument:
     if src is None:
         raise AppError("not_found", f"source {source_id} not found")
     return src
+
+
+# ------------------------------------------------------------------ combined orders (increment 35)
+
+
+def licensees_of(session: Session, source: SourceDocument) -> list[Utility]:
+    """The order's licensees: its primary licensee first, then those of a combined order."""
+    from ..models import SourceLicensee
+
+    out: list[Utility] = [source.utility] if source.utility is not None else []
+    extra = session.execute(
+        select(Utility)
+        .join(SourceLicensee, SourceLicensee.utility_id == Utility.id)
+        .where(SourceLicensee.source_id == source.id)
+        .order_by(Utility.code)
+    ).scalars()
+    out += [u for u in extra if u.id != source.utility_id]
+    return out
+
+
+def add_licensee(session: Session, source: SourceDocument, utility: Utility, *, actor: str, reason: str) -> bool:
+    """Add a licensee to a combined order; False when it is one already.  Same commission only."""
+    from ..models import SourceLicensee
+
+    if source.utility_id is None:
+        raise AppError("validation_failed", "set the order's primary licensee first")
+    if utility.id == source.utility_id or session.get(SourceLicensee, (source.id, utility.id)) is not None:
+        return False
+    if source.utility is not None and utility.commission_id != source.utility.commission_id:
+        raise AppError(
+            "validation_failed",
+            f"{utility.code} is a licensee of {utility.commission.code}, the order is "
+            f"{source.utility.commission.code}'s",
+        )
+    session.add(SourceLicensee(source_id=source.id, utility_id=utility.id, added_by=actor, reason=reason[:300]))
+    session.add(
+        AuditEvent(
+            actor=actor,
+            action="source.licensee_added",
+            entity_type="source",
+            entity_id=str(source.id),
+            after={"utility": utility.code},
+            reason=reason,
+            request_id=request_id_var.get(),
+        )
+    )
+    return True
+
+
+def set_licensees(session: Session, source: SourceDocument, codes: list[str], *, actor: str) -> list[Utility]:
+    """The order's licensees, exactly: the primary stays first; the others are added or removed."""
+    from ..models import SourceLicensee
+
+    if source.utility is None:
+        raise AppError("validation_failed", "set the order's primary licensee first")
+    wanted = [resolve_utility(session, c) for c in dict.fromkeys(codes)]
+    if source.utility_id not in [u.id for u in wanted]:
+        raise AppError("validation_failed", f"the primary licensee {source.utility.code} stays a licensee of the order")
+    for row in session.execute(select(SourceLicensee).where(SourceLicensee.source_id == source.id)).scalars():
+        if row.utility_id not in [u.id for u in wanted]:
+            session.delete(row)
+            session.add(
+                AuditEvent(
+                    actor=actor,
+                    action="source.licensee_removed",
+                    entity_type="source",
+                    entity_id=str(source.id),
+                    before={"utility_id": str(row.utility_id)},
+                    request_id=request_id_var.get(),
+                )
+            )
+    session.flush()
+    for u in wanted:
+        add_licensee(session, source, u, actor=actor, reason="set by a person")
+    session.flush()
+    return licensees_of(session, source)

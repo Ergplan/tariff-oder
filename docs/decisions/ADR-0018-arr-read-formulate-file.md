@@ -103,3 +103,18 @@ provider adapter, and the shared store is the artefact store.
 - KERC still waits on grids from OCR word boxes (ADR-0017).
 - The UPERC formulation plan and petition template ship as skeletons; their real content
   needs the UPERC regulations on file and a reviewer, which is Increment B/D/E work.
+
+## Amendment (increment 35, 2026-11-01): combined orders
+
+Many commissions decide the ARR of all their state's distribution licensees in one order (UP's
+five discoms, Bihar's two).  An order's licensees are its primary licensee and the further
+licensees in `source_licensees`, set by an administrator (or by the library, when the same
+document is acquired for a second licensee).  With several licensees, the structure channel
+attributes each value to the licensee its column header names (the year and the voice then
+come from the caption) or its table's caption names; a total across licensees, or a column for
+which no licensee can be read, is skipped and reported, never attributed.  The licensee is
+part of the candidate's identity and a correctable field; identities are evaluated per
+licensee; publication files each fact under its candidate's licensee and refuses a value whose
+licensee is not one of the order's.  The model channel is told the order's licensees and its
+candidates naming another are dropped.
+

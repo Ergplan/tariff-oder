@@ -45,7 +45,7 @@ from tariff_api.models import (
     TableGridRecord,
     ValidatorFindingRecord,
 )
-from tariff_api.services.sources import enqueue_stage
+from tariff_api.services.sources import enqueue_stage, licensees_of
 
 from ..runner import JobContext, JobFailure
 from .grid import _lines_around
@@ -235,6 +235,8 @@ def arr_extract_source(ctx: JobContext) -> dict:
         utility_code, kind = src.utility.code, src.utility.licensee_kind
         commission = src.utility.commission.code
         dataset_fixture = src.dataset.kind == DatasetKind.fixture
+        # a combined order: each value is attributed to the licensee its column or caption names
+        licensee_names = {u.code: [u.name, *(u.aliases or [])] for u in licensees_of(s, src)}
         first_reading = (
             s.execute(
                 select(ArrFact.id)
@@ -292,7 +294,13 @@ def arr_extract_source(ctx: JobContext) -> dict:
             above, _below = _lines_around(doc[page - 1], g["bbox"])
             grids.append(GridIn(page, g_ord, g["rows"], int(g.get("header_rows") or 0), above))
         structure, report = read_grids(
-            grids, taxonomy=tax, mapping=mapping, placer=placer, source_id=str(source_id), utility=utility_code
+            grids,
+            taxonomy=tax,
+            mapping=mapping,
+            placer=placer,
+            source_id=str(source_id),
+            utility=utility_code,
+            licensees=licensee_names if len(licensee_names) > 1 else None,
         )
         for c in structure.candidates:
             c.chapter = ordinal
@@ -322,6 +330,7 @@ def arr_extract_source(ctx: JobContext) -> dict:
                     "pages": list(range(start, end + 1)),
                     "source_id": str(source_id),
                     "utility": utility_code,
+                    "licensees": sorted(licensee_names) if len(licensee_names) > 1 else None,
                     "commission": commission,
                     "branch": branch,
                     "voices": [v.code for v in tax.value_types],
@@ -435,7 +444,8 @@ def arr_validate_source(ctx: JobContext) -> dict:
             rec = r.effective_record
             if rec.get("value_state") not in ("value", "zero") or rec.get("canonical_value") is None:
                 continue
-            g = (rec["fiscal_year"], rec["value_type"], rec["as_of_order"])
+            # identities hold within one licensee's figures: a combined order is grouped by licensee
+            g = (rec["fiscal_year"], rec["value_type"], rec["as_of_order"], rec.get("utility") or "")
             groups.setdefault(g, []).append(
                 Value(
                     rec["line_code"],
@@ -451,10 +461,11 @@ def arr_validate_source(ctx: JobContext) -> dict:
             )
         )
         findings = []
-        for (fy, vt, order), values in sorted(groups.items()):
-            for f in evaluate(
-                values, taxonomy=tax, mapping=mapping, group={"fiscal_year": fy, "value_type": vt, "as_of_order": order}
-            ):
+        for (fy, vt, order, licensee), values in sorted(groups.items()):
+            group = {"fiscal_year": fy, "value_type": vt, "as_of_order": order}
+            if licensee:
+                group["utility"] = licensee
+            for f in evaluate(values, taxonomy=tax, mapping=mapping, group=group):
                 findings.append(f)
                 s.add(
                     ValidatorFindingRecord(

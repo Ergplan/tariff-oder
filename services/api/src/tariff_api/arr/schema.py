@@ -34,6 +34,7 @@ ARR_CORRECTABLE_FIELDS = frozenset(
     {
         "line_code",
         "fiscal_year",
+        "utility",  # the licensee a value of a combined order belongs to
         "value_type",
         "category_code",
         "stated_value",

@@ -4,6 +4,7 @@ import { apiTry } from "@/lib/api";
 import { ErrorBanner } from "../../../components";
 import { ActionButton } from "../../../client/actions";
 import { ArrReview } from "./arr-review";
+import Licensees from "./licensees";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,7 @@ export default async function SourceArrPage({ params }: { params: Promise<{ id: 
     apiTry<CandidateList>(`/sources/${encodeURIComponent(id)}/arr/candidates`),
     apiTry<MeOut>("/me"),
   ]);
+  const lic = await apiTry<{ code: string; name: string; primary: boolean }[]>(`/sources/${encodeURIComponent(id)}/licensees`);
   if (rd.error || !rd.data) return <ErrorBanner error={rd.error!} />;
   const r = rd.data;
   const role = me.data?.role;
@@ -38,6 +40,7 @@ export default async function SourceArrPage({ params }: { params: Promise<{ id: 
         {r.mapping_confirmed ? "real lines can be approved" : `real lines cannot be approved yet: ${r.mapping_note}`} · {decided} of{" "}
         {Object.values(counts).reduce((a, b) => a + b, 0)} values decided
       </p>
+      {lic.data?.length ? <Licensees sourceId={id} licensees={lic.data} canEdit={role === "administrator"} /> : null}
       {r.arr_state === null && role === "administrator" ? <ActionButton path={`/api/sources/${id}/arr/read`} label="Read this order's ARR" /> : null}
       {r.arr_state === "chapters_proposed" ? (
         <>

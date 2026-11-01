@@ -135,12 +135,23 @@ def arr_image_prompt(context: dict[str, Any], pages: list[int]) -> str:
         f"Page images {pages[0]}-{pages[-1]} of an order of {context.get('commission', '?')} for the licensee "
         f"{context.get('utility', '?')}; ARR chapter: {context.get('branch', '?')}.\n"
         f"Voices (value_type): {voices}.\nFiscal years look like FY2025-26.\n"
-        f"Taxonomy line codes you may use:\n{codes}"
+        + (
+            f"This is a combined order for the licensees {', '.join(context['licensees'])}: set utility on every "
+            "candidate to the licensee its column or table names; leave out totals across licensees.\n"
+            if context.get("licensees")
+            else ""
+        )
+        + f"Taxonomy line codes you may use:\n{codes}"
     )
 
 
 def coerce_arr(
-    obj: Any, *, source_id: str, utility: str | None, conversions: dict[str, float]
+    obj: Any,
+    *,
+    source_id: str,
+    utility: str | None,
+    conversions: dict[str, float],
+    licensees: list[str] | None = None,
 ) -> tuple[list, list[str]]:
     """Each model candidate made to fit the ArrCandidate schema where the intent is clear, the
     identity fields the model cannot know set by code (the order, the licensee), the canonical
@@ -159,7 +170,17 @@ def coerce_arr(
             rejected.append(f"{i}: not an object")
             continue
         c = {k: v for k, v in c.items() if k not in ("canonical_value", "canonical_unit", "conversion")}
-        c["as_of_order"], c["utility"], c["family"] = source_id, utility, "arr_line"
+        # a combined order: the model names the licensee of each value, one of the order's own;
+        # anything else is the order's licensee only when it has just one
+        named = c.get("utility")
+        if licensees:
+            if named not in licensees:
+                rejected.append(f"{i}: utility {named!r} is not one of the order's licensees")
+                continue
+            owner = named
+        else:
+            owner = utility
+        c["as_of_order"], c["utility"], c["family"] = source_id, owner, "arr_line"
         v = c.get("stated_value")
         if isinstance(v, (int, float)) and not isinstance(v, bool):
             v = c["stated_value"] = str(v)
@@ -267,6 +288,7 @@ class AnthropicArrImageChannel(ArrImageChannel):
                 source_id=ctx.get("source_id", ""),
                 utility=ctx.get("utility"),
                 conversions=ctx.get("conversions", {}),
+                licensees=ctx.get("licensees"),
             )
             out.candidates.extend(kept)
             if isinstance(shaped, dict):

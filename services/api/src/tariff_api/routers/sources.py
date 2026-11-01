@@ -56,6 +56,8 @@ from ..schemas import (
     RegionAnnotation,
     SourceClassification,
     SourceDetail,
+    SourceLicenseeOut,
+    SourceLicenseesIn,
     SourceList,
     SourcePageList,
     SourcePageOut,
@@ -132,6 +134,29 @@ def classify_source(
         )
         s.flush()
         return _summary(src)
+
+
+@router.get("/{source_id}/licensees", response_model=list[SourceLicenseeOut], dependencies=[Depends(require_analyst)])
+def get_licensees(source_id: uuid.UUID) -> list[SourceLicenseeOut]:
+    """The order's licensees: its primary licensee, then those of a combined order."""
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        return [
+            SourceLicenseeOut(code=u.code, name=u.name, primary=u.id == src.utility_id)
+            for u in svc.licensees_of(s, src)
+        ]
+
+
+@router.put("/{source_id}/licensees", response_model=list[SourceLicenseeOut])
+def set_licensees(
+    source_id: uuid.UUID, body: SourceLicenseesIn, principal: Principal = Depends(require_admin)
+) -> list[SourceLicenseeOut]:
+    """Mark an order as combined: every licensee it decides for (same commission; the primary
+    licensee stays).  ARR values are then attributed by the column or caption naming each."""
+    with session_scope() as s:
+        src = svc.get_source(s, source_id)
+        out = svc.set_licensees(s, src, body.codes, actor=principal.email)
+        return [SourceLicenseeOut(code=u.code, name=u.name, primary=u.id == src.utility_id) for u in out]
 
 
 @router.put("/{source_id}/assignment", response_model=SourceSummary)

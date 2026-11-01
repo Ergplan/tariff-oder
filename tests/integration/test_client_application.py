@@ -267,6 +267,9 @@ def test_library_seed_locate_acquire_and_coverage(client, runner, object_store_r
     run_all(runner)
     t = next(e for e in client.get("/library/entries?utility=KESCO", headers=headers(ADMIN)).json() if e["id"] == twin)
     assert t["status"] == "acquired" and t["source_id"] == got[eid]["source_id"] and t["attempts"] == 0
+    # and the order is recorded as a combined order for both licensees
+    lic = client.get(f"/sources/{t['source_id']}/licensees", headers=headers(ADMIN)).json()
+    assert [(x["code"], x["primary"]) for x in lic] == [("NPCL", True), ("KESCO", False)]
 
     # discovery profiles: listed for analysts; a commission without one is told so (no fetch)
     assert "UPERC" in client.get("/library/discovery-profiles", headers=headers(CLIENT_A)).json()

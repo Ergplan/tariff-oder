@@ -413,6 +413,84 @@ def arr_order_pdf(licensee: str = ARR_LICENSEE) -> bytes:
     return _finalise(doc, {"title": "SYNTHETIC ARR order"})
 
 
+def combined_arr_order_pdf(north: str = "SYNTH-NORTH", south: str = "SYNTH-SOUTH") -> bytes:
+    """Five pages in the shape of a SYNTHETIC commission's combined ARR order for two
+    licensees (increment 35): tables with a column per licensee and a total column, the year
+    and the voice in the caption; and one table whose caption names a single licensee, with
+    the year and voice in its column headings.  Every identity closes per licensee."""
+    doc = pymupdf.open()
+    total = 5
+    widths = [36, 190, 95, 95, 95]
+
+    def new(label: int) -> pymupdf.Page:
+        page = doc.new_page(width=595, height=842)
+        page.insert_text((72, 60), BANNER, fontsize=9)
+        _footer(page, str(label), total)
+        return page
+
+    def table(page: pymupdf.Page, top: float, header: list[str], rows: list[tuple[str, ...]]) -> None:
+        body = [[str(i + 1), *r] for i, r in enumerate(rows)]
+        _ruled_grid(page, top, [header, *body], widths)
+
+    by_licensee = ["S. No.", "Particulars", north, south, "Total"]
+    p = new(1)
+    _lines(
+        p,
+        120,
+        [
+            "SYNTHETIC ELECTRICITY REGULATORY COMMISSION",
+            f"Order on the Aggregate Revenue Requirement of {north} and {south}",
+            "Combined order for the State's distribution licensees (synthetic figures)",
+        ],
+        13,
+        24,
+    )
+    p = new(2)
+    y = _lines(
+        p, 100, ["3. ENERGY SALES AND LOSSES", "", "Table 3.1: Energy balance approved for FY 2025-26 (MU)"], 10, 18
+    )
+    table(
+        p,
+        y + 6,
+        by_licensee,
+        [
+            ("Energy Sales", "4,500.00", "3,600.00", "8,100.00"),
+            ("Distribution Loss (%)", "10.00", "10.00", "10.00"),
+            ("Energy Input at Distribution Periphery", "5,000.00", "4,000.00", "9,000.00"),
+        ],
+    )
+    p = new(3)
+    y = _lines(
+        p, 100, ["4. AGGREGATE REVENUE REQUIREMENT", "", "Table 4.1: ARR approved for FY 2025-26 (Rs. Crore)"], 10, 18
+    )
+    table(
+        p,
+        y + 6,
+        by_licensee,
+        [
+            ("Power Purchase Cost", "2,800.00", "2,200.00", "5,000.00"),
+            ("O&M Expenses", "350.00", "250.00", "600.00"),
+            ("Depreciation", "120.00", "80.00", "200.00"),
+            ("Total Expenditure", "3,270.00", "2,530.00", "5,800.00"),
+            ("Less: Non-Tariff Income", "70.00", "30.00", "100.00"),
+            ("Aggregate Revenue Requirement", "3,200.00", "2,500.00", "5,700.00"),
+        ],
+    )
+    p = new(4)
+    y = _lines(p, 100, [f"Table 4.2: True-up of {south} (Rs. Crore)"], 10, 18)
+    table(
+        p,
+        y + 6,
+        ["S. No.", "Particulars", "FY 2024-25 True-up", "FY 2024-25 Approved", ""],
+        [("O&M Expenses", "240.00", "230.00", "")],
+    )
+    p = new(5)
+    _lines(
+        p, 100, ["6. DIRECTIONS", "The licensees shall file their next petitions with the formats of the regulations."]
+    )
+    return _finalise(doc, {"title": "SYNTHETIC combined ARR order"})
+
+
 def accounts_extract_pdf(licensee: str = ARR_LICENSEE) -> bytes:
     """Two pages in the shape of an extract of a SYNTHETIC licensee's audited accounts for
     FY 2025-26, in Rs. lakh: the document a true-up actual is grounded on (ADR-0020)."""
