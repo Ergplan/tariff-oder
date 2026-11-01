@@ -74,6 +74,42 @@ export function ArrReview({ sourceId, open, chapters, initial, findings }: { sou
     return next;
   }
 
+  async function post(c: CandidateOut, outcome: "approve" | "reject", rationale: string | null, viewMap: Record<string, string>) {
+    const res = await fetch(`/api/candidates/${c.id}/decision`, {
+      method: "POST",
+      headers: { "content-type": "application/json", "Idempotency-Key": crypto.randomUUID() },
+      body: JSON.stringify({
+        outcome,
+        expected_version: c.version,
+        rationale,
+        evidence_view_ids: viewMap[c.id] ? [viewMap[c.id]] : [],
+        time_spent_ms: viewedAt.current ? Date.now() - viewedAt.current : null,
+      }),
+    });
+    if (!res.ok) throw await readError(res);
+    const r = (await res.json()) as { candidate: CandidateOut };
+    setCands((all) => all.map((x) => (x.id === c.id ? r.candidate : x)));
+  }
+
+  /** Every open value on the page shown, read alike by both channels and in no identity
+   * failure: each still gets its own decision, citing this reviewer's view of the page. */
+  async function approvePage() {
+    if (!open || busy || !img) return;
+    const page = img.page;
+    const eligible = list.filter((c) => OPEN.includes(c.review_status) && rec(c).evidence[0].page_index === page && c.channel_agreement === "agree" && !flagged.has(c.id) && !(c.risk_tags ?? []).some((t) => t !== "new_profile"));
+    if (!eligible.length || !window.confirm(`Approve ${eligible.length} value(s) on page ${page} that both readings agree on and no identity check flags?`)) return;
+    setBusy("page");
+    setError(null);
+    try {
+      const viewMap = await showPage(page);
+      for (const c of eligible) await post(c, "approve", null, viewMap);
+    } catch (e) {
+      setError((e as ErrorResponse).message ? (e as ErrorResponse) : networkError("The decisions"));
+    } finally {
+      setBusy(null);
+    }
+  }
+
   async function decide(c: CandidateOut, outcome: "approve" | "reject") {
     if (!open || busy) return;
     let rationale: string | null = null;
@@ -85,20 +121,7 @@ export function ArrReview({ sourceId, open, chapters, initial, findings }: { sou
     setError(null);
     try {
       const viewMap = await showPage(rec(c).evidence[0].page_index);
-      const res = await fetch(`/api/candidates/${c.id}/decision`, {
-        method: "POST",
-        headers: { "content-type": "application/json", "Idempotency-Key": crypto.randomUUID() },
-        body: JSON.stringify({
-          outcome,
-          expected_version: c.version,
-          rationale,
-          evidence_view_ids: viewMap[c.id] ? [viewMap[c.id]] : [],
-          time_spent_ms: viewedAt.current ? Date.now() - viewedAt.current : null,
-        }),
-      });
-      if (!res.ok) throw await readError(res);
-      const r = (await res.json()) as { candidate: CandidateOut };
-      setCands((all) => all.map((x) => (x.id === c.id ? r.candidate : x)));
+      await post(c, outcome, rationale, viewMap);
     } catch (e) {
       setError((e as ErrorResponse).message ? (e as ErrorResponse) : networkError("The decision"));
     } finally {
@@ -199,7 +222,14 @@ export function ArrReview({ sourceId, open, chapters, initial, findings }: { sou
       <aside className="arr-page" aria-label="Cited page">
         {img ? (
           <>
-            <div className="muted">Page {img.page}</div>
+            <div className="muted">
+              Page {img.page}{" "}
+              {open ? (
+                <button type="button" className="tt-btn" disabled={!!busy} onClick={() => void approvePage()}>
+                  Approve agreeing values on this page
+                </button>
+              ) : null}
+            </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={img.url} alt={`page ${img.page} with the cited table outlined`} style={{ width: "100%" }} />
           </>
