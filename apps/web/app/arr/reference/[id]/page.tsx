@@ -43,6 +43,25 @@ type Filing = {
     not_in_index: string[];
     formats: { format: string; title: string; sheet: string | null; alias_why: string | null; status: string }[];
   } | null;
+  checklist: {
+    checklist: string;
+    version: number;
+    status: string;
+    scope: string;
+    regulation: { title: string; path: string; sha256: string };
+    counts: Counts;
+    items: {
+      id: string;
+      clause: string;
+      page: number;
+      quote: string;
+      requirement: string;
+      proceedings: string[];
+      note: string | null;
+      result: string;
+      evidence: { kind: string; ref: string | null; why: string; weight: string | null; found: boolean | null; where: string | null; context?: string }[];
+    }[];
+  } | null;
   narrative: {
     status: string;
     min_digits: number;
@@ -79,6 +98,11 @@ const TONE: Record<string, string> = {
   untraced: "warn",
   uninformative: "neutral",
   not_printed: "warn",
+  evidenced: "ok",
+  partly: "warn",
+  mentioned: "warn",
+  not_found: "bad",
+  outside_package: "neutral",
   no_format_value: "warn",
   computed: "ok",
   tied: "ok",
@@ -584,6 +608,67 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                 ))}
               </ul>
             </details>
+          </>
+        )}
+      </Panel>
+
+      <Panel num="06c" title="The regulations' filing requirements" aside="what the regulations require a petition to contain or to have been done, and the evidence found — evidence is not compliance">
+        {!f.checklist ? (
+          <p className="muted">No filing checklist evaluated.</p>
+        ) : (
+          <>
+            <p>
+              <CountBadges counts={f.checklist.counts} />
+            </p>
+            <p className="muted" style={{ fontSize: "0.85rem" }}>
+              {f.checklist.regulation.title} — {f.checklist.status}. {f.checklist.scope}
+            </p>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Clause</th>
+                    <th>Requirement</th>
+                    <th>Evidence</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {f.checklist.items.map((it) => (
+                    <tr key={it.id}>
+                      <td className="mono">
+                        {it.clause}
+                        <div className="muted">p.{it.page}</div>
+                      </td>
+                      <td>
+                        {it.requirement}
+                        <div className="muted">“{it.quote}”</div>
+                        {it.note ? <div className="muted">{it.note}</div> : null}
+                      </td>
+                      <td>
+                        <ul>
+                          {it.evidence.map((e, i) => (
+                            <li key={i}>
+                              <span className="badge" data-tone={e.found === null ? "neutral" : e.found ? "ok" : "bad"}>
+                                {e.found === null ? "outside" : e.found ? "found" : "not found"}
+                              </span>{" "}
+                              {e.why}
+                              {e.where ? <div className="muted mono">{e.where}</div> : null}
+                              {e.context ? <div className="muted">…{e.context}…</div> : null}
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                      <td>
+                        <span className="badge" data-tone={TONE[it.result] ?? "neutral"}>
+                          {it.result.replace("_", " ")}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </>
         )}
       </Panel>

@@ -1,0 +1,557 @@
+{
+ "checklist": "uperc/myt-2025",
+ "version": 1,
+ "status": "draft — read from the Regulations by the build; quotes checked against the PDF by a test; nobody has approved the list",
+ "scope": "What these Regulations require a true-up, APR or ARR petition to contain or to have been done (Regs. 4–8).  Not the Commission's list of formats: Regs. 4.2, 5.1 and 6.1 refer to formats 'as may be prescribed by the Commission', and that prescription is not in these Regulations.",
+ "regulation": {
+  "title": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025",
+  "path": "packages/regulations/uperc/myt-distribution-2025-english.pdf",
+  "sha256": "b167338dbaae200643e58425109f0da4f152b8dbfb915a337f11ecbad607847d"
+ },
+ "quotes_checked": 17,
+ "items": [
+  {
+   "id": "U25-4.1",
+   "clause": "Reg. 4.1",
+   "page": 9,
+   "quote": "30.11.2025 FY 2024-25*** FY 2025-26 FY 2026-27",
+   "requirement": "True-up FY2024-25, APR FY2025-26 and ARR FY2026-27 filed by 30 November 2025 (the 2019 Regulations govern the true-up's content; the date is these Regulations')",
+   "proceedings": [
+    "true_up",
+    "apr",
+    "arr"
+   ],
+   "note": "Reg. 6.1's proviso: a true-up filed after the Reg. 4.1 date gets no carrying cost on a gap for the delay — whether the extension covers it is the reviewer's",
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "text",
+     "ref": "Verified at [A-Za-z ]+ on this date \\d{1,2}\\w{0,2} day of \\w+, 20\\d\\d",
+     "why": "the affidavit's verification date — the petition's date as sworn",
+     "weight": "statement",
+     "found": true,
+     "where": "3. Petition in Form-2 ARR FY 2026-27.docx",
+     "context": " annexures filed along with the Petition are true copies of their originals. DEPONENT VERIFICATION: Verified at Greater Noida on this date 14th day of December, 2025 that the contents of the foregoing Affidavit are true and c"
+    },
+    {
+     "kind": "text",
+     "ref": "on or before 15\\.12\\.2025",
+     "why": "an extension the petition cites (the Commission's letter of 25.11.2025 — the letter itself is not among the documents)",
+     "weight": "statement",
+     "found": true,
+     "where": "1. Cover Letter ARR FY 2026-27.docx",
+     "context": "11.2025, granted an extension permitting all DISCOMs to submit their ARR, APR and True-up Petitions on or before 15.12.2025, considering that the Tariff Order for FY 2025-26 was issue"
+    }
+   ]
+  },
+  {
+   "id": "U25-4.2",
+   "clause": "Reg. 4.2",
+   "page": 9,
+   "quote": "The Licensee shall submit the data regarding the above as per guidelines and formats prescribed and added/ amended from time to time by the Commission.",
+   "requirement": "Data in the formats the Commission prescribes",
+   "proceedings": [
+    "true_up",
+    "apr",
+    "arr"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "document",
+     "ref": "4. Appendix-II MYT Tariff Formats",
+     "why": "the formats workbook",
+     "weight": null,
+     "found": true,
+     "where": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx"
+    },
+    {
+     "kind": "sheet",
+     "ref": "Index",
+     "why": "the petitioner's own index of formats — the Commission's list is not in these Regulations (Reg. 4.2, 5.1 and 6.1 refer to formats 'as may be prescribed')",
+     "weight": null,
+     "found": true,
+     "where": "Index"
+    }
+   ]
+  },
+  {
+   "id": "U25-5.1-board",
+   "clause": "Reg. 5.1",
+   "page": 10,
+   "quote": "after due authorization by the Board of Directors or by any Committee/person authorised by the Board in this regard",
+   "requirement": "Authorisation by the Board (or its delegate)",
+   "proceedings": [
+    "true_up",
+    "apr",
+    "arr"
+   ],
+   "note": null,
+   "result": "partly",
+   "evidence": [
+    {
+     "kind": "text",
+     "ref": "Resolution passed by the Board of Directors dated \\d\\d\\.\\d\\d\\.20\\d\\d",
+     "why": "Form-1 cites the Board resolution, attached as its Appendix I(b)",
+     "weight": "statement",
+     "found": true,
+     "where": "2. Petition in Form-1 ARR FY 2026-27.docx",
+     "context": "larification / submissions etc. required in respect thereof) before the State Commission. A copy of Resolution passed by the Board of Directors dated 28.08.2024 is attached hereto as Appendix – I(b). That, it is pertinen"
+    },
+    {
+     "kind": "document",
+     "ref": "Appendix-I",
+     "why": "the resolution and the letter of authorisation themselves (Form-1's Appendix I(a) and I(b))",
+     "weight": null,
+     "found": false,
+     "where": null
+    }
+   ]
+  },
+  {
+   "id": "U25-5.1-efiling",
+   "clause": "Reg. 5.1",
+   "page": 10,
+   "quote": "electronically on e-filing portal of the Commission",
+   "requirement": "Filed on the Commission's e-filing portal, digitally signed by the authorised representative",
+   "proceedings": [
+    "true_up",
+    "apr",
+    "arr"
+   ],
+   "note": null,
+   "result": "outside_package",
+   "evidence": [
+    {
+     "kind": "outside",
+     "ref": null,
+     "why": "a filing event and a signature: the documents as provided (DOCX and XLSX copies) cannot show either",
+     "weight": null,
+     "found": null
+    }
+   ]
+  },
+  {
+   "id": "U25-5.2",
+   "clause": "Reg. 5.2",
+   "page": 10,
+   "quote": "Hard copies of the Petition shall also be filed",
+   "requirement": "Hard copies with the fees under the Fee and Fines Regulations",
+   "proceedings": [
+    "true_up",
+    "apr",
+    "arr"
+   ],
+   "note": null,
+   "result": "outside_package",
+   "evidence": [
+    {
+     "kind": "outside",
+     "ref": null,
+     "why": "hard copies and the fee are not in the documents",
+     "weight": null,
+     "found": null
+    }
+   ]
+  },
+  {
+   "id": "U25-5.5",
+   "clause": "Reg. 5.5",
+   "page": 10,
+   "quote": "publish a Public Notice in at least two English and two Hindi daily newspapers",
+   "requirement": "Public notice within three working days of admittance; the petition and computations on the website, text-searchable or as spreadsheets",
+   "proceedings": [
+    "true_up",
+    "apr",
+    "arr"
+   ],
+   "note": null,
+   "result": "outside_package",
+   "evidence": [
+    {
+     "kind": "outside",
+     "ref": null,
+     "why": "after admittance — the Commission's order records it (the FY2026-27 order describes the public process)",
+     "weight": null,
+     "found": null
+    }
+   ]
+  },
+  {
+   "id": "U25-6.1",
+   "clause": "Reg. 6.1",
+   "page": 11,
+   "quote": "together with the Accounting Statements, extracts of books of account",
+   "requirement": "True-up with the Accounting Statements and extracts of books of account",
+   "proceedings": [
+    "true_up"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "document",
+     "ref": "11. Annexure-1(a) NPCL Audited Accounts",
+     "why": "the audited accounts",
+     "weight": null,
+     "found": true,
+     "where": "11. Annexure-1(a) NPCL Audited Accounts FY 2024-25.pdf"
+    },
+    {
+     "kind": "document",
+     "ref": "52. Annexure-41 Trial Balance",
+     "why": "the trial balance — extracts of the books",
+     "weight": null,
+     "found": true,
+     "where": "52. Annexure-41 Trial Balance for FY 2024-25.xlsx"
+    }
+   ]
+  },
+  {
+   "id": "U25-6.4",
+   "clause": "Reg. 6.4",
+   "page": 12,
+   "quote": "prepared in compliance of the Electricity Distribution (Accounts and Additional Disclosure) Rules, 2024",
+   "requirement": "Accounting Statements under the Accounts and Additional Disclosure Rules 2024",
+   "proceedings": [
+    "true_up"
+   ],
+   "note": "NPCL states the detailed disclosures are 'being complied' in the FY2024-25 accounts and that the Rules (as amended in 2025, in force from 01.04.2026) will be complied with from FY2026-27 — whether that meets Reg. 6.4 for the true-up year is the reviewer's (A59).  The audited accounts (a PDF not in this copy of the package) are where compliance shows.",
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "text",
+     "ref": "Company will ensure compliance with the said Rules from FY 20\\d\\d-\\d\\d onwards",
+     "why": "NPCL's statement in its compliance report (Appendix VII) — not the Commission's directive quoted above it",
+     "weight": "statement",
+     "found": true,
+     "where": "9. Appendix-VII Compliance Hon'ble Commission's Directives FY 2026-27.docx",
+     "context": "nts and Additional Disclosure) Rules, 2025 shall come into effect from 01.04.2026. Accordingly, the Company will ensure compliance with the said Rules from FY 2026-27 onwards. 15 The Commission directs the Petitioner to ensure that th"
+    }
+   ]
+  },
+  {
+   "id": "U25-6.5",
+   "clause": "Reg. 6.5",
+   "page": 12,
+   "quote": "submit a statement on the status of compliance to the directives issued by the Commission in the previous Tariff Order",
+   "requirement": "Statement of compliance with the Commission's directives",
+   "proceedings": [
+    "true_up"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "document",
+     "ref": "9. Appendix-VII Compliance",
+     "why": "the compliance statement",
+     "weight": null,
+     "found": true,
+     "where": "9. Appendix-VII Compliance Hon'ble Commission's Directives FY 2026-27.docx"
+    }
+   ]
+  },
+  {
+   "id": "U25-7.1",
+   "clause": "Reg. 7.1",
+   "page": 12,
+   "quote": "together with the audited/ provisional Accounting Statements",
+   "requirement": "APR with audited or provisional accounting statements",
+   "proceedings": [
+    "apr"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "document",
+     "ref": "6. Appendix-IV Text of APR",
+     "why": "the APR text",
+     "weight": null,
+     "found": true,
+     "where": "6. Appendix-IV Text of APR FY 2025-26.docx"
+    },
+    {
+     "kind": "sheet",
+     "ref": "APR Snapshot",
+     "why": "the APR summary format",
+     "weight": null,
+     "found": true,
+     "where": "APR Snapshot"
+    },
+    {
+     "kind": "text",
+     "ref": "Actual\\)? till Sep",
+     "why": "the current year's actuals for six months (Reg. 3.1(i))",
+     "weight": "statement",
+     "found": true,
+     "where": "6. Appendix-IV Text of APR FY 2025-26.docx",
+     "context": "able 1: Summary of Billing Determinants for FY 2025-26 7 Table 2 : Summary of Billing Determinants (Actual) till Sep’2025 7 Table 3: Summary of Billing Determinants estimated f"
+    }
+   ]
+  },
+  {
+   "id": "U25-8.2-sales",
+   "clause": "Reg. 8.2",
+   "page": 12,
+   "quote": "category/ sub-category wise number of consumers, connected load, load factor and sales projections",
+   "requirement": "Category-wise consumers, connected load, load factor and sales projections",
+   "proceedings": [
+    "arr"
+   ],
+   "note": null,
+   "result": "partly",
+   "evidence": [
+    {
+     "kind": "sheet",
+     "ref": "ESR2_Sales Forecast",
+     "why": "the sales forecast format",
+     "weight": null,
+     "found": true,
+     "where": "ESR2_Sales Forecast"
+    },
+    {
+     "kind": "document",
+     "ref": "69. Annexure-58 Billing Determinants FY 2026-27",
+     "why": "billing determinants for the ARR year",
+     "weight": null,
+     "found": true,
+     "where": "69. Annexure-58 Billing Determinants FY 2026-27.xlsb"
+    },
+    {
+     "kind": "text",
+     "ref": "load factor",
+     "why": "load factor — no format carries it; a mention only",
+     "weight": "mention",
+     "found": true,
+     "where": "2. Petition in Form-1 ARR FY 2026-27.docx",
+     "context": "ll comprise of, but not limited to, category/sub-category wise number of consumers, connected load, load factor and sales projections, Power Procurement Plan (renewable en"
+    }
+   ]
+  },
+  {
+   "id": "U25-8.2-power",
+   "clause": "Reg. 8.2",
+   "page": 12,
+   "quote": "Power Procurement Plan (renewable energy and non-renewable energy) and forecasting",
+   "requirement": "Power procurement plan, renewable and other",
+   "proceedings": [
+    "arr"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "sheet",
+     "ref": "F9_PP_plan",
+     "why": "the power purchase plan",
+     "weight": null,
+     "found": true,
+     "where": "F9_PP_plan"
+    },
+    {
+     "kind": "sheet",
+     "ref": "F5_PP_Renew",
+     "why": "renewable purchase",
+     "weight": null,
+     "found": true,
+     "where": "F5_PP_Renew"
+    },
+    {
+     "kind": "sheet",
+     "ref": "F4_PP_MOD",
+     "why": "merit order (Reg. 8.3)",
+     "weight": null,
+     "found": true,
+     "where": "F4_PP_MOD"
+    }
+   ]
+  },
+  {
+   "id": "U25-8.2-rpo",
+   "clause": "Reg. 8.2",
+   "page": 12,
+   "quote": "Renewable Purchase Obligation (RPO) planning and forecasting",
+   "requirement": "RPO planning and forecasting",
+   "proceedings": [
+    "arr"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "sheet",
+     "ref": "F6_PP6_RPO",
+     "why": "the RPO format",
+     "weight": null,
+     "found": true,
+     "where": "F6_PP6_RPO"
+    },
+    {
+     "kind": "document",
+     "ref": "24. Annexure-13 RPO Computation",
+     "why": "the RPO computation",
+     "weight": null,
+     "found": true,
+     "where": "24. Annexure-13 RPO Computation in the format prescribed by the Honble Commission.xlsx"
+    }
+   ]
+  },
+  {
+   "id": "U25-8.2-loss",
+   "clause": "Reg. 8.2",
+   "page": 12,
+   "quote": "Distribution Loss",
+   "requirement": "Distribution loss trajectory (with the AT&C trajectory agreed under a national scheme, if any)",
+   "proceedings": [
+    "arr"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "sheet",
+     "ref": "P1_DL",
+     "why": "the distribution loss format",
+     "weight": null,
+     "found": true,
+     "where": "P1_DL"
+    },
+    {
+     "kind": "sheet",
+     "ref": "Energy Balance",
+     "why": "the energy balance",
+     "weight": null,
+     "found": true,
+     "where": "Energy Balance"
+    }
+   ]
+  },
+  {
+   "id": "U25-8.2-capex",
+   "clause": "Reg. 8.2",
+   "page": 13,
+   "quote": "Capital Investment Plan, financing plan and physical targets, equity, grants, etc.",
+   "requirement": "Capital investment plan, financing plan, physical targets, equity and grants",
+   "proceedings": [
+    "arr"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "sheet",
+     "ref": "F13_CAP_Plan",
+     "why": "the capital plan",
+     "weight": null,
+     "found": true,
+     "where": "F13_CAP_Plan"
+    },
+    {
+     "kind": "document",
+     "ref": "49. Annexure-38- Details of CAPEX for FY 2026-27",
+     "why": "the ARR year's capex",
+     "weight": null,
+     "found": true,
+     "where": "49. Annexure-38- Details of CAPEX for FY 2026-27.xlsb"
+    },
+    {
+     "kind": "sheet",
+     "ref": "F14_CAP_Cap Cost",
+     "why": "capital cost and its financing",
+     "weight": null,
+     "found": true,
+     "where": "F14_CAP_Cap Cost"
+    },
+    {
+     "kind": "sheet",
+     "ref": "F12_CAP_Cons Contri",
+     "why": "consumer contributions and grants",
+     "weight": null,
+     "found": true,
+     "where": "F12_CAP_Cons Contri"
+    },
+    {
+     "kind": "sheet",
+     "ref": "P4_Phy Stat",
+     "why": "physical statistics",
+     "weight": null,
+     "found": true,
+     "where": "P4_Phy Stat"
+    }
+   ]
+  },
+  {
+   "id": "U25-8.4a",
+   "clause": "Reg. 8.4(a)",
+   "page": 13,
+   "quote": "status of metering, feeder level/ distribution transformer metering, diversity factor",
+   "requirement": "Status of metering, feeder and DT metering, diversity factors by category",
+   "proceedings": [
+    "arr"
+   ],
+   "note": null,
+   "result": "mentioned",
+   "evidence": [
+    {
+     "kind": "text",
+     "ref": "diversity factor",
+     "why": "diversity factor — no format carries it; a mention only",
+     "weight": "mention",
+     "found": true,
+     "where": "2. Petition in Form-1 ARR FY 2026-27.docx",
+     "context": " and energy sales projections, status of metering, feeder level/ distribution transformer metering, diversity factor for various categories of consumers taking seasonality into"
+    },
+    {
+     "kind": "text",
+     "ref": "distribution transformer metering|DT metering",
+     "why": "DT metering — a mention only",
+     "weight": "mention",
+     "found": true,
+     "where": "10. Appendix-IX Executive Summary FY 2026-27.docx",
+     "context": "8.23 4 A&G expenses 20.28 39.36 5 R&M expenses 54.72 64.91 6 Additional O&M - SOP Compliance, CGRF, DT Metering, Energy Audit etc. - 9.01 7 Interest Charges 77.82 82.23 8 "
+    }
+   ]
+  },
+  {
+   "id": "U25-8.5",
+   "clause": "Reg. 8.5",
+   "page": 13,
+   "quote": "expected revenue from the existing Tariff",
+   "requirement": "Revenue at the existing tariff and the proposed tariff, category-wise",
+   "proceedings": [
+    "arr"
+   ],
+   "note": null,
+   "result": "evidenced",
+   "evidence": [
+    {
+     "kind": "sheet",
+     "ref": "ESR_3 Curr Tariff FY27",
+     "why": "revenue at the existing tariff",
+     "weight": null,
+     "found": true,
+     "where": "ESR_3 Curr Tariff FY27"
+    },
+    {
+     "kind": "sheet",
+     "ref": "ESR4_Prop Tariff",
+     "why": "revenue at the proposed tariff",
+     "weight": null,
+     "found": true,
+     "where": "ESR4_Prop Tariff"
+    },
+    {
+     "kind": "sheet",
+     "ref": "ESR4A_Prop Tariff Rate Sch.",
+     "why": "the existing and proposed rate schedule",
+     "weight": null,
+     "found": true,
+     "where": "ESR4A_Prop Tariff Rate Sch."
+    }
+   ]
+  }
+ ]
+}

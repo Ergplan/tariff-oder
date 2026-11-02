@@ -1005,6 +1005,44 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 94 (2026-11-02): the regulations' filing requirements as a checklist (R-PKG-1).**
+  I read the 2025 Distribution Regulations for a list of mandatory formats (item 5a): **they
+  have none.**  Regs. 4.2, 5.1 and 6.1 refer to "guidelines and formats as may be prescribed by
+  the Commission", which is a separate prescription.  So 5a is still blocked, now correctly
+  described.  What the Regulations do set out (Regs. 3–8) is what a petition must contain and
+  how it is filed.
+  - **The checklist** (`packages/filing-checklists/uperc/myt-2025.json`, version 1, draft) has
+    17 requirements.  Each has its clause, page and a verbatim quote; a test finds every quote
+    on its page of the committed PDF, named by hash.  Each also says what would evidence it: a
+    package document, a formats sheet, or DOCX text weighted as a *statement* (a dated or sworn
+    fact) or only a *mention*.  Requirements no document can show (portal filing, signature,
+    fees, public notice) are *outside*.
+  - **`tariff_api.arr.checklist`** grades each requirement:
+    - evidenced (all found, none a mere mention);
+    - partly (something missing, or a part only mentioned);
+    - mentioned;
+    - not found;
+    - outside the package.
+    Evidence found is not compliance.
+  - **NPCL FY2026-27: 11 evidenced, 2 partly, 1 mentioned, 3 outside.**
+    - The filing date: the affidavit was verified on 14.12.2025, under the extension to
+      15.12.2025 that the cover letter cites.  The Commission's letter itself is not among the
+      documents.
+    - **Partly:** the Board's resolution is cited, but Form-1's Appendix I is not in the package.
+      Load factor is only mentioned (no format carries it).
+    - **Mentioned:** the metering status and diversity factors (Reg. 8.4(a)).
+    - **A59 (reviewer):** Reg. 6.4 wants the true-up's accounts under the Accounts and
+      Additional Disclosure Rules 2024 and amendments.  NPCL answers "being complied" for the
+      named disclosures and will comply with the Rules from FY2026-27.
+  - **Two grading bugs, found by reading the first run:**
+    - "Appendix-I" matched "Appendix-II".  It now needs a boundary.
+    - A requirement with a mention-only part was graded evidenced.  It is now partly.
+    The 6.4 evidence had first matched the Commission's directive quoted in Appendix VII; it
+    now matches NPCL's own statement.
+  - **Output:** `scripts/filing_checklist.py` writes `checklist.json`; the page shows it as
+    panel 06c.
+  Nothing verified, nothing approved.
+
   **Increment 93 (2026-11-02): the narrative reconciled to the formats (R-ACC-5).**  A petition
   restates its figures in prose: the true-up, APR and ARR texts, the executive summary, Form-1,
   the cost allocation and the compliance note.  These are 310 tables in seven DOCX files.
@@ -2342,6 +2380,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 94 (2026-11-02): 451 passed** (+4 unit: every checklist quote on its page of the committed regulation; a checklist without a hash, evidence without a reason or a text without its weight refused; grading — a mention never enough, "Appendix-I" not "Appendix-II", a document without its bytes not present; NPCL's result; the integration test checks the API's checklist block).  Ruff, format and web typecheck clean.
 - **Increment 93 (2026-11-02): 447 passed** (+6 unit: figures parsed as printed; traced / near / opposite sign / untraced, a two-digit figure never traced; a DOCX's merged cell kept once with its title; a summary table bound with sums, signs and dashes; a binding refuses an unknown table, a wrong header, a row matched twice; the real nine tables 232 / 21; the integration test checks the API's narrative block).  Ruff, format, contracts and web typecheck clean.
 - **Increment 92 (2026-11-02): 441 passed** (+2 unit: a kVAh rate fed to the per-kWh energy rule blocks, never a revenue; the quote checker on a PDF made in the test finds quotes and column headers, and reports a wrong page, a missing header and another document; the real-data test adds ESR4A 47 / 47 and the 58-rate record).  `scripts/check_order_quotes.py` on the real order: 58 / 58.  Ruff, format and contracts clean.
 - **Increment 91 (2026-11-02): 439 passed** (+3 unit: a rate record refuses a figure not in its quote, a rate with no page and a record with no hash; a cell takes the order's rate with its time-of-day percentage, and a rate the record lacks is an error; the real ESR-3 from the order's schedule — 40 / 45 match, the five differing rows are A53 and A54).  `scripts/check_order_quotes.py` on the real order: 36 / 36 quotes on their pages.  Ruff, format and contracts clean.
@@ -2568,7 +2607,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 93) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 94) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2617,7 +2656,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **26 findings (A29–A58):** 16 for the petitioner, collected in the draft queries; 10 for the
+  - **27 findings (A29–A59):** 16 for the petitioner, collected in the draft queries; 11 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 
@@ -2632,8 +2671,10 @@ entries below are the per-increment history.**
   5. **Operator:** the 2025 Distribution Regulations are in (increment 90); still to provide: the
      2019 MYT Regulations.  For each, run
      `scripts/clause_candidates.py` on each (increment 89) — the reviewer verifies with the pages in hand.
-  5a. **Operator:** provide the Commission's list of mandatory formats (the UPERC MYT
-     Regulations' appendix), so completeness is measured against it, not the petitioner's index.
+  5a. **Operator:** provide the Commission's prescribed formats and guidelines.  The 2025
+     Regulations have no list: Regs. 4.2, 5.1 and 6.1 refer to formats "as may be prescribed by
+     the Commission" (increment 94).  Until then, completeness is measured against the
+     petitioner's own index, plus the Regulations' 17 filing requirements (panel 06c).
   6. **Petitioner (through the operator):** answer the findings.  A39 asks for the working of
      the projection years' depreciation by class.
 

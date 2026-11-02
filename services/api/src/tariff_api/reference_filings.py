@@ -75,6 +75,7 @@ def filing(filing_id: str) -> dict[str, Any]:
         "pipeline": [],
         "accounting": None,
         "narrative": None,
+        "checklist": None,
         "findings": [],
     }
     rep_path = folder / "reproduction.json"
@@ -137,6 +138,11 @@ def filing(filing_id: str) -> dict[str, Any]:
     npath = folder / "narrative.json"
     if npath.exists():
         out["narrative"] = _narrative(json.loads(npath.read_text()))
+    cpath = folder / "checklist.json"
+    if cpath.exists():
+        # the regulations' filing requirements, each with the evidence found (R-PKG-1)
+        c = json.loads(cpath.read_text())
+        out["checklist"] = c | {"counts": dict(Counter(i["result"] for i in c["items"]))}
     fpath = folder / "findings.json"
     if fpath.exists():
         out["findings"] = json.loads(fpath.read_text())["findings"]

@@ -60,6 +60,10 @@ def test_the_npcl_reference_filing_and_its_reproduction(client):
         "gap_previous",
     }
     assert len(nar["documents"]) == 7 and nar["untraced_by_table"][0]["figures"] > 0
+    # the regulations' filing requirements with the evidence found (R-PKG-1)
+    chk = f["checklist"]
+    assert chk["counts"] == {"evidenced": 11, "partly": 2, "outside_package": 3, "mentioned": 1}
+    assert chk["checklist"] == "uperc/myt-2025" and len(chk["items"]) == 17
     assert client.get("/arr/reference-filings/nope", headers=headers(CLIENT_A)).status_code == 404
 
 

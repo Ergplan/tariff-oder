@@ -299,6 +299,18 @@
     "narrative.json"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A59",
+   "kind": "filing against the regulations",
+   "title": "Reg. 6.4 requires the true-up's accounts under the Accounts and Additional Disclosure Rules 2024 and amendments; NPCL states it will comply with the Rules from FY2026-27",
+   "detail": "The 2025 Regulations (Reg. 6.4, p.12): 'The Distribution Licensee shall ensure that its Accounting Statements are prepared in compliance of the Electricity Distribution (Accounts and Additional Disclosure) Rules, 2024 and any amendment thereof.'  NPCL's compliance report (Appendix VII, against the directives of the order of 22.11.2025) answers 'Being Complied' for the detailed break-ups in the FY2024-25 audited accounts (power purchase by source, transmission losses and charges, category-wise billing determinants and revenue), and adds that the Rules as notified on 25 September 2025 come into effect from 01.04.2026, 'Accordingly, the Company will ensure compliance with the said Rules from FY 2026-27 onwards.'  Whether the FY2024-25 accounts meet Reg. 6.4 — the 2024 Rules, or only the disclosures the Commission named — is for the reviewer with the audited accounts (Annexure-1(a)) in hand.  Found by the filing checklist (U25-6.4).",
+   "where": [
+    "MYT Distribution Regulations 2025 p.12, Reg. 6.4",
+    "9. Appendix-VII Compliance … FY 2026-27.docx",
+    "packages/filing-checklists/uperc/myt-2025.json"
+   ],
+   "for": "reviewer"
   }
  ]
 }
