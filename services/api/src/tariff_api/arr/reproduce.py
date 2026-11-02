@@ -505,7 +505,7 @@ def load_rate_record(record: dict[str, Any]) -> dict[str, tuple[str, str]]:
     if not (record.get("document") or {}).get("sha256"):
         raise RuleError("a rate record names its document by SHA-256")
     out: dict[str, tuple[str, str]] = {}
-    for key, r in (record.get("rates") or {}).items():
+    for key, r in (record.get("rates") or record.get("figures") or {}).items():
         missing = RATE_KEYS - set(r)
         if missing:
             raise RuleError(f"rate {key}: missing {', '.join(sorted(missing))}")
@@ -513,7 +513,9 @@ def load_rate_record(record: dict[str, Any]) -> dict[str, tuple[str, str]]:
             raise RuleError(f"rate {key}: page must be a page number")
         figure = str(r["value"]).lstrip("-")
         Decimal(figure)  # a number, or InvalidOperation
-        if not re.search(rf"(?<![\d.]){re.escape(figure)}(?![\d])", r["quote"]):
+        # the quote is kept as printed; digit-group commas ("1,062.12") are dropped for the search
+        plain = re.sub(r"(?<=\d),(?=\d{2,3}(?!\d))", "", r["quote"])
+        if not re.search(rf"(?<![\d.]){re.escape(figure)}(?![\d])", plain):
             raise RuleError(f"rate {key}: {figure} is not in its quote")
         out[key] = (str(r["value"]), r["unit"])
     return out
@@ -539,7 +541,11 @@ def reproduce_cells(
     ``"<name>::Sheet!A1"`` reads another workbook of the filing (``others``: name → workbook,
     as the binding's ``workbooks`` names them) — a utility's record checked against the formats.
     An input may also be a commission order's rate (``{"rate": "lmv6.base"}``), from the rate
-    record the binding names (``rates``: see ``load_rate_record``) — never a figure typed here."""
+    record the binding names (``rates``: see ``load_rate_record``) — never a figure typed here —
+    or what an earlier evaluation of this binding computed (``{"computed": "<its label>",
+    "output": …}``), unrounded: a chain of years carried as the regulator carries it, not
+    restarted from each printed, rounded figure.  A check may name a figure of the record
+    (``"order:<key>"``) instead of a cell: the order's own printed result."""
     places = int(binding.get("places", 6))
     q = Decimal(1).scaleb(-places)
 
@@ -557,6 +563,14 @@ def reproduce_cells(
         values: dict[str, tuple[Decimal | str, str]] = {}
         for source, spec in inputs.items():
             if isinstance(spec, dict):
+                if "computed" in spec:
+                    got = computed.get(spec["computed"], {}).get(spec["output"])
+                    if got is None:
+                        raise RuleError(
+                            f"{binding['sheet']}: no earlier evaluation {spec['computed']!r} computed {spec['output']}"
+                        )
+                    values[source] = got
+                    continue
                 if "rate" in spec:
                     if not rates or spec["rate"] not in rates:
                         raise RuleError(f"{binding['sheet']}: rate {spec['rate']!r} is not in the rate record")
@@ -581,7 +595,12 @@ def reproduce_cells(
         tag = f"{label} {ref}".strip()
         if res is None:
             return BlockCheck(binding["sheet"], fy, tag, output, "blocked", why=why)
-        filed = _stored(at(ref))
+        if ref.startswith("order:"):
+            if not rates or ref[6:] not in rates:
+                raise RuleError(f"{binding['sheet']}: {ref} is not in the record")
+            filed = Decimal(rates[ref[6:]][0])
+        else:
+            filed = _stored(at(ref))
         if filed is None:
             return BlockCheck(binding["sheet"], fy, tag, output, "no_filed_value", computed=str(res.value))
         want, got = filed.quantize(q), res.value.quantize(q)
@@ -591,10 +610,13 @@ def reproduce_cells(
         return check
 
     out: list[BlockCheck] = []
+    computed: dict[str, dict[str, tuple[Decimal, str]]] = {}  # evaluation label → output → (exact, unit)
     for e in binding["evaluations"]:
         fy = e["fiscal_year"]
         cats = {name: read(c.get("inputs", {})) for name, c in e.get("categories", {}).items()}
         ev = RuleSet(rules, fy).evaluate(fy, read(e.get("inputs", {})), cats or None)
+        if e.get("label"):
+            computed[e["label"]] = {o: (r.value, r.unit) for o, r in ev.results.items()}
         for name, c in e.get("categories", {}).items():
             for output, refs in c.get("checks", {}).items():
                 for ref in [refs] if isinstance(refs, str) else refs:

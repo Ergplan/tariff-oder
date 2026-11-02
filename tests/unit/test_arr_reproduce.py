@@ -1057,3 +1057,79 @@ def test_npcl_regulatory_asset_rolls_forward_along_the_petitions_chain():
     checks = reproduce_cells(wb, binding, load_rules("UPERC"))
     assert [c.result for c in checks] == ["match"] * 7
     assert not any(c.category.split(" ")[0][0] in "EHK" for c in checks)
+
+
+def test_cells_carry_a_chain_of_years_unrounded_and_check_against_an_order_figure():
+    """A year fed what the previous evaluation computed (unrounded), checked against a figure of
+    the order's record: 74.152 escalated 5.19 % is 78.0005 — printed 78.00 — and the next year
+    starts from 78.0005, not from the printed 78.00.  A computed input naming no earlier
+    evaluation is an error."""
+    import openpyxl
+    import pytest
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import RuleError, load_rules
+
+    record = {
+        "document": {"sha256": "0" * 64},
+        "figures": {
+            "base": {"value": "74.152", "unit": "INR_crore", "page": 1, "quote": "Avg. 74.152", "what": "w"},
+            "cpi": {"value": "5.19", "unit": "percent", "page": 1, "quote": "CPI 5.19%", "what": "w"},
+            "fy24": {
+                "value": "78.00",
+                "unit": "INR_crore",
+                "page": 1,
+                "quote": "Normative 1,078.00 78.00",
+                "what": "w",
+            },
+        },
+    }
+    figures = load_rate_record(record)
+    wb = openpyxl.Workbook()
+    wb.active.title = "S"
+    binding = {
+        "sheet": "S",
+        "places": 2,
+        "evaluations": [
+            {
+                "fiscal_year": "FY2022-23",
+                "label": "base",
+                "inputs": {f"record:om25_actual_y{i}": {"rate": "base"} for i in range(1, 6)},
+            },
+            {
+                "fiscal_year": "FY2023-24",
+                "label": "y1",
+                "inputs": {
+                    "prior:om25_level": {"computed": "base", "output": "om25_base_average"},
+                    "assumption:om25_index_change": {"rate": "cpi"},
+                },
+                "checks": {"om25_escalated": "order:fy24"},
+            },
+        ],
+    }
+    (check,) = reproduce_cells(wb, binding, load_rules("UPERC"), rates=figures)
+    assert (check.result, check.computed) == ("match", "78.00") and check.exact.startswith("78.0004")
+    bad = {**binding, "evaluations": [binding["evaluations"][1]]}
+    with pytest.raises(RuleError, match="no earlier evaluation"):
+        reproduce_cells(wb, bad, load_rules("UPERC"), rates=figures)
+
+
+def test_npcl_the_commissions_om_approval_reproduces_with_the_same_rules():
+    """Real data: the order's O&M approval for FY2026-27 (employee 87.63, A&G 28.87, R&M 111.04)
+    from the order's own figures and the same draft rules as NPCL's claim; one intermediate year
+    is one unit off (the order prints its CPI change rounded) — A60."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-om-fy27.json").read_text())
+    figures = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=figures)
+    assert len(checks) == 13
+    off = [(c.category, c.filed, c.computed) for c in checks if c.result != "match"]
+    assert off == [("employee FY2025-26 order:employee.normative.fy26", "84.57", "84.56")]
+    finals = {c.category.split(" order:")[1]: c.computed for c in checks if c.fiscal_year == "FY2026-27"}
+    assert finals == {"employee.normative.fy27": "87.63", "ag.normative.fy27": "28.87", "rm.approved": "111.04"}

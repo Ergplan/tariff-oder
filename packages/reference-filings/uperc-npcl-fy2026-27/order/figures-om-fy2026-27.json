@@ -1,0 +1,279 @@
+{
+ "status": "read from the order's text layer by pattern, each quote verbatim (whitespace-normalised) from its page — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): normative O&M approved for FY2026-27, Tables 6-45, 6-48, 6-49",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "sign": "a percent with a minus sign is a fall (the order prints it in brackets)",
+ "figures": {
+  "employee.actual.fy21": {
+   "value": "56.29",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Employee Expenses 56.29 68.26 73.27 77.52 95.42 74.15",
+   "what": "employee expenses, fy21 (Table 6-45: column 1 of the row)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.actual.fy22": {
+   "value": "68.26",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Employee Expenses 56.29 68.26 73.27 77.52 95.42 74.15",
+   "what": "employee expenses, fy22 (Table 6-45: column 2 of the row)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.actual.fy23": {
+   "value": "73.27",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Employee Expenses 56.29 68.26 73.27 77.52 95.42 74.15",
+   "what": "employee expenses, fy23 (Table 6-45: column 3 of the row)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.actual.fy24": {
+   "value": "77.52",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Employee Expenses 56.29 68.26 73.27 77.52 95.42 74.15",
+   "what": "employee expenses, fy24 (Table 6-45: column 4 of the row)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.actual.fy25": {
+   "value": "95.42",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Employee Expenses 56.29 68.26 73.27 77.52 95.42 74.15",
+   "what": "employee expenses, fy25 (Table 6-45: column 5 of the row)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.average": {
+   "value": "74.15",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Employee Expenses 56.29 68.26 73.27 77.52 95.42 74.15",
+   "what": "employee expenses, avg (Table 6-45: column 6 of the row)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.cpi.fy24": {
+   "value": "5.19",
+   "unit": "percent",
+   "page": 255,
+   "quote": "CPI 5.19% 3.38% 4.87% 3.63%",
+   "what": "CPI escalation applied for fy24 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.cpi.fy25": {
+   "value": "3.38",
+   "unit": "percent",
+   "page": 255,
+   "quote": "CPI 5.19% 3.38% 4.87% 3.63%",
+   "what": "CPI escalation applied for fy25 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.cpi.fy26": {
+   "value": "4.87",
+   "unit": "percent",
+   "page": 255,
+   "quote": "CPI 5.19% 3.38% 4.87% 3.63%",
+   "what": "CPI escalation applied for fy26 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.cpi.fy27": {
+   "value": "3.63",
+   "unit": "percent",
+   "page": 255,
+   "quote": "CPI 5.19% 3.38% 4.87% 3.63%",
+   "what": "CPI escalation applied for fy27 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.normative.fy23": {
+   "value": "74.15",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Normative Employee Expenses 74.15 78.00 80.64 84.57 87.63",
+   "what": "normative employee expenses approved, fy23 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.normative.fy24": {
+   "value": "78.00",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Normative Employee Expenses 74.15 78.00 80.64 84.57 87.63",
+   "what": "normative employee expenses approved, fy24 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.normative.fy25": {
+   "value": "80.64",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Normative Employee Expenses 74.15 78.00 80.64 84.57 87.63",
+   "what": "normative employee expenses approved, fy25 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.normative.fy26": {
+   "value": "84.57",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Normative Employee Expenses 74.15 78.00 80.64 84.57 87.63",
+   "what": "normative employee expenses approved, fy26 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "employee.normative.fy27": {
+   "value": "87.63",
+   "unit": "INR_crore",
+   "page": 255,
+   "quote": "Normative Employee Expenses 74.15 78.00 80.64 84.57 87.63",
+   "what": "normative employee expenses approved, fy27 (Table 6-45)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.actual.fy21": {
+   "value": "15.92",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "A&G Expenses 15.92 17.48 31.43 32.21 39.57 27.32",
+   "what": "A&G expenses, fy21 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.actual.fy22": {
+   "value": "17.48",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "A&G Expenses 15.92 17.48 31.43 32.21 39.57 27.32",
+   "what": "A&G expenses, fy22 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.actual.fy23": {
+   "value": "31.43",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "A&G Expenses 15.92 17.48 31.43 32.21 39.57 27.32",
+   "what": "A&G expenses, fy23 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.actual.fy24": {
+   "value": "32.21",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "A&G Expenses 15.92 17.48 31.43 32.21 39.57 27.32",
+   "what": "A&G expenses, fy24 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.actual.fy25": {
+   "value": "39.57",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "A&G Expenses 15.92 17.48 31.43 32.21 39.57 27.32",
+   "what": "A&G expenses, fy25 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.average": {
+   "value": "27.32",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "A&G Expenses 15.92 17.48 31.43 32.21 39.57 27.32",
+   "what": "A&G expenses, avg (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.wpi.fy24": {
+   "value": "-0.73",
+   "unit": "percent",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42%",
+   "what": "WPI escalation applied for fy24 (Table 6-48; brackets: a fall)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.wpi.fy25": {
+   "value": "2.27",
+   "unit": "percent",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42%",
+   "what": "WPI escalation applied for fy25 (Table 6-48; brackets: a fall)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.wpi.fy26": {
+   "value": "3.65",
+   "unit": "percent",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42%",
+   "what": "WPI escalation applied for fy26 (Table 6-48; brackets: a fall)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.wpi.fy27": {
+   "value": "0.42",
+   "unit": "percent",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42%",
+   "what": "WPI escalation applied for fy27 (Table 6-48; brackets: a fall)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.normative.fy23": {
+   "value": "27.32",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42% 27.32 27.12 27.74 28.75 28.87",
+   "what": "normative A&G approved, fy23 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.normative.fy24": {
+   "value": "27.12",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42% 27.32 27.12 27.74 28.75 28.87",
+   "what": "normative A&G approved, fy24 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.normative.fy25": {
+   "value": "27.74",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42% 27.32 27.12 27.74 28.75 28.87",
+   "what": "normative A&G approved, fy25 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.normative.fy26": {
+   "value": "28.75",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42% 27.32 27.12 27.74 28.75 28.87",
+   "what": "normative A&G approved, fy26 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "ag.normative.fy27": {
+   "value": "28.87",
+   "unit": "INR_crore",
+   "page": 256,
+   "quote": "Escalation Rate (0.73%) 2.27% 3.65% 0.42% 27.32 27.12 27.74 28.75 28.87",
+   "what": "normative A&G approved, fy27 (Table 6-48)",
+   "header": "FY21 FY22 FY23 FY24 FY25 Avg. FY26 FY27"
+  },
+  "rm.gfa.part_a": {
+   "value": "1062.12",
+   "unit": "INR_crore",
+   "page": 258,
+   "quote": "Opening GFA of FY 2025-26 for Assets up to March 31, 2020 A 1,062.12",
+   "what": "opening GFA FY2025-26, assets up to 31.03.2020 (Table 6-49, A)"
+  },
+  "rm.gfa.part_b": {
+   "value": "889.53",
+   "unit": "INR_crore",
+   "page": 258,
+   "quote": "to March 31, 2025 B 889.53",
+   "what": "opening GFA FY2025-26, assets added 01.04.2020 to 31.03.2025 (Table 6-49, B)"
+  },
+  "rm.gfa.part_c": {
+   "value": "448.49",
+   "unit": "INR_crore",
+   "page": 258,
+   "quote": "Opening GFA for Asset Capitalised after April 01, 2025, C 448.49",
+   "what": "opening GFA, assets capitalised after 01.04.2025 (Table 6-49, C)"
+  },
+  "rm.approved": {
+   "value": "111.04",
+   "unit": "INR_crore",
+   "page": 258,
+   "quote": "R&M for FY 2026-27 (A+B)*5%+(C)*3% 111.04",
+   "what": "R&M approved for FY2026-27 (Table 6-49)"
+  }
+ }
+}

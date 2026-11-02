@@ -1,0 +1,215 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F19_O&M_EE n AG base",
+ "rates": "order/figures-om-fy2026-27.json",
+ "places": 2,
+ "note": "The Commission's O&M approval for FY2026-27 reproduced with the same draft rules that reproduce NPCL's claim (f19-om-base-2025.json, rm-2025), fed the order's own figures (Tables 6-45, 6-48, 6-49, read with page and quote) and checked against the order's printed approvals.  Employee and A&G: the five-year average of FY2020-21 to FY2024-25 as FY2022-23, escalated year by year by the CPI / WPI rates the order applies, each year carried unrounded from the one before — and no growth factor (the Commission refused it, paras 6.6.32–6.6.34).  R&M: Reg. 33.7's 5 % and 3 % of the opening GFA, with nothing for the GNIDA assets (para 6.6.45).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "employee base",
+   "inputs": {
+    "record:om25_actual_y1": {
+     "rate": "employee.actual.fy21"
+    },
+    "record:om25_actual_y2": {
+     "rate": "employee.actual.fy22"
+    },
+    "record:om25_actual_y3": {
+     "rate": "employee.actual.fy23"
+    },
+    "record:om25_actual_y4": {
+     "rate": "employee.actual.fy24"
+    },
+    "record:om25_actual_y5": {
+     "rate": "employee.actual.fy25"
+    }
+   },
+   "checks": {
+    "om25_base_average": [
+     "order:employee.average",
+     "order:employee.normative.fy23"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "employee FY2023-24",
+   "inputs": {
+    "prior:om25_level": {
+     "computed": "employee base",
+     "output": "om25_base_average"
+    },
+    "assumption:om25_index_change": {
+     "rate": "employee.cpi.fy24"
+    }
+   },
+   "checks": {
+    "om25_escalated": "order:employee.normative.fy24"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "employee FY2024-25",
+   "inputs": {
+    "prior:om25_level": {
+     "computed": "employee FY2023-24",
+     "output": "om25_escalated"
+    },
+    "assumption:om25_index_change": {
+     "rate": "employee.cpi.fy25"
+    }
+   },
+   "checks": {
+    "om25_escalated": "order:employee.normative.fy25"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "employee FY2025-26",
+   "inputs": {
+    "prior:om25_level": {
+     "computed": "employee FY2024-25",
+     "output": "om25_escalated"
+    },
+    "assumption:om25_index_change": {
+     "rate": "employee.cpi.fy26"
+    }
+   },
+   "checks": {
+    "om25_escalated": "order:employee.normative.fy26"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "employee FY2026-27",
+   "inputs": {
+    "prior:om25_level": {
+     "computed": "employee FY2025-26",
+     "output": "om25_escalated"
+    },
+    "assumption:om25_index_change": {
+     "rate": "employee.cpi.fy27"
+    }
+   },
+   "checks": {
+    "om25_escalated": "order:employee.normative.fy27"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "A&G base",
+   "inputs": {
+    "record:om25_actual_y1": {
+     "rate": "ag.actual.fy21"
+    },
+    "record:om25_actual_y2": {
+     "rate": "ag.actual.fy22"
+    },
+    "record:om25_actual_y3": {
+     "rate": "ag.actual.fy23"
+    },
+    "record:om25_actual_y4": {
+     "rate": "ag.actual.fy24"
+    },
+    "record:om25_actual_y5": {
+     "rate": "ag.actual.fy25"
+    }
+   },
+   "checks": {
+    "om25_base_average": [
+     "order:ag.average",
+     "order:ag.normative.fy23"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "A&G FY2023-24",
+   "inputs": {
+    "prior:om25_level": {
+     "computed": "A&G base",
+     "output": "om25_base_average"
+    },
+    "assumption:om25_index_change": {
+     "rate": "ag.wpi.fy24"
+    }
+   },
+   "checks": {
+    "om25_escalated": "order:ag.normative.fy24"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "A&G FY2024-25",
+   "inputs": {
+    "prior:om25_level": {
+     "computed": "A&G FY2023-24",
+     "output": "om25_escalated"
+    },
+    "assumption:om25_index_change": {
+     "rate": "ag.wpi.fy25"
+    }
+   },
+   "checks": {
+    "om25_escalated": "order:ag.normative.fy25"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "A&G FY2025-26",
+   "inputs": {
+    "prior:om25_level": {
+     "computed": "A&G FY2024-25",
+     "output": "om25_escalated"
+    },
+    "assumption:om25_index_change": {
+     "rate": "ag.wpi.fy26"
+    }
+   },
+   "checks": {
+    "om25_escalated": "order:ag.normative.fy26"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "A&G FY2026-27",
+   "inputs": {
+    "prior:om25_level": {
+     "computed": "A&G FY2025-26",
+     "output": "om25_escalated"
+    },
+    "assumption:om25_index_change": {
+     "rate": "ag.wpi.fy27"
+    }
+   },
+   "checks": {
+    "om25_escalated": "order:ag.normative.fy27"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "R&M",
+   "inputs": {
+    "record:rm_gfa_part_a": {
+     "rate": "rm.gfa.part_a"
+    },
+    "record:rm_gfa_part_b": {
+     "rate": "rm.gfa.part_b"
+    },
+    "record:rm_gfa_part_c": {
+     "rate": "rm.gfa.part_c"
+    },
+    "record:rm_gfa_gnida": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the Commission allows no R&M on the assets transferred by GNIDA over the norm (order para 6.6.45, p.258)"
+    }
+   },
+   "checks": {
+    "rm_norm_total": "order:rm.approved"
+   }
+  }
+ ]
+}

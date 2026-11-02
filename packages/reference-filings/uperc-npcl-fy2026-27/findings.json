@@ -311,6 +311,19 @@
     "packages/filing-checklists/uperc/myt-2025.json"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A60",
+   "kind": "decision explained",
+   "title": "The Commission's O&M approval for FY2026-27 reproduces with the same draft rules as NPCL's claim; the 18.37 cut is a refused growth factor (11.62), three inflation averages (1.10), the approved GFA base and GNIDA (2.65) and the provision (3.00)",
+   "detail": "Fed the order's own figures (Tables 6-45, 6-48, 6-49, pp.255–258) the rules that reproduce NPCL's F19 and F22 give the Commission's approvals: employee 87.63, A&G 28.87, R&M 111.04 (bindings/approval-om-fy27.json; one intermediate year, employee FY2025-26, is 84.56 against the printed 84.57 — the order applies its CPI change more precisely than the 4.87 % it prints).  Against NPCL's claim: employee 99.98 → 87.63 = the growth factor on sales, consumers and employees refused (−11.62; paras 6.6.32–6.6.34: the five-year base already carries the rise, and a benchmarking study is awaited, 6.6.35) and the FY2026-27 CPI taken as the three-year average 3.63 % against NPCL's 4.48 % (−0.72); A&G 29.25 → 28.87 = the FY2026-27 WPI 0.42 % (three-year average) against NPCL's 1.73 % (−0.38; FY2025-26 is 28.75 in both); R&M 113.69 → 111.04 = the Commission's approved opening GFA (Part A 1,062.12 against NPCL's 1,148.63, −4.33; Part B 889.53 against 856.60, +1.65; Part C 448.49 against 433.49, +0.45) and no R&M on GNIDA's assets (−0.42, para 6.6.45); the A&G provision of 3.00 refused (paras 6.6.41–6.6.43).  For the next petition: support any growth factor with the benchmarking report; escalate the ARR year by the three-year average; take the GFA split the Commission approved.",
+   "where": [
+    "Tariff order FY2026-27 pp.252–258, Tables 6-45, 6-48, 6-49, 6-50",
+    "bindings/approval-om-fy27.json",
+    "order/figures-om-fy2026-27.json",
+    "F19_O&M_EE n AG base L9, L18, K24:L25; F22_O&M_R&M after FY25 H8:H16"
+   ],
+   "for": "petitioner"
   }
  ]
 }

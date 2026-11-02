@@ -40,7 +40,7 @@ def check(pdf: Path, record: dict) -> list[str]:
 
     with pymupdf.open(pdf) as doc:
         pages = {i + 1: norm(p.get_text()) for i, p in enumerate(doc)}
-    for key, r in record["rates"].items():
+    for key, r in (record.get("rates") or record.get("figures") or {}).items():
         # where several rates share a printed row, the column's header is quoted too
         ok = all(norm(q) in pages.get(r["page"], "") for q in (r["quote"], r.get("header")) if q)
         print(f"{'ok ' if ok else 'NOT'} {key:28} {r['value']:>6} {r['unit']:12} p.{r['page']}")

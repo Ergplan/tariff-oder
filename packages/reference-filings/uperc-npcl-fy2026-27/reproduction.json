@@ -10128,6 +10128,154 @@
    ]
   },
   {
+   "binding": "approval-om-fy27.json",
+   "checks": [
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2022-23",
+     "category": "employee base order:employee.average",
+     "output": "om25_base_average",
+     "result": "match",
+     "filed": "74.15",
+     "computed": "74.15",
+     "why": null,
+     "exact": "74.152"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2022-23",
+     "category": "employee base order:employee.normative.fy23",
+     "output": "om25_base_average",
+     "result": "match",
+     "filed": "74.15",
+     "computed": "74.15",
+     "why": null,
+     "exact": "74.152"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2023-24",
+     "category": "employee FY2023-24 order:employee.normative.fy24",
+     "output": "om25_escalated",
+     "result": "match",
+     "filed": "78.00",
+     "computed": "78.00",
+     "why": null,
+     "exact": "78.0004888"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2024-25",
+     "category": "employee FY2024-25 order:employee.normative.fy25",
+     "output": "om25_escalated",
+     "result": "match",
+     "filed": "80.64",
+     "computed": "80.64",
+     "why": null,
+     "exact": "80.63690532144"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2025-26",
+     "category": "employee FY2025-26 order:employee.normative.fy26",
+     "output": "om25_escalated",
+     "result": "differs",
+     "filed": "84.57",
+     "computed": "84.56",
+     "why": null,
+     "exact": "84.563922610594128"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2026-27",
+     "category": "employee FY2026-27 order:employee.normative.fy27",
+     "output": "om25_escalated",
+     "result": "match",
+     "filed": "87.63",
+     "computed": "87.63",
+     "why": null,
+     "exact": "87.6335930013586948464"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2022-23",
+     "category": "A&G base order:ag.average",
+     "output": "om25_base_average",
+     "result": "match",
+     "filed": "27.32",
+     "computed": "27.32",
+     "why": null,
+     "exact": "27.322"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2022-23",
+     "category": "A&G base order:ag.normative.fy23",
+     "output": "om25_base_average",
+     "result": "match",
+     "filed": "27.32",
+     "computed": "27.32",
+     "why": null,
+     "exact": "27.322"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2023-24",
+     "category": "A&G FY2023-24 order:ag.normative.fy24",
+     "output": "om25_escalated",
+     "result": "match",
+     "filed": "27.12",
+     "computed": "27.12",
+     "why": null,
+     "exact": "27.1225494"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2024-25",
+     "category": "A&G FY2024-25 order:ag.normative.fy25",
+     "output": "om25_escalated",
+     "result": "match",
+     "filed": "27.74",
+     "computed": "27.74",
+     "why": null,
+     "exact": "27.73823127138"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2025-26",
+     "category": "A&G FY2025-26 order:ag.normative.fy26",
+     "output": "om25_escalated",
+     "result": "match",
+     "filed": "28.75",
+     "computed": "28.75",
+     "why": null,
+     "exact": "28.750676712785370"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2026-27",
+     "category": "A&G FY2026-27 order:ag.normative.fy27",
+     "output": "om25_escalated",
+     "result": "match",
+     "filed": "28.87",
+     "computed": "28.87",
+     "why": null,
+     "exact": "28.8714295549790685540"
+    },
+    {
+     "table": "F19_O&M_EE n AG base",
+     "fiscal_year": "FY2026-27",
+     "category": "R&M order:rm.approved",
+     "output": "rm_norm_total",
+     "result": "match",
+     "filed": "111.04",
+     "computed": "111.04",
+     "why": null,
+     "exact": "111.0372"
+    }
+   ]
+  },
+  {
    "binding": "arr-contingency.json",
    "checks": [
     {

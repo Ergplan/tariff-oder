@@ -1005,6 +1005,34 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 97 (2026-11-02): the Commission's O&M approval reproduced with the same rules.**
+  The ARR year's largest cut is O&M (−18.37).  The order states its method and figures (pp.252–258,
+  Tables 6-45, 6-48, 6-49).  `order/figures-om-fy2026-27.json` holds 34 of them, each with its
+  page, quote and column header, and `check_order_quotes.py` finds 34 / 34 (the loader now reads
+  "1,062.12" in a quote as 1062.12).
+  - **Engine:** a `cells` evaluation can take what an earlier evaluation of the same binding
+    computed (`{"computed": label, "output": …}`), unrounded.  The order carries its chain
+    unrounded: restarting from each printed figure would end at 87.64, not the printed 87.63.
+    A check can name a record figure (`"order:<key>"`) instead of a cell.
+  - **Binding `approval-om-fy27.json`, using the same draft rules that reproduce NPCL's claim:
+    12 / 13 match**, and every final approval matches:
+    - employee 87.63: the five-year average, CPI escalation, no growth factor;
+    - A&G 28.87: WPI escalation;
+    - R&M 111.04: Reg. 33.7's 5 % and 3 % of the approved GFA, nothing for GNIDA.
+    One intermediate year is one unit off: employee FY2025-26 computes 84.56 against the printed
+    84.57.  The order applies a CPI change slightly above the 4.87 % it prints.
+  - **A60 (petitioner): the decision explained, exactly.**
+    - employee −12.35 = growth factor refused (−11.62) + three-year CPI average 3.63 % against
+      4.48 % (−0.72);
+    - A&G −0.38 = the FY2026-27 WPI 0.42 % against 1.73 %;
+    - R&M −2.65 = the approved GFA split (A −4.33, B +1.65, C +0.45) and GNIDA (−0.42);
+    - the provision of 3.00 refused.
+    The finding says what the next petition should do differently.
+  - **Significance:** the draft rules now reproduce both the petitioner's claim and the
+    regulator's approval of the same lines.  The difference is located in named inputs (growth
+    factor, index average, GFA base) rather than in the arithmetic.
+  Nothing verified, nothing approved.
+
   **Increment 96 (2026-11-02): what the Commission decided, line by line (R-TU-5).**  The
   FY2026-27 order (2 July 2026, the golden NPCL document) is the decision on this very petition.
   Its three summary tables are now read row by row from the text layer, each row with its page
@@ -2438,6 +2466,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 97 (2026-11-02): 459 passed** (+2 unit: a chain of years carried unrounded between evaluations and checked against an order figure, a computed input naming no evaluation refused; the real O&M approval — employee 87.63, A&G 28.87, R&M 111.04, one intermediate year one unit off).  `check_order_quotes.py`: 34 / 34 order figures, 58 / 58 rates.  Ruff and format clean.
 - **Increment 96 (2026-11-02): 457 passed** (+4 unit: rows read by serial number across a page header, with their quotes; a short row read only where the spec names its columns; a column override; the claimed column against the format, the decision, the order's own arithmetic; the real three tables — claimed within two last-place units, arithmetic 16 / 16, ARR decision +29.51; the integration test checks the API's decisions block).  Ruff, format and web typecheck clean.
 - **Increment 95 (2026-11-02): 453 passed** (+2 unit: a pipeline column fed from another only with a reason, never in a cycle or from a column the pipeline lacks; the real roll-forward 7 / 7.  Changed with the design: the pipeline tests expect the ARR and APR years at 10 / 12 with A40's effect carried, 0.22 and 0.25).  Ruff, format and web typecheck clean.
 - **Increment 94 (2026-11-02): 451 passed** (+4 unit: every checklist quote on its page of the committed regulation; a checklist without a hash, evidence without a reason or a text without its weight refused; grading — a mention never enough, "Appendix-I" not "Appendix-II", a document without its bytes not present; NPCL's result; the integration test checks the API's checklist block).  Ruff, format and web typecheck clean.
@@ -2667,7 +2696,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 96) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 97) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2717,11 +2746,12 @@ entries below are the per-increment history.**
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
   - **What the Commission decided** (the FY2026-27 order, read row by row with pages): the order
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.
-    The decisions are true-up −123.38, APR +92.64 and ARR +29.51 (net ARR).
+    The decisions are true-up −123.38, APR +92.64 and ARR +29.51 (net ARR).  The ARR year's O&M
+    approval reproduces with the same rules as the claim, and its cut is explained exactly (A60).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **27 findings (A29–A59):** 16 for the petitioner, collected in the draft queries; 11 for the
+  - **28 findings (A29–A60):** 17 for the petitioner, collected in the draft queries; 11 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 
