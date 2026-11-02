@@ -1501,3 +1501,41 @@ def test_npcl_the_regulatory_discount_is_ten_percent_of_the_demand_and_energy_ch
         wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
         disc = [c for c in reproduce_row_table(wb, binding, rules) if c.output == "revenue_regulatory_discount"]
         assert len(disc) == 2 and {(c.result, c.computed) for c in disc} == {("match", total)}, name
+
+
+def test_npcl_fixed_charges_sit_above_the_billable_demand_floor_except_lmv2():
+    """Real data: ESR-3's fixed charges against the schedule's fixed / demand charges (read with
+    their quotes) at the full contracted load: every category at or above the 75 % floor of
+    billable demand (General Provision 6, p.354) except LMV-2, at 58–66 % (A77).  An analysis —
+    the billable demand that would reproduce the charges is not in the filing."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rates = load_rate_record(json.loads((folder / "order" / "figures-fixed-charges-fy2026-27.json").read_text()))
+    ws = openpyxl.load_workbook(folder / "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx", data_only=True)[
+        "ESR_3 Curr Tariff FY27"
+    ]
+    rows = {
+        13: "lmv1.rural", 20: "lmv1.bulk", 21: "lmv1.other", 29: "lmv2.rural", 31: "lmv2.upto4kw",
+        32: "lmv2.above4kw", 41: "lmv4.public", 42: "lmv4.private", 52: "lmv6.base", 57: "lmv6.base",
+        78: "lmv7.urban", 81: "lmv9.irc", 82: "lmv9.others", 92: "hv1.commercial.11kv",
+        93: "hv1.commercial.above11kv", 95: "hv1.public.11kv", 96: "hv1.public.above11kv",
+        100: "hv2.upto11kv", 112: "hv2.11_66kv", 124: "hv2.66_132kv",
+    }  # fmt: skip
+    floor = Decimal(rates["billable.floor"][0]) / 100
+    share, short = {}, Decimal(0)
+    for r, key in rows.items():
+        rate, unit = rates[f"fixed.{key}"]
+        assert unit == ("INR_per_kVA_month" if key.startswith("hv") else "INR_per_kW_month")
+        contract = Decimal(repr(ws[f"E{r}"].value)) * 1000 * Decimal(rate) * 12 / Decimal(10) ** 7
+        billed = Decimal(repr(ws[f"J{r}"].value))
+        share[key] = billed / contract
+        if key.startswith("lmv2"):
+            short += contract * floor - billed
+    low = {k for k, s in share.items() if s < floor}
+    assert low == {"lmv2.rural", "lmv2.upto4kw", "lmv2.above4kw"}
+    assert max(share.values()) < Decimal("0.94") and round(short, 2) == Decimal("4.71")

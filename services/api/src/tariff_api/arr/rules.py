@@ -40,7 +40,8 @@ from pydantic import BaseModel, ConfigDict, Field
 
 # unit → (scale to base, dimensions).  Bases: INR (money), kWh (energy), kVAh (apparent
 # energy: kVAh is not kWh — a kVAh rate times kWh sold is a dimension error, not a revenue),
-# kW (power), month (time).  Dimensionless units: fraction, percent (scale 1/100), number.
+# kW (power), kVA (apparent power — a fixed charge per kVA times kW is a dimension error), month
+# (time).  Dimensionless units: fraction, percent (scale 1/100), number.
 UNITS: dict[str, tuple[Decimal, dict[str, int]]] = {
     "INR": (Decimal(1), {"money": 1}),
     "INR_lakh": (Decimal(10) ** 5, {"money": 1}),
@@ -53,6 +54,10 @@ UNITS: dict[str, tuple[Decimal, dict[str, int]]] = {
     "paise_per_kWh": (Decimal("0.01"), {"money": 1, "energy": -1}),
     "kVAh": (Decimal(1), {"apparent_energy": 1}),
     "INR_per_kVAh": (Decimal(1), {"money": 1, "apparent_energy": -1}),
+    "kVA": (Decimal(1), {"apparent_power": 1}),
+    "MVA": (Decimal(10) ** 3, {"apparent_power": 1}),
+    "INR_per_kW_month": (Decimal(1), {"money": 1, "power": -1, "time": -1}),
+    "INR_per_kVA_month": (Decimal(1), {"money": 1, "apparent_power": -1, "time": -1}),
     "month": (Decimal(1), {"time": 1}),
     "year": (Decimal(12), {"time": 1}),
     "fraction": (Decimal(1), {}),

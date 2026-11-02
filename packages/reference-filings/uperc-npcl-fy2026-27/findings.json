@@ -515,6 +515,18 @@
     "Tariff order FY2026-27 pp.289–294, paras 6.18.2, 6.18.11, 6.18.14, Tables 6-79 to 6-81"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A77",
+   "kind": "question",
+   "title": "ESR-3's fixed charges are billed on a demand the filing does not carry, so they cannot be reproduced; LMV-2's imply 58–66 % of the contracted load, below the 75 % floor of General Provision 6 — 4.71 less than the floor would give",
+   "detail": "The rate schedule's fixed / demand charges (read with their quotes, order/figures-fixed-charges-fy2026-27.json) times ESR-3's contracted load (column E) times twelve months give each category's fixed charges at full contracted load.  NPCL's fixed charges (column J) are 80.4 % of that overall (485.98 against 604.74): every category from 75.3 % (LMV-1 other) to 93.8 % (HV-1 commercial at 11 kV) — at or above the 75 % that General Provision 6 (p.354) sets as the floor of billable demand for consumers with TVM / TOD / demand-recording meters ('the actual maximum load / demand … or 75% of the contracted load / demand, whichever is higher') — except LMV-2, non-domestic: 57.8 % (rural), 65.6 % (up to 4 kW), 63.7 % (above 4 kW); 27.04 against 31.75 at the floor (4.71 less, before the 10 % discount).  The billable demand by category is not in the filing, so the fixed charges are not reproduced; and whether LMV-2's consumers have demand-recording meters (the provision's condition), or column E holds connected rather than contracted load, the filing does not say.  For the petitioner: the billable demand by category, and the basis of LMV-2's.",
+   "where": [
+    "ESR_3 Curr Tariff FY27 E, J (rows 13–124)",
+    "Tariff order FY2026-27 p.354 General Provision 6; pp.362–387 the fixed charges",
+    "order/figures-fixed-charges-fy2026-27.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

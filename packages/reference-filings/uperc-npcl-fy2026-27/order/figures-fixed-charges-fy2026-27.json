@@ -1,0 +1,150 @@
+{
+ "status": "read from the order's text layer by pattern, each quote verbatim (whitespace-normalised) from its page — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): Annexure, Rate Schedule FY2026-27 — fixed / demand charges and the billable-demand provision",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "fixed.lmv1.rural": {
+   "value": "90.00",
+   "unit": "INR_per_kW_month",
+   "page": 362,
+   "quote": "Metered Up to 100 kWh / month Rs. 90.00/ kW / month",
+   "what": "LMV-1 rural schedule, metered: fixed charge"
+  },
+  "fixed.lmv1.bulk": {
+   "value": "110.00",
+   "unit": "INR_per_kW_month",
+   "page": 363,
+   "quote": "Mixed load without any load restriction). Rs. 110.00 / kW / Month",
+   "what": "LMV-1 single-point bulk (registered societies, MES): fixed charge"
+  },
+  "fixed.lmv1.other": {
+   "value": "110.00",
+   "unit": "INR_per_kW_month",
+   "page": 365,
+   "quote": "Metered Up to 100 kWh / month Rs. 110.00/ kW / month",
+   "what": "LMV-1 other than rural, metered: fixed charge"
+  },
+  "fixed.lmv2.rural": {
+   "value": "110.00",
+   "unit": "INR_per_kW_month",
+   "page": 367,
+   "quote": "Fixed Charge Energy Charge Metered Rs. 110.00 / kW / month",
+   "what": "LMV-2 rural schedule, metered: fixed charge"
+  },
+  "fixed.lmv2.upto4kw": {
+   "value": "330.00",
+   "unit": "INR_per_kW_month",
+   "page": 368,
+   "quote": "Up to 4 kW Rs. 330.00 / kW / month",
+   "what": "LMV-2 other, contracted load up to 4 kW: fixed charge"
+  },
+  "fixed.lmv2.above4kw": {
+   "value": "450.00",
+   "unit": "INR_per_kW_month",
+   "page": 368,
+   "quote": "Above 4 kW Rs. 450.00 / kW / month",
+   "what": "LMV-2 other, contracted load above 4 kW: fixed charge"
+  },
+  "fixed.lmv4.public": {
+   "value": "300.00",
+   "unit": "INR_per_kW_month",
+   "page": 371,
+   "quote": "(A) Public Institutions Rs. 300.00 / kW / month",
+   "what": "LMV-4 public institutions: fixed charge"
+  },
+  "fixed.lmv4.private": {
+   "value": "350.00",
+   "unit": "INR_per_kW_month",
+   "page": 371,
+   "quote": "(B) Private Institutions Rs. 350.00 / kW / month",
+   "what": "LMV-4 private institutions: fixed charge"
+  },
+  "fixed.lmv6.base": {
+   "value": "290.00",
+   "unit": "INR_per_kW_month",
+   "page": 374,
+   "quote": "BASE RATE Rs. 290.00 / kW / month",
+   "what": "LMV-6 other than rural, base rate: fixed charge"
+  },
+  "fixed.lmv7.urban": {
+   "value": "375.00",
+   "unit": "INR_per_kW_month",
+   "page": 377,
+   "quote": "Metered Rs. 375.00 / kW / month",
+   "what": "LMV-7 other than rural, metered: fixed charge"
+  },
+  "fixed.lmv9.irc": {
+   "value": "200.00",
+   "unit": "INR_per_kW_month",
+   "page": 380,
+   "quote": "Individual Residential Consumers Rs. 200.00 / kW / Month",
+   "what": "LMV-9 metered, individual residential: fixed charge"
+  },
+  "fixed.lmv9.others": {
+   "value": "300.00",
+   "unit": "INR_per_kW_month",
+   "page": 380,
+   "quote": "Others Rs. 300.00 / kW / Month",
+   "what": "LMV-9 metered, others: fixed charge"
+  },
+  "fixed.hv1.commercial.11kv": {
+   "value": "430.00",
+   "unit": "INR_per_kVA_month",
+   "page": 384,
+   "quote": "For supply at 11kV Rs. 430.00 / kVA / month Rs. 8.32 / kVAh For supply above 11kV Rs. 400.00 / kVA / month",
+   "what": "HV-1 commercial, at 11 kV: fixed charge"
+  },
+  "fixed.hv1.commercial.above11kv": {
+   "value": "400.00",
+   "unit": "INR_per_kVA_month",
+   "page": 384,
+   "quote": "For supply at 11kV Rs. 430.00 / kVA / month Rs. 8.32 / kVAh For supply above 11kV Rs. 400.00 / kVA / month",
+   "what": "HV-1 commercial, above 11 kV: fixed charge"
+  },
+  "fixed.hv1.public.11kv": {
+   "value": "380.00",
+   "unit": "INR_per_kVA_month",
+   "page": 384,
+   "quote": "For supply at 11kV Rs. 380.00 / kVA / month Rs. 7.70 / kVAh For supply above 11kV Rs. 360.00 / kVA / month",
+   "what": "HV-1 public institutions etc., at 11 kV: fixed charge"
+  },
+  "fixed.hv1.public.above11kv": {
+   "value": "360.00",
+   "unit": "INR_per_kVA_month",
+   "page": 384,
+   "quote": "For supply at 11kV Rs. 380.00 / kVA / month Rs. 7.70 / kVAh For supply above 11kV Rs. 360.00 / kVA / month",
+   "what": "HV-1 public institutions etc., above 11 kV: fixed charge"
+  },
+  "fixed.hv2.upto11kv": {
+   "value": "300.00",
+   "unit": "INR_per_kVA_month",
+   "page": 387,
+   "quote": "BASE RATE Demand Charges Rs. 300.00 / kVA / month Rs. 290.00 / kVA / month Rs. 270.00 / kVA / month",
+   "what": "HV-2 up to 11 kV: demand charge"
+  },
+  "fixed.hv2.11_66kv": {
+   "value": "290.00",
+   "unit": "INR_per_kVA_month",
+   "page": 387,
+   "quote": "BASE RATE Demand Charges Rs. 300.00 / kVA / month Rs. 290.00 / kVA / month Rs. 270.00 / kVA / month",
+   "what": "HV-2 above 11 kV up to 66 kV: demand charge"
+  },
+  "fixed.hv2.66_132kv": {
+   "value": "270.00",
+   "unit": "INR_per_kVA_month",
+   "page": 387,
+   "quote": "BASE RATE Demand Charges Rs. 300.00 / kVA / month Rs. 290.00 / kVA / month Rs. 270.00 / kVA / month",
+   "what": "HV-2 above 66 kV up to 132 kV: demand charge"
+  },
+  "billable.floor": {
+   "value": "75",
+   "unit": "percent",
+   "page": 354,
+   "quote": "the billable load / demand during a month shall be the actual maximum load / demand as recorded by the meter (can be in parts of kW or kVA) or 75% of the contracted load / demand (kW or kVA), whichever is higher",
+   "what": "General Provision 6: billable demand for consumers with TVM / TOD / demand-recording meters — the recorded maximum or 75 % of the contracted load, whichever is higher"
+  }
+ }
+}

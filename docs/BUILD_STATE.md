@@ -1005,6 +1005,24 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 110 (2026-11-02): fixed charges — why they cannot be reproduced, and a question for
+  NPCL.**
+  - **The record:** `order/figures-fixed-charges-fy2026-27.json` holds 19 fixed / demand charges
+    from the rate schedule (pp.362–387) and General Provision 6's billable-demand floor (p.354),
+    20 / 20 quotes verified.
+  - **Units:** kVA (apparent power), MVA, and per kW / per kVA per month.  A per-kVA charge times
+    kW is a dimension error.
+  - **Analysis, not a reproduction.**  NPCL's fixed charges are 80.4% of the schedule's rates at
+    full contracted load (485.98 against 604.74).  Every category is at or above the 75% floor of
+    billable demand, from 75.3% to 93.8%.  So the charges are billed on a demand ESR-3 does not
+    carry, and they cannot be reproduced from the filing.
+  - **A77 (petitioner):** LMV-2 is the exception, at 58–66%, which is 4.71 below the floor.
+    Whether its consumers have demand-recording meters, or whether column E is connected load,
+    the filing does not say.  The query asks for the billable demand by category.
+  - **The plan changes:** "fixed and demand charges" leaves the engineering list and waits on
+    NPCL's billable demand.
+  Nothing verified, nothing approved.
+
   **Increment 109 (2026-11-02): every line the Commission changed, with its reason, enforced.**
   - **`order/explanations.json`:** for each changed line of the true-up, APR and ARR-year summary
     tables, it records:
@@ -2763,6 +2781,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 110 (2026-11-02): 479 passed** (+1 unit: the fixed charges against the billable-demand floor).  `check_order_quotes.py`: 20 / 20.  Ruff and format clean.
 - **Increment 109 (2026-11-02): 478 passed** (+2 unit: unexplained and stale lines listed, deductions, blank approvals and misprints, synthetic; the three real decisions fully explained).  Ruff, format and `tsc` clean.
 - **Increment 108 (2026-11-02): 476 passed** (+2 unit: summed shared cells with their reason, synthetic; the real regulatory discount in two years).  Ruff and format clean.
 - **Increment 107 (2026-11-02): 474 passed** (+1 unit: the tariff design summary, differences bounded by the inputs' precision).  `check_order_quotes.py`: 76 / 76.  Ruff and format clean.
@@ -3005,7 +3024,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 109) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 110) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3071,7 +3090,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **44 findings (A29–A76):** 25 for the petitioner, collected in the draft queries; 19 for the
+  - **45 findings (A29–A77):** 26 for the petitioner, collected in the draft queries; 19 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 
@@ -3097,7 +3116,8 @@ entries below are the per-increment history.**
   - the rest of revenue from the rate schedule.  Increment 91 computed energy charges for 45 LT
     slabs from the order's rates (40 match).  Increment 92 checked the existing tariff NPCL states
     in ESR4A against the order: 47 / 47 energy rates, HV per kVAh.  Still to do:
-    - fixed, demand and minimum charges;
+    - minimum charges (fixed and demand charges wait on NPCL's billable demand by category —
+      A77, increment 110);
     - LMV-3's local-body column, for the reviewer;
     - HV energy, which waits on the kVAh sold (A55);
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
