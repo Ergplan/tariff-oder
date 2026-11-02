@@ -395,6 +395,44 @@
    },
    "examples": [],
    "line_code": "R.REV.EXISTING"
+  },
+  {
+   "id": "uperc.revenue.revision_impact",
+   "version": 1,
+   "status": "draft",
+   "title": "Impact of the proposed tariff revision",
+   "output": "tariff_revision_impact",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "proposed - current",
+   "inputs": {
+    "proposed": {
+     "unit": "INR_crore",
+     "source": "record:revenue_proposed"
+    },
+    "current": {
+     "unit": "INR_crore",
+     "source": "record:revenue_current"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "line_code": "R.TARIFF_REVISION"
   }
  ]
 }

@@ -1,0 +1,26 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "places": 4,
+ "note": "The tariff revision impact the ARR carries (row 55, FY2026-27): revenue at the proposed tariff (ESR4) less revenue at the current tariff (ESR-3).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "revision impact",
+   "inputs": {
+    "record:revenue_proposed": [
+     "ESR4_Prop Tariff!O138",
+     "INR_crore"
+    ],
+    "record:revenue_current": [
+     "ESR_3 Curr Tariff FY27!O138",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "tariff_revision_impact": "ARR!M55"
+   }
+  }
+ ]
+}

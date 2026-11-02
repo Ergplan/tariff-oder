@@ -801,3 +801,22 @@ def test_npcl_fy2023_24_power_purchase_in_four_parts():
         "TOTAL ARR!G22": "8.9724",
         "TOTAL ARR!G24": "0.3542",
     }
+
+
+def test_npcl_proposed_tariff_revenue_and_revision_impact():
+    """Real data: ESR4 (revenue at the proposed tariff) reproduces like ESR-3; NPCL proposes no
+    revision, so proposed less current is 0 — the ARR's row 55."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells, reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    b = json.loads((folder / "bindings" / "esr4-proposed-fy27.json").read_text())
+    wb = openpyxl.load_workbook(folder / b["workbook"], data_only=True)
+    for c in reproduce_row_table(wb, b, rules):
+        assert c.result == "match" or (c.result == "blocked" and c.why == "division by zero"), c
+    r = json.loads((folder / "bindings" / "arr-revision-impact.json").read_text())
+    (impact,) = reproduce_cells(wb, r, rules)
+    assert (impact.result, impact.computed) == ("match", "0.0000")
