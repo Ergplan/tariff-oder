@@ -2049,6 +2049,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 86 (2026-11-01): 433 passed** (+1 unit: the distribution loss carried across formats, P1_DL differing in three years).  Ruff and format clean.
 - **Increment 85 (2026-11-01): 432 passed** (+1 unit: ESR4 and the revision impact).  Ruff and format clean.
 - **Increment 84 (2026-11-01): 431 passed** (+1 unit: PPC FY 24 in four parts tied to the ARR's FY2023-24 rows 8, 20, 22, 23, 24).  Ruff and format clean.
 - **Increment 83 (2026-11-01): 430 passed** (+1 unit: F6 renewable purchase obligation, 54 / 54).  Ruff and format clean.

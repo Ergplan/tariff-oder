@@ -27368,6 +27368,99 @@
    ]
   },
   {
+   "binding": "p1-distribution-loss.json",
+   "checks": [
+    {
+     "table": "P1_DL",
+     "fiscal_year": "FY2023-24",
+     "category": "distribution loss D10",
+     "output": "carried_fraction",
+     "result": "match",
+     "filed": "0.074928",
+     "computed": "0.074928",
+     "why": null,
+     "exact": "0.07492800854740833"
+    },
+    {
+     "table": "P1_DL",
+     "fiscal_year": "FY2023-24",
+     "category": "distribution loss ARR!G10",
+     "output": "carried_fraction",
+     "result": "match",
+     "filed": "0.074928",
+     "computed": "0.074928",
+     "why": null,
+     "exact": "0.07492800854740833"
+    },
+    {
+     "table": "P1_DL",
+     "fiscal_year": "FY2024-25",
+     "category": "distribution loss D11",
+     "output": "carried_fraction",
+     "result": "differs",
+     "filed": "0.074793",
+     "computed": "0.074792",
+     "why": null,
+     "exact": "0.07479214194381201"
+    },
+    {
+     "table": "P1_DL",
+     "fiscal_year": "FY2024-25",
+     "category": "distribution loss ARR!J10",
+     "output": "carried_fraction",
+     "result": "match",
+     "filed": "0.074792",
+     "computed": "0.074792",
+     "why": null,
+     "exact": "0.07479214194381201"
+    },
+    {
+     "table": "P1_DL",
+     "fiscal_year": "FY2025-26",
+     "category": "distribution loss D12",
+     "output": "carried_fraction",
+     "result": "differs",
+     "filed": "0.074500",
+     "computed": "0.072301",
+     "why": null,
+     "exact": "0.07230099207852492"
+    },
+    {
+     "table": "P1_DL",
+     "fiscal_year": "FY2025-26",
+     "category": "distribution loss ARR!L10",
+     "output": "carried_fraction",
+     "result": "match",
+     "filed": "0.072301",
+     "computed": "0.072301",
+     "why": null,
+     "exact": "0.07230099207852492"
+    },
+    {
+     "table": "P1_DL",
+     "fiscal_year": "FY2026-27",
+     "category": "distribution loss D13",
+     "output": "carried_fraction",
+     "result": "differs",
+     "filed": "0.074200",
+     "computed": "0.069700",
+     "why": null,
+     "exact": "0.06970036526137091"
+    },
+    {
+     "table": "P1_DL",
+     "fiscal_year": "FY2026-27",
+     "category": "distribution loss ARR!M10",
+     "output": "carried_fraction",
+     "result": "match",
+     "filed": "0.069700",
+     "computed": "0.069700",
+     "why": null,
+     "exact": "0.06970036526137091"
+    }
+   ]
+  },
+  {
    "binding": "p3-bad-debts.json",
    "checks": [
     {
@@ -50551,7 +50644,7 @@
     "title": "Distribution Loss",
     "sheet": "P1_DL",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "P1A_DL HT-LT",
@@ -50635,8 +50728,8 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 25,
-   "reproduced": 37,
+   "present": 24,
+   "reproduced": 38,
    "read": 9,
    "blank": 2,
    "missing": 1
@@ -50889,9 +50982,9 @@
       "filed": "7.49"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "p1-distribution-loss.json: carried_fraction",
+      "computed": "0.074928",
       "filed": "7.49"
      },
      "H": {
@@ -50907,9 +51000,9 @@
       "filed": "7.48"
      },
      "J": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "p1-distribution-loss.json: carried_fraction",
+      "computed": "0.074792",
       "filed": "7.48"
      },
      "K": {
@@ -50919,15 +51012,15 @@
       "filed": "7.23"
      },
      "L": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "p1-distribution-loss.json: carried_fraction",
+      "computed": "0.072301",
       "filed": "7.23"
      },
      "M": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "p1-distribution-loss.json: carried_fraction",
+      "computed": "0.069700",
       "filed": "6.97"
      }
     }
@@ -53915,9 +54008,9 @@
     "differs": 2
    },
    "G": {
-    "tied": 9,
-    "record": 17,
+    "tied": 10,
     "computed": 11,
+    "record": 16,
     "differs": 6
    },
    "H": {
@@ -53930,10 +54023,10 @@
     "computed": 16
    },
    "J": {
-    "tied": 10,
-    "record": 12,
+    "tied": 11,
     "computed": 16,
-    "differs": 3
+    "differs": 3,
+    "record": 11
    },
    "K": {
     "record": 26,
@@ -53941,14 +54034,14 @@
     "differs": 6
    },
    "L": {
-    "tied": 14,
-    "record": 15,
-    "computed": 17
+    "tied": 15,
+    "computed": 17,
+    "record": 14
    },
    "M": {
-    "tied": 14,
-    "record": 15,
-    "computed": 17
+    "tied": 15,
+    "computed": 17,
+    "record": 14
    }
   }
  }

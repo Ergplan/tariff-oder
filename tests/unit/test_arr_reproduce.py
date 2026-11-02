@@ -820,3 +820,19 @@ def test_npcl_proposed_tariff_revenue_and_revision_impact():
     r = json.loads((folder / "bindings" / "arr-revision-impact.json").read_text())
     (impact,) = reproduce_cells(wb, r, rules)
     assert (impact.result, impact.computed) == ("match", "0.0000")
+
+
+def test_npcl_distribution_loss_carried_across_formats():
+    """Real data: the Energy Balance's loss is the ARR's in every petition year; P1_DL's
+    'claimed' loss is not, in three of them (ledger A50)."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    b = json.loads((folder / "bindings" / "p1-distribution-loss.json").read_text())
+    wb = openpyxl.load_workbook(folder / b["workbook"], data_only=True)
+    checks = reproduce_cells(wb, b, load_rules("UPERC"))
+    assert all(c.result == "match" for c in checks if "ARR!" in c.category)
+    assert {c.fiscal_year for c in checks if c.result == "differs"} == {"FY2024-25", "FY2025-26", "FY2026-27"}

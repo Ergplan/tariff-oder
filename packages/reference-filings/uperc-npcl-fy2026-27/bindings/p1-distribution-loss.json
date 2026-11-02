@@ -1,0 +1,73 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "P1_DL",
+ "places": 6,
+ "note": "The distribution loss of the Energy Balance (row 11; the loss the sales and power purchase are computed at) against the loss P1_DL says NPCL claims (column D) and the loss the ARR format prints (row 10), each petition year.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "distribution loss",
+   "inputs": {
+    "record:carried_fraction": [
+     "Energy Balance!H11",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "carried_fraction": [
+     "D10",
+     "ARR!G10"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "distribution loss",
+   "inputs": {
+    "record:carried_fraction": [
+     "Energy Balance!L11",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "carried_fraction": [
+     "D11",
+     "ARR!J10"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "distribution loss",
+   "inputs": {
+    "record:carried_fraction": [
+     "Energy Balance!N11",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "carried_fraction": [
+     "D12",
+     "ARR!L10"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "distribution loss",
+   "inputs": {
+    "record:carried_fraction": [
+     "Energy Balance!O11",
+     "fraction"
+    ]
+   },
+   "checks": {
+    "carried_fraction": [
+     "D13",
+     "ARR!M10"
+    ]
+   }
+  }
+ ]
+}

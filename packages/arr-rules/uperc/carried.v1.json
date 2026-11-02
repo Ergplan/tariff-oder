@@ -1,0 +1,44 @@
+{
+ "status": "draft — not a regulation; identities across formats",
+ "regulation": "Cross-schedule consistency (R-SCH-16): a figure carried from one format to another is the same figure",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Figures carried between formats.",
+ "rules": [
+  {
+   "id": "uperc.carried.fraction",
+   "version": 1,
+   "status": "draft",
+   "title": "A share carried from one format to another",
+   "output": "carried_fraction",
+   "unit": "fraction",
+   "schedule": "R-SCH-16",
+   "formula": "value",
+   "inputs": {
+    "value": {
+     "unit": "fraction",
+     "source": "record:carried_fraction"
+    }
+   },
+   "clause": {
+    "regulation": "Cross-schedule consistency (R-SCH-16): a figure carried from one format to another is the same figure",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "not a regulation: the identity that a format carries another's figure unchanged"
+  }
+ ]
+}

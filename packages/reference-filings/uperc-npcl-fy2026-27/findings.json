@@ -188,6 +188,18 @@
     "PPC FY 24 M11, N66, N68, M75, P75, row 79"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A50",
+   "kind": "inconsistency",
+   "title": "Distribution loss: P1_DL claims more than the petition is computed at",
+   "detail": "P1_DL's 'Claimed' column gives 7.45 % for FY2025-26 and 7.42 % for FY2026-27 (and 7.40 %, 7.38 %, 7.37 % for the next control period, against the Commission's 6.70 %, 6.43 %, 6.16 %).  The Energy Balance and the ARR format — and so the power purchase, sales and ARR — use 7.23 % and 6.97 %, the Commission's approved losses.  For FY2024-25 P1_DL's 7.479277 % differs from the Energy Balance's 7.479214 % in the sixth decimal.  Which loss does NPCL claim?  If it claims P1_DL's, the energy requirement and the power purchase of the APR and ARR years are understated; if the approved, P1_DL should say so.",
+   "where": [
+    "P1_DL D11:D16",
+    "Energy Balance row 11",
+    "ARR row 10"
+   ],
+   "for": "petitioner"
   }
  ]
 }
