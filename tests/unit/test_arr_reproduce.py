@@ -617,6 +617,9 @@ def test_npcl_petition_computed_end_to_end_from_the_schedules():
         "493.69"
     )
     assert [c.result for c in results["f16-capitalisation.json"]] == ["match"] * 8
+    # the true-up year's capitalisation from its schemes (F16 till FY25), = F14's
+    assert [c.result for c in results["f16-capitalisation-till25.json"]] == ["match"] * 4
+    assert cols["FY2024-25"]["fed"]["record:capitalisation"]["binding"] == "f16-capitalisation-till25.json"
     assert {c["output"]: c["computed"] for c in cols["FY2026-27"]["checks"]}["arr_net"] == "3481.83"
     true_up = {c["output"]: c for c in cols["FY2024-25"]["checks"]}
     assert {o for o, c in true_up.items() if c["result"] == "differs"} == {

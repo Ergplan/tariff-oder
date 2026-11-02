@@ -1005,6 +1005,12 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 88 (2026-11-02): the true-up years' capitalisation by scheme.**  F16 for the years
+  up to FY25 is bound with the capex rules: the schemes of FY2023-24 and FY2024-25, the latter
+  each carried from F13.  **NPCL: 4 / 4 — 162.06 and 302.59, F14's capitalisation (row 11).**
+  The end-to-end pipeline now feeds the true-up year's capitalisation from its schemes (13 inputs
+  fed; still 7 + 5, A40's 0.19).
+
   *Docs defect found and fixed in increment 87:* the narrative entries of increments 76–86 had
   not been written.  Increment 76's script anchored on increment 75's heading with a wrong word,
   the replacement silently did nothing, and each later entry anchored on the one before it.  The
@@ -2188,6 +2194,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 88 (2026-11-02): 434 passed** (the end-to-end test checks the true-up capitalisation from its schemes, 4 / 4).  Ruff and format clean.
 - **Increment 87 (2026-11-01): 434 passed** (+1 integration: the draft queries are Markdown, labelled a draft, with the petitioner's questions by id and the Commission's points apart; unknown filing 404).  Ruff, format, contracts (regenerated) and web typecheck clean.
 - **Increment 86 (2026-11-01): 433 passed** (+1 unit: the distribution loss carried across formats, P1_DL differing in three years).  Ruff and format clean.
 - **Increment 85 (2026-11-01): 432 passed** (+1 unit: ESR4 and the revision impact).  Ruff and format clean.

@@ -22144,6 +22144,55 @@
    ]
   },
   {
+   "binding": "f16-capitalisation-till25.json",
+   "checks": [
+    {
+     "table": "F16_CAP_CAPEX & CAP. till 25 ",
+     "fiscal_year": "FY2023-24",
+     "category": "capitalisation C25",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "162.0582",
+     "computed": "162.0582",
+     "why": null,
+     "exact": "162.0582290099998693"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. till 25 ",
+     "fiscal_year": "FY2023-24",
+     "category": "capitalisation F14_CAP_Cap Cost!E11",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "162.0582",
+     "computed": "162.0582",
+     "why": null,
+     "exact": "162.0582290099998693"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. till 25 ",
+     "fiscal_year": "FY2024-25",
+     "category": "capitalisation E25",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "302.5949",
+     "computed": "302.5949",
+     "why": null,
+     "exact": "302.5949422930001869"
+    },
+    {
+     "table": "F16_CAP_CAPEX & CAP. till 25 ",
+     "fiscal_year": "FY2024-25",
+     "category": "capitalisation F14_CAP_Cap Cost!G11",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "302.5949",
+     "computed": "302.5949",
+     "why": null,
+     "exact": "302.5949422930001869"
+    }
+   ]
+  },
+  {
    "binding": "f16-capitalisation.json",
    "checks": [
     {
@@ -49986,6 +50035,11 @@
        "binding": "f27-mclr-rates.json",
        "output": "wc_rate_trueup",
        "value": "0.1138219178082191780821917808"
+      },
+      "record:capitalisation": {
+       "binding": "f16-capitalisation-till25.json",
+       "output": "capex_schemes_total",
+       "value": "302.5949422930001869"
       }
      },
      "not_fed": [],
@@ -49997,7 +50051,6 @@
       "prior:equity_closing",
       "prior:normative_loan_closing",
       "record:ag_net",
-      "record:capitalisation",
       "record:consumer_contribution",
       "record:employee_capitalised",
       "record:employee_gross",
@@ -50490,7 +50543,7 @@
     "title": "Capex and Capitalisation Details",
     "sheet": "F16_CAP_CAPEX & CAP. till 25 ",
     "alias_why": "the sheet is named in short",
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F16_CAP_CAPEX & CAPITALISATION - FY 26",
@@ -50728,8 +50781,8 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 24,
-   "reproduced": 38,
+   "present": 23,
+   "reproduced": 39,
    "read": 9,
    "blank": 2,
    "missing": 1
