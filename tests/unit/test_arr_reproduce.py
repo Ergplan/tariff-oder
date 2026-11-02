@@ -1285,3 +1285,25 @@ def test_npcl_the_trueup_depreciation_reproduces_class_by_class():
     capital = load_rate_record(json.loads((folder / "order" / "figures-trueup-capital-fy2024-25.json").read_text()))
     assert figures["dep.B.13.addition"] == capital["fund.investment"] == figures["gfa.addition"]
     assert figures["dep.net"] == capital["loan.repayment"]
+
+
+def test_npcl_the_trueup_excess_energy_disallowed_reproduces():
+    """Real data: the one computed line of the true-up's power purchase decision — 1.32 MU beyond
+    the energy balance at the weighted average energy charge of DIL, TPTCL and JITPL (2.57): 0.34
+    (paras 4.4.82–4.4.83).  The order's totals of Table 4-51 are one unit off the sum of its rows."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-trueup-power-purchase-fy25.json").read_text())
+    figures = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    got = {
+        c.output: (c.result, c.filed, c.computed)
+        for c in reproduce_cells(wb, binding, load_rules("UPERC"), rates=figures)
+    }
+    assert got["pp_excess_rate"] == ("match", "2.57", "2.57")
+    assert got["pp_excess_disallowed"] == ("match", "0.34", "0.34")
+    assert got["pp_energy_total"] == ("differs", "663.60", "663.61")

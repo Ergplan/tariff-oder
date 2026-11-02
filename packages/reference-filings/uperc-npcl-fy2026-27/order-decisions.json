@@ -3458,6 +3458,974 @@
      "format": "446.36",
      "result": "match"
     }
+   ],
+   "decisions": [
+    {
+     "line": "A",
+     "claimed": "534.39",
+     "approved": "580.74",
+     "decision": "46.35"
+    },
+    {
+     "line": "C.1",
+     "claimed": "258.03",
+     "approved": "0",
+     "decision": "-258.03"
+    },
+    {
+     "line": "C.2",
+     "claimed": "83.61",
+     "approved": "0",
+     "decision": "-83.61"
+    },
+    {
+     "line": "C.3",
+     "claimed": "158.45",
+     "approved": "0",
+     "decision": "-158.45"
+    },
+    {
+     "line": "C.4",
+     "claimed": "167.74",
+     "approved": "0",
+     "decision": "-167.74"
+    },
+    {
+     "line": "C.8",
+     "claimed": "0",
+     "approved": "56.95",
+     "decision": "56.95"
+    },
+    {
+     "line": "C.9",
+     "claimed": "0",
+     "approved": "4.58",
+     "decision": "4.58"
+    },
+    {
+     "line": "C.10",
+     "claimed": "0",
+     "approved": "4.58",
+     "decision": "4.58"
+    },
+    {
+     "line": "C.11",
+     "claimed": "0",
+     "approved": "15.83",
+     "decision": "15.83"
+    },
+    {
+     "line": "C.12",
+     "claimed": "0",
+     "approved": "48.77",
+     "decision": "48.77"
+    },
+    {
+     "line": "C.13",
+     "claimed": "0",
+     "approved": "3.30",
+     "decision": "3.30"
+    },
+    {
+     "line": "C.14",
+     "claimed": "0",
+     "approved": "5.41",
+     "decision": "5.41"
+    },
+    {
+     "line": "C.15",
+     "claimed": "0",
+     "approved": "12.64",
+     "decision": "12.64"
+    },
+    {
+     "line": "C.16",
+     "claimed": "0",
+     "approved": "12.38",
+     "decision": "12.38"
+    },
+    {
+     "line": "C.17",
+     "claimed": "0",
+     "approved": "47.58",
+     "decision": "47.58"
+    },
+    {
+     "line": "C.18",
+     "claimed": "0",
+     "approved": "24.82",
+     "decision": "24.82"
+    },
+    {
+     "line": "C.19",
+     "claimed": "0",
+     "approved": "20.91",
+     "decision": "20.91"
+    },
+    {
+     "line": "C.20",
+     "claimed": "0",
+     "approved": "8.96",
+     "decision": "8.96"
+    },
+    {
+     "line": "C.21",
+     "claimed": "0",
+     "approved": "33.53",
+     "decision": "33.53"
+    },
+    {
+     "line": "C.22",
+     "claimed": "0",
+     "approved": "288.44",
+     "decision": "288.44"
+    },
+    {
+     "line": "E.6",
+     "claimed": "0.32",
+     "approved": "0",
+     "decision": "-0.32"
+    },
+    {
+     "line": "G",
+     "claimed": "-59.72",
+     "approved": "0",
+     "decision": "59.72"
+    },
+    {
+     "line": "H",
+     "claimed": "-2.44",
+     "approved": "0",
+     "decision": "2.44"
+    },
+    {
+     "line": "J",
+     "claimed": "188.50",
+     "approved": "223.88",
+     "decision": "35.38"
+    },
+    {
+     "line": "K",
+     "claimed": "0.65",
+     "approved": "0.40",
+     "decision": "-0.25"
+    }
+   ]
+  },
+  {
+   "proceeding": "true_up",
+   "fiscal_year": "FY2024-25",
+   "title": "TABLE 4-52 POWER PURCHASE COST APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.)",
+   "pages": [
+    88,
+    89
+   ],
+   "anchors": "each page's two 'Periphery', 'kWh' and 'Cr.' header words (claimed left, approved right); a source's name is centred on the lines around its figures, so lines within 7 points belong to its label",
+   "rows": [
+    {
+     "code": null,
+     "label": "DIL Thermal",
+     "cells": {
+      "claimed_mu": "1,237.09",
+      "claimed_rate": "4.36",
+      "claimed_amount": "539.30",
+      "approved_mu": "1,237.09",
+      "approved_rate": "4.36",
+      "approved_amount": "539.30"
+     },
+     "quote": "DIL Thermal 1,237.09 4.36 539.30 1,237.09 4.36 539.30",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "PTC Wind",
+     "cells": {
+      "claimed_mu": "32.75",
+      "claimed_rate": "3.57",
+      "claimed_amount": "11.70",
+      "approved_mu": "32.75",
+      "approved_rate": "3.57",
+      "approved_amount": "11.70"
+     },
+     "quote": "PTC Wind 32.75 3.57 11.70 32.75 3.57 11.70",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "GNIDA Solar",
+     "cells": {
+      "claimed_mu": "0.92",
+      "claimed_rate": "6.92",
+      "claimed_amount": "0.64",
+      "approved_mu": "0.92",
+      "approved_rate": "6.92",
+      "approved_amount": "0.64"
+     },
+     "quote": "GNIDA Solar 0.92 6.92 0.64 0.92 6.92 0.64",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "APPCPL Solar",
+     "cells": {
+      "claimed_mu": "0.32",
+      "claimed_rate": "5.38",
+      "claimed_amount": "0.17",
+      "approved_mu": "0.32",
+      "approved_rate": "5.38",
+      "approved_amount": "0.17"
+     },
+     "quote": "APPCPL Solar 0.32 5.38 0.17 0.32 5.38 0.17",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "Adani Solar",
+     "cells": {
+      "claimed_mu": "52.22",
+      "claimed_rate": "3.12",
+      "claimed_amount": "16.28",
+      "approved_mu": "52.22",
+      "approved_rate": "3.12",
+      "approved_amount": "16.28"
+     },
+     "quote": "Adani Solar 52.22 3.12 16.28 52.22 3.12 16.28",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "Tata Solar",
+     "cells": {
+      "claimed_mu": "42.48",
+      "claimed_rate": "3.33",
+      "claimed_amount": "14.13",
+      "approved_mu": "42.48",
+      "approved_rate": "3.33",
+      "approved_amount": "14.13"
+     },
+     "quote": "Tata Solar 42.48 3.33 14.13 42.48 3.33 14.13",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "NPCL Solar",
+     "cells": {
+      "claimed_mu": "0.01",
+      "claimed_rate": "-",
+      "claimed_amount": "-",
+      "approved_mu": "0.01"
+     },
+     "quote": "NPCL Solar 0.01 - - 0.01",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "TPTCL(Source-JITPL) Thermal",
+     "cells": {
+      "claimed_mu": "704.03",
+      "claimed_rate": "4.35",
+      "claimed_amount": "306.51",
+      "approved_mu": "704.03",
+      "approved_rate": "4.35",
+      "approved_amount": "306.51"
+     },
+     "quote": "TPTCL(Source-JITPL) Thermal 704.03 4.35 306.51 704.03 4.35 306.51",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "TPTCL(Source-JITPL) - Thermal incentive",
+     "cells": {
+      "claimed_amount": "1.02",
+      "approved_amount": "-"
+     },
+     "quote": "TPTCL(Source-JITPL) - Thermal 1.02 - incentive",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "JITPL Thermal",
+     "cells": {
+      "claimed_mu": "642.30",
+      "claimed_rate": "5.59",
+      "claimed_amount": "359.30",
+      "approved_mu": "642.30",
+      "approved_rate": "5.59",
+      "approved_amount": "359.30"
+     },
+     "quote": "JITPL Thermal 642.30 5.59 359.30 642.30 5.59 359.30",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "Power Exchange Exchange",
+     "cells": {
+      "claimed_mu": "1,002.63",
+      "claimed_rate": "6.66",
+      "claimed_amount": "668.17",
+      "approved_mu": "1,002.63",
+      "approved_rate": "6.66",
+      "approved_amount": "668.17"
+     },
+     "quote": "Power Exchange Exchange 1,002.63 6.66 668.17 1,002.63 6.66 668.17",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "TPTCL(Source-TPSL) (Solar) Solar",
+     "cells": {
+      "claimed_mu": "46.65",
+      "claimed_rate": "4.22",
+      "claimed_amount": "19.69",
+      "approved_mu": "46.65",
+      "approved_rate": "4.22",
+      "approved_amount": "19.69"
+     },
+     "quote": "TPTCL(Source-TPSL) (Solar) Solar 46.65 4.22 19.69 46.65 4.22 19.69",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "Power Exchange Renewable (Renewable)",
+     "cells": {
+      "claimed_mu": "143.03",
+      "claimed_rate": "6.03",
+      "claimed_amount": "86.22",
+      "approved_mu": "143.03",
+      "approved_rate": "6.03",
+      "approved_amount": "86.22"
+     },
+     "quote": "Power Exchange Renewable 143.03 6.03 86.22 143.03 6.03 86.22 (Renewable)",
+     "page": 88
+    },
+    {
+     "code": null,
+     "label": "Net Metering-Net Feed DRE only",
+     "cells": {
+      "claimed_mu": "1.60",
+      "claimed_rate": "3.73",
+      "claimed_amount": "0.59",
+      "approved_mu": "1.60",
+      "approved_rate": "3.73",
+      "approved_amount": "0.59"
+     },
+     "quote": "Net Metering-Net Feed DRE 1.60 3.73 0.59 1.60 3.73 0.59 only",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Net Metering-Energy DRE settled",
+     "cells": {
+      "claimed_mu": "0.40",
+      "claimed_rate": "2.00",
+      "claimed_amount": "0.08",
+      "approved_mu": "0.40",
+      "approved_rate": "2.00",
+      "approved_amount": "0.08"
+     },
+     "quote": "Net Metering-Energy DRE 0.40 2.00 0.08 0.40 2.00 0.08 settled",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "REC Purchase Renewable",
+     "cells": {
+      "claimed_mu": "-",
+      "claimed_amount": "15.99",
+      "approved_mu": "-",
+      "approved_amount": "15.99"
+     },
+     "quote": "REC Purchase Renewable - 15.99 - 15.99",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "IEX (RTM Sale Market) Exchange",
+     "cells": {
+      "claimed_mu": "(25.47)",
+      "claimed_rate": "4.92",
+      "claimed_amount": "(12.53)",
+      "approved_mu": "(25.47)",
+      "approved_rate": "4.92",
+      "approved_amount": "(12.53)"
+     },
+     "quote": "IEX (RTM Sale Market) Exchange (25.47) 4.92 (12.53) (25.47) 4.92 (12.53)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "DSM/UI Exchange",
+     "cells": {
+      "claimed_mu": "7.52",
+      "claimed_rate": "27.43",
+      "claimed_amount": "20.64",
+      "approved_mu": "7.52",
+      "approved_rate": "27.43",
+      "approved_amount": "20.64"
+     },
+     "quote": "DSM/UI Exchange 7.52 27.43 20.64 7.52 27.43 20.64",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Add. Coal for FY23 (90% Booked in FY23)",
+     "cells": {
+      "claimed_amount": "73.25",
+      "approved_amount": "73.25"
+     },
+     "quote": "Add. Coal for FY23 (90% 73.25 73.25 Booked in FY23)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Add. Coal for FY23 (10% Booked in FY25)",
+     "cells": {
+      "claimed_amount": "6.55",
+      "approved_amount": "6.55"
+     },
+     "quote": "Add. Coal for FY23 (10% 6.55 6.55 Booked in FY25)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Refund against True-up of Additional Coal FY23",
+     "cells": {
+      "claimed_amount": "(0.21)",
+      "approved_amount": "(0.21)"
+     },
+     "quote": "Refund against True-up of (0.21) (0.21) Additional Coal FY23",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Change in Law for FY23 (100% Booked in FY23)",
+     "cells": {
+      "claimed_amount": "5.25",
+      "approved_amount": "5.25"
+     },
+     "quote": "Change in Law for FY23 5.25 5.25 (100% Booked in FY23)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Carrying Cost on above for FY23",
+     "cells": {
+      "claimed_amount": "4.37",
+      "approved_amount": "1.00"
+     },
+     "quote": "Carrying Cost on above for 4.37 1.00 FY23",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Add. Coal for FY24 (90% Booked in FY24)",
+     "cells": {
+      "claimed_amount": "19.96",
+      "approved_amount": "19.96"
+     },
+     "quote": "Add. Coal for FY24 (90% 19.96 19.96 Booked in FY24)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Add. Coal for FY24 (10% Booked in FY25)",
+     "cells": {
+      "claimed_amount": "2.22",
+      "approved_amount": "2.22"
+     },
+     "quote": "Add. Coal for FY24 (10% 2.22 2.22 Booked in FY25)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Change in Law for FY24 (100% Booked in FY24)",
+     "cells": {
+      "claimed_amount": "4.98",
+      "approved_amount": "-"
+     },
+     "quote": "Change in Law for FY24 4.98 - (100% Booked in FY24)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Carrying Cost for FY24 (Booked in FY25)",
+     "cells": {
+      "claimed_amount": "11.37",
+      "approved_amount": "9.07"
+     },
+     "quote": "Carrying Cost for FY24 11.37 9.07 (Booked in FY25)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Total",
+     "cells": {
+      "claimed_mu": "3,888.46",
+      "claimed_rate": "5.60",
+      "claimed_amount": "2,175.64",
+      "approved_mu": "3,888.46",
+      "approved_rate": "5.57",
+      "approved_amount": "2,163.99"
+     },
+     "quote": "Total 3,888.46 5.60 2,175.64 3,888.46 5.57 2,163.99",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Energy Disallowed",
+     "cells": {
+      "approved_amount": "(0.34)"
+     },
+     "quote": "Energy Disallowed (0.34)",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Sub-Total of Power Purchase Cost",
+     "cells": {
+      "approved_amount": "2,163.65"
+     },
+     "quote": "Sub-Total of Power 2,163.65 Purchase Cost",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Inter State Transmission Charges",
+     "cells": {
+      "claimed_amount": "194.10",
+      "approved_amount": "194.10"
+     },
+     "quote": "Inter State Transmission 194.10 194.10 Charges",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Intra State Transmission Charges",
+     "cells": {
+      "claimed_amount": "99.56",
+      "approved_amount": "99.56"
+     },
+     "quote": "Intra State Transmission 99.56 99.56 Charges",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "SLDC Application Fee",
+     "cells": {
+      "claimed_amount": "0.52",
+      "approved_amount": "0.52"
+     },
+     "quote": "SLDC Application Fee 0.52 0.52",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Reactive Power Purchase",
+     "cells": {
+      "claimed_amount": "0.21",
+      "approved_amount": "0.21"
+     },
+     "quote": "Reactive Power Purchase 0.21 0.21",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Sub-Total of Transmission Charges",
+     "cells": {
+      "claimed_amount": "294.40",
+      "approved_amount": "294.40"
+     },
+     "quote": "Sub-Total of Transmission 294.40 294.40 Charges",
+     "page": 89
+    },
+    {
+     "code": null,
+     "label": "Grand Total",
+     "cells": {
+      "claimed_mu": "3,888.46",
+      "claimed_rate": "6.35",
+      "claimed_amount": "2,470.04",
+      "approved_mu": "3,888.46",
+      "approved_rate": "6.32",
+      "approved_amount": "2,458.04"
+     },
+     "quote": "Grand Total 3,888.46 6.35 2,470.04 3,888.46 6.32 2,458.04",
+     "page": 89
+    }
+   ],
+   "arithmetic": [
+    {
+     "side": "claimed",
+     "check": "DIL Thermal: amount = MU × rate",
+     "printed": "539.30",
+     "computed": "539.37",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "PTC Wind: amount = MU × rate",
+     "printed": "11.70",
+     "computed": "11.69",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "GNIDA Solar: amount = MU × rate",
+     "printed": "0.64",
+     "computed": "0.64",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "APPCPL Solar: amount = MU × rate",
+     "printed": "0.17",
+     "computed": "0.17",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Adani Solar: amount = MU × rate",
+     "printed": "16.28",
+     "computed": "16.29",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Tata Solar: amount = MU × rate",
+     "printed": "14.13",
+     "computed": "14.15",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "NPCL Solar: amount = MU × rate",
+     "printed": "0",
+     "computed": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "TPTCL(Source-JITPL) Thermal: amount = MU × rate",
+     "printed": "306.51",
+     "computed": "306.25",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "JITPL Thermal: amount = MU × rate",
+     "printed": "359.30",
+     "computed": "359.05",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Power Exchange Exchange: amount = MU × rate",
+     "printed": "668.17",
+     "computed": "667.75",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "TPTCL(Source-TPSL) (Solar) Solar: amount = MU × rate",
+     "printed": "19.69",
+     "computed": "19.69",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Power Exchange Renewable (Renewable): amount = MU × rate",
+     "printed": "86.22",
+     "computed": "86.25",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Net Metering-Net Feed DRE only: amount = MU × rate",
+     "printed": "0.59",
+     "computed": "0.60",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Net Metering-Energy DRE settled: amount = MU × rate",
+     "printed": "0.08",
+     "computed": "0.08",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "IEX (RTM Sale Market) Exchange: amount = MU × rate",
+     "printed": "-12.53",
+     "computed": "-12.53",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "DSM/UI Exchange: amount = MU × rate",
+     "printed": "20.64",
+     "computed": "20.63",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Total: amount = MU × rate",
+     "printed": "2175.64",
+     "computed": "2177.54",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Grand Total: amount = MU × rate",
+     "printed": "2470.04",
+     "computed": "2469.17",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Total = DIL Thermal + PTC Wind + GNIDA Solar + APPCPL Solar + Adani Solar + Tata Solar + NPCL Solar + TPTCL(Source-JITPL) Thermal + TPTCL(Source-JITPL) - Thermal incentive + JITPL Thermal + Power Exchange Exchange + TPTCL(Source-TPSL) (Solar) Solar + Power Exchange Renewable (Renewable) + Net Metering-Net Feed DRE only + Net Metering-Energy DRE settled + REC Purchase Renewable + IEX (RTM Sale Market) Exchange + DSM/UI Exchange + Add. Coal for FY23 (90% Booked in FY23) + Add. Coal for FY23 (10% Booked in FY25) + Refund against True-up of Additional Coal FY23 + Change in Law for FY23 (100% Booked in FY23) + Carrying Cost on above for FY23 + Add. Coal for FY24 (90% Booked in FY24) + Add. Coal for FY24 (10% Booked in FY25) + Change in Law for FY24 (100% Booked in FY24) + Carrying Cost for FY24 (Booked in FY25)",
+     "printed": "2175.64",
+     "computed": "2175.64",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Total = DIL Thermal + PTC Wind + GNIDA Solar + APPCPL Solar + Adani Solar + Tata Solar + NPCL Solar + TPTCL(Source-JITPL) Thermal + TPTCL(Source-JITPL) - Thermal incentive + JITPL Thermal + Power Exchange Exchange + TPTCL(Source-TPSL) (Solar) Solar + Power Exchange Renewable (Renewable) + Net Metering-Net Feed DRE only + Net Metering-Energy DRE settled + REC Purchase Renewable + IEX (RTM Sale Market) Exchange + DSM/UI Exchange + Add. Coal for FY23 (90% Booked in FY23) + Add. Coal for FY23 (10% Booked in FY25) + Refund against True-up of Additional Coal FY23 + Change in Law for FY23 (100% Booked in FY23) + Carrying Cost on above for FY23 + Add. Coal for FY24 (90% Booked in FY24) + Add. Coal for FY24 (10% Booked in FY25) + Change in Law for FY24 (100% Booked in FY24) + Carrying Cost for FY24 (Booked in FY25)",
+     "printed": "3888.46",
+     "computed": "3888.48",
+     "difference": "-0.02",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Sub-Total of Transmission Charges = Inter State Transmission Charges + Intra State Transmission Charges + SLDC Application Fee + Reactive Power Purchase",
+     "printed": "294.40",
+     "computed": "294.39",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Grand Total = Total + Energy Disallowed + Sub-Total of Transmission Charges",
+     "printed": "2470.04",
+     "computed": "2470.04",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "DIL Thermal: amount = MU × rate",
+     "printed": "539.30",
+     "computed": "539.37",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "PTC Wind: amount = MU × rate",
+     "printed": "11.70",
+     "computed": "11.69",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "GNIDA Solar: amount = MU × rate",
+     "printed": "0.64",
+     "computed": "0.64",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "APPCPL Solar: amount = MU × rate",
+     "printed": "0.17",
+     "computed": "0.17",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Adani Solar: amount = MU × rate",
+     "printed": "16.28",
+     "computed": "16.29",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Tata Solar: amount = MU × rate",
+     "printed": "14.13",
+     "computed": "14.15",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "TPTCL(Source-JITPL) Thermal: amount = MU × rate",
+     "printed": "306.51",
+     "computed": "306.25",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "JITPL Thermal: amount = MU × rate",
+     "printed": "359.30",
+     "computed": "359.05",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Power Exchange Exchange: amount = MU × rate",
+     "printed": "668.17",
+     "computed": "667.75",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "TPTCL(Source-TPSL) (Solar) Solar: amount = MU × rate",
+     "printed": "19.69",
+     "computed": "19.69",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Power Exchange Renewable (Renewable): amount = MU × rate",
+     "printed": "86.22",
+     "computed": "86.25",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Net Metering-Net Feed DRE only: amount = MU × rate",
+     "printed": "0.59",
+     "computed": "0.60",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Net Metering-Energy DRE settled: amount = MU × rate",
+     "printed": "0.08",
+     "computed": "0.08",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "IEX (RTM Sale Market) Exchange: amount = MU × rate",
+     "printed": "-12.53",
+     "computed": "-12.53",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "DSM/UI Exchange: amount = MU × rate",
+     "printed": "20.64",
+     "computed": "20.63",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Total: amount = MU × rate",
+     "printed": "2163.99",
+     "computed": "2165.87",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Grand Total: amount = MU × rate",
+     "printed": "2458.04",
+     "computed": "2457.51",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Total = DIL Thermal + PTC Wind + GNIDA Solar + APPCPL Solar + Adani Solar + Tata Solar + NPCL Solar + TPTCL(Source-JITPL) Thermal + TPTCL(Source-JITPL) - Thermal incentive + JITPL Thermal + Power Exchange Exchange + TPTCL(Source-TPSL) (Solar) Solar + Power Exchange Renewable (Renewable) + Net Metering-Net Feed DRE only + Net Metering-Energy DRE settled + REC Purchase Renewable + IEX (RTM Sale Market) Exchange + DSM/UI Exchange + Add. Coal for FY23 (90% Booked in FY23) + Add. Coal for FY23 (10% Booked in FY25) + Refund against True-up of Additional Coal FY23 + Change in Law for FY23 (100% Booked in FY23) + Carrying Cost on above for FY23 + Add. Coal for FY24 (90% Booked in FY24) + Add. Coal for FY24 (10% Booked in FY25) + Change in Law for FY24 (100% Booked in FY24) + Carrying Cost for FY24 (Booked in FY25)",
+     "printed": "2163.99",
+     "computed": "2163.97",
+     "difference": "0.02",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Total = DIL Thermal + PTC Wind + GNIDA Solar + APPCPL Solar + Adani Solar + Tata Solar + NPCL Solar + TPTCL(Source-JITPL) Thermal + TPTCL(Source-JITPL) - Thermal incentive + JITPL Thermal + Power Exchange Exchange + TPTCL(Source-TPSL) (Solar) Solar + Power Exchange Renewable (Renewable) + Net Metering-Net Feed DRE only + Net Metering-Energy DRE settled + REC Purchase Renewable + IEX (RTM Sale Market) Exchange + DSM/UI Exchange + Add. Coal for FY23 (90% Booked in FY23) + Add. Coal for FY23 (10% Booked in FY25) + Refund against True-up of Additional Coal FY23 + Change in Law for FY23 (100% Booked in FY23) + Carrying Cost on above for FY23 + Add. Coal for FY24 (90% Booked in FY24) + Add. Coal for FY24 (10% Booked in FY25) + Change in Law for FY24 (100% Booked in FY24) + Carrying Cost for FY24 (Booked in FY25)",
+     "printed": "3888.46",
+     "computed": "3888.48",
+     "difference": "-0.02",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Sub-Total of Power Purchase Cost = Total + Energy Disallowed",
+     "printed": "2163.65",
+     "computed": "2163.65",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Sub-Total of Transmission Charges = Inter State Transmission Charges + Intra State Transmission Charges + SLDC Application Fee + Reactive Power Purchase",
+     "printed": "294.40",
+     "computed": "294.39",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Grand Total = Total + Energy Disallowed + Sub-Total of Transmission Charges",
+     "printed": "2458.04",
+     "computed": "2458.05",
+     "difference": "-0.01",
+     "result": "match"
+    }
+   ],
+   "against_format": [
+    {
+     "row": "Total",
+     "cells": [
+      "ARR!J20",
+      "ARR!J21",
+      "ARR!J22"
+     ],
+     "printed": "2175.64",
+     "format": "2175.64",
+     "result": "match"
+    },
+    {
+     "row": "Sub-Total of Transmission Charges",
+     "cells": [
+      "ARR!J23",
+      "ARR!J24"
+     ],
+     "printed": "294.40",
+     "format": "294.40",
+     "result": "match"
+    }
+   ],
+   "decisions": [
+    {
+     "line": "TPTCL(Source-JITPL) - Thermal incentive",
+     "claimed": "1.02",
+     "approved": "0",
+     "decision": "-1.02"
+    },
+    {
+     "line": "Carrying Cost on above for FY23",
+     "claimed": "4.37",
+     "approved": "1.00",
+     "decision": "-3.37"
+    },
+    {
+     "line": "Change in Law for FY24 (100% Booked in FY24)",
+     "claimed": "4.98",
+     "approved": "0",
+     "decision": "-4.98"
+    },
+    {
+     "line": "Carrying Cost for FY24 (Booked in FY25)",
+     "claimed": "11.37",
+     "approved": "9.07",
+     "decision": "-2.30"
+    },
+    {
+     "line": "Energy Disallowed",
+     "claimed": "0",
+     "approved": "-0.34",
+     "decision": "-0.34"
+    }
    ]
   }
  ]

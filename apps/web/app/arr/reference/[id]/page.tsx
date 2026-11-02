@@ -73,6 +73,7 @@ type Filing = {
       rows: { code: string | null; label: string; cells: Record<string, string>; page: number }[];
       arithmetic: { side: string; check: string; printed: string; computed: string; result: string }[];
       against_format: { row: string; printed: string; format: string; result: string }[];
+      decisions?: { line: string; claimed: string; approved: string; decision: string }[];
     }[];
   } | null;
   checklist: {
@@ -721,6 +722,12 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                   <summary>
                     {t.title} — pp.{t.pages.join(", ")}, read by word position: the table&apos;s own arithmetic <CountBadges counts={own} />
                   </summary>
+                  {(t.decisions ?? []).length > 0 && (
+                    <p className="muted" style={{ fontSize: "0.85rem" }}>
+                      Lines the decision changes (approved − claimed, Rs cr):{" "}
+                      {(t.decisions ?? []).map((d) => `${d.line} ${d.decision}`).join("; ")}.
+                    </p>
+                  )}
                   <div className="table-wrap">
                     <table>
                       <thead>

@@ -227,7 +227,12 @@ def identities(
 
 
 def rows_by_position(
-    words: list[tuple], anchors: dict[str, float], start: str, stop: str | None = None, code: str = r"^[A-Z](\.\d+)?$"
+    words: list[tuple],
+    anchors: dict[str, float],
+    start: str,
+    stop: str | None = None,
+    code: str = r"^[A-Z](\.\d+)?$",
+    label_span: float = 0,
 ) -> list[dict[str, Any]]:
     """The rows of a table whose blank cells make text order ambiguous (a figure printed under
     "Approved" with nothing under "Claimed"), read from one page's words with their positions
@@ -235,7 +240,12 @@ def rows_by_position(
     word ``start`` to the line before ``stop``; words share a line when their tops are within 3
     points.  Each figure goes to the column whose anchor (an x centre taken from the page's own
     header words) is nearest; two figures on one anchor is an error.  A line opens with its code
-    (``A``, ``B.1``) when it has one; a total line has none and is named by its words."""
+    (``A``, ``B.1``) when it has one; a total line has none and is named by its words.
+
+    ``label_span``: where a table centres its figures between the lines of a wrapped label ("Add.
+    Coal for FY23 (90%" / figures / "Booked in FY23)"), a line with no figures within that many
+    points of a figure line belongs to the nearest one's label, in reading order; a line with no
+    figures farther away (a section heading) belongs to none."""
     pat = re.compile(code)
     lines: list[list[tuple]] = []
     for w in sorted(words, key=lambda w: (round(w[1]), w[0])):
@@ -243,7 +253,9 @@ def rows_by_position(
             lines[-1].append(w)
         else:
             lines.append([w])
-    out: list[dict[str, Any]] = []
+    # a figure stands in the figure columns: a dash in a label ("TPTCL - PPGCL") is text
+    left = min(anchors.values()) - 25
+    body: list[tuple[float, list[tuple], list[tuple]]] = []
     on = False
     for line in lines:
         line.sort(key=lambda w: w[0])
@@ -253,14 +265,25 @@ def rows_by_position(
             continue
         if stop and stop in " ".join(texts):
             break
-        # a figure stands in the figure columns: a dash in a label ("TPTCL - PPGCL") is text
-        left = min(anchors.values()) - 25
-        figs = [w for w in line if _FIG.match(w[4]) and (w[0] + w[2]) / 2 >= left]
-        if not figs:
-            continue
+        body.append((line[0][1], line, [w for w in line if _FIG.match(w[4]) and (w[0] + w[2]) / 2 >= left]))
+    rows = [(y, line, figs) for y, line, figs in body if figs]
+    extra: dict[int, list[tuple[float, list[tuple]]]] = {i: [] for i in range(len(rows))}
+    if label_span and rows:
+        for y, line, figs in body:
+            if figs:
+                continue
+            i = min(range(len(rows)), key=lambda k: abs(rows[k][0] - y))
+            if abs(rows[i][0] - y) <= label_span:
+                extra[i].append((y, line))
+    out: list[dict[str, Any]] = []
+    for i, (y, line, figs) in enumerate(rows):
+        texts = [w[4] for w in line]
         first = texts[0]
         row_code = first if pat.match(first) else None
-        label = " ".join(w[4] for w in line if w not in figs and w[4] != row_code)
+        own = " ".join(w[4] for w in line if w not in figs and w[4] != row_code)
+        above = [" ".join(w[4] for w in ln) for yy, ln in extra[i] if yy < y]
+        below = [" ".join(w[4] for w in ln) for yy, ln in extra[i] if yy > y]
+        label = " ".join(t for t in [*above, own, *below] if t)
         cells: dict[str, str] = {}
         for w in figs:
             centre = (w[0] + w[2]) / 2
@@ -268,7 +291,29 @@ def rows_by_position(
             if name in cells:
                 raise ValueError(f"row {row_code or label!r}: two figures under {name}")
             cells[name] = w[4]
-        out.append({"code": row_code, "label": label, "cells": cells, "quote": " ".join(texts)})
+        quote = " ".join([*above, " ".join(texts), *below])
+        out.append({"code": row_code, "label": label, "cells": cells, "quote": quote})
+    return out
+
+
+def source_decisions(rows: list[dict[str, Any]], skip: tuple[str, ...] = ()) -> list[dict[str, str]]:
+    """The decision on each line of a source table: the approved amount against the claimed, a
+    blank or "-" counting as nil; only the lines where they differ.  ``skip``: the keys of total
+    lines, whose difference is the sum of the others'."""
+    out: list[dict[str, str]] = []
+    for r in rows:
+        key = r["code"] or r["label"]
+        if key in skip:
+            continue
+        cells = r["cells"]
+        if "claimed_amount" not in cells and "approved_amount" not in cells:
+            continue
+        claimed = _value(cells.get("claimed_amount", "-")) or Decimal(0)
+        approved = _value(cells.get("approved_amount", "-")) or Decimal(0)
+        if claimed != approved:
+            out.append(
+                {"line": key, "claimed": str(claimed), "approved": str(approved), "decision": str(approved - claimed)}
+            )
     return out
 
 

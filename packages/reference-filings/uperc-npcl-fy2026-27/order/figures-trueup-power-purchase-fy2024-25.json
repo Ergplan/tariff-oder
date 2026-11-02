@@ -1,0 +1,127 @@
+{
+ "status": "read from the order's text layer, each figure with its quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): true-up of FY2024-25, energy disallowed beyond the energy balance, Table 4-51 and paras 4.4.82-4.4.83",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "excess.dil.mu": {
+   "value": "1237.09",
+   "unit": "MU",
+   "page": 88,
+   "quote": "DIL 1,237.09 327.62 2.65",
+   "what": "DIL: energy at the bus (ex-bus MU) (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.dil.energy": {
+   "value": "327.62",
+   "unit": "INR_crore",
+   "page": 88,
+   "quote": "DIL 1,237.09 327.62 2.65",
+   "what": "DIL: energy charges (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.dil.rate": {
+   "value": "2.65",
+   "unit": "INR_per_kWh",
+   "page": 88,
+   "quote": "DIL 1,237.09 327.62 2.65",
+   "what": "DIL: average energy charge per unit (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.tptcl.mu": {
+   "value": "704.03",
+   "unit": "MU",
+   "page": 88,
+   "quote": "TPTCL(Source-JITPL) 704.03 156.97 2.23",
+   "what": "TPTCL(Source-JITPL): energy at the bus (ex-bus MU) (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.tptcl.energy": {
+   "value": "156.97",
+   "unit": "INR_crore",
+   "page": 88,
+   "quote": "TPTCL(Source-JITPL) 704.03 156.97 2.23",
+   "what": "TPTCL(Source-JITPL): energy charges (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.tptcl.rate": {
+   "value": "2.23",
+   "unit": "INR_per_kWh",
+   "page": 88,
+   "quote": "TPTCL(Source-JITPL) 704.03 156.97 2.23",
+   "what": "TPTCL(Source-JITPL): average energy charge per unit (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.jitpl.mu": {
+   "value": "642.30",
+   "unit": "MU",
+   "page": 88,
+   "quote": "JITPL 642.30 179.02 2.79",
+   "what": "JITPL: energy at the bus (ex-bus MU) (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.jitpl.energy": {
+   "value": "179.02",
+   "unit": "INR_crore",
+   "page": 88,
+   "quote": "JITPL 642.30 179.02 2.79",
+   "what": "JITPL: energy charges (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.jitpl.rate": {
+   "value": "2.79",
+   "unit": "INR_per_kWh",
+   "page": 88,
+   "quote": "JITPL 642.30 179.02 2.79",
+   "what": "JITPL: average energy charge per unit (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.total.mu": {
+   "value": "2583.41",
+   "unit": "MU",
+   "page": 88,
+   "quote": "Total 2,583.41 663.60 2.57",
+   "what": "Total: energy at the bus (ex-bus MU) (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.total.energy": {
+   "value": "663.60",
+   "unit": "INR_crore",
+   "page": 88,
+   "quote": "Total 2,583.41 663.60 2.57",
+   "what": "Total: energy charges (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.total.rate": {
+   "value": "2.57",
+   "unit": "INR_per_kWh",
+   "page": 88,
+   "quote": "Total 2,583.41 663.60 2.57",
+   "what": "Total: average energy charge per unit (Table 4-51)",
+   "header": "Sources Ex-Bus (MUs) Energy Charges (Rs. In Cr.) Avg. Energy Charges per unit"
+  },
+  "excess.disallowed": {
+   "value": "0.34",
+   "unit": "INR_crore",
+   "page": 88,
+   "quote": "disallows the power purchase cost of Rs. 0.34 Crore (1.32 MU x Rs. 2.57/unit)",
+   "what": "cost disallowed (para 4.4.83)"
+  },
+  "excess.mu": {
+   "value": "1.32",
+   "unit": "MU",
+   "page": 88,
+   "quote": "disallows the power purchase cost of Rs. 0.34 Crore (1.32 MU x Rs. 2.57/unit)",
+   "what": "energy bought beyond the energy balance (paras 4.4.82-4.4.83)"
+  },
+  "excess.rate": {
+   "value": "2.57",
+   "unit": "INR_per_kWh",
+   "page": 88,
+   "quote": "disallows the power purchase cost of Rs. 0.34 Crore (1.32 MU x Rs. 2.57/unit)",
+   "what": "the weighted average rate applied (para 4.4.83)"
+  }
+ }
+}

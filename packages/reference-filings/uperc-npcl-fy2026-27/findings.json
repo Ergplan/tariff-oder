@@ -402,7 +402,7 @@
    "id": "A67",
    "kind": "decision explained",
    "title": "The true-up's other cuts: interest −2.07, RoE −2.36, tax −0.79, bad debts −0.59 and non-tariff income +1.72 — the remand order's opening balances, the approved capitalisation and revenue, and the order's own non-tariff income",
-   "detail": "Reproduced from the order's figures with the same rules (bindings/approval-trueup-capital-fy25.json; A66 for the two departures): interest −2.07 = interest on the normative loan +1.06 (opening 507.65 from the order of 17.06.2026 against NPCL's 502.80, additions 161.33 against 151.12 from the approved capitalisation of 317.18, the rate 9.88 % allowed in the FY2023-24 true-up against 9.91 %) and working capital −3.12 (normative O&M and receivables of 1.5 months of approved revenue: 0.69 against 3.81); RoE −2.36 = opening equity 517.23 (the remand order) against 535.08, additions 67.12 against 62.92; tax −0.79 follows RoE; bad debts −0.59 = NPCL's own provisioning ratio (0.41 %) applied to the approved revenue net of electricity duty (2,634.60) instead of the revenue billed (2,779.49) (Table 4-114); non-tariff income +1.72: the order's 12.38 is the audited 50.78 less the interest on bank deposits (37.99) as treasury income and three small items, 0.41 in all (Table 4-118) — how NPCL's 10.66 differs item by item is not established here.  Depreciation −4.78: A68.  Not yet reproduced: power purchase −11.99, and the contingency reserve (−5.61) and efficiency gains (−2.58) not allowed.",
+   "detail": "Reproduced from the order's figures with the same rules (bindings/approval-trueup-capital-fy25.json; A66 for the two departures): interest −2.07 = interest on the normative loan +1.06 (opening 507.65 from the order of 17.06.2026 against NPCL's 502.80, additions 161.33 against 151.12 from the approved capitalisation of 317.18, the rate 9.88 % allowed in the FY2023-24 true-up against 9.91 %) and working capital −3.12 (normative O&M and receivables of 1.5 months of approved revenue: 0.69 against 3.81); RoE −2.36 = opening equity 517.23 (the remand order) against 535.08, additions 67.12 against 62.92; tax −0.79 follows RoE; bad debts −0.59 = NPCL's own provisioning ratio (0.41 %) applied to the approved revenue net of electricity duty (2,634.60) instead of the revenue billed (2,779.49) (Table 4-114); non-tariff income +1.72: the order's 12.38 is the audited 50.78 less the interest on bank deposits (37.99) as treasury income and three small items, 0.41 in all (Table 4-118) — how NPCL's 10.66 differs item by item is not established here.  Depreciation −4.78: A68.  Power purchase −11.99, the contingency reserve and efficiency gains: A70.",
    "where": [
     "Tariff order FY2026-27 pp.139–164, Tables 4-94 to 4-118",
     "bindings/approval-trueup-capital-fy25.json",
@@ -431,6 +431,30 @@
    "where": [
     "Tariff order FY2026-27 p.143 Tables 4-99, 4-100",
     "bindings/approval-trueup-depreciation-fy25.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A70",
+   "kind": "decision explained",
+   "title": "The true-up's last cuts: power purchase −11.99 is five lines — two amounts billed in FY2025-26 deferred to that year's true-up (−6.00), carrying costs on the order's months (−5.67), excess energy (−0.34); the contingency reserve (−5.61) and efficiency gains (−2.58) refused in principle",
+   "detail": "Table 4-52 (pp.88–89), read by word position with its wrapped labels joined: the table's arithmetic holds on both sides (44 / 44) and the claimed side is NPCL's format (ARR!J20:J22 2,175.64, J23:J24 294.40).  Five lines change: the TPTCL (JITPL) incentive −1.02, its bill dated 29.04.2025 falling in FY2025-26 (paras 4.4.54–4.4.56; the paragraphs say 1.03); change in law for FY2023-24 −4.98, to be considered in the true-up of FY2025-26 (Table 4-41); carrying cost on the FY2022-23 additional coal and change in law −3.37 (4.37 to 1.00) and on FY2023-24's −2.30 (11.37 to 9.07), computed on 'the number of months' from each bill, compounded (para 4.4.51, Table 4-40) — the months are not printed, so these two are read, not reproduced; and 1.32 MU bought beyond the approved energy balance at 2.57, the weighted average energy charge of DIL, TPTCL and JITPL: 0.34 — reproduced (bindings/approval-trueup-power-purchase-fy25.json).  The lines add to −12.01; the order's −11.99 is its approved sub-total 2,163.65 against 2,175.64, the approved total of rows (2,163.99) being the sum of unrounded figures.  Transmission is approved as claimed.  The contingency reserve (5.61): not allowed, as in earlier orders — a burden on consumers, and NPCL's accounts create no reserve (para 4.18.1).  Efficiency gains on loss reduction (2.58): no provision for sharing them in the 2019 Regulations (para 4.3.15).  And the 0.04 NPCL deducts as income from other business is within the order's non-tariff income: NPCL has one business, so all income in its balance sheet comes under the true-up (para 4.16.20) — NPCL's 10.66 + 0.04 against the order's 12.38, −1.68 on the net ARR.  With A65, A67 and A68, every line of the true-up's −123.38 has its reason: the ARR's lines −119.34 (O&M −90.91, power purchase −11.99, contingency −5.61, depreciation −4.78, efficiency gains −2.58, interest −2.07, tax −0.79, bad debts −0.59; within rounding), RoE −2.36, non-tariff and other income −1.68.",
+   "where": [
+    "Tariff order FY2026-27 pp.55–57, 76–79, 87–89, 164, 166–167; Tables 4-17, 4-40, 4-41, 4-51, 4-52, 4-120",
+    "order-decisions.json (source_tables, true_up)",
+    "bindings/approval-trueup-power-purchase-fy25.json",
+    "order/figures-trueup-power-purchase-fy2024-25.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A71",
+   "kind": "rule against the Commission's practice",
+   "title": "The draft contingency rule computes the reserve NPCL claims; the Commission has refused it in every order, the true-up of FY2024-25 included",
+   "detail": "uperc.contingency.contribution (a share of the opening gross fixed assets) reproduces NPCL's 5.61 for FY2024-25; the order allows nil, 'continuing the same approach as in earlier Tariff Orders' (para 4.18.1, p.166).  Likewise the 2.58 of efficiency gains NPCL computes (Table 4-17) has, in the Commission's reading, no provision in the 2019 Regulations (para 4.3.15).  The drafts are not changed to fit the order — they reproduce what NPCL files; whether a rule should carry the Commission's practice (a note, or an approved value of nil) is the reviewer's, with the Regulations.  For the reviewer.",
+   "where": [
+    "packages/arr-rules/uperc/contingency.v1.json",
+    "Tariff order FY2026-27 p.57 para 4.3.15, p.166 para 4.18.1"
    ],
    "for": "reviewer"
   }

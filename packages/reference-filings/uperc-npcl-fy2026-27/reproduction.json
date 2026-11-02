@@ -12457,6 +12457,55 @@
    ]
   },
   {
+   "binding": "approval-trueup-power-purchase-fy25.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy disallowed beyond the energy balance (Table 4-51) order:excess.total.energy",
+     "output": "pp_energy_total",
+     "result": "differs",
+     "filed": "663.60",
+     "computed": "663.61",
+     "why": null,
+     "exact": "663.61"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy disallowed beyond the energy balance (Table 4-51) order:excess.total.mu",
+     "output": "pp_mu_at_bus_total",
+     "result": "differs",
+     "filed": "2583.41",
+     "computed": "2583.42",
+     "why": null,
+     "exact": "2583.42"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy disallowed beyond the energy balance (Table 4-51) order:excess.total.rate",
+     "output": "pp_excess_rate",
+     "result": "match",
+     "filed": "2.57",
+     "computed": "2.57",
+     "why": null,
+     "exact": "2.568726726587237073336894504"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy disallowed beyond the energy balance (Table 4-51) order:excess.disallowed",
+     "output": "pp_excess_disallowed",
+     "result": "match",
+     "filed": "0.34",
+     "computed": "0.34",
+     "why": null,
+     "exact": "0.3390719279095152936804700745"
+    }
+   ]
+  },
+  {
    "binding": "arr-contingency.json",
    "checks": [
     {

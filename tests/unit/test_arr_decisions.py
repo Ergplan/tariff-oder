@@ -214,7 +214,7 @@ def test_npcl_power_purchase_approval_by_source():
     rep = json.loads(
         (ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27" / "order-decisions.json").read_text()
     )
-    (t,) = rep["source_tables"]
+    t = next(t for t in rep["source_tables"] if t["proceeding"] == "arr")
     assert len(t["rows"]) == 51
     assert {c["result"] for c in t["arithmetic"] if c["side"] == "approved"} == {"match"}
     off = sorted(c["check"].split(":")[0].split(" =")[0] for c in t["arithmetic"] if c["result"] != "match")
@@ -222,3 +222,69 @@ def test_npcl_power_purchase_approval_by_source():
     rows = {r["code"]: r["cells"] for r in t["rows"] if r["code"]}
     assert "claimed_mu" not in rows["C.8"] and rows["C.8"]["approved_mu"] == "102.29"
     assert (rows["A"]["claimed_rate"], rows["A"]["approved_rate"]) == ("4.50", "4.89")
+
+
+def test_a_wrapped_label_centred_on_its_figures_is_joined_and_a_heading_is_not():
+    """A source name wrapped over two lines with its figures centred between them (Table 4-52)
+    belongs to that row; a section heading farther away belongs to none.  The decision per line
+    counts a blank or "-" as nil and leaves out the totals."""
+    from tariff_api.arr.decisions import rows_by_position, source_decisions
+
+    anchors = {
+        "claimed_mu": 270,
+        "claimed_rate": 320,
+        "claimed_amount": 375,
+        "approved_mu": 430,
+        "approved_rate": 470,
+        "approved_amount": 530,
+    }
+    words = [
+        _w(300, 100, "kWh"),
+        _w(40, 120, "Others"),
+        _w(40, 133, "Change"),
+        _w(80, 133, "in"),
+        _w(95, 133, "Law"),
+        _w(360, 139, "4.98"),
+        _w(530, 139, "-"),
+        _w(40, 145, "(Booked"),
+        _w(90, 145, "FY24)"),
+        _w(40, 158, "Carrying"),
+        _w(360, 164, "11.37"),
+        _w(515, 164, "9.07"),
+        _w(40, 170, "Cost"),
+        _w(40, 183, "Total"),
+        _w(360, 183, "16.35"),
+        _w(515, 183, "9.07"),
+    ]
+    rows = rows_by_position(words, anchors, "kWh", label_span=7)
+    assert [r["label"] for r in rows] == ["Change in Law (Booked FY24)", "Carrying Cost", "Total"]
+    assert rows[0]["quote"] == "Change in Law 4.98 - (Booked FY24)"
+    assert [r["label"] for r in rows_by_position(words, anchors, "kWh")] == ["", "", "Total"]
+    got = source_decisions(rows, skip=("Total",))
+    assert [(d["line"], d["decision"]) for d in got] == [
+        ("Change in Law (Booked FY24)", "-4.98"),
+        ("Carrying Cost", "-2.30"),
+    ]
+
+
+def test_npcl_trueup_power_purchase_decision_line_by_line():
+    """Real data: Table 4-52 read by position, wrapped labels joined: the table's own arithmetic
+    holds on both sides, the claimed side is NPCL's format (ARR!J20:J24), and the decision is five
+    lines — two amounts deferred to FY2025-26's true-up, two carrying costs, the excess energy (A70)."""
+    rep = json.loads(
+        (ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27" / "order-decisions.json").read_text()
+    )
+    t = next(t for t in rep["source_tables"] if t["proceeding"] == "true_up")
+    assert {c["result"] for c in t["arithmetic"]} == {"match"} and len(t["arithmetic"]) == 44
+    assert [f["result"] for f in t["against_format"]] == ["match", "match"]
+    assert {d["line"]: d["decision"] for d in t["decisions"]} == {
+        "TPTCL(Source-JITPL) - Thermal incentive": "-1.02",
+        "Carrying Cost on above for FY23": "-3.37",
+        "Change in Law for FY24 (100% Booked in FY24)": "-4.98",
+        "Carrying Cost for FY24 (Booked in FY25)": "-2.30",
+        "Energy Disallowed": "-0.34",
+    }
+    summary = {r["key"]: r for r in next(x for x in rep["tables"] if x["proceeding"] == "true_up")["rows"]}
+    sub = next(r for r in t["rows"] if r["label"] == "Sub-Total of Power Purchase Cost")
+    assert summary["power_purchase"]["values"]["approved"] == sub["cells"]["approved_amount"] == "2,163.65"
+    assert summary["power_purchase"]["decision"] == "-11.99"

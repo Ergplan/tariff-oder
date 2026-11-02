@@ -449,6 +449,132 @@
      ]
     }
    ]
+  },
+  {
+   "proceeding": "true_up",
+   "fiscal_year": "FY2024-25",
+   "title": "TABLE 4-52 POWER PURCHASE COST APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.)",
+   "pages": [
+    88,
+    89
+   ],
+   "start": "kWh",
+   "stop": "4.5. AVERAGE",
+   "anchor_words": {
+    "mu": "Periphery",
+    "rate": "kWh",
+    "amount": "Cr."
+   },
+   "label_span": 7,
+   "anchors": "each page's two 'Periphery', 'kWh' and 'Cr.' header words (claimed left, approved right); a source's name is centred on the lines around its figures, so lines within 7 points belong to its label",
+   "sums": [
+    {
+     "total": "Total",
+     "parts": [
+      "DIL Thermal",
+      "PTC Wind",
+      "GNIDA Solar",
+      "APPCPL Solar",
+      "Adani Solar",
+      "Tata Solar",
+      "NPCL Solar",
+      "TPTCL(Source-JITPL) Thermal",
+      "TPTCL(Source-JITPL) - Thermal incentive",
+      "JITPL Thermal",
+      "Power Exchange Exchange",
+      "TPTCL(Source-TPSL) (Solar) Solar",
+      "Power Exchange Renewable (Renewable)",
+      "Net Metering-Net Feed DRE only",
+      "Net Metering-Energy DRE settled",
+      "REC Purchase Renewable",
+      "IEX (RTM Sale Market) Exchange",
+      "DSM/UI Exchange",
+      "Add. Coal for FY23 (90% Booked in FY23)",
+      "Add. Coal for FY23 (10% Booked in FY25)",
+      "Refund against True-up of Additional Coal FY23",
+      "Change in Law for FY23 (100% Booked in FY23)",
+      "Carrying Cost on above for FY23",
+      "Add. Coal for FY24 (90% Booked in FY24)",
+      "Add. Coal for FY24 (10% Booked in FY25)",
+      "Change in Law for FY24 (100% Booked in FY24)",
+      "Carrying Cost for FY24 (Booked in FY25)"
+     ]
+    },
+    {
+     "total": "Total",
+     "parts": [
+      "DIL Thermal",
+      "PTC Wind",
+      "GNIDA Solar",
+      "APPCPL Solar",
+      "Adani Solar",
+      "Tata Solar",
+      "NPCL Solar",
+      "TPTCL(Source-JITPL) Thermal",
+      "TPTCL(Source-JITPL) - Thermal incentive",
+      "JITPL Thermal",
+      "Power Exchange Exchange",
+      "TPTCL(Source-TPSL) (Solar) Solar",
+      "Power Exchange Renewable (Renewable)",
+      "Net Metering-Net Feed DRE only",
+      "Net Metering-Energy DRE settled",
+      "REC Purchase Renewable",
+      "IEX (RTM Sale Market) Exchange",
+      "DSM/UI Exchange",
+      "Add. Coal for FY23 (90% Booked in FY23)",
+      "Add. Coal for FY23 (10% Booked in FY25)",
+      "Refund against True-up of Additional Coal FY23",
+      "Change in Law for FY23 (100% Booked in FY23)",
+      "Carrying Cost on above for FY23",
+      "Add. Coal for FY24 (90% Booked in FY24)",
+      "Add. Coal for FY24 (10% Booked in FY25)",
+      "Change in Law for FY24 (100% Booked in FY24)",
+      "Carrying Cost for FY24 (Booked in FY25)"
+     ],
+     "field": "mu"
+    },
+    {
+     "total": "Sub-Total of Power Purchase Cost",
+     "parts": [
+      "Total",
+      "Energy Disallowed"
+     ]
+    },
+    {
+     "total": "Sub-Total of Transmission Charges",
+     "parts": [
+      "Inter State Transmission Charges",
+      "Intra State Transmission Charges",
+      "SLDC Application Fee",
+      "Reactive Power Purchase"
+     ]
+    },
+    {
+     "total": "Grand Total",
+     "parts": [
+      "Total",
+      "Energy Disallowed",
+      "Sub-Total of Transmission Charges"
+     ]
+    }
+   ],
+   "format": [
+    {
+     "row": "Total",
+     "cells": [
+      "ARR!J20",
+      "ARR!J21",
+      "ARR!J22"
+     ]
+    },
+    {
+     "row": "Sub-Total of Transmission Charges",
+     "cells": [
+      "ARR!J23",
+      "ARR!J24"
+     ]
+    }
+   ]
   }
  ]
 }

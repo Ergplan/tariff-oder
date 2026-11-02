@@ -29,6 +29,7 @@ from tariff_api.arr.decisions import (  # noqa: E402
     identities,
     read_rows,
     rows_by_position,
+    source_decisions,
 )
 
 
@@ -67,19 +68,18 @@ def main() -> int:
         with pymupdf.open(args.pdf) as doc:
             for pno in t["pages"]:
                 words = doc[pno - 1].get_text("words")
-                mus = sorted((w[0] + w[2]) / 2 for w in words if w[4] == "MUs")
-                amt = sorted((w[0] + w[2]) / 2 for w in words if w[4] == "Amount")
-                anchors = {
-                    "claimed_mu": mus[0],
-                    "claimed_rate": (mus[0] + amt[0]) / 2,
-                    "claimed_amount": amt[0],
-                    "approved_mu": mus[1],
-                    "approved_rate": (mus[1] + amt[1]) / 2,
-                    "approved_amount": amt[1],
-                }
-                for r in rows_by_position(words, anchors, t["start"], t["stop"]):
-                    rows.append(r | {"page": pno})
+                # the page's own header words, each printed twice: claimed left, approved right
+                named = t.get("anchor_words", {"mu": "MUs", "amount": "Amount"})
+                xs = {f: sorted((w[0] + w[2]) / 2 for w in words if w[4] == word) for f, word in named.items()}
+                anchors = {}
+                for i, side in enumerate(("claimed", "approved")):
+                    for f in ("mu", "rate", "amount"):
+                        anchors[f"{side}_{f}"] = xs[f][i] if f in xs else (xs["mu"][i] + xs["amount"][i]) / 2
+                stop = t["stop"] if pno == t["pages"][-1] else None
+                found = rows_by_position(words, anchors, t["start"], stop, label_span=t.get("label_span", 0))
+                rows += [r | {"page": pno} for r in found]
         own = check_sources(rows, ["claimed", "approved"], t["sums"])
+        decided = source_decisions(rows, skip=tuple(x["total"] for x in t["sums"]))
         fmt = []
         for f in t.get("format", []):
             row = next(r for r in rows if (r["code"] or r["label"]) == f["row"])
@@ -97,9 +97,9 @@ def main() -> int:
             )
         counts = collections.Counter(c["result"] for c in own)
         print(f"sources  {len(rows)} rows; the table's own arithmetic {dict(counts)}; ", end="")
-        print(f"against the format {[x['result'] for x in fmt]}")
+        print(f"against the format {[x['result'] for x in fmt]}; {len(decided)} lines changed by the decision")
         keep = {k: t[k] for k in ("proceeding", "fiscal_year", "title", "pages", "anchors")}
-        sources.append(keep | {"rows": rows, "arithmetic": own, "against_format": fmt})
+        sources.append(keep | {"rows": rows, "arithmetic": own, "against_format": fmt, "decisions": decided})
     report = {
         "order": spec["order"],
         "status": (

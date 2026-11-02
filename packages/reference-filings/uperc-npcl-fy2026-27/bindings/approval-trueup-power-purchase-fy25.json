@@ -1,0 +1,57 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "rates": "order/figures-trueup-power-purchase-fy2024-25.json",
+ "places": 2,
+ "note": "The one line of the true-up's power purchase decision the order computes (Table 4-52, 'Energy Disallowed' −0.34): the energy bought beyond the approved energy balance at the weighted average energy charge of the long- and medium-term conventional sources (Table 4-51; paras 4.4.82–4.4.83), with draft rules that follow the order's statement of its method.  The other lines of the decision (−11.67 of −12.00) are amounts deferred or carrying costs whose months the order does not print; they are read in order-decisions.json (source_tables), not reproduced.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "energy disallowed beyond the energy balance (Table 4-51)",
+   "categories": {
+    "DIL": {
+     "inputs": {
+      "record:pp_energy_charges": {
+       "rate": "excess.dil.energy"
+      },
+      "record:pp_mu_at_bus": {
+       "rate": "excess.dil.mu"
+      }
+     }
+    },
+    "TPTCL (source JITPL)": {
+     "inputs": {
+      "record:pp_energy_charges": {
+       "rate": "excess.tptcl.energy"
+      },
+      "record:pp_mu_at_bus": {
+       "rate": "excess.tptcl.mu"
+      }
+     }
+    },
+    "JITPL": {
+     "inputs": {
+      "record:pp_energy_charges": {
+       "rate": "excess.jitpl.energy"
+      },
+      "record:pp_mu_at_bus": {
+       "rate": "excess.jitpl.mu"
+      }
+     }
+    }
+   },
+   "inputs": {
+    "record:pp_mu_excess": {
+     "rate": "excess.mu"
+    }
+   },
+   "checks": {
+    "pp_energy_total": "order:excess.total.energy",
+    "pp_mu_at_bus_total": "order:excess.total.mu",
+    "pp_excess_rate": "order:excess.total.rate",
+    "pp_excess_disallowed": "order:excess.disallowed"
+   }
+  }
+ ]
+}
