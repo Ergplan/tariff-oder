@@ -839,7 +839,194 @@
      "difference": "0.00",
      "result": "match"
     }
-   ]
+   ],
+   "explanation": {
+    "lines": [
+     {
+      "key": "power_purchase",
+      "decision": "-11.99",
+      "effect": "-11.99",
+      "reason": "five lines of Table 4-52: the TPTCL incentive and FY2023-24's change in law billed in FY2025-26, deferred to its true-up; carrying costs on the order's months; 1.32 MU beyond the energy balance at 2.57",
+      "where": "pp.76–89, paras 4.4.51–4.4.83, Tables 4-40, 4-41, 4-51, 4-52",
+      "finding": "A70",
+      "status": "read",
+      "binding": "approval-trueup-power-purchase-fy25.json",
+      "parts": [
+       {
+        "amount": "-6.00",
+        "what": "deferred to the true-up of FY2025-26 (incentive −1.02, change in law −4.98)"
+       },
+       {
+        "amount": "-5.67",
+        "what": "carrying costs on the order's months (−3.37, −2.30), read"
+       },
+       {
+        "amount": "-0.34",
+        "what": "excess energy, reproduced"
+       }
+      ],
+      "parts_sum": "-12.01",
+      "parts_result": "match"
+     },
+     {
+      "key": "employee_gross",
+      "decision": "-57.78",
+      "effect": "-57.78",
+      "reason": "the lower of normative and actual: the norm 37.64 against NPCL's actual 95.42",
+      "where": "pp.103–109, Tables 4-68 to 4-71, para 4.6.64",
+      "finding": "A65",
+      "status": "reproduced",
+      "binding": "approval-trueup-om-fy25.json"
+     },
+     {
+      "key": "ag",
+      "decision": "-14.81",
+      "effect": "-14.81",
+      "reason": "the lower of normative and actual",
+      "where": "pp.103–109, Table 4-71",
+      "finding": "A65",
+      "status": "reproduced",
+      "binding": "approval-trueup-om-fy25.json"
+     },
+     {
+      "key": "rm",
+      "decision": "-9.31",
+      "effect": "-9.31",
+      "reason": "the lower of normative and actual",
+      "where": "pp.103–109, Table 4-71",
+      "finding": "A65",
+      "status": "reproduced",
+      "binding": "approval-trueup-om-fy25.json"
+     },
+     {
+      "key": "additional_om",
+      "decision": "-9.01",
+      "effect": "-9.01",
+      "reason": "SOP-compliance and metering expenses are within the norms, not allowed separately",
+      "where": "paras 4.6.57–4.6.58",
+      "finding": "A65",
+      "status": "refused"
+     },
+     {
+      "key": "interest",
+      "decision": "-2.07",
+      "effect": "-2.07",
+      "reason": "the remand order's opening loan, the approved capitalisation, the FY2023-24 rate; working capital on normative O&M and 1.5 months of approved revenue",
+      "where": "pp.144–150, Tables 4-103 to 4-108",
+      "finding": "A67",
+      "status": "reproduced",
+      "binding": "approval-trueup-capital-fy25.json",
+      "parts": [
+       {
+        "amount": "1.06",
+        "what": "interest on the normative loan"
+       },
+       {
+        "amount": "-3.12",
+        "what": "interest on working capital"
+       }
+      ],
+      "parts_sum": "-2.06",
+      "parts_result": "match"
+     },
+     {
+      "key": "depreciation",
+      "decision": "-4.78",
+      "effect": "-4.78",
+      "reason": "the remand order's opening gross block; depreciation on consumer contribution from the Fixed Asset Register",
+      "where": "pp.142–144, Tables 4-98 to 4-101",
+      "finding": "A68",
+      "status": "reproduced",
+      "binding": "approval-trueup-depreciation-fy25.json",
+      "parts": [
+       {
+        "amount": "-2.89",
+        "what": "Part A, the opening gross block"
+       },
+       {
+        "amount": "-0.51",
+        "what": "Part B"
+       },
+       {
+        "amount": "-1.39",
+        "what": "more deducted for consumer contribution (25.06 against 23.67)"
+       }
+      ],
+      "parts_sum": "-4.79",
+      "parts_result": "match"
+     },
+     {
+      "key": "tax",
+      "decision": "-0.79",
+      "effect": "-0.79",
+      "reason": "follows the return on equity",
+      "where": "Table 4-112",
+      "finding": "A67",
+      "status": "reproduced",
+      "binding": "approval-trueup-capital-fy25.json"
+     },
+     {
+      "key": "bad_debts",
+      "decision": "-0.59",
+      "effect": "-0.59",
+      "reason": "NPCL's own provisioning ratio applied to the approved revenue net of electricity duty",
+      "where": "Table 4-114",
+      "finding": "A67",
+      "status": "read"
+     },
+     {
+      "key": "efficiency_gains",
+      "decision": "-2.58",
+      "effect": "-2.58",
+      "reason": "no provision for sharing efficiency gains in the 2019 Regulations",
+      "where": "p.57, para 4.3.15",
+      "finding": "A70",
+      "status": "refused"
+     },
+     {
+      "key": "contingency",
+      "decision": "-5.61",
+      "effect": "-5.61",
+      "reason": "not allowed, as in earlier orders: a burden on consumers, and no reserve in NPCL's accounts",
+      "where": "p.166, para 4.18.1",
+      "finding": "A70",
+      "status": "refused"
+     },
+     {
+      "key": "roe",
+      "decision": "-2.36",
+      "effect": "-2.36",
+      "reason": "opening equity from the remand order of 17.06.2026; additions from the approved capitalisation",
+      "where": "Table 4-110",
+      "finding": "A67",
+      "status": "reproduced",
+      "binding": "approval-trueup-capital-fy25.json"
+     },
+     {
+      "key": "nti",
+      "decision": "1.72",
+      "effect": "-1.72",
+      "reason": "the audited non-tariff income less treasury income and three small items",
+      "where": "pp.162–164, Table 4-118",
+      "finding": "A67",
+      "status": "read"
+     },
+     {
+      "key": "other_business",
+      "decision": "-0.04",
+      "effect": "0.04",
+      "reason": "not deducted: NPCL has one business, so all its income comes under the true-up (and the non-tariff income above)",
+      "where": "p.164, para 4.16.20",
+      "finding": "A70",
+      "status": "read"
+     }
+    ],
+    "unexplained": [],
+    "stale": [],
+    "effect_sum": "-123.36",
+    "net_decision": "-123.38",
+    "difference": "0.02"
+   }
   },
   {
    "proceeding": "apr",
@@ -1611,7 +1798,140 @@
      "difference": "0.00",
      "result": "match"
     }
-   ]
+   ],
+   "explanation": {
+    "lines": [
+     {
+      "key": "power_purchase",
+      "decision": "118.55",
+      "effect": "118.55",
+      "reason": "NPCL's own supplementary claim of 29.04.2026 for DIL's true-up (40.70 + 116.12 − 38.27), taken with its estimate provisionally",
+      "where": "pp.179–180, Table 5-17, para 5.4.24",
+      "finding": "A72",
+      "status": "provisional",
+      "binding": "approval-apr-fy26.json"
+     },
+     {
+      "key": "employee_gross",
+      "decision": "-11.06",
+      "effect": "-11.06",
+      "reason": "no growth factor: the CPI-escalated norm, the same step as the ARR year's chain",
+      "where": "paras 5.5.29–5.5.31, Table 5-26",
+      "finding": "A72",
+      "status": "reproduced",
+      "binding": "approval-om-fy27.json"
+     },
+     {
+      "key": "rm",
+      "decision": "-2.12",
+      "effect": "-2.12",
+      "reason": "Reg. 33.7's 5 % on the Commission's GFA (base inferred, A73)",
+      "where": "Table 5-26",
+      "finding": "A72",
+      "status": "reproduced",
+      "binding": "approval-apr-fy26.json"
+     },
+     {
+      "key": "provisions",
+      "decision": "-2.26",
+      "effect": "-2.26",
+      "reason": "A&G provisions not allowed until substantiated at true-up",
+      "where": "para 5.5.30",
+      "finding": "A72",
+      "status": "refused"
+     },
+     {
+      "key": "interest",
+      "decision": "-1.99",
+      "effect": "-1.99",
+      "reason": "the true-up's closing loan, NPCL's rate allowed as claimed; working capital nil against the surplus NPCL holds",
+      "where": "pp.194–199, Tables 5-30, 5-32, 5-36",
+      "finding": "A72",
+      "status": "reproduced",
+      "binding": "approval-apr-fy26.json",
+      "parts": [
+       {
+        "amount": "2.10",
+        "what": "interest on the normative loan"
+       },
+       {
+        "amount": "-4.10",
+        "what": "interest on working capital, nil"
+       }
+      ],
+      "parts_sum": "-2.00",
+      "parts_result": "match"
+     },
+     {
+      "key": "depreciation",
+      "decision": "-3.08",
+      "effect": "-3.08",
+      "reason": "the approved gross block carried forward",
+      "where": "p.201, Table 5-40",
+      "finding": "A72",
+      "status": "read",
+      "parts": [
+       {
+        "amount": "-2.98",
+        "what": "Part A"
+       },
+       {
+        "amount": "-0.26",
+        "what": "Part B"
+       },
+       {
+        "amount": "0.16",
+        "what": "Part C"
+       }
+      ],
+      "parts_sum": "-3.08",
+      "parts_result": "match"
+     },
+     {
+      "key": "tax",
+      "decision": "-0.68",
+      "effect": "-0.68",
+      "reason": "follows the return on equity",
+      "where": "Table 5-43",
+      "finding": "A72",
+      "status": "reproduced",
+      "binding": "approval-apr-fy26.json"
+     },
+     {
+      "key": "roe",
+      "decision": "-2.05",
+      "effect": "-2.05",
+      "reason": "opening equity the true-up's closing",
+      "where": "Table 5-45",
+      "finding": "A72",
+      "status": "reproduced",
+      "binding": "approval-apr-fy26.json"
+     },
+     {
+      "key": "nti",
+      "decision": "2.86",
+      "effect": "-2.86",
+      "reason": "the true-up's approved non-tariff income",
+      "where": "para 5.16.2",
+      "finding": "A72",
+      "status": "read"
+     },
+     {
+      "key": "other_business",
+      "decision": "-0.20",
+      "effect": "0.20",
+      "reason": "not deducted (the APR gives no reason; the true-up's is that NPCL has one business, para 4.16.20)",
+      "where": "Table 5-48",
+      "finding": "A72",
+      "status": "read"
+     }
+    ],
+    "unexplained": [],
+    "stale": [],
+    "effect_sum": "92.65",
+    "net_decision": "92.64",
+    "difference": "0.01"
+   }
   },
   {
    "proceeding": "arr",
@@ -2180,7 +2500,208 @@
      "difference": "0.00",
      "result": "match"
     }
-   ]
+   ],
+   "explanation": {
+    "lines": [
+     {
+      "key": "power_purchase",
+      "decision": "29.03",
+      "effect": "29.03",
+      "reason": "DIL at its trued-up tariff, the approved short-term contracts and the exchange in place of NPCL's mix, the surplus sale and DSM not allowed",
+      "where": "pp.233–243, Tables 6-26, 6-33 to 6-35",
+      "finding": "A64",
+      "status": "read",
+      "parts": [
+       {
+        "amount": "46.35",
+        "what": "DIL at its trued-up tariff"
+       },
+       {
+        "amount": "-79.14",
+        "what": "short-term mix replaced"
+       },
+       {
+        "amount": "-0.32",
+        "what": "APPCPL's LT solar not approved"
+       },
+       {
+        "amount": "62.16",
+        "what": "the surplus sale and DSM not allowed"
+       }
+      ],
+      "parts_sum": "29.05",
+      "parts_result": "match"
+     },
+     {
+      "key": "transmission",
+      "decision": "35.13",
+      "effect": "35.13",
+      "reason": "UPPTCL at its own tariff order",
+      "where": "para 6.5.55",
+      "finding": "A64",
+      "status": "read",
+      "parts": [
+       {
+        "amount": "35.38",
+        "what": "UPPTCL"
+       },
+       {
+        "amount": "-0.25",
+        "what": "SLDC"
+       }
+      ],
+      "parts_sum": "35.13",
+      "parts_result": "match"
+     },
+     {
+      "key": "employee_gross",
+      "decision": "-12.35",
+      "effect": "-12.35",
+      "reason": "the growth factor refused; the ARR year escalated by the three-year CPI average",
+      "where": "paras 6.6.32–6.6.35, Table 6-45",
+      "finding": "A60",
+      "status": "reproduced",
+      "binding": "approval-om-fy27.json",
+      "parts": [
+       {
+        "amount": "-11.62",
+        "what": "growth factor refused"
+       },
+       {
+        "amount": "-0.72",
+        "what": "CPI three-year average"
+       }
+      ],
+      "parts_sum": "-12.34",
+      "parts_result": "match"
+     },
+     {
+      "key": "ag",
+      "decision": "-0.38",
+      "effect": "-0.38",
+      "reason": "the ARR year escalated by the three-year WPI average",
+      "where": "Table 6-48",
+      "finding": "A60",
+      "status": "reproduced",
+      "binding": "approval-om-fy27.json"
+     },
+     {
+      "key": "rm",
+      "decision": "-2.65",
+      "effect": "-2.65",
+      "reason": "the approved opening GFA split, nothing for GNIDA's assets",
+      "where": "Table 6-49, para 6.6.45",
+      "finding": "A60",
+      "status": "reproduced",
+      "binding": "approval-om-fy27.json"
+     },
+     {
+      "key": "provisions",
+      "decision": "-3.00",
+      "effect": "-3.00",
+      "reason": "the A&G provision refused",
+      "where": "paras 6.6.41–6.6.43",
+      "finding": "A60",
+      "status": "refused"
+     },
+     {
+      "key": "interest",
+      "decision": "-8.51",
+      "effect": "-8.88",
+      "reason": "the APR's closing loan; security deposit at 5.50 %; no working capital to fund after the surplus — the summary misprints the approved 110.43 as 110.80 (A61)",
+      "where": "pp.282–288, Tables 6-67 to 6-72",
+      "finding": "A62",
+      "status": "reproduced",
+      "binding": "approval-capital-fy27.json",
+      "parts": [
+       {
+        "amount": "1.72",
+        "what": "interest on the normative loan"
+       },
+       {
+        "amount": "-3.73",
+        "what": "security deposit at 5.50 %"
+       },
+       {
+        "amount": "-6.88",
+        "what": "working capital, nil"
+       }
+      ],
+      "as_approved": "-8.88",
+      "parts_sum": "-8.89",
+      "parts_result": "match"
+     },
+     {
+      "key": "depreciation",
+      "decision": "-2.95",
+      "effect": "-2.95",
+      "reason": "the approved opening GFA by part; the full approved additions in Part C",
+      "where": "pp.278–281, Tables 6-62 to 6-65",
+      "finding": "A62",
+      "status": "reproduced",
+      "binding": "approval-depreciation-fy27.json",
+      "parts": [
+       {
+        "amount": "-2.91",
+        "what": "Part A"
+       },
+       {
+        "amount": "-0.26",
+        "what": "Part B"
+       },
+       {
+        "amount": "0.21",
+        "what": "Part C"
+       }
+      ],
+      "parts_sum": "-2.96",
+      "parts_result": "match"
+     },
+     {
+      "key": "tax",
+      "decision": "-0.84",
+      "effect": "-0.84",
+      "reason": "follows the return on equity",
+      "where": "Table 6-76",
+      "finding": "A62",
+      "status": "reproduced",
+      "binding": "approval-capital-fy27.json"
+     },
+     {
+      "key": "roe",
+      "decision": "-2.49",
+      "effect": "-2.49",
+      "reason": "the APR's closing equity; 30 % of the capex disallowed",
+      "where": "Table 6-74",
+      "finding": "A62",
+      "status": "reproduced",
+      "binding": "approval-capital-fy27.json"
+     },
+     {
+      "key": "nti",
+      "decision": "2.09",
+      "effect": "-2.09",
+      "reason": "the true-up's approved non-tariff income, NPCL's other business within it",
+      "where": "p.293, para 6.18.14, Table 6-80",
+      "finding": "A76",
+      "status": "read"
+     },
+     {
+      "key": "other_business",
+      "decision": "-0.98",
+      "effect": "0.98",
+      "reason": "within the non-tariff income approved (para 6.18.14)",
+      "where": "p.293, Table 6-80",
+      "finding": "A76",
+      "status": "read"
+     }
+    ],
+    "unexplained": [],
+    "stale": [],
+    "effect_sum": "29.51",
+    "net_decision": "29.51",
+    "difference": "0.00"
+   }
   }
  ],
  "source_tables": [

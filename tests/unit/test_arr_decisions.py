@@ -288,3 +288,62 @@ def test_npcl_trueup_power_purchase_decision_line_by_line():
     sub = next(r for r in t["rows"] if r["label"] == "Sub-Total of Power Purchase Cost")
     assert summary["power_purchase"]["values"]["approved"] == sub["cells"]["approved_amount"] == "2,163.65"
     assert summary["power_purchase"]["decision"] == "-11.99"
+
+
+def test_every_changed_line_needs_its_reason_and_the_reasons_add_to_the_net():
+    """A changed line without a reason is listed, never dropped; a deduction moves the net the other
+    way; a claim the approved column leaves blank is a change; a misprint is carried by the
+    reason's as-approved figure; a reason for a line that did not change is stale."""
+    from tariff_api.arr.decisions import explain
+
+    rows = [
+        {"key": "om", "values": {"claimed": "10.00", "approved": "8.00"}, "decision": "-2.00"},
+        {"key": "interest", "values": {"claimed": "5.00", "approved": "5.50"}, "decision": "0.50"},
+        {"key": "nti", "values": {"claimed": "1.00", "approved": "1.50"}, "decision": "0.50"},
+        {"key": "other_business", "values": {"claimed": "0.20"}, "decision": None},
+        {"key": "arr_net", "values": {"claimed": "14.20", "approved": "12.00"}, "decision": "-2.20"},
+    ]
+    spec = {"deductions": ["nti", "other_business"], "totals": ["arr_net"], "net": "arr_net"}
+    lines = {
+        "om": {"reason": "norm", "parts": [{"amount": "-1.50", "what": "a"}, {"amount": "-0.50", "what": "b"}]},
+        "interest": {"reason": "rate", "as_approved": "0.10"},
+        "other_business": {"reason": "one business"},
+        "tax": {"reason": "stale"},
+    }
+    got = explain(rows, spec, lines)
+    assert got["unexplained"] == ["nti"] and got["stale"] == ["tax"]
+    by = {x["key"]: x for x in got["lines"]}
+    assert by["om"]["parts_result"] == "match"
+    assert (by["other_business"]["decision"], by["other_business"]["effect"]) == ("-0.20", "0.20")
+    # −2.00 + 0.10 (as approved) + 0.20; the unexplained nti's −0.50 is missing from the sum
+    assert (got["effect_sum"], got["difference"]) == ("-1.70", "0.50")
+
+
+def test_npcl_every_line_of_the_three_decisions_has_its_reason():
+    """Real data: every line the Commission changed in the true-up, the APR and the ARR year has a
+    reason with its pages and finding; each line's parts add to it; the reasons' effects add to the
+    net ARR's decision within the rounding of the printed lines — the ARR year exactly, once the
+    summary's misprinted interest is taken as approved (A61)."""
+    from decimal import Decimal
+
+    rep = json.loads(
+        (ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27" / "order-decisions.json").read_text()
+    )
+    findings = {
+        f["id"]
+        for f in json.loads(
+            (ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27" / "findings.json").read_text()
+        )["findings"]
+    }
+    for t in rep["tables"]:
+        ex = t["explanation"]
+        assert ex["unexplained"] == [] and ex["stale"] == [], t["proceeding"]
+        assert abs(Decimal(ex["difference"])) <= Decimal("0.02"), t["proceeding"]
+        for line in ex["lines"]:
+            assert line["finding"] in findings and line["where"] and line["reason"], line["key"]
+            assert line["status"] in ("reproduced", "read", "refused", "deferred", "provisional")
+            assert line.get("parts_result", "match") == "match", line["key"]
+    arr = next(t for t in rep["tables"] if t["proceeding"] == "arr")["explanation"]
+    assert arr["difference"] == "0.00"
+    statuses = [x["status"] for t in rep["tables"] for x in t["explanation"]["lines"]]
+    assert len(statuses) == 36 and statuses.count("reproduced") == 19  # 7 + 5 + 7

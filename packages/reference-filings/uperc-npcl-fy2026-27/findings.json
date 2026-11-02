@@ -505,6 +505,16 @@
     "order/figures-tariff-fy2026-27.json"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A76",
+   "kind": "decision explained",
+   "title": "The ARR year's non-tariff income is the true-up's approved 12.38, NPCL's other business within it: −1.11 on the net ARR against NPCL's 11.27",
+   "detail": "NPCL projects non-tariff income of 10.29 and income from other business of 0.98 for FY2026-27 — 11.27 in all (Table 6-80, 'Projected').  The Commission approves 12.38, 'as approved in the true up of FY 2024-25 in this Order' (para 6.18.14, p.293), and deducts no separate other-business income (Table 6-81: '-').  On the net ARR: −2.09 and +0.98, −1.11.  The Commission's analysis does not take up separately NPCL's requests to exclude investment income (para 6.18.2) and to bring other-business income under a sharing arrangement (p.293); it takes the true-up's figure for the year.  The APR does the same (para 5.16.2).",
+   "where": [
+    "Tariff order FY2026-27 pp.289–294, paras 6.18.2, 6.18.11, 6.18.14, Tables 6-79 to 6-81"
+   ],
+   "for": "petitioner"
   }
  ]
 }

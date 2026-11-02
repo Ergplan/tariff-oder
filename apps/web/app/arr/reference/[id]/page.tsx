@@ -64,6 +64,13 @@ type Filing = {
         decision?: string;
       }[];
       identities: { column: string; identity: string; printed: string; parts: string; difference: string; result: string }[];
+      explanation?: {
+        lines: { key: string; decision: string; effect: string; reason: string; where: string; finding: string; status: string; binding?: string; as_approved?: string }[];
+        unexplained: string[];
+        effect_sum: string;
+        net_decision: string | null;
+        difference: string | null;
+      };
     }[];
     source_tables?: {
       proceeding: string;
@@ -759,12 +766,22 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
               for (const c of checks) counts[c.result] = (counts[c.result] ?? 0) + 1;
               const own: Counts = {};
               for (const i of t.identities) own[i.result] = (own[i.result] ?? 0) + 1;
+              const why = new Map((t.explanation?.lines ?? []).map((l) => [l.key, l]));
+              const status: Counts = {};
+              for (const l of t.explanation?.lines ?? []) status[l.status] = (status[l.status] ?? 0) + 1;
               return (
                 <details key={t.proceeding} open={t.proceeding === "arr"}>
                   <summary>
                     {t.proceeding.replace("_", "-")} {t.fiscal_year} — pp.{t.pages.join(", ")}: against the format <CountBadges counts={counts} />, the order&apos;s own arithmetic{" "}
                     <CountBadges counts={own} />
                   </summary>
+                  {t.explanation ? (
+                    <p className="muted" style={{ fontSize: "0.85rem" }}>
+                      Every changed line with its reason: <CountBadges counts={status} />
+                      {t.explanation.unexplained.length ? ` — unexplained: ${t.explanation.unexplained.join(", ")}` : ""}; the reasons&apos; effects add to{" "}
+                      {t.explanation.effect_sum} against the net ARR&apos;s {t.explanation.net_decision ?? "—"}.
+                    </p>
+                  ) : null}
                   <div className="table-wrap">
                     <table>
                       <thead>
@@ -774,6 +791,7 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                             <th key={c.name}>{c.header}</th>
                           ))}
                           <th>Decision</th>
+                          <th>Why</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -797,6 +815,17 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                               );
                             })}
                             <td className="mono">{r.decision && r.decision !== "0" && r.decision !== "0.00" ? r.decision : ""}</td>
+                            <td>
+                              {r.key && why.get(r.key) ? (
+                                <>
+                                  <span className="badge">{why.get(r.key)!.status}</span> {why.get(r.key)!.reason}
+                                  <div className="muted">
+                                    {why.get(r.key)!.where} · {why.get(r.key)!.finding}
+                                    {why.get(r.key)!.as_approved ? ` · as approved ${why.get(r.key)!.as_approved}` : ""}
+                                  </div>
+                                </>
+                              ) : null}
+                            </td>
                           </tr>
                         ))}
                       </tbody>

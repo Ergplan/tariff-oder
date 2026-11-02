@@ -26,6 +26,7 @@ sys.path.insert(0, str(ROOT / "services" / "api" / "src"))
 from tariff_api.arr.decisions import (  # noqa: E402
     check_sources,
     evaluate_table,
+    explain,
     identities,
     read_rows,
     rows_by_position,
@@ -50,6 +51,8 @@ def main() -> int:
     with pymupdf.open(args.pdf) as doc:
         pages = {i + 1: p.get_text() for i, p in enumerate(doc)}
     wb = openpyxl.load_workbook(folder / spec["workbook"], data_only=True)
+    reasons_path = folder / "order" / "explanations.json"
+    reasons = json.loads(reasons_path.read_text()) if reasons_path.exists() else None
     tables = []
     for t in spec["tables"]:
         table = t | {"rows": read_rows(pages, t["title"], t["pages"])}
@@ -61,7 +64,13 @@ def main() -> int:
         own = identities(rows, t["columns"])
         print(f"         the order's own arithmetic {dict(collections.Counter(i['result'] for i in own))}")
         keep = {k: t[k] for k in ("proceeding", "fiscal_year", "title", "pages", "columns")}
-        tables.append(keep | {"rows": rows, "identities": own})
+        entry = keep | {"rows": rows, "identities": own}
+        if reasons and t["proceeding"] in reasons["proceedings"]:
+            entry["explanation"] = explain(rows, reasons, reasons["proceedings"][t["proceeding"]])
+            ex = entry["explanation"]
+            print(f"         reasons: {len(ex['lines'])} lines, unexplained {ex['unexplained']}, ", end="")
+            print(f"effects {ex['effect_sum']} against {ex['net_decision']}")
+        tables.append(entry)
     sources = []
     for t in spec.get("source_tables", []):
         rows = []

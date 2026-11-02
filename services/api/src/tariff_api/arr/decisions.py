@@ -362,3 +362,54 @@ def check_sources(rows: list[dict[str, Any]], sides: list[str], sums: list[dict[
                 }
             )
     return out
+
+
+def explain(rows: list[dict[str, Any]], spec: dict[str, Any], lines: dict[str, Any]) -> dict[str, Any]:
+    """Each line of a summary table the decision changed, with its reason (``lines``: key → reason,
+    pages, finding, status, optional parts).  A line is changed when its decision is not nil, or when
+    the approved column prints nothing against a claim (the decision is then −claimed, or the
+    reason's own ``decision``).  A deduction (``spec["deductions"]``) moves the net the other way;
+    a total (``spec["totals"]``) is not a line.  Returns the joined lines, the changed lines left
+    unexplained, each line's parts against it, and the effects added against the net's decision —
+    a summary misprint is carried by the reason's ``as_approved``."""
+    deductions, totals = set(spec["deductions"]), set(spec["totals"])
+    out: list[dict[str, Any]] = []
+    unexplained: list[str] = []
+    effect_sum = Decimal(0)
+    net = None
+    for r in rows:
+        key = r.get("key")
+        if key == spec["net"] and r.get("decision") is not None:
+            net = Decimal(r["decision"])
+        if key is None or key in totals:
+            continue
+        decision = r.get("decision")
+        claimed = _value(r["values"].get("claimed", "-")) or Decimal(0)
+        why = lines.get(key)
+        if decision is None:
+            if claimed == 0 or "approved" in r["values"]:
+                continue
+            decision = (why or {}).get("decision", str(-claimed))
+        if Decimal(decision) == 0:
+            continue
+        if why is None:
+            unexplained.append(key)
+            continue
+        counted = Decimal(why.get("as_approved", decision))
+        effect = -counted if key in deductions else counted
+        effect_sum += effect
+        line = {"key": key, "decision": decision, "effect": str(effect)} | why
+        if "parts" in why:
+            got = sum((Decimal(p["amount"]) for p in why["parts"]), Decimal(0))
+            line["parts_sum"] = str(got)
+            line["parts_result"] = "match" if abs(got - counted) <= Decimal("0.01") * len(why["parts"]) else "differs"
+        out.append(line)
+    stale = sorted(set(lines) - {x["key"] for x in out})
+    return {
+        "lines": out,
+        "unexplained": unexplained,
+        "stale": stale,
+        "effect_sum": str(effect_sum),
+        "net_decision": None if net is None else str(net),
+        "difference": None if net is None else str(effect_sum - net),
+    }

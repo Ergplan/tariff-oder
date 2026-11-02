@@ -1005,6 +1005,30 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 109 (2026-11-02): every line the Commission changed, with its reason, enforced.**
+  - **`order/explanations.json`:** for each changed line of the true-up, APR and ARR-year summary
+    tables, it records:
+    - the order's reason, with its pages;
+    - the finding that sets the reason out;
+    - the binding that reproduces the line, where one exists;
+    - a status: reproduced, read, refused, deferred or provisional;
+    - where a line has several causes, its parts.
+  - **`decisions.explain`:**
+    - joins the reasons to the rows read from the order;
+    - lists any changed line without a reason, and any reason for a line that did not change;
+    - checks each line's parts;
+    - adds the effects (a deduction moves the net the other way) against the net ARR's decision.
+  - **Results: 36 lines** — 19 reproduced, 11 read, 5 refused, 1 provisional.  None is
+    unexplained and no reason is stale.
+    - The effects add to −123.36 against −123.38 and 92.65 against 92.64, within the rounding of
+      the printed lines.
+    - The ARR year adds to 29.51 exactly, once the summary's misprinted interest is taken as
+      approved (A61).
+  - **A76 (petitioner):** the ARR year's non-tariff income is the true-up's approved 12.38,
+    NPCL's other business within it.  This was the one reason no finding held.
+  - **Panel 06d** shows each line's reason, status, pages and finding.
+  Nothing verified, nothing approved.
+
   **Increment 108 (2026-11-02): the regulatory discount computed; NPCL's revenue projection is
   the order's.**
   - **New draft rule `uperc.revenue.regulatory_discount`:** 10% of the fixed / demand and energy
@@ -2739,6 +2763,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 109 (2026-11-02): 478 passed** (+2 unit: unexplained and stale lines listed, deductions, blank approvals and misprints, synthetic; the three real decisions fully explained).  Ruff, format and `tsc` clean.
 - **Increment 108 (2026-11-02): 476 passed** (+2 unit: summed shared cells with their reason, synthetic; the real regulatory discount in two years).  Ruff and format clean.
 - **Increment 107 (2026-11-02): 474 passed** (+1 unit: the tariff design summary, differences bounded by the inputs' precision).  `check_order_quotes.py`: 76 / 76.  Ruff and format clean.
 - **Increment 106 (2026-11-02): 473 passed** (+1 unit: the gap and its carrying cost — NPCL's format and the order on one rule; the working-capital offset and the closings tied).  `check_order_quotes.py`: 34 / 34.  Ruff and format clean.
@@ -2980,7 +3005,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 108) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 109) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3046,7 +3071,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **43 findings (A29–A75):** 24 for the petitioner, collected in the draft queries; 19 for the
+  - **44 findings (A29–A76):** 25 for the petitioner, collected in the draft queries; 19 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 
