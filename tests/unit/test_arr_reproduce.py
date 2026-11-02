@@ -914,7 +914,7 @@ def test_npcl_esr3_energy_charges_from_the_orders_rate_schedule():
     binding = json.loads((folder / "bindings" / "esr3-energy-from-rates-fy27.json").read_text())
     record = json.loads((folder / binding["rates"]).read_text())
     rates = load_rate_record(record)
-    assert len(rates) == 36 and record["document"]["sha256"].startswith("ff36813e")
+    assert record["document"]["sha256"].startswith("ff36813e")
     wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
     checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rates)
     assert len(checks) == 45
@@ -922,3 +922,76 @@ def test_npcl_esr3_energy_charges_from_the_orders_rate_schedule():
     assert differs == ["K20", "K23", "K24", "K25", "K26"]
     k20 = next(c for c in checks if c.category.endswith("K20"))
     assert (k20.filed, k20.computed) == ("390.5230", "430.7347")
+    # the existing rates NPCL states in its own rate-schedule format (ESR4A column C) are the
+    # order's: ESR-3's revenue is at the rates the order kept (LT per kWh, HV per kVAh)
+    esr4a = json.loads((folder / "bindings" / "esr4a-existing-rates.json").read_text())
+    existing = reproduce_cells(wb, esr4a, load_rules("UPERC"), rates=rates)
+    assert len(existing) == 47 and {c.result for c in existing} == {"match"}
+    assert len(rates) == 58
+
+
+def test_a_kvah_rate_is_never_multiplied_by_kwh():
+    """HV energy is billed per kVAh.  Fed to the per-kWh energy rule, a kVAh rate blocks with a
+    unit reason — the engine does not turn kWh sold into kVAh revenue."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "S"
+    ws["F1"], ws["K1"] = 10.0, 8.32
+    binding = {
+        "sheet": "S",
+        "evaluations": [
+            {
+                "fiscal_year": "FY2026-27",
+                "categories": {
+                    "hv": {
+                        "inputs": {
+                            "record:units_sold": ["F1", "MU"],
+                            "order:energy_rate": {"rate": "hv"},
+                            "order:energy_adjustment": {"value": "0", "unit": "percent", "why": "none"},
+                        },
+                        "checks": {"revenue_energy_from_rate": "K1"},
+                    }
+                },
+            }
+        ],
+    }
+    (check,) = reproduce_cells(wb, binding, load_rules("UPERC"), rates={"hv": ("8.32", "INR_per_kVAh")})
+    assert check.result == "blocked" and "rate" in (check.why or "")
+
+
+def test_the_quote_checker_finds_each_quote_and_its_column_header_on_its_page(tmp_path):
+    """`scripts/check_order_quotes.py` on a PDF made in the test: the record's quotes and the
+    header of a shared row are found on their page; a quote on the wrong page, a header that is not
+    printed, or another document (hash) is reported."""
+    import hashlib
+    import importlib.util
+
+    import pymupdf
+
+    pdf = tmp_path / "order.pdf"
+    doc = pymupdf.open()
+    doc.new_page().insert_text((72, 72), "Rate Schedule")
+    page = doc.new_page()
+    page.insert_text((72, 72), "Up to 11 kV Above 11 kV")
+    page.insert_text((72, 100), "Energy Charges Rs. 7.10 / kVAh Rs. 6.80 / kVAh")
+    doc.save(pdf)
+    spec = importlib.util.spec_from_file_location("coq", ROOT / "scripts" / "check_order_quotes.py")
+    coq = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(coq)
+    row = "Energy Charges Rs. 7.10 / kVAh Rs. 6.80 / kVAh"
+    rate = {"value": "6.80", "unit": "INR_per_kVAh", "page": 2, "quote": row, "what": "second column"}
+    record = {"document": {"sha256": hashlib.sha256(pdf.read_bytes()).hexdigest()}}
+    assert coq.check(pdf, {**record, "rates": {"a": {**rate, "header": "Up to 11 kV Above 11 kV"}}}) == []
+    assert coq.check(pdf, {**record, "rates": {"a": {**rate, "page": 1}}}) == [
+        "a: quote or column header not found on page 1"
+    ]
+    assert coq.check(pdf, {**record, "rates": {"a": {**rate, "header": "Above 66 kV"}}}) == [
+        "a: quote or column header not found on page 2"
+    ]
+    other = coq.check(pdf, {"document": {"sha256": "0" * 64}, "rates": {"a": rate}})
+    assert len(other) == 1 and "not the record's document" in other[0]

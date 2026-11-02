@@ -1,0 +1,486 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ESR4A_Prop Tariff Rate Sch.",
+ "rates": "rate-schedule-fy2026-27.json",
+ "note": "The existing tariff as NPCL states it (ESR4A column C, the rates ESR-3's revenue is at: FY2025-26) against the energy rates of the UPERC order's FY2026-27 schedule, each read with its page and quote.  A match means the rate NPCL states as existing is the order's rate for FY2026-27: ESR-3's revenue is at rates the order kept.  HV-3 railway traction: ESR4A prints a rate below and one at or above 132 kV, the order one rate for both — both rows are checked against it.  HV-4: ESR4A's '33 kV & 66 kV' and '132 kV' are the order's 'above 11 kV up to 66 kV' and 'above 66 kV up to 132 kV'.  Not checked: the time-of-day percentages and rebates (ESR4A prints them as text, '(+) 15%'), fixed, demand and minimum charges.",
+ "places": 2,
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR4A existing",
+   "categories": {
+    "lmv1.rural.lifeline (row 11)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.rural.lifeline"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C11"
+     }
+    },
+    "lmv1.rural.upto100 (row 17)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.rural.upto100"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C17"
+     }
+    },
+    "lmv1.rural.101_150 (row 18)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.rural.101_150"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C18"
+     }
+    },
+    "lmv1.rural.151_300 (row 19)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.rural.151_300"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C19"
+     }
+    },
+    "lmv1.rural.above300 (row 20)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.rural.above300"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C20"
+     }
+    },
+    "lmv1.bulk (row 25)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.bulk"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C25"
+     }
+    },
+    "lmv1.other.lifeline (row 30)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.other.lifeline"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C30"
+     }
+    },
+    "lmv1.other.upto100 (row 34)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.other.upto100"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C34"
+     }
+    },
+    "lmv1.other.101_150 (row 35)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.other.101_150"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C35"
+     }
+    },
+    "lmv1.other.151_300 (row 36)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.other.151_300"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C36"
+     }
+    },
+    "lmv1.other.above300 (row 37)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv1.other.above300"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C37"
+     }
+    },
+    "lmv2.rural (row 45)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv2.rural"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C45"
+     }
+    },
+    "lmv2.upto4kw.upto300 (row 53)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv2.upto4kw.upto300"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C53"
+     }
+    },
+    "lmv2.upto4kw.above300 (row 54)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv2.upto4kw.above300"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C54"
+     }
+    },
+    "lmv2.above4kw.upto1000 (row 56)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv2.above4kw.upto1000"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C56"
+     }
+    },
+    "lmv2.above4kw.above1000 (row 57)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv2.above4kw.above1000"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C57"
+     }
+    },
+    "lmv3.gram_panchayat (row 71)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv3.gram_panchayat"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C71"
+     }
+    },
+    "lmv3.nagar_palika (row 72)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv3.nagar_palika"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C72"
+     }
+    },
+    "lmv3.nagar_nigam (row 73)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv3.nagar_nigam"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C73"
+     }
+    },
+    "lmv4.public (row 79)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv4.public"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C79"
+     }
+    },
+    "lmv4.private (row 84)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv4.private"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C84"
+     }
+    },
+    "lmv5.rural.metered (row 94)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv5.rural.metered"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C94"
+     }
+    },
+    "lmv5.rural.ee_pumps (row 99)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv5.rural.ee_pumps"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C99"
+     }
+    },
+    "lmv5.urban.metered (row 104)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv5.urban.metered"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C104"
+     }
+    },
+    "lmv6.base (row 111)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C111"
+     }
+    },
+    "lmv6.base (row 113)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C113"
+     }
+    },
+    "lmv7.urban (row 136)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv7.urban"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C136"
+     }
+    },
+    "lmv9.residential (row 156)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv9.residential"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C156"
+     }
+    },
+    "lmv9.others (row 157)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv9.others"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C157"
+     }
+    },
+    "lmv11.mb.lt (row 169)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv11.mb.lt"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C169"
+     }
+    },
+    "lmv11.mb.ht (row 170)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv11.mb.ht"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C170"
+     }
+    },
+    "lmv11.pcs.lt (row 176)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv11.pcs.lt"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C176"
+     }
+    },
+    "lmv11.pcs.ht (row 177)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "lmv11.pcs.ht"
+      }
+     },
+     "checks": {
+      "existing_energy_rate": "C177"
+     }
+    },
+    "hv1.commercial.11kv (row 187)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv1.commercial.11kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C187"
+     }
+    },
+    "hv1.commercial.above11kv (row 189)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv1.commercial.above11kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C189"
+     }
+    },
+    "hv1.public.11kv (row 198)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv1.public.11kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C198"
+     }
+    },
+    "hv1.public.above11kv (row 200)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv1.public.above11kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C200"
+     }
+    },
+    "hv2.upto11kv (row 208)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv2.upto11kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C208"
+     }
+    },
+    "hv2.11_66kv (row 213)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv2.11_66kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C213"
+     }
+    },
+    "hv2.66_132kv (row 218)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv2.66_132kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C218"
+     }
+    },
+    "hv2.above132kv (row 223)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv2.above132kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C223"
+     }
+    },
+    "hv3.railway (row 248)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv3.railway"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C248"
+     }
+    },
+    "hv3.railway (row 249)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv3.railway"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C249"
+     }
+    },
+    "hv3.metro (row 253)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv3.metro"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C253"
+     }
+    },
+    "hv4.11kv (row 262)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv4.11kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C262"
+     }
+    },
+    "hv4.11_66kv (row 263)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv4.11_66kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C263"
+     }
+    },
+    "hv4.66_132kv (row 264)": {
+     "inputs": {
+      "order:energy_rate": {
+       "rate": "hv4.66_132kv"
+      }
+     },
+     "checks": {
+      "existing_energy_rate_kvah": "C264"
+     }
+    }
+   }
+  }
+ ]
+}

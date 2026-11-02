@@ -1005,6 +1005,29 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 92 (2026-11-02): the existing tariff checked against the order, and HV in kVAh.**
+  - **The rate record now holds 58 rates.** Added: HV-1 to HV-4 per kVAh by supply voltage, the
+    HV-2 rural rebate, LMV-3 by local body, LMV-7 and its rural rebate, LMV-9, and LMV-5's
+    energy-efficient pumps.  Where several rates share one printed row (LMV-3, HV-2), each also
+    quotes the column header it sits under.  `scripts/check_order_quotes.py` now checks headers
+    too: **58 / 58 quotes and headers found** on their pages.
+  - **New units `kVAh` and `INR_per_kVAh`,** with their own dimension.  A kVAh rate times kWh sold
+    is now a dimension error: the rule blocks with the reason and never returns a revenue.
+  - **ESR4A (NPCL's own rate schedule, column C "Existing Tariff", the rates ESR-3 is at) against
+    the order's rates: 47 / 47 match.**  This covers every energy rate it states, LT per kWh and
+    HV per kVAh.  So the FY2025-26 rates ESR-3 uses are the rates the order kept for FY2026-27,
+    which settles the caveat in increment 91.  The format moves from "present" to "reproduced":
+    formats accounting is now 40 reproduced, 9 read, 22 present, 2 blank, 1 missing.
+  - **A55 (for the petitioner):** HV energy charges (1,740.21 crore, ESR-3 K92:K135) are billed
+    per kVAh, but ESR-3 states only kWh sold, so they cannot be recomputed.  Dividing the charges
+    by the kVAh rates implies 1.012–1.046 kVAh per kWh, which is plausible but derived from the
+    answer.  The petitioner should state the kVAh sold.
+  - **Corrected before commit:** I first wrote that HV total from memory as 1,670.27.  The
+    computed sum is 1,740.21, and that is what A55 carries.
+  - **Not checked:** the time-of-day percentages in ESR4A (printed as text), and fixed, demand
+    and minimum charges.
+  Nothing verified, nothing approved.
+
   **Increment 91 (2026-11-02): revenue from the tariff order's rates.**  ESR-3's energy
   charges were summed as filed; now each slab's charges are also computed from its units sold and
   the energy rate of the UPERC order's Annexure-I rate schedule.  The order (NPCL's FY2026-27 order
@@ -2277,6 +2300,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 92 (2026-11-02): 441 passed** (+2 unit: a kVAh rate fed to the per-kWh energy rule blocks, never a revenue; the quote checker on a PDF made in the test finds quotes and column headers, and reports a wrong page, a missing header and another document; the real-data test adds ESR4A 47 / 47 and the 58-rate record).  `scripts/check_order_quotes.py` on the real order: 58 / 58.  Ruff, format and contracts clean.
 - **Increment 91 (2026-11-02): 439 passed** (+3 unit: a rate record refuses a figure not in its quote, a rate with no page and a record with no hash; a cell takes the order's rate with its time-of-day percentage, and a rate the record lacks is an error; the real ESR-3 from the order's schedule — 40 / 45 match, the five differing rows are A53 and A54).  `scripts/check_order_quotes.py` on the real order: 36 / 36 quotes on their pages.  Ruff, format and contracts clean.
 - **Increment 90 (2026-11-02): 436 passed** (+1 unit: the real 2025 Regulations — hash as in the manifest; RoE → p.31 with 15 %, R&M → p.43, bad debts → p.45, surcharge → p.48; a 2019-only rule not offered the 2025 text; nothing verified).  Ruff and format clean.
 - **Increment 89 (2026-11-02): 435 passed** (+1 unit: pages ranked for a rule, the value-and-words page first, words alone or a bare number not proposed; the CLI on a PDF made in the test writes proposals with the hash and verifies nothing; the integration test checks the rules carry their candidates).  Ruff, format and web typecheck clean.
@@ -2501,7 +2525,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 91) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 92) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2544,10 +2568,10 @@ entries below are the per-increment history.**
     3,200.63).  The true-up year differs by exactly A40's 0.19.
   - **How each ARR figure is established:** FY2026-27 is 17 computed, 15 tied, 14 records, none
     differing.
-  - **Formats accounted, against the filing's index:** 38 reproduced, 9 read, 24 present, 2
+  - **Formats accounted, against the filing's index:** 40 reproduced, 9 read, 22 present, 2
     blank, 1 missing.
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
-  - **22 findings (A29–A54):** 13 for the petitioner, collected in the draft queries; 9 for the
+  - **23 findings (A29–A55):** 14 for the petitioner, collected in the draft queries; 9 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 
@@ -2569,10 +2593,11 @@ entries below are the per-increment history.**
 
   **Engineering next, smallest first:**
   - the rest of revenue from the rate schedule.  Increment 91 computed energy charges for 45 LT
-    slabs from the order's rates (40 match).  Still to do:
-    - read the HV-1 to HV-4 rates by voltage band and the fixed and minimum charges;
-    - settle LMV-3's local-body column with the reviewer;
-    - read the FY2025-26 order (the tariff ESR-3 is at), when the operator provides it;
+    slabs from the order's rates (40 match).  Increment 92 checked the existing tariff NPCL states
+    in ESR4A against the order: 47 / 47 energy rates, HV per kVAh.  Still to do:
+    - fixed, demand and minimum charges;
+    - LMV-3's local-body column, for the reviewer;
+    - HV energy, which waits on the kVAh sold (A55);
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

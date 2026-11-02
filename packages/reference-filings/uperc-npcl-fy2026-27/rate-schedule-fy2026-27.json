@@ -259,6 +259,167 @@
    "page": 381,
    "quote": "EV Charging Station (HT) - Rs. 7.30 / kWh",
    "what": "LMV-11, public charging station (HT)"
+  },
+  "lmv3.gram_panchayat": {
+   "value": "7.50",
+   "unit": "INR_per_kWh",
+   "page": 369,
+   "quote": "Metered Rs. 200.00 / kW / month Rs. 7.50 / kWh",
+   "what": "LMV-3 public lamps, metered: Gram Panchayat (first of three columns)",
+   "header": "Description Gram Panchayat Nagar Palika and Nagar Panchayat Nagar Nigam"
+  },
+  "lmv3.nagar_palika": {
+   "value": "8.00",
+   "unit": "INR_per_kWh",
+   "page": 369,
+   "quote": "Rs. 7.50 / kWh Rs. 250.00 / kW / month Rs. 8.00 / kWh",
+   "what": "LMV-3 public lamps, metered: Nagar Palika and Nagar Panchayat (second column)",
+   "header": "Description Gram Panchayat Nagar Palika and Nagar Panchayat Nagar Nigam"
+  },
+  "lmv3.nagar_nigam": {
+   "value": "8.50",
+   "unit": "INR_per_kWh",
+   "page": 369,
+   "quote": "Rs. 8.00 / kWh Rs. 250.00 / kW / month Rs. 8.50 / kWh",
+   "what": "LMV-3 public lamps, metered: Nagar Nigam (third column)",
+   "header": "Description Gram Panchayat Nagar Palika and Nagar Panchayat Nagar Nigam"
+  },
+  "lmv5.rural.ee_pumps": {
+   "value": "1.65",
+   "unit": "INR_per_kWh",
+   "page": 373,
+   "quote": "Metered Rs. 70.00 / BHP / month Rs. 140.00 / BHP / month Rs. 1.65 / kWh",
+   "what": "LMV-5, Rural Schedule, (iii) energy efficient pumps"
+  },
+  "lmv7.urban": {
+   "value": "8.50",
+   "unit": "INR_per_kWh",
+   "page": 377,
+   "quote": "Metered Rs. 375.00 / kW / month Rs. 8.50 / kWh",
+   "what": "LMV-7 public water works, other than Rural Schedule"
+  },
+  "lmv7.rural.rebate": {
+   "value": "-7.5",
+   "unit": "percent",
+   "page": 377,
+   "quote": "entitled to a rebate of 7.5% on",
+   "what": "LMV-7, Rural Schedule: rebate on the rate (a reduction)"
+  },
+  "lmv9.residential": {
+   "value": "8.00",
+   "unit": "INR_per_kWh",
+   "page": 380,
+   "quote": "Individual Residential Consumers Rs. 200.00 / kW / Month Rs. 8.00 / kWh",
+   "what": "LMV-9 temporary supply, metered: individual residential consumers"
+  },
+  "lmv9.others": {
+   "value": "9.00",
+   "unit": "INR_per_kWh",
+   "page": 380,
+   "quote": "Others Rs. 300.00 / kW / Month Rs. 9.00 / kWh",
+   "what": "LMV-9 temporary supply, metered: others"
+  },
+  "hv1.commercial.11kv": {
+   "value": "8.32",
+   "unit": "INR_per_kVAh",
+   "page": 384,
+   "quote": "For supply at 11kV Rs. 430.00 / kVA / month Rs. 8.32 / kVAh",
+   "what": "HV-1 (a) commercial / private institutions / non-domestic bulk: supply at 11 kV"
+  },
+  "hv1.commercial.above11kv": {
+   "value": "8.12",
+   "unit": "INR_per_kVAh",
+   "page": 384,
+   "quote": "For supply above 11kV Rs. 400.00 / kVA / month Rs. 8.12 / kVAh",
+   "what": "HV-1 (a): supply above 11 kV"
+  },
+  "hv1.public.11kv": {
+   "value": "7.70",
+   "unit": "INR_per_kVAh",
+   "page": 384,
+   "quote": "For supply at 11kV Rs. 380.00 / kVA / month Rs. 7.70 / kVAh",
+   "what": "HV-1 (b) public institutions / registered societies / residential: supply at 11 kV"
+  },
+  "hv1.public.above11kv": {
+   "value": "7.50",
+   "unit": "INR_per_kVAh",
+   "page": 384,
+   "quote": "For supply above 11kV Rs. 360.00 / kVA / month Rs. 7.50/ kVAh",
+   "what": "HV-1 (b): supply above 11 kV"
+  },
+  "hv2.upto11kv": {
+   "value": "7.10",
+   "unit": "INR_per_kVAh",
+   "page": 387,
+   "quote": "Energy Charges Rs. 7.10 / kVAh Rs. 6.80 / kVAh Rs. 6.40 / kVAh Rs. 6.10 / kVAh",
+   "what": "HV-2 urban schedule, base rate: supply up to 11 kV (first of four columns)",
+   "header": "(A) Urban Schedule: For supply up to 11 kV For supply above 11 kV and up to 66 kV For supply above 66 kV and up to 132 kV For supply above 132 kV"
+  },
+  "hv2.11_66kv": {
+   "value": "6.80",
+   "unit": "INR_per_kVAh",
+   "page": 387,
+   "quote": "Energy Charges Rs. 7.10 / kVAh Rs. 6.80 / kVAh Rs. 6.40 / kVAh Rs. 6.10 / kVAh",
+   "what": "HV-2 urban schedule, base rate: above 11 kV up to 66 kV (second column)",
+   "header": "(A) Urban Schedule: For supply up to 11 kV For supply above 11 kV and up to 66 kV For supply above 66 kV and up to 132 kV For supply above 132 kV"
+  },
+  "hv2.66_132kv": {
+   "value": "6.40",
+   "unit": "INR_per_kVAh",
+   "page": 387,
+   "quote": "Energy Charges Rs. 7.10 / kVAh Rs. 6.80 / kVAh Rs. 6.40 / kVAh Rs. 6.10 / kVAh",
+   "what": "HV-2 urban schedule, base rate: above 66 kV up to 132 kV (third column)",
+   "header": "(A) Urban Schedule: For supply up to 11 kV For supply above 11 kV and up to 66 kV For supply above 66 kV and up to 132 kV For supply above 132 kV"
+  },
+  "hv2.above132kv": {
+   "value": "6.10",
+   "unit": "INR_per_kVAh",
+   "page": 387,
+   "quote": "Energy Charges Rs. 7.10 / kVAh Rs. 6.80 / kVAh Rs. 6.40 / kVAh Rs. 6.10 / kVAh",
+   "what": "HV-2 urban schedule, base rate: above 132 kV (fourth column)",
+   "header": "(A) Urban Schedule: For supply up to 11 kV For supply above 11 kV and up to 66 kV For supply above 66 kV and up to 132 kV For supply above 132 kV"
+  },
+  "hv2.rural.rebate": {
+   "value": "-7.5",
+   "unit": "percent",
+   "page": 388,
+   "quote": "entitled to a rebate of 7.5% on ‘BASE RATE’ as given for 11 kV",
+   "what": "HV-2, Rural Schedule (up to 11 kV): rebate on the 11 kV base rate, no ToD (a reduction)"
+  },
+  "hv3.railway": {
+   "value": "8.50",
+   "unit": "INR_per_kVAh",
+   "page": 391,
+   "quote": "Energy Charge Rs. 8.50 / kVAh",
+   "what": "HV-3 (A) railway traction"
+  },
+  "hv3.metro": {
+   "value": "7.30",
+   "unit": "INR_per_kVAh",
+   "page": 392,
+   "quote": "Energy Charges Rs. 7.30 / kVAh",
+   "what": "HV-3 (B) metro rail"
+  },
+  "hv4.11kv": {
+   "value": "8.50",
+   "unit": "INR_per_kVAh",
+   "page": 393,
+   "quote": "For supply at 11 kV Rs. 8.50 / kVAh",
+   "what": "HV-4 lift irrigation: supply at 11 kV"
+  },
+  "hv4.11_66kv": {
+   "value": "8.40",
+   "unit": "INR_per_kVAh",
+   "page": 393,
+   "quote": "For supply above 11 kV up to 66 kV Rs. 8.40 / kVAh",
+   "what": "HV-4: above 11 kV up to 66 kV"
+  },
+  "hv4.66_132kv": {
+   "value": "8.25",
+   "unit": "INR_per_kVAh",
+   "page": 393,
+   "quote": "For supply above 66 kV up to 132 kV Rs. 8.25 / kVAh",
+   "what": "HV-4: above 66 kV up to 132 kV"
   }
  }
 }

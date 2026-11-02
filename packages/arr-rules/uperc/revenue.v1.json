@@ -487,6 +487,76 @@
    ],
    "per": "consumer_category",
    "note": "the rate is the order's, read with its page and quote into the filing's rate record (never typed into a binding); the figure is energy charges only — fixed, minimum and other charges and the regulatory discount are separate columns of ESR-3"
+  },
+  {
+   "id": "uperc.revenue.existing_rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy rate the petition states as existing, against the tariff order's (per kWh)",
+   "output": "existing_energy_rate",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-12",
+   "formula": "rate",
+   "inputs": {
+    "rate": {
+     "unit": "INR_per_kWh",
+     "source": "order:energy_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order, Annexure-I Rate Schedule — energy charge per kWh or per kVAh by category, slab and supply voltage",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category",
+   "note": "an identity, not a computation: the order's rate (read with its page and quote) checked against the rate the petitioner's own rate-schedule format states as existing (ESR4A column C); a kVAh rate is a different unit from a kWh rate and never compared with one"
+  },
+  {
+   "id": "uperc.revenue.existing_rate_kvah",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy rate the petition states as existing, against the tariff order's (per kVAh)",
+   "output": "existing_energy_rate_kvah",
+   "unit": "INR_per_kVAh",
+   "schedule": "R-SCH-12",
+   "formula": "rate",
+   "inputs": {
+    "rate": {
+     "unit": "INR_per_kVAh",
+     "source": "order:energy_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order, Annexure-I Rate Schedule — energy charge per kWh or per kVAh by category, slab and supply voltage",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category",
+   "note": "an identity, not a computation: the order's rate (read with its page and quote) checked against the rate the petitioner's own rate-schedule format states as existing (ESR4A column C); a kVAh rate is a different unit from a kWh rate and never compared with one"
   }
  ]
 }

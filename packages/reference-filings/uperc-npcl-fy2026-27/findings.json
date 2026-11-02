@@ -229,12 +229,13 @@
    "id": "A53",
    "kind": "revenue against the rate schedule",
    "title": "Urban domestic energy charges filed 1.8–1.9 % below units sold × the schedule's slab rates (Rs. 9.87 crore in FY2026-27)",
-   "detail": "Computed from the units sold (ESR-3 column F) and the energy rates of the order's Annexure-I (page 365: 5.50, 5.50, 6.00, 6.50 Rs/kWh), the four 'Domestic Other Metered' slabs give 110.7788, 43.4680, 98.5036 and 294.6805 crore; ESR-3 files 108.6854, 42.6614, 96.7187 and 289.4981 (ratios 0.9811, 0.9814, 0.9819, 0.9824), 9.8673 crore less in all.  The regulatory discount is a separate column (N), so it is not the cause.  The pattern is consistent with the 2 % discount on the 'RATE' for consumers with prepaid meters (Annexure-I, General Provisions 11(i), page 357) applied to about 88–95 % of each slab's sales — a reading, not a fact.  The other 40 slabs bound (rural domestic, LMV-2, LMV-4, LMV-5, LMV-6 with its time-of-day rates, LMV-11) reproduce exactly from the same schedule.  The petitioner should state the basis: the prepaid share by slab, or the other adjustment applied.  (The schedule read is FY2026-27's; ESR-3 is at the FY2025-26 tariff, whose order is not in this session — if a rate changed between the two, that, not the billing, would explain a difference; the exact matches elsewhere suggest it did not.)",
+   "detail": "Computed from the units sold (ESR-3 column F) and the energy rates of the order's Annexure-I (page 365: 5.50, 5.50, 6.00, 6.50 Rs/kWh), the four 'Domestic Other Metered' slabs give 110.7788, 43.4680, 98.5036 and 294.6805 crore; ESR-3 files 108.6854, 42.6614, 96.7187 and 289.4981 (ratios 0.9811, 0.9814, 0.9819, 0.9824), 9.8673 crore less in all.  The regulatory discount is a separate column (N), so it is not the cause.  The pattern is consistent with the 2 % discount on the 'RATE' for consumers with prepaid meters (Annexure-I, General Provisions 11(i), page 357) applied to about 88–95 % of each slab's sales — a reading, not a fact.  The other 40 slabs bound (rural domestic, LMV-2, LMV-4, LMV-5, LMV-6 with its time-of-day rates, LMV-11) reproduce exactly from the same schedule.  The petitioner should state the basis: the prepaid share by slab, or the other adjustment applied.  The rates are those ESR-3 is at: the existing rates NPCL states in ESR4A (column C, rows 34–37) are these same rates, as are all 47 existing energy rates it states (increment 92).",
    "where": [
     "ESR_3 Curr Tariff FY27 rows 23–26 (F, K)",
     "Tariff order FY2026-27 Annexure-I pp.357, 365",
     "bindings/esr3-energy-from-rates-fy27.json",
-    "rate-schedule-fy2026-27.json"
+    "rate-schedule-fy2026-27.json",
+    "ESR4A_Prop Tariff Rate Sch. C34:C37"
    ],
    "for": "petitioner"
   },
@@ -247,6 +248,19 @@
     "ESR_3 Curr Tariff FY27 row 20 (F20, K20)",
     "Tariff order FY2026-27 Annexure-I pp.353, 363",
     "bindings/esr3-energy-from-rates-fy27.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A55",
+   "kind": "revenue against the rate schedule",
+   "title": "HV energy charges are billed per kVAh but ESR-3 states only kWh sold, so HV revenue (1,740.21 crore of energy charges in FY2026-27, ESR-3 K92:K135) cannot be recomputed from the filing",
+   "detail": "The order prices HV-1 to HV-4 per kVAh (Annexure-I pp.384–393; HV-1 at 11 kV Rs. 8.32/kVAh, HV-2 up to 11 kV Rs. 7.10/kVAh), and NPCL's ESR4A states the same existing rates.  ESR-3's HV rows give units sold in MU (kWh) and energy charges, so the energy charges divided by the kVAh rate (with the HV-2 time-of-day percentages, p.388) imply the kVAh billed per kWh sold: HV-1 commercial 1.0348 at 11 kV and 1.0119 above; HV-1 public 1.0409 and 1.0279; HV-2 1.0428–1.0458 up to 11 kV, 1.0175–1.0203 at 11–66 kV, 1.0274–1.0341 at 66–132 kV — power factors of 0.96 to 0.99, plausible, but derived from the answer, not from a stated quantity.  The engine refuses to multiply a kVAh rate by kWh (they are different units).  The petitioner should state the kVAh sold by HV category and voltage (and time-of-day slot), so the HV revenue can be computed from the rates.",
+   "where": [
+    "ESR_3 Curr Tariff FY27 rows 92–135 (F, K)",
+    "ESR4A_Prop Tariff Rate Sch. C187:C264",
+    "Tariff order FY2026-27 Annexure-I pp.384–393",
+    "rate-schedule-fy2026-27.json"
    ],
    "for": "petitioner"
   }

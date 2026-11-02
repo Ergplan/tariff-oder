@@ -22644,6 +22644,528 @@
    ]
   },
   {
+   "binding": "esr4a-existing-rates.json",
+   "checks": [
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.rural.lifeline (row 11) C11",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "3.00",
+     "computed": "3.00",
+     "why": null,
+     "exact": "3.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.rural.upto100 (row 17) C17",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "3.35",
+     "computed": "3.35",
+     "why": null,
+     "exact": "3.35"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.rural.101_150 (row 18) C18",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "3.85",
+     "computed": "3.85",
+     "why": null,
+     "exact": "3.85"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.rural.151_300 (row 19) C19",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "5.00",
+     "computed": "5.00",
+     "why": null,
+     "exact": "5.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.rural.above300 (row 20) C20",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "5.50",
+     "computed": "5.50",
+     "why": null,
+     "exact": "5.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.bulk (row 25) C25",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "7.00",
+     "computed": "7.00",
+     "why": null,
+     "exact": "7.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.other.lifeline (row 30) C30",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "3.00",
+     "computed": "3.00",
+     "why": null,
+     "exact": "3.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.other.upto100 (row 34) C34",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "5.50",
+     "computed": "5.50",
+     "why": null,
+     "exact": "5.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.other.101_150 (row 35) C35",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "5.50",
+     "computed": "5.50",
+     "why": null,
+     "exact": "5.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.other.151_300 (row 36) C36",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "6.00",
+     "computed": "6.00",
+     "why": null,
+     "exact": "6.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv1.other.above300 (row 37) C37",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "6.50",
+     "computed": "6.50",
+     "why": null,
+     "exact": "6.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv2.rural (row 45) C45",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "5.50",
+     "computed": "5.50",
+     "why": null,
+     "exact": "5.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv2.upto4kw.upto300 (row 53) C53",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "7.50",
+     "computed": "7.50",
+     "why": null,
+     "exact": "7.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv2.upto4kw.above300 (row 54) C54",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "8.40",
+     "computed": "8.40",
+     "why": null,
+     "exact": "8.40"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv2.above4kw.upto1000 (row 56) C56",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "7.50",
+     "computed": "7.50",
+     "why": null,
+     "exact": "7.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv2.above4kw.above1000 (row 57) C57",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "8.75",
+     "computed": "8.75",
+     "why": null,
+     "exact": "8.75"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv3.gram_panchayat (row 71) C71",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "7.50",
+     "computed": "7.50",
+     "why": null,
+     "exact": "7.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv3.nagar_palika (row 72) C72",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "8.00",
+     "computed": "8.00",
+     "why": null,
+     "exact": "8.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv3.nagar_nigam (row 73) C73",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "8.50",
+     "computed": "8.50",
+     "why": null,
+     "exact": "8.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv4.public (row 79) C79",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "8.25",
+     "computed": "8.25",
+     "why": null,
+     "exact": "8.25"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv4.private (row 84) C84",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "9.00",
+     "computed": "9.00",
+     "why": null,
+     "exact": "9.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv5.rural.metered (row 94) C94",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "2.00",
+     "computed": "2.00",
+     "why": null,
+     "exact": "2.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv5.rural.ee_pumps (row 99) C99",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "1.65",
+     "computed": "1.65",
+     "why": null,
+     "exact": "1.65"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv5.urban.metered (row 104) C104",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "6.00",
+     "computed": "6.00",
+     "why": null,
+     "exact": "6.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv6.base (row 111) C111",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "7.30",
+     "computed": "7.30",
+     "why": null,
+     "exact": "7.30"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv6.base (row 113) C113",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "7.30",
+     "computed": "7.30",
+     "why": null,
+     "exact": "7.30"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv7.urban (row 136) C136",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "8.50",
+     "computed": "8.50",
+     "why": null,
+     "exact": "8.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv9.residential (row 156) C156",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "8.00",
+     "computed": "8.00",
+     "why": null,
+     "exact": "8.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv9.others (row 157) C157",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "9.00",
+     "computed": "9.00",
+     "why": null,
+     "exact": "9.00"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv11.mb.lt (row 169) C169",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "6.20",
+     "computed": "6.20",
+     "why": null,
+     "exact": "6.20"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv11.mb.ht (row 170) C170",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "5.90",
+     "computed": "5.90",
+     "why": null,
+     "exact": "5.90"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv11.pcs.lt (row 176) C176",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "7.70",
+     "computed": "7.70",
+     "why": null,
+     "exact": "7.70"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing lmv11.pcs.ht (row 177) C177",
+     "output": "existing_energy_rate",
+     "result": "match",
+     "filed": "7.30",
+     "computed": "7.30",
+     "why": null,
+     "exact": "7.30"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv1.commercial.11kv (row 187) C187",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "8.32",
+     "computed": "8.32",
+     "why": null,
+     "exact": "8.32"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv1.commercial.above11kv (row 189) C189",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "8.12",
+     "computed": "8.12",
+     "why": null,
+     "exact": "8.12"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv1.public.11kv (row 198) C198",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "7.70",
+     "computed": "7.70",
+     "why": null,
+     "exact": "7.70"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv1.public.above11kv (row 200) C200",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "7.50",
+     "computed": "7.50",
+     "why": null,
+     "exact": "7.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv2.upto11kv (row 208) C208",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "7.10",
+     "computed": "7.10",
+     "why": null,
+     "exact": "7.10"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv2.11_66kv (row 213) C213",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "6.80",
+     "computed": "6.80",
+     "why": null,
+     "exact": "6.80"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv2.66_132kv (row 218) C218",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "6.40",
+     "computed": "6.40",
+     "why": null,
+     "exact": "6.40"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv2.above132kv (row 223) C223",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "6.10",
+     "computed": "6.10",
+     "why": null,
+     "exact": "6.10"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv3.railway (row 248) C248",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "8.50",
+     "computed": "8.50",
+     "why": null,
+     "exact": "8.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv3.railway (row 249) C249",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "8.50",
+     "computed": "8.50",
+     "why": null,
+     "exact": "8.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv3.metro (row 253) C253",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "7.30",
+     "computed": "7.30",
+     "why": null,
+     "exact": "7.30"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv4.11kv (row 262) C262",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "8.50",
+     "computed": "8.50",
+     "why": null,
+     "exact": "8.50"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv4.11_66kv (row 263) C263",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "8.40",
+     "computed": "8.40",
+     "why": null,
+     "exact": "8.40"
+    },
+    {
+     "table": "ESR4A_Prop Tariff Rate Sch.",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR4A existing hv4.66_132kv (row 264) C264",
+     "output": "existing_energy_rate_kvah",
+     "result": "match",
+     "filed": "8.25",
+     "computed": "8.25",
+     "why": null,
+     "exact": "8.25"
+    }
+   ]
+  },
+  {
    "binding": "f16-capitalisation-till25.json",
    "checks": [
     {
@@ -50868,7 +51390,7 @@
     "title": "Rate Schedule for Proposed Tariff",
     "sheet": "ESR4A_Prop Tariff Rate Sch.",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "ESR5_BD&Rev",
@@ -51281,8 +51803,8 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 23,
-   "reproduced": 39,
+   "present": 22,
+   "reproduced": 40,
    "read": 9,
    "blank": 2,
    "missing": 1
