@@ -372,6 +372,18 @@
     "order-decisions.json (source_tables)"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A65",
+   "kind": "decision explained",
+   "title": "The true-up's O&M cut (−90.91 of −123.38) is the 2019 Regulations' 'lower of normative or actual': NPCL's actual employee cost (95.42) is 2.5 times the norm (37.64)",
+   "detail": "Reproduced with the draft O&M rules from the order's figures (Tables 4-68 to 4-71, bindings/approval-trueup-om-fy25.json, 8 / 13): the CPI and WPI averages and their FY2024-25 increases (3.38 %, 2.27 %) from the monthly indices exactly; each component's FY2023-24 normative value escalated by them — R&M 55.60 exactly, employee and A&G one unit off (the order prints its FY2023-24 bases rounded) — and the lower of normative and actual taken in each, the normative every time.  Against the claim: employee −57.78 (37.64 normative against 95.42 actual), A&G −14.81, R&M −9.31, and the 9.01 of SOP-compliance expenses not allowed separately (they are within the norms, paras 4.6.57–4.6.58); the capitalised 17.19 is the same.  The comparison of O&M cost per unit sold that NPCL offered was not accepted (para 4.6.59).  The normative FY2023-24 base is the Commission's order of 17.06.2026 on the APTEL remand (para 4.6.60), which is not in this session — the gap between NPCL's actual cost and the norm is what its appeals contest; the true-up allows the norm until those are decided.",
+   "where": [
+    "Tariff order FY2026-27 pp.103–109, Tables 4-68 to 4-71, paras 4.6.57–4.6.64",
+    "bindings/approval-trueup-om-fy25.json",
+    "order/figures-trueup-om-fy2024-25.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

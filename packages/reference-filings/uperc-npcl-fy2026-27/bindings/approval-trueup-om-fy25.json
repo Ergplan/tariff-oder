@@ -1,0 +1,296 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F19A-O&M Normative",
+ "rates": "order/figures-trueup-om-fy2024-25.json",
+ "places": 2,
+ "note": "The Commission's true-up of O&M for FY2024-25 (2019 Regulations) reproduced with the draft O&M rules, from the order's figures (Tables 4-68 to 4-71): the CPI and WPI annual averages from the monthly indices and their increase for FY2024-25; each component's FY2023-24 normative value (as the Commission's order of 17.06.2026 re-determined it after the APTEL remand — that order is not in this session) escalated by the increase, carried unrounded; the lower of the normative and the actual allowed (para 4.6.64).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "CPI FY2023-24",
+   "inputs": {
+    "record:index_apr": {
+     "rate": "cpi.fy24.apr"
+    },
+    "record:index_may": {
+     "rate": "cpi.fy24.may"
+    },
+    "record:index_jun": {
+     "rate": "cpi.fy24.jun"
+    },
+    "record:index_jul": {
+     "rate": "cpi.fy24.jul"
+    },
+    "record:index_aug": {
+     "rate": "cpi.fy24.aug"
+    },
+    "record:index_sep": {
+     "rate": "cpi.fy24.sep"
+    },
+    "record:index_oct": {
+     "rate": "cpi.fy24.oct"
+    },
+    "record:index_nov": {
+     "rate": "cpi.fy24.nov"
+    },
+    "record:index_dec": {
+     "rate": "cpi.fy24.dec"
+    },
+    "record:index_jan": {
+     "rate": "cpi.fy24.jan"
+    },
+    "record:index_feb": {
+     "rate": "cpi.fy24.feb"
+    },
+    "record:index_mar": {
+     "rate": "cpi.fy24.mar"
+    }
+   },
+   "checks": {
+    "index_annual_average": "order:cpi.fy24.average"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "CPI FY2024-25",
+   "inputs": {
+    "record:index_apr": {
+     "rate": "cpi.fy25.apr"
+    },
+    "record:index_may": {
+     "rate": "cpi.fy25.may"
+    },
+    "record:index_jun": {
+     "rate": "cpi.fy25.jun"
+    },
+    "record:index_jul": {
+     "rate": "cpi.fy25.jul"
+    },
+    "record:index_aug": {
+     "rate": "cpi.fy25.aug"
+    },
+    "record:index_sep": {
+     "rate": "cpi.fy25.sep"
+    },
+    "record:index_oct": {
+     "rate": "cpi.fy25.oct"
+    },
+    "record:index_nov": {
+     "rate": "cpi.fy25.nov"
+    },
+    "record:index_dec": {
+     "rate": "cpi.fy25.dec"
+    },
+    "record:index_jan": {
+     "rate": "cpi.fy25.jan"
+    },
+    "record:index_feb": {
+     "rate": "cpi.fy25.feb"
+    },
+    "record:index_mar": {
+     "rate": "cpi.fy25.mar"
+    },
+    "prior:index_annual_average": {
+     "computed": "CPI FY2023-24",
+     "output": "index_annual_average"
+    }
+   },
+   "checks": {
+    "index_annual_average": "order:cpi.fy25.average",
+    "index_increase": "order:cpi.escalation"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "WPI FY2023-24",
+   "inputs": {
+    "record:index_apr": {
+     "rate": "wpi.fy24.apr"
+    },
+    "record:index_may": {
+     "rate": "wpi.fy24.may"
+    },
+    "record:index_jun": {
+     "rate": "wpi.fy24.jun"
+    },
+    "record:index_jul": {
+     "rate": "wpi.fy24.jul"
+    },
+    "record:index_aug": {
+     "rate": "wpi.fy24.aug"
+    },
+    "record:index_sep": {
+     "rate": "wpi.fy24.sep"
+    },
+    "record:index_oct": {
+     "rate": "wpi.fy24.oct"
+    },
+    "record:index_nov": {
+     "rate": "wpi.fy24.nov"
+    },
+    "record:index_dec": {
+     "rate": "wpi.fy24.dec"
+    },
+    "record:index_jan": {
+     "rate": "wpi.fy24.jan"
+    },
+    "record:index_feb": {
+     "rate": "wpi.fy24.feb"
+    },
+    "record:index_mar": {
+     "rate": "wpi.fy24.mar"
+    }
+   },
+   "checks": {
+    "index_annual_average": "order:wpi.fy24.average"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "WPI FY2024-25",
+   "inputs": {
+    "record:index_apr": {
+     "rate": "wpi.fy25.apr"
+    },
+    "record:index_may": {
+     "rate": "wpi.fy25.may"
+    },
+    "record:index_jun": {
+     "rate": "wpi.fy25.jun"
+    },
+    "record:index_jul": {
+     "rate": "wpi.fy25.jul"
+    },
+    "record:index_aug": {
+     "rate": "wpi.fy25.aug"
+    },
+    "record:index_sep": {
+     "rate": "wpi.fy25.sep"
+    },
+    "record:index_oct": {
+     "rate": "wpi.fy25.oct"
+    },
+    "record:index_nov": {
+     "rate": "wpi.fy25.nov"
+    },
+    "record:index_dec": {
+     "rate": "wpi.fy25.dec"
+    },
+    "record:index_jan": {
+     "rate": "wpi.fy25.jan"
+    },
+    "record:index_feb": {
+     "rate": "wpi.fy25.feb"
+    },
+    "record:index_mar": {
+     "rate": "wpi.fy25.mar"
+    },
+    "prior:index_annual_average": {
+     "computed": "WPI FY2023-24",
+     "output": "index_annual_average"
+    }
+   },
+   "checks": {
+    "index_annual_average": "order:wpi.fy25.average",
+    "index_increase": "order:wpi.escalation"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "employee FY2024-25",
+   "inputs": {
+    "prior:om_component": {
+     "rate": "om.employee.base"
+    },
+    "assumption:om_escalation": {
+     "computed": "CPI FY2024-25",
+     "output": "index_increase"
+    },
+    "record:om_actual": {
+     "rate": "om.employee.actual"
+    }
+   },
+   "checks": {
+    "om_component": "order:om.employee.normative",
+    "om_trueup_allowed": "order:om.employee.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ag FY2024-25",
+   "inputs": {
+    "prior:om_component": {
+     "rate": "om.ag.base"
+    },
+    "assumption:om_escalation": {
+     "computed": "WPI FY2024-25",
+     "output": "index_increase"
+    },
+    "record:om_actual": {
+     "rate": "om.ag.actual"
+    }
+   },
+   "checks": {
+    "om_component": "order:om.ag.normative",
+    "om_trueup_allowed": "order:om.ag.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "rm FY2024-25",
+   "inputs": {
+    "prior:om_component": {
+     "rate": "om.rm.base"
+    },
+    "assumption:om_escalation": {
+     "computed": "WPI FY2024-25",
+     "output": "index_increase"
+    },
+    "record:om_actual": {
+     "rate": "om.rm.actual"
+    }
+   },
+   "checks": {
+    "om_component": "order:om.rm.normative",
+    "om_trueup_allowed": "order:om.rm.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "O&M approved FY2024-25",
+   "inputs": {
+    "record:om_employee": {
+     "computed": "employee FY2024-25",
+     "output": "om_trueup_allowed"
+    },
+    "record:om_ag": {
+     "computed": "ag FY2024-25",
+     "output": "om_trueup_allowed"
+    },
+    "record:om_rm": {
+     "computed": "rm FY2024-25",
+     "output": "om_trueup_allowed"
+    },
+    "record:om_finance_charges": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the order counts finance charges within A&G (para 4.6.61)"
+    },
+    "record:om_dps_carrying": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the financing cost of DPS is part of A&G (para 4.6.61)"
+    },
+    "record:om_gst": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no separate GST line in the order's O&M approval (Table 4-71)"
+    }
+   },
+   "checks": {
+    "om_gross": "order:om.total.approved"
+   }
+  }
+ ]
+}

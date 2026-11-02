@@ -1005,6 +1005,29 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 101 (2026-11-02): the true-up's O&M cut reproduced from the monthly indices.**
+  The true-up year's decision (−123.38) is mostly O&M (−90.91), under the 2019 Regulations.
+  - **The record:** `order/figures-trueup-om-fy2024-25.json` holds 69 figures: the CPI and WPI
+    month by month for two years (Tables 4-68, 4-69), the FY2023-24 norms, the FY2024-25
+    normative, actual and approved (4-70, 4-71).  69 / 69 quotes and headers verified.
+  - **New draft rule `uperc.om.trueup_allowed`:** the lower of normative and actual, citing the
+    order's statement of the method (para 4.6.64).  The 2019 Regulations are not in this session.
+  - **Engine:** an order figure printed in another unit than the result (3.38 % against a
+    fraction) is compared in the order's unit.
+  - **Binding `approval-trueup-om-fy25.json`: 8 / 13 match.**
+    - The CPI and WPI averages and their increases (3.38 %, 2.27 %) come out exactly from the
+      monthly indices.
+    - R&M matches exactly.
+    - Employee and A&G are one unit off: the order prints its FY2023-24 bases rounded.
+    - The lower-of picks the normative value in every component, as the order does.
+  - **A65 (petitioner):**
+    - employee −57.78: the norm 37.64 against actual 95.42, 2.5 times the norm;
+    - A&G −14.81; R&M −9.31;
+    - SOP-compliance 9.01 not allowed separately.
+    The norm's FY2023-24 base comes from the Commission's order of 17.06.2026 on the APTEL
+    remand, which is not in this session.
+  Nothing verified, nothing approved.
+
   **Increment 100 (2026-11-02): the power purchase decision, read by word position.**
   - **Why position:** Table 6-35 (pp.242–243) has blank cells.  A source NPCL claimed but the
     Commission did not approve prints only claimed figures, and the reverse, so the text order
@@ -2548,6 +2571,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 101 (2026-11-02): 466 passed** (+1 unit: the real true-up O&M — indices and their increases exact, R&M exact, every figure within one unit).  `check_order_quotes.py`: 69 / 69.  Ruff and format clean.
 - **Increment 100 (2026-11-02): 465 passed** (+3 unit: a table with blank cells read by word position, a dash in a label kept as text; a source table's arithmetic per side; the real Table 6-35 — 51 rows, approved side 100 %, the order's three claimed-side slips).  Ruff, format and web typecheck clean.
 - **Increment 99 (2026-11-02): 462 passed** (+2 unit: the real depreciation by class — 36 / 36 classes, the rest within two last-place units; a zero printed as "-" accepted, and only so).  `check_order_quotes.py`: 183 / 183.  Ruff and format clean.
 - **Increment 98 (2026-11-02): 460 passed** (+1 unit: the real capital and interest approval, 13 / 14 with RoE 113.28, loan interest 85.60, tax 38.10, security deposit 20.51.  Changed: the decisions tests expect the new ARR identity, skipped where a column prints none of its parts, and the one column where the order's lines do not add up, −0.38, A61).  `check_order_quotes.py`: 28 / 28.  Ruff and format clean.
@@ -2781,7 +2805,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 100) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 101) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2835,12 +2859,13 @@ entries below are the per-increment history.**
     approval reproduces with the same rules as the claim, and its cut is explained exactly (A60);
     so do capital, loan, RoE, tax, security deposit and depreciation by class (A62); the power
     purchase decision is read by source and explained (A64) — the ARR year's +29.51 accounted
-    for line by line.  The order misprints one line of
+    for line by line.  The true-up's O&M cut (−90.91 of −123.38) is reproduced from the monthly
+    price indices: the 2019 norm against NPCL's actual cost (A65).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **32 findings (A29–A64):** 19 for the petitioner, collected in the draft queries; 13 for the
+  - **33 findings (A29–A65):** 20 for the petitioner, collected in the draft queries; 13 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

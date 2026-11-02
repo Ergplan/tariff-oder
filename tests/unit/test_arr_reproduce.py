@@ -1201,3 +1201,28 @@ def test_a_record_figure_of_zero_may_be_printed_as_a_dash_and_only_so():
     rec["figures"]["z"]["quote"] = "6 Furniture 6.33%"
     with pytest.raises(RuleError, match="not in its quote"):
         load_rate_record(rec)
+
+
+def test_npcl_the_trueup_om_approval_reproduces_from_the_monthly_indices():
+    """Real data: the order's true-up of O&M for FY2024-25 — CPI and WPI averages and increases
+    from the monthly indices exactly (an order figure printed in percent compared in percent),
+    each component escalated from its FY2023-24 norm and the lower of normative and actual taken
+    (R&M exact, employee and A&G one unit off the rounded bases; A65)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-trueup-om-fy25.json").read_text())
+    figures = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=figures)
+    index = [c for c in checks if c.output.startswith("index_")]
+    assert len(index) == 6 and {c.result for c in index} == {"match"}
+    assert {c.computed for c in index if c.output == "index_increase"} == {"3.38", "2.27"}
+    rm = [c for c in checks if c.category.startswith("rm ")]
+    assert {c.result for c in rm} == {"match"}
+    assert all(abs(Decimal(c.filed) - Decimal(c.computed)) <= Decimal("0.01") for c in checks)

@@ -1,0 +1,560 @@
+{
+ "status": "read from the order's text layer by pattern, each quote verbatim (whitespace-normalised) from its page — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): normative O&M trued up for FY2024-25, Tables 4-68 to 4-71",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "cpi.fy24.apr": {
+   "value": "386.50",
+   "unit": "number",
+   "page": 108,
+   "quote": "April 386.50 401.47",
+   "what": "CPI April, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.apr": {
+   "value": "401.47",
+   "unit": "number",
+   "page": 108,
+   "quote": "April 386.50 401.47",
+   "what": "CPI April, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.may": {
+   "value": "387.94",
+   "unit": "number",
+   "page": 108,
+   "quote": "May 387.94 402.91",
+   "what": "CPI May, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.may": {
+   "value": "402.91",
+   "unit": "number",
+   "page": 108,
+   "quote": "May 387.94 402.91",
+   "what": "CPI May, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.jun": {
+   "value": "392.83",
+   "unit": "number",
+   "page": 108,
+   "quote": "June 392.83 407.23",
+   "what": "CPI June, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.jun": {
+   "value": "407.23",
+   "unit": "number",
+   "page": 108,
+   "quote": "June 392.83 407.23",
+   "what": "CPI June, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.jul": {
+   "value": "402.34",
+   "unit": "number",
+   "page": 108,
+   "quote": "July 402.34 410.98",
+   "what": "CPI July, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.jul": {
+   "value": "410.98",
+   "unit": "number",
+   "page": 108,
+   "quote": "July 402.34 410.98",
+   "what": "CPI July, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.aug": {
+   "value": "400.90",
+   "unit": "number",
+   "page": 108,
+   "quote": "August 400.90 410.69",
+   "what": "CPI August, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.aug": {
+   "value": "410.69",
+   "unit": "number",
+   "page": 108,
+   "quote": "August 400.90 410.69",
+   "what": "CPI August, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.sep": {
+   "value": "396.00",
+   "unit": "number",
+   "page": 108,
+   "quote": "September 396.00 412.70",
+   "what": "CPI September, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.sep": {
+   "value": "412.70",
+   "unit": "number",
+   "page": 108,
+   "quote": "September 396.00 412.70",
+   "what": "CPI September, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.oct": {
+   "value": "398.59",
+   "unit": "number",
+   "page": 108,
+   "quote": "October 398.59 416.16",
+   "what": "CPI October, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.oct": {
+   "value": "416.16",
+   "unit": "number",
+   "page": 108,
+   "quote": "October 398.59 416.16",
+   "what": "CPI October, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.nov": {
+   "value": "400.61",
+   "unit": "number",
+   "page": 108,
+   "quote": "November 400.61 416.16",
+   "what": "CPI November, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.nov": {
+   "value": "416.16",
+   "unit": "number",
+   "page": 108,
+   "quote": "November 400.61 416.16",
+   "what": "CPI November, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.dec": {
+   "value": "399.74",
+   "unit": "number",
+   "page": 108,
+   "quote": "December 399.74 413.86",
+   "what": "CPI December, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.dec": {
+   "value": "413.86",
+   "unit": "number",
+   "page": 108,
+   "quote": "December 399.74 413.86",
+   "what": "CPI December, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.jan": {
+   "value": "400.03",
+   "unit": "number",
+   "page": 108,
+   "quote": "January 400.03 412.42",
+   "what": "CPI January, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.jan": {
+   "value": "412.42",
+   "unit": "number",
+   "page": 108,
+   "quote": "January 400.03 412.42",
+   "what": "CPI January, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.feb": {
+   "value": "400.90",
+   "unit": "number",
+   "page": 108,
+   "quote": "February 400.90 411.26",
+   "what": "CPI February, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.feb": {
+   "value": "411.26",
+   "unit": "number",
+   "page": 108,
+   "quote": "February 400.90 411.26",
+   "what": "CPI February, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.mar": {
+   "value": "400.03",
+   "unit": "number",
+   "page": 108,
+   "quote": "March 400.03 411.84",
+   "what": "CPI March, fy24 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.mar": {
+   "value": "411.84",
+   "unit": "number",
+   "page": 108,
+   "quote": "March 400.03 411.84",
+   "what": "CPI March, fy25 (4-68)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy24.average": {
+   "value": "397.20",
+   "unit": "number",
+   "page": 108,
+   "quote": "Average 397.20 410.64",
+   "what": "CPI annual average, fy24",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.fy25.average": {
+   "value": "410.64",
+   "unit": "number",
+   "page": 108,
+   "quote": "Average 397.20 410.64",
+   "what": "CPI annual average, fy25",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "cpi.escalation": {
+   "value": "3.38",
+   "unit": "percent",
+   "page": 108,
+   "quote": "CPI Escalation for FY 2024-25 3.38%",
+   "what": "CPI escalation for FY2024-25"
+  },
+  "wpi.fy24.apr": {
+   "value": "151.10",
+   "unit": "number",
+   "page": 108,
+   "quote": "April 151.10 152.90",
+   "what": "WPI April, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.apr": {
+   "value": "152.90",
+   "unit": "number",
+   "page": 108,
+   "quote": "April 151.10 152.90",
+   "what": "WPI April, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.may": {
+   "value": "149.40",
+   "unit": "number",
+   "page": 108,
+   "quote": "May 149.40 153.50",
+   "what": "WPI May, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.may": {
+   "value": "153.50",
+   "unit": "number",
+   "page": 108,
+   "quote": "May 149.40 153.50",
+   "what": "WPI May, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.jun": {
+   "value": "148.90",
+   "unit": "number",
+   "page": 108,
+   "quote": "June 148.90 154.00",
+   "what": "WPI June, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.jun": {
+   "value": "154.00",
+   "unit": "number",
+   "page": 108,
+   "quote": "June 148.90 154.00",
+   "what": "WPI June, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.jul": {
+   "value": "152.10",
+   "unit": "number",
+   "page": 108,
+   "quote": "July 152.10 155.30",
+   "what": "WPI July, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.jul": {
+   "value": "155.30",
+   "unit": "number",
+   "page": 108,
+   "quote": "July 152.10 155.30",
+   "what": "WPI July, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.aug": {
+   "value": "152.50",
+   "unit": "number",
+   "page": 108,
+   "quote": "August 152.50 154.40",
+   "what": "WPI August, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.aug": {
+   "value": "154.40",
+   "unit": "number",
+   "page": 108,
+   "quote": "August 152.50 154.40",
+   "what": "WPI August, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.sep": {
+   "value": "151.80",
+   "unit": "number",
+   "page": 108,
+   "quote": "September 151.80 154.70",
+   "what": "WPI September, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.sep": {
+   "value": "154.70",
+   "unit": "number",
+   "page": 108,
+   "quote": "September 151.80 154.70",
+   "what": "WPI September, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.oct": {
+   "value": "152.50",
+   "unit": "number",
+   "page": 108,
+   "quote": "October 152.50 156.70",
+   "what": "WPI October, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.oct": {
+   "value": "156.70",
+   "unit": "number",
+   "page": 108,
+   "quote": "October 152.50 156.70",
+   "what": "WPI October, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.nov": {
+   "value": "153.10",
+   "unit": "number",
+   "page": 108,
+   "quote": "November 153.10 156.40",
+   "what": "WPI November, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.nov": {
+   "value": "156.40",
+   "unit": "number",
+   "page": 108,
+   "quote": "November 153.10 156.40",
+   "what": "WPI November, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.dec": {
+   "value": "151.80",
+   "unit": "number",
+   "page": 108,
+   "quote": "December 151.80 155.70",
+   "what": "WPI December, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.dec": {
+   "value": "155.70",
+   "unit": "number",
+   "page": 108,
+   "quote": "December 151.80 155.70",
+   "what": "WPI December, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.jan": {
+   "value": "151.20",
+   "unit": "number",
+   "page": 108,
+   "quote": "January 151.20 155.00",
+   "what": "WPI January, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.jan": {
+   "value": "155.00",
+   "unit": "number",
+   "page": 108,
+   "quote": "January 151.20 155.00",
+   "what": "WPI January, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.feb": {
+   "value": "151.20",
+   "unit": "number",
+   "page": 108,
+   "quote": "February 151.20 154.90",
+   "what": "WPI February, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.feb": {
+   "value": "154.90",
+   "unit": "number",
+   "page": 108,
+   "quote": "February 151.20 154.90",
+   "what": "WPI February, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.mar": {
+   "value": "151.40",
+   "unit": "number",
+   "page": 108,
+   "quote": "March 151.40 154.80",
+   "what": "WPI March, fy24 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.mar": {
+   "value": "154.80",
+   "unit": "number",
+   "page": 108,
+   "quote": "March 151.40 154.80",
+   "what": "WPI March, fy25 (4-69)",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy24.average": {
+   "value": "151.42",
+   "unit": "number",
+   "page": 108,
+   "quote": "Average 151.42 154.86",
+   "what": "WPI annual average, fy24",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.fy25.average": {
+   "value": "154.86",
+   "unit": "number",
+   "page": 108,
+   "quote": "Average 151.42 154.86",
+   "what": "WPI annual average, fy25",
+   "header": "Month FY 2023-24 FY 2024-25"
+  },
+  "wpi.escalation": {
+   "value": "2.27",
+   "unit": "percent",
+   "page": 108,
+   "quote": "WPI Escalation for FY 2024-25 2.27%",
+   "what": "WPI escalation for FY2024-25"
+  },
+  "om.employee.base": {
+   "value": "36.40",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "1 Employee Expenses 36.40 3.38% 37.64",
+   "what": "employee expenses FY2023-24 normative, as per the order of 17.06.2026 (Table 4-70)",
+   "header": "Particulars FY 2023-24 CPI and WPI for FY 2024-25 FY 2024-25 Normative Normative As per Order dtd 17.06.2026 WPI CPI"
+  },
+  "om.employee.normative": {
+   "value": "37.64",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "1 Employee Expenses 36.40 3.38% 37.64",
+   "what": "employee expenses FY2024-25 normative (Table 4-70)",
+   "header": "Particulars FY 2023-24 CPI and WPI for FY 2024-25 FY 2024-25 Normative Normative As per Order dtd 17.06.2026 WPI CPI"
+  },
+  "om.ag.base": {
+   "value": "24.01",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "2 A&G Expenses 24.01 2.27% 24.55",
+   "what": "A&G FY2023-24 normative (Table 4-70)",
+   "header": "Particulars FY 2023-24 CPI and WPI for FY 2024-25 FY 2024-25 Normative Normative As per Order dtd 17.06.2026 WPI CPI"
+  },
+  "om.ag.normative": {
+   "value": "24.55",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "2 A&G Expenses 24.01 2.27% 24.55",
+   "what": "A&G FY2024-25 normative (Table 4-70)",
+   "header": "Particulars FY 2023-24 CPI and WPI for FY 2024-25 FY 2024-25 Normative Normative As per Order dtd 17.06.2026 WPI CPI"
+  },
+  "om.rm.base": {
+   "value": "54.36",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "3 R&M Expenses 54.36 2.27% 55.60",
+   "what": "R&M FY2023-24 normative (Table 4-70)",
+   "header": "Particulars FY 2023-24 CPI and WPI for FY 2024-25 FY 2024-25 Normative Normative As per Order dtd 17.06.2026 WPI CPI"
+  },
+  "om.rm.normative": {
+   "value": "55.60",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "3 R&M Expenses 54.36 2.27% 55.60",
+   "what": "R&M FY2024-25 normative (Table 4-70)",
+   "header": "Particulars FY 2023-24 CPI and WPI for FY 2024-25 FY 2024-25 Normative Normative As per Order dtd 17.06.2026 WPI CPI"
+  },
+  "om.employee.actual": {
+   "value": "95.42",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "1 Employees Expenses including retiral benefits 36.56 95.42 37.64 37.64",
+   "what": "employee expenses claimed (actual) FY2024-25 (Table 4-71)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.employee.approved": {
+   "value": "37.64",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "1 Employees Expenses including retiral benefits 36.56 95.42 37.64 37.64",
+   "what": "employee expenses approved (Table 4-71)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.ag.actual": {
+   "value": "39.36",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "2 Administrative & General Expenses 20.28 39.36 24.55 24.55",
+   "what": "A&G claimed (Table 4-71)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.ag.approved": {
+   "value": "24.55",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "2 Administrative & General Expenses 20.28 39.36 24.55 24.55",
+   "what": "A&G approved (Table 4-71)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.rm.actual": {
+   "value": "64.91",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "3 Repair & Maintenance Expenses 54.72 64.91 55.60 55.60",
+   "what": "R&M claimed (Table 4-71)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.rm.approved": {
+   "value": "55.60",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "3 Repair & Maintenance Expenses 54.72 64.91 55.60 55.60",
+   "what": "R&M approved (Table 4-71)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.capitalised": {
+   "value": "17.19",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "6 Employee Cost Capitalised (18.00) (17.19) (17.19) (17.19)",
+   "what": "employee cost capitalised (Table 4-71, deducted)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.total.approved": {
+   "value": "117.79",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "4 Total O&M Expenses 111.55 199.68 117.79 117.79",
+   "what": "total (gross) O&M approved (Table 4-71)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.net.approved": {
+   "value": "100.60",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "7 Net O&M Expenses 93.55 191.51 100.60 100.60",
+   "what": "net O&M approved (Table 4-71)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  }
+ }
+}

@@ -21,7 +21,7 @@ computes what the petitioner computed — not that either is what the regulation
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Any
 
@@ -600,6 +600,8 @@ def reproduce_cells(
             if not rates or ref[6:] not in rates:
                 raise RuleError(f"{binding['sheet']}: {ref} is not in the record")
             filed = Decimal(rates[ref[6:]][0])
+            if rates[ref[6:]][1] != res.unit:  # the order prints 3.38 %: compare in its unit
+                res = replace(res, value=Q.of(res.value, res.unit).to(rates[ref[6:]][1]))
         else:
             filed = _stored(at(ref))
         if filed is None:

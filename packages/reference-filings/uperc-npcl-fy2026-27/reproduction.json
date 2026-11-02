@@ -11287,6 +11287,154 @@
    ]
   },
   {
+   "binding": "approval-trueup-om-fy25.json",
+   "checks": [
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2023-24",
+     "category": "CPI FY2023-24 order:cpi.fy24.average",
+     "output": "index_annual_average",
+     "result": "match",
+     "filed": "397.20",
+     "computed": "397.20",
+     "why": null,
+     "exact": "397.2008333333333333333333333"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "CPI FY2024-25 order:cpi.fy25.average",
+     "output": "index_annual_average",
+     "result": "match",
+     "filed": "410.64",
+     "computed": "410.64",
+     "why": null,
+     "exact": "410.64"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "CPI FY2024-25 order:cpi.escalation",
+     "output": "index_increase",
+     "result": "match",
+     "filed": "3.38",
+     "computed": "3.38",
+     "why": null,
+     "exact": "3.383468900073640328884842060"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2023-24",
+     "category": "WPI FY2023-24 order:wpi.fy24.average",
+     "output": "index_annual_average",
+     "result": "match",
+     "filed": "151.42",
+     "computed": "151.42",
+     "why": null,
+     "exact": "151.4166666666666666666666667"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "WPI FY2024-25 order:wpi.fy25.average",
+     "output": "index_annual_average",
+     "result": "match",
+     "filed": "154.86",
+     "computed": "154.86",
+     "why": null,
+     "exact": "154.8583333333333333333333333"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "WPI FY2024-25 order:wpi.escalation",
+     "output": "index_increase",
+     "result": "match",
+     "filed": "2.27",
+     "computed": "2.27",
+     "why": null,
+     "exact": "2.272977435332966428178315861"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "employee FY2024-25 order:om.employee.normative",
+     "output": "om_component",
+     "result": "differs",
+     "filed": "37.64",
+     "computed": "37.63",
+     "why": null,
+     "exact": "37.63158267962680507971408252"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "employee FY2024-25 order:om.employee.approved",
+     "output": "om_trueup_allowed",
+     "result": "differs",
+     "filed": "37.64",
+     "computed": "37.63",
+     "why": null,
+     "exact": "37.63158267962680507971408252"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "ag FY2024-25 order:om.ag.normative",
+     "output": "om_component",
+     "result": "differs",
+     "filed": "24.55",
+     "computed": "24.56",
+     "why": null,
+     "exact": "24.55574188222344523940561365"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "ag FY2024-25 order:om.ag.approved",
+     "output": "om_trueup_allowed",
+     "result": "differs",
+     "filed": "24.55",
+     "computed": "24.56",
+     "why": null,
+     "exact": "24.55574188222344523940561365"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "rm FY2024-25 order:om.rm.normative",
+     "output": "om_component",
+     "result": "match",
+     "filed": "55.60",
+     "computed": "55.60",
+     "why": null,
+     "exact": "55.59559053384700055035773252"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "rm FY2024-25 order:om.rm.approved",
+     "output": "om_trueup_allowed",
+     "result": "match",
+     "filed": "55.60",
+     "computed": "55.60",
+     "why": null,
+     "exact": "55.59559053384700055035773252"
+    },
+    {
+     "table": "F19A-O&M Normative",
+     "fiscal_year": "FY2024-25",
+     "category": "O&M approved FY2024-25 order:om.total.approved",
+     "output": "om_gross",
+     "result": "differs",
+     "filed": "117.79",
+     "computed": "117.78",
+     "why": null,
+     "exact": "117.7829150956972508694774287"
+    }
+   ]
+  },
+  {
    "binding": "arr-contingency.json",
    "checks": [
     {
