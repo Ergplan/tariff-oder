@@ -300,3 +300,36 @@ def sign(
     )
     session.flush()
     return {"id": str(r.id), "scope": scope, "decision": decision, "signed_by": actor, "reproduction_sha256": current}
+
+
+def queries_draft(filing_id: str) -> str:
+    """A draft of the queries to the petitioner (a deficiency note), from the findings addressed
+    to the petitioner, each with where it is in the filing — Markdown, for a reviewer to edit and
+    issue.  It says it is a draft; nothing here issues it.  The reviewer's own points (findings
+    for the reviewer) are listed apart, as matters for the Commission, not questions."""
+    f = filing(filing_id)
+    ask = [x for x in f["findings"] if x["for"] == "petitioner"]
+    own = [x for x in f["findings"] if x["for"] != "petitioner"]
+    lines = [
+        f"# Draft queries to the petitioner — {f['title']}",
+        "",
+        f"*{f['licensee']} · {f['commission']} · DRAFT for the reviewer to edit and issue.  Generated from the "
+        "reproduction's findings; not reviewed, not issued.*",
+        "",
+        "The petitioner is requested to clarify the following, with the working and the source of each figure:",
+        "",
+    ]
+    for i, x in enumerate(ask, 1):
+        lines += [
+            f"{i}. **{x['title']}** ({x['id']})",
+            "",
+            f"   {x['detail']}",
+            "",
+            f"   *Where:* {'; '.join(x['where'])}",
+            "",
+        ]
+    if own:
+        lines += ["---", "", "## For the Commission (not questions to the petitioner)", ""]
+        for x in own:
+            lines += [f"- **{x['title']}** ({x['id']}) — {x['detail']}", ""]
+    return "\n".join(lines) + "\n"

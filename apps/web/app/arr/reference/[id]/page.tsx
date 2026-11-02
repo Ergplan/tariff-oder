@@ -335,6 +335,12 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
       </Panel>
 
       <Panel num="03" title="Findings" aside="for the petitioner and the reviewer — none resolved by the build">
+        <p>
+          <a className="btn" href={`/api/arr/reference-filings/${encodeURIComponent(f.id)}/queries`}>
+            Draft queries to the petitioner (Markdown)
+          </a>{" "}
+          <span className="muted">a draft from the findings above, for a reviewer to edit and issue — not issued</span>
+        </p>
         {f.findings.map((x) => (
           <div key={x.id} style={{ padding: "0.7rem 0", borderBottom: "1px solid var(--line)" }}>
             <div className="eyebrow" style={{ margin: 0 }}>

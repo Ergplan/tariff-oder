@@ -86,3 +86,13 @@ def test_independent_sign_off_is_pinned_to_the_reproduction_and_never_automatic(
     latest = a["latest"]["finding:A40"]
     assert latest["decision"] == "accepted_with_reservations" and latest["current"] and latest["signed_by"]
     assert "finding:A40" not in a["open"] and "filing" in a["open"]
+
+
+def test_draft_queries_to_the_petitioner_are_a_labelled_draft(client):
+    r = client.get("/arr/reference-filings/uperc-npcl-fy2026-27/queries", headers=headers(CLIENT_A))
+    assert r.status_code == 200 and r.headers["content-type"].startswith("text/markdown")
+    text = r.text
+    assert "DRAFT for the reviewer to edit and issue" in text and "not issued" in text
+    assert "(A44)" in text and "(A46)" in text  # questions to the petitioner, with their ids
+    assert "## For the Commission" in text and "(A45)" in text  # the reviewer's own points, apart
+    assert client.get("/arr/reference-filings/nope/queries", headers=headers(CLIENT_A)).status_code == 404

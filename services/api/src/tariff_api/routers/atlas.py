@@ -3,7 +3,7 @@ ARR norms as the application holds them.  Read-only."""
 
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 from pydantic import BaseModel, Field
 
 from .. import atlas as atlas_
@@ -99,3 +99,19 @@ def reference_sign(filing_id: str, body: AcceptanceIn, principal: Principal = De
             reproduction_sha256_seen=body.reproduction_sha256,
             actor=principal.email,
         )
+
+
+@router.get(
+    "/arr/reference-filings/{filing_id}/queries",
+    dependencies=[Depends(require_analyst)],
+    responses={200: {"content": {"text/markdown": {}}, "description": "draft queries to the petitioner"}},
+)
+def reference_queries(filing_id: str) -> Response:
+    """A draft of the queries to the petitioner from the findings addressed to it (Markdown), for
+    a reviewer to edit and issue.  It is labelled a draft; the build issues nothing."""
+    text = rf.queries_draft(filing_id)
+    return Response(
+        text,
+        media_type="text/markdown",
+        headers={"Content-Disposition": f'attachment; filename="{filing_id}-draft-queries.md"'},
+    )

@@ -12916,6 +12916,108 @@
         ]
       }
     },
+    "/arr/reference-filings/{filing_id}/queries": {
+      "get": {
+        "description": "A draft of the queries to the petitioner from the findings addressed to it (Markdown), for\na reviewer to edit and issue.  It is labelled a draft; the build issues nothing.",
+        "operationId": "reference_queries_arr_reference_filings__filing_id__queries_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filing_id",
+            "required": true,
+            "schema": {
+              "title": "Filing Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              },
+              "text/markdown": {}
+            },
+            "description": "draft queries to the petitioner"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Reference Queries",
+        "tags": [
+          "atlas"
+        ]
+      }
+    },
     "/arr/rules/{commission}": {
       "get": {
         "description": "A commission's executable calculation rules with their status: draft or approved, the\nclause and whether a person verified it, the years each applies to (ADR-0021).",
