@@ -1005,6 +1005,40 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 100 (2026-11-02): the power purchase decision, read by word position.**
+  - **Why position:** Table 6-35 (pp.242–243) has blank cells.  A source NPCL claimed but the
+    Commission did not approve prints only claimed figures, and the reverse, so the text order
+    cannot say which side a lone triple belongs to.  Read that way, it had put C.8–C.21 on the
+    claimed side; they are approved-only.
+  - **The reader:** `decisions.rows_by_position` reads a page's words with their coordinates.
+    It groups them into lines, opens a row with its code (A, B.1, …) and gives each figure to
+    the nearest column anchor, taken from the page's own header words.  A dash inside a label
+    ("TPTCL - PPGCL") is text; two figures on one anchor is an error.
+  - **The checks:** `decisions.check_sources` checks the table's own arithmetic per side:
+    amount = MU × rate ÷ 10 within the printed rounding, and every subtotal against its parts.
+  - **Result: 51 rows; 81 / 84 arithmetic checks.  The approved side holds throughout.**  The
+    three exceptions are claimed-side slips by the order (A63, reviewer):
+    - the short-term subtotal is printed 810.23, where the rows add to 810.52 and NPCL's PPC
+      FY 27 has 810.53;
+    - hence F is 0.30 off its parts;
+    - the JITPL claimed rate is printed 5.62 where its amount implies 5.61.
+    The claimed power-purchase total is 2,448.32 against the format's 2,448.33; transmission
+    446.36 matches.
+  - **A64 (petitioner), the decision explained:**
+    - DIL +46.35: its trued-up FY2023-24 tariff, landed at 4.89 against 4.50 (para 6.5.38);
+    - short-term −79.14: NPCL's trader and exchange blocks replaced by the agreements the
+      Commission approved and 617.63 MU from the exchange at 4.67 (para 6.5.51);
+    - renewable −0.32;
+    - the IEX sale and DSM not allowed: +62.16;
+    - UPPTCL +35.38 at its own tariff order.
+    The table's 576.59 MU and 5.00 Rs/kWh for the exchange are the same purchase at NPCL's
+    periphery: 617.63 × (1 − 3.58 %) × (1 − 3.18 %) = 576.58.  I checked this before calling it
+    an inconsistency; it is not one.
+  - **Shown in panel 06d.**
+  - **The ARR year's +29.51 is now explained line by line** (A60, A62, A64), and the order's
+    own errors are recorded (A61, A63).
+  Nothing verified, nothing approved.
+
   **Increment 99 (2026-11-02): the Commission's depreciation reproduced class by class.**
   - **The record:** `order/figures-depreciation-fy2026-27.json` holds 183 figures.  These are
     36 asset classes in three parts (Tables 6-62 to 6-64) with opening, deduction or addition,
@@ -2514,6 +2548,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 100 (2026-11-02): 465 passed** (+3 unit: a table with blank cells read by word position, a dash in a label kept as text; a source table's arithmetic per side; the real Table 6-35 — 51 rows, approved side 100 %, the order's three claimed-side slips).  Ruff, format and web typecheck clean.
 - **Increment 99 (2026-11-02): 462 passed** (+2 unit: the real depreciation by class — 36 / 36 classes, the rest within two last-place units; a zero printed as "-" accepted, and only so).  `check_order_quotes.py`: 183 / 183.  Ruff and format clean.
 - **Increment 98 (2026-11-02): 460 passed** (+1 unit: the real capital and interest approval, 13 / 14 with RoE 113.28, loan interest 85.60, tax 38.10, security deposit 20.51.  Changed: the decisions tests expect the new ARR identity, skipped where a column prints none of its parts, and the one column where the order's lines do not add up, −0.38, A61).  `check_order_quotes.py`: 28 / 28.  Ruff and format clean.
 - **Increment 97 (2026-11-02): 459 passed** (+2 unit: a chain of years carried unrounded between evaluations and checked against an order figure, a computed input naming no evaluation refused; the real O&M approval — employee 87.63, A&G 28.87, R&M 111.04, one intermediate year one unit off).  `check_order_quotes.py`: 34 / 34 order figures, 58 / 58 rates.  Ruff and format clean.
@@ -2746,7 +2781,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 99) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 100) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2798,12 +2833,14 @@ entries below are the per-increment history.**
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.
     The decisions are true-up −123.38, APR +92.64 and ARR +29.51 (net ARR).  The ARR year's O&M
     approval reproduces with the same rules as the claim, and its cut is explained exactly (A60);
-    so do capital, loan, RoE, tax, security deposit and depreciation by class (A62).  The order misprints one line of
+    so do capital, loan, RoE, tax, security deposit and depreciation by class (A62); the power
+    purchase decision is read by source and explained (A64) — the ARR year's +29.51 accounted
+    for line by line.  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **30 findings (A29–A62):** 18 for the petitioner, collected in the draft queries; 12 for the
+  - **32 findings (A29–A64):** 19 for the petitioner, collected in the draft queries; 13 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

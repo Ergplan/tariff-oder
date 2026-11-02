@@ -17,12 +17,19 @@ import collections
 import hashlib
 import json
 import sys
+from decimal import Decimal
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "services" / "api" / "src"))
 
-from tariff_api.arr.decisions import evaluate_table, identities, read_rows  # noqa: E402
+from tariff_api.arr.decisions import (  # noqa: E402
+    check_sources,
+    evaluate_table,
+    identities,
+    read_rows,
+    rows_by_position,
+)
 
 
 def main() -> int:
@@ -54,6 +61,45 @@ def main() -> int:
         print(f"         the order's own arithmetic {dict(collections.Counter(i['result'] for i in own))}")
         keep = {k: t[k] for k in ("proceeding", "fiscal_year", "title", "pages", "columns")}
         tables.append(keep | {"rows": rows, "identities": own})
+    sources = []
+    for t in spec.get("source_tables", []):
+        rows = []
+        with pymupdf.open(args.pdf) as doc:
+            for pno in t["pages"]:
+                words = doc[pno - 1].get_text("words")
+                mus = sorted((w[0] + w[2]) / 2 for w in words if w[4] == "MUs")
+                amt = sorted((w[0] + w[2]) / 2 for w in words if w[4] == "Amount")
+                anchors = {
+                    "claimed_mu": mus[0],
+                    "claimed_rate": (mus[0] + amt[0]) / 2,
+                    "claimed_amount": amt[0],
+                    "approved_mu": mus[1],
+                    "approved_rate": (mus[1] + amt[1]) / 2,
+                    "approved_amount": amt[1],
+                }
+                for r in rows_by_position(words, anchors, t["start"], t["stop"]):
+                    rows.append(r | {"page": pno})
+        own = check_sources(rows, ["claimed", "approved"], t["sums"])
+        fmt = []
+        for f in t.get("format", []):
+            row = next(r for r in rows if (r["code"] or r["label"]) == f["row"])
+            vals = [wb[c.split("!")[0]][c.split("!")[1]].value for c in f["cells"]]
+            total = sum(Decimal(str(v)) for v in vals if isinstance(v, int | float)).quantize(Decimal("0.01"))
+            printed = row["cells"]["claimed_amount"].replace(",", "")
+            fmt.append(
+                {
+                    "row": f["row"],
+                    "cells": f["cells"],
+                    "printed": printed,
+                    "format": str(total),
+                    "result": "match" if Decimal(printed) == total else "differs",
+                }
+            )
+        counts = collections.Counter(c["result"] for c in own)
+        print(f"sources  {len(rows)} rows; the table's own arithmetic {dict(counts)}; ", end="")
+        print(f"against the format {[x['result'] for x in fmt]}")
+        keep = {k: t[k] for k in ("proceeding", "fiscal_year", "title", "pages", "anchors")}
+        sources.append(keep | {"rows": rows, "arithmetic": own, "against_format": fmt})
     report = {
         "order": spec["order"],
         "status": (
@@ -62,6 +108,7 @@ def main() -> int:
         ),
         "note": spec["note"],
         "tables": tables,
+        "source_tables": sources,
     }
     (folder / "order-decisions.json").write_text(json.dumps(report, indent=1, ensure_ascii=False) + "\n")
     return 0

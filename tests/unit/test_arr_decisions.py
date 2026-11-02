@@ -116,3 +116,109 @@ def test_npcl_order_decisions_on_the_three_proceedings():
         "claimed": "95.42",
         "approved": "37.64",
     }
+
+
+def _w(x0, y, text):
+    return (x0, y, x0 + 6 * len(text), y + 9, text)
+
+
+def test_a_table_with_blank_cells_is_read_by_word_position():
+    """A figure under "Approved" with nothing under "Claimed" is the approved one: the text order
+    cannot tell, the position can.  A dash inside a label is not a blank cell."""
+    from tariff_api.arr.decisions import rows_by_position
+
+    anchors = {
+        "claimed_mu": 330,
+        "claimed_rate": 370,
+        "claimed_amount": 415,
+        "approved_mu": 460,
+        "approved_rate": 500,
+        "approved_amount": 545,
+    }
+    words = [
+        _w(320, 100, "MUs"),
+        _w(400, 100, "Amount"),
+        _w(40, 120, "A"),
+        _w(60, 120, "Long"),
+        _w(310, 120, "100.00"),
+        _w(360, 120, "4.50"),
+        _w(400, 120, "45.00"),
+        _w(440, 120, "100.00"),
+        _w(490, 120, "4.89"),
+        _w(530, 120, "48.90"),
+        _w(40, 140, "C.8"),
+        _w(60, 140, "TPTCL"),
+        _w(100, 140, "-"),
+        _w(110, 140, "PPGCL"),
+        _w(440, 140, "10.00"),
+        _w(490, 140, "5.57"),
+        _w(530, 140, "5.57"),
+        _w(40, 160, "E.6"),
+        _w(60, 160, "Solar"),
+        _w(310, 160, "1.00"),
+        _w(360, 160, "5.49"),
+        _w(400, 160, "0.55"),
+        _w(455, 160, "-"),
+        _w(495, 160, "-"),
+        _w(540, 160, "-"),
+        _w(40, 180, "6.6."),
+        _w(70, 180, "OPERATION"),
+    ]
+    rows = rows_by_position(words, anchors, "Amount", "6.6. OPERATION")
+    by = {r["code"]: r["cells"] for r in rows}
+    assert set(by) == {"A", "C.8", "E.6"}
+    assert set(by["C.8"]) == {"approved_mu", "approved_rate", "approved_amount"}  # nothing claimed
+    assert by["E.6"]["approved_amount"] == "-" and by["E.6"]["claimed_amount"] == "0.55"
+    assert next(r for r in rows if r["code"] == "C.8")["label"] == "TPTCL - PPGCL"
+
+
+def test_a_source_tables_arithmetic_is_checked_per_side():
+    from tariff_api.arr.decisions import check_sources
+
+    rows = [
+        {
+            "code": "A",
+            "label": "",
+            "cells": {
+                "claimed_mu": "100.00",
+                "claimed_rate": "4.50",
+                "claimed_amount": "45.00",
+                "approved_mu": "100.00",
+                "approved_rate": "4.89",
+                "approved_amount": "48.90",
+            },
+        },
+        {
+            "code": "B",
+            "label": "",
+            "cells": {"claimed_mu": "660.36", "claimed_rate": "5.62", "claimed_amount": "370.66"},
+        },
+        {"code": "F", "label": "", "cells": {"claimed_amount": "415.96", "approved_amount": "48.90"}},
+    ]
+    got = {
+        (c["side"], c["check"][:1]): c["result"]
+        for c in check_sources(rows, ["claimed", "approved"], [{"total": "F", "parts": ["A", "B"]}])
+    }
+    assert got == {
+        ("claimed", "A"): "match",
+        ("claimed", "B"): "differs",
+        ("claimed", "F"): "differs",
+        ("approved", "A"): "match",
+        ("approved", "F"): "match",
+    }
+
+
+def test_npcl_power_purchase_approval_by_source():
+    """Real data: Table 6-35 read by position — 51 rows; the approved side's arithmetic holds
+    throughout; the claimed side has the order's two transcription slips (A63)."""
+    rep = json.loads(
+        (ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27" / "order-decisions.json").read_text()
+    )
+    (t,) = rep["source_tables"]
+    assert len(t["rows"]) == 51
+    assert {c["result"] for c in t["arithmetic"] if c["side"] == "approved"} == {"match"}
+    off = sorted(c["check"].split(":")[0].split(" =")[0] for c in t["arithmetic"] if c["result"] != "match")
+    assert off == ["B.1", "C", "F"]
+    rows = {r["code"]: r["cells"] for r in t["rows"] if r["code"]}
+    assert "claimed_mu" not in rows["C.8"] and rows["C.8"]["approved_mu"] == "102.29"
+    assert (rows["A"]["claimed_rate"], rows["A"]["approved_rate"]) == ("4.50", "4.89")

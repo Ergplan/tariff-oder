@@ -224,3 +224,96 @@ def identities(
                 }
             )
     return out
+
+
+def rows_by_position(
+    words: list[tuple], anchors: dict[str, float], start: str, stop: str | None = None, code: str = r"^[A-Z](\.\d+)?$"
+) -> list[dict[str, Any]]:
+    """The rows of a table whose blank cells make text order ambiguous (a figure printed under
+    "Approved" with nothing under "Claimed"), read from one page's words with their positions
+    (PyMuPDF ``get_text("words")``: x0, y0, x1, y1, text, …).  Rows run from the line holding the
+    word ``start`` to the line before ``stop``; words share a line when their tops are within 3
+    points.  Each figure goes to the column whose anchor (an x centre taken from the page's own
+    header words) is nearest; two figures on one anchor is an error.  A line opens with its code
+    (``A``, ``B.1``) when it has one; a total line has none and is named by its words."""
+    pat = re.compile(code)
+    lines: list[list[tuple]] = []
+    for w in sorted(words, key=lambda w: (round(w[1]), w[0])):
+        if lines and abs(lines[-1][0][1] - w[1]) < 3:
+            lines[-1].append(w)
+        else:
+            lines.append([w])
+    out: list[dict[str, Any]] = []
+    on = False
+    for line in lines:
+        line.sort(key=lambda w: w[0])
+        texts = [w[4] for w in line]
+        if not on:
+            on = start in texts
+            continue
+        if stop and stop in " ".join(texts):
+            break
+        # a figure stands in the figure columns: a dash in a label ("TPTCL - PPGCL") is text
+        left = min(anchors.values()) - 25
+        figs = [w for w in line if _FIG.match(w[4]) and (w[0] + w[2]) / 2 >= left]
+        if not figs:
+            continue
+        first = texts[0]
+        row_code = first if pat.match(first) else None
+        label = " ".join(w[4] for w in line if w not in figs and w[4] != row_code)
+        cells: dict[str, str] = {}
+        for w in figs:
+            centre = (w[0] + w[2]) / 2
+            name = min(anchors, key=lambda a: abs(anchors[a] - centre))
+            if name in cells:
+                raise ValueError(f"row {row_code or label!r}: two figures under {name}")
+            cells[name] = w[4]
+        out.append({"code": row_code, "label": label, "cells": cells, "quote": " ".join(texts)})
+    return out
+
+
+def check_sources(rows: list[dict[str, Any]], sides: list[str], sums: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """A source table's own arithmetic, per side ("claimed", "approved"): each row's amount
+    against its MUs × rate (Rs. crore = MU × Rs/kWh ÷ 10, within the rounding of the printed rate
+    and MUs), and each subtotal against the sum of its parts as printed (two units of the last
+    place).  ``sums``: ``{"total": key, "parts": [keys], "field": "amount" | "mu"}``, a key being a
+    row's code or its label."""
+    by = {(r["code"] or r["label"]): r["cells"] for r in rows}
+    out: list[dict[str, Any]] = []
+    for side in sides:
+        for key, cells in by.items():
+            mu, rate, amount = (_value(cells.get(f"{side}_{f}", "")) for f in ("mu", "rate", "amount"))
+            if None in (mu, rate, amount) or mu == 0:
+                continue
+            implied = mu * rate / 10
+            slack = abs(mu) * Decimal("0.005") / 10 + abs(rate) * Decimal("0.005") / 10 + Decimal("0.005")
+            ok = abs(implied - amount) <= slack
+            out.append(
+                {
+                    "side": side,
+                    "check": f"{key}: amount = MU × rate",
+                    "printed": str(amount),
+                    "computed": str(implied.quantize(Decimal("0.01"))),
+                    "result": "match" if ok else "differs",
+                }
+            )
+        for s in sums:
+            total = _value(by.get(s["total"], {}).get(f"{side}_{s.get('field', 'amount')}", ""))
+            if total is None:
+                continue
+            parts = [_value(by.get(k, {}).get(f"{side}_{s.get('field', 'amount')}", "")) for k in s["parts"]]
+            if all(p is None for p in parts):
+                continue
+            got = sum((p or Decimal(0) for p in parts), Decimal(0))
+            diff = total - got
+            out.append(
+                {
+                    "side": side,
+                    "check": f"{s['total']} = {' + '.join(s['parts'])}",
+                    "printed": str(total),
+                    "computed": str(got),
+                    "difference": str(diff),
+                    "result": "match" if abs(diff) <= Decimal("0.02") else "differs",
+                }
+            )
+    return out

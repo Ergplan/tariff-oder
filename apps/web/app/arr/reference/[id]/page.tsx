@@ -65,6 +65,15 @@ type Filing = {
       }[];
       identities: { column: string; identity: string; printed: string; parts: string; difference: string; result: string }[];
     }[];
+    source_tables?: {
+      proceeding: string;
+      fiscal_year: string;
+      title: string;
+      pages: number[];
+      rows: { code: string | null; label: string; cells: Record<string, string>; page: number }[];
+      arithmetic: { side: string; check: string; printed: string; computed: string; result: string }[];
+      against_format: { row: string; printed: string; format: string; result: string }[];
+    }[];
   } | null;
   checklist: {
     checklist: string;
@@ -704,6 +713,39 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
             <p className="muted" style={{ fontSize: "0.85rem" }}>
               {f.decisions.order.title} — {f.decisions.status}.
             </p>
+            {(f.decisions.source_tables ?? []).map((t) => {
+              const own: Counts = {};
+              for (const c of t.arithmetic) own[`${c.side} ${c.result}`] = (own[`${c.side} ${c.result}`] ?? 0) + 1;
+              return (
+                <details key={t.title}>
+                  <summary>
+                    {t.title} — pp.{t.pages.join(", ")}, read by word position: the table&apos;s own arithmetic <CountBadges counts={own} />
+                  </summary>
+                  <div className="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Source</th>
+                          <th>Claimed MU · Rs/kWh · Rs cr</th>
+                          <th>Approved MU · Rs/kWh · Rs cr</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {t.rows.map((r, i) => (
+                          <tr key={i}>
+                            <td>
+                              <span className="mono">{r.code ?? ""}</span> {r.label}
+                            </td>
+                            <td className="mono">{[r.cells.claimed_mu, r.cells.claimed_rate, r.cells.claimed_amount].filter(Boolean).join(" · ")}</td>
+                            <td className="mono">{[r.cells.approved_mu, r.cells.approved_rate, r.cells.approved_amount].filter(Boolean).join(" · ")}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              );
+            })}
             {f.decisions.tables.map((t) => {
               const checks = t.rows.flatMap((r) => Object.values(r.checks));
               const counts: Counts = {};

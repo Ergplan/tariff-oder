@@ -2182,5 +2182,1283 @@
     }
    ]
   }
+ ],
+ "source_tables": [
+  {
+   "proceeding": "arr",
+   "fiscal_year": "FY2026-27",
+   "title": "TABLE 6-35 POWER PURCHASE COST APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.)",
+   "pages": [
+    242,
+    243
+   ],
+   "anchors": "the page's two 'MUs' and two 'Amount' header words (claimed left, approved right); the rate column midway",
+   "rows": [
+    {
+     "code": "A",
+     "label": "Long Term Power from DIL Thermal",
+     "cells": {
+      "claimed_mu": "1,188.64",
+      "claimed_rate": "4.50",
+      "claimed_amount": "534.39",
+      "approved_mu": "1,188.64",
+      "approved_rate": "4.89",
+      "approved_amount": "580.74"
+     },
+     "quote": "A Long Term Power from DIL Thermal 1,188.64 4.50 534.39 1,188.64 4.89 580.74",
+     "page": 242
+    },
+    {
+     "code": "B",
+     "label": "Total-Power Procured from Medium Term",
+     "cells": {
+      "claimed_mu": "1,355.47",
+      "claimed_rate": "5.75",
+      "claimed_amount": "780.04",
+      "approved_mu": "1,355.47",
+      "approved_rate": "5.75",
+      "approved_amount": "780.04"
+     },
+     "quote": "B Total-Power Procured from Medium Term 1,355.47 5.75 780.04 1,355.47 5.75 780.04",
+     "page": 242
+    },
+    {
+     "code": "B.1",
+     "label": "Medium Term Power (JITPL, Odisha) Thermal",
+     "cells": {
+      "claimed_mu": "660.36",
+      "claimed_rate": "5.62",
+      "claimed_amount": "370.66",
+      "approved_mu": "660.36",
+      "approved_rate": "5.61",
+      "approved_amount": "370.66"
+     },
+     "quote": "B.1 Medium Term Power (JITPL, Odisha) Thermal 660.36 5.62 370.66 660.36 5.61 370.66",
+     "page": 242
+    },
+    {
+     "code": "B.2",
+     "label": "Medium Term Power (Maa Durga) Thermal",
+     "cells": {
+      "claimed_mu": "173.78",
+      "claimed_rate": "5.93",
+      "claimed_amount": "103.09",
+      "approved_mu": "173.78",
+      "approved_rate": "5.93",
+      "approved_amount": "103.09"
+     },
+     "quote": "B.2 Medium Term Power (Maa Durga) Thermal 173.78 5.93 103.09 173.78 5.93 103.09",
+     "page": 242
+    },
+    {
+     "code": "B.3",
+     "label": "Medium Term Power [Sai Lilagar (MPL)] Thermal",
+     "cells": {
+      "claimed_mu": "173.78",
+      "claimed_rate": "5.85",
+      "claimed_amount": "101.60",
+      "approved_mu": "173.78",
+      "approved_rate": "5.85",
+      "approved_amount": "101.60"
+     },
+     "quote": "B.3 Medium Term Power [Sai Lilagar (MPL)] Thermal 173.78 5.85 101.60 173.78 5.85 101.60",
+     "page": 242
+    },
+    {
+     "code": "B.4",
+     "label": "Medium Term Power [BLA Power (MPL)] Thermal",
+     "cells": {
+      "claimed_mu": "173.78",
+      "claimed_rate": "5.93",
+      "claimed_amount": "103.09",
+      "approved_mu": "173.78",
+      "approved_rate": "5.93",
+      "approved_amount": "103.09"
+     },
+     "quote": "B.4 Medium Term Power [BLA Power (MPL)] Thermal 173.78 5.93 103.09 173.78 5.93 103.09",
+     "page": 242
+    },
+    {
+     "code": "B.5",
+     "label": "Medium Term Power (Dhariwal Infra Limited) Thermal",
+     "cells": {
+      "claimed_mu": "173.78",
+      "claimed_rate": "5.85",
+      "claimed_amount": "101.60",
+      "approved_mu": "173.78",
+      "approved_rate": "5.85",
+      "approved_amount": "101.60"
+     },
+     "quote": "B.5 Medium Term Power (Dhariwal Infra Limited) Thermal 173.78 5.85 101.60 173.78 5.85 101.60",
+     "page": 242
+    },
+    {
+     "code": "C",
+     "label": "",
+     "cells": {
+      "claimed_mu": "1,473.76",
+      "claimed_rate": "5.50",
+      "claimed_amount": "810.23",
+      "approved_mu": "1,328.08",
+      "approved_rate": "5.51",
+      "approved_amount": "731.38"
+     },
+     "quote": "C 1,473.76 5.50 810.23 1,328.08 5.51 731.38",
+     "page": 242
+    },
+    {
+     "code": "C.1",
+     "label": "",
+     "cells": {
+      "claimed_mu": "323.72",
+      "claimed_rate": "7.97",
+      "claimed_amount": "258.03"
+     },
+     "quote": "C.1 323.72 7.97 258.03",
+     "page": 242
+    },
+    {
+     "code": "C.2",
+     "label": "",
+     "cells": {
+      "claimed_mu": "189.07",
+      "claimed_rate": "4.42",
+      "claimed_amount": "83.61"
+     },
+     "quote": "C.2 189.07 4.42 83.61",
+     "page": 242
+    },
+    {
+     "code": "C.3",
+     "label": "",
+     "cells": {
+      "claimed_mu": "413.20",
+      "claimed_rate": "3.83",
+      "claimed_amount": "158.45"
+     },
+     "quote": "C.3 413.20 3.83 158.45",
+     "page": 242
+    },
+    {
+     "code": "C.4",
+     "label": "",
+     "cells": {
+      "claimed_mu": "320.65",
+      "claimed_rate": "5.23",
+      "claimed_amount": "167.74"
+     },
+     "quote": "C.4 320.65 5.23 167.74",
+     "page": 242
+    },
+    {
+     "code": "C.5",
+     "label": "TPTCL – RTC Thermal",
+     "cells": {
+      "claimed_mu": "188.10",
+      "claimed_rate": "5.62",
+      "claimed_amount": "105.76",
+      "approved_mu": "188.10",
+      "approved_rate": "5.62",
+      "approved_amount": "105.76"
+     },
+     "quote": "C.5 TPTCL – RTC Thermal 188.10 5.62 105.76 188.10 5.62 105.76",
+     "page": 242
+    },
+    {
+     "code": "C.6",
+     "label": "TPTCL – PEAK-1 Thermal",
+     "cells": {
+      "claimed_mu": "8.86",
+      "claimed_rate": "9.33",
+      "claimed_amount": "8.26",
+      "approved_mu": "8.86",
+      "approved_rate": "9.33",
+      "approved_amount": "8.26"
+     },
+     "quote": "C.6 TPTCL – PEAK-1 Thermal 8.86 9.33 8.26 8.86 9.33 8.26",
+     "page": 242
+    },
+    {
+     "code": "C.7",
+     "label": "TPTCL – PEAK-2 Thermal",
+     "cells": {
+      "claimed_mu": "30.15",
+      "claimed_rate": "9.51",
+      "claimed_amount": "28.67",
+      "approved_mu": "30.15",
+      "approved_rate": "9.51",
+      "approved_amount": "28.67"
+     },
+     "quote": "C.7 TPTCL – PEAK-2 Thermal 30.15 9.51 28.67 30.15 9.51 28.67",
+     "page": 242
+    },
+    {
+     "code": "C.8",
+     "label": "TPTCL - PPGCL - RTC-2 Thermal",
+     "cells": {
+      "approved_mu": "102.29",
+      "approved_rate": "5.57",
+      "approved_amount": "56.95"
+     },
+     "quote": "C.8 TPTCL - PPGCL - RTC-2 Thermal 102.29 5.57 56.95",
+     "page": 242
+    },
+    {
+     "code": "C.9",
+     "label": "EEPTPL - KFIL - PEAK-1 Thermal",
+     "cells": {
+      "approved_mu": "4.92",
+      "approved_rate": "9.32",
+      "approved_amount": "4.58"
+     },
+     "quote": "C.9 EEPTPL - KFIL - PEAK-1 Thermal 4.92 9.32 4.58",
+     "page": 242
+    },
+    {
+     "code": "C.10",
+     "label": "APPCPL - MSPDLC - PEAK-1 Thermal",
+     "cells": {
+      "approved_mu": "4.92",
+      "approved_rate": "9.32",
+      "approved_amount": "4.58"
+     },
+     "quote": "C.10 APPCPL - MSPDLC - PEAK-1 Thermal 4.92 9.32 4.58",
+     "page": 242
+    },
+    {
+     "code": "C.11",
+     "label": "EEPTPL - BALRAMPUR - RE- RTC Non-Solar",
+     "cells": {
+      "approved_mu": "26.43",
+      "approved_rate": "5.99",
+      "approved_amount": "15.83"
+     },
+     "quote": "C.11 EEPTPL - BALRAMPUR - RE- RTC Non-Solar 26.43 5.99 15.83",
+     "page": 242
+    },
+    {
+     "code": "C.12",
+     "label": "TPTCL - PPGCL - RTC-3 Thermal",
+     "cells": {
+      "approved_mu": "82.12",
+      "approved_rate": "5.94",
+      "approved_amount": "48.77"
+     },
+     "quote": "C.12 TPTCL - PPGCL - RTC-3 Thermal 82.12 5.94 48.77",
+     "page": 242
+    },
+    {
+     "code": "C.13",
+     "label": "TPTCL - PPGCL - PEAK-4 Thermal",
+     "cells": {
+      "approved_mu": "3.51",
+      "approved_rate": "9.39",
+      "approved_amount": "3.30"
+     },
+     "quote": "C.13 TPTCL - PPGCL - PEAK-4 Thermal 3.51 9.39 3.30",
+     "page": 242
+    },
+    {
+     "code": "C.14",
+     "label": "PTC - GOHP -RTC Hydro",
+     "cells": {
+      "approved_mu": "9.72",
+      "approved_rate": "5.57",
+      "approved_amount": "5.41"
+     },
+     "quote": "C.14 PTC - GOHP -RTC Hydro 9.72 5.57 5.41",
+     "page": 242
+    },
+    {
+     "code": "C.15",
+     "label": "APPCPL - ACB – RTC Thermal",
+     "cells": {
+      "approved_mu": "22.69",
+      "approved_rate": "5.57",
+      "approved_amount": "12.64"
+     },
+     "quote": "C.15 APPCPL - ACB – RTC Thermal 22.69 5.57 12.64",
+     "page": 242
+    },
+    {
+     "code": "C.16",
+     "label": "EEPTPL (OCL IRON & STEEL) Thermal",
+     "cells": {
+      "approved_mu": "23.44",
+      "approved_rate": "5.28",
+      "approved_amount": "12.38"
+     },
+     "quote": "C.16 EEPTPL (OCL IRON & STEEL) Thermal 23.44 5.28 12.38",
+     "page": 242
+    },
+    {
+     "code": "C.17",
+     "label": "PTC - AD HYDRO – RTC Hydro",
+     "cells": {
+      "approved_mu": "90.10",
+      "approved_rate": "5.28",
+      "approved_amount": "47.58"
+     },
+     "quote": "C.17 PTC - AD HYDRO – RTC Hydro 90.10 5.28 47.58",
+     "page": 242
+    },
+    {
+     "code": "C.18",
+     "label": "PTSL - ADANI WIND -RE RTC Wind",
+     "cells": {
+      "approved_mu": "42.13",
+      "approved_rate": "5.89",
+      "approved_amount": "24.82"
+     },
+     "quote": "C.18 PTSL - ADANI WIND -RE RTC Wind 42.13 5.89 24.82",
+     "page": 242
+    },
+    {
+     "code": "C.19",
+     "label": "EEPTPL - JAGANATH - RE RTC Biomass",
+     "cells": {
+      "approved_mu": "36.90",
+      "approved_rate": "5.67",
+      "approved_amount": "20.91"
+     },
+     "quote": "C.19 EEPTPL - JAGANATH - RE RTC Biomass 36.90 5.67 20.91",
+     "page": 242
+    },
+    {
+     "code": "C.20",
+     "label": "APPCPL - APRAAVA - RE RTC Wind",
+     "cells": {
+      "approved_mu": "15.81",
+      "approved_rate": "5.67",
+      "approved_amount": "8.96"
+     },
+     "quote": "C.20 APPCPL - APRAAVA - RE RTC Wind 15.81 5.67 8.96",
+     "page": 242
+    },
+    {
+     "code": "C.21",
+     "label": "APPCPL - PD SIKKIM - RE RTC Hydro",
+     "cells": {
+      "approved_mu": "59.40",
+      "approved_rate": "5.65",
+      "approved_amount": "33.53"
+     },
+     "quote": "C.21 APPCPL - PD SIKKIM - RE RTC Hydro 59.40 5.65 33.53",
+     "page": 242
+    },
+    {
+     "code": "C.22",
+     "label": "Exchange",
+     "cells": {
+      "approved_mu": "576.59",
+      "approved_rate": "5.00",
+      "approved_amount": "288.44"
+     },
+     "quote": "C.22 Exchange 576.59 5.00 288.44",
+     "page": 242
+    },
+    {
+     "code": "D",
+     "label": "Banking Power",
+     "cells": {
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "-",
+      "approved_mu": "-",
+      "approved_rate": "-",
+      "approved_amount": "-"
+     },
+     "quote": "D Banking Power - - - - - -",
+     "page": 242
+    },
+    {
+     "code": "E",
+     "label": "Power Procured from Renewable Sources",
+     "cells": {
+      "claimed_mu": "857.89",
+      "claimed_rate": "4.49",
+      "claimed_amount": "385.52",
+      "approved_mu": "857.30",
+      "approved_rate": "4.49",
+      "approved_amount": "385.20"
+     },
+     "quote": "E Power Procured from Renewable Sources 857.89 4.49 385.52 857.30 4.49 385.20",
+     "page": 242
+    },
+    {
+     "code": "E.1",
+     "label": "SJVNL (100 MW FDRE-based power) Non-Solar",
+     "cells": {
+      "claimed_mu": "568.86",
+      "claimed_rate": "4.77",
+      "claimed_amount": "271.16",
+      "approved_mu": "568.86",
+      "approved_rate": "4.77",
+      "approved_amount": "271.16"
+     },
+     "quote": "E.1 SJVNL (100 MW FDRE-based power) Non-Solar 568.86 4.77 271.16 568.86 4.77 271.16",
+     "page": 242
+    },
+    {
+     "code": "E.2",
+     "label": "PTC (LT Wind Power) Wind",
+     "cells": {
+      "claimed_mu": "33.95",
+      "claimed_rate": "3.65",
+      "claimed_amount": "12.38",
+      "approved_mu": "33.95",
+      "approved_rate": "3.65",
+      "approved_amount": "12.38"
+     },
+     "quote": "E.2 PTC (LT Wind Power) Wind 33.95 3.65 12.38 33.95 3.65 12.38",
+     "page": 242
+    },
+    {
+     "code": "E.3",
+     "label": "GNIDA (LT Solar Power) Solar",
+     "cells": {
+      "claimed_mu": "1.58",
+      "claimed_rate": "7.06",
+      "claimed_amount": "1.11",
+      "approved_mu": "1.58",
+      "approved_rate": "7.06",
+      "approved_amount": "1.11"
+     },
+     "quote": "E.3 GNIDA (LT Solar Power) Solar 1.58 7.06 1.11 1.58 7.06 1.11",
+     "page": 242
+    },
+    {
+     "code": "E.4",
+     "label": "ADANI (Solar Power) Solar",
+     "cells": {
+      "claimed_mu": "51.95",
+      "claimed_rate": "3.18",
+      "claimed_amount": "16.53",
+      "approved_mu": "51.95",
+      "approved_rate": "3.18",
+      "approved_amount": "16.53"
+     },
+     "quote": "E.4 ADANI (Solar Power) Solar 51.95 3.18 16.53 51.95 3.18 16.53",
+     "page": 242
+    },
+    {
+     "code": "E.5",
+     "label": "TATA (Solar Power) Solar",
+     "cells": {
+      "claimed_mu": "51.95",
+      "claimed_rate": "3.18",
+      "claimed_amount": "16.53",
+      "approved_mu": "51.95",
+      "approved_rate": "3.18",
+      "approved_amount": "16.53"
+     },
+     "quote": "E.5 TATA (Solar Power) Solar 51.95 3.18 16.53 51.95 3.18 16.53",
+     "page": 242
+    },
+    {
+     "code": "E.6",
+     "label": "APPCPL (LT Solar) Solar",
+     "cells": {
+      "claimed_mu": "0.59",
+      "claimed_rate": "5.49",
+      "claimed_amount": "0.32",
+      "approved_mu": "-",
+      "approved_rate": "-",
+      "approved_amount": "-"
+     },
+     "quote": "E.6 APPCPL (LT Solar) Solar 0.59 5.49 0.32 - - -",
+     "page": 242
+    },
+    {
+     "code": "E.7",
+     "label": "EEPTPL – Solar Solar",
+     "cells": {
+      "claimed_mu": "76.88",
+      "claimed_rate": "3.37",
+      "claimed_amount": "25.94",
+      "approved_mu": "76.88",
+      "approved_rate": "3.37",
+      "approved_amount": "25.94"
+     },
+     "quote": "E.7 EEPTPL – Solar Solar 76.88 3.37 25.94 76.88 3.37 25.94",
+     "page": 242
+    },
+    {
+     "code": "E.8",
+     "label": "EEPTPL – Non-Solar 1 Hydro",
+     "cells": {
+      "claimed_mu": "30.92",
+      "claimed_rate": "5.76",
+      "claimed_amount": "17.81",
+      "approved_mu": "30.92",
+      "approved_rate": "5.76",
+      "approved_amount": "17.81"
+     },
+     "quote": "E.8 EEPTPL – Non-Solar 1 Hydro 30.92 5.76 17.81 30.92 5.76 17.81",
+     "page": 242
+    },
+    {
+     "code": "E.9",
+     "label": "EEPTPL – Non-Solar 2 Hydro",
+     "cells": {
+      "claimed_mu": "41.23",
+      "claimed_rate": "5.76",
+      "claimed_amount": "23.74",
+      "approved_mu": "41.23",
+      "approved_rate": "5.76",
+      "approved_amount": "23.74"
+     },
+     "quote": "E.9 EEPTPL – Non-Solar 2 Hydro 41.23 5.76 23.74 41.23 5.76 23.74",
+     "page": 242
+    },
+    {
+     "code": "F",
+     "label": "Sub Total-Import to NPCL",
+     "cells": {
+      "claimed_mu": "4,875.76",
+      "claimed_rate": "5.15",
+      "claimed_amount": "2,510.48",
+      "approved_mu": "4,729.49",
+      "approved_rate": "5.24",
+      "approved_amount": "2,477.36"
+     },
+     "quote": "F Sub Total-Import to NPCL 4,875.76 5.15 2,510.48 4,729.49 5.24 2,477.36",
+     "page": 242
+    },
+    {
+     "code": "G",
+     "label": "Adjustment-Sale @ IEX",
+     "cells": {
+      "claimed_mu": "(121.89)",
+      "claimed_rate": "4.90",
+      "claimed_amount": "(59.72)",
+      "approved_mu": "-",
+      "approved_rate": "-",
+      "approved_amount": "-"
+     },
+     "quote": "G Adjustment-Sale @ IEX (121.89) 4.90 (59.72) - - -",
+     "page": 242
+    },
+    {
+     "code": "H",
+     "label": "DSM / UI",
+     "cells": {
+      "claimed_mu": "(24.38)",
+      "claimed_rate": "1.00",
+      "claimed_amount": "(2.44)",
+      "approved_mu": "-",
+      "approved_rate": "-",
+      "approved_amount": "-"
+     },
+     "quote": "H DSM / UI (24.38) 1.00 (2.44) - - -",
+     "page": 243
+    },
+    {
+     "code": null,
+     "label": "Sub Total of (G and H)",
+     "cells": {
+      "claimed_amount": "(62.16)",
+      "approved_amount": "-"
+     },
+     "quote": "Sub Total of (G and H) (62.16) -",
+     "page": 243
+    },
+    {
+     "code": null,
+     "label": "Sub Total of Power Purchase Cost",
+     "cells": {
+      "claimed_amount": "2,448.32",
+      "approved_amount": "2,477.36"
+     },
+     "quote": "Sub Total of Power Purchase Cost 2,448.32 2,477.36",
+     "page": 243
+    },
+    {
+     "code": "I",
+     "label": "GNA & TGNA Charges",
+     "cells": {
+      "claimed_amount": "257.21",
+      "approved_amount": "257.21"
+     },
+     "quote": "I GNA & TGNA Charges 257.21 257.21",
+     "page": 243
+    },
+    {
+     "code": "J",
+     "label": "UPPTCL Charges",
+     "cells": {
+      "claimed_amount": "188.50",
+      "approved_amount": "223.88"
+     },
+     "quote": "J UPPTCL Charges 188.50 223.88",
+     "page": 243
+    },
+    {
+     "code": "K",
+     "label": "UPSLDC Charges and Application Charges",
+     "cells": {
+      "claimed_amount": "0.65",
+      "approved_amount": "0.40"
+     },
+     "quote": "K UPSLDC Charges and Application Charges 0.65 0.40",
+     "page": 243
+    },
+    {
+     "code": null,
+     "label": "Sub Total-Transmission and SLDC Charges",
+     "cells": {
+      "claimed_amount": "446.36",
+      "approved_amount": "481.49"
+     },
+     "quote": "Sub Total-Transmission and SLDC Charges 446.36 481.49",
+     "page": 243
+    },
+    {
+     "code": null,
+     "label": "Grand Total",
+     "cells": {
+      "claimed_mu": "4,729.49",
+      "claimed_rate": "6.12",
+      "claimed_amount": "2,894.69",
+      "approved_mu": "4,729.49",
+      "approved_rate": "6.26",
+      "approved_amount": "2,958.85"
+     },
+     "quote": "Grand Total 4,729.49 6.12 2,894.69 4,729.49 6.26 2,958.85",
+     "page": 243
+    }
+   ],
+   "arithmetic": [
+    {
+     "side": "claimed",
+     "check": "A: amount = MU × rate",
+     "printed": "534.39",
+     "computed": "534.89",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "B: amount = MU × rate",
+     "printed": "780.04",
+     "computed": "779.40",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "B.1: amount = MU × rate",
+     "printed": "370.66",
+     "computed": "371.12",
+     "result": "differs"
+    },
+    {
+     "side": "claimed",
+     "check": "B.2: amount = MU × rate",
+     "printed": "103.09",
+     "computed": "103.05",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "B.3: amount = MU × rate",
+     "printed": "101.60",
+     "computed": "101.66",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "B.4: amount = MU × rate",
+     "printed": "103.09",
+     "computed": "103.05",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "B.5: amount = MU × rate",
+     "printed": "101.60",
+     "computed": "101.66",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C: amount = MU × rate",
+     "printed": "810.23",
+     "computed": "810.57",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C.1: amount = MU × rate",
+     "printed": "258.03",
+     "computed": "258.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C.2: amount = MU × rate",
+     "printed": "83.61",
+     "computed": "83.57",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C.3: amount = MU × rate",
+     "printed": "158.45",
+     "computed": "158.26",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C.4: amount = MU × rate",
+     "printed": "167.74",
+     "computed": "167.70",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C.5: amount = MU × rate",
+     "printed": "105.76",
+     "computed": "105.71",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C.6: amount = MU × rate",
+     "printed": "8.26",
+     "computed": "8.27",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C.7: amount = MU × rate",
+     "printed": "28.67",
+     "computed": "28.67",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E: amount = MU × rate",
+     "printed": "385.52",
+     "computed": "385.19",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.1: amount = MU × rate",
+     "printed": "271.16",
+     "computed": "271.35",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.2: amount = MU × rate",
+     "printed": "12.38",
+     "computed": "12.39",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.3: amount = MU × rate",
+     "printed": "1.11",
+     "computed": "1.12",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.4: amount = MU × rate",
+     "printed": "16.53",
+     "computed": "16.52",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.5: amount = MU × rate",
+     "printed": "16.53",
+     "computed": "16.52",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.6: amount = MU × rate",
+     "printed": "0.32",
+     "computed": "0.32",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.7: amount = MU × rate",
+     "printed": "25.94",
+     "computed": "25.91",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.8: amount = MU × rate",
+     "printed": "17.81",
+     "computed": "17.81",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "E.9: amount = MU × rate",
+     "printed": "23.74",
+     "computed": "23.75",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "F: amount = MU × rate",
+     "printed": "2510.48",
+     "computed": "2511.02",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "G: amount = MU × rate",
+     "printed": "-59.72",
+     "computed": "-59.73",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "H: amount = MU × rate",
+     "printed": "-2.44",
+     "computed": "-2.44",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Grand Total: amount = MU × rate",
+     "printed": "2894.69",
+     "computed": "2894.45",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "B = B.1 + B.2 + B.3 + B.4 + B.5",
+     "printed": "780.04",
+     "computed": "780.04",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "C = C.1 + C.2 + C.3 + C.4 + C.5 + C.6 + C.7 + C.8 + C.9 + C.10 + C.11 + C.12 + C.13 + C.14 + C.15 + C.16 + C.17 + C.18 + C.19 + C.20 + C.21 + C.22",
+     "printed": "810.23",
+     "computed": "810.52",
+     "difference": "-0.29",
+     "result": "differs"
+    },
+    {
+     "side": "claimed",
+     "check": "E = E.1 + E.2 + E.3 + E.4 + E.5 + E.6 + E.7 + E.8 + E.9",
+     "printed": "385.52",
+     "computed": "385.52",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "F = A + B + C + D + E",
+     "printed": "2510.48",
+     "computed": "2510.18",
+     "difference": "0.30",
+     "result": "differs"
+    },
+    {
+     "side": "claimed",
+     "check": "F = A + B + C + D + E",
+     "printed": "4875.76",
+     "computed": "4875.76",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Sub Total of (G and H) = G + H",
+     "printed": "-62.16",
+     "computed": "-62.16",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Sub Total of Power Purchase Cost = F + G + H",
+     "printed": "2448.32",
+     "computed": "2448.32",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Sub Total-Transmission and SLDC Charges = I + J + K",
+     "printed": "446.36",
+     "computed": "446.36",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Grand Total = Sub Total of Power Purchase Cost + Sub Total-Transmission and SLDC Charges",
+     "printed": "2894.69",
+     "computed": "2894.68",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "A: amount = MU × rate",
+     "printed": "580.74",
+     "computed": "581.24",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "B: amount = MU × rate",
+     "printed": "780.04",
+     "computed": "779.40",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "B.1: amount = MU × rate",
+     "printed": "370.66",
+     "computed": "370.46",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "B.2: amount = MU × rate",
+     "printed": "103.09",
+     "computed": "103.05",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "B.3: amount = MU × rate",
+     "printed": "101.60",
+     "computed": "101.66",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "B.4: amount = MU × rate",
+     "printed": "103.09",
+     "computed": "103.05",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "B.5: amount = MU × rate",
+     "printed": "101.60",
+     "computed": "101.66",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C: amount = MU × rate",
+     "printed": "731.38",
+     "computed": "731.77",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.5: amount = MU × rate",
+     "printed": "105.76",
+     "computed": "105.71",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.6: amount = MU × rate",
+     "printed": "8.26",
+     "computed": "8.27",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.7: amount = MU × rate",
+     "printed": "28.67",
+     "computed": "28.67",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.8: amount = MU × rate",
+     "printed": "56.95",
+     "computed": "56.98",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.9: amount = MU × rate",
+     "printed": "4.58",
+     "computed": "4.59",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.10: amount = MU × rate",
+     "printed": "4.58",
+     "computed": "4.59",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.11: amount = MU × rate",
+     "printed": "15.83",
+     "computed": "15.83",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.12: amount = MU × rate",
+     "printed": "48.77",
+     "computed": "48.78",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.13: amount = MU × rate",
+     "printed": "3.30",
+     "computed": "3.30",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.14: amount = MU × rate",
+     "printed": "5.41",
+     "computed": "5.41",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.15: amount = MU × rate",
+     "printed": "12.64",
+     "computed": "12.64",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.16: amount = MU × rate",
+     "printed": "12.38",
+     "computed": "12.38",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.17: amount = MU × rate",
+     "printed": "47.58",
+     "computed": "47.57",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.18: amount = MU × rate",
+     "printed": "24.82",
+     "computed": "24.81",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.19: amount = MU × rate",
+     "printed": "20.91",
+     "computed": "20.92",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.20: amount = MU × rate",
+     "printed": "8.96",
+     "computed": "8.96",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.21: amount = MU × rate",
+     "printed": "33.53",
+     "computed": "33.56",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C.22: amount = MU × rate",
+     "printed": "288.44",
+     "computed": "288.30",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E: amount = MU × rate",
+     "printed": "385.20",
+     "computed": "384.93",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E.1: amount = MU × rate",
+     "printed": "271.16",
+     "computed": "271.35",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E.2: amount = MU × rate",
+     "printed": "12.38",
+     "computed": "12.39",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E.3: amount = MU × rate",
+     "printed": "1.11",
+     "computed": "1.12",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E.4: amount = MU × rate",
+     "printed": "16.53",
+     "computed": "16.52",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E.5: amount = MU × rate",
+     "printed": "16.53",
+     "computed": "16.52",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E.7: amount = MU × rate",
+     "printed": "25.94",
+     "computed": "25.91",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E.8: amount = MU × rate",
+     "printed": "17.81",
+     "computed": "17.81",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E.9: amount = MU × rate",
+     "printed": "23.74",
+     "computed": "23.75",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "F: amount = MU × rate",
+     "printed": "2477.36",
+     "computed": "2478.25",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Grand Total: amount = MU × rate",
+     "printed": "2958.85",
+     "computed": "2960.66",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "B = B.1 + B.2 + B.3 + B.4 + B.5",
+     "printed": "780.04",
+     "computed": "780.04",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "C = C.1 + C.2 + C.3 + C.4 + C.5 + C.6 + C.7 + C.8 + C.9 + C.10 + C.11 + C.12 + C.13 + C.14 + C.15 + C.16 + C.17 + C.18 + C.19 + C.20 + C.21 + C.22",
+     "printed": "731.38",
+     "computed": "731.37",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "E = E.1 + E.2 + E.3 + E.4 + E.5 + E.6 + E.7 + E.8 + E.9",
+     "printed": "385.20",
+     "computed": "385.20",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "F = A + B + C + D + E",
+     "printed": "2477.36",
+     "computed": "2477.36",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "F = A + B + C + D + E",
+     "printed": "4729.49",
+     "computed": "4729.49",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Sub Total of (G and H) = G + H",
+     "printed": "0",
+     "computed": "0",
+     "difference": "0",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Sub Total of Power Purchase Cost = F + G + H",
+     "printed": "2477.36",
+     "computed": "2477.36",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Sub Total-Transmission and SLDC Charges = I + J + K",
+     "printed": "481.49",
+     "computed": "481.49",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved",
+     "check": "Grand Total = Sub Total of Power Purchase Cost + Sub Total-Transmission and SLDC Charges",
+     "printed": "2958.85",
+     "computed": "2958.85",
+     "difference": "0.00",
+     "result": "match"
+    }
+   ],
+   "against_format": [
+    {
+     "row": "Sub Total of Power Purchase Cost",
+     "cells": [
+      "ARR!M20",
+      "ARR!M21",
+      "ARR!M22"
+     ],
+     "printed": "2448.32",
+     "format": "2448.33",
+     "result": "differs"
+    },
+    {
+     "row": "Sub Total-Transmission and SLDC Charges",
+     "cells": [
+      "ARR!M23",
+      "ARR!M24"
+     ],
+     "printed": "446.36",
+     "format": "446.36",
+     "result": "match"
+    }
+   ]
+  }
  ]
 }

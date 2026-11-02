@@ -349,6 +349,29 @@
     "order/figures-capital-fy2026-27.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A63",
+   "kind": "order against itself",
+   "title": "The order's power purchase table (6-35) prints NPCL's claimed short-term total as 810.23 where the petition has 810.53 and the order's own rows add to 810.52; and the claimed JITPL rate as 5.62 where its amount implies 5.61",
+   "detail": "Read by word position (blank cells make the text order ambiguous), Table 6-35's approved side is consistent throughout (every amount = MU × rate within rounding, every subtotal = its parts).  On the claimed side: the short-term subtotal C is printed 810.23, its seven rows add to 810.52 and NPCL's PPC FY 27 carries 810.53 (M31); the import total F (2,510.48) is the petition's, so the 810.23 reads as a transcription slip (which also makes F appear 0.30 off its parts); and B.1 (JITPL) prints a claimed rate of 5.62 against an amount, 370.66, that implies 5.61 — the approved side prints 5.61.  Neither touches the approval.  For the reviewer.",
+   "where": [
+    "Tariff order FY2026-27 pp.242–243 Table 6-35",
+    "PPC FY 27 M31, N45",
+    "order-decisions.json (source_tables)"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A64",
+   "kind": "decision explained",
+   "title": "Power purchase +29.04 and transmission +35.13 for FY2026-27: DIL priced at its trued-up tariff, the short-term mix replaced by the contracts the Commission approved and the exchange, the surplus sale and DSM not allowed, UPPTCL at its own tariff order",
+   "detail": "From Table 6-35 read by position (51 rows, the approved side's arithmetic 100 %): long-term DIL +46.35 — the same 1,188.64 MU at a landed 4.89 Rs/kWh against 4.50, the Commission taking DIL's normative auxiliary consumption and ex-bus fixed and energy charges for FY2023-24 from its true-up order of 20.03.2026 (para 6.5.38, Table 6-26); short-term −79.14 — NPCL's trader and exchange blocks (1,246.64 MU) replaced by the short-term agreements the Commission approved in its orders on Petitions 2341/2025 and 2339/2025 (751.49 MU with TPTCL's, Table 6-33) and 617.63 MU from the exchange at 4.67 Rs/kWh, the fourteen-month IEX DAM average (para 6.5.51) — 576.59 MU at NPCL's periphery after the ISTS 3.58 % and intra-state 3.18 % losses, so the table's 5.00 Rs/kWh is per periphery unit; renewable −0.32 (APPCPL's LT solar not approved); the sale at IEX (−59.72) and DSM (−2.44) not allowed, to be settled at true-up (paras 6.5.52–6.5.53): +62.16.  Transmission: UPPTCL 223.88 against 188.50 (+35.38) at UPPTCL's own tariff order (para 6.5.55), SLDC −0.25.  For the next petition: price DIL at the trued-up tariff, plan short-term purchases from approved agreements, and leave the surplus sale and DSM to true-up.",
+   "where": [
+    "Tariff order FY2026-27 pp.233–243, Tables 6-26, 6-33, 6-34, 6-35, paras 6.5.38, 6.5.51–6.5.55",
+    "order-decisions.json (source_tables)"
+   ],
+   "for": "petitioner"
   }
  ]
 }

@@ -315,5 +315,140 @@
     }
    ]
   }
+ ],
+ "source_tables": [
+  {
+   "proceeding": "arr",
+   "fiscal_year": "FY2026-27",
+   "title": "TABLE 6-35 POWER PURCHASE COST APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.)",
+   "pages": [
+    242,
+    243
+   ],
+   "start": "Amount",
+   "stop": "6.6. OPERATION",
+   "anchors": "the page's two 'MUs' and two 'Amount' header words (claimed left, approved right); the rate column midway",
+   "sums": [
+    {
+     "total": "B",
+     "parts": [
+      "B.1",
+      "B.2",
+      "B.3",
+      "B.4",
+      "B.5"
+     ]
+    },
+    {
+     "total": "C",
+     "parts": [
+      "C.1",
+      "C.2",
+      "C.3",
+      "C.4",
+      "C.5",
+      "C.6",
+      "C.7",
+      "C.8",
+      "C.9",
+      "C.10",
+      "C.11",
+      "C.12",
+      "C.13",
+      "C.14",
+      "C.15",
+      "C.16",
+      "C.17",
+      "C.18",
+      "C.19",
+      "C.20",
+      "C.21",
+      "C.22"
+     ]
+    },
+    {
+     "total": "E",
+     "parts": [
+      "E.1",
+      "E.2",
+      "E.3",
+      "E.4",
+      "E.5",
+      "E.6",
+      "E.7",
+      "E.8",
+      "E.9"
+     ]
+    },
+    {
+     "total": "F",
+     "parts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+     ]
+    },
+    {
+     "total": "F",
+     "parts": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+     ],
+     "field": "mu"
+    },
+    {
+     "total": "Sub Total of (G and H)",
+     "parts": [
+      "G",
+      "H"
+     ]
+    },
+    {
+     "total": "Sub Total of Power Purchase Cost",
+     "parts": [
+      "F",
+      "G",
+      "H"
+     ]
+    },
+    {
+     "total": "Sub Total-Transmission and SLDC Charges",
+     "parts": [
+      "I",
+      "J",
+      "K"
+     ]
+    },
+    {
+     "total": "Grand Total",
+     "parts": [
+      "Sub Total of Power Purchase Cost",
+      "Sub Total-Transmission and SLDC Charges"
+     ]
+    }
+   ],
+   "format": [
+    {
+     "row": "Sub Total of Power Purchase Cost",
+     "cells": [
+      "ARR!M20",
+      "ARR!M21",
+      "ARR!M22"
+     ]
+    },
+    {
+     "row": "Sub Total-Transmission and SLDC Charges",
+     "cells": [
+      "ARR!M23",
+      "ARR!M24"
+     ]
+    }
+   ]
+  }
  ]
 }
