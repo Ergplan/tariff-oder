@@ -325,3 +325,26 @@ def test_clause_candidates_propose_pages_and_never_verify(tmp_path):
     assert css and css[0]["page"] == 2
     assert all(not x.clause.verified for x in load_rules("UPERC"))
     json.dumps(out)
+
+
+def test_clause_candidates_from_the_notified_2025_regulations():
+    """Real document: the UPERC MYT Distribution Regulations 2025 (English text, hashed in the
+    manifest).  The candidates file proposes, for the rules whose value the clause states, the
+    page that states it — and verifies nothing."""
+    import hashlib
+    import json
+
+    pkg = ROOT_SCRIPTS.parent / "packages"
+    man = json.loads((pkg / "regulations" / "uperc" / "manifest.json").read_text())
+    (doc,) = man["documents"]
+    pdf = pkg / "regulations" / "uperc" / doc["file"]
+    assert hashlib.sha256(pdf.read_bytes()).hexdigest() == doc["sha256"]
+    cands = json.loads((pkg / "arr-rules" / "uperc" / "candidates" / "myt-2025.json").read_text())
+    assert cands["sha256"] == doc["sha256"] and "none verified" in cands["status"]
+    first = {rid: (c[0]["page"], c[0]["values"]) for rid, c in cands["rules"].items() if c}
+    assert first["uperc.myt2025.roe"] == (31, ["15%"])
+    assert first["uperc.rm2025.total"] == (43, ["3%", "5%"])
+    assert first["uperc.baddebts.cap"] == (45, ["2%"])
+    assert first["uperc.oa.css"] == (48, ["20%"])
+    assert "uperc.myt2019.roe" not in cands["rules"]  # a 2019-only rule is not offered the 2025 text
+    assert all(not r.clause.verified for r in load_rules("UPERC"))

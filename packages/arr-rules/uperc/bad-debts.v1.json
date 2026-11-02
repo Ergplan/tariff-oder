@@ -314,7 +314,8 @@
     "mode": "half_up",
     "feeds": "unrounded"
    },
-   "examples": []
+   "examples": [],
+   "note": "the candidate clause (2025 Regulations p.45) caps at 2 % of revenue from the sale of electricity in the audited accounts; this draft follows P3's 2 % of receivables (A52) — to be decided when the clause is verified"
   },
   {
    "id": "uperc.baddebts.loss_reduction",

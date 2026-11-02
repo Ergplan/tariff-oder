@@ -1005,6 +1005,31 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 90 (2026-11-02): the notified MYT Distribution Regulations 2025, read for
+  clause candidates.**  The operator uploaded `NotifiedMYTDistribution2025.rar` (SHA-256
+  `547d1e17…062c`).  It is a RAR5 archive: Debian's 7-Zip lacks the codec, so it was extracted
+  with bsdtar into its own folder as untrusted data, text only.  It holds the English text (58
+  pages, text layer), the Gazette notification (Hindi), the Hindi text and the Statement of
+  Reasons (66 pages, scanned, no text).  The English text is committed as
+  `packages/regulations/uperc/myt-distribution-2025-english.pdf` with a manifest (hash,
+  provenance, what was not committed).  The candidates tool gained `--applies-in` (only the rules
+  in force that year — a 2019-only rule is not offered the 2025 text) and was run for
+  FY2025-26: **108 of 151 rules have candidate pages from the regulation itself.**  RoE 15 %
+  post-tax → p.31 (Reg. 19 equity base); R&M 5 % / 3 % of opening GFA → p.43; the five-year
+  base for employee cost → p.42; bad debts → p.45; the cross-subsidy surcharge → p.48.  The
+  regulation has no contingency-reserve provision (the word does not occur), consistent with NPCL
+  claiming it only in the 2019-regime true-up years.  **Reading the candidates beside the draft
+  rules found two departures, for the reviewer:**
+  - **A51:** the 2025 Regulations cap the surcharge at 20 % of the *average cost of supply*;
+    F33, and the draft that follows it, cap at 20 % of the category's ABR, though F33's own
+    header says ACoS.  No numerical effect this year.
+  - **A52:** bad debts are capped at 2 % of *revenue from the sale of electricity in the
+    audited accounts*; P3 and the draft take 2 % of receivables.  No effect this year.
+
+  The drafts are not changed, only annotated: amending a rule to its clause comes with
+  verifying the clause, a person's act.  Still to obtain: the 2019 MYT Regulations, for the
+  true-up years' rules.  Nothing verified, nothing approved.
+
   **Increment 89 (2026-11-02): clause candidates — proposals for the reviewer, never
   verification.**  The 160 draft rules wait on a person verifying each clause against the
   regulation.  `tariff_api.arr.clauses` ranks a document's pages for a rule: each distinct
@@ -2218,6 +2243,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 90 (2026-11-02): 436 passed** (+1 unit: the real 2025 Regulations — hash as in the manifest; RoE → p.31 with 15 %, R&M → p.43, bad debts → p.45, surcharge → p.48; a 2019-only rule not offered the 2025 text; nothing verified).  Ruff and format clean.
 - **Increment 89 (2026-11-02): 435 passed** (+1 unit: pages ranked for a rule, the value-and-words page first, words alone or a bare number not proposed; the CLI on a PDF made in the test writes proposals with the hash and verifies nothing; the integration test checks the rules carry their candidates).  Ruff, format and web typecheck clean.
 - **Increment 88 (2026-11-02): 434 passed** (the end-to-end test checks the true-up capitalisation from its schemes, 4 / 4).  Ruff and format clean.
 - **Increment 87 (2026-11-01): 434 passed** (+1 integration: the draft queries are Markdown, labelled a draft, with the petitioner's questions by id and the Commission's points apart; unknown filing 404).  Ruff, format, contracts (regenerated) and web typecheck clean.
@@ -2498,7 +2524,8 @@ entries below are the per-increment history.**
   4. **Reviewer:** verify the rules' clauses against the UPERC MYT Regulations 2019 and 2025, and
      approve or amend each rule.  No rule can be approved by the build; until then nothing is
      `filing_ready`.
-  5. **Operator:** download the official UPERC MYT Regulations (Distribution 2025; 2019) and run
+  5. **Operator:** the 2025 Distribution Regulations are in (increment 90); still to provide: the
+     2019 MYT Regulations.  For each, run
      `scripts/clause_candidates.py` on each (increment 89) — the reviewer verifies with the pages in hand.
   5a. **Operator:** provide the Commission's list of mandatory formats (the UPERC MYT
      Regulations' appendix), so completeness is measured against it, not the petitioner's index.

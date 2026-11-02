@@ -1,0 +1,3206 @@
+{
+ "status": "proposals for the reviewer — none verified; a clause is verified only by a person reading the page",
+ "regulation_pdf": "myt-distribution-2025-english.pdf",
+ "kind": "regulation — UPERC (Multi Year Tariff for Distribution) Regulations, 2025, English text as notified",
+ "sha256": "b167338dbaae200643e58425109f0da4f152b8dbfb915a337f11ecbad607847d",
+ "pages": 58,
+ "pages_with_text": 58,
+ "cites": "",
+ "applies_in": "FY2025-26",
+ "rules": {
+  "uperc.alloc.wheeling": [],
+  "uperc.alloc.supply": [
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "business",
+     "retail",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…enses 41 34 Provision for Write-off of Bad and Doubtful Debts 45 35 Non-Tariff Income 45 36 Income from Other Business 47 37 Cross-Subsidy Surcharge 47 38 Additional Surcharge 48 39 Wheeling Charges 48 40 Other Charges 4…"
+   },
+   {
+    "page": 4,
+    "score": 3,
+    "words": [
+     "business",
+     "retail",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…ed from time to time; (3) “Aggregate Revenue Requirement” or “ARR” means the costs pertaining to the licensed business which are permitted, in accordance with these Regulations, to be recovered from the Tariff determined…"
+   },
+   {
+    "page": 7,
+    "score": 3,
+    "words": [
+     "business",
+     "retail",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…dicial body; (18) \"Licence\" means a licence granted under clause (b) of Section 14 of the Act; (19) “Licensed Business” means the functions and activities, which the Licensee is required to undertake in terms of the Lice…"
+   }
+  ],
+  "uperc.arr.employee_net": [],
+  "uperc.arr.om": [
+   {
+    "page": 2,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…ee 37 30 Sales forecast 38 31 Distribution Loss 39 32 Capital Investment Plan 39 33 Operation and Maintenance Expenses 41 34 Provision for Write-off of Bad and Doubtful Debts 45 35 Non-Tariff Income 45 36 Income from Oth…"
+   },
+   {
+    "page": 12,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…e Commission shall carry out Truing-Up exercise stipulated in the provisions of these Regulations. True-Up of expenses and revenue shall be on the basis of approved and actual expenses, revenue, etc., based on the pruden…"
+   },
+   {
+    "page": 14,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…-State Transmission charges and losses (f) Variation in interest rates for long-term loans; and (g) Any other expenses allowed by the Commission 9.2 The “Controllable Factors” shall include, but shall not be limited to t…"
+   }
+  ],
+  "uperc.arr.expenditure": [
+   {
+    "page": 1,
+    "score": 1,
+    "words": [
+     "expenditure"
+    ],
+    "values": [],
+    "snippet": "…nd Power Purchase Adjustment Surcharge 20 PART C: FINANCIAL PRINCIPLES 24 17 Financial Prudence 24 18 Capital Expenditure/ Cost and Capital Structure 26 19 Debt-Equity 28 20 Depreciation 29 21 Return on Equity 31 22 Inte…"
+   },
+   {
+    "page": 14,
+    "score": 1,
+    "words": [
+     "expenditure"
+    ],
+    "values": [],
+    "snippet": "…t be limited to the following: (a) Variation in Distribution and commercial losses; (b) Variations in capital expenditure on account of time and/ or cost overruns not attributable to an approved change in the scope of su…"
+   },
+   {
+    "page": 24,
+    "score": 1,
+    "words": [
+     "expenditure"
+    ],
+    "values": [],
+    "snippet": "…Commission shall assess the financial prudence with regard to the following factors: (a) Revenues (b) Capital expenditure/ cost (c) Other expenditures Provided that the Commission may disallow a part of the ARR due to in…"
+   }
+  ],
+  "uperc.arr.deductions": [],
+  "uperc.arr.net_arr": [
+   {
+    "page": 3,
+    "score": 3,
+    "words": [
+     "annual",
+     "requirement",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…ble to Distribution Licensees, and their successors for determination of Aggregate Revenue Requirement (ARR), Annual Performance Review (APR), Tariff, True-Up and related matters covered under these Regulations from Apri…"
+   },
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "annual",
+     "requirement",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…f Order and also the directives given in earlier Tariff Orders pending compliance, along with the Petition. 7 Annual Performance Review Petition 7.1 The Licensee shall file Petition for Annual Performance Review (APR) as…"
+   }
+  ],
+  "uperc.arr.gap": [
+   {
+    "page": 19,
+    "score": 3,
+    "words": [
+     "excess",
+     "shortfall",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…tion in the quantum of power procured from source(s) other than the previously approved source(s), that is in excess of 5% of the total annual quantum as approved by the Commission, shall require its prior approval. Prov…"
+   }
+  ],
+  "uperc.arr.gap_revised": [
+   {
+    "page": 19,
+    "score": 3,
+    "words": [
+     "excess",
+     "shortfall",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…tion in the quantum of power procured from source(s) other than the previously approved source(s), that is in excess of 5% of the total annual quantum as approved by the Commission, shall require its prior approval. Prov…"
+   }
+  ],
+  "uperc.arr.gap_subsidy": [],
+  "uperc.arr.unrecovered": [
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "carrying",
+     "cost",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…2 Provided further that if the True-Up Petition is not submitted within timelines given in Regulation 4.1, no carrying cost for the period of delay shall be allowed for the gap arrived for the true-up year. However, in c…"
+   },
+   {
+    "page": 35,
+    "score": 3,
+    "words": [
+     "carrying",
+     "cost",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…aid or payable by the Licensee, if any, and shall submit them to the Commission along with its Petition. 27.3 Carrying cost for the ARR gap of the Distribution Licensee will be provided by the Commission after prudence c…"
+   }
+  ],
+  "uperc.arr.carrying": [
+   {
+    "page": 24,
+    "score": 6,
+    "words": [
+     "cost"
+    ],
+    "values": [
+     "75%"
+    ],
+    "snippet": "…ded that the assessment of sales for the unmetered consumers, if any (except LMV-5) shall be done considering 75% of consumption/ kW/ month of the metered consumers within the same category or sub-category, or any other…"
+   },
+   {
+    "page": 48,
+    "score": 4,
+    "words": [
+     "asset",
+     "carrying",
+     "cost",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "…essed as a percentage applicable to the relevant voltage level; R is the per unit cost of carrying regulatory assets: Provided that in any case the Cross Subsidy Surcharge shall not exceed 20% of the Average Cost of Supp…"
+   },
+   {
+    "page": 1,
+    "score": 3,
+    "words": [
+     "cost",
+     "regulatory",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…hase Adjustment Surcharge 20 PART C: FINANCIAL PRINCIPLES 24 17 Financial Prudence 24 18 Capital Expenditure/ Cost and Capital Structure 26 19 Debt-Equity 28 20 Depreciation 29 21 Return on Equity 31 22 Interest on Long-…"
+   }
+  ],
+  "uperc.arr.cumulative": [],
+  "uperc.arr.revenue_gross": [
+   {
+    "page": 1,
+    "score": 4,
+    "words": [
+     "charges",
+     "miscellaneous",
+     "regulatory",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…-Equity 28 20 Depreciation 29 21 Return on Equity 31 22 Interest on Long- Term Loan 31 23 Banking and Finance Charges 32 24 Hedging Cost of Foreign Exchange Rate Variation (FERV) 32 25 Interest on Working Capital 32 26 T…"
+   },
+   {
+    "page": 20,
+    "score": 4,
+    "words": [
+     "charges",
+     "discount",
+     "regulatory",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…in the cost of power supplied to consumers, due to changes in Fuel cost, power purchase cost and transmission charges with reference to the cost of power supply approved by the Commission. (2) FPPAS shall be calculated a…"
+   },
+   {
+    "page": 21,
+    "score": 4,
+    "words": [
+     "discount",
+     "regulatory",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…g cost rate under these Regulations. (4) The monthly FPPAS shall not exceed +/-10% of RATE (net of regulatory discount, if any, approved by the Commission) or such other ceiling as may be stipulated by the Commission fro…"
+   }
+  ],
+  "uperc.arr.receipts": [
+   {
+    "page": 35,
+    "score": 1,
+    "words": [
+     "receipts"
+    ],
+    "values": [],
+    "snippet": "…invest the revenue surplus in risk free securities such as RBI bonds, Government Securities or fixed deposit receipts of Scheduled banks only."
+   },
+   {
+    "page": 46,
+    "score": 1,
+    "words": [
+     "receipts"
+    ],
+    "values": [],
+    "snippet": "…sale of tender documents; n) Excess found on physical verification; o) Prior Period Income; p) Miscellaneous receipts; and q) Any other Non-Tariff Income: 35.3 The Non-Tariff Income under item (l) above (income from adv…"
+   }
+  ],
+  "uperc.arr.acos": [
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "average",
+     "cost",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…n from time to time, shall be considered. 13.4 The peak demand (in MW) shall be determined by considering the average load factor, load diversity factor, seasonal variation factors for the last three years and the energy…"
+   },
+   {
+    "page": 17,
+    "score": 3,
+    "words": [
+     "average",
+     "cost",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…ll include the following: a) A quantitative forecast of the seasonal variation in the unrestricted base load, average load and peak load for electricity within its area of supply. b) An estimate of the optimum quantities…"
+   },
+   {
+    "page": 19,
+    "score": 3,
+    "words": [
+     "average",
+     "cost",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…tal annual quantum of power purchase approved by the Commission. 13.17 The Commission may impose a cap on the average rate of short/ medium/ long term power purchase. 14 Additional Power Procurement 14.1 The Distribution…"
+   }
+  ],
+  "uperc.arr.abr": [
+   {
+    "page": 33,
+    "score": 4,
+    "words": [
+     "average",
+     "excluding",
+     "rate",
+     "subsidy"
+    ],
+    "values": [],
+    "snippet": "…f Truing-Up for any year, simple interest on working capital shall be allowed at a rate equal to the weighted average SBI MCLR (1 Year) prevailing during the concerned Year plus 200 basis points. 25.3 Interest paid on co…"
+   },
+   {
+    "page": 5,
+    "score": 3,
+    "words": [
+     "average",
+     "billing",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…from or to each such Other Business together with a description of the basis of that charge; (5) “ABR” means average billing rate in Rs. /kWh determined as the sum product of total billed units and approved Tariff in ea…"
+   },
+   {
+    "page": 19,
+    "score": 3,
+    "words": [
+     "average",
+     "excluding",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…tal annual quantum of power purchase approved by the Commission. 13.17 The Commission may impose a cap on the average rate of short/ medium/ long term power purchase. 14 Additional Power Procurement 14.1 The Distribution…"
+   }
+  ],
+  "uperc.baddebts.billed": [],
+  "uperc.baddebts.closing": [],
+  "uperc.baddebts.collection": [],
+  "uperc.baddebts.ratio": [],
+  "uperc.baddebts.provision": [
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…al Investment Plan 39 33 Operation and Maintenance Expenses 41 34 Provision for Write-off of Bad and Doubtful Debts 45 35 Non-Tariff Income 45 36 Income from Other Business 47 37 Cross-Subsidy Surcharge 47 38 Additional…"
+   },
+   {
+    "page": 14,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…contractor, supplier or agency of the Distribution Licensee; (d) Provision for Write-off of Bad and Doubtful Debts; (e) Variation in performance parameters and standards specified; (f) Variation in interest on working c…"
+   },
+   {
+    "page": 36,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…rm Loan 90% 10% b) Other Interest & Finance charges 10% 90% Depreciation 90% 10% Provision for Bad & Doubtful debts 0% 100% Return on Equity 90% 10% Income Tax 90% 10% Non-Tariff Income 10% 90% Provided that the Commissi…"
+   }
+  ],
+  "uperc.baddebts.provision_closing": [
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…al Investment Plan 39 33 Operation and Maintenance Expenses 41 34 Provision for Write-off of Bad and Doubtful Debts 45 35 Non-Tariff Income 45 36 Income from Other Business 47 37 Cross-Subsidy Surcharge 47 38 Additional…"
+   },
+   {
+    "page": 14,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…contractor, supplier or agency of the Distribution Licensee; (d) Provision for Write-off of Bad and Doubtful Debts; (e) Variation in performance parameters and standards specified; (f) Variation in interest on working c…"
+   },
+   {
+    "page": 36,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…rm Loan 90% 10% b) Other Interest & Finance charges 10% 90% Depreciation 90% 10% Provision for Bad & Doubtful debts 0% 100% Return on Equity 90% 10% Income Tax 90% 10% Non-Tariff Income 10% 90% Provided that the Commissi…"
+   }
+  ],
+  "uperc.baddebts.claimed": [],
+  "uperc.baddebts.cap": [
+   {
+    "page": 45,
+    "score": 8,
+    "words": [
+     "debts",
+     "doubtful",
+     "regulations"
+    ],
+    "values": [
+     "2%"
+    ],
+    "snippet": "…icular year, the Commission may allow a provision for write-off of bad and doubtful debts up to the extent of 2% of revenue from the sale of electricity as reflected in the audited accounts of the Distribution Licensee f…"
+   },
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "regulations"
+    ],
+    "values": [],
+    "snippet": "…al Investment Plan 39 33 Operation and Maintenance Expenses 41 34 Provision for Write-off of Bad and Doubtful Debts 45 35 Non-Tariff Income 45 36 Income from Other Business 47 37 Cross-Subsidy Surcharge 47 38 Additional…"
+   },
+   {
+    "page": 14,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "regulations"
+    ],
+    "values": [],
+    "snippet": "…contractor, supplier or agency of the Distribution Licensee; (d) Provision for Write-off of Bad and Doubtful Debts; (e) Variation in performance parameters and standards specified; (f) Variation in interest on working c…"
+   }
+  ],
+  "uperc.baddebts.loss_reduction": [
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "loss",
+     "revenue",
+     "target"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 13 trajectory (taking into consideration AT&C Loss trajectory agreed by the State Government and approved by the Central Government under any National Scheme or Programme, i…"
+   },
+   {
+    "page": 40,
+    "score": 3,
+    "words": [
+     "loss",
+     "reduction",
+     "target"
+    ],
+    "values": [],
+    "snippet": "…d augmentation of its distribution network, meeting the requirement of load growth, reduction in distribution losses, improvement in the quality of supply, reliability, metering, reduction in congestion, etc. 32.5 The Di…"
+   }
+  ],
+  "uperc.baddebts.other_items": [
+   {
+    "page": 25,
+    "score": 4,
+    "words": [
+     "assets",
+     "loan",
+     "other",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…on's approval, detailed justification shall be submitted along with the Petition for True-Up. (f) Creation of assets in accordance with Capex Plan approved by the Commission and their retirement, replacement, or deletion…"
+   },
+   {
+    "page": 27,
+    "score": 4,
+    "words": [
+     "assets",
+     "gain",
+     "loan",
+     "loss"
+    ],
+    "values": [],
+    "snippet": "…e adjusted only against the debt component of the capital cost: Provided further that the capital cost of the assets forming part of the Project but not put to use or not in use shall be excluded from the capital cost: P…"
+   },
+   {
+    "page": 1,
+    "score": 3,
+    "words": [
+     "gain",
+     "loan",
+     "loss"
+    ],
+    "values": [],
+    "snippet": "…Performance Review Petition 12 8 ARR Petition 12 9 Controllable and Uncontrollable Factors 14 10 Treatment of Gains or Losses on account of Uncontrollable Factors 15 11 Treatment of Gains or Losses on account of Controll…"
+   }
+  ],
+  "uperc.capex.scheme": [],
+  "uperc.capex.schemes_total": [],
+  "uperc.capex.cwip_movement": [
+   {
+    "page": 25,
+    "score": 3,
+    "words": [
+     "capital",
+     "progress",
+     "work"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 25 17.4 The financial prudence with respect to capital expenditure shall be assessed in terms of the following parameters: (a) Whether projected capital expenditure and capi…"
+   },
+   {
+    "page": 33,
+    "score": 3,
+    "words": [
+     "capital",
+     "positive",
+     "work"
+    ],
+    "values": [],
+    "snippet": "…minus (iv) Amount held as security deposits from the Distribution System Users; Provided that if the working capital, determined based on the above formula, is positive, it shall be reduced by the amount of revenue surp…"
+   },
+   {
+    "page": 40,
+    "score": 3,
+    "words": [
+     "capital",
+     "reduction",
+     "work"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 40 32.3 The Capital Investment Plan shall be accompanied by such information, particulars and documents as may be required including but not limited to the information such…"
+   }
+  ],
+  "uperc.capex.capitalisation": [],
+  "uperc.capital.gross_block": [],
+  "uperc.capital.net_capitalisation": [],
+  "uperc.capital.debt_addition": [
+   {
+    "page": 46,
+    "score": 6,
+    "words": [
+     "loan"
+    ],
+    "values": [
+     "70%"
+    ],
+    "snippet": "…m advertisements) shall be shared between the Distribution Licensee and the consumers in the ratio of 30% and 70% respectively: Provided that the Licensee shall undertake asset monetisation study within six months from t…"
+   },
+   {
+    "page": 32,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ing-Up, the normative average loan of the concerned year shall be considered on the basis of the actual asset capitalisation approved by the Commission for the year. 23 Banking and Finance Charges The Banking & Finance c…"
+   }
+  ],
+  "uperc.capital.equity_addition": [
+   {
+    "page": 26,
+    "score": 7,
+    "words": [
+     "equity",
+     "normative"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…ing of funds up to actual COD: Provided also that IDC on a normative loan corresponding to excess equity over 30% of funds deployed shall be allowed only in cases where the actual infusion of equity on a pari-passu basis…"
+   },
+   {
+    "page": 29,
+    "score": 7,
+    "words": [
+     "equity",
+     "normative"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…to prudence check for the determination of Tariff: Provided that if the equity actually deployed is more than 30% of the capital cost, equity in excess of 30% shall be treated as normative loan for the Licensee for deter…"
+   }
+  ],
+  "uperc.capital.retired_gross_net": [
+   {
+    "page": 31,
+    "score": 4,
+    "words": [
+     "funded",
+     "grants",
+     "gross",
+     "part"
+    ],
+    "values": [],
+    "snippet": "…ation 19 at the rate of 15% post-tax per annum (hereinafter referred to as ‘Base Rate’): Provided that assets funded by Consumer Contribution / Deposit works, Capital Subsidies / Grants and corresponding Depreciation sha…"
+   },
+   {
+    "page": 30,
+    "score": 3,
+    "words": [
+     "funded",
+     "grants",
+     "part"
+    ],
+    "values": [],
+    "snippet": "…and 100% value of the assets shall be considered depreciable. (d) Depreciation shall not be allowed on assets funded by Consumer Contribution, Deposit works, Capital Subsidies and Grants. 20.2 In case of existing assets,…"
+   }
+  ],
+  "uperc.capital.retired_dep_net": [
+   {
+    "page": 28,
+    "score": 3,
+    "words": [
+     "accumulated",
+     "assets",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…follows: Net Value of Replaced Assets = OCRA – AD; Where; OCRA: Original Capital Cost of Replaced Assets: AD: Accumulated depreciation pertaining to the Replaced Assets Provided that in case the original capital cost of…"
+   },
+   {
+    "page": 29,
+    "score": 3,
+    "words": [
+     "assets",
+     "depreciation",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…he date of each investment. Provided that in case of retirement or replacement or deletion/ adjustment of the assets, the equity capital approved as mentioned above shall be reduced to the extent of 30% (or actual equity…"
+   }
+  ],
+  "uperc.capital.retired_wdv": [
+   {
+    "page": 29,
+    "score": 3,
+    "words": [
+     "assets",
+     "retired",
+     "value"
+    ],
+    "values": [],
+    "snippet": "…he date of each investment. Provided that in case of retirement or replacement or deletion/ adjustment of the assets, the equity capital approved as mentioned above shall be reduced to the extent of 30% (or actual equity…"
+   }
+  ],
+  "uperc.capital.retired_wdv_share": [],
+  "uperc.capital.loan_reduction": [
+   {
+    "page": 29,
+    "score": 9,
+    "words": [
+     "assets",
+     "loan",
+     "normative",
+     "retired"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…to prudence check for the determination of Tariff: Provided that if the equity actually deployed is more than 30% of the capital cost, equity in excess of 30% shall be treated as normative loan for the Licensee for deter…"
+   },
+   {
+    "page": 26,
+    "score": 7,
+    "words": [
+     "loan",
+     "normative"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…ing of funds up to actual COD: Provided also that IDC on a normative loan corresponding to excess equity over 30% of funds deployed shall be allowed only in cases where the actual infusion of equity on a pari-passu basis…"
+   },
+   {
+    "page": 46,
+    "score": 6,
+    "words": [
+     "loan"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…come from advertisements) shall be shared between the Distribution Licensee and the consumers in the ratio of 30% and 70% respectively: Provided that the Licensee shall undertake asset monetisation study within six month…"
+   }
+  ],
+  "uperc.capital.equity_reduction_2025": [
+   {
+    "page": 29,
+    "score": 9,
+    "words": [
+     "assets",
+     "equity",
+     "normative",
+     "retired"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…to prudence check for the determination of Tariff: Provided that if the equity actually deployed is more than 30% of the capital cost, equity in excess of 30% shall be treated as normative loan for the Licensee for deter…"
+   },
+   {
+    "page": 26,
+    "score": 7,
+    "words": [
+     "equity",
+     "normative"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…ing of funds up to actual COD: Provided also that IDC on a normative loan corresponding to excess equity over 30% of funds deployed shall be allowed only in cases where the actual infusion of equity on a pari-passu basis…"
+   },
+   {
+    "page": 28,
+    "score": 3,
+    "words": [
+     "assets",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…r Distribution) Regulations, 2025 28 (b) Battery Energy Storage System 1.0% 18.6 The impact of revaluation of assets shall be permitted provided it does not result in increase in Tariff of the Licensee: Provided that any…"
+   }
+  ],
+  "uperc.carried.fraction": [],
+  "uperc.contingency.contribution": [
+   {
+    "page": 28,
+    "score": 3,
+    "words": [
+     "contribution",
+     "fund",
+     "towards"
+    ],
+    "values": [],
+    "snippet": "…roved by the Commission under Regulation 18, after making appropriate adjustment of assets funded by Consumer Contribution/"
+   }
+  ],
+  "uperc.depreciation.gfa_closing": [
+   {
+    "page": 28,
+    "score": 3,
+    "words": [
+     "assets",
+     "closing",
+     "fixed"
+    ],
+    "values": [],
+    "snippet": "…r Distribution) Regulations, 2025 28 (b) Battery Energy Storage System 1.0% 18.6 The impact of revaluation of assets shall be permitted provided it does not result in increase in Tariff of the Licensee: Provided that any…"
+   },
+   {
+    "page": 31,
+    "score": 3,
+    "words": [
+     "assets",
+     "closing",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…h Regulation 19 at the rate of 15% post-tax per annum (hereinafter referred to as ‘Base Rate’): Provided that assets funded by Consumer Contribution / Deposit works, Capital Subsidies / Grants and corresponding Depreciat…"
+   }
+  ],
+  "uperc.depreciation.gfa_average": [
+   {
+    "page": 31,
+    "score": 3,
+    "words": [
+     "assets",
+     "average",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…h Regulation 19 at the rate of 15% post-tax per annum (hereinafter referred to as ‘Base Rate’): Provided that assets funded by Consumer Contribution / Deposit works, Capital Subsidies / Grants and corresponding Depreciat…"
+   },
+   {
+    "page": 48,
+    "score": 3,
+    "words": [
+     "assets",
+     "average",
+     "fixed"
+    ],
+    "values": [],
+    "snippet": "…essed as a percentage applicable to the relevant voltage level; R is the per unit cost of carrying regulatory assets: Provided that in any case the Cross Subsidy Surcharge shall not exceed 20% of the Average Cost of Supp…"
+   }
+  ],
+  "uperc.depreciation.gross": [],
+  "uperc.depreciation.acc_closing": [
+   {
+    "page": 28,
+    "score": 3,
+    "words": [
+     "accumulated",
+     "closing",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…follows: Net Value of Replaced Assets = OCRA – AD; Where; OCRA: Original Capital Cost of Replaced Assets: AD: Accumulated depreciation pertaining to the Replaced Assets Provided that in case the original capital cost of…"
+   }
+  ],
+  "uperc.depreciation.total": [],
+  "uperc.depreciation.rate_implied": [
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "check",
+     "format",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…enses and revenue shall be on the basis of approved and actual expenses, revenue, etc., based on the prudence check of Accounting Statements of the Licensee for the Financial Year. 6.3 The Distribution Licensee shall ens…"
+   },
+   {
+    "page": 30,
+    "score": 3,
+    "words": [
+     "check",
+     "depreciation",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…e Accounting Statements and documentary evidence of assets capitalised by the Petitioner, subject to prudence check by the Commission."
+   }
+  ],
+  "uperc.depreciation.net": [
+   {
+    "page": 28,
+    "score": 4,
+    "words": [
+     "assets",
+     "consumer",
+     "contribution",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…r Distribution) Regulations, 2025 28 (b) Battery Energy Storage System 1.0% 18.6 The impact of revaluation of assets shall be permitted provided it does not result in increase in Tariff of the Licensee: Provided that any…"
+   },
+   {
+    "page": 30,
+    "score": 4,
+    "words": [
+     "assets",
+     "consumer",
+     "contribution",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…hall be allowed annually based on the Straight-Line Method at the rates stipulated in Annexure-A for existing assets and at the rates stipulated in Annexure-B for the assets capitalised during the Control Period. Provide…"
+   },
+   {
+    "page": 31,
+    "score": 4,
+    "words": [
+     "assets",
+     "consumer",
+     "contribution",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…h Regulation 19 at the rate of 15% post-tax per annum (hereinafter referred to as ‘Base Rate’): Provided that assets funded by Consumer Contribution / Deposit works, Capital Subsidies / Grants and corresponding Depreciat…"
+   }
+  ],
+  "uperc.energy.dist_loss_quantum": [
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "distribution",
+     "loss",
+     "quantum"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 13 trajectory (taking into consideration AT&C Loss trajectory agreed by the State Government and approved by the Central Government under any National Scheme or Programme, i…"
+   },
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "distribution",
+     "loss",
+     "quantum"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 16 PART B: POWER PROCUREMENT 12 Applicability 12.1 The Regulations contained in this Part shall apply to power procurement by a Distribution Licensee from a generating stati…"
+   }
+  ],
+  "uperc.energy.input_dist": [
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "distribution",
+     "energy",
+     "requirement"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 12 Provided further that if the True-Up Petition is not submitted within timelines given in Regulation 4.1, no carrying cost for the period of delay shall be allowed for the…"
+   },
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "distribution",
+     "energy",
+     "requirement"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 13 trajectory (taking into consideration AT&C Loss trajectory agreed by the State Government and approved by the Central Government under any National Scheme or Programme, i…"
+   },
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "distribution",
+     "energy",
+     "requirement"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 16 PART B: POWER PROCUREMENT 12 Applicability 12.1 The Regulations contained in this Part shall apply to power procurement by a Distribution Licensee from a generating stati…"
+   }
+  ],
+  "uperc.energy.intra_loss_quantum": [
+   {
+    "page": 16,
+    "score": 5,
+    "words": [
+     "intra",
+     "loss",
+     "quantum",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…stic power purchase requirement (in MWh) by adding distribution losses proposed by the Distribution Licensee, Intra-State Transmission Losses and Inter-State Transmission Losses. However, for the purpose of True-Up, APR…"
+   },
+   {
+    "page": 14,
+    "score": 4,
+    "words": [
+     "intra",
+     "loss",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…n price of fuel and/ or price of power purchase (d) Variation in sales (e) Variation in rates of Inter-State/ Intra-State Transmission charges and losses (f) Variation in interest rates for long-term loans; and (g) Any o…"
+   },
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "loss",
+     "quantum",
+     "state"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 13 trajectory (taking into consideration AT&C Loss trajectory agreed by the State Government and approved by the Central Government under any National Scheme or Programme, i…"
+   }
+  ],
+  "uperc.energy.state_requirement": [
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "energy",
+     "requirement",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…ise number of consumers, connected load, load factor and sales projections, Power Procurement Plan (renewable energy and non-renewable energy) and forecasting, Renewable Purchase Obligation (RPO) planning and forecasting…"
+   },
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "energy",
+     "requirement",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…Order Despatch (MOD)/ Security Constrained Economic Despatch (SCED) principles, must run plants and renewable energy plants subject to the Renewable Purchase Obligation (RPO) stipulated by the Commission under the releva…"
+   },
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "energy",
+     "requirement",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…lan 13.1 The Distribution Licensee shall be responsible for the assessment and forecasting of demand (MW) and energy (MWh) within its licensed area of supply to its consumers for multiple horizons (short/ medium/ long) a…"
+   }
+  ],
+  "uperc.energy.inter_loss": [
+   {
+    "page": 14,
+    "score": 4,
+    "words": [
+     "inter",
+     "loss",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…) Variation in price of fuel and/ or price of power purchase (d) Variation in sales (e) Variation in rates of Inter-State/ Intra-State Transmission charges and losses (f) Variation in interest rates for long-term loans;…"
+   },
+   {
+    "page": 16,
+    "score": 4,
+    "words": [
+     "inter",
+     "loss",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…MWh) by adding distribution losses proposed by the Distribution Licensee, Intra-State Transmission Losses and Inter-State Transmission Losses. However, for the purpose of True-Up, APR and ARR, normative loss trajectory,…"
+   },
+   {
+    "page": 39,
+    "score": 4,
+    "words": [
+     "inter",
+     "loss",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…ommission. 31.2 The power purchase requirement of the Distribution Licensee at the Transmission- Distribution interface point, shall be computed by grossing up the sales with the distribution losses approved by the Commi…"
+   }
+  ],
+  "uperc.tax.grossed_income": [
+   {
+    "page": 34,
+    "score": 4,
+    "words": [
+     "equity",
+     "grossed",
+     "income",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…surcharge and cess as specified under Section 115BAA of the Income Tax Act, 1961. 26.2 The rate of return on equity shall be rounded off to three decimal places and shall be computed as per the formula given below: Rate…"
+   },
+   {
+    "page": 33,
+    "score": 3,
+    "words": [
+     "equity",
+     "grossed",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…e prescribed norms, the Working Capital shall be reduced by the amount of such shortfall. 26 Tax on Return on Equity 26.1 The rate of return on equity as allowed by the Commission under Regulation 21 of these Regulations…"
+   },
+   {
+    "page": 36,
+    "score": 3,
+    "words": [
+     "equity",
+     "income",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…Interest & Finance charges 10% 90% Depreciation 90% 10% Provision for Bad & Doubtful debts 0% 100% Return on Equity 90% 10% Income Tax 90% 10% Non-Tariff Income 10% 90% Provided that the Commission may, through Suo-Motu…"
+   }
+  ],
+  "uperc.tax.on_income": [],
+  "uperc.tax.on_roe": [
+   {
+    "page": 33,
+    "score": 3,
+    "words": [
+     "equity",
+     "grossed",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…e prescribed norms, the Working Capital shall be reduced by the amount of such shortfall. 26 Tax on Return on Equity 26.1 The rate of return on equity as allowed by the Commission under Regulation 21 of these Regulations…"
+   },
+   {
+    "page": 34,
+    "score": 3,
+    "words": [
+     "equity",
+     "grossed",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…surcharge and cess as specified under Section 115BAA of the Income Tax Act, 1961. 26.2 The rate of return on equity shall be rounded off to three decimal places and shall be computed as per the formula given below: Rate…"
+   }
+  ],
+  "uperc.tax.recoverable": [],
+  "uperc.ledger.account": [
+   {
+    "page": 4,
+    "score": 3,
+    "words": [
+     "account",
+     "balance",
+     "trial"
+    ],
+    "values": [],
+    "snippet": "…in Part I of Schedule 3 to the Companies Act 2013, as amended from time to time. ii) Audited Profit and loss accounts, complying with the requirements contained in Part II of Schedule 3 to the Companies Act 2013, as ame…"
+   }
+  ],
+  "uperc.ledger.total": [],
+  "uperc.myt2025.equity.closing": [
+   {
+    "page": 28,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…asset requiring its replacement shall be first adjusted towards outstanding actual or normative loan; and the balance amount, if any, shall be utilised to reduce the capital cost of such replaced asset, and any further b…"
+   },
+   {
+    "page": 31,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…est on loan: Provided that in case of retirement or replacement or deletion/ adjustments of the assets in the Balance Sheet, the loan capital approved as mentioned above shall be reduced to the extent of the outstanding…"
+   }
+  ],
+  "uperc.myt2025.equity.average": [
+   {
+    "page": 26,
+    "score": 3,
+    "words": [
+     "average",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…rovided further that IDC on normative loan, post infusion of actual loan shall be computed based on Weightage Average Rate of Interest (WAROI) for that respective quarter. Provided further that the IDC on normative loan…"
+   },
+   {
+    "page": 31,
+    "score": 3,
+    "words": [
+     "average",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…red from the first year of commercial operation of the asset. 22.5 The rate of interest shall be the weighted average rate of interest computed on the basis of the actual long-term loan portfolio at the beginning of each…"
+   }
+  ],
+  "uperc.myt2025.roe": [
+   {
+    "page": 31,
+    "score": 7,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [
+     "15%"
+    ],
+    "snippet": "…y shall be computed in Rs. terms on equity base as determined in accordance with Regulation 19 at the rate of 15% post-tax per annum (hereinafter referred to as ‘Base Rate’): Provided that assets funded by Consumer Contr…"
+   },
+   {
+    "page": 1,
+    "score": 2,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…INANCIAL PRINCIPLES 24 17 Financial Prudence 24 18 Capital Expenditure/ Cost and Capital Structure 26 19 Debt-Equity 28 20 Depreciation 29 21 Return on Equity 31 22 Interest on Long- Term Loan 31 23 Banking and Finance C…"
+   },
+   {
+    "page": 33,
+    "score": 2,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…e prescribed norms, the Working Capital shall be reduced by the amount of such shortfall. 26 Tax on Return on Equity 26.1 The rate of return on equity as allowed by the Commission under Regulation 21 of these Regulations…"
+   }
+  ],
+  "uperc.myt2025.loan.closing": [
+   {
+    "page": 28,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…asset requiring its replacement shall be first adjusted towards outstanding actual or normative loan; and the balance amount, if any, shall be utilised to reduce the capital cost of such replaced asset, and any further b…"
+   },
+   {
+    "page": 31,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…est on loan: Provided that in case of retirement or replacement or deletion/ adjustments of the assets in the Balance Sheet, the loan capital approved as mentioned above shall be reduced to the extent of the outstanding…"
+   }
+  ],
+  "uperc.myt2025.loan.average": [
+   {
+    "page": 26,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…rovided further that IDC on normative loan, post infusion of actual loan shall be computed based on Weightage Average Rate of Interest (WAROI) for that respective quarter. Provided further that the IDC on normative loan…"
+   },
+   {
+    "page": 31,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…red from the first year of commercial operation of the asset. 22.5 The rate of interest shall be the weighted average rate of interest computed on the basis of the actual long-term loan portfolio at the beginning of each…"
+   },
+   {
+    "page": 32,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 32 22.6 At the time of Truing-Up, the weighted average rate of interest of the actual long- term loan portfolio during the concerned year shall be considered as the rate of…"
+   }
+  ],
+  "uperc.myt2025.loan.interest": [
+   {
+    "page": 31,
+    "score": 5,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "normative",
+     "term"
+    ],
+    "values": [],
+    "snippet": "…works, Capital Subsidies / Grants and corresponding Depreciation shall not form part of the Capital Cost. 22 Interest on Long-Term Loan 22.1 The long-term loans arrived at in the manner indicated in these Regulations on…"
+   },
+   {
+    "page": 32,
+    "score": 5,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "normative",
+     "term"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 32 22.6 At the time of Truing-Up, the weighted average rate of interest of the actual long- term loan portfolio during the concerned year shall be considered as the rate of…"
+   },
+   {
+    "page": 1,
+    "score": 4,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "term"
+    ],
+    "values": [],
+    "snippet": "…tal Expenditure/ Cost and Capital Structure 26 19 Debt-Equity 28 20 Depreciation 29 21 Return on Equity 31 22 Interest on Long- Term Loan 31 23 Banking and Finance Charges 32 24 Hedging Cost of Foreign Exchange Rate Vari…"
+   }
+  ],
+  "uperc.om2025.ag_excl_fc": [
+   {
+    "page": 32,
+    "score": 4,
+    "words": [
+     "actual",
+     "charges",
+     "expenses",
+     "finance"
+    ],
+    "values": [],
+    "snippet": "…istribution) Regulations, 2025 32 22.6 At the time of Truing-Up, the weighted average rate of interest of the actual long- term loan portfolio during the concerned year shall be considered as the rate of interest: Provid…"
+   },
+   {
+    "page": 36,
+    "score": 4,
+    "words": [
+     "actual",
+     "charges",
+     "expenses",
+     "finance"
+    ],
+    "values": [],
+    "snippet": "…her that the Allocation Matrix shall be applied for all or any of the heads of expenditure and revenue, where actual accounting separation has not been done between the Distribution Wires Business and Retail Supply Busin…"
+   },
+   {
+    "page": 26,
+    "score": 3,
+    "words": [
+     "actual",
+     "charges",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…sion after prudence check; Provided that Interest during construction (IDC) shall be computed considering the actual loan and normative loan after taking into account the prudent phasing of funds up to actual COD: Provid…"
+   }
+  ],
+  "uperc.om2025.base_average": [
+   {
+    "page": 42,
+    "score": 4,
+    "words": [
+     "average",
+     "base",
+     "five",
+     "middle"
+    ],
+    "values": [],
+    "snippet": "…e for the remaining Control Period. Employee Cost 33.6 The Employee Cost shall be derived on the basis of the average of the values in the Audited Accounts for the last five (5) Financial Years ending March 31, 2025 subj…"
+   },
+   {
+    "page": 44,
+    "score": 4,
+    "words": [
+     "average",
+     "base",
+     "five",
+     "middle"
+    ],
+    "values": [],
+    "snippet": "…r duties. Administrative and General (A&G) Expense 33.8 The A&G Expenses shall be derived on the basis of the average of the values in the Audited Accounts for the last five (5) Financial Years ending March 31, 2025 subj…"
+   },
+   {
+    "page": 23,
+    "score": 3,
+    "words": [
+     "average",
+     "base",
+     "taken"
+    ],
+    "values": [],
+    "snippet": "…pending before the Commission. In case Tariff Petition has not been filed, FPPAS shall not be charged. ABR = Average Billing Rate for the year (to be taken from the latest available Tariff Order in Rs/kWh) (2) The Actua…"
+   }
+  ],
+  "uperc.om2025.escalated": [
+   {
+    "page": 43,
+    "score": 4,
+    "words": [
+     "base",
+     "escalated",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…xpenses such as Arears due to impact of pay revision, change in pension scheme etc. shall be removed from the base Employee Cost. Employee cost shall be computed as per the following formula: EMPn= EMPn-1 × (1+ CPI infla…"
+   },
+   {
+    "page": 44,
+    "score": 4,
+    "words": [
+     "base",
+     "escalated",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…Control Period (01.04.2020 to 31.03.2025) will be considered and subsequently when the same are available the base year value (i.e. FY 2024-25) will be recomputed. The average of such A&G Expenses shall be considered as…"
+   },
+   {
+    "page": 45,
+    "score": 3,
+    "words": [
+     "base",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…n, in its ARR / Tariff Order, may provisionally approve the provision for write-off of bad and doubtful debts based on the provision for write-off of bad and doubtful debts approved by the Commission for the True-Up year…"
+   }
+  ],
+  "uperc.om2025.growth_sales": [
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "based",
+     "factor",
+     "sales"
+    ],
+    "values": [],
+    "snippet": "…ations. True-Up of expenses and revenue shall be on the basis of approved and actual expenses, revenue, etc., based on the prudence check of Accounting Statements of the Licensee for the Financial Year. 6.3 The Distribut…"
+   },
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "based",
+     "factor",
+     "sales"
+    ],
+    "values": [],
+    "snippet": "…se requirement optimised on cost from all generating stations and other sources considered for power purchase based on the Merit Order Despatch (MOD)/ Security Constrained Economic Despatch (SCED) principles, must run pl…"
+   },
+   {
+    "page": 24,
+    "score": 3,
+    "words": [
+     "based",
+     "factor",
+     "sales"
+    ],
+    "values": [],
+    "snippet": "…e shall be assessed in terms of the following parameters: (a) Whether sub-category wise sales projections are based on realistic estimates, and adequate justification has been provided for any anomalous increase/ decreas…"
+   }
+  ],
+  "uperc.om2025.growth_consumers": [
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "based",
+     "consumers",
+     "factor"
+    ],
+    "values": [],
+    "snippet": "…ations. True-Up of expenses and revenue shall be on the basis of approved and actual expenses, revenue, etc., based on the prudence check of Accounting Statements of the Licensee for the Financial Year. 6.3 The Distribut…"
+   },
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "based",
+     "consumers",
+     "factor"
+    ],
+    "values": [],
+    "snippet": "…se requirement optimised on cost from all generating stations and other sources considered for power purchase based on the Merit Order Despatch (MOD)/ Security Constrained Economic Despatch (SCED) principles, must run pl…"
+   },
+   {
+    "page": 24,
+    "score": 3,
+    "words": [
+     "based",
+     "consumers",
+     "factor"
+    ],
+    "values": [],
+    "snippet": "…e shall be assessed in terms of the following parameters: (a) Whether sub-category wise sales projections are based on realistic estimates, and adequate justification has been provided for any anomalous increase/ decreas…"
+   }
+  ],
+  "uperc.om2025.growth_employees": [
+   {
+    "page": 24,
+    "score": 3,
+    "words": [
+     "based",
+     "employees",
+     "factor"
+    ],
+    "values": [],
+    "snippet": "…e shall be assessed in terms of the following parameters: (a) Whether sub-category wise sales projections are based on realistic estimates, and adequate justification has been provided for any anomalous increase/ decreas…"
+   },
+   {
+    "page": 43,
+    "score": 3,
+    "words": [
+     "based",
+     "factor",
+     "growth"
+    ],
+    "values": [],
+    "snippet": "…concerned Financial Year. Gn is a growth factor for the nth year and it may be greater than or less than zero based on the actual performance. Value of Gn shall be determined by the Commission in the Tariff Order for mee…"
+   }
+  ],
+  "uperc.om2025.employee": [
+   {
+    "page": 32,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ing-Up, the normative average loan of the concerned year shall be considered on the basis of the actual asset capitalisation approved by the Commission for the year. 23 Banking and Finance Charges The Banking & Finance c…"
+   },
+   {
+    "page": 42,
+    "score": 3,
+    "words": [
+     "employee",
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ed based on the formula shown below: O&Mn = EMPn + R&Mn + A&Gn Where: O&Mn – O&M Expenses for nth year EMPn – Employee Expenses for nth year R&Mn – R&M Expenses for nth year A&Gn– A&G Expenses for nth year 33.3 At the ti…"
+   },
+   {
+    "page": 43,
+    "score": 3,
+    "words": [
+     "employee",
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…es such as Arears due to impact of pay revision, change in pension scheme etc. shall be removed from the base Employee Cost. Employee cost shall be computed as per the following formula: EMPn= EMPn-1 × (1+ CPI inflation)…"
+   }
+  ],
+  "uperc.om2025.ag": [
+   {
+    "page": 26,
+    "score": 4,
+    "words": [
+     "charges",
+     "expenses",
+     "including",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…a) the expenditure incurred or projected to be incurred, including interest during construction and financing charges, as admitted by the Commission after prudence check; Provided that Interest during construction (IDC)…"
+   },
+   {
+    "page": 32,
+    "score": 4,
+    "words": [
+     "charges",
+     "expenses",
+     "finance",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…the basis of the actual asset capitalisation approved by the Commission for the year. 23 Banking and Finance Charges The Banking & Finance charges shall be allowed as per actuals in Truing-Up, subject to prudence check…"
+   },
+   {
+    "page": 44,
+    "score": 4,
+    "words": [
+     "captive",
+     "consumption",
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…dering the WPI of respective years, for subsequent years up to FY 2024-25. Provided that the expenses towards Captive Consumption shall be determined based on the Rate provided in the Rate Schedule and energy consumption…"
+   }
+  ],
+  "uperc.om.index_average": [
+   {
+    "page": 43,
+    "score": 3,
+    "words": [
+     "average",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…for the nth year; EMPn-1: Employee expense for the (n-1)th year; For the purpose of ARR, CPI inflation is the average of Consumer Price Index (CPI) for Industrial Workers (All India) as per the Labour Bureau, Government…"
+   },
+   {
+    "page": 44,
+    "score": 3,
+    "words": [
+     "average",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…r duties. Administrative and General (A&G) Expense 33.8 The A&G Expenses shall be derived on the basis of the average of the values in the Audited Accounts for the last five (5) Financial Years ending March 31, 2025 subj…"
+   },
+   {
+    "page": 45,
+    "score": 3,
+    "words": [
+     "average",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 45 For the purpose of ARR, WPI inflation is the average of Wholesale Price Index (WPI) for immediately preceding three Financial Years as per the Office of Economic Advisor…"
+   }
+  ],
+  "uperc.om.index_increase": [
+   {
+    "page": 44,
+    "score": 3,
+    "words": [
+     "index",
+     "previous",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…r otherwise. 33.9 A&G expense shall be computed as per the following formula escalated by the Wholesale Price Index (WPI) and adjusted by the provisions for confirmed initiatives (IT etc. initiatives as proposed by the D…"
+   }
+  ],
+  "uperc.om.escalation": [
+   {
+    "page": 43,
+    "score": 5,
+    "words": [
+     "average",
+     "escalation",
+     "factor",
+     "preceding",
+     "three"
+    ],
+    "values": [],
+    "snippet": "…for the nth year; EMPn-1: Employee expense for the (n-1)th year; For the purpose of ARR, CPI inflation is the average of Consumer Price Index (CPI) for Industrial Workers (All India) as per the Labour Bureau, Government…"
+   },
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "average",
+     "factor",
+     "three"
+    ],
+    "values": [],
+    "snippet": "…n from time to time, shall be considered. 13.4 The peak demand (in MW) shall be determined by considering the average load factor, load diversity factor, seasonal variation factors for the last three years and the energy…"
+   },
+   {
+    "page": 24,
+    "score": 3,
+    "words": [
+     "average",
+     "factor",
+     "increase"
+    ],
+    "values": [],
+    "snippet": "…ling which the Commission shall compute the deemed revenue by considering per capita consumption at twice the average yearly consumption of Urban Metered Consumers in the LMV-1 category, calculated at the highest Tariff…"
+   }
+  ],
+  "uperc.om.escalated": [
+   {
+    "page": 42,
+    "score": 3,
+    "words": [
+     "component",
+     "normative",
+     "previous"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 42 33.2 The norms for each component of O&M Expenses shall be determined as per these Regulations. Thereafter O&M Expenses for each year of the Control Period shall be compu…"
+   },
+   {
+    "page": 44,
+    "score": 3,
+    "words": [
+     "escalated",
+     "normative",
+     "previous"
+    ],
+    "values": [],
+    "snippet": "…mputed. The average of such A&G Expenses shall be considered as A&G Expenses for the middle year and shall be escalated year on year with the escalation factor considering the WPI of respective years, for subsequent year…"
+   }
+  ],
+  "uperc.om.ag_total": [
+   {
+    "page": 2,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…ee 37 30 Sales forecast 38 31 Distribution Loss 39 32 Capital Investment Plan 39 33 Operation and Maintenance Expenses 41 34 Provision for Write-off of Bad and Doubtful Debts 45 35 Non-Tariff Income 45 36 Income from Oth…"
+   },
+   {
+    "page": 12,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…e Commission shall carry out Truing-Up exercise stipulated in the provisions of these Regulations. True-Up of expenses and revenue shall be on the basis of approved and actual expenses, revenue, etc., based on the pruden…"
+   },
+   {
+    "page": 14,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…-State Transmission charges and losses (f) Variation in interest rates for long-term loans; and (g) Any other expenses allowed by the Commission 9.2 The “Controllable Factors” shall include, but shall not be limited to t…"
+   }
+  ],
+  "uperc.om.gross": [],
+  "uperc.om.net": [
+   {
+    "page": 2,
+    "score": 2,
+    "words": [
+     "capitalised",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…ficulties 54 48 Power to Amend 54 49 Power to Relax 54 Annexure A - Depreciation Schedule for Existing Assets Capitalised on or before 31.03.2025 55 Annexure B - Depreciation Schedule for Existing Assets Capitalised Afte…"
+   },
+   {
+    "page": 26,
+    "score": 2,
+    "words": [
+     "capitalised",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…by the Licensee that the capital cost arrived after IDC on normative loan is to the benefit of consumers. (b) capitalised initial spares subject to the ceiling rates stipulated in these Regulations;"
+   },
+   {
+    "page": 27,
+    "score": 2,
+    "words": [
+     "capitalised",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…lan prepared by the Licensee and approved by the Commission. 18.5 The capital cost may include initial spares capitalised as a percentage of the Plant and Machinery cost, subject to the following ceiling norms: (a) Distr…"
+   }
+  ],
+  "uperc.om.additional_rm": [],
+  "uperc.om.total": [
+   {
+    "page": 26,
+    "score": 2,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ons, 2025 26 (c) Transparent method of power procurement, with the objective of optimising the power purchase expenses, as stipulated in these Regulations. (d) Optimum purchase of power considering factors such as the re…"
+   },
+   {
+    "page": 32,
+    "score": 2,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…25.1 The working capital requirement of the Distribution Business shall cover: (i) Operation and maintenance expenses for one month; (ii) Maintenance spares at 40% of the R&M expenses for two months; and"
+   },
+   {
+    "page": 42,
+    "score": 2,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 42 33.2 The norms for each component of O&M Expenses shall be determined as per these Regulations. Thereafter O&M Expenses for each year of the Control Period shall be compu…"
+   }
+  ],
+  "uperc.oa.per_unit": [
+   {
+    "page": 48,
+    "score": 4,
+    "words": [
+     "charge",
+     "cost",
+     "energy",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…e level; R is the per unit cost of carrying regulatory assets: Provided that in any case the Cross Subsidy Surcharge shall not exceed 20% of the Average Cost of Supply. 38 Additional Surcharge 38.1 The additional surchar…"
+   },
+   {
+    "page": 52,
+    "score": 4,
+    "words": [
+     "charge",
+     "cost",
+     "energy",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…roved by the Commission, as a separate Tariff category i.e., as an incremental Tariff which would be per-unit charge to be paid by the consumer over and above the regular charges as per their consumer category, in line w…"
+   },
+   {
+    "page": 18,
+    "score": 3,
+    "words": [
+     "cost",
+     "energy",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…meet the RPO keeping in view the lead time in setting up different types of renewable power plants. 13.16 The cost of power through Deviation Settlement Mechanism (DSM) shall be allowed in Tariff subject to the condition…"
+   }
+  ],
+  "uperc.oa.cos_voltage": [
+   {
+    "page": 40,
+    "score": 3,
+    "words": [
+     "cost",
+     "supply",
+     "voltage"
+    ],
+    "values": [],
+    "snippet": "…o as well as distribution line length showing the need for the proposed investments, alternatives considered, cost / benefit analysis and other aspects that may have a bearing on the Tariff. 32.4 The Capital Investment P…"
+   },
+   {
+    "page": 47,
+    "score": 3,
+    "words": [
+     "cost",
+     "supply",
+     "voltage"
+    ],
+    "values": [],
+    "snippet": "…rovided that the Distribution Licensee shall follow a reasonable basis for allocation of all joint and common costs between the Distribution Business and the Other Business and shall submit the Allocation Statement, duly…"
+   },
+   {
+    "page": 48,
+    "score": 3,
+    "words": [
+     "cost",
+     "supply",
+     "voltage"
+    ],
+    "values": [],
+    "snippet": "…and commercial losses, expressed as a percentage applicable to the relevant voltage level; R is the per unit cost of carrying regulatory assets: Provided that in any case the Cross Subsidy Surcharge shall not exceed 20%…"
+   }
+  ],
+  "uperc.oa.css": [
+   {
+    "page": 48,
+    "score": 8,
+    "words": [
+     "cross",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [
+     "20%"
+    ],
+    "snippet": "…it cost of carrying regulatory assets: Provided that in any case the Cross Subsidy Surcharge shall not exceed 20% of the Average Cost of Supply. 38 Additional Surcharge 38.1 The additional surcharge for obligation to sup…"
+   },
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "cross",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [],
+    "snippet": "…vision for Write-off of Bad and Doubtful Debts 45 35 Non-Tariff Income 45 36 Income from Other Business 47 37 Cross-Subsidy Surcharge 47 38 Additional Surcharge 48 39 Wheeling Charges 48 40 Other Charges 49 41 Time of Da…"
+   },
+   {
+    "page": 33,
+    "score": 3,
+    "words": [
+     "cross",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [],
+    "snippet": "…f electricity at the Tariff approved by the Commission for the ensuing year, including revenue from wheeling, cross-subsidy surcharge and additional surcharge, if any, but excluding Electricity Duty; minus (iv) Amount he…"
+   }
+  ],
+  "uperc.oa.css_proposed": [
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "cross",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [],
+    "snippet": "…vision for Write-off of Bad and Doubtful Debts 45 35 Non-Tariff Income 45 36 Income from Other Business 47 37 Cross-Subsidy Surcharge 47 38 Additional Surcharge 48 39 Wheeling Charges 48 40 Other Charges 49 41 Time of Da…"
+   },
+   {
+    "page": 33,
+    "score": 3,
+    "words": [
+     "cross",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [],
+    "snippet": "…f electricity at the Tariff approved by the Commission for the ensuing year, including revenue from wheeling, cross-subsidy surcharge and additional surcharge, if any, but excluding Electricity Duty; minus (iv) Amount he…"
+   },
+   {
+    "page": 47,
+    "score": 3,
+    "words": [
+     "cross",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [],
+    "snippet": "…ess exceeds the revenues from such Other Business, income from such Other Business shall be taken as zero. 37 Cross-Subsidy Surcharge 37.1 A consumer situated within the area of supply of a Distribution Licensee availing…"
+   }
+  ],
+  "uperc.pp.amount": [
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "power",
+     "purchase",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…ing plan and physical targets, equity, grants, etc. 8.3 The Distribution Licensee shall project the realistic power purchase requirement optimised on cost from all generating stations and other sources considered for pow…"
+   },
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "power",
+     "purchase",
+     "source"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 16 PART B: POWER PROCUREMENT 12 Applicability 12.1 The Regulations contained in this Part shall apply to power procurement by a Distribution Licensee from a generating stati…"
+   },
+   {
+    "page": 17,
+    "score": 3,
+    "words": [
+     "power",
+     "purchase",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…cy Plan for multiple time horizons (short/ medium/ long term) as per the guidelines issued by the Ministry of Power and applicable Regulations issued by the Commission and get them validated/ approved by competent author…"
+   }
+  ],
+  "uperc.pp.tx": [
+   {
+    "page": 22,
+    "score": 3,
+    "words": [
+     "charges",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…(%) = (A-B)*C+(D-E)$+ Adj Factor Z * ABR $ Shall be computed in case inter-state or intra-state transmission charges are not on per unit basis Where, nth month means the month in which the billing of FPPAS component is…"
+   }
+  ],
+  "uperc.pp.total": [
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…13.5 The Distribution Licensee shall maintain a historical database of demand and power purchase quantum and cost. 13.6 For the purpose of ascertaining load profile and for assessment of the contribution of various cons…"
+   },
+   {
+    "page": 22,
+    "score": 3,
+    "words": [
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…ued by the State Load Dispatch Centre by the 10th day of each month). C is incremental Average Power Purchase Cost (including the change of fuel cost) = Actual Average Power Purchase Cost (PPC) from all Sources in (n-3)t…"
+   }
+  ],
+  "uperc.pp.rate": [
+   {
+    "page": 19,
+    "score": 2,
+    "words": [
+     "rate",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…al quantum of power purchase approved by the Commission. 13.17 The Commission may impose a cap on the average rate of short/ medium/ long term power purchase. 14 Additional Power Procurement 14.1 The Distribution License…"
+   },
+   {
+    "page": 26,
+    "score": 2,
+    "words": [
+     "rate",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…d renewable energy plants, potential for earning additional net revenue based on the differential between the rate for purchase of power from different sources and the market rate for sale of surplus power, if any: 18 Ca…"
+   }
+  ],
+  "uperc.pp.unit_cost": [],
+  "uperc.pp.cost_total": [
+   {
+    "page": 17,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "procurement",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "…power to meet the demand as envisaged in the demand forecast and Resource Adequacy Plan in an optimal (least cost and secure) manner. The plan shall be based on the Merit Order Despatch (MOD)/ Security Constrained Econo…"
+   },
+   {
+    "page": 19,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "procurement",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "…rce of supply, from which power can be procured at a Tariff that reduces its approved total power procurement cost, it may enter into a short-term power procurement agreement or arrangement with such supplier without the…"
+   },
+   {
+    "page": 26,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "procurement",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "…f power from different sources and the market rate for sale of surplus power, if any: 18 Capital Expenditure/ Cost and Capital Structure 18.1 Capital cost for a capital investment Project shall include: (a) the expenditu…"
+   }
+  ],
+  "uperc.pp.tx_total": [
+   {
+    "page": 22,
+    "score": 5,
+    "words": [
+     "charges",
+     "dispatch",
+     "load",
+     "sources",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…(%) = (A-B)*C+(D-E)$+ Adj Factor Z * ABR $ Shall be computed in case inter-state or intra-state transmission charges are not on per unit basis Where, nth month means the month in which the billing of FPPAS component is…"
+   }
+  ],
+  "uperc.pp.mu_total": [],
+  "uperc.pp.mu_source": [],
+  "uperc.pp.billed.billed": [
+   {
+    "page": 38,
+    "score": 4,
+    "words": [
+     "charges",
+     "energy",
+     "fixed",
+     "other"
+    ],
+    "values": [],
+    "snippet": "…uing- Up based on the audited accounts, on a case to case basis, subject to prudence check: 29.2 The Wheeling Charges and Tariff for the retail supply of the Distribution Licensee shall be determined by the Commission on…"
+   },
+   {
+    "page": 50,
+    "score": 4,
+    "words": [
+     "charges",
+     "energy",
+     "fixed",
+     "other"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 50 fixed cost of the ARR which would comprise of Fixed Charges of generating stations, Transmission Charges, Return on Equity, Interest on Loan, Depreciation, O&M & other fi…"
+   },
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "charges",
+     "energy",
+     "other"
+    ],
+    "values": [],
+    "snippet": "…come 45 36 Income from Other Business 47 37 Cross-Subsidy Surcharge 47 38 Additional Surcharge 48 39 Wheeling Charges 48 40 Other Charges 49 41 Time of Day Tariff 49 42 Determination of Retail Supply Tariff 49 PART E: GR…"
+   }
+  ],
+  "uperc.pp.billed.net": [
+   {
+    "page": 1,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…-Equity 28 20 Depreciation 29 21 Return on Equity 31 22 Interest on Long- Term Loan 31 23 Banking and Finance Charges 32 24 Hedging Cost of Foreign Exchange Rate Variation (FERV) 32 25 Interest on Working Capital 32 26 T…"
+   },
+   {
+    "page": 49,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…ions, 2025 49 Provided that those embedded Open Access Customers who are already liable for payment of Demand Charges will not be required to pay any wheeling charges to the Distribution Licensee. 40 Other Charges 40.1 T…"
+   }
+  ],
+  "uperc.pp.billed.with_tx": [
+   {
+    "page": 22,
+    "score": 4,
+    "words": [
+     "charges",
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…(%) = (A-B)*C+(D-E)$+ Adj Factor Z * ABR $ Shall be computed in case inter-state or intra-state transmission charges are not on per unit basis Where, nth month means the month in which the billing of FPPAS component is…"
+   },
+   {
+    "page": 14,
+    "score": 3,
+    "words": [
+     "charges",
+     "cost",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…rice of power purchase (d) Variation in sales (e) Variation in rates of Inter-State/ Intra-State Transmission charges and losses (f) Variation in interest rates for long-term loans; and (g) Any other expenses allowed by…"
+   },
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…13.5 The Distribution Licensee shall maintain a historical database of demand and power purchase quantum and cost. 13.6 For the purpose of ascertaining load profile and for assessment of the contribution of various cons…"
+   }
+  ],
+  "uperc.pp.billed.rate_billed": [
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "billed",
+     "energy",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…ensee for the Financial Year. 6.3 The Distribution Licensee shall ensure that the category/ sub-category wise billed revenue as per the Rate Schedule is included in its Accounting Statements. 6.4 The Distribution License…"
+   }
+  ],
+  "uperc.pp.billed.unit_cost_bus": [
+   {
+    "page": 18,
+    "score": 3,
+    "words": [
+     "cost",
+     "licensee",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…meet the RPO keeping in view the lead time in setting up different types of renewable power plants. 13.16 The cost of power through Deviation Settlement Mechanism (DSM) shall be allowed in Tariff subject to the condition…"
+   },
+   {
+    "page": 22,
+    "score": 3,
+    "words": [
+     "cost",
+     "licensee",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…ued by the State Load Dispatch Centre by the 10th day of each month). C is incremental Average Power Purchase Cost (including the change of fuel cost) = Actual Average Power Purchase Cost (PPC) from all Sources in (n-3)t…"
+   },
+   {
+    "page": 28,
+    "score": 3,
+    "words": [
+     "cost",
+     "licensee",
+     "received"
+    ],
+    "values": [],
+    "snippet": "…ensees, shall be considered after writing off the net value of such replaced assets from the original capital cost, and shall be computed as follows: Net Value of Replaced Assets = OCRA – AD; Where; OCRA: Original Capita…"
+   }
+  ],
+  "uperc.pp.billed.loss_inter": [
+   {
+    "page": 14,
+    "score": 3,
+    "words": [
+     "inter",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…) Variation in price of fuel and/ or price of power purchase (d) Variation in sales (e) Variation in rates of Inter-State/ Intra-State Transmission charges and losses (f) Variation in interest rates for long-term loans;…"
+   },
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "inter",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…MWh) by adding distribution losses proposed by the Distribution Licensee, Intra-State Transmission Losses and Inter-State Transmission Losses. However, for the purpose of True-Up, APR and ARR, normative loss trajectory,…"
+   },
+   {
+    "page": 39,
+    "score": 3,
+    "words": [
+     "inter",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…ommission. 31.2 The power purchase requirement of the Distribution Licensee at the Transmission- Distribution interface point, shall be computed by grossing up the sales with the distribution losses approved by the Commi…"
+   }
+  ],
+  "uperc.pp.billed.loss_intra": [
+   {
+    "page": 14,
+    "score": 3,
+    "words": [
+     "intra",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…n price of fuel and/ or price of power purchase (d) Variation in sales (e) Variation in rates of Inter-State/ Intra-State Transmission charges and losses (f) Variation in interest rates for long-term loans; and (g) Any o…"
+   },
+   {
+    "page": 16,
+    "score": 3,
+    "words": [
+     "intra",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…stic power purchase requirement (in MWh) by adding distribution losses proposed by the Distribution Licensee, Intra-State Transmission Losses and Inter-State Transmission Losses. However, for the purpose of True-Up, APR…"
+   }
+  ],
+  "uperc.pp.billed.loss_total": [
+   {
+    "page": 2,
+    "score": 2,
+    "words": [
+     "licensee",
+     "loss"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 2 PART D: DETERMINATION OF ARR FOR DISTRIBUTION LICENSEES 36 28 Separation of Accounts of Distribution Licensee 36 29 Components of ARR for Distribution Licensee 37 30 Sales…"
+   },
+   {
+    "page": 4,
+    "score": 2,
+    "words": [
+     "licensee",
+     "loss"
+    ],
+    "values": [],
+    "snippet": "…tute of Chartered Accountants of India, as amended from time to time. iv) Report of statutory auditors of the Licensee. v) Cost records if any, prescribed by the Central Government under Section 148 of the Companies Act…"
+   },
+   {
+    "page": 12,
+    "score": 2,
+    "words": [
+     "licensee",
+     "loss"
+    ],
+    "values": [],
+    "snippet": "…s of approved and actual expenses, revenue, etc., based on the prudence check of Accounting Statements of the Licensee for the Financial Year. 6.3 The Distribution Licensee shall ensure that the category/ sub-category wi…"
+   }
+  ],
+  "uperc.pp.billed.net_with_tx_total": [
+   {
+    "page": 14,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "purchase",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…ation in Distribution and commercial losses; (b) Variations in capital expenditure on account of time and/ or cost overruns not attributable to an approved change in the scope of such project, change in statutory levies…"
+   },
+   {
+    "page": 16,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "purchase",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…13.5 The Distribution Licensee shall maintain a historical database of demand and power purchase quantum and cost. 13.6 For the purpose of ascertaining load profile and for assessment of the contribution of various cons…"
+   },
+   {
+    "page": 18,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "purchase",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…meet the RPO keeping in view the lead time in setting up different types of renewable power plants. 13.16 The cost of power through Deviation Settlement Mechanism (DSM) shall be allowed in Tariff subject to the condition…"
+   }
+  ],
+  "uperc.pp.billed.billed_total": [
+   {
+    "page": 20,
+    "score": 2,
+    "words": [
+     "billed",
+     "charges"
+    ],
+    "values": [],
+    "snippet": "…rges with reference to the cost of power supply approved by the Commission. (2) FPPAS shall be calculated and billed to consumers on RATE as defined in the applicable Tariff Order (net of regulatory discount, if any, app…"
+   }
+  ],
+  "uperc.pp.billed.rebate_total": [
+   {
+    "page": 1,
+    "score": 1,
+    "words": [
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…Foreign Exchange Rate Variation (FERV) 32 25 Interest on Working Capital 32 26 Tax on Return on Equity 33 27 Rebate, Incentive, Penalties and Miscellaneous 35"
+   },
+   {
+    "page": 35,
+    "score": 1,
+    "words": [
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 35 27 Rebate, Incentive, Penalties and Miscellaneous 27.1 All rebates or incentives earned by the Licensee shall be considered under its Non- Tariff Income, while all rebate…"
+   },
+   {
+    "page": 49,
+    "score": 1,
+    "words": [
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…Distribution Licensee shall propose consumer category-wise Time of Day (ToD) time slots, along with slot-wise rebate/penalty at the time of Tariff filing, keeping in consideration the applicable Rules and other Extant La…"
+   }
+  ],
+  "uperc.pp.billed.rebate_source": [],
+  "uperc.pp.billed.mu_at_bus_total": [
+   {
+    "page": 28,
+    "score": 3,
+    "words": [
+     "energy",
+     "licensee",
+     "received"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 28 (b) Battery Energy Storage System 1.0% 18.6 The impact of revaluation of assets shall be permitted provided it does not result in increase in Tariff of the Licensee: Prov…"
+   }
+  ],
+  "uperc.pp.billed.mu_at_bus_source": [],
+  "uperc.pp.claims.claim": [
+   {
+    "page": 12,
+    "score": 4,
+    "words": [
+     "additional",
+     "carrying",
+     "cost",
+     "earlier"
+    ],
+    "values": [],
+    "snippet": "…nsure that its Accounting Statements are prepared in compliance of the Electricity Distribution (Accounts and Additional Disclosure) Rules, 2024 and any amendment thereof. 6.5 The Distribution Licensee shall also submit…"
+   },
+   {
+    "page": 35,
+    "score": 4,
+    "words": [
+     "carrying",
+     "cost",
+     "incentive",
+     "paid"
+    ],
+    "values": [],
+    "snippet": "…aid or payable by the Licensee, if any, and shall submit them to the Commission along with its Petition. 27.3 Carrying cost for the ARR gap of the Distribution Licensee will be provided by the Commission after prudence c…"
+   },
+   {
+    "page": 1,
+    "score": 3,
+    "words": [
+     "additional",
+     "cost",
+     "incentive"
+    ],
+    "values": [],
+    "snippet": "…le Factors 15 PART B: POWER PROCUREMENT 16 12 Applicability 16 13 Power Procurement Guidelines and Plan 16 14 Additional Power Procurement 19 15 Treatment of Surplus Power 19 16 Fuel and Power Purchase Adjustment Surchar…"
+   }
+  ],
+  "uperc.pp.claims.claims_total": [],
+  "uperc.pp.claims.with_claims": [
+   {
+    "page": 12,
+    "score": 5,
+    "words": [
+     "books",
+     "cost",
+     "earlier",
+     "power",
+     "procurement"
+    ],
+    "values": [],
+    "snippet": "…ay be prescribed by the Commission, together with the audited/ provisional Accounting Statements, extracts of books of account and such other details, etc., as per the guidelines and formats prescribed. 8 ARR Petition 8.…"
+   },
+   {
+    "page": 17,
+    "score": 4,
+    "words": [
+     "cost",
+     "including",
+     "power",
+     "procurement"
+    ],
+    "values": [],
+    "snippet": "…power to meet the demand as envisaged in the demand forecast and Resource Adequacy Plan in an optimal (least cost and secure) manner. The plan shall be based on the Merit Order Despatch (MOD)/ Security Constrained Econo…"
+   },
+   {
+    "page": 19,
+    "score": 4,
+    "words": [
+     "cost",
+     "including",
+     "power",
+     "procurement"
+    ],
+    "values": [],
+    "snippet": "…rce of supply, from which power can be procured at a Tariff that reduces its approved total power procurement cost, it may enter into a short-term power procurement agreement or arrangement with such supplier without the…"
+   }
+  ],
+  "uperc.pp.reconciled": [
+   {
+    "page": 12,
+    "score": 5,
+    "words": [
+     "accounts",
+     "audited",
+     "power",
+     "purchase",
+     "true"
+    ],
+    "values": [],
+    "snippet": "…ensee shall ensure that its Accounting Statements are prepared in compliance of the Electricity Distribution (Accounts and Additional Disclosure) Rules, 2024 and any amendment thereof. 6.5 The Distribution Licensee shall…"
+   },
+   {
+    "page": 1,
+    "score": 3,
+    "words": [
+     "power",
+     "purchase",
+     "true"
+    ],
+    "values": [],
+    "snippet": "…nt of Uncontrollable Factors 15 11 Treatment of Gains or Losses on account of Controllable Factors 15 PART B: POWER PROCUREMENT 16 12 Applicability 16 13 Power Procurement Guidelines and Plan 16 14 Additional Power Procu…"
+   },
+   {
+    "page": 9,
+    "score": 3,
+    "words": [
+     "accounts",
+     "audited",
+     "true"
+    ],
+    "values": [],
+    "snippet": "…revenue from existing and proposed Tariff shall be submitted by the Licensee along with audited / provisional accounts of the previous year and available data of 6 months in books of Accounts for the current Financial Ye…"
+   }
+  ],
+  "uperc.pp.billed.net_total": [
+   {
+    "page": 1,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…-Equity 28 20 Depreciation 29 21 Return on Equity 31 22 Interest on Long- Term Loan 31 23 Banking and Finance Charges 32 24 Hedging Cost of Foreign Exchange Rate Variation (FERV) 32 25 Interest on Working Capital 32 26 T…"
+   },
+   {
+    "page": 49,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…ions, 2025 49 Provided that those embedded Open Access Customers who are already liable for payment of Demand Charges will not be required to pay any wheeling charges to the Distribution Licensee. 40 Other Charges 40.1 T…"
+   }
+  ],
+  "uperc.rate.period_days": [],
+  "uperc.rate.period_weight": [
+   {
+    "page": 31,
+    "score": 3,
+    "words": [
+     "mclr",
+     "period",
+     "weighted"
+    ],
+    "values": [],
+    "snippet": "…st for the purpose of allowing the interest on the normative long-term loan shall be the weighted average SBI MCLR (1 Year) prevailing during the concerned year plus 100 basis points."
+   },
+   {
+    "page": 32,
+    "score": 3,
+    "words": [
+     "mclr",
+     "period",
+     "weighted"
+    ],
+    "values": [],
+    "snippet": "…st for the purpose of allowing the interest on the normative long-term loan shall be the weighted average SBI MCLR (1 Year) prevailing during the concerned year plus 100 basis points. 22.7 The interest on long-term loan…"
+   }
+  ],
+  "uperc.rate.weighted": [],
+  "uperc.rate.loan": [
+   {
+    "page": 26,
+    "score": 4,
+    "words": [
+     "interest",
+     "loan",
+     "normative",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…capital investment Project shall include: (a) the expenditure incurred or projected to be incurred, including interest during construction and financing charges, as admitted by the Commission after prudence check; Provid…"
+   },
+   {
+    "page": 31,
+    "score": 4,
+    "words": [
+     "interest",
+     "loan",
+     "normative",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…works, Capital Subsidies / Grants and corresponding Depreciation shall not form part of the Capital Cost. 22 Interest on Long-Term Loan 22.1 The long-term loans arrived at in the manner indicated in these Regulations on…"
+   },
+   {
+    "page": 32,
+    "score": 4,
+    "words": [
+     "interest",
+     "loan",
+     "normative",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 32 22.6 At the time of Truing-Up, the weighted average rate of interest of the actual long- term loan portfolio during the concerned year shall be considered as the rate of…"
+   }
+  ],
+  "uperc.revenue.category_total": [
+   {
+    "page": 9,
+    "score": 4,
+    "words": [
+     "category",
+     "current",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…computation of ARR and expected revenue from Tariff: (i) The ARR Petition comprising the forecast of ARR and category/ subcategory wise expected revenue from existing and proposed Tariff shall be submitted by the Licens…"
+   },
+   {
+    "page": 33,
+    "score": 4,
+    "words": [
+     "duty",
+     "excluding",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…ng revenue from wheeling, cross-subsidy surcharge and additional surcharge, if any, but excluding Electricity Duty; minus (iv) Amount held as security deposits from the Distribution System Users; Provided that if the wor…"
+   },
+   {
+    "page": 4,
+    "score": 3,
+    "words": [
+     "category",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…to, and such other supporting statements and information as the Commission may direct from time to time; vii) Category/ sub-category wise billed revenue as per the Rate Schedule. viii) Trial Balance for the year matching…"
+   }
+  ],
+  "uperc.revenue.energy_rate": [
+   {
+    "page": 52,
+    "score": 4,
+    "words": [
+     "category",
+     "charge",
+     "energy",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…IFF 44 Green Energy Tariff 44.1 Green Energy Tariff shall be approved by the Commission, as a separate Tariff category i.e., as an incremental Tariff which would be per-unit charge to be paid by the consumer over and abo…"
+   },
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "category",
+     "energy",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…unting Statements of the Licensee for the Financial Year. 6.3 The Distribution Licensee shall ensure that the category/ sub-category wise billed revenue as per the Rate Schedule is included in its Accounting Statements.…"
+   },
+   {
+    "page": 13,
+    "score": 3,
+    "words": [
+     "category",
+     "energy",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…behalf of Distribution System Users; Provided that the Distribution Licensee shall submit relevant details of category/ sub-category wise number of consumers, connected load and energy sales projections, status of meteri…"
+   }
+  ],
+  "uperc.revenue.fixed_rate": [
+   {
+    "page": 47,
+    "score": 4,
+    "words": [
+     "category",
+     "charge",
+     "revenue",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…S= T – [C/ (1-L/100) + D+ R] Where: S is the Cross Subsidy Surcharge; T is the Tariff payable by the relevant category of consumers, including reflecting the Renewable Purchase Obligation; C is the per unit weighted aver…"
+   },
+   {
+    "page": 52,
+    "score": 4,
+    "words": [
+     "category",
+     "charge",
+     "revenue",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…IFF 44 Green Energy Tariff 44.1 Green Energy Tariff shall be approved by the Commission, as a separate Tariff category i.e., as an incremental Tariff which would be per-unit charge to be paid by the consumer over and abo…"
+   },
+   {
+    "page": 5,
+    "score": 3,
+    "words": [
+     "category",
+     "charge",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…ing rate in Rs. /kWh determined as the sum product of total billed units and approved Tariff in each consumer category divided by total billed units in all consumer categories for a given period; (6) “Base Year” means th…"
+   }
+  ],
+  "uperc.revenue.total": [
+   {
+    "page": 9,
+    "score": 3,
+    "words": [
+     "current",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…dited / provisional accounts of the previous year and available data of 6 months in books of Accounts for the current Financial Year: (ii) Annual Performance Review (APR) of operational and financial performance vis-à-vi…"
+   }
+  ],
+  "uperc.revenue.units": [],
+  "uperc.revenue.units_category": [],
+  "uperc.revenue.discount_total": [
+   {
+    "page": 20,
+    "score": 2,
+    "words": [
+     "discount",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "…ll be calculated and billed to consumers on RATE as defined in the applicable Tariff Order (net of regulatory discount, if any, approved by the Commission), automatically, without going through the regulatory approval pr…"
+   },
+   {
+    "page": 21,
+    "score": 2,
+    "words": [
+     "discount",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "…g cost rate under these Regulations. (4) The monthly FPPAS shall not exceed +/-10% of RATE (net of regulatory discount, if any, approved by the Commission) or such other ceiling as may be stipulated by the Commission fro…"
+   }
+  ],
+  "uperc.revenue.discount_category": [],
+  "uperc.revenue.category_billed": [
+   {
+    "page": 4,
+    "score": 3,
+    "words": [
+     "billed",
+     "category",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…g statements and information as the Commission may direct from time to time; vii) Category/ sub-category wise billed revenue as per the Rate Schedule. viii) Trial Balance for the year matching the accounts with financial…"
+   },
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "billed",
+     "category",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…ensee for the Financial Year. 6.3 The Distribution Licensee shall ensure that the category/ sub-category wise billed revenue as per the Rate Schedule is included in its Accounting Statements. 6.4 The Distribution License…"
+   }
+  ],
+  "uperc.revenue.billed_total": [],
+  "uperc.revenue.revision_impact": [
+   {
+    "page": 43,
+    "score": 3,
+    "words": [
+     "impact",
+     "revision",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…tion factor considering the CPI of respective years, for subsequent years up to FY 2024-25. Provided that the impact of one-time expenses such as Arears due to impact of pay revision, change in pension scheme etc. shall…"
+   },
+   {
+    "page": 49,
+    "score": 3,
+    "words": [
+     "impact",
+     "proposed",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…analysis of the consumption patterns of the relevant consumer categories and an assessment of the anticipated impact of the proposed ToD structure. 42 Determination of Retail Supply Tariff 42.1 The Commission may categor…"
+   }
+  ],
+  "uperc.rm2025.existing": [
+   {
+    "page": 43,
+    "score": 7,
+    "words": [
+     "approved",
+     "norm"
+    ],
+    "values": [
+     "5%"
+    ],
+    "snippet": "…True-up by the Commission as the sum of the following a) For the assets capitalised on or before 31.03.2025 @ 5% of the opening GFA as approved by the Commission. b) For the assets capitalised after 31.03.2025 @ 3% of th…"
+   },
+   {
+    "page": 19,
+    "score": 6,
+    "words": [
+     "approved"
+    ],
+    "values": [
+     "5%"
+    ],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 19 limited to 5% of the total annual quantum of power purchase approved by the Commission. 13.17 The Commission may impose a cap on the average rate of short/ medium/ long t…"
+   },
+   {
+    "page": 28,
+    "score": 3,
+    "words": [
+     "approved",
+     "april",
+     "norm"
+    ],
+    "values": [],
+    "snippet": "…ount shall be considered as Non-Tariff Income. 19 Debt-Equity 19.1 Closing balance of Equity as on 31.03.2025 approved by the Commission shall be taken as the opening Equity for Financial Year 2025-26; 19.2 For a capital…"
+   }
+  ],
+  "uperc.rm2025.new": [
+   {
+    "page": 43,
+    "score": 6,
+    "words": [
+     "norm"
+    ],
+    "values": [
+     "3%"
+    ],
+    "snippet": "….2025 @ 5% of the opening GFA as approved by the Commission. b) For the assets capitalised after 31.03.2025 @ 3% of the opening GFA as approved by the Commission."
+   }
+  ],
+  "uperc.rm2025.total": [
+   {
+    "page": 43,
+    "score": 12,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [
+     "3%",
+     "5%"
+    ],
+    "snippet": "….2025 @ 5% of the opening GFA as approved by the Commission. b) For the assets capitalised after 31.03.2025 @ 3% of the opening GFA as approved by the Commission."
+   },
+   {
+    "page": 26,
+    "score": 2,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ons, 2025 26 (c) Transparent method of power procurement, with the objective of optimising the power purchase expenses, as stipulated in these Regulations. (d) Optimum purchase of power considering factors such as the re…"
+   },
+   {
+    "page": 32,
+    "score": 2,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…25.1 The working capital requirement of the Distribution Business shall cover: (i) Operation and maintenance expenses for one month; (ii) Maintenance spares at 40% of the R&M expenses for two months; and"
+   }
+  ],
+  "uperc.rpo.periphery": [],
+  "uperc.rpo.state": [],
+  "uperc.rpo.discom": [],
+  "uperc.rpo.base": [],
+  "uperc.rpo.obligation": [
+   {
+    "page": 12,
+    "score": 1,
+    "words": [
+     "obligation"
+    ],
+    "values": [],
+    "snippet": "…tions, Power Procurement Plan (renewable energy and non-renewable energy) and forecasting, Renewable Purchase Obligation (RPO) planning and forecasting, Distribution Loss"
+   },
+   {
+    "page": 13,
+    "score": 1,
+    "words": [
+     "obligation"
+    ],
+    "values": [],
+    "snippet": "…mic Despatch (SCED) principles, must run plants and renewable energy plants subject to the Renewable Purchase Obligation (RPO) stipulated by the Commission under the relevant Regulations and their subsequent amendments,…"
+   },
+   {
+    "page": 17,
+    "score": 1,
+    "words": [
+     "obligation"
+    ],
+    "values": [],
+    "snippet": "…mic Despatch (SCED) principles, must run plants and renewable energy plants subject to the Renewable Purchase Obligation (RPO) stipulated by the Commission under the relevant Regulations and their subsequent amendments.…"
+   }
+  ],
+  "uperc.rpo.balance": [],
+  "uperc.rpo.current": [
+   {
+    "page": 13,
+    "score": 2,
+    "words": [
+     "categories",
+     "obligation"
+    ],
+    "values": [],
+    "snippet": "…rojections, status of metering, feeder level/ distribution transformer metering, diversity factor for various categories of consumers taking seasonality into consideration, etc., for each Distribution Licensee area; (b)…"
+   },
+   {
+    "page": 17,
+    "score": 2,
+    "words": [
+     "categories",
+     "obligation"
+    ],
+    "values": [],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 17 structure for various consumer categories and sub-categories shall be proposed based on such studies. 13.7 The Distribution Licensee shall be responsible for preparing Re…"
+   }
+  ],
+  "uperc.rpo.closing": [],
+  "uperc.isd.closing_month": [
+   {
+    "page": 33,
+    "score": 3,
+    "words": [
+     "deposit",
+     "month",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…urcharge and additional surcharge, if any, but excluding Electricity Duty; minus (iv) Amount held as security deposits from the Distribution System Users; Provided that if the working capital, determined based on the abo…"
+   }
+  ],
+  "uperc.isd.interest_month": [
+   {
+    "page": 33,
+    "score": 4,
+    "words": [
+     "deposit",
+     "interest",
+     "month",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…urcharge and additional surcharge, if any, but excluding Electricity Duty; minus (iv) Amount held as security deposits from the Distribution System Users; Provided that if the working capital, determined based on the abo…"
+   },
+   {
+    "page": 37,
+    "score": 3,
+    "words": [
+     "deposit",
+     "interest",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…epreciation; (g) Interest on Loan capital; (h) Interest on Working Capital; (i) Interest on Consumer Security Deposit paid to the Consumers; (j) Banking & Finance charges (k) Provision for Bad and doubtful debts; (l) Ret…"
+   }
+  ],
+  "uperc.isd.interest_months": [
+   {
+    "page": 33,
+    "score": 3,
+    "words": [
+     "deposit",
+     "interest",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…urcharge and additional surcharge, if any, but excluding Electricity Duty; minus (iv) Amount held as security deposits from the Distribution System Users; Provided that if the working capital, determined based on the abo…"
+   },
+   {
+    "page": 37,
+    "score": 3,
+    "words": [
+     "deposit",
+     "interest",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…epreciation; (g) Interest on Loan capital; (h) Interest on Working Capital; (i) Interest on Consumer Security Deposit paid to the Consumers; (j) Banking & Finance charges (k) Provision for Bad and doubtful debts; (l) Ret…"
+   }
+  ],
+  "uperc.isd.interest_annual": [
+   {
+    "page": 31,
+    "score": 4,
+    "words": [
+     "average",
+     "balance",
+     "deposit",
+     "interest"
+    ],
+    "values": [],
+    "snippet": "…red from the first year of commercial operation of the asset. 22.5 The rate of interest shall be the weighted average rate of interest computed on the basis of the actual long-term loan portfolio at the beginning of each…"
+   },
+   {
+    "page": 33,
+    "score": 4,
+    "words": [
+     "average",
+     "deposit",
+     "interest",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…f Truing-Up for any year, simple interest on working capital shall be allowed at a rate equal to the weighted average SBI MCLR (1 Year) prevailing during the concerned Year plus 200 basis points. 25.3 Interest paid on co…"
+   },
+   {
+    "page": 35,
+    "score": 4,
+    "words": [
+     "average",
+     "balance",
+     "deposit",
+     "interest"
+    ],
+    "values": [],
+    "snippet": "…for the year and balance revenue surplus amount, if any, shall be eligible for carrying cost as per weighted average of bank rate published by RBI net of income tax for the relevant year. Provided that the Distribution…"
+   }
+  ],
+  "uperc.iowc.om_month": [
+   {
+    "page": 12,
+    "score": 6,
+    "words": [
+     "expenses"
+    ],
+    "values": [
+     "12"
+    ],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 12 Provided further that if the True-Up Petition is not submitted within timelines given in Regulation 4.1, no carrying cost for the period of delay shall be allowed for the…"
+   },
+   {
+    "page": 23,
+    "score": 6,
+    "words": [
+     "month"
+    ],
+    "values": [
+     "12"
+    ],
+    "snippet": "…Regulations, 2025 23 E = Base Cost of Transmission Charges for (n-3)th Month = (Approved Transmission Charges/12) (in Rs) Adj Factor= Change in Fuel and Power Purchase Cost (Calculated as (A-B)*C+(D-E)) for (n-5)th month…"
+   },
+   {
+    "page": 21,
+    "score": 2,
+    "words": [
+     "expenses",
+     "month"
+    ],
+    "values": [],
+    "snippet": "…(6) The Distribution Licensee shall submit such details, in the stipulated formats, of the variation between expenses incurred and the FPPAS recovered, and the detailed computations and supporting documents, as required…"
+   }
+  ],
+  "uperc.iowc.receivables": [],
+  "uperc.iowc.total": [
+   {
+    "page": 42,
+    "score": 6,
+    "words": [
+     "normative"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 42 33.2 The norms for each component of O&M Expenses shall be determined as per these Regulations. Thereafter O&M Expenses for each year of the Control Period shall be compu…"
+   },
+   {
+    "page": 44,
+    "score": 6,
+    "words": [
+     "normative"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 44 Provided that the normative R&M determined as per the above stipulation shall be inclusive of any impact of change in the applicable taxes or duties. Administrative and G…"
+   },
+   {
+    "page": 55,
+    "score": 6,
+    "words": [
+     "capital"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 55 Annexure A - Depreciation Schedule for Existing Assets Capitalised on or before 31.03.2025 Description of Assets Depreciation Rate A. Land owned under full title 0.00 B.…"
+   }
+  ],
+  "uperc.iowc.net": [
+   {
+    "page": 33,
+    "score": 4,
+    "words": [
+     "beginning",
+     "capital",
+     "surplus",
+     "working"
+    ],
+    "values": [],
+    "snippet": "…after referred to as ‘t’) of the respective financial year. The effective tax rate shall be calculated at the beginning of every Financial Year based on the estimated profit and tax to be paid estimated in line with the…"
+   },
+   {
+    "page": 1,
+    "score": 3,
+    "words": [
+     "capital",
+     "surplus",
+     "working"
+    ],
+    "values": [],
+    "snippet": "…6 Fuel and Power Purchase Adjustment Surcharge 20 PART C: FINANCIAL PRINCIPLES 24 17 Financial Prudence 24 18 Capital Expenditure/ Cost and Capital Structure 26 19 Debt-Equity 28 20 Depreciation 29 21 Return on Equity 31…"
+   },
+   {
+    "page": 35,
+    "score": 3,
+    "words": [
+     "capital",
+     "surplus",
+     "working"
+    ],
+    "values": [],
+    "snippet": "…icensee will be provided by the Commission after prudence check at the interest rates as provided for working capital in these Regulations. 27.4 The revenue surplus of the Distribution Licensee shall be first adjusted to…"
+   }
+  ],
+  "uperc.iowc.interest": [
+   {
+    "page": 36,
+    "score": 6,
+    "words": [
+     "interest"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 36 PART D: DETERMINATION OF ARR FOR DISTRIBUTION LICENSEES 28 Separation of Accounts of Distribution Licensee 28.1 Every Distribution Licensee shall maintain separate accoun…"
+   },
+   {
+    "page": 55,
+    "score": 6,
+    "words": [
+     "capital"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 55 Annexure A - Depreciation Schedule for Existing Assets Capitalised on or before 31.03.2025 Description of Assets Depreciation Rate A. Land owned under full title 0.00 B.…"
+   },
+   {
+    "page": 57,
+    "score": 6,
+    "words": [
+     "capital"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "UPERC (MYT for Distribution) Regulations, 2025 57 Annexure B - Depreciation Schedule for Existing Assets Capitalised After 31.03.2025 Description of Assets Depreciation Rate A. Land owned under full title 0.00 B. Land he…"
+   }
+  ]
+ }
+}

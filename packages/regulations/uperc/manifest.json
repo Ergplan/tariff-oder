@@ -1,0 +1,17 @@
+{
+ "commission": "UPERC",
+ "documents": [
+  {
+   "file": "myt-distribution-2025-english.pdf",
+   "title": "Uttar Pradesh Electricity Regulatory Commission (Multi Year Tariff for Distribution) Regulations, 2025 — English text",
+   "sha256": "b167338dbaae200643e58425109f0da4f152b8dbfb915a337f11ecbad607847d",
+   "pages": 58,
+   "text_layer": true,
+   "provenance": "uploaded by the operator on 2026-11-02 as 'NotifiedMYTDistribution2025.rar' (SHA-256 547d1e17…062c), file 'MYT Distribution2025/ENGLISH.pdf'; the archive also holds the Gazette notification (Hindi), the Hindi text and the Statement of Reasons (scanned, no text layer), not committed",
+   "status": "the regulation's text as notified, held for clause verification; reading it proposes pages (packages/arr-rules/uperc/candidates/myt-2025.json), a person verifies"
+  }
+ ],
+ "missing": [
+  "UPERC (Multi Year Tariff for Distribution and Transmission) Regulations, 2019 — for the true-up years' rules"
+ ]
+}

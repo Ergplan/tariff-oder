@@ -200,6 +200,30 @@
     "ARR row 10"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A51",
+   "kind": "rule against regulation",
+   "title": "Cross-subsidy surcharge capped at 20 % of the ABR, where the 2025 Regulations say 20 % of the average cost of supply",
+   "detail": "The candidate clause (MYT Distribution Regulations 2025, p.48) reads: 'the Cross Subsidy Surcharge shall not exceed 20% of the Average Cost of Supply'.  F33 caps at 20 % of each category's average billing rate (G107 = MIN(20 % × D107, F107)), although its own column header says 'with a cap of 20% of ACoS'; the draft rule uperc.oa.css follows F33.  At ACoS 7.91 Rs/kWh the cap would be 1.58; the surcharges computed for FY2026-27 (1.21) are below either cap, so the figures do not change this year — the rule does.  The reviewer should verify the clause and amend the draft rule.",
+   "where": [
+    "MYT Distribution Regulations 2025 p.48",
+    "F33_CSS G107:G117, F75:F80",
+    "packages/arr-rules/uperc/open-access.v1.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A52",
+   "kind": "rule against regulation",
+   "title": "Bad and doubtful debts capped at 2 % of receivables, where the 2025 Regulations say 2 % of revenue from the sale of electricity in the audited accounts",
+   "detail": "The candidate clause (MYT Distribution Regulations 2025, p.45) allows 'a provision for write-off of bad and doubtful debts up to the extent of 2% of revenue from the sale of electricity as reflected in the audited accounts'.  P3 (and the draft rule uperc.baddebts.cap) takes 2 % of 'receivables for the year', which F31 builds as receipts × 1.0532.  NPCL's claims (12.44, 13.76) are far below either cap, so nothing changes this year; the base of the cap should follow the clause once verified.",
+   "where": [
+    "MYT Distribution Regulations 2025 p.45",
+    "P3_Bad Debts row 13",
+    "F31_Recievables column D"
+   ],
+   "for": "reviewer"
   }
  ]
 }
