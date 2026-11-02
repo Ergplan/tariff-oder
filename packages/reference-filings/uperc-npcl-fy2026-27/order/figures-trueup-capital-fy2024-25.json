@@ -1,0 +1,312 @@
+{
+ "status": "read from the order's text layer by pattern, each quote verbatim (whitespace-normalised) from its page — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): true-up FY2024-25 — capital funding, normative loan, working capital, interest, RoE, tax (Tables 4-71, 4-94, 4-103, 4-105, 4-108, 4-110, 4-112)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "fund.investment": {
+   "value": "317.18",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Total Investment during the year A 321.46 317.18",
+   "what": "total investment approved (Table 4-94) — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.contribution": {
+   "value": "86.70",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Less: Consumer Contribution, Grants B 86.70 86.70",
+   "what": "consumer contribution and grants — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.to_fund": {
+   "value": "230.48",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Investment funded by debt and equity C=A-B 234.76 230.48",
+   "what": "investment funded by debt and equity — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.debt": {
+   "value": "161.33",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Debt Addition D=70% of C 164.33 161.33",
+   "what": "debt addition — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.equity": {
+   "value": "69.14",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Equity Addition E=30% of C 70.43 69.14",
+   "what": "equity addition — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.decapitalised": {
+   "value": "11.74",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "De-capitalizations F 11.74 11.74",
+   "what": "decapitalisation — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.retired_cc": {
+   "value": "4.98",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Gross block retired from Consumer Contribution G 4.98 4.98",
+   "what": "gross block retired from consumer contribution — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.retired_net": {
+   "value": "6.76",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Gross block of Assets retired during the year (net of Consumer Contribution) H = (F-G) 6.76 6.76",
+   "what": "gross block retired, net of consumer contribution — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.retired_acc_dep": {
+   "value": "4.91",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Accumulated depreciation on assets retired during the year (net of Consumer Contribution) I 4.91 4.91",
+   "what": "accumulated depreciation on the retired assets — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.debt_deletion": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Debt Deletion J=(70% of H)-I - -",
+   "what": "debt deletion (printed '-') — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.equity_deletion": {
+   "value": "2.03",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Equity Deletion K=30% of H 1.85 2.03",
+   "what": "equity deletion — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "fund.net_equity": {
+   "value": "67.12",
+   "unit": "INR_crore",
+   "page": 139,
+   "quote": "Net Equity Addition M=E-K 68.58 67.12",
+   "what": "net equity addition — the Approved (last) figure",
+   "header": "Particulars Derivation Claimed Approved"
+  },
+  "loan.opening": {
+   "value": "507.65",
+   "unit": "INR_crore",
+   "page": 145,
+   "quote": "Opening Balance of Normative Loan A 445.58 502.80 507.65",
+   "what": "opening normative loan (Table 4-103; the order of 17.06.2026) — the Approved (last) figure",
+   "header": "Particulars Ref Approved as per TO dated 10.10.2024 Claimed Approved"
+  },
+  "loan.repayment": {
+   "value": "69.97",
+   "unit": "INR_crore",
+   "page": 145,
+   "quote": "Repayment of Normative loan during the year C 62.21 74.75 69.97",
+   "what": "repayment = depreciation allowed — the Approved (last) figure",
+   "header": "Particulars Ref Approved as per TO dated 10.10.2024 Claimed Approved"
+  },
+  "loan.closing": {
+   "value": "599.02",
+   "unit": "INR_crore",
+   "page": 145,
+   "quote": "Closing Balance of Normative Loan D=A+B-C 622.35 579.18 599.02",
+   "what": "closing normative loan — the Approved (last) figure",
+   "header": "Particulars Ref Approved as per TO dated 10.10.2024 Claimed Approved"
+  },
+  "loan.average": {
+   "value": "553.34",
+   "unit": "INR_crore",
+   "page": 145,
+   "quote": "Average Balance of Normative Loan E=(A+D)/2 533.97 540.99 553.34",
+   "what": "average normative loan — the Approved (last) figure",
+   "header": "Particulars Ref Approved as per TO dated 10.10.2024 Claimed Approved"
+  },
+  "loan.rate": {
+   "value": "9.88",
+   "unit": "percent",
+   "page": 145,
+   "quote": "Weighted average Rate of Interest on actual Loans (%) F 9.91% 9.91% 9.88%",
+   "what": "rate as allowed in the true-up of FY2023-24 (para 4.9.7) — the Approved (last) figure",
+   "header": "Particulars Ref Approved as per TO dated 10.10.2024 Claimed Approved"
+  },
+  "wc.om_month": {
+   "value": "8.38",
+   "unit": "INR_crore",
+   "page": 148,
+   "quote": "One month's O&M Expenses 7.80 15.96 8.38",
+   "what": "one month's O&M (Table 4-105) — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "wc.receivables": {
+   "value": "329.33",
+   "unit": "INR_crore",
+   "page": 148,
+   "quote": "One-and-a-half-month equivalent of expected revenue from distribution tariff 340.71 348.11 329.33",
+   "what": "receivables: 1.5 months of approved revenue — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "wc.spares": {
+   "value": "3.71",
+   "unit": "INR_crore",
+   "page": 148,
+   "quote": "Maintenance spares @ 40% of the R&M Expense for two months 3.65 4.82 3.71",
+   "what": "maintenance spares — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "wc.gross": {
+   "value": "341.41",
+   "unit": "INR_crore",
+   "page": 148,
+   "quote": "Gross Total 352.15 368.89 341.41",
+   "what": "gross working capital — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "wc.deposits_net": {
+   "value": "335.38",
+   "unit": "INR_crore",
+   "page": 148,
+   "quote": "Net Security Deposits from Consumers 343.42 335.38 335.38",
+   "what": "net security deposits — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "wc.net": {
+   "value": "6.04",
+   "unit": "INR_crore",
+   "page": 148,
+   "quote": "Net Working Capital 8.73 33.52 6.04",
+   "what": "net working capital — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "wc.rate": {
+   "value": "11.38",
+   "unit": "percent",
+   "page": 148,
+   "quote": "Rate of Interest for Working Capital (SBI MCLR (1Year) + 250 basis points) 11.05% 11.38% 11.38%",
+   "what": "working-capital rate — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "wc.interest": {
+   "value": "0.69",
+   "unit": "INR_crore",
+   "page": 148,
+   "quote": "Interest on Total Working Capital 0.96 3.81 0.69",
+   "what": "interest on working capital — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "int.ltl": {
+   "value": "54.68",
+   "unit": "INR_crore",
+   "page": 150,
+   "quote": "Interest on Long term loans 52.92 53.62 54.68",
+   "what": "interest on long-term loans (Table 4-108) — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "int.isd": {
+   "value": "24.79",
+   "unit": "INR_crore",
+   "page": 150,
+   "quote": "Interest on security deposit 23.94 24.79 24.79",
+   "what": "interest on security deposit — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "int.total": {
+   "value": "80.16",
+   "unit": "INR_crore",
+   "page": 150,
+   "quote": "Total Interest & Finance Charges 77.82 82.23 80.16",
+   "what": "total interest and finance charges — the Approved (last) figure",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "roe.opening": {
+   "value": "517.23",
+   "unit": "INR_crore",
+   "page": 152,
+   "quote": "1 Equity (Opening Balance) 416.74 535.08 517.23*",
+   "what": "opening equity (Table 4-110; the order of 17.06.2026) — the Approved (last) figure",
+   "header": "Sl. No. Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "roe.closing": {
+   "value": "584.35",
+   "unit": "INR_crore",
+   "page": 152,
+   "quote": "3 Equity (Closing Balance) 519.16 597.99 584.35",
+   "what": "closing equity — the Approved (last) figure",
+   "header": "Sl. No. Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "roe.average": {
+   "value": "550.79",
+   "unit": "INR_crore",
+   "page": 152,
+   "quote": "4 Average Equity 467.95 566.54 550.79",
+   "what": "average equity — the Approved (last) figure",
+   "header": "Sl. No. Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "roe.approved": {
+   "value": "82.62",
+   "unit": "INR_crore",
+   "page": 152,
+   "quote": "6 Return on Equity 70.19 84.98 82.62",
+   "what": "return on equity — the Approved (last) figure",
+   "header": "Sl. No. Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "tax.approved": {
+   "value": "27.79",
+   "unit": "INR_crore",
+   "page": 153,
+   "quote": "Total Tax Expense C=A*B/(1-B) 23.61 29.74 28.77 28.58 27.79",
+   "what": "income tax approved upon true-up (Table 4-112)"
+  },
+  "tax.rate": {
+   "value": "25.17",
+   "unit": "percent",
+   "page": 153,
+   "quote": "Income Tax Rate B 25.17% 25.17% 25.17%",
+   "what": "income tax rate (Table 4-112)"
+  },
+  "om.employee": {
+   "value": "37.64",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "1 Employees Expenses including retiral benefits 36.56 95.42 37.64 37.64",
+   "what": "employee expenses approved (Table 4-71) — the Approved (last) figure",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.ag": {
+   "value": "24.55",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "2 Administrative & General Expenses 20.28 39.36 24.55 24.55",
+   "what": "A&G approved — the Approved (last) figure",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.rm": {
+   "value": "55.60",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "3 Repair & Maintenance Expenses 54.72 64.91 55.60 55.60",
+   "what": "R&M approved — the Approved (last) figure",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  },
+  "om.capitalised": {
+   "value": "17.19",
+   "unit": "INR_crore",
+   "page": 109,
+   "quote": "6 Employee Cost Capitalised (18.00) (17.19) (17.19) (17.19)",
+   "what": "employee cost capitalised (Table 4-71, deducted)",
+   "header": "Approved as per TO dtd 10.10.2024 Claimed Normative (Computed) Approved"
+  }
+ }
+}

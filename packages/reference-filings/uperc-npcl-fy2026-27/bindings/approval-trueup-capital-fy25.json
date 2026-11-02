@@ -1,0 +1,116 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F25_IOL",
+ "rates": "order/figures-trueup-capital-fy2024-25.json",
+ "places": 2,
+ "note": "The Commission's true-up of FY2024-25 (2019 Regulations) for capital funding, normative loan, equity and RoE, income tax and working capital, reproduced with the same draft rules that reproduce NPCL's claim, from the order's figures (Tables 4-71, 4-94, 4-103, 4-105, 4-110, 4-112) and checked against its approvals.  Two inputs are the order's own where the draft rule follows NPCL and the order does not (A66): none for the equity deletion, which the draft computes (and so differs); the working capital's receivables, which the order takes as 1.5 months of approved revenue (329.33) where the draft true-up rule takes the actual receivables.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "capital approved FY2024-25",
+   "inputs": {
+    "record:capitalisation": {
+     "rate": "fund.investment"
+    },
+    "record:consumer_contribution": {
+     "rate": "fund.contribution"
+    },
+    "record:retired_gross": {
+     "rate": "fund.decapitalised"
+    },
+    "record:retired_grants": {
+     "rate": "fund.retired_cc"
+    },
+    "record:retired_acc_dep": {
+     "rate": "fund.retired_acc_dep"
+    },
+    "record:retired_acc_dep_adjustment": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the order's table nets no adjustment from the retired assets' accumulated depreciation (Table 4-94, I)"
+    },
+    "prior:equity_closing": {
+     "rate": "roe.opening"
+    },
+    "prior:normative_loan_closing": {
+     "rate": "loan.opening"
+    },
+    "record:depreciation": {
+     "rate": "loan.repayment"
+    },
+    "assumption:loan_interest_rate": {
+     "rate": "loan.rate"
+    },
+    "assumption:tax_rate_roe": {
+     "rate": "tax.rate"
+    }
+   },
+   "checks": {
+    "net_capitalisation": "order:fund.to_fund",
+    "normative_loan_addition": "order:fund.debt",
+    "equity_addition": "order:fund.equity",
+    "retired_gross_net": "order:fund.retired_net",
+    "loan_reduction_on_retirement": "order:fund.debt_deletion",
+    "equity_reduction_on_retirement": "order:fund.equity_deletion",
+    "normative_loan_closing": "order:loan.closing",
+    "normative_loan_average": "order:loan.average",
+    "interest_on_loan": "order:int.ltl",
+    "equity_closing": "order:roe.closing",
+    "equity_average": "order:roe.average",
+    "return_on_equity": "order:roe.approved",
+    "tax_on_roe": "order:tax.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "working capital approved FY2024-25",
+   "inputs": {
+    "record:rm": {
+     "rate": "om.rm"
+    },
+    "record:employee_gross": {
+     "rate": "om.employee"
+    },
+    "record:employee_capitalised": {
+     "rate": "om.capitalised"
+    },
+    "record:ag_net": {
+     "rate": "om.ag"
+    },
+    "record:om_additional": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the order allows no separate SOP-compliance expenses (Table 4-71, row 5)"
+    },
+    "record:provisions": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no A&G provisions in the true-up's O&M (Table 4-71)"
+    },
+    "record:maintenance_spares": {
+     "rate": "wc.spares"
+    },
+    "record:wc_receivables_actual": {
+     "rate": "wc.receivables"
+    },
+    "record:security_deposit_average": {
+     "rate": "wc.deposits_net"
+    },
+    "record:surplus_at_beginning": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the true-up's working-capital table has no surplus at the beginning (Table 4-105)"
+    },
+    "assumption:wc_interest_rate": {
+     "rate": "wc.rate"
+    }
+   },
+   "checks": {
+    "wc_om_month": "order:wc.om_month",
+    "wc_total": "order:wc.net",
+    "interest_on_working_capital": "order:wc.interest"
+   }
+  }
+ ]
+}

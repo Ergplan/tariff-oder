@@ -1226,3 +1226,32 @@ def test_npcl_the_trueup_om_approval_reproduces_from_the_monthly_indices():
     rm = [c for c in checks if c.category.startswith("rm ")]
     assert {c.result for c in rm} == {"match"}
     assert all(abs(Decimal(c.filed) - Decimal(c.computed)) <= Decimal("0.01") for c in checks)
+
+
+def test_npcl_the_trueup_capital_approval_shows_where_the_draft_rules_depart():
+    """Real data: the true-up of FY2024-25's funding, loan, equity, tax and working capital from
+    the order's figures.  The working capital reproduces; one draft rule (the equity deleted on
+    retirement: WDV 1.85 against the order's 30 % of the gross, 2.03) shows as differences, the
+    rest one unit of rounding (A66) — the build does not bend a rule to fit an order."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-trueup-capital-fy25.json").read_text())
+    figures = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=figures)
+    assert {c.result for c in checks if c.category.startswith("working capital")} == {"match"}
+    dele = next(c for c in checks if c.output == "equity_reduction_on_retirement")
+    assert (dele.filed, dele.computed) == ("2.03", "1.85")
+    small = [
+        c
+        for c in checks
+        if c.result != "match"
+        and c.output not in ("equity_reduction_on_retirement", "equity_closing", "equity_average")
+    ]
+    assert all(abs(Decimal(c.filed) - Decimal(c.computed)) <= Decimal("0.01") for c in small)

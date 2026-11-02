@@ -1005,6 +1005,33 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 102 (2026-11-02): the true-up's capital, loan, equity and working capital; two
+  draft rules depart from the Commission.**
+  - **The record:** `order/figures-trueup-capital-fy2024-25.json` holds 38 figures (Tables 4-71,
+    4-94, 4-103, 4-105, 4-108, 4-110, 4-112).
+  - **Two extraction errors, caught by reading the values, not by the quote checker.**
+    - A pattern for "the row's last figure" took the next paragraph's number ("4.8.") as a
+      figure.  Figures now need two decimals.
+    - It found NPCL's submitted table before the approved one on the same page.  Searches now
+      start at the approved table's title.
+    Both wrong quotes really were on the page, so the checker could not catch either; the
+    values had to be read.  38 / 38 verified after the fix.
+  - **Binding `approval-trueup-capital-fy25.json`: 9 / 16 match.**  Working capital reproduces
+    (interest 0.69).  The other differences are one unit of rounding, except one draft rule:
+  - **A66 (reviewer), two draft rules follow NPCL where the order does not:**
+    - Equity deleted on retired assets: WDV 1.85 against the order's 30 % of the gross retired,
+      2.03, with the debt deletion nil (para 4.9.8).  The difference carries into closing
+      equity (+0.17) and RoE (+0.01).
+    - Working-capital receivables in the true-up: actual receivables against 1.5 months of
+      approved revenue, 329.33.  Fed here as the order's figure.
+    The drafts are not changed to fit the order: verifying the 2019 clauses is the reviewer's.
+  - **A67 (petitioner):** interest −2.07 (loan +1.06, working capital −3.12), RoE −2.36, tax
+    −0.79 and bad debts −0.59 explained.  I first attributed non-tariff income's +1.72 to the
+    treasury deduction; that was not established, and the finding now says so.
+  - **Still to reproduce in the true-up:** power purchase −11.99, depreciation −4.78,
+    contingency −5.61, efficiency gains −2.58.
+  Nothing verified, nothing approved.
+
   **Increment 101 (2026-11-02): the true-up's O&M cut reproduced from the monthly indices.**
   The true-up year's decision (−123.38) is mostly O&M (−90.91), under the 2019 Regulations.
   - **The record:** `order/figures-trueup-om-fy2024-25.json` holds 69 figures: the CPI and WPI
@@ -2571,6 +2598,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 102 (2026-11-02): 467 passed** (+1 unit: the real true-up capital and working capital — working capital exact, the equity-deletion rule's departure shown, the rest within a unit).  `check_order_quotes.py`: 38 / 38.  Ruff and format clean.
 - **Increment 101 (2026-11-02): 466 passed** (+1 unit: the real true-up O&M — indices and their increases exact, R&M exact, every figure within one unit).  `check_order_quotes.py`: 69 / 69.  Ruff and format clean.
 - **Increment 100 (2026-11-02): 465 passed** (+3 unit: a table with blank cells read by word position, a dash in a label kept as text; a source table's arithmetic per side; the real Table 6-35 — 51 rows, approved side 100 %, the order's three claimed-side slips).  Ruff, format and web typecheck clean.
 - **Increment 99 (2026-11-02): 462 passed** (+2 unit: the real depreciation by class — 36 / 36 classes, the rest within two last-place units; a zero printed as "-" accepted, and only so).  `check_order_quotes.py`: 183 / 183.  Ruff and format clean.
@@ -2805,7 +2833,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 101) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 102) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2860,12 +2888,14 @@ entries below are the per-increment history.**
     so do capital, loan, RoE, tax, security deposit and depreciation by class (A62); the power
     purchase decision is read by source and explained (A64) — the ARR year's +29.51 accounted
     for line by line.  The true-up's O&M cut (−90.91 of −123.38) is reproduced from the monthly
-    price indices: the 2019 norm against NPCL's actual cost (A65).  The order misprints one line of
+    price indices: the 2019 norm against NPCL's actual cost (A65); its capital, loan, equity,
+    tax and working capital likewise (A67), showing two draft rules that depart from the
+    Commission's practice (A66).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **33 findings (A29–A65):** 20 for the petitioner, collected in the draft queries; 13 for the
+  - **35 findings (A29–A67):** 21 for the petitioner, collected in the draft queries; 14 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

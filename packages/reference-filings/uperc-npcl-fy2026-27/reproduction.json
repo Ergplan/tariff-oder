@@ -11287,6 +11287,187 @@
    ]
   },
   {
+   "binding": "approval-trueup-capital-fy25.json",
+   "checks": [
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:fund.to_fund",
+     "output": "net_capitalisation",
+     "result": "match",
+     "filed": "230.48",
+     "computed": "230.48",
+     "why": null,
+     "exact": "230.48"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:fund.debt",
+     "output": "normative_loan_addition",
+     "result": "differs",
+     "filed": "161.33",
+     "computed": "161.34",
+     "why": null,
+     "exact": "161.3360"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:fund.equity",
+     "output": "equity_addition",
+     "result": "match",
+     "filed": "69.14",
+     "computed": "69.14",
+     "why": null,
+     "exact": "69.1440"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:fund.retired_net",
+     "output": "retired_gross_net",
+     "result": "match",
+     "filed": "6.76",
+     "computed": "6.76",
+     "why": null,
+     "exact": "6.76"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:fund.debt_deletion",
+     "output": "loan_reduction_on_retirement",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null,
+     "exact": "0E-30"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:fund.equity_deletion",
+     "output": "equity_reduction_on_retirement",
+     "result": "differs",
+     "filed": "2.03",
+     "computed": "1.85",
+     "why": null,
+     "exact": "1.85"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:loan.closing",
+     "output": "normative_loan_closing",
+     "result": "match",
+     "filed": "599.02",
+     "computed": "599.02",
+     "why": null,
+     "exact": "599.016000000000000000"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:loan.average",
+     "output": "normative_loan_average",
+     "result": "differs",
+     "filed": "553.34",
+     "computed": "553.33",
+     "why": null,
+     "exact": "553.33300000000000000"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:int.ltl",
+     "output": "interest_on_loan",
+     "result": "differs",
+     "filed": "54.68",
+     "computed": "54.67",
+     "why": null,
+     "exact": "54.6693004000000000000"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:roe.closing",
+     "output": "equity_closing",
+     "result": "differs",
+     "filed": "584.35",
+     "computed": "584.52",
+     "why": null,
+     "exact": "584.5240"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:roe.average",
+     "output": "equity_average",
+     "result": "differs",
+     "filed": "550.79",
+     "computed": "550.88",
+     "why": null,
+     "exact": "550.8770"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:roe.approved",
+     "output": "return_on_equity",
+     "result": "differs",
+     "filed": "82.62",
+     "computed": "82.63",
+     "why": null,
+     "exact": "82.631550"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "capital approved FY2024-25 order:tax.approved",
+     "output": "tax_on_roe",
+     "result": "match",
+     "filed": "27.79",
+     "computed": "27.79",
+     "why": null,
+     "exact": "27.79414824936522784979286382"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "working capital approved FY2024-25 order:wc.om_month",
+     "output": "wc_om_month",
+     "result": "match",
+     "filed": "8.38",
+     "computed": "8.38",
+     "why": null,
+     "exact": "8.383333333333333333333333333"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "working capital approved FY2024-25 order:wc.net",
+     "output": "wc_total",
+     "result": "match",
+     "filed": "6.04",
+     "computed": "6.04",
+     "why": null,
+     "exact": "6.0433333333333333333333333"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2024-25",
+     "category": "working capital approved FY2024-25 order:wc.interest",
+     "output": "interest_on_working_capital",
+     "result": "match",
+     "filed": "0.69",
+     "computed": "0.69",
+     "why": null,
+     "exact": "0.6877313333333333333333333295"
+    }
+   ]
+  },
+  {
    "binding": "approval-trueup-om-fy25.json",
    "checks": [
     {
