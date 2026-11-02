@@ -20,9 +20,11 @@ computes what the petitioner computed — not that either is what the regulation
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass, field, replace
 from decimal import ROUND_HALF_UP, Decimal
+from pathlib import Path
 from typing import Any
 
 from .rules import Q, Rule, RuleError, RuleSet
@@ -531,6 +533,22 @@ def load_rate_record(record: dict[str, Any]) -> dict[str, tuple[str, str]]:
     return out
 
 
+def load_binding_rates(folder: Path, binding: dict[str, Any]) -> dict[str, tuple[str, str]] | None:
+    """The records a binding names: one path (``"rates": "order/…json"``, keys as recorded), or
+    several under aliases (``"rates": {"tu": "order/…", "fy27": "order/…"}``, keys ``"tu:key"``)
+    so that two records' keys never collide."""
+    named = binding.get("rates")
+    if not named:
+        return None
+    if isinstance(named, str):
+        return load_rate_record(json.loads((folder / named).read_text()))
+    out: dict[str, tuple[str, str]] = {}
+    for alias, path in named.items():
+        for key, value in load_rate_record(json.loads((folder / path).read_text())).items():
+            out[f"{alias}:{key}"] = value
+    return out
+
+
 def reproduce_cells(
     wb: Any,
     binding: dict[str, Any],
@@ -551,7 +569,8 @@ def reproduce_cells(
     ``"<name>::Sheet!A1"`` reads another workbook of the filing (``others``: name → workbook,
     as the binding's ``workbooks`` names them) — a utility's record checked against the formats.
     An input may also be a commission order's rate (``{"rate": "lmv6.base"}``), from the rate
-    record the binding names (``rates``: see ``load_rate_record``) — never a figure typed here —
+    record the binding names (``rates``: see ``load_rate_record``, ``load_binding_rates``) — never a
+    figure typed here; ``{"rate": a, "minus": b}`` is one recorded figure less another —
     or what an earlier evaluation of this binding computed (``{"computed": "<its label>",
     "output": …}``), unrounded: a chain of years carried as the regulator carries it, not
     restarted from each printed, rounded figure.  A check may name a figure of the record
@@ -582,9 +601,17 @@ def reproduce_cells(
                     values[source] = got
                     continue
                 if "rate" in spec:
-                    if not rates or spec["rate"] not in rates:
-                        raise RuleError(f"{binding['sheet']}: rate {spec['rate']!r} is not in the rate record")
+                    for key in [spec["rate"], *([spec["minus"]] if "minus" in spec else [])]:
+                        if not rates or key not in rates:
+                            raise RuleError(f"{binding['sheet']}: rate {key!r} is not in the rate record")
                     values[source] = rates[spec["rate"]]
+                    if "minus" in spec:
+                        # one recorded figure less another (a year's deduction between two printed
+                        # balances) — derived, never typed; the units must agree
+                        (a, ua), (b, ub) = rates[spec["rate"]], rates[spec["minus"]]
+                        if ua != ub:
+                            raise RuleError(f"{binding['sheet']}: {spec['rate']} ({ua}) minus {spec['minus']} ({ub})")
+                        values[source] = (str(Decimal(a) - Decimal(b)), ua)
                     continue
                 if "value" in spec:
                     if not spec.get("why"):

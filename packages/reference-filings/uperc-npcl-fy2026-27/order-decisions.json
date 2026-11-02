@@ -1868,10 +1868,10 @@
       "key": "depreciation",
       "decision": "-3.08",
       "effect": "-3.08",
-      "reason": "the approved gross block carried forward",
+      "reason": "the approved gross block carried forward: each class from the true-up's closing to the ARR year's opening, at the 2025 class rates",
       "where": "p.201, Table 5-40",
       "finding": "A72",
-      "status": "read",
+      "status": "reproduced",
       "parts": [
        {
         "amount": "-2.98",
@@ -1886,6 +1886,7 @@
         "what": "Part C"
        }
       ],
+      "binding": "approval-apr-depreciation-fy26.json",
       "parts_sum": "-3.08",
       "parts_result": "match"
      },

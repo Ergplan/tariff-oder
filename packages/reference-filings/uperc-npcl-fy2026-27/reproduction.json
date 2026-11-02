@@ -10128,6 +10128,66 @@
    ]
   },
   {
+   "binding": "approval-apr-depreciation-fy26.json",
+   "checks": [
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Part A FY2025-26 order:apr:dep.A",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "54.05",
+     "computed": "54.05",
+     "why": null,
+     "exact": "54.048386"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Part B FY2025-26 order:apr:dep.B",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "54.09",
+     "computed": "54.09",
+     "why": null,
+     "exact": "54.090341"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "Part C FY2025-26 order:apr:dep.C",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "9.81",
+     "computed": "9.81",
+     "why": null,
+     "exact": "9.8094880"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "depreciation APR FY2025-26 (Table 5-40) order:apr:dep.gross",
+     "output": "depreciation_gross_total",
+     "result": "match",
+     "filed": "117.95",
+     "computed": "117.95",
+     "why": null,
+     "exact": "117.9482150"
+    },
+    {
+     "table": "F24_Dep",
+     "fiscal_year": "FY2025-26",
+     "category": "depreciation APR FY2025-26 (Table 5-40) order:apr:dep.net",
+     "output": "depreciation_net",
+     "result": "match",
+     "filed": "87.01",
+     "computed": "87.01",
+     "why": null,
+     "exact": "87.0082150"
+    }
+   ]
+  },
+  {
    "binding": "approval-apr-fy26.json",
    "checks": [
     {

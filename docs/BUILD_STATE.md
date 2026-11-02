@@ -1005,6 +1005,27 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 113 (2026-11-02): the APR's depreciation reproduced class by class between two
+  printed balances.**
+  - **The problem:** Table 5-40 prints only the APR's part totals.  The FY2025-26 per-class
+    figures are not printed anywhere.
+  - **The approach:** each class opens at the true-up's closing (Tables 4-99, 4-100) and closes
+    at the ARR year's opening (Tables 6-62 to 6-64).  The year's deduction is their difference;
+    Part C's additions are the ARR year's opening of Part C.  The rates are the ARR year's class
+    rates.
+  - **Binding `approval-apr-depreciation-fy26.json`: 5 / 5 exact** — Part A 54.05, B 54.09,
+    C 9.81, gross 117.95, net 87.01.  This confirms the order applied the 2025 Regulations'
+    class rates to FY2025-26.
+  - **Engine:**
+    - a binding may draw on several records under aliases (`rates: {alias: path}`, keys
+      `alias:key`) — `load_binding_rates`, now used by `reproduce_formats.py`;
+    - an input may be one recorded figure less another (`{"rate": a, "minus": b}`, same unit
+      only), so a derived difference is never typed.
+    A synthetic test covers both, including the refusal of mixed units.
+  - **The explanations:** the APR's depreciation moves to reproduced; 22 of the 36 changed lines
+    are now reproduced.
+  Nothing verified, nothing approved.
+
   **Increment 112 (2026-11-02): the true-up's bad debts and non-tariff income reproduced.**
   - **The record:** `order/figures-trueup-nti-fy2024-25.json` holds 16 figures (Tables 4-113,
     4-114, 4-117, 4-118), 16 / 16 quotes verified.  Allowing whole numbers for the one figure
@@ -2820,6 +2841,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 113 (2026-11-02): 483 passed** (+2 unit: aliased records and one figure less another, synthetic; the APR's depreciation exactly).  Ruff and format clean.
 - **Increment 112 (2026-11-02): 481 passed** (+1 unit: the true-up's bad debts and non-tariff income).  `check_order_quotes.py`: 16 / 16.  Ruff and format clean.
 - **Increment 111 (2026-11-02): 480 passed** (+1 unit: the ARR year's working capital).  `check_order_quotes.py`: 17 / 17.  Ruff and format clean.
 - **Increment 110 (2026-11-02): 479 passed** (+1 unit: the fixed charges against the billable-demand floor).  `check_order_quotes.py`: 20 / 20.  Ruff and format clean.
@@ -3065,7 +3087,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 112) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 113) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

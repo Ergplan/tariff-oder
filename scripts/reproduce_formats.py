@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "services" / "api" / "src"))
 
 from tariff_api.arr.blocks import read_year_blocks  # noqa: E402
 from tariff_api.arr.reproduce import (  # noqa: E402
-    load_rate_record,
+    load_binding_rates,
     reproduce,
     reproduce_blocks,
     reproduce_cells,
@@ -285,9 +285,8 @@ def main() -> int:
                 name: openpyxl.load_workbook(folder / path, data_only=True, read_only=False)
                 for name, path in binding.get("workbooks", {}).items()
             }
-            rates = None
-            if binding.get("rates"):  # a commission order's rates, each with its page and quote
-                rates = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+            # a commission order's figures, each with its page and quote (one record, or several)
+            rates = load_binding_rates(folder, binding)
             checks = reproduce_cells(wb, binding, rules, others, rates)
             results[b.name] = checks
             counts = dict(collections.Counter(c.result for c in checks))

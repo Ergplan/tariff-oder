@@ -1,0 +1,1808 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F24_Dep",
+ "rates": {
+  "tu": "order/figures-trueup-depreciation-fy2024-25.json",
+  "fy27": "order/figures-depreciation-fy2026-27.json",
+  "apr": "order/figures-apr-fy2025-26.json"
+ },
+ "places": 2,
+ "note": "The APR's depreciation for FY2025-26 (Table 5-40 prints only its part totals) reproduced class by class between two printed balances: each class opens at the true-up's closing (Tables 4-99, 4-100) and closes at the ARR year's opening (Tables 6-62 to 6-64), the year's deduction being their difference and Part C's additions the ARR year's opening of Part C; at the ARR year's class rates (FY2025-26 is under the 2025 Regulations, as FY2026-27 is), with the same draft rules as NPCL's F24.  Checked against the part totals, the gross (117.95) and the net (87.01, after the 30.94 on consumer contribution).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "Part A FY2025-26",
+   "categories": {
+    "A1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.1.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.1.closing",
+       "minus": "fy27:dep.A.1.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.1.rate"
+      }
+     }
+    },
+    "A2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.2.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.2.closing",
+       "minus": "fy27:dep.A.2.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.2.rate"
+      }
+     }
+    },
+    "A3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.3.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.3.closing",
+       "minus": "fy27:dep.A.3.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.3.rate"
+      }
+     }
+    },
+    "A4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.4.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.4.closing",
+       "minus": "fy27:dep.A.4.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.4.rate"
+      }
+     }
+    },
+    "A5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.5.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.5.closing",
+       "minus": "fy27:dep.A.5.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.5.rate"
+      }
+     }
+    },
+    "A6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.6.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.6.closing",
+       "minus": "fy27:dep.A.6.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.6.rate"
+      }
+     }
+    },
+    "A7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.7.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.7.closing",
+       "minus": "fy27:dep.A.7.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.7.rate"
+      }
+     }
+    },
+    "A8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.8.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.8.closing",
+       "minus": "fy27:dep.A.8.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.8.rate"
+      }
+     }
+    },
+    "A9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.9.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.9.closing",
+       "minus": "fy27:dep.A.9.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.9.rate"
+      }
+     }
+    },
+    "A10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.10.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.10.closing",
+       "minus": "fy27:dep.A.10.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.10.rate"
+      }
+     }
+    },
+    "A11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.11.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.11.closing",
+       "minus": "fy27:dep.A.11.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.11.rate"
+      }
+     }
+    },
+    "A12 Solar Power Generation Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.12.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.12.closing",
+       "minus": "fy27:dep.A.12.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.12.rate"
+      }
+     }
+    }
+   },
+   "checks": {
+    "depreciation_gross_total": "order:apr:dep.A"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "Part B FY2025-26",
+   "categories": {
+    "B1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.1.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.1.closing",
+       "minus": "fy27:dep.B.1.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.1.rate"
+      }
+     }
+    },
+    "B2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.2.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.2.closing",
+       "minus": "fy27:dep.B.2.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.2.rate"
+      }
+     }
+    },
+    "B3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.3.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.3.closing",
+       "minus": "fy27:dep.B.3.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.3.rate"
+      }
+     }
+    },
+    "B4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.4.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.4.closing",
+       "minus": "fy27:dep.B.4.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.4.rate"
+      }
+     }
+    },
+    "B5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.5.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.5.closing",
+       "minus": "fy27:dep.B.5.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.5.rate"
+      }
+     }
+    },
+    "B6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.6.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.6.closing",
+       "minus": "fy27:dep.B.6.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.6.rate"
+      }
+     }
+    },
+    "B7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.7.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.7.closing",
+       "minus": "fy27:dep.B.7.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.7.rate"
+      }
+     }
+    },
+    "B8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.8.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.8.closing",
+       "minus": "fy27:dep.B.8.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.8.rate"
+      }
+     }
+    },
+    "B9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.9.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.9.closing",
+       "minus": "fy27:dep.B.9.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.9.rate"
+      }
+     }
+    },
+    "B10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.10.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.10.closing",
+       "minus": "fy27:dep.B.10.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.10.rate"
+      }
+     }
+    },
+    "B11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.11.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.11.closing",
+       "minus": "fy27:dep.B.11.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.11.rate"
+      }
+     }
+    },
+    "B12 Solar Power Generation equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.12.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.12.closing",
+       "minus": "fy27:dep.B.12.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.12.rate"
+      }
+     }
+    }
+   },
+   "checks": {
+    "depreciation_gross_total": "order:apr:dep.B"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "Part C FY2025-26",
+   "categories": {
+    "C1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.1.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.1.rate"
+      }
+     }
+    },
+    "C2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.2.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.2.rate"
+      }
+     }
+    },
+    "C3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.3.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.3.rate"
+      }
+     }
+    },
+    "C4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.4.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.4.rate"
+      }
+     }
+    },
+    "C5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.5.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.5.rate"
+      }
+     }
+    },
+    "C6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.6.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.6.rate"
+      }
+     }
+    },
+    "C7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.7.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.7.rate"
+      }
+     }
+    },
+    "C8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.8.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.8.rate"
+      }
+     }
+    },
+    "C9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.9.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.9.rate"
+      }
+     }
+    },
+    "C10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.10.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.10.rate"
+      }
+     }
+    },
+    "C11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.11.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.11.rate"
+      }
+     }
+    },
+    "C12 Solar Power Generation equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.12.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.12.rate"
+      }
+     }
+    }
+   },
+   "checks": {
+    "depreciation_gross_total": "order:apr:dep.C"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "depreciation APR FY2025-26 (Table 5-40)",
+   "categories": {
+    "A1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.1.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.1.closing",
+       "minus": "fy27:dep.A.1.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.1.rate"
+      }
+     }
+    },
+    "A2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.2.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.2.closing",
+       "minus": "fy27:dep.A.2.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.2.rate"
+      }
+     }
+    },
+    "A3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.3.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.3.closing",
+       "minus": "fy27:dep.A.3.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.3.rate"
+      }
+     }
+    },
+    "A4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.4.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.4.closing",
+       "minus": "fy27:dep.A.4.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.4.rate"
+      }
+     }
+    },
+    "A5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.5.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.5.closing",
+       "minus": "fy27:dep.A.5.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.5.rate"
+      }
+     }
+    },
+    "A6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.6.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.6.closing",
+       "minus": "fy27:dep.A.6.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.6.rate"
+      }
+     }
+    },
+    "A7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.7.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.7.closing",
+       "minus": "fy27:dep.A.7.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.7.rate"
+      }
+     }
+    },
+    "A8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.8.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.8.closing",
+       "minus": "fy27:dep.A.8.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.8.rate"
+      }
+     }
+    },
+    "A9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.9.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.9.closing",
+       "minus": "fy27:dep.A.9.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.9.rate"
+      }
+     }
+    },
+    "A10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.10.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.10.closing",
+       "minus": "fy27:dep.A.10.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.10.rate"
+      }
+     }
+    },
+    "A11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.11.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.11.closing",
+       "minus": "fy27:dep.A.11.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.11.rate"
+      }
+     }
+    },
+    "A12 Solar Power Generation Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.A.12.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.A.12.closing",
+       "minus": "fy27:dep.A.12.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A takes no additions"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.A.12.rate"
+      }
+     }
+    },
+    "B1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.1.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.1.closing",
+       "minus": "fy27:dep.B.1.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.1.rate"
+      }
+     }
+    },
+    "B2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.2.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.2.closing",
+       "minus": "fy27:dep.B.2.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.2.rate"
+      }
+     }
+    },
+    "B3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.3.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.3.closing",
+       "minus": "fy27:dep.B.3.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.3.rate"
+      }
+     }
+    },
+    "B4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.4.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.4.closing",
+       "minus": "fy27:dep.B.4.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.4.rate"
+      }
+     }
+    },
+    "B5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.5.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.5.closing",
+       "minus": "fy27:dep.B.5.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.5.rate"
+      }
+     }
+    },
+    "B6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.6.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.6.closing",
+       "minus": "fy27:dep.B.6.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.6.rate"
+      }
+     }
+    },
+    "B7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.7.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.7.closing",
+       "minus": "fy27:dep.B.7.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.7.rate"
+      }
+     }
+    },
+    "B8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.8.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.8.closing",
+       "minus": "fy27:dep.B.8.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.8.rate"
+      }
+     }
+    },
+    "B9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.9.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.9.closing",
+       "minus": "fy27:dep.B.9.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.9.rate"
+      }
+     }
+    },
+    "B10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.10.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.10.closing",
+       "minus": "fy27:dep.B.10.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.10.rate"
+      }
+     }
+    },
+    "B11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.11.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.11.closing",
+       "minus": "fy27:dep.B.11.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.11.rate"
+      }
+     }
+    },
+    "B12 Solar Power Generation equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "tu:dep.B.12.closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "tu:dep.B.12.closing",
+       "minus": "fy27:dep.B.12.opening"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B (assets of 01.04.2020 to 31.03.2025) takes no additions after FY2024-25"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.B.12.rate"
+      }
+     }
+    },
+    "C1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.1.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.1.rate"
+      }
+     }
+    },
+    "C2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.2.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.2.rate"
+      }
+     }
+    },
+    "C3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.3.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.3.rate"
+      }
+     }
+    },
+    "C4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.4.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.4.rate"
+      }
+     }
+    },
+    "C5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.5.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.5.rate"
+      }
+     }
+    },
+    "C6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.6.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.6.rate"
+      }
+     }
+    },
+    "C7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.7.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.7.rate"
+      }
+     }
+    },
+    "C8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.8.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.8.rate"
+      }
+     }
+    },
+    "C9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.9.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.9.rate"
+      }
+     }
+    },
+    "C10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.10.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.10.rate"
+      }
+     }
+    },
+    "C11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.11.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.11.rate"
+      }
+     }
+    },
+    "C12 Solar Power Generation equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C (assets from 01.04.2025) opens FY2025-26 empty"
+      },
+      "record:gfa_additions": {
+       "rate": "fy27:dep.C.12.opening"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "nothing retired from Part C in its first year"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column"
+      },
+      "record:dep_rate": {
+       "rate": "fy27:dep.C.12.rate"
+      }
+     }
+    }
+   },
+   "inputs": {
+    "record:dep_contribution": {
+     "rate": "apr:dep.contribution"
+    }
+   },
+   "checks": {
+    "depreciation_gross_total": "order:apr:dep.gross",
+    "depreciation_net": "order:apr:dep.net"
+   }
+  }
+ ]
+}

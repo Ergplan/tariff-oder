@@ -346,4 +346,4 @@ def test_npcl_every_line_of_the_three_decisions_has_its_reason():
     arr = next(t for t in rep["tables"] if t["proceeding"] == "arr")["explanation"]
     assert arr["difference"] == "0.00"
     statuses = [x["status"] for t in rep["tables"] for x in t["explanation"]["lines"]]
-    assert len(statuses) == 36 and statuses.count("reproduced") == 21  # 9 + 5 + 7
+    assert len(statuses) == 36 and statuses.count("reproduced") == 22  # 9 + 6 + 7

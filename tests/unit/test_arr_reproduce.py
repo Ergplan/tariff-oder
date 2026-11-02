@@ -1588,3 +1588,73 @@ def test_npcl_the_trueup_bad_debts_and_non_tariff_income_reproduce():
     # the stated exclusions are the record's rows 15-17, not a typed figure that could drift
     stated = binding["evaluations"][1]["inputs"]["record:nti_other_excluded"]["value"]
     assert Decimal(stated) == sum(Decimal(n[k][0]) for k in ("nti.emi", "nti.telecom", "nti.emi_prior"))
+
+
+def test_a_binding_may_draw_on_several_records_and_take_one_figure_less_another(tmp_path):
+    """Records under aliases never collide; an input may be one recorded figure less another (a
+    year's deduction between two printed balances), never a typed difference, and only between
+    figures in the same unit."""
+    import pytest
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import RuleError, load_rules
+
+    def record(figures):
+        return {
+            "document": {"sha256": "0" * 64},
+            "figures": {
+                k: {"value": v, "unit": u, "page": 1, "quote": f"row {v}", "what": k} for k, (v, u) in figures.items()
+            },
+        }
+
+    (tmp_path / "a.json").write_text(json.dumps(record({"gfa.closing": ("100.00", "INR_crore")})))
+    (tmp_path / "b.json").write_text(
+        json.dumps(
+            record({"gfa.closing": ("90.00", "INR_crore"), "rate": ("5.00", "percent"), "dep": ("4.75", "INR_crore")})
+        )
+    )
+    binding = {
+        "sheet": "S",
+        "rates": {"tu": "a.json", "next": "b.json"},
+        "places": 2,
+        "evaluations": [
+            {
+                "fiscal_year": "FY2025-26",
+                "categories": {
+                    "Lines": {
+                        "inputs": {
+                            "record:gfa_opening": {"rate": "tu:gfa.closing"},
+                            "record:gfa_deductions": {"rate": "tu:gfa.closing", "minus": "next:gfa.closing"},
+                            "record:gfa_additions": {"value": "0", "unit": "INR_crore", "why": "none"},
+                            "record:gfa_grants": {"value": "0", "unit": "INR_crore", "why": "none"},
+                            "record:dep_rate": {"rate": "next:rate"},
+                        },
+                        "checks": {"gfa_closing": "order:next:gfa.closing", "depreciation_class": "order:next:dep"},
+                    }
+                },
+            }
+        ],
+    }
+    rates = load_binding_rates(tmp_path, binding)
+    assert set(rates) == {"tu:gfa.closing", "next:gfa.closing", "next:rate", "next:dep"}
+    got = {c.output: (c.result, c.computed) for c in reproduce_cells(None, binding, load_rules("UPERC"), rates=rates)}
+    assert got == {"gfa_closing": ("match", "90.00"), "depreciation_class": ("match", "4.75")}  # avg 95 × 5 %
+    binding["evaluations"][0]["categories"]["Lines"]["inputs"]["record:gfa_deductions"]["minus"] = "next:rate"
+    with pytest.raises(RuleError, match="minus"):
+        reproduce_cells(None, binding, load_rules("UPERC"), rates=rates)
+
+
+def test_npcl_the_apr_depreciation_reproduces_between_two_printed_balances():
+    """Real data: Table 5-40 prints only the APR's part totals; each class opened at the true-up's
+    closing and closed at the ARR year's opening, at the 2025 class rates, gives every total
+    exactly — Part A 54.05, B 54.09, C 9.81, gross 117.95, net 87.01 (A72)."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-apr-depreciation-fy26.json").read_text())
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=load_binding_rates(folder, binding))
+    assert len(checks) == 5 and {c.result for c in checks} == {"match"}
