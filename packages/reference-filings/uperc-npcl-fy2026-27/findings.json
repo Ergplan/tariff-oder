@@ -178,6 +178,16 @@
     "Energy Balance rows 17, 23"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A49",
+   "kind": "typed adjustment",
+   "title": "PPC FY 24: figures adjusted by hand inside their formulas, and an unlabelled amount",
+   "detail": "In the FY2023-24 power purchase summary: change in law for FY2020-21 is 4.85790 − 0.05 (N66); the carrying cost on the long-term claims is 1.17434 × 0 + 0.89 (N68) — computed, zeroed and replaced by a typed 0.89; the carrying cost on the medium-term claims is 0.88151 × 0 (M75, P75); the FY2023-24 incentive (2.66577) is multiplied by 0 (M11, Q11); and row 79 carries 0.0743 with no label into the transmission arrears (R80, the ARR's row 24).  The totals reproduce from the figures as entered; the adjustments themselves are not explained.  Ask the petitioner for the reason of each.",
+   "where": [
+    "PPC FY 24 M11, N66, N68, M75, P75, row 79"
+   ],
+   "for": "petitioner"
   }
  ]
 }

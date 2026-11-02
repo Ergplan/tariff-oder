@@ -772,3 +772,32 @@ def test_npcl_renewable_purchase_obligation():
     assert [c.result for c in checks] == ["match"] * 54
     closing = {c.fiscal_year: c.computed for c in checks if c.output == "rpo_closing"}
     assert closing["FY2026-27"] == "-147.251651"  # a net surplus carried forward (A48)
+
+
+def test_npcl_fy2023_24_power_purchase_in_four_parts():
+    """Real data: PPC FY 24 (no transmission columns): sources, transmission, earlier years'
+    claims and their transmission, each tied to its ARR line for FY2023-24; the unlabelled
+    row 79 is declared and counted, as NPCL's total counts it."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    wb = None
+    arr = {}
+    for name in ("ppc-fy24.json", "ppc-fy24-transmission.json", "ppc-fy24-arrears.json", "ppc-fy24-tx-arrears.json"):
+        b = json.loads((folder / "bindings" / name).read_text())
+        wb = wb or openpyxl.load_workbook(folder / b["workbook"], data_only=True)
+        for c in reproduce_row_table(wb, b, rules):
+            assert c.result == "match" or (c.result == "blocked" and c.why == "division by zero"), c
+            if "ARR!" in c.category:
+                arr[c.category] = c.computed
+    assert arr == {
+        "TOTAL ARR!G20": "1740.9174",
+        "TOTAL ARR!G8": "3383.9580",
+        "TOTAL ARR!G23": "197.0075",
+        "TOTAL ARR!G22": "8.9724",
+        "TOTAL ARR!G24": "0.3542",
+    }

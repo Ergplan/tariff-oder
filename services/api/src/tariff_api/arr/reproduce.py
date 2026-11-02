@@ -402,8 +402,11 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
     cats: dict[str, dict] = {}
     rows_of: dict[str, int] = {}
     skip_rows = set(binding.get("skip_rows", {}).get("rows", []))  # subtotal rows, with the reason
+    unlabelled = set(binding.get("unlabelled_rows", {}).get("rows", []))  # declared, with the reason
     for r in range(first, last + 1):
         label = str(ws.cell(r, label_col).value or "").strip()
+        if not label and r in unlabelled:
+            label = "(no label)"
         if not label or skip.search(label) or r in skip_rows:
             continue
         vals = {}

@@ -1,0 +1,32 @@
+{
+ "type": "row_table",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "PPC FY 24",
+ "fiscal_year": "FY2023-24",
+ "note": "PPC FY 24 transmission and other charges (rows 54–59: inter- and intra-state transmission, SLDC); the bill (P, typed) is given, net of rebate (R) computed; total R60, the ARR's row 23 for FY2023-24.",
+ "rows": [
+  54,
+  59
+ ],
+ "label_col": "C",
+ "inputs": {
+  "rule:pp_billed": "P",
+  "record:pp_rebate": "Q"
+ },
+ "blank_is_zero": {
+  "columns": [
+   "Q"
+  ],
+  "why": "NPCL leaves a charge blank where a row has none; its totals (P = SUM(M:O), R = P − Q, the SUBTOTALs) read the blanks as zero"
+ },
+ "outputs": {
+  "pp_net": "R"
+ },
+ "totals": {
+  "pp_net_total": [
+   "R60",
+   "ARR!G23"
+  ]
+ },
+ "places": 4
+}

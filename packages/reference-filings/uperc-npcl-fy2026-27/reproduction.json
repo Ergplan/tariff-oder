@@ -24778,6 +24778,851 @@
    ]
   },
   {
+   "binding": "ppc-fy24-arrears.json",
+   "checks": [
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Additional Coal Charges for FY 2021-22 approved in  Petition 1873/2022 vide Order dt. 13.06.23 (row 65)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "-7.0292",
+     "computed": "-7.0292",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Additional Coal Charges for FY 2021-22 approved in  Petition 1873/2022 vide Order dt. 13.06.23 (row 65)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "-7.0292",
+     "computed": "-7.0292",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Change in Law for FY 2020-21 approved in Petition 1798/2021 vide Order dt.12.05.23 (row 66)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "4.8079",
+     "computed": "4.8079",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Change in Law for FY 2020-21 approved in Petition 1798/2021 vide Order dt.12.05.23 (row 66)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "4.8079",
+     "computed": "4.8079",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Change in Law for FY 2021-22) approved in Petition 1879/2022 vide Order dt.13.06.23 (row 67)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "5.1198",
+     "computed": "5.1198",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Change in Law for FY 2021-22) approved in Petition 1879/2022 vide Order dt.13.06.23 (row 67)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "5.1198",
+     "computed": "5.1198",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Carrying Cost on above (row 68)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.8900",
+     "computed": "0.8900",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Carrying Cost on above (row 68)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.8900",
+     "computed": "0.8900",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL - Govt. of AP Fixed Cost Provision (FY-21) (row 71)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.3500",
+     "computed": "0.3500",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL - Govt. of AP Fixed Cost Provision (FY-21) (row 71)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.3500",
+     "computed": "0.3500",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL - Govt. of  Nagaland Fixed Cost Provision (FY-21) (row 72)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.3492",
+     "computed": "0.3492",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL - Govt. of  Nagaland Fixed Cost Provision (FY-21) (row 72)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.3492",
+     "computed": "0.3492",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL - Govt. of AP Fixed Cost Provision (FY-22) (row 73)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "2.4847",
+     "computed": "2.4847",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL - Govt. of AP Fixed Cost Provision (FY-22) (row 73)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "2.4847",
+     "computed": "2.4847",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL - Govt. of Nagaland Fixed Cost Provision (FY-22) (row 74)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "2.0000",
+     "computed": "2.0000",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL - Govt. of Nagaland Fixed Cost Provision (FY-22) (row 74)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "2.0000",
+     "computed": "2.0000",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Carrying Cost on above (row 75)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Carrying Cost on above (row 75)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL ARR!G22",
+     "output": "pp_net_total",
+     "result": "match",
+     "filed": "8.9724",
+     "computed": "8.9724",
+     "why": null,
+     "exact": "8.97240165905888"
+    }
+   ]
+  },
+  {
+   "binding": "ppc-fy24-transmission.json",
+   "checks": [
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Inter State Transmission Charges (row 54)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "108.6674",
+     "computed": "108.6674",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Intra State Transmission Charges (row 55)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "85.9547",
+     "computed": "85.9547",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "SLDC Application Fee (row 56)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.2298",
+     "computed": "0.2298",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "CTUIL-PGCIL past Invoice (row 58)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "1.7456",
+     "computed": "1.7456",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TPTCL (Source- PPGCL) Trans. (for FY-23 billed in FY-24) (row 59)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.4101",
+     "computed": "0.4101",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL R60",
+     "output": "pp_net_total",
+     "result": "match",
+     "filed": "197.0075",
+     "computed": "197.0075",
+     "why": null,
+     "exact": "197.00754108790657978"
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL ARR!G23",
+     "output": "pp_net_total",
+     "result": "match",
+     "filed": "197.0075",
+     "computed": "197.0075",
+     "why": null,
+     "exact": "197.00754108790657978"
+    }
+   ]
+  },
+  {
+   "binding": "ppc-fy24-tx-arrears.json",
+   "checks": [
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TPTCL (Source- PPGCL) Trans. Charge (FY 22) (row 78)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.2799",
+     "computed": "0.2799",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TPTCL (Source- PPGCL) Trans. Charge (FY 22) (row 78)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.2799",
+     "computed": "0.2799",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "(no label) (row 79)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.0743",
+     "computed": "0.0743",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "(no label) (row 79)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.0743",
+     "computed": "0.0743",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL R80",
+     "output": "pp_net_total",
+     "result": "match",
+     "filed": "0.3542",
+     "computed": "0.3542",
+     "why": null,
+     "exact": "0.354197176349"
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL ARR!G24",
+     "output": "pp_net_total",
+     "result": "match",
+     "filed": "0.3542",
+     "computed": "0.3542",
+     "why": null,
+     "exact": "0.354197176349"
+    }
+   ]
+  },
+  {
+   "binding": "ppc-fy24.json",
+   "checks": [
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Long Term Power (row 10)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "544.6870",
+     "computed": "544.6870",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Long Term Power (row 10)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "536.5187",
+     "computed": "536.5187",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Incentive for (FY 2023-24) (row 11)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Incentive for (FY 2023-24) (row 11)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "PTC (Wind) (row 17)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "13.0742",
+     "computed": "13.0742",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "PTC (Wind) (row 17)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "12.8238",
+     "computed": "12.8238",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "GNIDA (Solar) (row 18)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.6295",
+     "computed": "0.6295",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "GNIDA (Solar) (row 18)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.6169",
+     "computed": "0.6169",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL (Solar) (row 19)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.1843",
+     "computed": "0.1843",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL (Solar) (row 19)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.1806",
+     "computed": "0.1806",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Adani (Solar) (row 20)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "18.0696",
+     "computed": "18.0696",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Adani (Solar) (row 20)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "17.7082",
+     "computed": "17.7082",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Tata (Solar) (row 21)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "13.5372",
+     "computed": "13.5372",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Tata (Solar) (row 21)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "13.2664",
+     "computed": "13.2664",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "NPCL (Solar) (row 22)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "NPCL (Solar) (row 22)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.0000",
+     "computed": "0.0000",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TPTCL(Source-JITPL) (row 26)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "303.8376",
+     "computed": "303.8376",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TPTCL(Source-JITPL) (row 26)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "300.7992",
+     "computed": "300.7992",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TPTCL-  Govt of Himachal Pradesh (Hydro) (row 30)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "57.9084",
+     "computed": "57.9084",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TPTCL-  Govt of Himachal Pradesh (Hydro) (row 30)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "57.3293",
+     "computed": "57.3293",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL-  Goodwill, HP (Hydro) (row 31)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "5.4539",
+     "computed": "5.4539",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "APPCPL-  Goodwill, HP (Hydro) (row 31)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "5.3993",
+     "computed": "5.3993",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Incentive claimed by MTPPA Supplier TPTCL (GoHP) (row 32)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.6510",
+     "computed": "0.6510",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Incentive claimed by MTPPA Supplier TPTCL (GoHP) (row 32)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.6445",
+     "computed": "0.6445",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Power Exchange (row 37)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "584.9421",
+     "computed": "584.9421",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Power Exchange (row 37)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "584.9421",
+     "computed": "584.9421",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "PTC (Source- Singoli) (Hydro) (row 41)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "17.9075",
+     "computed": "17.9075",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "PTC (Source- Singoli) (Hydro) (row 41)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "17.5494",
+     "computed": "17.5494",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "PTC(NSL Sugars Ltd.) (row 42)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "7.3749",
+     "computed": "7.3749",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "PTC(NSL Sugars Ltd.) (row 42)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "7.2274",
+     "computed": "7.2274",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Power Exchange (large Hydro) (row 43)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "111.3600",
+     "computed": "111.3600",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Power Exchange (large Hydro) (row 43)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "111.3600",
+     "computed": "111.3600",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Power Exchange (Renewable) (row 44)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "76.9600",
+     "computed": "76.9600",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Power Exchange (Renewable) (row 44)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "76.9600",
+     "computed": "76.9600",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Net Metering (Renewable Sources) (row 45)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.0263",
+     "computed": "0.0263",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "Net Metering (Renewable Sources) (row 45)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "0.0263",
+     "computed": "0.0263",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "DSM/UI (row 50)",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "-2.4347",
+     "computed": "-2.4347",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "DSM/UI (row 50)",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "-2.4347",
+     "computed": "-2.4347",
+     "why": null,
+     "exact": null
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL R52",
+     "output": "pp_net_total",
+     "result": "match",
+     "filed": "1740.9174",
+     "computed": "1740.9174",
+     "why": null,
+     "exact": "1740.917412590605562895"
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL ARR!G20",
+     "output": "pp_net_total",
+     "result": "match",
+     "filed": "1740.9174",
+     "computed": "1740.9174",
+     "why": null,
+     "exact": "1740.917412590605562895"
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL P52",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "1754.1687",
+     "computed": "1754.1687",
+     "why": null,
+     "exact": "1754.168654294968959997"
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL J52",
+     "output": "pp_mu_at_bus_total",
+     "result": "match",
+     "filed": "3383.9580",
+     "computed": "3383.9580",
+     "why": null,
+     "exact": "3383.958007027605983951"
+    },
+    {
+     "table": "PPC FY 24",
+     "fiscal_year": "FY2023-24",
+     "category": "TOTAL ARR!G8",
+     "output": "pp_mu_at_bus_total",
+     "result": "match",
+     "filed": "3383.9580",
+     "computed": "3383.9580",
+     "why": null,
+     "exact": "3383.958007027605983951"
+    }
+   ]
+  },
+  {
    "binding": "ppc-fy25-arrears.json",
    "checks": [
     {
@@ -46476,7 +47321,7 @@
     "title": "Financial Year 2023-24",
     "sheet": "PPC FY 24",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "PPC FY 25",
@@ -46777,8 +47622,8 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 27,
-   "reproduced": 35,
+   "present": 26,
+   "reproduced": 36,
    "read": 9,
    "blank": 2,
    "missing": 1
@@ -46885,9 +47730,9 @@
       "filed": "3383.96"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "ppc-fy24.json: pp_mu_at_bus_total",
+      "computed": "3383.9580",
       "filed": "3383.96"
      },
      "H": {
@@ -47396,9 +48241,9 @@
       "filed": "1740.92"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "ppc-fy24.json: pp_net_total",
+      "computed": "1740.9174",
       "filed": "1740.92"
      },
      "H": {
@@ -47524,9 +48369,9 @@
       "filed": "8.97"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "ppc-fy24-arrears.json: pp_net_total",
+      "computed": "8.9724",
       "filed": "8.97"
      },
      "H": {
@@ -47597,9 +48442,9 @@
       "filed": "197.01"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "ppc-fy24-transmission.json: pp_net_total",
+      "computed": "197.0075",
       "filed": "197.01"
      },
      "H": {
@@ -47670,9 +48515,9 @@
       "filed": "0.35"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "ppc-fy24-tx-arrears.json: pp_net_total",
+      "computed": "0.3542",
       "filed": "0.35"
      },
      "H": {
@@ -50057,8 +50902,8 @@
     "differs": 2
    },
    "G": {
-    "record": 22,
-    "tied": 4,
+    "tied": 9,
+    "record": 17,
     "computed": 11,
     "differs": 6
    },

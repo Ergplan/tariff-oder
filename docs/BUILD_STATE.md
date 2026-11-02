@@ -2049,6 +2049,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 84 (2026-11-01): 431 passed** (+1 unit: PPC FY 24 in four parts tied to the ARR's FY2023-24 rows 8, 20, 22, 23, 24).  Ruff and format clean.
 - **Increment 83 (2026-11-01): 430 passed** (+1 unit: F6 renewable purchase obligation, 54 / 54).  Ruff and format clean.
 - **Increment 82 (2026-11-01): 429 passed** (+1 unit: F32 allocation 34 / 34 and F33 cross-subsidy surcharge 48 / 48).  Ruff and format clean.
 - **Increment 81 (2026-11-01): 428 passed** (+1 unit: ESR-3 FY2023-24 in the seven-column layout, tied to the ARR's rows 15 and 9).  Ruff and format clean.

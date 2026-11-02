@@ -1000,6 +1000,39 @@
    },
    "examples": [],
    "note": "the bridge from the audited accounts to the power purchase claimed; it must equal the claim, line for line"
+  },
+  {
+   "id": "uperc.pp.billed.net_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Net charges after rebate, total",
+   "output": "pp_net_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "sources",
+   "inputs": {
+    "sources": {
+     "unit": "INR_crore",
+     "source": "sum:pp_net"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — power purchase cost (approved sources, at their tariffs; transmission charges)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
   }
  ]
 }
