@@ -1,0 +1,95 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — the revenue gap (surplus) carried forward with its carrying cost",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "The regulatory asset (or liability) of each year: the opening balance, the year's gap or surplus, the carrying cost on them, the closing.",
+ "rules": [
+  {
+   "id": "uperc.gap.carrying_cost",
+   "version": 1,
+   "status": "draft",
+   "title": "Carrying cost on the revenue gap (surplus)",
+   "output": "gap_carrying_cost",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-16",
+   "formula": "(opening + addition / 2) * rate",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:gap_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:gap_addition",
+     "note": "the year's gap (positive) or surplus (negative) — or the reverse, as long as opening and addition share the sign convention"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:carrying_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — carrying cost on the revenue gap (surplus): on the opening balance and half the year's addition, at a rate the case supplies",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the convention both NPCL's format (ARR row 62: '(J59 + J58/2) × rate') and the order's Table 7-1 follow for FY2024-25; the rate is an input because the two differ on it — NPCL's format carries a gap at the working-capital rate and a surplus at 75 % of the bank rate, the order carries FY2024-25's surplus at the working-capital rate and FY2025-26's at 4.86 % 'after consideration of working capital adjustments'.  Unverified until a person reads the Regulations."
+  },
+  {
+   "id": "uperc.gap.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue gap (surplus) at the close of the year",
+   "output": "gap_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-16",
+   "formula": "opening + addition + carrying",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:gap_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:gap_addition"
+    },
+    "carrying": {
+     "unit": "INR_crore",
+     "source": "rule:gap_carrying_cost"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations — carrying cost on the revenue gap (surplus): on the opening balance and half the year's addition, at a rate the case supplies",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the convention both NPCL's format (ARR row 62: '(J59 + J58/2) × rate') and the order's Table 7-1 follow for FY2024-25; the rate is an input because the two differ on it — NPCL's format carries a gap at the working-capital rate and a surplus at 75 % of the bank rate, the order carries FY2024-25's surplus at the working-capital rate and FY2025-26's at 4.86 % 'after consideration of working capital adjustments'.  Unverified until a person reads the Regulations."
+  }
+ ]
+}

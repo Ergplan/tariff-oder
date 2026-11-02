@@ -1347,3 +1347,41 @@ def test_npcl_the_apr_carries_the_trueup_closings_and_reproduces():
     rep = json.loads((folder / "order-decisions.json").read_text())
     summary = {r["key"]: r for r in next(t for t in rep["tables"] if t["proceeding"] == "apr")["rows"]}
     assert summary["power_purchase"]["decision"] == "118.55" and summary["arr_net"]["decision"] == "92.64"
+
+
+def test_npcl_the_gap_and_its_carrying_cost_reproduce_on_one_convention():
+    """Real data: one draft rule — (opening + half the year's addition) × rate — reproduces NPCL's
+    format (ARR rows 62–63) and the order's carrying costs (Tables 7-1, 8-4), the APR's and the
+    ARR year's on the opening left after the working capital the surplus funds; the order's
+    closings add the carrying cost to the unadjusted opening (A74)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-gap.json").read_text())
+    g = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=g)
+    assert {c.result for c in checks if c.output == "gap_carrying_cost"} == {"match"}
+    assert sum(1 for c in checks if c.output == "gap_carrying_cost") == 8
+    off = [c for c in checks if c.result != "match"]
+    assert len(off) == 1 and abs(Decimal(off[0].filed) - Decimal(off[0].computed)) == Decimal("0.01")
+
+    def v(key):
+        return Decimal(g[key][0])
+
+    # the surplus funds the year's working capital first (Tables 5-32, 6-69, 8-4; each figure
+    # printed rounded, so the sums hold within a unit)
+    assert abs(v("gap.fy26.computed.opening") + v("wc.fy26.total") - v("wc.fy26.net")) <= Decimal("0.01")
+    assert abs(v("gap.fy27.opening") + v("wc.fy27.total") - v("wc.fy27.net")) <= Decimal("0.01")
+    assert v("wc.fy27.surplus") == v("gap.fy26.computed.closing") == v("gap.fy27.opening")
+    assert v("wc.fy27.net") == v("gap.fy27.opening_after_wc")
+    # the closings carry from the unadjusted opening: I = A + E + H
+    for c in ("fy26.computed", "fy27"):
+        a, e, h, i = (v(f"gap.{c}.{k}") for k in ("opening", "addition", "carrying", "closing"))
+        assert abs(a + e + h - i) <= Decimal("0.01")
+    assert v("gap.fy25.approved.closing") == v("gap.fy26.computed.opening")

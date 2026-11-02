@@ -480,6 +480,19 @@
     "bindings/approval-apr-fy26.json (R&M, inferred base)"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A74",
+   "kind": "question",
+   "title": "The order carries the surplus at the working-capital rate in FY2024-25 (11.38 %) and FY2026-27 (10.75 %), but at 4.86 % in FY2025-26 — a rate it does not explain; at 10.75 % the surplus brought into FY2026-27 would be 13.52 larger",
+   "detail": "Reproduced with one draft rule, carrying cost = (opening + half the year's addition) × rate (packages/arr-rules/uperc/gap.v1.json; bindings/approval-gap.json, 13 / 14, the other a unit of rounding): NPCL's format (ARR J62, L62, M62: its gap at its working-capital rate) and the order's Table 7-1 and 8-4 alike.  The order sets the surplus against the year's working capital first in the APR and the ARR year — the opening for carrying cost is the net working capital that remains (Table 5-32: −434.00; Table 6-69 and 8-4: −11.03) — and that base reproduces both years' carrying costs at their printed rates (−11.17, 15.98).  The FY2024-25 true-up sets no surplus against its working capital (Table 4-105) and carries the whole surplus at the working-capital rate; at the same rate the two treatments come to the same (the 0.69 of interest allowed against 0.69 less carrying cost).  But FY2025-26's rate, 4.86 %, is marked only '*Computed after consideration of working capital adjustments' (Table 8-3), and the adjustment is already in the base: at 10.75 %, the rate the order applies to the APR's working capital and to FY2026-27's carrying cost, the APR's carrying cost would be −24.70 and its closing surplus 86.86, not 73.34.  For comparison, NPCL's own format carries a surplus at 75 % of the bank rate (ARR row 62's formula), which would give FY2024-25 −25.49 rather than −57.32 — the order applies the same rate to a gap and a surplus there.  The rate is the Commission's; the question is its basis.  For the reviewer — and for the petitioner, which the lower rate favours.",
+   "where": [
+    "Tariff order FY2026-27 p.296 Table 7-1, p.307 Table 8-3, p.308 Table 8-4, p.197 Table 5-32, p.284 Table 6-69, p.148 Table 4-105",
+    "bindings/approval-gap.json",
+    "order/figures-gap-fy2026-27.json",
+    "ARR!J62, L62, M62 (formulas)"
+   ],
+   "for": "reviewer"
   }
  ]
 }

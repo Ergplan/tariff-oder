@@ -1,0 +1,273 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): the revenue gap (surplus) and its carrying cost, Tables 7-1, 8-4, with the working capital the surplus funds (Tables 5-32, 6-69)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "gap.fy25.claimed.opening": {
+   "value": "-47.92",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Opening Gap/ (Surplus) (47.92) (593.81) 267.74 (470.67)",
+   "what": "FY2024-25 claimed: opening (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.approved.opening": {
+   "value": "-593.81",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Opening Gap/ (Surplus) (47.92) (593.81) 267.74 (470.67)",
+   "what": "FY2024-25 approved: opening (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.claimed.opening": {
+   "value": "267.74",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Opening Gap/ (Surplus) (47.92) (593.81) 267.74 (470.67)",
+   "what": "FY2025-26 claimed: opening (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.computed.opening": {
+   "value": "-470.67",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Opening Gap/ (Surplus) (47.92) (593.81) 267.74 (470.67)",
+   "what": "FY2025-26 computed: opening (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.claimed.addition": {
+   "value": "303.83",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Addition in Gap/ (Surplus) during the year 303.83 180.46 315.87 408.51",
+   "what": "FY2024-25 claimed: addition (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.approved.addition": {
+   "value": "180.46",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Addition in Gap/ (Surplus) during the year 303.83 180.46 315.87 408.51",
+   "what": "FY2024-25 approved: addition (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.claimed.addition": {
+   "value": "315.87",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Addition in Gap/ (Surplus) during the year 303.83 180.46 315.87 408.51",
+   "what": "FY2025-26 claimed: addition (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.computed.addition": {
+   "value": "408.51",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Addition in Gap/ (Surplus) during the year 303.83 180.46 315.87 408.51",
+   "what": "FY2025-26 computed: addition (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.claimed.carrying": {
+   "value": "11.84",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Carrying Cost on Gap/ (Surplus) 11.84 (57.32) 45.76 (11.17)",
+   "what": "FY2024-25 claimed: carrying (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.approved.carrying": {
+   "value": "-57.32",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Carrying Cost on Gap/ (Surplus) 11.84 (57.32) 45.76 (11.17)",
+   "what": "FY2024-25 approved: carrying (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.claimed.carrying": {
+   "value": "45.76",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Carrying Cost on Gap/ (Surplus) 11.84 (57.32) 45.76 (11.17)",
+   "what": "FY2025-26 claimed: carrying (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.computed.carrying": {
+   "value": "-11.17",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Carrying Cost on Gap/ (Surplus) 11.84 (57.32) 45.76 (11.17)",
+   "what": "FY2025-26 computed: carrying (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.claimed.rate": {
+   "value": "11.38",
+   "unit": "percent",
+   "page": 296,
+   "quote": "Carrying Cost (%) 11.38% 11.38% 10.75% 4.86%",
+   "what": "FY2024-25 claimed: rate (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.approved.rate": {
+   "value": "11.38",
+   "unit": "percent",
+   "page": 296,
+   "quote": "Carrying Cost (%) 11.38% 11.38% 10.75% 4.86%",
+   "what": "FY2024-25 approved: rate (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.claimed.rate": {
+   "value": "10.75",
+   "unit": "percent",
+   "page": 296,
+   "quote": "Carrying Cost (%) 11.38% 11.38% 10.75% 4.86%",
+   "what": "FY2025-26 claimed: rate (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.computed.rate": {
+   "value": "4.86",
+   "unit": "percent",
+   "page": 296,
+   "quote": "Carrying Cost (%) 11.38% 11.38% 10.75% 4.86%",
+   "what": "FY2025-26 computed: rate (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.claimed.closing": {
+   "value": "267.74",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Closing Gap/ (Surplus) 267.74 (470.67) 629.37 (73.34)",
+   "what": "FY2024-25 claimed: closing (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy25.approved.closing": {
+   "value": "-470.67",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Closing Gap/ (Surplus) 267.74 (470.67) 629.37 (73.34)",
+   "what": "FY2024-25 approved: closing (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.claimed.closing": {
+   "value": "629.37",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Closing Gap/ (Surplus) 267.74 (470.67) 629.37 (73.34)",
+   "what": "FY2025-26 claimed: closing (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy26.computed.closing": {
+   "value": "-73.34",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Closing Gap/ (Surplus) 267.74 (470.67) 629.37 (73.34)",
+   "what": "FY2025-26 computed: closing (Table 7-1; a surplus printed in brackets, negative here)",
+   "header": "Revenue Gap / (Surplus) FY 2024-25 FY 2025-26 (True-Up) (APR) Claimed Approved Claimed Computed"
+  },
+  "gap.fy27.opening": {
+   "value": "-73.34",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Opening Gap/ (Surplus) A (73.34)",
+   "what": "FY2026-27: opening (surplus) (Table 8-4)"
+  },
+  "gap.fy27.opening_after_wc": {
+   "value": "-11.03",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Opening Gap/ (Surplus) after WC adjustment B (11.03)",
+   "what": "FY2026-27: opening after the working capital the surplus funds (Table 8-4)"
+  },
+  "gap.fy27.arr": {
+   "value": "3511.33",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Aggregate Revenue Requirement C 3,511.33",
+   "what": "FY2026-27: ARR (Table 8-4)"
+  },
+  "gap.fy27.revenue": {
+   "value": "3192.04",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Net Revenue for the Year D 3,192.04",
+   "what": "FY2026-27: net revenue at the approved tariff (Table 8-4)"
+  },
+  "gap.fy27.addition": {
+   "value": "319.29",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Addition in Gap/ (Surplus) during the year E= C-D 319.29",
+   "what": "FY2026-27: the year's gap (Table 8-4)"
+  },
+  "gap.fy27.closing_before": {
+   "value": "308.26",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Closing Gap/ (Surplus) during the year F= B+E 308.26",
+   "what": "FY2026-27: closing before carrying cost (Table 8-4)"
+  },
+  "gap.fy27.rate": {
+   "value": "10.75",
+   "unit": "percent",
+   "page": 308,
+   "quote": "Carrying Cost (%) G 10.75%",
+   "what": "FY2026-27: carrying cost rate (Table 8-4)"
+  },
+  "gap.fy27.carrying": {
+   "value": "15.98",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Carrying Cost on Gap/ (Surplus) H=AVG(B,F)*G 15.98",
+   "what": "FY2026-27: carrying cost, 'AVG(B,F) × G' (Table 8-4)"
+  },
+  "gap.fy27.closing": {
+   "value": "261.93",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Closing Gap/ (Surplus) I=A+E+H 261.93",
+   "what": "FY2026-27: closing gap (Table 8-4)"
+  },
+  "wc.fy27.total": {
+   "value": "62.30",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "Total Working Capital K 64.01 62.30",
+   "what": "FY2026-27 working capital requirement, approved (Table 6-69) — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.fy27.surplus": {
+   "value": "-73.34",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "(Surplus) at the beginning of the year L - (73.34)",
+   "what": "FY2026-27 surplus at the beginning, set against it (Table 6-69) — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.fy27.net": {
+   "value": "-11.03",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "Net Working Capital M=K+L 64.01 (11.03)",
+   "what": "FY2026-27 net working capital, approved (Table 6-69) — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.fy26.total": {
+   "value": "36.68",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "Total Working Capital 40.30 38.10 36.68",
+   "what": "FY2025-26 working capital requirement, computed (Table 5-32) — the Computed (last) figure",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.fy26.net": {
+   "value": "-434.00",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "Net Working Capital (1,194.39) 38.10 (434.00)",
+   "what": "FY2025-26 net working capital after the surplus, computed (Table 5-32) — the Computed (last) figure",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  }
+ }
+}

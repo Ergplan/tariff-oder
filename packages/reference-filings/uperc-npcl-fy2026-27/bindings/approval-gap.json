@@ -1,0 +1,176 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "rates": "order/figures-gap-fy2026-27.json",
+ "places": 2,
+ "note": "The revenue gap (surplus) and its carrying cost, on the convention NPCL's format and the order share: (opening + half the year's addition) × rate.  NPCL's format (ARR rows 58–63) and the order's Tables 7-1 and 8-4.  Where the order sets the surplus against the year's working capital first (the APR and the ARR year, Tables 5-32, 6-69), the opening is the net working capital that remains; the closing then adds the carrying cost to the unadjusted opening (Table 8-4, I = A + E + H), which the test checks.  The rate is the case's: the order's own for each column, NPCL's working-capital rate unrounded for FY2024-25.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "NPCL's format, true-up FY2024-25 as claimed (ARR J62–J63)",
+   "inputs": {
+    "record:gap_opening": {
+     "cell": "ARR!J59",
+     "unit": "INR_crore"
+    },
+    "record:gap_addition": {
+     "cell": "ARR!J58",
+     "unit": "INR_crore"
+    },
+    "assumption:carrying_rate": {
+     "cell": "F27_Work Cap!I15",
+     "unit": "fraction",
+     "why": "NPCL's format: a gap (negative there) carries the working-capital rate of its column"
+    }
+   },
+   "checks": {
+    "gap_carrying_cost": "ARR!J62",
+    "gap_closing": "ARR!J63"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "NPCL's format, APR FY2025-26 as estimated (ARR L62–L63)",
+   "inputs": {
+    "record:gap_opening": {
+     "cell": "ARR!L59",
+     "unit": "INR_crore"
+    },
+    "record:gap_addition": {
+     "cell": "ARR!L58",
+     "unit": "INR_crore"
+    },
+    "assumption:carrying_rate": {
+     "cell": "F27_Work Cap!K15",
+     "unit": "fraction",
+     "why": "NPCL's format: a gap (negative there) carries the working-capital rate of its column"
+    }
+   },
+   "checks": {
+    "gap_carrying_cost": "ARR!L62",
+    "gap_closing": "ARR!L63"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's format, ARR FY2026-27 as projected (ARR M62–M63)",
+   "inputs": {
+    "record:gap_opening": {
+     "cell": "ARR!M59",
+     "unit": "INR_crore"
+    },
+    "record:gap_addition": {
+     "cell": "ARR!M58",
+     "unit": "INR_crore"
+    },
+    "assumption:carrying_rate": {
+     "cell": "F27_Work Cap!L15",
+     "unit": "fraction",
+     "why": "NPCL's format: a gap (negative there) carries the working-capital rate of its column"
+    }
+   },
+   "checks": {
+    "gap_carrying_cost": "ARR!M62",
+    "gap_closing": "ARR!M63"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "Table 7-1, fy25 claimed",
+   "inputs": {
+    "record:gap_opening": {
+     "rate": "gap.fy25.claimed.opening"
+    },
+    "record:gap_addition": {
+     "rate": "gap.fy25.claimed.addition"
+    },
+    "assumption:carrying_rate": {
+     "cell": "F27_Work Cap!I15",
+     "unit": "fraction",
+     "why": "the true-up's working-capital rate, weighted SBI MCLR + 250 bp (11.3822 %), which the order prints 11.38 % and applies to the gap as to working capital (Tables 4-105, 7-1); at the rounded 11.38 % the approved carrying cost would be −57.31"
+    }
+   },
+   "checks": {
+    "gap_carrying_cost": "order:gap.fy25.claimed.carrying",
+    "gap_closing": "order:gap.fy25.claimed.closing"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "Table 7-1, fy25 approved",
+   "inputs": {
+    "record:gap_opening": {
+     "rate": "gap.fy25.approved.opening"
+    },
+    "record:gap_addition": {
+     "rate": "gap.fy25.approved.addition"
+    },
+    "assumption:carrying_rate": {
+     "cell": "F27_Work Cap!I15",
+     "unit": "fraction",
+     "why": "the true-up's working-capital rate, weighted SBI MCLR + 250 bp (11.3822 %), which the order prints 11.38 % and applies to the gap as to working capital (Tables 4-105, 7-1); at the rounded 11.38 % the approved carrying cost would be −57.31"
+    }
+   },
+   "checks": {
+    "gap_carrying_cost": "order:gap.fy25.approved.carrying",
+    "gap_closing": "order:gap.fy25.approved.closing"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "Table 7-1, fy26 claimed",
+   "inputs": {
+    "record:gap_opening": {
+     "rate": "gap.fy26.claimed.opening"
+    },
+    "record:gap_addition": {
+     "rate": "gap.fy26.claimed.addition"
+    },
+    "assumption:carrying_rate": {
+     "rate": "gap.fy26.claimed.rate"
+    }
+   },
+   "checks": {
+    "gap_carrying_cost": "order:gap.fy26.claimed.carrying",
+    "gap_closing": "order:gap.fy26.claimed.closing"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "Table 7-1, fy26 computed — on the opening after the working capital the surplus funds (Table 5-32), at the printed 4.86 %",
+   "inputs": {
+    "record:gap_opening": {
+     "rate": "wc.fy26.net"
+    },
+    "record:gap_addition": {
+     "rate": "gap.fy26.computed.addition"
+    },
+    "assumption:carrying_rate": {
+     "rate": "gap.fy26.computed.rate"
+    }
+   },
+   "checks": {
+    "gap_carrying_cost": "order:gap.fy26.computed.carrying"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "Table 8-4, FY2026-27 — on the opening after working capital (B), 'AVG(B,F) × G'",
+   "inputs": {
+    "record:gap_opening": {
+     "rate": "gap.fy27.opening_after_wc"
+    },
+    "record:gap_addition": {
+     "rate": "gap.fy27.addition"
+    },
+    "assumption:carrying_rate": {
+     "rate": "gap.fy27.rate"
+    }
+   },
+   "checks": {
+    "gap_carrying_cost": "order:gap.fy27.carrying"
+   }
+  }
+ ]
+}

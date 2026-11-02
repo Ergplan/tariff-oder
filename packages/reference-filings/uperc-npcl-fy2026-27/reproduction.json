@@ -11287,6 +11287,165 @@
    ]
   },
   {
+   "binding": "approval-gap.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL's format, true-up FY2024-25 as claimed (ARR J62\u2013J63) ARR!J62",
+     "output": "gap_carrying_cost",
+     "result": "match",
+     "filed": "-11.84",
+     "computed": "-11.84",
+     "why": null,
+     "exact": "-11.83636072137028043260478083"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "NPCL's format, true-up FY2024-25 as claimed (ARR J62\u2013J63) ARR!J63",
+     "output": "gap_closing",
+     "result": "match",
+     "filed": "-267.74",
+     "computed": "-267.74",
+     "why": null,
+     "exact": "-267.7398141273836704326047808"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2025-26",
+     "category": "NPCL's format, APR FY2025-26 as estimated (ARR L62\u2013L63) ARR!L62",
+     "output": "gap_carrying_cost",
+     "result": "match",
+     "filed": "-45.76",
+     "computed": "-45.76",
+     "why": null,
+     "exact": "-45.7600113839267488125"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2025-26",
+     "category": "NPCL's format, APR FY2025-26 as estimated (ARR L62\u2013L63) ARR!L63",
+     "output": "gap_closing",
+     "result": "match",
+     "filed": "-629.37",
+     "computed": "-629.37",
+     "why": null,
+     "exact": "-629.3692462598313988125"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "NPCL's format, ARR FY2026-27 as projected (ARR M62\u2013M63) ARR!M62",
+     "output": "gap_carrying_cost",
+     "result": "match",
+     "filed": "-83.23",
+     "computed": "-83.23",
+     "why": null,
+     "exact": "-83.233244216003407125"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "NPCL's format, ARR FY2026-27 as projected (ARR M62\u2013M63) ARR!M63",
+     "output": "gap_closing",
+     "result": "match",
+     "filed": "-1002.39",
+     "computed": "-1002.39",
+     "why": null,
+     "exact": "-1002.389471742281907125"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "Table 7-1, fy25 claimed order:gap.fy25.claimed.carrying",
+     "output": "gap_carrying_cost",
+     "result": "match",
+     "filed": "11.84",
+     "computed": "11.84",
+     "why": null,
+     "exact": "11.83691034246575050425"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "Table 7-1, fy25 claimed order:gap.fy25.claimed.closing",
+     "output": "gap_closing",
+     "result": "differs",
+     "filed": "267.74",
+     "computed": "267.75",
+     "why": null,
+     "exact": "267.74691034246575050425"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "Table 7-1, fy25 approved order:gap.fy25.approved.carrying",
+     "output": "gap_carrying_cost",
+     "result": "match",
+     "filed": "-57.32",
+     "computed": "-57.32",
+     "why": null,
+     "exact": "-57.3184413698629995570"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "Table 7-1, fy25 approved order:gap.fy25.approved.closing",
+     "output": "gap_closing",
+     "result": "match",
+     "filed": "-470.67",
+     "computed": "-470.67",
+     "why": null,
+     "exact": "-470.668441369862999557"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2025-26",
+     "category": "Table 7-1, fy26 claimed order:gap.fy26.claimed.carrying",
+     "output": "gap_carrying_cost",
+     "result": "match",
+     "filed": "45.76",
+     "computed": "45.76",
+     "why": null,
+     "exact": "45.7600625"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2025-26",
+     "category": "Table 7-1, fy26 claimed order:gap.fy26.claimed.closing",
+     "output": "gap_closing",
+     "result": "match",
+     "filed": "629.37",
+     "computed": "629.37",
+     "why": null,
+     "exact": "629.3700625"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2025-26",
+     "category": "Table 7-1, fy26 computed \u2014 on the opening after the working capital the surplus funds (Table 5-32), at the printed 4.86 % order:gap.fy26.computed.carrying",
+     "output": "gap_carrying_cost",
+     "result": "match",
+     "filed": "-11.17",
+     "computed": "-11.17",
+     "why": null,
+     "exact": "-11.165607"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "Table 8-4, FY2026-27 \u2014 on the opening after working capital (B), 'AVG(B,F) \u00d7 G' order:gap.fy27.carrying",
+     "output": "gap_carrying_cost",
+     "result": "match",
+     "filed": "15.98",
+     "computed": "15.98",
+     "why": null,
+     "exact": "15.9761125"
+    }
+   ]
+  },
+  {
    "binding": "approval-om-fy27.json",
    "checks": [
     {

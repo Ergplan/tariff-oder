@@ -1005,6 +1005,28 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 106 (2026-11-02): the revenue gap (surplus) and its carrying cost, one convention
+  across NPCL's format and the order.**
+  - **New draft rules `packages/arr-rules/uperc/gap.v1.json`:**
+    - carrying cost = (opening + half the year's addition) × rate;
+    - closing = opening + addition + carrying.
+    The rate is an input because NPCL's format and the order choose it differently.
+  - **The record:** `order/figures-gap-fy2026-27.json` holds 34 figures (Tables 7-1, 8-4, 5-32
+    and 6-69), 34 / 34 quotes verified.
+  - **Binding `approval-gap.json`: 13 / 14** (the other is a rounding unit).
+    - NPCL's format: ARR J/L/M rows 62–63, all six cells.
+    - The order: five carrying costs.  In the APR and the ARR year the order first sets the
+      surplus against that year's working capital, and carries what remains (Tables 5-32, 6-69,
+      8-4: "Opening … after WC adjustment").
+  - **A74 (reviewer):** the surplus is carried at the working-capital rate in FY2024-25 and
+    FY2026-27, but at an unexplained 4.86% in FY2025-26.  At 10.75% the surplus brought into
+    FY2026-27 would be 13.52 larger.  This is a question, not an established error.
+  - **Ties checked by the test:**
+    - the surplus funds the working capital first;
+    - the closings add the carrying cost to the unadjusted opening (I = A + E + H);
+    - each year opens on the last one's closing.
+  Nothing verified, nothing approved.
+
   **Increment 105 (2026-11-02): the APR of FY2025-26 reproduced; its +92.64 explained line by
   line.**
   - **The record:** `order/figures-apr-fy2025-26.json` holds 57 figures, 57 / 57 quotes verified.
@@ -2681,6 +2703,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 106 (2026-11-02): 473 passed** (+1 unit: the gap and its carrying cost — NPCL's format and the order on one rule; the working-capital offset and the closings tied).  `check_order_quotes.py`: 34 / 34.  Ruff and format clean.
 - **Increment 105 (2026-11-02): 472 passed** (+1 unit: the real APR — 11 / 13, ties to the true-up and the ARR year).  `check_order_quotes.py`: 57 / 57.  Ruff and format clean.
 - **Increment 104 (2026-11-02): 471 passed** (+3 unit: wrapped labels joined and the decision per line, synthetic; Table 4-52 real; the excess energy reproduced).  `check_order_quotes.py`: 15 / 15.  Ruff, format and `tsc` clean.
 - **Increment 103 (2026-11-02): 468 passed** (+1 unit: the real true-up depreciation — 24 classes, gross and net match; the order's non-adding row pinned).  `check_order_quotes.py`: 205 / 205.  Ruff and format clean.
@@ -2919,7 +2942,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 105) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 106) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2978,12 +3001,13 @@ entries below are the per-increment history.**
     tax and working capital likewise (A67), showing two draft rules that depart from the
     Commission's practice (A66); its depreciation class by class (A68, A69); its power purchase
     line by line, so every line of the true-up's −123.38 has its reason (A70, A71); and the
-    APR's +92.64 likewise, reproduced from the Commission's computations (A72, A73).  The order misprints one line of
+    APR's +92.64 likewise, reproduced from the Commission's computations (A72, A73); and the
+    revenue gap (surplus) carried to FY2026-27 with its carrying cost (A74).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **41 findings (A29–A73):** 24 for the petitioner, collected in the draft queries; 17 for the
+  - **42 findings (A29–A74):** 24 for the petitioner, collected in the draft queries; 18 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 
