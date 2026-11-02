@@ -10128,6 +10128,165 @@
    ]
   },
   {
+   "binding": "approval-capital-fy27.json",
+   "checks": [
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:capital.to_fund",
+     "output": "net_capitalisation",
+     "result": "match",
+     "filed": "409.84",
+     "computed": "409.84",
+     "why": null,
+     "exact": "409.84"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:capital.debt",
+     "output": "normative_loan_addition",
+     "result": "match",
+     "filed": "286.89",
+     "computed": "286.89",
+     "why": null,
+     "exact": "286.8880"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:capital.equity",
+     "output": "equity_addition",
+     "result": "match",
+     "filed": "122.95",
+     "computed": "122.95",
+     "why": null,
+     "exact": "122.9520"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:capital.debt_deletion",
+     "output": "loan_reduction_on_retirement",
+     "result": "match",
+     "filed": "2.18",
+     "computed": "2.18",
+     "why": null,
+     "exact": "2.18000000000000000000"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:capital.equity_deletion",
+     "output": "equity_reduction_on_retirement",
+     "result": "match",
+     "filed": "4.50",
+     "computed": "4.50",
+     "why": null,
+     "exact": "4.5000"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:equity.closing",
+     "output": "equity_closing",
+     "result": "match",
+     "filed": "814.43",
+     "computed": "814.43",
+     "why": null,
+     "exact": "814.4320"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:equity.average",
+     "output": "equity_average",
+     "result": "differs",
+     "filed": "755.20",
+     "computed": "755.21",
+     "why": null,
+     "exact": "755.2060"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:roe.approved",
+     "output": "return_on_equity",
+     "result": "match",
+     "filed": "113.28",
+     "computed": "113.28",
+     "why": null,
+     "exact": "113.280900"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:loan.closing",
+     "output": "normative_loan_closing",
+     "result": "match",
+     "filed": "961.61",
+     "computed": "961.61",
+     "why": null,
+     "exact": "961.60800000000000000"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:loan.average",
+     "output": "normative_loan_average",
+     "result": "match",
+     "filed": "871.15",
+     "computed": "871.15",
+     "why": null,
+     "exact": "871.15400000000000000"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:loan.interest",
+     "output": "interest_on_loan",
+     "result": "match",
+     "filed": "85.60",
+     "computed": "85.60",
+     "why": null,
+     "exact": "85.6010240739725693256"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "capital approved FY2026-27 order:tax.approved",
+     "output": "tax_on_roe",
+     "result": "match",
+     "filed": "38.10",
+     "computed": "38.10",
+     "why": null,
+     "exact": "38.10343783242015234531604971"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "security deposit approved FY2026-27 order:isd.interest",
+     "output": "isd_interest_annual",
+     "result": "match",
+     "filed": "20.51",
+     "computed": "20.51",
+     "why": null,
+     "exact": "20.508950"
+    },
+    {
+     "table": "F25_IOL",
+     "fiscal_year": "FY2026-27",
+     "category": "security deposit approved FY2026-27 order:interest.isd",
+     "output": "isd_interest_annual",
+     "result": "match",
+     "filed": "20.51",
+     "computed": "20.51",
+     "why": null,
+     "exact": "20.508950"
+    }
+   ]
+  },
+  {
    "binding": "approval-om-fy27.json",
    "checks": [
     {

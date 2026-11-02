@@ -769,6 +769,14 @@
    "identities": [
     {
      "column": "approved_before",
+     "identity": "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts + other allowed lines",
+     "printed": "2658.56",
+     "parts": "2658.56",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "approved_before",
      "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
      "printed": "2675.75",
      "parts": "2675.74",
@@ -780,6 +788,14 @@
      "identity": "gap = net ARR − revenue + tariff revision impact",
      "printed": "-49.92",
      "parts": "-49.92",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "claimed",
+     "identity": "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts + other allowed lines",
+     "printed": "2869.53",
+     "parts": "2869.53",
      "difference": "0.00",
      "result": "match"
     },
@@ -797,6 +813,14 @@
      "printed": "303.83",
      "parts": "303.84",
      "difference": "-0.01",
+     "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts + other allowed lines",
+     "printed": "2750.19",
+     "parts": "2750.21",
+     "difference": "-0.02",
      "result": "match"
     },
     {
@@ -1517,6 +1541,14 @@
    "identities": [
     {
      "column": "approved_before",
+     "identity": "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts + other allowed lines",
+     "printed": "2981.82",
+     "parts": "2981.82",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "approved_before",
      "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
      "printed": "2987.93",
      "parts": "2987.93",
@@ -1533,6 +1565,14 @@
     },
     {
      "column": "claimed",
+     "identity": "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts + other allowed lines",
+     "printed": "3119.36",
+     "parts": "3119.36",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "claimed",
      "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
      "printed": "3200.63",
      "parts": "3200.63",
@@ -1544,6 +1584,14 @@
      "identity": "gap = net ARR − revenue + tariff revision impact",
      "printed": "315.87",
      "parts": "315.87",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts + other allowed lines",
+     "printed": "3216.71",
+     "parts": "3216.71",
      "difference": "0.00",
      "result": "match"
     },
@@ -2086,6 +2134,14 @@
    "identities": [
     {
      "column": "claimed",
+     "identity": "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts + other allowed lines",
+     "printed": "3387.16",
+     "parts": "3387.16",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "claimed",
      "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
      "printed": "3481.82",
      "parts": "3481.82",
@@ -2099,6 +2155,14 @@
      "parts": "289.78",
      "difference": "0.01",
      "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts + other allowed lines",
+     "printed": "3420.27",
+     "parts": "3420.65",
+     "difference": "-0.38",
+     "result": "differs"
     },
     {
      "column": "approved",

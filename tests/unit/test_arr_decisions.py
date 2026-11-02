@@ -101,7 +101,14 @@ def test_npcl_order_decisions_on_the_three_proceedings():
         assert all(
             c["result"] == "match" or abs(c["last_place_units"]) <= 2 for r in t["rows"] for c in r["checks"].values()
         )
-        assert {i["result"] for i in t["identities"]} == {"match"}
+    # the order's own arithmetic holds in every column but one: the ARR year's approved lines add
+    # to 3,420.65 against the printed 3,420.27 — the interest line misprinted (110.80; Table 6-72
+    # approves 110.43; A61)
+    off = [
+        (p, i["column"], i["difference"]) for p, t in tables.items() for i in t["identities"] if i["result"] != "match"
+    ]
+    assert off == [("arr", "approved", "-0.38")]
+    assert sum(len(t["identities"]) for t in tables.values()) == 24
     arr = {r["key"]: r for r in tables["arr"]["rows"]}
     assert arr["arr_net"]["decision"] == "29.51" and arr["arr_net"]["page"] == 294
     assert tables["true_up"]["rows"][2]["values"] == {

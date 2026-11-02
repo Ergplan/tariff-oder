@@ -324,6 +324,31 @@
     "F19_O&M_EE n AG base L9, L18, K24:L25; F22_O&M_R&M after FY25 H8:H16"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A61",
+   "kind": "order against itself",
+   "title": "The order's ARR summary (Table 6-81) prints approved interest charges of 110.80 where its interest table (6-72) approves 110.43; the summary's own ARR (3,420.27) adds up only with 110.43",
+   "detail": "Table 6-72 (p.286) approves interest on long-term loans 85.60, on working capital nil, on security deposits 20.51 and banking and finance charges 4.32: 110.43.  Table 6-81 (p.294) prints 'Interest Charges … 110.80' in the approved column; its lines then add to 3,420.65, but it prints the Annual Revenue Requirement as 3,420.27 — the sum with 110.43 (3,420.28, rounding) — and the net ARR (3,511.33) and gap (319.29) follow from 3,420.27.  The approved totals are therefore consistent with 110.43 and the 110.80 line reads as a misprint (found by the order's own arithmetic, now checked per column: every other column of the three summary tables adds up).  Similarly, Table 6-50 (p.258) gives the claimed total O&M as 245.92 where the summary's gross O&M is 242.92 (the former includes the 3.00 provision).  For the reviewer — and for the petitioner, should it seek a correction.",
+   "where": [
+    "Tariff order FY2026-27 p.286 Table 6-72",
+    "p.294 Table 6-81",
+    "p.258 Table 6-50",
+    "order-decisions.json (identities)"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A62",
+   "kind": "decision explained",
+   "title": "The capital and interest approvals for FY2026-27 reproduce with the same rules; RoE −2.49, interest −8.88 and tax −0.84 trace to the approved opening balances, the disallowed capex and two rates",
+   "detail": "Fed the order's figures (Tables 6-58, 6-67, 6-70, 6-72, 6-74, 6-76), the capital, MYT 2025 and tax rules give the Commission's funding (to fund 409.84, debt 286.89, equity 122.95, deletions 2.18 and 4.50), normative loan (closing 961.61, interest 85.60 — at NPCL's own rate, which the order accepts, para 6.10.5), equity (closing 814.43, RoE 113.28), tax 38.10 and security-deposit interest 20.51 (bindings/approval-capital-fy27.json, 13 / 14; the average equity is 755.21 against the printed 755.20, the order's opening equity being itself rounded).  Against NPCL's claim: RoE −2.49 = the opening equity approved in the APR (695.98 against 709.62: −2.05) and 30 % of the 19.56 of capex disallowed — metering/AMI 15.56 and cyber resilience 4.00 (−0.44); interest −8.88 = interest on the normative loan +1.72 (the approved opening loan 780.70 against 757.77 outweighs the lower additions), security deposit −3.73 (5.50 % allowed against 6.50 %), working capital −6.88 (the surplus of 73.34 at the beginning of the year leaves no working capital to fund); tax −0.84 follows RoE.  For the next petition: take the opening balances the Commission approved, and the deposit rate it allows.",
+   "where": [
+    "Tariff order FY2026-27 pp.276–288",
+    "bindings/approval-capital-fy27.json",
+    "order/figures-capital-fy2026-27.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

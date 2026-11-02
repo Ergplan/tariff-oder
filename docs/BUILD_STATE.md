@@ -1005,6 +1005,34 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 98 (2026-11-02): the capital and interest approval reproduced, and an error found
+  in the order.**
+  - **The record:** `order/figures-capital-fy2026-27.json` holds 28 figures with page, quote
+    and column header (Tables 6-58, 6-67, 6-70, 6-72, 6-74, 6-76): 28 / 28 found on their pages.
+  - **Binding `approval-capital-fy27.json`, using the capital, MYT 2025 and income-tax draft
+    rules that reproduce NPCL's claim: 13 / 14 match.**
+    - funding: to fund 409.84, debt 286.89, equity 122.95, retirement deletions 2.18 and 4.50;
+    - normative loan: closing 961.61, interest 85.60;
+    - equity: closing 814.43, RoE 113.28;
+    - tax 38.10; security-deposit interest 20.51 at the 5.50 % allowed.
+    The loan rate is NPCL's own (F25 I14, 9.8262 %), because the order "considered the rate of
+    interest as claimed" (para 6.10.5).  At the 9.83 % it prints, the result would be 85.63, not
+    85.60.  The one difference is the average equity, 755.21 against 755.20, from the order's
+    rounded opening equity.
+  - **A62 (petitioner), the decisions explained:**
+    - RoE −2.49 = the APR's approved opening equity (−2.05) and 30 % of the 19.56 of capex
+      disallowed, metering/AMI and cyber resilience (−0.44);
+    - interest −8.88 = loan +1.72 (a higher approved opening loan), security deposit −3.73
+      (5.50 % against 6.50 %), working capital −6.88 (the 73.34 opening surplus leaves none to
+      fund);
+    - tax −0.84 follows RoE.
+  - **The order's own arithmetic, now with "ARR = the expense lines" per column: 23 / 24.**  The
+    exception is A61 (reviewer).  The ARR year's summary prints approved interest as 110.80;
+    Table 6-72 approves 110.43, and the summary's ARR (3,420.27) adds up only with 110.43 (its
+    lines with 110.80 add to 3,420.65).  The totals are consistent; the line reads as a misprint.
+    An identity is skipped in a column that prints none of its parts.
+  Nothing verified, nothing approved.
+
   **Increment 97 (2026-11-02): the Commission's O&M approval reproduced with the same rules.**
   The ARR year's largest cut is O&M (−18.37).  The order states its method and figures (pp.252–258,
   Tables 6-45, 6-48, 6-49).  `order/figures-om-fy2026-27.json` holds 34 of them, each with its
@@ -2466,6 +2494,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 98 (2026-11-02): 460 passed** (+1 unit: the real capital and interest approval, 13 / 14 with RoE 113.28, loan interest 85.60, tax 38.10, security deposit 20.51.  Changed: the decisions tests expect the new ARR identity, skipped where a column prints none of its parts, and the one column where the order's lines do not add up, −0.38, A61).  `check_order_quotes.py`: 28 / 28.  Ruff and format clean.
 - **Increment 97 (2026-11-02): 459 passed** (+2 unit: a chain of years carried unrounded between evaluations and checked against an order figure, a computed input naming no evaluation refused; the real O&M approval — employee 87.63, A&G 28.87, R&M 111.04, one intermediate year one unit off).  `check_order_quotes.py`: 34 / 34 order figures, 58 / 58 rates.  Ruff and format clean.
 - **Increment 96 (2026-11-02): 457 passed** (+4 unit: rows read by serial number across a page header, with their quotes; a short row read only where the spec names its columns; a column override; the claimed column against the format, the decision, the order's own arithmetic; the real three tables — claimed within two last-place units, arithmetic 16 / 16, ARR decision +29.51; the integration test checks the API's decisions block).  Ruff, format and web typecheck clean.
 - **Increment 95 (2026-11-02): 453 passed** (+2 unit: a pipeline column fed from another only with a reason, never in a cycle or from a column the pipeline lacks; the real roll-forward 7 / 7.  Changed with the design: the pipeline tests expect the ARR and APR years at 10 / 12 with A40's effect carried, 0.22 and 0.25).  Ruff, format and web typecheck clean.
@@ -2696,7 +2725,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 97) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 98) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2747,11 +2776,13 @@ entries below are the per-increment history.**
   - **What the Commission decided** (the FY2026-27 order, read row by row with pages): the order
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.
     The decisions are true-up −123.38, APR +92.64 and ARR +29.51 (net ARR).  The ARR year's O&M
-    approval reproduces with the same rules as the claim, and its cut is explained exactly (A60).
+    approval reproduces with the same rules as the claim, and its cut is explained exactly (A60);
+    so do capital, loan, RoE, tax and security deposit (A62).  The order misprints one line of
+    its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **28 findings (A29–A60):** 17 for the petitioner, collected in the draft queries; 11 for the
+  - **30 findings (A29–A62):** 18 for the petitioner, collected in the draft queries; 12 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

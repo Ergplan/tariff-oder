@@ -166,6 +166,24 @@ def _part(by_key: dict[str, dict[str, str]], key: str, column: str) -> Decimal:
 
 IDENTITIES = (
     (
+        "ARR = power purchase + transmission + net O&M + interest + depreciation + tax + bad debts"
+        " + other allowed lines",
+        "arr_before_roe",
+        [
+            "power_purchase",
+            "transmission",
+            "om_net",
+            "interest",
+            "depreciation",
+            "tax",
+            "bad_debts",
+            "loss_retired",
+            "efficiency_gains",
+            "contingency",
+        ],
+        [],
+    ),
+    (
         "net ARR = ARR + RoE − open access − non-tariff income − other business",
         "arr_net",
         ["arr_before_roe", "roe"],
@@ -188,8 +206,8 @@ def identities(
         name = c["name"]
         for title, total_key, plus, minus in IDENTITIES:
             total = _value(by_key.get(total_key, {}).get(name, ""))
-            if total is None:
-                continue
+            if total is None or not any(name in by_key.get(k, {}) for k in plus + minus):
+                continue  # the total is not printed, or none of its parts is: nothing to check
 
             parts = sum((_part(by_key, k, name) for k in plus), Decimal(0)) - sum(
                 (_part(by_key, k, name) for k in minus), Decimal(0)

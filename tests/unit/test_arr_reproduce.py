@@ -1133,3 +1133,31 @@ def test_npcl_the_commissions_om_approval_reproduces_with_the_same_rules():
     assert off == [("employee FY2025-26 order:employee.normative.fy26", "84.57", "84.56")]
     finals = {c.category.split(" order:")[1]: c.computed for c in checks if c.fiscal_year == "FY2026-27"}
     assert finals == {"employee.normative.fy27": "87.63", "ag.normative.fy27": "28.87", "rm.approved": "111.04"}
+
+
+def test_npcl_the_commissions_capital_and_interest_approval_reproduces_with_the_same_rules():
+    """Real data: funding, normative loan, equity, RoE, tax and security-deposit interest approved
+    for FY2026-27, from the order's figures and the same draft rules as NPCL's claim — the loan
+    at NPCL's own rate, which the order accepts (A62); one last-place difference from the order's
+    rounded opening equity."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-capital-fy27.json").read_text())
+    figures = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=figures)
+    assert len(checks) == 14
+    assert [(c.output, c.filed, c.computed) for c in checks if c.result != "match"] == [
+        ("equity_average", "755.20", "755.21")
+    ]
+    got = {c.output: c.computed for c in checks}
+    assert (got["return_on_equity"], got["interest_on_loan"], got["tax_on_roe"], got["isd_interest_annual"]) == (
+        "113.28",
+        "85.60",
+        "38.10",
+        "20.51",
+    )

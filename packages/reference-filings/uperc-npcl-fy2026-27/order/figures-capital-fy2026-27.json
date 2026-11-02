@@ -1,0 +1,234 @@
+{
+ "status": "read from the order's text layer by pattern, each quote verbatim (whitespace-normalised) from its page — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): capital funding, normative loan, security deposit, interest, return on equity and income tax approved for FY2026-27, Tables 6-58, 6-67, 6-70, 6-72, 6-74, 6-76",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "capital.addition": {
+   "value": "474.13",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "CAPEX Addition for FY 2026-27 G=B-C-D-E+F 493.69 474.13",
+   "what": "capex addition approved for FY2026-27, G (Table 6-58) — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "capital.consumer_contribution": {
+   "value": "64.29",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "Less: Consumer Contribution H 64.29 64.29",
+   "what": "consumer contribution, H — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "capital.to_fund": {
+   "value": "409.84",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "CAPEX to be funded for FY 2026-27 I=G-H 429.40 409.84",
+   "what": "capex to be funded, I — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "capital.debt": {
+   "value": "286.89",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "Debt Addition J=I*70% 300.58 286.89",
+   "what": "debt addition, J — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "capital.equity": {
+   "value": "122.95",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "Equity Addition K=I*30% 128.82 122.95",
+   "what": "equity addition, K — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "capital.decapitalised": {
+   "value": "15.00",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "Decapitalisation L 15.00 15.00",
+   "what": "decapitalisation, L — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "capital.retired_acc_dep": {
+   "value": "8.32",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "(net of Consumer Contribution) O 8.32 8.32",
+   "what": "accumulated depreciation on the retired assets, O — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "capital.debt_deletion": {
+   "value": "2.18",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "Debt Deletion Q=(70%*N-O) 2.18 2.18",
+   "what": "debt deletion, Q — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "capital.equity_deletion": {
+   "value": "4.50",
+   "unit": "INR_crore",
+   "page": 277,
+   "quote": "Equity Deletion R=30%*N 4.50 4.50",
+   "what": "equity deletion, R — the second (Approved) figure",
+   "header": "Particulars Ref. Claimed Approved"
+  },
+  "loan.opening": {
+   "value": "780.70",
+   "unit": "INR_crore",
+   "page": 283,
+   "quote": "Opening Balance of Normative Loan 757.77 780.70",
+   "what": "opening normative loan approved (Table 6-67) — the second (Approved) figure",
+   "header": "Loan Computation Claimed Approved"
+  },
+  "loan.repayment": {
+   "value": "103.80",
+   "unit": "INR_crore",
+   "page": 283,
+   "quote": "Less: Repayment of Normative loan during the year 106.75 103.80",
+   "what": "repayment = depreciation approved — the second (Approved) figure",
+   "header": "Loan Computation Claimed Approved"
+  },
+  "loan.closing": {
+   "value": "961.61",
+   "unit": "INR_crore",
+   "page": 283,
+   "quote": "Closing Balance of Normative Loan 949.42 961.61",
+   "what": "closing normative loan approved — the second (Approved) figure",
+   "header": "Loan Computation Claimed Approved"
+  },
+  "loan.average": {
+   "value": "871.15",
+   "unit": "INR_crore",
+   "page": 283,
+   "quote": "Average Balance of Normative Loan 853.59 871.15",
+   "what": "average normative loan approved — the second (Approved) figure",
+   "header": "Loan Computation Claimed Approved"
+  },
+  "loan.interest": {
+   "value": "85.60",
+   "unit": "INR_crore",
+   "page": 283,
+   "quote": "Interest on long term loan 83.88 85.60",
+   "what": "interest on the normative loan approved — the second (Approved) figure",
+   "header": "Loan Computation Claimed Approved"
+  },
+  "equity.opening": {
+   "value": "695.98",
+   "unit": "INR_crore",
+   "page": 288,
+   "quote": "1 Equity (Opening Balance) A 709.62 695.98",
+   "what": "opening equity approved (Table 6-74) — the second (Approved) figure",
+   "header": "Particulars Reference ARR Petition Approved"
+  },
+  "equity.closing": {
+   "value": "814.43",
+   "unit": "INR_crore",
+   "page": 288,
+   "quote": "3 Equity (Closing Balance) C=A+B 833.94 814.43",
+   "what": "closing equity approved — the second (Approved) figure",
+   "header": "Particulars Reference ARR Petition Approved"
+  },
+  "equity.average": {
+   "value": "755.20",
+   "unit": "INR_crore",
+   "page": 288,
+   "quote": "4 Average Equity D=(A+C)/2 771.78 755.20",
+   "what": "average equity approved — the second (Approved) figure",
+   "header": "Particulars Reference ARR Petition Approved"
+  },
+  "roe.approved": {
+   "value": "113.28",
+   "unit": "INR_crore",
+   "page": 288,
+   "quote": "6 Return on Equity F=D*E 115.77 113.28",
+   "what": "return on equity approved — the second (Approved) figure",
+   "header": "Particulars Reference ARR Petition Approved"
+  },
+  "tax.rate": {
+   "value": "25.17",
+   "unit": "percent",
+   "page": 288,
+   "quote": "2 Income Tax Rate B 25.17% 25.17%",
+   "what": "income tax rate approved (Table 6-76) — the second (Approved) figure",
+   "header": "Nature of Tax Reference Claimed Approved"
+  },
+  "tax.approved": {
+   "value": "38.10",
+   "unit": "INR_crore",
+   "page": 288,
+   "quote": "3 Total Tax Expense C=A * B/(1-B) 38.94 38.10",
+   "what": "income tax approved (Table 6-76) — the second (Approved) figure",
+   "header": "Nature of Tax Reference Claimed Approved"
+  },
+  "isd.opening": {
+   "value": "365.39",
+   "unit": "INR_crore",
+   "page": 285,
+   "quote": "Opening Balance of Security Deposit 365.39 365.39",
+   "what": "opening security deposit (Table 6-70) — the second (Approved) figure",
+   "header": "Particulars Claimed Approved"
+  },
+  "isd.closing": {
+   "value": "380.39",
+   "unit": "INR_crore",
+   "page": 285,
+   "quote": "Closing Balance for Security Deposit 380.39 380.39",
+   "what": "closing security deposit — the second (Approved) figure",
+   "header": "Particulars Claimed Approved"
+  },
+  "isd.rate": {
+   "value": "5.50",
+   "unit": "percent",
+   "page": 285,
+   "quote": "Rate of Interest 6.50% 5.50%",
+   "what": "rate of interest on security deposit approved — the second (Approved) figure",
+   "header": "Particulars Claimed Approved"
+  },
+  "isd.interest": {
+   "value": "20.51",
+   "unit": "INR_crore",
+   "page": 285,
+   "quote": "Interest payable on Consumer Security Deposit 24.24 20.51",
+   "what": "interest on security deposit approved — the second (Approved) figure",
+   "header": "Particulars Claimed Approved"
+  },
+  "interest.ltl": {
+   "value": "85.60",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "1 Interest on Long term loans 83.88 85.60",
+   "what": "interest on long-term loans in the interest summary (Table 6-72) — the second (Approved) figure",
+   "header": "Sl. No. Description Claimed Approved"
+  },
+  "interest.isd": {
+   "value": "20.51",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "3 Interest on security deposits 24.24 20.51",
+   "what": "interest on security deposits in the interest summary (Table 6-72) — the second (Approved) figure",
+   "header": "Sl. No. Description Claimed Approved"
+  },
+  "interest.finance": {
+   "value": "4.32",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "4 Banking and Finance Charges 4.32 4.32",
+   "what": "banking and finance charges (Table 6-72) — the second (Approved) figure",
+   "header": "Sl. No. Description Claimed Approved"
+  },
+  "interest.total": {
+   "value": "110.43",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "5 Total Interest & Fin. Charges 119.31 110.43",
+   "what": "total interest and finance charges approved (Table 6-72) — the second (Approved) figure",
+   "header": "Sl. No. Description Claimed Approved"
+  }
+ }
+}

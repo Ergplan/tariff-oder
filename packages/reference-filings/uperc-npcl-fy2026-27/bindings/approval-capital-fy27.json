@@ -1,0 +1,89 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F25_IOL",
+ "rates": "order/figures-capital-fy2026-27.json",
+ "places": 2,
+ "note": "The Commission's capital funding, normative loan, return on equity and income tax for FY2026-27, and the interest on consumers' security deposit at the 5.50 % the order allows (6.50 % claimed), reproduced with the same draft rules (capital, MYT 2025, income tax) that reproduce NPCL's claim, fed the order's own figures (Tables 6-58, 6-67, 6-74, 6-76, read with page and quote) and checked against its printed approvals.  The loan rate is NPCL's (F25 I14, 9.8262 %): the order 'has considered the rate of interest as claimed by the Petitioner' (para 6.10.5, p.282) and prints it rounded (9.83 %), which alone would give 85.63, not 85.60.  Depreciation is the order's net approval (103.80), used as the loan repayment as Reg. 22.3 provides.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "capital approved FY2026-27",
+   "inputs": {
+    "record:capitalisation": {
+     "rate": "capital.addition"
+    },
+    "record:consumer_contribution": {
+     "rate": "capital.consumer_contribution"
+    },
+    "record:retired_gross": {
+     "rate": "capital.decapitalised"
+    },
+    "record:retired_grants": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the order prints '-' for gross block retired from consumer contribution (Table 6-58, M, p.277)"
+    },
+    "record:retired_acc_dep": {
+     "rate": "capital.retired_acc_dep"
+    },
+    "record:retired_acc_dep_adjustment": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the order's table nets no adjustment from the retired assets' accumulated depreciation (Table 6-58, O, p.277)"
+    },
+    "prior:equity_closing": {
+     "rate": "equity.opening"
+    },
+    "prior:normative_loan_closing": {
+     "rate": "loan.opening"
+    },
+    "record:depreciation": {
+     "rate": "loan.repayment"
+    },
+    "assumption:loan_interest_rate": {
+     "cell": "I14",
+     "unit": "fraction"
+    },
+    "assumption:tax_rate_roe": {
+     "rate": "tax.rate"
+    }
+   },
+   "checks": {
+    "net_capitalisation": "order:capital.to_fund",
+    "normative_loan_addition": "order:capital.debt",
+    "equity_addition": "order:capital.equity",
+    "loan_reduction_on_retirement": "order:capital.debt_deletion",
+    "equity_reduction_on_retirement": "order:capital.equity_deletion",
+    "equity_closing": "order:equity.closing",
+    "equity_average": "order:equity.average",
+    "return_on_equity": "order:roe.approved",
+    "normative_loan_closing": "order:loan.closing",
+    "normative_loan_average": "order:loan.average",
+    "interest_on_loan": "order:loan.interest",
+    "tax_on_roe": "order:tax.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "security deposit approved FY2026-27",
+   "inputs": {
+    "record:deposit_opening": {
+     "rate": "isd.opening"
+    },
+    "record:deposit_closing": {
+     "rate": "isd.closing"
+    },
+    "assumption:isd_rate": {
+     "rate": "isd.rate"
+    }
+   },
+   "checks": {
+    "isd_interest_annual": [
+     "order:isd.interest",
+     "order:interest.isd"
+    ]
+   }
+  }
+ ]
+}
