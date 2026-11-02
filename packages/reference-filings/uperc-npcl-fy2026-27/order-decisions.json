@@ -1,0 +1,2122 @@
+{
+ "order": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a"
+ },
+ "status": "read from the order's text layer, each row with its page and quote — not reviewed; the decision is the Commission's, the comparison the build's",
+ "note": "The order's three summary tables, read row by row from its text layer.  Columns restating the petition ('Claimed', 'Claimed in APR') or an earlier approval ('Approved in TO dated …') are compared with the ARR format's columns (true-up J and H, APR L and K, ARR M); the 'Approved' / 'Provisionally Considered' column is the decision.  Not bound to the format: loss on retired assets and efficiency gains (the format carries their sum as row 45), the true-up's tariff revision impact (the format books the regulatory discount in its revenue rows).",
+ "tables": [
+  {
+   "proceeding": "true_up",
+   "fiscal_year": "FY2024-25",
+   "title": "TABLE 4-120 SUMMARY OF ARR AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.)",
+   "pages": [
+    166,
+    167
+   ],
+   "columns": [
+    {
+     "name": "approved_before",
+     "header": "Approved in TO dated 10.10.2024",
+     "format_column": "H"
+    },
+    {
+     "name": "claimed",
+     "header": "Claimed",
+     "format_column": "J"
+    },
+    {
+     "name": "approved",
+     "header": "Approved"
+    }
+   ],
+   "rows": [
+    {
+     "serial": 1,
+     "label": "Power Purchase Expenses",
+     "page": 166,
+     "quote": "1 Power Purchase Expenses 2,076.85 2,175.64 2,163.65",
+     "key": "power_purchase",
+     "values": {
+      "approved_before": "2,076.85",
+      "claimed": "2,175.64",
+      "approved": "2,163.65"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "2,076.85",
+       "format": "2076.85",
+       "cells": [
+        "ARR!H20",
+        "ARR!H21",
+        "ARR!H22"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "2,175.64",
+       "format": "2175.64",
+       "cells": [
+        "ARR!J20",
+        "ARR!J21",
+        "ARR!J22"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-11.99"
+    },
+    {
+     "serial": 2,
+     "label": "Transmission & SLDC Charges",
+     "page": 166,
+     "quote": "2 Transmission & SLDC Charges 314.22 294.40 294.40",
+     "key": "transmission",
+     "values": {
+      "approved_before": "314.22",
+      "claimed": "294.40",
+      "approved": "294.40"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "314.22",
+       "format": "314.22",
+       "cells": [
+        "ARR!H23",
+        "ARR!H24"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "294.40",
+       "format": "294.40",
+       "cells": [
+        "ARR!J23",
+        "ARR!J24"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 3,
+     "label": "Employee Expenses",
+     "page": 166,
+     "quote": "3 Employee Expenses 36.56 95.42 37.64",
+     "key": "employee_gross",
+     "values": {
+      "approved_before": "36.56",
+      "claimed": "95.42",
+      "approved": "37.64"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "36.56",
+       "format": "36.56",
+       "cells": [
+        "ARR!H27"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "95.42",
+       "format": "95.42",
+       "cells": [
+        "ARR!J27"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-57.78"
+    },
+    {
+     "serial": 4,
+     "label": "A&G Expenses",
+     "page": 166,
+     "quote": "4 A&G Expenses 20.28 39.36 24.55",
+     "key": "ag",
+     "values": {
+      "approved_before": "20.28",
+      "claimed": "39.36",
+      "approved": "24.55"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "20.28",
+       "format": "20.28",
+       "cells": [
+        "ARR!H31"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "39.36",
+       "format": "39.36",
+       "cells": [
+        "ARR!J31"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-14.81"
+    },
+    {
+     "serial": 5,
+     "label": "R&M Expenses",
+     "page": 166,
+     "quote": "5 R&M Expenses 54.72 64.91 55.60",
+     "key": "rm",
+     "values": {
+      "approved_before": "54.72",
+      "claimed": "64.91",
+      "approved": "55.60"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "54.72",
+       "format": "54.72",
+       "cells": [
+        "ARR!H26"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "64.91",
+       "format": "64.91",
+       "cells": [
+        "ARR!J26"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-9.31"
+    },
+    {
+     "serial": 6,
+     "label": "Gross O&M Expenses",
+     "page": 166,
+     "quote": "6 Gross O&M Expenses 111.55 199.68 117.79",
+     "key": "om_gross",
+     "values": {
+      "approved_before": "111.55",
+      "claimed": "199.68",
+      "approved": "117.79"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "111.55",
+       "format": "111.55",
+       "cells": [
+        "ARR!H26",
+        "ARR!H27",
+        "ARR!H31"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "199.68",
+       "format": "199.68",
+       "cells": [
+        "ARR!J26",
+        "ARR!J27",
+        "ARR!J31"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-81.89"
+    },
+    {
+     "serial": 7,
+     "label": "Smart Metering OPEX/ DT Metering/ SOP Implementation",
+     "page": 166,
+     "quote": "7 Smart Metering OPEX/ DT Metering/ SOP Implementation - 9.01 -",
+     "key": "additional_om",
+     "values": {
+      "approved_before": "-",
+      "claimed": "9.01",
+      "approved": "-"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "-",
+       "format": "0.00",
+       "cells": [
+        "ARR!H33"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "9.01",
+       "format": "9.01",
+       "cells": [
+        "ARR!J33"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-9.01"
+    },
+    {
+     "serial": 8,
+     "label": "Employee Cost Capitalized",
+     "page": 166,
+     "quote": "8 Employee Cost Capitalized 18.00 17.19 17.19",
+     "key": "employee_capitalised",
+     "values": {
+      "approved_before": "18.00",
+      "claimed": "17.19",
+      "approved": "17.19"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "18.00",
+       "format": "18.00",
+       "cells": [
+        "ARR!H28"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "17.19",
+       "format": "17.19",
+       "cells": [
+        "ARR!J28"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 9,
+     "label": "Net O&M Expenses",
+     "page": 166,
+     "quote": "9 Net O&M Expenses 93.55 191.51 100.60",
+     "key": "om_net",
+     "values": {
+      "approved_before": "93.55",
+      "claimed": "191.51",
+      "approved": "100.60"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "93.55",
+       "format": "93.55",
+       "cells": [
+        "ARR!H35"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "191.51",
+       "format": "191.51",
+       "cells": [
+        "ARR!J35"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-90.91"
+    },
+    {
+     "serial": 10,
+     "label": "Interest Charges",
+     "page": 166,
+     "quote": "10 Interest Charges 77.82 82.23 80.16",
+     "key": "interest",
+     "values": {
+      "approved_before": "77.82",
+      "claimed": "82.23",
+      "approved": "80.16"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "77.82",
+       "format": "77.84",
+       "cells": [
+        "ARR!H37",
+        "ARR!H38",
+        "ARR!H39",
+        "ARR!H40"
+       ],
+       "result": "differs",
+       "last_place_units": -2
+      },
+      "claimed": {
+       "printed": "82.23",
+       "format": "82.23",
+       "cells": [
+        "ARR!J37",
+        "ARR!J38",
+        "ARR!J39",
+        "ARR!J40"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-2.07"
+    },
+    {
+     "serial": 11,
+     "label": "Depreciation",
+     "page": 166,
+     "quote": "11 Depreciation 62.21 74.75 69.97",
+     "key": "depreciation",
+     "values": {
+      "approved_before": "62.21",
+      "claimed": "74.75",
+      "approved": "69.97"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "62.21",
+       "format": "62.21",
+       "cells": [
+        "ARR!H36"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "74.75",
+       "format": "74.75",
+       "cells": [
+        "ARR!J36"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-4.78"
+    },
+    {
+     "serial": 12,
+     "label": "Income Tax",
+     "page": 166,
+     "quote": "12 Income Tax 23.61 28.58 27.79",
+     "key": "tax",
+     "values": {
+      "approved_before": "23.61",
+      "claimed": "28.58",
+      "approved": "27.79"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "23.61",
+       "format": "23.61",
+       "cells": [
+        "ARR!H44"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "28.58",
+       "format": "28.58",
+       "cells": [
+        "ARR!J44"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-0.79"
+    },
+    {
+     "serial": 13,
+     "label": "Provision for Bad & Doubtful Debts",
+     "page": 166,
+     "quote": "13 Provision for Bad & Doubtful Debts 10.30 11.38 10.79",
+     "key": "bad_debts",
+     "values": {
+      "approved_before": "10.30",
+      "claimed": "11.38",
+      "approved": "10.79"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "10.30",
+       "format": "10.30",
+       "cells": [
+        "ARR!H41"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "11.38",
+       "format": "11.38",
+       "cells": [
+        "ARR!J41"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-0.59"
+    },
+    {
+     "serial": 14,
+     "label": "Loss on Sale of Retired Assets",
+     "page": 166,
+     "quote": "14 Loss on Sale of Retired Assets - 2.85 2.85",
+     "key": "loss_retired",
+     "values": {
+      "approved_before": "-",
+      "claimed": "2.85",
+      "approved": "2.85"
+     },
+     "checks": {},
+     "decision": "0.00"
+    },
+    {
+     "serial": 15,
+     "label": "Efficiency Gains on Loss Reduction",
+     "page": 167,
+     "quote": "15 Efficiency Gains on Loss Reduction - 2.58 -",
+     "key": "efficiency_gains",
+     "values": {
+      "approved_before": "-",
+      "claimed": "2.58",
+      "approved": "-"
+     },
+     "checks": {},
+     "decision": "-2.58"
+    },
+    {
+     "serial": 16,
+     "label": "Contingency Reserve",
+     "page": 167,
+     "quote": "16 Contingency Reserve - 5.61 -",
+     "key": "contingency",
+     "values": {
+      "approved_before": "-",
+      "claimed": "5.61",
+      "approved": "-"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "-",
+       "format": "0.00",
+       "cells": [
+        "ARR!H42"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "5.61",
+       "format": "5.61",
+       "cells": [
+        "ARR!J42"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-5.61"
+    },
+    {
+     "serial": 17,
+     "label": "Annual Revenue Requirement",
+     "page": 167,
+     "quote": "17 Annual Revenue Requirement 2,658.56 2,869.53 2,750.19",
+     "key": "arr_before_roe",
+     "values": {
+      "approved_before": "2,658.56",
+      "claimed": "2,869.53",
+      "approved": "2,750.19"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "2,658.56",
+       "format": "2658.58",
+       "cells": [
+        "ARR!H46",
+        "-ARR!H43"
+       ],
+       "result": "differs",
+       "last_place_units": -2
+      },
+      "claimed": {
+       "printed": "2,869.53",
+       "format": "2869.52",
+       "cells": [
+        "ARR!J46",
+        "-ARR!J43"
+       ],
+       "result": "differs",
+       "last_place_units": 1
+      }
+     },
+     "decision": "-119.34"
+    },
+    {
+     "serial": 18,
+     "label": "Add: Return on Equity",
+     "page": 167,
+     "quote": "18 Add: Return on Equity 70.19 84.98 82.62",
+     "key": "roe",
+     "values": {
+      "approved_before": "70.19",
+      "claimed": "84.98",
+      "approved": "82.62"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "70.19",
+       "format": "70.19",
+       "cells": [
+        "ARR!H43"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "84.98",
+       "format": "84.98",
+       "cells": [
+        "ARR!J43"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-2.36"
+    },
+    {
+     "serial": 19,
+     "label": "Less: Revenue from Open Access Charges",
+     "page": 167,
+     "quote": "19 Less: Revenue from Open Access Charges 5.37 5.37",
+     "key": "open_access",
+     "values": {
+      "claimed": "5.37",
+      "approved": "5.37"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "5.37",
+       "format": "5.37",
+       "cells": [
+        "ARR!J51"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 20,
+     "label": "Less: Non-Tariff Income",
+     "page": 167,
+     "quote": "20 Less: Non-Tariff Income 53.01 10.66 12.38",
+     "key": "nti",
+     "values": {
+      "approved_before": "53.01",
+      "claimed": "10.66",
+      "approved": "12.38"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "53.01",
+       "format": "53.01",
+       "cells": [
+        "ARR!H50"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "10.66",
+       "format": "10.66",
+       "cells": [
+        "ARR!J50"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "1.72"
+    },
+    {
+     "serial": 21,
+     "label": "Less: Income from Other Business",
+     "page": 167,
+     "quote": "21 Less: Income from Other Business 0.04",
+     "key": "other_business",
+     "values": {
+      "claimed": "0.04"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "0.04",
+       "format": "0.04",
+       "cells": [
+        "ARR!J49"
+       ],
+       "result": "match"
+      }
+     }
+    },
+    {
+     "serial": 22,
+     "label": "Net Annual Revenue Requirement",
+     "page": 167,
+     "quote": "22 Net Annual Revenue Requirement 2,675.75 2,938.44 2,815.06",
+     "key": "arr_net",
+     "values": {
+      "approved_before": "2,675.75",
+      "claimed": "2,938.44",
+      "approved": "2,815.06"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "2,675.75",
+       "format": "2675.76",
+       "cells": [
+        "ARR!H53"
+       ],
+       "result": "differs",
+       "last_place_units": -1
+      },
+      "claimed": {
+       "printed": "2,938.44",
+       "format": "2938.43",
+       "cells": [
+        "ARR!J53"
+       ],
+       "result": "differs",
+       "last_place_units": 1
+      }
+     },
+     "decision": "-123.38"
+    },
+    {
+     "serial": 23,
+     "label": "Less: Revenue from Approved Tariff",
+     "page": 167,
+     "quote": "23 Less: Revenue from Approved Tariff 3,028.52 2,634.60 2,634.60",
+     "key": "revenue",
+     "values": {
+      "approved_before": "3,028.52",
+      "claimed": "2,634.60",
+      "approved": "2,634.60"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "3,028.52",
+       "format": "3028.52",
+       "cells": [
+        "ARR!H13"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "2,634.60",
+       "format": "2634.60",
+       "cells": [
+        "ARR!J17"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 24,
+     "label": "Add: Tariff Revision Impact (10% Regulatory Discount)",
+     "page": 167,
+     "quote": "24 Add: Tariff Revision Impact (10% Regulatory Discount) 302.85",
+     "key": "revision_impact",
+     "values": {
+      "approved_before": "302.85"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "302.85",
+       "format": "302.85",
+       "cells": [
+        "ARR!H14"
+       ],
+       "result": "match"
+      }
+     }
+    },
+    {
+     "serial": 25,
+     "label": "Revenue Gap / (Surplus)",
+     "page": 167,
+     "quote": "25 Revenue Gap / (Surplus) (49.92) 303.83 180.46",
+     "key": "gap",
+     "values": {
+      "approved_before": "(49.92)",
+      "claimed": "303.83",
+      "approved": "180.46"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "(49.92)",
+       "format": "-49.90",
+       "cells": [
+        "ARR!H58"
+       ],
+       "result": "differs",
+       "last_place_units": -2
+      },
+      "claimed": {
+       "printed": "303.83",
+       "format": "303.83",
+       "cells": [
+        "ARR!J58"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-123.37"
+    }
+   ],
+   "identities": [
+    {
+     "column": "approved_before",
+     "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
+     "printed": "2675.75",
+     "parts": "2675.74",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "column": "approved_before",
+     "identity": "gap = net ARR − revenue + tariff revision impact",
+     "printed": "-49.92",
+     "parts": "-49.92",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "claimed",
+     "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
+     "printed": "2938.44",
+     "parts": "2938.44",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "claimed",
+     "identity": "gap = net ARR − revenue + tariff revision impact",
+     "printed": "303.83",
+     "parts": "303.84",
+     "difference": "-0.01",
+     "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
+     "printed": "2815.06",
+     "parts": "2815.06",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "gap = net ARR − revenue + tariff revision impact",
+     "printed": "180.46",
+     "parts": "180.46",
+     "difference": "0.00",
+     "result": "match"
+    }
+   ]
+  },
+  {
+   "proceeding": "apr",
+   "fiscal_year": "FY2025-26",
+   "title": "TABLE 5-48 SUMMARY OF APR COMPUTED BY THE COMMISSION FOR FY 2025-26 (IN RS. CR.)",
+   "pages": [
+    207,
+    208
+   ],
+   "columns": [
+    {
+     "name": "approved_before",
+     "header": "Approved as per TO dtd 22.11.2025",
+     "format_column": "K"
+    },
+    {
+     "name": "claimed",
+     "header": "Claimed in APR",
+     "format_column": "L"
+    },
+    {
+     "name": "approved",
+     "header": "Provisionally Considered"
+    }
+   ],
+   "rows": [
+    {
+     "serial": 1,
+     "label": "Power Purchase Expenses",
+     "page": 207,
+     "quote": "1 Power Purchase Expenses 2,192.18 2,298.48 2,417.03",
+     "key": "power_purchase",
+     "values": {
+      "approved_before": "2,192.18",
+      "claimed": "2,298.48",
+      "approved": "2,417.03"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "2,192.18",
+       "format": "2192.18",
+       "cells": [
+        "ARR!K20",
+        "ARR!K21",
+        "ARR!K22"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "2,298.48",
+       "format": "2298.48",
+       "cells": [
+        "ARR!L20",
+        "ARR!L21",
+        "ARR!L22"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "118.55"
+    },
+    {
+     "serial": 2,
+     "label": "Transmission & SLDC Charges",
+     "page": 207,
+     "quote": "2 Transmission & SLDC Charges 440.03 389.77 389.77",
+     "key": "transmission",
+     "values": {
+      "approved_before": "440.03",
+      "claimed": "389.77",
+      "approved": "389.77"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "440.03",
+       "format": "440.03",
+       "cells": [
+        "ARR!K23",
+        "ARR!K24"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "389.77",
+       "format": "389.77",
+       "cells": [
+        "ARR!L23",
+        "ARR!L24"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 3,
+     "label": "Employee Expenses",
+     "page": 207,
+     "quote": "3 Employee Expenses 80.05 95.63 84.57",
+     "key": "employee_gross",
+     "values": {
+      "approved_before": "80.05",
+      "claimed": "95.63",
+      "approved": "84.57"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "80.05",
+       "format": "80.05",
+       "cells": [
+        "ARR!K27"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "95.63",
+       "format": "95.63",
+       "cells": [
+        "ARR!L27"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-11.06"
+    },
+    {
+     "serial": 4,
+     "label": "A&G Expenses",
+     "page": 207,
+     "quote": "4 A&G Expenses 26.45 28.75 28.75",
+     "key": "ag",
+     "values": {
+      "approved_before": "26.45",
+      "claimed": "28.75",
+      "approved": "28.75"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "26.45",
+       "format": "26.45",
+       "cells": [
+        "ARR!K31"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "28.75",
+       "format": "28.75",
+       "cells": [
+        "ARR!L31"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 5,
+     "label": "R&M Expenses",
+     "page": 207,
+     "quote": "5 R&M Expenses 83.83 100.26 98.14",
+     "key": "rm",
+     "values": {
+      "approved_before": "83.83",
+      "claimed": "100.26",
+      "approved": "98.14"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "83.83",
+       "format": "83.83",
+       "cells": [
+        "ARR!K26"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "100.26",
+       "format": "100.26",
+       "cells": [
+        "ARR!L26"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-2.12"
+    },
+    {
+     "serial": 6,
+     "label": "Gross O&M Expenses",
+     "page": 207,
+     "quote": "6 Gross O&M Expenses 190.33 224.64 211.46",
+     "key": "om_gross",
+     "values": {
+      "approved_before": "190.33",
+      "claimed": "224.64",
+      "approved": "211.46"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "190.33",
+       "format": "190.33",
+       "cells": [
+        "ARR!K26",
+        "ARR!K27",
+        "ARR!K31"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "224.64",
+       "format": "224.64",
+       "cells": [
+        "ARR!L26",
+        "ARR!L27",
+        "ARR!L31"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-13.18"
+    },
+    {
+     "serial": 7,
+     "label": "Employee Cost Capitalized",
+     "page": 207,
+     "quote": "7 Employee Cost Capitalized 30.34 28.30 28.30",
+     "key": "employee_capitalised",
+     "values": {
+      "approved_before": "30.34",
+      "claimed": "28.30",
+      "approved": "28.30"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "30.34",
+       "format": "30.34",
+       "cells": [
+        "ARR!K28"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "28.30",
+       "format": "28.30",
+       "cells": [
+        "ARR!L28"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 8,
+     "label": "Provisions for A&G Expenses",
+     "page": 207,
+     "quote": "8 Provisions for A&G Expenses - 2.26 -",
+     "key": "provisions",
+     "values": {
+      "approved_before": "-",
+      "claimed": "2.26",
+      "approved": "-"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "-",
+       "format": "0.00",
+       "cells": [
+        "ARR!K34"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "2.26",
+       "format": "2.26",
+       "cells": [
+        "ARR!L34"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-2.26"
+    },
+    {
+     "serial": 9,
+     "label": "Net O&M Expenses",
+     "page": 207,
+     "quote": "9 Net O&M Expenses 160.00 198.60 183.15",
+     "key": "om_net",
+     "values": {
+      "approved_before": "160.00",
+      "claimed": "198.60",
+      "approved": "183.15"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "160.00",
+       "format": "159.99",
+       "cells": [
+        "ARR!K35"
+       ],
+       "result": "differs",
+       "last_place_units": 1
+      },
+      "claimed": {
+       "printed": "198.60",
+       "format": "198.60",
+       "cells": [
+        "ARR!L35"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-15.45"
+    },
+    {
+     "serial": 10,
+     "label": "Interest Charges",
+     "page": 207,
+     "quote": "10 Interest Charges 80.95 97.00 95.01",
+     "key": "interest",
+     "values": {
+      "approved_before": "80.95",
+      "claimed": "97.00",
+      "approved": "95.01"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "80.95",
+       "format": "80.95",
+       "cells": [
+        "ARR!K37",
+        "ARR!K38",
+        "ARR!K39",
+        "ARR!K40"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "97.00",
+       "format": "97.00",
+       "cells": [
+        "ARR!L37",
+        "ARR!L38",
+        "ARR!L39",
+        "ARR!L40"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-1.99"
+    },
+    {
+     "serial": 11,
+     "label": "Depreciation",
+     "page": 207,
+     "quote": "11 Depreciation 70.69 90.09 87.01",
+     "key": "depreciation",
+     "values": {
+      "approved_before": "70.69",
+      "claimed": "90.09",
+      "approved": "87.01"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "70.69",
+       "format": "70.69",
+       "cells": [
+        "ARR!K36"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "90.09",
+       "format": "90.09",
+       "cells": [
+        "ARR!L36"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-3.08"
+    },
+    {
+     "serial": 12,
+     "label": "Income Tax",
+     "page": 208,
+     "quote": "12 Income Tax 26.65 32.98 32.30",
+     "key": "tax",
+     "values": {
+      "approved_before": "26.65",
+      "claimed": "32.98",
+      "approved": "32.30"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "26.65",
+       "format": "26.65",
+       "cells": [
+        "ARR!K44"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "32.98",
+       "format": "32.98",
+       "cells": [
+        "ARR!L44"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-0.68"
+    },
+    {
+     "serial": 13,
+     "label": "Provision for Bad & Doubtful Debts",
+     "page": 208,
+     "quote": "13 Provision for Bad & Doubtful Debts 11.32 12.44 12.44",
+     "key": "bad_debts",
+     "values": {
+      "approved_before": "11.32",
+      "claimed": "12.44",
+      "approved": "12.44"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "11.32",
+       "format": "11.32",
+       "cells": [
+        "ARR!K41"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "12.44",
+       "format": "12.44",
+       "cells": [
+        "ARR!L41"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 14,
+     "label": "Annual Revenue Requirement",
+     "page": 208,
+     "quote": "14 Annual Revenue Requirement 2,981.82 3,119.36 3,216.71",
+     "key": "arr_before_roe",
+     "values": {
+      "approved_before": "2,981.82",
+      "claimed": "3,119.36",
+      "approved": "3,216.71"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "2,981.82",
+       "format": "2981.81",
+       "cells": [
+        "ARR!K46",
+        "-ARR!K43"
+       ],
+       "result": "differs",
+       "last_place_units": 1
+      },
+      "claimed": {
+       "printed": "3,119.36",
+       "format": "3119.37",
+       "cells": [
+        "ARR!L46",
+        "-ARR!L43"
+       ],
+       "result": "differs",
+       "last_place_units": -1
+      }
+     },
+     "decision": "97.35"
+    },
+    {
+     "serial": 15,
+     "label": "Add: Return on Equity",
+     "page": 208,
+     "quote": "15 Add: Return on Equity 79.23 98.07 96.02",
+     "key": "roe",
+     "values": {
+      "approved_before": "79.23",
+      "claimed": "98.07",
+      "approved": "96.02"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "79.23",
+       "format": "79.23",
+       "cells": [
+        "ARR!K43"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "98.07",
+       "format": "98.07",
+       "cells": [
+        "ARR!L43"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-2.05"
+    },
+    {
+     "serial": 16,
+     "label": "Less: Revenue from Open Access Charges",
+     "page": 208,
+     "quote": "16 Less: Revenue from Open Access Charges 9.13 7.08 7.08",
+     "key": "open_access",
+     "values": {
+      "approved_before": "9.13",
+      "claimed": "7.08",
+      "approved": "7.08"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "9.13",
+       "format": "9.13",
+       "cells": [
+        "ARR!K51"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "7.08",
+       "format": "7.08",
+       "cells": [
+        "ARR!L51"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 17,
+     "label": "Less: Non-Tariff Income",
+     "page": 208,
+     "quote": "17 Less: Non-Tariff Income 63.99 9.52 12.38",
+     "key": "nti",
+     "values": {
+      "approved_before": "63.99",
+      "claimed": "9.52",
+      "approved": "12.38"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "63.99",
+       "format": "63.99",
+       "cells": [
+        "ARR!K50"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "9.52",
+       "format": "9.52",
+       "cells": [
+        "ARR!L50"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "2.86"
+    },
+    {
+     "serial": 18,
+     "label": "Less: Income from Other Business",
+     "page": 208,
+     "quote": "18 Less: Income from Other Business - 0.20",
+     "key": "other_business",
+     "values": {
+      "approved_before": "-",
+      "claimed": "0.20"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "-",
+       "format": "0.00",
+       "cells": [
+        "ARR!K49"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "0.20",
+       "format": "0.20",
+       "cells": [
+        "ARR!L49"
+       ],
+       "result": "match"
+      }
+     }
+    },
+    {
+     "serial": 19,
+     "label": "Net Annual Revenue Requirement",
+     "page": 208,
+     "quote": "19 Net Annual Revenue Requirement 2,987.93 3,200.63 3,293.27",
+     "key": "arr_net",
+     "values": {
+      "approved_before": "2,987.93",
+      "claimed": "3,200.63",
+      "approved": "3,293.27"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "2,987.93",
+       "format": "2987.92",
+       "cells": [
+        "ARR!K53"
+       ],
+       "result": "differs",
+       "last_place_units": 1
+      },
+      "claimed": {
+       "printed": "3,200.63",
+       "format": "3200.63",
+       "cells": [
+        "ARR!L53"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "92.64"
+    },
+    {
+     "serial": 20,
+     "label": "Less: Revenue from Approved Tariff",
+     "page": 208,
+     "quote": "20 Less: Revenue from Approved Tariff 2,961.96 2,884.76 2,884.76",
+     "key": "revenue",
+     "values": {
+      "approved_before": "2,961.96",
+      "claimed": "2,884.76",
+      "approved": "2,884.76"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "2,961.96",
+       "format": "2961.96",
+       "cells": [
+        "ARR!K17"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "2,884.76",
+       "format": "2884.76",
+       "cells": [
+        "ARR!L17"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 21,
+     "label": "Revenue Gap / (Surplus)",
+     "page": 208,
+     "quote": "21 Revenue Gap / (Surplus) 25.97 315.87 408.51",
+     "key": "gap",
+     "values": {
+      "approved_before": "25.97",
+      "claimed": "315.87",
+      "approved": "408.51"
+     },
+     "checks": {
+      "approved_before": {
+       "printed": "25.97",
+       "format": "25.97",
+       "cells": [
+        "ARR!K58"
+       ],
+       "result": "match"
+      },
+      "claimed": {
+       "printed": "315.87",
+       "format": "315.87",
+       "cells": [
+        "ARR!L58"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "92.64"
+    }
+   ],
+   "identities": [
+    {
+     "column": "approved_before",
+     "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
+     "printed": "2987.93",
+     "parts": "2987.93",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "approved_before",
+     "identity": "gap = net ARR − revenue + tariff revision impact",
+     "printed": "25.97",
+     "parts": "25.97",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "claimed",
+     "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
+     "printed": "3200.63",
+     "parts": "3200.63",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "claimed",
+     "identity": "gap = net ARR − revenue + tariff revision impact",
+     "printed": "315.87",
+     "parts": "315.87",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
+     "printed": "3293.27",
+     "parts": "3293.27",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "gap = net ARR − revenue + tariff revision impact",
+     "printed": "408.51",
+     "parts": "408.51",
+     "difference": "0.00",
+     "result": "match"
+    }
+   ]
+  },
+  {
+   "proceeding": "arr",
+   "fiscal_year": "FY2026-27",
+   "title": "TABLE 6-81 SUMMARY OF ARR AS APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.)",
+   "pages": [
+    294
+   ],
+   "columns": [
+    {
+     "name": "claimed",
+     "header": "Claimed",
+     "format_column": "M"
+    },
+    {
+     "name": "approved",
+     "header": "Approved"
+    }
+   ],
+   "rows": [
+    {
+     "serial": 1,
+     "label": "Power Purchase Expenses for the Year including arrears",
+     "page": 294,
+     "quote": "1 Power Purchase Expenses for the Year including arrears 2,448.33 2,477.36",
+     "key": "power_purchase",
+     "values": {
+      "claimed": "2,448.33",
+      "approved": "2,477.36"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "2,448.33",
+       "format": "2448.33",
+       "cells": [
+        "ARR!M20",
+        "ARR!M21",
+        "ARR!M22"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "29.03"
+    },
+    {
+     "serial": 2,
+     "label": "Transmission & SLDC Charges",
+     "page": 294,
+     "quote": "2 Transmission & SLDC Charges 446.36 481.49",
+     "key": "transmission",
+     "values": {
+      "claimed": "446.36",
+      "approved": "481.49"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "446.36",
+       "format": "446.36",
+       "cells": [
+        "ARR!M23",
+        "ARR!M24"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "35.13"
+    },
+    {
+     "serial": 3,
+     "label": "Power Purchase Expenses incl. Transmission and SLDC Charges",
+     "page": 294,
+     "quote": "3 Power Purchase Expenses incl. Transmission and SLDC Charges 2,894.69 2,958.85",
+     "key": "power_purchase_total",
+     "values": {
+      "claimed": "2,894.69",
+      "approved": "2,958.85"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "2,894.69",
+       "format": "2894.69",
+       "cells": [
+        "ARR!M20",
+        "ARR!M21",
+        "ARR!M22",
+        "ARR!M23",
+        "ARR!M24"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "64.16"
+    },
+    {
+     "serial": 4,
+     "label": "Employee Cost (Incl. Retiral Benefits)",
+     "page": 294,
+     "quote": "4 Employee Cost (Incl. Retiral Benefits) 99.98 87.63",
+     "key": "employee_gross",
+     "values": {
+      "claimed": "99.98",
+      "approved": "87.63"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "99.98",
+       "format": "99.98",
+       "cells": [
+        "ARR!M27"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-12.35"
+    },
+    {
+     "serial": 5,
+     "label": "A&G Expenses",
+     "page": 294,
+     "quote": "5 A&G Expenses 29.25 28.87",
+     "key": "ag",
+     "values": {
+      "claimed": "29.25",
+      "approved": "28.87"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "29.25",
+       "format": "29.25",
+       "cells": [
+        "ARR!M31"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-0.38"
+    },
+    {
+     "serial": 6,
+     "label": "R&M Expenses",
+     "page": 294,
+     "quote": "6 R&M Expenses 113.69 111.04",
+     "key": "rm",
+     "values": {
+      "claimed": "113.69",
+      "approved": "111.04"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "113.69",
+       "format": "113.69",
+       "cells": [
+        "ARR!M26"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-2.65"
+    },
+    {
+     "serial": 7,
+     "label": "Gross O&M Expenses",
+     "page": 294,
+     "quote": "7 Gross O&M Expenses 242.92 227.54",
+     "key": "om_gross",
+     "values": {
+      "claimed": "242.92",
+      "approved": "227.54"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "242.92",
+       "format": "242.92",
+       "cells": [
+        "ARR!M26",
+        "ARR!M27",
+        "ARR!M31"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-15.38"
+    },
+    {
+     "serial": 8,
+     "label": "Employee Cost Capitalized",
+     "page": 294,
+     "quote": "8 Employee Cost Capitalized 32.20 32.20",
+     "key": "employee_capitalised",
+     "values": {
+      "claimed": "32.20",
+      "approved": "32.20"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "32.20",
+       "format": "32.20",
+       "cells": [
+        "ARR!M28"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 9,
+     "label": "Provisions",
+     "page": 294,
+     "quote": "9 Provisions 3.00 -",
+     "key": "provisions",
+     "values": {
+      "claimed": "3.00",
+      "approved": "-"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "3.00",
+       "format": "3.00",
+       "cells": [
+        "ARR!M34"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-3.00"
+    },
+    {
+     "serial": 10,
+     "label": "Net O&M Expenses",
+     "page": 294,
+     "quote": "10 Net O&M Expenses 213.71 195.34",
+     "key": "om_net",
+     "values": {
+      "claimed": "213.71",
+      "approved": "195.34"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "213.71",
+       "format": "213.71",
+       "cells": [
+        "ARR!M35"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-18.37"
+    },
+    {
+     "serial": 11,
+     "label": "Interest Charges",
+     "page": 294,
+     "quote": "11 Interest Charges 119.31 110.80",
+     "key": "interest",
+     "values": {
+      "claimed": "119.31",
+      "approved": "110.80"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "119.31",
+       "format": "119.31",
+       "cells": [
+        "ARR!M37",
+        "ARR!M38",
+        "ARR!M39",
+        "ARR!M40"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-8.51"
+    },
+    {
+     "serial": 12,
+     "label": "Depreciation",
+     "page": 294,
+     "quote": "12 Depreciation 106.75 103.80",
+     "key": "depreciation",
+     "values": {
+      "claimed": "106.75",
+      "approved": "103.80"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "106.75",
+       "format": "106.75",
+       "cells": [
+        "ARR!M36"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-2.95"
+    },
+    {
+     "serial": 13,
+     "label": "Income Tax",
+     "page": 294,
+     "quote": "13 Income Tax 38.94 38.10",
+     "key": "tax",
+     "values": {
+      "claimed": "38.94",
+      "approved": "38.10"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "38.94",
+       "format": "38.94",
+       "cells": [
+        "ARR!M44"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-0.84"
+    },
+    {
+     "serial": 14,
+     "label": "Provision for Bad & Doubtful Debts",
+     "page": 294,
+     "quote": "14 Provision for Bad & Doubtful Debts 13.76 13.76",
+     "key": "bad_debts",
+     "values": {
+      "claimed": "13.76",
+      "approved": "13.76"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "13.76",
+       "format": "13.76",
+       "cells": [
+        "ARR!M41"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 15,
+     "label": "Annual Revenue Requirement",
+     "page": 294,
+     "quote": "15 Annual Revenue Requirement 3,387.16 3,420.27",
+     "key": "arr_before_roe",
+     "values": {
+      "claimed": "3,387.16",
+      "approved": "3,420.27"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "3,387.16",
+       "format": "3387.16",
+       "cells": [
+        "ARR!M46",
+        "-ARR!M43"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "33.11"
+    },
+    {
+     "serial": 16,
+     "label": "Add: Return on Equity",
+     "page": 294,
+     "quote": "16 Add: Return on Equity 115.77 113.28",
+     "key": "roe",
+     "values": {
+      "claimed": "115.77",
+      "approved": "113.28"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "115.77",
+       "format": "115.77",
+       "cells": [
+        "ARR!M43"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-2.49"
+    },
+    {
+     "serial": 17,
+     "label": "Less: Revenue from Open Access Charges",
+     "page": 294,
+     "quote": "17 Less: Revenue from Open Access Charges 9.84 9.84",
+     "key": "open_access",
+     "values": {
+      "claimed": "9.84",
+      "approved": "9.84"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "9.84",
+       "format": "9.84",
+       "cells": [
+        "ARR!M51"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 18,
+     "label": "Less: Non-Tariff Income",
+     "page": 294,
+     "quote": "18 Less: Non-Tariff Income 10.29 12.38",
+     "key": "nti",
+     "values": {
+      "claimed": "10.29",
+      "approved": "12.38"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "10.29",
+       "format": "10.29",
+       "cells": [
+        "ARR!M50"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "2.09"
+    },
+    {
+     "serial": 19,
+     "label": "Less: Income from Other Business",
+     "page": 294,
+     "quote": "19 Less: Income from Other Business 0.98 -",
+     "key": "other_business",
+     "values": {
+      "claimed": "0.98",
+      "approved": "-"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "0.98",
+       "format": "0.98",
+       "cells": [
+        "ARR!M49"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "-0.98"
+    },
+    {
+     "serial": 20,
+     "label": "Net Annual Revenue Requirement",
+     "page": 294,
+     "quote": "20 Net Annual Revenue Requirement 3,481.82 3,511.33",
+     "key": "arr_net",
+     "values": {
+      "claimed": "3,481.82",
+      "approved": "3,511.33"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "3,481.82",
+       "format": "3481.83",
+       "cells": [
+        "ARR!M53"
+       ],
+       "result": "differs",
+       "last_place_units": -1
+      }
+     },
+     "decision": "29.51"
+    },
+    {
+     "serial": 21,
+     "label": "Less: Revenue from Existing Tariff",
+     "page": 294,
+     "quote": "21 Less: Revenue from Existing Tariff 3,192.04 3,192.04",
+     "key": "revenue",
+     "values": {
+      "claimed": "3,192.04",
+      "approved": "3,192.04"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "3,192.04",
+       "format": "3192.04",
+       "cells": [
+        "ARR!M17"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "0.00"
+    },
+    {
+     "serial": 22,
+     "label": "Revenue Gap / (Surplus)",
+     "page": 294,
+     "quote": "22 Revenue Gap / (Surplus) 289.79 319.29",
+     "key": "gap",
+     "values": {
+      "claimed": "289.79",
+      "approved": "319.29"
+     },
+     "checks": {
+      "claimed": {
+       "printed": "289.79",
+       "format": "289.79",
+       "cells": [
+        "ARR!M58"
+       ],
+       "result": "match"
+      }
+     },
+     "decision": "29.50"
+    }
+   ],
+   "identities": [
+    {
+     "column": "claimed",
+     "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
+     "printed": "3481.82",
+     "parts": "3481.82",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "claimed",
+     "identity": "gap = net ARR − revenue + tariff revision impact",
+     "printed": "289.79",
+     "parts": "289.78",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "net ARR = ARR + RoE − open access − non-tariff income − other business",
+     "printed": "3511.33",
+     "parts": "3511.33",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "column": "approved",
+     "identity": "gap = net ARR − revenue + tariff revision impact",
+     "printed": "319.29",
+     "parts": "319.29",
+     "difference": "0.00",
+     "result": "match"
+    }
+   ]
+  }
+ ]
+}

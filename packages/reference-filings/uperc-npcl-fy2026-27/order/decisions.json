@@ -1,0 +1,319 @@
+{
+ "type": "order_decisions",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "order": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a"
+ },
+ "note": "The order's three summary tables, read row by row from its text layer.  Columns restating the petition ('Claimed', 'Claimed in APR') or an earlier approval ('Approved in TO dated …') are compared with the ARR format's columns (true-up J and H, APR L and K, ARR M); the 'Approved' / 'Provisionally Considered' column is the decision.  Not bound to the format: loss on retired assets and efficiency gains (the format carries their sum as row 45), the true-up's tariff revision impact (the format books the regulatory discount in its revenue rows).",
+ "rows": [
+  {
+   "key": "power_purchase",
+   "label": "power purchase expenses( for the year including arrears)?",
+   "rows": [
+    20,
+    21,
+    22
+   ]
+  },
+  {
+   "key": "transmission",
+   "label": "transmission & sldc charges",
+   "rows": [
+    23,
+    24
+   ]
+  },
+  {
+   "key": "power_purchase_total",
+   "label": "power purchase expenses incl\\. transmission and sldc charges",
+   "rows": [
+    20,
+    21,
+    22,
+    23,
+    24
+   ]
+  },
+  {
+   "key": "employee_gross",
+   "label": "employee (expenses|cost \\(incl\\. retiral benefits\\))",
+   "rows": [
+    27
+   ]
+  },
+  {
+   "key": "ag",
+   "label": "a&g expenses",
+   "rows": [
+    31
+   ]
+  },
+  {
+   "key": "rm",
+   "label": "r&m expenses",
+   "rows": [
+    26
+   ]
+  },
+  {
+   "key": "om_gross",
+   "label": "gross o&m expenses",
+   "rows": [
+    26,
+    27,
+    31
+   ]
+  },
+  {
+   "key": "additional_om",
+   "label": "smart metering opex/ dt metering/ sop implementation",
+   "rows": [
+    33
+   ]
+  },
+  {
+   "key": "employee_capitalised",
+   "label": "employee cost capitali[sz]ed",
+   "rows": [
+    28
+   ]
+  },
+  {
+   "key": "provisions",
+   "label": "provisions( for a&g expenses)?",
+   "rows": [
+    34
+   ]
+  },
+  {
+   "key": "om_net",
+   "label": "net o&m expenses",
+   "rows": [
+    35
+   ]
+  },
+  {
+   "key": "interest",
+   "label": "interest charges",
+   "rows": [
+    37,
+    38,
+    39,
+    40
+   ]
+  },
+  {
+   "key": "depreciation",
+   "label": "depreciation",
+   "rows": [
+    36
+   ]
+  },
+  {
+   "key": "tax",
+   "label": "income tax",
+   "rows": [
+    44
+   ]
+  },
+  {
+   "key": "bad_debts",
+   "label": "provision for bad & doubtful debts",
+   "rows": [
+    41
+   ]
+  },
+  {
+   "key": "loss_retired",
+   "label": "loss on sale of retired assets",
+   "rows": null
+  },
+  {
+   "key": "efficiency_gains",
+   "label": "efficiency gains on loss reduction",
+   "rows": null
+  },
+  {
+   "key": "contingency",
+   "label": "contingency reserve",
+   "rows": [
+    42
+   ]
+  },
+  {
+   "key": "arr_before_roe",
+   "label": "annual revenue requirement",
+   "rows": [
+    46
+   ],
+   "minus": [
+    43
+   ]
+  },
+  {
+   "key": "roe",
+   "label": "add: return on equity",
+   "rows": [
+    43
+   ]
+  },
+  {
+   "key": "open_access",
+   "label": "less: revenue from open access charges",
+   "rows": [
+    51
+   ]
+  },
+  {
+   "key": "nti",
+   "label": "less: non-tariff income",
+   "rows": [
+    50
+   ]
+  },
+  {
+   "key": "other_business",
+   "label": "less: income from other business",
+   "rows": [
+    49
+   ]
+  },
+  {
+   "key": "arr_net",
+   "label": "net annual revenue requirement",
+   "rows": [
+    53
+   ]
+  },
+  {
+   "key": "revenue",
+   "label": "less: revenue from (existing|approved) tariff",
+   "rows": [
+    17
+   ]
+  },
+  {
+   "key": "revision_impact",
+   "label": "add: tariff revision impact \\(10% regulatory discount\\)",
+   "rows": null
+  },
+  {
+   "key": "gap",
+   "label": "revenue gap ?/ ?\\(surplus\\)",
+   "rows": [
+    58
+   ],
+   "sign": -1
+  }
+ ],
+ "tables": [
+  {
+   "proceeding": "true_up",
+   "fiscal_year": "FY2024-25",
+   "title": "TABLE 4-120 SUMMARY OF ARR AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.)",
+   "pages": [
+    166,
+    167
+   ],
+   "columns": [
+    {
+     "name": "approved_before",
+     "header": "Approved in TO dated 10.10.2024",
+     "format_column": "H"
+    },
+    {
+     "name": "claimed",
+     "header": "Claimed",
+     "format_column": "J"
+    },
+    {
+     "name": "approved",
+     "header": "Approved"
+    }
+   ],
+   "short_rows": {
+    "19": [
+     "claimed",
+     "approved"
+    ],
+    "21": [
+     "claimed"
+    ],
+    "24": [
+     "approved_before"
+    ]
+   },
+   "row_overrides": {
+    "revenue": {
+     "approved_before": {
+      "rows": [
+       13
+      ],
+      "why": "the order prints the earlier approval's revenue gross (ARR row 13) and the 10 % regulatory discount on its own row"
+     }
+    },
+    "revision_impact": {
+     "approved_before": {
+      "rows": [
+       14
+      ],
+      "sign": -1,
+      "why": "the regulatory discount the earlier approval deducted (ARR row 14, negative), added back as 'tariff revision impact'"
+     }
+    }
+   }
+  },
+  {
+   "proceeding": "apr",
+   "fiscal_year": "FY2025-26",
+   "title": "TABLE 5-48 SUMMARY OF APR COMPUTED BY THE COMMISSION FOR FY 2025-26 (IN RS. CR.)",
+   "pages": [
+    207,
+    208
+   ],
+   "columns": [
+    {
+     "name": "approved_before",
+     "header": "Approved as per TO dtd 22.11.2025",
+     "format_column": "K"
+    },
+    {
+     "name": "claimed",
+     "header": "Claimed in APR",
+     "format_column": "L"
+    },
+    {
+     "name": "approved",
+     "header": "Provisionally Considered"
+    }
+   ],
+   "short_rows": {
+    "18": [
+     "approved_before",
+     "claimed"
+    ]
+   }
+  },
+  {
+   "proceeding": "arr",
+   "fiscal_year": "FY2026-27",
+   "title": "TABLE 6-81 SUMMARY OF ARR AS APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.)",
+   "pages": [
+    294
+   ],
+   "columns": [
+    {
+     "name": "claimed",
+     "header": "Claimed",
+     "format_column": "M"
+    },
+    {
+     "name": "approved",
+     "header": "Approved"
+    }
+   ]
+  }
+ ]
+}

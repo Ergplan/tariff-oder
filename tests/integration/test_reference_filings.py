@@ -65,6 +65,10 @@ def test_the_npcl_reference_filing_and_its_reproduction(client):
     chk = f["checklist"]
     assert chk["counts"] == {"evidenced": 11, "partly": 2, "outside_package": 3, "mentioned": 1}
     assert chk["checklist"] == "uperc/myt-2025" and len(chk["items"]) == 17
+    # the Commission's decisions read from its order, line by line (R-TU-5)
+    dec = {t["proceeding"]: t for t in f["decisions"]["tables"]}
+    assert set(dec) == {"true_up", "apr", "arr"}
+    assert {r["key"]: r.get("decision") for r in dec["arr"]["rows"]}["arr_net"] == "29.51"
     assert client.get("/arr/reference-filings/nope", headers=headers(CLIENT_A)).status_code == 404
 
 

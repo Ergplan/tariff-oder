@@ -1005,6 +1005,37 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 96 (2026-11-02): what the Commission decided, line by line (R-TU-5).**  The
+  FY2026-27 order (2 July 2026, the golden NPCL document) is the decision on this very petition.
+  Its three summary tables are now read row by row from the text layer, each row with its page
+  and the text it was read from (`tariff_api.arr.decisions`, `scripts/order_decisions.py` →
+  `order-decisions.json`):
+  - true-up FY2024-25, pp.166–167: approved earlier, claimed, approved;
+  - APR FY2025-26, pp.207–208: approved, claimed, provisionally considered;
+  - ARR FY2026-27, p.294: claimed, approved.
+  - **Reading:** rows are found by their serial numbers, so a page header inside a table is
+    passed over.  A row printing fewer figures than columns is read only where the spec names
+    its columns: three rows of the true-up and one of the APR, assigned from the layout text.
+  - **Mapping:** rows are mapped to the ARR format with the narrative's row map plus the order's
+    groupings (gross O&M = rows 26 + 27 + 31; ARR before RoE = row 46 − row 43).  One table may
+    override a column: the true-up's earlier approval prints revenue gross (row 13) with the
+    regulatory discount on its own row (−row 14).  My first map had that as a 302.86 "difference".
+  - **The order read the petition as filed.**  Every claimed and earlier-approved figure agrees
+    with the ARR format to the last printed place: 37 + 38 + 21 match; the 11 others are 1–2
+    units of rounding.
+  - **The order's own arithmetic holds:** 16 / 16 column identities (net ARR, gap).
+  - **The decisions** (approved − claimed, Rs crore):
+    - **true-up FY2024-25: −123.38.**  Employee cost 95.42 → 37.64; A&G −14.81; R&M −9.31; the
+      contingency reserve, efficiency gains and the additional O&M disallowed; power purchase
+      −11.99.
+    - **APR FY2025-26: +92.64.**  Power purchase +118.55; employee −11.06.
+    - **ARR FY2026-27: +29.51.**  Power purchase +29.03 and transmission +35.13; employee
+      −12.35; interest −8.51; depreciation −2.95; provisions disallowed.
+    These are the Commission's figures, with the reasons in the order's chapters.  The petition
+    engine's later task is to anticipate them, not to restate them.
+  - **Shown on the page** as panel 06d, with the API's `decisions` block.
+  Nothing verified, nothing approved.
+
   **Increment 95 (2026-11-02): the regulatory asset rolled forward, end to end.**  Each year's
   "gap / surplus from preceding years" (ARR row 59) was a record in every column, taken on
   trust.
@@ -2407,6 +2438,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 96 (2026-11-02): 457 passed** (+4 unit: rows read by serial number across a page header, with their quotes; a short row read only where the spec names its columns; a column override; the claimed column against the format, the decision, the order's own arithmetic; the real three tables — claimed within two last-place units, arithmetic 16 / 16, ARR decision +29.51; the integration test checks the API's decisions block).  Ruff, format and web typecheck clean.
 - **Increment 95 (2026-11-02): 453 passed** (+2 unit: a pipeline column fed from another only with a reason, never in a cycle or from a column the pipeline lacks; the real roll-forward 7 / 7.  Changed with the design: the pipeline tests expect the ARR and APR years at 10 / 12 with A40's effect carried, 0.22 and 0.25).  Ruff, format and web typecheck clean.
 - **Increment 94 (2026-11-02): 451 passed** (+4 unit: every checklist quote on its page of the committed regulation; a checklist without a hash, evidence without a reason or a text without its weight refused; grading — a mention never enough, "Appendix-I" not "Appendix-II", a document without its bytes not present; NPCL's result; the integration test checks the API's checklist block).  Ruff, format and web typecheck clean.
 - **Increment 93 (2026-11-02): 447 passed** (+6 unit: figures parsed as printed; traced / near / opposite sign / untraced, a two-digit figure never traced; a DOCX's merged cell kept once with its title; a summary table bound with sums, signs and dashes; a binding refuses an unknown table, a wrong header, a row matched twice; the real nine tables 232 / 21; the integration test checks the API's narrative block).  Ruff, format, contracts and web typecheck clean.
@@ -2635,7 +2667,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 95) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 96) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2683,6 +2715,9 @@ entries below are the per-increment history.**
   - **Formats accounted, against the filing's index:** 40 reproduced, 9 read, 22 present, 2
     blank, 1 missing.
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
+  - **What the Commission decided** (the FY2026-27 order, read row by row with pages): the order
+    read the petition as filed (claimed figures to the last place), and its arithmetic holds.
+    The decisions are true-up −123.38, APR +92.64 and ARR +29.51 (net ARR).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).

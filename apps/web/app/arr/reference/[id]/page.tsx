@@ -43,6 +43,29 @@ type Filing = {
     not_in_index: string[];
     formats: { format: string; title: string; sheet: string | null; alias_why: string | null; status: string }[];
   } | null;
+  decisions: {
+    order: { title: string; sha256: string };
+    status: string;
+    note: string;
+    tables: {
+      proceeding: string;
+      fiscal_year: string;
+      title: string;
+      pages: number[];
+      columns: { name: string; header: string; format_column?: string }[];
+      rows: {
+        serial: number;
+        label: string;
+        page: number;
+        quote: string;
+        key: string | null;
+        values: Record<string, string>;
+        checks: Record<string, { printed: string; format: string; cells: string[]; result: string; last_place_units?: number }>;
+        decision?: string;
+      }[];
+      identities: { column: string; identity: string; printed: string; parts: string; difference: string; result: string }[];
+    }[];
+  } | null;
   checklist: {
     checklist: string;
     version: number;
@@ -669,6 +692,70 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                 </tbody>
               </table>
             </div>
+          </>
+        )}
+      </Panel>
+
+      <Panel num="06d" title="What the Commission decided" aside="the order's summary tables, read with their pages: approved before → claimed → approved, the claimed column checked against the petition's format">
+        {!f.decisions ? (
+          <p className="muted">The order has not been read.</p>
+        ) : (
+          <>
+            <p className="muted" style={{ fontSize: "0.85rem" }}>
+              {f.decisions.order.title} — {f.decisions.status}.
+            </p>
+            {f.decisions.tables.map((t) => {
+              const checks = t.rows.flatMap((r) => Object.values(r.checks));
+              const counts: Counts = {};
+              for (const c of checks) counts[c.result] = (counts[c.result] ?? 0) + 1;
+              const own: Counts = {};
+              for (const i of t.identities) own[i.result] = (own[i.result] ?? 0) + 1;
+              return (
+                <details key={t.proceeding} open={t.proceeding === "arr"}>
+                  <summary>
+                    {t.proceeding.replace("_", "-")} {t.fiscal_year} — pp.{t.pages.join(", ")}: against the format <CountBadges counts={counts} />, the order&apos;s own arithmetic{" "}
+                    <CountBadges counts={own} />
+                  </summary>
+                  <div className="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Line</th>
+                          {t.columns.map((c) => (
+                            <th key={c.name}>{c.header}</th>
+                          ))}
+                          <th>Decision</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {t.rows.map((r) => (
+                          <tr key={r.serial}>
+                            <td>
+                              {r.label}
+                              <div className="muted">p.{r.page}</div>
+                            </td>
+                            {t.columns.map((c) => {
+                              const ch = r.checks[c.name];
+                              return (
+                                <td key={c.name} className="mono">
+                                  {r.values[c.name] ?? "—"}
+                                  {ch && ch.result !== "match" ? (
+                                    <div className="muted">
+                                      format {ch.format} ({ch.result})
+                                    </div>
+                                  ) : null}
+                                </td>
+                              );
+                            })}
+                            <td className="mono">{r.decision && r.decision !== "0" && r.decision !== "0.00" ? r.decision : ""}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              );
+            })}
           </>
         )}
       </Panel>
