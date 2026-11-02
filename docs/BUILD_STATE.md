@@ -1005,6 +1005,24 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 107 (2026-11-02): the tariff design summary — ABR, ACoS and cross-subsidy levels.**
+  - **New draft rules `packages/arr-rules/uperc/tariff-design.v1.json`:**
+    - ABR by category and overall;
+    - ACoS = ARR ÷ sales;
+    - cross-subsidy level = ABR ÷ ACoS − 1.
+    These are the definitions as the order's Table 8-6 applies them; unverified.
+  - **The record:** `order/figures-tariff-fy2026-27.json` holds 76 figures (Tables 8-4 to 8-7),
+    76 / 76 quotes verified.
+  - **Binding `approval-tariff-fy27.json`: 31 / 41 match.**  The ACoS (7.98), the overall ABR
+    (7.25), its −9.09% and the large categories match.  The ten differences are small
+    categories, whose revenue the order prints to two places in crore.  The test bounds each
+    difference by its own inputs' precision, not by a blanket tolerance.
+  - **A75 (reviewer):** Table 8-7's monthly sales for FPPAS are apportioned by NPCL's monthly
+    power purchase units.  That series is in no format of the package: a scan of every row and
+    column of twelve figures found none proportional.  The monthly sales cannot be checked here.
+    The months do add to 4,399.84.
+  Nothing verified, nothing approved.
+
   **Increment 106 (2026-11-02): the revenue gap (surplus) and its carrying cost, one convention
   across NPCL's format and the order.**
   - **New draft rules `packages/arr-rules/uperc/gap.v1.json`:**
@@ -2703,6 +2721,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 107 (2026-11-02): 474 passed** (+1 unit: the tariff design summary, differences bounded by the inputs' precision).  `check_order_quotes.py`: 76 / 76.  Ruff and format clean.
 - **Increment 106 (2026-11-02): 473 passed** (+1 unit: the gap and its carrying cost — NPCL's format and the order on one rule; the working-capital offset and the closings tied).  `check_order_quotes.py`: 34 / 34.  Ruff and format clean.
 - **Increment 105 (2026-11-02): 472 passed** (+1 unit: the real APR — 11 / 13, ties to the true-up and the ARR year).  `check_order_quotes.py`: 57 / 57.  Ruff and format clean.
 - **Increment 104 (2026-11-02): 471 passed** (+3 unit: wrapped labels joined and the decision per line, synthetic; Table 4-52 real; the excess energy reproduced).  `check_order_quotes.py`: 15 / 15.  Ruff, format and `tsc` clean.
@@ -2942,7 +2961,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 106) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 107) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3002,12 +3021,13 @@ entries below are the per-increment history.**
     Commission's practice (A66); its depreciation class by class (A68, A69); its power purchase
     line by line, so every line of the true-up's −123.38 has its reason (A70, A71); and the
     APR's +92.64 likewise, reproduced from the Commission's computations (A72, A73); and the
-    revenue gap (surplus) carried to FY2026-27 with its carrying cost (A74).  The order misprints one line of
+    revenue gap (surplus) carried to FY2026-27 with its carrying cost (A74); the tariff design
+    summary — ABR, ACoS, cross-subsidy levels (A75 for the FPPAS monthly sales).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **42 findings (A29–A74):** 24 for the petitioner, collected in the draft queries; 18 for the
+  - **43 findings (A29–A75):** 24 for the petitioner, collected in the draft queries; 19 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

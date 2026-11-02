@@ -1,0 +1,222 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "rates": "order/figures-tariff-fy2026-27.json",
+ "places": 2,
+ "note": "The order's tariff design summary for FY2026-27 reproduced from its own sales and revenue by category (Table 8-5) and ARR (Table 8-4): each category's ABR, the ACoS, and each category's cross-subsidy level (Table 8-6) — the order prints its revenue in crore to two places, so a small category's ABR is known only to a few paise and its cross-subsidy level to a few hundredths of a percent.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "tariff design FY2026-27 (Tables 8-4 to 8-7)",
+   "categories": {
+    "LMV-1 Domestic": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv1.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv1.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv1.abr",
+       "order:lmv1.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv1.cross_subsidy"
+     }
+    },
+    "LMV-2 Non-domestic": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv2.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv2.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv2.abr",
+       "order:lmv2.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv2.cross_subsidy"
+     }
+    },
+    "LMV-3 Public lamps": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv3.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv3.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv3.abr",
+       "order:lmv3.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv3.cross_subsidy"
+     }
+    },
+    "LMV-4 Institutions": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv4.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv4.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv4.abr",
+       "order:lmv4.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv4.cross_subsidy"
+     }
+    },
+    "LMV-5 Private tube wells": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv5.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv5.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv5.abr",
+       "order:lmv5.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv5.cross_subsidy"
+     }
+    },
+    "LMV-6 Small and medium power": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv6.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv6.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv6.abr",
+       "order:lmv6.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv6.cross_subsidy"
+     }
+    },
+    "LMV-7 & 8 Public water works": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv7.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv7.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv7.abr",
+       "order:lmv7.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv7.cross_subsidy"
+     }
+    },
+    "LMV-9 Temporary supply": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv9.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv9.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv9.abr",
+       "order:lmv9.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv9.cross_subsidy"
+     }
+    },
+    "LMV-11 EV charging": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "lmv11.sales"
+      },
+      "record:category_revenue": {
+       "rate": "lmv11.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:lmv11.abr",
+       "order:lmv11.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:lmv11.cross_subsidy"
+     }
+    },
+    "HV-1 Non-industrial bulk": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "hv1.sales"
+      },
+      "record:category_revenue": {
+       "rate": "hv1.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:hv1.abr",
+       "order:hv1.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:hv1.cross_subsidy"
+     }
+    },
+    "HV-2 Large and heavy power": {
+     "inputs": {
+      "record:category_sales": {
+       "rate": "hv2.sales"
+      },
+      "record:category_revenue": {
+       "rate": "hv2.revenue"
+      }
+     },
+     "checks": {
+      "tariff_abr_category": [
+       "order:hv2.abr",
+       "order:hv2.abr85"
+      ],
+      "tariff_cross_subsidy_category": "order:hv2.cross_subsidy"
+     }
+    }
+   },
+   "inputs": {
+    "record:arr_for_acos": {
+     "rate": "arr"
+    }
+   },
+   "checks": {
+    "tariff_sales_total": [
+     "order:total.sales",
+     "order:monthly.total"
+    ],
+    "tariff_revenue_total": "order:total.revenue",
+    "tariff_abr_total": [
+     "order:total.abr",
+     "order:total.abr85"
+    ],
+    "tariff_acos": "order:acos",
+    "tariff_cross_subsidy_total": "order:total.cross_subsidy",
+    "tariff_acos_minus_abr": "order:acos_minus_abr"
+   }
+  }
+ ]
+}

@@ -1,0 +1,380 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "Tariff design — ABR, ACoS and cross-subsidy levels",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "The tariff design summary of an order: each category's average billing rate against the average cost of supply.",
+ "rules": [
+  {
+   "id": "uperc.tariff.sales_category",
+   "version": 1,
+   "status": "draft",
+   "title": "Sales of a consumer category",
+   "output": "tariff_sales_category",
+   "unit": "MU",
+   "schedule": "R-SCH-15",
+   "formula": "sales",
+   "inputs": {
+    "sales": {
+     "unit": "MU",
+     "source": "record:category_sales"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations",
+   "per": "tariff_category"
+  },
+  {
+   "id": "uperc.tariff.revenue_category",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue of a consumer category at the approved tariff",
+   "output": "tariff_revenue_category",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "formula": "revenue",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:category_revenue",
+     "note": "after the regulatory discount, where the order applies one"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations",
+   "per": "tariff_category"
+  },
+  {
+   "id": "uperc.tariff.abr_category",
+   "version": 1,
+   "status": "draft",
+   "title": "Average billing rate of a consumer category",
+   "output": "tariff_abr_category",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "revenue / sales",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "rule:tariff_revenue_category"
+    },
+    "sales": {
+     "unit": "MU",
+     "source": "rule:tariff_sales_category"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations",
+   "per": "tariff_category"
+  },
+  {
+   "id": "uperc.tariff.sales_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Sales, all categories",
+   "output": "tariff_sales_total",
+   "unit": "MU",
+   "schedule": "R-SCH-15",
+   "formula": "sales",
+   "inputs": {
+    "sales": {
+     "unit": "MU",
+     "source": "sum:tariff_sales_category"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations"
+  },
+  {
+   "id": "uperc.tariff.revenue_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue at the approved tariff, all categories",
+   "output": "tariff_revenue_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "formula": "revenue",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "sum:tariff_revenue_category"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations"
+  },
+  {
+   "id": "uperc.tariff.abr_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Average billing rate, all categories",
+   "output": "tariff_abr_total",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "revenue / sales",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "rule:tariff_revenue_total"
+    },
+    "sales": {
+     "unit": "MU",
+     "source": "rule:tariff_sales_total"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations"
+  },
+  {
+   "id": "uperc.tariff.acos",
+   "version": 1,
+   "status": "draft",
+   "title": "Average cost of supply",
+   "output": "tariff_acos",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "arr / sales",
+   "inputs": {
+    "arr": {
+     "unit": "INR_crore",
+     "source": "record:arr_for_acos",
+     "note": "the aggregate revenue requirement of the year"
+    },
+    "sales": {
+     "unit": "MU",
+     "source": "rule:tariff_sales_total"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations"
+  },
+  {
+   "id": "uperc.tariff.cross_subsidy_category",
+   "version": 1,
+   "status": "draft",
+   "title": "Cross-subsidy level of a category: its ABR against the ACoS",
+   "output": "tariff_cross_subsidy_category",
+   "unit": "fraction",
+   "schedule": "R-SCH-15",
+   "formula": "abr / acos - 1",
+   "inputs": {
+    "abr": {
+     "unit": "INR_per_kWh",
+     "source": "rule:tariff_abr_category"
+    },
+    "acos": {
+     "unit": "INR_per_kWh",
+     "source": "rule:tariff_acos"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations",
+   "per": "tariff_category"
+  },
+  {
+   "id": "uperc.tariff.cross_subsidy_total",
+   "version": 1,
+   "status": "draft",
+   "title": "ABR against the ACoS, all categories",
+   "output": "tariff_cross_subsidy_total",
+   "unit": "fraction",
+   "schedule": "R-SCH-15",
+   "formula": "abr / acos - 1",
+   "inputs": {
+    "abr": {
+     "unit": "INR_per_kWh",
+     "source": "rule:tariff_abr_total"
+    },
+    "acos": {
+     "unit": "INR_per_kWh",
+     "source": "rule:tariff_acos"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations"
+  },
+  {
+   "id": "uperc.tariff.acos_minus_abr",
+   "version": 1,
+   "status": "draft",
+   "title": "ACoS less ABR",
+   "output": "tariff_acos_minus_abr",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "acos - abr",
+   "inputs": {
+    "acos": {
+     "unit": "INR_per_kWh",
+     "source": "rule:tariff_acos"
+    },
+    "abr": {
+     "unit": "INR_per_kWh",
+     "source": "rule:tariff_abr_total"
+    }
+   },
+   "clause": {
+    "regulation": "Tariff design — average billing rate (ABR) and average cost of supply (ACoS), and the cross-subsidy level of each category as the variation of its ABR from the ACoS (National Tariff Policy; UPERC's practice, Table 8-6 of the order of 2 July 2026)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: definitions as the order's Table 8-6 applies them (ACoS = ARR ÷ sales; ABR = revenue at the approved tariff, after the regulatory discount, ÷ sales); unverified until a person reads the Tariff Policy and the Regulations"
+  }
+ ]
+}

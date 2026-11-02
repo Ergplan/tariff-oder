@@ -1,0 +1,591 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): tariff design FY2026-27 — sales and revenue by category, ABR, cross-subsidy levels and ACoS, monthly sales for FPPAS (Tables 8-4 to 8-7)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "lmv1.sales": {
+   "value": "1580.09",
+   "unit": "MU",
+   "page": 308,
+   "quote": "1 LMV-1: Domestic Light, Fan & Power 1,580.09 962.49 6.09",
+   "what": "lmv1: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv1.revenue": {
+   "value": "962.49",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "1 LMV-1: Domestic Light, Fan & Power 1,580.09 962.49 6.09",
+   "what": "lmv1: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv1.abr85": {
+   "value": "6.09",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "1 LMV-1: Domestic Light, Fan & Power 1,580.09 962.49 6.09",
+   "what": "lmv1: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv2.sales": {
+   "value": "138.16",
+   "unit": "MU",
+   "page": 308,
+   "quote": "2 LMV-2: Non-Domestic Light & Fan & Power 138.16 131.33 9.51",
+   "what": "lmv2: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv2.revenue": {
+   "value": "131.33",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "2 LMV-2: Non-Domestic Light & Fan & Power 138.16 131.33 9.51",
+   "what": "lmv2: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv2.abr85": {
+   "value": "9.51",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "2 LMV-2: Non-Domestic Light & Fan & Power 138.16 131.33 9.51",
+   "what": "lmv2: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv3.sales": {
+   "value": "23.92",
+   "unit": "MU",
+   "page": 308,
+   "quote": "3 LMV-3: Public Lamps 23.92 20.15 8.42",
+   "what": "lmv3: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv3.revenue": {
+   "value": "20.15",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "3 LMV-3: Public Lamps 23.92 20.15 8.42",
+   "what": "lmv3: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv3.abr85": {
+   "value": "8.42",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "3 LMV-3: Public Lamps 23.92 20.15 8.42",
+   "what": "lmv3: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv4.sales": {
+   "value": "25.46",
+   "unit": "MU",
+   "page": 308,
+   "quote": "4 LMV-4: Institutions 25.46 23.65 9.29",
+   "what": "lmv4: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv4.revenue": {
+   "value": "23.65",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "4 LMV-4: Institutions 25.46 23.65 9.29",
+   "what": "lmv4: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv4.abr85": {
+   "value": "9.29",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "4 LMV-4: Institutions 25.46 23.65 9.29",
+   "what": "lmv4: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv5.sales": {
+   "value": "7.18",
+   "unit": "MU",
+   "page": 308,
+   "quote": "5 LMV-5: Private Tube Wells 7.18 2.34 3.26",
+   "what": "lmv5: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv5.revenue": {
+   "value": "2.34",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "5 LMV-5: Private Tube Wells 7.18 2.34 3.26",
+   "what": "lmv5: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv5.abr85": {
+   "value": "3.26",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "5 LMV-5: Private Tube Wells 7.18 2.34 3.26",
+   "what": "lmv5: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv6.sales": {
+   "value": "169.70",
+   "unit": "MU",
+   "page": 308,
+   "quote": "6 LMV 6: Small and Medium Power 169.70 139.58 8.22",
+   "what": "lmv6: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv6.revenue": {
+   "value": "139.58",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "6 LMV 6: Small and Medium Power 169.70 139.58 8.22",
+   "what": "lmv6: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv6.abr85": {
+   "value": "8.22",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "6 LMV 6: Small and Medium Power 169.70 139.58 8.22",
+   "what": "lmv6: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv7.sales": {
+   "value": "35.58",
+   "unit": "MU",
+   "page": 308,
+   "quote": "7 LMV-7: Public Water Works 35.58 35.84 10.07",
+   "what": "lmv7: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv7.revenue": {
+   "value": "35.84",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "7 LMV-7: Public Water Works 35.58 35.84 10.07",
+   "what": "lmv7: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv7.abr85": {
+   "value": "10.07",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "7 LMV-7: Public Water Works 35.58 35.84 10.07",
+   "what": "lmv7: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv9.sales": {
+   "value": "61.82",
+   "unit": "MU",
+   "page": 308,
+   "quote": "8 LMV-9: Temporary Supply 61.82 70.13 11.34",
+   "what": "lmv9: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv9.revenue": {
+   "value": "70.13",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "8 LMV-9: Temporary Supply 61.82 70.13 11.34",
+   "what": "lmv9: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv9.abr85": {
+   "value": "11.34",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "8 LMV-9: Temporary Supply 61.82 70.13 11.34",
+   "what": "lmv9: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv11.sales": {
+   "value": "1.54",
+   "unit": "MU",
+   "page": 308,
+   "quote": "9 LMV-11: Electric Vehicle Charging 1.54 1.09 7.07",
+   "what": "lmv11: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv11.revenue": {
+   "value": "1.09",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "9 LMV-11: Electric Vehicle Charging 1.54 1.09 7.07",
+   "what": "lmv11: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv11.abr85": {
+   "value": "7.07",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "9 LMV-11: Electric Vehicle Charging 1.54 1.09 7.07",
+   "what": "lmv11: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "hv1.sales": {
+   "value": "452.58",
+   "unit": "MU",
+   "page": 308,
+   "quote": "10 HV-1: Non-Industrial Bulk Power 452.58 417.34 9.22",
+   "what": "hv1: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "hv1.revenue": {
+   "value": "417.34",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "10 HV-1: Non-Industrial Bulk Power 452.58 417.34 9.22",
+   "what": "hv1: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "hv1.abr85": {
+   "value": "9.22",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "10 HV-1: Non-Industrial Bulk Power 452.58 417.34 9.22",
+   "what": "hv1: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "hv2.sales": {
+   "value": "1903.82",
+   "unit": "MU",
+   "page": 308,
+   "quote": "11 HV-2: Large and Heavy Power 1,903.82 1,388.10 7.29",
+   "what": "hv2: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "hv2.revenue": {
+   "value": "1388.10",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "11 HV-2: Large and Heavy Power 1,903.82 1,388.10 7.29",
+   "what": "hv2: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "hv2.abr85": {
+   "value": "7.29",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "11 HV-2: Large and Heavy Power 1,903.82 1,388.10 7.29",
+   "what": "hv2: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "total.sales": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 308,
+   "quote": "12 Total 4,399.84 3,192.04 7.25",
+   "what": "total: sales (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "total.revenue": {
+   "value": "3192.04",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "12 Total 4,399.84 3,192.04 7.25",
+   "what": "total: revenue (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "total.abr85": {
+   "value": "7.25",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "12 Total 4,399.84 3,192.04 7.25",
+   "what": "total: abr85 (Table 8-5; revenue after the 10 % regulatory discount)",
+   "header": "Sl. No. Category Sales Revenue after Regulatory Discount @10% ABR (MUs) (Rs. Cr.) (Rs/kWh)"
+  },
+  "lmv1.abr": {
+   "value": "6.09",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "LMV-1: Domestic Light, Fan & Power 6.09 (23.67%)",
+   "what": "lmv1: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv1.cross_subsidy": {
+   "value": "-23.67",
+   "unit": "percent",
+   "page": 308,
+   "quote": "LMV-1: Domestic Light, Fan & Power 6.09 (23.67%)",
+   "what": "lmv1: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "lmv2.abr": {
+   "value": "9.51",
+   "unit": "INR_per_kWh",
+   "page": 308,
+   "quote": "LMV-2: Non- Domestic Light, Fan & Power 9.51 19.11%",
+   "what": "lmv2: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv2.cross_subsidy": {
+   "value": "19.11",
+   "unit": "percent",
+   "page": 308,
+   "quote": "LMV-2: Non- Domestic Light, Fan & Power 9.51 19.11%",
+   "what": "lmv2: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "lmv3.abr": {
+   "value": "8.42",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "LMV-3: Public Lamps 8.42 5.53%",
+   "what": "lmv3: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv3.cross_subsidy": {
+   "value": "5.53",
+   "unit": "percent",
+   "page": 309,
+   "quote": "LMV-3: Public Lamps 8.42 5.53%",
+   "what": "lmv3: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "lmv4.abr": {
+   "value": "9.29",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "LMV-4: Light, Fan & Power for Institutions 9.29 16.42%",
+   "what": "lmv4: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv4.cross_subsidy": {
+   "value": "16.42",
+   "unit": "percent",
+   "page": 309,
+   "quote": "LMV-4: Light, Fan & Power for Institutions 9.29 16.42%",
+   "what": "lmv4: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "lmv5.abr": {
+   "value": "3.26",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "LMV-5: Small Power - Private Tube wells 3.26 (59.19%)",
+   "what": "lmv5: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv5.cross_subsidy": {
+   "value": "-59.19",
+   "unit": "percent",
+   "page": 309,
+   "quote": "LMV-5: Small Power - Private Tube wells 3.26 (59.19%)",
+   "what": "lmv5: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "lmv6.abr": {
+   "value": "8.22",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "LMV-6: Small and Medium Power 8.22 3.06%",
+   "what": "lmv6: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv6.cross_subsidy": {
+   "value": "3.06",
+   "unit": "percent",
+   "page": 309,
+   "quote": "LMV-6: Small and Medium Power 8.22 3.06%",
+   "what": "lmv6: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "lmv7.abr": {
+   "value": "10.07",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "LMV-7 & LMV-8: Public Water Works 10.07 26.22%",
+   "what": "lmv7: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv7.cross_subsidy": {
+   "value": "26.22",
+   "unit": "percent",
+   "page": 309,
+   "quote": "LMV-7 & LMV-8: Public Water Works 10.07 26.22%",
+   "what": "lmv7: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "lmv9.abr": {
+   "value": "11.34",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "LMV-9: Temporary Supply 11.34 42.15%",
+   "what": "lmv9: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv9.cross_subsidy": {
+   "value": "42.15",
+   "unit": "percent",
+   "page": 309,
+   "quote": "LMV-9: Temporary Supply 11.34 42.15%",
+   "what": "lmv9: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "lmv11.abr": {
+   "value": "7.07",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "LMV-11: Electric Vehicle Charging 7.07 (11.36%)",
+   "what": "lmv11: ABR at the approved tariff (Table 8-6)"
+  },
+  "lmv11.cross_subsidy": {
+   "value": "-11.36",
+   "unit": "percent",
+   "page": 309,
+   "quote": "LMV-11: Electric Vehicle Charging 7.07 (11.36%)",
+   "what": "lmv11: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "hv1.abr": {
+   "value": "9.22",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "HV-1: Non-Industrial Bulk Load 9.22 15.55%",
+   "what": "hv1: ABR at the approved tariff (Table 8-6)"
+  },
+  "hv1.cross_subsidy": {
+   "value": "15.55",
+   "unit": "percent",
+   "page": 309,
+   "quote": "HV-1: Non-Industrial Bulk Load 9.22 15.55%",
+   "what": "hv1: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "hv2.abr": {
+   "value": "7.29",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "HV-2: Large & Heavy Power 7.29 (8.64%)",
+   "what": "hv2: ABR at the approved tariff (Table 8-6)"
+  },
+  "hv2.cross_subsidy": {
+   "value": "-8.64",
+   "unit": "percent",
+   "page": 309,
+   "quote": "HV-2: Large & Heavy Power 7.29 (8.64%)",
+   "what": "hv2: cross-subsidy level, ABR against ACoS (Table 8-6; negative in brackets)"
+  },
+  "total.abr": {
+   "value": "7.25",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "ABR 7.25 (9.09%) ACOS 7.98 ACOS-ABR 0.73",
+   "what": "ABR, all categories (Table 8-6)"
+  },
+  "total.cross_subsidy": {
+   "value": "-9.09",
+   "unit": "percent",
+   "page": 309,
+   "quote": "ABR 7.25 (9.09%) ACOS 7.98 ACOS-ABR 0.73",
+   "what": "ABR against ACoS, all categories (Table 8-6)"
+  },
+  "acos": {
+   "value": "7.98",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "ABR 7.25 (9.09%) ACOS 7.98 ACOS-ABR 0.73",
+   "what": "average cost of supply (Table 8-6)"
+  },
+  "acos_minus_abr": {
+   "value": "0.73",
+   "unit": "INR_per_kWh",
+   "page": 309,
+   "quote": "ABR 7.25 (9.09%) ACOS 7.98 ACOS-ABR 0.73",
+   "what": "ACoS − ABR (Table 8-6)"
+  },
+  "arr": {
+   "value": "3511.33",
+   "unit": "INR_crore",
+   "page": 308,
+   "quote": "Aggregate Revenue Requirement C 3,511.33",
+   "what": "aggregate revenue requirement FY2026-27 (Table 8-4)"
+  },
+  "monthly.apr-26": {
+   "value": "330.51",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Apr-26 330.51",
+   "what": "approved sales, Apr-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.may-26": {
+   "value": "373.27",
+   "unit": "MU",
+   "page": 309,
+   "quote": "May-26 373.27",
+   "what": "approved sales, May-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.jun-26": {
+   "value": "416.42",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Jun-26 416.42",
+   "what": "approved sales, Jun-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.jul-26": {
+   "value": "449.53",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Jul-26 449.53",
+   "what": "approved sales, Jul-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.aug-26": {
+   "value": "442.57",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Aug-26 442.57",
+   "what": "approved sales, Aug-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.sep-26": {
+   "value": "442.94",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Sep-26 442.94",
+   "what": "approved sales, Sep-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.oct-26": {
+   "value": "378.07",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Oct-26 378.07",
+   "what": "approved sales, Oct-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.nov-26": {
+   "value": "277.05",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Nov-26 277.05",
+   "what": "approved sales, Nov-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.dec-26": {
+   "value": "296.61",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Dec-26 296.61",
+   "what": "approved sales, Dec-26 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.jan-27": {
+   "value": "346.02",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Jan-27 346.02",
+   "what": "approved sales, Jan-27 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.feb-27": {
+   "value": "318.10",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Feb-27 318.10",
+   "what": "approved sales, Feb-27 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.mar-27": {
+   "value": "328.75",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Mar-27 328.75",
+   "what": "approved sales, Mar-27 (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  },
+  "monthly.total": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 309,
+   "quote": "Total 4,399.84",
+   "what": "approved sales, Total (Table 8-7, for FPPAS)",
+   "header": "Month (FY 2026-27) Approved Sales (MUs)"
+  }
+ }
+}

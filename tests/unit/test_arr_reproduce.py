@@ -1385,3 +1385,48 @@ def test_npcl_the_gap_and_its_carrying_cost_reproduce_on_one_convention():
         a, e, h, i = (v(f"gap.{c}.{k}") for k in ("opening", "addition", "carrying", "closing"))
         assert abs(a + e + h - i) <= Decimal("0.01")
     assert v("gap.fy25.approved.closing") == v("gap.fy26.computed.opening")
+
+
+def test_npcl_the_tariff_design_summary_reproduces_within_its_inputs_precision():
+    """Real data: the order's ABR by category, ACoS and cross-subsidy levels (Table 8-6) from its
+    sales and revenue (Table 8-5) and ARR (Table 8-4).  Where a figure differs, the difference is
+    within what the order's own rounding of revenue and sales (two places in crore and MU)
+    allows; the monthly sales for FPPAS add to the year's (A75)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-tariff-fy27.json").read_text())
+    t = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=t)
+    got = {c.category.split(" order:")[-1]: c for c in checks}
+    for key in (
+        "acos",
+        "total.abr",
+        "total.cross_subsidy",
+        "acos_minus_abr",
+        "lmv1.cross_subsidy",
+        "hv2.cross_subsidy",
+    ):
+        assert got[key].result == "match", key
+    half = Decimal("0.005")
+    for c in checks:
+        if c.result == "match":
+            continue
+        ref = c.category.split(" order:")[-1]
+        cat = ref.split(".")[0]
+        if cat in ("total", "monthly"):  # eleven rounded categories add a unit off the printed total
+            assert abs(Decimal(c.filed) - Decimal(c.computed)) == Decimal("0.01")
+            continue
+        rev, sales = Decimal(t[f"{cat}.revenue"][0]), Decimal(t[f"{cat}.sales"][0])
+        relative = half / rev + half / sales  # the printed inputs' rounding, relative
+        value = Decimal(c.exact)
+        scale = abs(value) if c.output == "tariff_abr_category" else (abs(value) + 100)
+        assert abs(Decimal(c.filed) - Decimal(c.computed)) <= relative * scale + Decimal("0.01"), ref
+    months = [v for k, v in t.items() if k.startswith("monthly.") and k != "monthly.total"]
+    assert len(months) == 12 and sum(Decimal(v[0]) for v in months) == Decimal(t["monthly.total"][0])

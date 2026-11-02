@@ -493,6 +493,18 @@
     "ARR!J62, L62, M62 (formulas)"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A75",
+   "kind": "missing working",
+   "title": "The monthly sales the order approves for FPPAS (Table 8-7) apportion 4,399.84 MU by NPCL's monthly power purchase units — a series not in NPCL's formats",
+   "detail": "Para 8.1.10 (p.309): the Commission approves monthly sales 'based on the monthly power purchase units submitted by the Petitioner, and the ratio of annual sales to annual power purchase units', for the computation of FPPAS under Regulation 16 of the 2025 Regulations.  Table 8-7's months add to 4,399.84 (the approved sales).  No series in the filed formats workbook is proportional to them: F3_PP_Monthly FY2027's monthly units at NPCL's periphery (rows 40, 42; 4,729.49 MU) would give April 368.82 against the order's 330.51 and February 263.17 against 318.10; no other row or column of twelve figures fits within 0.2 % of a month's share.  The series the Commission used is a later submission, not in this package — so the monthly sales, which FPPAS will be computed on, cannot be checked here.  For the reviewer: obtain the submission.",
+   "where": [
+    "Tariff order FY2026-27 p.309 para 8.1.10, Table 8-7",
+    "F3_PP_Monthly FY2027 rows 40, 42",
+    "order/figures-tariff-fy2026-27.json"
+   ],
+   "for": "reviewer"
   }
  ]
 }
