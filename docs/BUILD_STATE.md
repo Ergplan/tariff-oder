@@ -1005,6 +1005,24 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 108 (2026-11-02): the regulatory discount computed; NPCL's revenue projection is
+  the order's.**
+  - **New draft rule `uperc.revenue.regulatory_discount`:** 10% of the fixed / demand and energy
+    charges, under General Provision 21 of the rate schedule (p.360).  It takes an exclusion for
+    anything in the fixed column that is not a demand charge.
+  - **Results:** NPCL's ESR-3 discount for FY2025-26 (−322.6380) and FY2026-27 (−357.0702)
+    reproduces exactly at four places.
+  - **The one apparent difference was mine, not NPCL's.**  At first the rule took 10% of the
+    whole fixed column and missed by 0.0039 and 0.0052.  The difference sat entirely in the
+    LMV-11 public charging stations, which have no demand charge ("Demand Charge –", p.381).
+    NPCL discounts only their energy charge, as the schedule implies.  What their fixed column
+    holds (the excess-demand penalty) is inferred.
+  - **Row-table `shared` inputs** may now sum named cells (`cells`).  A reason is required, and
+    the test proves the reader refuses a sum without one.
+  - **The order's revenue at approved tariff is NPCL's ESR-3:** 3,549.11 without the discount,
+    3,192.04 with it (ARR!M13, M15; para 8.1.7).
+  Nothing verified, nothing approved.
+
   **Increment 107 (2026-11-02): the tariff design summary — ABR, ACoS and cross-subsidy levels.**
   - **New draft rules `packages/arr-rules/uperc/tariff-design.v1.json`:**
     - ABR by category and overall;
@@ -2721,6 +2739,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 108 (2026-11-02): 476 passed** (+2 unit: summed shared cells with their reason, synthetic; the real regulatory discount in two years).  Ruff and format clean.
 - **Increment 107 (2026-11-02): 474 passed** (+1 unit: the tariff design summary, differences bounded by the inputs' precision).  `check_order_quotes.py`: 76 / 76.  Ruff and format clean.
 - **Increment 106 (2026-11-02): 473 passed** (+1 unit: the gap and its carrying cost — NPCL's format and the order on one rule; the working-capital offset and the closings tied).  `check_order_quotes.py`: 34 / 34.  Ruff and format clean.
 - **Increment 105 (2026-11-02): 472 passed** (+1 unit: the real APR — 11 / 13, ties to the true-up and the ARR year).  `check_order_quotes.py`: 57 / 57.  Ruff and format clean.
@@ -2961,7 +2980,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 107) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 108) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

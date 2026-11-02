@@ -3,7 +3,7 @@
  "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
  "sheet": "ESR_3 Curr Tariff FY27",
  "fiscal_year": "FY2026-27",
- "note": "Revenue from the current tariff, FY2026-27: one row per consumer category, slab or time-of-day block (rows 12–137); per row the total (fixed + energy + minimum + other charges + regulatory discount, O) and the energy and fixed charges per unit it implies (G, H) — for the reviewer to compare with the tariff order's rate schedule, which is not read yet.  Totals: the revenue (O138) the ARR carries as row 15 (M15), the units sold as row 9, the regulatory discount (N138).",
+ "note": "Revenue from the current tariff, FY2026-27: one row per consumer category, slab or time-of-day block (rows 12–137); per row the total (fixed + energy + minimum + other charges + regulatory discount, O) and the energy and fixed charges per unit it implies (G, H) — for the reviewer to compare with the tariff order's rate schedule, which is not read yet.  Totals: the revenue (O138) the ARR carries as row 15 (M15), the units sold as row 9, the regulatory discount (N138).  The regulatory discount is also computed: 10 % of the energy and fixed / demand charges, the public charging stations' fixed column excluded (revenue_regulatory_discount), against the discount NPCL carries.",
  "rows": [
   12,
   137
@@ -50,7 +50,26 @@
   "revenue_discount_total": [
    "N138",
    "ARR!M14"
+  ],
+  "revenue_regulatory_discount": [
+   "N138",
+   "ARR!M14"
   ]
  },
- "places": 4
+ "places": 4,
+ "shared": {
+  "assumption:regulatory_discount_share": {
+   "value": "0.10",
+   "unit": "fraction",
+   "why": "the 10 % regulatory discount on energy and fixed charges in force (the order keeps it for FY2026-27: para 7.2.5; Table 8-1 'after Regulatory Discount @10%')"
+  },
+  "record:rev_fixed_not_demand": {
+   "cells": [
+    "J87",
+    "J88"
+   ],
+   "unit": "INR_crore",
+   "why": "the LMV-11 public charging stations (PCS-LT, PCS-HT) have no demand charge in the rate schedule ('Demand Charge –', p.381); what NPCL carries in their fixed column is another charge (the penalty for exceeding contracted demand, p.382, by inference), which the regulatory discount does not reach — NPCL discounts their energy charge only"
+  }
+ }
 }

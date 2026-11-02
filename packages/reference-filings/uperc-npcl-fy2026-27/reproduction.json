@@ -20483,6 +20483,28 @@
      "computed": "-322.6380",
      "why": null,
      "exact": "-322.63799425365419879999"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL N138",
+     "output": "revenue_regulatory_discount",
+     "result": "match",
+     "filed": "-322.6380",
+     "computed": "-322.6380",
+     "why": null,
+     "exact": "-322.6379942541309215338"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY26",
+     "fiscal_year": "FY2025-26",
+     "category": "TOTAL ARR!L14",
+     "output": "revenue_regulatory_discount",
+     "result": "match",
+     "filed": "-322.6380",
+     "computed": "-322.6380",
+     "why": null,
+     "exact": "-322.6379942541309215338"
     }
    ]
   },
@@ -23513,6 +23535,28 @@
      "computed": "-357.0702",
      "why": null,
      "exact": "-357.0702107917574056606"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL N138",
+     "output": "revenue_regulatory_discount",
+     "result": "match",
+     "filed": "-357.0702",
+     "computed": "-357.0702",
+     "why": null,
+     "exact": "-357.0702107918680465131"
+    },
+    {
+     "table": "ESR_3 Curr Tariff FY27",
+     "fiscal_year": "FY2026-27",
+     "category": "TOTAL ARR!M14",
+     "output": "revenue_regulatory_discount",
+     "result": "match",
+     "filed": "-357.0702",
+     "computed": "-357.0702",
+     "why": null,
+     "exact": "-357.0702107918680465131"
     }
    ]
   },

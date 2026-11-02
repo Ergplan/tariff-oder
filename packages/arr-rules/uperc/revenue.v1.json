@@ -557,6 +557,154 @@
    "examples": [],
    "per": "consumer_category",
    "note": "an identity, not a computation: the order's rate (read with its page and quote) checked against the rate the petitioner's own rate-schedule format states as existing (ESR4A column C); a kVAh rate is a different unit from a kWh rate and never compared with one"
+  },
+  {
+   "id": "uperc.revenue.fixed_category",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue from fixed / demand charges of a category",
+   "output": "revenue_fixed_category",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "fixed",
+   "inputs": {
+    "fixed": {
+     "unit": "INR_crore",
+     "source": "record:rev_fixed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category"
+  },
+  {
+   "id": "uperc.revenue.energy_category",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue from energy charges of a category",
+   "output": "revenue_energy_category",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "energy",
+   "inputs": {
+    "energy": {
+     "unit": "INR_crore",
+     "source": "record:rev_energy"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "per": "consumer_category"
+  },
+  {
+   "id": "uperc.revenue.charges_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue from energy and fixed charges, all categories",
+   "output": "revenue_charges_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "fixed + energy",
+   "inputs": {
+    "fixed": {
+     "unit": "INR_crore",
+     "source": "sum:revenue_fixed_category"
+    },
+    "energy": {
+     "unit": "INR_crore",
+     "source": "sum:revenue_energy_category"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order (rate schedule in force) — revenue from the current tariff by consumer category; identities of the format ESR-3",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "uperc.revenue.regulatory_discount",
+   "version": 1,
+   "status": "draft",
+   "title": "Regulatory discount on the energy and fixed charges",
+   "output": "revenue_regulatory_discount",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "-(share * (charges - excluded))",
+   "inputs": {
+    "share": {
+     "unit": "fraction",
+     "source": "assumption:regulatory_discount_share"
+    },
+    "charges": {
+     "unit": "INR_crore",
+     "source": "rule:revenue_charges_total"
+    },
+    "excluded": {
+     "unit": "INR_crore",
+     "source": "record:rev_fixed_not_demand",
+     "note": "anything in the fixed-charge column that is not a fixed / demand charge (the LMV-11 public charging stations have no demand charge — their column holds other charges), which the discount does not reach"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC rate schedule FY2026-27, General Provision 21 (p.360): 'All the Consumers shall be entitled to a regulatory discount of 10% … on the ‘Rate’ i.e. on Fixed / Demand Charge and Energy Charge excluding Electricity Duty etc.'; kept for FY2026-27 (para 7.2.5)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: 10 % of the fixed / demand and energy charges, nothing else (not minimum charges, other charges, rebates, or charges in the fixed column that are not a demand charge); printed negative, as the format does"
   }
  ]
 }

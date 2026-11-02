@@ -521,7 +521,8 @@ def test_npcl_revenue_from_the_current_tariff_by_category():
                 assert (c.filed, c.computed) == ("-288.1762", "-288.1362"), c
             else:
                 assert c.result == "match", c
-            if "ARR!" in c.category and c.output != "revenue_discount_total":
+            # the discount, as carried and as computed, is the next test's
+            if "ARR!" in c.category and c.output not in ("revenue_discount_total", "revenue_regulatory_discount"):
                 arr[(binding["fiscal_year"], c.output)] = c.computed
     assert arr == {
         ("FY2024-25", "revenue_tariff_total"): "2634.6026",
@@ -1430,3 +1431,73 @@ def test_npcl_the_tariff_design_summary_reproduces_within_its_inputs_precision()
         assert abs(Decimal(c.filed) - Decimal(c.computed)) <= relative * scale + Decimal("0.01"), ref
     months = [v for k, v in t.items() if k.startswith("monthly.") and k != "monthly.total"]
     assert len(months) == 12 and sum(Decimal(v[0]) for v in months) == Decimal(t["monthly.total"][0])
+
+
+def test_a_shared_input_may_sum_named_cells_with_a_reason():
+    """A row table's shared input can be the sum of several named cells (a charge spread over a
+    few rows) — only with its reason, and only over cells that hold numbers."""
+    import openpyxl
+    import pytest
+
+    from tariff_api.arr.reproduce import reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "S"
+    for r, (label, units, fixed, energy, discount) in enumerate(
+        [("A", 10.0, 4.0, 40.0, -4.4), ("B", 5.0, 0.0, 20.0, -2.0), ("PCS", 1.0, 0.5, 6.0, -0.6)], start=2
+    ):
+        ws[f"A{r}"], ws[f"B{r}"], ws[f"C{r}"], ws[f"D{r}"], ws[f"E{r}"] = label, units, fixed, energy, discount
+        ws[f"F{r}"] = fixed + energy + discount
+    ws["E6"] = -7.0
+    binding = {
+        "sheet": "S",
+        "fiscal_year": "FY2026-27",
+        "rows": [2, 4],
+        "label_col": "A",
+        "inputs": {
+            "record:units_sold": "B",
+            "record:rev_fixed": "C",
+            "record:rev_energy": "D",
+            "record:rev_discount": "E",
+        },
+        "units": {"B": "MU"},
+        "shared": {
+            "record:rev_minimum": {"value": "0", "why": "none"},
+            "record:rev_other": {"value": "0", "why": "none"},
+            "assumption:regulatory_discount_share": {"value": "0.10", "unit": "fraction", "why": "10 %"},
+            "record:rev_fixed_not_demand": {"cells": ["C4"], "why": "PCS: no demand charge"},
+        },
+        "outputs": {"revenue_category": "F"},
+        "totals": {"revenue_regulatory_discount": "E6"},
+        "places": 2,
+    }
+    rules = load_rules("UPERC")
+    got = {c.output: c for c in reproduce_row_table(wb, binding, rules)}
+    # 10 % of (4 + 40 + 0 + 20 + 0.5 + 6 − 0.5): the PCS fixed column is not discounted
+    assert (got["revenue_regulatory_discount"].result, got["revenue_regulatory_discount"].computed) == (
+        "match",
+        "-7.00",
+    )
+    del binding["shared"]["record:rev_fixed_not_demand"]["why"]
+    with pytest.raises(ValueError, match="needs its reason"):
+        reproduce_row_table(wb, binding, rules)
+
+
+def test_npcl_the_regulatory_discount_is_ten_percent_of_the_demand_and_energy_charges():
+    """Real data: NPCL's regulatory discount in ESR-3 for FY2025-26 and FY2026-27 is 10 % of the
+    fixed / demand and energy charges exactly, once the public charging stations' fixed column —
+    no demand charge in their schedule (p.381) — is left out, as NPCL leaves it."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_row_table
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rules = load_rules("UPERC")
+    for name, total in (("esr3-revenue-fy26.json", "-322.6380"), ("esr3-revenue-fy27.json", "-357.0702")):
+        binding = json.loads((folder / "bindings" / name).read_text())
+        wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+        disc = [c for c in reproduce_row_table(wb, binding, rules) if c.output == "revenue_regulatory_discount"]
+        assert len(disc) == 2 and {(c.result, c.computed) for c in disc} == {("match", total)}, name

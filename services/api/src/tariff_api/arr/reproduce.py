@@ -434,6 +434,15 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
                 continue  # blank: absent, never 0
             v = Decimal(repr(raw) if isinstance(raw, float) else str(raw))
             shared[source] = (-v if spec.get("negate") else v, spec.get("unit", "INR_crore"))
+        elif "cells" in spec:
+            # the sum of several cells (a charge spread over named rows); each needs its reason
+            if not spec.get("why"):
+                raise ValueError(f"{source}: a sum of cells needs its reason")
+            raws = [ws[ref].value for ref in spec["cells"]]
+            if any(not isinstance(r, int | float) or isinstance(r, bool) for r in raws):
+                raise ValueError(f"{source}: {spec['cells']} must all hold numbers")
+            v = sum((Decimal(repr(r) if isinstance(r, float) else str(r)) for r in raws), Decimal(0))
+            shared[source] = (-v if spec.get("negate") else v, spec.get("unit", "INR_crore"))
         else:
             shared[source] = (str(spec["value"]), spec.get("unit", "INR_crore"))
     ev = RuleSet(rules, fy).evaluate(fy, shared, cats)
