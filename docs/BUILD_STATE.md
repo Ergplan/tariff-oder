@@ -1005,6 +1005,48 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 93 (2026-11-02): the narrative reconciled to the formats (R-ACC-5).**  A petition
+  restates its figures in prose: the true-up, APR and ARR texts, the executive summary, Form-1,
+  the cost allocation and the compliance note.  These are 310 tables in seven DOCX files.
+  `tariff_api.arr.narrative` reads them as untrusted text, keeping each merged cell once and
+  taking each table's title.  It parses every printed figure with its printed precision
+  (brackets are negative, % is kept as a unit).
+  - **The trace (every figure).**  Each figure is looked for among the 31,778 numeric cells of the
+    formats workbook and the three record workbooks, at its printed precision:
+    - **1736 traced;**
+    - **218 near** (one unit of the last place away);
+    - **77 opposite sign** (a gap printed positive where the format holds a
+      negative shortfall);
+    - **1538 untraced;**
+    - **5339 uninformative:** fewer than 4 significant digits, which would match
+      some cell by chance, so they are counted but never called traced.
+    The untraced figures cluster in tables whose source is not the formats: project-wise capex,
+    vehicles in rupees, month-wise availability, approved figures quoted from earlier orders.
+    The page lists the 25 tables with the most untraced figures as the reviewer's reading list.
+    A trace says where a figure also appears; it does not say it is the same quantity.
+  - **The bindings (summary tables, row by row).**  Nine summary tables are bound to the ARR
+    format: true-up, APR and ARR in Appendices III–V, the executive summary and Form-1.  Each
+    table is found by its title and each column must carry its header word (Approved / Actual /
+    Estimated / Projected).  Each row is matched in full by its label, sums the format rows it
+    names (power purchase with its arrears, interest with its four parts) and takes the gap
+    with the sign reversed.  A missing table, a wrong header or a row matching twice is an
+    error, never a guess.
+  - **Result: 253 figures — 232 match, 21 differ.**  Every claimed, estimated and projected
+    figure matches; all 21 differences are in the approved columns:
+    - **A56 (petitioner):** Form-1's Table-II prints an approved ARR of 2,718.46, against 2,728.76
+      in Appendix III and the executive summary and 2,728.77 in the format.  It also prints
+      approved open-access revenue of 53.01, which repeats the non-tariff income figure.
+    - **A57 (petitioner):** the APR's approved opening surplus is printed (1,202.28), against
+      1,242.59 in the format (K59).  The format rebuilds its own total; the narrative's opening
+      does not.
+    - **A58 (reviewer):** the true-up's approved carried-forward (1,163.25) deducts 91.19 of
+      power purchase provisions that the format does not carry.  The other approved differences
+      are 1–2 units in the last place: the order's printed roundings against unrounded arithmetic.
+  - **Output and page.**  `scripts/reconcile_narrative.py` writes `narrative.json`.  The reference
+    page shows it as panel 06b: counts per document, the differing figures with their cells,
+    and the reading list.
+  Nothing verified, nothing approved.
+
   **Increment 92 (2026-11-02): the existing tariff checked against the order, and HV in kVAh.**
   - **The rate record now holds 58 rates.** Added: HV-1 to HV-4 per kVAh by supply voltage, the
     HV-2 rural rebate, LMV-3 by local body, LMV-7 and its rural rebate, LMV-9, and LMV-5's
@@ -2300,6 +2342,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 93 (2026-11-02): 447 passed** (+6 unit: figures parsed as printed; traced / near / opposite sign / untraced, a two-digit figure never traced; a DOCX's merged cell kept once with its title; a summary table bound with sums, signs and dashes; a binding refuses an unknown table, a wrong header, a row matched twice; the real nine tables 232 / 21; the integration test checks the API's narrative block).  Ruff, format, contracts and web typecheck clean.
 - **Increment 92 (2026-11-02): 441 passed** (+2 unit: a kVAh rate fed to the per-kWh energy rule blocks, never a revenue; the quote checker on a PDF made in the test finds quotes and column headers, and reports a wrong page, a missing header and another document; the real-data test adds ESR4A 47 / 47 and the 58-rate record).  `scripts/check_order_quotes.py` on the real order: 58 / 58.  Ruff, format and contracts clean.
 - **Increment 91 (2026-11-02): 439 passed** (+3 unit: a rate record refuses a figure not in its quote, a rate with no page and a record with no hash; a cell takes the order's rate with its time-of-day percentage, and a rate the record lacks is an error; the real ESR-3 from the order's schedule — 40 / 45 match, the five differing rows are A53 and A54).  `scripts/check_order_quotes.py` on the real order: 36 / 36 quotes on their pages.  Ruff, format and contracts clean.
 - **Increment 90 (2026-11-02): 436 passed** (+1 unit: the real 2025 Regulations — hash as in the manifest; RoE → p.31 with 15 %, R&M → p.43, bad debts → p.45, surcharge → p.48; a 2019-only rule not offered the 2025 text; nothing verified).  Ruff and format clean.
@@ -2525,7 +2568,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 92) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 93) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2571,7 +2614,10 @@ entries below are the per-increment history.**
   - **Formats accounted, against the filing's index:** 40 reproduced, 9 read, 22 present, 2
     blank, 1 missing.
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
-  - **23 findings (A29–A55):** 14 for the petitioner, collected in the draft queries; 9 for the
+  - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
+    (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
+    (1736 traced, 1538 untraced).
+  - **26 findings (A29–A58):** 16 for the petitioner, collected in the draft queries; 10 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

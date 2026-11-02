@@ -43,6 +43,27 @@ type Filing = {
     not_in_index: string[];
     formats: { format: string; title: string; sheet: string | null; alias_why: string | null; status: string }[];
   } | null;
+  narrative: {
+    status: string;
+    min_digits: number;
+    documents: Record<string, Counts>;
+    untraced_by_table: { document: string; table: string; figures: number }[];
+    bound: {
+      counts: Counts;
+      checks: {
+        document: string;
+        table: string;
+        column: string;
+        key: string;
+        label: string;
+        printed: string;
+        format_rounded: string | null;
+        cells: string[];
+        result: string;
+        last_place_units: number | null;
+      }[];
+    };
+  } | null;
 };
 
 const TONE: Record<string, string> = {
@@ -52,6 +73,13 @@ const TONE: Record<string, string> = {
   blank: "warn",
   missing: "bad",
   match: "ok",
+  traced: "ok",
+  near: "warn",
+  opposite_sign: "neutral",
+  untraced: "warn",
+  uninformative: "neutral",
+  not_printed: "warn",
+  no_format_value: "warn",
   computed: "ok",
   tied: "ok",
   differs: "bad",
@@ -466,6 +494,95 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                   </tbody>
                 </table>
               </div>
+            </details>
+          </>
+        )}
+      </Panel>
+
+      <Panel num="06b" title="The narrative against the formats" aside="every figure of the petition's text tables looked for in the formats; the summary tables bound row by row">
+        {!f.narrative ? (
+          <p className="muted">The narrative has not been reconciled.</p>
+        ) : (
+          <>
+            <p>
+              Summary tables, row by row: <CountBadges counts={f.narrative.bound.counts} />
+            </p>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Document</th>
+                    <th>Tables</th>
+                    <th>Figures traced, near, opposite sign, untraced, uninformative</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(f.narrative.documents).map(([doc, c]) => (
+                    <tr key={doc}>
+                      <td>{doc}</td>
+                      <td className="mono">{c.tables}</td>
+                      <td>
+                        <CountBadges counts={Object.fromEntries(Object.entries(c).filter(([k]) => k !== "tables"))} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="muted" style={{ fontSize: "0.85rem" }}>
+              {f.narrative.status}.  A figure with fewer than {f.narrative.min_digits} significant digits is not traced (it would match by chance).
+            </p>
+            <details>
+              <summary>Summary-table figures that differ ({f.narrative.bound.checks.filter((c) => c.result !== "match").length})</summary>
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Where</th>
+                      <th>Row</th>
+                      <th>Printed</th>
+                      <th>Format</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {f.narrative.bound.checks
+                      .filter((c) => c.result !== "match")
+                      .map((c, i) => (
+                        <tr key={i}>
+                          <td>
+                            {c.table}
+                            <div className="muted">
+                              {c.document} · {c.column}
+                            </div>
+                          </td>
+                          <td>{c.label}</td>
+                          <td className="mono">{c.printed || "—"}</td>
+                          <td className="mono">
+                            {c.format_rounded ?? "—"}
+                            <div className="muted">{c.cells.join(" + ")}</div>
+                          </td>
+                          <td>
+                            <span className="badge" data-tone={TONE[c.result] ?? "neutral"}>
+                              {c.result}
+                            </span>
+                            {c.last_place_units != null ? <div className="muted">{c.last_place_units} in the last place</div> : null}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            </details>
+            <details>
+              <summary>Tables with the most untraced figures (the reviewer's reading list)</summary>
+              <ul>
+                {f.narrative.untraced_by_table.map((t, i) => (
+                  <li key={i}>
+                    {t.table} <span className="muted">— {t.document}, {t.figures}</span>
+                  </li>
+                ))}
+              </ul>
             </details>
           </>
         )}

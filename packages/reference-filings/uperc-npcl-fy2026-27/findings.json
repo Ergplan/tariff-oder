@@ -263,6 +263,42 @@
     "rate-schedule-fy2026-27.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A56",
+   "kind": "narrative against formats",
+   "title": "Form-1's true-up summary (Table-II) prints an approved ARR of 2,718.46 and approved open-access revenue of 53.01, where Appendix III, the executive summary and the ARR format have 2,728.76 / 2,728.77 and none",
+   "detail": "Bound row by row (narrative/summary-tables.json), Form-1's Table-II 'Approved vide T.O. dated 10.10.2024' column differs from the ARR format's column H in two places beyond rounding: the Aggregate Revenue Requirement (2,718.46 against H46 = 2,728.77; Appendix III Table 84 and the executive summary's Table 2 print 2,728.76), and 'Less: Revenue from Open Access Consumer' (53.01, the same figure as the non-tariff income on the next row, against nothing in H51).  The revenue gap Form-1 derives from them is (49.92), as in the other documents, so the two figures look like errors of transcription in Form-1 — the petition itself.  The petitioner should correct Form-1 or explain.",
+   "where": [
+    "2. Petition in Form-1 ARR FY 2026-27.docx Table-II",
+    "ARR!H46, ARR!H51",
+    "narrative.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A57",
+   "kind": "narrative against formats",
+   "title": "The APR's approved 'gap from previous year' is (1,202.28) in Appendix IV and the executive summary, but 1,242.59 surplus in the ARR format (K59): 40.31 apart",
+   "detail": "Appendix IV Table 62 and the executive summary's Table 4 print the approved revenue (surplus) from the previous year for FY2025-26 as (1,202.28); the ARR format's 'Accumulated Revenue (Gap)/Surplus from Preceding Years' for the approved FY2025-26 column (K59) is 1,242.59.  Their carrying cost (77.30) and total carried forward (1,293.92) agree with the format (K62, K63), so the narrative's opening figure is the odd one.  In surplus terms the format rebuilds its total (1,242.59 − 25.97 gap + 77.30 carrying cost = 1,293.92) and the narrative's opening does not (1,202.28 − 25.97 + 77.30 = 1,253.61, against the 1,293.92 it prints).  The petitioner should state which opening the FY2025-26 order approved.",
+   "where": [
+    "6. Appendix-IV Text of APR FY 2025-26.docx Table 62",
+    "10. Appendix-IX Executive Summary Table 4",
+    "ARR!K59, K62, K63"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A58",
+   "kind": "narrative against formats",
+   "title": "The true-up's approved closing gap carried forward (1,163.25) deducts 'power purchase provisions' (91.19) that the ARR format does not carry (its closing is 1,254.43)",
+   "detail": "Appendix III Table 84, the executive summary's Table 2 and Form-1's Table-II print an approved total carried forward of (1,163.25) for FY2024-25, after a row 'Power purchase provisions 91.19'; the ARR format's approved column ends at the cumulative (1,254.43) (H63) and has no such row: 1,254.43 − 91.19 = 1,163.24.  The other approved figures differ from the format only in the last printed place (interest 77.82 against 77.84, ARR 2,728.76 against 2,728.77, revenue 2,725.67 against 2,725.66, gap (49.92) against (49.90), APR ARR 3,061.05 against 3,061.04) — the order's printed roundings against the format's unrounded arithmetic.  For the reviewer: which closing the FY2024-25 order approved (the order of 10.10.2024 is not in this session), and whether the provision belongs in the ARR format.",
+   "where": [
+    "5. Appendix-III Text of True-up FY 2024-25.docx Table 84",
+    "ARR!H58:H63",
+    "narrative.json"
+   ],
+   "for": "reviewer"
   }
  ]
 }

@@ -50,6 +50,16 @@ def test_the_npcl_reference_filing_and_its_reproduction(client):
     assert sum(acc["counts"].values()) == 74
     assert [e["format"] for e in acc["formats"] if e["status"] == "missing"] == ["ESR7_BD monthly"]
     assert acc["counts"]["reproduced"] >= 27 and acc["not_in_index"] == ["F19A-O&M Normative"]
+    # the narrative against the formats (R-ACC-5): the summary tables bound row by row, the
+    # differing figures listed with their cells; the rest of the text traced by value
+    nar = f["narrative"]
+    assert nar["bound"]["counts"] == {"match": 232, "differs": 21}
+    assert {c["key"] for c in nar["bound"]["checks"] if c["result"] == "differs"} >= {
+        "arr",
+        "open_access",
+        "gap_previous",
+    }
+    assert len(nar["documents"]) == 7 and nar["untraced_by_table"][0]["figures"] > 0
     assert client.get("/arr/reference-filings/nope", headers=headers(CLIENT_A)).status_code == 404
 
 

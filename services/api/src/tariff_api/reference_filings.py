@@ -74,6 +74,7 @@ def filing(filing_id: str) -> dict[str, Any]:
         "coverage": None,
         "pipeline": [],
         "accounting": None,
+        "narrative": None,
         "findings": [],
     }
     rep_path = folder / "reproduction.json"
@@ -133,10 +134,50 @@ def filing(filing_id: str) -> dict[str, Any]:
             # how each figure of the ARR format is established, by column (computed / tied /
             # given / differs / record) — what the reproduction covers and what it takes on trust
             out["coverage"] = rep["coverage"]
+    npath = folder / "narrative.json"
+    if npath.exists():
+        out["narrative"] = _narrative(json.loads(npath.read_text()))
     fpath = folder / "findings.json"
     if fpath.exists():
         out["findings"] = json.loads(fpath.read_text())["findings"]
     return out
+
+
+def _narrative(rep: dict[str, Any]) -> dict[str, Any]:
+    """The narrative reconciled to the formats (R-ACC-5), compact: the trace's counts per document,
+    the untraced figures counted per table (the reviewer's reading list, largest first), and every
+    bound summary-table figure with its result."""
+    untraced = Counter(
+        (f["document"], f["title"]) for f in rep["trace"]["figures"] if f["result"] in ("untraced", "near")
+    )
+    checks = [c for t in rep["tables"] for c in t["checks"]]
+    return {
+        "status": rep["status"],
+        "min_digits": rep["trace"]["min_digits"],
+        "documents": rep["trace"]["summary"],
+        "untraced_by_table": [{"document": d, "table": t, "figures": n} for (d, t), n in untraced.most_common(25)],
+        "bound": {
+            "counts": dict(Counter(c["result"] for c in checks)),
+            "checks": [
+                {
+                    k: c.get(k)
+                    for k in (
+                        "document",
+                        "table",
+                        "column",
+                        "key",
+                        "label",
+                        "printed",
+                        "format_rounded",
+                        "cells",
+                        "result",
+                        "last_place_units",
+                    )
+                }
+                for c in checks
+            ],
+        },
+    }
 
 
 def clause_candidates(commission: str) -> dict[str, list[dict[str, Any]]]:
