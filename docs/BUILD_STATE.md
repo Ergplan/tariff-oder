@@ -1005,6 +1005,26 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 112 (2026-11-02): the true-up's bad debts and non-tariff income reproduced.**
+  - **The record:** `order/figures-trueup-nti-fy2024-25.json` holds 16 figures (Tables 4-113,
+    4-114, 4-117, 4-118), 16 / 16 quotes verified.  Allowing whole numbers for the one figure
+    printed without decimals first swallowed the next rows' serial numbers; the count checks
+    caught all six, and whole numbers are now allowed for that figure only.
+  - **New draft rules:**
+    - `uperc.nti.*`: the treasury income excluded is the lower of the shareholders' fund at the
+      RBI bank rate and the interest earned; non-tariff income is the audited figure less that
+      and the other exclusions;
+    - `uperc.baddebts.trueup_allowed`: NPCL's own provisioning ratio on the approved revenue net
+      of electricity duty.
+    Both follow the order's stated method, for the true-up years only.
+  - **Binding `approval-trueup-nti-fy25.json`: 4 / 5 match** — bad debts 10.79, treasury
+    excluded 37.99, non-tariff income 12.38.  The fund's income is 39.05 against 39.07; the order
+    prints the average investment in whole crore.
+  - **The test** also proves that the stated other exclusions (0.41) are the record's three rows.
+  - **The explanations:** two true-up lines move from read to reproduced, so 21 of the 36
+    changed lines are now reproduced.
+  Nothing verified, nothing approved.
+
   **Increment 111 (2026-11-02): the ARR year's working capital reproduced — nil against the
   surplus.**
   - **The record:** `order/figures-wc-fy2026-27.json` holds 17 figures (Table 6-69 and the O&M
@@ -2800,6 +2820,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 112 (2026-11-02): 481 passed** (+1 unit: the true-up's bad debts and non-tariff income).  `check_order_quotes.py`: 16 / 16.  Ruff and format clean.
 - **Increment 111 (2026-11-02): 480 passed** (+1 unit: the ARR year's working capital).  `check_order_quotes.py`: 17 / 17.  Ruff and format clean.
 - **Increment 110 (2026-11-02): 479 passed** (+1 unit: the fixed charges against the billable-demand floor).  `check_order_quotes.py`: 20 / 20.  Ruff and format clean.
 - **Increment 109 (2026-11-02): 478 passed** (+2 unit: unexplained and stale lines listed, deductions, blank approvals and misprints, synthetic; the three real decisions fully explained).  Ruff, format and `tsc` clean.
@@ -3044,7 +3065,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 111) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 112) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

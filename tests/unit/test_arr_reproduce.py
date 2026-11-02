@@ -1563,3 +1563,28 @@ def test_npcl_the_arr_years_working_capital_is_nil_against_the_surplus():
     assert got["interest_on_working_capital"].computed == "0.00"
     gap = load_rate_record(json.loads((folder / "order" / "figures-gap-fy2026-27.json").read_text()))
     assert Decimal(wc["wc.surplus"][0]) == -Decimal(gap["gap.fy26.computed.closing"][0])
+
+
+def test_npcl_the_trueup_bad_debts_and_non_tariff_income_reproduce():
+    """Real data: bad debts at NPCL's own provisioning ratio on the approved revenue net of duty
+    (10.79); non-tariff income as the audited 50.78 less the lower of the shareholders' fund's
+    income and the interest earned (37.99) and three small items (12.38).  The fund's income is
+    two units off, the order printing the average investment in whole crore."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-trueup-nti-fy25.json").read_text())
+    n = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=n)
+    assert [(c.output, c.filed, c.computed) for c in checks if c.result != "match"] == [
+        ("nti_fund_income", "39.07", "39.05")
+    ]
+    # the stated exclusions are the record's rows 15-17, not a typed figure that could drift
+    stated = binding["evaluations"][1]["inputs"]["record:nti_other_excluded"]["value"]
+    assert Decimal(stated) == sum(Decimal(n[k][0]) for k in ("nti.emi", "nti.telecom", "nti.emi_prior"))

@@ -1,0 +1,125 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): true-up of FY2024-25, bad and doubtful debts and non-tariff income (Tables 4-113, 4-114, 4-117, 4-118)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "bd.claimed.billed": {
+   "value": "2779.49",
+   "unit": "INR_crore",
+   "page": 156,
+   "quote": "2 Revenue billed for the year 2,779.49",
+   "what": "revenue billed, claimed (Table 4-113)"
+  },
+  "bd.claimed.provision": {
+   "value": "11.38",
+   "unit": "INR_crore",
+   "page": 156,
+   "quote": "5 Provision for Bad & Doubtful debts 10.30 11.38",
+   "what": "provision for bad debts, claimed (Table 4-113, second figure)"
+  },
+  "bd.approved.revenue": {
+   "value": "2634.60",
+   "unit": "INR_crore",
+   "page": 158,
+   "quote": "Revenue billed during the year 2,725.66 2,779.49 2,634.60",
+   "what": "revenue billed, approved: net of electricity duty (Table 4-114, '*')",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "bd.approved.ratio": {
+   "value": "0.41",
+   "unit": "percent",
+   "page": 158,
+   "quote": "Provision as % revenue billed claimed 0.38% 0.41% 0.41%",
+   "what": "provision as % of revenue billed, approved as claimed (Table 4-114)",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "bd.approved.provision": {
+   "value": "10.79",
+   "unit": "INR_crore",
+   "page": 158,
+   "quote": "Provision of bad and doubtful debt 10.30 11.38 10.79",
+   "what": "provision for bad debts, approved (Table 4-114)",
+   "header": "Particulars Approved in TO dated 10.10.2024 Claimed Approved"
+  },
+  "tr.average_investment": {
+   "value": "582",
+   "unit": "INR_crore",
+   "page": 163,
+   "quote": "Average Investment 582",
+   "what": "average investment of the shareholders' fund (Table 4-117; printed in whole crore)"
+  },
+  "tr.rate": {
+   "value": "6.71",
+   "unit": "percent",
+   "page": 163,
+   "quote": "WAROI of RBI Bank Rate 6.71%",
+   "what": "weighted average RBI bank rate (Table 4-117)"
+  },
+  "tr.fund_income": {
+   "value": "39.07",
+   "unit": "INR_crore",
+   "page": 163,
+   "quote": "Treasury Income on Shareholders Fund (A) 39.07",
+   "what": "treasury income on the shareholders' fund, A (Table 4-117)"
+  },
+  "tr.deposits": {
+   "value": "37.99",
+   "unit": "INR_crore",
+   "page": 163,
+   "quote": "Treasury Income as per Audited accounts: Interest Income on Bank Deposits (B) 37.99",
+   "what": "interest on bank deposits per audited accounts, B (Table 4-117)"
+  },
+  "tr.allowed": {
+   "value": "37.99",
+   "unit": "INR_crore",
+   "page": 163,
+   "quote": "Minimum of (A&B) allowable 37.99",
+   "what": "the lower of A and B, excluded from non-tariff income (Table 4-117)"
+  },
+  "nti.audited": {
+   "value": "50.78",
+   "unit": "INR_crore",
+   "page": 164,
+   "quote": "13 Total Non-Tariff Income as per Audited Accounts 50.78",
+   "what": "non-tariff income per audited accounts (Table 4-118, row 13)"
+  },
+  "nti.treasury": {
+   "value": "37.99",
+   "unit": "INR_crore",
+   "page": 164,
+   "quote": "14 Less: Treasury Income 37.99",
+   "what": "less treasury income (row 14)"
+  },
+  "nti.emi": {
+   "value": "0.22",
+   "unit": "INR_crore",
+   "page": 164,
+   "quote": "15 Less: Interest on new connection charges paid on EMI/instalment basis 0.22",
+   "what": "less interest on new connection charges paid by instalments (row 15)"
+  },
+  "nti.telecom": {
+   "value": "0.02",
+   "unit": "INR_crore",
+   "page": 164,
+   "quote": "16 Less: Income from Telecom 0.02",
+   "what": "less income from telecom (row 16)"
+  },
+  "nti.emi_prior": {
+   "value": "0.17",
+   "unit": "INR_crore",
+   "page": 164,
+   "quote": "17 Less: Interest on new connection charges paid on EMI/instalment basis in FY 2023-24 allowed as per Review Order dtd 12.05.2026 0.17",
+   "what": "less the FY2023-24 instalment interest allowed in review (row 17)"
+  },
+  "nti.approved": {
+   "value": "12.38",
+   "unit": "INR_crore",
+   "page": 164,
+   "quote": "18 Non-Tariff Income (18 = 13-14-15-16-17) 12.38",
+   "what": "non-tariff income approved (row 18)"
+  }
+ }
+}

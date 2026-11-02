@@ -113,9 +113,10 @@
    },
    "bad_debts": {
     "reason": "NPCL's own provisioning ratio applied to the approved revenue net of electricity duty",
-    "where": "Table 4-114",
+    "where": "pp.156–158, Tables 4-113, 4-114",
     "finding": "A67",
-    "status": "read"
+    "status": "reproduced",
+    "binding": "approval-trueup-nti-fy25.json"
    },
    "efficiency_gains": {
     "reason": "no provision for sharing efficiency gains in the 2019 Regulations",
@@ -137,10 +138,11 @@
     "binding": "approval-trueup-capital-fy25.json"
    },
    "nti": {
-    "reason": "the audited non-tariff income less treasury income and three small items",
-    "where": "pp.162–164, Table 4-118",
+    "reason": "the audited non-tariff income less the treasury income on the shareholders' fund (the lower of the fund's 6.71 % and the interest earned, 37.99) and three small items",
+    "where": "pp.162–164, Tables 4-117, 4-118",
     "finding": "A67",
-    "status": "read"
+    "status": "reproduced",
+    "binding": "approval-trueup-nti-fy25.json"
    },
    "other_business": {
     "reason": "not deducted: NPCL has one business, so all its income comes under the true-up (and the non-tariff income above)",

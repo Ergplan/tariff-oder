@@ -1,0 +1,133 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations — non-tariff income",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "Non-tariff income at true-up: the audited income less the treasury income on the shareholders' fund and the items the Commission excludes.",
+ "rules": [
+  {
+   "id": "uperc.nti.fund_income",
+   "version": 1,
+   "status": "draft",
+   "title": "Treasury income the shareholders' fund would earn",
+   "output": "nti_fund_income",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "average * rate",
+   "inputs": {
+    "average": {
+     "unit": "INR_crore",
+     "source": "record:shareholders_fund_average"
+    },
+    "rate": {
+     "unit": "fraction",
+     "source": "assumption:bank_rate_weighted",
+     "note": "the weighted average RBI bank rate of the year"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2019, Reg. 47 (non-tariff income), as the order of 2 July 2026 applies it with the shareholders' fund methodology of its order of 17.06.2026 (paras 4.16.18–4.16.21, Tables 4-117, 4-118)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's method as it states it; the 2019 Regulations are not in this session — unverified until a person reads the clause"
+  },
+  {
+   "id": "uperc.nti.treasury_excluded",
+   "version": 1,
+   "status": "draft",
+   "title": "Treasury income excluded from non-tariff income: the lower of the fund's income and the interest earned on bank deposits",
+   "output": "nti_treasury_excluded",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "min(fund, deposits)",
+   "inputs": {
+    "fund": {
+     "unit": "INR_crore",
+     "source": "rule:nti_fund_income"
+    },
+    "deposits": {
+     "unit": "INR_crore",
+     "source": "record:interest_on_bank_deposits"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2019, Reg. 47 (non-tariff income), as the order of 2 July 2026 applies it with the shareholders' fund methodology of its order of 17.06.2026 (paras 4.16.18–4.16.21, Tables 4-117, 4-118)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's method as it states it; the 2019 Regulations are not in this session — unverified until a person reads the clause"
+  },
+  {
+   "id": "uperc.nti.trueup",
+   "version": 1,
+   "status": "draft",
+   "title": "Non-tariff income at true-up",
+   "output": "nti_trueup",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "audited - treasury - excluded",
+   "inputs": {
+    "audited": {
+     "unit": "INR_crore",
+     "source": "record:nti_audited"
+    },
+    "treasury": {
+     "unit": "INR_crore",
+     "source": "rule:nti_treasury_excluded"
+    },
+    "excluded": {
+     "unit": "INR_crore",
+     "source": "record:nti_other_excluded",
+     "note": "the other items the Commission takes out (instalment interest, telecom income, a review order's allowance)"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2019, Reg. 47 (non-tariff income), as the order of 2 July 2026 applies it with the shareholders' fund methodology of its order of 17.06.2026 (paras 4.16.18–4.16.21, Tables 4-117, 4-118)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's method as it states it; the 2019 Regulations are not in this session — unverified until a person reads the clause"
+  }
+ ]
+}

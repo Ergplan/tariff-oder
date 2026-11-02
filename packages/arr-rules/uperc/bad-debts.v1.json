@@ -408,6 +408,50 @@
    },
    "examples": [],
    "line_code": "C.OTHER"
+  },
+  {
+   "id": "uperc.baddebts.trueup_allowed",
+   "version": 1,
+   "status": "draft",
+   "title": "Bad and doubtful debts allowed at true-up: the petitioner's own provisioning ratio on the approved revenue",
+   "output": "bad_debts_trueup_allowed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "claimed / billed * revenue",
+   "inputs": {
+    "claimed": {
+     "unit": "INR_crore",
+     "source": "record:bad_debts_claimed_trueup"
+    },
+    "billed": {
+     "unit": "INR_crore",
+     "source": "record:revenue_billed_claimed"
+    },
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:revenue_approved_net_of_duty",
+     "note": "the approved revenue, net of electricity duty"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2019 — bad and doubtful debts, as the order of 2 July 2026 applies them: 'Provision as % revenue billed claimed' on the revenue net of electricity duty (Table 4-114)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's method as it states it; the 2019 Regulations are not in this session — unverified until a person reads the clause"
   }
  ]
 }

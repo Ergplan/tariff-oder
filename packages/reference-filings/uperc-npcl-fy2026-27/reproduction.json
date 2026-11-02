@@ -13072,6 +13072,66 @@
    ]
   },
   {
+   "binding": "approval-trueup-nti-fy25.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "bad and doubtful debts approved FY2024-25 (Table 4-114) order:bd.approved.provision",
+     "output": "bad_debts_trueup_allowed",
+     "result": "match",
+     "filed": "10.79",
+     "computed": "10.79",
+     "why": null,
+     "exact": "10.78678030861776800779999208"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "non-tariff income approved FY2024-25 (Tables 4-117, 4-118) order:tr.fund_income",
+     "output": "nti_fund_income",
+     "result": "differs",
+     "filed": "39.07",
+     "computed": "39.05",
+     "why": null,
+     "exact": "39.0522"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "non-tariff income approved FY2024-25 (Tables 4-117, 4-118) order:tr.allowed",
+     "output": "nti_treasury_excluded",
+     "result": "match",
+     "filed": "37.99",
+     "computed": "37.99",
+     "why": null,
+     "exact": "37.99"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "non-tariff income approved FY2024-25 (Tables 4-117, 4-118) order:nti.treasury",
+     "output": "nti_treasury_excluded",
+     "result": "match",
+     "filed": "37.99",
+     "computed": "37.99",
+     "why": null,
+     "exact": "37.99"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "non-tariff income approved FY2024-25 (Tables 4-117, 4-118) order:nti.approved",
+     "output": "nti_trueup",
+     "result": "match",
+     "filed": "12.38",
+     "computed": "12.38",
+     "why": null,
+     "exact": "12.38"
+    }
+   ]
+  },
+  {
    "binding": "approval-trueup-om-fy25.json",
    "checks": [
     {

@@ -1,0 +1,59 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "rates": "order/figures-trueup-nti-fy2024-25.json",
+ "places": 2,
+ "note": "The true-up's bad debts and non-tariff income for FY2024-25 reproduced from the order's figures with draft rules that follow its stated method (Tables 4-113, 4-114, 4-117, 4-118).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "bad and doubtful debts approved FY2024-25 (Table 4-114)",
+   "inputs": {
+    "record:bad_debts_claimed_trueup": {
+     "rate": "bd.claimed.provision"
+    },
+    "record:revenue_billed_claimed": {
+     "rate": "bd.claimed.billed"
+    },
+    "record:revenue_approved_net_of_duty": {
+     "rate": "bd.approved.revenue"
+    }
+   },
+   "checks": {
+    "bad_debts_trueup_allowed": "order:bd.approved.provision"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "non-tariff income approved FY2024-25 (Tables 4-117, 4-118)",
+   "inputs": {
+    "record:shareholders_fund_average": {
+     "rate": "tr.average_investment"
+    },
+    "assumption:bank_rate_weighted": {
+     "rate": "tr.rate"
+    },
+    "record:interest_on_bank_deposits": {
+     "rate": "tr.deposits"
+    },
+    "record:nti_audited": {
+     "rate": "nti.audited"
+    },
+    "record:nti_other_excluded": {
+     "value": "0.41",
+     "unit": "INR_crore",
+     "why": "rows 15–17 of Table 4-118: 0.22 + 0.02 + 0.17 (instalment interest, telecom income, the review order's FY2023-24 instalment interest)"
+    }
+   },
+   "checks": {
+    "nti_fund_income": "order:tr.fund_income",
+    "nti_treasury_excluded": [
+     "order:tr.allowed",
+     "order:nti.treasury"
+    ],
+    "nti_trueup": "order:nti.approved"
+   }
+  }
+ ]
+}
