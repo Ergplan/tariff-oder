@@ -42,6 +42,7 @@ class OutputCheck:
     unit: str | None = None
     why: str | None = None
     rule: str | None = None
+    exact: str | None = None  # the computed value unrounded, in the rule's unit (to feed a later year)
 
 
 @dataclass
@@ -241,6 +242,7 @@ def reproduce(
                     computed=str(got),
                     unit=unit,
                     rule=f"{res.rule} v{res.version} ({res.status})",
+                    exact=str(res.value),
                 )
             )
     return out
@@ -615,19 +617,51 @@ def reproduce_pipeline(
     """The chain computed end to end for the columns a pipeline binding names
     (``{"columns": {"FY2026-27|petitioned": {"record:pp": {"binding": …, "output": …}}}}``): each
     fed input is the value a schedule's binding computed for that year (``results``: binding →
-    its checks; the unrounded result, in the rule's unit), not the format's own row.  A feed whose
-    schedule computed nothing is listed as not fed; every input not fed stays a record, listed."""
+    its checks; the unrounded result, in the rule's unit), not the format's own row.  A feed may
+    instead name another column of this pipeline (``{"column": "FY2025-26|petitioned", "output":
+    "arr_gap_cumulative", "why": …}``): the value that column's end-to-end computation reached —
+    the regulatory asset a year opens with is the closing the year before computed, so a
+    difference upstream travels down rather than being reset by a filed figure.  Columns are
+    evaluated in that order (a cycle is an error) and reported in the binding's order.  A feed
+    that computed nothing is listed as not fed; every input not fed stays a record, listed."""
     from collections import Counter
     from dataclasses import asdict
 
     unit_of = {r.output: r.unit for r in rules}
     out: dict[str, Any] = {"chain": binding["chain"], "columns": []}
     for key, feeds in binding["columns"].items():
+        for source, f in feeds.items():
+            if "column" in f and not f.get("why"):
+                raise RuleError(f"{key}: {source} is fed from column {f['column']} without a reason")
+            if "column" in f and f["column"] not in binding["columns"]:
+                raise RuleError(f"{key}: {source} is fed from {f['column']}, not a column of this pipeline")
+    order: list[str] = []
+    pending = list(binding["columns"])
+    while pending:
+        ready = [
+            k for k in pending if all(f.get("column") in order for f in binding["columns"][k].values() if "column" in f)
+        ]
+        if not ready:
+            raise RuleError(f"pipeline columns feed each other in a cycle: {', '.join(pending)}")
+        order.append(ready[0])
+        pending.remove(ready[0])
+    reached: dict[str, dict[str, str]] = {}  # column → output → the unrounded value it computed
+    done: dict[str, dict[str, Any]] = {}
+    for key in order:
+        feeds = binding["columns"][key]
         fy, voice = key.split("|")
         fed: dict[str, tuple[Decimal | str, str]] = {}
         sources: dict[str, dict[str, str]] = {}
         missing: list[str] = []
         for source, f in feeds.items():
+            if "column" in f:
+                value = reached.get(f["column"], {}).get(f["output"])
+                if value is None:
+                    missing.append(source)
+                    continue
+                fed[source] = (value, unit_of[f["output"]])
+                sources[source] = {"column": f["column"], "output": f["output"], "value": value}
+                continue
             # a feed may take another year's value — the petitioner carries a rate forward
             # (NPCL's FY2026-27 loan rate is its FY2025-26 rate) — only with the binding's reason
             year = f.get("fiscal_year", fy)
@@ -649,18 +683,18 @@ def reproduce_pipeline(
             if year != fy:
                 sources[source]["fiscal_year"] = year
         rep = reproduce(sheets[chain["sheet"]], chain, rules, sheets, fed={(fy, voice): fed})
+        reached[key] = {c.output: c.exact for c in rep.checks if c.exact is not None}
         checks = [asdict(c) for c in rep.checks if c.result != "no_filed_value"]
-        out["columns"].append(
-            {
-                "fiscal_year": fy,
-                "voice": voice,
-                "fed": sources,
-                "not_fed": missing,
-                "records": sorted(s for s in chain["inputs"] if s not in fed),
-                "counts": dict(Counter(c["result"] for c in checks)),
-                "checks": checks,
-            }
-        )
+        done[key] = {
+            "fiscal_year": fy,
+            "voice": voice,
+            "fed": sources,
+            "not_fed": missing,
+            "records": sorted(s for s in chain["inputs"] if s not in fed),
+            "counts": dict(Counter(c["result"] for c in checks)),
+            "checks": checks,
+        }
+    out["columns"] = [done[k] for k in binding["columns"]]
     return out
 
 

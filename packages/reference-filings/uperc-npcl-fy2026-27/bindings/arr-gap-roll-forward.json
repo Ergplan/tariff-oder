@@ -1,0 +1,100 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "places": 2,
+ "note": "The regulatory asset rolled forward along the petition's own chain: each column's 'Accumulated Revenue (Gap)/Surplus from Preceding Years' (row 59) against the cumulative closing (row 63) of the column it continues.  The approved columns (E, H, K) are not one chain — each is a different order's approval, and later orders revise earlier years — so they are not tied.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "D59 ← C63: final true-up FY2022-23 opens with the final true-up FY2021-22's closing",
+   "inputs": {
+    "record:gap_closing_prior": [
+     "C63",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "gap_opening_carried": "ARR!D59"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F59 ← D63: FY2023-24 actual opens with the FY2022-23 final true-up's closing",
+   "inputs": {
+    "record:gap_closing_prior": [
+     "D63",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "gap_opening_carried": "ARR!F59"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "G59 ← D63: FY2023-24 claimed opens with the FY2022-23 final true-up's closing",
+   "inputs": {
+    "record:gap_closing_prior": [
+     "D63",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "gap_opening_carried": "ARR!G59"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "I59 ← G63: FY2024-25 actual opens with FY2023-24 as claimed",
+   "inputs": {
+    "record:gap_closing_prior": [
+     "G63",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "gap_opening_carried": "ARR!I59"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "J59 ← G63: FY2024-25 claimed opens with FY2023-24 as claimed",
+   "inputs": {
+    "record:gap_closing_prior": [
+     "G63",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "gap_opening_carried": "ARR!J59"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "L59 ← J63: the APR estimate opens with the true-up FY2024-25 as claimed",
+   "inputs": {
+    "record:gap_closing_prior": [
+     "J63",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "gap_opening_carried": "ARR!L59"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "M59 ← L63: the ARR opens with the APR estimate's closing",
+   "inputs": {
+    "record:gap_closing_prior": [
+     "L63",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "gap_opening_carried": "ARR!M59"
+   }
+  }
+ ]
+}

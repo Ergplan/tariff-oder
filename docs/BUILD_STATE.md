@@ -1005,6 +1005,33 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 95 (2026-11-02): the regulatory asset rolled forward, end to end.**  Each year's
+  "gap / surplus from preceding years" (ARR row 59) was a record in every column, taken on
+  trust.
+  - **Ties along the petition's chain: 7 / 7 match** (new binding `arr-gap-roll-forward.json`,
+    rule `uperc.carried.gap_opening`).  Each opening is the cumulative closing (row 63) of the
+    column it continues: C→D, D→F, D→G, G→I, G→J, J→L, L→M.  Coverage now shows row 59 as tied
+    in those columns.
+  - **Approved columns not tied.**  E, H and K are each a different order's approval, and later
+    orders revise earlier years, so they are not one chain.  An observation for the reviewer:
+    K59 (1,242.59) equals H63 (1,254.43) less I62's carrying cost (11.84).  It is not bound.
+  - **The end-to-end pipeline carries the asset.**  A pipeline column can now be fed from an
+    earlier column's computed output (`{"column": …, "output": …, "why": …}`).  Columns are
+    evaluated in dependency order, a cycle or an unexplained or unknown feed is an error, and
+    `OutputCheck` keeps the unrounded value to feed with.  The APR year opens with the true-up
+    year's computed closing, and the ARR year with the APR year's.
+  - **Result:** each year's net ARR and gap still match.  A40's 0.19 (the March security-deposit
+    interest) now travels down with carrying cost:
+    - the true-up closes at (267.94) against the filed (267.74);
+    - the APR at (629.59) against (629.37);
+    - the ARR at (1,002.64) against (1,002.39).
+    The ARR and APR columns are therefore 10 / 12, the two differing rows being the carried gap.
+    The previous 12 / 12 had reset each year's opening to the filed figure.  A40 now states
+    this effect.
+  - **Tests changed with the design:** the pipeline unit and integration tests now expect
+    10 / 12 and the 0.22 / 0.25 carried.
+  Nothing verified, nothing approved.
+
   **Increment 94 (2026-11-02): the regulations' filing requirements as a checklist (R-PKG-1).**
   I read the 2025 Distribution Regulations for a list of mandatory formats (item 5a): **they
   have none.**  Regs. 4.2, 5.1 and 6.1 refer to "guidelines and formats as may be prescribed by
@@ -2380,6 +2407,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 95 (2026-11-02): 453 passed** (+2 unit: a pipeline column fed from another only with a reason, never in a cycle or from a column the pipeline lacks; the real roll-forward 7 / 7.  Changed with the design: the pipeline tests expect the ARR and APR years at 10 / 12 with A40's effect carried, 0.22 and 0.25).  Ruff, format and web typecheck clean.
 - **Increment 94 (2026-11-02): 451 passed** (+4 unit: every checklist quote on its page of the committed regulation; a checklist without a hash, evidence without a reason or a text without its weight refused; grading — a mention never enough, "Appendix-I" not "Appendix-II", a document without its bytes not present; NPCL's result; the integration test checks the API's checklist block).  Ruff, format and web typecheck clean.
 - **Increment 93 (2026-11-02): 447 passed** (+6 unit: figures parsed as printed; traced / near / opposite sign / untraced, a two-digit figure never traced; a DOCX's merged cell kept once with its title; a summary table bound with sums, signs and dashes; a binding refuses an unknown table, a wrong header, a row matched twice; the real nine tables 232 / 21; the integration test checks the API's narrative block).  Ruff, format, contracts and web typecheck clean.
 - **Increment 92 (2026-11-02): 441 passed** (+2 unit: a kVAh rate fed to the per-kWh energy rule blocks, never a revenue; the quote checker on a PDF made in the test finds quotes and column headers, and reports a wrong page, a missing header and another document; the real-data test adds ESR4A 47 / 47 and the 58-rate record).  `scripts/check_order_quotes.py` on the real order: 58 / 58.  Ruff, format and contracts clean.
@@ -2607,7 +2635,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 94) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 95) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2646,8 +2674,10 @@ entries below are the per-increment history.**
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
   held by the operator).  **160 draft UPERC rules** in 23 files reproduce the filed formats.
   `/arr/reference/uperc-npcl-fy2026-27` shows the following:
-  - **End to end from the schedules:** the ARR and APR years are 12 / 12 (net ARR 3,481.83 and
-    3,200.63).  The true-up year differs by exactly A40's 0.19.
+  - **End to end from the schedules:** the regulatory asset is carried from year to year as
+    computed (increment 95).  The net ARR and gap of the ARR and APR years match (3,481.83 and
+    3,200.63).  The true-up differs by exactly A40's 0.19, which reaches the ARR year's carried
+    gap as 0.25 (10 / 12 there).
   - **How each ARR figure is established:** FY2026-27 is 17 computed, 15 tied, 14 records, none
     differing.
   - **Formats accounted, against the filing's index:** 40 reproduced, 9 read, 22 present, 2

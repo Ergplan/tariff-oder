@@ -25,7 +25,7 @@ type Filing = {
     fiscal_year: string;
     voice: string;
     counts: Counts;
-    fed: Record<string, { binding: string; output: string; value: string }>;
+    fed: Record<string, { binding?: string; column?: string; output: string; value: string }>;
     not_fed: string[];
     records: string[];
     checks: { output: string; label: string; filed: string | null; computed: string | null; result: string }[];
@@ -290,7 +290,7 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
               <>
                 <h3 style={{ marginTop: "1.4rem" }}>End to end: the chain fed by the schedules</h3>
                 <p className="muted" style={{ fontSize: "0.85rem" }}>
-                  The same chain, with its record inputs replaced by what each schedule&apos;s reproduction computes (power purchase, O&amp;M, depreciation, interest on security deposit, bad debts, revenue…). What is not fed stays the format&apos;s own figure, listed.
+                  The same chain, with its record inputs replaced by what each schedule&apos;s reproduction computes (power purchase, O&amp;M, depreciation, interest on security deposit, bad debts, revenue…), and each year&apos;s opening regulatory asset taken from the year before as computed — so a difference upstream travels down. What is not fed stays the format&apos;s own figure, listed.
                 </p>
                 <div className="table-wrap">
                   <table>
@@ -315,7 +315,7 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                                 <ul className="mono" style={{ fontSize: "0.75rem", margin: "0.3rem 0" }}>
                                   {Object.entries(p.fed).map(([k, x]) => (
                                     <li key={k}>
-                                      {k} ← {x.binding}: {x.output}
+                                      {k} ← {x.binding ?? `${x.column} (as computed)`}: {x.output}
                                     </li>
                                   ))}
                                 </ul>

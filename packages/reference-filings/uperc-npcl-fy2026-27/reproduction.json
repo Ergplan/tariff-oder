@@ -24,7 +24,8 @@
      "computed": "59.29",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "59.285270224999981"
     },
     {
      "output": "arr_om_total",
@@ -38,7 +39,8 @@
      "computed": "128.92",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "128.923421253999981"
     },
     {
      "output": "arr_total_expenditure",
@@ -52,7 +54,8 @@
      "computed": "1915.97",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "1915.967447967776774"
     },
     {
      "output": "arr_deductions",
@@ -66,7 +69,8 @@
      "computed": "8.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "8.84708664091823999"
     },
     {
      "output": "arr_net",
@@ -80,7 +84,8 @@
      "computed": "1907.12",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "1907.12036132685853401"
     },
     {
      "output": "arr_gap",
@@ -94,7 +99,8 @@
      "computed": "32.54",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "32.54329867114166599"
     },
     {
      "output": "arr_gap_after_revision",
@@ -108,7 +114,8 @@
      "computed": "32.54",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "32.54329867114166599"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -122,7 +129,8 @@
      "computed": "32.54",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "32.54329867114166599"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -136,7 +144,8 @@
      "computed": "325.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "325.97627037304131599"
     },
     {
      "output": "arr_carrying_cost",
@@ -150,7 +159,8 @@
      "computed": null,
      "unit": null,
      "why": "input gap_rate (assumption:gap_carrying_rate) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap_cumulative",
@@ -164,7 +174,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_carrying_cost, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -178,7 +189,8 @@
      "computed": "1939.66",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "1939.6636599980002"
     },
     {
      "output": "receipts_total",
@@ -192,7 +204,8 @@
      "computed": "1939.66",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "1939.6636599980002"
     },
     {
      "output": "arr_employee_net",
@@ -206,7 +219,8 @@
      "computed": "66.75",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "66.748461131999999"
     },
     {
      "output": "arr_om_total",
@@ -220,7 +234,8 @@
      "computed": "159.88",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "159.875080299999985"
     },
     {
      "output": "arr_total_expenditure",
@@ -234,7 +249,8 @@
      "computed": "2477.57",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2477.5650306193616092"
     },
     {
      "output": "arr_deductions",
@@ -248,7 +264,8 @@
      "computed": "12.48",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "12.48448324699998"
     },
     {
      "output": "arr_net",
@@ -262,7 +279,8 @@
      "computed": "2465.08",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2465.0805473723616292"
     },
     {
      "output": "arr_gap",
@@ -276,7 +294,8 @@
      "computed": "-257.3",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-257.3024651003110292"
     },
     {
      "output": "arr_gap_after_revision",
@@ -290,7 +309,8 @@
      "computed": "-257.3",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "-257.3024651003110292"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -304,7 +324,8 @@
      "computed": "-257.3",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "-257.3024651003110292"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -318,7 +339,8 @@
      "computed": "78.55",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "78.5456400682994308"
     },
     {
      "output": "arr_carrying_cost",
@@ -332,7 +354,8 @@
      "computed": "6.6",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "6.604400314713251384625"
     },
     {
      "output": "arr_gap_cumulative",
@@ -346,7 +369,8 @@
      "computed": "85.15",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "85.150040383012682184625"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -360,7 +384,8 @@
      "computed": "2344.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "2344.8331286559506"
     },
     {
      "output": "receipts_total",
@@ -374,7 +399,8 @@
      "computed": "2207.78",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2207.7780822720506"
     },
     {
      "output": "arr_employee_net",
@@ -388,7 +414,8 @@
      "computed": "22.6",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "22.59726982978192"
     },
     {
      "output": "arr_om_total",
@@ -402,7 +429,8 @@
      "computed": "89.92",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "89.923319621901312"
     },
     {
      "output": "arr_total_expenditure",
@@ -416,7 +444,8 @@
      "computed": "2403.93",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2403.931458540993803"
     },
     {
      "output": "arr_deductions",
@@ -430,7 +459,8 @@
      "computed": "36.9",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "36.9"
     },
     {
      "output": "arr_net",
@@ -444,7 +474,8 @@
      "computed": "2367.03",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2367.031458540993803"
     },
     {
      "output": "arr_gap",
@@ -458,7 +489,8 @@
      "computed": "46.2",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "46.202193491341197"
     },
     {
      "output": "arr_gap_after_revision",
@@ -472,7 +504,8 @@
      "computed": "46.2",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "46.202193491341197"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -486,7 +519,8 @@
      "computed": "46.2",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "46.202193491341197"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -500,7 +534,8 @@
      "computed": "1207.82",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "1207.822348505631197"
     },
     {
      "output": "arr_carrying_cost",
@@ -514,7 +549,8 @@
      "computed": "59.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "59.9765133703480052990625"
     },
     {
      "output": "arr_gap_cumulative",
@@ -528,7 +564,8 @@
      "computed": "1267.80",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "1267.7988618759792022990625"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -542,7 +579,8 @@
      "computed": "2681.37",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "2681.37072448037226"
     },
     {
      "output": "receipts_total",
@@ -556,7 +594,8 @@
      "computed": "2413.23",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2413.233652032335"
     },
     {
      "output": "arr_employee_net",
@@ -570,7 +609,8 @@
      "computed": "65.93",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "65.932115431000011"
     },
     {
      "output": "arr_om_total",
@@ -584,7 +624,8 @@
      "computed": "166.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "166.762206324499999"
     },
     {
      "output": "arr_total_expenditure",
@@ -598,7 +639,8 @@
      "computed": "2380.27",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2380.27172223749664276"
     },
     {
      "output": "arr_deductions",
@@ -612,7 +654,8 @@
      "computed": "18.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "18.733925073923976"
     },
     {
      "output": "arr_net",
@@ -626,7 +669,8 @@
      "computed": "2361.54",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2361.53779716357266676"
     },
     {
      "output": "arr_gap",
@@ -640,7 +684,8 @@
      "computed": "-40.56",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-40.56393863794366676"
     },
     {
      "output": "arr_gap_after_revision",
@@ -654,7 +699,8 @@
      "computed": "-40.56",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "-40.56393863794366676"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -668,7 +714,8 @@
      "computed": "-40.56",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "-40.56393863794366676"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -682,7 +729,8 @@
      "computed": "44.59",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "44.58610174506893324"
     },
     {
      "output": "arr_carrying_cost",
@@ -696,7 +744,8 @@
      "computed": "3.28",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "3.2839460976170638101375"
     },
     {
      "output": "arr_gap_cumulative",
@@ -710,7 +759,8 @@
      "computed": "47.87",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "47.8700478426859970501375"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -724,7 +774,8 @@
      "computed": "2575.69",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "2575.68834362562905"
     },
     {
      "output": "receipts_total",
@@ -738,7 +789,8 @@
      "computed": "2320.97",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2320.973858525629"
     },
     {
      "output": "arr_employee_net",
@@ -752,7 +804,8 @@
      "computed": "65.93",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "65.932115431000011"
     },
     {
      "output": "arr_om_total",
@@ -766,7 +819,8 @@
      "computed": "166.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "166.762206324499999"
     },
     {
      "output": "arr_total_expenditure",
@@ -780,7 +834,8 @@
      "computed": "2380.27",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2380.27172223749664276"
     },
     {
      "output": "arr_deductions",
@@ -794,7 +849,8 @@
      "computed": "18.78",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "18.775925073923976"
     },
     {
      "output": "arr_net",
@@ -808,7 +864,8 @@
      "computed": "2361.5",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2361.49579716357266676"
     },
     {
      "output": "arr_gap",
@@ -822,7 +879,8 @@
      "computed": "-40.52",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-40.52193863794366676"
     },
     {
      "output": "arr_gap_after_revision",
@@ -836,7 +894,8 @@
      "computed": "-40.52",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "-40.52193863794366676"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -850,7 +909,8 @@
      "computed": "-40.52",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "-40.52193863794366676"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -864,7 +924,8 @@
      "computed": "44.63",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "44.62810174506893324"
     },
     {
      "output": "arr_carrying_cost",
@@ -878,7 +939,8 @@
      "computed": "3.29",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "3.2850092226170638101375"
     },
     {
      "output": "arr_gap_cumulative",
@@ -892,7 +954,8 @@
      "computed": "47.91",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "47.9131109676859970501375"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -906,7 +969,8 @@
      "computed": "2575.69",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "2575.68834362562905"
     },
     {
      "output": "receipts_total",
@@ -920,7 +984,8 @@
      "computed": "2320.97",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2320.973858525629"
     },
     {
      "output": "arr_employee_net",
@@ -934,7 +999,8 @@
      "computed": "18.56",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "18.5559817719409"
     },
     {
      "output": "arr_om_total",
@@ -948,7 +1014,8 @@
      "computed": "93.55",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "93.55346291501541"
     },
     {
      "output": "arr_total_expenditure",
@@ -962,7 +1029,8 @@
      "computed": "2728.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2728.7686935015230963"
     },
     {
      "output": "arr_deductions",
@@ -976,7 +1044,8 @@
      "computed": "53.01",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "53.01"
     },
     {
      "output": "arr_net",
@@ -990,7 +1059,8 @@
      "computed": "2675.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2675.7586935015230963"
     },
     {
      "output": "arr_gap",
@@ -1004,7 +1074,8 @@
      "computed": "49.9",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "49.9048878659544037"
     },
     {
      "output": "arr_gap_after_revision",
@@ -1018,7 +1089,8 @@
      "computed": "49.9",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "49.9048878659544037"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -1032,7 +1104,8 @@
      "computed": "49.9",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "49.9048878659544037"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -1046,7 +1119,8 @@
      "computed": "1132.09",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "1132.0871439656354037"
     },
     {
      "output": "arr_carrying_cost",
@@ -1060,7 +1134,8 @@
      "computed": "56.05",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "56.04869418915332146865625"
     },
     {
      "output": "arr_gap_cumulative",
@@ -1074,7 +1149,8 @@
      "computed": "1188.14",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "1188.13583815478872516865625"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -1088,7 +1164,8 @@
      "computed": "3028.52",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "3028.5150904083084"
     },
     {
      "output": "receipts_total",
@@ -1102,7 +1179,8 @@
      "computed": "2725.66",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2725.6635813674775"
     },
     {
      "output": "arr_employee_net",
@@ -1116,7 +1194,8 @@
      "computed": "78.23",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "78.230413162999998"
     },
     {
      "output": "arr_om_total",
@@ -1130,7 +1209,8 @@
      "computed": "191.51",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "191.505522902454583"
     },
     {
      "output": "arr_total_expenditure",
@@ -1144,7 +1224,8 @@
      "computed": "2954.51",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2954.5051155527837199"
     },
     {
      "output": "arr_deductions",
@@ -1158,7 +1239,8 @@
      "computed": "16.08",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "16.075958733725197996"
     },
     {
      "output": "arr_net",
@@ -1172,7 +1254,8 @@
      "computed": "2938.43",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2938.429156819058521904"
     },
     {
      "output": "arr_gap",
@@ -1186,7 +1269,8 @@
      "computed": "-303.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-303.826564373699521904"
     },
     {
      "output": "arr_gap_after_revision",
@@ -1200,7 +1284,8 @@
      "computed": "-303.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "-303.826564373699521904"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -1214,7 +1299,8 @@
      "computed": "-303.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "-303.826564373699521904"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -1228,7 +1314,8 @@
      "computed": "-255.9",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "-255.903453406013411904"
     },
     {
      "output": "arr_carrying_cost",
@@ -1242,7 +1329,8 @@
      "computed": "-11.84",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "-11.83636072137028167918242467"
     },
     {
      "output": "arr_gap_cumulative",
@@ -1256,7 +1344,8 @@
      "computed": "-267.74",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "-267.7398141273836935831824247"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -1270,7 +1359,8 @@
      "computed": "2922.78",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "2922.77882552235895"
     },
     {
      "output": "receipts_total",
@@ -1284,7 +1374,8 @@
      "computed": "2634.6",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2634.602592445359"
     },
     {
      "output": "arr_employee_net",
@@ -1298,7 +1389,8 @@
      "computed": "78.23",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "78.230413162999998"
     },
     {
      "output": "arr_om_total",
@@ -1312,7 +1404,8 @@
      "computed": "191.51",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "191.505522902454583"
     },
     {
      "output": "arr_total_expenditure",
@@ -1326,7 +1419,8 @@
      "computed": "2954.51",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2954.5051155527837199"
     },
     {
      "output": "arr_deductions",
@@ -1340,7 +1434,8 @@
      "computed": "16.08",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "16.075958733725197996"
     },
     {
      "output": "arr_net",
@@ -1354,7 +1449,8 @@
      "computed": "2938.43",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2938.429156819058521904"
     },
     {
      "output": "arr_gap",
@@ -1368,7 +1464,8 @@
      "computed": "-303.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-303.826564373699521904"
     },
     {
      "output": "arr_gap_after_revision",
@@ -1382,7 +1479,8 @@
      "computed": "-303.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "-303.826564373699521904"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -1396,7 +1494,8 @@
      "computed": "-303.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "-303.826564373699521904"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -1410,7 +1509,8 @@
      "computed": "-255.9",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "-255.903453406013411904"
     },
     {
      "output": "arr_carrying_cost",
@@ -1424,7 +1524,8 @@
      "computed": "-11.84",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "-11.83636072137028167918242467"
     },
     {
      "output": "arr_gap_cumulative",
@@ -1438,7 +1539,8 @@
      "computed": "-267.74",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "-267.7398141273836935831824247"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -1452,7 +1554,8 @@
      "computed": "2922.78",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "2922.77882552235895"
     },
     {
      "output": "receipts_total",
@@ -1466,7 +1569,8 @@
      "computed": "2634.6",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2634.602592445359"
     },
     {
      "output": "arr_employee_net",
@@ -1480,7 +1584,8 @@
      "computed": "49.71",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "49.71"
     },
     {
      "output": "arr_om_total",
@@ -1494,7 +1599,8 @@
      "computed": "159.99",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "159.99"
     },
     {
      "output": "arr_total_expenditure",
@@ -1508,7 +1614,8 @@
      "computed": "3061.04",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "3061.04000000000003"
     },
     {
      "output": "arr_deductions",
@@ -1522,7 +1629,8 @@
      "computed": "73.12",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "73.12"
     },
     {
      "output": "arr_net",
@@ -1536,7 +1644,8 @@
      "computed": "2987.92",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2987.92000000000003"
     },
     {
      "output": "arr_gap",
@@ -1550,7 +1659,8 @@
      "computed": "-25.96",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-25.96000000000003"
     },
     {
      "output": "arr_gap_after_revision",
@@ -1564,7 +1674,8 @@
      "computed": "-25.96",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "-25.96000000000003"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -1578,7 +1689,8 @@
      "computed": "-25.96",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "-25.96000000000003"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -1592,7 +1704,8 @@
      "computed": "1216.63",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "1216.62999999999997"
     },
     {
      "output": "arr_carrying_cost",
@@ -1606,7 +1719,8 @@
      "computed": "62.2",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "62.249006249999999240625"
     },
     {
      "output": "arr_gap_cumulative",
@@ -1620,7 +1734,8 @@
      "computed": "1278.88",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "1278.879006249999969240625"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -1634,7 +1749,8 @@
      "computed": "3291.07",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "3291.06666666666657"
     },
     {
      "output": "receipts_total",
@@ -1648,7 +1764,8 @@
      "computed": "2961.96",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2961.96"
     },
     {
      "output": "arr_employee_net",
@@ -1662,7 +1779,8 @@
      "computed": "67.33",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "67.325511994922603"
     },
     {
      "output": "arr_om_total",
@@ -1676,7 +1794,8 @@
      "computed": "198.6",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "198.601178233562951"
     },
     {
      "output": "arr_total_expenditure",
@@ -1690,7 +1809,8 @@
      "computed": "3217.45",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "3217.445224050168987"
     },
     {
      "output": "arr_deductions",
@@ -1704,7 +1824,8 @@
      "computed": "16.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "16.81132252899293498"
     },
     {
      "output": "arr_net",
@@ -1718,7 +1839,8 @@
      "computed": "3200.63",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "3200.63390152117605202"
     },
     {
      "output": "arr_gap",
@@ -1732,7 +1854,8 @@
      "computed": "-315.87",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-315.86942074852105202"
     },
     {
      "output": "arr_gap_after_revision",
@@ -1746,7 +1869,8 @@
      "computed": "-315.87",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "-315.86942074852105202"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -1760,7 +1884,8 @@
      "computed": "-315.87",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "-315.86942074852105202"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -1774,7 +1899,8 @@
      "computed": "-583.61",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "-583.60923487590475202"
     },
     {
      "output": "arr_carrying_cost",
@@ -1788,7 +1914,8 @@
      "computed": "-45.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "-45.760011383926754296075"
     },
     {
      "output": "arr_gap_cumulative",
@@ -1802,7 +1929,8 @@
      "computed": "-629.37",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "-629.369246259831506316075"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -1816,7 +1944,8 @@
      "computed": "3207.4",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "3207.4024750263092"
     },
     {
      "output": "receipts_total",
@@ -1830,7 +1959,8 @@
      "computed": "2884.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "2884.764480772655"
     },
     {
      "output": "arr_employee_net",
@@ -1844,7 +1974,8 @@
      "computed": "67.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.employee_net v1 (draft)"
+     "rule": "uperc.arr.employee_net v1 (draft)",
+     "exact": "67.77378947067185"
     },
     {
      "output": "arr_om_total",
@@ -1858,7 +1989,8 @@
      "computed": "213.71",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "213.708885610709182"
     },
     {
      "output": "arr_total_expenditure",
@@ -1872,7 +2004,8 @@
      "computed": "3502.93",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "3502.926782010715331"
     },
     {
      "output": "arr_deductions",
@@ -1886,7 +2019,8 @@
      "computed": "21.1",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.deductions v1 (draft)"
+     "rule": "uperc.arr.deductions v1 (draft)",
+     "exact": "21.1014897173459607"
     },
     {
      "output": "arr_net",
@@ -1900,7 +2034,8 @@
      "computed": "3481.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "3481.8252922933693703"
     },
     {
      "output": "arr_gap",
@@ -1914,7 +2049,8 @@
      "computed": "-289.79",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-289.7869812664473703"
     },
     {
      "output": "arr_gap_after_revision",
@@ -1928,7 +2064,8 @@
      "computed": "-289.79",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_revised v1 (draft)"
+     "rule": "uperc.arr.gap_revised v1 (draft)",
+     "exact": "-289.7869812664473703"
     },
     {
      "output": "arr_gap_after_subsidy",
@@ -1942,7 +2079,8 @@
      "computed": "-289.79",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap_subsidy v1 (draft)"
+     "rule": "uperc.arr.gap_subsidy v1 (draft)",
+     "exact": "-289.7869812664473703"
     },
     {
      "output": "arr_gap_unrecovered",
@@ -1956,7 +2094,8 @@
      "computed": "-919.16",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.unrecovered v1 (draft)"
+     "rule": "uperc.arr.unrecovered v1 (draft)",
+     "exact": "-919.1562275262787703"
     },
     {
      "output": "arr_carrying_cost",
@@ -1970,7 +2109,8 @@
      "computed": "-83.23",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "-83.233244216003421653625"
     },
     {
      "output": "arr_gap_cumulative",
@@ -1984,7 +2124,8 @@
      "computed": "-1002.39",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "-1002.389471742282191953625"
     },
     {
      "output": "revenue_gross_current_tariff",
@@ -1998,7 +2139,8 @@
      "computed": "3549.11",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.revenue_gross v1 (draft)"
+     "rule": "uperc.arr.revenue_gross v1 (draft)",
+     "exact": "3549.1085218186794"
     },
     {
      "output": "receipts_total",
@@ -2012,7 +2154,8 @@
      "computed": "3192.04",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.receipts v1 (draft)"
+     "rule": "uperc.arr.receipts v1 (draft)",
+     "exact": "3192.038311026922"
     }
    ]
   },
@@ -2039,7 +2182,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "return_on_equity",
@@ -2053,7 +2197,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_addition",
@@ -2067,7 +2212,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_loan",
@@ -2081,7 +2227,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_working_capital",
@@ -2095,7 +2242,8 @@
      "computed": null,
      "unit": null,
      "why": "needs wc_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "tax_recoverable",
@@ -2109,7 +2257,8 @@
      "computed": null,
      "unit": null,
      "why": "needs tax_on_income, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_om_total",
@@ -2123,7 +2272,8 @@
      "computed": "128.92",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "128.923421253999981"
     },
     {
      "output": "arr_total_expenditure",
@@ -2137,7 +2287,8 @@
      "computed": null,
      "unit": null,
      "why": "needs interest_on_loan, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_net",
@@ -2151,7 +2302,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_total_expenditure, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap",
@@ -2165,7 +2317,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_carrying_cost",
@@ -2179,7 +2332,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_after_subsidy, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap_cumulative",
@@ -2193,7 +2347,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_unrecovered, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -2207,7 +2362,8 @@
      "computed": null,
      "unit": null,
      "why": "needs net_capitalisation, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "return_on_equity",
@@ -2221,7 +2377,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_addition",
@@ -2235,7 +2392,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_loan",
@@ -2249,7 +2407,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_working_capital",
@@ -2263,7 +2422,8 @@
      "computed": "1.07",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "1.072975905962921546912733159"
     },
     {
      "output": "tax_recoverable",
@@ -2277,7 +2437,8 @@
      "computed": null,
      "unit": null,
      "why": "needs tax_on_income, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_om_total",
@@ -2291,7 +2452,8 @@
      "computed": "159.88",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "159.875080299999985"
     },
     {
      "output": "arr_total_expenditure",
@@ -2305,7 +2467,8 @@
      "computed": null,
      "unit": null,
      "why": "needs interest_on_loan, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_net",
@@ -2319,7 +2482,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_total_expenditure, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap",
@@ -2333,7 +2497,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_carrying_cost",
@@ -2347,7 +2512,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_after_subsidy, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap_cumulative",
@@ -2361,7 +2527,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_unrecovered, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -2375,7 +2542,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "return_on_equity",
@@ -2389,7 +2557,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_addition",
@@ -2403,7 +2572,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_loan",
@@ -2417,7 +2587,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_working_capital",
@@ -2431,7 +2602,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0.000"
     },
     {
      "output": "tax_recoverable",
@@ -2445,7 +2617,8 @@
      "computed": null,
      "unit": null,
      "why": "needs tax_on_income, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_om_total",
@@ -2459,7 +2632,8 @@
      "computed": "89.92",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "89.923319621901312"
     },
     {
      "output": "arr_total_expenditure",
@@ -2473,7 +2647,8 @@
      "computed": null,
      "unit": null,
      "why": "needs interest_on_loan, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_net",
@@ -2487,7 +2662,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_total_expenditure, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap",
@@ -2501,7 +2677,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_carrying_cost",
@@ -2515,7 +2692,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_after_subsidy, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap_cumulative",
@@ -2529,7 +2707,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_unrecovered, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -2543,7 +2722,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "return_on_equity",
@@ -2557,7 +2737,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_addition",
@@ -2571,7 +2752,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_loan",
@@ -2585,7 +2767,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_working_capital",
@@ -2599,7 +2782,8 @@
      "computed": "0.16",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0.1647762715412995305528785357"
     },
     {
      "output": "tax_recoverable",
@@ -2613,7 +2797,8 @@
      "computed": null,
      "unit": null,
      "why": "needs tax_on_roe, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_om_total",
@@ -2627,7 +2812,8 @@
      "computed": "166.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "166.762206324499999"
     },
     {
      "output": "arr_total_expenditure",
@@ -2641,7 +2827,8 @@
      "computed": null,
      "unit": null,
      "why": "needs interest_on_loan, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_net",
@@ -2655,7 +2842,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_total_expenditure, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap",
@@ -2669,7 +2857,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_carrying_cost",
@@ -2683,7 +2872,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_after_subsidy, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap_cumulative",
@@ -2697,7 +2887,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_unrecovered, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -2711,7 +2902,8 @@
      "computed": "22.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "22.7304615440999640"
     },
     {
      "output": "return_on_equity",
@@ -2725,7 +2917,8 @@
      "computed": "78.67",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.roe v1 (draft)"
+     "rule": "uperc.myt2019.roe v1 (draft)",
+     "exact": "78.670003246536627300"
     },
     {
      "output": "normative_loan_addition",
@@ -2739,7 +2932,8 @@
      "computed": "53.04",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "53.0377436028999160"
     },
     {
      "output": "interest_on_loan",
@@ -2753,7 +2947,8 @@
      "computed": "50.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.interest v1 (draft)"
+     "rule": "uperc.myt2019.loan.interest v1 (draft)",
+     "exact": "50.8490745179991087121648608"
     },
     {
      "output": "interest_on_working_capital",
@@ -2767,7 +2962,8 @@
      "computed": "0.16",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0.1647762715412995305528785357"
     },
     {
      "output": "tax_recoverable",
@@ -2781,7 +2977,8 @@
      "computed": "26.46",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "26.45882298627370424265554842"
     },
     {
      "output": "arr_om_total",
@@ -2795,7 +2992,8 @@
      "computed": "166.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "166.762206324499999"
     },
     {
      "output": "arr_total_expenditure",
@@ -2809,7 +3007,8 @@
      "computed": "2380.45",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2380.445905688195598285373288"
     },
     {
      "output": "arr_net",
@@ -2823,7 +3022,8 @@
      "computed": "2361.7",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2361.669980614271622285373288"
     },
     {
      "output": "arr_gap",
@@ -2837,7 +3037,8 @@
      "computed": "-40.70",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-40.696122088642622285373288"
     },
     {
      "output": "arr_carrying_cost",
@@ -2851,7 +3052,8 @@
      "computed": "3.28",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "3.280600204021246498401488648"
     },
     {
      "output": "arr_gap_cumulative",
@@ -2865,7 +3067,8 @@
      "computed": "47.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "47.73451849839122421302820065"
     },
     {
      "output": "equity_addition",
@@ -2879,7 +3082,8 @@
      "computed": null,
      "unit": null,
      "why": "needs net_capitalisation, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "return_on_equity",
@@ -2893,7 +3097,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_addition",
@@ -2907,7 +3112,8 @@
      "computed": null,
      "unit": null,
      "why": "needs net_capitalisation, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_loan",
@@ -2921,7 +3127,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_working_capital",
@@ -2935,7 +3142,8 @@
      "computed": "0.96",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0.96486746028456794985"
     },
     {
      "output": "tax_recoverable",
@@ -2949,7 +3157,8 @@
      "computed": null,
      "unit": null,
      "why": "needs tax_on_income, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_om_total",
@@ -2963,7 +3172,8 @@
      "computed": "93.55",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "93.55346291501541"
     },
     {
      "output": "arr_total_expenditure",
@@ -2977,7 +3187,8 @@
      "computed": null,
      "unit": null,
      "why": "needs interest_on_loan, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_net",
@@ -2991,7 +3202,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_total_expenditure, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap",
@@ -3005,7 +3217,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_carrying_cost",
@@ -3019,7 +3232,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_after_subsidy, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap_cumulative",
@@ -3033,7 +3247,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_unrecovered, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -3047,7 +3262,8 @@
      "computed": "64.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "64.7672732037000600"
     },
     {
      "output": "return_on_equity",
@@ -3061,7 +3277,8 @@
      "computed": "84.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.roe v1 (draft)"
+     "rule": "uperc.myt2019.roe v1 (draft)",
+     "exact": "84.9803126741916195375"
     },
     {
      "output": "normative_loan_addition",
@@ -3075,7 +3292,8 @@
      "computed": "151.12",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "151.1236374753001400"
     },
     {
      "output": "interest_on_loan",
@@ -3089,7 +3307,8 @@
      "computed": "53.62",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.interest v1 (draft)"
+     "rule": "uperc.myt2019.loan.interest v1 (draft)",
+     "exact": "53.62435176288611074440945561"
     },
     {
      "output": "interest_on_working_capital",
@@ -3103,7 +3322,8 @@
      "computed": null,
      "unit": null,
      "why": "needs wc_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "tax_recoverable",
@@ -3117,7 +3337,8 @@
      "computed": "28.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "28.58114856457203710337556127"
     },
     {
      "output": "arr_om_total",
@@ -3131,7 +3352,8 @@
      "computed": "191.51",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "191.505522902454583"
     },
     {
      "output": "arr_total_expenditure",
@@ -3145,7 +3367,8 @@
      "computed": null,
      "unit": null,
      "why": "needs interest_on_working_capital, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_net",
@@ -3159,7 +3382,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_total_expenditure, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap",
@@ -3173,7 +3397,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_carrying_cost",
@@ -3187,7 +3412,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_after_subsidy, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap_cumulative",
@@ -3201,7 +3427,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_unrecovered, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -3215,7 +3442,8 @@
      "computed": "64.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "64.7672732037000600"
     },
     {
      "output": "return_on_equity",
@@ -3229,7 +3457,8 @@
      "computed": "84.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.roe v1 (draft)"
+     "rule": "uperc.myt2019.roe v1 (draft)",
+     "exact": "84.9803126741916195375"
     },
     {
      "output": "normative_loan_addition",
@@ -3243,7 +3472,8 @@
      "computed": "151.12",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "151.1236374753001400"
     },
     {
      "output": "interest_on_loan",
@@ -3257,7 +3487,8 @@
      "computed": "53.62",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.interest v1 (draft)"
+     "rule": "uperc.myt2019.loan.interest v1 (draft)",
+     "exact": "53.62435176288611074440945561"
     },
     {
      "output": "interest_on_working_capital",
@@ -3271,7 +3502,8 @@
      "computed": "3.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "3.814790352392463030825865245"
     },
     {
      "output": "tax_recoverable",
@@ -3285,7 +3517,8 @@
      "computed": "28.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "28.58114856457203710337556127"
     },
     {
      "output": "arr_om_total",
@@ -3299,7 +3532,8 @@
      "computed": "191.51",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "191.505522902454583"
     },
     {
      "output": "arr_total_expenditure",
@@ -3313,7 +3547,8 @@
      "computed": "2954.51",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "2954.505115552783688916110882"
     },
     {
      "output": "arr_net",
@@ -3327,7 +3562,8 @@
      "computed": "2938.43",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "2938.429156819058490920110882"
     },
     {
      "output": "arr_gap",
@@ -3341,7 +3577,8 @@
      "computed": "-303.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-303.826564373699490920110882"
     },
     {
      "output": "arr_carrying_cost",
@@ -3355,7 +3592,8 @@
      "computed": "-11.84",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "-11.83636072137027991585958438"
     },
     {
      "output": "arr_gap_cumulative",
@@ -3369,7 +3607,8 @@
      "computed": "-267.74",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "-267.7398141273836608359704664"
     },
     {
      "output": "equity_addition",
@@ -3383,7 +3622,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "return_on_equity",
@@ -3397,7 +3637,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_addition",
@@ -3411,7 +3652,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_loan",
@@ -3425,7 +3667,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_working_capital",
@@ -3439,7 +3682,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0"
     },
     {
      "output": "tax_recoverable",
@@ -3453,7 +3697,8 @@
      "computed": null,
      "unit": null,
      "why": "needs tax_on_income, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_om_total",
@@ -3467,7 +3712,8 @@
      "computed": "159.99",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "159.99"
     },
     {
      "output": "arr_total_expenditure",
@@ -3481,7 +3727,8 @@
      "computed": null,
      "unit": null,
      "why": "needs interest_on_loan, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_net",
@@ -3495,7 +3742,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_total_expenditure, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap",
@@ -3509,7 +3757,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_carrying_cost",
@@ -3523,7 +3772,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_after_subsidy, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "arr_gap_cumulative",
@@ -3537,7 +3787,8 @@
      "computed": null,
      "unit": null,
      "why": "needs arr_gap_unrecovered, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -3551,7 +3802,8 @@
      "computed": "116.13",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "116.1281177746693620"
     },
     {
      "output": "return_on_equity",
@@ -3565,7 +3817,8 @@
      "computed": "98.07",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.roe v1 (draft)"
+     "rule": "uperc.myt2025.roe v1 (draft)",
+     "exact": "98.071161391969332150"
     },
     {
      "output": "normative_loan_addition",
@@ -3579,7 +3832,8 @@
      "computed": "270.97",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "270.9656081408951780"
     },
     {
      "output": "interest_on_loan",
@@ -3593,7 +3847,8 @@
      "computed": "65.69",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.loan.interest v1 (draft)"
+     "rule": "uperc.myt2025.loan.interest v1 (draft)",
+     "exact": "65.68531999953625111261879101"
     },
     {
      "output": "interest_on_working_capital",
@@ -3607,7 +3862,8 @@
      "computed": "4.1",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "4.09617100456015087072916667"
     },
     {
      "output": "tax_recoverable",
@@ -3621,7 +3877,8 @@
      "computed": "32.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "32.983950581476963752822322"
     },
     {
      "output": "arr_om_total",
@@ -3635,7 +3892,8 @@
      "computed": "198.6",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "198.601178233562951"
     },
     {
      "output": "arr_total_expenditure",
@@ -3649,7 +3907,8 @@
      "computed": "3217.45",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "3217.44522405016899088617028"
     },
     {
      "output": "arr_net",
@@ -3663,7 +3922,8 @@
      "computed": "3200.63",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "3200.63390152117605590617028"
     },
     {
      "output": "arr_gap",
@@ -3677,7 +3937,8 @@
      "computed": "-315.87",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-315.86942074852105590617028"
     },
     {
      "output": "arr_carrying_cost",
@@ -3691,7 +3952,8 @@
      "computed": "-45.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "-45.76001138392675450495665255"
     },
     {
      "output": "arr_gap_cumulative",
@@ -3705,7 +3967,8 @@
      "computed": "-629.37",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "-629.3692462598315104111269326"
     },
     {
      "output": "equity_addition",
@@ -3719,7 +3982,8 @@
      "computed": "128.82",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "128.8214042762883540"
     },
     {
      "output": "return_on_equity",
@@ -3733,7 +3997,8 @@
      "computed": "115.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.roe v1 (draft)"
+     "rule": "uperc.myt2025.roe v1 (draft)",
+     "exact": "115.767375545791166550"
     },
     {
      "output": "normative_loan_addition",
@@ -3747,7 +4012,8 @@
      "computed": "300.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "300.5832766446728260"
     },
     {
      "output": "interest_on_loan",
@@ -3761,7 +4027,8 @@
      "computed": "83.88",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.loan.interest v1 (draft)"
+     "rule": "uperc.myt2025.loan.interest v1 (draft)",
+     "exact": "83.87561260754432559497472345"
     },
     {
      "output": "interest_on_working_capital",
@@ -3775,7 +4042,8 @@
      "computed": "6.88",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "6.88121514190632266458333333"
     },
     {
      "output": "tax_recoverable",
@@ -3789,7 +4057,8 @@
      "computed": "38.94",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "38.935659981511543536"
     },
     {
      "output": "arr_om_total",
@@ -3803,7 +4072,8 @@
      "computed": "213.71",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.om v1 (draft)"
+     "rule": "uperc.arr.om v1 (draft)",
+     "exact": "213.708885610709182"
     },
     {
      "output": "arr_total_expenditure",
@@ -3817,7 +4087,8 @@
      "computed": "3502.93",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.expenditure v2 (draft)"
+     "rule": "uperc.arr.expenditure v2 (draft)",
+     "exact": "3502.926782010715345345558056"
     },
     {
      "output": "arr_net",
@@ -3831,7 +4102,8 @@
      "computed": "3481.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.net_arr v1 (draft)"
+     "rule": "uperc.arr.net_arr v1 (draft)",
+     "exact": "3481.825292293369384645558056"
     },
     {
      "output": "arr_gap",
@@ -3845,7 +4117,8 @@
      "computed": "-289.79",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.gap v1 (draft)"
+     "rule": "uperc.arr.gap v1 (draft)",
+     "exact": "-289.786981266447384645558056"
     },
     {
      "output": "arr_carrying_cost",
@@ -3859,7 +4132,8 @@
      "computed": "-83.23",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.carrying v1 (draft)"
+     "rule": "uperc.arr.carrying v1 (draft)",
+     "exact": "-83.23324421600342242469874551"
     },
     {
      "output": "arr_gap_cumulative",
@@ -3873,7 +4147,8 @@
      "computed": "-1002.39",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.arr.cumulative v1 (draft)"
+     "rule": "uperc.arr.cumulative v1 (draft)",
+     "exact": "-1002.389471742282207070256802"
     }
    ]
   },
@@ -3897,7 +4172,8 @@
      "computed": "202.01",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "202.012795709542826575256465"
     },
     {
      "output": "energy_input_dist",
@@ -3911,7 +4187,8 @@
      "computed": "2540.05",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "2540.050178709542826575256465"
     },
     {
      "output": "intra_loss_mu",
@@ -3925,7 +4202,8 @@
      "computed": "85.71",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "85.706264954791694140599738"
     },
     {
      "output": "energy_requirement_state",
@@ -3939,7 +4217,8 @@
      "computed": "2625.76",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "2625.756443664334520715856203"
     },
     {
      "output": "inter_state_loss",
@@ -3953,7 +4232,8 @@
      "computed": "3.2",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0319708040726625888542741567"
     },
     {
      "output": "dist_loss_mu",
@@ -3967,7 +4247,8 @@
      "computed": "237.17",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "237.172345002040298414786914"
     },
     {
      "output": "energy_input_dist",
@@ -3981,7 +4262,8 @@
      "computed": "3107.61",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "3107.606623636498098414786914"
     },
     {
      "output": "intra_loss_mu",
@@ -3995,7 +4277,8 @@
      "computed": "90.29",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "90.285702439899019521787373"
     },
     {
      "output": "energy_requirement_state",
@@ -4009,7 +4292,8 @@
      "computed": "3197.89",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "3197.892326076397117936574287"
     },
     {
      "output": "inter_state_loss",
@@ -4023,7 +4307,8 @@
      "computed": "2.91",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0290645135118037016579447054"
     },
     {
      "output": "dist_loss_mu",
@@ -4037,7 +4322,8 @@
      "computed": "273.88",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "273.876566226693845062360133"
     },
     {
      "output": "energy_input_dist",
@@ -4051,7 +4337,8 @@
      "computed": "3589.47",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "3589.470068501883845062360133"
     },
     {
      "output": "intra_loss_mu",
@@ -4065,7 +4352,8 @@
      "computed": "115.81",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "115.811344643252560777943565"
     },
     {
      "output": "energy_requirement_state",
@@ -4079,7 +4367,8 @@
      "computed": "3705.28",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "3705.281413145136405840303698"
     },
     {
      "output": "inter_state_loss",
@@ -4093,7 +4382,8 @@
      "computed": "3.61",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0360981101087568769043586593"
     },
     {
      "output": "dist_loss_mu",
@@ -4107,7 +4397,8 @@
      "computed": "253.55",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "253.553234474635402623328226"
     },
     {
      "output": "energy_input_dist",
@@ -4121,7 +4412,8 @@
      "computed": "3383.96",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "3383.958007027607102623328226"
     },
     {
      "output": "intra_loss_mu",
@@ -4135,7 +4427,8 @@
      "computed": "108.05",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "108.050227698022386033177065"
     },
     {
      "output": "energy_requirement_state",
@@ -4149,7 +4442,8 @@
      "computed": "3492.01",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "3492.008234725629488656505291"
     },
     {
      "output": "inter_state_loss",
@@ -4163,7 +4457,8 @@
      "computed": "3.26",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0325835739330609385933733669"
     },
     {
      "output": "dist_loss_mu",
@@ -4177,7 +4472,8 @@
      "computed": "253.55",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "253.553234474635402623328226"
     },
     {
      "output": "energy_input_dist",
@@ -4191,7 +4487,8 @@
      "computed": "3383.96",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "3383.958007027607102623328226"
     },
     {
      "output": "intra_loss_mu",
@@ -4205,7 +4502,8 @@
      "computed": "108.05",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "108.050227698022386033177065"
     },
     {
      "output": "energy_requirement_state",
@@ -4219,7 +4517,8 @@
      "computed": "3492.01",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "3492.008234725629488656505291"
     },
     {
      "output": "inter_state_loss",
@@ -4233,7 +4532,8 @@
      "computed": "3.26",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0325835739330609385933733669"
     },
     {
      "output": "dist_loss_mu",
@@ -4247,7 +4547,8 @@
      "computed": "303.36",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "303.360000000000308241736231"
     },
     {
      "output": "energy_input_dist",
@@ -4261,7 +4562,8 @@
      "computed": "4007.46",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "4007.460000000000308241736231"
     },
     {
      "output": "intra_loss_mu",
@@ -4275,7 +4577,8 @@
      "computed": "132.29",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "132.289310451361415095291538"
     },
     {
      "output": "energy_requirement_state",
@@ -4289,7 +4592,8 @@
      "computed": "4139.75",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "4139.749310451361723337027769"
     },
     {
      "output": "inter_state_loss",
@@ -4303,7 +4607,8 @@
      "computed": "3.66",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0366385448805346387204927275"
     },
     {
      "output": "dist_loss_mu",
@@ -4317,7 +4622,8 @@
      "computed": "290.83",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "290.825891862408340080138207"
     },
     {
      "output": "energy_input_dist",
@@ -4331,7 +4637,8 @@
      "computed": "3888.46",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "3888.455181306250340080138207"
     },
     {
      "output": "intra_loss_mu",
@@ -4345,7 +4652,8 @@
      "computed": "128.98",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "128.981875947409079135167027"
     },
     {
      "output": "energy_requirement_state",
@@ -4359,7 +4667,8 @@
      "computed": "4017.44",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "4017.437057253659419215305234"
     },
     {
      "output": "inter_state_loss",
@@ -4373,7 +4682,8 @@
      "computed": "3.47",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0346867942174129311732530485"
     },
     {
      "output": "dist_loss_mu",
@@ -4387,7 +4697,8 @@
      "computed": "290.83",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "290.825891862408340080138207"
     },
     {
      "output": "energy_input_dist",
@@ -4401,7 +4712,8 @@
      "computed": "3888.46",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "3888.455181306250340080138207"
     },
     {
      "output": "intra_loss_mu",
@@ -4415,7 +4727,8 @@
      "computed": "128.98",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "128.981875947409079135167027"
     },
     {
      "output": "energy_requirement_state",
@@ -4429,7 +4742,8 @@
      "computed": "4017.44",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "4017.437057253659419215305234"
     },
     {
      "output": "inter_state_loss",
@@ -4443,7 +4757,8 @@
      "computed": "3.47",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0346867942174129311732530485"
     },
     {
      "output": "dist_loss_mu",
@@ -4457,7 +4772,8 @@
      "computed": "318.26",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "318.257944378570658618087744"
     },
     {
      "output": "energy_input_dist",
@@ -4471,7 +4787,8 @@
      "computed": "4401.91",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "4401.907944378570658618087744"
     },
     {
      "output": "intra_loss_mu",
@@ -4485,7 +4802,8 @@
      "computed": "144.58",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "144.578261341911327147340622"
     },
     {
      "output": "energy_requirement_state",
@@ -4499,7 +4817,8 @@
      "computed": "4546.49",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "4546.486205720481985765428366"
     },
     {
      "output": "inter_state_loss",
@@ -4513,7 +4832,8 @@
      "computed": "3.63",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0363428595639033932607534277"
     },
     {
      "output": "dist_loss_mu",
@@ -4527,7 +4847,8 @@
      "computed": "307.96",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "307.958122649349214414045205"
     },
     {
      "output": "energy_input_dist",
@@ -4541,7 +4862,8 @@
      "computed": "4259.39",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "4259.390000000013214414045205"
     },
     {
      "output": "intra_loss_mu",
@@ -4555,7 +4877,8 @@
      "computed": "145.35",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "145.352226539339368913728852"
     },
     {
      "output": "energy_requirement_state",
@@ -4569,7 +4892,8 @@
      "computed": "4404.74",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "4404.742226539352583327774057"
     },
     {
      "output": "inter_state_loss",
@@ -4583,7 +4907,8 @@
      "computed": "3.55",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0355393707571710260458132046"
     },
     {
      "output": "dist_loss_mu",
@@ -4597,7 +4922,8 @@
      "computed": "329.65",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.dist_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.dist_loss_quantum v1 (draft)",
+     "exact": "329.647180500001113012943437"
     },
     {
      "output": "energy_input_dist",
@@ -4611,7 +4937,8 @@
      "computed": "4729.49",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.input_dist v1 (draft)"
+     "rule": "uperc.energy.input_dist v1 (draft)",
+     "exact": "4729.490000000000113012943437"
     },
     {
      "output": "intra_loss_mu",
@@ -4625,7 +4952,8 @@
      "computed": "163.95",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.intra_loss_quantum v1 (draft)"
+     "rule": "uperc.energy.intra_loss_quantum v1 (draft)",
+     "exact": "163.946893029955418884068721"
     },
     {
      "output": "energy_requirement_state",
@@ -4639,7 +4967,8 @@
      "computed": "4893.44",
      "unit": "MU",
      "why": null,
-     "rule": "uperc.energy.state_requirement v1 (draft)"
+     "rule": "uperc.energy.state_requirement v1 (draft)",
+     "exact": "4893.436893029955531897012158"
     },
     {
      "output": "inter_state_loss",
@@ -4653,7 +4982,8 @@
      "computed": "3.41",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.energy.inter_loss v1 (draft)"
+     "rule": "uperc.energy.inter_loss v1 (draft)",
+     "exact": "0.0341273159680877204875363359"
     }
    ]
   },
@@ -4677,7 +5007,8 @@
      "computed": "2245.95",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.gross_block v1 (draft)"
+     "rule": "uperc.capital.gross_block v1 (draft)",
+     "exact": "2245.94902430656028"
     },
     {
      "output": "net_capitalisation",
@@ -4691,7 +5022,8 @@
      "computed": "75.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.net_capitalisation v1 (draft)"
+     "rule": "uperc.capital.net_capitalisation v1 (draft)",
+     "exact": "75.76820514699988"
     },
     {
      "output": "normative_loan_addition",
@@ -4705,7 +5037,8 @@
      "computed": "53.04",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "53.0377436028999160"
     },
     {
      "output": "equity_addition",
@@ -4719,7 +5052,8 @@
      "computed": "22.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "22.7304615440999640"
     },
     {
      "output": "retired_gross_net",
@@ -4733,7 +5067,8 @@
      "computed": "5.07",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_gross_net v1 (draft)"
+     "rule": "uperc.capital.retired_gross_net v1 (draft)",
+     "exact": "5.073530905"
     },
     {
      "output": "retired_acc_dep_net",
@@ -4747,7 +5082,8 @@
      "computed": "3.54",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_dep_net v1 (draft)"
+     "rule": "uperc.capital.retired_dep_net v1 (draft)",
+     "exact": "3.54"
     },
     {
      "output": "retired_wdv",
@@ -4761,7 +5097,8 @@
      "computed": "1.53",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_wdv v1 (draft)"
+     "rule": "uperc.capital.retired_wdv v1 (draft)",
+     "exact": "1.533530905"
     },
     {
      "output": "retired_wdv_share",
@@ -4775,7 +5112,8 @@
      "computed": "30",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.capital.retired_wdv_share v1 (draft)"
+     "rule": "uperc.capital.retired_wdv_share v1 (draft)",
+     "exact": "0.3022610749229288473211734580"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -4789,7 +5127,8 @@
      "computed": "0.01",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "0.01147163350000000000000000003"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -4803,7 +5142,8 @@
      "computed": "1.53",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)",
+     "exact": "1.533530905"
     },
     {
      "output": "gross_block_closing",
@@ -4817,7 +5157,8 @@
      "computed": "2245.95",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.gross_block v1 (draft)"
+     "rule": "uperc.capital.gross_block v1 (draft)",
+     "exact": "2245.94902430656028"
     },
     {
      "output": "net_capitalisation",
@@ -4831,7 +5172,8 @@
      "computed": "75.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.net_capitalisation v1 (draft)"
+     "rule": "uperc.capital.net_capitalisation v1 (draft)",
+     "exact": "75.76820514699988"
     },
     {
      "output": "normative_loan_addition",
@@ -4845,7 +5187,8 @@
      "computed": "53.04",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "53.0377436028999160"
     },
     {
      "output": "equity_addition",
@@ -4859,7 +5202,8 @@
      "computed": "22.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "22.7304615440999640"
     },
     {
      "output": "retired_gross_net",
@@ -4873,7 +5217,8 @@
      "computed": "5.07",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_gross_net v1 (draft)"
+     "rule": "uperc.capital.retired_gross_net v1 (draft)",
+     "exact": "5.073530905"
     },
     {
      "output": "retired_acc_dep_net",
@@ -4887,7 +5232,8 @@
      "computed": "3.54",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_dep_net v1 (draft)"
+     "rule": "uperc.capital.retired_dep_net v1 (draft)",
+     "exact": "3.54"
     },
     {
      "output": "retired_wdv",
@@ -4901,7 +5247,8 @@
      "computed": "1.53",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_wdv v1 (draft)"
+     "rule": "uperc.capital.retired_wdv v1 (draft)",
+     "exact": "1.533530905"
     },
     {
      "output": "retired_wdv_share",
@@ -4915,7 +5262,8 @@
      "computed": "30",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.capital.retired_wdv_share v1 (draft)"
+     "rule": "uperc.capital.retired_wdv_share v1 (draft)",
+     "exact": "0.3022610749229288473211734580"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -4929,7 +5277,8 @@
      "computed": "0.01",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "0.01147163350000000000000000003"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -4943,7 +5292,8 @@
      "computed": "1.53",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)",
+     "exact": "1.533530905"
     },
     {
      "output": "gross_block_closing",
@@ -4957,7 +5307,8 @@
      "computed": "2536.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.gross_block v1 (draft)"
+     "rule": "uperc.capital.gross_block v1 (draft)",
+     "exact": "2536.80778289356014"
     },
     {
      "output": "net_capitalisation",
@@ -4971,7 +5322,8 @@
      "computed": "215.89",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.net_capitalisation v1 (draft)"
+     "rule": "uperc.capital.net_capitalisation v1 (draft)",
+     "exact": "215.89091067900020"
     },
     {
      "output": "normative_loan_addition",
@@ -4985,7 +5337,8 @@
      "computed": "151.12",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "151.1236374753001400"
     },
     {
      "output": "equity_addition",
@@ -4999,7 +5352,8 @@
      "computed": "64.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "64.7672732037000600"
     },
     {
      "output": "retired_gross_net",
@@ -5013,7 +5367,8 @@
      "computed": "6.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_gross_net v1 (draft)"
+     "rule": "uperc.capital.retired_gross_net v1 (draft)",
+     "exact": "6.757675844"
     },
     {
      "output": "retired_acc_dep_net",
@@ -5027,7 +5382,8 @@
      "computed": "4.91",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_dep_net v1 (draft)"
+     "rule": "uperc.capital.retired_dep_net v1 (draft)",
+     "exact": "4.9069344360000005"
     },
     {
      "output": "retired_wdv",
@@ -5041,7 +5397,8 @@
      "computed": "1.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_wdv v1 (draft)"
+     "rule": "uperc.capital.retired_wdv v1 (draft)",
+     "exact": "1.8507414079999995"
     },
     {
      "output": "retired_wdv_share",
@@ -5055,7 +5412,8 @@
      "computed": "27",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.capital.retired_wdv_share v1 (draft)"
+     "rule": "uperc.capital.retired_wdv_share v1 (draft)",
+     "exact": "0.2738724749047017917303936309"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -5069,7 +5427,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "0E-37"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -5083,7 +5442,8 @@
      "computed": "1.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)",
+     "exact": "1.8507414079999995"
     },
     {
      "output": "gross_block_closing",
@@ -5097,7 +5457,8 @@
      "computed": "2536.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.gross_block v1 (draft)"
+     "rule": "uperc.capital.gross_block v1 (draft)",
+     "exact": "2536.80778289356014"
     },
     {
      "output": "net_capitalisation",
@@ -5111,7 +5472,8 @@
      "computed": "215.89",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.net_capitalisation v1 (draft)"
+     "rule": "uperc.capital.net_capitalisation v1 (draft)",
+     "exact": "215.89091067900020"
     },
     {
      "output": "normative_loan_addition",
@@ -5125,7 +5487,8 @@
      "computed": "151.12",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "151.1236374753001400"
     },
     {
      "output": "equity_addition",
@@ -5139,7 +5502,8 @@
      "computed": "64.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "64.7672732037000600"
     },
     {
      "output": "retired_gross_net",
@@ -5153,7 +5517,8 @@
      "computed": "6.76",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_gross_net v1 (draft)"
+     "rule": "uperc.capital.retired_gross_net v1 (draft)",
+     "exact": "6.757675844"
     },
     {
      "output": "retired_acc_dep_net",
@@ -5167,7 +5532,8 @@
      "computed": "4.91",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_dep_net v1 (draft)"
+     "rule": "uperc.capital.retired_dep_net v1 (draft)",
+     "exact": "4.9069344360000005"
     },
     {
      "output": "retired_wdv",
@@ -5181,7 +5547,8 @@
      "computed": "1.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_wdv v1 (draft)"
+     "rule": "uperc.capital.retired_wdv v1 (draft)",
+     "exact": "1.8507414079999995"
     },
     {
      "output": "retired_wdv_share",
@@ -5195,7 +5562,8 @@
      "computed": "27",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.capital.retired_wdv_share v1 (draft)"
+     "rule": "uperc.capital.retired_wdv_share v1 (draft)",
+     "exact": "0.2738724749047017917303936309"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -5209,7 +5577,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "0E-37"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -5223,7 +5592,8 @@
      "computed": "1.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)",
+     "exact": "1.8507414079999995"
     },
     {
      "output": "gross_block_closing",
@@ -5237,7 +5607,8 @@
      "computed": "2970.3",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.gross_block v1 (draft)"
+     "rule": "uperc.capital.gross_block v1 (draft)",
+     "exact": "2970.2963804523752"
     },
     {
      "output": "net_capitalisation",
@@ -5251,7 +5622,8 @@
      "computed": "387.09",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.net_capitalisation v1 (draft)"
+     "rule": "uperc.capital.net_capitalisation v1 (draft)",
+     "exact": "387.09372591556454"
     },
     {
      "output": "normative_loan_addition",
@@ -5265,7 +5637,8 @@
      "computed": "270.97",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "270.9656081408951780"
     },
     {
      "output": "equity_addition",
@@ -5279,7 +5652,8 @@
      "computed": "116.13",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "116.1281177746693620"
     },
     {
      "output": "retired_gross_net",
@@ -5293,7 +5667,8 @@
      "computed": "15",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_gross_net v1 (draft)"
+     "rule": "uperc.capital.retired_gross_net v1 (draft)",
+     "exact": "15"
     },
     {
      "output": "retired_acc_dep_net",
@@ -5307,7 +5682,8 @@
      "computed": "8.22",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_dep_net v1 (draft)"
+     "rule": "uperc.capital.retired_dep_net v1 (draft)",
+     "exact": "8.21924309492435"
     },
     {
      "output": "retired_wdv",
@@ -5321,7 +5697,8 @@
      "computed": "6.78",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_wdv v1 (draft)"
+     "rule": "uperc.capital.retired_wdv v1 (draft)",
+     "exact": "6.78075690507565"
     },
     {
      "output": "retired_wdv_share",
@@ -5335,7 +5712,8 @@
      "computed": "45",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.capital.retired_wdv_share v1 (draft)"
+     "rule": "uperc.capital.retired_wdv_share v1 (draft)",
+     "exact": "0.4520504603383766666666666667"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -5349,7 +5727,8 @@
      "computed": "2.28",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "2.28075690507565000000"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -5363,7 +5742,8 @@
      "computed": "4.5",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2025 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2025 v1 (draft)",
+     "exact": "4.50"
     },
     {
      "output": "gross_block_closing",
@@ -5377,7 +5757,8 @@
      "computed": "3448.99",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.gross_block v1 (draft)"
+     "rule": "uperc.capital.gross_block v1 (draft)",
+     "exact": "3448.98715673453564"
     },
     {
      "output": "net_capitalisation",
@@ -5391,7 +5772,8 @@
      "computed": "429.4",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.net_capitalisation v1 (draft)"
+     "rule": "uperc.capital.net_capitalisation v1 (draft)",
+     "exact": "429.40468092096118"
     },
     {
      "output": "normative_loan_addition",
@@ -5405,7 +5787,8 @@
      "computed": "300.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "300.5832766446728260"
     },
     {
      "output": "equity_addition",
@@ -5419,7 +5802,8 @@
      "computed": "128.82",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "128.8214042762883540"
     },
     {
      "output": "retired_gross_net",
@@ -5433,7 +5817,8 @@
      "computed": "15",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_gross_net v1 (draft)"
+     "rule": "uperc.capital.retired_gross_net v1 (draft)",
+     "exact": "15"
     },
     {
      "output": "retired_acc_dep_net",
@@ -5447,7 +5832,8 @@
      "computed": "8.32",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_dep_net v1 (draft)"
+     "rule": "uperc.capital.retired_dep_net v1 (draft)",
+     "exact": "8.319944985254537"
     },
     {
      "output": "retired_wdv",
@@ -5461,7 +5847,8 @@
      "computed": "6.68",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.retired_wdv v1 (draft)"
+     "rule": "uperc.capital.retired_wdv v1 (draft)",
+     "exact": "6.680055014745463"
     },
     {
      "output": "retired_wdv_share",
@@ -5475,7 +5862,8 @@
      "computed": "45",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.capital.retired_wdv_share v1 (draft)"
+     "rule": "uperc.capital.retired_wdv_share v1 (draft)",
+     "exact": "0.4453370009830308666666666667"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -5489,7 +5877,8 @@
      "computed": "2.18",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "2.18005501474546300000"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -5503,7 +5892,8 @@
      "computed": "4.5",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2025 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2025 v1 (draft)",
+     "exact": "4.50"
     }
    ]
   },
@@ -5529,7 +5919,8 @@
      "computed": "322.5",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "322.5"
     },
     {
      "output": "index_increase",
@@ -5543,7 +5934,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_escalation",
@@ -5557,7 +5949,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_annual_average",
@@ -5571,7 +5964,8 @@
      "computed": "338.69",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "338.693999999999995"
     },
     {
      "output": "index_increase",
@@ -5585,7 +5979,8 @@
      "computed": "5.02",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.05021395348837207751937984496"
     },
     {
      "output": "om_escalation",
@@ -5599,7 +5994,8 @@
      "computed": null,
      "unit": null,
      "why": "input lag1 (record:index_increase_lag1) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_annual_average",
@@ -5613,7 +6009,8 @@
      "computed": "356.06",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "356.0639999999999958333333333"
     },
     {
      "output": "index_increase",
@@ -5627,7 +6024,8 @@
      "computed": "5.13",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.05128523091640252819578312564"
     },
     {
      "output": "om_escalation",
@@ -5641,7 +6039,8 @@
      "computed": null,
      "unit": null,
      "why": "input lag2 (record:index_increase_lag2) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_annual_average",
@@ -5655,7 +6054,8 @@
      "computed": "377.62",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "377.61599999999998"
     },
     {
      "output": "index_increase",
@@ -5669,7 +6069,8 @@
      "computed": "6.05",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.06052844432461574323717084569"
     },
     {
      "output": "om_escalation",
@@ -5683,7 +6084,8 @@
      "computed": null,
      "unit": null,
      "why": "input lag3 (record:index_increase_lag3) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_annual_average",
@@ -5697,7 +6099,8 @@
      "computed": "397.2",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "397.1999999999999858333333333"
     },
     {
      "output": "index_increase",
@@ -5711,7 +6114,8 @@
      "computed": "5.19",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.05186220922842248695323644470"
     },
     {
      "output": "om_escalation",
@@ -5725,7 +6129,8 @@
      "computed": "5.4",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.escalation v1 (draft)"
+     "rule": "uperc.om.escalation v1 (draft)",
+     "exact": "0.054009209576463422"
     },
     {
      "output": "index_annual_average",
@@ -5739,7 +6144,8 @@
      "computed": "410.64",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "410.63999999999998"
     },
     {
      "output": "index_increase",
@@ -5753,7 +6159,8 @@
      "computed": "3.38",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.03383685800604211557944889149"
     },
     {
      "output": "om_escalation",
@@ -5767,7 +6174,8 @@
      "computed": "5.46",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.escalation v1 (draft)"
+     "rule": "uperc.om.escalation v1 (draft)",
+     "exact": "0.05455862815648032533333333333"
     },
     {
      "output": "index_annual_average",
@@ -5781,7 +6189,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_increase",
@@ -5795,7 +6204,8 @@
      "computed": null,
      "unit": null,
      "why": "needs index_annual_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_escalation",
@@ -5809,7 +6219,8 @@
      "computed": "4.87",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.escalation v1 (draft)"
+     "rule": "uperc.om.escalation v1 (draft)",
+     "exact": "0.048742503853026792"
     },
     {
      "output": "index_annual_average",
@@ -5823,7 +6234,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_increase",
@@ -5837,7 +6249,8 @@
      "computed": null,
      "unit": null,
      "why": "needs index_annual_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_escalation",
@@ -5851,7 +6264,8 @@
      "computed": "4.48",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.escalation v1 (draft)"
+     "rule": "uperc.om.escalation v1 (draft)",
+     "exact": "0.04481385702916382333333333333"
     }
    ]
   },
@@ -5877,7 +6291,8 @@
      "computed": "121.8",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "121.7999999999999991666666667"
     },
     {
      "output": "index_increase",
@@ -5891,7 +6306,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_escalation",
@@ -5905,7 +6321,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_annual_average",
@@ -5919,7 +6336,8 @@
      "computed": "123.38",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "123.375"
     },
     {
      "output": "index_increase",
@@ -5933,7 +6351,8 @@
      "computed": "1.29",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.01293103448275853752618764509"
     },
     {
      "output": "om_escalation",
@@ -5947,7 +6366,8 @@
      "computed": null,
      "unit": null,
      "why": "input lag1 (record:index_increase_lag1) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_annual_average",
@@ -5961,7 +6381,8 @@
      "computed": "139.41",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "139.4083333333333333333333333"
     },
     {
      "output": "index_increase",
@@ -5975,7 +6396,8 @@
      "computed": "13",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.1299560959135427220533603510"
     },
     {
      "output": "om_escalation",
@@ -5989,7 +6411,8 @@
      "computed": null,
      "unit": null,
      "why": "input lag2 (record:index_increase_lag2) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_annual_average",
@@ -6003,7 +6426,8 @@
      "computed": "152.53",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "152.525"
     },
     {
      "output": "index_increase",
@@ -6017,7 +6441,8 @@
      "computed": "9.41",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.09408811046685399232681237293"
     },
     {
      "output": "om_escalation",
@@ -6031,7 +6456,8 @@
      "computed": null,
      "unit": null,
      "why": "input lag3 (record:index_increase_lag3) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_annual_average",
@@ -6045,7 +6471,8 @@
      "computed": "151.42",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "151.4166666666666666666666667"
     },
     {
      "output": "index_increase",
@@ -6059,7 +6486,8 @@
      "computed": "-0.73",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "-0.007266568322132983663880237994"
     },
     {
      "output": "om_escalation",
@@ -6073,7 +6501,8 @@
      "computed": "7.9",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.escalation v1 (draft)"
+     "rule": "uperc.om.escalation v1 (draft)",
+     "exact": "0.07899174695438508233333333333"
     },
     {
      "output": "index_annual_average",
@@ -6087,7 +6516,8 @@
      "computed": "154.86",
      "unit": "number",
      "why": null,
-     "rule": "uperc.om.index_average v1 (draft)"
+     "rule": "uperc.om.index_average v1 (draft)",
+     "exact": "154.8583333333333333333333333"
     },
     {
      "output": "index_increase",
@@ -6101,7 +6531,8 @@
      "computed": "2.27",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.index_increase v1 (draft)"
+     "rule": "uperc.om.index_increase v1 (draft)",
+     "exact": "0.02272977435332970931116232684"
     },
     {
      "output": "om_escalation",
@@ -6115,7 +6546,8 @@
      "computed": "7.23",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.escalation v1 (draft)"
+     "rule": "uperc.om.escalation v1 (draft)",
+     "exact": "0.07225921268608787916666666667"
     },
     {
      "output": "index_annual_average",
@@ -6129,7 +6561,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_increase",
@@ -6143,7 +6576,8 @@
      "computed": null,
      "unit": null,
      "why": "needs index_annual_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_escalation",
@@ -6157,7 +6591,8 @@
      "computed": "3.65",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.escalation v1 (draft)"
+     "rule": "uperc.om.escalation v1 (draft)",
+     "exact": "0.03651710549935025583333333333"
     },
     {
      "output": "index_annual_average",
@@ -6171,7 +6606,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "index_increase",
@@ -6185,7 +6621,8 @@
      "computed": null,
      "unit": null,
      "why": "needs index_annual_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_escalation",
@@ -6199,7 +6636,8 @@
      "computed": "1.73",
      "unit": "percent",
      "why": null,
-     "rule": "uperc.om.escalation v1 (draft)"
+     "rule": "uperc.om.escalation v1 (draft)",
+     "exact": "0.01732677051018233583333333333"
     }
    ]
   },
@@ -6224,7 +6662,8 @@
      "computed": null,
      "unit": null,
      "why": "input previous (prior:om_component) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_component",
@@ -6238,7 +6677,8 @@
      "computed": "12.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "12.97669143168705864782215913"
     },
     {
      "output": "om_component",
@@ -6252,7 +6692,8 @@
      "computed": "13.67",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "13.66727784954843797576214694"
     },
     {
      "output": "om_component",
@@ -6266,7 +6707,8 @@
      "computed": "14.75",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "14.74688000299523955069729351"
     },
     {
      "output": "om_component",
@@ -6280,7 +6722,8 @@
      "computed": "15.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "15.81247794158788824776106518"
     }
    ]
   },
@@ -6305,7 +6748,8 @@
      "computed": null,
      "unit": null,
      "why": "input previous (prior:om_component) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_component",
@@ -6319,7 +6763,8 @@
      "computed": "3.28",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "3.283619217795215251292604581"
     },
     {
      "output": "om_component",
@@ -6333,7 +6778,8 @@
      "computed": "3.46",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "3.45836505691571704641232355"
     },
     {
      "output": "om_component",
@@ -6347,7 +6793,8 @@
      "computed": "3.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "3.731547354367490583071719605"
     },
     {
      "output": "om_component",
@@ -6361,7 +6808,8 @@
      "computed": "4",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "4.001186028294939428199165029"
     }
    ]
   },
@@ -6386,7 +6834,8 @@
      "computed": null,
      "unit": null,
      "why": "input previous (prior:om_component) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_component",
@@ -6400,7 +6849,8 @@
      "computed": "33.08",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "33.07657138437825781726373514"
     },
     {
      "output": "om_component",
@@ -6414,7 +6864,8 @@
      "computed": "35.03",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "35.02586060049964013895007372"
     },
     {
      "output": "om_component",
@@ -6428,7 +6879,8 @@
      "computed": "36.92",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "36.91757964626801774123687258"
     },
     {
      "output": "om_component",
@@ -6442,7 +6894,8 @@
      "computed": "38.93",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "38.93175214662600775556037566"
     }
    ]
   },
@@ -6467,7 +6920,8 @@
      "computed": null,
      "unit": null,
      "why": "input previous (prior:om_component) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_component",
@@ -6481,7 +6935,8 @@
      "computed": "2.3",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "2.298113009530121946453215819"
     },
     {
      "output": "om_component",
@@ -6495,7 +6950,8 @@
      "computed": "2.42",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "2.420412722014363110267069532"
     },
     {
      "output": "om_component",
@@ -6509,7 +6965,8 @@
      "computed": "2.61",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "2.611605351276895660287096727"
     },
     {
      "output": "om_component",
@@ -6523,7 +6980,8 @@
      "computed": "2.8",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "2.800317897806937941490566527"
     }
    ]
   },
@@ -6548,7 +7006,8 @@
      "computed": null,
      "unit": null,
      "why": "input previous (prior:om_component) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_component",
@@ -6562,7 +7021,8 @@
      "computed": "3.13",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "3.12524085727633186288373794"
     },
     {
      "output": "om_component",
@@ -6576,7 +7036,8 @@
      "computed": "3.29",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "3.291558204031636371497470918"
     },
     {
      "output": "om_component",
@@ -6590,7 +7051,8 @@
      "computed": "3.55",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "3.551564136770133455469776678"
     },
     {
      "output": "om_component",
@@ -6604,7 +7066,8 @@
      "computed": "3.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "3.808197365097288573899531672"
     }
    ]
   },
@@ -6629,7 +7092,8 @@
      "computed": null,
      "unit": null,
      "why": "input previous (prior:om_component) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "om_component",
@@ -6643,7 +7107,8 @@
      "computed": "44.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "44.7740781171699271234272868"
     },
     {
      "output": "om_component",
@@ -6657,7 +7122,8 @@
      "computed": "47.16",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "47.15684034764719331783309666"
     },
     {
      "output": "om_component",
@@ -6671,7 +7137,8 @@
      "computed": "50.88",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "50.88184154755687384939863472"
     },
     {
      "output": "om_component",
@@ -6685,7 +7152,8 @@
      "computed": "54.56",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.escalated v1 (draft)"
+     "rule": "uperc.om.escalated v1 (draft)",
+     "exact": "54.55852335780160903828250286"
     }
    ]
   },
@@ -6709,7 +7177,8 @@
      "computed": "21.17",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.ag_total v1 (draft)"
+     "rule": "uperc.om.ag_total v1 (draft)",
+     "exact": "21.1720324922899741"
     },
     {
      "output": "om_gross",
@@ -6723,7 +7192,8 @@
      "computed": "96.09",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.gross v1 (draft)"
+     "rule": "uperc.om.gross v1 (draft)",
+     "exact": "96.0938668889909441"
     },
     {
      "output": "om_net",
@@ -6737,7 +7207,8 @@
      "computed": "86.27",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.net v1 (draft)"
+     "rule": "uperc.om.net v1 (draft)",
+     "exact": "86.2727890049909441"
     },
     {
      "output": "om_additional_rm",
@@ -6751,7 +7222,8 @@
      "computed": "21.86",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.additional_rm v1 (draft)"
+     "rule": "uperc.om.additional_rm v1 (draft)",
+     "exact": "21.8588107189388300"
     },
     {
      "output": "om_total_normative",
@@ -6765,7 +7237,8 @@
      "computed": "108.13",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.total v1 (draft)"
+     "rule": "uperc.om.total v1 (draft)",
+     "exact": "108.1315997239297741"
     },
     {
      "output": "om_ag_total",
@@ -6779,7 +7252,8 @@
      "computed": "21.68",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.ag_total v1 (draft)"
+     "rule": "uperc.om.ag_total v1 (draft)",
+     "exact": "21.6836645162887265"
     },
     {
      "output": "om_gross",
@@ -6793,7 +7267,8 @@
      "computed": "99.53",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.gross v1 (draft)"
+     "rule": "uperc.om.gross v1 (draft)",
+     "exact": "99.5343140178369015"
     },
     {
      "output": "om_net",
@@ -6807,7 +7282,8 @@
      "computed": "90.56",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.net v1 (draft)"
+     "rule": "uperc.om.net v1 (draft)",
+     "exact": "90.5553138108369025"
     },
     {
      "output": "om_additional_rm",
@@ -6821,7 +7297,8 @@
      "computed": "22.39",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.additional_rm v1 (draft)"
+     "rule": "uperc.om.additional_rm v1 (draft)",
+     "exact": "22.3870390585849600"
     },
     {
      "output": "om_total_normative",
@@ -6835,7 +7312,8 @@
      "computed": "112.94",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.total v1 (draft)"
+     "rule": "uperc.om.total v1 (draft)",
+     "exact": "112.9423528694218625"
     },
     {
      "output": "om_ag_total",
@@ -6849,7 +7327,8 @@
      "computed": "22.84",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.ag_total v1 (draft)"
+     "rule": "uperc.om.ag_total v1 (draft)",
+     "exact": "22.8376138325101526"
     },
     {
      "output": "om_gross",
@@ -6863,7 +7342,8 @@
      "computed": "105.02",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.gross v1 (draft)"
+     "rule": "uperc.om.gross v1 (draft)",
+     "exact": "105.0203147806569826"
     },
     {
      "output": "om_net",
@@ -6877,7 +7357,8 @@
      "computed": "98.5",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.net v1 (draft)"
+     "rule": "uperc.om.net v1 (draft)",
+     "exact": "98.5037227746569816"
     },
     {
      "output": "om_additional_rm",
@@ -6891,7 +7372,8 @@
      "computed": "23.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.additional_rm v1 (draft)"
+     "rule": "uperc.om.additional_rm v1 (draft)",
+     "exact": "23.5784201738235950"
     },
     {
      "output": "om_total_normative",
@@ -6905,7 +7387,8 @@
      "computed": "122.08",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.total v1 (draft)"
+     "rule": "uperc.om.total v1 (draft)",
+     "exact": "122.0821429484805766"
     },
     {
      "output": "om_ag_total",
@@ -6919,7 +7402,8 @@
      "computed": "24.64",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.ag_total v1 (draft)"
+     "rule": "uperc.om.ag_total v1 (draft)",
+     "exact": "24.6415968454097583"
     },
     {
      "output": "om_gross",
@@ -6933,7 +7417,8 @@
      "computed": "112.44",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.gross v1 (draft)"
+     "rule": "uperc.om.gross v1 (draft)",
+     "exact": "112.4410180392346563"
     },
     {
      "output": "om_net",
@@ -6947,7 +7432,8 @@
      "computed": "100.86",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.net v1 (draft)"
+     "rule": "uperc.om.net v1 (draft)",
+     "exact": "100.8570595902346573"
     },
     {
      "output": "om_additional_rm",
@@ -6961,7 +7447,8 @@
      "computed": "25.44",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.additional_rm v1 (draft)"
+     "rule": "uperc.om.additional_rm v1 (draft)",
+     "exact": "25.44092077377843700"
     },
     {
      "output": "om_total_normative",
@@ -6975,7 +7462,8 @@
      "computed": "126.3",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.total v1 (draft)"
+     "rule": "uperc.om.total v1 (draft)",
+     "exact": "126.29798036401309430"
     },
     {
      "output": "om_ag_total",
@@ -6989,7 +7477,8 @@
      "computed": "26.42",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.ag_total v1 (draft)"
+     "rule": "uperc.om.ag_total v1 (draft)",
+     "exact": "26.4221792327870540"
     },
     {
      "output": "om_gross",
@@ -7003,7 +7492,8 @@
      "computed": "119.91",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.gross v1 (draft)"
+     "rule": "uperc.om.gross v1 (draft)",
+     "exact": "119.9124547372146640"
     },
     {
      "output": "om_net",
@@ -7017,7 +7507,8 @@
      "computed": "102.72",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.net v1 (draft)"
+     "rule": "uperc.om.net v1 (draft)",
+     "exact": "102.7224547372146640"
     },
     {
      "output": "om_additional_rm",
@@ -7031,7 +7522,8 @@
      "computed": "27.28",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.additional_rm v1 (draft)"
+     "rule": "uperc.om.additional_rm v1 (draft)",
+     "exact": "27.2792616789008050"
     },
     {
      "output": "om_total_normative",
@@ -7045,7 +7537,8 @@
      "computed": "130",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.om.total v1 (draft)"
+     "rule": "uperc.om.total v1 (draft)",
+     "exact": "130.0017164161154690"
     }
    ]
   },
@@ -7070,7 +7563,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "rm_norm_new",
@@ -7084,7 +7578,8 @@
      "computed": "0.42",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.new v1 (draft)"
+     "rule": "uperc.rm2025.new v1 (draft)",
+     "exact": "0.42"
     }
    ]
   },
@@ -7108,7 +7603,8 @@
      "computed": "57.43",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.existing v1 (draft)"
+     "rule": "uperc.rm2025.existing v1 (draft)",
+     "exact": "57.4316208001495"
     },
     {
      "output": "rm_norm_existing",
@@ -7122,7 +7618,8 @@
      "computed": "57.43",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.existing v1 (draft)"
+     "rule": "uperc.rm2025.existing v1 (draft)",
+     "exact": "57.4316208001495"
     }
    ]
   },
@@ -7146,7 +7643,8 @@
      "computed": "42.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.existing v1 (draft)"
+     "rule": "uperc.rm2025.existing v1 (draft)",
+     "exact": "42.829814262199990"
     },
     {
      "output": "rm_norm_existing",
@@ -7160,7 +7658,8 @@
      "computed": "42.83",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.existing v1 (draft)"
+     "rule": "uperc.rm2025.existing v1 (draft)",
+     "exact": "42.829814262199990"
     }
    ]
   },
@@ -7184,7 +7683,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.new v1 (draft)"
+     "rule": "uperc.rm2025.new v1 (draft)",
+     "exact": "0.00"
     },
     {
      "output": "rm_norm_new",
@@ -7198,7 +7698,8 @@
      "computed": "13",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.new v1 (draft)"
+     "rule": "uperc.rm2025.new v1 (draft)",
+     "exact": "13.004657926764435"
     }
    ]
   },
@@ -7222,7 +7723,8 @@
      "computed": "100.26",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.total v1 (draft)"
+     "rule": "uperc.rm2025.total v1 (draft)",
+     "exact": "100.261435062349490"
     },
     {
      "output": "rm_norm_total",
@@ -7236,7 +7738,8 @@
      "computed": "113.69",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.rm2025.total v1 (draft)"
+     "rule": "uperc.rm2025.total v1 (draft)",
+     "exact": "113.686092989113925"
     }
    ]
   },
@@ -7262,7 +7765,8 @@
      "computed": null,
      "unit": null,
      "why": "needs retired_wdv_share, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_addition",
@@ -7276,7 +7780,8 @@
      "computed": null,
      "unit": null,
      "why": "needs net_capitalisation, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_closing",
@@ -7290,7 +7795,8 @@
      "computed": null,
      "unit": null,
      "why": "needs loan_reduction_on_retirement, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_average",
@@ -7304,7 +7810,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_closing, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_loan",
@@ -7318,7 +7825,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -7332,7 +7840,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "0.01147163350000000000000000003"
     },
     {
      "output": "normative_loan_addition",
@@ -7346,7 +7855,8 @@
      "computed": "53.04",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "53.0377436028999160"
     },
     {
      "output": "normative_loan_closing",
@@ -7360,7 +7870,8 @@
      "computed": "506.3",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.closing v2 (draft)"
+     "rule": "uperc.myt2019.loan.closing v2 (draft)",
+     "exact": "506.341484747465706000"
     },
     {
      "output": "normative_loan_average",
@@ -7374,7 +7885,8 @@
      "computed": "512.99",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.average v1 (draft)"
+     "rule": "uperc.myt2019.loan.average v1 (draft)",
+     "exact": "512.99209229606625300"
     },
     {
      "output": "interest_on_loan",
@@ -7388,7 +7900,8 @@
      "computed": "50.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.interest v1 (draft)"
+     "rule": "uperc.myt2019.loan.interest v1 (draft)",
+     "exact": "50.8490745179991087121648608"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -7402,7 +7915,8 @@
      "computed": null,
      "unit": null,
      "why": "needs retired_wdv_share, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_addition",
@@ -7416,7 +7930,8 @@
      "computed": null,
      "unit": null,
      "why": "needs net_capitalisation, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_closing",
@@ -7430,7 +7945,8 @@
      "computed": null,
      "unit": null,
      "why": "needs loan_reduction_on_retirement, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "normative_loan_average",
@@ -7444,7 +7960,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_closing, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_loan",
@@ -7458,7 +7975,8 @@
      "computed": null,
      "unit": null,
      "why": "needs normative_loan_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -7472,7 +7990,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "0E-37"
     },
     {
      "output": "normative_loan_addition",
@@ -7486,7 +8005,8 @@
      "computed": "151.12",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "151.1236374753001400"
     },
     {
      "output": "normative_loan_closing",
@@ -7500,7 +8020,8 @@
      "computed": "579.18",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.closing v2 (draft)"
+     "rule": "uperc.myt2019.loan.closing v2 (draft)",
+     "exact": "579.178371353419900000"
     },
     {
      "output": "normative_loan_average",
@@ -7514,7 +8035,8 @@
      "computed": "540.99",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.average v1 (draft)"
+     "rule": "uperc.myt2019.loan.average v1 (draft)",
+     "exact": "540.99054249504280000"
     },
     {
      "output": "interest_on_loan",
@@ -7528,7 +8050,8 @@
      "computed": "53.62",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.interest v1 (draft)"
+     "rule": "uperc.myt2019.loan.interest v1 (draft)",
+     "exact": "53.62435176288611074440945561"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -7542,7 +8065,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "0E-37"
     },
     {
      "output": "normative_loan_addition",
@@ -7556,7 +8080,8 @@
      "computed": "151.12",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "151.1236374753001400"
     },
     {
      "output": "normative_loan_closing",
@@ -7570,7 +8095,8 @@
      "computed": "579.18",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.closing v2 (draft)"
+     "rule": "uperc.myt2019.loan.closing v2 (draft)",
+     "exact": "579.178371353419900000"
     },
     {
      "output": "normative_loan_average",
@@ -7584,7 +8110,8 @@
      "computed": "540.99",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.average v1 (draft)"
+     "rule": "uperc.myt2019.loan.average v1 (draft)",
+     "exact": "540.99054249504280000"
     },
     {
      "output": "interest_on_loan",
@@ -7598,7 +8125,8 @@
      "computed": "53.62",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.loan.interest v1 (draft)"
+     "rule": "uperc.myt2019.loan.interest v1 (draft)",
+     "exact": "53.62435176288611074440945561"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -7612,7 +8140,8 @@
      "computed": "2.28",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "2.28075690507565000000"
     },
     {
      "output": "normative_loan_addition",
@@ -7626,7 +8155,8 @@
      "computed": "270.97",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "270.9656081408951780"
     },
     {
      "output": "normative_loan_closing",
@@ -7640,7 +8170,8 @@
      "computed": "757.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.loan.closing v2 (draft)"
+     "rule": "uperc.myt2025.loan.closing v2 (draft)",
+     "exact": "757.768934543932108000"
     },
     {
      "output": "normative_loan_average",
@@ -7654,7 +8185,8 @@
      "computed": "668.47",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.loan.average v1 (draft)"
+     "rule": "uperc.myt2025.loan.average v1 (draft)",
+     "exact": "668.47365294867605400"
     },
     {
      "output": "interest_on_loan",
@@ -7668,7 +8200,8 @@
      "computed": "65.69",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.loan.interest v1 (draft)"
+     "rule": "uperc.myt2025.loan.interest v1 (draft)",
+     "exact": "65.68531999953625111261879101"
     },
     {
      "output": "loan_reduction_on_retirement",
@@ -7682,7 +8215,8 @@
      "computed": "2.18",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.loan_reduction v1 (draft)"
+     "rule": "uperc.capital.loan_reduction v1 (draft)",
+     "exact": "2.18005501474546300000"
     },
     {
      "output": "normative_loan_addition",
@@ -7696,7 +8230,8 @@
      "computed": "300.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.debt_addition v1 (draft)"
+     "rule": "uperc.capital.debt_addition v1 (draft)",
+     "exact": "300.5832766446728260"
     },
     {
      "output": "normative_loan_closing",
@@ -7710,7 +8245,8 @@
      "computed": "949.42",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.loan.closing v2 (draft)"
+     "rule": "uperc.myt2025.loan.closing v2 (draft)",
+     "exact": "949.42034773311367300"
     },
     {
      "output": "normative_loan_average",
@@ -7724,7 +8260,8 @@
      "computed": "853.59",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.loan.average v1 (draft)"
+     "rule": "uperc.myt2025.loan.average v1 (draft)",
+     "exact": "853.59464113852283650"
     },
     {
      "output": "interest_on_loan",
@@ -7738,7 +8275,8 @@
      "computed": "83.88",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.loan.interest v1 (draft)"
+     "rule": "uperc.myt2025.loan.interest v1 (draft)",
+     "exact": "83.87561260754432559497472345"
     }
    ]
   },
@@ -7764,7 +8302,8 @@
      "computed": null,
      "unit": null,
      "why": "needs retired_wdv, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -7778,7 +8317,8 @@
      "computed": null,
      "unit": null,
      "why": "needs net_capitalisation, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_closing",
@@ -7792,7 +8332,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_reduction_on_retirement, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_average",
@@ -7806,7 +8347,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_closing, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "return_on_equity",
@@ -7820,7 +8362,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -7834,7 +8377,8 @@
      "computed": "2",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)",
+     "exact": "1.533530905"
     },
     {
      "output": "equity_addition",
@@ -7848,7 +8392,8 @@
      "computed": "22.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "22.7304615440999640"
     },
     {
      "output": "equity_closing",
@@ -7862,7 +8407,8 @@
      "computed": "535.07",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.equity.closing v2 (draft)"
+     "rule": "uperc.myt2019.equity.closing v2 (draft)",
+     "exact": "535.0651536297941640"
     },
     {
      "output": "equity_average",
@@ -7876,7 +8422,8 @@
      "computed": "524.47",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.equity.average v1 (draft)"
+     "rule": "uperc.myt2019.equity.average v1 (draft)",
+     "exact": "524.4666883102441820"
     },
     {
      "output": "return_on_equity",
@@ -7890,7 +8437,8 @@
      "computed": "78.67",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.roe v1 (draft)"
+     "rule": "uperc.myt2019.roe v1 (draft)",
+     "exact": "78.670003246536627300"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -7904,7 +8452,8 @@
      "computed": null,
      "unit": null,
      "why": "needs retired_wdv, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_addition",
@@ -7918,7 +8467,8 @@
      "computed": null,
      "unit": null,
      "why": "needs net_capitalisation, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_closing",
@@ -7932,7 +8482,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_reduction_on_retirement, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_average",
@@ -7946,7 +8497,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_closing, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "return_on_equity",
@@ -7960,7 +8512,8 @@
      "computed": null,
      "unit": null,
      "why": "needs equity_average, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -7974,7 +8527,8 @@
      "computed": "1.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)",
+     "exact": "1.8507414079999995"
     },
     {
      "output": "equity_addition",
@@ -7988,7 +8542,8 @@
      "computed": "64.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "64.7672732037000600"
     },
     {
      "output": "equity_closing",
@@ -8002,7 +8557,8 @@
      "computed": "597.99",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.equity.closing v2 (draft)"
+     "rule": "uperc.myt2019.equity.closing v2 (draft)",
+     "exact": "597.9936837257941605"
     },
     {
      "output": "equity_average",
@@ -8016,7 +8572,8 @@
      "computed": "566.54",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.equity.average v1 (draft)"
+     "rule": "uperc.myt2019.equity.average v1 (draft)",
+     "exact": "566.53541782794413025"
     },
     {
      "output": "return_on_equity",
@@ -8030,7 +8587,8 @@
      "computed": "84.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.roe v1 (draft)"
+     "rule": "uperc.myt2019.roe v1 (draft)",
+     "exact": "84.9803126741916195375"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -8044,7 +8602,8 @@
      "computed": "1.85",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2019 v1 (draft)",
+     "exact": "1.8507414079999995"
     },
     {
      "output": "equity_addition",
@@ -8058,7 +8617,8 @@
      "computed": "64.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "64.7672732037000600"
     },
     {
      "output": "equity_closing",
@@ -8072,7 +8632,8 @@
      "computed": "597.99",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.equity.closing v2 (draft)"
+     "rule": "uperc.myt2019.equity.closing v2 (draft)",
+     "exact": "597.9936837257941605"
     },
     {
      "output": "equity_average",
@@ -8086,7 +8647,8 @@
      "computed": "566.54",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.equity.average v1 (draft)"
+     "rule": "uperc.myt2019.equity.average v1 (draft)",
+     "exact": "566.53541782794413025"
     },
     {
      "output": "return_on_equity",
@@ -8100,7 +8662,8 @@
      "computed": "84.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2019.roe v1 (draft)"
+     "rule": "uperc.myt2019.roe v1 (draft)",
+     "exact": "84.9803126741916195375"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -8114,7 +8677,8 @@
      "computed": "4.5",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2025 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2025 v1 (draft)",
+     "exact": "4.50"
     },
     {
      "output": "equity_addition",
@@ -8128,7 +8692,8 @@
      "computed": "116.13",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "116.1281177746693620"
     },
     {
      "output": "equity_closing",
@@ -8142,7 +8707,8 @@
      "computed": "709.62",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.equity.closing v2 (draft)"
+     "rule": "uperc.myt2025.equity.closing v2 (draft)",
+     "exact": "709.6218015004635620"
     },
     {
      "output": "equity_average",
@@ -8156,7 +8722,8 @@
      "computed": "653.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.equity.average v1 (draft)"
+     "rule": "uperc.myt2025.equity.average v1 (draft)",
+     "exact": "653.8077426131288810"
     },
     {
      "output": "return_on_equity",
@@ -8170,7 +8737,8 @@
      "computed": "98.07",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.roe v1 (draft)"
+     "rule": "uperc.myt2025.roe v1 (draft)",
+     "exact": "98.071161391969332150"
     },
     {
      "output": "equity_reduction_on_retirement",
@@ -8184,7 +8752,8 @@
      "computed": "4.5",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_reduction_2025 v1 (draft)"
+     "rule": "uperc.capital.equity_reduction_2025 v1 (draft)",
+     "exact": "4.50"
     },
     {
      "output": "equity_addition",
@@ -8198,7 +8767,8 @@
      "computed": "128.82",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.capital.equity_addition v1 (draft)"
+     "rule": "uperc.capital.equity_addition v1 (draft)",
+     "exact": "128.8214042762883540"
     },
     {
      "output": "equity_closing",
@@ -8212,7 +8782,8 @@
      "computed": "833.94",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.equity.closing v2 (draft)"
+     "rule": "uperc.myt2025.equity.closing v2 (draft)",
+     "exact": "833.9432057767519540"
     },
     {
      "output": "equity_average",
@@ -8226,7 +8797,8 @@
      "computed": "771.78",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.equity.average v1 (draft)"
+     "rule": "uperc.myt2025.equity.average v1 (draft)",
+     "exact": "771.7825036386077770"
     },
     {
      "output": "return_on_equity",
@@ -8240,7 +8812,8 @@
      "computed": "115.77",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.myt2025.roe v1 (draft)"
+     "rule": "uperc.myt2025.roe v1 (draft)",
+     "exact": "115.767375545791166550"
     }
    ]
   },
@@ -8267,7 +8840,8 @@
      "computed": "13.32",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "13.32292335833333166666666667"
     },
     {
      "output": "wc_receivables",
@@ -8281,7 +8855,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": "uperc.iowc.receivables_trueup"
+     "rule": "uperc.iowc.receivables_trueup",
+     "exact": null
     },
     {
      "output": "wc_total",
@@ -8295,7 +8870,8 @@
      "computed": "10.43",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "10.4262550596064251666666667"
     },
     {
      "output": "wc_net",
@@ -8309,7 +8885,8 @@
      "computed": "10.43",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "10.4262550596064251666666667"
     },
     {
      "output": "interest_on_working_capital",
@@ -8323,7 +8900,8 @@
      "computed": "1.07",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "1.072975905962921504033166956"
     },
     {
      "output": "wc_om_month",
@@ -8337,7 +8915,8 @@
      "computed": "7.49",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "7.4936099684917775"
     },
     {
      "output": "wc_receivables",
@@ -8351,7 +8930,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": "uperc.iowc.receivables_trueup"
+     "rule": "uperc.iowc.receivables_trueup",
+     "exact": null
     },
     {
      "output": "wc_total",
@@ -8365,7 +8945,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "0"
     },
     {
      "output": "wc_net",
@@ -8379,7 +8960,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "0"
     },
     {
      "output": "interest_on_working_capital",
@@ -8393,7 +8975,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0.000"
     },
     {
      "output": "wc_om_month",
@@ -8407,7 +8990,8 @@
      "computed": "13.9",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "13.89685052704166666666666667"
     },
     {
      "output": "wc_receivables",
@@ -8421,7 +9005,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": "uperc.iowc.receivables_trueup"
+     "rule": "uperc.iowc.receivables_trueup",
+     "exact": null
     },
     {
      "output": "wc_total",
@@ -8435,7 +9020,8 @@
      "computed": "1.49",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "1.4891444222407156666666667"
     },
     {
      "output": "wc_net",
@@ -8449,7 +9035,8 @@
      "computed": "1.49",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "1.4891444222407156666666667"
     },
     {
      "output": "interest_on_working_capital",
@@ -8463,7 +9050,8 @@
      "computed": "0.16",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0.1647762715412995397738484885"
     },
     {
      "output": "wc_om_month",
@@ -8477,7 +9065,8 @@
      "computed": "13.9",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "13.89685052704166666666666667"
     },
     {
      "output": "wc_receivables",
@@ -8491,7 +9080,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": "uperc.iowc.receivables_trueup"
+     "rule": "uperc.iowc.receivables_trueup",
+     "exact": null
     },
     {
      "output": "wc_total",
@@ -8505,7 +9095,8 @@
      "computed": "1.49",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "1.4891444222407156666666667"
     },
     {
      "output": "wc_net",
@@ -8519,7 +9110,8 @@
      "computed": "1.49",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "1.4891444222407156666666667"
     },
     {
      "output": "interest_on_working_capital",
@@ -8533,7 +9125,8 @@
      "computed": "0.16",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0.1647762715412995397738484885"
     },
     {
      "output": "wc_om_month",
@@ -8547,7 +9140,8 @@
      "computed": "7.8",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "7.796121909584616666666666667"
     },
     {
      "output": "wc_receivables",
@@ -8561,7 +9155,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": "uperc.iowc.receivables_trueup"
+     "rule": "uperc.iowc.receivables_trueup",
+     "exact": null
     },
     {
      "output": "wc_total",
@@ -8575,7 +9170,8 @@
      "computed": "8.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "8.7318322197698448666666667"
     },
     {
      "output": "wc_net",
@@ -8589,7 +9185,8 @@
      "computed": "8.73",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "8.7318322197698448666666667"
     },
     {
      "output": "interest_on_working_capital",
@@ -8603,7 +9200,8 @@
      "computed": "0.96",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0.9648674602845678577666666704"
     },
     {
      "output": "wc_om_month",
@@ -8617,7 +9215,8 @@
      "computed": "15.96",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "15.9587935752045475"
     },
     {
      "output": "wc_receivables",
@@ -8631,7 +9230,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": "uperc.iowc.receivables_trueup"
+     "rule": "uperc.iowc.receivables_trueup",
+     "exact": null
     },
     {
      "output": "wc_total",
@@ -8645,7 +9245,8 @@
      "computed": "33.52",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "33.5154285382897895"
     },
     {
      "output": "wc_net",
@@ -8659,7 +9260,8 @@
      "computed": null,
      "unit": null,
      "why": "input surplus (record:surplus_at_beginning) has no value",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "interest_on_working_capital",
@@ -8673,7 +9275,8 @@
      "computed": null,
      "unit": null,
      "why": "needs wc_net, which is blocked",
-     "rule": null
+     "rule": null,
+     "exact": null
     },
     {
      "output": "wc_om_month",
@@ -8687,7 +9290,8 @@
      "computed": "15.96",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "15.9587935752045475"
     },
     {
      "output": "wc_receivables",
@@ -8701,7 +9305,8 @@
      "computed": null,
      "unit": null,
      "why": null,
-     "rule": "uperc.iowc.receivables_trueup"
+     "rule": "uperc.iowc.receivables_trueup",
+     "exact": null
     },
     {
      "output": "wc_total",
@@ -8715,7 +9320,8 @@
      "computed": "33.52",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "33.5154285382897895"
     },
     {
      "output": "wc_net",
@@ -8729,7 +9335,8 @@
      "computed": "33.52",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "33.5154285382897895"
     },
     {
      "output": "interest_on_working_capital",
@@ -8743,7 +9350,8 @@
      "computed": "3.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "3.814790352392462907518787623"
     },
     {
      "output": "wc_om_month",
@@ -8757,7 +9365,8 @@
      "computed": "13.33",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "13.33249999999999833333333333"
     },
     {
      "output": "wc_receivables",
@@ -8771,7 +9380,8 @@
      "computed": "371.39",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.receivables v1 (draft)"
+     "rule": "uperc.iowc.receivables v1 (draft)",
+     "exact": "371.38625"
     },
     {
      "output": "wc_total",
@@ -8785,7 +9395,8 @@
      "computed": "41.4",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "41.4387499999999983333333333"
     },
     {
      "output": "wc_net",
@@ -8799,7 +9410,8 @@
      "computed": "-1193.25",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "-1193.251250000000001666666667"
     },
     {
      "output": "interest_on_working_capital",
@@ -8813,7 +9425,8 @@
      "computed": "0",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "0"
     },
     {
      "output": "wc_om_month",
@@ -8827,7 +9440,8 @@
      "computed": "16.55",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "16.55009818613024666666666667"
     },
     {
      "output": "wc_receivables",
@@ -8841,7 +9455,8 @@
      "computed": "361.48",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.receivables v1 (draft)"
+     "rule": "uperc.iowc.receivables v1 (draft)",
+     "exact": "361.480823611536128625"
     },
     {
      "output": "wc_total",
@@ -8855,7 +9470,8 @@
      "computed": "38.1",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "38.1039163214897762916666667"
     },
     {
      "output": "wc_net",
@@ -8869,7 +9485,8 @@
      "computed": "38.1",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "38.1039163214897762916666667"
     },
     {
      "output": "interest_on_working_capital",
@@ -8883,7 +9500,8 @@
      "computed": "4.1",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "4.09617100456015095135416667"
     },
     {
      "output": "wc_om_month",
@@ -8897,7 +9515,8 @@
      "computed": "17.81",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.om_month v2 (draft)"
+     "rule": "uperc.iowc.om_month v2 (draft)",
+     "exact": "17.80907380089243"
     },
     {
      "output": "wc_receivables",
@@ -8911,7 +9530,8 @@
      "computed": "400.23",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.receivables v1 (draft)"
+     "rule": "uperc.iowc.receivables v1 (draft)",
+     "exact": "400.23425812580675"
     },
     {
      "output": "wc_total",
@@ -8925,7 +9545,8 @@
      "computed": "64.01",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.total v1 (draft)"
+     "rule": "uperc.iowc.total v1 (draft)",
+     "exact": "64.011303645640209"
     },
     {
      "output": "wc_net",
@@ -8939,7 +9560,8 @@
      "computed": "64.01",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.net v1 (draft)"
+     "rule": "uperc.iowc.net v1 (draft)",
+     "exact": "64.011303645640209"
     },
     {
      "output": "interest_on_working_capital",
@@ -8953,7 +9575,8 @@
      "computed": "6.88",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.iowc.interest v1 (draft)"
+     "rule": "uperc.iowc.interest v1 (draft)",
+     "exact": "6.8812151419063224675"
     }
    ]
   },
@@ -8977,7 +9600,8 @@
      "computed": "105.13",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.grossed_income v2 (draft)"
+     "rule": "uperc.tax.grossed_income v2 (draft)",
+     "exact": "105.1300287564933718195424417"
     },
     {
      "output": "tax_on_income",
@@ -8991,7 +9615,8 @@
      "computed": "26.46",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_income v1 (draft)"
+     "rule": "uperc.tax.on_income v1 (draft)",
+     "exact": "26.4591256374342513616"
     },
     {
      "output": "tax_on_roe",
@@ -9005,7 +9630,8 @@
      "computed": "26.46",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_roe v2 (draft)"
+     "rule": "uperc.tax.on_roe v2 (draft)",
+     "exact": "26.45912563743425181954244173"
     },
     {
      "output": "tax_recoverable",
@@ -9019,7 +9645,8 @@
      "computed": "26.46",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "26.4591256374342513616"
     },
     {
      "output": "tax_grossed_income",
@@ -9033,7 +9660,8 @@
      "computed": "105.13",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.grossed_income v2 (draft)"
+     "rule": "uperc.tax.grossed_income v2 (draft)",
+     "exact": "105.1300287564933718195424417"
     },
     {
      "output": "tax_on_income",
@@ -9047,7 +9675,8 @@
      "computed": "26.46",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_income v1 (draft)"
+     "rule": "uperc.tax.on_income v1 (draft)",
+     "exact": "26.4591256374342513616"
     },
     {
      "output": "tax_on_roe",
@@ -9061,7 +9690,8 @@
      "computed": "26.46",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_roe v2 (draft)"
+     "rule": "uperc.tax.on_roe v2 (draft)",
+     "exact": "26.45912563743425181954244173"
     },
     {
      "output": "tax_recoverable",
@@ -9075,7 +9705,8 @@
      "computed": "26.46",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "26.4591256374342513616"
     },
     {
      "output": "tax_grossed_income",
@@ -9089,7 +9720,8 @@
      "computed": "113.56",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.grossed_income v2 (draft)"
+     "rule": "uperc.tax.grossed_income v2 (draft)",
+     "exact": "113.5614612387636839854607654"
     },
     {
      "output": "tax_on_income",
@@ -9103,7 +9735,8 @@
      "computed": "28.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_income v1 (draft)"
+     "rule": "uperc.tax.on_income v1 (draft)",
+     "exact": "28.5811485645720429824"
     },
     {
      "output": "tax_on_roe",
@@ -9117,7 +9750,8 @@
      "computed": "28.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_roe v2 (draft)"
+     "rule": "uperc.tax.on_roe v2 (draft)",
+     "exact": "28.58114856457204398546076544"
     },
     {
      "output": "tax_recoverable",
@@ -9131,7 +9765,8 @@
      "computed": "28.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "28.5811485645720429824"
     },
     {
      "output": "tax_grossed_income",
@@ -9145,7 +9780,8 @@
      "computed": "113.56",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.grossed_income v2 (draft)"
+     "rule": "uperc.tax.grossed_income v2 (draft)",
+     "exact": "113.5614612387636839854607654"
     },
     {
      "output": "tax_on_income",
@@ -9159,7 +9795,8 @@
      "computed": "28.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_income v1 (draft)"
+     "rule": "uperc.tax.on_income v1 (draft)",
+     "exact": "28.5811485645720429824"
     },
     {
      "output": "tax_on_roe",
@@ -9173,7 +9810,8 @@
      "computed": "28.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_roe v2 (draft)"
+     "rule": "uperc.tax.on_roe v2 (draft)",
+     "exact": "28.58114856457204398546076544"
     },
     {
      "output": "tax_recoverable",
@@ -9187,7 +9825,8 @@
      "computed": "28.58",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "28.5811485645720429824"
     },
     {
      "output": "tax_grossed_income",
@@ -9201,7 +9840,8 @@
      "computed": "131.06",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.grossed_income v2 (draft)"
+     "rule": "uperc.tax.grossed_income v2 (draft)",
+     "exact": "131.0551119734462930297199059"
     },
     {
      "output": "tax_on_income",
@@ -9215,7 +9855,8 @@
      "computed": "32.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_income v1 (draft)"
+     "rule": "uperc.tax.on_income v1 (draft)",
+     "exact": "32.983950581476964784"
     },
     {
      "output": "tax_on_roe",
@@ -9229,7 +9870,8 @@
      "computed": "32.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_roe v2 (draft)"
+     "rule": "uperc.tax.on_roe v2 (draft)",
+     "exact": "32.98395058147696302971990592"
     },
     {
      "output": "tax_recoverable",
@@ -9243,7 +9885,8 @@
      "computed": "32.98",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "32.98395058147696302971990592"
     },
     {
      "output": "tax_grossed_income",
@@ -9257,7 +9900,8 @@
      "computed": "154.7",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.grossed_income v2 (draft)"
+     "rule": "uperc.tax.grossed_income v2 (draft)",
+     "exact": "154.7030355273026913619841779"
     },
     {
      "output": "tax_on_income",
@@ -9271,7 +9915,8 @@
      "computed": "38.94",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_income v1 (draft)"
+     "rule": "uperc.tax.on_income v1 (draft)",
+     "exact": "38.935659981511543536"
     },
     {
      "output": "tax_on_roe",
@@ -9285,7 +9930,8 @@
      "computed": "38.94",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.on_roe v2 (draft)"
+     "rule": "uperc.tax.on_roe v2 (draft)",
+     "exact": "38.93565998151154136198417789"
     },
     {
      "output": "tax_recoverable",
@@ -9299,7 +9945,8 @@
      "computed": "38.94",
      "unit": "INR_crore",
      "why": null,
-     "rule": "uperc.tax.recoverable v1 (draft)"
+     "rule": "uperc.tax.recoverable v1 (draft)",
+     "exact": "38.93565998151154136198417789"
     }
    ]
   }
@@ -9504,6 +10151,88 @@
      "computed": "5.6149",
      "why": null,
      "exact": "5.614872560766400"
+    }
+   ]
+  },
+  {
+   "binding": "arr-gap-roll-forward.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2022-23",
+     "category": "D59 \u2190 C63: final true-up FY2022-23 opens with the final true-up FY2021-22's closing ARR!D59",
+     "output": "gap_opening_carried",
+     "result": "match",
+     "filed": "335.85",
+     "computed": "335.85",
+     "why": null,
+     "exact": "335.84810516861046"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2023-24",
+     "category": "F59 \u2190 D63: FY2023-24 actual opens with the FY2022-23 final true-up's closing ARR!F59",
+     "output": "gap_opening_carried",
+     "result": "match",
+     "filed": "85.15",
+     "computed": "85.15",
+     "why": null,
+     "exact": "85.1500403830126"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2023-24",
+     "category": "G59 \u2190 D63: FY2023-24 claimed opens with the FY2022-23 final true-up's closing ARR!G59",
+     "output": "gap_opening_carried",
+     "result": "match",
+     "filed": "85.15",
+     "computed": "85.15",
+     "why": null,
+     "exact": "85.1500403830126"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "I59 \u2190 G63: FY2024-25 actual opens with FY2023-24 as claimed ARR!I59",
+     "output": "gap_opening_carried",
+     "result": "match",
+     "filed": "47.92",
+     "computed": "47.92",
+     "why": null,
+     "exact": "47.92311096768611"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "J59 \u2190 G63: FY2024-25 claimed opens with FY2023-24 as claimed ARR!J59",
+     "output": "gap_opening_carried",
+     "result": "match",
+     "filed": "47.92",
+     "computed": "47.92",
+     "why": null,
+     "exact": "47.92311096768611"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2025-26",
+     "category": "L59 \u2190 J63: the APR estimate opens with the true-up FY2024-25 as claimed ARR!L59",
+     "output": "gap_opening_carried",
+     "result": "match",
+     "filed": "-267.74",
+     "computed": "-267.74",
+     "why": null,
+     "exact": "-267.7398141273837"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "M59 \u2190 L63: the ARR opens with the APR estimate's closing ARR!M59",
+     "output": "gap_opening_carried",
+     "result": "match",
+     "filed": "-629.37",
+     "computed": "-629.37",
+     "why": null,
+     "exact": "-629.3692462598314"
     }
    ]
   },
@@ -50497,6 +51226,11 @@
        "binding": "f16-capitalisation.json",
        "output": "capitalisation_planned",
        "value": "493.6907762821606402"
+      },
+      "record:gap_accumulated_opening": {
+       "column": "FY2025-26|petitioned",
+       "output": "arr_gap_cumulative",
+       "value": "-629.5917448242713315412065615"
       }
      },
      "not_fed": [],
@@ -50511,7 +51245,6 @@
       "record:contingency",
       "record:employee_capitalised",
       "record:finance",
-      "record:gap_accumulated_opening",
       "record:income_other_business",
       "record:maintenance_spares",
       "record:nti",
@@ -50534,7 +51267,8 @@
       "record:wc_receivables_actual"
      ],
      "counts": {
-      "match": 12
+      "match": 10,
+      "differs": 2
      },
      "checks": [
       {
@@ -50549,7 +51283,8 @@
        "computed": "128.82",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.capital.equity_addition v1 (draft)"
+       "rule": "uperc.capital.equity_addition v1 (draft)",
+       "exact": "128.821404276288354060"
       },
       {
        "output": "return_on_equity",
@@ -50563,7 +51298,8 @@
        "computed": "115.77",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.myt2025.roe v1 (draft)"
+       "rule": "uperc.myt2025.roe v1 (draft)",
+       "exact": "115.7673755457911665545"
       },
       {
        "output": "normative_loan_addition",
@@ -50577,7 +51313,8 @@
        "computed": "300.58",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.capital.debt_addition v1 (draft)"
+       "rule": "uperc.capital.debt_addition v1 (draft)",
+       "exact": "300.583276644672826140"
       },
       {
        "output": "interest_on_loan",
@@ -50591,7 +51328,8 @@
        "computed": "83.88",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.myt2025.loan.interest v1 (draft)"
+       "rule": "uperc.myt2025.loan.interest v1 (draft)",
+       "exact": "83.87561260754435775289954794"
       },
       {
        "output": "interest_on_working_capital",
@@ -50605,7 +51343,8 @@
        "computed": "6.88",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.iowc.interest v1 (draft)"
+       "rule": "uperc.iowc.interest v1 (draft)",
+       "exact": "6.881215141906336773320158698"
       },
       {
        "output": "tax_recoverable",
@@ -50619,7 +51358,8 @@
        "computed": "38.94",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.tax.recoverable v1 (draft)"
+       "rule": "uperc.tax.recoverable v1 (draft)",
+       "exact": "38.935659981511543536"
       },
       {
        "output": "arr_om_total",
@@ -50633,7 +51373,8 @@
        "computed": "213.71",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.om v1 (draft)"
+       "rule": "uperc.arr.om v1 (draft)",
+       "exact": "213.7088856107091677381619014"
       },
       {
        "output": "arr_total_expenditure",
@@ -50647,7 +51388,8 @@
        "computed": "3502.93",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.expenditure v2 (draft)"
+       "rule": "uperc.arr.expenditure v2 (draft)",
+       "exact": "3502.926782010714750406259739"
       },
       {
        "output": "arr_net",
@@ -50661,7 +51403,8 @@
        "computed": "3481.83",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.net_arr v1 (draft)"
+       "rule": "uperc.arr.net_arr v1 (draft)",
+       "exact": "3481.825292293368789706259739"
       },
       {
        "output": "arr_gap",
@@ -50675,7 +51418,8 @@
        "computed": "-289.79",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.gap v1 (draft)"
+       "rule": "uperc.arr.gap v1 (draft)",
+       "exact": "-289.786981266445730245859739"
       },
       {
        "output": "arr_carrying_cost",
@@ -50684,12 +51428,13 @@
        "fiscal_year": "FY2026-27",
        "voice": "petitioned",
        "words": "Projected",
-       "result": "match",
+       "result": "differs",
        "filed": "-83.23",
-       "computed": "-83.23",
+       "computed": "-83.26",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.carrying v1 (draft)"
+       "rule": "uperc.arr.carrying v1 (draft)",
+       "exact": "-83.25716281168062614139466633"
       },
       {
        "output": "arr_gap_cumulative",
@@ -50698,12 +51443,13 @@
        "fiscal_year": "FY2026-27",
        "voice": "petitioned",
        "words": "Projected",
-       "result": "match",
+       "result": "differs",
        "filed": "-1002.39",
-       "computed": "-1002.39",
+       "computed": "-1002.64",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.cumulative v1 (draft)"
+       "rule": "uperc.arr.cumulative v1 (draft)",
+       "exact": "-1002.635888902397687928460967"
       }
      ]
     },
@@ -50785,6 +51531,11 @@
        "binding": "f16-capitalisation.json",
        "output": "capitalisation_planned",
        "value": "448.4885975588144180"
+      },
+      "record:gap_accumulated_opening": {
+       "column": "FY2024-25|petitioned",
+       "output": "arr_gap_cumulative",
+       "value": "-267.9407157657032456693276402"
       }
      },
      "not_fed": [],
@@ -50799,7 +51550,6 @@
       "record:contingency",
       "record:employee_capitalised",
       "record:finance",
-      "record:gap_accumulated_opening",
       "record:income_other_business",
       "record:maintenance_spares",
       "record:nti",
@@ -50821,7 +51571,8 @@
       "record:wc_receivables_actual"
      ],
      "counts": {
-      "match": 12
+      "match": 10,
+      "differs": 2
      },
      "checks": [
       {
@@ -50836,7 +51587,8 @@
        "computed": "116.13",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.capital.equity_addition v1 (draft)"
+       "rule": "uperc.capital.equity_addition v1 (draft)",
+       "exact": "116.128117774669337400"
       },
       {
        "output": "return_on_equity",
@@ -50850,7 +51602,8 @@
        "computed": "98.07",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.myt2025.roe v1 (draft)"
+       "rule": "uperc.myt2025.roe v1 (draft)",
+       "exact": "98.0711613919693303050"
       },
       {
        "output": "normative_loan_addition",
@@ -50864,7 +51617,8 @@
        "computed": "270.97",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.capital.debt_addition v1 (draft)"
+       "rule": "uperc.capital.debt_addition v1 (draft)",
+       "exact": "270.965608140895120600"
       },
       {
        "output": "interest_on_loan",
@@ -50878,7 +51632,8 @@
        "computed": "65.69",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.myt2025.loan.interest v1 (draft)"
+       "rule": "uperc.myt2025.loan.interest v1 (draft)",
+       "exact": "65.68531999953627222284232877"
       },
       {
        "output": "interest_on_working_capital",
@@ -50892,7 +51647,8 @@
        "computed": "4.1",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.iowc.interest v1 (draft)"
+       "rule": "uperc.iowc.interest v1 (draft)",
+       "exact": "4.096171004560151096725307776"
       },
       {
        "output": "tax_recoverable",
@@ -50906,7 +51662,8 @@
        "computed": "32.98",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.tax.recoverable v1 (draft)"
+       "rule": "uperc.tax.recoverable v1 (draft)",
+       "exact": "32.983950581476963132299551"
       },
       {
        "output": "arr_om_total",
@@ -50920,7 +51677,8 @@
        "computed": "198.6",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.om v1 (draft)"
+       "rule": "uperc.arr.om v1 (draft)",
+       "exact": "198.6011782335629515629612162"
       },
       {
        "output": "arr_total_expenditure",
@@ -50934,7 +51692,8 @@
        "computed": "3217.45",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.expenditure v2 (draft)"
+       "rule": "uperc.arr.expenditure v2 (draft)",
+       "exact": "3217.445224050169884483438185"
       },
       {
        "output": "arr_net",
@@ -50948,7 +51707,8 @@
        "computed": "3200.63",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.net_arr v1 (draft)"
+       "rule": "uperc.arr.net_arr v1 (draft)",
+       "exact": "3200.633901521176949503438185"
       },
       {
        "output": "arr_gap",
@@ -50962,7 +51722,8 @@
        "computed": "-315.87",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.gap v1 (draft)"
+       "rule": "uperc.arr.gap v1 (draft)",
+       "exact": "-315.869420748521933060428185"
       },
       {
        "output": "arr_carrying_cost",
@@ -50971,12 +51732,13 @@
        "fiscal_year": "FY2025-26",
        "voice": "petitioned",
        "words": "Estimated",
-       "result": "match",
+       "result": "differs",
        "filed": "-45.76",
-       "computed": "-45.76",
+       "computed": "-45.78",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.carrying v1 (draft)"
+       "rule": "uperc.arr.carrying v1 (draft)",
+       "exact": "-45.78160831004615281145073627"
       },
       {
        "output": "arr_gap_cumulative",
@@ -50985,12 +51747,13 @@
        "fiscal_year": "FY2025-26",
        "voice": "petitioned",
        "words": "Estimated",
-       "result": "match",
+       "result": "differs",
        "filed": "-629.37",
-       "computed": "-629.37",
+       "computed": "-629.59",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.cumulative v1 (draft)"
+       "rule": "uperc.arr.cumulative v1 (draft)",
+       "exact": "-629.5917448242713315412065615"
       }
      ]
     },
@@ -51116,7 +51879,8 @@
        "computed": "64.77",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.capital.equity_addition v1 (draft)"
+       "rule": "uperc.capital.equity_addition v1 (draft)",
+       "exact": "64.767273203700074070"
       },
       {
        "output": "return_on_equity",
@@ -51130,7 +51894,8 @@
        "computed": "84.98",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.myt2019.roe v1 (draft)"
+       "rule": "uperc.myt2019.roe v1 (draft)",
+       "exact": "84.98031267419162059275"
       },
       {
        "output": "normative_loan_addition",
@@ -51144,7 +51909,8 @@
        "computed": "151.12",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.capital.debt_addition v1 (draft)"
+       "rule": "uperc.capital.debt_addition v1 (draft)",
+       "exact": "151.123637475300172830"
       },
       {
        "output": "interest_on_loan",
@@ -51158,7 +51924,8 @@
        "computed": "53.62",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.myt2019.loan.interest v1 (draft)"
+       "rule": "uperc.myt2019.loan.interest v1 (draft)",
+       "exact": "53.6243517628861141111062175"
       },
       {
        "output": "interest_on_working_capital",
@@ -51172,7 +51939,8 @@
        "computed": "3.81",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.iowc.interest v1 (draft)"
+       "rule": "uperc.iowc.interest v1 (draft)",
+       "exact": "3.814790352392463972012557073"
       },
       {
        "output": "tax_recoverable",
@@ -51186,7 +51954,8 @@
        "computed": "28.58",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.tax.recoverable v1 (draft)"
+       "rule": "uperc.tax.recoverable v1 (draft)",
+       "exact": "28.58114856457203745828431688"
       },
       {
        "output": "arr_om_total",
@@ -51200,7 +51969,8 @@
        "computed": "191.51",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.om v1 (draft)"
+       "rule": "uperc.arr.om v1 (draft)",
+       "exact": "191.505522902454583"
       },
       {
        "output": "arr_total_expenditure",
@@ -51214,7 +51984,8 @@
        "computed": "2954.70",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.expenditure v2 (draft)"
+       "rule": "uperc.arr.expenditure v2 (draft)",
+       "exact": "2954.695199340472474869403092"
       },
       {
        "output": "arr_net",
@@ -51228,7 +51999,8 @@
        "computed": "2938.62",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.net_arr v1 (draft)"
+       "rule": "uperc.arr.net_arr v1 (draft)",
+       "exact": "2938.619240606747276873403092"
       },
       {
        "output": "arr_gap",
@@ -51242,7 +52014,8 @@
        "computed": "-304.02",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.gap v1 (draft)"
+       "rule": "uperc.arr.gap v1 (draft)",
+       "exact": "-304.016648161389511502577356"
       },
       {
        "output": "arr_carrying_cost",
@@ -51256,7 +52029,8 @@
        "computed": "-11.85",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.carrying v1 (draft)"
+       "rule": "uperc.arr.carrying v1 (draft)",
+       "exact": "-11.84717857199984416675028416"
       },
       {
        "output": "arr_gap_cumulative",
@@ -51270,7 +52044,8 @@
        "computed": "-267.94",
        "unit": "INR_crore",
        "why": null,
-       "rule": "uperc.arr.cumulative v1 (draft)"
+       "rule": "uperc.arr.cumulative v1 (draft)",
+       "exact": "-267.9407157657032456693276402"
       }
      ]
     }
@@ -54779,9 +55554,9 @@
       "filed": "293.43"
      },
      "D": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "arr-gap-roll-forward.json: gap_opening_carried",
+      "computed": "335.85",
       "filed": "335.85"
      },
      "E": {
@@ -54791,15 +55566,15 @@
       "filed": "1161.62"
      },
      "F": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "arr-gap-roll-forward.json: gap_opening_carried",
+      "computed": "85.15",
       "filed": "85.15"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "arr-gap-roll-forward.json: gap_opening_carried",
+      "computed": "85.15",
       "filed": "85.15"
      },
      "H": {
@@ -54809,15 +55584,15 @@
       "filed": "1082.18"
      },
      "I": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "arr-gap-roll-forward.json: gap_opening_carried",
+      "computed": "47.92",
       "filed": "47.92"
      },
      "J": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "arr-gap-roll-forward.json: gap_opening_carried",
+      "computed": "47.92",
       "filed": "47.92"
      },
      "K": {
@@ -54827,15 +55602,15 @@
       "filed": "1242.59"
      },
      "L": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "arr-gap-roll-forward.json: gap_opening_carried",
+      "computed": "-267.74",
       "filed": "-267.74"
      },
      "M": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "arr-gap-roll-forward.json: gap_opening_carried",
+      "computed": "-629.37",
       "filed": "-629.37"
      }
     }
@@ -55066,9 +55841,9 @@
     "computed": 11
    },
    "D": {
-    "record": 28,
+    "record": 27,
     "computed": 13,
-    "tied": 1,
+    "tied": 2,
     "differs": 1
    },
    "E": {
@@ -55077,15 +55852,15 @@
     "differs": 2
    },
    "F": {
-    "record": 28,
+    "record": 27,
     "computed": 12,
-    "tied": 2,
+    "tied": 3,
     "differs": 2
    },
    "G": {
-    "tied": 10,
+    "tied": 11,
     "computed": 11,
-    "record": 16,
+    "record": 15,
     "differs": 6
    },
    "H": {
@@ -55094,14 +55869,15 @@
     "differs": 2
    },
    "I": {
-    "record": 28,
-    "computed": 16
+    "record": 27,
+    "computed": 16,
+    "tied": 1
    },
    "J": {
-    "tied": 11,
+    "tied": 12,
     "computed": 16,
     "differs": 3,
-    "record": 11
+    "record": 10
    },
    "K": {
     "record": 26,
@@ -55109,14 +55885,14 @@
     "differs": 6
    },
    "L": {
-    "tied": 15,
+    "tied": 16,
     "computed": 17,
-    "record": 14
+    "record": 13
    },
    "M": {
-    "tied": 15,
+    "tied": 16,
     "computed": 17,
-    "record": 14
+    "record": 13
    }
   }
  }

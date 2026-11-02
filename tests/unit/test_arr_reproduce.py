@@ -573,10 +573,11 @@ def test_npcl_true_up_power_purchase_as_billed_ties_to_the_arr():
 def test_npcl_petition_computed_end_to_end_from_the_schedules():
     """Real data, the milestone's point: the chain for the petition's columns fed not by the ARR
     format's own rows but by what each schedule's reproduction computes (PPC, F22, F19 base, F24,
-    F30, P3, ESR-3, the contingency fund).  The ARR year (FY2026-27) and the APR year
-    (FY2025-26) reproduce in full, net ARR and gap included.  The true-up year differs by exactly
-    the security-deposit interest NPCL types for March (A40: 0.19), carried to the net ARR and
-    the gap — the computation shows the finding's effect instead of hiding it."""
+    F30, P3, ESR-3, the contingency fund), and each year's opening regulatory asset is the year
+    before's closing as computed.  The true-up year differs by exactly the security-deposit
+    interest NPCL types for March (A40: 0.19), carried to the net ARR and the gap; the APR and ARR
+    years reproduce their net ARR and gap, and A40's effect travels into their carried gap with
+    carrying cost (0.22, then 0.25) — the computation shows the finding's effect, never hides it."""
     from decimal import Decimal
 
     import openpyxl
@@ -597,7 +598,7 @@ def test_npcl_petition_computed_end_to_end_from_the_schedules():
     chain = json.loads((folder / "bindings" / pipe["chain"]).read_text())
     wb = None
     results = {}
-    for name in sorted({f["binding"] for feeds in pipe["columns"].values() for f in feeds.values()}):
+    for name in sorted({f["binding"] for feeds in pipe["columns"].values() for f in feeds.values() if "binding" in f}):
         binding = json.loads((folder / "bindings" / name).read_text())
         wb = wb or openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
         fn = {"cells": reproduce_cells, "period_table": reproduce_period_table}.get(
@@ -606,9 +607,16 @@ def test_npcl_petition_computed_end_to_end_from_the_schedules():
         results[name] = fn(wb, binding, rules)
     out = reproduce_pipeline(pipe, chain, rules, sheets, results)
     cols = {c["fiscal_year"]: c for c in out["columns"]}
+    carried = {"FY2025-26": "0.22", "FY2026-27": "0.25"}
     for fy in ("FY2026-27", "FY2025-26"):
-        assert cols[fy]["counts"] == {"match": 12}, cols[fy]["checks"]
+        assert cols[fy]["counts"] == {"match": 10, "differs": 2}, cols[fy]["checks"]
         assert not cols[fy]["not_fed"]
+        # the opening is the previous column's computed closing, and only the carried gap differs
+        assert "column" in cols[fy]["fed"]["record:gap_accumulated_opening"]
+        off = {c["output"]: c for c in cols[fy]["checks"] if c["result"] == "differs"}
+        assert set(off) == {"arr_carrying_cost", "arr_gap_cumulative"}
+        closing = off["arr_gap_cumulative"]
+        assert str(Decimal(closing["filed"]) - Decimal(closing["computed"])) == carried[fy]
         # the loan rate from the MCLR revisions (the ARR year carries the APR year's, as NPCL does)
         assert cols[fy]["fed"]["assumption:loan_interest_rate"]["output"] == "loan_rate_reference"
     assert cols["FY2026-27"]["fed"]["assumption:loan_interest_rate"]["fiscal_year"] == "FY2025-26"
@@ -995,3 +1003,57 @@ def test_the_quote_checker_finds_each_quote_and_its_column_header_on_its_page(tm
     ]
     other = coq.check(pdf, {"document": {"sha256": "0" * 64}, "rates": {"a": rate}})
     assert len(other) == 1 and "not the record's document" in other[0]
+
+
+def test_a_pipeline_column_feeds_a_later_one_only_with_a_reason_and_never_in_a_cycle():
+    import pytest
+
+    from tariff_api.arr.reproduce import reproduce_pipeline
+    from tariff_api.arr.rules import RuleError, load_rules
+
+    feed = {"column": "FY2025-26|petitioned", "output": "arr_gap_cumulative"}
+    cycle = {
+        "chain": "c.json",
+        "columns": {
+            "FY2026-27|petitioned": {"record:gap_accumulated_opening": feed | {"why": "w"}},
+            "FY2025-26|petitioned": {
+                "record:gap_accumulated_opening": feed | {"column": "FY2026-27|petitioned", "why": "w"}
+            },
+        },
+    }
+    with pytest.raises(RuleError, match="cycle"):
+        reproduce_pipeline(cycle, {"sheet": "ARR", "inputs": {}}, load_rules("UPERC"), {}, {})
+    unexplained = {
+        "chain": "c.json",
+        "columns": {
+            "FY2026-27|petitioned": {"record:gap_accumulated_opening": feed | {"column": "FY2024-25|petitioned"}},
+            "FY2024-25|petitioned": {},
+        },
+    }
+    unknown = {
+        "chain": "c.json",
+        "columns": {"FY2026-27|petitioned": {"record:gap_accumulated_opening": feed | {"why": "w"}}},
+    }
+    with pytest.raises(RuleError, match="not a column of this pipeline"):
+        reproduce_pipeline(unknown, {"sheet": "ARR", "inputs": {}}, load_rules("UPERC"), {}, {})
+    with pytest.raises(RuleError, match="without a reason"):
+        reproduce_pipeline(
+            unexplained, {"sheet": "ARR", "inputs": {}}, load_rules("UPERC"), {"ARR": {"sheet": "ARR", "rows": []}}, {}
+        )
+
+
+def test_npcl_regulatory_asset_rolls_forward_along_the_petitions_chain():
+    """Real data: each column's gap brought forward (ARR row 59) is the closing (row 63) of the
+    column it continues — 7 ties along the petition's chain; the approved columns, each a
+    different order's, are not one chain and are not tied."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "arr-gap-roll-forward.json").read_text())
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"))
+    assert [c.result for c in checks] == ["match"] * 7
+    assert not any(c.category.split(" ")[0][0] in "EHK" for c in checks)

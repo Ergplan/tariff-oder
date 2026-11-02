@@ -61,6 +61,11 @@
    "record:capitalisation": {
     "binding": "f16-capitalisation.json",
     "output": "capitalisation_planned"
+   },
+   "record:gap_accumulated_opening": {
+    "column": "FY2025-26|petitioned",
+    "output": "arr_gap_cumulative",
+    "why": "the ARR year opens with the APR year's closing as computed end to end (the format carries L63 as M59)"
    }
   },
   "FY2025-26|petitioned": {
@@ -123,6 +128,11 @@
    "record:capitalisation": {
     "binding": "f16-capitalisation.json",
     "output": "capitalisation_planned"
+   },
+   "record:gap_accumulated_opening": {
+    "column": "FY2024-25|petitioned",
+    "output": "arr_gap_cumulative",
+    "why": "the APR year opens with the true-up year's closing as computed end to end (the format carries J63 as L59)"
    }
   },
   "FY2024-25|petitioned": {

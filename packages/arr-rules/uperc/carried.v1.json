@@ -39,6 +39,40 @@
    },
    "examples": [],
    "note": "not a regulation: the identity that a format carries another's figure unchanged"
+  },
+  {
+   "id": "uperc.carried.gap_opening",
+   "version": 1,
+   "status": "draft",
+   "title": "The revenue gap (surplus) brought forward is the closing of the year before",
+   "output": "gap_opening_carried",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-16",
+   "formula": "value",
+   "inputs": {
+    "value": {
+     "unit": "INR_crore",
+     "source": "record:gap_closing_prior"
+    }
+   },
+   "clause": {
+    "regulation": "Cross-schedule consistency (R-SCH-16): a figure carried from one format to another is the same figure",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "not a regulation: the regulatory asset rolls forward — a year's accumulated gap or surplus from preceding years (ARR row 59) is the cumulative closing (row 63) of the column it continues"
   }
  ]
 }
