@@ -1,0 +1,1900 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F24_Dep",
+ "rates": "order/figures-depreciation-fy2026-27.json",
+ "places": 2,
+ "note": "The Commission's depreciation for FY2026-27 reproduced class by class with the same draft rules that reproduce NPCL's F24 (closing = opening + additions − deductions; depreciation = the average of opening and closing × the class rate), fed the order's own figures (Tables 6-62 to 6-65, read row by row with their quotes) and checked against its printed closing GFA, allowable depreciation, part totals, gross (136.98) and net (103.80, after the 33.18 on consumer contribution).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "Part A — assets up to 31.03.2020 (Table 6-62)",
+   "categories": {
+    "A1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.1.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.1.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.1.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.1.closing",
+      "depreciation_class": "order:dep.A.1.allowable"
+     }
+    },
+    "A2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.2.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.2.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.2.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.2.closing",
+      "depreciation_class": "order:dep.A.2.allowable"
+     }
+    },
+    "A3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.3.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.3.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.3.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.3.closing",
+      "depreciation_class": "order:dep.A.3.allowable"
+     }
+    },
+    "A4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.4.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.4.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.4.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.4.closing",
+      "depreciation_class": "order:dep.A.4.allowable"
+     }
+    },
+    "A5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.5.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.5.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.5.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.5.closing",
+      "depreciation_class": "order:dep.A.5.allowable"
+     }
+    },
+    "A6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.6.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.6.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.6.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.6.closing",
+      "depreciation_class": "order:dep.A.6.allowable"
+     }
+    },
+    "A7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.7.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.7.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.7.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.7.closing",
+      "depreciation_class": "order:dep.A.7.allowable"
+     }
+    },
+    "A8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.8.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.8.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.8.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.8.closing",
+      "depreciation_class": "order:dep.A.8.allowable"
+     }
+    },
+    "A9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.9.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.9.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.9.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.9.closing",
+      "depreciation_class": "order:dep.A.9.allowable"
+     }
+    },
+    "A10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.10.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.10.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.10.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.10.closing",
+      "depreciation_class": "order:dep.A.10.allowable"
+     }
+    },
+    "A11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.11.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.11.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.11.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.11.closing",
+      "depreciation_class": "order:dep.A.11.allowable"
+     }
+    },
+    "A12 Solar Power Generation Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.12.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.12.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.12.deduction"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.A.12.closing",
+      "depreciation_class": "order:dep.A.12.allowable"
+     }
+    }
+   },
+   "checks": {
+    "depreciation_gross_total": "order:dep.A.13.allowable"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "Part B — assets added 01.04.2020 to 31.03.2025 (Table 6-63)",
+   "categories": {
+    "B1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.1.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.1.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.1.closing",
+      "depreciation_class": "order:dep.B.1.allowable"
+     }
+    },
+    "B2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.2.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.2.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.2.closing",
+      "depreciation_class": "order:dep.B.2.allowable"
+     }
+    },
+    "B3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.3.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.3.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.3.closing",
+      "depreciation_class": "order:dep.B.3.allowable"
+     }
+    },
+    "B4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.4.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.4.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.4.closing",
+      "depreciation_class": "order:dep.B.4.allowable"
+     }
+    },
+    "B5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.5.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.5.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.5.closing",
+      "depreciation_class": "order:dep.B.5.allowable"
+     }
+    },
+    "B6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.6.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.6.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.6.closing",
+      "depreciation_class": "order:dep.B.6.allowable"
+     }
+    },
+    "B7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.7.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.7.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.7.closing",
+      "depreciation_class": "order:dep.B.7.allowable"
+     }
+    },
+    "B8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.8.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.8.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.8.closing",
+      "depreciation_class": "order:dep.B.8.allowable"
+     }
+    },
+    "B9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.9.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.9.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.9.closing",
+      "depreciation_class": "order:dep.B.9.allowable"
+     }
+    },
+    "B10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.10.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.10.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.10.closing",
+      "depreciation_class": "order:dep.B.10.allowable"
+     }
+    },
+    "B11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.11.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.11.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.11.closing",
+      "depreciation_class": "order:dep.B.11.allowable"
+     }
+    },
+    "B12 Solar Power Generation equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.12.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.12.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.B.12.closing",
+      "depreciation_class": "order:dep.B.12.allowable"
+     }
+    }
+   },
+   "checks": {
+    "depreciation_gross_total": "order:dep.B.13.allowable"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "Part C — assets added after 01.04.2025 (Table 6-64)",
+   "categories": {
+    "C1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.1.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.1.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.1.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.1.closing",
+      "depreciation_class": "order:dep.C.1.allowable"
+     }
+    },
+    "C2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.2.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.2.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.2.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.2.closing",
+      "depreciation_class": "order:dep.C.2.allowable"
+     }
+    },
+    "C3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.3.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.3.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.3.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.3.closing",
+      "depreciation_class": "order:dep.C.3.allowable"
+     }
+    },
+    "C4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.4.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.4.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.4.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.4.closing",
+      "depreciation_class": "order:dep.C.4.allowable"
+     }
+    },
+    "C5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.5.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.5.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.5.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.5.closing",
+      "depreciation_class": "order:dep.C.5.allowable"
+     }
+    },
+    "C6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.6.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.6.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.6.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.6.closing",
+      "depreciation_class": "order:dep.C.6.allowable"
+     }
+    },
+    "C7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.7.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.7.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.7.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.7.closing",
+      "depreciation_class": "order:dep.C.7.allowable"
+     }
+    },
+    "C8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.8.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.8.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.8.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.8.closing",
+      "depreciation_class": "order:dep.C.8.allowable"
+     }
+    },
+    "C9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.9.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.9.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.9.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.9.closing",
+      "depreciation_class": "order:dep.C.9.allowable"
+     }
+    },
+    "C10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.10.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.10.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.10.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.10.closing",
+      "depreciation_class": "order:dep.C.10.allowable"
+     }
+    },
+    "C11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.11.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.11.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.11.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.11.closing",
+      "depreciation_class": "order:dep.C.11.allowable"
+     }
+    },
+    "C12 Solar Power Generation equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.12.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.12.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.12.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     },
+     "checks": {
+      "gfa_closing": "order:dep.C.12.closing",
+      "depreciation_class": "order:dep.C.12.allowable"
+     }
+    }
+   },
+   "checks": {
+    "depreciation_gross_total": "order:dep.C.13.allowable"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "depreciation approved FY2026-27 (Table 6-65)",
+   "categories": {
+    "A1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.1.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.1.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.1.deduction"
+      }
+     }
+    },
+    "A2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.2.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.2.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.2.deduction"
+      }
+     }
+    },
+    "A3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.3.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.3.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.3.deduction"
+      }
+     }
+    },
+    "A4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.4.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.4.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.4.deduction"
+      }
+     }
+    },
+    "A5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.5.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.5.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.5.deduction"
+      }
+     }
+    },
+    "A6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.6.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.6.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.6.deduction"
+      }
+     }
+    },
+    "A7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.7.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.7.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.7.deduction"
+      }
+     }
+    },
+    "A8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.8.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.8.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.8.deduction"
+      }
+     }
+    },
+    "A9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.9.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.9.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.9.deduction"
+      }
+     }
+    },
+    "A10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.10.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.10.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.10.deduction"
+      }
+     }
+    },
+    "A11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.11.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.11.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.11.deduction"
+      }
+     }
+    },
+    "A12 Solar Power Generation Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.A.12.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.A.12.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part A (assets up to 31.03.2020) takes no additions; the table prints opening, deduction, closing"
+      },
+      "record:gfa_deductions": {
+       "rate": "dep.A.12.deduction"
+      }
+     }
+    },
+    "B1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.1.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.1.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.2.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.2.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.3.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.3.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.4.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.4.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.5.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.5.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.6.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.6.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.7.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.7.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.8.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.8.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.9.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.9.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.10.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.10.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.11.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.11.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "B12 Solar Power Generation equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.B.12.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.B.12.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no additions"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part B prints opening and closing only, equal: no deductions"
+      }
+     }
+    },
+    "C1 Land": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.1.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.1.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.1.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C2 Buildings": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.2.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.2.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.2.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C3 Plant & Machinery": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.3.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.3.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.3.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C4 Lines & Cables": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.4.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.4.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.4.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C5 Vehicles": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.5.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.5.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.5.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C6 Furniture & Fixtures": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.6.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.6.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.6.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C7 Office equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.7.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.7.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.7.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C8 Metering Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.8.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.8.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.8.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C9 Communication Equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.9.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.9.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.9.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C10 Intangible Assets": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.10.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.10.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.10.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C11 Assets taken over & pending final valuation": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.11.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.11.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.11.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    },
+    "C12 Solar Power Generation equipment": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.C.12.opening"
+      },
+      "record:dep_rate": {
+       "rate": "dep.C.12.rate"
+      },
+      "record:gfa_grants": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the order's depreciation tables have no grants column (Tables 6-62 to 6-64)"
+      },
+      "record:gfa_additions": {
+       "rate": "dep.C.12.addition"
+      },
+      "record:gfa_deductions": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "Part C prints opening, addition, closing: no deductions"
+      }
+     }
+    }
+   },
+   "inputs": {
+    "record:dep_contribution": {
+     "rate": "dep.contribution"
+    }
+   },
+   "checks": {
+    "depreciation_gross_total": "order:dep.gross",
+    "depreciation_net": "order:dep.net"
+   }
+  }
+ ]
+}

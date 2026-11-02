@@ -23,7 +23,7 @@ from typing import Any
 
 from .narrative import parse_figure
 
-_FIG = re.compile(r"^(\(?[0-9][0-9,]*\.[0-9]+\)?|-)$")
+_FIG = re.compile(r"^(\(?[0-9][0-9,]*\.[0-9]+%?\)?|-)$")  # a rate prints with %
 
 
 def norm(text: str) -> str:

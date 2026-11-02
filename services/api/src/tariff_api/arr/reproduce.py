@@ -515,7 +515,8 @@ def load_rate_record(record: dict[str, Any]) -> dict[str, tuple[str, str]]:
         Decimal(figure)  # a number, or InvalidOperation
         # the quote is kept as printed; digit-group commas ("1,062.12") are dropped for the search
         plain = re.sub(r"(?<=\d),(?=\d{2,3}(?!\d))", "", r["quote"])
-        if not re.search(rf"(?<![\d.]){re.escape(figure)}(?![\d])", plain):
+        dash = Decimal(figure) == 0 and re.search(r"(?<!\S)[-–](?!\S)", plain)  # the order prints a zero as "-"
+        if not dash and not re.search(rf"(?<![\d.]){re.escape(figure)}(?![\d])", plain):
             raise RuleError(f"rate {key}: {figure} is not in its quote")
         out[key] = (str(r["value"]), r["unit"])
     return out

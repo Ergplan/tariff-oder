@@ -1,0 +1,1515 @@
+{
+ "status": "read from the order's text layer row by row (serial numbers), each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): depreciation approved for FY2026-27 by asset class, Tables 6-62 to 6-65",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "classes": {
+  "A.1": "Land",
+  "A.2": "Buildings",
+  "A.3": "Plant & Machinery",
+  "A.4": "Lines & Cables",
+  "A.5": "Vehicles",
+  "A.6": "Furniture & Fixtures",
+  "A.7": "Office equipment",
+  "A.8": "Metering Equipment",
+  "A.9": "Communication Equipment",
+  "A.10": "Intangible Assets",
+  "A.11": "Assets taken over & pending final valuation",
+  "A.12": "Solar Power Generation Equipment",
+  "A.13": "Total Fixed Assets",
+  "B.1": "Land",
+  "B.2": "Buildings",
+  "B.3": "Plant & Machinery",
+  "B.4": "Lines & Cables",
+  "B.5": "Vehicles",
+  "B.6": "Furniture & Fixtures",
+  "B.7": "Office equipment",
+  "B.8": "Metering Equipment",
+  "B.9": "Communication Equipment",
+  "B.10": "Intangible Assets",
+  "B.11": "Assets taken over & pending final valuation",
+  "B.12": "Solar Power Generation equipment",
+  "B.13": "Total Fixed Assets",
+  "C.1": "Land",
+  "C.2": "Buildings",
+  "C.3": "Plant & Machinery",
+  "C.4": "Lines & Cables",
+  "C.5": "Vehicles",
+  "C.6": "Furniture & Fixtures",
+  "C.7": "Office equipment",
+  "C.8": "Metering Equipment",
+  "C.9": "Communication Equipment",
+  "C.10": "Intangible Assets",
+  "C.11": "Assets taken over & pending final valuation",
+  "C.12": "Solar Power Generation equipment",
+  "C.13": "Total Fixed Assets"
+ },
+ "figures": {
+  "dep.A.1.opening": {
+   "value": "123.84",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 123.84 - 123.84 3.34% 4.14",
+   "what": "Part A, Land: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.1.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 123.84 - 123.84 3.34% 4.14",
+   "what": "Part A, Land: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.1.closing": {
+   "value": "123.84",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 123.84 - 123.84 3.34% 4.14",
+   "what": "Part A, Land: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.1.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 280,
+   "quote": "1 Land 123.84 - 123.84 3.34% 4.14",
+   "what": "Part A, Land: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.1.allowable": {
+   "value": "4.14",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 123.84 - 123.84 3.34% 4.14",
+   "what": "Part A, Land: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.2.opening": {
+   "value": "192.95",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 192.95 - 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.2.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 192.95 - 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.2.closing": {
+   "value": "192.95",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 192.95 - 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.2.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 280,
+   "quote": "2 Buildings 192.95 - 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.2.allowable": {
+   "value": "6.44",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 192.95 - 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.3.opening": {
+   "value": "36.97",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 36.97 - 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.3.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 36.97 - 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.3.closing": {
+   "value": "36.97",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 36.97 - 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.3.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 280,
+   "quote": "3 Plant & Machinery 36.97 - 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.3.allowable": {
+   "value": "1.95",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 36.97 - 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.4.opening": {
+   "value": "619.92",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 619.92 2.27 617.64 5.28% 32.67",
+   "what": "Part A, Lines & Cables: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.4.deduction": {
+   "value": "2.27",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 619.92 2.27 617.64 5.28% 32.67",
+   "what": "Part A, Lines & Cables: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.4.closing": {
+   "value": "617.64",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 619.92 2.27 617.64 5.28% 32.67",
+   "what": "Part A, Lines & Cables: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.4.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 280,
+   "quote": "4 Lines & Cables 619.92 2.27 617.64 5.28% 32.67",
+   "what": "Part A, Lines & Cables: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.4.allowable": {
+   "value": "32.67",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 619.92 2.27 617.64 5.28% 32.67",
+   "what": "Part A, Lines & Cables: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.5.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles - - - 9.00% -",
+   "what": "Part A, Vehicles: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.5.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles - - - 9.00% -",
+   "what": "Part A, Vehicles: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.5.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles - - - 9.00% -",
+   "what": "Part A, Vehicles: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.5.rate": {
+   "value": "9.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "5 Vehicles - - - 9.00% -",
+   "what": "Part A, Vehicles: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.5.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles - - - 9.00% -",
+   "what": "Part A, Vehicles: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.6.opening": {
+   "value": "20.77",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 20.77 - 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.6.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 20.77 - 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.6.closing": {
+   "value": "20.77",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 20.77 - 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.6.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 20.77 - 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.6.allowable": {
+   "value": "1.31",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 20.77 - 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.7.opening": {
+   "value": "5.89",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "7 Office equipment 5.89 2.62 3.27 6.33% 0.29",
+   "what": "Part A, Office equipment: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.7.deduction": {
+   "value": "2.62",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "7 Office equipment 5.89 2.62 3.27 6.33% 0.29",
+   "what": "Part A, Office equipment: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.7.closing": {
+   "value": "3.27",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "7 Office equipment 5.89 2.62 3.27 6.33% 0.29",
+   "what": "Part A, Office equipment: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.7.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 280,
+   "quote": "7 Office equipment 5.89 2.62 3.27 6.33% 0.29",
+   "what": "Part A, Office equipment: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.7.allowable": {
+   "value": "0.29",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "7 Office equipment 5.89 2.62 3.27 6.33% 0.29",
+   "what": "Part A, Office equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.8.opening": {
+   "value": "28.43",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "8 Metering Equipment 28.43 10.10 18.32 9.00% 2.10",
+   "what": "Part A, Metering Equipment: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.8.deduction": {
+   "value": "10.10",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "8 Metering Equipment 28.43 10.10 18.32 9.00% 2.10",
+   "what": "Part A, Metering Equipment: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.8.closing": {
+   "value": "18.32",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "8 Metering Equipment 28.43 10.10 18.32 9.00% 2.10",
+   "what": "Part A, Metering Equipment: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.8.rate": {
+   "value": "9.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "8 Metering Equipment 28.43 10.10 18.32 9.00% 2.10",
+   "what": "Part A, Metering Equipment: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.8.allowable": {
+   "value": "2.10",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "8 Metering Equipment 28.43 10.10 18.32 9.00% 2.10",
+   "what": "Part A, Metering Equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.9.opening": {
+   "value": "9.92",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "9 Communication Equipment 9.92 - 9.92 5.28% 0.52",
+   "what": "Part A, Communication Equipment: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.9.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "9 Communication Equipment 9.92 - 9.92 5.28% 0.52",
+   "what": "Part A, Communication Equipment: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.9.closing": {
+   "value": "9.92",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "9 Communication Equipment 9.92 - 9.92 5.28% 0.52",
+   "what": "Part A, Communication Equipment: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.9.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 280,
+   "quote": "9 Communication Equipment 9.92 - 9.92 5.28% 0.52",
+   "what": "Part A, Communication Equipment: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.9.allowable": {
+   "value": "0.52",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "9 Communication Equipment 9.92 - 9.92 5.28% 0.52",
+   "what": "Part A, Communication Equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.10.opening": {
+   "value": "22.52",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "10 Intangible Assets 22.52 - 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.10.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "10 Intangible Assets 22.52 - 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.10.closing": {
+   "value": "22.52",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "10 Intangible Assets 22.52 - 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.10.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "10 Intangible Assets 22.52 - 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.10.allowable": {
+   "value": "3.38",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "10 Intangible Assets 22.52 - 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.11.opening": {
+   "value": "0.74",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.11.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.11.closing": {
+   "value": "0.74",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.11.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.11.allowable": {
+   "value": "0.11",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.12.opening": {
+   "value": "0.18",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "12 Solar Power Generation Equipment 0.18 - 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.12.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "12 Solar Power Generation Equipment 0.18 - 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.12.closing": {
+   "value": "0.18",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "12 Solar Power Generation Equipment 0.18 - 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.12.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 280,
+   "quote": "12 Solar Power Generation Equipment 0.18 - 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: rate",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.12.allowable": {
+   "value": "0.01",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "12 Solar Power Generation Equipment 0.18 - 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.13.opening": {
+   "value": "1062.12",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "13 Total Fixed Assets 1,062.12 15.00 1,047.12 52.93",
+   "what": "Part A, Total Fixed Assets: opening",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.13.deduction": {
+   "value": "15.00",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "13 Total Fixed Assets 1,062.12 15.00 1,047.12 52.93",
+   "what": "Part A, Total Fixed Assets: deduction",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.13.closing": {
+   "value": "1047.12",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "13 Total Fixed Assets 1,062.12 15.00 1,047.12 52.93",
+   "what": "Part A, Total Fixed Assets: closing",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.A.13.allowable": {
+   "value": "52.93",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "13 Total Fixed Assets 1,062.12 15.00 1,047.12 52.93",
+   "what": "Part A, Total Fixed Assets: allowable",
+   "header": "S. No. Particulars Opening GFA Deduction to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.1.opening": {
+   "value": "17.51",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 17.51 17.51 3.34% 0.58",
+   "what": "Part B, Land: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.1.closing": {
+   "value": "17.51",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 17.51 17.51 3.34% 0.58",
+   "what": "Part B, Land: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.1.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 280,
+   "quote": "1 Land 17.51 17.51 3.34% 0.58",
+   "what": "Part B, Land: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.1.allowable": {
+   "value": "0.58",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 17.51 17.51 3.34% 0.58",
+   "what": "Part B, Land: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.2.opening": {
+   "value": "55.65",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 55.65 55.65 3.34% 1.86",
+   "what": "Part B, Buildings: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.2.closing": {
+   "value": "55.65",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 55.65 55.65 3.34% 1.86",
+   "what": "Part B, Buildings: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.2.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 280,
+   "quote": "2 Buildings 55.65 55.65 3.34% 1.86",
+   "what": "Part B, Buildings: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.2.allowable": {
+   "value": "1.86",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 55.65 55.65 3.34% 1.86",
+   "what": "Part B, Buildings: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.3.opening": {
+   "value": "48.06",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 48.06 48.06 5.28% 2.54",
+   "what": "Part B, Plant & Machinery: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.3.closing": {
+   "value": "48.06",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 48.06 48.06 5.28% 2.54",
+   "what": "Part B, Plant & Machinery: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.3.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 280,
+   "quote": "3 Plant & Machinery 48.06 48.06 5.28% 2.54",
+   "what": "Part B, Plant & Machinery: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.3.allowable": {
+   "value": "2.54",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 48.06 48.06 5.28% 2.54",
+   "what": "Part B, Plant & Machinery: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.4.opening": {
+   "value": "573.01",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 573.01 573.01 5.28% 30.25",
+   "what": "Part B, Lines & Cables: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.4.closing": {
+   "value": "573.01",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 573.01 573.01 5.28% 30.25",
+   "what": "Part B, Lines & Cables: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.4.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 280,
+   "quote": "4 Lines & Cables 573.01 573.01 5.28% 30.25",
+   "what": "Part B, Lines & Cables: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.4.allowable": {
+   "value": "30.25",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 573.01 573.01 5.28% 30.25",
+   "what": "Part B, Lines & Cables: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.5.opening": {
+   "value": "8.21",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles 8.21 8.21 9.00% 0.74",
+   "what": "Part B, Vehicles: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.5.closing": {
+   "value": "8.21",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles 8.21 8.21 9.00% 0.74",
+   "what": "Part B, Vehicles: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.5.rate": {
+   "value": "9.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "5 Vehicles 8.21 8.21 9.00% 0.74",
+   "what": "Part B, Vehicles: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.5.allowable": {
+   "value": "0.74",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles 8.21 8.21 9.00% 0.74",
+   "what": "Part B, Vehicles: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.6.opening": {
+   "value": "0.83",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 0.83 0.83 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.6.closing": {
+   "value": "0.83",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 0.83 0.83 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.6.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 0.83 0.83 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.6.allowable": {
+   "value": "0.05",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures 0.83 0.83 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.7.opening": {
+   "value": "8.90",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "7 Office equipment 8.90 8.90 6.33% 0.56",
+   "what": "Part B, Office equipment: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.7.closing": {
+   "value": "8.90",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "7 Office equipment 8.90 8.90 6.33% 0.56",
+   "what": "Part B, Office equipment: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.7.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 280,
+   "quote": "7 Office equipment 8.90 8.90 6.33% 0.56",
+   "what": "Part B, Office equipment: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.7.allowable": {
+   "value": "0.56",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "7 Office equipment 8.90 8.90 6.33% 0.56",
+   "what": "Part B, Office equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.8.opening": {
+   "value": "101.70",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "8 Metering Equipment 101.70 101.70 9.00% 9.15",
+   "what": "Part B, Metering Equipment: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.8.closing": {
+   "value": "101.70",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "8 Metering Equipment 101.70 101.70 9.00% 9.15",
+   "what": "Part B, Metering Equipment: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.8.rate": {
+   "value": "9.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "8 Metering Equipment 101.70 101.70 9.00% 9.15",
+   "what": "Part B, Metering Equipment: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.8.allowable": {
+   "value": "9.15",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "8 Metering Equipment 101.70 101.70 9.00% 9.15",
+   "what": "Part B, Metering Equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.9.opening": {
+   "value": "30.88",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "9 Communication Equipment 30.88 30.88 5.28% 1.63",
+   "what": "Part B, Communication Equipment: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.9.closing": {
+   "value": "30.88",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "9 Communication Equipment 30.88 30.88 5.28% 1.63",
+   "what": "Part B, Communication Equipment: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.9.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 280,
+   "quote": "9 Communication Equipment 30.88 30.88 5.28% 1.63",
+   "what": "Part B, Communication Equipment: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.9.allowable": {
+   "value": "1.63",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "9 Communication Equipment 30.88 30.88 5.28% 1.63",
+   "what": "Part B, Communication Equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.10.opening": {
+   "value": "44.77",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "10 Intangible Assets 44.77 44.77 15.00% 6.72",
+   "what": "Part B, Intangible Assets: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.10.closing": {
+   "value": "44.77",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "10 Intangible Assets 44.77 44.77 15.00% 6.72",
+   "what": "Part B, Intangible Assets: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.10.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "10 Intangible Assets 44.77 44.77 15.00% 6.72",
+   "what": "Part B, Intangible Assets: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.10.allowable": {
+   "value": "6.72",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "10 Intangible Assets 44.77 44.77 15.00% 6.72",
+   "what": "Part B, Intangible Assets: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.11.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.11.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.11.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.11.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "11 Assets taken over & pending final valuation - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.12.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "12 Solar Power Generation equipment - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.12.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "12 Solar Power Generation equipment - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.12.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 280,
+   "quote": "12 Solar Power Generation equipment - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: rate",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.12.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "12 Solar Power Generation equipment - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.13.opening": {
+   "value": "889.53",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "13 Total Fixed Assets 889.53 889.53 54.09",
+   "what": "Part B, Total Fixed Assets: opening",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.13.closing": {
+   "value": "889.53",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "13 Total Fixed Assets 889.53 889.53 54.09",
+   "what": "Part B, Total Fixed Assets: closing",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.B.13.allowable": {
+   "value": "54.09",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "13 Total Fixed Assets 889.53 889.53 54.09",
+   "what": "Part B, Total Fixed Assets: allowable",
+   "header": "S. No. Particulars Opening GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.1.opening": {
+   "value": "11.26",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 11.26 - 11.26 3.34% 0.38",
+   "what": "Part C, Land: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.1.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 11.26 - 11.26 3.34% 0.38",
+   "what": "Part C, Land: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.1.closing": {
+   "value": "11.26",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 11.26 - 11.26 3.34% 0.38",
+   "what": "Part C, Land: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.1.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 280,
+   "quote": "1 Land 11.26 - 11.26 3.34% 0.38",
+   "what": "Part C, Land: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.1.allowable": {
+   "value": "0.38",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "1 Land 11.26 - 11.26 3.34% 0.38",
+   "what": "Part C, Land: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.2.opening": {
+   "value": "14.05",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 14.05 38.56 52.61 3.34% 1.11",
+   "what": "Part C, Buildings: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.2.addition": {
+   "value": "38.56",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 14.05 38.56 52.61 3.34% 1.11",
+   "what": "Part C, Buildings: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.2.closing": {
+   "value": "52.61",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 14.05 38.56 52.61 3.34% 1.11",
+   "what": "Part C, Buildings: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.2.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 280,
+   "quote": "2 Buildings 14.05 38.56 52.61 3.34% 1.11",
+   "what": "Part C, Buildings: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.2.allowable": {
+   "value": "1.11",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "2 Buildings 14.05 38.56 52.61 3.34% 1.11",
+   "what": "Part C, Buildings: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.3.opening": {
+   "value": "1.52",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 1.52 - 1.52 4.22% 0.06",
+   "what": "Part C, Plant & Machinery: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.3.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 1.52 - 1.52 4.22% 0.06",
+   "what": "Part C, Plant & Machinery: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.3.closing": {
+   "value": "1.52",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 1.52 - 1.52 4.22% 0.06",
+   "what": "Part C, Plant & Machinery: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.3.rate": {
+   "value": "4.22",
+   "unit": "percent",
+   "page": 280,
+   "quote": "3 Plant & Machinery 1.52 - 1.52 4.22% 0.06",
+   "what": "Part C, Plant & Machinery: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.3.allowable": {
+   "value": "0.06",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "3 Plant & Machinery 1.52 - 1.52 4.22% 0.06",
+   "what": "Part C, Plant & Machinery: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.4.opening": {
+   "value": "356.06",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 356.06 382.20 738.27 4.22% 23.09",
+   "what": "Part C, Lines & Cables: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.4.addition": {
+   "value": "382.20",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 356.06 382.20 738.27 4.22% 23.09",
+   "what": "Part C, Lines & Cables: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.4.closing": {
+   "value": "738.27",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 356.06 382.20 738.27 4.22% 23.09",
+   "what": "Part C, Lines & Cables: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.4.rate": {
+   "value": "4.22",
+   "unit": "percent",
+   "page": 280,
+   "quote": "4 Lines & Cables 356.06 382.20 738.27 4.22% 23.09",
+   "what": "Part C, Lines & Cables: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.4.allowable": {
+   "value": "23.09",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "4 Lines & Cables 356.06 382.20 738.27 4.22% 23.09",
+   "what": "Part C, Lines & Cables: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.5.opening": {
+   "value": "3.85",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles 3.85 3.87 7.72 9.00% 0.52",
+   "what": "Part C, Vehicles: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.5.addition": {
+   "value": "3.87",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles 3.85 3.87 7.72 9.00% 0.52",
+   "what": "Part C, Vehicles: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.5.closing": {
+   "value": "7.72",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles 3.85 3.87 7.72 9.00% 0.52",
+   "what": "Part C, Vehicles: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.5.rate": {
+   "value": "9.00",
+   "unit": "percent",
+   "page": 280,
+   "quote": "5 Vehicles 3.85 3.87 7.72 9.00% 0.52",
+   "what": "Part C, Vehicles: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.5.allowable": {
+   "value": "0.52",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "5 Vehicles 3.85 3.87 7.72 9.00% 0.52",
+   "what": "Part C, Vehicles: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.6.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures - - - 6.33% -",
+   "what": "Part C, Furniture & Fixtures: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.6.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures - - - 6.33% -",
+   "what": "Part C, Furniture & Fixtures: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.6.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures - - - 6.33% -",
+   "what": "Part C, Furniture & Fixtures: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.6.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures - - - 6.33% -",
+   "what": "Part C, Furniture & Fixtures: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.6.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "6 Furniture & Fixtures - - - 6.33% -",
+   "what": "Part C, Furniture & Fixtures: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.7.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "7 Office equipment - 6.27 6.27 6.33% 0.20",
+   "what": "Part C, Office equipment: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.7.addition": {
+   "value": "6.27",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "7 Office equipment - 6.27 6.27 6.33% 0.20",
+   "what": "Part C, Office equipment: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.7.closing": {
+   "value": "6.27",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "7 Office equipment - 6.27 6.27 6.33% 0.20",
+   "what": "Part C, Office equipment: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.7.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 281,
+   "quote": "7 Office equipment - 6.27 6.27 6.33% 0.20",
+   "what": "Part C, Office equipment: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.7.allowable": {
+   "value": "0.20",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "7 Office equipment - 6.27 6.27 6.33% 0.20",
+   "what": "Part C, Office equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.8.opening": {
+   "value": "15.31",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "8 Metering Equipment 15.31 15.00 30.31 9.00% 2.05",
+   "what": "Part C, Metering Equipment: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.8.addition": {
+   "value": "15.00",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "8 Metering Equipment 15.31 15.00 30.31 9.00% 2.05",
+   "what": "Part C, Metering Equipment: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.8.closing": {
+   "value": "30.31",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "8 Metering Equipment 15.31 15.00 30.31 9.00% 2.05",
+   "what": "Part C, Metering Equipment: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.8.rate": {
+   "value": "9.00",
+   "unit": "percent",
+   "page": 281,
+   "quote": "8 Metering Equipment 15.31 15.00 30.31 9.00% 2.05",
+   "what": "Part C, Metering Equipment: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.8.allowable": {
+   "value": "2.05",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "8 Metering Equipment 15.31 15.00 30.31 9.00% 2.05",
+   "what": "Part C, Metering Equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.9.opening": {
+   "value": "46.43",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "9 Communication Equipment 46.43 28.22 74.66 4.22% 2.55",
+   "what": "Part C, Communication Equipment: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.9.addition": {
+   "value": "28.22",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "9 Communication Equipment 46.43 28.22 74.66 4.22% 2.55",
+   "what": "Part C, Communication Equipment: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.9.closing": {
+   "value": "74.66",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "9 Communication Equipment 46.43 28.22 74.66 4.22% 2.55",
+   "what": "Part C, Communication Equipment: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.9.rate": {
+   "value": "4.22",
+   "unit": "percent",
+   "page": 281,
+   "quote": "9 Communication Equipment 46.43 28.22 74.66 4.22% 2.55",
+   "what": "Part C, Communication Equipment: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.9.allowable": {
+   "value": "2.55",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "9 Communication Equipment 46.43 28.22 74.66 4.22% 2.55",
+   "what": "Part C, Communication Equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.10.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "10 Intangible Assets - - - 15.00% -",
+   "what": "Part C, Intangible Assets: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.10.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "10 Intangible Assets - - - 15.00% -",
+   "what": "Part C, Intangible Assets: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.10.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "10 Intangible Assets - - - 15.00% -",
+   "what": "Part C, Intangible Assets: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.10.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 281,
+   "quote": "10 Intangible Assets - - - 15.00% -",
+   "what": "Part C, Intangible Assets: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.10.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "10 Intangible Assets - - - 15.00% -",
+   "what": "Part C, Intangible Assets: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.11.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "11 Assets taken over & pending final valuation - - - 15.00% -",
+   "what": "Part C, Assets taken over & pending final valuation: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.11.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "11 Assets taken over & pending final valuation - - - 15.00% -",
+   "what": "Part C, Assets taken over & pending final valuation: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.11.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "11 Assets taken over & pending final valuation - - - 15.00% -",
+   "what": "Part C, Assets taken over & pending final valuation: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.11.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 281,
+   "quote": "11 Assets taken over & pending final valuation - - - 15.00% -",
+   "what": "Part C, Assets taken over & pending final valuation: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.11.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "11 Assets taken over & pending final valuation - - - 15.00% -",
+   "what": "Part C, Assets taken over & pending final valuation: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.12.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "12 Solar Power Generation equipment - - - 4.22% -",
+   "what": "Part C, Solar Power Generation equipment: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.12.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "12 Solar Power Generation equipment - - - 4.22% -",
+   "what": "Part C, Solar Power Generation equipment: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.12.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "12 Solar Power Generation equipment - - - 4.22% -",
+   "what": "Part C, Solar Power Generation equipment: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.12.rate": {
+   "value": "4.22",
+   "unit": "percent",
+   "page": 281,
+   "quote": "12 Solar Power Generation equipment - - - 4.22% -",
+   "what": "Part C, Solar Power Generation equipment: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.12.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "12 Solar Power Generation equipment - - - 4.22% -",
+   "what": "Part C, Solar Power Generation equipment: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.13.opening": {
+   "value": "448.49",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "13 Total Fixed Assets 448.49 474.13 922.62 4.37% 29.95",
+   "what": "Part C, Total Fixed Assets: opening",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.13.addition": {
+   "value": "474.13",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "13 Total Fixed Assets 448.49 474.13 922.62 4.37% 29.95",
+   "what": "Part C, Total Fixed Assets: addition",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.13.closing": {
+   "value": "922.62",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "13 Total Fixed Assets 448.49 474.13 922.62 4.37% 29.95",
+   "what": "Part C, Total Fixed Assets: closing",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.13.rate": {
+   "value": "4.37",
+   "unit": "percent",
+   "page": 281,
+   "quote": "13 Total Fixed Assets 448.49 474.13 922.62 4.37% 29.95",
+   "what": "Part C, Total Fixed Assets: rate",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.C.13.allowable": {
+   "value": "29.95",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "13 Total Fixed Assets 448.49 474.13 922.62 4.37% 29.95",
+   "what": "Part C, Total Fixed Assets: allowable",
+   "header": "S. No. Particulars Opening GFA Addition to GFA Closing GFA Depreciation Rate Allowable Depreciation"
+  },
+  "dep.gross": {
+   "value": "136.98",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "4 Gross Depreciation for the Year 139.93 136.98",
+   "what": "dep.gross approved (Table 6-65, second figure)",
+   "header": "Sl. No. Particulars Claimed Approved"
+  },
+  "dep.contribution": {
+   "value": "33.18",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "5 Less: Depreciation on Consumer Contribution 33.18 33.18",
+   "what": "dep.contribution approved (Table 6-65, second figure)",
+   "header": "Sl. No. Particulars Claimed Approved"
+  },
+  "dep.net": {
+   "value": "103.80",
+   "unit": "INR_crore",
+   "page": 281,
+   "quote": "6 Net Depreciation 106.75 103.80",
+   "what": "dep.net approved (Table 6-65, second figure)",
+   "header": "Sl. No. Particulars Claimed Approved"
+  }
+ }
+}

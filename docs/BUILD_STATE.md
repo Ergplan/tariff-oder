@@ -1005,6 +1005,26 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 99 (2026-11-02): the Commission's depreciation reproduced class by class.**
+  - **The record:** `order/figures-depreciation-fy2026-27.json` holds 183 figures.  These are
+    36 asset classes in three parts (Tables 6-62 to 6-64) with opening, deduction or addition,
+    closing, rate and allowable depreciation, plus the net (6-65).  They are read row by row
+    with the decisions module's serial-number reader, which now accepts a figure printed with %.
+    The totals rows print no rate.  183 / 183 quotes and headers are found on their pages.
+  - **Engine:** a record figure of zero may be printed as "-", and only so.
+  - **Binding `approval-depreciation-fy27.json`, using the same depreciation rules as NPCL's
+    F24: 69 / 77 match, and all 36 classes' depreciation matches.**  The 8 others are closings
+    and part totals within two units of the last place: the order prints its GFA rounded and
+    computes from unrounded balances (619.92 − 2.27 = 617.65 against the printed 617.64).  The
+    net therefore comes to 103.82 against 103.80.
+  - **A62 extended:** depreciation −2.95 is Part A −2.91 (the approved opening GFA), Part B
+    −0.26 and Part C +0.21 (the full 474.13 of approved additions).
+  - **Where this leaves the ARR year's decision (+29.51):**
+    - reproduced and explained: O&M −18.37 (A60), capital, interest, tax and depreciation (A62);
+    - left: power purchase and transmission (+64.16), the Commission's own procurement plan,
+      and non-tariff income (+2.09) and other business (−0.98).
+  Nothing verified, nothing approved.
+
   **Increment 98 (2026-11-02): the capital and interest approval reproduced, and an error found
   in the order.**
   - **The record:** `order/figures-capital-fy2026-27.json` holds 28 figures with page, quote
@@ -2494,6 +2514,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 99 (2026-11-02): 462 passed** (+2 unit: the real depreciation by class — 36 / 36 classes, the rest within two last-place units; a zero printed as "-" accepted, and only so).  `check_order_quotes.py`: 183 / 183.  Ruff and format clean.
 - **Increment 98 (2026-11-02): 460 passed** (+1 unit: the real capital and interest approval, 13 / 14 with RoE 113.28, loan interest 85.60, tax 38.10, security deposit 20.51.  Changed: the decisions tests expect the new ARR identity, skipped where a column prints none of its parts, and the one column where the order's lines do not add up, −0.38, A61).  `check_order_quotes.py`: 28 / 28.  Ruff and format clean.
 - **Increment 97 (2026-11-02): 459 passed** (+2 unit: a chain of years carried unrounded between evaluations and checked against an order figure, a computed input naming no evaluation refused; the real O&M approval — employee 87.63, A&G 28.87, R&M 111.04, one intermediate year one unit off).  `check_order_quotes.py`: 34 / 34 order figures, 58 / 58 rates.  Ruff and format clean.
 - **Increment 96 (2026-11-02): 457 passed** (+4 unit: rows read by serial number across a page header, with their quotes; a short row read only where the spec names its columns; a column override; the claimed column against the format, the decision, the order's own arithmetic; the real three tables — claimed within two last-place units, arithmetic 16 / 16, ARR decision +29.51; the integration test checks the API's decisions block).  Ruff, format and web typecheck clean.
@@ -2725,7 +2746,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 98) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 99) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2777,7 +2798,7 @@ entries below are the per-increment history.**
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.
     The decisions are true-up −123.38, APR +92.64 and ARR +29.51 (net ARR).  The ARR year's O&M
     approval reproduces with the same rules as the claim, and its cut is explained exactly (A60);
-    so do capital, loan, RoE, tax and security deposit (A62).  The order misprints one line of
+    so do capital, loan, RoE, tax, security deposit and depreciation by class (A62).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value

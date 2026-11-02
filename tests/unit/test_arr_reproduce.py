@@ -1161,3 +1161,43 @@ def test_npcl_the_commissions_capital_and_interest_approval_reproduces_with_the_
         "38.10",
         "20.51",
     )
+
+
+def test_npcl_the_commissions_depreciation_reproduces_class_by_class():
+    """Real data: 36 asset classes in three parts (Tables 6-62 to 6-64) from the order's figures
+    and the same depreciation rules as NPCL's F24: every class's depreciation matches; closings
+    and totals within two units of the last place (the order prints its GFA rounded)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-depreciation-fy27.json").read_text())
+    figures = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=figures)
+    assert {c.result for c in checks if c.output == "depreciation_class"} == {"match"}
+    assert sum(1 for c in checks if c.output == "depreciation_class") == 36
+    off = [c for c in checks if c.result != "match"]
+    assert len(off) == 8 and all(abs(Decimal(c.filed) - Decimal(c.computed)) <= Decimal("0.02") for c in off)
+
+
+def test_a_record_figure_of_zero_may_be_printed_as_a_dash_and_only_so():
+    import pytest
+
+    from tariff_api.arr.reproduce import load_rate_record
+    from tariff_api.arr.rules import RuleError
+
+    rec = {
+        "document": {"sha256": "0" * 64},
+        "figures": {
+            "z": {"value": "0", "unit": "INR_crore", "page": 1, "quote": "6 Furniture - - - 6.33% -", "what": "w"}
+        },
+    }
+    assert load_rate_record(rec) == {"z": ("0", "INR_crore")}
+    rec["figures"]["z"]["quote"] = "6 Furniture 6.33%"
+    with pytest.raises(RuleError, match="not in its quote"):
+        load_rate_record(rec)
