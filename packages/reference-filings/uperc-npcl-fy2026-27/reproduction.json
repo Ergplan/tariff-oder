@@ -13269,6 +13269,77 @@
    ]
   },
   {
+   "binding": "approval-wc-fy27.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "working capital approved FY2026-27 (Table 6-69) order:om.net",
+     "output": "arr_om_total",
+     "result": "match",
+     "filed": "195.34",
+     "computed": "195.34",
+     "why": null,
+     "exact": "195.34"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "working capital approved FY2026-27 (Table 6-69) order:wc.om_month",
+     "output": "wc_om_month",
+     "result": "match",
+     "filed": "16.28",
+     "computed": "16.28",
+     "why": null,
+     "exact": "16.27833333333333333333333333"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "working capital approved FY2026-27 (Table 6-69) order:wc.receivables",
+     "output": "wc_receivables",
+     "result": "match",
+     "filed": "400.23",
+     "computed": "400.23",
+     "why": null,
+     "exact": "400.23425812580675"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "working capital approved FY2026-27 (Table 6-69) order:wc.total",
+     "output": "wc_total",
+     "result": "match",
+     "filed": "62.30",
+     "computed": "62.30",
+     "why": null,
+     "exact": "62.3025914591400833333333333"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "working capital approved FY2026-27 (Table 6-69) order:wc.net",
+     "output": "wc_net",
+     "result": "differs",
+     "filed": "-11.03",
+     "computed": "-11.04",
+     "why": null,
+     "exact": "-11.0374085408599166666666667"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "working capital approved FY2026-27 (Table 6-69) order:wc.interest",
+     "output": "interest_on_working_capital",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null,
+     "exact": "0"
+    }
+   ]
+  },
+  {
    "binding": "arr-contingency.json",
    "checks": [
     {

@@ -1,0 +1,66 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "rates": "order/figures-wc-fy2026-27.json",
+ "places": 2,
+ "note": "The Commission's working capital for FY2026-27 (Table 6-69) reproduced with the same draft rules as NPCL's F27: one month of the approved net O&M, 1.5 months of the revenue with the open-access charges (Reg. 25.1(iii) of the 2025 Regulations), 40 % of two months' R&M, less the consumers' security deposits — and the surplus NPCL holds at the beginning of the year (73.34, the APR's closing) set against it, so the net is negative and no interest is allowed.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "working capital approved FY2026-27 (Table 6-69)",
+   "inputs": {
+    "record:rm": {
+     "rate": "om.rm"
+    },
+    "record:employee_gross": {
+     "rate": "om.employee"
+    },
+    "record:employee_capitalised": {
+     "rate": "om.capitalised"
+    },
+    "record:ag_net": {
+     "rate": "om.ag"
+    },
+    "record:om_additional": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "nothing beyond the norms (Table 6-81)"
+    },
+    "record:provisions": {
+     "rate": "om.provisions"
+    },
+    "record:maintenance_spares": {
+     "rate": "wc.spares"
+    },
+    "fact:R.REV.EXISTING": {
+     "cell": "M15",
+     "unit": "INR_crore",
+     "why": "the order adopts NPCL's projection unchanged ('Claimed' = 'Approved' in Table 6-81; para 8.1.7), and prints it rounded; NPCL's figure is unrounded"
+    },
+    "record:open_access_revenue": {
+     "cell": "M51",
+     "unit": "INR_crore",
+     "why": "the order adopts NPCL's projection unchanged ('Claimed' = 'Approved' in Table 6-81; para 8.1.7), and prints it rounded; NPCL's figure is unrounded"
+    },
+    "record:security_deposit_average": {
+     "rate": "wc.deposits_net"
+    },
+    "record:surplus_at_beginning": {
+     "rate": "wc.surplus"
+    },
+    "assumption:wc_interest_rate": {
+     "rate": "wc.rate"
+    }
+   },
+   "checks": {
+    "arr_om_total": "order:om.net",
+    "wc_om_month": "order:wc.om_month",
+    "wc_receivables": "order:wc.receivables",
+    "wc_total": "order:wc.total",
+    "wc_net": "order:wc.net",
+    "interest_on_working_capital": "order:wc.interest"
+   }
+  }
+ ]
+}

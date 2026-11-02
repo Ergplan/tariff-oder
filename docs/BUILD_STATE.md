@@ -1005,6 +1005,25 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 111 (2026-11-02): the ARR year's working capital reproduced — nil against the
+  surplus.**
+  - **The record:** `order/figures-wc-fy2026-27.json` holds 17 figures (Table 6-69 and the O&M
+    and open-access lines of Table 6-81), 17 / 17 quotes verified.  The checker refused a header
+    I had copied from the true-up's summary; Table 6-81 heads its rows "S. No.".
+  - **Binding `approval-wc-fy27.json`: 5 / 6 match**, with the same rules as NPCL's F27:
+    - net O&M 195.34;
+    - one month 16.28;
+    - receivables 400.23: 1.5 months of revenue with the open-access charges, NPCL's projection
+      unrounded, which the order adopts;
+    - total 62.30;
+    - interest nil.
+    The net is −11.04 against the printed −11.03, consistent with the order's surplus unrounded.
+  - **Ties checked by the test:** the surplus set against working capital is the APR's closing
+    (73.34).
+  - **A62 and the explanations** now point at the binding; the ARR year's interest line is
+    reproduced in full.
+  Nothing verified, nothing approved.
+
   **Increment 110 (2026-11-02): fixed charges — why they cannot be reproduced, and a question for
   NPCL.**
   - **The record:** `order/figures-fixed-charges-fy2026-27.json` holds 19 fixed / demand charges
@@ -2781,6 +2800,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 111 (2026-11-02): 480 passed** (+1 unit: the ARR year's working capital).  `check_order_quotes.py`: 17 / 17.  Ruff and format clean.
 - **Increment 110 (2026-11-02): 479 passed** (+1 unit: the fixed charges against the billable-demand floor).  `check_order_quotes.py`: 20 / 20.  Ruff and format clean.
 - **Increment 109 (2026-11-02): 478 passed** (+2 unit: unexplained and stale lines listed, deductions, blank approvals and misprints, synthetic; the three real decisions fully explained).  Ruff, format and `tsc` clean.
 - **Increment 108 (2026-11-02): 476 passed** (+2 unit: summed shared cells with their reason, synthetic; the real regulatory discount in two years).  Ruff and format clean.
@@ -3024,7 +3044,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 110) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 111) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

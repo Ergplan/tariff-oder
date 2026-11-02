@@ -1539,3 +1539,27 @@ def test_npcl_fixed_charges_sit_above_the_billable_demand_floor_except_lmv2():
     low = {k for k, s in share.items() if s < floor}
     assert low == {"lmv2.rural", "lmv2.upto4kw", "lmv2.above4kw"}
     assert max(share.values()) < Decimal("0.94") and round(short, 2) == Decimal("4.71")
+
+
+def test_npcl_the_arr_years_working_capital_is_nil_against_the_surplus():
+    """Real data: the Commission's working capital for FY2026-27 (Table 6-69) with the same rules
+    as NPCL's F27 — one month of the approved O&M, 1.5 months of the revenue with the open-access
+    charges, the spares, less the deposits — and the APR's closing surplus set against it: the net
+    is negative, the interest nil (A62)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-wc-fy27.json").read_text())
+    wc = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    got = {c.output: c for c in reproduce_cells(wb, binding, load_rules("UPERC"), rates=wc)}
+    assert {o for o, c in got.items() if c.result != "match"} == {"wc_net"}
+    assert (got["wc_net"].filed, got["wc_net"].computed) == ("-11.03", "-11.04")
+    assert got["interest_on_working_capital"].computed == "0.00"
+    gap = load_rate_record(json.loads((folder / "order" / "figures-gap-fy2026-27.json").read_text()))
+    assert Decimal(wc["wc.surplus"][0]) == -Decimal(gap["gap.fy26.computed.closing"][0])

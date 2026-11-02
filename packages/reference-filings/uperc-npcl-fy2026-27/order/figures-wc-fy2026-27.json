@@ -1,0 +1,146 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): interest on working capital approved for FY2026-27 (Table 6-69) and the O&M lines of the ARR summary (Table 6-81)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "wc.om_month": {
+   "value": "16.28",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "One month's O&M Expenses A 17.81 16.28",
+   "what": "one month's O&M (Table 6-69) — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.receivables": {
+   "value": "400.23",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "One-and-a-half-month equivalent of expected revenue from distribution tariff B 400.23 400.23",
+   "what": "receivables — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.spares": {
+   "value": "7.40",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "Maintenance spares @ 40% of the R&M Expense for 2 Months C 7.58 7.40",
+   "what": "maintenance spares — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.gross": {
+   "value": "423.92",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "Gross Total D=A+B+C 425.62 423.92",
+   "what": "gross working capital — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.deposits_net": {
+   "value": "361.61",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "Net Security Deposits from Consumers J=H-I 361.61 361.61",
+   "what": "net security deposits — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.total": {
+   "value": "62.30",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "Total Working Capital K 64.01 62.30",
+   "what": "total working capital — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.surplus": {
+   "value": "73.34",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "(Surplus) at the beginning of the year L - (73.34)",
+   "what": "surplus at the beginning of the year (printed in brackets; stored as the surplus, positive) — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.net": {
+   "value": "-11.03",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "Net Working Capital M=K+L 64.01 (11.03)",
+   "what": "net working capital (printed in brackets: negative) — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.rate": {
+   "value": "10.75",
+   "unit": "percent",
+   "page": 284,
+   "quote": "Rate of Interest for Working Capital (SBI MCLR (1Year) + 200 basis point) N 10.75% 10.75%",
+   "what": "working-capital rate — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "wc.interest": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 284,
+   "quote": "Interest on Total Working Capital O = M*N 6.88 -",
+   "what": "interest on working capital (nil) — the Approved (last) figure",
+   "header": "Particulars Ref Claimed Approved"
+  },
+  "om.employee": {
+   "value": "87.63",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "4 Employee Cost (Incl. Retiral Benefits) 99.98 87.63",
+   "what": "employee expenses (Table 6-81) — the Approved (last) figure",
+   "header": "S. No. Particulars Claimed Approved"
+  },
+  "om.ag": {
+   "value": "28.87",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "5 A&G Expenses 29.25 28.87",
+   "what": "A&G expenses (Table 6-81) — the Approved (last) figure",
+   "header": "S. No. Particulars Claimed Approved"
+  },
+  "om.rm": {
+   "value": "111.04",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "6 R&M Expenses 113.69 111.04",
+   "what": "R&M expenses (Table 6-81) — the Approved (last) figure",
+   "header": "S. No. Particulars Claimed Approved"
+  },
+  "om.capitalised": {
+   "value": "32.20",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "8 Employee Cost Capitalized 32.20 32.20",
+   "what": "employee cost capitalised (Table 6-81) — the Approved (last) figure",
+   "header": "S. No. Particulars Claimed Approved"
+  },
+  "om.provisions": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "9 Provisions 3.00 -",
+   "what": "A&G provisions (Table 6-81, nil) — the Approved (last) figure",
+   "header": "S. No. Particulars Claimed Approved"
+  },
+  "om.net": {
+   "value": "195.34",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "10 Net O&M Expenses 213.71 195.34",
+   "what": "net O&M (Table 6-81) — the Approved (last) figure",
+   "header": "S. No. Particulars Claimed Approved"
+  },
+  "open_access": {
+   "value": "9.84",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "17 Less: Revenue from Open Access Charges 9.84 9.84",
+   "what": "revenue from open access charges (Table 6-81) — the Approved (last) figure",
+   "header": "S. No. Particulars Claimed Approved"
+  }
+ }
+}
