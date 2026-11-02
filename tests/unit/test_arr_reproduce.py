@@ -1255,3 +1255,33 @@ def test_npcl_the_trueup_capital_approval_shows_where_the_draft_rules_depart():
         and c.output not in ("equity_reduction_on_retirement", "equity_closing", "equity_average")
     ]
     assert all(abs(Decimal(c.filed) - Decimal(c.computed)) <= Decimal("0.01") for c in small)
+
+
+def test_npcl_the_trueup_depreciation_reproduces_class_by_class():
+    """Real data: the true-up of FY2024-25's depreciation (Tables 4-99 to 4-101) from the order's
+    figures and the same rules as NPCL's F24: all 24 classes, the gross 95.03 and the net 69.97
+    match; the rest is half-paisa averages, except one row of the order that does not add (Part B
+    Lines & Cables 573.03 against 573.00; A69).  The approved additions are the funding table's
+    317.18 and the net is the loan repayment (A68)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-trueup-depreciation-fy25.json").read_text())
+    figures = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=figures)
+    dep = [c for c in checks if c.output == "depreciation_class"]
+    assert len(dep) == 24 and {c.result for c in dep} == {"match"}
+    assert {c.result for c in checks if c.output == "depreciation_net"} == {"match"}
+    lc = next(c for c in checks if c.output == "gfa_closing" and "B4 Lines & Cables" in c.category)
+    assert (lc.filed, lc.computed) == ("573.03", "573.00")
+    off = [c for c in checks if c.result != "match" and c is not lc]
+    assert len(off) == 7 and all(abs(Decimal(c.filed) - Decimal(c.computed)) <= Decimal("0.01") for c in off)
+    capital = load_rate_record(json.loads((folder / "order" / "figures-trueup-capital-fy2024-25.json").read_text()))
+    assert figures["dep.B.13.addition"] == capital["fund.investment"] == figures["gfa.addition"]
+    assert figures["dep.net"] == capital["loan.repayment"]

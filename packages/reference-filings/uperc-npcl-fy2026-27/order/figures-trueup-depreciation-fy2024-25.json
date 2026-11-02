@@ -1,0 +1,1680 @@
+{
+ "status": "read from the order's text layer row by row (serial numbers), each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): true-up of FY2024-25, depreciation approved by asset class, Tables 4-98 to 4-101",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "classes": {
+  "A.1": "Land",
+  "A.2": "Buildings",
+  "A.3": "Plant & Machinery",
+  "A.4": "Lines & Cables",
+  "A.5": "Vehicles",
+  "A.6": "Furniture & Fixtures",
+  "A.7": "Office equipment",
+  "A.8": "Metering Equipment",
+  "A.9": "Communication Equipment",
+  "A.10": "Intangible Assets",
+  "A.11": "Assets taken over & pending final valuation",
+  "A.12": "Solar Power Generation Equipment",
+  "A.13": "Total Fixed Assets",
+  "A.14": "Non depreciable assets (Land & Land Rights)",
+  "A.15": "Depreciable Assets",
+  "B.1": "Land",
+  "B.2": "Buildings",
+  "B.3": "Plant & Machinery",
+  "B.4": "Lines & Cables",
+  "B.5": "Vehicles",
+  "B.6": "Furniture & Fixtures",
+  "B.7": "Office equipment",
+  "B.8": "Metering Equipment",
+  "B.9": "Communication Equipment",
+  "B.10": "Intangible Assets",
+  "B.11": "Assets taken over & pending final valuation",
+  "B.12": "Solar Power Generation equipment",
+  "B.13": "Total Fixed Assets"
+ },
+ "figures": {
+  "dep.A.1.opening": {
+   "value": "123.84",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 123.84 - - 123.84 123.84 3.34% 4.14",
+   "what": "Part A, Land: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.1.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 123.84 - - 123.84 123.84 3.34% 4.14",
+   "what": "Part A, Land: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.1.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 123.84 - - 123.84 123.84 3.34% 4.14",
+   "what": "Part A, Land: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.1.closing": {
+   "value": "123.84",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 123.84 - - 123.84 123.84 3.34% 4.14",
+   "what": "Part A, Land: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.1.average": {
+   "value": "123.84",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 123.84 - - 123.84 123.84 3.34% 4.14",
+   "what": "Part A, Land: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.1.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 143,
+   "quote": "1 Land 123.84 - - 123.84 123.84 3.34% 4.14",
+   "what": "Part A, Land: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.1.allowable": {
+   "value": "4.14",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 123.84 - - 123.84 123.84 3.34% 4.14",
+   "what": "Part A, Land: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.2.opening": {
+   "value": "192.95",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 192.95 - - 192.95 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.2.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 192.95 - - 192.95 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.2.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 192.95 - - 192.95 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.2.closing": {
+   "value": "192.95",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 192.95 - - 192.95 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.2.average": {
+   "value": "192.95",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 192.95 - - 192.95 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.2.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 143,
+   "quote": "2 Buildings 192.95 - - 192.95 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.2.allowable": {
+   "value": "6.44",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 192.95 - - 192.95 192.95 3.34% 6.44",
+   "what": "Part A, Buildings: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.3.opening": {
+   "value": "36.97",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 36.97 - - 36.97 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.3.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 36.97 - - 36.97 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.3.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 36.97 - - 36.97 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.3.closing": {
+   "value": "36.97",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 36.97 - - 36.97 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.3.average": {
+   "value": "36.97",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 36.97 - - 36.97 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.3.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "3 Plant & Machinery 36.97 - - 36.97 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.3.allowable": {
+   "value": "1.95",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 36.97 - - 36.97 36.97 5.28% 1.95",
+   "what": "Part A, Plant & Machinery: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.4.opening": {
+   "value": "625.48",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 625.48 - 0.56 624.92 625.20 5.28% 33.01",
+   "what": "Part A, Lines & Cables: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.4.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 625.48 - 0.56 624.92 625.20 5.28% 33.01",
+   "what": "Part A, Lines & Cables: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.4.deduction": {
+   "value": "0.56",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 625.48 - 0.56 624.92 625.20 5.28% 33.01",
+   "what": "Part A, Lines & Cables: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.4.closing": {
+   "value": "624.92",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 625.48 - 0.56 624.92 625.20 5.28% 33.01",
+   "what": "Part A, Lines & Cables: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.4.average": {
+   "value": "625.20",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 625.48 - 0.56 624.92 625.20 5.28% 33.01",
+   "what": "Part A, Lines & Cables: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.4.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "4 Lines & Cables 625.48 - 0.56 624.92 625.20 5.28% 33.01",
+   "what": "Part A, Lines & Cables: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.4.allowable": {
+   "value": "33.01",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 625.48 - 0.56 624.92 625.20 5.28% 33.01",
+   "what": "Part A, Lines & Cables: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.5.opening": {
+   "value": "1.41",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 1.41 - 1.41 - 0.70 9.50% 0.07",
+   "what": "Part A, Vehicles: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.5.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 1.41 - 1.41 - 0.70 9.50% 0.07",
+   "what": "Part A, Vehicles: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.5.deduction": {
+   "value": "1.41",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 1.41 - 1.41 - 0.70 9.50% 0.07",
+   "what": "Part A, Vehicles: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.5.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 1.41 - 1.41 - 0.70 9.50% 0.07",
+   "what": "Part A, Vehicles: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.5.average": {
+   "value": "0.70",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 1.41 - 1.41 - 0.70 9.50% 0.07",
+   "what": "Part A, Vehicles: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.5.rate": {
+   "value": "9.50",
+   "unit": "percent",
+   "page": 143,
+   "quote": "5 Vehicles 1.41 - 1.41 - 0.70 9.50% 0.07",
+   "what": "Part A, Vehicles: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.5.allowable": {
+   "value": "0.07",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 1.41 - 1.41 - 0.70 9.50% 0.07",
+   "what": "Part A, Vehicles: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.6.opening": {
+   "value": "20.77",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 20.77 - - 20.77 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.6.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 20.77 - - 20.77 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.6.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 20.77 - - 20.77 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.6.closing": {
+   "value": "20.77",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 20.77 - - 20.77 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.6.average": {
+   "value": "20.77",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 20.77 - - 20.77 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.6.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 20.77 - - 20.77 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.6.allowable": {
+   "value": "1.31",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 20.77 - - 20.77 20.77 6.33% 1.31",
+   "what": "Part A, Furniture & Fixtures: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.7.opening": {
+   "value": "10.89",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 10.89 - - 10.89 10.89 6.33% 0.69",
+   "what": "Part A, Office equipment: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.7.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 10.89 - - 10.89 10.89 6.33% 0.69",
+   "what": "Part A, Office equipment: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.7.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 10.89 - - 10.89 10.89 6.33% 0.69",
+   "what": "Part A, Office equipment: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.7.closing": {
+   "value": "10.89",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 10.89 - - 10.89 10.89 6.33% 0.69",
+   "what": "Part A, Office equipment: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.7.average": {
+   "value": "10.89",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 10.89 - - 10.89 10.89 6.33% 0.69",
+   "what": "Part A, Office equipment: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.7.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 143,
+   "quote": "7 Office equipment 10.89 - - 10.89 10.89 6.33% 0.69",
+   "what": "Part A, Office equipment: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.7.allowable": {
+   "value": "0.69",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 10.89 - - 10.89 10.89 6.33% 0.69",
+   "what": "Part A, Office equipment: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.8.opening": {
+   "value": "35.96",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 35.96 - 2.53 33.43 34.69 5.28% 1.83",
+   "what": "Part A, Metering Equipment: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.8.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 35.96 - 2.53 33.43 34.69 5.28% 1.83",
+   "what": "Part A, Metering Equipment: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.8.deduction": {
+   "value": "2.53",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 35.96 - 2.53 33.43 34.69 5.28% 1.83",
+   "what": "Part A, Metering Equipment: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.8.closing": {
+   "value": "33.43",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 35.96 - 2.53 33.43 34.69 5.28% 1.83",
+   "what": "Part A, Metering Equipment: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.8.average": {
+   "value": "34.69",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 35.96 - 2.53 33.43 34.69 5.28% 1.83",
+   "what": "Part A, Metering Equipment: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.8.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "8 Metering Equipment 35.96 - 2.53 33.43 34.69 5.28% 1.83",
+   "what": "Part A, Metering Equipment: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.8.allowable": {
+   "value": "1.83",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 35.96 - 2.53 33.43 34.69 5.28% 1.83",
+   "what": "Part A, Metering Equipment: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.9.opening": {
+   "value": "10.56",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 10.56 - 0.64 9.92 10.24 5.28% 0.54",
+   "what": "Part A, Communication Equipment: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.9.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 10.56 - 0.64 9.92 10.24 5.28% 0.54",
+   "what": "Part A, Communication Equipment: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.9.deduction": {
+   "value": "0.64",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 10.56 - 0.64 9.92 10.24 5.28% 0.54",
+   "what": "Part A, Communication Equipment: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.9.closing": {
+   "value": "9.92",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 10.56 - 0.64 9.92 10.24 5.28% 0.54",
+   "what": "Part A, Communication Equipment: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.9.average": {
+   "value": "10.24",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 10.56 - 0.64 9.92 10.24 5.28% 0.54",
+   "what": "Part A, Communication Equipment: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.9.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "9 Communication Equipment 10.56 - 0.64 9.92 10.24 5.28% 0.54",
+   "what": "Part A, Communication Equipment: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.9.allowable": {
+   "value": "0.54",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 10.56 - 0.64 9.92 10.24 5.28% 0.54",
+   "what": "Part A, Communication Equipment: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.10.opening": {
+   "value": "22.52",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 22.52 - - 22.52 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.10.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 22.52 - - 22.52 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.10.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 22.52 - - 22.52 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.10.closing": {
+   "value": "22.52",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 22.52 - - 22.52 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.10.average": {
+   "value": "22.52",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 22.52 - - 22.52 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.10.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 143,
+   "quote": "10 Intangible Assets 22.52 - - 22.52 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.10.allowable": {
+   "value": "3.38",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 22.52 - - 22.52 22.52 15.00% 3.38",
+   "what": "Part A, Intangible Assets: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.11.opening": {
+   "value": "0.74",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - - 0.74 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.11.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - - 0.74 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.11.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - - 0.74 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.11.closing": {
+   "value": "0.74",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - - 0.74 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.11.average": {
+   "value": "0.74",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - - 0.74 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.11.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - - 0.74 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.11.allowable": {
+   "value": "0.11",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation 0.74 - - 0.74 0.74 15.00% 0.11",
+   "what": "Part A, Assets taken over & pending final valuation: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.12.opening": {
+   "value": "0.18",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation Equipment 0.18 - - 0.18 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.12.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation Equipment 0.18 - - 0.18 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.12.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation Equipment 0.18 - - 0.18 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.12.closing": {
+   "value": "0.18",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation Equipment 0.18 - - 0.18 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.12.average": {
+   "value": "0.18",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation Equipment 0.18 - - 0.18 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.12.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "12 Solar Power Generation Equipment 0.18 - - 0.18 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.12.allowable": {
+   "value": "0.01",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation Equipment 0.18 - - 0.18 0.18 5.28% 0.01",
+   "what": "Part A, Solar Power Generation Equipment: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.13.opening": {
+   "value": "1082.27",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 1082.27 - 5.15 1077.12 1079.69 53.48",
+   "what": "Part A, Total Fixed Assets: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.13.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 1082.27 - 5.15 1077.12 1079.69 53.48",
+   "what": "Part A, Total Fixed Assets: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.13.deduction": {
+   "value": "5.15",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 1082.27 - 5.15 1077.12 1079.69 53.48",
+   "what": "Part A, Total Fixed Assets: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.13.closing": {
+   "value": "1077.12",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 1082.27 - 5.15 1077.12 1079.69 53.48",
+   "what": "Part A, Total Fixed Assets: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.13.average": {
+   "value": "1079.69",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 1082.27 - 5.15 1077.12 1079.69 53.48",
+   "what": "Part A, Total Fixed Assets: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.13.allowable": {
+   "value": "53.48",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 1082.27 - 5.15 1077.12 1079.69 53.48",
+   "what": "Part A, Total Fixed Assets: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.14.opening": {
+   "value": "3.92",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "14 Non depreciable assets (Land & Land Rights) 3.92 - - 3.92 3.92",
+   "what": "Part A, Non depreciable assets (Land & Land Rights): opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.14.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "14 Non depreciable assets (Land & Land Rights) 3.92 - - 3.92 3.92",
+   "what": "Part A, Non depreciable assets (Land & Land Rights): addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.14.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "14 Non depreciable assets (Land & Land Rights) 3.92 - - 3.92 3.92",
+   "what": "Part A, Non depreciable assets (Land & Land Rights): deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.14.closing": {
+   "value": "3.92",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "14 Non depreciable assets (Land & Land Rights) 3.92 - - 3.92 3.92",
+   "what": "Part A, Non depreciable assets (Land & Land Rights): closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.14.average": {
+   "value": "3.92",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "14 Non depreciable assets (Land & Land Rights) 3.92 - - 3.92 3.92",
+   "what": "Part A, Non depreciable assets (Land & Land Rights): average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.15.opening": {
+   "value": "1078.35",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "15 Depreciable Assets 1,078.35 - 5.15 1,073.20 1,075.77 4.97% 53.48",
+   "what": "Part A, Depreciable Assets: opening",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.15.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "15 Depreciable Assets 1,078.35 - 5.15 1,073.20 1,075.77 4.97% 53.48",
+   "what": "Part A, Depreciable Assets: addition",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.15.deduction": {
+   "value": "5.15",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "15 Depreciable Assets 1,078.35 - 5.15 1,073.20 1,075.77 4.97% 53.48",
+   "what": "Part A, Depreciable Assets: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.15.closing": {
+   "value": "1073.20",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "15 Depreciable Assets 1,078.35 - 5.15 1,073.20 1,075.77 4.97% 53.48",
+   "what": "Part A, Depreciable Assets: closing",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.15.average": {
+   "value": "1075.77",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "15 Depreciable Assets 1,078.35 - 5.15 1,073.20 1,075.77 4.97% 53.48",
+   "what": "Part A, Depreciable Assets: average",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.15.rate": {
+   "value": "4.97",
+   "unit": "percent",
+   "page": 143,
+   "quote": "15 Depreciable Assets 1,078.35 - 5.15 1,073.20 1,075.77 4.97% 53.48",
+   "what": "Part A, Depreciable Assets: rate",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A.15.allowable": {
+   "value": "53.48",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "15 Depreciable Assets 1,078.35 - 5.15 1,073.20 1,075.77 4.97% 53.48",
+   "what": "Part A, Depreciable Assets: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.2026 Addi tion to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.1.opening": {
+   "value": "2.28",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 2.28 15.23 - 17.51 9.90 3.34% 0.33",
+   "what": "Part B, Land: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.1.addition": {
+   "value": "15.23",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 2.28 15.23 - 17.51 9.90 3.34% 0.33",
+   "what": "Part B, Land: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.1.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 2.28 15.23 - 17.51 9.90 3.34% 0.33",
+   "what": "Part B, Land: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.1.closing": {
+   "value": "17.51",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 2.28 15.23 - 17.51 9.90 3.34% 0.33",
+   "what": "Part B, Land: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.1.average": {
+   "value": "9.90",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 2.28 15.23 - 17.51 9.90 3.34% 0.33",
+   "what": "Part B, Land: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.1.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 143,
+   "quote": "1 Land 2.28 15.23 - 17.51 9.90 3.34% 0.33",
+   "what": "Part B, Land: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.1.allowable": {
+   "value": "0.33",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Land 2.28 15.23 - 17.51 9.90 3.34% 0.33",
+   "what": "Part B, Land: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.2.opening": {
+   "value": "24.64",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 24.64 31.01 - 55.65 40.15 3.34% 1.34",
+   "what": "Part B, Buildings: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.2.addition": {
+   "value": "31.01",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 24.64 31.01 - 55.65 40.15 3.34% 1.34",
+   "what": "Part B, Buildings: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.2.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 24.64 31.01 - 55.65 40.15 3.34% 1.34",
+   "what": "Part B, Buildings: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.2.closing": {
+   "value": "55.65",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 24.64 31.01 - 55.65 40.15 3.34% 1.34",
+   "what": "Part B, Buildings: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.2.average": {
+   "value": "40.15",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 24.64 31.01 - 55.65 40.15 3.34% 1.34",
+   "what": "Part B, Buildings: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.2.rate": {
+   "value": "3.34",
+   "unit": "percent",
+   "page": 143,
+   "quote": "2 Buildings 24.64 31.01 - 55.65 40.15 3.34% 1.34",
+   "what": "Part B, Buildings: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.2.allowable": {
+   "value": "1.34",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Buildings 24.64 31.01 - 55.65 40.15 3.34% 1.34",
+   "what": "Part B, Buildings: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.3.opening": {
+   "value": "23.12",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 23.12 24.97 0.03 48.06 35.59 5.28% 1.88",
+   "what": "Part B, Plant & Machinery: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.3.addition": {
+   "value": "24.97",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 23.12 24.97 0.03 48.06 35.59 5.28% 1.88",
+   "what": "Part B, Plant & Machinery: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.3.deduction": {
+   "value": "0.03",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 23.12 24.97 0.03 48.06 35.59 5.28% 1.88",
+   "what": "Part B, Plant & Machinery: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.3.closing": {
+   "value": "48.06",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 23.12 24.97 0.03 48.06 35.59 5.28% 1.88",
+   "what": "Part B, Plant & Machinery: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.3.average": {
+   "value": "35.59",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 23.12 24.97 0.03 48.06 35.59 5.28% 1.88",
+   "what": "Part B, Plant & Machinery: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.3.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "3 Plant & Machinery 23.12 24.97 0.03 48.06 35.59 5.28% 1.88",
+   "what": "Part B, Plant & Machinery: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.3.allowable": {
+   "value": "1.88",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Plant & Machinery 23.12 24.97 0.03 48.06 35.59 5.28% 1.88",
+   "what": "Part B, Plant & Machinery: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.4.opening": {
+   "value": "379.10",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 379.10 193.91 0.01 573.03 476.06 5.28% 25.14",
+   "what": "Part B, Lines & Cables: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.4.addition": {
+   "value": "193.91",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 379.10 193.91 0.01 573.03 476.06 5.28% 25.14",
+   "what": "Part B, Lines & Cables: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.4.deduction": {
+   "value": "0.01",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 379.10 193.91 0.01 573.03 476.06 5.28% 25.14",
+   "what": "Part B, Lines & Cables: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.4.closing": {
+   "value": "573.03",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 379.10 193.91 0.01 573.03 476.06 5.28% 25.14",
+   "what": "Part B, Lines & Cables: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.4.average": {
+   "value": "476.06",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 379.10 193.91 0.01 573.03 476.06 5.28% 25.14",
+   "what": "Part B, Lines & Cables: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.4.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "4 Lines & Cables 379.10 193.91 0.01 573.03 476.06 5.28% 25.14",
+   "what": "Part B, Lines & Cables: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.4.allowable": {
+   "value": "25.14",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Lines & Cables 379.10 193.91 0.01 573.03 476.06 5.28% 25.14",
+   "what": "Part B, Lines & Cables: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.5.opening": {
+   "value": "5.03",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 5.03 3.18 - 8.21 6.62 9.50% 0.63",
+   "what": "Part B, Vehicles: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.5.addition": {
+   "value": "3.18",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 5.03 3.18 - 8.21 6.62 9.50% 0.63",
+   "what": "Part B, Vehicles: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.5.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 5.03 3.18 - 8.21 6.62 9.50% 0.63",
+   "what": "Part B, Vehicles: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.5.closing": {
+   "value": "8.21",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 5.03 3.18 - 8.21 6.62 9.50% 0.63",
+   "what": "Part B, Vehicles: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.5.average": {
+   "value": "6.62",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 5.03 3.18 - 8.21 6.62 9.50% 0.63",
+   "what": "Part B, Vehicles: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.5.rate": {
+   "value": "9.50",
+   "unit": "percent",
+   "page": 143,
+   "quote": "5 Vehicles 5.03 3.18 - 8.21 6.62 9.50% 0.63",
+   "what": "Part B, Vehicles: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.5.allowable": {
+   "value": "0.63",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "5 Vehicles 5.03 3.18 - 8.21 6.62 9.50% 0.63",
+   "what": "Part B, Vehicles: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.6.opening": {
+   "value": "0.73",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 0.73 0.10 - 0.83 0.78 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.6.addition": {
+   "value": "0.10",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 0.73 0.10 - 0.83 0.78 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.6.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 0.73 0.10 - 0.83 0.78 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.6.closing": {
+   "value": "0.83",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 0.73 0.10 - 0.83 0.78 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.6.average": {
+   "value": "0.78",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 0.73 0.10 - 0.83 0.78 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.6.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 0.73 0.10 - 0.83 0.78 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.6.allowable": {
+   "value": "0.05",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "6 Furniture & Fixtures 0.73 0.10 - 0.83 0.78 6.33% 0.05",
+   "what": "Part B, Furniture & Fixtures: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.7.opening": {
+   "value": "7.57",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 7.57 1.33 - 8.90 8.23 6.33% 0.52",
+   "what": "Part B, Office equipment: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.7.addition": {
+   "value": "1.33",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 7.57 1.33 - 8.90 8.23 6.33% 0.52",
+   "what": "Part B, Office equipment: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.7.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 7.57 1.33 - 8.90 8.23 6.33% 0.52",
+   "what": "Part B, Office equipment: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.7.closing": {
+   "value": "8.90",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 7.57 1.33 - 8.90 8.23 6.33% 0.52",
+   "what": "Part B, Office equipment: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.7.average": {
+   "value": "8.23",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 7.57 1.33 - 8.90 8.23 6.33% 0.52",
+   "what": "Part B, Office equipment: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.7.rate": {
+   "value": "6.33",
+   "unit": "percent",
+   "page": 143,
+   "quote": "7 Office equipment 7.57 1.33 - 8.90 8.23 6.33% 0.52",
+   "what": "Part B, Office equipment: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.7.allowable": {
+   "value": "0.52",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "7 Office equipment 7.57 1.33 - 8.90 8.23 6.33% 0.52",
+   "what": "Part B, Office equipment: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.8.opening": {
+   "value": "74.80",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 74.80 27.67 0.77 101.70 88.25 5.28% 4.66",
+   "what": "Part B, Metering Equipment: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.8.addition": {
+   "value": "27.67",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 74.80 27.67 0.77 101.70 88.25 5.28% 4.66",
+   "what": "Part B, Metering Equipment: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.8.deduction": {
+   "value": "0.77",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 74.80 27.67 0.77 101.70 88.25 5.28% 4.66",
+   "what": "Part B, Metering Equipment: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.8.closing": {
+   "value": "101.70",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 74.80 27.67 0.77 101.70 88.25 5.28% 4.66",
+   "what": "Part B, Metering Equipment: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.8.average": {
+   "value": "88.25",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 74.80 27.67 0.77 101.70 88.25 5.28% 4.66",
+   "what": "Part B, Metering Equipment: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.8.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "8 Metering Equipment 74.80 27.67 0.77 101.70 88.25 5.28% 4.66",
+   "what": "Part B, Metering Equipment: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.8.allowable": {
+   "value": "4.66",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "8 Metering Equipment 74.80 27.67 0.77 101.70 88.25 5.28% 4.66",
+   "what": "Part B, Metering Equipment: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.9.opening": {
+   "value": "28.15",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 28.15 2.73 - 30.88 29.51 5.28% 1.56",
+   "what": "Part B, Communication Equipment: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.9.addition": {
+   "value": "2.73",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 28.15 2.73 - 30.88 29.51 5.28% 1.56",
+   "what": "Part B, Communication Equipment: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.9.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 28.15 2.73 - 30.88 29.51 5.28% 1.56",
+   "what": "Part B, Communication Equipment: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.9.closing": {
+   "value": "30.88",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 28.15 2.73 - 30.88 29.51 5.28% 1.56",
+   "what": "Part B, Communication Equipment: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.9.average": {
+   "value": "29.51",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 28.15 2.73 - 30.88 29.51 5.28% 1.56",
+   "what": "Part B, Communication Equipment: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.9.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "9 Communication Equipment 28.15 2.73 - 30.88 29.51 5.28% 1.56",
+   "what": "Part B, Communication Equipment: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.9.allowable": {
+   "value": "1.56",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "9 Communication Equipment 28.15 2.73 - 30.88 29.51 5.28% 1.56",
+   "what": "Part B, Communication Equipment: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.10.opening": {
+   "value": "27.74",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 27.74 17.03 - 44.77 36.25 15.00% 5.44",
+   "what": "Part B, Intangible Assets: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.10.addition": {
+   "value": "17.03",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 27.74 17.03 - 44.77 36.25 15.00% 5.44",
+   "what": "Part B, Intangible Assets: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.10.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 27.74 17.03 - 44.77 36.25 15.00% 5.44",
+   "what": "Part B, Intangible Assets: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.10.closing": {
+   "value": "44.77",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 27.74 17.03 - 44.77 36.25 15.00% 5.44",
+   "what": "Part B, Intangible Assets: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.10.average": {
+   "value": "36.25",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 27.74 17.03 - 44.77 36.25 15.00% 5.44",
+   "what": "Part B, Intangible Assets: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.10.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 143,
+   "quote": "10 Intangible Assets 27.74 17.03 - 44.77 36.25 15.00% 5.44",
+   "what": "Part B, Intangible Assets: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.10.allowable": {
+   "value": "5.44",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "10 Intangible Assets 27.74 17.03 - 44.77 36.25 15.00% 5.44",
+   "what": "Part B, Intangible Assets: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.11.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation - - - - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.11.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation - - - - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.11.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation - - - - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.11.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation - - - - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.11.average": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation - - - - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.11.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation - - - - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.11.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "11 Assets taken over & pending final valuation - - - - - 15.00% -",
+   "what": "Part B, Assets taken over & pending final valuation: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.12.opening": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation equipment - - - - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.12.addition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation equipment - - - - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.12.deduction": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation equipment - - - - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.12.closing": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation equipment - - - - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.12.average": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation equipment - - - - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.12.rate": {
+   "value": "5.28",
+   "unit": "percent",
+   "page": 143,
+   "quote": "12 Solar Power Generation equipment - - - - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: rate",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.12.allowable": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "12 Solar Power Generation equipment - - - - - 5.28% -",
+   "what": "Part B, Solar Power Generation equipment: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.13.opening": {
+   "value": "573.16",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 573.16 317.18 0.81 889.53 731.35 41.54",
+   "what": "Part B, Total Fixed Assets: opening",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.13.addition": {
+   "value": "317.18",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 573.16 317.18 0.81 889.53 731.35 41.54",
+   "what": "Part B, Total Fixed Assets: addition",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.13.deduction": {
+   "value": "0.81",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 573.16 317.18 0.81 889.53 731.35 41.54",
+   "what": "Part B, Total Fixed Assets: deduction",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.13.closing": {
+   "value": "889.53",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 573.16 317.18 0.81 889.53 731.35 41.54",
+   "what": "Part B, Total Fixed Assets: closing",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.13.average": {
+   "value": "731.35",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 573.16 317.18 0.81 889.53 731.35 41.54",
+   "what": "Part B, Total Fixed Assets: average",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.B.13.allowable": {
+   "value": "41.54",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 573.16 317.18 0.81 889.53 731.35 41.54",
+   "what": "Part B, Total Fixed Assets: allowable",
+   "header": "Opening GFA as per Order dtd 17.06.202 6 Addition to GFA Deductio n to GFA Closing GFA Average GFA Depreciatio n Rate Allowable Depreciatio n"
+  },
+  "dep.A": {
+   "value": "53.48",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Depreciation on Gross Block till 01.04.2020 (Part-A) 40.00 56.37 53.48",
+   "what": "Part A approved (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "dep.B": {
+   "value": "41.54",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Depreciation on Gross Block after 01.04.2020 till 31.03.2025 (Part-B) 43.56 42.05 41.54",
+   "what": "Part B approved (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "dep.gross": {
+   "value": "95.03",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "3 Gross Depreciation for the Year (Part-A + Part-B) 83.55 98.42 95.03",
+   "what": "gross depreciation approved (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "dep.contribution": {
+   "value": "25.06",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Less: Depreciation on Consumer Contribution 21.34 23.67 25.06*",
+   "what": "depreciation on consumer contribution approved, 'taken from Fixed Asset Register of FY 2024-25' (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "dep.net": {
+   "value": "69.97",
+   "unit": "INR_crore",
+   "page": 144,
+   "quote": "5 Net Depreciation 62.21 74.75 69.97",
+   "what": "net depreciation approved (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "claimed.A": {
+   "value": "56.37",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "1 Depreciation on Gross Block till 01.04.2020 (Part-A) 40.00 56.37 53.48",
+   "what": "Part A claimed (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "claimed.B": {
+   "value": "42.05",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "2 Depreciation on Gross Block after 01.04.2020 till 31.03.2025 (Part-B) 43.56 42.05 41.54",
+   "what": "Part B claimed (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "claimed.contribution": {
+   "value": "23.67",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "4 Less: Depreciation on Consumer Contribution 21.34 23.67 25.06",
+   "what": "depreciation on consumer contribution claimed (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "claimed.net": {
+   "value": "74.75",
+   "unit": "INR_crore",
+   "page": 144,
+   "quote": "5 Net Depreciation 62.21 74.75 69.97",
+   "what": "net depreciation claimed (Table 4-101)",
+   "header": "S. No. Particulars Approved in Order dated 10.10.2024 Claimed Approved"
+  },
+  "gfa.opening": {
+   "value": "2179.12",
+   "unit": "INR_crore",
+   "page": 142,
+   "quote": "Opening GFA 1,817.95 2,041.29 2,245.95 2,179.12",
+   "what": "opening GFA approved (Table 4-98)",
+   "header": "Particulars Approved in TO dtd 10.10.2024 As per Order dated 17.06.2026 Claimed Approved"
+  },
+  "gfa.addition": {
+   "value": "317.18",
+   "unit": "INR_crore",
+   "page": 142,
+   "quote": "Addition to GFA 416.50 146.91 302.59 317.18",
+   "what": "addition to GFA approved (Table 4-98)",
+   "header": "Particulars Approved in TO dtd 10.10.2024 As per Order dated 17.06.2026 Claimed Approved"
+  },
+  "gfa.decap": {
+   "value": "11.74",
+   "unit": "INR_crore",
+   "page": 142,
+   "quote": "Decapitalization 15.00 9.08 11.74 11.74",
+   "what": "decapitalisation approved (Table 4-98)",
+   "header": "Particulars Approved in TO dtd 10.10.2024 As per Order dated 17.06.2026 Claimed Approved"
+  },
+  "gfa.closing": {
+   "value": "2484.56",
+   "unit": "INR_crore",
+   "page": 142,
+   "quote": "Closing GFA 2,219.45 2,179.12 2,536.81 2,484.56",
+   "what": "closing GFA approved (Table 4-98)",
+   "header": "Particulars Approved in TO dtd 10.10.2024 As per Order dated 17.06.2026 Claimed Approved"
+  }
+ }
+}

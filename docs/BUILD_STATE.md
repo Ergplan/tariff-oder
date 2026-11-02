@@ -1005,6 +1005,31 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 103 (2026-11-02): the true-up's depreciation reproduced class by class.**
+  - **The record:** `order/figures-trueup-depreciation-fy2024-25.json` holds 205 figures
+    (Tables 4-98 to 4-101, pp. 142–144): every class of Parts A and B with opening, addition,
+    deduction, closing, average, rate and allowable; the summary claimed and approved.
+    205 / 205 quotes verified.
+  - **Binding `approval-trueup-depreciation-fy25.json`: 68 / 76 match.**  All 24 classes'
+    depreciation, the gross 95.03 and the net 69.97 match, with the same draft rules as NPCL's
+    F24.  Six of the eight differences are averages at a half-paisa and one is Part A's total,
+    printed as the sum of rounded classes.
+  - **A68 (petitioner), the −4.78 explained against NPCL's own workings (Annexure-21):**
+    - Part A −2.89: almost all of it is the opening gross block from the remand order of
+      17.06.2026 (−59.52).
+    - Part B −0.51: openings −21.74, additions +14.59 (land moved into the year's additions).
+    - Depreciation on consumer contribution, taken "from Fixed Asset Register": 25.06 against
+      23.67.  Not reproducible; no class table is given.
+  - **A69 (reviewer), two questions about the order, not established errors:**
+    - Part B Lines & Cables does not add (573.03 against 573.00).
+    - Part A sets 3.92 of land apart as non-depreciable while depreciating the Land class on its
+      whole 123.84.
+  - **Ties checked by the test:** the approved additions are the funding table's 317.18, and the
+    net depreciation is the loan repayment.
+  - **Still to reproduce in the true-up:** power purchase −11.99, contingency −5.61, efficiency
+    gains −2.58.
+  Nothing verified, nothing approved.
+
   **Increment 102 (2026-11-02): the true-up's capital, loan, equity and working capital; two
   draft rules depart from the Commission.**
   - **The record:** `order/figures-trueup-capital-fy2024-25.json` holds 38 figures (Tables 4-71,
@@ -2598,6 +2623,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 103 (2026-11-02): 468 passed** (+1 unit: the real true-up depreciation — 24 classes, gross and net match; the order's non-adding row pinned).  `check_order_quotes.py`: 205 / 205.  Ruff and format clean.
 - **Increment 102 (2026-11-02): 467 passed** (+1 unit: the real true-up capital and working capital — working capital exact, the equity-deletion rule's departure shown, the rest within a unit).  `check_order_quotes.py`: 38 / 38.  Ruff and format clean.
 - **Increment 101 (2026-11-02): 466 passed** (+1 unit: the real true-up O&M — indices and their increases exact, R&M exact, every figure within one unit).  `check_order_quotes.py`: 69 / 69.  Ruff and format clean.
 - **Increment 100 (2026-11-02): 465 passed** (+3 unit: a table with blank cells read by word position, a dash in a label kept as text; a source table's arithmetic per side; the real Table 6-35 — 51 rows, approved side 100 %, the order's three claimed-side slips).  Ruff, format and web typecheck clean.
@@ -2833,7 +2859,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 102) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 103) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2890,12 +2916,12 @@ entries below are the per-increment history.**
     for line by line.  The true-up's O&M cut (−90.91 of −123.38) is reproduced from the monthly
     price indices: the 2019 norm against NPCL's actual cost (A65); its capital, loan, equity,
     tax and working capital likewise (A67), showing two draft rules that depart from the
-    Commission's practice (A66).  The order misprints one line of
+    Commission's practice (A66); its depreciation class by class (A68, A69).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **35 findings (A29–A67):** 21 for the petitioner, collected in the draft queries; 14 for the
+  - **37 findings (A29–A69):** 22 for the petitioner, collected in the draft queries; 15 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

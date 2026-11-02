@@ -402,13 +402,37 @@
    "id": "A67",
    "kind": "decision explained",
    "title": "The true-up's other cuts: interest −2.07, RoE −2.36, tax −0.79, bad debts −0.59 and non-tariff income +1.72 — the remand order's opening balances, the approved capitalisation and revenue, and the order's own non-tariff income",
-   "detail": "Reproduced from the order's figures with the same rules (bindings/approval-trueup-capital-fy25.json; A66 for the two departures): interest −2.07 = interest on the normative loan +1.06 (opening 507.65 from the order of 17.06.2026 against NPCL's 502.80, additions 161.33 against 151.12 from the approved capitalisation of 317.18, the rate 9.88 % allowed in the FY2023-24 true-up against 9.91 %) and working capital −3.12 (normative O&M and receivables of 1.5 months of approved revenue: 0.69 against 3.81); RoE −2.36 = opening equity 517.23 (the remand order) against 535.08, additions 67.12 against 62.92; tax −0.79 follows RoE; bad debts −0.59 = NPCL's own provisioning ratio (0.41 %) applied to the approved revenue net of electricity duty (2,634.60) instead of the revenue billed (2,779.49) (Table 4-114); non-tariff income +1.72: the order's 12.38 is the audited 50.78 less the interest on bank deposits (37.99) as treasury income and three small items, 0.41 in all (Table 4-118) — how NPCL's 10.66 differs item by item is not established here.  Not yet reproduced: power purchase −11.99, depreciation −4.78, and the contingency reserve (−5.61) and efficiency gains (−2.58) not allowed.",
+   "detail": "Reproduced from the order's figures with the same rules (bindings/approval-trueup-capital-fy25.json; A66 for the two departures): interest −2.07 = interest on the normative loan +1.06 (opening 507.65 from the order of 17.06.2026 against NPCL's 502.80, additions 161.33 against 151.12 from the approved capitalisation of 317.18, the rate 9.88 % allowed in the FY2023-24 true-up against 9.91 %) and working capital −3.12 (normative O&M and receivables of 1.5 months of approved revenue: 0.69 against 3.81); RoE −2.36 = opening equity 517.23 (the remand order) against 535.08, additions 67.12 against 62.92; tax −0.79 follows RoE; bad debts −0.59 = NPCL's own provisioning ratio (0.41 %) applied to the approved revenue net of electricity duty (2,634.60) instead of the revenue billed (2,779.49) (Table 4-114); non-tariff income +1.72: the order's 12.38 is the audited 50.78 less the interest on bank deposits (37.99) as treasury income and three small items, 0.41 in all (Table 4-118) — how NPCL's 10.66 differs item by item is not established here.  Depreciation −4.78: A68.  Not yet reproduced: power purchase −11.99, and the contingency reserve (−5.61) and efficiency gains (−2.58) not allowed.",
    "where": [
     "Tariff order FY2026-27 pp.139–164, Tables 4-94 to 4-118",
     "bindings/approval-trueup-capital-fy25.json",
     "order/figures-trueup-capital-fy2024-25.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A68",
+   "kind": "decision explained",
+   "title": "The true-up's depreciation cut (−4.78) is the remand order's opening gross block (−2.89 on the pre-2020 assets, −0.51 after) and the depreciation on consumer-contribution assets taken from the Fixed Asset Register (+1.39 deducted)",
+   "detail": "Reproduced class by class with the same draft rules as NPCL's F24 from the order's figures (Tables 4-99 to 4-101, bindings/approval-trueup-depreciation-fy25.json): all 24 classes' depreciation, the gross 95.03 and the net 69.97 match (the net is also the loan repayment of Table 4-103).  Against NPCL's own workings (Annexure-21, the same rates): Part A −2.89 is almost wholly the opening gross block, which the order takes from its order of 17.06.2026 on the APTEL remand — 1,082.27 against NPCL's 1,141.79, −59.52 (Lines & Cables −28.90, Land −21.90, Metering −5.49); the deductions differ by 0.06 (Vehicles: the order deducts its whole opening of 1.41 where NPCL retires 1.53).  Part B −0.51: openings −21.74 and additions +14.59 (the approved capitalisation 317.18 against 302.59; Land 19.82 out of the opening and 13.39 into the year's additions, Plant & Machinery 1.53 likewise).  The depreciation on consumer-contribution assets, 25.06, is 'taken from Fixed Asset Register of FY 2024-25' against NPCL's 23.67 (8.44 + 15.23 in its workings); the order gives no class table for it, so it is not reproduced.  −2.89 − 0.51 − 1.39 = −4.79; the order prints −4.78 from its unrounded gross.  The remand order of 17.06.2026 is not in this session.",
+   "where": [
+    "Tariff order FY2026-27 pp.140–144, Tables 4-95 to 4-101",
+    "bindings/approval-trueup-depreciation-fy25.json",
+    "order/figures-trueup-depreciation-fy2024-25.json",
+    "records/32. Annexure-21 (FY2024-25 blocks)"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A69",
+   "kind": "order against itself",
+   "title": "The order's Part B depreciation table (4-100) does not add in one row: Lines & Cables 379.10 + 193.91 − 0.01 = 573.00, printed 573.03; and Part A sets 3.92 of land apart as non-depreciable while depreciating the Land class on its whole 123.84",
+   "detail": "Lines & Cables (Table 4-100, p.143): the 0.03 is more than three rounded figures can lose (0.015); the additions column also adds to 317.16 against its printed total 317.18, which Table 4-98 and the funding table repeat.  An addition near 193.93 would make both add; the text does not settle which figure is misprinted.  The depreciation (25.14) is the same either way.  Table 4-99: row 14 prints 'Non depreciable assets (Land & Land Rights) 3.92' and row 15 the depreciable assets 1,075.77 at 4.97 %, 53.48 — the same 53.48 as the sum of the classes, in which Land is depreciated at 3.34 % on 123.84.  If the 3.92 is within that Land class, 0.13 of depreciation is on land the table calls non-depreciable; whether it is, the order does not say.  For the reviewer — questions, not errors established.",
+   "where": [
+    "Tariff order FY2026-27 p.143 Tables 4-99, 4-100",
+    "bindings/approval-trueup-depreciation-fy25.json"
+   ],
+   "for": "reviewer"
   }
  ]
 }
