@@ -1307,3 +1307,43 @@ def test_npcl_the_trueup_excess_energy_disallowed_reproduces():
     assert got["pp_excess_rate"] == ("match", "2.57", "2.57")
     assert got["pp_excess_disallowed"] == ("match", "0.34", "0.34")
     assert got["pp_energy_total"] == ("differs", "663.60", "663.61")
+
+
+def test_npcl_the_apr_carries_the_trueup_closings_and_reproduces():
+    """Real data: the Commission's APR of FY2025-26 from its own figures with the MYT 2025 rules —
+    loan, equity, RoE, tax, working capital (nil against the surplus NPCL holds) and R&M on the
+    inferred base (A73) — each opening the true-up's approved closing, the supplementary DIL
+    claim NPCL's own arithmetic (A72)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-apr-fy26.json").read_text())
+    apr = load_rate_record(json.loads((folder / binding["rates"]).read_text()))
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=apr)
+    got = {c.output: c for c in checks}
+    assert {o for o, c in got.items() if c.result != "match"} == {"normative_loan_closing", "wc_total"}
+    assert all(abs(Decimal(c.filed) - Decimal(c.computed)) <= Decimal("0.01") for c in checks)
+    assert (got["interest_on_working_capital"].computed, got["wc_net"].computed) == ("0.00", "-434.00")
+    assert got["rm_norm_total"].computed == "98.14"
+
+    def record(name):
+        return load_rate_record(json.loads((folder / "order" / name).read_text()))
+
+    trueup = record("figures-trueup-capital-fy2024-25.json")
+    assert apr["loan.opening"] == trueup["loan.closing"] and apr["roe.opening"] == trueup["roe.closing"]
+    assert apr["gfa.opening"] == record("figures-trueup-depreciation-fy2024-25.json")["gfa.closing"]
+    assert Decimal(apr["wc.surplus"][0]) == -Decimal(apr["gap.fy25_closing"][0])
+    assert apr["dep.B"] == record("figures-depreciation-fy2026-27.json")["dep.B.13.allowable"]
+    om27 = record("figures-om-fy2026-27.json")
+    assert apr["om.employee"] == om27["employee.normative.fy26"] and apr["om.ag"] == om27["ag.normative.fy26"]
+    claim, carrying, allowed, total = (Decimal(apr[f"dil.{k}"][0]) for k in ("claim", "carrying", "allowed", "total"))
+    assert claim + carrying - allowed == total == Decimal("118.55")
+    rep = json.loads((folder / "order-decisions.json").read_text())
+    summary = {r["key"]: r for r in next(t for t in rep["tables"] if t["proceeding"] == "apr")["rows"]}
+    assert summary["power_purchase"]["decision"] == "118.55" and summary["arr_net"]["decision"] == "92.64"

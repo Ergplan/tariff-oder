@@ -1,0 +1,144 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F14_CAP_Cap Cost",
+ "rates": "order/figures-apr-fy2025-26.json",
+ "places": 2,
+ "note": "The Commission's APR of FY2025-26 (chapter 5) reproduced with the same draft MYT 2025 rules that reproduce NPCL's claim, fed the order's own figures and checked against its printed computations: the loan and equity carried from the true-up's approved closings (599.02, 584.35) with NPCL's capitalisation, which the order adopts, and NPCL's loan rate unrounded (allowed as claimed); income tax on RoE; working capital with the revenue surplus NPCL holds at the beginning of the year set against it (Table 5-32: net negative, so nil interest); and R&M as Reg. 33.7's 5 % of a base the order does not print — Part A's depreciable assets and Part B at the true-up's close (1,073.20 + 889.53), which gives 98.14 exactly (inferred).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "capital APR FY2025-26",
+   "inputs": {
+    "record:capitalisation": {
+     "rate": "capex.capitalisation"
+    },
+    "record:consumer_contribution": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the capitalisation of 387.09 is already net of consumer contribution and the GNIDA assets (Table 5-28, D = A − B − C)"
+    },
+    "record:retired_gross": {
+     "rate": "gfa.decap"
+    },
+    "record:retired_grants": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no gross block retired from consumer contribution in NPCL's APR working (F14 H column)"
+    },
+    "record:retired_acc_dep": {
+     "cell": "F14_CAP_Cap Cost!H37",
+     "unit": "INR_crore",
+     "why": "the retired assets' accumulated depreciation is NPCL's (F14 H37, 8.22); the order prints none but adopts the net loan and equity additions it implies (Tables 5-30, 5-45: claimed = computed)"
+    },
+    "record:retired_acc_dep_adjustment": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no adjustment in NPCL's APR working"
+    },
+    "prior:equity_closing": {
+     "rate": "roe.opening"
+    },
+    "prior:normative_loan_closing": {
+     "rate": "loan.opening"
+    },
+    "record:depreciation": {
+     "rate": "loan.repayment"
+    },
+    "assumption:loan_interest_rate": {
+     "cell": "F25_IOL!H14",
+     "unit": "fraction",
+     "why": "the rate is NPCL's (F25 H14, 9.8262 %): 'The interest rate is allowed as claimed by the Petitioner' (para 5.7.5, p.194); the order prints it rounded (9.83 %), which gives 67.81, not its 67.79"
+    },
+    "assumption:tax_rate_roe": {
+     "rate": "tax.rate"
+    }
+   },
+   "checks": {
+    "normative_loan_closing": "order:loan.closing",
+    "normative_loan_average": "order:loan.average",
+    "interest_on_loan": "order:loan.interest",
+    "equity_closing": "order:roe.closing",
+    "equity_average": "order:roe.average",
+    "return_on_equity": "order:roe.approved",
+    "tax_on_roe": "order:tax.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "working capital APR FY2025-26",
+   "inputs": {
+    "record:rm": {
+     "rate": "om.rm"
+    },
+    "record:employee_gross": {
+     "rate": "om.employee"
+    },
+    "record:employee_capitalised": {
+     "rate": "om.capitalised"
+    },
+    "record:ag_net": {
+     "rate": "om.ag"
+    },
+    "record:om_additional": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "nothing beyond the norms (Table 5-26)"
+    },
+    "record:provisions": {
+     "rate": "om.provisions"
+    },
+    "record:maintenance_spares": {
+     "rate": "wc.spares"
+    },
+    "fact:R.REV.EXISTING": {
+     "rate": "revenue"
+    },
+    "record:open_access_revenue": {
+     "rate": "open_access"
+    },
+    "record:security_deposit_average": {
+     "rate": "wc.deposits_net"
+    },
+    "record:surplus_at_beginning": {
+     "rate": "wc.surplus"
+    },
+    "assumption:wc_interest_rate": {
+     "rate": "wc.rate"
+    }
+   },
+   "checks": {
+    "wc_om_month": "order:wc.om_month",
+    "wc_receivables": "order:wc.receivables",
+    "wc_total": "order:wc.total",
+    "wc_net": "order:wc.net",
+    "interest_on_working_capital": "order:wc.interest"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "R&M APR FY2025-26 (inferred base)",
+   "inputs": {
+    "record:rm_gfa_part_a": {
+     "rate": "tu.part_a_depreciable_closing"
+    },
+    "record:rm_gfa_part_b": {
+     "rate": "tu.part_b_closing"
+    },
+    "record:rm_gfa_part_c": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "Part C (assets from 01.04.2025) opens the year at nil"
+    },
+    "record:rm_gfa_gnida": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "nothing for the GNIDA assets (as in the ARR year, para 6.6.45)"
+    }
+   },
+   "checks": {
+    "rm_norm_total": "order:om.rm"
+   }
+  }
+ ]
+}

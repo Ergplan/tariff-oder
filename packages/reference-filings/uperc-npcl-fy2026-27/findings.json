@@ -457,6 +457,29 @@
     "Tariff order FY2026-27 p.57 para 4.3.15, p.166 para 4.18.1"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A72",
+   "kind": "decision explained",
+   "title": "The APR's +92.64 is NPCL's own supplementary claim for DIL's true-up (+118.55), less the true-up's approved closings carried forward, no growth factor, no A&G provisions and nil working-capital interest against the surplus NPCL holds",
+   "detail": "Reproduced from the order's figures with the draft MYT 2025 rules (bindings/approval-apr-fy26.json, 11 / 13, the other two one unit): power purchase +118.55 is not the Commission allowing more than NPCL asked — it is NPCL's supplementary submission of 29.04.2026 after DIL's true-up order of 20.03.2026 (FY2019-20 to FY2023-24): 40.70 + 116.12 carrying cost − 38.27 already allowed (Table 5-17); the summary's 'claimed' column (2,298.48) is the petition as filed and its format, and the Commission takes NPCL's estimate with the supplement (2,417.03) provisionally, the prudence check left to the true-up (para 5.4.24).  O&M −15.45: employee −11.06 — no growth factor (para 5.5.29), 84.57 being the CPI-escalated norm, the same step the ARR year's chain reproduces; R&M −2.12 — Reg. 33.7's 5 % on the Commission's GFA, not NPCL's 2,005.23 (A73 for the base); A&G provisions −2.26 not allowed until substantiated (para 5.5.30).  Interest −1.99: the loan +2.10 (opening 599.02, the true-up's approved closing, against NPCL's 579.18; repayment the approved depreciation 87.01; NPCL's rate, allowed as claimed), working capital −4.10 — nil, because the revenue surplus of 470.67 NPCL holds at the beginning of the year (the true-up's closing, Table 7-1) is set against the requirement of 36.68 (Table 5-32).  Depreciation −3.08: Part A −2.98, Part B −0.26 (54.09, the ARR year's figure for the same block), Part C +0.16.  RoE −2.05: opening equity 584.35, the true-up's closing, against 597.99; tax −0.68 follows.  Non-tariff income: the true-up's approved 12.38 against NPCL's 9.52 (para 5.16.2), −2.86; the 0.20 NPCL deducts as income from other business is not deducted (as in the true-up, para 4.16.20), +0.20.  118.55 − 15.45 − 1.99 − 3.08 − 0.68 − 2.05 − 2.86 + 0.20 = +92.64.",
+   "where": [
+    "Tariff order FY2026-27 pp.179–208, Tables 5-17, 5-18, 5-26, 5-28, 5-30, 5-32, 5-36, 5-39, 5-40, 5-43, 5-45, 5-48; p.296 Table 7-1",
+    "bindings/approval-apr-fy26.json",
+    "order/figures-apr-fy2025-26.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A73",
+   "kind": "question",
+   "title": "The APR's R&M (98.14) fits only a base that leaves out the 3.92 of non-depreciable land, where the ARR year's R&M takes Part A whole; and Table 6-49 labels FY2026-27's opening Part A 'Opening GFA of FY 2025-26'",
+   "detail": "The order does not print the APR's R&M base.  98.14 is 5 % of 1,962.73 (98.1365), which is the true-up's Part A depreciable assets at close (1,073.20, Table 4-99 row 15, after the 3.92 the table calls non-depreciable) plus Part B (889.53, Table 4-100); with Part A whole (1,077.12) it would be 98.33.  The ARR year's R&M (Table 6-49, p.258) takes Part A as 1,062.12 — Table 6-62's FY2026-27 opening, i.e. the 1,077.12 less the 15.00 retired in FY2025-26, land included — though its row is labelled 'Opening GFA of FY 2025-26'.  If the inferred base is right, the two years treat the land differently (0.20 of R&M).  Inferred, not established: the base matches to the paisa but is not stated.  For the reviewer.",
+   "where": [
+    "Tariff order FY2026-27 p.190 Table 5-26, p.143 Tables 4-99 and 4-100, p.258 Table 6-49, p.280 Table 6-62",
+    "bindings/approval-apr-fy26.json (R&M, inferred base)"
+   ],
+   "for": "reviewer"
   }
  ]
 }

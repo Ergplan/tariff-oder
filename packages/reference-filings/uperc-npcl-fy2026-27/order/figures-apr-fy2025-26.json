@@ -1,0 +1,454 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): Annual Performance Review of FY2025-26 as computed by the Commission (chapter 5), with the true-up closings it carries",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "dil.claim": {
+   "value": "40.70",
+   "unit": "INR_crore",
+   "page": 179,
+   "quote": "1. Total Claimed Amount 40.70",
+   "what": "DIL true-up (order of 20.03.2026): amount claimed (Table 5-17, NPCL's supplementary submission of 29.04.2026)"
+  },
+  "dil.carrying": {
+   "value": "116.12",
+   "unit": "INR_crore",
+   "page": 179,
+   "quote": "2 Total Claim of Carrying Cost / Interest 116.12",
+   "what": "carrying cost / interest claimed"
+  },
+  "dil.allowed": {
+   "value": "38.27",
+   "unit": "INR_crore",
+   "page": 179,
+   "quote": "3 Partial Carrying Cost already allowed by the Commission 38.27",
+   "what": "carrying cost already allowed"
+  },
+  "dil.total": {
+   "value": "118.55",
+   "unit": "INR_crore",
+   "page": 179,
+   "quote": "4 Total Claim by the Petitioner {1+(2-3)} 118.55",
+   "what": "total supplementary claim"
+  },
+  "om.employee": {
+   "value": "84.57",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Employees Expenses including retiral benefits 80.05 95.63 84.57",
+   "what": "employee expenses computed — the Computed (last) figure (Table 5-26)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "om.ag": {
+   "value": "28.75",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Administrative & General Expenses 26.45 28.75 28.75",
+   "what": "A&G expenses computed — the Computed (last) figure (Table 5-26)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "om.rm": {
+   "value": "98.14",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Repair & Maintenance Expenses 83.83 100.26 98.14",
+   "what": "R&M expenses computed — the Computed (last) figure (Table 5-26)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "om.total": {
+   "value": "211.46",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Total O&M Expenses 190.34 224.64 211.46",
+   "what": "total O&M computed — the Computed (last) figure (Table 5-26)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "om.capitalised": {
+   "value": "28.30",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Employee Cost Capitalised (30.34) (28.30) (28.30)",
+   "what": "employee cost capitalised (printed in brackets as a deduction) — the Computed (last) figure (Table 5-26)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "om.provisions": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Provisions - 2.26 -",
+   "what": "A&G provisions computed (nil) — the Computed (last) figure (Table 5-26)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "om.net": {
+   "value": "183.15",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Net O&M Expenses 160.00 198.60 183.15",
+   "what": "net O&M computed — the Computed (last) figure (Table 5-26)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "capex.capitalisation": {
+   "value": "387.09",
+   "unit": "INR_crore",
+   "page": 193,
+   "quote": "Total Capitalization in FY 2025-26 F=D+E 407.66 387.09",
+   "what": "capitalisation claimed for FY2025-26 (Table 5-28; the order adopts it: 'claimed = computed' in Tables 5-30 and 5-45)"
+  },
+  "loan.opening": {
+   "value": "599.02",
+   "unit": "INR_crore",
+   "page": 195,
+   "quote": "Opening Balance of Normative Loan 459.91 579.18 599.02",
+   "what": "opening normative loan (the true-up's closing) — the Computed (last) figure (Table 5-30)",
+   "header": "Loan Computation Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "loan.ace": {
+   "value": "268.68",
+   "unit": "INR_crore",
+   "page": 195,
+   "quote": "Net Increase/Decrease due to ACE during the Year (70% of Net GFA Addition after deducting Consumer contribution and asset deletion) 279.31 268.68 268.68",
+   "what": "net loan addition — the Computed (last) figure (Table 5-30)",
+   "header": "Loan Computation Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "loan.repayment": {
+   "value": "87.01",
+   "unit": "INR_crore",
+   "page": 195,
+   "quote": "Repayment of Normative loan during the year 70.69 90.09 87.01",
+   "what": "repayment = net depreciation — the Computed (last) figure (Table 5-30)",
+   "header": "Loan Computation Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "loan.closing": {
+   "value": "780.70",
+   "unit": "INR_crore",
+   "page": 195,
+   "quote": "Closing Balance of Normative Loan 668.54 757.77 780.70",
+   "what": "closing normative loan — the Computed (last) figure (Table 5-30)",
+   "header": "Loan Computation Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "loan.average": {
+   "value": "689.86",
+   "unit": "INR_crore",
+   "page": 195,
+   "quote": "Average Balance of Normative Loan 564.22 668.47 689.86",
+   "what": "average normative loan — the Computed (last) figure (Table 5-30)",
+   "header": "Loan Computation Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "loan.rate": {
+   "value": "9.83",
+   "unit": "percent",
+   "page": 195,
+   "quote": "Weighted average Rate of Interest on actual Loans (%) 9.88% 9.83% 9.83%",
+   "what": "rate 'allowed as claimed' (para 5.7.5) — the Computed (last) figure (Table 5-30)",
+   "header": "Loan Computation Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "loan.interest": {
+   "value": "67.79",
+   "unit": "INR_crore",
+   "page": 195,
+   "quote": "Interest on long term loan 55.78 65.69 67.79",
+   "what": "interest on long-term loan — the Computed (last) figure (Table 5-30)",
+   "header": "Loan Computation Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.om_month": {
+   "value": "15.26",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "One month's O&M Expenses 13.33 16.55 15.26",
+   "what": "one month's O&M — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.receivables": {
+   "value": "361.48",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "One-and-a-half-month equivalent of expected revenue from distribution tariff 370.25 361.48 361.48",
+   "what": "receivables — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.spares": {
+   "value": "6.54",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "Maintenance spares @ 40% of the R&M Expense for 2 Months 5.59 6.68 6.54",
+   "what": "maintenance spares — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.gross": {
+   "value": "383.29",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "Gross Total 389.17 384.72 383.29",
+   "what": "gross working capital — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.deposits_net": {
+   "value": "346.61",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "Net Security Deposits from Consumers 348.87 346.61 346.61",
+   "what": "net security deposits — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.total": {
+   "value": "36.68",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "Total Working Capital 40.30 38.10 36.68",
+   "what": "total working capital — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.surplus": {
+   "value": "470.67",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "(Surplus) at the beginning of the year (1,234.69) (470.67)",
+   "what": "surplus at the beginning of the year (printed in brackets) — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.net": {
+   "value": "-434.00",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "Net Working Capital (1,194.39) 38.10 (434.00)",
+   "what": "net working capital (printed in brackets: negative) — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.rate": {
+   "value": "10.75",
+   "unit": "percent",
+   "page": 197,
+   "quote": "Rate of Interest for Working Capital 10.95% 10.75% 10.75%",
+   "what": "working-capital rate — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "wc.interest": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 197,
+   "quote": "Interest on Total Working Capital - 4.10 -",
+   "what": "interest on working capital (nil) — the Computed (last) figure (Table 5-32)",
+   "header": "Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "int.ltl": {
+   "value": "67.79",
+   "unit": "INR_crore",
+   "page": 199,
+   "quote": "1 Interest on Long term loans 65.69 67.79",
+   "what": "interest on long-term loans — the Computed (last) figure (Table 5-36)",
+   "header": "Sl. No. Description Claimed Computed by Commission"
+  },
+  "int.wc": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 199,
+   "quote": "2 Interest on working capital facilities 4.10 -",
+   "what": "interest on working capital — the Computed (last) figure (Table 5-36)",
+   "header": "Sl. No. Description Claimed Computed by Commission"
+  },
+  "int.isd": {
+   "value": "23.26",
+   "unit": "INR_crore",
+   "page": 199,
+   "quote": "3 Interest on security deposit 23.26 23.26",
+   "what": "interest on security deposit — the Computed (last) figure (Table 5-36)",
+   "header": "Sl. No. Description Claimed Computed by Commission"
+  },
+  "int.bank": {
+   "value": "3.96",
+   "unit": "INR_crore",
+   "page": 199,
+   "quote": "4 Banking and Finance charges 3.96 3.96",
+   "what": "banking and finance charges — the Computed (last) figure (Table 5-36)",
+   "header": "Sl. No. Description Claimed Computed by Commission"
+  },
+  "int.total": {
+   "value": "95.01",
+   "unit": "INR_crore",
+   "page": 199,
+   "quote": "5 Total Interest & Fin. Charges 97.00 95.01",
+   "what": "total interest and finance charges — the Computed (last) figure (Table 5-36)",
+   "header": "Sl. No. Description Claimed Computed by Commission"
+  },
+  "gfa.opening": {
+   "value": "2484.56",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Opening GFA 2,112.82 2,536.81 2,484.56",
+   "what": "opening GFA (the true-up's closing) — the Computed (last) figure (Table 5-39)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "gfa.addition": {
+   "value": "448.49",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Addition to GFA 482.68 448.49 448.49",
+   "what": "addition to GFA — the Computed (last) figure (Table 5-39)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "gfa.decap": {
+   "value": "15.00",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Decapitalization 15.00 15.00 15.00",
+   "what": "decapitalisation — the Computed (last) figure (Table 5-39)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "gfa.closing": {
+   "value": "2918.05",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Closing GFA 2,580.50 2,970.30 2,918.05",
+   "what": "closing GFA — the Computed (last) figure (Table 5-39)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Claimed Computed by Commission"
+  },
+  "dep.A": {
+   "value": "54.05",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Depreciation on Gross Block till 01.04.2020 39.61 57.03 54.05",
+   "what": "Part A — the Computed (last) figure (Table 5-40)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Projected (APR) Computed by Commission"
+  },
+  "dep.B": {
+   "value": "54.09",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Depreciation on Gross Block after 01.04.2020 till 31.03.2025 49.36 54.35 54.09",
+   "what": "Part B — the Computed (last) figure (Table 5-40)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Projected (APR) Computed by Commission"
+  },
+  "dep.C": {
+   "value": "9.81",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Depreciation on Gross Block after 01.04.2025 11.49 9.65 9.81",
+   "what": "Part C — the Computed (last) figure (Table 5-40)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Projected (APR) Computed by Commission"
+  },
+  "dep.gross": {
+   "value": "117.95",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Gross Depreciation for the Year 100.46 121.04 117.95",
+   "what": "gross depreciation — the Computed (last) figure (Table 5-40)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Projected (APR) Computed by Commission"
+  },
+  "dep.contribution": {
+   "value": "30.94",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Less: Depreciation on Consumer Contribution 29.77 30.94 30.94",
+   "what": "depreciation on consumer contribution — the Computed (last) figure (Table 5-40)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Projected (APR) Computed by Commission"
+  },
+  "dep.net": {
+   "value": "87.01",
+   "unit": "INR_crore",
+   "page": 201,
+   "quote": "Net Depreciation 70.69 90.09 87.01",
+   "what": "net depreciation — the Computed (last) figure (Table 5-40)",
+   "header": "Particulars Approved as per TO dtd 22.11.2025 Projected (APR) Computed by Commission"
+  },
+  "tax.rate": {
+   "value": "25.17",
+   "unit": "percent",
+   "page": 203,
+   "quote": "2 Income Tax Rate B 25.17% 25.17% 25.17%",
+   "what": "income tax rate — the Computed (last) figure (Table 5-43)"
+  },
+  "tax.approved": {
+   "value": "32.30",
+   "unit": "INR_crore",
+   "page": 203,
+   "quote": "3 Total Tax Expense C=A * B/(1-B) 26.65 32.98 32.30",
+   "what": "income tax — the Computed (last) figure (Table 5-43)"
+  },
+  "roe.opening": {
+   "value": "584.35",
+   "unit": "INR_crore",
+   "page": 205,
+   "quote": "Equity (Opening Balance) 469.28 597.99 584.35",
+   "what": "opening equity (the true-up's closing) — the Computed (last) figure (Table 5-45)",
+   "header": "Particulars Approved in TO dated 22.11.2025 Claimed Computed by Commission"
+  },
+  "roe.additions": {
+   "value": "111.63",
+   "unit": "INR_crore",
+   "page": 205,
+   "quote": "Net additions during the year 117.80 111.63 111.63",
+   "what": "net equity additions — the Computed (last) figure (Table 5-45)",
+   "header": "Particulars Approved in TO dated 22.11.2025 Claimed Computed by Commission"
+  },
+  "roe.closing": {
+   "value": "695.98",
+   "unit": "INR_crore",
+   "page": 205,
+   "quote": "Equity (Closing Balance) 587.08 709.62 695.98",
+   "what": "closing equity — the Computed (last) figure (Table 5-45)",
+   "header": "Particulars Approved in TO dated 22.11.2025 Claimed Computed by Commission"
+  },
+  "roe.average": {
+   "value": "640.16",
+   "unit": "INR_crore",
+   "page": 205,
+   "quote": "Average Equity 528.18 653.81 640.16",
+   "what": "average equity — the Computed (last) figure (Table 5-45)",
+   "header": "Particulars Approved in TO dated 22.11.2025 Claimed Computed by Commission"
+  },
+  "roe.rate": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 205,
+   "quote": "Rate of Return on Equity 15.00% 15% 15.00%",
+   "what": "rate of return on equity — the Computed (last) figure (Table 5-45)",
+   "header": "Particulars Approved in TO dated 22.11.2025 Claimed Computed by Commission"
+  },
+  "roe.approved": {
+   "value": "96.02",
+   "unit": "INR_crore",
+   "page": 205,
+   "quote": "Return on Equity 79.23 98.07 96.02",
+   "what": "return on equity — the Computed (last) figure (Table 5-45)",
+   "header": "Particulars Approved in TO dated 22.11.2025 Claimed Computed by Commission"
+  },
+  "revenue": {
+   "value": "2884.76",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "20 Less: Revenue from Approved Tariff 2,961.96 2,884.76 2,884.76",
+   "what": "revenue from approved tariff (Table 5-48, Provisionally Considered)"
+  },
+  "open_access": {
+   "value": "7.08",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "16 Less: Revenue from Open Access Charges 9.13 7.08 7.08",
+   "what": "revenue from open access charges (Table 5-48, Provisionally Considered)"
+  },
+  "tu.part_a_depreciable_closing": {
+   "value": "1073.20",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "15 Depreciable Assets 1,078.35 - 5.15 1,073.20 1,075.77 4.97% 53.48",
+   "what": "true-up FY2024-25 Part A depreciable assets, closing (Table 4-99, row 15)"
+  },
+  "tu.part_b_closing": {
+   "value": "889.53",
+   "unit": "INR_crore",
+   "page": 143,
+   "quote": "13 Total Fixed Assets 573.16 317.18 0.81 889.53 731.35 41.54",
+   "what": "true-up FY2024-25 Part B, closing (Table 4-100, row 13)"
+  },
+  "gap.fy25_closing": {
+   "value": "-470.67",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Closing Gap/ (Surplus) 267.74 (470.67) 629.37 (73.34)",
+   "what": "FY2024-25 closing revenue (surplus), approved (Table 7-1, the second figure; printed in brackets)"
+  }
+ }
+}

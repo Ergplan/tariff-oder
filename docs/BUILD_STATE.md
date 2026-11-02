@@ -1005,6 +1005,37 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 105 (2026-11-02): the APR of FY2025-26 reproduced; its +92.64 explained line by
+  line.**
+  - **The record:** `order/figures-apr-fy2025-26.json` holds 57 figures, 57 / 57 quotes verified.
+    They come from Tables 5-17 to 5-48 (the Commission's own APR computations) and the true-up
+    closings the APR carries.
+  - **Binding `approval-apr-fy26.json`: 11 / 13 match, the other two one unit.**  It uses the
+    MYT 2025 rules:
+    - loan, equity, RoE and tax, opening from the true-up's approved closings;
+    - NPCL's loan rate unrounded (F25 H14), which the order allows as claimed and prints rounded;
+    - working capital: the revenue surplus NPCL holds at the beginning of the year (470.67, the
+      true-up's closing, Table 7-1) is set against the requirement, so interest is nil;
+    - R&M at 5% of a base the order does not print.  1,073.20 + 889.53 gives 98.14 exactly.
+  - **A72 (petitioner), the +92.64:**
+    - +118.55 is NPCL's own supplementary claim for DIL's true-up (29.04.2026), taken
+      provisionally.  The order's "claimed" column is the petition as filed.
+    - O&M −15.45: no growth factor, R&M on the Commission's GFA, provisions refused.
+    - Interest −1.99: the working-capital interest is nil against the surplus.
+    - Depreciation −3.08, RoE −2.05 and tax −0.68: the true-up's closings carried forward.
+    - Non-tariff income −2.86: the true-up's approved figure.
+    - Other business +0.20.
+  - **A73 (reviewer):** the inferred R&M base leaves out the 3.92 of non-depreciable land, where
+    the ARR year's R&M takes Part A whole.  Table 6-49 also mislabels FY2026-27's opening.  These
+    are questions; the base is inferred.
+  - **Ties checked by the test:**
+    - the APR opens on the true-up's closings;
+    - its employee and A&G figures are the FY2025-26 steps of the ARR year's chain;
+    - its Part B depreciation is the ARR year's.
+  - **All three proceedings' decisions are now explained line by line:** true-up −123.38, APR
+    +92.64, ARR year +29.51.
+  Nothing verified, nothing approved.
+
   **Increment 104 (2026-11-02): the true-up's power purchase decision, line by line; every line
   of the true-up now has its reason.**
   - **Table 4-52 read by word position (pp. 88–89).**  Its source names are centred on the lines
@@ -2650,6 +2681,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 105 (2026-11-02): 472 passed** (+1 unit: the real APR — 11 / 13, ties to the true-up and the ARR year).  `check_order_quotes.py`: 57 / 57.  Ruff and format clean.
 - **Increment 104 (2026-11-02): 471 passed** (+3 unit: wrapped labels joined and the decision per line, synthetic; Table 4-52 real; the excess energy reproduced).  `check_order_quotes.py`: 15 / 15.  Ruff, format and `tsc` clean.
 - **Increment 103 (2026-11-02): 468 passed** (+1 unit: the real true-up depreciation — 24 classes, gross and net match; the order's non-adding row pinned).  `check_order_quotes.py`: 205 / 205.  Ruff and format clean.
 - **Increment 102 (2026-11-02): 467 passed** (+1 unit: the real true-up capital and working capital — working capital exact, the equity-deletion rule's departure shown, the rest within a unit).  `check_order_quotes.py`: 38 / 38.  Ruff and format clean.
@@ -2887,7 +2919,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 104) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 105) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2945,12 +2977,13 @@ entries below are the per-increment history.**
     price indices: the 2019 norm against NPCL's actual cost (A65); its capital, loan, equity,
     tax and working capital likewise (A67), showing two draft rules that depart from the
     Commission's practice (A66); its depreciation class by class (A68, A69); its power purchase
-    line by line, so every line of the true-up's −123.38 has its reason (A70, A71).  The order misprints one line of
+    line by line, so every line of the true-up's −123.38 has its reason (A70, A71); and the
+    APR's +92.64 likewise, reproduced from the Commission's computations (A72, A73).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **39 findings (A29–A71):** 23 for the petitioner, collected in the draft queries; 16 for the
+  - **41 findings (A29–A73):** 24 for the petitioner, collected in the draft queries; 17 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

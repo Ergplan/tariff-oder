@@ -10128,6 +10128,154 @@
    ]
   },
   {
+   "binding": "approval-apr-fy26.json",
+   "checks": [
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "capital APR FY2025-26 order:loan.closing",
+     "output": "normative_loan_closing",
+     "result": "differs",
+     "filed": "780.70",
+     "computed": "780.69",
+     "why": null,
+     "exact": "780.692243094924350000"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "capital APR FY2025-26 order:loan.average",
+     "output": "normative_loan_average",
+     "result": "match",
+     "filed": "689.86",
+     "computed": "689.86",
+     "why": null,
+     "exact": "689.85612154746217500"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "capital APR FY2025-26 order:loan.interest",
+     "output": "interest_on_loan",
+     "result": "match",
+     "filed": "67.79",
+     "computed": "67.79",
+     "why": null,
+     "exact": "67.78639651331642460130629681"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "capital APR FY2025-26 order:roe.closing",
+     "output": "equity_closing",
+     "result": "match",
+     "filed": "695.98",
+     "computed": "695.98",
+     "why": null,
+     "exact": "695.9770"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "capital APR FY2025-26 order:roe.average",
+     "output": "equity_average",
+     "result": "match",
+     "filed": "640.16",
+     "computed": "640.16",
+     "why": null,
+     "exact": "640.1635"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "capital APR FY2025-26 order:roe.approved",
+     "output": "return_on_equity",
+     "result": "match",
+     "filed": "96.02",
+     "computed": "96.02",
+     "why": null,
+     "exact": "96.024525"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "capital APR FY2025-26 order:tax.approved",
+     "output": "tax_on_roe",
+     "result": "match",
+     "filed": "32.30",
+     "computed": "32.30",
+     "why": null,
+     "exact": "32.29904175130295336095149003"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "working capital APR FY2025-26 order:wc.om_month",
+     "output": "wc_om_month",
+     "result": "match",
+     "filed": "15.26",
+     "computed": "15.26",
+     "why": null,
+     "exact": "15.26333333333333333333333333"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "working capital APR FY2025-26 order:wc.receivables",
+     "output": "wc_receivables",
+     "result": "match",
+     "filed": "361.48",
+     "computed": "361.48",
+     "why": null,
+     "exact": "361.480"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "working capital APR FY2025-26 order:wc.total",
+     "output": "wc_total",
+     "result": "differs",
+     "filed": "36.68",
+     "computed": "36.67",
+     "why": null,
+     "exact": "36.6733333333333333333333333"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "working capital APR FY2025-26 order:wc.net",
+     "output": "wc_net",
+     "result": "match",
+     "filed": "-434.00",
+     "computed": "-434.00",
+     "why": null,
+     "exact": "-433.9966666666666666666666667"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "working capital APR FY2025-26 order:wc.interest",
+     "output": "interest_on_working_capital",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null,
+     "exact": "0"
+    },
+    {
+     "table": "F14_CAP_Cap Cost",
+     "fiscal_year": "FY2025-26",
+     "category": "R&M APR FY2025-26 (inferred base) order:om.rm",
+     "output": "rm_norm_total",
+     "result": "match",
+     "filed": "98.14",
+     "computed": "98.14",
+     "why": null,
+     "exact": "98.1365"
+    }
+   ]
+  },
+  {
    "binding": "approval-capital-fy27.json",
    "checks": [
     {
