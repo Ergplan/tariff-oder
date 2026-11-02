@@ -19,11 +19,16 @@ type Rule = {
   clause: string | null;
   page: number | null;
   verified: boolean;
+  clause_candidates: { page: number; score: number; words: string[]; values: string[]; snippet: string; regulation_pdf: string; kind: string }[];
   from_fy: string | null;
   to_fy: string | null;
   examples: number;
 };
-type Rules = { commission: string; rules: Rule[]; summary: { rules: number; approved: number; clauses_verified: number } };
+type Rules = {
+  commission: string;
+  rules: Rule[];
+  summary: { rules: number; approved: number; clauses_verified: number; with_clause_candidates: number };
+};
 
 /** A commission's executable calculation rules and their status (ADR-0021): drafts until a person approves them on a verified clause. */
 export default async function RulesPage({ params }: { params: Promise<{ commission: string }> }) {
@@ -94,6 +99,25 @@ export default async function RulesPage({ params }: { params: Promise<{ commissi
                       {r.verified ? "verified" : "not verified"}
                     </span>
                   </div>
+                  {!r.verified && r.clause_candidates?.length ? (
+                    <details style={{ marginTop: "0.3rem" }}>
+                      <summary className="muted">
+                        {r.clause_candidates.length} page{r.clause_candidates.length === 1 ? "" : "s"} to check (proposed, not verified)
+                      </summary>
+                      <ul style={{ margin: "0.3rem 0", paddingLeft: "1rem" }}>
+                        {r.clause_candidates.map((c, i) => (
+                          <li key={i}>
+                            <span className="mono">
+                              {c.regulation_pdf} p.{c.page}
+                            </span>{" "}
+                            {c.kind !== "regulation" ? <span className="muted">({c.kind.split(" — ")[0]})</span> : null}{" "}
+                            {c.values.length ? <span className="badge" data-tone="neutral">{c.values.join(", ")}</span> : null}
+                            <div className="muted">{c.snippet}</div>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  ) : null}
                 </td>
                 <td>
                   <span className="badge" data-tone={r.status === "approved" ? "ok" : "warn"}>

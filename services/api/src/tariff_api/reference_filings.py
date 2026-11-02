@@ -139,10 +139,29 @@ def filing(filing_id: str) -> dict[str, Any]:
     return out
 
 
+def clause_candidates(commission: str) -> dict[str, list[dict[str, Any]]]:
+    """Proposed regulation pages per rule id (``packages/arr-rules/<commission>/candidates/*.json``,
+    written by ``scripts/clause_candidates.py``) — proposals for the reviewer, never verifications."""
+    out: dict[str, list[dict[str, Any]]] = {}
+    folder = _root().parent / "arr-rules" / commission.lower() / "candidates"
+    for f in sorted(folder.glob("*.json")) if folder.is_dir() else []:
+        d = json.loads(f.read_text())
+        for rule_id, cands in d.get("rules", {}).items():
+            for c in cands:
+                where = {
+                    "regulation_pdf": d["regulation_pdf"],
+                    "kind": d.get("kind", "regulation"),
+                    "sha256": d["sha256"],
+                }
+                out.setdefault(rule_id, []).append({**c, **where})
+    return out
+
+
 def rules(commission: str) -> dict[str, Any]:
     rs = load_rules(commission)
     if not rs:
         raise AppError("not_found", f"no calculation rules for {commission}")
+    cands = clause_candidates(commission)
     return {
         "commission": commission.upper(),
         "rules": [
@@ -166,6 +185,7 @@ def rules(commission: str) -> dict[str, Any]:
                 "to_fy": r.applies.to_fy,
                 "examples": len(r.examples),
                 "note": r.note,
+                "clause_candidates": cands.get(r.id, []),
             }
             for r in rs
         ],
@@ -173,6 +193,7 @@ def rules(commission: str) -> dict[str, Any]:
             "rules": len(rs),
             "approved": sum(1 for r in rs if r.status == "approved"),
             "clauses_verified": sum(1 for r in rs if r.clause.verified),
+            "with_clause_candidates": sum(1 for r in rs if cands.get(r.id)),
         },
     }
 

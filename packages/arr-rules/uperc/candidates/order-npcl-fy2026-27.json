@@ -1,0 +1,4865 @@
+{
+ "status": "proposals for the reviewer — none verified; a clause is verified only by a person reading the page",
+ "regulation_pdf": "npcl_to_2627.pdf",
+ "kind": "UPERC tariff order for NPCL, FY2026-27 — quotes the regulations; the regulation itself must still be checked",
+ "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+ "pages": 423,
+ "pages_with_text": 423,
+ "cites": "",
+ "rules": {
+  "uperc.alloc.wheeling": [],
+  "uperc.alloc.supply": [
+   {
+    "page": 311,
+    "score": 4,
+    "words": [
+     "allocated",
+     "business",
+     "retail",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "OPEN ACCESS CHARGES Page 311 of 423 building of capacity like Interest on Term Loan, RoE etc. are being allocated on the same basis. ➢ “Customer” in the MYT Regulation, 2025 includes operating expenses associated with m…"
+   },
+   {
+    "page": 14,
+    "score": 3,
+    "words": [
+     "business",
+     "retail",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…da of the State of Uttar Pradesh. 1.2.6. The Commission, in an Order dated November 26, 2020, for approval of Business Plan, observed that License of the Petitioner is valid up to August 30, 2023, and the License will ex…"
+   },
+   {
+    "page": 312,
+    "score": 3,
+    "words": [
+     "item",
+     "retail",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "….03 0.03 0.03 0.27 Depreciation 0.24 0.24 0.15 0.22 0.00 0.00 0.08 0.02 0.24 Debits, Write-offs and any other items 0.00 0.00 0.00 0.00 0.00 0.00 0.12 0.03 0.03 Reasonable Return & Cont. Res. 0.28 0.25 0.16 0.24 0.00 0.0…"
+   }
+  ],
+  "uperc.arr.employee_net": [
+   {
+    "page": 246,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "employee",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…infrastructure and operational responsibilities has naturally resulted in higher Employee Expenses. Increased capitalisation each year requires additional field and support staff to manage the growing network. The rise i…"
+   },
+   {
+    "page": 252,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "employee",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…24-25 indicates that the manpower requirement arising from anticipated future growth in consumers, sales, and capitalisation has, to a significant extent, already been addressed and absorbed within the base year data its…"
+   },
+   {
+    "page": 276,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "employee",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…stainability & Demand Side Management (DSM) 3.95 3.95 V Land and Boundary Wall 5.54 5.54 W Interest / Expense Capitalisation 8.18 8.18 X Salary Capitalisation 32.20 32.20 Y Total 503.21 483.65 Z Asset not belonging to Di…"
+   }
+  ],
+  "uperc.arr.om": [
+   {
+    "page": 2,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…COST (APPC) .............................................................. 89 4.6. OPERATION AND MAINTENANCE EXPENSES.............................................................. 90 4.7. CAPITAL EXPENDITURE ...........…"
+   },
+   {
+    "page": 3,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…QUANTUM AND COST ........................................................ 172 5.5. OPERATION AND MAINTENANCE EXPENSES............................................................. 181 5.6. CAPITAL EXPENDITURE ...........…"
+   },
+   {
+    "page": 6,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…ERAGE POWER PURCHASE COST AS APPROVED BY THE COMMISSION FOR FY 2024-25 .......... 90 TABLE 4-54 NORMATIVE O&M EXPENSES AS SUBMITTED BY THE PETITIONER (IN RS. CR.) ............................. 91 TABLE 4-55 COMPUTATION O…"
+   }
+  ],
+  "uperc.arr.expenditure": [
+   {
+    "page": 2,
+    "score": 1,
+    "words": [
+     "expenditure"
+    ],
+    "values": [],
+    "snippet": "…RATION AND MAINTENANCE EXPENSES.............................................................. 90 4.7. CAPITAL EXPENDITURE ............................................................................................ 109 4…"
+   },
+   {
+    "page": 3,
+    "score": 1,
+    "words": [
+     "expenditure"
+    ],
+    "values": [],
+    "snippet": "…RATION AND MAINTENANCE EXPENSES............................................................. 181 5.6. CAPITAL EXPENDITURE ............................................................................................ 190 5…"
+   },
+   {
+    "page": 6,
+    "score": 1,
+    "words": [
+     "expenditure"
+    ],
+    "values": [],
+    "snippet": "…XPENSES AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.) .................... 109 TABLE 4-72 CAPITAL EXPENDITURE AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) .......... 109 TABLE 4-73 CAPITAL EXPEN…"
+   }
+  ],
+  "uperc.arr.deductions": [],
+  "uperc.arr.net_arr": [
+   {
+    "page": 1,
+    "score": 3,
+    "words": [
+     "annual",
+     "requirement",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…ION LUCKNOW Petition No. 2330/2025 APPROVAL OF AGGREGATE REVENUE REQUIREMENT (ARR) AND TARIFF FOR FY 2026-27, ANNUAL PERFORMANCE REVIEW (APR) FOR FY 2025-26 AND TRUE-UP OF ARR AND REVENUE FOR FY 2024-25 FOR Noida Power C…"
+   },
+   {
+    "page": 3,
+    "score": 3,
+    "words": [
+     "annual",
+     "requirement",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…. TRUE-UP AND REVENUE GAP / (SURPLUS) ................................................................ 166 5. ANNUAL PERFORMANCE REVIEW OF FY 2025-26 ............................................ 168 5.1. INTRODUCTION ...…"
+   },
+   {
+    "page": 12,
+    "score": 3,
+    "words": [
+     "annual",
+     "requirement",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…RADESH ELECTRICITY REGULATORY COMMISSION Petition No. 2330 / 2025 IN THE MATTER OF: TRUING-UP FOR FY 2024-25, ANNUAL PERFORMANCE REVIEW (APR) FOR FY 2025-26 AND APPROVAL OF AGGREGATE REVENUE REQUIREMENT (ARR) AND TARIFF…"
+   }
+  ],
+  "uperc.arr.gap": [],
+  "uperc.arr.gap_revised": [],
+  "uperc.arr.gap_subsidy": [],
+  "uperc.arr.unrecovered": [
+   {
+    "page": 296,
+    "score": 3,
+    "words": [
+     "carrying",
+     "cost",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…plus) (47.92) (593.81) 267.74 (470.67) Addition in Gap/ (Surplus) during the year 303.83 180.46 315.87 408.51 Carrying Cost on Gap/ (Surplus) 11.84 (57.32) 45.76 (11.17) Carrying Cost (%) 11.38% 11.38% 10.75% 4.86% Closi…"
+   },
+   {
+    "page": 297,
+    "score": 3,
+    "words": [
+     "carrying",
+     "cost",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…at Rs. 3,192.04 Cr. Thus, in the current year there is estimated regulatory gap of Rs. 319.29 Cr., excluding carrying cost, in revenue receipts over expenditure. However, since these are forecasted values only and there…"
+   },
+   {
+    "page": 307,
+    "score": 3,
+    "words": [
+     "carrying",
+     "cost",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…) A (47.92) (593.81) 267.74 (470.67) Addition in Gap/ (Surplus) during the year B 303.83 180.46 315.87 408.51 Carrying Cost on Gap C 11.84 (57.32) 45.76 (11.17) * Carrying Cost (%) D 11.38% 11.38% 10.75% 4.86% Closing Ga…"
+   }
+  ],
+  "uperc.arr.carrying": [
+   {
+    "page": 31,
+    "score": 6,
+    "words": [
+     "cost"
+    ],
+    "values": [
+     "75%"
+    ],
+    "snippet": "…t the reliance on short term power purchase will come down in coming few years and Petitioner aims to procure 75% of power through Long Term Contracts. For FY 2026-27 as well the Petitioner has planned to meet the majori…"
+   },
+   {
+    "page": 298,
+    "score": 6,
+    "words": [
+     "cost"
+    ],
+    "values": [
+     "75%"
+    ],
+    "snippet": "…a month shall be the actual maximum load / demand as recorded by the meter (can be in parts of kW or kVA) or 75% of the contracted load / demand (kW or kVA), whichever is higher. It is proposed that the billable demand…"
+   },
+   {
+    "page": 11,
+    "score": 4,
+    "words": [
+     "asset",
+     "cost",
+     "regulatory",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…2026-27 (IN RS. CR.) ......................... 288 TABLE 6-77 INCOME PROJECTED UNDER RENTING OF DISTRIBUTION ASSETS IN FY 2026-27 (IN RS. CR.) ..... 291 TABLE 6-78 INCOME PROJECTED UNDER ADVERTISEMENTS IN FY 2026-27 (IN…"
+   }
+  ],
+  "uperc.arr.cumulative": [
+   {
+    "page": 11,
+    "score": 3,
+    "words": [
+     "cumulative",
+     "revenue",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…ATORY ASSET (IN RS. CR.) ..................................................................... 306 TABLE 8-3: CUMULATIVE GAP / (SURPLUS) (IN RS. CR.) ......................................................................…"
+   },
+   {
+    "page": 296,
+    "score": 3,
+    "words": [
+     "cumulative",
+     "revenue",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…pproved regulatory surplus of Rs. 593.81 Cr. at the end of FY 2023-24. Further, The Commission has considered cumulative regulatory gap till FY 2025-26 as shown below: TABLE 7-1: REVENUE GAP/(SURPLUS) TILL FY 2025-26 (IN…"
+   },
+   {
+    "page": 307,
+    "score": 3,
+    "words": [
+     "cumulative",
+     "revenue",
+     "surplus"
+    ],
+    "values": [],
+    "snippet": "…the Petitioner will separately place its submissions before the Commission. Commission’s Analysis 8.1.6. The cumulative Gap/ (Surplus) at the end of FY 2025-26 is shown in the Table below: TABLE 8-3: CUMULATIVE GAP / (S…"
+   }
+  ],
+  "uperc.arr.revenue_gross": [
+   {
+    "page": 24,
+    "score": 6,
+    "words": [
+     "charges",
+     "current",
+     "discount",
+     "regulatory",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…% of Contract Demand and increase in solar hour TOD rebate to 20% and corresponding increase in Peak hour TOD charges to 20%. The proposal made by the Petitioner lack evidence and needs to be supported by study and subst…"
+   },
+   {
+    "page": 160,
+    "score": 6,
+    "words": [
+     "charges",
+     "current",
+     "discount",
+     "miscellaneous",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…. As per Clause 4.9 Part (B)(i) of the Supply Code, eligible consumers are required to pay service connection charges and meter costs, including through EMI/instalment mode as approved by the Commission. In this process,…"
+   },
+   {
+    "page": 297,
+    "score": 6,
+    "words": [
+     "charges",
+     "current",
+     "discount",
+     "regulatory",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…sections of this Chapter. TARIFF PROPOSAL FOR THE RECOVERY OF FIXED COST OF THE COMPANY THROUGH DEMAND/ FIXED CHARGES OF RETAIL SUPPLY TARIFF 7.2.8. The Petitioner has submitted that the retail tariff for Distribution Li…"
+   }
+  ],
+  "uperc.arr.receipts": [
+   {
+    "page": 158,
+    "score": 1,
+    "words": [
+     "receipts"
+    ],
+    "values": [],
+    "snippet": "…ARR. Accordingly, Non-Tariff Income comprising income from delayed payment surcharge and other miscellaneous receipts incidental to the business of electricity supply during FY 2024-25 is summarized below: 4.16.2. TREAS…"
+   },
+   {
+    "page": 297,
+    "score": 1,
+    "words": [
+     "receipts"
+    ],
+    "values": [],
+    "snippet": "…in the current year there is estimated regulatory gap of Rs. 319.29 Cr., excluding carrying cost, in revenue receipts over expenditure. However, since these are forecasted values only and there is regulatory surplus out…"
+   }
+  ],
+  "uperc.arr.acos": [
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "average",
+     "cost",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…E ................................................................................................... 57 4.5. AVERAGE POWER PURCHASE COST (APPC) .............................................................. 89 4.6. OPER…"
+   },
+   {
+    "page": 11,
+    "score": 3,
+    "words": [
+     "average",
+     "cost",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…SALES & REVENUE AS APPROVED BY THE COMMISSION FOR FY 2026-27 ...................... 308 TABLE 8-6 SUMMARY OF AVERAGE BILLING RATE APPROVED BY THE COMMISSION FOR FY 2026-27 ......... 308 TABLE 8-7: APPROVED MONTHLY SALES…"
+   },
+   {
+    "page": 20,
+    "score": 3,
+    "words": [
+     "average",
+     "cost",
+     "supply"
+    ],
+    "values": [],
+    "snippet": "…also contain the details of the cumulative revenue gap and its treatment, distribution & transmission losses, average power purchase cost, average cost of supply, average retail tariff realized from each category/sub-cat…"
+   }
+  ],
+  "uperc.arr.abr": [
+   {
+    "page": 4,
+    "score": 4,
+    "words": [
+     "average",
+     "billing",
+     "rate",
+     "subsidy"
+    ],
+    "values": [],
+    "snippet": "…FOR FY 2026-27 ........................................................ 352 12.2. ANNEXURE-II: CATEGORY WISE AVERAGE BILLING RATE FOR FY 2026-27 ................. 401 12.3. ANNEXURE-III: (ADMITTANCE ORDER) .............…"
+   },
+   {
+    "page": 308,
+    "score": 4,
+    "words": [
+     "average",
+     "billing",
+     "rate",
+     "subsidy"
+    ],
+    "values": [],
+    "snippet": "…r 1,903.82 1,388.10 7.29 12 Total 4,399.84 3,192.04 7.25 8.1.9. The Commission in Table below, summarises the Average Billing Rate (ABR) and Average Cost of Supply (ACOS) for FY 2026-27. TABLE 8-6 SUMMARY OF AVERAGE BILL…"
+   },
+   {
+    "page": 320,
+    "score": 4,
+    "words": [
+     "average",
+     "billing",
+     "rate",
+     "subsidy"
+    ],
+    "values": [],
+    "snippet": "…n is shown in the table below: TABLE 9-13 CSS COMPUTED BY THE COMMISSION FOR FY 2026-27 (RS. /KWH) Categories Average Billing Rate (ABR) (A) T = ABR + R (i.e., Regulatory Surcharge) (B) Cost of Supply (C) Cross Subsidy S…"
+   }
+  ],
+  "uperc.baddebts.billed": [
+   {
+    "page": 158,
+    "score": 3,
+    "words": [
+     "billed",
+     "receipts",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…E COMMISSION FOR FY 2024-25 (IN RS. CR.) Particulars Approved in TO dated 10.10.2024 Claimed Approved Revenue billed during the year 2,725.66 2,779.49 2,634.60* Provision as % revenue billed claimed 0.38% 0.41% 0.41% Pro…"
+   }
+  ],
+  "uperc.baddebts.closing": [
+   {
+    "page": 101,
+    "score": 1,
+    "words": [
+     "receivables"
+    ],
+    "values": [],
+    "snippet": "…bility of Bad and Doubtful Debts as a legitimate business expense with the ceiling limit of 2% of the revenue receivables in the Tariff. However, the Petitioner has been able to contain the same to 0.41% during the FY 20…"
+   },
+   {
+    "page": 146,
+    "score": 1,
+    "words": [
+     "receivables"
+    ],
+    "values": [],
+    "snippet": "…payment recovery cycle of approximately 67 days. However, the MYT Regulations, 2019 only consider 45 days of receivables for working capital calculations, whereas the 2014 regulations allowed 60 days. The Petitioner has…"
+   },
+   {
+    "page": 156,
+    "score": 1,
+    "words": [
+     "receivables"
+    ],
+    "values": [],
+    "snippet": "…BTS AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) Sl. No. Description Approved Claimed 1 Opening Receivables 2,725.66 96.70 2 Revenue billed for the year 2,779.49 3 Collection for the year 2,761.07 4 Closing…"
+   }
+  ],
+  "uperc.baddebts.collection": [
+   {
+    "page": 106,
+    "score": 1,
+    "words": [
+     "collection"
+    ],
+    "values": [],
+    "snippet": "…art meters, as mandated under Rights of Consumers Rules, 2020, the employee expenses would reduce as billing, collection, connection and reconnection related operations would not require substantial manpower. 4.6.57. In…"
+   },
+   {
+    "page": 107,
+    "score": 1,
+    "words": [
+     "collection"
+    ],
+    "values": [],
+    "snippet": "…5.3 of MYT Regulations, 2019, stipulates that the Interest and Finance charges such as Credit Rating charges, collection facilitation charges, financing cost of Delayed Payment Surcharge and other finance charges shall b…"
+   },
+   {
+    "page": 156,
+    "score": 1,
+    "words": [
+     "collection"
+    ],
+    "values": [],
+    "snippet": "…o. Description Approved Claimed 1 Opening Receivables 2,725.66 96.70 2 Revenue billed for the year 2,779.49 3 Collection for the year 2,761.07 4 Closing Receivable 115.12 5 Provision for Bad & Doubtful debts 10.30 11.38…"
+   }
+  ],
+  "uperc.baddebts.ratio": [
+   {
+    "page": 8,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "share"
+    ],
+    "values": [],
+    "snippet": "Page 8 of 423 TABLE 4-114 PROVISION OF BAD AND DOUBTFUL DEBTS AS APPROVED BY THE COMMISSION FOR FY 2024- 25 (IN RS. CR.)....................................................................................................…"
+   },
+   {
+    "page": 101,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "receivables"
+    ],
+    "values": [],
+    "snippet": "…may please observe that the Regulation 46 of MYT Regulation, 2019 provides admissibility of Bad and Doubtful Debts as a legitimate business expense with the ceiling limit of 2% of the revenue receivables in the Tariff.…"
+   },
+   {
+    "page": 156,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "receivables"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 156 of 423 4.15. PROVISION FOR BAD AND DOUBTFUL DEBTS Petitioner’s Submission 4.15.1. The Petitioner has submitted that Provision for Bad and doubtful debts actually incurred are as mentione…"
+   }
+  ],
+  "uperc.baddebts.provision": [
+   {
+    "page": 3,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "….................................................................... 153 4.15. PROVISION FOR BAD AND DOUBTFUL DEBTS ........................................................... 156 4.16. NON-TARIFF INCOME ................…"
+   },
+   {
+    "page": 4,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…....................................................... 288 6.17. PROVISION FOR WRITE-OFF OF BAD AND DOUBTFUL DEBTS .................................... 289 6.18. NON-TARIFF INCOME .......................................…"
+   },
+   {
+    "page": 7,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…HE COMMISSION FOR FY 2024-25 (IN RS. CR.) ....................... 153 TABLE 4-113 PROVISION OF BAD & DOUBTFUL DEBTS AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) .............................................…"
+   }
+  ],
+  "uperc.baddebts.provision_closing": [
+   {
+    "page": 3,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "….................................................................... 153 4.15. PROVISION FOR BAD AND DOUBTFUL DEBTS ........................................................... 156 4.16. NON-TARIFF INCOME ................…"
+   },
+   {
+    "page": 4,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…....................................................... 288 6.17. PROVISION FOR WRITE-OFF OF BAD AND DOUBTFUL DEBTS .................................... 289 6.18. NON-TARIFF INCOME .......................................…"
+   },
+   {
+    "page": 7,
+    "score": 3,
+    "words": [
+     "debts",
+     "doubtful",
+     "provision"
+    ],
+    "values": [],
+    "snippet": "…HE COMMISSION FOR FY 2024-25 (IN RS. CR.) ....................... 153 TABLE 4-113 PROVISION OF BAD & DOUBTFUL DEBTS AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) .............................................…"
+   }
+  ],
+  "uperc.baddebts.claimed": [
+   {
+    "page": 8,
+    "score": 3,
+    "words": [
+     "claimed",
+     "debts",
+     "doubtful"
+    ],
+    "values": [],
+    "snippet": "…25-26 (IN MU)......... 170 TABLE 5-5 COMPARISON OF BILLING DETERMINANTS APPROVED IN ARR BY THE COMMISSION AND CLAIMED IN APR BY THE PETITIONER .............................................................................…"
+   },
+   {
+    "page": 102,
+    "score": 3,
+    "words": [
+     "claimed",
+     "debts",
+     "doubtful"
+    ],
+    "values": [],
+    "snippet": "…ON FOR BAD DEBTS FOR FY 2024-25 AS SUBMITTED BY THE PETITIONER (IN RS. CR.) Sl. No. Particulars UOM Reference Claimed 1 Revenue billed for the year Rs. Cr. A 2,779.49 2 Actual Provision for Bad & Doubtful debts Rs. Cr. B…"
+   },
+   {
+    "page": 156,
+    "score": 3,
+    "words": [
+     "claimed",
+     "debts",
+     "doubtful"
+    ],
+    "values": [],
+    "snippet": "…BAD & DOUBTFUL DEBTS AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) Sl. No. Description Approved Claimed 1 Opening Receivables 2,725.66 96.70 2 Revenue billed for the year 2,779.49 3 Collection for the year…"
+   }
+  ],
+  "uperc.baddebts.cap": [
+   {
+    "page": 102,
+    "score": 8,
+    "words": [
+     "debts",
+     "doubtful",
+     "regulations"
+    ],
+    "values": [
+     "2%"
+    ],
+    "snippet": "…Cr. B 11.38 3 Provision as % of Revenue billed % C= B/A 0.41% 4 Normative Provision for Bad & Doubtful Debt @2% Rs. Cr. D=A X 2% 55.59 5 Saving in provision for Bad & Doubtful debts Rs. Cr. E=D-B 44.21 4.6.40. From the…"
+   },
+   {
+    "page": 157,
+    "score": 8,
+    "words": [
+     "debts",
+     "doubtful",
+     "regulations"
+    ],
+    "values": [
+     "2%"
+    ],
+    "snippet": "…er has submitted that amount of Rs. 11.38 Cr. provided as bad debts in FY 2024-25 is well within the norms of 2% specified in Regulation 46.1 of the MYT Regulations, 2019. 4.15.6. The Petitioner has submitted that the Co…"
+   },
+   {
+    "page": 158,
+    "score": 8,
+    "words": [
+     "debts",
+     "doubtful",
+     "regulations"
+    ],
+    "values": [
+     "2%"
+    ],
+    "snippet": "…which amounts to 0.41% of the total, based on actuals. This approved amount is within the normative limit of 2% of revenue as stipulated under the UPERC MYT Regulations, 2019. TABLE 4-114 PROVISION OF BAD AND DOUBTFUL D…"
+   }
+  ],
+  "uperc.baddebts.loss_reduction": [
+   {
+    "page": 55,
+    "score": 4,
+    "words": [
+     "loss",
+     "reduction",
+     "revenue",
+     "target"
+    ],
+    "values": [],
+    "snippet": "…icity theft cases, and political interference—hinder effective reduction of Transmission & Distribution (T&D) losses. Nevertheless, it has achieved a distribution loss of 7.48% in FY 2024-25, which is lower than the norm…"
+   },
+   {
+    "page": 42,
+    "score": 3,
+    "words": [
+     "loss",
+     "revenue",
+     "value"
+    ],
+    "values": [],
+    "snippet": "…ive Consumption in MUs is not included in the Sales, the same will result in incorrect computation of the T&D Losses. Therefore, it is very necessary to include Captive Consumption in MUs in Sales. It is pertinent to men…"
+   },
+   {
+    "page": 154,
+    "score": 3,
+    "words": [
+     "loss",
+     "reduction",
+     "value"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 154 of 423 4.14.4. The Petitioner has submitted that the loss on sale of retired fixed assets is a legitimate business expense and not an additional burden on consumers. Using a lifecycle ex…"
+   }
+  ],
+  "uperc.baddebts.other_items": [
+   {
+    "page": 3,
+    "score": 6,
+    "words": [
+     "assets",
+     "items",
+     "loan",
+     "loss",
+     "other",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…....................................................................................... 199 5.12. GROSS FIXED ASSETS (GFA) AND DEPRECIATION ..................................................... 199 5.13. PROVISION FOR WR…"
+   },
+   {
+    "page": 146,
+    "score": 6,
+    "words": [
+     "assets",
+     "loan",
+     "other",
+     "reduction",
+     "retired",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…68 * Asset retired/decapitalized not adjusted as the accumulated depreciation is more than the 70% of retired assets. 4.10. INTEREST ON WORKING CAPITAL Petitioner’s Submission 4.10.1. The Petitioner has submitted that Re…"
+   },
+   {
+    "page": 154,
+    "score": 6,
+    "words": [
+     "assets",
+     "items",
+     "loan",
+     "loss",
+     "reduction",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…-UP OF FY 2024-25 Page 154 of 423 4.14.4. The Petitioner has submitted that the loss on sale of retired fixed assets is a legitimate business expense and not an additional burden on consumers. Using a lifecycle example,…"
+   }
+  ],
+  "uperc.capex.scheme": [
+   {
+    "page": 111,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "plan",
+     "scheme"
+    ],
+    "values": [],
+    "snippet": "…l Expenditure Projects of value not exceeding Rs. 10 Cr. 225.41 192.43 3 Subtotal 416.50 302.59 4 Add: Salary Capitalisation Included Above Included Above 5 Total 416.50 302.59 6 Less: Consumer Contribution 66.00 86.70 7…"
+   }
+  ],
+  "uperc.capex.schemes_total": [],
+  "uperc.capex.cwip_movement": [
+   {
+    "page": 276,
+    "score": 4,
+    "words": [
+     "capital",
+     "movement",
+     "reduction",
+     "work"
+    ],
+    "values": [],
+    "snippet": "…stainability & Demand Side Management (DSM) 3.95 3.95 V Land and Boundary Wall 5.54 5.54 W Interest / Expense Capitalisation 8.18 8.18 X Salary Capitalisation 32.20 32.20 Y Total 503.21 483.65 Z Asset not belonging to Di…"
+   },
+   {
+    "page": 146,
+    "score": 3,
+    "words": [
+     "capital",
+     "reduction",
+     "work"
+    ],
+    "values": [],
+    "snippet": "…per TO dated 10.10.2024 Claimed Approved Interest on Long Term Loan G=E*F 52.92 53.62 54.68 * Asset retired/decapitalized not adjusted as the accumulated depreciation is more than the 70% of retired assets. 4.10. INTERES…"
+   },
+   {
+    "page": 204,
+    "score": 3,
+    "words": [
+     "capital",
+     "reduction",
+     "work"
+    ],
+    "values": [],
+    "snippet": "ANNUAL PERFORMANCE REVIEW OF FY 2025-26 Page 204 of 423 5.15.2. Accordingly, the Petitioner, on the basis of Capital Expenditures for FY 2020-21 to FY 2024-25, has claimed, the opening normative net Equity for FY 2025-2…"
+   }
+  ],
+  "uperc.capex.capitalisation": [],
+  "uperc.capital.gross_block": [
+   {
+    "page": 140,
+    "score": 3,
+    "words": [
+     "block",
+     "closing",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…to maintain separate individual asset wise FAR for assets capitalised after April 01, 2020, so that the Gross Block and Depreciation may be computed separately from the Gross Block before April 01, 2020. In this regard,…"
+   },
+   {
+    "page": 141,
+    "score": 3,
+    "words": [
+     "block",
+     "closing",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…024-25 (IN RS. CR.) Sl. No. Description Ref Approved as per TO dtd 10.10.2024 Claimed 1 Depreciation on Gross Block till 01.04.2020 (Part-A) A 40.00 56.37 2 Depreciation on Gross Block after 01.04.2020 (Part-B) B 43.56 4…"
+   },
+   {
+    "page": 142,
+    "score": 3,
+    "words": [
+     "block",
+     "closing",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…5 (IN RS. CR.) Particulars Original Gross Value Considered for Depreciation Computation Assets Retired out of block of assets capitalised till FY 2019-20 10.86 5.21 Assets Retired out of block of assets capitalised from…"
+   }
+  ],
+  "uperc.capital.net_capitalisation": [
+   {
+    "page": 111,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "consumer",
+     "contribution"
+    ],
+    "values": [],
+    "snippet": "…l Expenditure Projects of value not exceeding Rs. 10 Cr. 225.41 192.43 3 Subtotal 416.50 302.59 4 Add: Salary Capitalisation Included Above Included Above 5 Total 416.50 302.59 6 Less: Consumer Contribution 66.00 86.70 7…"
+   },
+   {
+    "page": 138,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "consumer",
+     "contribution"
+    ],
+    "values": [],
+    "snippet": "…mand Side Management 1.11 1.11 10 Sub-Total 192.43 190.60 Total - Additions to Assets 426.50 304.30 300.02 11 Capitalisation in GFA considered in FY 2023-24 by the Petitioner in books of accounts but to be considered in…"
+   },
+   {
+    "page": 139,
+    "score": 3,
+    "words": [
+     "capitalisation",
+     "consumer",
+     "contribution"
+    ],
+    "values": [],
+    "snippet": "…assets is allowed separately to the Petitioner as an item of expenditure. 4.7.52. Accordingly, the portion of capitalisation and retired assets financed through consumer contributions has been considered for determining…"
+   }
+  ],
+  "uperc.capital.debt_addition": [
+   {
+    "page": 133,
+    "score": 7,
+    "words": [
+     "loan",
+     "normative"
+    ],
+    "values": [
+     "70%"
+    ],
+    "snippet": "…r but put to use in FY 2024-25 D - 17.16 IDC on above CAPEX E - 1.70 Net CAPEX F = C+D+E 341.40 234.75 Debt - 70% G=F*70% 238.98 164.33 Equity- 30% H=F*30% 102.42 70.43 4.7.31. As detailed above, the Petitioner requested…"
+   },
+   {
+    "page": 139,
+    "score": 7,
+    "words": [
+     "capitalisation",
+     "loan"
+    ],
+    "values": [
+     "70%"
+    ],
+    "snippet": "…r Contribution, Grants B 86.70 86.70 Investment funded by debt and equity C=A-B 234.76 230.48 Debt Addition D=70% of C 164.33 161.33 Equity Addition E=30% of C 70.43 69.14 De-capitalizations F 11.74 11.74 Gross block ret…"
+   },
+   {
+    "page": 145,
+    "score": 7,
+    "words": [
+     "loan",
+     "normative"
+    ],
+    "values": [
+     "70%"
+    ],
+    "snippet": "…as approved by the Commission in Order dated June 17, 2026 as opening normative loan for FY 2024-25. Further, 70% of approved asset capitalised (net off deduction / de- capitalization and consumer contribution) has been…"
+   }
+  ],
+  "uperc.capital.equity_addition": [
+   {
+    "page": 133,
+    "score": 7,
+    "words": [
+     "equity",
+     "normative"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…17.16 IDC on above CAPEX E - 1.70 Net CAPEX F = C+D+E 341.40 234.75 Debt - 70% G=F*70% 238.98 164.33 Equity- 30% H=F*30% 102.42 70.43 4.7.31. As detailed above, the Petitioner requested the Commission to approve the cap…"
+   },
+   {
+    "page": 139,
+    "score": 7,
+    "words": [
+     "capitalisation",
+     "equity"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…stment funded by debt and equity C=A-B 234.76 230.48 Debt Addition D=70% of C 164.33 161.33 Equity Addition E=30% of C 70.43 69.14 De-capitalizations F 11.74 11.74 Gross block retired from Consumer Contribution G 4.98 4.…"
+   },
+   {
+    "page": 145,
+    "score": 7,
+    "words": [
+     "equity",
+     "normative"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…capitalized as 70:30 in line with Regulation 23 of the MYT Regulations, 2019. In case the equity is less than 30%, the actual equity shall be considered and if equity is more than 30%, the amount of equity shall be limit…"
+   }
+  ],
+  "uperc.capital.retired_gross_net": [
+   {
+    "page": 139,
+    "score": 6,
+    "words": [
+     "block",
+     "funded",
+     "grants",
+     "gross",
+     "part",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…dition D=70% of C 164.33 161.33 Equity Addition E=30% of C 70.43 69.14 De-capitalizations F 11.74 11.74 Gross block retired from Consumer Contribution G 4.98 4.98 Gross block of Assets retired during the year (net of Con…"
+   },
+   {
+    "page": 277,
+    "score": 5,
+    "words": [
+     "block",
+     "funded",
+     "gross",
+     "part",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…ebt Addition J=I*70% 300.58 286.89 Equity Addition K=I*30% 128.82 122.95 Decapitalisation L 15.00 15.00 Gross Block retired from Consumer Contribution M - - Gross Block of Assets retired during the year (net of Consumer…"
+   },
+   {
+    "page": 109,
+    "score": 4,
+    "words": [
+     "funded",
+     "gross",
+     "part",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…Approved Claimed Total Additions to Assets A 416.50 302.59 Assets Retired B 15.00 11.74 Less: Retired Assets funded from Consumer Contribution C 5.90 4.98 Net Assets Retired D=B-C 9.10 6.76 Net Capex E=A-D 407.40 295.84…"
+   }
+  ],
+  "uperc.capital.retired_dep_net": [
+   {
+    "page": 139,
+    "score": 4,
+    "words": [
+     "accumulated",
+     "assets",
+     "depreciation",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…G 4.98 4.98 Gross block of Assets retired during the year (net of Consumer Contribution) H = (F-G) 6.76 6.76 Accumulated depreciation on assets retired during the year (net of Consumer Contribution) I 4.91 4.91 Debt Del…"
+   },
+   {
+    "page": 140,
+    "score": 4,
+    "words": [
+     "accumulated",
+     "assets",
+     "depreciation",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…ate of Acquisition, Rate of Depreciation, Addition to Gross Block, Assets Retired, Depreciation for the year, Accumulated Depreciation etc. The Petitioner prepares its Accounting Statement on the basis of such system gen…"
+   },
+   {
+    "page": 145,
+    "score": 4,
+    "words": [
+     "accumulated",
+     "assets",
+     "depreciation",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…rore (70% comes Rs. 4.73 crore, loan addition in earlier years) were retired, against which Rs. 4.91 crore of accumulated depreciation had already been claimed. As a result, the net impact on the asset retired/decapitali…"
+   }
+  ],
+  "uperc.capital.retired_wdv": [
+   {
+    "page": 141,
+    "score": 5,
+    "words": [
+     "assets",
+     "down",
+     "retired",
+     "value",
+     "written"
+    ],
+    "values": [],
+    "snippet": "…22, while determining the depreciation for Truing-up of FY 2020-21 has considered Written Down Value of Fixed Assets as on 31.03.2020 (i.e. Closing WDV of FY 2019-20) as the Opening Gross Fixed Assets as on 01.04.2020 (i…"
+   },
+   {
+    "page": 7,
+    "score": 3,
+    "words": [
+     "assets",
+     "retired",
+     "value"
+    ],
+    "values": [],
+    "snippet": "…. 114 TABLE 4-79 PROJECT WISE SUMMARY FOR NEW CONNECTION, TRANSITION OF AGEING/TECHNOLOGICAL OBSOLETE/DAMAGED ASSETS & METERING AS SUBMITTED BY THE PETITIONER (IN RS.) ............................. 115 TABLE 4-80 PROJECT…"
+   },
+   {
+    "page": 109,
+    "score": 3,
+    "words": [
+     "assets",
+     "retired",
+     "value"
+    ],
+    "values": [],
+    "snippet": "…SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) Particulars Ref. Approved Claimed Total Additions to Assets A 416.50 302.59 Assets Retired B 15.00 11.74 Less: Retired Assets funded from Consumer Contribution C 5…"
+   }
+  ],
+  "uperc.capital.retired_wdv_share": [
+   {
+    "page": 141,
+    "score": 6,
+    "words": [
+     "block",
+     "down",
+     "gross",
+     "retired",
+     "value",
+     "written"
+    ],
+    "values": [],
+    "snippet": "…024-25 (IN RS. CR.) Sl. No. Description Ref Approved as per TO dtd 10.10.2024 Claimed 1 Depreciation on Gross Block till 01.04.2020 (Part-A) A 40.00 56.37 2 Depreciation on Gross Block after 01.04.2020 (Part-B) B 43.56 4…"
+   },
+   {
+    "page": 140,
+    "score": 4,
+    "words": [
+     "block",
+     "gross",
+     "retired",
+     "value"
+    ],
+    "values": [],
+    "snippet": "…to maintain separate individual asset wise FAR for assets capitalised after April 01, 2020, so that the Gross Block and Depreciation may be computed separately from the Gross Block before April 01, 2020. In this regard,…"
+   },
+   {
+    "page": 142,
+    "score": 4,
+    "words": [
+     "block",
+     "gross",
+     "retired",
+     "value"
+    ],
+    "values": [],
+    "snippet": "…5 (IN RS. CR.) Particulars Original Gross Value Considered for Depreciation Computation Assets Retired out of block of assets capitalised till FY 2019-20 10.86 5.21 Assets Retired out of block of assets capitalised from…"
+   }
+  ],
+  "uperc.capital.loan_reduction": [
+   {
+    "page": 145,
+    "score": 9,
+    "words": [
+     "assets",
+     "loan",
+     "normative",
+     "retired"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…capitalized as 70:30 in line with Regulation 23 of the MYT Regulations, 2019. In case the equity is less than 30%, the actual equity shall be considered and if equity is more than 30%, the amount of equity shall be limit…"
+   },
+   {
+    "page": 133,
+    "score": 8,
+    "words": [
+     "assets",
+     "loan",
+     "normative"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…17.16 IDC on above CAPEX E - 1.70 Net CAPEX F = C+D+E 341.40 234.75 Debt - 70% G=F*70% 238.98 164.33 Equity- 30% H=F*30% 102.42 70.43 4.7.31. As detailed above, the Petitioner requested the Commission to approve the cap…"
+   },
+   {
+    "page": 139,
+    "score": 8,
+    "words": [
+     "assets",
+     "loan",
+     "retired"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…stment funded by debt and equity C=A-B 234.76 230.48 Debt Addition D=70% of C 164.33 161.33 Equity Addition E=30% of C 70.43 69.14 De-capitalizations F 11.74 11.74 Gross block retired from Consumer Contribution G 4.98 4.…"
+   }
+  ],
+  "uperc.capital.equity_reduction_2025": [
+   {
+    "page": 145,
+    "score": 9,
+    "words": [
+     "assets",
+     "equity",
+     "normative",
+     "retired"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…capitalized as 70:30 in line with Regulation 23 of the MYT Regulations, 2019. In case the equity is less than 30%, the actual equity shall be considered and if equity is more than 30%, the amount of equity shall be limit…"
+   },
+   {
+    "page": 133,
+    "score": 8,
+    "words": [
+     "assets",
+     "equity",
+     "normative"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…17.16 IDC on above CAPEX E - 1.70 Net CAPEX F = C+D+E 341.40 234.75 Debt - 70% G=F*70% 238.98 164.33 Equity- 30% H=F*30% 102.42 70.43 4.7.31. As detailed above, the Petitioner requested the Commission to approve the cap…"
+   },
+   {
+    "page": 139,
+    "score": 8,
+    "words": [
+     "assets",
+     "equity",
+     "retired"
+    ],
+    "values": [
+     "30%"
+    ],
+    "snippet": "…stment funded by debt and equity C=A-B 234.76 230.48 Debt Addition D=70% of C 164.33 161.33 Equity Addition E=30% of C 70.43 69.14 De-capitalizations F 11.74 11.74 Gross block retired from Consumer Contribution G 4.98 4.…"
+   }
+  ],
+  "uperc.capital.equity_reduction_2019": [
+   {
+    "page": 138,
+    "score": 4,
+    "words": [
+     "assets",
+     "equity",
+     "normative",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…FY 2026 Sub Total 191.10 111.87 109.44 1 New Connections, Transition of Ageing/Technological Obsolete/Damaged Assets & Metering 235.41 97.89 97.89 2 Substations, Transformers, 33kV, 11 kV & LT Network 65.46 65.46 3 Proce…"
+   },
+   {
+    "page": 145,
+    "score": 4,
+    "words": [
+     "assets",
+     "equity",
+     "normative",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…2024-25 Page 145 of 423 Commission’s Analysis 4.9.5. The Commission has considered debt-equity ratio for the assets capitalized as 70:30 in line with Regulation 23 of the MYT Regulations, 2019. In case the equity is les…"
+   },
+   {
+    "page": 7,
+    "score": 3,
+    "words": [
+     "assets",
+     "equity",
+     "retired"
+    ],
+    "values": [],
+    "snippet": "…. 114 TABLE 4-79 PROJECT WISE SUMMARY FOR NEW CONNECTION, TRANSITION OF AGEING/TECHNOLOGICAL OBSOLETE/DAMAGED ASSETS & METERING AS SUBMITTED BY THE PETITIONER (IN RS.) ............................. 115 TABLE 4-80 PROJECT…"
+   }
+  ],
+  "uperc.carried.fraction": [],
+  "uperc.contingency.contribution": [
+   {
+    "page": 133,
+    "score": 3,
+    "words": [
+     "contribution",
+     "fund",
+     "towards"
+    ],
+    "values": [],
+    "snippet": "…. Thus, the Capital Expenditure incurred by the Petitioner after the above adjustment and net of the Consumer contribution and retirement of the assets for FY 2024-25 was Rs. 234.75 Cr. as given below: TABLE 4-91 CAPITAL…"
+   },
+   {
+    "page": 166,
+    "score": 3,
+    "words": [
+     "contingency",
+     "contribution",
+     "fund"
+    ],
+    "values": [],
+    "snippet": "…r. The final treatment will be done as per the Orders passed by Hon’ble APTEL in the above-said Appeal. 4.18. CONTINGENCY RESERVE Petitioner’s Submission & Commission’s Analysis 4.18.1. The Petitioner has claimed conting…"
+   }
+  ],
+  "uperc.depreciation.gfa_closing": [
+   {
+    "page": 140,
+    "score": 4,
+    "words": [
+     "assets",
+     "closing",
+     "fixed",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 140 of 423 TABLE 4-95 GROSS FIXED ASSETS AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) Sl. No. Description Approved Claimed GFA till 01.04.2020 GFA added after 01.04.2020 GFA FY…"
+   },
+   {
+    "page": 141,
+    "score": 4,
+    "words": [
+     "assets",
+     "closing",
+     "fixed",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…22, while determining the depreciation for Truing-up of FY 2020-21 has considered Written Down Value of Fixed Assets as on 31.03.2020 (i.e. Closing WDV of FY 2019-20) as the Opening Gross Fixed Assets as on 01.04.2020 (i…"
+   },
+   {
+    "page": 142,
+    "score": 4,
+    "words": [
+     "assets",
+     "closing",
+     "fixed",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…ECIATION FOR FY 2024-25 (IN RS. CR.) Particulars Original Gross Value Considered for Depreciation Computation Assets Retired out of block of assets capitalised till FY 2019-20 10.86 5.21 Assets Retired out of block of as…"
+   }
+  ],
+  "uperc.depreciation.gfa_average": [
+   {
+    "page": 143,
+    "score": 4,
+    "words": [
+     "assets",
+     "average",
+     "fixed",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…2024-25 Page 143 of 423 TABLE 4-99 GROSS ALLOWABLE DEPRECIATION APPROVED BY THE COMMISSION FOR FY 2024-25 FOR ASSETS UPTO MARCH 31, 2020 (PART-A) (IN RS. CR.) S. No. Particulars Opening GFA as per Order dtd 17.06.2026 Ad…"
+   },
+   {
+    "page": 200,
+    "score": 4,
+    "words": [
+     "assets",
+     "average",
+     "fixed",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "ANNUAL PERFORMANCE REVIEW OF FY 2025-26 Page 200 of 423 TABLE 5-37 GROSS FIXED ASSETS AS SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) Sl. No. Description Estimated GFA FY 2025-26 GFA till 01.04.2020 GFA added…"
+   },
+   {
+    "page": 3,
+    "score": 3,
+    "words": [
+     "assets",
+     "fixed",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…....................................................................................... 199 5.12. GROSS FIXED ASSETS (GFA) AND DEPRECIATION ..................................................... 199 5.13. PROVISION FOR WR…"
+   }
+  ],
+  "uperc.depreciation.gross": [],
+  "uperc.depreciation.acc_closing": [
+   {
+    "page": 140,
+    "score": 3,
+    "words": [
+     "accumulated",
+     "closing",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…ate of Acquisition, Rate of Depreciation, Addition to Gross Block, Assets Retired, Depreciation for the year, Accumulated Depreciation etc. The Petitioner prepares its Accounting Statement on the basis of such system gen…"
+   },
+   {
+    "page": 145,
+    "score": 3,
+    "words": [
+     "accumulated",
+     "closing",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…rore (70% comes Rs. 4.73 crore, loan addition in earlier years) were retired, against which Rs. 4.91 crore of accumulated depreciation had already been claimed. As a result, the net impact on the asset retired/decapitali…"
+   },
+   {
+    "page": 277,
+    "score": 3,
+    "words": [
+     "accumulated",
+     "closing",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…ribution M - - Gross Block of Assets retired during the year (net of Consumer Contribution) N=L-M 15.00 15.00 Accumulated Depreciation on Assets retired during the year (net of Consumer Contribution) O 8.32 8.32 Net Bloc…"
+   }
+  ],
+  "uperc.depreciation.total": [],
+  "uperc.depreciation.rate_implied": [
+   {
+    "page": 27,
+    "score": 3,
+    "words": [
+     "check",
+     "format",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…etween units assessed & units realized and revenue assessed & revenue realized. It is requested that prudence check of such claim by the Petitioner should be done. Petitioners’ Response 3.4.6. It is submitted that the Pe…"
+   },
+   {
+    "page": 30,
+    "score": 3,
+    "words": [
+     "check",
+     "depreciation",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…. 3.6.4. The concern has been raised regarding substantial increase in ARR. It is submitted that the prudence check needs to be done, particularly for ARR components such as O&M expenses, non-tariff income, O&M expenses,…"
+   },
+   {
+    "page": 40,
+    "score": 3,
+    "words": [
+     "check",
+     "figure",
+     "format"
+    ],
+    "values": [],
+    "snippet": "…nditures and revenue for FY 2024-25 and has undertaken the truing up of expenses and revenue after a prudence check of the data made available by the Petitioner as per Regulations. 4.1.2. The Petitioner has submitted tha…"
+   }
+  ],
+  "uperc.depreciation.net": [
+   {
+    "page": 131,
+    "score": 4,
+    "words": [
+     "assets",
+     "consumer",
+     "contribution",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…5 Page 131 of 423 impact on computation of ROE, interest on Term Loans and depreciation with respect to these assets. The total amount of asset handed over by GNIDA & other bodies in FY 2024-25 is Rs. 9.58 Cr. as provide…"
+   },
+   {
+    "page": 139,
+    "score": 4,
+    "words": [
+     "assets",
+     "consumer",
+     "contribution",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 139 of 423 of EA, 2003. Further, the loss on sale of assets is allowed separately to the Petitioner as an item of expenditure. 4.7.52. Accordingly, the portion of capitalisation and retired…"
+   },
+   {
+    "page": 141,
+    "score": 4,
+    "words": [
+     "assets",
+     "consumer",
+     "contribution",
+     "depreciation"
+    ],
+    "values": [],
+    "snippet": "…22, while determining the depreciation for Truing-up of FY 2020-21 has considered Written Down Value of Fixed Assets as on 31.03.2020 (i.e. Closing WDV of FY 2019-20) as the Opening Gross Fixed Assets as on 01.04.2020 (i…"
+   }
+  ],
+  "uperc.energy.dist_loss_quantum": [
+   {
+    "page": 3,
+    "score": 3,
+    "words": [
+     "distribution",
+     "loss",
+     "quantum"
+    ],
+    "values": [],
+    "snippet": "…................................................................................. 168 5.3. ENERGY BALANCE AND DISTRIBUTION LOSSES ........................................................ 171 5.4. POWER PROCUREMENT QUANTU…"
+   },
+   {
+    "page": 56,
+    "score": 3,
+    "words": [
+     "distribution",
+     "loss",
+     "quantum"
+    ],
+    "values": [],
+    "snippet": "…fficiency Gains earned Rs. Cr. H=G 2.58 Commission’s Analysis 4.3.12. The Commission observes that the actual Distribution Losses claimed by the Petitioner is lower than the approved distribution losses. Thus, for the pu…"
+   },
+   {
+    "page": 85,
+    "score": 3,
+    "words": [
+     "distribution",
+     "loss",
+     "quantum"
+    ],
+    "values": [],
+    "snippet": "…ntum (MU) Quantum (MU) 1 Gross Energy Consumption (Sales) (Excluding Inter-State sales) A 3,597.63 3,597.63 2 Distribution Loss (%) B 7.48% 7.48% 3 Energy Consumption at Discom Periphery C=A/(1-B) 3,888.46 3,888.46 4 Hyd…"
+   }
+  ],
+  "uperc.energy.input_dist": [
+   {
+    "page": 55,
+    "score": 4,
+    "words": [
+     "distribution",
+     "energy",
+     "periphery",
+     "requirement"
+    ],
+    "values": [],
+    "snippet": "…l courts for electricity theft cases, and political interference—hinder effective reduction of Transmission & Distribution (T&D) losses. Nevertheless, it has achieved a distribution loss of 7.48% in FY 2024-25, which is…"
+   },
+   {
+    "page": 56,
+    "score": 4,
+    "words": [
+     "distribution",
+     "energy",
+     "periphery",
+     "requirement"
+    ],
+    "values": [],
+    "snippet": "…fficiency Gains earned Rs. Cr. H=G 2.58 Commission’s Analysis 4.3.12. The Commission observes that the actual Distribution Losses claimed by the Petitioner is lower than the approved distribution losses. Thus, for the pu…"
+   },
+   {
+    "page": 57,
+    "score": 4,
+    "words": [
+     "distribution",
+     "energy",
+     "periphery",
+     "requirement"
+    ],
+    "values": [],
+    "snippet": "…UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved Energy Sales MU 3,704.10 3,597.63 3,597.63 Distribution Loss % 7.57% 7.48% 7.48% Distribution Loss MU 303.36 290.83 290.83 Energy Requirement at NPCL MU…"
+   }
+  ],
+  "uperc.energy.intra_loss_quantum": [
+   {
+    "page": 56,
+    "score": 5,
+    "words": [
+     "intra",
+     "loss",
+     "quantum",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…(Solar) 43.87 43.87 Subtotal 131.63 131.63 4.3.14. The Commission observes that the Petitioner has claimed an Intra-State Transmission Loss of 3.21%, whereas the approved loss for FY 2024-25 is 3.18%. This deviation resu…"
+   },
+   {
+    "page": 64,
+    "score": 5,
+    "words": [
+     "intra",
+     "loss",
+     "quantum",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…15.11.2023. 4.4.21. Accordingly, based on the applicable transmission charges and losses for Inter-State and Intra-State Transmission, the Petitioner procured 1,346 MU power in aggregate through above sources at the lan…"
+   },
+   {
+    "page": 65,
+    "score": 5,
+    "words": [
+     "intra",
+     "loss",
+     "quantum",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…tion % 82.73% 9 Units at Ex-Bus MU 688.52 10 Inter-State Losses % 3.65% 11 Units at UP Periphery MU 663.39 12 Intra-State Losses % 3.18% 13 Units at NPCL MU 642.30 14 Fixed Cost* Rs. Cr. 183.92 15 Energy Cost Rs. Cr. 179…"
+   }
+  ],
+  "uperc.energy.state_requirement": [
+   {
+    "page": 55,
+    "score": 4,
+    "words": [
+     "energy",
+     "periphery",
+     "requirement",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…on. This over achievement qualifies the Petitioner for an incentive as per regulatory provisions. 4.3.10. The Energy Balance for FY 2024-25 as submitted by the Petitioner is provided in TABLE below: TABLE 4-16 ENERGY BAL…"
+   },
+   {
+    "page": 56,
+    "score": 4,
+    "words": [
+     "energy",
+     "periphery",
+     "requirement",
+     "state"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 56 of 423 Sl. No. Particulars UoM Ref. Claimed 5 Revenue from total energy sold Rs. Cr. E 2,634.60 6 Average realization from energy sold Rs. /kWh F=E*10/C 7.32 7 Additional revenue due to l…"
+   },
+   {
+    "page": 57,
+    "score": 4,
+    "words": [
+     "energy",
+     "periphery",
+     "requirement",
+     "state"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 57 of 423 TABLE 4-19 ENERGY BALANCE AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN MU) Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved Energy Sales MU 3,704.1…"
+   }
+  ],
+  "uperc.energy.inter_loss": [
+   {
+    "page": 2,
+    "score": 4,
+    "words": [
+     "inter",
+     "loss",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…ASSET AND DEPRECIATION ............................................................................ 139 4.9. INTEREST ON LONG TERM LOANS ............................................................................ 144"
+   },
+   {
+    "page": 11,
+    "score": 4,
+    "words": [
+     "inter",
+     "loss",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…BLE 9-7 INTRA-STATE TRANSMISSION CHARGES FOR COMPUTATION OF ‘D’ FOR FY 2026-27 (TC) ........... 318 TABLE 9-8 INTER-STATE TRANSMISSION CHARGES FOR COMPUTATION OF ‘D’ FOR FY 2026-27 (PC) ........... 318 TABLE 9-9 INTER-ST…"
+   },
+   {
+    "page": 55,
+    "score": 4,
+    "words": [
+     "inter",
+     "loss",
+     "state",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…HT:LT ratio, lack of dedicated police stations and special courts for electricity theft cases, and political interference—hinder effective reduction of Transmission & Distribution (T&D) losses. Nevertheless, it has achi…"
+   }
+  ],
+  "uperc.tax.grossed_income": [
+   {
+    "page": 3,
+    "score": 3,
+    "words": [
+     "equity",
+     "income",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…ST ON CONSUMER SECURITY DEPOSIT ......................................................... 149 4.12. RETURN ON EQUITY ................................................................................................. 150 4…"
+   },
+   {
+    "page": 4,
+    "score": 3,
+    "words": [
+     "equity",
+     "income",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…EREST CHARGES ........................................................................... 286 6.15. RETURN ON EQUITY ................................................................................................. 287 6…"
+   },
+   {
+    "page": 7,
+    "score": 3,
+    "words": [
+     "equity",
+     "income",
+     "return"
+    ],
+    "values": [],
+    "snippet": "…................................................................................... 150 TABLE 4-109 RETURN ON EQUITY AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) ............. 151 TABLE 4-110 RETURN ON EQUI…"
+   }
+  ],
+  "uperc.tax.on_income": [],
+  "uperc.tax.on_roe": [],
+  "uperc.tax.recoverable": [],
+  "uperc.ledger.account": [],
+  "uperc.ledger.total": [],
+  "uperc.myt2019.equity.closing": [
+   {
+    "page": 144,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…2022, May 24, 2023 and October 10, 2024, before the Hon’ble APTEL, the Petitioner has considered the opening balances of Debt/Loan and Equity as per its True-up Petitions / submission for determination of Interest on Te…"
+   },
+   {
+    "page": 145,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…uity shall be considered and if equity is more than 30%, the amount of equity shall be limited to 30% and the balance shall be treated as normative loan for the purpose of determination of tariff. 4.9.6. The Commission h…"
+   },
+   {
+    "page": 150,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ntrol Period (FY 2020-21 to FY 2024-25), the closing debt and equity of FY 2019- 20 are considered as opening balances for FY 2020-21. Appeals have been filed against"
+   }
+  ],
+  "uperc.myt2019.equity.average": [
+   {
+    "page": 133,
+    "score": 3,
+    "words": [
+     "average",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…5 (IN RS.) Asset No. Date of Capitalization Addition in FY 2023-24 FY Opening value (Rs.) Closing Value (Rs.) Average Value (Rs.) Rate of Interest (%) IDC (Rs.) a b c = (a+b)/2 d e=c*d 10000066 Land 08-08-2023 5,94,50,71…"
+   },
+   {
+    "page": 144,
+    "score": 3,
+    "words": [
+     "average",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ual Term Loan outstanding during FY 2024-25, in accordance with above regulation, the last available weighted average rate of interest for the term loan has been considered for determination of normative interest on the…"
+   },
+   {
+    "page": 145,
+    "score": 3,
+    "words": [
+     "average",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ative loan during the year C 62.21 74.75 69.97 Closing Balance of Normative Loan D=A+B-C 622.35 579.18 599.02 Average Balance of Normative Loan E=(A+D)/2 533.97 540.99 553.34 Weighted average Rate of Interest on actual L…"
+   }
+  ],
+  "uperc.myt2019.roe": [
+   {
+    "page": 151,
+    "score": 7,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [
+     "15%"
+    ],
+    "snippet": "…Rs. 535.08 crore (as per Petition No. 2168 of 2024), is taken as the opening balance for FY 2024-25, on which 15% return is allowed under Regulation 22 of the MYT Regulations, 2019. 4.12.2. The summary of Return on Equit…"
+   },
+   {
+    "page": 204,
+    "score": 7,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [
+     "15%"
+    ],
+    "snippet": "…(Closing Balance) D=A-B+C 587.08 709.62 5 Average Equity E=(A+D)/2 528.18 653.81 6 Rate of Return on Equity F 15% 15% 7 Return on Equity G=E * F 79.23 98.07 Commission’s Analysis 5.15.4. The Commission observes that the…"
+   },
+   {
+    "page": 205,
+    "score": 7,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [
+     "15%"
+    ],
+    "snippet": "…ty (Closing Balance) 587.08 709.62 695.98 Average Equity 528.18 653.81 640.16 Rate of Return on Equity 15.00% 15% 15.00% Return on Equity 79.23 98.07 96.02 5.15.7. Further analysis of Return on Equity for FY 2025-26 woul…"
+   }
+  ],
+  "uperc.myt2019.loan.closing": [
+   {
+    "page": 144,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…2022, May 24, 2023 and October 10, 2024, before the Hon’ble APTEL, the Petitioner has considered the opening balances of Debt/Loan and Equity as per its True-up Petitions / submission for determination of Interest on Te…"
+   },
+   {
+    "page": 145,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…uity shall be considered and if equity is more than 30%, the amount of equity shall be limited to 30% and the balance shall be treated as normative loan for the purpose of determination of tariff. 4.9.6. The Commission h…"
+   },
+   {
+    "page": 150,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ntrol Period (FY 2020-21 to FY 2024-25), the closing debt and equity of FY 2019- 20 are considered as opening balances for FY 2020-21. Appeals have been filed against"
+   }
+  ],
+  "uperc.myt2019.loan.average": [
+   {
+    "page": 133,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…5 (IN RS.) Asset No. Date of Capitalization Addition in FY 2023-24 FY Opening value (Rs.) Closing Value (Rs.) Average Value (Rs.) Rate of Interest (%) IDC (Rs.) a b c = (a+b)/2 d e=c*d 10000066 Land 08-08-2023 5,94,50,71…"
+   },
+   {
+    "page": 144,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ual Term Loan outstanding during FY 2024-25, in accordance with above regulation, the last available weighted average rate of interest for the term loan has been considered for determination of normative interest on the…"
+   },
+   {
+    "page": 145,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ative loan during the year C 62.21 74.75 69.97 Closing Balance of Normative Loan D=A+B-C 622.35 579.18 599.02 Average Balance of Normative Loan E=(A+D)/2 533.97 540.99 553.34 Weighted average Rate of Interest on actual L…"
+   }
+  ],
+  "uperc.myt2019.loan.interest": [
+   {
+    "page": 8,
+    "score": 5,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "normative",
+     "term"
+    ],
+    "values": [],
+    "snippet": "…28 CAPITAL EXPENDITURE SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.)................ 192 TABLE 5-29 INTEREST ON LONG TERM LOAN SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) 194 TABLE 5-30 INTEREST ON…"
+   },
+   {
+    "page": 10,
+    "score": 5,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "normative",
+     "term"
+    ],
+    "values": [],
+    "snippet": "…65 NET DEPRECIATION APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.) ................... 281 TABLE 6-66 INTEREST ON LONG TERM LOAN SUBMITTED BY THE PETITIONER FOR FY 2026-27 (IN RS CR.) . 282 TABLE 6-67 INTEREST ON…"
+   },
+   {
+    "page": 144,
+    "score": 5,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "normative",
+     "term"
+    ],
+    "values": [],
+    "snippet": "…4 Claimed Approved 5 Net Depreciation 62.21 74.75 69.97 * Taken from Fixed Asset Register of FY 2024-25. 4.9. INTEREST ON LONG TERM LOANS Petitioner’s Submission 4.9.1. The Commission in its Tariff Order dated October 10…"
+   }
+  ],
+  "uperc.myt2025.equity.closing": [
+   {
+    "page": 144,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…2022, May 24, 2023 and October 10, 2024, before the Hon’ble APTEL, the Petitioner has considered the opening balances of Debt/Loan and Equity as per its True-up Petitions / submission for determination of Interest on Te…"
+   },
+   {
+    "page": 145,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…uity shall be considered and if equity is more than 30%, the amount of equity shall be limited to 30% and the balance shall be treated as normative loan for the purpose of determination of tariff. 4.9.6. The Commission h…"
+   },
+   {
+    "page": 150,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ntrol Period (FY 2020-21 to FY 2024-25), the closing debt and equity of FY 2019- 20 are considered as opening balances for FY 2020-21. Appeals have been filed against"
+   }
+  ],
+  "uperc.myt2025.equity.average": [
+   {
+    "page": 133,
+    "score": 3,
+    "words": [
+     "average",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…5 (IN RS.) Asset No. Date of Capitalization Addition in FY 2023-24 FY Opening value (Rs.) Closing Value (Rs.) Average Value (Rs.) Rate of Interest (%) IDC (Rs.) a b c = (a+b)/2 d e=c*d 10000066 Land 08-08-2023 5,94,50,71…"
+   },
+   {
+    "page": 144,
+    "score": 3,
+    "words": [
+     "average",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ual Term Loan outstanding during FY 2024-25, in accordance with above regulation, the last available weighted average rate of interest for the term loan has been considered for determination of normative interest on the…"
+   },
+   {
+    "page": 145,
+    "score": 3,
+    "words": [
+     "average",
+     "equity",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ative loan during the year C 62.21 74.75 69.97 Closing Balance of Normative Loan D=A+B-C 622.35 579.18 599.02 Average Balance of Normative Loan E=(A+D)/2 533.97 540.99 553.34 Weighted average Rate of Interest on actual L…"
+   }
+  ],
+  "uperc.myt2025.roe": [
+   {
+    "page": 151,
+    "score": 7,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [
+     "15%"
+    ],
+    "snippet": "…Rs. 535.08 crore (as per Petition No. 2168 of 2024), is taken as the opening balance for FY 2024-25, on which 15% return is allowed under Regulation 22 of the MYT Regulations, 2019. 4.12.2. The summary of Return on Equit…"
+   },
+   {
+    "page": 204,
+    "score": 7,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [
+     "15%"
+    ],
+    "snippet": "…(Closing Balance) D=A-B+C 587.08 709.62 5 Average Equity E=(A+D)/2 528.18 653.81 6 Rate of Return on Equity F 15% 15% 7 Return on Equity G=E * F 79.23 98.07 Commission’s Analysis 5.15.4. The Commission observes that the…"
+   },
+   {
+    "page": 205,
+    "score": 7,
+    "words": [
+     "equity",
+     "return"
+    ],
+    "values": [
+     "15%"
+    ],
+    "snippet": "…ty (Closing Balance) 587.08 709.62 695.98 Average Equity 528.18 653.81 640.16 Rate of Return on Equity 15.00% 15% 15.00% Return on Equity 79.23 98.07 96.02 5.15.7. Further analysis of Return on Equity for FY 2025-26 woul…"
+   }
+  ],
+  "uperc.myt2025.loan.closing": [
+   {
+    "page": 144,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…2022, May 24, 2023 and October 10, 2024, before the Hon’ble APTEL, the Petitioner has considered the opening balances of Debt/Loan and Equity as per its True-up Petitions / submission for determination of Interest on Te…"
+   },
+   {
+    "page": 145,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…uity shall be considered and if equity is more than 30%, the amount of equity shall be limited to 30% and the balance shall be treated as normative loan for the purpose of determination of tariff. 4.9.6. The Commission h…"
+   },
+   {
+    "page": 150,
+    "score": 4,
+    "words": [
+     "balance",
+     "closing",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ntrol Period (FY 2020-21 to FY 2024-25), the closing debt and equity of FY 2019- 20 are considered as opening balances for FY 2020-21. Appeals have been filed against"
+   }
+  ],
+  "uperc.myt2025.loan.average": [
+   {
+    "page": 133,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…5 (IN RS.) Asset No. Date of Capitalization Addition in FY 2023-24 FY Opening value (Rs.) Closing Value (Rs.) Average Value (Rs.) Rate of Interest (%) IDC (Rs.) a b c = (a+b)/2 d e=c*d 10000066 Land 08-08-2023 5,94,50,71…"
+   },
+   {
+    "page": 144,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ual Term Loan outstanding during FY 2024-25, in accordance with above regulation, the last available weighted average rate of interest for the term loan has been considered for determination of normative interest on the…"
+   },
+   {
+    "page": 145,
+    "score": 3,
+    "words": [
+     "average",
+     "loan",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ative loan during the year C 62.21 74.75 69.97 Closing Balance of Normative Loan D=A+B-C 622.35 579.18 599.02 Average Balance of Normative Loan E=(A+D)/2 533.97 540.99 553.34 Weighted average Rate of Interest on actual L…"
+   }
+  ],
+  "uperc.myt2025.loan.interest": [
+   {
+    "page": 8,
+    "score": 5,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "normative",
+     "term"
+    ],
+    "values": [],
+    "snippet": "…28 CAPITAL EXPENDITURE SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.)................ 192 TABLE 5-29 INTEREST ON LONG TERM LOAN SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) 194 TABLE 5-30 INTEREST ON…"
+   },
+   {
+    "page": 10,
+    "score": 5,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "normative",
+     "term"
+    ],
+    "values": [],
+    "snippet": "…65 NET DEPRECIATION APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.) ................... 281 TABLE 6-66 INTEREST ON LONG TERM LOAN SUBMITTED BY THE PETITIONER FOR FY 2026-27 (IN RS CR.) . 282 TABLE 6-67 INTEREST ON…"
+   },
+   {
+    "page": 144,
+    "score": 5,
+    "words": [
+     "interest",
+     "loan",
+     "long",
+     "normative",
+     "term"
+    ],
+    "values": [],
+    "snippet": "…4 Claimed Approved 5 Net Depreciation 62.21 74.75 69.97 * Taken from Fixed Asset Register of FY 2024-25. 4.9. INTEREST ON LONG TERM LOANS Petitioner’s Submission 4.9.1. The Commission in its Tariff Order dated October 10…"
+   }
+  ],
+  "uperc.om2025.ag_excl_fc": [
+   {
+    "page": 185,
+    "score": 5,
+    "words": [
+     "actual",
+     "charges",
+     "excluding",
+     "expenses",
+     "finance"
+    ],
+    "values": [],
+    "snippet": "…yee Expenses computed under the Regulations, indicating that the normative provision is insufficient to cover actual operational needs. 5.5.17. Further, based on the prescribed methodology, the normative Employee Expense…"
+   },
+   {
+    "page": 99,
+    "score": 4,
+    "words": [
+     "actual",
+     "charges",
+     "expenses",
+     "finance"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 99 of 423 while the Petitioner has actually incurred Rs. 16.77 crore. Therefore, it requests the Commission to at least allow the incremental Rs. 6.77 crore. 4.6.28. The Petitioner further s…"
+   },
+   {
+    "page": 150,
+    "score": 4,
+    "words": [
+     "actual",
+     "charges",
+     "excluding",
+     "finance"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 150 of 423 security deposit in full actually paid to consumers which amounts to Rs. 24.79 Cr for FY 2024-25. 4.11.3. The summary of total interest and finance charges claimed by the Petition…"
+   }
+  ],
+  "uperc.om2025.base_average": [
+   {
+    "page": 184,
+    "score": 5,
+    "words": [
+     "average",
+     "base",
+     "five",
+     "middle",
+     "taken"
+    ],
+    "values": [],
+    "snippet": "…mployee Expenses using audited figures from FY 2020-21 to FY 2024-25. In accordance with Regulation 33.6, the average of these five years is taken for the middle year (FY 2022-23), and this amount is escalated annually u…"
+   },
+   {
+    "page": 91,
+    "score": 4,
+    "words": [
+     "average",
+     "base",
+     "five",
+     "middle"
+    ],
+    "values": [],
+    "snippet": "…on the above submissions and methodology as provided in Regulation 45 (a) to (e) of MYT Regulations 2019, the average of corrected trued up values of O&M Expenses including additional O&M expenses, as enumerated above, d…"
+   },
+   {
+    "page": 185,
+    "score": 4,
+    "words": [
+     "average",
+     "base",
+     "five",
+     "middle"
+    ],
+    "values": [],
+    "snippet": "ANNUAL PERFORMANCE REVIEW OF FY 2025-26 Page 185 of 423 Average of last 5 years as Middle Year (FY 2022-23) FY 2023-24 FY 2024-25 FY 2025-26 Escalation using CPI 74.15 78.00 80.64 84.57 YoY change in CPI % 5.19% 3.38% 4…"
+   }
+  ],
+  "uperc.om2025.escalated": [
+   {
+    "page": 184,
+    "score": 4,
+    "words": [
+     "base",
+     "escalated",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…iddle year (FY 2022-23), and this amount is escalated annually using the Consumer Price Index (CPI) up to the base year FY 2024-25. To determine the Normative Employee Expenses for FY 2025-26, the Petitioner has applied…"
+   },
+   {
+    "page": 186,
+    "score": 4,
+    "words": [
+     "base",
+     "escalated",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…EVIEW OF FY 2025-26 Page 186 of 423 escalated annually using the Wholesale Price Index (WPI) to arrive at the base-year A&G Expenses for FY 2024–25. 5.5.19. To determine the Normative A&G Expenses for FY 2025–26, the bas…"
+   },
+   {
+    "page": 243,
+    "score": 4,
+    "words": [
+     "base",
+     "escalated",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…he reference (middle) year. This average is escalated annually using the Consumer Price Index (CPI) up to the base year FY 2024–25 and further applying CPI escalation year on year to determine employee expenses for FY 20…"
+   }
+  ],
+  "uperc.om2025.growth_sales": [
+   {
+    "page": 41,
+    "score": 4,
+    "words": [
+     "based",
+     "factor",
+     "growth",
+     "sales"
+    ],
+    "values": [],
+    "snippet": "…. 4.2.2. The Petitioner has submitted that the projections of number of consumers and the connected load were based on certain assumptions regarding various factors such as forthcoming development in area and several oth…"
+   },
+   {
+    "page": 107,
+    "score": 4,
+    "words": [
+     "based",
+     "factor",
+     "growth",
+     "sales"
+    ],
+    "values": [],
+    "snippet": "…The Petitioner has also submitted a comparison of approved O&M cost for different Discom across the Country. Based on the submission it is found that in case of Discom in the State of Maharashtra there has not been much…"
+   },
+   {
+    "page": 181,
+    "score": 4,
+    "words": [
+     "based",
+     "factor",
+     "growth",
+     "sales"
+    ],
+    "values": [],
+    "snippet": "…E EXPENSES 5.5.1. The Petitioner has submitted that it has filed a revised Tariff Petition for ARR FY 2025-26 based on the latest MYT Regulations, 2025, and accordingly recomputed Employee Expenses. For APR FY 2025-26, E…"
+   }
+  ],
+  "uperc.om2025.growth_consumers": [
+   {
+    "page": 41,
+    "score": 4,
+    "words": [
+     "based",
+     "consumers",
+     "factor",
+     "growth"
+    ],
+    "values": [],
+    "snippet": "…. 4.2.2. The Petitioner has submitted that the projections of number of consumers and the connected load were based on certain assumptions regarding various factors such as forthcoming development in area and several oth…"
+   },
+   {
+    "page": 181,
+    "score": 4,
+    "words": [
+     "based",
+     "consumers",
+     "factor",
+     "growth"
+    ],
+    "values": [],
+    "snippet": "…E EXPENSES 5.5.1. The Petitioner has submitted that it has filed a revised Tariff Petition for ARR FY 2025-26 based on the latest MYT Regulations, 2025, and accordingly recomputed Employee Expenses. For APR FY 2025-26, E…"
+   },
+   {
+    "page": 182,
+    "score": 4,
+    "words": [
+     "based",
+     "consumers",
+     "factor",
+     "growth"
+    ],
+    "values": [],
+    "snippet": "…ot define the Growth Factor (Gn), the Petitioner relied on recognized methodologies of CEA, FoR, and employee-based calculations solely to determine this undefined parameter. These sector-aligned inputs were provided to…"
+   }
+  ],
+  "uperc.om2025.growth_employees": [
+   {
+    "page": 182,
+    "score": 4,
+    "words": [
+     "based",
+     "employees",
+     "factor",
+     "growth"
+    ],
+    "values": [],
+    "snippet": "…ot define the Growth Factor (Gn), the Petitioner relied on recognized methodologies of CEA, FoR, and employee-based calculations solely to determine this undefined parameter. These sector-aligned inputs were provided to…"
+   },
+   {
+    "page": 184,
+    "score": 4,
+    "words": [
+     "based",
+     "employees",
+     "factor",
+     "growth"
+    ],
+    "values": [],
+    "snippet": "…s) Escalation using Gn Sales (MU) - 3,597.63 3,951.43 Sales growth (FY25 to FY26) - - 9.83% Normative Expense based on Sales (Rs. Crore) 92.88 Average of last 5 years as Middle Year (FY 2022-23) FY 2023-24 FY 2024-25 FY…"
+   },
+   {
+    "page": 185,
+    "score": 4,
+    "words": [
+     "based",
+     "employees",
+     "factor",
+     "growth"
+    ],
+    "values": [],
+    "snippet": "…) Escalation using Gn No. of Employees - 639 725 Employees growth (FY25 to FY26) - - 13.46% Normative Expense based on Employees (Rs. Crore) 95.95 TABLE 5-19 NORMATIVE EMPLOYEE EXPENSES SUBMITTED BY THE PETITIONER FOR FY…"
+   }
+  ],
+  "uperc.om2025.employee": [
+   {
+    "page": 246,
+    "score": 4,
+    "words": [
+     "capitalisation",
+     "employee",
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…infrastructure and operational responsibilities has naturally resulted in higher Employee Expenses. Increased capitalisation each year requires additional field and support staff to manage the growing network. The rise i…"
+   },
+   {
+    "page": 252,
+    "score": 4,
+    "words": [
+     "capitalisation",
+     "employee",
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…24-25 indicates that the manpower requirement arising from anticipated future growth in consumers, sales, and capitalisation has, to a significant extent, already been addressed and absorbed within the base year data its…"
+   },
+   {
+    "page": 6,
+    "score": 3,
+    "words": [
+     "employee",
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…............................................................................................... 91 TABLE 4-56 EMPLOYEE EXPENSES AS SUBMITTED BY THE PETITIONER (IN RS. CR.).......................................... 92 TAB…"
+   }
+  ],
+  "uperc.om2025.ag": [
+   {
+    "page": 185,
+    "score": 8,
+    "words": [
+     "captive",
+     "charges",
+     "consumption",
+     "excluding",
+     "expenses",
+     "finance",
+     "including",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…cable norms, the Petitioner has calculated A&G Expenses by taking the average audited A&G Expenses (including captive consumption and excluding finance charges) for the five audited years from FY 2020–21 to FY 2024–25 an…"
+   },
+   {
+    "page": 248,
+    "score": 8,
+    "words": [
+     "captive",
+     "charges",
+     "consumption",
+     "excluding",
+     "expenses",
+     "finance",
+     "including",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…oner has referred to the Regulation 33.8 of the UPERC MYT Regulations, 2025 as per which the expenses towards Captive Consumption shall be determined based on the Rate provided in the Rate Schedule and energy consumption…"
+   },
+   {
+    "page": 91,
+    "score": 5,
+    "words": [
+     "charges",
+     "expenses",
+     "finance",
+     "including",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…2 37.97 3 A&G Exp. 7.97 9.76 11.54 12.32 13.43 11.00 4 Subtotal 52.92 64.88 76.70 85.23 97.57 75.46 5 Finance Charges 3.07 1.71 1.64 1.58 1.74 1.95 6 S. Tax / GST 1.41 2.05 2.22 3.56 4.01 2.65 7 Financing Cost of DPS 1.4…"
+   }
+  ],
+  "uperc.om.index_average": [
+   {
+    "page": 184,
+    "score": 3,
+    "words": [
+     "average",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…mployee Expenses using audited figures from FY 2020-21 to FY 2024-25. In accordance with Regulation 33.6, the average of these five years is taken for the middle year (FY 2022-23), and this amount is escalated annually u…"
+   },
+   {
+    "page": 186,
+    "score": 3,
+    "words": [
+     "average",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…e the Normative A&G Expenses for FY 2025–26, the base-year amount (FY 2024–25) is further escalated using the average WPI of the last three years (FY 2022–23, FY 2023–24, and FY 2024–25), which works out to 3.65%. TABLE…"
+   },
+   {
+    "page": 243,
+    "score": 3,
+    "words": [
+     "average",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…6.2. The Petitioner has submitted that as per Regulation 33.6, the Employee Expenses are determined using the average of audited employee costs from the past five financial years, with FY 2022–23 as the reference (middle…"
+   }
+  ],
+  "uperc.om.index_increase": [
+   {
+    "page": 101,
+    "score": 3,
+    "words": [
+     "increase",
+     "index",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…es, and repair-related job work. Since lower-level employees are governed by the Minimum Wages Act, 1948, any increase in minimum wages triggers a cascading rise in remuneration across all staff levels, including senior…"
+   },
+   {
+    "page": 249,
+    "score": 3,
+    "words": [
+     "index",
+     "previous",
+     "price"
+    ],
+    "values": [],
+    "snippet": "…at Regulation 33.9 provides for escalation of the previous year’s A&G expenses by the average Wholesale Price Index (WPI) inflation and also allows for adjustment through a “Provision” component. It provides that the “Pr…"
+   }
+  ],
+  "uperc.om.escalation": [
+   {
+    "page": 254,
+    "score": 5,
+    "words": [
+     "average",
+     "escalation",
+     "factor",
+     "preceding",
+     "three"
+    ],
+    "values": [],
+    "snippet": "…ovember 400.61 416.16 December 399.74 413.86 January 400.03 412.42 February 400.90 411.26 March 400.03 411.84 Average 397.20 410.64 420.11 * CPI Source - https://labourbureau.gov.in/ TABLE 6-44 CPI INFLATION INDEX FOR FY…"
+   },
+   {
+    "page": 185,
+    "score": 4,
+    "words": [
+     "average",
+     "escalation",
+     "factor",
+     "increase"
+    ],
+    "values": [],
+    "snippet": "ANNUAL PERFORMANCE REVIEW OF FY 2025-26 Page 185 of 423 Average of last 5 years as Middle Year (FY 2022-23) FY 2023-24 FY 2024-25 FY 2025-26 Escalation using CPI 74.15 78.00 80.64 84.57 YoY change in CPI % 5.19% 3.38% 4…"
+   },
+   {
+    "page": 252,
+    "score": 4,
+    "words": [
+     "average",
+     "factor",
+     "increase",
+     "three"
+    ],
+    "values": [],
+    "snippet": "…-27 Page 252 of 423 EMPLOYEE EXPENSES 6.6.29. As per the Regulations, the mid-year value is determined as the average of the last five-year audited figure and escalated based on CPI. Apart from this, the Petitioner has a…"
+   }
+  ],
+  "uperc.om.escalated": [
+   {
+    "page": 91,
+    "score": 3,
+    "words": [
+     "component",
+     "escalated",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…93.65 106.18 82.84 4.6.5. Further in line with the norms stipulated in Regulation 45 (c), the values of each component of O&M expenses arrived of the middle year (i.e. FY 2017-18) values is further escalated to determin…"
+   },
+   {
+    "page": 186,
+    "score": 3,
+    "words": [
+     "component",
+     "escalated",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ted annually using the Wholesale Price Index (WPI), with additional adjustments allowed through a “Provision” component. This Provision covers costs arising from CAPEX-to-OPEX conversions, compliance‑related obligations,…"
+   },
+   {
+    "page": 243,
+    "score": 3,
+    "words": [
+     "component",
+     "escalated",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ON AND MAINTENANCE EXPENSES Petitioner’s Submission 6.6.1. The Petitioner has submitted the expenses for each component of Operation & Maintenance vis-à-vis Employee Expenses, Repair and Maintenance (R&M) Expenses and Ad…"
+   }
+  ],
+  "uperc.om.ag_total": [
+   {
+    "page": 2,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…COST (APPC) .............................................................. 89 4.6. OPERATION AND MAINTENANCE EXPENSES.............................................................. 90 4.7. CAPITAL EXPENDITURE ...........…"
+   },
+   {
+    "page": 3,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…QUANTUM AND COST ........................................................ 172 5.5. OPERATION AND MAINTENANCE EXPENSES............................................................. 181 5.6. CAPITAL EXPENDITURE ...........…"
+   },
+   {
+    "page": 6,
+    "score": 1,
+    "words": [
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…ERAGE POWER PURCHASE COST AS APPROVED BY THE COMMISSION FOR FY 2024-25 .......... 90 TABLE 4-54 NORMATIVE O&M EXPENSES AS SUBMITTED BY THE PETITIONER (IN RS. CR.) ............................. 91 TABLE 4-55 COMPUTATION O…"
+   }
+  ],
+  "uperc.om.gross": [
+   {
+    "page": 3,
+    "score": 2,
+    "words": [
+     "expenses",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…QUANTUM AND COST ........................................................ 172 5.5. OPERATION AND MAINTENANCE EXPENSES............................................................. 181 5.6. CAPITAL EXPENDITURE ...........…"
+   },
+   {
+    "page": 8,
+    "score": 2,
+    "words": [
+     "expenses",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…........................................................................... 179 TABLE 5-19 NORMATIVE EMPLOYEE EXPENSES SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) .............................................…"
+   },
+   {
+    "page": 10,
+    "score": 2,
+    "words": [
+     "expenses",
+     "gross"
+    ],
+    "values": [],
+    "snippet": "…HASE COST APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.) .......... 242 TABLE 6-36 NORMATIVE EMPLOYEE EXPENSES BASED ON SALES, CONSUMER AND EMPLOYEES IN EQUAL RATIO ...............................................…"
+   }
+  ],
+  "uperc.om.net": [
+   {
+    "page": 106,
+    "score": 2,
+    "words": [
+     "capitalised",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…s 54.72 64.91 4 Total O&M Expenses 111.55 199.68 5 Exp. for SOP & Other Compliances 0.00 9.01 6 Employee Cost Capitalised 18.00 17.19 7 Net O&M Expenses 93.55 191.51"
+   },
+   {
+    "page": 109,
+    "score": 2,
+    "words": [
+     "capitalised",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…nses 24.01 2.27% 24.55 3 R&M Expenses 54.36 2.27% 55.60 4 Gross O&M Expenses (1+2+3) 114.77 117.79 5 Expenses Capitalised 11.58 17.19 6 Net O&M Expenses (4-5) 103.19 100.60 4.6.64. Accordingly, the Commission has approve…"
+   },
+   {
+    "page": 154,
+    "score": 2,
+    "words": [
+     "capitalised",
+     "expenses"
+    ],
+    "values": [],
+    "snippet": "…2020-21 onwards, the Commission changed the methodology by reducing the original value of retired assets from capitalised assets, leading to a corresponding reduction in Debt and Equity and disallowance of Interest and R…"
+   }
+  ],
+  "uperc.om.additional_rm": [
+   {
+    "page": 96,
+    "score": 6,
+    "words": [
+     "additional"
+    ],
+    "values": [
+     "50%"
+    ],
+    "snippet": "…f Order dated May 24, 2023, for the U.P. State DISCOMs has also allowed additional R&M expenses equivalent to 50% of Normative R&M expenses to comply with SOP regulations in addition to the Normative O&M expense. The ext…"
+   },
+   {
+    "page": 97,
+    "score": 6,
+    "words": [
+     "additional"
+    ],
+    "values": [
+     "50%"
+    ],
+    "snippet": "…ss in development of framework for implementation of SoP Regulations. Accordingly, the Commission is allowing 50% of additional R&M approved in Tariff Order for FY 2021-22 dated July 29, 2021 on account of implementation…"
+   },
+   {
+    "page": 322,
+    "score": 6,
+    "words": [
+     "additional"
+    ],
+    "values": [
+     "50%"
+    ],
+    "snippet": "…to purchase solar power, the following incentives are provided by the Commission and the State Government: ▪ 50% exemption on wheeling charges / transmission charges on Intra-State Open Access. ▪ Exemption of electricit…"
+   }
+  ],
+  "uperc.om.total": [
+   {
+    "page": 6,
+    "score": 2,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…ERAGE POWER PURCHASE COST AS APPROVED BY THE COMMISSION FOR FY 2024-25 .......... 90 TABLE 4-54 NORMATIVE O&M EXPENSES AS SUBMITTED BY THE PETITIONER (IN RS. CR.) ............................. 91 TABLE 4-55 COMPUTATION O…"
+   },
+   {
+    "page": 8,
+    "score": 2,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…........................................................................... 179 TABLE 5-19 NORMATIVE EMPLOYEE EXPENSES SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) .............................................…"
+   },
+   {
+    "page": 10,
+    "score": 2,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [],
+    "snippet": "…HASE COST APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.) .......... 242 TABLE 6-36 NORMATIVE EMPLOYEE EXPENSES BASED ON SALES, CONSUMER AND EMPLOYEES IN EQUAL RATIO ...............................................…"
+   }
+  ],
+  "uperc.oa.per_unit": [
+   {
+    "page": 6,
+    "score": 4,
+    "words": [
+     "charge",
+     "cost",
+     "energy",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…................................... 76 TABLE 4-40 SUMMARY OF CARRYING COST ON ADDITIONAL COAL & CHANGE IN LAW CHARGES AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.) ............................................…"
+   },
+   {
+    "page": 8,
+    "score": 4,
+    "words": [
+     "charge",
+     "cost",
+     "energy",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…RPO STATUS SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN MU) .................. 176 TABLE 5-15 TRANSMISSION CHARGES SUBMITTED BY THE PETITIONER ESTIMATED FOR FY 2025-26 (IN RS. CR.) ....................................…"
+   },
+   {
+    "page": 58,
+    "score": 4,
+    "words": [
+     "charge",
+     "cost",
+     "energy",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…lity i.e. 85%) Rs. Cr. 219.89 14 Variable Cost @ Rs. 2.471 /unit Rs. Cr. 327.62 15 Rebate on Fixed & Variable Charges Rs. Cr. (8.21) 16 Total Cost Rs. Cr. 539.30 4.4.6. The Petitioner has submitted that based on the Regu…"
+   }
+  ],
+  "uperc.oa.cos_voltage": [
+   {
+    "page": 11,
+    "score": 3,
+    "words": [
+     "cost",
+     "supply",
+     "voltage"
+    ],
+    "values": [],
+    "snippet": "…SALES FIGURES FOR FY 2026-27 ................................................................. 309 TABLE 9-1 COST ALLOCATION AS SUBMITTED BY THE PETITIONER ...............................................................…"
+   },
+   {
+    "page": 263,
+    "score": 3,
+    "words": [
+     "cost",
+     "supply",
+     "voltage"
+    ],
+    "values": [],
+    "snippet": "…nterconnections and ring formation for better redundancy and load balancing. Accordingly, the total estimated cost to be incurred for this project will be Rs. 28.45 Crore for FY 2026-27. I. DEVELOPMENT OF NEW LT NETWORK…"
+   },
+   {
+    "page": 264,
+    "score": 3,
+    "words": [
+     "cost",
+     "supply",
+     "voltage"
+    ],
+    "values": [],
+    "snippet": "…r load management, quicker fault isolation, and enhanced operational safety. Accordingly, the total estimated cost to be incurred for this project will be Rs. 17.56 Crore for FY 2026-27. J. UPGRADATION/AUGMENTATION OF TH…"
+   }
+  ],
+  "uperc.oa.css": [
+   {
+    "page": 320,
+    "score": 8,
+    "words": [
+     "cross",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [
+     "20%"
+    ],
+    "snippet": "…of Supply (C) Cross Subsidy Surcharge \"CSS\" (Computed) D= (T-C) Cross Subsidy Surcharge \"CSS” (with a cap of 20% of the cost of supply of T) Y= Min (C*0.2, D) Supply below 11 kV* 1.46 HV1 Supply at 11 kV 10.29 10.29 7.7…"
+   },
+   {
+    "page": 24,
+    "score": 6,
+    "words": [
+     "surcharge"
+    ],
+    "values": [
+     "20%"
+    ],
+    "snippet": "…ncreasing limit of minimum billable demand to 85% of Contract Demand and increase in solar hour TOD rebate to 20% and corresponding increase in Peak hour TOD charges to 20%. The proposal made by the Petitioner lack evide…"
+   },
+   {
+    "page": 295,
+    "score": 6,
+    "words": [
+     "cross"
+    ],
+    "values": [
+     "20 %"
+    ],
+    "snippet": "…ost of the Company through Demand/ Fixed Charges of Retail Supply Tariff • Increasing TOD Tariff from 15 % to 20 % during Solar Hours • Permanent Disconnection due to non-payment by prepaid consumers The Commission has a…"
+   }
+  ],
+  "uperc.oa.css_proposed": [
+   {
+    "page": 316,
+    "score": 5,
+    "words": [
+     "cross",
+     "figure",
+     "lower",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [],
+    "snippet": "…to payment of wheeling charges, the open-access customers also have to bear the wheeling losses in kind. 9.3. CROSS SUBSIDY SURCHARGE Petitioner’s Submission 9.3.1. The Petitioner has submitted that it has calculated the…"
+   },
+   {
+    "page": 320,
+    "score": 4,
+    "words": [
+     "cross",
+     "figure",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [],
+    "snippet": "…WH) Categories Average Billing Rate (ABR) (A) T = ABR + R (i.e., Regulatory Surcharge) (B) Cost of Supply (C) Cross Subsidy Surcharge \"CSS\" (Computed) D= (T-C) Cross Subsidy Surcharge \"CSS” (with a cap of 20% of the cost…"
+   },
+   {
+    "page": 4,
+    "score": 3,
+    "words": [
+     "cross",
+     "subsidy",
+     "surcharge"
+    ],
+    "values": [],
+    "snippet": "…OPEN ACCESS WHEELING CHARGES ....................................................................... 310 9.3. CROSS SUBSIDY SURCHARGE ................................................................................. 316…"
+   }
+  ],
+  "uperc.pp.amount": [
+   {
+    "page": 66,
+    "score": 4,
+    "words": [
+     "amount",
+     "power",
+     "purchase",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…Utilization (%) Normativ e PLF (%) Excess Energy (%) Excess Energy (MU) Incentiv e Rate (Rs./ kWh) Incentiv e Amount (Rs. Cr.) Net Amount post 1% Rebate (Rs. Cr.) A B C D E=C-D F=B-(A*D) G H=F*G I TPTCL- JITPL, Odisha 87…"
+   },
+   {
+    "page": 67,
+    "score": 4,
+    "words": [
+     "amount",
+     "power",
+     "purchase",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…rder dated November 30, 2017. • 42.48 MU @Rs 3.33 per kWh (including charges related to BCD and Change in Law amounting to Rs 0.89 Cr.) (Landed Cost of Power) from Long Term Power Purchase Agreement for 25 MW solar power…"
+   },
+   {
+    "page": 68,
+    "score": 4,
+    "words": [
+     "amount",
+     "power",
+     "purchase",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…S. TATA POWER SOLAR AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) S. No. Particulars U.o.M. Ref. Amount 1 Contracted Units at NPCL MU A=25*24*365 219.00 2 Minimum CUF as per Article 4.6.1 of PPA % B=15% OF 2…"
+   }
+  ],
+  "uperc.pp.tx": [
+   {
+    "page": 5,
+    "score": 3,
+    "words": [
+     "charges",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…................................... 60 TABLE 4-23 SUMMARY OF CARRYING COST ON ADDITIONAL COAL & CHANGE IN LAW CHARGES FOR TRUE- UP AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) ..............................…"
+   },
+   {
+    "page": 9,
+    "score": 3,
+    "words": [
+     "charges",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "Page 9 of 423 TABLE 5-34 BANKING AND FINANCE CHARGES SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) ...............................................................................................................…"
+   },
+   {
+    "page": 63,
+    "score": 3,
+    "words": [
+     "charges",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…TRUING-UP OF FY 2024-25 Page 63 of 423 TABLE 4-23 SUMMARY OF CARRYING COST ON ADDITIONAL COAL & CHANGE IN LAW CHARGES FOR TRUE-UP AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) S. No. Particulars FY 2022-23 F…"
+   }
+  ],
+  "uperc.pp.total": [
+   {
+    "page": 5,
+    "score": 3,
+    "words": [
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…TED BY THE PETITIONER IN FY 2024-25 (IN RS. CR.) ..................... 58 TABLE 4-22 LONG TERM POWER PURCHASE COST SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) .................................................…"
+   },
+   {
+    "page": 9,
+    "score": 3,
+    "words": [
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…S SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) ..................... 199 TABLE 5-36 TOTAL INTEREST COST COMPUTED BY THE COMMISSION FOR FY 2025-26 (IN RS. CR.) ............. 199 TABLE 5-37 GROSS FIXED ASSETS AS…"
+   },
+   {
+    "page": 33,
+    "score": 3,
+    "words": [
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…dered view that the benefit of net metering cannot be extended to all categories of consumers, as it has huge cost implications for the Discoms. Net metering allows 100% banking and withdrawal of such banked power at any…"
+   }
+  ],
+  "uperc.pp.rate": [
+   {
+    "page": 6,
+    "score": 2,
+    "words": [
+     "rate",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…ISISON FOR FY 2024-25 (IN MU) ................................. 86 TABLE 4-51 COMPUTATION OF WEIGHTED AVERAGE RATE OF MEDIUM TERM AND LONG TERM CONVENTIONAL SOURCES FOR FY 2024-25 ........................................…"
+   },
+   {
+    "page": 9,
+    "score": 2,
+    "words": [
+     "rate",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…6-18 DETAILS OF SHORT-TERM POWER PURCHASE AGREEMENTS SUBMITTED BY THE PETITIONER .. 226 TABLE 6-19 SUMMARY OF RATES CONSIDERED BY THE PETITIONER FOR SHORT TERM POWER ................... 226 TABLE 6-20 SHORT-TERM POWER FO…"
+   },
+   {
+    "page": 57,
+    "score": 2,
+    "words": [
+     "rate",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…4.4. Since, the Commission is yet to approved tariff of DIL for FY 2024-25, the Petitioner has considered the rates as approved for FY 2023-24 and same was also billed by DIL."
+   }
+  ],
+  "uperc.pp.unit_cost": [
+   {
+    "page": 81,
+    "score": 4,
+    "words": [
+     "cost",
+     "npcl",
+     "received",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…laid down in judgement dated November 28, 2025 by Hon’ble APTEL, procurement of power is to be allowed at the cost at which it was actually procured provided that the quantum of power procurement remains within the appro…"
+   },
+   {
+    "page": 42,
+    "score": 3,
+    "words": [
+     "npcl",
+     "received",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…istribution licenses in Uttar Pradesh, effective from April 01, 2023. Although the Petitioner vide letter no. NPCL/MD/2024/09/001 dated September 11, 2024, has approached the Government of Uttar Pradesh (GoUP) and reques…"
+   },
+   {
+    "page": 58,
+    "score": 3,
+    "words": [
+     "cost",
+     "npcl",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 58 of 423 Further, the Petitioner would consider the Fixed Cost and Energy Cost at actual approved rates once the same is finalized for FY 2024-25. 4.4.5. The Petitioner has claimed the cost…"
+   }
+  ],
+  "uperc.pp.cost_total": [
+   {
+    "page": 57,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "procurement",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "…Petitioner’s Submission 4.4.1. The Petitioner has submitted source wise details of the actual power purchase cost in the subsequent paragraphs. POWER PROCUREMENT FROM LT-PPA 4.4.2. The Petitioner has submitted that duri…"
+   },
+   {
+    "page": 66,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "procurement",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "…roved Medium-Term Sources during FY 2024-25 is as provided below TABLE: TABLE 4-28 MEDIUM TERM POWER PURCHASE COST AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) S. No. Seller Units at NPCL Fixed Charges, Inc…"
+   },
+   {
+    "page": 67,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "procurement",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "….48 MU @Rs 3.33 per kWh (including charges related to BCD and Change in Law amounting to Rs 0.89 Cr.) (Landed Cost of Power) from Long Term Power Purchase Agreement for 25 MW solar power with Tata power approved by the C…"
+   }
+  ],
+  "uperc.pp.tx_total": [
+   {
+    "page": 5,
+    "score": 4,
+    "words": [
+     "charges",
+     "load",
+     "sources",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…................................... 60 TABLE 4-23 SUMMARY OF CARRYING COST ON ADDITIONAL COAL & CHANGE IN LAW CHARGES FOR TRUE- UP AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) ..............................…"
+   },
+   {
+    "page": 9,
+    "score": 4,
+    "words": [
+     "charges",
+     "load",
+     "sources",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "Page 9 of 423 TABLE 5-34 BANKING AND FINANCE CHARGES SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) ...............................................................................................................…"
+   },
+   {
+    "page": 87,
+    "score": 4,
+    "words": [
+     "charges",
+     "load",
+     "sources",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…ore, considering the above, the Commission approves the sale of power claimed by the Petitioner. TRANSMISSION CHARGES 4.4.81. The Commission has verified the monthly bills submitted by the Petitioner and approves the Tra…"
+   }
+  ],
+  "uperc.pp.mu_total": [
+   {
+    "page": 81,
+    "score": 3,
+    "words": [
+     "energy",
+     "purchased",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "…er 18, 2019, in Petition No. 1479 of 2019, approved the tariff for NPCL to procure solar power from M/s Adani Energy (Mahoba Solar (UP) Pvt. Ltd, Ahmedabad) and M/s Tata Power (Solar). The Commission noted that the Petit…"
+   },
+   {
+    "page": 87,
+    "score": 3,
+    "words": [
+     "energy",
+     "purchased",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "…the Petitioner and allows the same. However, the Petitioner has not been able to clearly demonstrate that net energy of 7.52 MUs has been drawn/ purchased under DSM. The Commission finds that the matter related to UI/DSM…"
+   },
+   {
+    "page": 175,
+    "score": 3,
+    "words": [
+     "energy",
+     "purchased",
+     "sources"
+    ],
+    "values": [],
+    "snippet": "…THE PETITIONER FOR FY 2025-26 (IN RS. CR.) S. No. Sellers Units at Regional Periphery (MU) Units at NPCL (MU) Energy Charges (Rs. Cr.) Rate at Regional Periphery (Rs. Cr.) Landed Rate at NPCL Bus (Rs./ kWh)* 1 Power Exch…"
+   }
+  ],
+  "uperc.pp.mu_source": [
+   {
+    "page": 69,
+    "score": 3,
+    "words": [
+     "energy",
+     "purchased",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…4-31 SUMMARY OF SHORT-TERM POWER SUBMITTED BY THE PETITIONER FOR FY 2024-25 S. No. Sellers Units at NPCL (MU) Energy Charges (Rs. Cr.) Rebate on Energy Charges (Rs. Cr.) Total Cost at NPCL Bus (Rs. Cr.) Landed Rate at NP…"
+   },
+   {
+    "page": 70,
+    "score": 3,
+    "words": [
+     "energy",
+     "purchased",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…hile Truing up the ARR for FY 2020-21, has revised the methodology of computing RPO by considering the ex-bus energy purchased by the Petitioner. 4.4.35. The Petitioner has submitted that the Commission has changed the m…"
+   },
+   {
+    "page": 81,
+    "score": 3,
+    "words": [
+     "energy",
+     "purchased",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…er 18, 2019, in Petition No. 1479 of 2019, approved the tariff for NPCL to procure solar power from M/s Adani Energy (Mahoba Solar (UP) Pvt. Ltd, Ahmedabad) and M/s Tata Power (Solar). The Commission noted that the Petit…"
+   }
+  ],
+  "uperc.pp.billed.billed": [
+   {
+    "page": 225,
+    "score": 6,
+    "words": [
+     "billed",
+     "charges",
+     "energy",
+     "fixed",
+     "other",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…ntation of GNA regime, the CTU transmission charges have been disassociated with the generation and now being billed as per GNA/ T-GNA granted. Accordingly, ISTS charges have been considered separately. Similarly, the ST…"
+   },
+   {
+    "page": 65,
+    "score": 5,
+    "words": [
+     "billed",
+     "charges",
+     "energy",
+     "fixed",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…ntation of GNA regime, the CTU transmission charges have been disassociated with the generation and now being billed as per GNA/ T-GNA granted. Accordingly, CTU charges have been considered separately. Similarly, STU Cha…"
+   },
+   {
+    "page": 73,
+    "score": 5,
+    "words": [
+     "charges",
+     "energy",
+     "fixed",
+     "other",
+     "source"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 73 of 423 OTHER CHARGES/ BILLS/ CLAIMS 4.4.43. The Petitioner has submitted that it has incurred certain claims towards Long Term PPA as the same were raised/ claimed by the supplier during…"
+   }
+  ],
+  "uperc.pp.billed.net": [
+   {
+    "page": 5,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…................................... 60 TABLE 4-23 SUMMARY OF CARRYING COST ON ADDITIONAL COAL & CHANGE IN LAW CHARGES FOR TRUE- UP AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) ..............................…"
+   },
+   {
+    "page": 24,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…% of Contract Demand and increase in solar hour TOD rebate to 20% and corresponding increase in Peak hour TOD charges to 20%. The proposal made by the Petitioner lack evidence and needs to be supported by study and subst…"
+   },
+   {
+    "page": 36,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…Public 3.9.1. Consumers in multi-storied buildings have raised several concerns, including higher electricity charges collected by builders/RWAs compared to payments made to distribution licensees, non-passing of rebates…"
+   }
+  ],
+  "uperc.pp.billed.with_tx": [
+   {
+    "page": 5,
+    "score": 4,
+    "words": [
+     "charges",
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…................................... 60 TABLE 4-23 SUMMARY OF CARRYING COST ON ADDITIONAL COAL & CHANGE IN LAW CHARGES FOR TRUE- UP AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) ..............................…"
+   },
+   {
+    "page": 9,
+    "score": 4,
+    "words": [
+     "charges",
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "Page 9 of 423 TABLE 5-34 BANKING AND FINANCE CHARGES SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) ...............................................................................................................…"
+   },
+   {
+    "page": 63,
+    "score": 4,
+    "words": [
+     "charges",
+     "cost",
+     "source",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…TRUING-UP OF FY 2024-25 Page 63 of 423 TABLE 4-23 SUMMARY OF CARRYING COST ON ADDITIONAL COAL & CHANGE IN LAW CHARGES FOR TRUE-UP AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) S. No. Particulars FY 2022-23 F…"
+   }
+  ],
+  "uperc.pp.billed.rate_billed": [
+   {
+    "page": 47,
+    "score": 3,
+    "words": [
+     "billed",
+     "energy",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…FY 2024–25 and to submit the applicable category/sub-category-wise tariff rates at which these consumers were billed. 4.2.27. In reply to above mentioned query, the Petitioner in its reply clarified that no new connectio…"
+   },
+   {
+    "page": 57,
+    "score": 3,
+    "words": [
+     "billed",
+     "energy",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…f of DIL for FY 2024-25, the Petitioner has considered the rates as approved for FY 2023-24 and same was also billed by DIL."
+   },
+   {
+    "page": 58,
+    "score": 3,
+    "words": [
+     "billed",
+     "energy",
+     "rate"
+    ],
+    "values": [],
+    "snippet": "…ioner has submitted that based on the Regulation-35 of UPERC Generation Tariff Regulation, 2019, DIL has also billed incentives as the dispatched power, based on actual drawl of 87.78%, which is 2.78% higher than normati…"
+   }
+  ],
+  "uperc.pp.billed.unit_cost_bus": [
+   {
+    "page": 348,
+    "score": 4,
+    "words": [
+     "cost",
+     "licensee",
+     "received",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…wer within approved ARR limits through power exchange without prior approval of the Commission. Regarding the cost of the power, if the same approval is in approved limits of increase in sales approved by the Commission,…"
+   },
+   {
+    "page": 22,
+    "score": 3,
+    "words": [
+     "cost",
+     "licensee",
+     "received"
+    ],
+    "values": [],
+    "snippet": "…the objections/suggestions/comments of public on the ARR/Tariff. The process is significantly important in a “cost plus regime”, where the entire cost allowed to the licensee gets transferred to the consumer. 3.1.2. To p…"
+   },
+   {
+    "page": 46,
+    "score": 3,
+    "words": [
+     "licensee",
+     "received",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…rein the Hon’ble APTEL observed that the assessed energy has to be considered as supplied by the distribution licensee to the concerned person. It is also observed that If the distribution licensee has plugged the energy…"
+   }
+  ],
+  "uperc.pp.billed.loss_inter": [
+   {
+    "page": 2,
+    "score": 3,
+    "words": [
+     "inter",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…ASSET AND DEPRECIATION ............................................................................ 139 4.9. INTEREST ON LONG TERM LOANS ............................................................................ 144"
+   },
+   {
+    "page": 11,
+    "score": 3,
+    "words": [
+     "inter",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…BLE 9-7 INTRA-STATE TRANSMISSION CHARGES FOR COMPUTATION OF ‘D’ FOR FY 2026-27 (TC) ........... 318 TABLE 9-8 INTER-STATE TRANSMISSION CHARGES FOR COMPUTATION OF ‘D’ FOR FY 2026-27 (PC) ........... 318 TABLE 9-9 INTER-ST…"
+   },
+   {
+    "page": 55,
+    "score": 3,
+    "words": [
+     "inter",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…HT:LT ratio, lack of dedicated police stations and special courts for electricity theft cases, and political interference—hinder effective reduction of Transmission & Distribution (T&D) losses. Nevertheless, it has achi…"
+   }
+  ],
+  "uperc.pp.billed.loss_intra": [
+   {
+    "page": 11,
+    "score": 3,
+    "words": [
+     "intra",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…BLE 9-6 DISTRIBUTION / RETAIL SUPPLY CHARGES FOR COMPUTATION OF ‘D’ FOR FY 2026-27 (DC) ....... 317 TABLE 9-7 INTRA-STATE TRANSMISSION CHARGES FOR COMPUTATION OF ‘D’ FOR FY 2026-27 (TC) ........... 318 TABLE 9-8 INTER-ST…"
+   },
+   {
+    "page": 55,
+    "score": 3,
+    "words": [
+     "intra",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…/Delivered at NPCL Bus MU E (20.29) (13.92) 6 Net Energy requirement at NPCL Bus MU F=D-E 4,027.75 3,902.37 7 Intra-State Losses % G 3.18% 3.21% 8 Energy Requirement at STU/UP Periphery MU H=F/(1-G) 4,160.04 4,031.82 9 E…"
+   },
+   {
+    "page": 56,
+    "score": 3,
+    "words": [
+     "intra",
+     "loss",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…(Solar) 43.87 43.87 Subtotal 131.63 131.63 4.3.14. The Commission observes that the Petitioner has claimed an Intra-State Transmission Loss of 3.21%, whereas the approved loss for FY 2024-25 is 3.18%. This deviation resu…"
+   }
+  ],
+  "uperc.pp.billed.loss_total": [
+   {
+    "page": 52,
+    "score": 2,
+    "words": [
+     "licensee",
+     "loss"
+    ],
+    "values": [],
+    "snippet": "…nsequences. 4.3.4. The Petitioner has highlighted some of volatile issues which are beyond the control of the Licensee such as: ❖ Local Authority restraining the Petitioner from providing electricity connection in unplan…"
+   },
+   {
+    "page": 54,
+    "score": 2,
+    "words": [
+     "licensee",
+     "loss"
+    ],
+    "values": [],
+    "snippet": "…mitted that the following are the pre-requisites for effectively controlling T&D Losses: ❖ On the part of the Licensee: • Robust Distribution Network. • Identification of theft prone areas. • Educating / spreading awaren…"
+   },
+   {
+    "page": 215,
+    "score": 2,
+    "words": [
+     "licensee",
+     "loss"
+    ],
+    "values": [],
+    "snippet": "…the 13th Amendment to the Electricity Supply Code, 2005, in multi-storey buildings the meter installed by the licensee at the incoming supply point serves as the reference meter, and its total recorded energy is compared…"
+   }
+  ],
+  "uperc.pp.billed.net_with_tx_total": [
+   {
+    "page": 2,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "purchase",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…5. DISTRIBUTION LOSSES/LINE LOSSES AND TRANSMISSION LOSSES ........................... 28 3.6. POWER PURCHASE COST AND OTHER ARR COMPONENTS ....................................... 29 3.7. PROMOTION OF RENEWABLE ENERGY ..…"
+   },
+   {
+    "page": 5,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "purchase",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…TED BY THE PETITIONER IN FY 2024-25 (IN RS. CR.) ..................... 58 TABLE 4-22 LONG TERM POWER PURCHASE COST SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) .................................................…"
+   },
+   {
+    "page": 8,
+    "score": 4,
+    "words": [
+     "cost",
+     "power",
+     "purchase",
+     "transmission"
+    ],
+    "values": [],
+    "snippet": "…......................................................................... 179 TABLE 5-18 TOTAL POWER PURCHASE COST SUBMITTED BY THE PETITIONER ESTIMATED FOR FY 2025-26 (IN RS. CR.) .......................................…"
+   }
+  ],
+  "uperc.pp.billed.billed_total": [
+   {
+    "page": 58,
+    "score": 2,
+    "words": [
+     "billed",
+     "charges"
+    ],
+    "values": [],
+    "snippet": "…ioner has submitted that based on the Regulation-35 of UPERC Generation Tariff Regulation, 2019, DIL has also billed incentives as the dispatched power, based on actual drawl of 87.78%, which is 2.78% higher than normati…"
+   },
+   {
+    "page": 65,
+    "score": 2,
+    "words": [
+     "billed",
+     "charges"
+    ],
+    "values": [],
+    "snippet": "…ntation of GNA regime, the CTU transmission charges have been disassociated with the generation and now being billed as per GNA/ T-GNA granted. Accordingly, CTU charges have been considered separately. Similarly, STU Cha…"
+   },
+   {
+    "page": 69,
+    "score": 2,
+    "words": [
+     "billed",
+     "charges"
+    ],
+    "values": [],
+    "snippet": "…ntation of GNA regime, the CTU transmission charges have been disassociated with the generation and now being billed as per GNA/ T-GNA granted. Accordingly, CTU & STU charges have been considered separately. 4.4.30. Furt…"
+   }
+  ],
+  "uperc.pp.billed.rebate_total": [
+   {
+    "page": 5,
+    "score": 1,
+    "words": [
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…NSMISSION COST AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) ............... 72 TABLE 4-35 TOTAL REBATE AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) .......................... 72 TABLE 4-36 IMP…"
+   },
+   {
+    "page": 24,
+    "score": 1,
+    "words": [
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…Charge, increasing limit of minimum billable demand to 85% of Contract Demand and increase in solar hour TOD rebate to 20% and corresponding increase in Peak hour TOD charges to 20%. The proposal made by the Petitioner…"
+   },
+   {
+    "page": 36,
+    "score": 1,
+    "words": [
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…ricity charges collected by builders/RWAs compared to payments made to distribution licensees, non-passing of rebates, and lack of transparency in billing— especially for prepaid meters under single-point and multi-point…"
+   }
+  ],
+  "uperc.pp.billed.rebate_source": [
+   {
+    "page": 5,
+    "score": 2,
+    "words": [
+     "rebate",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…NSMISSION COST AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) ............... 72 TABLE 4-35 TOTAL REBATE AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) .......................... 72 TABLE 4-36 IMP…"
+   },
+   {
+    "page": 65,
+    "score": 2,
+    "words": [
+     "rebate",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…ription UoM M/s. TPTCL (Source- JITPL, Odisha) 14 Fixed Cost* Rs. Cr. 152.64 15 Energy Cost Rs. Cr. 156.97 16 Rebate on Energy Cost Rs. Cr. (3.10) 17 Total Cost excluding transmission cost** (14+15+16) Rs. Cr. 306.51 18…"
+   },
+   {
+    "page": 66,
+    "score": 2,
+    "words": [
+     "rebate",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…declared availability of M/s. TPTCL (JITPL, Odisha) was 87.03%, it claimed incentives of Rs. 1.02 Cr. net of rebate for FY 2024-25 which has also been paid by the Petitioner as shown in TABLE herein below: TABLE 4-27 IN…"
+   }
+  ],
+  "uperc.pp.billed.mu_at_bus_total": [
+   {
+    "page": 46,
+    "score": 3,
+    "words": [
+     "energy",
+     "licensee",
+     "received"
+    ],
+    "values": [],
+    "snippet": "…ructure Limited Vs. MERC & Ors. in Appeal No. 85 of 2012 wherein the Hon’ble APTEL observed that the assessed energy has to be considered as supplied by the distribution licensee to the concerned person. It is also obser…"
+   },
+   {
+    "page": 297,
+    "score": 3,
+    "words": [
+     "energy",
+     "licensee",
+     "received"
+    ],
+    "values": [],
+    "snippet": "…e retail tariff for Distribution Licensees is generally determined in two parts i.e. Demand/ Fixed Charge and Energy Charge. It is further submitted that ideally, the fixed cost should be recovered through demand/ fixed…"
+   }
+  ],
+  "uperc.pp.billed.mu_at_bus_source": [
+   {
+    "page": 56,
+    "score": 3,
+    "words": [
+     "energy",
+     "received",
+     "source"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 56 of 423 Sl. No. Particulars UoM Ref. Claimed 5 Revenue from total energy sold Rs. Cr. E 2,634.60 6 Average realization from energy sold Rs. /kWh F=E*10/C 7.32 7 Additional revenue due to l…"
+   },
+   {
+    "page": 81,
+    "score": 3,
+    "words": [
+     "energy",
+     "received",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…er 18, 2019, in Petition No. 1479 of 2019, approved the tariff for NPCL to procure solar power from M/s Adani Energy (Mahoba Solar (UP) Pvt. Ltd, Ahmedabad) and M/s Tata Power (Solar). The Commission noted that the Petit…"
+   },
+   {
+    "page": 346,
+    "score": 3,
+    "words": [
+     "energy",
+     "received",
+     "source"
+    ],
+    "values": [],
+    "snippet": "…with the original purpose for which the temporary connection was sanctioned; (iii) the month-wise details of energy sales and revenue realised from such temporary connections from the date when deadline of 90 days has p…"
+   }
+  ],
+  "uperc.pp.claims.claim": [
+   {
+    "page": 59,
+    "score": 8,
+    "words": [
+     "additional",
+     "carrying",
+     "change",
+     "claim",
+     "coal",
+     "cost",
+     "incentive",
+     "paid"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 59 of 423 2025, any additional incentive claims raised by DIL under the new regulations will be paid by the Petitioner and subsequently claimed during the True‑Up for FY 2025‑26. 4.4.8. The…"
+   },
+   {
+    "page": 60,
+    "score": 8,
+    "words": [
+     "additional",
+     "carrying",
+     "change",
+     "claim",
+     "coal",
+     "cost",
+     "earlier",
+     "incentive"
+    ],
+    "values": [],
+    "snippet": "…or the period FY 2023- 24 in its Tariff Order dated 10.10.2024, has deferred some costs towards the impact of Additional Coal and Change in Law impact. The relevant extract of the Tariff Order is reproduced as under: “Ch…"
+   },
+   {
+    "page": 75,
+    "score": 8,
+    "words": [
+     "additional",
+     "carrying",
+     "change",
+     "claim",
+     "coal",
+     "cost",
+     "incentive",
+     "paid"
+    ],
+    "values": [],
+    "snippet": "…2.3 Add. Coal for FY_25 27.14 2.4 Change In Law for FY_25 4.91 2.5 Incentive for FY_25 3.37 Sub Total 36.94 3 Additional Claim 3.1 LT-PPA 3.1a Add. Coal for FY_23 (90% Booked in FY23) 73.25 Order-2025 of 2024 DIL- Add Co…"
+   }
+  ],
+  "uperc.pp.claims.claims_total": [
+   {
+    "page": 60,
+    "score": 2,
+    "words": [
+     "claims",
+     "earlier"
+    ],
+    "values": [],
+    "snippet": "…duced as under: “Change in Law and Additional Coal Charges: 5.5.105 The Petitioner has requested to allow the claims for Additional Coal and Change in Law along with carrying cost and submitted the summary TABLE for carr…"
+   }
+  ],
+  "uperc.pp.claims.with_claims": [
+   {
+    "page": 67,
+    "score": 5,
+    "words": [
+     "books",
+     "cost",
+     "including",
+     "power",
+     "procurement"
+    ],
+    "values": [],
+    "snippet": "…s were raised after end of FY 2024-25 in accordance with the terms of PPA, the same has been accounted for in books of accounts of the Petitioner in FY 2025-26. The summary of Damages claimed from suppliers in terms of t…"
+   },
+   {
+    "page": 29,
+    "score": 4,
+    "words": [
+     "claims",
+     "cost",
+     "including",
+     "power"
+    ],
+    "values": [],
+    "snippet": "…026-27. 3.6.2. As per the submission made by one of the stakeholders’ prudence checks is required for several claims by the Petitioner in power purchase cost. It is highlighted that claims based on orders of the Commissi…"
+   },
+   {
+    "page": 32,
+    "score": 4,
+    "words": [
+     "earlier",
+     "including",
+     "power",
+     "procurement"
+    ],
+    "values": [],
+    "snippet": "…velop decentralized storage deployment that will complement the initiatives taken under the schemes mentioned earlier and at the same time address the challenges related to renewable energy curtailment. The stakeholders…"
+   }
+  ],
+  "uperc.pp.reconciled": [
+   {
+    "page": 73,
+    "score": 5,
+    "words": [
+     "accounts",
+     "audited",
+     "power",
+     "purchase",
+     "true"
+    ],
+    "values": [],
+    "snippet": "…for FY 2023-24 - 1.50 - - 1.50 Total - 129.84 - 2.10 127.73 4.4.44. Accordingly, based on the Audited Annual Accounts for FY 2024-25 and aforesaid submissions with respect to Impact of Genco’s Tariff Orders, the summary…"
+   },
+   {
+    "page": 164,
+    "score": 5,
+    "words": [
+     "accounts",
+     "audited",
+     "power",
+     "purchase",
+     "true"
+    ],
+    "values": [],
+    "snippet": "…FOR FY 2024-25 (IN RS. CR.) SI. No. Description Approved Remarks 1 Processing Charges 1.22 Note-27 of Audited Accounts 2 Disconnection and reconnection fees 0.33 Note-27 of Audited Accounts 3 Meter Testing Charges 0.61 N…"
+   },
+   {
+    "page": 166,
+    "score": 5,
+    "words": [
+     "accounts",
+     "audited",
+     "power",
+     "purchase",
+     "true"
+    ],
+    "values": [],
+    "snippet": "…n the consumers. Also, the Petitioner has not created any reserve for contingency requirements in its audited accounts. Therefore, continuing the same approach as in earlier Tariff Orders, the Commission for FY 2024-25 h…"
+   }
+  ],
+  "uperc.pp.billed.net_total": [
+   {
+    "page": 5,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…................................... 60 TABLE 4-23 SUMMARY OF CARRYING COST ON ADDITIONAL COAL & CHANGE IN LAW CHARGES FOR TRUE- UP AS SUBMITTED BY THE PETITIONER FOR FY 2024-25 (IN RS. CR.) ..............................…"
+   },
+   {
+    "page": 24,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…% of Contract Demand and increase in solar hour TOD rebate to 20% and corresponding increase in Peak hour TOD charges to 20%. The proposal made by the Petitioner lack evidence and needs to be supported by study and subst…"
+   },
+   {
+    "page": 36,
+    "score": 2,
+    "words": [
+     "charges",
+     "rebate"
+    ],
+    "values": [],
+    "snippet": "…Public 3.9.1. Consumers in multi-storied buildings have raised several concerns, including higher electricity charges collected by builders/RWAs compared to payments made to distribution licensees, non-passing of rebates…"
+   }
+  ],
+  "uperc.rate.period_days": [
+   {
+    "page": 146,
+    "score": 3,
+    "words": [
+     "days",
+     "mclr",
+     "period"
+    ],
+    "values": [],
+    "snippet": "…submitted that the U.P. Electricity Supply Code, 2005 mandates that electricity bills must be issued within 7 days of the billing cycle, with a 15-day payment window and an additional 15-day grace period before disconnec…"
+   }
+  ],
+  "uperc.rate.period_weight": [
+   {
+    "page": 146,
+    "score": 3,
+    "words": [
+     "days",
+     "mclr",
+     "period"
+    ],
+    "values": [],
+    "snippet": "…submitted that the U.P. Electricity Supply Code, 2005 mandates that electricity bills must be issued within 7 days of the billing cycle, with a 15-day payment window and an additional 15-day grace period before disconnec…"
+   }
+  ],
+  "uperc.rate.weighted": [],
+  "uperc.rate.wc_trueup": [
+   {
+    "page": 148,
+    "score": 5,
+    "words": [
+     "capital",
+     "interest",
+     "rate",
+     "true",
+     "working"
+    ],
+    "values": [],
+    "snippet": "…he Commission to consider the Electricity Duty as part of Receivable for determination of Interest on Working Capital for True-up of ARR for FY 2024-25. Since it is not provided in the Regulation to include electricity d…"
+   },
+   {
+    "page": 195,
+    "score": 5,
+    "words": [
+     "capital",
+     "interest",
+     "rate",
+     "true",
+     "working"
+    ],
+    "values": [],
+    "snippet": "…rue-Up proceedings based on actual data and Audited Balance Sheet of the Petitioner. 5.8. INTEREST ON WORKING CAPITAL Petitioner’s Submission 5.8.1. The Petitioner has submitted that it has computed the Interest on Worki…"
+   },
+   {
+    "page": 197,
+    "score": 5,
+    "words": [
+     "capital",
+     "interest",
+     "rate",
+     "true",
+     "working"
+    ],
+    "values": [],
+    "snippet": "ANNUAL PERFORMANCE REVIEW OF FY 2025-26 Page 197 of 423 TABLE 5-32 INTEREST ON WORKING CAPITAL AS COMPUTED BY THE COMMISSION FOR FY 2025-26 (IN RS. CR.) Particulars Approved in TO dtd 22.11.2025 Claimed Computed by Comm…"
+   }
+  ],
+  "uperc.rate.loan": [
+   {
+    "page": 66,
+    "score": 6,
+    "words": [
+     "rate"
+    ],
+    "values": [
+     "1%"
+    ],
+    "snippet": "…) Excess Energy (%) Excess Energy (MU) Incentiv e Rate (Rs./ kWh) Incentiv e Amount (Rs. Cr.) Net Amount post 1% Rebate (Rs. Cr.) A B C D E=C-D F=B-(A*D) G H=F*G I TPTCL- JITPL, Odisha 876.00 754.64 86.15 85.00 1.15 10.0…"
+   },
+   {
+    "page": 183,
+    "score": 6,
+    "words": [
+     "normative"
+    ],
+    "values": [
+     "1%"
+    ],
+    "snippet": "…4 to FY25 Distribution Operations & Technical 203 227 236 307 71 79% IT and Automation 132 130 135 125 (10) (11%) Commercial 37 38 40 47 7 8% Power Management Services 5 10 11 12 1 1% BE & CR 36 39 42 46 4 4% Legal and R…"
+   },
+   {
+    "page": 211,
+    "score": 6,
+    "words": [
+     "rate"
+    ],
+    "values": [
+     "1%"
+    ],
+    "snippet": "…Domestic Light, Fan & Power 19% 16% 17% 14% 13% 10%* LMV-2: Non-Domestic Light & Fan & Power 16% 16% 15% 15% 11% 11% LMV-3: Public Lamps (4%) 0% (3%) 0% 84% 2% LMV-4: Institutions 6% 6% 5% 5% (2%) 3% LMV-5: Private Tube…"
+   }
+  ],
+  "uperc.revenue.category_total": [
+   {
+    "page": 24,
+    "score": 4,
+    "words": [
+     "category",
+     "current",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…Therefore, above proposals of the Petitioner should be rejected. 3.3.3. All the Stakeholders, from different category of consumers, have submitted that Fuel and Power Purchase Adjustment Surcharge (FPPAS) should be abol…"
+   },
+   {
+    "page": 270,
+    "score": 4,
+    "words": [
+     "current",
+     "duty",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…2026-27, which will incur cost of the land, registration charges, stamp duty fee, one-time Lease Rent (as per current approved rates of GNIDA/UPSIDA) etc. The Petitioner will also be planning to construct the Boundary wa…"
+   },
+   {
+    "page": 297,
+    "score": 4,
+    "words": [
+     "current",
+     "excluding",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…he ARR forecast of Rs. 3,511.33 Cr. for FY 2026-27, the total revenue from tariff payable by consumers at the current tariff, including regulatory discount of 10%, has been projected at Rs. 3,192.04 Cr. Thus, in the curr…"
+   }
+  ],
+  "uperc.revenue.energy_rate": [
+   {
+    "page": 4,
+    "score": 4,
+    "words": [
+     "category",
+     "charge",
+     "energy",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…RATE SCHEDULE FOR FY 2026-27 ........................................................ 352 12.2. ANNEXURE-II: CATEGORY WISE AVERAGE BILLING RATE FOR FY 2026-27 ................. 401 12.3. ANNEXURE-III: (ADMITTANCE ORDER)…"
+   },
+   {
+    "page": 8,
+    "score": 4,
+    "words": [
+     "category",
+     "charge",
+     "energy",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…E 4-118 NON-TARIFF INCOME AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.) ......... 164 TABLE 4-119 CATEGORY-WISE ENERGY SALES & REVENUE SUBMITTED BY THE PETITIONER FOR FY 2024-25 ..............................…"
+   },
+   {
+    "page": 9,
+    "score": 4,
+    "words": [
+     "category",
+     "charge",
+     "energy",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…-46 NON-TARIFF INCOME AS SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) ............. 205 TABLE 5-47 CATEGORY-WISE ENERGY SALES & REVENUE AS SUBMITTED BY THE PETITIONER FOR FY 2025-26 ...........................…"
+   }
+  ],
+  "uperc.revenue.fixed_rate": [
+   {
+    "page": 8,
+    "score": 5,
+    "words": [
+     "category",
+     "charge",
+     "fixed",
+     "revenue",
+     "unit"
+    ],
+    "values": [],
+    "snippet": "…E 4-118 NON-TARIFF INCOME AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.) ......... 164 TABLE 4-119 CATEGORY-WISE ENERGY SALES & REVENUE SUBMITTED BY THE PETITIONER FOR FY 2024-25 ..............................…"
+   },
+   {
+    "page": 4,
+    "score": 4,
+    "words": [
+     "category",
+     "charge",
+     "fixed",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…RATE SCHEDULE FOR FY 2026-27 ........................................................ 352 12.2. ANNEXURE-II: CATEGORY WISE AVERAGE BILLING RATE FOR FY 2026-27 ................. 401 12.3. ANNEXURE-III: (ADMITTANCE ORDER)…"
+   },
+   {
+    "page": 9,
+    "score": 4,
+    "words": [
+     "category",
+     "charge",
+     "fixed",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…-46 NON-TARIFF INCOME AS SUBMITTED BY THE PETITIONER FOR FY 2025-26 (IN RS. CR.) ............. 205 TABLE 5-47 CATEGORY-WISE ENERGY SALES & REVENUE AS SUBMITTED BY THE PETITIONER FOR FY 2025-26 ...........................…"
+   }
+  ],
+  "uperc.revenue.total": [
+   {
+    "page": 24,
+    "score": 3,
+    "words": [
+     "current",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "PUBLIC HEARING PROCESS Page 24 of 423 is also stated that the current tariffs are high for MSMEs and it should be reduced. Considering the growing number of consumers in the area, the profits of the company would increas…"
+   },
+   {
+    "page": 160,
+    "score": 3,
+    "words": [
+     "current",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…ction fees 0.33 Note-27 of Audited Accounts 3 Meter Testing Charges 0.61 Note-27 of Audited Accounts 4 On non-current investments 0.11 Note-28 of Audited Accounts 5 Treasury Income 39.15 Note-28 of Audited Accounts 5.1 I…"
+   },
+   {
+    "page": 202,
+    "score": 3,
+    "words": [
+     "current",
+     "revenue",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…grossing up aggregate of tax expense i.e. tax on Return on equity and tax expense for preceding years, at the current tax rate i.e. 25.17% as per Section 115 BAA of the Income Tax Act,1961 and profit before tax is comput…"
+   }
+  ],
+  "uperc.revenue.units": [],
+  "uperc.revenue.units_category": [],
+  "uperc.revenue.discount_total": [
+   {
+    "page": 23,
+    "score": 2,
+    "words": [
+     "discount",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "…ublic 3.3.1. All the stakeholders, from different categories of consumers, have submitted that the regulatory discount of 10% provided to the consumers of the Petitioner should continue as removal of regulatory discount…"
+   },
+   {
+    "page": 24,
+    "score": 2,
+    "words": [
+     "discount",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "…rplus approved by the Commission viz the disputes under claim in the various Appeals and projected Regulatory Discount for the current year FY 2026-27, the Company has requested the Commission to reconsider the continuat…"
+   },
+   {
+    "page": 25,
+    "score": 2,
+    "words": [
+     "discount",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "PUBLIC HEARING PROCESS Page 25 of 423 applicable rate (net of regulatory discount, if any), or such limit as may be determined by the Commission from time to time. The Petitioner has submitted that the Fuel and Power Pur…"
+   }
+  ],
+  "uperc.revenue.discount_category": [
+   {
+    "page": 24,
+    "score": 3,
+    "words": [
+     "category",
+     "discount",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "…Therefore, above proposals of the Petitioner should be rejected. 3.3.3. All the Stakeholders, from different category of consumers, have submitted that Fuel and Power Purchase Adjustment Surcharge (FPPAS) should be abol…"
+   },
+   {
+    "page": 41,
+    "score": 3,
+    "words": [
+     "category",
+     "discount",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 41 of 423 S. No. Category No. of Consumers Connected Load (MW) Sales (MU) 6 LMV 6: Small and Medium Power 3,886 105.19 144.19 7 LMV-7: Public Water Works 334 16.78 35.42 8 LMV-9: Temporary S…"
+   },
+   {
+    "page": 212,
+    "score": 3,
+    "words": [
+     "category",
+     "discount",
+     "regulatory"
+    ],
+    "values": [],
+    "snippet": "AGGREGATE REVENUE REQUIREMENT OF FY 2026-27 Page 212 of 423 Tariff Category Sales Connected Load Number of Consumers 7 Year CAGR CAGR considered 7 Year CAGR CAGR considered 7 Year CAGR CAGR considered HV-1: Non-Industri…"
+   }
+  ],
+  "uperc.revenue.category_billed": [
+   {
+    "page": 41,
+    "score": 3,
+    "words": [
+     "billed",
+     "category",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…retained by the Commission which was applicable from October 24, 2024. 4.2.5. Accordingly, the consumers were billed on the basis of applicable tariff order i.e. Rate Schedule approved in the prevailing Tariff Order date…"
+   },
+   {
+    "page": 47,
+    "score": 3,
+    "words": [
+     "billed",
+     "category",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…FY 2024–25 and to submit the applicable category/sub-category-wise tariff rates at which these consumers were billed. 4.2.27. In reply to above mentioned query, the Petitioner in its reply clarified that no new connectio…"
+   },
+   {
+    "page": 50,
+    "score": 3,
+    "words": [
+     "billed",
+     "category",
+     "revenue"
+    ],
+    "values": [],
+    "snippet": "…tal Tubewell Consumer details Total Registered eligible Consumer as on 31.08.2024 Total No. of Consumer Total Billed Amount (Rs.) Total subsidy Amount as per Notification Eligible Consumer Total Billed amount to eligible…"
+   }
+  ],
+  "uperc.revenue.billed_total": [],
+  "uperc.revenue.revision_impact": [
+   {
+    "page": 25,
+    "score": 3,
+    "words": [
+     "proposed",
+     "revision",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…ToD structure and clearly demonstrate the cost-benefit analysis by comparing the existing structure with the proposed structure. 3.3.11. The Commission is of the view that the proposals that are made by the Petitioner,…"
+   },
+   {
+    "page": 101,
+    "score": 3,
+    "words": [
+     "impact",
+     "revision",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…69% 69% 4.6.36. The Petitioner has submitted that changes in minimum wages have a significant and unavoidable impact on various O&M cost components—such as breakdown gangs, security services, and repair-related job work.…"
+   },
+   {
+    "page": 167,
+    "score": 3,
+    "words": [
+     "impact",
+     "revision",
+     "tariff"
+    ],
+    "values": [],
+    "snippet": "…75 2,938.44 2,815.06 23 Less: Revenue from Approved Tariff 3,028.52 2,634.60 2,634.60 24 Add: Tariff Revision Impact (10% Regulatory Discount) 302.85 25 Revenue Gap / (Surplus) (49.92) 303.83 180.46 4.19.2. Analysis of a…"
+   }
+  ],
+  "uperc.rm2025.existing": [
+   {
+    "page": 188,
+    "score": 9,
+    "words": [
+     "approved",
+     "april",
+     "gross",
+     "norm"
+    ],
+    "values": [
+     "5%"
+    ],
+    "snippet": "…Y 2025-26 (IN RS. CR.) S. No. Particulars Normative 1 GFA up to 31.03.2020 (Part-A) 1,148.63 2 Norms for R&M (5% of GFA) (A) 57.43 3 GFA from 01.04.2020 to 31.03.2025) (Part-B) 856.60 4 Norms for R&M (5% of GFA) (B) 42.8…"
+   },
+   {
+    "page": 250,
+    "score": 9,
+    "words": [
+     "approved",
+     "april",
+     "gross",
+     "norm"
+    ],
+    "values": [
+     "5%"
+    ],
+    "snippet": "…ets (GFA) as of March 31, 2020 (Part A), amounting to Rs. 1,148.63 Crore, and accordingly, the R&M Expense at 5% of GFA is Rs. 57.43 Crore. For the period from April 01, 2020, to March 31, 2025 (Part B), the Petitioner h…"
+   },
+   {
+    "page": 187,
+    "score": 8,
+    "words": [
+     "approved",
+     "gross",
+     "norm"
+    ],
+    "values": [
+     "5%"
+    ],
+    "snippet": "…are to be calculated as a fixed percentage of the opening Gross Fixed Assets (GFA) approved by the Commission—5% for assets capitalized up to 31.03.2025 and 3% for assets capitalized thereafter, inclusive of any changes…"
+   }
+  ],
+  "uperc.rm2025.new": [
+   {
+    "page": 188,
+    "score": 8,
+    "words": [
+     "april",
+     "gross",
+     "norm"
+    ],
+    "values": [
+     "3%"
+    ],
+    "snippet": "…25) (Part-B) 856.60 4 Norms for R&M (5% of GFA) (B) 42.83 5 GFA as on 01.04.2025 (Part-C) NA 6 Norms for R&M (3% of GFA) (C) NA Total R&M (A+B+C) 100.26 5.5.27. The summary of normative O&M Expenses as computed on the ba…"
+   },
+   {
+    "page": 250,
+    "score": 8,
+    "words": [
+     "april",
+     "gross",
+     "norm"
+    ],
+    "values": [
+     "3%"
+    ],
+    "snippet": "…et capitalize after March 31, 2025, the Petitioner has considered Rs. 433.03 Cr. resulting in R&M expenses at 3% of GFA amounting to Rs. 13.00 Cr. 6.6.24. The Petitioner has further submitted that Local development bodie…"
+   },
+   {
+    "page": 258,
+    "score": 8,
+    "words": [
+     "added",
+     "april",
+     "norm"
+    ],
+    "values": [
+     "3%"
+    ],
+    "snippet": "…025 B 889.53 Opening GFA for Asset Capitalised after April 01, 2025, C 448.49 R&M for FY 2026-27 (A+B)*5%+(C)*3% 111.04 6.6.47. The Commission has considered employee expenses capitalized in line with the Petitioner subm…"
+   }
+  ],
+  "uperc.rm2025.total": [
+   {
+    "page": 187,
+    "score": 12,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [
+     "3%",
+     "5%"
+    ],
+    "snippet": "…he opening Gross Fixed Assets (GFA) approved by the Commission—5% for assets capitalized up to 31.03.2025 and 3% for assets capitalized thereafter, inclusive of any changes in taxes or duties. 5.5.25. The Petitioner has…"
+   },
+   {
+    "page": 188,
+    "score": 12,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [
+     "3%",
+     "5%"
+    ],
+    "snippet": "…25) (Part-B) 856.60 4 Norms for R&M (5% of GFA) (B) 42.83 5 GFA as on 01.04.2025 (Part-C) NA 6 Norms for R&M (3% of GFA) (C) NA Total R&M (A+B+C) 100.26 5.5.27. The summary of normative O&M Expenses as computed on the ba…"
+   },
+   {
+    "page": 250,
+    "score": 12,
+    "words": [
+     "expenses",
+     "normative"
+    ],
+    "values": [
+     "3%",
+     "5%"
+    ],
+    "snippet": "…et capitalize after March 31, 2025, the Petitioner has considered Rs. 433.03 Cr. resulting in R&M expenses at 3% of GFA amounting to Rs. 13.00 Cr. 6.6.24. The Petitioner has further submitted that Local development bodie…"
+   }
+  ],
+  "uperc.rpo.periphery": [
+   {
+    "page": 85,
+    "score": 3,
+    "words": [
+     "consumption",
+     "distribution",
+     "periphery"
+    ],
+    "values": [],
+    "snippet": "…ON FOR FY 2024-25 (IN MU) S. No Particulars Formula Claimed Approved Quantum (MU) Quantum (MU) 1 Gross Energy Consumption (Sales) (Excluding Inter-State sales) A 3,597.63 3,597.63 2 Distribution Loss (%) B 7.48% 7.48% 3…"
+   },
+   {
+    "page": 237,
+    "score": 3,
+    "words": [
+     "consumption",
+     "distribution",
+     "periphery"
+    ],
+    "values": [],
+    "snippet": "…LIGATION APPROVED BY THE COMMISSION FOR FY 2026-27 (IN MU) S. No Particular Projected Approved 1 Gross Energy Consumption (Sales) (Excluding Inter-State sales) 4,399.84 4,399.84 2 Distribution Loss (%) 6.97% 6.97% 3 Ener…"
+   }
+  ],
+  "uperc.rpo.state": [
+   {
+    "page": 55,
+    "score": 3,
+    "words": [
+     "energy",
+     "periphery",
+     "state"
+    ],
+    "values": [],
+    "snippet": "…on. This over achievement qualifies the Petitioner for an incentive as per regulatory provisions. 4.3.10. The Energy Balance for FY 2024-25 as submitted by the Petitioner is provided in TABLE below: TABLE 4-16 ENERGY BAL…"
+   },
+   {
+    "page": 56,
+    "score": 3,
+    "words": [
+     "energy",
+     "periphery",
+     "state"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 56 of 423 Sl. No. Particulars UoM Ref. Claimed 5 Revenue from total energy sold Rs. Cr. E 2,634.60 6 Average realization from energy sold Rs. /kWh F=E*10/C 7.32 7 Additional revenue due to l…"
+   },
+   {
+    "page": 57,
+    "score": 3,
+    "words": [
+     "energy",
+     "periphery",
+     "state"
+    ],
+    "values": [],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 57 of 423 TABLE 4-19 ENERGY BALANCE AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN MU) Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved Energy Sales MU 3,704.1…"
+   }
+  ],
+  "uperc.rpo.discom": [
+   {
+    "page": 55,
+    "score": 3,
+    "words": [
+     "distribution",
+     "energy",
+     "periphery"
+    ],
+    "values": [],
+    "snippet": "…l courts for electricity theft cases, and political interference—hinder effective reduction of Transmission & Distribution (T&D) losses. Nevertheless, it has achieved a distribution loss of 7.48% in FY 2024-25, which is…"
+   },
+   {
+    "page": 56,
+    "score": 3,
+    "words": [
+     "distribution",
+     "energy",
+     "periphery"
+    ],
+    "values": [],
+    "snippet": "…fficiency Gains earned Rs. Cr. H=G 2.58 Commission’s Analysis 4.3.12. The Commission observes that the actual Distribution Losses claimed by the Petitioner is lower than the approved distribution losses. Thus, for the pu…"
+   },
+   {
+    "page": 57,
+    "score": 3,
+    "words": [
+     "distribution",
+     "energy",
+     "periphery"
+    ],
+    "values": [],
+    "snippet": "…UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved Energy Sales MU 3,704.10 3,597.63 3,597.63 Distribution Loss % 7.57% 7.48% 7.48% Distribution Loss MU 303.36 290.83 290.83 Energy Requirement at NPCL MU…"
+   }
+  ],
+  "uperc.rpo.base": [
+   {
+    "page": 70,
+    "score": 2,
+    "words": [
+     "consumption",
+     "hydro"
+    ],
+    "values": [],
+    "snippet": "…4.4.35. The Petitioner has submitted that the Commission has changed the methodology of RPO computation from “consumption units” to “power purchase units” at ex-bus contrary to UPERC (Promotion of Green Energy through Re…"
+   },
+   {
+    "page": 85,
+    "score": 2,
+    "words": [
+     "consumption",
+     "hydro"
+    ],
+    "values": [],
+    "snippet": "…ON FOR FY 2024-25 (IN MU) S. No Particulars Formula Claimed Approved Quantum (MU) Quantum (MU) 1 Gross Energy Consumption (Sales) (Excluding Inter-State sales) A 3,597.63 3,597.63 2 Distribution Loss (%) B 7.48% 7.48% 3…"
+   },
+   {
+    "page": 230,
+    "score": 2,
+    "words": [
+     "consumption",
+     "hydro"
+    ],
+    "values": [],
+    "snippet": "…ued during the True-up of ARR for FY 2020–21, the Commission shifted the basis of RPO computation from energy consumption to ex-bus power purchase units. Petitioner methodology, according to the Petitioner, deviates from…"
+   }
+  ],
+  "uperc.rpo.obligation": [
+   {
+    "page": 6,
+    "score": 1,
+    "words": [
+     "obligation"
+    ],
+    "values": [],
+    "snippet": "…............................................................................ 85 TABLE 4-49 RENEWABLE PURCHASE OBLIGATION APPROVED BY THE COMMISSION FOR FY 2024-25 (IN MU) .................................................…"
+   },
+   {
+    "page": 10,
+    "score": 1,
+    "words": [
+     "obligation"
+    ],
+    "values": [],
+    "snippet": "Page 10 of 423 TABLE 6-29 RENEWABLE PURCHASE OBLIGATION APPROVED BY THE COMMISSION FOR FY 2026-27 (IN MU) ..................................................................................................................…"
+   },
+   {
+    "page": 31,
+    "score": 1,
+    "words": [
+     "obligation"
+    ],
+    "values": [],
+    "snippet": "…iently manage variations in the load curve, optimize power procurement costs, and meet its Renewable Purchase Obligation (RPO) requirements, the Company has envisaged procurement of power through Power Exchanges during F…"
+   }
+  ],
+  "uperc.rpo.balance": [],
+  "uperc.rpo.current": [],
+  "uperc.rpo.closing": [],
+  "uperc.isd.closing_month": [
+   {
+    "page": 10,
+    "score": 3,
+    "words": [
+     "deposit",
+     "month",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…......................................................................... 284 TABLE 6-70 INTEREST ON SECURITY DEPOSIT APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.) ...............................................…"
+   },
+   {
+    "page": 147,
+    "score": 3,
+    "words": [
+     "deposit",
+     "month",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…tenance spares @ 40% of the R&M Expense for 2 Months C 3.65 4.82 d Gross Total D=A+B+C 352.15 368.89 Security Deposits from Consumers e Opening Balance E 345.19 342.92 f Received during the year (Net of Refunds) F 19.03…"
+   },
+   {
+    "page": 148,
+    "score": 3,
+    "words": [
+     "deposit",
+     "month",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…spares @ 40% of the R&M Expense for two months 3.65 4.82 3.71 Gross Total 352.15 368.89 341.41 Less: Security Deposits from Consumers Opening Balance 345.19 342.92 342.92 Received during the year (Net of Refunds) 19.03 7…"
+   }
+  ],
+  "uperc.isd.interest_month": [
+   {
+    "page": 10,
+    "score": 4,
+    "words": [
+     "deposit",
+     "interest",
+     "month",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…......................................................................... 284 TABLE 6-70 INTEREST ON SECURITY DEPOSIT APPROVED BY THE COMMISSION FOR FY 2026-27 (IN RS. CR.) ...............................................…"
+   },
+   {
+    "page": 147,
+    "score": 4,
+    "words": [
+     "deposit",
+     "interest",
+     "month",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…tenance spares @ 40% of the R&M Expense for 2 Months C 3.65 4.82 d Gross Total D=A+B+C 352.15 368.89 Security Deposits from Consumers e Opening Balance E 345.19 342.92 f Received during the year (Net of Refunds) F 19.03…"
+   },
+   {
+    "page": 148,
+    "score": 4,
+    "words": [
+     "deposit",
+     "interest",
+     "month",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…spares @ 40% of the R&M Expense for two months 3.65 4.82 3.71 Gross Total 352.15 368.89 341.41 Less: Security Deposits from Consumers Opening Balance 345.19 342.92 342.92 Received during the year (Net of Refunds) 19.03 7…"
+   }
+  ],
+  "uperc.isd.interest_months": [
+   {
+    "page": 147,
+    "score": 4,
+    "words": [
+     "deposit",
+     "interest",
+     "months",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…tenance spares @ 40% of the R&M Expense for 2 Months C 3.65 4.82 d Gross Total D=A+B+C 352.15 368.89 Security Deposits from Consumers e Opening Balance E 345.19 342.92 f Received during the year (Net of Refunds) F 19.03…"
+   },
+   {
+    "page": 148,
+    "score": 4,
+    "words": [
+     "deposit",
+     "interest",
+     "months",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…spares @ 40% of the R&M Expense for two months 3.65 4.82 3.71 Gross Total 352.15 368.89 341.41 Less: Security Deposits from Consumers Opening Balance 345.19 342.92 342.92 Received during the year (Net of Refunds) 19.03 7…"
+   },
+   {
+    "page": 196,
+    "score": 4,
+    "words": [
+     "deposit",
+     "interest",
+     "months",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…intenance spares @ 40% of the R&M Expense for 2 Months C 5.59 6.68 Gross Total D=A+B+C 389.17 384.72 Security Deposits from Consumers Opening Balance E 352.23 350.39 Received during the year (Net of Refunds) F 15.83 15.0…"
+   }
+  ],
+  "uperc.isd.interest_annual": [
+   {
+    "page": 147,
+    "score": 5,
+    "words": [
+     "average",
+     "balance",
+     "deposit",
+     "interest",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…45.19 342.92 f Received during the year (Net of Refunds) F 19.03 7.47 g Closing Balance G=E+F 364.22 350.39 h Average Security Deposit H=(E+G)/2 354.70 346.66 i Security Deposit with UPPCL I 11.28 11.28 j Net Security De…"
+   },
+   {
+    "page": 148,
+    "score": 5,
+    "words": [
+     "average",
+     "balance",
+     "deposit",
+     "interest",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…342.92 342.92 Received during the year (Net of Refunds) 19.03 7.47 7.47 Closing Balance 364.22 350.39 350.39 Average Balance for Security Deposit 354.70 346.66 346.66 Security Deposit with UPPCL 11.28 11.28 11.28 Net Se…"
+   },
+   {
+    "page": 149,
+    "score": 5,
+    "words": [
+     "average",
+     "balance",
+     "deposit",
+     "interest",
+     "security"
+    ],
+    "values": [],
+    "snippet": "…the ERP System of the Petitioner (viz. SAP) automatically. Hence, the computation of interest on the basis of average Consumer Security Deposit might not tally with the amount of interest on Security deposit actually pai…"
+   }
+  ],
+  "uperc.iowc.om_month": [
+   {
+    "page": 75,
+    "score": 7,
+    "words": [
+     "expenses",
+     "month"
+    ],
+    "values": [
+     "12"
+    ],
+    "snippet": "…Additional Coal FY23 (0.21) 3.1c Change in Law for FY_23 (100% Booked in FY23) 5.25 Order-2004 of 2023 dated 12.04.2024 for Change in Law FY23 3.1d Carrying Cost on above for FY_23 4.37 3.1e Add. Coal for FY_24 (90% Boo…"
+   },
+   {
+    "page": 5,
+    "score": 6,
+    "words": [
+     "month"
+    ],
+    "values": [
+     "12"
+    ],
+    "snippet": "…ENERGY SALES APPROVED BY THE COMMISSION FOR FY 2024-25 (IN MU) .................................. 50 TABLE 4-12 DETAILS OF LMV-5 TUBE WELLS CONSUMERS SUBMITTED BY THE PETITIONER FOR FY 2023-24 50 TABLE 4-13 SUBSIDY REQU…"
+   },
+   {
+    "page": 8,
+    "score": 6,
+    "words": [
+     "expenses"
+    ],
+    "values": [
+     "12"
+    ],
+    "snippet": "…................................................................................................. 165 TABLE 4-120 SUMMARY OF ARR AS APPROVED BY THE COMMISSION FOR FY 2024-25 (IN RS. CR.) ............. 166 TABLE 4-121 SUM…"
+   }
+  ],
+  "uperc.iowc.receivables": [
+   {
+    "page": 77,
+    "score": 6,
+    "words": [
+     "months"
+    ],
+    "values": [
+     "12"
+    ],
+    "snippet": "…ns 10.29% 11.07% 10.29% 11.07% 6 Carrying Cost 4.37 11.37 15.74 1.00 9.07 10.08 7 Grand Closing Balance 89.21 127.73 127.73 30.48 112.95 112.95 4.4.52. Further, the Commission has deferred the approval of certain claims…"
+   },
+   {
+    "page": 336,
+    "score": 6,
+    "words": [
+     "months"
+    ],
+    "values": [
+     "12"
+    ],
+    "snippet": "…ers together with a building- wise migration plan and dates. The Licensee shall complete the migration within 120 days of this Order. also submitted the reply to the data requirement raised by the Commission, dated 25.03…"
+   },
+   {
+    "page": 376,
+    "score": 6,
+    "words": [
+     "months"
+    ],
+    "values": [
+     "12"
+    ],
+    "snippet": "ANNEXURES Page 376 of 423 v) The seasonal period once notified cannot be reduced during the next consecutive 12 months. The off-season tariff is not applicable to composite units having seasonal and other category loads.…"
+   }
+  ],
+  "uperc.iowc.receivables_trueup": [],
+  "uperc.iowc.total": [
+   {
+    "page": 10,
+    "score": 8,
+    "words": [
+     "capital",
+     "normative",
+     "working"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "Page 10 of 423 TABLE 6-29 RENEWABLE PURCHASE OBLIGATION APPROVED BY THE COMMISSION FOR FY 2026-27 (IN MU) ..................................................................................................................…"
+   },
+   {
+    "page": 150,
+    "score": 8,
+    "words": [
+     "capital",
+     "normative",
+     "working"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 150 of 423 security deposit in full actually paid to consumers which amounts to Rs. 24.79 Cr for FY 2024-25. 4.11.3. The summary of total interest and finance charges claimed by the Petition…"
+   },
+   {
+    "page": 159,
+    "score": 8,
+    "words": [
+     "capital",
+     "normative",
+     "working"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 159 of 423 Revenue Surplus to the Petitioner while simultaneously, not allowing the interest earned on treasury income, resulting in the double loss to the Petitioner. 4.16.3. Accordingly, t…"
+   }
+  ],
+  "uperc.iowc.net": [
+   {
+    "page": 196,
+    "score": 4,
+    "words": [
+     "beginning",
+     "capital",
+     "surplus",
+     "working"
+    ],
+    "values": [],
+    "snippet": "…t Security Deposits from Consumers J=H-I 348.87 346.61 Net Working Capital K 40.30 38.10 Less: Surplus at the beginning of the year L (1,234.69) Net Working Capital M=I-K (1,194.39) 38.10 Rate of Interest for Working Cap…"
+   },
+   {
+    "page": 197,
+    "score": 4,
+    "words": [
+     "beginning",
+     "capital",
+     "surplus",
+     "working"
+    ],
+    "values": [],
+    "snippet": "…ecurity Deposits from Consumers 348.87 346.61 346.61 Total Working Capital 40.30 38.10 36.68 (Surplus) at the beginning of the year (1,234.69) (470.67) Net Working Capital (1,194.39) 38.10 (434.00) Rate of Interest for W…"
+   },
+   {
+    "page": 284,
+    "score": 4,
+    "words": [
+     "beginning",
+     "capital",
+     "surplus",
+     "working"
+    ],
+    "values": [],
+    "snippet": "…Net Security Deposits from Consumers J=H-I 361.61 361.61 Total Working Capital K 64.01 62.30 (Surplus) at the beginning of the year L - (73.34) Net Working Capital M=K+L 64.01 (11.03) Rate of Interest for Working Capital…"
+   }
+  ],
+  "uperc.iowc.interest": [
+   {
+    "page": 10,
+    "score": 8,
+    "words": [
+     "capital",
+     "interest",
+     "working"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "Page 10 of 423 TABLE 6-29 RENEWABLE PURCHASE OBLIGATION APPROVED BY THE COMMISSION FOR FY 2026-27 (IN MU) ..................................................................................................................…"
+   },
+   {
+    "page": 147,
+    "score": 8,
+    "words": [
+     "capital",
+     "interest",
+     "working"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 147 of 423 4.10.6. Accordingly, the Petitioner has requested the Commission to approve the interest on working capital for FY 2024-25 as given in TABLE below: TABLE 4-104 INTEREST ON WORKING…"
+   },
+   {
+    "page": 148,
+    "score": 8,
+    "words": [
+     "capital",
+     "interest",
+     "working"
+    ],
+    "values": [
+     "0"
+    ],
+    "snippet": "TRUING-UP OF FY 2024-25 Page 148 of 423 4.10.9. The Commission finds that the Petitioner has requested the Commission to consider the Electricity Duty as part of Receivable for determination of Interest on Working Capit…"
+   }
+  ]
+ }
+}

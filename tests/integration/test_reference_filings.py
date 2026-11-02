@@ -16,6 +16,9 @@ def test_rules_are_listed_with_their_status_and_nothing_is_approved(client):
     d = r.json()
     assert d["summary"]["rules"] >= 60
     assert d["summary"]["approved"] == 0 and d["summary"]["clauses_verified"] == 0  # the build approves nothing
+    # clause candidates are proposals listed beside each rule (none until a regulation is read)
+    assert all(isinstance(x["clause_candidates"], list) for x in d["rules"])
+    assert d["summary"]["with_clause_candidates"] >= 0
     roe = [x for x in d["rules"] if x["output"] == "return_on_equity"]
     assert {x["to_fy"] or x["from_fy"] for x in roe} == {"FY2024-25", "FY2025-26"}  # two regimes
     assert client.get("/arr/rules/NOPE", headers=headers(CLIENT_A)).status_code == 404

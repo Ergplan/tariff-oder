@@ -4,10 +4,13 @@ tests, which check the real UPERC drafts in packages/arr-rules and their worked 
 from __future__ import annotations
 
 from decimal import Decimal
+from pathlib import Path
 
 import pytest
 
 from tariff_api.arr.rules import Q, Rule, RuleError, RuleSet, check_all, load_rules, parse
+
+ROOT_SCRIPTS = Path(__file__).resolve().parents[2] / "scripts"
 
 
 def rule(id, output, unit, formula, inputs, **kw) -> Rule:  # noqa: A002
@@ -271,3 +274,54 @@ def test_a_category_can_be_given_and_is_labelled_so():
     assert ev.by_category["Vehicles"]["dep"].status == "given"
     assert ev.by_category["Lines"]["dep"].status != "given"
     assert ev.results["total"].value == Decimal("6.18")
+
+
+def test_clause_candidates_propose_pages_and_never_verify(tmp_path):
+    """A regulation's pages ranked for a rule: the page printing the rule's words and its value
+    first; a page with the value but none of the words is never proposed.  The CLI writes
+    proposals with the PDF's hash; the rules stay unverified."""
+    import fitz
+
+    from tariff_api.arr.clauses import rank, terms
+
+    r = rule(
+        "css",
+        "css",
+        "INR_per_kWh",
+        "t * cap",
+        {
+            "t": {"unit": "INR_per_kWh", "source": "record:t"},
+            "cap": {"unit": "percent", "source": "regulation", "value": "20"},
+        },
+        title="Cross-subsidy surcharge, capped",
+    )
+    words, values = terms(r)
+    assert "surcharge" in words and "20%" in values and "20 per cent" in values
+    pages = [
+        "Definitions.  Surcharge means ...",
+        "The cross subsidy surcharge shall not exceed 20 % of the tariff applicable.",
+        "Interest at 20% per annum on arrears.",  # the value, none of the words
+    ]
+    got = rank(pages, r)
+    # page 2 states the value with the words; page 1 has one word only (weak — not proposed);
+    # page 3 has the value without the words (a bare number — never proposed)
+    assert [c.page for c in got] == [2] and got[0].values == ["20 %"]
+    assert "20 % of the tariff" in got[0].snippet
+    # the CLI end to end on a real PDF (made here), proposals only
+    import importlib.util
+    import json
+
+    pdf = tmp_path / "reg.pdf"
+    doc = fitz.open()
+    for t in pages:
+        doc.new_page().insert_text((72, 72), t)
+    doc.save(pdf)
+    spec = importlib.util.spec_from_file_location("cc", ROOT_SCRIPTS / "clause_candidates.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    out = mod.candidates(pdf, "UPERC", "Tariff Policy")
+    assert out["pages"] == 3 and len(out["sha256"]) == 64 and "none verified" in out["status"]
+    css = out["rules"]["uperc.oa.css"]
+    assert css and css[0]["page"] == 2
+    assert all(not x.clause.verified for x in load_rules("UPERC"))
+    json.dumps(out)

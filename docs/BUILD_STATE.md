@@ -1005,6 +1005,30 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 89 (2026-11-02): clause candidates — proposals for the reviewer, never
+  verification.**  The 160 draft rules wait on a person verifying each clause against the
+  regulation.  `tariff_api.arr.clauses` ranks a document's pages for a rule: each distinct
+  significant title word counts 1; each of the rule's regulation values printed on the page counts
+  5 ("20 %", "20%", "20 per cent").  A page needs a title word, and without a value it needs
+  three of them (all, for a shorter title): no proposal is better than noise.
+  `scripts/clause_candidates.py` reads a PDF's text (PyMuPDF; untrusted data, text only) and
+  writes `packages/arr-rules/<commission>/candidates/<label>.json`, recording the PDF's SHA-256
+  and what kind of document it is.  The subfolder is never read as rules.  The rules API and
+  page list up to three candidate pages per unverified rule, with snippets, marked "proposed, not
+  verified"; nothing sets `verified`.  **The official regulations could not be fetched from this
+  session:** uperc.org refuses the menu postback (403, its bot protection — not pursued) and India
+  Code timed out; third-party copies are no basis for verification.  So the tool was run on
+  **UPERC's FY2026-27 order for NPCL** (SHA-256 `ff36813e…`, as registered in increment 37),
+  labelled as an order that quotes the regulations.  **It finds the known answers: both RoE
+  rules → pp.151 and 204** (the pages identified by hand earlier; p.151 quotes "Regulation 22 of
+  the MYT Regulations, 2019" and 15 %).  Also the surcharge → p.320 (20 %), the bad-debt cap →
+  pp.102 / 157 (2 %), the 2025 R&M → pp.187–188 (5 %, 3 %), deposit interest → pp.147–149 and the
+  base-year O&M → p.184.  137 of 160 rules have candidates; 23 have none rather than noise.
+  **Next, for the operator:** download the official UPERC MYT Distribution Regulations 2025 and
+  the MYT Regulations 2019 and run
+  `uv run python scripts/clause_candidates.py --commission UPERC --pdf <file> --cites 2025 --label myt-2025`
+  (and `--cites 2019 --label myt-2019`); the reviewer then verifies with the pages in hand.
+
   **Increment 88 (2026-11-02): the true-up years' capitalisation by scheme.**  F16 for the years
   up to FY25 is bound with the capex rules: the schemes of FY2023-24 and FY2024-25, the latter
   each carried from F13.  **NPCL: 4 / 4 — 162.06 and 302.59, F14's capitalisation (row 11).**
@@ -2194,6 +2218,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 89 (2026-11-02): 435 passed** (+1 unit: pages ranked for a rule, the value-and-words page first, words alone or a bare number not proposed; the CLI on a PDF made in the test writes proposals with the hash and verifies nothing; the integration test checks the rules carry their candidates).  Ruff, format and web typecheck clean.
 - **Increment 88 (2026-11-02): 434 passed** (the end-to-end test checks the true-up capitalisation from its schemes, 4 / 4).  Ruff and format clean.
 - **Increment 87 (2026-11-01): 434 passed** (+1 integration: the draft queries are Markdown, labelled a draft, with the petitioner's questions by id and the Commission's points apart; unknown filing 404).  Ruff, format, contracts (regenerated) and web typecheck clean.
 - **Increment 86 (2026-11-01): 433 passed** (+1 unit: the distribution loss carried across formats, P1_DL differing in three years).  Ruff and format clean.
@@ -2473,7 +2498,9 @@ entries below are the per-increment history.**
   4. **Reviewer:** verify the rules' clauses against the UPERC MYT Regulations 2019 and 2025, and
      approve or amend each rule.  No rule can be approved by the build; until then nothing is
      `filing_ready`.
-  5. **Operator:** provide the Commission's list of mandatory formats (the UPERC MYT
+  5. **Operator:** download the official UPERC MYT Regulations (Distribution 2025; 2019) and run
+     `scripts/clause_candidates.py` on each (increment 89) — the reviewer verifies with the pages in hand.
+  5a. **Operator:** provide the Commission's list of mandatory formats (the UPERC MYT
      Regulations' appendix), so completeness is measured against it, not the petitioner's index.
   6. **Petitioner (through the operator):** answer the findings.  A39 asks for the working of
      the projection years' depreciation by class.
