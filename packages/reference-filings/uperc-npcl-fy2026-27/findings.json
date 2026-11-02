@@ -224,6 +224,31 @@
     "F31_Recievables column D"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A53",
+   "kind": "revenue against the rate schedule",
+   "title": "Urban domestic energy charges filed 1.8–1.9 % below units sold × the schedule's slab rates (Rs. 9.87 crore in FY2026-27)",
+   "detail": "Computed from the units sold (ESR-3 column F) and the energy rates of the order's Annexure-I (page 365: 5.50, 5.50, 6.00, 6.50 Rs/kWh), the four 'Domestic Other Metered' slabs give 110.7788, 43.4680, 98.5036 and 294.6805 crore; ESR-3 files 108.6854, 42.6614, 96.7187 and 289.4981 (ratios 0.9811, 0.9814, 0.9819, 0.9824), 9.8673 crore less in all.  The regulatory discount is a separate column (N), so it is not the cause.  The pattern is consistent with the 2 % discount on the 'RATE' for consumers with prepaid meters (Annexure-I, General Provisions 11(i), page 357) applied to about 88–95 % of each slab's sales — a reading, not a fact.  The other 40 slabs bound (rural domestic, LMV-2, LMV-4, LMV-5, LMV-6 with its time-of-day rates, LMV-11) reproduce exactly from the same schedule.  The petitioner should state the basis: the prepaid share by slab, or the other adjustment applied.  (The schedule read is FY2026-27's; ESR-3 is at the FY2025-26 tariff, whose order is not in this session — if a rate changed between the two, that, not the billing, would explain a difference; the exact matches elsewhere suggest it did not.)",
+   "where": [
+    "ESR_3 Curr Tariff FY27 rows 23–26 (F, K)",
+    "Tariff order FY2026-27 Annexure-I pp.357, 365",
+    "bindings/esr3-energy-from-rates-fy27.json",
+    "rate-schedule-fy2026-27.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A54",
+   "kind": "revenue against the rate schedule",
+   "title": "Registered societies (single-point bulk supply) filed at 6.3465 Rs/kWh against the schedule's 7.00 (Rs. 40.21 crore less in FY2026-27)",
+   "detail": "Units sold 615.3353 MU (ESR-3 F20) at the order's bulk-supply energy rate of Rs. 7.00/kWh (Annexure-I, page 363) give 430.7347 crore of energy charges; ESR-3 files 390.5230 (K20), 9.34 % less.  The order converts kWh rates to kVAh rates by the factor 0.90 for consumers billed in kVAh (Annexure-I, General Provisions 5, page 353), which gives Rs. 6.30/kVAh; the filed figure equals 6.30 × 1.0074 per kWh — consistent with kVAh billing if the kVAh sold exceed the kWh shown by 0.74 %, but ESR-3 shows kWh only, so that is a reading, not a fact.  The petitioner should state the kVAh sold to this category and the rate applied.",
+   "where": [
+    "ESR_3 Curr Tariff FY27 row 20 (F20, K20)",
+    "Tariff order FY2026-27 Annexure-I pp.353, 363",
+    "bindings/esr3-energy-from-rates-fy27.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

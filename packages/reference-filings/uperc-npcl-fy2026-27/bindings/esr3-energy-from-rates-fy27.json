@@ -1,0 +1,874 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ESR_3 Curr Tariff FY27",
+ "rates": "rate-schedule-fy2026-27.json",
+ "note": "Energy charges (column K) of ESR-3's slab rows computed from the units sold (column F) and the energy rate of the UPERC order's Annexure-I rate schedule, with its time-of-day percentages (LMV-6) and the rural rebate — each rate read with its page and quote (rate-schedule-fy2026-27.json), none typed here.  The order's schedule is FY2026-27's; ESR-3 is at the tariff in force when NPCL filed (FY2025-26), whose order is not in this session — a slab that matches shows the rate did not change; one that differs is for the reviewer and the petitioner (findings A53, A54).  Not bound: LMV-3 (the order prints one rate per local-body type and ESR-3 has one row — choosing a column would fit the answer), LMV-7 and LMV-9 (their implied rates exceed the schedule's: kVAh billing, not one rate), HV-1 to HV-4 (one row per supply voltage band, rates not yet read), and the fixed, minimum and other charges.",
+ "places": 4,
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR-3 energy from rates",
+   "categories": {
+    "LMV-1 rural lifeline (row 14)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F14",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.rural.lifeline"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K14"
+     }
+    },
+    "LMV-1 rural up to 100 (row 15)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F15",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.rural.upto100"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K15"
+     }
+    },
+    "LMV-1 rural 101-150 (row 16)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F16",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.rural.101_150"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K16"
+     }
+    },
+    "LMV-1 rural 151-300 (row 17)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F17",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.rural.151_300"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K17"
+     }
+    },
+    "LMV-1 rural above 300 (row 18)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F18",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.rural.above300"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K18"
+     }
+    },
+    "LMV-1 registered societies (bulk) (row 20)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F20",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.bulk"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K20"
+     }
+    },
+    "LMV-1 other metered lifeline (row 22)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F22",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.other.lifeline"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K22"
+     }
+    },
+    "LMV-1 other metered up to 100 (row 23)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F23",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.other.upto100"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K23"
+     }
+    },
+    "LMV-1 other metered 101-150 (row 24)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F24",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.other.101_150"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K24"
+     }
+    },
+    "LMV-1 other metered 151-300 (row 25)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F25",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.other.151_300"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K25"
+     }
+    },
+    "LMV-1 other metered above 300 (row 26)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F26",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv1.other.above300"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K26"
+     }
+    },
+    "LMV-2 rural metered (row 29)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F29",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv2.rural"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K29"
+     }
+    },
+    "LMV-2 up to 4 kW, up to 300 (row 33)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F33",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv2.upto4kw.upto300"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K33"
+     }
+    },
+    "LMV-2 up to 4 kW, above 300 (row 34)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F34",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv2.upto4kw.above300"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K34"
+     }
+    },
+    "LMV-2 above 4 kW, up to 1000 (row 35)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F35",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv2.above4kw.upto1000"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K35"
+     }
+    },
+    "LMV-2 above 4 kW, above 1000 (row 36)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F36",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv2.above4kw.above1000"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K36"
+     }
+    },
+    "LMV-4(A) public institutions (row 41)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F41",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv4.public"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K41"
+     }
+    },
+    "LMV-4(B) private institutions (row 42)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F42",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv4.private"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K42"
+     }
+    },
+    "LMV-5 rural metered (row 47)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F47",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv5.rural.metered"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K47"
+     }
+    },
+    "LMV-5 urban (other) metered (row 48)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F48",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv5.urban.metered"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K48"
+     }
+    },
+    "LMV-6 up to 20 kW summer TOD1 (07-16 h) (row 53)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F53",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.summer.07_16"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K53"
+     }
+    },
+    "LMV-6 up to 20 kW summer TOD2 (16-19 h) (row 54)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F54",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.summer.16_19"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K54"
+     }
+    },
+    "LMV-6 up to 20 kW summer TOD3 (19-02 h) (row 55)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F55",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.summer.19_02"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K55"
+     }
+    },
+    "LMV-6 up to 20 kW summer TOD4 (02-07 h) (row 56)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F56",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.summer.02_07"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K56"
+     }
+    },
+    "LMV-6 above 20 kW summer TOD1 (07-16 h) (row 58)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F58",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.summer.07_16"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K58"
+     }
+    },
+    "LMV-6 above 20 kW summer TOD2 (16-19 h) (row 59)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F59",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.summer.16_19"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K59"
+     }
+    },
+    "LMV-6 above 20 kW summer TOD3 (19-02 h) (row 60)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F60",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.summer.19_02"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K60"
+     }
+    },
+    "LMV-6 above 20 kW summer TOD4 (02-07 h) (row 61)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F61",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.summer.02_07"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K61"
+     }
+    },
+    "LMV-6 up to 20 kW winter TOD1 (10-17 h) (row 63)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F63",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.10_17"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K63"
+     }
+    },
+    "LMV-6 up to 20 kW winter TOD2 (17-19 h) (row 64)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F64",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.17_19"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K64"
+     }
+    },
+    "LMV-6 up to 20 kW winter TOD3 (19-22 h) (row 65)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F65",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.19_22"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K65"
+     }
+    },
+    "LMV-6 up to 20 kW winter TOD4 (22-04 h) (row 66)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F66",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.22_04"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K66"
+     }
+    },
+    "LMV-6 up to 20 kW winter TOD5 (04-06 h) (row 67)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F67",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.04_06"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K67"
+     }
+    },
+    "LMV-6 up to 20 kW winter TOD6 (06-10 h) (row 68)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F68",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.06_10"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K68"
+     }
+    },
+    "LMV-6 above 20 kW winter TOD1 (10-17 h) (row 70)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F70",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.10_17"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K70"
+     }
+    },
+    "LMV-6 above 20 kW winter TOD2 (17-19 h) (row 71)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F71",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.17_19"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K71"
+     }
+    },
+    "LMV-6 above 20 kW winter TOD3 (19-22 h) (row 72)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F72",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.19_22"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K72"
+     }
+    },
+    "LMV-6 above 20 kW winter TOD4 (22-04 h) (row 73)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F73",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.22_04"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K73"
+     }
+    },
+    "LMV-6 above 20 kW winter TOD5 (04-06 h) (row 74)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F74",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.04_06"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K74"
+     }
+    },
+    "LMV-6 above 20 kW winter TOD6 (06-10 h) (row 75)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F75",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.tod.winter.06_10"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K75"
+     }
+    },
+    "LMV-6 rural schedule (row 76)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F76",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv6.base"
+      },
+      "order:energy_adjustment": {
+       "rate": "lmv6.rural.rebate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K76"
+     }
+    },
+    "LMV-11 multi-storey (LT) (row 85)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F85",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv11.mb.lt"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K85"
+     }
+    },
+    "LMV-11 multi-storey (HT) (row 86)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F86",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv11.mb.ht"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K86"
+     }
+    },
+    "LMV-11 charging station (LT) (row 87)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F87",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv11.pcs.lt"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K87"
+     }
+    },
+    "LMV-11 charging station (HT) (row 88)": {
+     "inputs": {
+      "record:units_sold": {
+       "cell": "F88",
+       "unit": "MU",
+       "blank_is_zero": "a slab with no sales is printed blank"
+      },
+      "order:energy_rate": {
+       "rate": "lmv11.pcs.ht"
+      },
+      "order:energy_adjustment": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the order prints no time-of-day percentage or rebate on this slab's rate"
+      }
+     },
+     "checks": {
+      "revenue_energy_from_rate": "K88"
+     }
+    }
+   }
+  }
+ ]
+}

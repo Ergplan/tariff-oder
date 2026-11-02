@@ -839,3 +839,86 @@ def test_npcl_distribution_loss_carried_across_formats():
     checks = reproduce_cells(wb, b, load_rules("UPERC"))
     assert all(c.result == "match" for c in checks if "ARR!" in c.category)
     assert {c.fiscal_year for c in checks if c.result == "differs"} == {"FY2024-25", "FY2025-26", "FY2026-27"}
+
+
+def _rate_record(**rates):
+    return {"document": {"sha256": "0" * 64}, "rates": rates}
+
+
+def _rate(value, quote, unit="INR_per_kWh", page=1):
+    return {"value": value, "unit": unit, "page": page, "quote": quote, "what": "a synthetic slab"}
+
+
+def test_a_rate_record_refuses_a_figure_that_is_not_in_its_quote():
+    """A rate is read with its page and the text it was read from; a figure that is not in that
+    text could only have been typed, so the record is refused — as is a rate with no page, or a
+    record that does not name its document."""
+    import pytest
+
+    from tariff_api.arr.reproduce import load_rate_record
+    from tariff_api.arr.rules import RuleError
+
+    ok = _rate_record(base=_rate("7.30", "BASE RATE Rs. 7.30 / kWh"), off=_rate("-15", "(-) 15%", "percent"))
+    assert load_rate_record(ok) == {"base": ("7.30", "INR_per_kWh"), "off": ("-15", "percent")}
+    with pytest.raises(RuleError, match="not in its quote"):
+        load_rate_record(_rate_record(base=_rate("7.40", "BASE RATE Rs. 7.30 / kWh")))
+    with pytest.raises(RuleError, match="not in its quote"):  # 7.3 inside 17.30 is not the figure
+        load_rate_record(_rate_record(base=_rate("7.3", "Rs. 17.30 / kWh")))
+    with pytest.raises(RuleError, match="missing page"):
+        load_rate_record(_rate_record(base={"value": "7.30", "unit": "INR_per_kWh", "quote": "7.30", "what": "x"}))
+    with pytest.raises(RuleError, match="SHA-256"):
+        load_rate_record({"document": {}, "rates": {}})
+
+
+def test_cells_take_a_rate_from_the_record_with_its_time_of_day_percentage():
+    """Energy charges from units and the order's rate: 10 MU at 7.30 Rs/kWh less 15 % is 6.205
+    crore.  A rate the record does not have is an error, never a blank or a zero."""
+    import openpyxl
+    import pytest
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import RuleError, load_rules
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "S"
+    ws["F1"], ws["K1"], ws["K2"] = 10.0, 6.205, 7.0
+    rates = {"base": ("7.30", "INR_per_kWh"), "off": ("-15", "percent")}
+    cat = {
+        "inputs": {
+            "record:units_sold": ["F1", "MU"],
+            "order:energy_rate": {"rate": "base"},
+            "order:energy_adjustment": {"rate": "off"},
+        },
+        "checks": {"revenue_energy_from_rate": ["K1", "K2"]},
+    }
+    binding = {"sheet": "S", "places": 4, "evaluations": [{"fiscal_year": "FY2026-27", "categories": {"slot": cat}}]}
+    got = [(c.category, c.result, c.computed) for c in reproduce_cells(wb, binding, load_rules("UPERC"), rates=rates)]
+    assert got == [("slot K1", "match", "6.2050"), ("slot K2", "differs", "6.2050")]
+    with pytest.raises(RuleError, match="not in the rate record"):
+        reproduce_cells(wb, binding, load_rules("UPERC"), rates={"base": rates["base"]})
+
+
+def test_npcl_esr3_energy_charges_from_the_orders_rate_schedule():
+    """Real data: 45 slab rows of ESR-3 (FY2026-27, current tariff) computed from the units sold
+    and the rates of the UPERC order's Annexure-I, each read with its page and quote.  40 match
+    to the paisa-crore (4 places), the LMV-6 time-of-day slots and the rural rebate included;
+    the four urban domestic slabs (A53) and the registered societies (A54) differ — findings for
+    the petitioner, not fitted away."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_rate_record, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "esr3-energy-from-rates-fy27.json").read_text())
+    record = json.loads((folder / binding["rates"]).read_text())
+    rates = load_rate_record(record)
+    assert len(rates) == 36 and record["document"]["sha256"].startswith("ff36813e")
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rates)
+    assert len(checks) == 45
+    differs = sorted(c.category.rsplit(" ", 1)[-1] for c in checks if c.result != "match")
+    assert differs == ["K20", "K23", "K24", "K25", "K26"]
+    k20 = next(c for c in checks if c.category.endswith("K20"))
+    assert (k20.filed, k20.computed) == ("390.5230", "430.7347")

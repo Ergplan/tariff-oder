@@ -433,6 +433,60 @@
    },
    "examples": [],
    "line_code": "R.TARIFF_REVISION"
+  },
+  {
+   "id": "uperc.revenue.energy_from_rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy charges of a slab from its units sold and the tariff order's energy rate",
+   "output": "revenue_energy_from_rate",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "units * rate * (1 + adjustment)",
+   "inputs": {
+    "units": {
+     "unit": "MU",
+     "source": "record:units_sold"
+    },
+    "rate": {
+     "unit": "INR_per_kWh",
+     "source": "order:energy_rate"
+    },
+    "adjustment": {
+     "unit": "fraction",
+     "source": "order:energy_adjustment",
+     "note": "the order's time-of-day percentage or rebate on the rate (negative for a reduction); 0 where none applies"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff order, Annexure-I Rate Schedule — energy charge per kWh by category and slab, time-of-day percentages and rebates on the rate",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "units": "21.506272700408",
+      "rate": "3.35",
+      "adjustment": "0"
+     },
+     "expected": "7.2046",
+     "source": "NPCL FY2026-27 petition, ESR_3 Curr Tariff FY27 row 15 (F15 units, K15 energy revenue); the rate from the order's Annexure-I, page 362"
+    }
+   ],
+   "per": "consumer_category",
+   "note": "the rate is the order's, read with its page and quote into the filing's rate record (never typed into a binding); the figure is energy charges only — fixed, minimum and other charges and the regulatory discount are separate columns of ESR-3"
   }
  ]
 }

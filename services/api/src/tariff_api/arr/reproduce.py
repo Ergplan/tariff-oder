@@ -491,8 +491,38 @@ def _stored(value: Any) -> Decimal | None:
     return None
 
 
+RATE_KEYS = {"value", "unit", "page", "quote", "what"}
+
+
+def load_rate_record(record: dict[str, Any]) -> dict[str, tuple[str, str]]:
+    """A commission order's rates as read for a filing (``{"document": {"sha256": …}, "rates":
+    {key: {"value", "unit", "page", "quote", "what"}}}``): key → (value, unit).  Each rate must
+    carry the page it is printed on and the text it was read from, and the figure must be in that
+    text — a value that is not in its quote is refused, so no rate can be typed in.  Reading a rate
+    is not verifying it: the record says so, and a person verifies it against the page."""
+    if not (record.get("document") or {}).get("sha256"):
+        raise RuleError("a rate record names its document by SHA-256")
+    out: dict[str, tuple[str, str]] = {}
+    for key, r in (record.get("rates") or {}).items():
+        missing = RATE_KEYS - set(r)
+        if missing:
+            raise RuleError(f"rate {key}: missing {', '.join(sorted(missing))}")
+        if not isinstance(r["page"], int) or r["page"] < 1:
+            raise RuleError(f"rate {key}: page must be a page number")
+        figure = str(r["value"]).lstrip("-")
+        Decimal(figure)  # a number, or InvalidOperation
+        if not re.search(rf"(?<![\d.]){re.escape(figure)}(?![\d])", r["quote"]):
+            raise RuleError(f"rate {key}: {figure} is not in its quote")
+        out[key] = (str(r["value"]), r["unit"])
+    return out
+
+
 def reproduce_cells(
-    wb: Any, binding: dict[str, Any], rules: list[Rule], others: dict[str, Any] | None = None
+    wb: Any,
+    binding: dict[str, Any],
+    rules: list[Rule],
+    others: dict[str, Any] | None = None,
+    rates: dict[str, tuple[str, str]] | None = None,
 ) -> list[BlockCheck]:
     """Workings laid out freely on a sheet (e.g. NPCL's base-year determination of employee and
     A&G expenses: five years' actuals, their average, the year-by-year escalation, the growth
@@ -505,7 +535,9 @@ def reproduce_cells(
     formula) or a cell declared blank-as-zero (``{"cell": …, "unit": …, "blank_is_zero": why}``);
     otherwise a blank input cell blocks the outputs that need it — never zero.  A reference
     ``"<name>::Sheet!A1"`` reads another workbook of the filing (``others``: name → workbook,
-    as the binding's ``workbooks`` names them) — a utility's record checked against the formats."""
+    as the binding's ``workbooks`` names them) — a utility's record checked against the formats.
+    An input may also be a commission order's rate (``{"rate": "lmv6.base"}``), from the rate
+    record the binding names (``rates``: see ``load_rate_record``) — never a figure typed here."""
     places = int(binding.get("places", 6))
     q = Decimal(1).scaleb(-places)
 
@@ -523,6 +555,11 @@ def reproduce_cells(
         values: dict[str, tuple[Decimal | str, str]] = {}
         for source, spec in inputs.items():
             if isinstance(spec, dict):
+                if "rate" in spec:
+                    if not rates or spec["rate"] not in rates:
+                        raise RuleError(f"{binding['sheet']}: rate {spec['rate']!r} is not in the rate record")
+                    values[source] = rates[spec["rate"]]
+                    continue
                 if "value" in spec:
                     if not spec.get("why"):
                         raise ValueError(f"{source}: a stated constant needs its reason")

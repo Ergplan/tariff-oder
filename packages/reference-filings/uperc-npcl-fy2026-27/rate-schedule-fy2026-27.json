@@ -1,0 +1,264 @@
+{
+ "status": "read from the order's text layer by pattern, each quote verbatim (whitespace-normalised) from its page — not reviewed; a rate is verified only by a person reading the page",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025: ARR and tariff FY 2026-27, APR FY 2025-26, true-up FY 2024-25 (2 July 2026), Annexure-I: Rate Schedule for FY 2026-27 (applicable for NPCL)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "applies": "FY2026-27 (the order's approved schedule).  The petition's ESR-3 is at the tariff in force when it was filed (FY2025-26), whose order is not in this session: a rate here equal to the rate the petition's figures imply shows the schedule did not change for that slab — it is not the petition's source.",
+ "sign": "a percent with a minus sign is a reduction (the order prints it as (-)); a ToD 0% is printed as 0% or 0",
+ "rates": {
+  "lmv1.rural.lifeline": {
+   "value": "3.00",
+   "unit": "INR_per_kWh",
+   "page": 362,
+   "quote": "up to 100 kWh / month Rs. 50.00 / kW / month Rs. 3.00/ kWh",
+   "what": "LMV-1, Rural Schedule, lifeline (load of 1 kW, up to 100 kWh/month): energy charge"
+  },
+  "lmv1.rural.upto100": {
+   "value": "3.35",
+   "unit": "INR_per_kWh",
+   "page": 362,
+   "quote": "Metered Up to 100 kWh / month Rs. 90.00/ kW / month Rs. 3.35 / kWh",
+   "what": "LMV-1, Rural Schedule, others, metered, up to 100 kWh/month"
+  },
+  "lmv1.rural.101_150": {
+   "value": "3.85",
+   "unit": "INR_per_kWh",
+   "page": 363,
+   "quote": "101 - 150 kWh / month Rs. 3.85 / kWh",
+   "what": "LMV-1, Rural Schedule, others, 101-150 kWh/month"
+  },
+  "lmv1.rural.151_300": {
+   "value": "5.00",
+   "unit": "INR_per_kWh",
+   "page": 363,
+   "quote": "151 – 300 kWh / month Rs. 5.00 / kWh",
+   "what": "LMV-1, Rural Schedule, others, 151-300 kWh/month"
+  },
+  "lmv1.rural.above300": {
+   "value": "5.50",
+   "unit": "INR_per_kWh",
+   "page": 363,
+   "quote": "Above 300 kWh / month Rs. 5.50 / kWh",
+   "what": "LMV-1, Rural Schedule, others, above 300 kWh/month"
+  },
+  "lmv1.bulk": {
+   "value": "7.00",
+   "unit": "INR_per_kWh",
+   "page": 363,
+   "quote": "Rs. 110.00 / kW / Month Rs. 7.00 / kWh",
+   "what": "LMV-1, supply at single point for bulk loads (registered societies, townships, 50 kW and above)"
+  },
+  "lmv1.other.lifeline": {
+   "value": "3.00",
+   "unit": "INR_per_kWh",
+   "page": 365,
+   "quote": "up to 100 kWh / month Rs. 50.00 / kW / month Rs. 3.00 / kWh",
+   "what": "LMV-1, Other Metered Domestic, lifeline (load of 1 kW, up to 100 kWh/month)"
+  },
+  "lmv1.other.upto100": {
+   "value": "5.50",
+   "unit": "INR_per_kWh",
+   "page": 365,
+   "quote": "Metered Up to 100 kWh / month Rs. 110.00/ kW / month Rs. 5.50 / kWh",
+   "what": "LMV-1, Other Metered Domestic, others, up to 100 kWh/month"
+  },
+  "lmv1.other.101_150": {
+   "value": "5.50",
+   "unit": "INR_per_kWh",
+   "page": 365,
+   "quote": "101 - 150 kWh / month Rs. 5.50 / kWh",
+   "what": "LMV-1, Other Metered Domestic, others, 101-150 kWh/month"
+  },
+  "lmv1.other.151_300": {
+   "value": "6.00",
+   "unit": "INR_per_kWh",
+   "page": 365,
+   "quote": "151 – 300 kWh / month Rs. 6.00 / kWh",
+   "what": "LMV-1, Other Metered Domestic, others, 151-300 kWh/month"
+  },
+  "lmv1.other.above300": {
+   "value": "6.50",
+   "unit": "INR_per_kWh",
+   "page": 365,
+   "quote": "Above 300 kWh / month Rs. 6.50 / kWh",
+   "what": "LMV-1, Other Metered Domestic, others, above 300 kWh/month"
+  },
+  "lmv2.rural": {
+   "value": "5.50",
+   "unit": "INR_per_kWh",
+   "page": 367,
+   "quote": "Metered Rs. 110.00 / kW / month Rs. 5.50 / kWh",
+   "what": "LMV-2, Rural Schedule, metered"
+  },
+  "lmv2.upto4kw.upto300": {
+   "value": "7.50",
+   "unit": "INR_per_kWh",
+   "page": 368,
+   "quote": "Up to 300 kWh / month Rs. 7.50 / kWh",
+   "what": "LMV-2, other cases, load up to 4 kW, up to 300 kWh/month"
+  },
+  "lmv2.upto4kw.above300": {
+   "value": "8.40",
+   "unit": "INR_per_kWh",
+   "page": 368,
+   "quote": "Above 300 kWh / month Rs. 8.40 / kWh",
+   "what": "LMV-2, other cases, load up to 4 kW, above 300 kWh/month"
+  },
+  "lmv2.above4kw.upto1000": {
+   "value": "7.50",
+   "unit": "INR_per_kWh",
+   "page": 368,
+   "quote": "Up to 1000 kWh / month Rs. 7.50 / kWh",
+   "what": "LMV-2, other cases, load above 4 kW, up to 1000 kWh/month"
+  },
+  "lmv2.above4kw.above1000": {
+   "value": "8.75",
+   "unit": "INR_per_kWh",
+   "page": 368,
+   "quote": "Above 1000 kWh / month Rs. 8.75 / kWh",
+   "what": "LMV-2, other cases, load above 4 kW, above 1000 kWh/month"
+  },
+  "lmv4.public": {
+   "value": "8.25",
+   "unit": "INR_per_kWh",
+   "page": 371,
+   "quote": "(A) Public Institutions Rs. 300.00 / kW / month Rs. 8.25 / kWh",
+   "what": "LMV-4(A), public institutions"
+  },
+  "lmv4.private": {
+   "value": "9.00",
+   "unit": "INR_per_kWh",
+   "page": 371,
+   "quote": "(B) Private Institutions Rs. 350.00 / kW / month Rs. 9.00 / kWh",
+   "what": "LMV-4(B), private institutions"
+  },
+  "lmv5.rural.metered": {
+   "value": "2.00",
+   "unit": "INR_per_kWh",
+   "page": 373,
+   "quote": "Metered Rs. 70.00 / BHP / month Rs. 160.00 / BHP / month Rs. 2.00 / kWh",
+   "what": "LMV-5, Rural Schedule, (ii) metered supply"
+  },
+  "lmv5.urban.metered": {
+   "value": "6.00",
+   "unit": "INR_per_kWh",
+   "page": 373,
+   "quote": "Metered Rs. 130.00 / BHP / month Rs. 215.00 / BHP / month Rs. 6.00 / kWh",
+   "what": "LMV-5, Urban Schedule (metered supply)"
+  },
+  "lmv6.base": {
+   "value": "7.30",
+   "unit": "INR_per_kWh",
+   "page": 374,
+   "quote": "BASE RATE Rs. 290.00 / kW / month Rs. 7.30 / kWh",
+   "what": "LMV-6, other than Rural Schedule: base rate of energy"
+  },
+  "lmv6.tod.summer.19_02": {
+   "value": "15",
+   "unit": "percent",
+   "page": 374,
+   "quote": "19:00 hrs – 02:00 hrs (+) 15%",
+   "what": "LMV-6 ToD, summer (April-September), 19:00-02:00"
+  },
+  "lmv6.tod.summer.02_07": {
+   "value": "0",
+   "unit": "percent",
+   "page": 374,
+   "quote": "02:00 hrs – 07:00 hrs 0%",
+   "what": "LMV-6 ToD, summer, 02:00-07:00"
+  },
+  "lmv6.tod.summer.07_16": {
+   "value": "-15",
+   "unit": "percent",
+   "page": 374,
+   "quote": "07:00 hrs – 16:00 hrs (-) 15%",
+   "what": "LMV-6 ToD, summer, 07:00-16:00 (a reduction)"
+  },
+  "lmv6.tod.summer.16_19": {
+   "value": "0",
+   "unit": "percent",
+   "page": 374,
+   "quote": "16:00 hrs – 19:00 hrs 0%",
+   "what": "LMV-6 ToD, summer, 16:00-19:00"
+  },
+  "lmv6.tod.winter.22_04": {
+   "value": "-15",
+   "unit": "percent",
+   "page": 374,
+   "quote": "22:00 hrs – 04:00 hrs (-) 15%",
+   "what": "LMV-6 ToD, winter (October-March), 22:00-04:00 (a reduction)"
+  },
+  "lmv6.tod.winter.04_06": {
+   "value": "0",
+   "unit": "percent",
+   "page": 374,
+   "quote": "04:00 hrs – 06:00 hrs 0",
+   "what": "LMV-6 ToD, winter, 04:00-06:00"
+  },
+  "lmv6.tod.winter.06_10": {
+   "value": "15",
+   "unit": "percent",
+   "page": 374,
+   "quote": "06:00 hrs – 10:00 hrs (+) 15%",
+   "what": "LMV-6 ToD, winter, 06:00-10:00"
+  },
+  "lmv6.tod.winter.10_17": {
+   "value": "0",
+   "unit": "percent",
+   "page": 374,
+   "quote": "10:00 hrs – 17:00 hrs 0",
+   "what": "LMV-6 ToD, winter, 10:00-17:00"
+  },
+  "lmv6.tod.winter.17_19": {
+   "value": "15",
+   "unit": "percent",
+   "page": 375,
+   "quote": "17:00 hrs – 19:00 hrs (+) 15%",
+   "what": "LMV-6 ToD, winter, 17:00-19:00"
+  },
+  "lmv6.tod.winter.19_22": {
+   "value": "0",
+   "unit": "percent",
+   "page": 375,
+   "quote": "19:00 hrs – 22:00 hrs 0",
+   "what": "LMV-6 ToD, winter, 19:00-22:00"
+  },
+  "lmv6.rural.rebate": {
+   "value": "-7.5",
+   "unit": "percent",
+   "page": 375,
+   "quote": "entitled to a rebate of 7.5% on ‘BASE RATE",
+   "what": "LMV-6, Rural Schedule: rebate on the base rate, no ToD (a reduction)"
+  },
+  "lmv11.mb.lt": {
+   "value": "6.20",
+   "unit": "INR_per_kWh",
+   "page": 381,
+   "quote": "Multi storeys Buildings (LT) - Rs. 6.20 / kWh",
+   "what": "LMV-11, multi-storey buildings (LT)"
+  },
+  "lmv11.mb.ht": {
+   "value": "5.90",
+   "unit": "INR_per_kWh",
+   "page": 381,
+   "quote": "Multi storeys Buildings (HT) - Rs. 5.90/ kWh",
+   "what": "LMV-11, multi-storey buildings (HT)"
+  },
+  "lmv11.pcs.lt": {
+   "value": "7.70",
+   "unit": "INR_per_kWh",
+   "page": 381,
+   "quote": "EV Charging Station (LT) - Rs. 7.70 / kWh",
+   "what": "LMV-11, public charging station (LT)"
+  },
+  "lmv11.pcs.ht": {
+   "value": "7.30",
+   "unit": "INR_per_kWh",
+   "page": 381,
+   "quote": "EV Charging Station (HT) - Rs. 7.30 / kWh",
+   "what": "LMV-11, public charging station (HT)"
+  }
+ }
+}

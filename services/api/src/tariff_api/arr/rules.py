@@ -218,7 +218,9 @@ class InputSpec(BaseModel):
     """Where an input comes from.  ``source`` is ``fact:<LINE>`` (a reviewed fact),
     ``record:<name>`` (a utility record), ``assumption:<name>`` (the petitioner's, with its
     source), ``rule:<output>`` (another rule this year), ``prior:<output>`` (that output last
-    year), or ``regulation`` — a parameter the clause itself fixes, whose ``value`` is then given
+    year), ``order:<name>`` (a figure printed in a commission's order — a rate of its schedule —
+    read with its page and quote into the filing's rate record, unverified until a person reads the
+    page), or ``regulation`` — a parameter the clause itself fixes, whose ``value`` is then given
     here and cited by the rule's clause."""
 
     model_config = ConfigDict(extra="forbid")

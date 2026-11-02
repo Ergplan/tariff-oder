@@ -1005,6 +1005,40 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 91 (2026-11-02): revenue from the tariff order's rates.**  ESR-3's energy
+  charges were summed as filed; now each slab's charges are also computed from its units sold and
+  the energy rate of the UPERC order's Annexure-I rate schedule.  The order (NPCL's FY2026-27 order
+  of 2 July 2026, the golden manifest's NPCL document, SHA-256 `ff36813e…4b1a`) is read for **36
+  rates and percentages** (pp.362–381: LMV-1 rural and urban slabs and bulk supply, LMV-2, LMV-4,
+  LMV-5, the LMV-6 base rate with its summer and winter time-of-day percentages and the rural
+  rebate, LMV-11).  Each rate is a quote taken from the page's text by a pattern, never typed, in
+  `packages/reference-filings/uperc-npcl-fy2026-27/rate-schedule-fy2026-27.json`.
+  - **Engine:** `load_rate_record` refuses a rate whose figure is not in its quote, a rate with no
+    page, and a record that does not name its document by hash.  `reproduce_cells` takes an input
+    `{"rate": key}` from the record the binding names, and a key the record lacks is an error.
+    Rules may use an `order:<name>` source.  New draft rule `uperc.revenue.energy_from_rate`:
+    units × rate × (1 + adjustment), with a worked example from ESR-3 row 15.
+  - **`scripts/check_order_quotes.py`** re-finds every quote on its page in the PDF named by
+    hash: **36 / 36 found** on the order.  That shows the figures are printed where the record
+    says; it does not show each is the right rate for its row, which the reviewer checks.
+  - **Result (binding `esr3-energy-from-rates-fy27.json`): 40 of 45 slab rows match to four
+    places**, the 20 LMV-6 time-of-day slots and the rural rebate included.  The order's schedule
+    is FY2026-27's, while ESR-3 is at the FY2025-26 tariff, whose order is not in this session.
+    So a match shows the slab's rate did not change; it does not prove the petition's source.
+  - **Five rows differ, both findings for the petitioner:**
+    - **A53:** the four urban domestic slabs are filed 1.8–1.9 % below rate × units (9.87
+      crore).  This is consistent with the 2 % prepaid-meter discount (p.357) on most of the
+      sales.
+    - **A54:** the registered societies (bulk) are filed at 6.3465 Rs/kWh against 7.00 (40.21
+      crore less).  This is consistent with kVAh billing at 0.90 × the kWh rate (p.353).
+    Both are readings, not facts; the petitioner states the basis.
+  - **Not bound, with the reason in the binding:**
+    - LMV-3: one rate per local-body type, one ESR-3 row; choosing a column would fit the answer.
+    - LMV-7 and LMV-9: the implied rates exceed the schedule's.
+    - The HV categories: one row per voltage band, rates not yet read.
+    - Fixed, minimum and other charges.
+  Nothing verified, nothing approved.
+
   **Increment 90 (2026-11-02): the notified MYT Distribution Regulations 2025, read for
   clause candidates.**  The operator uploaded `NotifiedMYTDistribution2025.rar` (SHA-256
   `547d1e17…062c`).  It is a RAR5 archive: Debian's 7-Zip lacks the codec, so it was extracted
@@ -2243,6 +2277,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 91 (2026-11-02): 439 passed** (+3 unit: a rate record refuses a figure not in its quote, a rate with no page and a record with no hash; a cell takes the order's rate with its time-of-day percentage, and a rate the record lacks is an error; the real ESR-3 from the order's schedule — 40 / 45 match, the five differing rows are A53 and A54).  `scripts/check_order_quotes.py` on the real order: 36 / 36 quotes on their pages.  Ruff, format and contracts clean.
 - **Increment 90 (2026-11-02): 436 passed** (+1 unit: the real 2025 Regulations — hash as in the manifest; RoE → p.31 with 15 %, R&M → p.43, bad debts → p.45, surcharge → p.48; a 2019-only rule not offered the 2025 text; nothing verified).  Ruff and format clean.
 - **Increment 89 (2026-11-02): 435 passed** (+1 unit: pages ranked for a rule, the value-and-words page first, words alone or a bare number not proposed; the CLI on a PDF made in the test writes proposals with the hash and verifies nothing; the integration test checks the rules carry their candidates).  Ruff, format and web typecheck clean.
 - **Increment 88 (2026-11-02): 434 passed** (the end-to-end test checks the true-up capitalisation from its schemes, 4 / 4).  Ruff and format clean.
@@ -2466,7 +2501,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 87) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 91) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2512,7 +2547,7 @@ entries below are the per-increment history.**
   - **Formats accounted, against the filing's index:** 38 reproduced, 9 read, 24 present, 2
     blank, 1 missing.
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
-  - **18 findings (A29–A50):** 11 for the petitioner, collected in the draft queries; 7 for the
+  - **22 findings (A29–A54):** 13 for the petitioner, collected in the draft queries; 9 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 
@@ -2533,8 +2568,11 @@ entries below are the per-increment history.**
      the projection years' depreciation by class.
 
   **Engineering next, smallest first:**
-  - reading the tariff order's rate schedule, so revenue is computed from rates, not only
-    summed;
+  - the rest of revenue from the rate schedule.  Increment 91 computed energy charges for 45 LT
+    slabs from the order's rates (40 match).  Still to do:
+    - read the HV-1 to HV-4 rates by voltage band and the fixed and minimum charges;
+    - settle LMV-3's local-body column with the reviewer;
+    - read the FY2025-26 order (the tariff ESR-3 is at), when the operator provides it;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this
