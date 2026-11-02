@@ -1005,6 +1005,145 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  *Docs defect found and fixed in increment 87:* the narrative entries of increments 76–86 had
+  not been written.  Increment 76's script anchored on increment 75's heading with a wrong word,
+  the replacement silently did nothing, and each later entry anchored on the one before it.  The
+  test-result lines had landed.  They are restored above from the same text, and the docs
+  scripts now assert their anchors.
+
+  **Increment 87 (2026-11-01): draft queries to the petitioner.**  `GET
+  /arr/reference-filings/{id}/queries` (analyst and above) returns a Markdown draft of the
+  queries to the petitioner (the deficiency note the Commission's staff issue).  It is built from
+  the findings addressed to the petitioner, each numbered with its id, detail and where it is in
+  the filing.  The findings addressed to the reviewer are listed apart, as matters for the
+  Commission rather than questions.  It is labelled "DRAFT for the reviewer to edit and issue …
+  not reviewed, not issued"; nothing issues it.  The reference page links it from the findings
+  panel, through a web route carrying the caller's identity.  **NPCL: 11 questions to the
+  petitioner, 7 points for the Commission.**  Checked through the web route on the local stack.
+
+  **Increment 86 (2026-11-01): the distribution loss across formats.**  One draft identity: a
+  share carried from one format to another is the same (R-SCH-16).  It checks the Energy
+  Balance's loss against P1_DL's claimed column and the ARR's row 10 for the four petition
+  years.  **NPCL: the Energy Balance and the ARR agree every year.  P1_DL claims 7.45 %
+  (FY2025-26) and 7.42 % (FY2026-27), where the petition is computed at the Commission's 7.23 %
+  and 6.97 %; FY2024-25 differs in the sixth decimal** (A50, for the petitioner: which loss is
+  claimed).
+
+  **Increment 85 (2026-11-01): revenue at the proposed tariff.**  ESR4 is bound with the
+  revenue rules (236 match; slabs with no units have no rate).  One more draft rule: the tariff
+  revision impact (proposed less current), which is the ARR's row 55.  **NPCL proposes no
+  revision: ESR4 repeats ESR-3 FY27 row for row (3,192.04), and the impact is 0, as filed.**
+
+  **Increment 84 (2026-11-01): FY2023-24 power purchase.**  PPC FY 24, the earlier billed
+  layout without transmission columns, is bound as four row tables: sources, transmission,
+  earlier years' claims, and transmission of earlier years.  One more draft rule: net charges
+  total.  Row tables can declare an unlabelled row with its reason; it was otherwise skipped,
+  which would have dropped an amount NPCL's total includes.  **NPCL: every check matches —
+  power purchase 1,740.92, transmission 197.01, arrears 8.97, transmission arrears 0.35 and
+  energy at the bus 3,383.96 MU are the ARR's FY2023-24 rows 20, 23, 22, 24 and 8.**  Power
+  purchase is now reproduced in all four years.  **A49** (for the petitioner): hand adjustments
+  inside the claims' formulas (a −0.05; a computed carrying cost zeroed and replaced by 0.89;
+  amounts multiplied by 0) and an unlabelled 0.0743.
+
+  **Increment 83 (2026-11-01): the renewable purchase obligation.**  8 draft rules
+  (`rpo.v1.json`):
+  - consumption grossed up to the distribution periphery, less hydro;
+  - energy at the state and the distribution periphery through the transmission losses;
+  - the obligation (base × share) and each category's balance;
+  - the year's obligation, netted across categories, and the closing obligation after RECs.
+
+  **NPCL F6: 54 / 54 over FY2024-25 to FY2026-27.**  The losses NPCL types into its formulas
+  are declared as stated constants.  **A48** (for the reviewer): those losses are not the Energy
+  Balance's (FY2026-27 3.58 % / 3.18 % against 3.41 % / 3.35 %), and F6's sales differ from
+  ESR-3 by about 0.004 MU.  The categories are netted: a solar and non-solar surplus offsets a
+  hydro shortfall, and a net surplus is carried forward as a credit.  FY2025-26's REC purchase is
+  typed equal to its obligation.
+
+  **Increment 82 (2026-11-01): the wheeling / supply allocation and the cross-subsidy
+  surcharge.**  6 draft rules (`open-access.v1.json`, `allocation.v1.json`, R-SCH-15):
+  - a per-unit charge (a cost in Rs crore over energy in MU, in Rs/kWh by the units);
+  - the cost of supply at a voltage, C / ((1 − L1)(1 − L2)(1 − L3)) + D + R;
+  - the surcharge, T − cost of supply, capped at 20 % of T and never negative;
+  - the petitioner's proposal (the lower of the computed and its own figure);
+  - each ARR item's wheeling and supply allocation.
+
+  Row tables can skip named subtotal rows, with the reason.  **NPCL FY2026-27:**
+  - **F32: 34 / 34**;
+  - **F33: 48 / 48** — the distribution, transmission and wheeling charges per unit; the
+    average power-purchase cost; the cost of supply at five voltages; 14 category ABRs; the
+    capped surcharge (HV-1 at 11 kV 1.21 Rs/kWh; HV-2 below its cost of supply, so 0); and the
+    proposal.
+
+  One category with no sales has no ABR (blocked).  **A47** (for the reviewer): F32's summary
+  column double-counts interest (119.31).  Its allocation base adds the carrying cost (83.23),
+  omits provisions (3.00) and does not deduct other income (10.82) — the base the surcharge rests
+  on is the reviewer's call.
+
+  **Increment 81 (2026-11-01): revenue of FY2023-24, in the earlier layout.**  ESR-3 FY2023-24
+  bills in seven columns: fixed, energy, minimum, other charges, regulatory surcharge, total
+  minimum charges and regulatory discount.  Its eleven category subtotals subtract rows that are
+  blank in every column.  Two draft rules and one row table.  **NPCL: 194 match; revenue
+  2,320.97 and units 3,130.40 MU are the ARR's rows 15 and 9 (FY2023-24).**  44 rates of slabs
+  with no units are blocked, never 0.  Revenue is now reproduced in all four years.
+
+  **Increment 80 (2026-11-01): R&M and A&G of the true-up reconciled to the books.**  The
+  ledger binding takes a list of groupings, or several condition sets (an account in any counts
+  once).  **NPCL: the true-up's R&M (F22: 72.36) is five sub-groupings of Note 33** (R&M of the
+  T&D system and others, security, insurance, power and fuel; 25 accounts).  **Its A&G (F23:
+  40.91) is seven sub-groupings of Note 33 and the finance charges of Note 31** (44 accounts).
+  CSR expenditure (4.23) is in the books and not claimed.  The trial balance now agrees with
+  **11 of 13** true-up claims; employee benefits and net employee expenses differ, by exactly
+  0.0105 crore (A46).  My first R&M binding named a sub-grouping from a truncated printout and
+  found 11 accounts instead of 25; corrected from the ledger's own text before commit.
+
+  **Increment 79 (2026-11-01): the true-up reconciled to the books.**  Two of NPCL's own records,
+  hashed and checked against the manifest, are committed beside Annexure-21: **Annexure-14**
+  (power purchase reconciled with the audited accounts) and **Annexure-41** (the trial balance,
+  474 accounts).  The `cells` binding reads other workbooks of the filing (`name::Sheet!A1`).  A
+  new **`ledger`** binding sums trial-balance accounts by their own financial-statement grouping
+  (note, sub-grouping) through two draft identities (per account in rupees, the total in Rs crore
+  by the units) and compares the total with the claimed cell at its filed precision; it never
+  moves an account by resemblance.  **NPCL:**
+  - **Annexure-14:** its own bridge reproduces (2,471.54); against the claim (2,470.04) it differs
+    by 1.50 — the FY2023-24 carrying cost, 12.88 against 11.37 (**A44**).
+  - **Trial balance: 9 of 11 agree to the paisa of a crore**; employee benefits differ by exactly
+    0.0105 crore (**A46**).
+
+  **BS1, the format's "profit and loss account", is formulas over the ARR format, not the audited
+  accounts (A45):** it is circular as evidence.
+
+  **Increment 78 (2026-11-01): average cost of supply and billing rate.**  Two draft rules
+  (R-SCH-14): ACoS (net ARR / sales) and ABR (revenue / sales), in Rs/kWh by the units.  Checked
+  on the three snapshots.  **NPCL: 8 / 8 — FY2026-27 ACoS 7.9135 against ABR 7.2549 Rs/kWh.**
+  The snapshots' "Approved in Tariff Order" column is blank for the ARR year and typed 0 for the
+  true-up year's ABR and ACoS.
+
+  **Increment 77 (2026-11-01): every format accounted for (R-ACC-3), against the filing's own
+  index.**  Each of the 74 formats the workbook's `Index` lists is reproduced, read, present,
+  blank or missing; sheets not in the index are listed.  Names match exactly or through declared
+  aliases with reasons (`formats-index.json`), never by resemblance.  Served by the API; panel
+  06 of the reference page.  **NPCL at the time: 27 reproduced, 10 read, 34 present, 2 blank (ESR6,
+  F10), 1 missing (ESR7); F19A filed but not indexed** (A43).  A proxy until the Commission's
+  mandatory list is provided.  Also **A42**: revenue at the current tariff cannot be computed from
+  the rate schedule in force (rural slabs match it exactly, urban domestic imply 1.8–1.9 % less).
+
+  **Increment 76 (2026-11-01): independent sign-off (R-ACC-2), the mechanism — nobody has
+  signed.**  Migration **0021** adds `acceptance_records`, an append-only record of a named
+  checker's sign-off.  Each record holds:
+  - a scope: the whole filing, one petition column, or the treatment of one finding;
+  - a decision: accepted, accepted with reservations or rejected — a reason is required for
+    anything short of acceptance, enforced in the API and by a database constraint;
+  - the checker's attestation that they did not build the reproduction (a constraint);
+  - the SHA-256 of the `reproduction.json` they were shown.
+
+  The POST (reviewer or above, audited) refuses a stale hash (409); the GET lists every record,
+  current or stale, the latest per scope and the scopes still open.  A changed reproduction makes
+  earlier sign-offs stale; they are never carried forward.  The reference page's sign-off panel
+  (now 07) shows the records and, for a reviewer, the form (scope, note, attestation; buttons
+  disabled until it is ticked; the hash being signed shown).  **NPCL: nothing signed.**  The build
+  signed nothing on any stack; only the integration test's synthetic reviewer signs, in the
+  throwaway test database.
+
   **Increment 75 (2026-11-01): capitalisation of the APR and ARR years from the capital plan.**
   4 draft rules (`capex.v1.json`):
   - each scheme's capitalisation (per scheme) and their total;
@@ -2269,7 +2408,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-01, after increment 71) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-02, after increment 87) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -2301,18 +2440,27 @@ entries below are the per-increment history.**
   each as a real source with its licensees, waits for parsing and starts its ARR reading; it is
   idempotent and skips a website that does not answer.  Tested on this session's stack (HPERC,
   MPERC ×2: found by hash, readings already proposed).
-- *Milestone 13 (proposed, ADR-0021) — where it stands after increment 71:* one commission,
+- *Milestone 13 (proposed, ADR-0021) — where it stands after increment 87:* one commission,
   one licensee, one historical filing reproduced and independently signed off — **UPERC / NPCL,
   ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
   `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
-  held by the operator).  ~150 draft UPERC rules reproduce the filed formats.  For the
-  petition's columns, `/arr/reference/uperc-npcl-fy2026-27` (panel 01) shows how each ARR
-  figure is established.  FY2026-27 projected: 15 computed and 13 tied to their schedules,
-  none differs; 16 still records (increment 72).  **End to end (increment 73):** the chain fed by the schedules reproduces the ARR and APR years 12 / 12 (net ARR 3,481.83 and 3,200.63).  Findings A29–A41 are for the petitioner and the reviewer.
+  held by the operator).  **160 draft UPERC rules** in 23 files reproduce the filed formats.
+  `/arr/reference/uperc-npcl-fy2026-27` shows the following:
+  - **End to end from the schedules:** the ARR and APR years are 12 / 12 (net ARR 3,481.83 and
+    3,200.63).  The true-up year differs by exactly A40's 0.19.
+  - **How each ARR figure is established:** FY2026-27 is 17 computed, 15 tied, 14 records, none
+    differing.
+  - **Formats accounted, against the filing's index:** 38 reproduced, 9 read, 24 present, 2
+    blank, 1 missing.
+  - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
+  - **18 findings (A29–A50):** 11 for the petitioner, collected in the draft queries; 7 for the
+    reviewer.
+  - **The sign-off panel:** nothing signed.
+
   **Blocked on people:**
   1. **Operator:** approve or amend the requirements and scope decision S-1.
-  2. **Operator:** name the independent checker, who signs off in panel 06 of the reference page
+  2. **Operator:** name the independent checker, who signs off in panel 07 of the reference page
      (increment 76) with a reviewer account.
   3. **Operator:** provide Annexure-34 and -40.
   4. **Reviewer:** verify the rules' clauses against the UPERC MYT Regulations 2019 and 2025, and
