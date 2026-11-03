@@ -329,12 +329,13 @@
    "id": "A61",
    "kind": "order against itself",
    "title": "The order's ARR summary (Table 6-81) prints approved interest charges of 110.80 where its interest table (6-72) approves 110.43; the summary's own ARR (3,420.27) adds up only with 110.43",
-   "detail": "Table 6-72 (p.286) approves interest on long-term loans 85.60, on working capital nil, on security deposits 20.51 and banking and finance charges 4.32: 110.43.  Table 6-81 (p.294) prints 'Interest Charges … 110.80' in the approved column; its lines then add to 3,420.65, but it prints the Annual Revenue Requirement as 3,420.27 — the sum with 110.43 (3,420.28, rounding) — and the net ARR (3,511.33) and gap (319.29) follow from 3,420.27.  The approved totals are therefore consistent with 110.43 and the 110.80 line reads as a misprint (found by the order's own arithmetic, now checked per column: every other column of the three summary tables adds up).  Similarly, Table 6-50 (p.258) gives the claimed total O&M as 245.92 where the summary's gross O&M is 242.92 (the former includes the 3.00 provision).  For the reviewer — and for the petitioner, should it seek a correction.",
+   "detail": "Table 6-72 (p.286) approves interest on long-term loans 85.60, on working capital nil, on security deposits 20.51 and banking and finance charges 4.32: 110.43.  Table 6-81 (p.294) prints 'Interest Charges … 110.80' in the approved column; its lines then add to 3,420.65, but it prints the Annual Revenue Requirement as 3,420.27 — the sum with 110.43 (3,420.28, rounding) — and the net ARR (3,511.33) and gap (319.29) follow from 3,420.27.  The approved totals are therefore consistent with 110.43 and the 110.80 line reads as a misprint (found by the order's own arithmetic, now checked per column: every other column of the three summary tables adds up).  Similarly, Table 6-50 (p.258) gives the claimed total O&M as 245.92 where the summary's gross O&M is 242.92 (the former includes the 3.00 provision).  The order's own allocation of the ARR (Table 9-4, p.314) splits interest of 85.60 and 24.82 — 110.42, Table 6-72's figure — and its two totals add to the net ARR of 3,511.33 (increment 121).  For the reviewer — and for the petitioner, should it seek a correction.",
    "where": [
     "Tariff order FY2026-27 p.286 Table 6-72",
     "p.294 Table 6-81",
     "p.258 Table 6-50",
-    "order-decisions.json (identities)"
+    "order-decisions.json (identities)",
+    "Tariff order FY2026-27 p.314 Table 9-4"
    ],
    "for": "reviewer"
   },

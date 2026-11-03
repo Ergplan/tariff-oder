@@ -83,6 +83,74 @@
     "feeds": "unrounded"
    },
    "examples": []
+  },
+  {
+   "id": "uperc.alloc.wheeling_arr",
+   "version": 1,
+   "status": "draft",
+   "title": "Wheeling (distribution wires) ARR: the items' wheeling shares added",
+   "output": "alloc_wheeling_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:alloc_wheeling"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC Distribution Tariff / MYT Regulations — allocation of the ARR between the wheeling and the retail supply business",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "deductions (non-tariff income) enter as negative items"
+  },
+  {
+   "id": "uperc.alloc.supply_arr",
+   "version": 1,
+   "status": "draft",
+   "title": "Retail supply ARR: the items' supply shares added",
+   "output": "alloc_supply_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:alloc_supply"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC Distribution Tariff / MYT Regulations — allocation of the ARR between the wheeling and the retail supply business",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "deductions (non-tariff income) enter as negative items"
   }
  ]
 }

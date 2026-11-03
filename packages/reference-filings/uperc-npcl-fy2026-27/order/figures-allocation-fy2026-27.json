@@ -1,0 +1,444 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): wheeling and retail supply ARR FY2026-27 (Table 9-4) and lines of Table 6-81",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "alloc.pp.wheeling_share": {
+   "value": "0",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Power Purchase Expenses 0% 100.00% - 2,477.36",
+   "what": "Table 9-4, Power Purchase Expenses (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.pp.supply_share": {
+   "value": "100.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Power Purchase Expenses 0% 100.00% - 2,477.36",
+   "what": "Table 9-4, Power Purchase Expenses (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.pp.wheeling": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Power Purchase Expenses 0% 100.00% - 2,477.36",
+   "what": "Table 9-4, Power Purchase Expenses (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.pp.supply": {
+   "value": "2477.36",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Power Purchase Expenses 0% 100.00% - 2,477.36",
+   "what": "Table 9-4, Power Purchase Expenses (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.inter.wheeling_share": {
+   "value": "0",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Inter State Transmission Charges 0% 100.00% - 257.21",
+   "what": "Table 9-4, Inter State Transmission Charges (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.inter.supply_share": {
+   "value": "100.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Inter State Transmission Charges 0% 100.00% - 257.21",
+   "what": "Table 9-4, Inter State Transmission Charges (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.inter.wheeling": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Inter State Transmission Charges 0% 100.00% - 257.21",
+   "what": "Table 9-4, Inter State Transmission Charges (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.inter.supply": {
+   "value": "257.21",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Inter State Transmission Charges 0% 100.00% - 257.21",
+   "what": "Table 9-4, Inter State Transmission Charges (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.intra.wheeling_share": {
+   "value": "0",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Intra State Transmission Charges 0% 100.00% - 224.28",
+   "what": "Table 9-4, Intra State Transmission Charges (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.intra.supply_share": {
+   "value": "100.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Intra State Transmission Charges 0% 100.00% - 224.28",
+   "what": "Table 9-4, Intra State Transmission Charges (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.intra.wheeling": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Intra State Transmission Charges 0% 100.00% - 224.28",
+   "what": "Table 9-4, Intra State Transmission Charges (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.intra.supply": {
+   "value": "224.28",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Intra State Transmission Charges 0% 100.00% - 224.28",
+   "what": "Table 9-4, Intra State Transmission Charges (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.employee.wheeling_share": {
+   "value": "60",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Employee Cost 60% 40.00% 33.26 22.17",
+   "what": "Table 9-4, Employee Cost (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.employee.supply_share": {
+   "value": "40.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Employee Cost 60% 40.00% 33.26 22.17",
+   "what": "Table 9-4, Employee Cost (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.employee.wheeling": {
+   "value": "33.26",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Employee Cost 60% 40.00% 33.26 22.17",
+   "what": "Table 9-4, Employee Cost (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.employee.supply": {
+   "value": "22.17",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Employee Cost 60% 40.00% 33.26 22.17",
+   "what": "Table 9-4, Employee Cost (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.ag.wheeling_share": {
+   "value": "40",
+   "unit": "percent",
+   "page": 314,
+   "quote": "A&G Expenses 40% 60.00% 11.55 17.32",
+   "what": "Table 9-4, A&G Expenses (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.ag.supply_share": {
+   "value": "60.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "A&G Expenses 40% 60.00% 11.55 17.32",
+   "what": "Table 9-4, A&G Expenses (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.ag.wheeling": {
+   "value": "11.55",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "A&G Expenses 40% 60.00% 11.55 17.32",
+   "what": "Table 9-4, A&G Expenses (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.ag.supply": {
+   "value": "17.32",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "A&G Expenses 40% 60.00% 11.55 17.32",
+   "what": "Table 9-4, A&G Expenses (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.rm.wheeling_share": {
+   "value": "90",
+   "unit": "percent",
+   "page": 314,
+   "quote": "R&M Expenses 90% 10.00% 99.93 11.10",
+   "what": "Table 9-4, R&M Expenses (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.rm.supply_share": {
+   "value": "10.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "R&M Expenses 90% 10.00% 99.93 11.10",
+   "what": "Table 9-4, R&M Expenses (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.rm.wheeling": {
+   "value": "99.93",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "R&M Expenses 90% 10.00% 99.93 11.10",
+   "what": "Table 9-4, R&M Expenses (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.rm.supply": {
+   "value": "11.10",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "R&M Expenses 90% 10.00% 99.93 11.10",
+   "what": "Table 9-4, R&M Expenses (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.ltl.wheeling_share": {
+   "value": "90",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Interest of Long-term Loan 90% 10.00% 77.04 8.56",
+   "what": "Table 9-4, Interest of Long-term Loan (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.ltl.supply_share": {
+   "value": "10.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Interest of Long-term Loan 90% 10.00% 77.04 8.56",
+   "what": "Table 9-4, Interest of Long-term Loan (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.ltl.wheeling": {
+   "value": "77.04",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Interest of Long-term Loan 90% 10.00% 77.04 8.56",
+   "what": "Table 9-4, Interest of Long-term Loan (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.ltl.supply": {
+   "value": "8.56",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Interest of Long-term Loan 90% 10.00% 77.04 8.56",
+   "what": "Table 9-4, Interest of Long-term Loan (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.other_interest.wheeling_share": {
+   "value": "10",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Other Interest Charges 10% 90.00% 2.48 22.34",
+   "what": "Table 9-4, Other Interest Charges (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.other_interest.supply_share": {
+   "value": "90.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Other Interest Charges 10% 90.00% 2.48 22.34",
+   "what": "Table 9-4, Other Interest Charges (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.other_interest.wheeling": {
+   "value": "2.48",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Other Interest Charges 10% 90.00% 2.48 22.34",
+   "what": "Table 9-4, Other Interest Charges (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.other_interest.supply": {
+   "value": "22.34",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Other Interest Charges 10% 90.00% 2.48 22.34",
+   "what": "Table 9-4, Other Interest Charges (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.dep.wheeling_share": {
+   "value": "90",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Depreciation 90% 10.00% 93.42 10.38",
+   "what": "Table 9-4, Depreciation (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.dep.supply_share": {
+   "value": "10.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Depreciation 90% 10.00% 93.42 10.38",
+   "what": "Table 9-4, Depreciation (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.dep.wheeling": {
+   "value": "93.42",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Depreciation 90% 10.00% 93.42 10.38",
+   "what": "Table 9-4, Depreciation (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.dep.supply": {
+   "value": "10.38",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Depreciation 90% 10.00% 93.42 10.38",
+   "what": "Table 9-4, Depreciation (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.bad_debt.wheeling_share": {
+   "value": "0",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Provision of Bad and Doubtful Debt 0% 100.00% - 13.76",
+   "what": "Table 9-4, Provision of Bad and Doubtful Debt (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.bad_debt.supply_share": {
+   "value": "100.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Provision of Bad and Doubtful Debt 0% 100.00% - 13.76",
+   "what": "Table 9-4, Provision of Bad and Doubtful Debt (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.bad_debt.wheeling": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Provision of Bad and Doubtful Debt 0% 100.00% - 13.76",
+   "what": "Table 9-4, Provision of Bad and Doubtful Debt (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.bad_debt.supply": {
+   "value": "13.76",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Provision of Bad and Doubtful Debt 0% 100.00% - 13.76",
+   "what": "Table 9-4, Provision of Bad and Doubtful Debt (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.roe.wheeling_share": {
+   "value": "90",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Return on Equity 90% 10.00% 101.95 11.33",
+   "what": "Table 9-4, Return on Equity (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.roe.supply_share": {
+   "value": "10.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Return on Equity 90% 10.00% 101.95 11.33",
+   "what": "Table 9-4, Return on Equity (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.roe.wheeling": {
+   "value": "101.95",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Return on Equity 90% 10.00% 101.95 11.33",
+   "what": "Table 9-4, Return on Equity (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.roe.supply": {
+   "value": "11.33",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Return on Equity 90% 10.00% 101.95 11.33",
+   "what": "Table 9-4, Return on Equity (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.tax.wheeling_share": {
+   "value": "90",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Income Tax 90% 10.00% 34.29 3.81",
+   "what": "Table 9-4, Income Tax (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.tax.supply_share": {
+   "value": "10.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Income Tax 90% 10.00% 34.29 3.81",
+   "what": "Table 9-4, Income Tax (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.tax.wheeling": {
+   "value": "34.29",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Income Tax 90% 10.00% 34.29 3.81",
+   "what": "Table 9-4, Income Tax (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.tax.supply": {
+   "value": "3.81",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Income Tax 90% 10.00% 34.29 3.81",
+   "what": "Table 9-4, Income Tax (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.nti.wheeling_share": {
+   "value": "10",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Non-Tariff Income 10% 90.00% (2.22) (20.00)",
+   "what": "Table 9-4, Non-Tariff Income (NTI printed in brackets: a deduction): wheeling_share"
+  },
+  "alloc.nti.supply_share": {
+   "value": "90.00",
+   "unit": "percent",
+   "page": 314,
+   "quote": "Non-Tariff Income 10% 90.00% (2.22) (20.00)",
+   "what": "Table 9-4, Non-Tariff Income (NTI printed in brackets: a deduction): supply_share"
+  },
+  "alloc.nti.wheeling": {
+   "value": "-2.22",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Non-Tariff Income 10% 90.00% (2.22) (20.00)",
+   "what": "Table 9-4, Non-Tariff Income (NTI printed in brackets: a deduction): wheeling"
+  },
+  "alloc.nti.supply": {
+   "value": "-20.00",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Non-Tariff Income 10% 90.00% (2.22) (20.00)",
+   "what": "Table 9-4, Non-Tariff Income (NTI printed in brackets: a deduction): supply"
+  },
+  "alloc.total.wheeling": {
+   "value": "451.70",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Total 451.70 3,059.63 9.2.10",
+   "what": "Table 9-4, total: wheeling"
+  },
+  "alloc.total.supply": {
+   "value": "3059.63",
+   "unit": "INR_crore",
+   "page": 314,
+   "quote": "Total 451.70 3,059.63 9.2.10",
+   "what": "Table 9-4, total: supply"
+  },
+  "t681.bad_debt.claimed": {
+   "value": "13.76",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "14 Provision for Bad & Doubtful Debts 13.76 13.76",
+   "what": "Table 6-81, provision for bad and doubtful debts: claimed"
+  },
+  "t681.bad_debt.approved": {
+   "value": "13.76",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "14 Provision for Bad & Doubtful Debts 13.76 13.76",
+   "what": "Table 6-81, provision for bad and doubtful debts: approved"
+  },
+  "t681.nti.claimed": {
+   "value": "10.29",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "18 Less: Non-Tariff Income 10.29 12.38",
+   "what": "Table 6-81, non-tariff income: claimed"
+  },
+  "t681.nti.approved": {
+   "value": "12.38",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "18 Less: Non-Tariff Income 10.29 12.38",
+   "what": "Table 6-81, non-tariff income: approved"
+  },
+  "t681.open_access.claimed": {
+   "value": "9.84",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "17 Less: Revenue from Open Access Charges 9.84 9.84",
+   "what": "Table 6-81, revenue from open access charges: claimed"
+  },
+  "t681.open_access.approved": {
+   "value": "9.84",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "17 Less: Revenue from Open Access Charges 9.84 9.84",
+   "what": "Table 6-81, revenue from open access charges: approved"
+  },
+  "t681.net_arr.claimed": {
+   "value": "3481.82",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "20 Net Annual Revenue Requirement 3,481.82 3,511.33",
+   "what": "Table 6-81, net ARR: claimed"
+  },
+  "t681.net_arr.approved": {
+   "value": "3511.33",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "20 Net Annual Revenue Requirement 3,481.82 3,511.33",
+   "what": "Table 6-81, net ARR: approved"
+  }
+ }
+}

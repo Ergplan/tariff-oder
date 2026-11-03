@@ -10128,6 +10128,352 @@
    ]
   },
   {
+   "binding": "approval-allocation-fy27.json",
+   "checks": [
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) power purchase order:a:alloc.pp.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null,
+     "exact": "0.0000"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) power purchase order:a:alloc.pp.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "2477.36",
+     "computed": "2477.36",
+     "why": null,
+     "exact": "2477.3600"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) inter-state transmission order:a:alloc.inter.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null,
+     "exact": "0.0000"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) inter-state transmission order:a:alloc.inter.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "257.21",
+     "computed": "257.21",
+     "why": null,
+     "exact": "257.2100"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) intra-state transmission order:a:alloc.intra.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null,
+     "exact": "0.0000"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) intra-state transmission order:a:alloc.intra.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "224.28",
+     "computed": "224.28",
+     "why": null,
+     "exact": "224.2800"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) employee order:a:alloc.employee.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "33.26",
+     "computed": "33.26",
+     "why": null,
+     "exact": "33.2580"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) employee order:a:alloc.employee.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "22.17",
+     "computed": "22.17",
+     "why": null,
+     "exact": "22.1720"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) A&G order:a:alloc.ag.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "11.55",
+     "computed": "11.55",
+     "why": null,
+     "exact": "11.5480"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) A&G order:a:alloc.ag.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "17.32",
+     "computed": "17.32",
+     "why": null,
+     "exact": "17.3220"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) R&M order:a:alloc.rm.wheeling",
+     "output": "alloc_wheeling",
+     "result": "differs",
+     "filed": "99.93",
+     "computed": "99.94",
+     "why": null,
+     "exact": "99.9360"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) R&M order:a:alloc.rm.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "11.10",
+     "computed": "11.10",
+     "why": null,
+     "exact": "11.1040"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) interest on long-term loans order:a:alloc.ltl.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "77.04",
+     "computed": "77.04",
+     "why": null,
+     "exact": "77.0400"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) interest on long-term loans order:a:alloc.ltl.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "8.56",
+     "computed": "8.56",
+     "why": null,
+     "exact": "8.5600"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) other interest order:a:alloc.other_interest.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "2.48",
+     "computed": "2.48",
+     "why": null,
+     "exact": "2.4830"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) other interest order:a:alloc.other_interest.supply",
+     "output": "alloc_supply",
+     "result": "differs",
+     "filed": "22.34",
+     "computed": "22.35",
+     "why": null,
+     "exact": "22.3470"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) depreciation order:a:alloc.dep.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "93.42",
+     "computed": "93.42",
+     "why": null,
+     "exact": "93.4200"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) depreciation order:a:alloc.dep.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "10.38",
+     "computed": "10.38",
+     "why": null,
+     "exact": "10.3800"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) bad and doubtful debts order:a:alloc.bad_debt.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "0.00",
+     "computed": "0.00",
+     "why": null,
+     "exact": "0.0000"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) bad and doubtful debts order:a:alloc.bad_debt.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "13.76",
+     "computed": "13.76",
+     "why": null,
+     "exact": "13.7600"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) return on equity order:a:alloc.roe.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "101.95",
+     "computed": "101.95",
+     "why": null,
+     "exact": "101.9520"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) return on equity order:a:alloc.roe.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "11.33",
+     "computed": "11.33",
+     "why": null,
+     "exact": "11.3280"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) income tax order:a:alloc.tax.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "34.29",
+     "computed": "34.29",
+     "why": null,
+     "exact": "34.2900"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) income tax order:a:alloc.tax.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "3.81",
+     "computed": "3.81",
+     "why": null,
+     "exact": "3.8100"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) non-tariff income order:a:alloc.nti.wheeling",
+     "output": "alloc_wheeling",
+     "result": "match",
+     "filed": "-2.22",
+     "computed": "-2.22",
+     "why": null,
+     "exact": "-2.2220"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) non-tariff income order:a:alloc.nti.supply",
+     "output": "alloc_supply",
+     "result": "match",
+     "filed": "-20.00",
+     "computed": "-20.00",
+     "why": null,
+     "exact": "-19.9980"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) order:a:alloc.total.wheeling",
+     "output": "alloc_wheeling_total",
+     "result": "match",
+     "filed": "451.70",
+     "computed": "451.70",
+     "why": null,
+     "exact": "451.7050"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) order:oa:wheel.arr",
+     "output": "alloc_wheeling_total",
+     "result": "match",
+     "filed": "451.70",
+     "computed": "451.70",
+     "why": null,
+     "exact": "451.7050"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) order:oa:wc.arr",
+     "output": "alloc_wheeling_total",
+     "result": "match",
+     "filed": "451.70",
+     "computed": "451.70",
+     "why": null,
+     "exact": "451.7050"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) order:a:alloc.total.supply",
+     "output": "alloc_supply_total",
+     "result": "differs",
+     "filed": "3059.63",
+     "computed": "3059.64",
+     "why": null,
+     "exact": "3059.6350"
+    },
+    {
+     "table": "F32_Wheeling-Supply",
+     "fiscal_year": "FY2026-27",
+     "category": "wheeling and supply ARR (Table 9-4) order:oa:dc.supply_arr",
+     "output": "alloc_supply_total",
+     "result": "differs",
+     "filed": "3059.63",
+     "computed": "3059.64",
+     "why": null,
+     "exact": "3059.6350"
+    }
+   ]
+  },
+  {
    "binding": "approval-apr-depreciation-fy26.json",
    "checks": [
     {

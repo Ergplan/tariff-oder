@@ -571,7 +571,8 @@ def reproduce_cells(
     An input may also be a commission order's rate (``{"rate": "lmv6.base"}``), from the rate
     record the binding names (``rates``: see ``load_rate_record``, ``load_binding_rates``) — never a
     figure typed here; ``{"rate": a, "minus": b}`` is one recorded figure less another (``"plus"``
-    and ``"minus"`` may each name several) —
+    and ``"minus"`` may each name several; ``"negate": true`` with its ``"why"`` turns a printed
+    deduction into the sign it takes) —
     or what an earlier evaluation of this binding computed (``{"computed": "<its label>",
     "output": …}``), unrounded: a chain of years carried as the regulator carries it, not
     restarted from each printed, rounded figure.  A check may name a figure of the record
@@ -620,6 +621,13 @@ def reproduce_cells(
                                 raise RuleError(f"{binding['sheet']}: {spec['rate']} ({ua}) {how} {key} ({ub})")
                             total += sign * Decimal(b)
                         values[source] = (str(total), ua)
+                    if spec.get("negate"):
+                        # a deduction the order prints as a positive figure in one table and in
+                        # brackets in another (non-tariff income allocated): the reason is required
+                        if not spec.get("why"):
+                            raise RuleError(f"{binding['sheet']}: {spec['rate']} negated without a reason")
+                        v, u = values[source]
+                        values[source] = (str(-Decimal(v)), u)
                     continue
                 if "value" in spec:
                     if not spec.get("why"):

@@ -1005,6 +1005,27 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 121 (2026-11-03): the order's wheeling and retail supply ARR (Table 9-4).**
+  - **The record:** `order/figures-allocation-fy2026-27.json` holds 62 figures (Table 9-4's
+    shares and amounts, four lines of Table 6-81), 62 / 62 quotes verified.
+  - **Two new draft rules in `allocation.v1.json`:** the wheeling ARR and the supply ARR, each
+    the sum of the items' shares.
+  - **Engine:** an order input may be negated (`negate`, with its reason).  The order prints
+    non-tariff income as a "Less:" line in one table and in brackets in another.
+  - **Binding `approval-allocation-fy27.json`: 27 / 31 match.**  Each approved item comes from
+    the record where the order approves it: Tables 6-81, 6-82 and 6-72, the O&M, depreciation,
+    RoE and tax tables, and the GNA charges.  Each is split by the 2025 Regulations' matrix.
+    - The totals give 451.70 (Table 9-5's wheeling ARR) and 3,059.635 against 3,059.63 (Table
+      9-6's supply ARR).
+    - R&M (99.936 against 99.93) and other interest (22.347 against 22.34) are within their
+      inputs' printed precision; the test bounds each.
+  - **Ties checked by the test:**
+    - the two printed totals add to the net ARR, 3,511.33;
+    - the interest allocated is Table 6-72's 110.43, not Table 6-81's 110.80 — new evidence
+      for A61's reading;
+    - every line's shares add to 100%.
+  Nothing verified, nothing approved.
+
   **Increment 120 (2026-11-03): open access charges and the cross-subsidy surcharge for FY2026-27.**
   - **The record:** `order/figures-open-access-fy2026-27.json` holds 159 figures (Tables 9-5 to
     9-14, Table 6-82's APPC and ACoS, NPCL's own surcharge table on p.316), 159 / 159 quotes
@@ -2974,6 +2995,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 121 (2026-11-03): 491 passed** (+1 unit: the wheeling / supply allocation).  `check_order_quotes.py`: 62 / 62.  Ruff and format clean.
 - **Increment 120 (2026-11-03): 490 passed** (+1 unit: the open access charges and surcharge).  `check_order_quotes.py`: 159 / 159.  Ruff and format clean.
 - **Increment 119 (2026-11-03): 489 passed** (+1 unit: the RCO).  `check_order_quotes.py`: 25 / 25.  Ruff and format clean.
 - **Increment 118 (2026-11-03): 488 passed** (+1 unit: the true-up's power purchase by source).  `check_order_quotes.py`: 78 / 78.  Ruff and format clean.
@@ -3227,7 +3249,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 120) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 121) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3264,7 +3286,7 @@ entries below are the per-increment history.**
   ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
   `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
-  held by the operator).  **231 draft UPERC rules** in 27 files reproduce the filed formats.
+  held by the operator).  **233 draft UPERC rules** in 27 files reproduce the filed formats.
   `/arr/reference/uperc-npcl-fy2026-27` shows the following:
   - **End to end from the schedules:** the regulatory asset is carried from year to year as
     computed (increment 95).  The net ARR and gap of the ARR and APR years match (3,481.83 and
@@ -3288,8 +3310,9 @@ entries below are the per-increment history.**
     line by line, so every line of the true-up's −123.38 has its reason (A70, A71); and the
     APR's +92.64 likewise, reproduced from the Commission's computations (A72, A73); and the
     revenue gap (surplus) carried to FY2026-27 with its carrying cost (A74); the tariff design
-    summary — ABR, ACoS, cross-subsidy levels (A75 for the FPPAS monthly sales); the open access
-    charges and the cross-subsidy surcharge by voltage, computed, capped and approved (A80, A81).  The order misprints one line of
+    summary — ABR, ACoS, cross-subsidy levels (A75 for the FPPAS monthly sales); the ARR split
+    between wheeling and supply, and the open access charges and cross-subsidy surcharge by voltage,
+    computed, capped and approved (A80, A81).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value

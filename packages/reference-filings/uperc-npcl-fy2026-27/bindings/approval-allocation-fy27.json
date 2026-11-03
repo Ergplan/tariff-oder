@@ -1,0 +1,226 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F32_Wheeling-Supply",
+ "rates": {
+  "a": "order/figures-allocation-fy2026-27.json",
+  "oa": "order/figures-open-access-fy2026-27.json",
+  "pp": "order/figures-pp-fy2026-27.json",
+  "wc": "order/figures-wc-fy2026-27.json",
+  "cap": "order/figures-capital-fy2026-27.json",
+  "dep": "order/figures-depreciation-fy2026-27.json"
+ },
+ "places": 2,
+ "note": "The order's wheeling and retail supply ARR for FY2026-27 (Table 9-4): each approved item — taken from the record where the order approves it (Tables 6-81, 6-82, 6-72, the O&M, depreciation, RoE and tax tables, the GNA charges) — split by the 2025 Regulations' allocation matrix (cl. 28.1, as the order reproduces it); the two totals feed the wheeling charge (Table 9-5) and the supply charge DC (Table 9-6).  Interest is allocated as Table 6-72's 110.43 (A61).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "wheeling and supply ARR (Table 9-4)",
+   "categories": {
+    "power purchase": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "oa:t682.pp_cost.approved",
+       "minus": "oa:t682.transmission.approved"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.pp.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.pp.wheeling",
+      "alloc_supply": "order:a:alloc.pp.supply"
+     }
+    },
+    "inter-state transmission": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "pp:gna.total"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.inter.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.inter.wheeling",
+      "alloc_supply": "order:a:alloc.inter.supply"
+     }
+    },
+    "intra-state transmission": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "oa:tc.cost"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.intra.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.intra.wheeling",
+      "alloc_supply": "order:a:alloc.intra.supply"
+     }
+    },
+    "employee": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "wc:om.employee",
+       "minus": "wc:om.capitalised"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.employee.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.employee.wheeling",
+      "alloc_supply": "order:a:alloc.employee.supply"
+     }
+    },
+    "A&G": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "wc:om.ag"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.ag.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.ag.wheeling",
+      "alloc_supply": "order:a:alloc.ag.supply"
+     }
+    },
+    "R&M": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "wc:om.rm"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.rm.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.rm.wheeling",
+      "alloc_supply": "order:a:alloc.rm.supply"
+     }
+    },
+    "interest on long-term loans": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "cap:interest.ltl"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.ltl.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.ltl.wheeling",
+      "alloc_supply": "order:a:alloc.ltl.supply"
+     }
+    },
+    "other interest": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "cap:interest.isd",
+       "plus": [
+        "cap:interest.finance"
+       ]
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.other_interest.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.other_interest.wheeling",
+      "alloc_supply": "order:a:alloc.other_interest.supply"
+     }
+    },
+    "depreciation": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "dep:dep.net"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.dep.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.dep.wheeling",
+      "alloc_supply": "order:a:alloc.dep.supply"
+     }
+    },
+    "bad and doubtful debts": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "a:t681.bad_debt.approved"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.bad_debt.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.bad_debt.wheeling",
+      "alloc_supply": "order:a:alloc.bad_debt.supply"
+     }
+    },
+    "return on equity": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "cap:roe.approved"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.roe.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.roe.wheeling",
+      "alloc_supply": "order:a:alloc.roe.supply"
+     }
+    },
+    "income tax": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "cap:tax.approved"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.tax.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.tax.wheeling",
+      "alloc_supply": "order:a:alloc.tax.supply"
+     }
+    },
+    "non-tariff income": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "a:t681.nti.approved",
+       "plus": [
+        "a:t681.open_access.approved"
+       ],
+       "negate": true,
+       "why": "a deduction: Table 6-81 prints non-tariff income (12.38) and open access revenue (9.84) as 'Less:' lines; Table 9-4 allocates their sum in brackets"
+      },
+      "record:wheeling_share": {
+       "rate": "a:alloc.nti.wheeling_share"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:a:alloc.nti.wheeling",
+      "alloc_supply": "order:a:alloc.nti.supply"
+     }
+    }
+   },
+   "checks": {
+    "alloc_wheeling_total": [
+     "order:a:alloc.total.wheeling",
+     "order:oa:wheel.arr",
+     "order:oa:wc.arr"
+    ],
+    "alloc_supply_total": [
+     "order:a:alloc.total.supply",
+     "order:oa:dc.supply_arr"
+    ]
+   }
+  }
+ ]
+}

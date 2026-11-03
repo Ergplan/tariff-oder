@@ -1894,3 +1894,66 @@ def test_npcl_the_open_access_charges_and_surcharge_reproduce():
     # NPCL's own HV-2 at 33 kV is negative and printed "-" (nil)
     npcl = [c for c in checks if c.category.startswith("NPCL's cost of supply hv2_33")]
     assert len(npcl) == 1 and Decimal(rec["oa:npcl.hv2_33.t"][0]) < Decimal(npcl[0].exact)
+
+
+def test_npcl_the_wheeling_and_supply_allocation_reproduces():
+    """Real data: Table 9-4 — every approved ARR item, taken from the record where the order
+    approves it, split by the 2025 Regulations' allocation matrix; the totals are the wheeling ARR
+    (Table 9-5) and the supply ARR (Table 9-6).  Interest is allocated as Table 6-72's 110.43, not
+    Table 6-81's 110.80 (A61).  Three figures differ, each within its inputs' printed precision."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-allocation-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rec)
+    assert len(checks) == 31 and {c.result for c in checks} <= {"match", "differs"}
+    differ = {
+        c.category.split(") ", 1)[1] if ") " in c.category else c.category: c for c in checks if c.result != "match"
+    }
+    assert set(differ) == {
+        "R&M order:a:alloc.rm.wheeling",
+        "other interest order:a:alloc.other_interest.supply",
+        "order:a:alloc.total.supply",
+        "order:oa:dc.supply_arr",
+    }
+    half = Decimal("0.005")
+    # an item of n printed inputs, times its share, then printed: n × 0.005 × share + 0.005
+    assert (
+        abs(Decimal(differ["R&M order:a:alloc.rm.wheeling"].exact) - Decimal("99.93")) <= half * Decimal("0.9") + half
+    )
+    other = differ["other interest order:a:alloc.other_interest.supply"]
+    assert abs(Decimal(other.exact) - Decimal(other.filed)) <= 2 * half * Decimal("0.9") + half
+    for key in ("order:a:alloc.total.supply", "order:oa:dc.supply_arr"):  # 3,059.635: the items' half-paise
+        assert abs(Decimal(differ[key].exact) - Decimal(differ[key].filed)) <= Decimal("0.01")
+    # the two printed totals are the approved net ARR, to the paisa
+    total = Decimal(rec["a:alloc.total.wheeling"][0]) + Decimal(rec["a:alloc.total.supply"][0])
+    assert total == Decimal(rec["a:t681.net_arr.approved"][0]) == Decimal(rec["oa:t682.arr.approved"][0])
+    # interest allocated is Table 6-72's total, not the summary's 110.80
+    interest = sum(
+        Decimal(rec[f"a:alloc.{k}.{s}"][0]) for k in ("ltl", "other_interest") for s in ("wheeling", "supply")
+    )
+    assert abs(interest - Decimal(rec["cap:interest.total"][0])) <= Decimal("0.01")
+    # the shares are the matrix's: wheeling + supply = 100 % on every line
+    for k in (
+        "pp",
+        "inter",
+        "intra",
+        "employee",
+        "ag",
+        "rm",
+        "ltl",
+        "other_interest",
+        "dep",
+        "bad_debt",
+        "roe",
+        "tax",
+        "nti",
+    ):
+        assert Decimal(rec[f"a:alloc.{k}.wheeling_share"][0]) + Decimal(rec[f"a:alloc.{k}.supply_share"][0]) == 100
