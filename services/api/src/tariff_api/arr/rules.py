@@ -13,9 +13,10 @@ Guarantees (each tested):
   converted to the rule's declared output unit or refused.  ACoS (Rs/kWh) from ARR (Rs crore) and
   sales (MU) therefore needs no hand-written ``× 10``: the units do it.
 - **A restricted language.**  Formulas are parsed with :mod:`ast` and only numbers, input names,
-  ``+ - * /``, unary minus, parentheses and the functions ``avg``, ``min``, ``max``, ``sum`` and
-  ``ifneg(test, then, otherwise)`` are accepted.  No attribute access, subscripts, comparisons or
-  other calls: a formula cannot do anything but arithmetic.
+  ``+ - * /``, unary minus, parentheses and the functions ``avg``, ``min``, ``max``, ``sum``,
+  ``ifneg(test, then, otherwise)`` and ``root(x, n)`` (the n-th root of a dimensionless, non-negative
+  x, n a whole-number literal — a compound growth rate over n years) are accepted.  No attribute
+  access, subscripts, comparisons or other calls: a formula cannot do anything but arithmetic.
 - **Dependency order** (R-NUM-4).  Rules referring to other rules' outputs are evaluated
   topologically; a cycle is refused with its members named.
 - **Rounding policy per rule** (R-NUM-3): places, mode (half-up as orders print, unless a rule
@@ -106,7 +107,7 @@ def _combine(a: tuple, b: tuple, sign: int) -> tuple:
 
 # ---------------------------------------------------------------- the formula language
 
-_FUNCS = {"avg", "min", "max", "sum", "ifneg"}
+_FUNCS = {"avg", "min", "max", "sum", "ifneg", "root"}
 
 
 def parse(formula: str) -> ast.Expression:
@@ -179,6 +180,20 @@ def evaluate(tree: ast.Expression, env: dict[str, Q], source: str) -> Q:
             if a.dims != b.dims:
                 raise RuleError("ifneg() branches of different dimensions")
             return a if test.value < 0 else b
+        if isinstance(node, ast.Call) and node.func.id == "root":
+            # root(x, n): (x)^(1/n) — the n-year CAGR is root(end / start, n) - 1; n is a literal
+            # whole number (the years counted), x a pure number, never negative
+            if len(node.args) != 2:
+                raise RuleError("root() takes (x, n)")
+            n_node = node.args[1]
+            if not (isinstance(n_node, ast.Constant) and isinstance(n_node.value, int) and n_node.value > 0):
+                raise RuleError("root()'s n must be a whole-number literal above zero")
+            x = ev(node.args[0])
+            if x.dims:
+                raise RuleError(f"root() of {dim_words(x.dims)}: only a pure number has a root")
+            if x.value < 0:
+                raise RuleError("root() of a negative number")
+            return Q(x.value ** (Decimal(1) / Decimal(n_node.value)) if x.value else Decimal(0))
         if isinstance(node, ast.Call):
             args = [ev(x) for x in node.args]
             if not args:

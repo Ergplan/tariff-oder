@@ -1005,6 +1005,33 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 145 (2026-11-03): NPCL — the revenue formats: open access (ESR1), the sales forecast (ESR2), billing determinants (ESR5).**
+  - **The rule language gains `root(x, n)`**, the n-th root of a pure, non-negative number, n a
+    whole-number literal.  It exists for a compound growth rate; anything else is refused (tested).
+  - **`uperc/sales-forecast.v1.json` (2 draft rules):** the seven-year CAGR and a year projected at
+    it.  The clause is Reg. 30.2 of the 2025 Regulations, p.38 of the copy in the session — not
+    verified.  **`formats.v1.json` +8:** generic lines and totals (number, MU, Rs crore), a
+    percentage change, and open-access revenue.  UPERC now has 260 draft rules in 30 files.
+  - **`esr1-open-access.json`: 12 / 12** — four years to the ARR's row 51.  The charges are typed:
+    no rate in the formats gives them.
+  - **`esr2-sales-forecast.json`: 69 / 69** — 33 CAGRs and ten years' totals, sales tied to the
+    ARR's row 9.  Checked to five places: the format's float shows in the sixth.
+  - **`esr2-sales-at-cagr.json`: 5 / 10** — FY2026-27 at Reg. 30.2's basis.  Exact to 0.1 MWh for
+    HV-2, LMV-2, LMV-4, LMV-5 and LMV-9.  The rest total 55.00 MU under that basis.
+  - **`esr5-billing-determinants.json`: 108 / 120** — subtotals from the sheet's own SUM ranges, the
+    grand total, ties to ESR3 and the ARR, and FY2023-24 summed against the ARR.  The 12
+    differences are all the %-change column (A86).
+  - **Findings:**
+    - **`A85` (reviewer):** four categories at the petition's moderated rates rather than Reg.
+      30.2's CAGR, which only the Commission can allow.
+    - **`A86` (petitioner):** the "% change wrt previous" column divides by FY2022-23; on
+      FY2023-24 the total is 13.51 %, not 19.33 %.
+    - **`A87` (petitioner):** connected load is labelled kW but the figures are MVA.
+    - **`A88` (petitioner):** LMV-7 sits under its CAGR with no departure stated, and ESR7, the
+      monthly basis, is not filed.
+  - **Formats accounted: 48 reproduced, 5 read, 18 present, 2 blank, 1 missing.**
+  Nothing verified, nothing approved.
+
   **Increment 144 (2026-11-03): NPCL — the capital formats: assets not in use (F11), consumer contributions (F12), the investment plan (F13).**
   - **9 more draft rules in `uperc/formats.v1.json` (17; UPERC 250):** per-class cost, depreciation
     and written-down value of withdrawn assets with their totals; the consumer-contribution roll
@@ -3570,6 +3597,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 145 (2026-11-03): 517 passed** (+2 unit: `root()` and its refusals; NPCL ESR1, ESR2, ESR5).  Ruff and format clean.
 - **Increment 144 (2026-11-03): 515 passed** (+1 unit: NPCL F11, F12, F13, all exact).  Ruff and format clean.
 - **Increment 143 (2026-11-03): 514 passed** (+1 unit: NPCL F28 and F20; one integration assertion now expects non-tariff income tied, not a record).  Ruff and format clean.
 - **Increment 142 (2026-11-03): 513 passed** (+2 unit: JSERC capital chain with J1, J2; JSERC ARR end to end).  `check_order_quotes.py`: 207 / 207.  Ruff and format clean.
@@ -3847,7 +3875,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 144) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 145) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3884,16 +3912,16 @@ entries below are the per-increment history.**
   ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
   `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
-  held by the operator).  **250 draft UPERC rules** in 29 files reproduce the filed formats.
+  held by the operator).  **260 draft UPERC rules** in 30 files reproduce the filed formats.
   `/arr/reference/uperc-npcl-fy2026-27` shows the following:
   - **End to end from the schedules:** the regulatory asset is carried from year to year as
     computed (increment 95).  The net ARR and gap of the ARR and APR years match (3,481.83 and
     3,200.63).  The true-up differs by exactly A40's 0.19, which reaches the ARR year's carried
     gap as 0.25 (10 / 12 there).
-  - **How each ARR figure is established:** FY2026-27 is 17 computed, 18 tied, 11 records, none
+  - **How each ARR figure is established:** FY2026-27 is 17 computed, 19 tied, 10 records, none
     differing.
-  - **Formats accounted, against the filing's index:** 45 reproduced, 7 read, 19 present, 2
-    blank, 1 missing (increment 144; the operator's direction is to close every one).
+  - **Formats accounted, against the filing's index:** 48 reproduced, 5 read, 18 present, 2
+    blank, 1 missing (increment 145; the operator's direction is to close every one).
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
   - **What the Commission decided** (the FY2026-27 order, read row by row with pages): the order
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.
@@ -3915,7 +3943,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **52 findings (A29–A84):** 31 for the petitioner, collected in the draft queries; 21 for the
+  - **56 findings (A29–A88):** 34 for the petitioner, collected in the draft queries; 22 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

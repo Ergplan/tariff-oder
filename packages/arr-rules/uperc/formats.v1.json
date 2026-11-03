@@ -633,6 +633,297 @@
    },
    "examples": [],
    "note": "F13's 'Equity Amount' column as its formula computes it"
+  },
+  {
+   "id": "uperc.fmt.line_number",
+   "version": 1,
+   "status": "draft",
+   "title": "A line of a format (number)",
+   "output": "line_number",
+   "unit": "number",
+   "schedule": "R-SCH-16",
+   "formula": "value",
+   "inputs": {
+    "value": {
+     "unit": "number",
+     "source": "record:line_number"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line a format's total sums",
+   "per": "format_line"
+  },
+  {
+   "id": "uperc.fmt.lines_number",
+   "version": 1,
+   "status": "draft",
+   "title": "A format's lines summed (number)",
+   "output": "lines_number_total",
+   "unit": "number",
+   "schedule": "R-SCH-16",
+   "formula": "lines",
+   "inputs": {
+    "lines": {
+     "unit": "number",
+     "source": "sum:line_number"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a format's subtotal or total"
+  },
+  {
+   "id": "uperc.fmt.line_mu",
+   "version": 1,
+   "status": "draft",
+   "title": "A line of a format (MU)",
+   "output": "line_mu",
+   "unit": "MU",
+   "schedule": "R-SCH-16",
+   "formula": "value",
+   "inputs": {
+    "value": {
+     "unit": "MU",
+     "source": "record:line_mu"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line a format's total sums",
+   "per": "format_line"
+  },
+  {
+   "id": "uperc.fmt.lines_mu",
+   "version": 1,
+   "status": "draft",
+   "title": "A format's lines summed (MU)",
+   "output": "lines_mu_total",
+   "unit": "MU",
+   "schedule": "R-SCH-16",
+   "formula": "lines",
+   "inputs": {
+    "lines": {
+     "unit": "MU",
+     "source": "sum:line_mu"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a format's subtotal or total"
+  },
+  {
+   "id": "uperc.fmt.line_crore",
+   "version": 1,
+   "status": "draft",
+   "title": "A line of a format (INR_crore)",
+   "output": "line_crore",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-16",
+   "formula": "value",
+   "inputs": {
+    "value": {
+     "unit": "INR_crore",
+     "source": "record:line_crore"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line a format's total sums",
+   "per": "format_line"
+  },
+  {
+   "id": "uperc.fmt.lines_crore",
+   "version": 1,
+   "status": "draft",
+   "title": "A format's lines summed (INR_crore)",
+   "output": "lines_crore_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-16",
+   "formula": "lines",
+   "inputs": {
+    "lines": {
+     "unit": "INR_crore",
+     "source": "sum:line_crore"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a format's subtotal or total"
+  },
+  {
+   "id": "uperc.fmt.pct_change",
+   "version": 1,
+   "status": "draft",
+   "title": "Change on the previous year, as a fraction",
+   "output": "pct_change",
+   "unit": "fraction",
+   "schedule": "R-SCH-16",
+   "formula": "(current - previous) / previous",
+   "inputs": {
+    "current": {
+     "unit": "number",
+     "source": "record:current_value"
+    },
+    "previous": {
+     "unit": "number",
+     "source": "record:previous_value"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a format's '% change … wrt previous' column"
+  },
+  {
+   "id": "uperc.fmt.oa_revenue",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue from open access customers: wheeling, cross-subsidy surcharge, additional surcharge, other",
+   "output": "oa_revenue_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-12",
+   "formula": "wheeling + css + additional + other",
+   "inputs": {
+    "wheeling": {
+     "unit": "INR_crore",
+     "source": "record:oa_wheeling"
+    },
+    "css": {
+     "unit": "INR_crore",
+     "source": "record:oa_css"
+    },
+    "additional": {
+     "unit": "INR_crore",
+     "source": "record:oa_additional"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "record:oa_other"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "ESR1's total, carried to the ARR format's row 51"
   }
  ]
 }

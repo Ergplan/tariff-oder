@@ -619,6 +619,57 @@
     "bindings/f13-investment-plan.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A85",
+   "kind": "rule against regulation",
+   "title": "FY2026-27 sales: five categories at Reg. 30.2's seven-year CAGR, four at moderated rates — 55.00 MU below the regulation's basis",
+   "detail": "Reg. 30.2 of the 2025 Regulations (p.38): 'Unless provided otherwise by the Commission, sales forecast shall be based on … The Compounded Annual Growth Rate (CAGR) of past seven years of sales within each of the slabs of a consumer category'.  ESR2 computes each category's CAGR from FY2017-18 to FY2024-25 exactly (33 / 33).  FY2026-27's sales are FY2025-26's × (1 + CAGR) to 0.1 MWh for HV-2, LMV-2, LMV-4, LMV-5 and LMV-9.  For HV-1 (452.58 against 468.05 at its 11.94 %), LMV-1 (1,580.09 against 1,619.05 at 19.01 %), LMV-3 (23.92 against 22.90 at −4.00 %) and LMV-6 (169.70 against 171.27 at 11.16 %) the petition applies its own rates — 8 %, 16 %, 0 % and 10 % — for reasons it states (Appendix-V, the paragraphs after its Table 4); and LMV-7 (A88).  Together 55.00 MU below the regulation's basis.  ESR2 also computes per category where the Regulation says within each slab.  For the reviewer: whether the Commission accepts the departures, which the Regulation allows only as 'provided otherwise by the Commission'.",
+   "where": [
+    "2025 Regulations p.38, Reg. 30.2",
+    "ESR2_Sales Forecast AC, AF, AI",
+    "Appendix-V (Text of ARR FY2026-27), Table 4 and the reasons after it",
+    "bindings/esr2-sales-forecast.json",
+    "bindings/esr2-sales-at-cagr.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A86",
+   "kind": "inconsistency",
+   "title": "ESR5's '% change wrt previous' compares FY2024-25 with FY2022-23 in every subtotal and the total (19.33 %); on FY2023-24, as headed, the total is 13.51 %",
+   "detail": "ESR5's column U is headed '% Change of True-Up Claimed wrt Previous'.  Its subtotal and grand-total formulas divide by FY2022-23 (column E), two years back; its first line (U8) divides one sub-line of FY2024-25 (LMV-1 urban, 426.24) by the whole category's FY2023-24 (598.29), giving −28.76 %.  On FY2023-24 — entered only on each category's first line, but adding to the ARR format's sales and revenue exactly — the grand total's change is 13.51 % (not 19.33 %), HV-1's 3.06 % (not 14.46 %), LMV-11's 516 % (not 2,385 %); all twelve differ.  The subtotals and totals themselves reproduce exactly (108 / 108), tied to ESR3 and the ARR format.  For the petitioner: compute the column on FY2023-24, and give FY2023-24 by sub-category as the other years.",
+   "where": [
+    "ESR5_BD&Rev U8:U181, F8:L172",
+    "ARR!G9, G15",
+    "bindings/esr5-billing-determinants.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A87",
+   "kind": "unit",
+   "title": "The formats head connected load 'kW' (ESR2, ESR5) and 'KW/KVA' (ESR3); the figures are MVA, as the narrative's tables say",
+   "detail": "ESR5 gives LMV-1's FY2024-25 connected load as 691.40 'kW' for 170,711 consumers — 4 W each — and ESR2 the licence area's FY2025-26 total as 2,093.88 'kW'.  The narrative's tables of the same series are headed 'Connected Load (MVA)'.  Sums and growth rates are unaffected (ESR2 69 / 69, ESR5 108 / 108); a reader of the formats alone would understate the load a thousandfold.  For the petitioner: head the columns MVA (or kVA / kW in their own scale).",
+   "where": [
+    "ESR2_Sales Forecast row 9",
+    "ESR5_BD&Rev row 5",
+    "ESR_3 Curr Tariff E8",
+    "Appendix-V: 'Connected Load(MVA)'"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A88",
+   "kind": "inconsistency",
+   "title": "LMV-7's FY2026-27 sales are 35.58 against 35.60 at its seven-year CAGR, with no departure stated; the monthly basis (ESR7) is not filed",
+   "detail": "The narrative states the categories whose rates depart from the seven-year CAGR (HV-1, LMV-1, LMV-3, LMV-6) and says the rates were 'applied month on month on the estimated figures of FY 2025-26'.  LMV-7 (public water works) is not among them, yet its FY2026-27 sales (35.576) are 0.022 MU under FY2025-26 × (1 + 8.08 %) = 35.598 — an 8.01 % growth.  The month-on-month working would show why, but ESR7 (billing determinants by month) is the one indexed format not filed.  For the petitioner: the rate used for LMV-7, and ESR7.",
+   "where": [
+    "ESR2_Sales Forecast AC53, AF53, AI53",
+    "formats index: ESR7_BD monthly (missing)",
+    "bindings/esr2-sales-at-cagr.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

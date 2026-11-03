@@ -2773,3 +2773,42 @@ def test_npcl_assets_not_in_use_consumer_contributions_and_the_investment_plan()
     assert cc[("FY2024-25", "cc_balance_closing", "J9")] == "438.295267"
     assert cc[("FY2026-27", "cc_balance_closing", "R9")] == "499.854722"
     assert "A84" in {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+
+
+def test_npcl_revenue_formats_open_access_sales_forecast_and_billing_determinants():
+    """Real data, NPCL's ESR1, ESR2 and ESR5 (increment 145).  Open-access revenue to its totals and
+    the ARR's row 51 (12 / 12).  ESR2's seven-year CAGRs and ten years of totals, sales tied to the
+    ARR's row 9 (69 / 69); FY2026-27 at Reg. 30.2's CAGR for five categories, the other five 55.00
+    MU under it (A85, A88).  ESR5's subtotals and totals from the format's own SUM ranges, tied to
+    ESR3 and the ARR (108 / 108); its '% change wrt previous' on FY2022-23, not FY2023-24 (A86)."""
+    from collections import Counter
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("UPERC") == []
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    wb = openpyxl.load_workbook(folder / "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx", data_only=True)
+    rules = load_rules("UPERC")
+    run = lambda n: reproduce_cells(wb, json.loads((folder / "bindings" / n).read_text()), rules)  # noqa: E731
+    assert Counter(c.result for c in run("esr1-open-access.json")) == {"match": 12}
+    assert Counter(c.result for c in run("esr2-sales-forecast.json")) == {"match": 69}
+    at = {c.category.split(") ")[1].split(" ")[0]: c for c in run("esr2-sales-at-cagr.json")}
+    assert {k for k, c in at.items() if c.result == "match"} == {"HV-2", "LMV-2", "LMV-4", "LMV-5", "LMV-9"}
+    for c in at.values():  # those at the CAGR agree to slab-level rounding, a few millionths of a MU
+        if c.result == "match":
+            assert abs(
+                Decimal(c.exact) - Decimal(str(wb["ESR2_Sales Forecast"][c.category.rsplit(" ", 1)[1]].value))
+            ) < Decimal("5e-6")
+    under = sum(Decimal(c.computed) - Decimal(c.filed) for c in at.values() if c.result != "match")
+    assert under == Decimal("55.0036")  # MU below Reg. 30.2's basis (A85: 55.00)
+    esr5 = run("esr5-billing-determinants.json")
+    assert Counter(c.result for c in esr5) == {"match": 108, "differs": 12}
+    assert {c.output for c in esr5 if c.result != "match"} == {"pct_change"}
+    total = next(c for c in esr5 if c.category.endswith("U181"))
+    assert (total.computed, total.filed) == ("0.135128", "0.193328")
+    ids = {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+    assert {"A85", "A86", "A87", "A88"} <= ids

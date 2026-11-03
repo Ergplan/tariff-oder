@@ -16326,6 +16326,1022 @@
    ]
   },
   {
+   "binding": "esr1-open-access.json",
+   "checks": [
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR1 claimed J9",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "2.414729",
+     "computed": "2.414729",
+     "why": null,
+     "exact": "2.41472896592408966"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR1 claimed J11",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "2.414729",
+     "computed": "2.414729",
+     "why": null,
+     "exact": "2.41472896592408966"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR1 claimed ARR!G51",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "2.414729",
+     "computed": "2.414729",
+     "why": null,
+     "exact": "2.41472896592408966"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR1 audited R9",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "5.374129",
+     "computed": "5.374129",
+     "why": null,
+     "exact": "5.3741285447251971"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR1 audited R11",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "5.374129",
+     "computed": "5.374129",
+     "why": null,
+     "exact": "5.3741285447251971"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR1 audited ARR!J51",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "5.374129",
+     "computed": "5.374129",
+     "why": null,
+     "exact": "5.3741285447251971"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2025-26",
+     "category": "ESR1 estimated Z9",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "7.082108",
+     "computed": "7.082108",
+     "why": null,
+     "exact": "7.082108119634029"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2025-26",
+     "category": "ESR1 estimated Z11",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "7.082108",
+     "computed": "7.082108",
+     "why": null,
+     "exact": "7.082108119634029"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2025-26",
+     "category": "ESR1 estimated ARR!L51",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "7.082108",
+     "computed": "7.082108",
+     "why": null,
+     "exact": "7.082108119634029"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR1 projected AH9",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "9.835754",
+     "computed": "9.835754",
+     "why": null,
+     "exact": "9.8357539795319999"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR1 projected AH11",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "9.835754",
+     "computed": "9.835754",
+     "why": null,
+     "exact": "9.8357539795319999"
+    },
+    {
+     "table": "ESR1_OA",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR1 projected ARR!M51",
+     "output": "oa_revenue_total",
+     "result": "match",
+     "filed": "9.835754",
+     "computed": "9.835754",
+     "why": null,
+     "exact": "9.8357539795319999"
+    }
+   ]
+  },
+  {
+   "binding": "esr2-sales-at-cagr.json",
+   "checks": [
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) HV-1 AF14",
+     "output": "projected_at_cagr",
+     "result": "differs",
+     "filed": "452.5799",
+     "computed": "468.0506",
+     "why": null,
+     "exact": "468.0505874768125769584345532"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) HV-2 AF20",
+     "output": "projected_at_cagr",
+     "result": "match",
+     "filed": "1903.8174",
+     "computed": "1903.8174",
+     "why": null,
+     "exact": "1903.817424830697083023448478"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) LMV-1 AF27",
+     "output": "projected_at_cagr",
+     "result": "differs",
+     "filed": "1580.0885",
+     "computed": "1619.0494",
+     "why": null,
+     "exact": "1619.049405120969035227449877"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) LMV-2 AF30",
+     "output": "projected_at_cagr",
+     "result": "match",
+     "filed": "138.1594",
+     "computed": "138.1594",
+     "why": null,
+     "exact": "138.1593523755033003878482798"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) LMV-3 AF34",
+     "output": "projected_at_cagr",
+     "result": "differs",
+     "filed": "23.9243",
+     "computed": "22.8986",
+     "why": null,
+     "exact": "22.89858457881920195493057977"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) LMV-4 AF39",
+     "output": "projected_at_cagr",
+     "result": "match",
+     "filed": "25.4574",
+     "computed": "25.4574",
+     "why": null,
+     "exact": "25.45736458083706738420553841"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) LMV-5 AF45",
+     "output": "projected_at_cagr",
+     "result": "match",
+     "filed": "7.1769",
+     "computed": "7.1769",
+     "why": null,
+     "exact": "7.176904914802906407685766304"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) LMV-6 AF50",
+     "output": "projected_at_cagr",
+     "result": "differs",
+     "filed": "169.6981",
+     "computed": "171.2741",
+     "why": null,
+     "exact": "171.2741455438455119875365711"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) LMV-7 AF53",
+     "output": "projected_at_cagr",
+     "result": "differs",
+     "filed": "35.5761",
+     "computed": "35.5978",
+     "why": null,
+     "exact": "35.59783933571859391569385320"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2) LMV-9 AF59",
+     "output": "projected_at_cagr",
+     "result": "match",
+     "filed": "61.8207",
+     "computed": "61.8207",
+     "why": null,
+     "exact": "61.82072725291775601421841931"
+    }
+   ]
+  },
+  {
+   "binding": "esr2-sales-forecast.json",
+   "checks": [
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) HV-1 AG14",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.11588",
+     "computed": "0.11588",
+     "why": null,
+     "exact": "0.115878644702834551552955344"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) HV-2 AG20",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.09129",
+     "computed": "0.09129",
+     "why": null,
+     "exact": "0.091291943453770923780684263"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) LMV-1 AG27",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.12962",
+     "computed": "0.12962",
+     "why": null,
+     "exact": "0.129618837501485061956919774"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) LMV-2 AG30",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.11109",
+     "computed": "0.11109",
+     "why": null,
+     "exact": "0.111086067046185494967129210"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) LMV-3 AG34",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.84109",
+     "computed": "0.84109",
+     "why": null,
+     "exact": "0.841086379602683460208966649"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) LMV-4 AG39",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "-0.02270",
+     "computed": "-0.02270",
+     "why": null,
+     "exact": "-0.0227032906715865428281489944"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) LMV-5 AG45",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "-0.02713",
+     "computed": "-0.02713",
+     "why": null,
+     "exact": "-0.0271288930279778127248850520"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) LMV-6 AG50",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.05496",
+     "computed": "0.05496",
+     "why": null,
+     "exact": "0.054957183332624803354202842"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) LMV-7 AG53",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.05686",
+     "computed": "0.05686",
+     "why": null,
+     "exact": "0.056860035472356415201448426"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) LMV-9 AG59",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.04997",
+     "computed": "0.04997",
+     "why": null,
+     "exact": "0.049967663895934201346715095"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, consumers ('000) Total AG64",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.12467",
+     "computed": "0.12467",
+     "why": null,
+     "exact": "0.124665474398804743907894498"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2017-18",
+     "category": "ESR2 consumers ('000) FY2017-18 C64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "82231.00000",
+     "computed": "82231.00000",
+     "why": null,
+     "exact": "82231"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2018-19",
+     "category": "ESR2 consumers ('000) FY2018-19 F64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "91234.00000",
+     "computed": "91234.00000",
+     "why": null,
+     "exact": "91234"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2019-20",
+     "category": "ESR2 consumers ('000) FY2019-20 I64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "97682.00000",
+     "computed": "97682.00000",
+     "why": null,
+     "exact": "97682"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2020-21",
+     "category": "ESR2 consumers ('000) FY2020-21 L64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "106707.00000",
+     "computed": "106707.00000",
+     "why": null,
+     "exact": "106707"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2021-22",
+     "category": "ESR2 consumers ('000) FY2021-22 O64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "117753.00000",
+     "computed": "117753.00000",
+     "why": null,
+     "exact": "117753"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR2 consumers ('000) FY2022-23 R64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "135214.00000",
+     "computed": "135214.00000",
+     "why": null,
+     "exact": "135214"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR2 consumers ('000) FY2023-24 U64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "161914.00000",
+     "computed": "161914.00000",
+     "why": null,
+     "exact": "161914"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR2 consumers ('000) FY2024-25 X64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "187154.00000",
+     "computed": "187154.00000",
+     "why": null,
+     "exact": "187154"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2025-26",
+     "category": "ESR2 consumers ('000) FY2025-26 AA64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "216992.00000",
+     "computed": "216992.00000",
+     "why": null,
+     "exact": "216992"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 consumers ('000) FY2026-27 AD64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "249556.00000",
+     "computed": "249556.00000",
+     "why": null,
+     "exact": "249556"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load HV-1 AH14",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.10593",
+     "computed": "0.10593",
+     "why": null,
+     "exact": "0.105927050352047003501727713"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load HV-2 AH20",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.10046",
+     "computed": "0.10046",
+     "why": null,
+     "exact": "0.100458021871575412681817915"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load LMV-1 AH27",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.16618",
+     "computed": "0.16618",
+     "why": null,
+     "exact": "0.166179898378864150822268222"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load LMV-2 AH30",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.15475",
+     "computed": "0.15475",
+     "why": null,
+     "exact": "0.154754195890554686055568933"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load LMV-3 AH34",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "-0.03367",
+     "computed": "-0.03367",
+     "why": null,
+     "exact": "-0.0336662621475459315120672130"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load LMV-4 AH39",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.04835",
+     "computed": "0.04835",
+     "why": null,
+     "exact": "0.048348883198015872236690799"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load LMV-5 AH45",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "-0.01021",
+     "computed": "-0.01021",
+     "why": null,
+     "exact": "-0.0102127519114073366277428113"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load LMV-6 AH50",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.07948",
+     "computed": "0.07948",
+     "why": null,
+     "exact": "0.079479011289016104781318387"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load LMV-7 AH53",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.11850",
+     "computed": "0.11850",
+     "why": null,
+     "exact": "0.118496203527339636498704659"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load LMV-9 AH59",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "-0.05432",
+     "computed": "-0.05432",
+     "why": null,
+     "exact": "-0.0543229274272215687620081361"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, connected load Total AH64",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.12259",
+     "computed": "0.12259",
+     "why": null,
+     "exact": "0.122589471696105773149228412"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2017-18",
+     "category": "ESR2 connected load FY2017-18 D64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "832.43800",
+     "computed": "832.43800",
+     "why": null,
+     "exact": "832.438001013015016"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2018-19",
+     "category": "ESR2 connected load FY2018-19 G64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "934.72315",
+     "computed": "934.72315",
+     "why": null,
+     "exact": "934.72315444444490328"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2019-20",
+     "category": "ESR2 connected load FY2019-20 J64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1072.86600",
+     "computed": "1072.86600",
+     "why": null,
+     "exact": "1072.86599999999996"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2020-21",
+     "category": "ESR2 connected load FY2020-21 M64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1146.57700",
+     "computed": "1146.57700",
+     "why": null,
+     "exact": "1146.576999999999989"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2021-22",
+     "category": "ESR2 connected load FY2021-22 P64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1250.23400",
+     "computed": "1250.23400",
+     "why": null,
+     "exact": "1250.2340000000000475"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR2 connected load FY2022-23 S64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1448.94940",
+     "computed": "1448.94940",
+     "why": null,
+     "exact": "1448.949404042222300"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR2 connected load FY2023-24 V64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1658.61157",
+     "computed": "1658.61157",
+     "why": null,
+     "exact": "1658.611573333334131"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR2 connected load FY2024-25 Y64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1870.24564",
+     "computed": "1870.24564",
+     "why": null,
+     "exact": "1870.24564222222245315"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2025-26",
+     "category": "ESR2 connected load FY2025-26 AB64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "2093.87756",
+     "computed": "2093.87756",
+     "why": null,
+     "exact": "2093.877555555555459"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 connected load FY2026-27 AE64",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "2345.72889",
+     "computed": "2345.72889",
+     "why": null,
+     "exact": "2345.7288888888888880"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales HV-1 AI14",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.11940",
+     "computed": "0.11940",
+     "why": null,
+     "exact": "0.119402242954545421216135891"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales HV-2 AI20",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.08813",
+     "computed": "0.08813",
+     "why": null,
+     "exact": "0.088128680316116447206580245"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales LMV-1 AI27",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.19006",
+     "computed": "0.19006",
+     "why": null,
+     "exact": "0.190063039346894379127980829"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales LMV-2 AI30",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.16434",
+     "computed": "0.16434",
+     "why": null,
+     "exact": "0.164339088113864384710537691"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales LMV-3 AI34",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "-0.04004",
+     "computed": "-0.04004",
+     "why": null,
+     "exact": "-0.0400360069041597159239044346"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales LMV-4 AI39",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.06266",
+     "computed": "0.06266",
+     "why": null,
+     "exact": "0.062655227286392895364367870"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales LMV-5 AI45",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "-0.13378",
+     "computed": "-0.13378",
+     "why": null,
+     "exact": "-0.1337795529524767953865596642"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales LMV-6 AI50",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.11159",
+     "computed": "0.11159",
+     "why": null,
+     "exact": "0.111589437212270514918664382"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales LMV-7 AI53",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.08076",
+     "computed": "0.08076",
+     "why": null,
+     "exact": "0.080755667740604292637400337"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales LMV-9 AI59",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.02546",
+     "computed": "0.02546",
+     "why": null,
+     "exact": "0.025457457595955815412593691"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 seven-year CAGR, sales Total AI64",
+     "output": "cagr_7y",
+     "result": "match",
+     "filed": "0.11611",
+     "computed": "0.11611",
+     "why": null,
+     "exact": "0.116110797515760545603082200"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2017-18",
+     "category": "ESR2 sales FY2017-18 E64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "1667.49770",
+     "computed": "1667.49770",
+     "why": null,
+     "exact": "1667.497697690051861"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2018-19",
+     "category": "ESR2 sales FY2018-19 H64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "1850.06874",
+     "computed": "1850.06874",
+     "why": null,
+     "exact": "1850.06874425839994406"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2019-20",
+     "category": "ESR2 sales FY2019-20 K64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "2080.65129",
+     "computed": "2080.65129",
+     "why": null,
+     "exact": "2080.65128531121622625"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2020-21",
+     "category": "ESR2 sales FY2020-21 N64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "2012.05237",
+     "computed": "2012.05237",
+     "why": null,
+     "exact": "2012.05237357363535501"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2021-22",
+     "category": "ESR2 sales FY2021-22 Q64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "2338.03738",
+     "computed": "2338.03738",
+     "why": null,
+     "exact": "2338.03738299999978999"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2021-22",
+     "category": "ESR2 sales FY2021-22 ARR!C9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "2338.03738",
+     "computed": "2338.03738",
+     "why": null,
+     "exact": "2338.03738299999978999"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR2 sales FY2022-23 T64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "2870.43428",
+     "computed": "2870.43428",
+     "why": null,
+     "exact": "2870.434278634457704"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR2 sales FY2022-23 ARR!D9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "2870.43428",
+     "computed": "2870.43428",
+     "why": null,
+     "exact": "2870.434278634457704"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR2 sales FY2023-24 W64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3130.40477",
+     "computed": "3130.40477",
+     "why": null,
+     "exact": "3130.404772552971619"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR2 sales FY2023-24 ARR!G9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3130.40477",
+     "computed": "3130.40477",
+     "why": null,
+     "exact": "3130.404772552971619"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR2 sales FY2024-25 Z64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3597.62929",
+     "computed": "3597.62929",
+     "why": null,
+     "exact": "3597.629289443841006"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR2 sales FY2024-25 ARR!J9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3597.62929",
+     "computed": "3597.62929",
+     "why": null,
+     "exact": "3597.629289443841006"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2025-26",
+     "category": "ESR2 sales FY2025-26 AC64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3951.43188",
+     "computed": "3951.43188",
+     "why": null,
+     "exact": "3951.4318773506639371"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2025-26",
+     "category": "ESR2 sales FY2025-26 ARR!L9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3951.43188",
+     "computed": "3951.43188",
+     "why": null,
+     "exact": "3951.4318773506639371"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 sales FY2026-27 AF64",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "4399.84282",
+     "computed": "4399.84282",
+     "why": null,
+     "exact": "4399.8428194999998"
+    },
+    {
+     "table": "ESR2_Sales Forecast",
+     "fiscal_year": "FY2026-27",
+     "category": "ESR2 sales FY2026-27 ARR!M9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "4399.84282",
+     "computed": "4399.84282",
+     "why": null,
+     "exact": "4399.8428194999998"
+    }
+   ]
+  },
+  {
    "binding": "esr3-energy-from-rates-fy27.json",
    "checks": [
     {
@@ -30008,6 +31024,1331 @@
      "computed": "8.25",
      "why": null,
      "exact": "8.25"
+    }
+   ]
+  },
+  {
+   "binding": "esr5-billing-determinants.json",
+   "checks": [
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-1) B B31",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "122861.000000",
+     "computed": "122861.000000",
+     "why": null,
+     "exact": "122861"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-2) B B43",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "4238.000000",
+     "computed": "4238.000000",
+     "why": null,
+     "exact": "4238"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-3) B B52",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "421.000000",
+     "computed": "421.000000",
+     "why": null,
+     "exact": "421"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-4) B B63",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "527.000000",
+     "computed": "527.000000",
+     "why": null,
+     "exact": "527"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-5) B B69",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1025.000000",
+     "computed": "1025.000000",
+     "why": null,
+     "exact": "1025"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-6) B B88",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "3601.000000",
+     "computed": "3601.000000",
+     "why": null,
+     "exact": "3601"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-7) B B97",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "302.000000",
+     "computed": "302.000000",
+     "why": null,
+     "exact": "302"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-9) B B110",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1006.000000",
+     "computed": "1006.000000",
+     "why": null,
+     "exact": "1006"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (HV-1) B B128",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "259.000000",
+     "computed": "259.000000",
+     "why": null,
+     "exact": "259"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (HV-2) B B153",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "972.000000",
+     "computed": "972.000000",
+     "why": null,
+     "exact": "972"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-11) B B179",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "2.000000",
+     "computed": "2.000000",
+     "why": null,
+     "exact": "2"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 grand total B B181",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "135214.000000",
+     "computed": "135214.000000",
+     "why": null,
+     "exact": "135214"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 grand total B B185",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "135214.000000",
+     "computed": "135214.000000",
+     "why": null,
+     "exact": "135214"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-1) C C31",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "619.915900",
+     "computed": "619.915900",
+     "why": null,
+     "exact": "619.91590000000003"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-2) C C43",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "40.272889",
+     "computed": "40.272889",
+     "why": null,
+     "exact": "40.272888888888889"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-3) C C52",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "10.975778",
+     "computed": "10.975778",
+     "why": null,
+     "exact": "10.9757777777778"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-4) C C63",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "7.486111",
+     "computed": "7.486111",
+     "why": null,
+     "exact": "7.48611111111111"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-5) C C69",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "5.207851",
+     "computed": "5.207851",
+     "why": null,
+     "exact": "5.207850866666673"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-6) C C88",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "87.777262",
+     "computed": "87.777262",
+     "why": null,
+     "exact": "87.7772620222222222"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-7) C C97",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "14.585689",
+     "computed": "14.585689",
+     "why": null,
+     "exact": "14.5856889555556"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-9) C C110",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "20.313134",
+     "computed": "20.313134",
+     "why": null,
+     "exact": "20.31313442"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (HV-1) C C128",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "145.621230",
+     "computed": "145.621230",
+     "why": null,
+     "exact": "145.62123"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (HV-2) C C153",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "496.743560",
+     "computed": "496.743560",
+     "why": null,
+     "exact": "496.74356"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-11) C C179",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "0.050000",
+     "computed": "0.050000",
+     "why": null,
+     "exact": "0.05"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 grand total C C181",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1448.949404",
+     "computed": "1448.949404",
+     "why": null,
+     "exact": "1448.949404042222300"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 grand total C C185",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1448.949404",
+     "computed": "1448.949404",
+     "why": null,
+     "exact": "1448.949404042222300"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-1) D D31",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "883.707866",
+     "computed": "883.707866",
+     "why": null,
+     "exact": "883.7078661286416"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-2) D D43",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "60.152356",
+     "computed": "60.152356",
+     "why": null,
+     "exact": "60.152355776000006"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-3) D D52",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "28.902363",
+     "computed": "28.902363",
+     "why": null,
+     "exact": "28.90236342956183"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-4) D D63",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "16.502253",
+     "computed": "16.502253",
+     "why": null,
+     "exact": "16.50225253315014747"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-5) D D69",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "11.703669",
+     "computed": "11.703669",
+     "why": null,
+     "exact": "11.703669400000003"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-6) D D88",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "118.043657",
+     "computed": "118.043657",
+     "why": null,
+     "exact": "118.043657460000000006"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-7) D D97",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "29.994958",
+     "computed": "29.994958",
+     "why": null,
+     "exact": "29.99495797710376"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-9) D D110",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "57.012773",
+     "computed": "57.012773",
+     "why": null,
+     "exact": "57.01277339999995"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (HV-1) D D128",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "317.670097",
+     "computed": "317.670097",
+     "why": null,
+     "exact": "317.6700970300001"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (HV-2) D D153",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "1346.735411",
+     "computed": "1346.735411",
+     "why": null,
+     "exact": "1346.735410600000015"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-11) D D179",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "0.008875",
+     "computed": "0.008875",
+     "why": null,
+     "exact": "0.0088749"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 grand total D D181",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "2870.434279",
+     "computed": "2870.434279",
+     "why": null,
+     "exact": "2870.434278634457404"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 grand total D ARR!D9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "2870.434279",
+     "computed": "2870.434279",
+     "why": null,
+     "exact": "2870.434278634457404"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-1) E E31",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "562.495822",
+     "computed": "562.495822",
+     "why": null,
+     "exact": "562.4958218127814694"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-2) E E43",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "60.536374",
+     "computed": "60.536374",
+     "why": null,
+     "exact": "60.53637366059566"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-3) E E52",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "25.218561",
+     "computed": "25.218561",
+     "why": null,
+     "exact": "25.218560926174067"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-4) E E63",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "13.488917",
+     "computed": "13.488917",
+     "why": null,
+     "exact": "13.4889171023310104"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-5) E E69",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "3.163487",
+     "computed": "3.163487",
+     "why": null,
+     "exact": "3.16348661831435451"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-6) E E88",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "107.815462",
+     "computed": "107.815462",
+     "why": null,
+     "exact": "107.81546185012512"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-7) E E97",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "31.348708",
+     "computed": "31.348708",
+     "why": null,
+     "exact": "31.34870839817466"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-9) E E110",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "65.482185",
+     "computed": "65.482185",
+     "why": null,
+     "exact": "65.48218457582695"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (HV-1) E E128",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "312.996845",
+     "computed": "312.996845",
+     "why": null,
+     "exact": "312.99684487944717"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (HV-2) E E153",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1025.226088",
+     "computed": "1025.226088",
+     "why": null,
+     "exact": "1025.226087968280295"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 SUBTOTAL (LMV-11) E E179",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "0.005634",
+     "computed": "0.005634",
+     "why": null,
+     "exact": "0.005634479999999999"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 grand total E E181",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2207.778082",
+     "computed": "2207.778082",
+     "why": null,
+     "exact": "2207.778082272050896599"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2022-23",
+     "category": "ESR5 grand total E ARR!D15",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2207.778082",
+     "computed": "2207.778082",
+     "why": null,
+     "exact": "2207.778082272050896599"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-1) N N31",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "171375.000000",
+     "computed": "171375.000000",
+     "why": null,
+     "exact": "171375"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-2) N N43",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "5849.000000",
+     "computed": "5849.000000",
+     "why": null,
+     "exact": "5849"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-3) N N52",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1434.000000",
+     "computed": "1434.000000",
+     "why": null,
+     "exact": "1434"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-4) N N63",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "539.000000",
+     "computed": "539.000000",
+     "why": null,
+     "exact": "539"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-5) N N69",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "975.000000",
+     "computed": "975.000000",
+     "why": null,
+     "exact": "975"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-6) N N88",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "3784.000000",
+     "computed": "3784.000000",
+     "why": null,
+     "exact": "3784"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-7) N N97",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "324.000000",
+     "computed": "324.000000",
+     "why": null,
+     "exact": "324"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-9) N N110",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1366.000000",
+     "computed": "1366.000000",
+     "why": null,
+     "exact": "1366"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (HV-1) N N128",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "321.000000",
+     "computed": "321.000000",
+     "why": null,
+     "exact": "321"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (HV-2) N N153",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1176.000000",
+     "computed": "1176.000000",
+     "why": null,
+     "exact": "1176"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-11) N N179",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "11.000000",
+     "computed": "11.000000",
+     "why": null,
+     "exact": "11"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total N N181",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "187154.000000",
+     "computed": "187154.000000",
+     "why": null,
+     "exact": "187154"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total N N185",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "187154.000000",
+     "computed": "187154.000000",
+     "why": null,
+     "exact": "187154"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-1) P P31",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "890.853950",
+     "computed": "890.853950",
+     "why": null,
+     "exact": "890.8539499999998412"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-2) P P43",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "59.112556",
+     "computed": "59.112556",
+     "why": null,
+     "exact": "59.1125555555555571"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-3) P P52",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "9.978000",
+     "computed": "9.978000",
+     "why": null,
+     "exact": "9.978000000000002"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-4) P P63",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "8.251667",
+     "computed": "8.251667",
+     "why": null,
+     "exact": "8.2516666666666663"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-5) P P69",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "5.237778",
+     "computed": "5.237778",
+     "why": null,
+     "exact": "5.2377777777777335"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-6) P P88",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "101.274667",
+     "computed": "101.274667",
+     "why": null,
+     "exact": "101.27466666666743778"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-7) P P97",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "15.927778",
+     "computed": "15.927778",
+     "why": null,
+     "exact": "15.927777777777724"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-9) P P110",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "21.278692",
+     "computed": "21.278692",
+     "why": null,
+     "exact": "21.278692222222226"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (HV-1) P P128",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "173.815556",
+     "computed": "173.815556",
+     "why": null,
+     "exact": "173.8155555555556"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (HV-2) P P153",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "584.106889",
+     "computed": "584.106889",
+     "why": null,
+     "exact": "584.1068888888886"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-11) P P179",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "0.408111",
+     "computed": "0.408111",
+     "why": null,
+     "exact": "0.40811111111111115"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total P P181",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1870.245642",
+     "computed": "1870.245642",
+     "why": null,
+     "exact": "1870.24564222222245315"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total P P185",
+     "output": "lines_number_total",
+     "result": "match",
+     "filed": "1870.245642",
+     "computed": "1870.245642",
+     "why": null,
+     "exact": "1870.24564222222245315"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-1) R R31",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "1239.115726",
+     "computed": "1239.115726",
+     "why": null,
+     "exact": "1239.1157263294470997"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-2) R R43",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "96.555672",
+     "computed": "96.555672",
+     "why": null,
+     "exact": "96.5556716182162819"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-3) R R52",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "25.806604",
+     "computed": "25.806604",
+     "why": null,
+     "exact": "25.806604132000007"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-4) R R63",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "20.313294",
+     "computed": "20.313294",
+     "why": null,
+     "exact": "20.313293706267890"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-5) R R69",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "11.592824",
+     "computed": "11.592824",
+     "why": null,
+     "exact": "11.5928237900000058"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-6) R R88",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "144.834774",
+     "computed": "144.834774",
+     "why": null,
+     "exact": "144.834774280909063064"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-7) R R97",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "34.335644",
+     "computed": "34.335644",
+     "why": null,
+     "exact": "34.335643586473836"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-9) R R110",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "56.243071",
+     "computed": "56.243071",
+     "why": null,
+     "exact": "56.243071128220215"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (HV-1) R R128",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "384.930201",
+     "computed": "384.930201",
+     "why": null,
+     "exact": "384.9302014805523"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (HV-2) R R153",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "1583.704678",
+     "computed": "1583.704678",
+     "why": null,
+     "exact": "1583.704678391754444"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-11) R R179",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "0.196801",
+     "computed": "0.196801",
+     "why": null,
+     "exact": "0.196801"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total R R181",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3597.629289",
+     "computed": "3597.629289",
+     "why": null,
+     "exact": "3597.629289443841206"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total R R185",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3597.629289",
+     "computed": "3597.629289",
+     "why": null,
+     "exact": "3597.629289443841206"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total R ARR!J9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3597.629289",
+     "computed": "3597.629289",
+     "why": null,
+     "exact": "3597.629289443841206"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-1) T T31",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "751.644496",
+     "computed": "751.644496",
+     "why": null,
+     "exact": "751.64449604297694"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-2) T T43",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "91.252273",
+     "computed": "91.252273",
+     "why": null,
+     "exact": "91.2522731480000033"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-3) T T52",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "22.773632",
+     "computed": "22.773632",
+     "why": null,
+     "exact": "22.773632256000006"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-4) T T63",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "15.537190",
+     "computed": "15.537190",
+     "why": null,
+     "exact": "15.537189630000006"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-5) T T69",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "3.570227",
+     "computed": "3.570227",
+     "why": null,
+     "exact": "3.57022698910706234"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-6) T T88",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "122.142737",
+     "computed": "122.142737",
+     "why": null,
+     "exact": "122.14273682210803374"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-7) T T97",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "34.894101",
+     "computed": "34.894101",
+     "why": null,
+     "exact": "34.894101421"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-9) T T110",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "67.224387",
+     "computed": "67.224387",
+     "why": null,
+     "exact": "67.224387198"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (HV-1) T T128",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "358.253487",
+     "computed": "358.253487",
+     "why": null,
+     "exact": "358.25348723266546"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (HV-2) T T153",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1167.170072",
+     "computed": "1167.170072",
+     "why": null,
+     "exact": "1167.17007241850014"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 SUBTOTAL (LMV-11) T T179",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "0.139989",
+     "computed": "0.139989",
+     "why": null,
+     "exact": "0.139989287"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total T T181",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2634.602592",
+     "computed": "2634.602592",
+     "why": null,
+     "exact": "2634.6025924453576644"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total T T185",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2634.602592",
+     "computed": "2634.602592",
+     "why": null,
+     "exact": "2634.6025924453576644"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 grand total T ARR!J15",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2634.602592",
+     "computed": "2634.602592",
+     "why": null,
+     "exact": "2634.6025924453576644"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR5 FY2023-24 categories J ARR!G9",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "3130.404773",
+     "computed": "3130.404773",
+     "why": null,
+     "exact": "3130.404772552971719"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2023-24",
+     "category": "ESR5 FY2023-24 categories L ARR!G15",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2320.973859",
+     "computed": "2320.973859",
+     "why": null,
+     "exact": "2320.9738585256291365"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-1) U31",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.336267",
+     "computed": "0.256312",
+     "why": null,
+     "exact": "0.2563115934773136970147961881"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-2) U43",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.507396",
+     "computed": "0.245049",
+     "why": null,
+     "exact": "0.2450488239091234443019433861"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-3) U52",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "-0.096950",
+     "computed": "-0.041641",
+     "why": null,
+     "exact": "-0.04164096203727306317250133815"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-4) U63",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.151849",
+     "computed": "0.137300",
+     "why": null,
+     "exact": "0.1373002190239550270794141878"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-5) U69",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.128573",
+     "computed": "0.179748",
+     "why": null,
+     "exact": "0.1797481167872509630668100606"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-6) U88",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.132887",
+     "computed": "0.107241",
+     "why": null,
+     "exact": "0.1072406541393491002612194104"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-7) U97",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.113095",
+     "computed": "0.048348",
+     "why": null,
+     "exact": "0.04834836604005519329139227375"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-9) U110",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.026606",
+     "computed": "0.002951",
+     "why": null,
+     "exact": "0.002951446313989391515194203587"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (HV-1) U128",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.144591",
+     "computed": "0.030634",
+     "why": null,
+     "exact": "0.03063381545194662011076032533"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (HV-2) U153",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.138451",
+     "computed": "0.110867",
+     "why": null,
+     "exact": "0.1108665325537212189361146015"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change SUBTOTAL (LMV-11) U179",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "23.845112",
+     "computed": "5.160446",
+     "why": null,
+     "exact": "5.160445548715470810675460936"
+    },
+    {
+     "table": "ESR5_BD&Rev",
+     "fiscal_year": "FY2024-25",
+     "category": "ESR5 % change, grand total U181",
+     "output": "pct_change",
+     "result": "differs",
+     "filed": "0.193328",
+     "computed": "0.135128",
+     "why": null,
+     "exact": "0.1351280768491539227383473928"
     }
    ]
   },
@@ -59270,14 +61611,14 @@
     "title": "Revenue from Open Access Customers",
     "sheet": "ESR1_OA",
     "alias_why": null,
-    "status": "read"
+    "status": "reproduced"
    },
    {
     "format": "ESR2_Sales Forecast",
     "title": "Determination of CAGR of Energy Sales Forecast",
     "sheet": "ESR2_Sales Forecast",
     "alias_why": null,
-    "status": "read"
+    "status": "reproduced"
    },
    {
     "format": "ESR3_Curr Tariff - FY24",
@@ -59326,7 +61667,7 @@
     "title": "Consumer No., Connected Load, Sales & Revenue Details",
     "sheet": "ESR5_BD&Rev",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "ESR6_Subsidy",
@@ -59732,11 +62073,11 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 19,
-   "reproduced": 45,
-   "read": 7,
+   "present": 18,
+   "reproduced": 48,
    "blank": 2,
-   "missing": 1
+   "missing": 1,
+   "read": 5
   }
  },
  "coverage": {
@@ -59889,15 +62230,15 @@
     "line_code": "E.PP.QTY.SURPLUS_SALE",
     "cells": {
      "C": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "esr2-sales-forecast.json: lines_mu_total",
+      "computed": "2338.03738",
       "filed": "2338.04"
      },
      "D": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "esr2-sales-forecast.json: lines_mu_total",
+      "computed": "2870.43428",
       "filed": "2870.43"
      },
      "E": {
@@ -59914,8 +62255,8 @@
      },
      "G": {
       "status": "tied",
-      "source": "esr3-revenue-fy24.json: units_sold_total",
-      "computed": "3130.4048",
+      "source": "esr2-sales-forecast.json: lines_mu_total",
+      "computed": "3130.40477",
       "filed": "3130.4"
      },
      "H": {
@@ -59932,8 +62273,8 @@
      },
      "J": {
       "status": "tied",
-      "source": "esr3-revenue-fy25.json: units_sold_total",
-      "computed": "3597.6293",
+      "source": "esr2-sales-forecast.json: lines_mu_total",
+      "computed": "3597.62929",
       "filed": "3597.63"
      },
      "K": {
@@ -59944,14 +62285,14 @@
      },
      "L": {
       "status": "tied",
-      "source": "esr3-revenue-fy26.json: units_sold_total",
-      "computed": "3951.4319",
+      "source": "esr2-sales-forecast.json: lines_mu_total",
+      "computed": "3951.43188",
       "filed": "3951.43"
      },
      "M": {
       "status": "tied",
-      "source": "esr3-revenue-fy27.json: units_sold_total",
-      "computed": "4399.8428",
+      "source": "esr2-sales-forecast.json: lines_mu_total",
+      "computed": "4399.84282",
       "filed": "4399.84"
      }
     }
@@ -60187,9 +62528,9 @@
       "filed": "1939.66"
      },
      "D": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "esr5-billing-determinants.json: lines_crore_total",
+      "computed": "2207.778082",
       "filed": "2207.78"
      },
      "E": {
@@ -62172,9 +64513,9 @@
       "filed": "2.41"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "esr1-open-access.json: oa_revenue_total",
+      "computed": "2.414729",
       "filed": "2.41"
      },
      "H": {
@@ -62190,9 +64531,9 @@
       "filed": "5.37"
      },
      "J": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "esr1-open-access.json: oa_revenue_total",
+      "computed": "5.374129",
       "filed": "5.37"
      },
      "K": {
@@ -62202,15 +64543,15 @@
       "filed": "9.13"
      },
      "L": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "esr1-open-access.json: oa_revenue_total",
+      "computed": "7.082108",
       "filed": "7.08"
      },
      "M": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "esr1-open-access.json: oa_revenue_total",
+      "computed": "9.835754",
       "filed": "9.84"
      }
     }
@@ -62991,13 +65332,14 @@
   ],
   "summary": {
    "C": {
-    "record": 32,
+    "record": 31,
+    "tied": 1,
     "computed": 11
    },
    "D": {
-    "record": 27,
+    "record": 25,
+    "tied": 4,
     "computed": 13,
-    "tied": 2,
     "differs": 1
    },
    "E": {
@@ -63012,9 +65354,9 @@
     "differs": 2
    },
    "G": {
-    "tied": 13,
+    "tied": 14,
     "computed": 11,
-    "record": 13,
+    "record": 12,
     "differs": 6
    },
    "H": {
@@ -63029,10 +65371,10 @@
     "tied": 1
    },
    "J": {
-    "tied": 14,
+    "tied": 15,
     "computed": 16,
     "differs": 3,
-    "record": 8
+    "record": 7
    },
    "K": {
     "record": 26,
@@ -63040,14 +65382,14 @@
     "differs": 6
    },
    "L": {
-    "tied": 18,
+    "tied": 19,
     "computed": 17,
-    "record": 11
+    "record": 10
    },
    "M": {
-    "tied": 18,
+    "tied": 19,
     "computed": 17,
-    "record": 11
+    "record": 10
    }
   }
  }

@@ -382,3 +382,29 @@ def test_an_amended_clause_applies_only_from_its_effective_year():
     rival = rule("syn.roe_other", "roe", "INR_crore", "rate * equity", inputs, applies={"from_fy": "FY2026-27"})
     with pytest.raises(RuleError, match="several rules apply to roe"):
         RuleSet([v2, rival], "FY2026-27")
+
+
+def test_root_gives_a_compound_growth_rate_and_refuses_what_has_no_root():
+    """root(x, n): the n-th root of a pure, non-negative number, n a whole-number literal — the
+    seven-year CAGR of a sales forecast is root(end / start, 7) - 1 (increment 145)."""
+    from decimal import Decimal
+
+    import pytest
+
+    from tariff_api.arr.rules import Q, RuleError, evaluate, parse
+
+    src = "root(end / start, 7) - 1"
+    got = evaluate(parse(src), {"end": Q(Decimal(321)), "start": Q(Decimal(149))}, src).value
+    assert abs(got - Decimal("0.1158786447")) < Decimal("1e-10")  # ESR2's HV-1 consumers, AG14
+    assert evaluate(parse("root(x, 7)"), {"x": Q(Decimal(128))}, "root(x, 7)").value == 2
+    for bad, why in (
+        ("root(x, 1.5)", "whole-number literal"),
+        ("root(x, n)", "whole-number literal"),
+        ("root(x)", "takes"),
+    ):
+        with pytest.raises(RuleError, match=why):
+            evaluate(parse(bad), {"x": Q(Decimal(2)), "n": Q(Decimal(2))}, bad)
+    with pytest.raises(RuleError, match="negative"):
+        evaluate(parse("root(x, 2)"), {"x": Q(Decimal(-4))}, "root(x, 2)")
+    with pytest.raises(RuleError, match="pure number"):
+        evaluate(parse("root(x, 2)"), {"x": Q(Decimal(4), (("money", 1),))}, "root(x, 2)")

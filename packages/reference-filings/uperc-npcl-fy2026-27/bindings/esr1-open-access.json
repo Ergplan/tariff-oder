@@ -1,0 +1,141 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ESR1_OA",
+ "places": 6,
+ "note": "ESR1's revenue from open access customers — wheeling, cross-subsidy surcharge, additional surcharge, other — to its total and the ARR format's row 51, four years.  The charges themselves are typed: no rate in the formats gives them.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "ESR1 claimed",
+   "inputs": {
+    "record:oa_wheeling": {
+     "cell": "F9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_css": {
+     "cell": "G9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_additional": {
+     "cell": "H9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_other": {
+     "cell": "I9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "oa_revenue_total": [
+     "J9",
+     "J11",
+     "ARR!G51"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR1 audited",
+   "inputs": {
+    "record:oa_wheeling": {
+     "cell": "N9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_css": {
+     "cell": "O9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_additional": {
+     "cell": "P9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_other": {
+     "cell": "Q9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "oa_revenue_total": [
+     "R9",
+     "R11",
+     "ARR!J51"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "ESR1 estimated",
+   "inputs": {
+    "record:oa_wheeling": {
+     "cell": "V9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_css": {
+     "cell": "W9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_additional": {
+     "cell": "X9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_other": {
+     "cell": "Y9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "oa_revenue_total": [
+     "Z9",
+     "Z11",
+     "ARR!L51"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR1 projected",
+   "inputs": {
+    "record:oa_wheeling": {
+     "cell": "AD9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_css": {
+     "cell": "AE9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_additional": {
+     "cell": "AF9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    },
+    "record:oa_other": {
+     "cell": "AG9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "oa_revenue_total": [
+     "AH9",
+     "AH11",
+     "ARR!M51"
+    ]
+   }
+  }
+ ]
+}

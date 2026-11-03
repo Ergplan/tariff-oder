@@ -1,0 +1,205 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ESR2_Sales Forecast",
+ "places": 4,
+ "note": "FY2026-27's sales by category against FY2025-26 × (1 + the category's seven-year CAGR) — Reg. 30.2's basis when the Commission provides nothing else.  To four places (0.1 MWh): ESR3 builds each category from its slabs month by month, so a category at its CAGR agrees to a few millionths of a MU, not to the sixth place.  Exact for HV-2, LMV-2, LMV-4, LMV-5 and LMV-9; HV-1, LMV-1, LMV-3 and LMV-6 at the moderated rates the narrative states, LMV-7 a little under its CAGR with no departure stated (A85, A88).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR2 FY2026-27 sales at the seven-year CAGR (Reg. 30.2)",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:series_end": [
+       "Z14",
+       "number"
+      ],
+      "record:series_start": [
+       "E14",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC14",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF14"
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:series_end": [
+       "Z20",
+       "number"
+      ],
+      "record:series_start": [
+       "E20",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC20",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF20"
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:series_end": [
+       "Z27",
+       "number"
+      ],
+      "record:series_start": [
+       "E27",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC27",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF27"
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:series_end": [
+       "Z30",
+       "number"
+      ],
+      "record:series_start": [
+       "E30",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC30",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF30"
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:series_end": [
+       "Z34",
+       "number"
+      ],
+      "record:series_start": [
+       "E34",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC34",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF34"
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:series_end": [
+       "Z39",
+       "number"
+      ],
+      "record:series_start": [
+       "E39",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC39",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF39"
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:series_end": [
+       "Z45",
+       "number"
+      ],
+      "record:series_start": [
+       "E45",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC45",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF45"
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:series_end": [
+       "Z50",
+       "number"
+      ],
+      "record:series_start": [
+       "E50",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC50",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF50"
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:series_end": [
+       "Z53",
+       "number"
+      ],
+      "record:series_start": [
+       "E53",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC53",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF53"
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:series_end": [
+       "Z59",
+       "number"
+      ],
+      "record:series_start": [
+       "E59",
+       "number"
+      ],
+      "record:series_previous": [
+       "AC59",
+       "number"
+      ]
+     },
+     "checks": {
+      "projected_at_cagr": "AF59"
+     }
+    }
+   }
+  }
+ ]
+}

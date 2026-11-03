@@ -1,0 +1,3817 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ESR5_BD&Rev",
+ "places": 6,
+ "note": "ESR5's consumers, connected load, sales and revenue by category: every subtotal from its lines (ranges read from the format's own SUM formulas) and the grand total from the subtotals, for FY2022-23 (trued up) and FY2024-25 (true-up claimed), tied to the ARR format's rows 9 and 15 and to ESR3 (row 185); FY2023-24 entered on each category's first line only, summed against the ARR format; and the '% change wrt previous' column recomputed on FY2023-24 as its heading says — the format's subtotals and total compare with FY2022-23 instead (A86).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-1) B",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_number": [
+       "B8",
+       "number"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_number": [
+       "B9",
+       "number"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "B19",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B31"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-2) B",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "B34",
+       "number"
+      ]
+     }
+    },
+    "row 38": {
+     "inputs": {
+      "record:line_number": [
+       "B38",
+       "number"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_number": [
+       "B39",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B43"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-3) B",
+   "categories": {
+    "row 45": {
+     "inputs": {
+      "record:line_number": [
+       "B45",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B52"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-4) B",
+   "categories": {
+    "row 55": {
+     "inputs": {
+      "record:line_number": [
+       "B55",
+       "number"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_number": [
+       "B59",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B63"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-5) B",
+   "categories": {
+    "row 66": {
+     "inputs": {
+      "record:line_number": [
+       "B66",
+       "number"
+      ]
+     }
+    },
+    "row 67": {
+     "inputs": {
+      "record:line_number": [
+       "B67",
+       "number"
+      ]
+     }
+    },
+    "row 68": {
+     "inputs": {
+      "record:line_number": [
+       "B68",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B69"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-6) B",
+   "categories": {
+    "row 80": {
+     "inputs": {
+      "record:line_number": [
+       "B80",
+       "number"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:line_number": [
+       "B84",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B88"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-7) B",
+   "categories": {
+    "row 90": {
+     "inputs": {
+      "record:line_number": [
+       "B90",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B97"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-9) B",
+   "categories": {
+    "row 105": {
+     "inputs": {
+      "record:line_number": [
+       "B105",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B110"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (HV-1) B",
+   "categories": {
+    "row 123": {
+     "inputs": {
+      "record:line_number": [
+       "B123",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B128"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (HV-2) B",
+   "categories": {
+    "row 131": {
+     "inputs": {
+      "record:line_number": [
+       "B131",
+       "number"
+      ]
+     }
+    },
+    "row 136": {
+     "inputs": {
+      "record:line_number": [
+       "B136",
+       "number"
+      ]
+     }
+    },
+    "row 147": {
+     "inputs": {
+      "record:line_number": [
+       "B147",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B153"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-11) B",
+   "categories": {
+    "row 172": {
+     "inputs": {
+      "record:line_number": [
+       "B172",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "B179"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 grand total B",
+   "categories": {
+    "SUBTOTAL (LMV-1)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B31",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-2)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B43",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-3)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B52",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-4)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B63",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-5)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B69",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-6)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B88",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-7)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B97",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-8)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B103",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-9)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B110",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-10)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B121",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-1)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B128",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-2)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B153",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-3)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B159",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-4)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B165",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-11)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "B179",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "B181",
+     "B185"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-1) C",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_number": [
+       "C8",
+       "number"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_number": [
+       "C9",
+       "number"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "C19",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C31"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-2) C",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "C34",
+       "number"
+      ]
+     }
+    },
+    "row 38": {
+     "inputs": {
+      "record:line_number": [
+       "C38",
+       "number"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_number": [
+       "C39",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C43"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-3) C",
+   "categories": {
+    "row 45": {
+     "inputs": {
+      "record:line_number": [
+       "C45",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C52"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-4) C",
+   "categories": {
+    "row 55": {
+     "inputs": {
+      "record:line_number": [
+       "C55",
+       "number"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_number": [
+       "C59",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C63"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-5) C",
+   "categories": {
+    "row 66": {
+     "inputs": {
+      "record:line_number": [
+       "C66",
+       "number"
+      ]
+     }
+    },
+    "row 67": {
+     "inputs": {
+      "record:line_number": [
+       "C67",
+       "number"
+      ]
+     }
+    },
+    "row 68": {
+     "inputs": {
+      "record:line_number": [
+       "C68",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C69"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-6) C",
+   "categories": {
+    "row 80": {
+     "inputs": {
+      "record:line_number": [
+       "C80",
+       "number"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:line_number": [
+       "C84",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C88"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-7) C",
+   "categories": {
+    "row 90": {
+     "inputs": {
+      "record:line_number": [
+       "C90",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C97"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-9) C",
+   "categories": {
+    "row 105": {
+     "inputs": {
+      "record:line_number": [
+       "C105",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C110"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (HV-1) C",
+   "categories": {
+    "row 123": {
+     "inputs": {
+      "record:line_number": [
+       "C123",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C128"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (HV-2) C",
+   "categories": {
+    "row 131": {
+     "inputs": {
+      "record:line_number": [
+       "C131",
+       "number"
+      ]
+     }
+    },
+    "row 136": {
+     "inputs": {
+      "record:line_number": [
+       "C136",
+       "number"
+      ]
+     }
+    },
+    "row 147": {
+     "inputs": {
+      "record:line_number": [
+       "C147",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C153"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-11) C",
+   "categories": {
+    "row 172": {
+     "inputs": {
+      "record:line_number": [
+       "C172",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C179"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 grand total C",
+   "categories": {
+    "SUBTOTAL (LMV-1)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C31",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-2)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C43",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-3)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C52",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-4)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C63",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-5)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C69",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-6)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C88",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-7)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C97",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-8)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C103",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-9)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C110",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-10)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C121",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-1)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C128",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-2)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C153",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-3)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C159",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-4)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C165",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-11)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C179",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "C181",
+     "C185"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-1) D",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_mu": [
+       "D8",
+       "MU"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_mu": [
+       "D9",
+       "MU"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_mu": [
+       "D19",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D31"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-2) D",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_mu": [
+       "D34",
+       "MU"
+      ]
+     }
+    },
+    "row 38": {
+     "inputs": {
+      "record:line_mu": [
+       "D38",
+       "MU"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_mu": [
+       "D39",
+       "MU"
+      ]
+     }
+    },
+    "row 40": {
+     "inputs": {
+      "record:line_mu": [
+       "D40",
+       "MU"
+      ]
+     }
+    },
+    "row 41": {
+     "inputs": {
+      "record:line_mu": [
+       "D41",
+       "MU"
+      ]
+     }
+    },
+    "row 42": {
+     "inputs": {
+      "record:line_mu": [
+       "D42",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D43"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-3) D",
+   "categories": {
+    "row 45": {
+     "inputs": {
+      "record:line_mu": [
+       "D45",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D52"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-4) D",
+   "categories": {
+    "row 55": {
+     "inputs": {
+      "record:line_mu": [
+       "D55",
+       "MU"
+      ]
+     }
+    },
+    "row 56": {
+     "inputs": {
+      "record:line_mu": [
+       "D56",
+       "MU"
+      ]
+     }
+    },
+    "row 57": {
+     "inputs": {
+      "record:line_mu": [
+       "D57",
+       "MU"
+      ]
+     }
+    },
+    "row 58": {
+     "inputs": {
+      "record:line_mu": [
+       "D58",
+       "MU"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_mu": [
+       "D59",
+       "MU"
+      ]
+     }
+    },
+    "row 60": {
+     "inputs": {
+      "record:line_mu": [
+       "D60",
+       "MU"
+      ]
+     }
+    },
+    "row 61": {
+     "inputs": {
+      "record:line_mu": [
+       "D61",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D63"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-5) D",
+   "categories": {
+    "row 66": {
+     "inputs": {
+      "record:line_mu": [
+       "D66",
+       "MU"
+      ]
+     }
+    },
+    "row 67": {
+     "inputs": {
+      "record:line_mu": [
+       "D67",
+       "MU"
+      ]
+     }
+    },
+    "row 68": {
+     "inputs": {
+      "record:line_mu": [
+       "D68",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D69"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-6) D",
+   "categories": {
+    "row 80": {
+     "inputs": {
+      "record:line_mu": [
+       "D80",
+       "MU"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:line_mu": [
+       "D84",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D88"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-7) D",
+   "categories": {
+    "row 90": {
+     "inputs": {
+      "record:line_mu": [
+       "D90",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D97"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-9) D",
+   "categories": {
+    "row 105": {
+     "inputs": {
+      "record:line_mu": [
+       "D105",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D110"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (HV-1) D",
+   "categories": {
+    "row 123": {
+     "inputs": {
+      "record:line_mu": [
+       "D123",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D128"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (HV-2) D",
+   "categories": {
+    "row 132": {
+     "inputs": {
+      "record:line_mu": [
+       "D132",
+       "MU"
+      ]
+     }
+    },
+    "row 133": {
+     "inputs": {
+      "record:line_mu": [
+       "D133",
+       "MU"
+      ]
+     }
+    },
+    "row 134": {
+     "inputs": {
+      "record:line_mu": [
+       "D134",
+       "MU"
+      ]
+     }
+    },
+    "row 135": {
+     "inputs": {
+      "record:line_mu": [
+       "D135",
+       "MU"
+      ]
+     }
+    },
+    "row 137": {
+     "inputs": {
+      "record:line_mu": [
+       "D137",
+       "MU"
+      ]
+     }
+    },
+    "row 138": {
+     "inputs": {
+      "record:line_mu": [
+       "D138",
+       "MU"
+      ]
+     }
+    },
+    "row 139": {
+     "inputs": {
+      "record:line_mu": [
+       "D139",
+       "MU"
+      ]
+     }
+    },
+    "row 140": {
+     "inputs": {
+      "record:line_mu": [
+       "D140",
+       "MU"
+      ]
+     }
+    },
+    "row 143": {
+     "inputs": {
+      "record:line_mu": [
+       "D143",
+       "MU"
+      ]
+     }
+    },
+    "row 145": {
+     "inputs": {
+      "record:line_mu": [
+       "D145",
+       "MU"
+      ]
+     }
+    },
+    "row 147": {
+     "inputs": {
+      "record:line_mu": [
+       "D147",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D153"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-11) D",
+   "categories": {
+    "row 172": {
+     "inputs": {
+      "record:line_mu": [
+       "D172",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "D179"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 grand total D",
+   "categories": {
+    "SUBTOTAL (LMV-1)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-2)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-3)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D52",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-4)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D63",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-5)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D69",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-6)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D88",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-7)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D97",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-8)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D103",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-9)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D110",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-10)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D121",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-1)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D128",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-2)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D153",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-3)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D159",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-4)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D165",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-11)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "D179",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "D181",
+     "ARR!D9"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-1) E",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": [
+       "E8",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": [
+       "E9",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": [
+       "E19",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E31"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-2) E",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_crore": [
+       "E34",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 38": {
+     "inputs": {
+      "record:line_crore": [
+       "E38",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_crore": [
+       "E39",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E43"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-3) E",
+   "categories": {
+    "row 45": {
+     "inputs": {
+      "record:line_crore": [
+       "E45",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E52"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-4) E",
+   "categories": {
+    "row 55": {
+     "inputs": {
+      "record:line_crore": [
+       "E55",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_crore": [
+       "E59",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E63"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-5) E",
+   "categories": {
+    "row 66": {
+     "inputs": {
+      "record:line_crore": [
+       "E66",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 67": {
+     "inputs": {
+      "record:line_crore": [
+       "E67",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 68": {
+     "inputs": {
+      "record:line_crore": [
+       "E68",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E69"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-6) E",
+   "categories": {
+    "row 80": {
+     "inputs": {
+      "record:line_crore": [
+       "E80",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:line_crore": [
+       "E84",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E88"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-7) E",
+   "categories": {
+    "row 90": {
+     "inputs": {
+      "record:line_crore": [
+       "E90",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E97"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-9) E",
+   "categories": {
+    "row 105": {
+     "inputs": {
+      "record:line_crore": [
+       "E105",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E110"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (HV-1) E",
+   "categories": {
+    "row 123": {
+     "inputs": {
+      "record:line_crore": [
+       "E123",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E128"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (HV-2) E",
+   "categories": {
+    "row 131": {
+     "inputs": {
+      "record:line_crore": [
+       "E131",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 136": {
+     "inputs": {
+      "record:line_crore": [
+       "E136",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 147": {
+     "inputs": {
+      "record:line_crore": [
+       "E147",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E153"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 SUBTOTAL (LMV-11) E",
+   "categories": {
+    "row 172": {
+     "inputs": {
+      "record:line_crore": [
+       "E172",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E179"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR5 grand total E",
+   "categories": {
+    "SUBTOTAL (LMV-1)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-2)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-3)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E52",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-4)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E63",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-5)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E69",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-6)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E88",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-7)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E97",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-8)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E103",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-9)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E110",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-10)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E121",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-1)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E128",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-2)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E153",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-3)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E159",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-4)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E165",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-11)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E179",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": [
+     "E181",
+     "ARR!D15"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-1) N",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_number": [
+       "N8",
+       "number"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_number": [
+       "N9",
+       "number"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "N19",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-2) N",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "N34",
+       "number"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_number": [
+       "N39",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N43"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-3) N",
+   "categories": {
+    "row 45": {
+     "inputs": {
+      "record:line_number": [
+       "N45",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N52"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-4) N",
+   "categories": {
+    "row 55": {
+     "inputs": {
+      "record:line_number": [
+       "N55",
+       "number"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_number": [
+       "N59",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N63"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-5) N",
+   "categories": {
+    "row 66": {
+     "inputs": {
+      "record:line_number": [
+       "N66",
+       "number"
+      ]
+     }
+    },
+    "row 67": {
+     "inputs": {
+      "record:line_number": [
+       "N67",
+       "number"
+      ]
+     }
+    },
+    "row 68": {
+     "inputs": {
+      "record:line_number": [
+       "N68",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N69"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-6) N",
+   "categories": {
+    "row 80": {
+     "inputs": {
+      "record:line_number": [
+       "N80",
+       "number"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:line_number": [
+       "N84",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N88"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-7) N",
+   "categories": {
+    "row 90": {
+     "inputs": {
+      "record:line_number": [
+       "N90",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N97"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-9) N",
+   "categories": {
+    "row 105": {
+     "inputs": {
+      "record:line_number": [
+       "N105",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N110"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (HV-1) N",
+   "categories": {
+    "row 123": {
+     "inputs": {
+      "record:line_number": [
+       "N123",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N128"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (HV-2) N",
+   "categories": {
+    "row 131": {
+     "inputs": {
+      "record:line_number": [
+       "N131",
+       "number"
+      ]
+     }
+    },
+    "row 136": {
+     "inputs": {
+      "record:line_number": [
+       "N136",
+       "number"
+      ]
+     }
+    },
+    "row 142": {
+     "inputs": {
+      "record:line_number": [
+       "N142",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N153"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-11) N",
+   "categories": {
+    "row 172": {
+     "inputs": {
+      "record:line_number": [
+       "N172",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "N179"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 grand total N",
+   "categories": {
+    "SUBTOTAL (LMV-1)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N31",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-2)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N43",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-3)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N52",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-4)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N63",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-5)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N69",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-6)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N88",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-7)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N97",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-8)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N103",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-9)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N110",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-10)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N121",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-1)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N128",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-2)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N153",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-3)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N159",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-4)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N165",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-11)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "N179",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "N181",
+     "N185"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-1) P",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_number": [
+       "P8",
+       "number"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_number": [
+       "P9",
+       "number"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "P19",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-2) P",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "P34",
+       "number"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_number": [
+       "P39",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P43"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-3) P",
+   "categories": {
+    "row 45": {
+     "inputs": {
+      "record:line_number": [
+       "P45",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P52"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-4) P",
+   "categories": {
+    "row 55": {
+     "inputs": {
+      "record:line_number": [
+       "P55",
+       "number"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_number": [
+       "P59",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P63"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-5) P",
+   "categories": {
+    "row 66": {
+     "inputs": {
+      "record:line_number": [
+       "P66",
+       "number"
+      ]
+     }
+    },
+    "row 67": {
+     "inputs": {
+      "record:line_number": [
+       "P67",
+       "number"
+      ]
+     }
+    },
+    "row 68": {
+     "inputs": {
+      "record:line_number": [
+       "P68",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P69"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-6) P",
+   "categories": {
+    "row 80": {
+     "inputs": {
+      "record:line_number": [
+       "P80",
+       "number"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:line_number": [
+       "P84",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P88"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-7) P",
+   "categories": {
+    "row 90": {
+     "inputs": {
+      "record:line_number": [
+       "P90",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P97"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-9) P",
+   "categories": {
+    "row 105": {
+     "inputs": {
+      "record:line_number": [
+       "P105",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P110"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (HV-1) P",
+   "categories": {
+    "row 123": {
+     "inputs": {
+      "record:line_number": [
+       "P123",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P128"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (HV-2) P",
+   "categories": {
+    "row 131": {
+     "inputs": {
+      "record:line_number": [
+       "P131",
+       "number"
+      ]
+     }
+    },
+    "row 136": {
+     "inputs": {
+      "record:line_number": [
+       "P136",
+       "number"
+      ]
+     }
+    },
+    "row 142": {
+     "inputs": {
+      "record:line_number": [
+       "P142",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P153"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-11) P",
+   "categories": {
+    "row 172": {
+     "inputs": {
+      "record:line_number": [
+       "P172",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P179"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 grand total P",
+   "categories": {
+    "SUBTOTAL (LMV-1)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P31",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-2)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P43",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-3)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P52",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-4)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P63",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-5)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P69",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-6)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P88",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-7)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P97",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-8)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P103",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-9)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P110",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-10)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P121",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-1)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P128",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-2)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P153",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-3)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P159",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-4)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P165",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-11)": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P179",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "P181",
+     "P185"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-1) R",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_mu": [
+       "R8",
+       "MU"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_mu": [
+       "R9",
+       "MU"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_mu": [
+       "R19",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-2) R",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_mu": [
+       "R34",
+       "MU"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_mu": [
+       "R39",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R43"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-3) R",
+   "categories": {
+    "row 45": {
+     "inputs": {
+      "record:line_mu": [
+       "R45",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R52"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-4) R",
+   "categories": {
+    "row 55": {
+     "inputs": {
+      "record:line_mu": [
+       "R55",
+       "MU"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_mu": [
+       "R59",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R63"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-5) R",
+   "categories": {
+    "row 66": {
+     "inputs": {
+      "record:line_mu": [
+       "R66",
+       "MU"
+      ]
+     }
+    },
+    "row 67": {
+     "inputs": {
+      "record:line_mu": [
+       "R67",
+       "MU"
+      ]
+     }
+    },
+    "row 68": {
+     "inputs": {
+      "record:line_mu": [
+       "R68",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R69"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-6) R",
+   "categories": {
+    "row 80": {
+     "inputs": {
+      "record:line_mu": [
+       "R80",
+       "MU"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:line_mu": [
+       "R84",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R88"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-7) R",
+   "categories": {
+    "row 90": {
+     "inputs": {
+      "record:line_mu": [
+       "R90",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R97"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-9) R",
+   "categories": {
+    "row 105": {
+     "inputs": {
+      "record:line_mu": [
+       "R105",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R110"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (HV-1) R",
+   "categories": {
+    "row 123": {
+     "inputs": {
+      "record:line_mu": [
+       "R123",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R128"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (HV-2) R",
+   "categories": {
+    "row 131": {
+     "inputs": {
+      "record:line_mu": [
+       "R131",
+       "MU"
+      ]
+     }
+    },
+    "row 136": {
+     "inputs": {
+      "record:line_mu": [
+       "R136",
+       "MU"
+      ]
+     }
+    },
+    "row 142": {
+     "inputs": {
+      "record:line_mu": [
+       "R142",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R153"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-11) R",
+   "categories": {
+    "row 172": {
+     "inputs": {
+      "record:line_mu": [
+       "R172",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "R179"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 grand total R",
+   "categories": {
+    "SUBTOTAL (LMV-1)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-2)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-3)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R52",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-4)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R63",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-5)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R69",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-6)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R88",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-7)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R97",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-8)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R103",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-9)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R110",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-10)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R121",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-1)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R128",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-2)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R153",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-3)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R159",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-4)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R165",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-11)": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "R179",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "R181",
+     "R185",
+     "ARR!J9"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-1) T",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": [
+       "T8",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": [
+       "T9",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": [
+       "T19",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-2) T",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_crore": [
+       "T34",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_crore": [
+       "T39",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T43"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-3) T",
+   "categories": {
+    "row 45": {
+     "inputs": {
+      "record:line_crore": [
+       "T45",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T52"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-4) T",
+   "categories": {
+    "row 55": {
+     "inputs": {
+      "record:line_crore": [
+       "T55",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_crore": [
+       "T59",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T63"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-5) T",
+   "categories": {
+    "row 66": {
+     "inputs": {
+      "record:line_crore": [
+       "T66",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 67": {
+     "inputs": {
+      "record:line_crore": [
+       "T67",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 68": {
+     "inputs": {
+      "record:line_crore": [
+       "T68",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T69"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-6) T",
+   "categories": {
+    "row 80": {
+     "inputs": {
+      "record:line_crore": [
+       "T80",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:line_crore": [
+       "T84",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T88"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-7) T",
+   "categories": {
+    "row 90": {
+     "inputs": {
+      "record:line_crore": [
+       "T90",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T97"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-9) T",
+   "categories": {
+    "row 105": {
+     "inputs": {
+      "record:line_crore": [
+       "T105",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T110"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (HV-1) T",
+   "categories": {
+    "row 123": {
+     "inputs": {
+      "record:line_crore": [
+       "T123",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T128"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (HV-2) T",
+   "categories": {
+    "row 131": {
+     "inputs": {
+      "record:line_crore": [
+       "T131",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 136": {
+     "inputs": {
+      "record:line_crore": [
+       "T136",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 142": {
+     "inputs": {
+      "record:line_crore": [
+       "T142",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T153"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 SUBTOTAL (LMV-11) T",
+   "categories": {
+    "row 172": {
+     "inputs": {
+      "record:line_crore": [
+       "T172",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "T179"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 grand total T",
+   "categories": {
+    "SUBTOTAL (LMV-1)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-2)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-3)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T52",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-4)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T63",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-5)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T69",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-6)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T88",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-7)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T97",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-8)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T103",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-9)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T110",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-10)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T121",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-1)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T128",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-2)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T153",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-3)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T159",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (HV-4)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T165",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "SUBTOTAL (LMV-11)": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "T179",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": [
+     "T181",
+     "T185",
+     "ARR!J15"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "ESR5 FY2023-24 categories J",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_mu": [
+       "J8",
+       "MU"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_mu": [
+       "J33",
+       "MU"
+      ]
+     }
+    },
+    "row 45": {
+     "inputs": {
+      "record:line_mu": [
+       "J45",
+       "MU"
+      ]
+     }
+    },
+    "row 54": {
+     "inputs": {
+      "record:line_mu": [
+       "J54",
+       "MU"
+      ]
+     }
+    },
+    "row 65": {
+     "inputs": {
+      "record:line_mu": [
+       "J65",
+       "MU"
+      ]
+     }
+    },
+    "row 71": {
+     "inputs": {
+      "record:line_mu": [
+       "J71",
+       "MU"
+      ]
+     }
+    },
+    "row 90": {
+     "inputs": {
+      "record:line_mu": [
+       "J90",
+       "MU"
+      ]
+     }
+    },
+    "row 105": {
+     "inputs": {
+      "record:line_mu": [
+       "J105",
+       "MU"
+      ]
+     }
+    },
+    "row 123": {
+     "inputs": {
+      "record:line_mu": [
+       "J123",
+       "MU"
+      ]
+     }
+    },
+    "row 130": {
+     "inputs": {
+      "record:line_mu": [
+       "J130",
+       "MU"
+      ]
+     }
+    },
+    "row 172": {
+     "inputs": {
+      "record:line_mu": [
+       "J172",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": "ARR!G9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "ESR5 FY2023-24 categories L",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": [
+       "L8",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_crore": [
+       "L33",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 45": {
+     "inputs": {
+      "record:line_crore": [
+       "L45",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 54": {
+     "inputs": {
+      "record:line_crore": [
+       "L54",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 65": {
+     "inputs": {
+      "record:line_crore": [
+       "L65",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 71": {
+     "inputs": {
+      "record:line_crore": [
+       "L71",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 90": {
+     "inputs": {
+      "record:line_crore": [
+       "L90",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 105": {
+     "inputs": {
+      "record:line_crore": [
+       "L105",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 123": {
+     "inputs": {
+      "record:line_crore": [
+       "L123",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 130": {
+     "inputs": {
+      "record:line_crore": [
+       "L130",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 172": {
+     "inputs": {
+      "record:line_crore": [
+       "L172",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "ARR!G15"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-1)",
+   "inputs": {
+    "record:current_value": [
+     "T31",
+     "number"
+    ],
+    "record:previous_value": [
+     "L8",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-2)",
+   "inputs": {
+    "record:current_value": [
+     "T43",
+     "number"
+    ],
+    "record:previous_value": [
+     "L33",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U43"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-3)",
+   "inputs": {
+    "record:current_value": [
+     "T52",
+     "number"
+    ],
+    "record:previous_value": [
+     "L45",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U52"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-4)",
+   "inputs": {
+    "record:current_value": [
+     "T63",
+     "number"
+    ],
+    "record:previous_value": [
+     "L54",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U63"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-5)",
+   "inputs": {
+    "record:current_value": [
+     "T69",
+     "number"
+    ],
+    "record:previous_value": [
+     "L65",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U69"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-6)",
+   "inputs": {
+    "record:current_value": [
+     "T88",
+     "number"
+    ],
+    "record:previous_value": [
+     "L71",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U88"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-7)",
+   "inputs": {
+    "record:current_value": [
+     "T97",
+     "number"
+    ],
+    "record:previous_value": [
+     "L90",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U97"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-9)",
+   "inputs": {
+    "record:current_value": [
+     "T110",
+     "number"
+    ],
+    "record:previous_value": [
+     "L105",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U110"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (HV-1)",
+   "inputs": {
+    "record:current_value": [
+     "T128",
+     "number"
+    ],
+    "record:previous_value": [
+     "L123",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U128"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (HV-2)",
+   "inputs": {
+    "record:current_value": [
+     "T153",
+     "number"
+    ],
+    "record:previous_value": [
+     "L130",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U153"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change SUBTOTAL (LMV-11)",
+   "inputs": {
+    "record:current_value": [
+     "T179",
+     "number"
+    ],
+    "record:previous_value": [
+     "L172",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U179"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR5 % change, grand total",
+   "inputs": {
+    "record:current_value": [
+     "T181",
+     "number"
+    ],
+    "record:previous_value": [
+     "ARR!G15",
+     "number"
+    ]
+   },
+   "checks": {
+    "pct_change": "U181"
+   }
+  }
+ ]
+}

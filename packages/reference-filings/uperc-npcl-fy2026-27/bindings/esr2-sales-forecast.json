@@ -1,0 +1,4098 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ESR2_Sales Forecast",
+ "places": 5,
+ "note": "ESR2: each category's seven-year CAGR (FY2017-18 to FY2024-25) of consumers, connected load and sales, and of the total (Reg. 30.2); the categories' totals for each of ten years to the format's total, sales also to the ARR format's row 9 — to five places, the format's own sums carrying a spreadsheet's float in the sixth (the projection at the CAGR is esr2-sales-at-cagr.json).  The load is labelled kW and reads as MVA (A87).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR2 seven-year CAGR, consumers ('000)",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:series_end": [
+       "X14",
+       "number"
+      ],
+      "record:series_start": [
+       "C14",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG14"
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:series_end": [
+       "X20",
+       "number"
+      ],
+      "record:series_start": [
+       "C20",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG20"
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:series_end": [
+       "X27",
+       "number"
+      ],
+      "record:series_start": [
+       "C27",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG27"
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:series_end": [
+       "X30",
+       "number"
+      ],
+      "record:series_start": [
+       "C30",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG30"
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:series_end": [
+       "X34",
+       "number"
+      ],
+      "record:series_start": [
+       "C34",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG34"
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:series_end": [
+       "X39",
+       "number"
+      ],
+      "record:series_start": [
+       "C39",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG39"
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:series_end": [
+       "X45",
+       "number"
+      ],
+      "record:series_start": [
+       "C45",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG45"
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:series_end": [
+       "X50",
+       "number"
+      ],
+      "record:series_start": [
+       "C50",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG50"
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:series_end": [
+       "X53",
+       "number"
+      ],
+      "record:series_start": [
+       "C53",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG53"
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:series_end": [
+       "X59",
+       "number"
+      ],
+      "record:series_start": [
+       "C59",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG59"
+     }
+    },
+    "Total": {
+     "inputs": {
+      "record:series_end": [
+       "X64",
+       "number"
+      ],
+      "record:series_start": [
+       "C64",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AG64"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2017-18",
+   "label": "ESR2 consumers ('000) FY2017-18",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "C62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "C64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2018-19",
+   "label": "ESR2 consumers ('000) FY2018-19",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "F62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "F64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2019-20",
+   "label": "ESR2 consumers ('000) FY2019-20",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "I62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "I64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2020-21",
+   "label": "ESR2 consumers ('000) FY2020-21",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "L62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "L64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2021-22",
+   "label": "ESR2 consumers ('000) FY2021-22",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "O62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "O64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR2 consumers ('000) FY2022-23",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "R62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "R64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "ESR2 consumers ('000) FY2023-24",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "U62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "U64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR2 consumers ('000) FY2024-25",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "X62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "X64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "ESR2 consumers ('000) FY2025-26",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AA62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "AA64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR2 consumers ('000) FY2026-27",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AD62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "AD64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR2 seven-year CAGR, connected load",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:series_end": [
+       "Y14",
+       "number"
+      ],
+      "record:series_start": [
+       "D14",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH14"
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:series_end": [
+       "Y20",
+       "number"
+      ],
+      "record:series_start": [
+       "D20",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH20"
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:series_end": [
+       "Y27",
+       "number"
+      ],
+      "record:series_start": [
+       "D27",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH27"
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:series_end": [
+       "Y30",
+       "number"
+      ],
+      "record:series_start": [
+       "D30",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH30"
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:series_end": [
+       "Y34",
+       "number"
+      ],
+      "record:series_start": [
+       "D34",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH34"
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:series_end": [
+       "Y39",
+       "number"
+      ],
+      "record:series_start": [
+       "D39",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH39"
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:series_end": [
+       "Y45",
+       "number"
+      ],
+      "record:series_start": [
+       "D45",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH45"
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:series_end": [
+       "Y50",
+       "number"
+      ],
+      "record:series_start": [
+       "D50",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH50"
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:series_end": [
+       "Y53",
+       "number"
+      ],
+      "record:series_start": [
+       "D53",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH53"
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:series_end": [
+       "Y59",
+       "number"
+      ],
+      "record:series_start": [
+       "D59",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH59"
+     }
+    },
+    "Total": {
+     "inputs": {
+      "record:series_end": [
+       "Y64",
+       "number"
+      ],
+      "record:series_start": [
+       "D64",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AH64"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2017-18",
+   "label": "ESR2 connected load FY2017-18",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "D62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "D64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2018-19",
+   "label": "ESR2 connected load FY2018-19",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "G62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "G64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2019-20",
+   "label": "ESR2 connected load FY2019-20",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "J62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "J64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2020-21",
+   "label": "ESR2 connected load FY2020-21",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "M62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "M64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2021-22",
+   "label": "ESR2 connected load FY2021-22",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "P62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "P64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR2 connected load FY2022-23",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "S62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "S64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "ESR2 connected load FY2023-24",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "V62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "V64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR2 connected load FY2024-25",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "Y62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "Y64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "ESR2 connected load FY2025-26",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AB62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "AB64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR2 connected load FY2026-27",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE14",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE20",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE27",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE30",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE34",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE39",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE45",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE50",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE53",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE56",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE59",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_number": {
+       "cell": "AE62",
+       "unit": "number",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": [
+     "AE64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR2 seven-year CAGR, sales",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:series_end": [
+       "Z14",
+       "number"
+      ],
+      "record:series_start": [
+       "E14",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI14"
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:series_end": [
+       "Z20",
+       "number"
+      ],
+      "record:series_start": [
+       "E20",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI20"
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:series_end": [
+       "Z27",
+       "number"
+      ],
+      "record:series_start": [
+       "E27",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI27"
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:series_end": [
+       "Z30",
+       "number"
+      ],
+      "record:series_start": [
+       "E30",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI30"
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:series_end": [
+       "Z34",
+       "number"
+      ],
+      "record:series_start": [
+       "E34",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI34"
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:series_end": [
+       "Z39",
+       "number"
+      ],
+      "record:series_start": [
+       "E39",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI39"
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:series_end": [
+       "Z45",
+       "number"
+      ],
+      "record:series_start": [
+       "E45",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI45"
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:series_end": [
+       "Z50",
+       "number"
+      ],
+      "record:series_start": [
+       "E50",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI50"
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:series_end": [
+       "Z53",
+       "number"
+      ],
+      "record:series_start": [
+       "E53",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI53"
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:series_end": [
+       "Z59",
+       "number"
+      ],
+      "record:series_start": [
+       "E59",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI59"
+     }
+    },
+    "Total": {
+     "inputs": {
+      "record:series_end": [
+       "Z64",
+       "number"
+      ],
+      "record:series_start": [
+       "E64",
+       "number"
+      ]
+     },
+     "checks": {
+      "cagr_7y": "AI64"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2017-18",
+   "label": "ESR2 sales FY2017-18",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "E62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "E64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2018-19",
+   "label": "ESR2 sales FY2018-19",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "H62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "H64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2019-20",
+   "label": "ESR2 sales FY2019-20",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "K62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "K64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2020-21",
+   "label": "ESR2 sales FY2020-21",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "N62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "N64"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2021-22",
+   "label": "ESR2 sales FY2021-22",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Q62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "Q64",
+     "ARR!C9"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "ESR2 sales FY2022-23",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "T62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "T64",
+     "ARR!D9"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "ESR2 sales FY2023-24",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "W62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "W64",
+     "ARR!G9"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "ESR2 sales FY2024-25",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "Z62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "Z64",
+     "ARR!J9"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "ESR2 sales FY2025-26",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AC62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "AC64",
+     "ARR!L9"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ESR2 sales FY2026-27",
+   "categories": {
+    "HV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "HV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF20",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-1": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF27",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-2": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF30",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-3": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-4": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF39",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-5": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF45",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-6": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF50",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-7": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF53",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-8": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF56",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-9": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF59",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "LMV-11": {
+     "inputs": {
+      "record:line_mu": {
+       "cell": "AF62",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "AF64",
+     "ARR!M9"
+    ]
+   }
+  }
+ ]
+}

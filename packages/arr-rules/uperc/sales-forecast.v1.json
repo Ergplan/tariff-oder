@@ -1,0 +1,102 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "Uttar Pradesh Electricity Regulatory Commission (Multi Year Tariff for Distribution) Regulations, 2025",
+ "applies": {
+  "commission": "UPERC",
+  "from_fy": "FY2025-26"
+ },
+ "note": "The sales forecast's growth rate (Reg. 30.2): the compound annual growth of the past seven years, and a year projected at it.",
+ "rules": [
+  {
+   "id": "uperc.sales.cagr_7y",
+   "version": 1,
+   "status": "draft",
+   "title": "Seven-year compound annual growth (sales, consumers or load) of a consumer category",
+   "output": "cagr_7y",
+   "unit": "fraction",
+   "schedule": "R-SCH-1",
+   "formula": "root(end / start, 7) - 1",
+   "inputs": {
+    "end": {
+     "unit": "number",
+     "source": "record:series_end",
+     "note": "the seventh year after the start (FY2024-25 for the FY2026-27 petition)"
+    },
+    "start": {
+     "unit": "number",
+     "source": "record:series_start",
+     "note": "seven years earlier (FY2017-18)"
+    }
+   },
+   "clause": {
+    "regulation": "Uttar Pradesh Electricity Regulatory Commission (Multi Year Tariff for Distribution) Regulations, 2025",
+    "clause": "30.2",
+    "source_id": null,
+    "page": 38,
+    "excerpt": "30.2 Unless provided otherwise by the Commission, sales forecast shall be based on the past trends in each of the slabs of consumer categories. The Compounded Annual Growth Rate (CAGR) of past seven years of sales within each of the slabs of a consumer category as per the audited books of account, or if not available, then provisional accounts, will be considered: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "end": "128",
+      "start": "1"
+     },
+     "expected": "1.000000",
+     "source": "constructed: 2^7 = 128, a CAGR of 100 %"
+    }
+   ],
+   "note": "Reg. 30.2 asks for the CAGR within each slab of a category; ESR2 computes it per category (and for consumers and load as well as sales) — the binding checks ESR2's arithmetic as filed",
+   "per": "consumer_category"
+  },
+  {
+   "id": "uperc.sales.projected_at_cagr",
+   "version": 1,
+   "status": "draft",
+   "title": "A category's next year at its seven-year CAGR",
+   "output": "projected_at_cagr",
+   "unit": "number",
+   "schedule": "R-SCH-1",
+   "formula": "previous * (1 + cagr)",
+   "inputs": {
+    "previous": {
+     "unit": "number",
+     "source": "record:series_previous"
+    },
+    "cagr": {
+     "unit": "fraction",
+     "source": "rule:cagr_7y"
+    }
+   },
+   "clause": {
+    "regulation": "Uttar Pradesh Electricity Regulatory Commission (Multi Year Tariff for Distribution) Regulations, 2025",
+    "clause": "30.2",
+    "source_id": null,
+    "page": 38,
+    "excerpt": "30.2 Unless provided otherwise by the Commission, sales forecast shall be based on the past trends in each of the slabs of consumer categories. The Compounded Annual Growth Rate (CAGR) of past seven years of sales within each of the slabs of a consumer category as per the audited books of account, or if not available, then provisional accounts, will be considered: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the projection Reg. 30.2 implies when the Commission provides nothing else; the petition departs from it for some categories with stated reasons (A85) — a projection the binding compares, not one it approves",
+   "per": "consumer_category"
+  }
+ ]
+}
