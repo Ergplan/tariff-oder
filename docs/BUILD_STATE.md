@@ -1005,6 +1005,21 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 147 (2026-11-03): NPCL — the rest of power purchase: merit order (F4), renewables (F5), competitive bids (F7), short term (F8), the procurement plan (F9).**
+  - **2 more format rules (34; UPERC 269):** a monthly average, and a PPA's levelised tariff as
+    capacity + energy charges.
+  - **All exact:**
+    - `f4-merit-order.json` 71: lines' cost and cost per kWh, totals tied to F1, three years.
+    - `f5-renewable.json` 6: PPA by PPA to the totals and to F4's renewables line.
+    - `f7-competitive-bids.json` 5: generation equal to PPC FY 25's for the same PPAs; levelised
+      tariff = capacity + energy (4.05, 5.19).
+    - `f8-short-term.json` 15: each line's cost per kWh, totals and average.
+    - `f9-procurement-plan.json` 9: the monthly MW averages.
+  - **F2 (assumptions for power purchase) is text** — no figure to compute.  It is left "present"
+    until the accounting can say so in its own words (next increment).
+  - **Formats accounted: 57 reproduced, 4 read, 10 present, 2 blank, 1 missing.**
+  Nothing verified, nothing approved.
+
   **Increment 146 (2026-11-03): NPCL — power purchase by source (F1) and by month (F3, three years).**
   - **7 more format rules (`formats.v1.json`, 32; UPERC 267):** fixed, energy and other charges per
     source with their totals, and the average cost on the total.  The existing per-source billed /
@@ -3612,6 +3627,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 147 (2026-11-03): 519 passed** (+1 unit: NPCL F4, F5, F7, F8, F9, 106 checks exact).  Ruff and format clean.
 - **Increment 146 (2026-11-03): 518 passed** (+1 unit: NPCL F1 and F3, 1,375 checks exact; A89).  Ruff and format clean.
 - **Increment 145 (2026-11-03): 517 passed** (+2 unit: `root()` and its refusals; NPCL ESR1, ESR2, ESR5).  Ruff and format clean.
 - **Increment 144 (2026-11-03): 515 passed** (+1 unit: NPCL F11, F12, F13, all exact).  Ruff and format clean.
@@ -3891,7 +3907,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 146) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 147) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3928,7 +3944,7 @@ entries below are the per-increment history.**
   ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
   `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
-  held by the operator).  **267 draft UPERC rules** in 30 files reproduce the filed formats.
+  held by the operator).  **269 draft UPERC rules** in 30 files reproduce the filed formats.
   `/arr/reference/uperc-npcl-fy2026-27` shows the following:
   - **End to end from the schedules:** the regulatory asset is carried from year to year as
     computed (increment 95).  The net ARR and gap of the ARR and APR years match (3,481.83 and
@@ -3936,8 +3952,8 @@ entries below are the per-increment history.**
     gap as 0.25 (10 / 12 there).
   - **How each ARR figure is established:** FY2026-27 is 17 computed, 19 tied, 10 records, none
     differing.
-  - **Formats accounted, against the filing's index:** 52 reproduced, 5 read, 14 present, 2
-    blank, 1 missing (increment 146; the operator's direction is to close every one).
+  - **Formats accounted, against the filing's index:** 57 reproduced, 4 read, 10 present, 2
+    blank, 1 missing (increment 147; the operator's direction is to close every one).
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
   - **What the Commission decided** (the FY2026-27 order, read row by row with pages): the order
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.

@@ -1,0 +1,1015 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F4_PP_MOD",
+ "places": 6,
+ "note": "F4's power purchase by type (long, medium, short term, renewables, sale, DSM, banking, transmission, claims), three years: each line's cost and cost per kWh, the totals tied to F1's.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F4 FY2024-25",
+   "categories": {
+    "row 9": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D9",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K9",
+      "pp_rate_billed": "L9"
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D10",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K10",
+      "pp_rate_billed": "L10"
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D11",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K11",
+      "pp_rate_billed": "L11"
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D13",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K13",
+      "pp_rate_billed": "L13"
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K14",
+      "pp_rate_billed": "L14"
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D15",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K15",
+      "pp_rate_billed": "L15"
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D16",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K16"
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K17"
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D18",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K18"
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "E19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "I19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "D19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "K19"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "D22",
+     "F1_PP_Annual!J36"
+    ],
+    "fmt_pp_fixed_total": "E22",
+    "fmt_pp_energy_total": "G22",
+    "fmt_pp_other_total": "I22",
+    "pp_billed_total": [
+     "K22",
+     "F1_PP_Annual!O36"
+    ],
+    "fmt_pp_avg_cost": "L22"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F4 FY2025-26",
+   "categories": {
+    "row 9": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M9",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T9",
+      "pp_rate_billed": "U9"
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M10",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T10",
+      "pp_rate_billed": "U10"
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M11",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T11",
+      "pp_rate_billed": "U11"
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M12",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T12"
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M13",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T13",
+      "pp_rate_billed": "U13"
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T14",
+      "pp_rate_billed": "U14"
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M15",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T15",
+      "pp_rate_billed": "U15"
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M16",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T16"
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T17"
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M18",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T18"
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "N19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "P19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "R19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "M19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "T19"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "M22",
+     "F1_PP_Annual!J72"
+    ],
+    "fmt_pp_fixed_total": "N22",
+    "fmt_pp_energy_total": "P22",
+    "fmt_pp_other_total": "R22",
+    "pp_billed_total": [
+     "T22",
+     "F1_PP_Annual!O72"
+    ],
+    "fmt_pp_avg_cost": "U22"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F4 FY2026-27",
+   "categories": {
+    "row 9": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "W9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "Y9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AA9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "V9",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "AC9",
+      "pp_rate_billed": "AD9"
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "W10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "Y10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AA10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "V10",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "AC10",
+      "pp_rate_billed": "AD10"
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "W11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "Y11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AA11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "V11",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "AC11",
+      "pp_rate_billed": "AD11"
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "W13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "Y13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AA13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "V13",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "AC13",
+      "pp_rate_billed": "AD13"
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "W14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "Y14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AA14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "V14",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "AC14",
+      "pp_rate_billed": "AD14"
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "W15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "Y15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AA15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "V15",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "AC15",
+      "pp_rate_billed": "AD15"
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "W17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "Y17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AA17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "V17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "AC17"
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "W18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "Y18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AA18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "V18",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_billed": "AC18"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "V22",
+     "F1_PP_Annual!J107"
+    ],
+    "fmt_pp_fixed_total": "W22",
+    "fmt_pp_energy_total": "Y22",
+    "fmt_pp_other_total": "AA22",
+    "pp_billed_total": [
+     "AC22",
+     "F1_PP_Annual!O107"
+    ],
+    "fmt_pp_avg_cost": "AD22"
+   }
+  }
+ ]
+}

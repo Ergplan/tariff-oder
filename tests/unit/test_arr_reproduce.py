@@ -2849,3 +2849,30 @@ def test_npcl_power_purchase_summary_and_monthly_appropriation():
     assert f1["K90"].value == ppc["L15"].value and f1["K91"].value == ppc["L16"].value  # F1 reads them by position
     assert f1["K90"].value != f1["K91"].value
     assert "A89" in {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+
+
+def test_npcl_merit_order_renewables_bids_short_term_and_the_procurement_plan():
+    """Real data, NPCL's F4, F5, F7, F8 and F9 (increment 147), all exact: the merit-order lines'
+    cost and cost per kWh with totals tied to F1; renewable generation PPA by PPA to F4's line; the
+    competitively bid PPAs' generation (PPC's) and levelised tariffs (capacity + energy); short-term
+    purchases' cost per kWh and totals; the procurement plan's monthly averages."""
+    from collections import Counter
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    wb = openpyxl.load_workbook(folder / "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx", data_only=True)
+    rules = load_rules("UPERC")
+    expected = {
+        "f4-merit-order.json": 71,
+        "f5-renewable.json": 6,
+        "f7-competitive-bids.json": 5,
+        "f8-short-term.json": 15,
+        "f9-procurement-plan.json": 9,
+    }
+    for name, n in expected.items():
+        checks = reproduce_cells(wb, json.loads((folder / "bindings" / name).read_text()), rules)
+        assert Counter(c.result for c in checks) == {"match": n}, name

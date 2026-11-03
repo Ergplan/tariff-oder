@@ -1,0 +1,234 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F8_PP_Short Term",
+ "places": 6,
+ "note": "F8's short-term purchases (trading licensees, power exchanges), three years: each line's cost per kWh and the year's units, cost and average cost.  Its figures are PPC's by formula.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F8 FY2024-25",
+   "categories": {
+    "row 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_mu_exported": {
+       "cell": "F11",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_rate_billed": "H11"
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_mu_exported": {
+       "cell": "F12",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_rate_billed": "H12"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": "F15",
+    "pp_billed_total": "G15",
+    "fmt_pp_avg_cost": "H15"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F8 FY2025-26",
+   "categories": {
+    "row 18": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_mu_exported": {
+       "cell": "F18",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_rate_billed": "H18"
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_mu_exported": {
+       "cell": "F19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_rate_billed": "H19"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": "F22",
+    "pp_billed_total": "G22",
+    "fmt_pp_avg_cost": "H22"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F8 FY2026-27",
+   "categories": {
+    "row 25": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_mu_exported": {
+       "cell": "F25",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_rate_billed": "H25"
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_energy_charges": {
+       "cell": "G26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format gives one cost for the line"
+      },
+      "record:pp_mu_exported": {
+       "cell": "F26",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column"
+      }
+     },
+     "checks": {
+      "pp_rate_billed": "H26"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": "F29",
+    "pp_billed_total": "G29",
+    "fmt_pp_avg_cost": "H29"
+   }
+  }
+ ]
+}

@@ -53209,6 +53209,863 @@
    ]
   },
   {
+   "binding": "f4-merit-order.json",
+   "checks": [
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 9 K9",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "539.302416",
+     "computed": "539.302416",
+     "why": null,
+     "exact": "539.302416255289"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 9 L9",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.359439",
+     "computed": "4.359439",
+     "why": null,
+     "exact": "4.359438579978361514752306924"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 10 K10",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "666.832744",
+     "computed": "666.832744",
+     "why": null,
+     "exact": "666.8327440328400005"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 10 L10",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.953000",
+     "computed": "4.953000",
+     "why": null,
+     "exact": "4.952999869650991245074150002"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 11 K11",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "165.491486",
+     "computed": "165.491486",
+     "why": null,
+     "exact": "165.49148575083706007"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 11 L11",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.165709",
+     "computed": "5.165709",
+     "why": null,
+     "exact": "5.165708835391778931664956252"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 13 K13",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "668.168512",
+     "computed": "668.168512",
+     "why": null,
+     "exact": "668.168512155800001"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 13 L13",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "6.664189",
+     "computed": "6.664189",
+     "why": null,
+     "exact": "6.664188667200279177427492442"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 14 K14",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "-12.526879",
+     "computed": "-12.526879",
+     "why": null,
+     "exact": "-12.526878583400000005"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 14 L14",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.917740",
+     "computed": "4.917740",
+     "why": null,
+     "exact": "4.917739690932991442543186100"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 15 K15",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "20.639519",
+     "computed": "20.639519",
+     "why": null,
+     "exact": "20.639518699999996"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 15 L15",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "27.429027",
+     "computed": "27.429027",
+     "why": null,
+     "exact": "27.42902743721584374473310957"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 16 K16",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 17 K17",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "194.103464",
+     "computed": "194.103464",
+     "why": null,
+     "exact": "194.10346437699997"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 18 K18",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "100.295672",
+     "computed": "100.295672",
+     "why": null,
+     "exact": "100.29567223261176"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 row 19 K19",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "127.731733",
+     "computed": "127.731733",
+     "why": null,
+     "exact": "127.73173290695422"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 D22",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "3888.455181",
+     "computed": "3888.455181",
+     "why": null,
+     "exact": "3888.455181306250124"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 F1_PP_Annual!J36",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "3888.455181",
+     "computed": "3888.455181",
+     "why": null,
+     "exact": "3888.455181306250124"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 E22",
+     "output": "fmt_pp_fixed_total",
+     "result": "match",
+     "filed": "557.481129",
+     "computed": "557.481129",
+     "why": null,
+     "exact": "557.4811292"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 G22",
+     "output": "fmt_pp_energy_total",
+     "result": "match",
+     "filed": "1503.166751",
+     "computed": "1503.166751",
+     "why": null,
+     "exact": "1503.166751349361256"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 I22",
+     "output": "fmt_pp_other_total",
+     "result": "match",
+     "filed": "409.390787",
+     "computed": "409.390787",
+     "why": null,
+     "exact": "409.390787278570751565"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 K22",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "2470.038668",
+     "computed": "2470.038668",
+     "why": null,
+     "exact": "2470.038667827932007565"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 F1_PP_Annual!O36",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "2470.038668",
+     "computed": "2470.038668",
+     "why": null,
+     "exact": "2470.038667827932007565"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2024-25",
+     "category": "F4 FY2024-25 L22",
+     "output": "fmt_pp_avg_cost",
+     "result": "match",
+     "filed": "6.352236",
+     "computed": "6.352236",
+     "why": null,
+     "exact": "6.352236434928307556022178536"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 9 T9",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "534.517067",
+     "computed": "534.517067",
+     "why": null,
+     "exact": "534.51706740000013"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 9 U9",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.497513",
+     "computed": "4.497513",
+     "why": null,
+     "exact": "4.497512857204962522762592135"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 10 T10",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "1083.302414",
+     "computed": "1083.302414",
+     "why": null,
+     "exact": "1083.3024137322789"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 10 U10",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.312240",
+     "computed": "5.312240",
+     "why": null,
+     "exact": "5.312239941420387681110117280"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 11 T11",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "173.315029",
+     "computed": "173.315029",
+     "why": null,
+     "exact": "173.31502858584903"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 11 U11",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.064389",
+     "computed": "5.064389",
+     "why": null,
+     "exact": "5.064389467650428379299839851"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 12 T12",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "13.573106",
+     "computed": "13.573106",
+     "why": null,
+     "exact": "13.57310642080977"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 13 T13",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "455.030074",
+     "computed": "455.030074",
+     "why": null,
+     "exact": "455.0300736441795"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 13 U13",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.821680",
+     "computed": "5.821680",
+     "why": null,
+     "exact": "5.821679711806163089566311636"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 14 T14",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "-29.093755",
+     "computed": "-29.093755",
+     "why": null,
+     "exact": "-29.093755237179224"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 14 U14",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "3.683503",
+     "computed": "3.683503",
+     "why": null,
+     "exact": "3.683503100089468718817220506"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 15 T15",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "9.031066",
+     "computed": "9.031066",
+     "why": null,
+     "exact": "9.031066434377305"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 15 U15",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "-6.845901",
+     "computed": "-6.845901",
+     "why": null,
+     "exact": "-6.845901230441070512291509976"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 16 T16",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 17 T17",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "230.180365",
+     "computed": "230.180365",
+     "why": null,
+     "exact": "230.18036455099997"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 18 T18",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "159.589006",
+     "computed": "159.589006",
+     "why": null,
+     "exact": "159.58900646480268"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 row 19 T19",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "58.808527",
+     "computed": "58.808527",
+     "why": null,
+     "exact": "58.80852734613921"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 M22",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "4259.390000",
+     "computed": "4259.390000",
+     "why": null,
+     "exact": "4259.390000000011052"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 F1_PP_Annual!J72",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "4259.390000",
+     "computed": "4259.390000",
+     "why": null,
+     "exact": "4259.390000000011052"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 N22",
+     "output": "fmt_pp_fixed_total",
+     "result": "match",
+     "filed": "758.591622",
+     "computed": "758.591622",
+     "why": null,
+     "exact": "758.59162212337883"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 P22",
+     "output": "fmt_pp_energy_total",
+     "result": "match",
+     "filed": "1481.083379",
+     "computed": "1481.083379",
+     "why": null,
+     "exact": "1481.083378856936581"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 R22",
+     "output": "fmt_pp_other_total",
+     "result": "match",
+     "filed": "448.577898",
+     "computed": "448.577898",
+     "why": null,
+     "exact": "448.57789836194186"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 T22",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "2688.252899",
+     "computed": "2688.252899",
+     "why": null,
+     "exact": "2688.252899342257271"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 F1_PP_Annual!O72",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "2688.252899",
+     "computed": "2688.252899",
+     "why": null,
+     "exact": "2688.252899342257271"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2025-26",
+     "category": "F4 FY2025-26 U22",
+     "output": "fmt_pp_avg_cost",
+     "result": "match",
+     "filed": "6.311357",
+     "computed": "6.311357",
+     "why": null,
+     "exact": "6.311356554206706349239530287"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 9 AC9",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "534.389740",
+     "computed": "534.389740",
+     "why": null,
+     "exact": "534.3897402"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 9 AD9",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.495798",
+     "computed": "4.495798",
+     "why": null,
+     "exact": "4.495797730621571532234654752"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 10 AC10",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "780.042960",
+     "computed": "780.042960",
+     "why": null,
+     "exact": "780.04296000000017"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 10 AD10",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.754779",
+     "computed": "5.754779",
+     "why": null,
+     "exact": "5.754779302186735319132007380"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 11 AC11",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "385.518920",
+     "computed": "385.518920",
+     "why": null,
+     "exact": "385.5189203726439"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 11 AD11",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.493800",
+     "computed": "4.493800",
+     "why": null,
+     "exact": "4.493800478365938972119824653"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 13 AC13",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "810.532260",
+     "computed": "810.532260",
+     "why": null,
+     "exact": "810.5322601638441"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 13 AD13",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.499759",
+     "computed": "5.499759",
+     "why": null,
+     "exact": "5.499758540135519993858519252"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 14 AC14",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "-59.717027",
+     "computed": "-59.717027",
+     "why": null,
+     "exact": "-59.71702737907205"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 14 AD14",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.899092",
+     "computed": "4.899092",
+     "why": null,
+     "exact": "4.899091999999990714828211921"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 15 AC15",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "-2.437881",
+     "computed": "-2.437881",
+     "why": null,
+     "exact": "-2.4378814432989686"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 15 AD15",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "1.000000",
+     "computed": "1.000000",
+     "why": null,
+     "exact": "0.9999999999999994257308927601"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 17 AC17",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "257.210224",
+     "computed": "257.210224",
+     "why": null,
+     "exact": "257.2102235649487"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 row 18 AC18",
+     "output": "pp_billed",
+     "result": "match",
+     "filed": "189.148230",
+     "computed": "189.148230",
+     "why": null,
+     "exact": "189.14823016936003"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 V22",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "4729.490000",
+     "computed": "4729.490000",
+     "why": null,
+     "exact": "4729.49000000000015"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 F1_PP_Annual!J107",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "4729.490000",
+     "computed": "4729.490000",
+     "why": null,
+     "exact": "4729.49000000000015"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 W22",
+     "output": "fmt_pp_fixed_total",
+     "result": "match",
+     "filed": "608.462548",
+     "computed": "608.462548",
+     "why": null,
+     "exact": "608.4625482000001"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 Y22",
+     "output": "fmt_pp_energy_total",
+     "result": "match",
+     "filed": "1839.866424",
+     "computed": "1839.866424",
+     "why": null,
+     "exact": "1839.8664237141170514"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 AA22",
+     "output": "fmt_pp_other_total",
+     "result": "match",
+     "filed": "446.358454",
+     "computed": "446.358454",
+     "why": null,
+     "exact": "446.35845373430873"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 AC22",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "2894.687426",
+     "computed": "2894.687426",
+     "why": null,
+     "exact": "2894.6874256484258814"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 F1_PP_Annual!O107",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "2894.687426",
+     "computed": "2894.687426",
+     "why": null,
+     "exact": "2894.6874256484258814"
+    },
+    {
+     "table": "F4_PP_MOD",
+     "fiscal_year": "FY2026-27",
+     "category": "F4 FY2026-27 AD22",
+     "output": "fmt_pp_avg_cost",
+     "result": "match",
+     "filed": "6.120506",
+     "computed": "6.120506",
+     "why": null,
+     "exact": "6.120506493614376580968355141"
+    }
+   ]
+  },
+  {
+   "binding": "f5-renewable.json",
+   "checks": [
+    {
+     "table": "F5_PP_Renew",
+     "fiscal_year": "FY2024-25",
+     "category": "F5 FY2024-25 J18",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "320.365493",
+     "computed": "320.365493",
+     "why": null,
+     "exact": "320.365492954241990346"
+    },
+    {
+     "table": "F5_PP_Renew",
+     "fiscal_year": "FY2024-25",
+     "category": "F5 FY2024-25 F4_PP_MOD!D11",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "320.365493",
+     "computed": "320.365493",
+     "why": null,
+     "exact": "320.365492954241990346"
+    },
+    {
+     "table": "F5_PP_Renew",
+     "fiscal_year": "FY2025-26",
+     "category": "F5 FY2025-26 J32",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "342.222947",
+     "computed": "342.222947",
+     "why": null,
+     "exact": "342.2229465030792421"
+    },
+    {
+     "table": "F5_PP_Renew",
+     "fiscal_year": "FY2025-26",
+     "category": "F5 FY2025-26 F4_PP_MOD!M11",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "342.222947",
+     "computed": "342.222947",
+     "why": null,
+     "exact": "342.2229465030792421"
+    },
+    {
+     "table": "F5_PP_Renew",
+     "fiscal_year": "FY2026-27",
+     "category": "F5 FY2026-27 J44",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "857.890603",
+     "computed": "857.890603",
+     "why": null,
+     "exact": "857.890603351460795"
+    },
+    {
+     "table": "F5_PP_Renew",
+     "fiscal_year": "FY2026-27",
+     "category": "F5 FY2026-27 F4_PP_MOD!V11",
+     "output": "lines_mu_total",
+     "result": "match",
+     "filed": "857.890603",
+     "computed": "857.890603",
+     "why": null,
+     "exact": "857.890603351460795"
+    }
+   ]
+  },
+  {
    "binding": "f6-rpo.json",
    "checks": [
     {
@@ -53804,6 +54661,340 @@
      "computed": "-147.251651",
      "why": null,
      "exact": "-147.25165138326412"
+    }
+   ]
+  },
+  {
+   "binding": "f7-competitive-bids.json",
+   "checks": [
+    {
+     "table": "F7_PP_Comp Bid",
+     "fiscal_year": "FY2024-25",
+     "category": "F7 developer B net generation PPC FY 25!F24",
+     "output": "line_mu",
+     "result": "match",
+     "filed": "754.640340",
+     "computed": "754.640340",
+     "why": null,
+     "exact": "754.6403395000001"
+    },
+    {
+     "table": "F7_PP_Comp Bid",
+     "fiscal_year": "FY2024-25",
+     "category": "F7 developer B B19",
+     "output": "ppa_levelised",
+     "result": "match",
+     "filed": "4.050000",
+     "computed": "4.050000",
+     "why": null,
+     "exact": "4.050"
+    },
+    {
+     "table": "F7_PP_Comp Bid",
+     "fiscal_year": "FY2024-25",
+     "category": "F7 developer C net generation PPC FY 25!F26",
+     "output": "line_mu",
+     "result": "match",
+     "filed": "688.519795",
+     "computed": "688.519795",
+     "why": null,
+     "exact": "688.5197949999997"
+    },
+    {
+     "table": "F7_PP_Comp Bid",
+     "fiscal_year": "FY2024-25",
+     "category": "F7 developer C C19",
+     "output": "ppa_levelised",
+     "result": "match",
+     "filed": "5.190000",
+     "computed": "5.190000",
+     "why": null,
+     "exact": "5.190"
+    },
+    {
+     "table": "F7_PP_Comp Bid",
+     "fiscal_year": "FY2024-25",
+     "category": "F7 developer D net generation PPC FY 25!F47",
+     "output": "line_mu",
+     "result": "match",
+     "filed": "50.029547",
+     "computed": "50.029547",
+     "why": null,
+     "exact": "50.02954650000001"
+    }
+   ]
+  },
+  {
+   "binding": "f8-short-term.json",
+   "checks": [
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2024-25",
+     "category": "F8 FY2024-25 row 11 H11",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "4.187075",
+     "computed": "4.187075",
+     "why": null,
+     "exact": "4.187074699386701223728667824"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2024-25",
+     "category": "F8 FY2024-25 row 12 H12",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "6.584795",
+     "computed": "6.584795",
+     "why": null,
+     "exact": "6.584795359404283120676534511"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2024-25",
+     "category": "F8 FY2024-25 F15",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "1194.291955",
+     "computed": "1194.291955",
+     "why": null,
+     "exact": "1194.2919551037364"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2024-25",
+     "category": "F8 FY2024-25 G15",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "774.755102",
+     "computed": "774.755102",
+     "why": null,
+     "exact": "774.755101646551157"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2024-25",
+     "category": "F8 FY2024-25 H15",
+     "output": "fmt_pp_avg_cost",
+     "result": "match",
+     "filed": "6.487150",
+     "computed": "6.487150",
+     "why": null,
+     "exact": "6.487149966435600737360614598"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2025-26",
+     "category": "F8 FY2025-26 row 18 H18",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.788822",
+     "computed": "5.788822",
+     "why": null,
+     "exact": "5.788821907462953114652061959"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2025-26",
+     "category": "F8 FY2025-26 row 19 H19",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.945859",
+     "computed": "5.945859",
+     "why": null,
+     "exact": "5.945859027262674286382114698"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2025-26",
+     "category": "F8 FY2025-26 F22",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "995.014987",
+     "computed": "995.014987",
+     "why": null,
+     "exact": "995.01498720971497"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2025-26",
+     "category": "F8 FY2025-26 G22",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "585.350564",
+     "computed": "585.350564",
+     "why": null,
+     "exact": "585.35056423517943"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2025-26",
+     "category": "F8 FY2025-26 H22",
+     "output": "fmt_pp_avg_cost",
+     "result": "match",
+     "filed": "5.882832",
+     "computed": "5.882832",
+     "why": null,
+     "exact": "5.882831633286822483318236715"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2026-27",
+     "category": "F8 FY2026-27 row 25 H25",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.588130",
+     "computed": "5.588130",
+     "why": null,
+     "exact": "5.588130411839656446162498003"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2026-27",
+     "category": "F8 FY2026-27 row 26 H26",
+     "output": "pp_rate_billed",
+     "result": "match",
+     "filed": "5.357042",
+     "computed": "5.357042",
+     "why": null,
+     "exact": "5.357042005918271436107862662"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2026-27",
+     "category": "F8 FY2026-27 F29",
+     "output": "pp_mu_exported_total",
+     "result": "match",
+     "filed": "1622.780460",
+     "computed": "1622.780460",
+     "why": null,
+     "exact": "1622.7804603518380"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2026-27",
+     "category": "F8 FY2026-27 G29",
+     "output": "pp_billed_total",
+     "result": "match",
+     "filed": "878.022270",
+     "computed": "878.022270",
+     "why": null,
+     "exact": "878.022270163844"
+    },
+    {
+     "table": "F8_PP_Short Term",
+     "fiscal_year": "FY2026-27",
+     "category": "F8 FY2026-27 H29",
+     "output": "fmt_pp_avg_cost",
+     "result": "match",
+     "filed": "5.410604",
+     "computed": "5.410604",
+     "why": null,
+     "exact": "5.410604155126925705815100037"
+    }
+   ]
+  },
+  {
+   "binding": "f9-procurement-plan.json",
+   "checks": [
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2024-25",
+     "category": "F9 long term B21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "155.829655",
+     "computed": "155.829655",
+     "why": null,
+     "exact": "155.8296548883564433333333333"
+    },
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2024-25",
+     "category": "F9 medium term C21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "153.618121",
+     "computed": "153.618121",
+     "why": null,
+     "exact": "153.6181212397593508333333333"
+    },
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2024-25",
+     "category": "F9 short term D21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "133.857379",
+     "computed": "133.857379",
+     "why": null,
+     "exact": "133.8573785343004618333333333"
+    },
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2025-26",
+     "category": "F9 long term E21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "150.418505",
+     "computed": "150.418505",
+     "why": null,
+     "exact": "150.4185050265094416666666667"
+    },
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2025-26",
+     "category": "F9 medium term F21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "232.842415",
+     "computed": "232.842415",
+     "why": null,
+     "exact": "232.8424151084800391666666667"
+    },
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2025-26",
+     "category": "F9 short term G21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "92.020522",
+     "computed": "92.020522",
+     "why": null,
+     "exact": "92.02052183613398154166666667"
+    },
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2026-27",
+     "category": "F9 long term H21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "216.450218",
+     "computed": "216.450218",
+     "why": null,
+     "exact": "216.4502182472508883333333333"
+    },
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2026-27",
+     "category": "F9 medium term I21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "154.838141",
+     "computed": "154.838141",
+     "why": null,
+     "exact": "154.83814117532258"
+    },
+    {
+     "table": "F9_PP_plan",
+     "fiscal_year": "FY2026-27",
+     "category": "F9 short term J21",
+     "output": "monthly_average",
+     "result": "match",
+     "filed": "199.399774",
+     "computed": "199.399774",
+     "why": null,
+     "exact": "199.3997738824435341666666667"
     }
    ]
   },
@@ -76868,14 +78059,14 @@
     "title": "Merit Order Despatch",
     "sheet": "F4_PP_MOD",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F5_PP_Renew",
     "title": "PPA-wise renewable energy procured",
     "sheet": "F5_PP_Renew",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F6_PP6_RPO",
@@ -76889,21 +78080,21 @@
     "title": "Details for power procured via competitive bidding for True-up Year : FY 2024-25",
     "sheet": "F7_PP_Comp Bid",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F8_PP_Short Term",
     "title": "Information on short-term power procurement",
     "sheet": "F8_PP_Short Term",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F9_PP_plan",
     "title": "Power Procurement (in MWs)",
     "sheet": "F9_PP_plan",
     "alias_why": null,
-    "status": "read"
+    "status": "reproduced"
    },
    {
     "format": "F10_PP_BST",
@@ -77218,11 +78409,11 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 14,
-   "reproduced": 52,
+   "present": 10,
+   "reproduced": 57,
    "blank": 2,
    "missing": 1,
-   "read": 5
+   "read": 4
   }
  },
  "coverage": {

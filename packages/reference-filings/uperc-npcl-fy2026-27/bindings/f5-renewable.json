@@ -1,0 +1,285 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F5_PP_Renew",
+ "places": 6,
+ "note": "F5's renewable generation PPA by PPA, three years, to its totals and to F4's renewables line.  The PPA particulars (location, dates, capacity, CUF) are text; the tariffs are PPC's (reproduced).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F5 FY2024-25",
+   "categories": {
+    "row 7": {
+     "inputs": {
+      "record:line_mu": [
+       "J7",
+       "MU"
+      ]
+     }
+    },
+    "row 8": {
+     "inputs": {
+      "record:line_mu": [
+       "J8",
+       "MU"
+      ]
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_mu": [
+       "J9",
+       "MU"
+      ]
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_mu": [
+       "J10",
+       "MU"
+      ]
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_mu": [
+       "J11",
+       "MU"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_mu": [
+       "J12",
+       "MU"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_mu": [
+       "J13",
+       "MU"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_mu": [
+       "J14",
+       "MU"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_mu": [
+       "J15",
+       "MU"
+      ]
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_mu": [
+       "J16",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "J18",
+     "F4_PP_MOD!D11"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F5 FY2025-26",
+   "categories": {
+    "row 20": {
+     "inputs": {
+      "record:line_mu": [
+       "J20",
+       "MU"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_mu": [
+       "J21",
+       "MU"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_mu": [
+       "J22",
+       "MU"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_mu": [
+       "J23",
+       "MU"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_mu": [
+       "J24",
+       "MU"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_mu": [
+       "J25",
+       "MU"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_mu": [
+       "J26",
+       "MU"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_mu": [
+       "J27",
+       "MU"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_mu": [
+       "J28",
+       "MU"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_mu": [
+       "J29",
+       "MU"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_mu": [
+       "J30",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "J32",
+     "F4_PP_MOD!M11"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F5 FY2026-27",
+   "categories": {
+    "row 34": {
+     "inputs": {
+      "record:line_mu": [
+       "J34",
+       "MU"
+      ]
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_mu": [
+       "J35",
+       "MU"
+      ]
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_mu": [
+       "J36",
+       "MU"
+      ]
+     }
+    },
+    "row 37": {
+     "inputs": {
+      "record:line_mu": [
+       "J37",
+       "MU"
+      ]
+     }
+    },
+    "row 38": {
+     "inputs": {
+      "record:line_mu": [
+       "J38",
+       "MU"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:line_mu": [
+       "J39",
+       "MU"
+      ]
+     }
+    },
+    "row 40": {
+     "inputs": {
+      "record:line_mu": [
+       "J40",
+       "MU"
+      ]
+     }
+    },
+    "row 41": {
+     "inputs": {
+      "record:line_mu": [
+       "J41",
+       "MU"
+      ]
+     }
+    },
+    "row 42": {
+     "inputs": {
+      "record:line_mu": [
+       "J42",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "J44",
+     "F4_PP_MOD!V11"
+    ]
+   }
+  }
+ ]
+}

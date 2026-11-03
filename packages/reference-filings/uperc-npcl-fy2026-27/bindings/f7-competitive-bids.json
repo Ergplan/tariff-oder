@@ -1,0 +1,86 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F7_PP_Comp Bid",
+ "places": 6,
+ "note": "F7's three competitively bid PPAs: the net generation each gives is PPC FY 25's (column F) for the same source, and the levelised tariff is the capacity and energy charges together (Jindal-sourced TPTCL 4.05, JITPL 5.19; TP Saurya's '4.00-4.05' is a range, its charges 'N.A.').  The particulars are text.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F7 developer B",
+   "categories": {
+    "net generation": {
+     "inputs": {
+      "record:line_mu": [
+       "B16",
+       "MU"
+      ]
+     },
+     "checks": {
+      "line_mu": "PPC FY 25!F24"
+     }
+    }
+   },
+   "inputs": {
+    "record:ppa_capacity_charge": [
+     "B20",
+     "INR_per_kWh"
+    ],
+    "record:ppa_energy_charge": [
+     "B23",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "ppa_levelised": "B19"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F7 developer C",
+   "categories": {
+    "net generation": {
+     "inputs": {
+      "record:line_mu": [
+       "C16",
+       "MU"
+      ]
+     },
+     "checks": {
+      "line_mu": "PPC FY 25!F26"
+     }
+    }
+   },
+   "inputs": {
+    "record:ppa_capacity_charge": [
+     "C20",
+     "INR_per_kWh"
+    ],
+    "record:ppa_energy_charge": [
+     "C23",
+     "INR_per_kWh"
+    ]
+   },
+   "checks": {
+    "ppa_levelised": "C19"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F7 developer D",
+   "categories": {
+    "net generation": {
+     "inputs": {
+      "record:line_mu": [
+       "D16",
+       "MU"
+      ]
+     },
+     "checks": {
+      "line_mu": "PPC FY 25!F47"
+     }
+    }
+   }
+  }
+ ]
+}

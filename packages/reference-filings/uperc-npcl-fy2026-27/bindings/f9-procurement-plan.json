@@ -1,0 +1,954 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F9_PP_plan",
+ "places": 6,
+ "note": "F9's power procurement in MW by month and term, three years: each column's average of its twelve months.  The MW are typed; no other format carries them.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F9 long term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "B9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "B10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "B11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "B12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "B13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "B14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "B15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "B16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "B17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "B18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "B19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "B20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "B21"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F9 medium term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "C9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "C10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "C11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "C12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "C13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "C14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "C15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "C16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "C17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "C18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "C19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "C20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "C21"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F9 short term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "D9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "D10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "D11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "D12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "D13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "D14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "D15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "D16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "D17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "D18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "D19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "D20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "D21"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F9 long term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "E9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "E10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "E11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "E12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "E13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "E14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "E15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "E16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "E17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "E18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "E19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "E20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "E21"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F9 medium term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "F9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "F10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "F11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "F12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "F13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "F14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "F15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "F16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "F17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "F18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "F19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "F20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "F21"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F9 short term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "G9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "G10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "G11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "G12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "G13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "G14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "G15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "G16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "G17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "G18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "G19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "G20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "G21"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F9 long term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "H9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "H10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "H11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "H12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "H13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "H14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "H15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "H16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "H17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "H18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "H19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "H20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "H21"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F9 medium term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "I9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "I10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "I11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "I12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "I13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "I14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "I15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "I16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "I17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "I18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "I19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "I20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "I21"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F9 short term",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:line_number": [
+       "J9",
+       "number"
+      ]
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:line_number": [
+       "J10",
+       "number"
+      ]
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:line_number": [
+       "J11",
+       "number"
+      ]
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:line_number": [
+       "J12",
+       "number"
+      ]
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:line_number": [
+       "J13",
+       "number"
+      ]
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:line_number": [
+       "J14",
+       "number"
+      ]
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:line_number": [
+       "J15",
+       "number"
+      ]
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:line_number": [
+       "J16",
+       "number"
+      ]
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:line_number": [
+       "J17",
+       "number"
+      ]
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:line_number": [
+       "J18",
+       "number"
+      ]
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:line_number": [
+       "J19",
+       "number"
+      ]
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:line_number": [
+       "J20",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "monthly_average": "J21"
+   }
+  }
+ ]
+}

@@ -1169,6 +1169,78 @@
    },
    "examples": [],
    "note": "F1's and F3's average cost (Rs/kWh) on the total"
+  },
+  {
+   "id": "uperc.fmt.monthly_average",
+   "version": 1,
+   "status": "draft",
+   "title": "A year's monthly figures averaged",
+   "output": "monthly_average",
+   "unit": "number",
+   "schedule": "R-SCH-3",
+   "formula": "months / 12",
+   "inputs": {
+    "months": {
+     "unit": "number",
+     "source": "rule:lines_number_total"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F9's 'Average' row: the twelve months over twelve"
+  },
+  {
+   "id": "uperc.fmt.ppa_levelised",
+   "version": 1,
+   "status": "draft",
+   "title": "A PPA's levelised tariff: its capacity and energy charges",
+   "output": "ppa_levelised",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "capacity + energy",
+   "inputs": {
+    "capacity": {
+     "unit": "INR_per_kWh",
+     "source": "record:ppa_capacity_charge"
+    },
+    "energy": {
+     "unit": "INR_per_kWh",
+     "source": "record:ppa_energy_charge"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F7: the levelised tariff payable as per the PPA against its two charges"
   }
  ]
 }
