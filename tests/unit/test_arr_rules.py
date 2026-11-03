@@ -348,3 +348,37 @@ def test_clause_candidates_from_the_notified_2025_regulations():
     assert first["uperc.oa.css"] == (48, ["20%"])
     assert "uperc.myt2019.roe" not in cands["rules"]  # a 2019-only rule is not offered the 2025 text
     assert all(not r.clause.verified for r in load_rules("UPERC"))
+
+
+def test_an_amended_clause_applies_only_from_its_effective_year():
+    """R-APP-3 (synthetic): an amendment is a new version of the same rule from its effective
+    year; the earlier version keeps the years before.  Each year is computed under the version in
+    force that year, a superseded version is never chosen, and two different rules claiming the
+    same output in one year are refused.  Effective dates resolve to the fiscal year — a mid-year
+    amendment is not modelled."""
+    inputs = {
+        "equity": {"unit": "INR_crore", "source": "record:equity"},
+        "rate": {"unit": "percent", "source": "record:rate"},
+    }
+    v1 = rule("syn.roe", "roe", "INR_crore", "rate * equity", inputs, applies={"to_fy": "FY2025-26"})
+    v2 = rule(
+        "syn.roe",
+        "roe",
+        "INR_crore",
+        "rate * equity * (1 - haircut)",
+        {**inputs, "haircut": {"unit": "percent", "source": "regulation", "value": "10"}},
+        version=2,
+        applies={"from_fy": "FY2026-27"},
+    )
+    values = {"record:equity": ("100", "INR_crore"), "record:rate": ("15", "percent")}
+    before = RuleSet([v1, v2], "FY2025-26").evaluate("FY2025-26", values)
+    after = RuleSet([v1, v2], "FY2026-27").evaluate("FY2026-27", values)
+    assert before.results["roe"].value == Decimal("15") and before.results["roe"].version == 1
+    assert after.results["roe"].value == Decimal("13.5") and after.results["roe"].version == 2
+    # a version withdrawn (superseded) is never chosen, whatever its years
+    gone = v2.model_copy(update={"status": "superseded"})
+    assert "roe" not in RuleSet([v1, gone], "FY2026-27").rules
+    # two different rules for one output in one year: refused, not silently picked
+    rival = rule("syn.roe_other", "roe", "INR_crore", "rate * equity", inputs, applies={"from_fy": "FY2026-27"})
+    with pytest.raises(RuleError, match="several rules apply to roe"):
+        RuleSet([v2, rival], "FY2026-27")

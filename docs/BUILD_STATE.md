@@ -1005,6 +1005,19 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 140 (2026-11-03): R-APP-3 — an amended clause applies only from its effective
+  year.**
+  - **The capability was already in the engine.**  A rule id may carry versions with
+    non-overlapping years, and `RuleSet` takes the version in force each year.  A `superseded`
+    version is dropped, and two different rules claiming one output in one year are refused.
+  - **A unit test now pins it** with two constructed versions of one rule: 15% RoE to
+    FY2025-26, and from FY2026-27 the same less a 10% haircut.  It also checks the superseded
+    version and the rival rule.
+  - **Already in use:** UPERC's 2019 and 2025 rules, and UERC's 2021 and 2024.
+  - **Not built:** an effective date within a year, which resolves to the fiscal year; and
+    exceptions with precedence.
+  - The matrix row moves from none to partial.
+
   **Increment 139 (2026-11-03): the rules compared across commissions.**
   - **API (read-only, analyst): `GET /arr/rules-compare`** returns every commission's draft
     rules grouped by schedule (sales to tariff design, true-up sharing and carrying).  Each rule
@@ -3479,6 +3492,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 140 (2026-11-03): 510 passed** (+1 unit: an amended rule by effective year, synthetic).  Ruff and format clean.
 - **Increment 139 (2026-11-03): 509 passed** (+1 integration: the rules compared across commissions).  Ruff, format, contracts (regenerated, no drift) and `tsc` clean; screenshots at 1440 / 390 px.
 - **Increment 138 (2026-11-03): 508 passed** (+1 unit: OERC's bad debts, RoE and depreciation for four DISCOMs; O1, O2).  `check_order_quotes.py`: 76 / 76.  Ruff and format clean.
 - **Increment 137 (2026-11-03): 507 passed** (+1 unit: BERC's working capital per DISCOM).  The first full run failed this test on the claimed interest's bound; it now bounds by the printed rate.  `check_order_quotes.py`: 43 / 43.  Ruff and format clean.
@@ -3751,7 +3765,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 139) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 140) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
