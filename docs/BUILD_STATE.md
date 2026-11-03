@@ -1005,6 +1005,35 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 124 (2026-11-03): UERC — GFA, depreciation, normative loan and interest for UPCL,
+  FY2026-27.**
+  - **The record:** `order/figures-loan-dep-fy2026-27.json` in the UERC folder holds 52 figures
+    (Tables 4.38–4.41, 4.52), 52 / 52 quotes verified.
+  - **Nine more draft UERC rules (17 in all), quoting Regs. 27 and 28 as the order does:**
+    - closing GFA;
+    - means of finance;
+    - the depreciable base (GFA less grants), depreciation and the closing base;
+    - the normative loan, closing (opening + drawal − repayment);
+    - interest on the average of the opening loan and the closing loan less the year's drawal
+      (no interest on the year's additions: the order's 4.9);
+    - loan with finance charges, and total interest.
+  - **The method:** depreciation is the order's interim one, FY2024-25's weighted-average rate
+    on the depreciable opening GFA, for want of a fixed asset register.  The rule says this is
+    not Reg. 28(4)'s class-by-class method.
+  - **Binding `approval-loan-dep-fy27.json`: 5 / 17 exact.**  Every other check is within its
+    inputs' printed precision, and the test bounds each one.  The order computes with rates
+    that print rounded: depreciation implies 3.2208% and interest 10.066%, printed as 3.22%
+    and 10.07%.  Three sums are off by a paisa.
+  - **Ties checked by the test:**
+    - the repayment is the depreciation allowed;
+    - the drawal is the debt financed;
+    - the equity financed is the RoE's addition (increment 123);
+    - Table 4.38's opening GFA is Table 4.41's.
+  - **Not checked:** UPCL's claimed interest (217.51).  It follows a method the order does not
+    state, near the full average of opening and closing (217.61 at 10.07%).  Only its loan
+    balance is checked (exact).
+  Nothing verified, nothing approved.
+
   **Increment 123 (2026-11-03): a second commission — UERC's interest on working capital and
   return on equity for UPCL, FY2026-27.**
   - **Why:** the bindings so far were all UPERC / NPCL.  The second NPCL filing is still blocked
@@ -3060,6 +3089,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 124 (2026-11-03): 494 passed** (+1 unit: UERC depreciation, loan and interest, differences bounded by printed precision; the chain's ties).  `check_order_quotes.py`: 52 / 52.  Ruff and format clean.
 - **Increment 123 (2026-11-03): 493 passed** (+1 unit: UERC's working capital and RoE for UPCL — a second commission, no workbook; U1).  `check_order_quotes.py`: 41 / 41.  Ruff and format clean.
 - **Increment 122 (2026-11-03): 492 passed** (+1 unit: gain / loss sharing — the examples, the year selection, the illustration).  `check_order_quotes.py`: 12 / 12.  Ruff and format clean.
 - **Increment 121 (2026-11-03): 491 passed** (+1 unit: the wheeling / supply allocation).  `check_order_quotes.py`: 62 / 62.  Ruff and format clean.
@@ -3316,7 +3346,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 123) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 124) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3415,7 +3445,8 @@ entries below are the per-increment history.**
     - LMV-3's local-body column, for the reviewer;
     - HV energy, which waits on the kVAh sold (A55);
   - more of a second commission's order (increment 123 began with UERC / UPCL: working capital
-    and RoE, 14 / 18) — next its interest on loans and depreciation, from the same order;
+    and RoE, 14 / 18; increment 124 its depreciation, loan and interest, 5 / 17 exact and the rest
+    within printed precision) — next its O&M (Reg. 84: employee, R&M on K × GFA, A&G by WPI);
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

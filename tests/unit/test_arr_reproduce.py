@@ -2039,3 +2039,49 @@ def test_a_second_commission_uerc_working_capital_and_return_reproduce():
     assert claimed.computed == "209.00" and Decimal(claimed.filed) - Decimal(claimed.exact) > Decimal("1.6")
     findings = json.loads((folder / "findings.json").read_text())["findings"]
     assert {f["id"] for f in findings} == {"U1", "U2"}
+
+
+def test_uerc_depreciation_loan_and_interest_reproduce_within_printed_precision():
+    """Real data, UERC / UPCL FY2026-27: GFA, means of finance, depreciation (the order's interim
+    weighted-average rate on the depreciable opening GFA), the normative loan (repayment = the
+    depreciation allowed, Reg. 27(3)) and interest on the average of the opening loan and the closing
+    loan less the year's drawal.  Five checks are exact; every other is within its inputs' printed
+    precision — the order works with rates that print rounded (3.22 %, 10.07 %)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "uerc-upcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-loan-dep-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("UERC"), rates=rec)
+    assert len(checks) == 17 and sum(c.result == "match" for c in checks) == 5
+    assert {c.result for c in checks} == {"match", "differs"}
+    pct = Decimal("0.00005")  # half the last printed digit of a rate in %
+    base_a = Decimal(rec["dep.depreciable_opening.approved"][0])
+    base_c = Decimal(rec["dep.depreciable_opening.claimed"][0])
+    avg_loan = (
+        Decimal(rec["loan.opening.approved"][0])
+        + Decimal(rec["loan.closing.approved"][0])
+        - Decimal(rec["mof.fy27.debt"][0])
+    ) / 2
+    bound = {
+        "depreciation": max(base_a, base_c) * pct + Decimal("0.01"),
+        "dep_base_opening": Decimal("0.01"),
+        "dep_base_closing": Decimal("0.01"),
+        "mof_total": Decimal("0.015"),
+        "loan_interest": avg_loan * pct + Decimal("0.005"),
+        "interest_loan_finance": avg_loan * pct + Decimal("0.01"),
+        "interest_total": avg_loan * pct + Decimal("0.015"),
+    }
+    for c in checks:
+        if c.result == "differs":
+            assert abs(Decimal(c.exact) - Decimal(c.filed)) <= bound[c.output], (c.category, c.exact, c.filed)
+    # the ties the order's chain rests on: repayment is the depreciation; the drawal is the debt
+    # financed; the equity financed is the RoE's addition; Table 4.38's opening is Table 4.41's
+    assert rec["loan.repayment.approved"] == rec["dep.depreciation.approved"]
+    assert rec["loan.drawal.approved"] == rec["mof.fy27.debt"]
+    assert rec["gfa.opening.approved"] == rec["dep.opening_gfa.approved"]
+    iowc = load_binding_rates(folder, {"rates": "order/figures-iowc-roe-fy2026-27.json"})
+    assert iowc["roe.addition.approved"] == rec["mof.fy27.equity"]

@@ -1,0 +1,139 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "UERC order",
+ "rates": "order/figures-loan-dep-fy2026-27.json",
+ "places": 2,
+ "note": "UERC's GFA, means of finance, depreciation, normative loan and interest for UPCL, FY2026-27, with draft UERC rules from the order's own figures.  Depreciation is the order's interim method (FY2024-25's weighted average rate on the depreciable opening GFA); the repayment is the order's printed depreciation (Reg. 27(3)); interest is on the average of the opening loan and the closing loan less the year's drawal.  UPCL's claimed interest follows another method, not stated: only its loan balance is checked.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "GFA and depreciation, approved (Tables 4.38, 4.41)",
+   "inputs": {
+    "record:gfa_opening": {
+     "rate": "dep.opening_gfa.approved"
+    },
+    "record:grants_cumulative": {
+     "rate": "dep.grants.approved"
+    },
+    "record:dep_rate": {
+     "rate": "dep.rate.approved"
+    },
+    "record:dep_net_addition": {
+     "rate": "dep.net_addition.approved"
+    },
+    "record:gfa_addition": {
+     "rate": "gfa.addition.approved"
+    }
+   },
+   "checks": {
+    "dep_base_opening": "order:dep.depreciable_opening.approved",
+    "depreciation": [
+     "order:dep.depreciation.approved",
+     "order:arr.dep_approved"
+    ],
+    "dep_base_closing": "order:dep.closing.approved",
+    "gfa_closing": "order:gfa.closing.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "GFA and depreciation, claimed (Tables 4.38, 4.41)",
+   "inputs": {
+    "record:gfa_opening": {
+     "rate": "dep.opening_gfa.claimed"
+    },
+    "record:grants_cumulative": {
+     "rate": "dep.grants.claimed"
+    },
+    "record:dep_rate": {
+     "rate": "dep.rate.claimed"
+    },
+    "record:dep_net_addition": {
+     "rate": "dep.net_addition.claimed"
+    },
+    "record:gfa_addition": {
+     "rate": "gfa.addition.claimed"
+    }
+   },
+   "checks": {
+    "dep_base_opening": "order:dep.depreciable_opening.claimed",
+    "depreciation": [
+     "order:dep.depreciation.claimed",
+     "order:arr.dep_claimed"
+    ],
+    "dep_base_closing": "order:dep.closing.claimed",
+    "gfa_closing": "order:gfa.closing.claimed"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "means of finance FY2026-27 (Table 4.39)",
+   "inputs": {
+    "record:mof_grant": {
+     "rate": "mof.fy27.grant"
+    },
+    "record:mof_debt": {
+     "rate": "mof.fy27.debt"
+    },
+    "record:mof_equity": {
+     "rate": "mof.fy27.equity"
+    }
+   },
+   "checks": {
+    "mof_total": [
+     "order:mof.fy27.total",
+     "order:gfa.addition.approved"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "normative loan and interest, approved (Table 4.40)",
+   "inputs": {
+    "record:loan_opening": {
+     "rate": "loan.opening.approved"
+    },
+    "record:loan_drawal": {
+     "rate": "mof.fy27.debt"
+    },
+    "record:loan_repayment": {
+     "rate": "dep.depreciation.approved"
+    },
+    "record:loan_rate": {
+     "rate": "loan.rate.approved"
+    },
+    "record:finance_charges": {
+     "rate": "interest.finance.approved"
+    },
+    "record:interest_csd": {
+     "rate": "interest.csd.approved"
+    }
+   },
+   "checks": {
+    "loan_closing": "order:loan.closing.approved",
+    "loan_interest": "order:loan.interest.approved",
+    "interest_loan_finance": "order:arr.interest_approved",
+    "interest_total": "order:interest.total.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "normative loan, claimed by UPCL (Table 4.40)",
+   "inputs": {
+    "record:loan_opening": {
+     "rate": "loan.opening.claimed"
+    },
+    "record:loan_drawal": {
+     "rate": "loan.drawal.claimed"
+    },
+    "record:loan_repayment": {
+     "rate": "loan.repayment.claimed"
+    }
+   },
+   "checks": {
+    "loan_closing": "order:loan.closing.claimed"
+   }
+  }
+ ]
+}

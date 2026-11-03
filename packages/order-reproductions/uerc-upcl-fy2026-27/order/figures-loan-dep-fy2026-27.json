@@ -1,0 +1,374 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UERC order on UPCL: true-up FY2024-25, APR FY2025-26 and ARR FY2026-27 (31 March 2026) — GFA, means of finance, interest on loan and depreciation for FY2026-27",
+  "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+  "pages": 414
+ },
+ "figures": {
+  "gfa.opening.mytorder": {
+   "value": "11033.06",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "1. Opening Value 11033.06 11814.94 11152.19",
+   "what": "Table 4.38, Opening Value: mytorder"
+  },
+  "gfa.opening.claimed": {
+   "value": "11814.94",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "1. Opening Value 11033.06 11814.94 11152.19",
+   "what": "Table 4.38, Opening Value: claimed"
+  },
+  "gfa.opening.approved": {
+   "value": "11152.19",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "1. Opening Value 11033.06 11814.94 11152.19",
+   "what": "Table 4.38, Opening Value: approved"
+  },
+  "gfa.addition.mytorder": {
+   "value": "944.70",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "2. Total addition during the year 944.70 3324.28 944.70",
+   "what": "Table 4.38, Total addition during the year: mytorder"
+  },
+  "gfa.addition.claimed": {
+   "value": "3324.28",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "2. Total addition during the year 944.70 3324.28 944.70",
+   "what": "Table 4.38, Total addition during the year: claimed"
+  },
+  "gfa.addition.approved": {
+   "value": "944.70",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "2. Total addition during the year 944.70 3324.28 944.70",
+   "what": "Table 4.38, Total addition during the year: approved"
+  },
+  "gfa.closing.mytorder": {
+   "value": "11977.76",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "3. Closing value 11977.76 15139.22 12096.89",
+   "what": "Table 4.38, Closing value: mytorder"
+  },
+  "gfa.closing.claimed": {
+   "value": "15139.22",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "3. Closing value 11977.76 15139.22 12096.89",
+   "what": "Table 4.38, Closing value: claimed"
+  },
+  "gfa.closing.approved": {
+   "value": "12096.89",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "3. Closing value 11977.76 15139.22 12096.89",
+   "what": "Table 4.38, Closing value: approved"
+  },
+  "mof.fy27.capitalisation": {
+   "value": "944.70",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "Capitalisation 951.00 944.70 Financing Grant 421.17 398.88 Debt 370.88 382.08 Equity 158.95 163.75 Total 951.00 944.70",
+   "what": "Table 4.39, FY2026-27: capitalisation"
+  },
+  "mof.fy27.grant": {
+   "value": "398.88",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "Capitalisation 951.00 944.70 Financing Grant 421.17 398.88 Debt 370.88 382.08 Equity 158.95 163.75 Total 951.00 944.70",
+   "what": "Table 4.39, FY2026-27: grant"
+  },
+  "mof.fy27.debt": {
+   "value": "382.08",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "Capitalisation 951.00 944.70 Financing Grant 421.17 398.88 Debt 370.88 382.08 Equity 158.95 163.75 Total 951.00 944.70",
+   "what": "Table 4.39, FY2026-27: debt"
+  },
+  "mof.fy27.equity": {
+   "value": "163.75",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "Capitalisation 951.00 944.70 Financing Grant 421.17 398.88 Debt 370.88 382.08 Equity 158.95 163.75 Total 951.00 944.70",
+   "what": "Table 4.39, FY2026-27: equity"
+  },
+  "mof.fy27.total": {
+   "value": "944.70",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "Capitalisation 951.00 944.70 Financing Grant 421.17 398.88 Debt 370.88 382.08 Equity 158.95 163.75 Total 951.00 944.70",
+   "what": "Table 4.39, FY2026-27: total"
+  },
+  "loan.opening.claimed": {
+   "value": "1950.94",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Opening Loan balance 1950.94 947.85",
+   "what": "Table 4.40, Opening Loan balance: claimed"
+  },
+  "loan.opening.approved": {
+   "value": "947.85",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Opening Loan balance 1950.94 947.85",
+   "what": "Table 4.40, Opening Loan balance: approved"
+  },
+  "loan.drawal.claimed": {
+   "value": "679.27",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Drawal during the year 679.27 382.08",
+   "what": "Table 4.40, Drawal during the year: claimed"
+  },
+  "loan.drawal.approved": {
+   "value": "382.08",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Drawal during the year 679.27 382.08",
+   "what": "Table 4.40, Drawal during the year: approved"
+  },
+  "loan.repayment.claimed": {
+   "value": "259.23",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Repayment during the year 259.23 144.19",
+   "what": "Table 4.40, Repayment during the year: claimed"
+  },
+  "loan.repayment.approved": {
+   "value": "144.19",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Repayment during the year 259.23 144.19",
+   "what": "Table 4.40, Repayment during the year: approved"
+  },
+  "loan.closing.claimed": {
+   "value": "2370.98",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Closing Loan balance 2370.98 1185.74",
+   "what": "Table 4.40, Closing Loan balance: claimed"
+  },
+  "loan.closing.approved": {
+   "value": "1185.74",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Closing Loan balance 2370.98 1185.74",
+   "what": "Table 4.40, Closing Loan balance: approved"
+  },
+  "loan.rate.claimed": {
+   "value": "10.07",
+   "unit": "percent",
+   "page": 208,
+   "quote": "Interest Rate 10.07% 10.07%",
+   "what": "Table 4.40, interest rate: claimed"
+  },
+  "loan.rate.approved": {
+   "value": "10.07",
+   "unit": "percent",
+   "page": 208,
+   "quote": "Interest Rate 10.07% 10.07%",
+   "what": "Table 4.40, interest rate: approved"
+  },
+  "loan.interest.claimed": {
+   "value": "217.51",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Interest Rate 10.07% 10.07% Interest on Loan 217.51 88.15",
+   "what": "Table 4.40, interest on loan: claimed"
+  },
+  "loan.interest.approved": {
+   "value": "88.15",
+   "unit": "INR_crore",
+   "page": 208,
+   "quote": "Interest Rate 10.07% 10.07% Interest on Loan 217.51 88.15",
+   "what": "Table 4.40, interest on loan: approved"
+  },
+  "interest.finance.claimed": {
+   "value": "40.72",
+   "unit": "INR_crore",
+   "page": 209,
+   "quote": "Other finance charges 40.72 5.98",
+   "what": "Table 4.40 (cont.), Other finance charges: claimed"
+  },
+  "interest.finance.approved": {
+   "value": "5.98",
+   "unit": "INR_crore",
+   "page": 209,
+   "quote": "Other finance charges 40.72 5.98",
+   "what": "Table 4.40 (cont.), Other finance charges: approved"
+  },
+  "interest.csd.claimed": {
+   "value": "146.25",
+   "unit": "INR_crore",
+   "page": 209,
+   "quote": "Interest on CSD 146.25 146.25",
+   "what": "Table 4.40 (cont.), Interest on CSD: claimed"
+  },
+  "interest.csd.approved": {
+   "value": "146.25",
+   "unit": "INR_crore",
+   "page": 209,
+   "quote": "Interest on CSD 146.25 146.25",
+   "what": "Table 4.40 (cont.), Interest on CSD: approved"
+  },
+  "interest.total.claimed": {
+   "value": "404.49",
+   "unit": "INR_crore",
+   "page": 209,
+   "quote": "Total Interest 404.49 240.38",
+   "what": "Table 4.40 (cont.), Total Interest: claimed"
+  },
+  "interest.total.approved": {
+   "value": "240.38",
+   "unit": "INR_crore",
+   "page": 209,
+   "quote": "Total Interest 404.49 240.38",
+   "what": "Table 4.40 (cont.), Total Interest: approved"
+  },
+  "dep.opening_gfa.claimed": {
+   "value": "11814.94",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Opening GFA 11814.94 11152.19",
+   "what": "Table 4.41, Opening GFA: claimed"
+  },
+  "dep.opening_gfa.approved": {
+   "value": "11152.19",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Opening GFA 11814.94 11152.19",
+   "what": "Table 4.41, Opening GFA: approved"
+  },
+  "dep.grants.claimed": {
+   "value": "3766.02",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Grants 3766.02 6675.31",
+   "what": "Table 4.41, Grants: claimed"
+  },
+  "dep.grants.approved": {
+   "value": "6675.31",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Grants 3766.02 6675.31",
+   "what": "Table 4.41, Grants: approved"
+  },
+  "dep.depreciable_opening.claimed": {
+   "value": "8048.91",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Depreciable opening GFA 8048.91 4476.88",
+   "what": "Table 4.41, Depreciable opening GFA: claimed"
+  },
+  "dep.depreciable_opening.approved": {
+   "value": "4476.88",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Depreciable opening GFA 8048.91 4476.88",
+   "what": "Table 4.41, Depreciable opening GFA: approved"
+  },
+  "dep.net_addition.claimed": {
+   "value": "1814.78",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Net addition during the year 1814.78 529.83",
+   "what": "Table 4.41, Net addition during the year: claimed"
+  },
+  "dep.net_addition.approved": {
+   "value": "529.83",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Net addition during the year 1814.78 529.83",
+   "what": "Table 4.41, Net addition during the year: approved"
+  },
+  "dep.closing.claimed": {
+   "value": "9863.69",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Closing GFA 9863.69 5006.70",
+   "what": "Table 4.41, Closing GFA: claimed"
+  },
+  "dep.closing.approved": {
+   "value": "5006.70",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Closing GFA 9863.69 5006.70",
+   "what": "Table 4.41, Closing GFA: approved"
+  },
+  "dep.rate.claimed": {
+   "value": "3.22",
+   "unit": "percent",
+   "page": 210,
+   "quote": "Depreciation rate 3.22% 3.22%",
+   "what": "Table 4.41, depreciation rate: claimed"
+  },
+  "dep.rate.approved": {
+   "value": "3.22",
+   "unit": "percent",
+   "page": 210,
+   "quote": "Depreciation rate 3.22% 3.22%",
+   "what": "Table 4.41, depreciation rate: approved"
+  },
+  "dep.depreciation.claimed": {
+   "value": "259.22",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Depreciation rate 3.22% 3.22% Depreciation 259.22 144.19",
+   "what": "Table 4.41, depreciation: claimed"
+  },
+  "dep.depreciation.approved": {
+   "value": "144.19",
+   "unit": "INR_crore",
+   "page": 210,
+   "quote": "Depreciation rate 3.22% 3.22% Depreciation 259.22 144.19",
+   "what": "Table 4.41, depreciation: approved"
+  },
+  "arr.interest_claimed": {
+   "value": "258.24",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "3 Interest on Loan and finance charges 258.24 94.13 4 Interest on consumer security deposit 146.25 146.25 5 Depreciation 259.23 144.19",
+   "what": "Table 4.52: interest_claimed"
+  },
+  "arr.interest_approved": {
+   "value": "94.13",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "3 Interest on Loan and finance charges 258.24 94.13 4 Interest on consumer security deposit 146.25 146.25 5 Depreciation 259.23 144.19",
+   "what": "Table 4.52: interest_approved"
+  },
+  "arr.csd_claimed": {
+   "value": "146.25",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "3 Interest on Loan and finance charges 258.24 94.13 4 Interest on consumer security deposit 146.25 146.25 5 Depreciation 259.23 144.19",
+   "what": "Table 4.52: csd_claimed"
+  },
+  "arr.csd_approved": {
+   "value": "146.25",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "3 Interest on Loan and finance charges 258.24 94.13 4 Interest on consumer security deposit 146.25 146.25 5 Depreciation 259.23 144.19",
+   "what": "Table 4.52: csd_approved"
+  },
+  "arr.dep_claimed": {
+   "value": "259.23",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "3 Interest on Loan and finance charges 258.24 94.13 4 Interest on consumer security deposit 146.25 146.25 5 Depreciation 259.23 144.19",
+   "what": "Table 4.52: dep_claimed"
+  },
+  "arr.dep_approved": {
+   "value": "144.19",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "3 Interest on Loan and finance charges 258.24 94.13 4 Interest on consumer security deposit 146.25 146.25 5 Depreciation 259.23 144.19",
+   "what": "Table 4.52: dep_approved"
+  }
+ }
+}

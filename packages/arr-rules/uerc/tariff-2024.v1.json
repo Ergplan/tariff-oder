@@ -334,6 +334,378 @@
    },
    "examples": [],
    "note": "the equity base of Regulation 24"
+  },
+  {
+   "id": "uerc.gfa.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Closing GFA: opening plus the year's capitalisation",
+   "output": "gfa_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "opening + addition",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:gfa_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:gfa_addition"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "24, 28(1)",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the capital cost base"
+  },
+  {
+   "id": "uerc.mof.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Means of finance: grant, debt and equity together",
+   "output": "mof_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "grant + debt + equity",
+   "inputs": {
+    "grant": {
+     "unit": "INR_crore",
+     "source": "record:mof_grant"
+    },
+    "debt": {
+     "unit": "INR_crore",
+     "source": "record:mof_debt"
+    },
+    "equity": {
+     "unit": "INR_crore",
+     "source": "record:mof_equity"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "24",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the capitalisation financed; equity capped at the normative 30 % net of grants (the order's 4.8)"
+  },
+  {
+   "id": "uerc.dep.base_opening",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciable opening GFA: GFA less assets from grants and contributions",
+   "output": "dep_base_opening",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "gfa - grants",
+   "inputs": {
+    "gfa": {
+     "unit": "INR_crore",
+     "source": "record:gfa_opening"
+    },
+    "grants": {
+     "unit": "INR_crore",
+     "source": "record:grants_cumulative"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "28(1)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "28. Depreciation (1) The value base for the purpose of depreciation shall be the capital cost of the asset admitted by the Commission. Provided that no depreciation shall be allowed on assets funded through Consumer Contribution and Capital Subsidies/Grants. (2) The salvage value of the asset shall be considered as 10% and depreciation shall be allowed up to maximum of 90% of the capital cost of the asset. ... (4) Depreciation shall be calculated annually based on Straight Line Method and at rates specified in Appendix - II to these Regulations. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.207–209), not read from the Regulations; no depreciation on assets funded by consumer contribution or grants"
+  },
+  {
+   "id": "uerc.dep.depreciation",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation at the weighted average rate on the depreciable opening GFA",
+   "output": "depreciation",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "rate * base",
+   "inputs": {
+    "base": {
+     "unit": "INR_crore",
+     "source": "rule:dep_base_opening"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:dep_rate",
+     "note": "the order applies FY2024-25's weighted average rate (3.22 %) for want of a complete fixed asset register — Reg. 28(4)'s Appendix-II rates class by class are the Regulation's method"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "28(4)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "28. Depreciation (1) The value base for the purpose of depreciation shall be the capital cost of the asset admitted by the Commission. Provided that no depreciation shall be allowed on assets funded through Consumer Contribution and Capital Subsidies/Grants. (2) The salvage value of the asset shall be considered as 10% and depreciation shall be allowed up to maximum of 90% of the capital cost of the asset. ... (4) Depreciation shall be calculated annually based on Straight Line Method and at rates specified in Appendix - II to these Regulations. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.207–209), not read from the Regulations; the order's interim method, not Reg. 28(4)'s class-by-class straight line"
+  },
+  {
+   "id": "uerc.dep.base_closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciable closing GFA: opening plus net additions",
+   "output": "dep_base_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "base + addition",
+   "inputs": {
+    "base": {
+     "unit": "INR_crore",
+     "source": "rule:dep_base_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:dep_net_addition"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "28(1)",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "net of grant-funded additions"
+  },
+  {
+   "id": "uerc.loan.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative loan, closing: opening plus drawal less repayment",
+   "output": "loan_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "opening + drawal - repayment",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:loan_opening"
+    },
+    "drawal": {
+     "unit": "INR_crore",
+     "source": "record:loan_drawal",
+     "note": "the debt part of the year's capitalisation (means of finance)"
+    },
+    "repayment": {
+     "unit": "INR_crore",
+     "source": "record:loan_repayment",
+     "note": "Reg. 27(3): deemed equal to the depreciation allowed for the year"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "27(1)–(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "27. Interest and finance charges on loan capital and on Security Deposit (1) The loans arrived at in the manner indicated in Regulation 24 shall be considered as gross normative loan for calculation of interest on loan. (2) The normative loan outstanding as on 01.04.2025 shall be worked out by deducting the cumulative repayment as admitted by the Commission up to 31.03.2025 from the approved gross normative loan. (3) The repayment for each year of the Control Period shall be deemed to be equal to the depreciation allowed for that year… … (5) The rate of interest shall be the weighted average rate of interest calculated on the basis of the actual loan portfolio of the previous year after providing appropriate accounting adjustment for interest capitalised: … (6) The interest on loan shall be calculated on the normative average loan of the year by applying the weighted average rate of interest. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.207–209), not read from the Regulations"
+  },
+  {
+   "id": "uerc.loan.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on loan: the rate on the average of the opening loan and the closing loan less the year's drawal",
+   "output": "loan_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "rate * (opening + closing - drawal) / 2",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:loan_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:loan_closing"
+    },
+    "drawal": {
+     "unit": "INR_crore",
+     "source": "record:loan_drawal"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:loan_rate",
+     "note": "Reg. 27(5): the previous year's weighted average rate"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "27(5), 27(6)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "27. Interest and finance charges on loan capital and on Security Deposit (1) The loans arrived at in the manner indicated in Regulation 24 shall be considered as gross normative loan for calculation of interest on loan. (2) The normative loan outstanding as on 01.04.2025 shall be worked out by deducting the cumulative repayment as admitted by the Commission up to 31.03.2025 from the approved gross normative loan. (3) The repayment for each year of the Control Period shall be deemed to be equal to the depreciation allowed for that year… … (5) The rate of interest shall be the weighted average rate of interest calculated on the basis of the actual loan portfolio of the previous year after providing appropriate accounting adjustment for interest capitalised: … (6) The interest on loan shall be calculated on the normative average loan of the year by applying the weighted average rate of interest. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.207–209), not read from the Regulations; no interest on the year's drawal — capitalised at year end, its interest goes to CWIP (the order's 4.9)"
+  },
+  {
+   "id": "uerc.interest.loan_and_finance",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on loan and finance charges",
+   "output": "interest_loan_finance",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "loan + finance",
+   "inputs": {
+    "loan": {
+     "unit": "INR_crore",
+     "source": "rule:loan_interest"
+    },
+    "finance": {
+     "unit": "INR_crore",
+     "source": "record:finance_charges"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "27",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 4.52 row 3"
+  },
+  {
+   "id": "uerc.interest.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Total interest: loan, finance charges and interest on consumer security deposits",
+   "output": "interest_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "loan_finance + csd",
+   "inputs": {
+    "loan_finance": {
+     "unit": "INR_crore",
+     "source": "rule:interest_loan_finance"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "record:interest_csd",
+     "note": "at the RBI bank rate on 1 April (Supply Code)"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "27",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 4.40's total"
   }
  ]
 }
