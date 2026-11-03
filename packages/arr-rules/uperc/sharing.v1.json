@@ -1,0 +1,305 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — Regulation 11 (treatment of gains or losses on account of controllable factors) and 33.3 (O&M gains or losses shared per Regulation 11)",
+ "applies": {
+  "commission": "UPERC",
+  "from_fy": "FY2025-26"
+ },
+ "note": "R-TU-2: gains and losses on controllable factors in the true-up, from FY2025-26 (the 2025 Regulations).  O&M is shared component by component (Reg. 33.3).  The distribution loss is also a controllable factor shared the same way, but the Regulations do not say how a loss variation is valued in rupees: not built, for the reviewer.  The 2019 Regulations (FY2024-25 and before) allow the lower of normative and actual instead (om.v1.json).",
+ "rules": [
+  {
+   "id": "uperc.share.om_variation",
+   "version": 1,
+   "status": "draft",
+   "title": "Variation in an O&M component: normative less actual (a gain when positive)",
+   "output": "om_variation",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "per": "om_component",
+   "formula": "normative - actual",
+   "inputs": {
+    "normative": {
+     "unit": "INR_crore",
+     "source": "record:om_normative",
+     "note": "the component as the Commission computes it under the norms (the true-up's normative)"
+    },
+    "actual": {
+     "unit": "INR_crore",
+     "source": "record:om_actual",
+     "note": "the audited actual"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — Regulation 11 (treatment of gains or losses on account of controllable factors) and 33.3 (O&M gains or losses shared per Regulation 11)",
+    "clause": "11.1, 11.2; 33.3",
+    "source_id": null,
+    "page": 15,
+    "excerpt": "11.1 The approved gain to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) Two-third of the amount of such gain shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such gain shall be utilised at the discretion of the Distribution Licensee. 11.2 The approved loss to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) One-third of the amount of such loss shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such loss shall be absorbed by the Distribution Licensee.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "normative": "100",
+      "actual": "70"
+     },
+     "expected": "30.00",
+     "source": "constructed to show the rule's branch (the regulation's arithmetic, not a filing)"
+    },
+    {
+     "inputs": {
+      "normative": "100",
+      "actual": "130"
+     },
+     "expected": "-30.00",
+     "source": "constructed to show the rule's branch (the regulation's arithmetic, not a filing)"
+    }
+   ],
+   "note": "positive: a gain (spent less than the norm); negative: a loss"
+  },
+  {
+   "id": "uperc.share.om_passed",
+   "version": 1,
+   "status": "draft",
+   "title": "The part of an O&M variation passed on in the ARR: two-thirds of a gain, one-third of a loss",
+   "output": "om_variation_passed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "per": "om_component",
+   "formula": "ifneg(variation, variation / 3, variation * 2 / 3)",
+   "inputs": {
+    "variation": {
+     "unit": "INR_crore",
+     "source": "rule:om_variation"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — Regulation 11 (treatment of gains or losses on account of controllable factors) and 33.3 (O&M gains or losses shared per Regulation 11)",
+    "clause": "11.1, 11.2; 33.3",
+    "source_id": null,
+    "page": 15,
+    "excerpt": "11.1 The approved gain to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) Two-third of the amount of such gain shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such gain shall be utilised at the discretion of the Distribution Licensee. 11.2 The approved loss to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) One-third of the amount of such loss shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such loss shall be absorbed by the Distribution Licensee.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "variation": "30"
+     },
+     "expected": "20.00",
+     "source": "constructed to show the rule's branch (the regulation's arithmetic, not a filing)"
+    },
+    {
+     "inputs": {
+      "variation": "-30"
+     },
+     "expected": "-10.00",
+     "source": "constructed to show the rule's branch (the regulation's arithmetic, not a filing)"
+    }
+   ],
+   "note": "signed as the variation: a gain passed on lowers the ARR, a loss passed on raises it"
+  },
+  {
+   "id": "uperc.share.om_allowed",
+   "version": 1,
+   "status": "draft",
+   "title": "An O&M component allowed in the true-up after sharing",
+   "output": "om_allowed_shared",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "per": "om_component",
+   "formula": "normative - passed",
+   "inputs": {
+    "normative": {
+     "unit": "INR_crore",
+     "source": "record:om_normative"
+    },
+    "passed": {
+     "unit": "INR_crore",
+     "source": "rule:om_variation_passed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — Regulation 11 (treatment of gains or losses on account of controllable factors) and 33.3 (O&M gains or losses shared per Regulation 11)",
+    "clause": "11.1, 11.2; 33.3",
+    "source_id": null,
+    "page": 15,
+    "excerpt": "11.1 The approved gain to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) Two-third of the amount of such gain shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such gain shall be utilised at the discretion of the Distribution Licensee. 11.2 The approved loss to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) One-third of the amount of such loss shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such loss shall be absorbed by the Distribution Licensee.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "normative": "100",
+      "passed": "20"
+     },
+     "expected": "80.00",
+     "source": "constructed to show the rule's branch (the regulation's arithmetic, not a filing)"
+    },
+    {
+     "inputs": {
+      "normative": "100",
+      "passed": "-10"
+     },
+     "expected": "110.00",
+     "source": "constructed to show the rule's branch (the regulation's arithmetic, not a filing)"
+    }
+   ],
+   "note": "the norm less the gain passed on, or plus the loss passed on: actual + gain / 3, or normative + loss / 3"
+  },
+  {
+   "id": "uperc.share.om_retained",
+   "version": 1,
+   "status": "draft",
+   "title": "The part of an O&M variation the licensee keeps (a gain) or absorbs (a loss)",
+   "output": "om_variation_retained",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "per": "om_component",
+   "formula": "variation - passed",
+   "inputs": {
+    "variation": {
+     "unit": "INR_crore",
+     "source": "rule:om_variation"
+    },
+    "passed": {
+     "unit": "INR_crore",
+     "source": "rule:om_variation_passed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — Regulation 11 (treatment of gains or losses on account of controllable factors) and 33.3 (O&M gains or losses shared per Regulation 11)",
+    "clause": "11.1, 11.2; 33.3",
+    "source_id": null,
+    "page": 15,
+    "excerpt": "11.1 The approved gain to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) Two-third of the amount of such gain shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such gain shall be utilised at the discretion of the Distribution Licensee. 11.2 The approved loss to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) One-third of the amount of such loss shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such loss shall be absorbed by the Distribution Licensee.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "variation": "30",
+      "passed": "20"
+     },
+     "expected": "10.00",
+     "source": "constructed to show the rule's branch (the regulation's arithmetic, not a filing)"
+    },
+    {
+     "inputs": {
+      "variation": "-30",
+      "passed": "-10"
+     },
+     "expected": "-20.00",
+     "source": "constructed to show the rule's branch (the regulation's arithmetic, not a filing)"
+    }
+   ],
+   "note": "one-third of a gain kept; two-thirds of a loss absorbed"
+  },
+  {
+   "id": "uperc.share.om_allowed_total",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M allowed after sharing, all components",
+   "output": "om_allowed_shared_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:om_allowed_shared"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — Regulation 11 (treatment of gains or losses on account of controllable factors) and 33.3 (O&M gains or losses shared per Regulation 11)",
+    "clause": "11.1, 11.2; 33.3",
+    "source_id": null,
+    "page": 15,
+    "excerpt": "11.1 The approved gain to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) Two-third of the amount of such gain shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such gain shall be utilised at the discretion of the Distribution Licensee. 11.2 The approved loss to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) One-third of the amount of such loss shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such loss shall be absorbed by the Distribution Licensee.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Regulation 33.3: each component shared on its own, then added"
+  },
+  {
+   "id": "uperc.share.om_retained_total",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M variation kept or absorbed by the licensee, all components",
+   "output": "om_variation_retained_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:om_variation_retained"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC (Multi Year Tariff for Distribution) Regulations, 2025 — Regulation 11 (treatment of gains or losses on account of controllable factors) and 33.3 (O&M gains or losses shared per Regulation 11)",
+    "clause": "11.1, 11.2; 33.3",
+    "source_id": null,
+    "page": 15,
+    "excerpt": "11.1 The approved gain to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) Two-third of the amount of such gain shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such gain shall be utilised at the discretion of the Distribution Licensee. 11.2 The approved loss to the Distribution Licensee on account of variation in each component of Operation & Maintenance expenses and Distribution Loss shall be dealt with in the following manner: (a) One-third of the amount of such loss shall be passed on in Tariff/ ARR over such period as may be stipulated in the Order of the Commission; (b) The balance amount of such loss shall be absorbed by the Distribution Licensee.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "positive: kept; negative: absorbed"
+  }
+ ]
+}

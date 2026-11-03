@@ -1005,6 +1005,36 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 122 (2026-11-03): R-TU-2 — sharing of controllable gains and losses under the 2025
+  Regulations.**
+  - **The clause:** Regulation 11 (p.15 of the committed English text), with 33.3 for O&M.
+    - A gain on each O&M component or on distribution loss: two-thirds passed on in the ARR,
+      the rest kept by the licensee.
+    - A loss: one-third passed on, the rest absorbed.
+    The rule file cites the page and quotes the clause; `verified` stays false.
+  - **Six new draft rules in `sharing.v1.json`, applying from FY2025-26:**
+    - the variation (normative less actual);
+    - the part passed on;
+    - the component allowed after sharing;
+    - the part kept or absorbed;
+    - two totals.
+    Each per-component rule carries constructed worked examples of both branches (labelled as
+    constructed, not a filing); `check_all` runs them.  FY2024-25, under the 2019 Regulations,
+    does not select them; it keeps the lower of normative and actual.
+  - **Illustration on the APR of FY2025-26 (Table 5-26, recorded in
+    `order/figures-apr-om-fy2025-26.json`, 12 / 12 quotes verified):** NPCL's estimate is taken
+    as if it were the audited actual, against the Commission's computed norm.  This is the
+    arithmetic of the coming true-up, not a figure any order printed.
+    - Employee: 11.06 over the norm; 3.69 passed on, 7.37 absorbed; 88.26 allowed.
+    - A&G: no variation.
+    - R&M: 2.12 over; 98.85 allowed.
+    - Total: 215.85 allowed against 224.64 estimated; 8.79 absorbed.
+  - **Not built:** the distribution-loss gain.  Regulation 11 shares it the same way but does not
+    say how a loss variation is valued in rupees.  That is for the reviewer.
+  - **Docs correction:** increments 120 and 121 put the UPERC rule count at 231 and 233.  The
+    true counts were 225 and 227; with this increment it is 233.
+  Nothing verified, nothing approved.
+
   **Increment 121 (2026-11-03): the order's wheeling and retail supply ARR (Table 9-4).**
   - **The record:** `order/figures-allocation-fy2026-27.json` holds 62 figures (Table 9-4's
     shares and amounts, four lines of Table 6-81), 62 / 62 quotes verified.
@@ -2995,6 +3025,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 122 (2026-11-03): 492 passed** (+1 unit: gain / loss sharing — the examples, the year selection, the illustration).  `check_order_quotes.py`: 12 / 12.  Ruff and format clean.
 - **Increment 121 (2026-11-03): 491 passed** (+1 unit: the wheeling / supply allocation).  `check_order_quotes.py`: 62 / 62.  Ruff and format clean.
 - **Increment 120 (2026-11-03): 490 passed** (+1 unit: the open access charges and surcharge).  `check_order_quotes.py`: 159 / 159.  Ruff and format clean.
 - **Increment 119 (2026-11-03): 489 passed** (+1 unit: the RCO).  `check_order_quotes.py`: 25 / 25.  Ruff and format clean.
@@ -3249,7 +3280,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 121) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 122) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

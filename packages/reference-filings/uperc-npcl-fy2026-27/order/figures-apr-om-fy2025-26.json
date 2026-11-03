@@ -1,0 +1,94 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): APR FY2025-26 O&M (Table 5-26)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "apr.om.employee.approved_to": {
+   "value": "80.05",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Employees Expenses including retiral benefits 80.05 95.63 84.57",
+   "what": "Table 5-26, Employees Expenses including retiral benefits: approved in the order of 22.11.2025"
+  },
+  "apr.om.employee.claimed": {
+   "value": "95.63",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Employees Expenses including retiral benefits 80.05 95.63 84.57",
+   "what": "Table 5-26, Employees Expenses including retiral benefits: claimed (NPCL estimate)"
+  },
+  "apr.om.employee.computed": {
+   "value": "84.57",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Employees Expenses including retiral benefits 80.05 95.63 84.57",
+   "what": "Table 5-26, Employees Expenses including retiral benefits: computed by the Commission (the APR approval)"
+  },
+  "apr.om.ag.approved_to": {
+   "value": "26.45",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Administrative & General Expenses 26.45 28.75 28.75",
+   "what": "Table 5-26, Administrative & General Expenses: approved in the order of 22.11.2025"
+  },
+  "apr.om.ag.claimed": {
+   "value": "28.75",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Administrative & General Expenses 26.45 28.75 28.75",
+   "what": "Table 5-26, Administrative & General Expenses: claimed (NPCL estimate)"
+  },
+  "apr.om.ag.computed": {
+   "value": "28.75",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Administrative & General Expenses 26.45 28.75 28.75",
+   "what": "Table 5-26, Administrative & General Expenses: computed by the Commission (the APR approval)"
+  },
+  "apr.om.rm.approved_to": {
+   "value": "83.83",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Repair & Maintenance Expenses 83.83 100.26 98.14",
+   "what": "Table 5-26, Repair & Maintenance Expenses: approved in the order of 22.11.2025"
+  },
+  "apr.om.rm.claimed": {
+   "value": "100.26",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Repair & Maintenance Expenses 83.83 100.26 98.14",
+   "what": "Table 5-26, Repair & Maintenance Expenses: claimed (NPCL estimate)"
+  },
+  "apr.om.rm.computed": {
+   "value": "98.14",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Repair & Maintenance Expenses 83.83 100.26 98.14",
+   "what": "Table 5-26, Repair & Maintenance Expenses: computed by the Commission (the APR approval)"
+  },
+  "apr.om.total.approved_to": {
+   "value": "190.34",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Total O&M Expenses 190.34 224.64 211.46",
+   "what": "Table 5-26, Total O&M Expenses: approved in the order of 22.11.2025"
+  },
+  "apr.om.total.claimed": {
+   "value": "224.64",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Total O&M Expenses 190.34 224.64 211.46",
+   "what": "Table 5-26, Total O&M Expenses: claimed (NPCL estimate)"
+  },
+  "apr.om.total.computed": {
+   "value": "211.46",
+   "unit": "INR_crore",
+   "page": 190,
+   "quote": "Total O&M Expenses 190.34 224.64 211.46",
+   "what": "Table 5-26, Total O&M Expenses: computed by the Commission (the APR approval)"
+  }
+ }
+}

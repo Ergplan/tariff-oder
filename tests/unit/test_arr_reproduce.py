@@ -1957,3 +1957,45 @@ def test_npcl_the_wheeling_and_supply_allocation_reproduces():
         "nti",
     ):
         assert Decimal(rec[f"a:alloc.{k}.wheeling_share"][0]) + Decimal(rec[f"a:alloc.{k}.supply_share"][0]) == 100
+
+
+def test_controllable_gains_and_losses_are_shared_from_the_2025_regulations():
+    """R-TU-2: under the 2025 Regulations (Reg. 11, 33.3) each O&M component's variation from the
+    norm is shared — two-thirds of a gain and one-third of a loss passed on in the ARR — from
+    FY2025-26; the 2019 years keep the lower of normative and actual.  Illustrated on the APR of
+    FY2025-26 (Table 5-26): NPCL's estimate taken as if it were the audited actual — an
+    illustration of the coming true-up, not a figure any order printed."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates
+    from tariff_api.arr.rules import RuleSet, check_all, load_rules
+
+    rules = load_rules("UPERC")
+    assert not [p for p in check_all("UPERC") if "share" in p]  # the worked examples pass
+    sharing = {r.output for r in rules if r.id.startswith("uperc.share.")}
+    assert sharing and not sharing & set(RuleSet(rules, "FY2024-25")._order())
+    assert sharing <= set(RuleSet(rules, "FY2025-26")._order())
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    rec = load_binding_rates(folder, {"rates": "order/figures-apr-om-fy2025-26.json"})
+    cats = {
+        c: {
+            "record:om_normative": rec[f"apr.om.{c}.computed"],
+            "record:om_actual": rec[f"apr.om.{c}.claimed"],
+        }
+        for c in ("employee", "ag", "rm")
+    }
+    ev = RuleSet(rules, "FY2025-26").evaluate("FY2025-26", {}, cats)
+    got = {c: {o: r.value for o, r in ev.by_category[c].items()} for c in cats}
+    # employee: 11.06 over the norm — 3.69 passed on, 7.37 absorbed
+    assert got["employee"]["om_variation"] == Decimal("-11.06")
+    assert got["employee"]["om_allowed_shared"].quantize(Decimal("0.01")) == Decimal("88.26")
+    assert got["employee"]["om_variation_retained"].quantize(Decimal("0.01")) == Decimal("-7.37")
+    assert got["ag"]["om_variation"] == 0 and got["ag"]["om_allowed_shared"] == Decimal("28.75")
+    assert got["rm"]["om_allowed_shared"].quantize(Decimal("0.01")) == Decimal("98.85")
+    total = ev.results["om_allowed_shared_total"].value
+    assert total.quantize(Decimal("0.01")) == Decimal("215.85")
+    # the three components' claims add to the table's total; 8.79 of it would be NPCL's to absorb
+    claimed = sum(Decimal(rec[f"apr.om.{c}.claimed"][0]) for c in cats)
+    assert claimed == Decimal(rec["apr.om.total.claimed"][0])
+    assert (claimed - total).quantize(Decimal("0.01")) == -ev.results["om_variation_retained_total"].rounded
