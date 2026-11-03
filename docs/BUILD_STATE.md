@@ -1005,6 +1005,30 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 136 (2026-11-03): a fifth commission — JSERC / JBVNL, the MYT working capital
+  FY2026-27 to FY2030-31.**
+  - **The order:** JSERC's 2026 MYT order for JBVNL (SHA-256 `0391dd27…9108`, the loader's
+    `JSERC-JBVNL-2026`).
+  - **New folder `packages/order-reproductions/jserc-jbvnl-fy2026-27/`:** the record holds
+    Table 131 (40 figures, 40 / 40 quotes verified).
+  - **Three draft JSERC rules in `packages/arr-rules/jserc/tariff.v1.json`** (Clauses
+    10.31–10.32 as the order quotes them):
+    - the requirement: spares plus receivables, less a month of power purchase and the
+      deposits;
+    - the interest as computed;
+    - the interest approved, floored at nil.  The floor is the order's practice (para 8.52),
+      shown in constructed examples of both branches.
+  - **Binding `approval-iowc-fy27-31.json`, five years, each its own evaluation: 14 / 15
+    exact.**  One requirement is a paisa off.  The computed interest is negative for FY2026-27
+    to FY2028-29 (−38.74, −21.71, −2.75) and approved nil; FY2029-30 and FY2030-31 are approved
+    as computed.
+  - **Two commissions, opposite treatments:** MPERC admits and nets a negative working capital
+    (M1); JSERC approves nil.  M1 now records the contrast.  NPCL's FY2026-27 working capital
+    under UPERC was also nil (increment 111); whether for the same reason is not established
+    here.
+  - **The desk:** five commissions' orders are now served at `/arr/orders/<id>`.
+  Nothing verified, nothing approved.
+
   **Increment 135 (2026-11-03): a fourth commission — HPERC / HPSEBL, FY2026-27: working
   capital and the ARR's arithmetic.**
   - **The order:** HPERC's FY2026-27 order for HPSEBL (SHA-256 `0f3d9e9d…ec74`, the loader's
@@ -3384,6 +3408,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 136 (2026-11-03): 506 passed** (+1 unit: JSERC's MYT working capital, nil for negative years).  `check_order_quotes.py`: 40 / 40.  Ruff and format clean.
 - **Increment 135 (2026-11-03): 505 passed** (+1 unit: HPERC's working capital and ARR arithmetic, H1, H2).  `check_order_quotes.py`: 85 / 85.  Ruff and format clean.
 - **Increment 134 (2026-11-03): 504 passed** (+1 integration: the reproduced orders' API — counts, gaps, findings, 404s, authentication).  Ruff, format, contracts (regenerated, no drift) and `tsc` clean.
 - **Increment 133 (2026-11-03): 503 passed** (+1 unit: MPERC's wheeling / supply split per DISCOM, M4).  `check_order_quotes.py`: 96 / 96.  Ruff and format clean.
@@ -3652,7 +3677,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 135) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 136) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3761,7 +3786,8 @@ entries below are the per-increment history.**
     end, within the printed rates' precision; increment 132 its O&M and the inventory base (M2
     reproduced); increment 133 its wheeling / supply split, M4; increment 134 both orders on the desk,
     `/arr/orders/<id>`); increment 135 a fourth commission, HPERC / HPSEBL (working capital, ARR,
-    H1)) — next HPERC's O&M and depreciation, or the other orders (BERC, JSERC, OERC);
+    H1); increment 136 a fifth, JSERC / JBVNL's MYT working capital (negative → nil, against
+    MPERC's netting)) — next BERC or OERC, or deeper in any of the five;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

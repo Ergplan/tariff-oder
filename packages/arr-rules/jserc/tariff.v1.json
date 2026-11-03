@@ -1,0 +1,147 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations as the order quotes them (Clauses 10.30–10.32)",
+ "applies": {
+  "commission": "JSERC"
+ },
+ "note": "JSERC's interest on working capital for the retail supply business, as the 2026 MYT order for JBVNL quotes and applies it — the engine's fifth commission.  The control period's years are not bounded here yet.",
+ "rules": [
+  {
+   "id": "jserc.iowc.requirement",
+   "version": 1,
+   "status": "draft",
+   "title": "Working capital: spares and receivables, less a month of power purchase and the deposits",
+   "output": "iowc_requirement",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "spares + receivables - pp_month - csd",
+   "inputs": {
+    "spares": {
+     "unit": "INR_crore",
+     "source": "record:iowc_spares",
+     "note": "1 % of the opening GFA"
+    },
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "record:iowc_receivables",
+     "note": "two months of the expected revenue"
+    },
+    "pp_month": {
+     "unit": "INR_crore",
+     "source": "record:iowc_pp_month",
+     "note": "one month of power purchase with transmission and SLDC"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "record:iowc_csd"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations as the order quotes them (Clauses 10.30–10.32)",
+    "clause": "10.31",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.31 Working capital for the Retail Supply of Electricity for the Control Period shall comprise: a) Maintenance spares at one percent (1%) of Opening GFA for Retail Supply Business; plus b) Two months equivalent of the expected revenue from sale of electricity at the prevailing tariffs; minus c) Amount held as security deposits … from consumers and Distribution System Users net of any security held for Wheeling Business; minus d) One-month equivalent of cost of power purchased including the Inter-State and Intra-State Transmission Charges and Load Despatch Charges, based on the annual power procurement plan. 10.32 Rate of interest on working capital shall be equal to the Bank Rates on September 30 of the financial year in which the MYT Petition is filed plus three hundred and fifty (350) basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.285–286), not read from the Regulations; may be negative"
+  },
+  {
+   "id": "jserc.iowc.computed",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on working capital as computed",
+   "output": "iowc_interest_computed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "rate * requirement",
+   "inputs": {
+    "requirement": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_requirement"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:iowc_rate",
+     "note": "Bank Rate on 30 September of the filing year + 350 bp; 11.45 % for the control period (para 8.51)"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations as the order quotes them (Clauses 10.30–10.32)",
+    "clause": "10.32",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.31 Working capital for the Retail Supply of Electricity for the Control Period shall comprise: a) Maintenance spares at one percent (1%) of Opening GFA for Retail Supply Business; plus b) Two months equivalent of the expected revenue from sale of electricity at the prevailing tariffs; minus c) Amount held as security deposits … from consumers and Distribution System Users net of any security held for Wheeling Business; minus d) One-month equivalent of cost of power purchased including the Inter-State and Intra-State Transmission Charges and Load Despatch Charges, based on the annual power procurement plan. 10.32 Rate of interest on working capital shall be equal to the Bank Rates on September 30 of the financial year in which the MYT Petition is filed plus three hundred and fifty (350) basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.285–286), not read from the Regulations"
+  },
+  {
+   "id": "jserc.iowc.approved",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on working capital approved: nil when the computation is negative",
+   "output": "iowc_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "ifneg(computed, computed - computed, computed)",
+   "inputs": {
+    "computed": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_interest_computed"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations as the order quotes them (Clauses 10.30–10.32)",
+    "clause": "10.31–10.32",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.31 Working capital for the Retail Supply of Electricity for the Control Period shall comprise: a) Maintenance spares at one percent (1%) of Opening GFA for Retail Supply Business; plus b) Two months equivalent of the expected revenue from sale of electricity at the prevailing tariffs; minus c) Amount held as security deposits … from consumers and Distribution System Users net of any security held for Wheeling Business; minus d) One-month equivalent of cost of power purchased including the Inter-State and Intra-State Transmission Charges and Load Despatch Charges, based on the annual power procurement plan. 10.32 Rate of interest on working capital shall be equal to the Bank Rates on September 30 of the financial year in which the MYT Petition is filed plus three hundred and fifty (350) basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "computed": "-38.74"
+     },
+     "expected": "0.00",
+     "source": "constructed to show the rule's branch (not a filing)"
+    },
+    {
+     "inputs": {
+      "computed": "14.85"
+     },
+     "expected": "14.85",
+     "source": "constructed to show the rule's branch (not a filing)"
+    }
+   ],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.285–286), not read from the Regulations; the order's practice (para 8.52): a negative computation approved as nil — MPERC instead admits and nets a negative (its M1)"
+  }
+ ]
+}

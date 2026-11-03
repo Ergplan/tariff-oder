@@ -1,0 +1,17 @@
+{
+ "id": "jserc-jbvnl-fy2026-27",
+ "status": "a commission order reproduced from its own figures — no petition or formats in this session; nothing reviewed, nothing approved",
+ "commission": "JSERC",
+ "licensees": [
+  "JBVNL"
+ ],
+ "fiscal_year": "FY2026-27",
+ "order": {
+  "title": "JSERC order on JBVNL (2026): true-up FY2024-25, APR FY2025-26, business plan and MYT ARR FY2026-27 to FY2030-31",
+  "url": "https://jserc.org/pdf/tariff_order/JBVNL-2026.pdf",
+  "sha256": "0391dd2701c7bbb7a962923212ef5a8ed6c9cdfbfea601df692d7ce4aa119108",
+  "loaded_by": "scripts/load_real_orders.py (key JSERC-JBVNL-2026)"
+ },
+ "rules": "packages/arr-rules/jserc/tariff.v1.json",
+ "why": "a fifth commission, and a multi-year (MYT) approval"
+}

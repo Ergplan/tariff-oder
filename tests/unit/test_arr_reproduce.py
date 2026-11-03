@@ -2524,3 +2524,32 @@ def test_a_fourth_commission_hperc_working_capital_and_arr_arithmetic():
     assert checks["adj.total"].computed == "8640.69" and checks["adj.total"].filed == "8641.16"
     assert checks["rev.surplus"].computed == "4.08" and checks["rev.surplus"].filed == "3.61"
     assert {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]} == {"H1", "H2"}
+
+
+def test_a_fifth_commission_jserc_working_capital_negative_approved_nil():
+    """Real data, a fifth commission and a multi-year approval: JSERC's working capital for JBVNL,
+    FY2026-27 to FY2030-31 (Table 131) — the requirement from its printed components, the interest
+    at 11.45 %, and the approval floored at nil in the three years the computation is negative
+    (para 8.52), where MPERC admits and nets a negative (M1).  14 of 15 exact, one a paisa."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("JSERC") == []
+    folder = ROOT / "packages" / "order-reproductions" / "jserc-jbvnl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-iowc-fy27-31.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("JSERC"), rates=rec)
+    assert len(checks) == 15 and sum(c.result == "match" for c in checks) == 14
+    assert all(abs(Decimal(c.exact) - Decimal(c.filed)) <= Decimal("0.01") for c in checks)
+    approved = {c.fiscal_year: c.computed for c in checks if c.output == "iowc_interest"}
+    assert approved == {
+        "FY2026-27": "0.00",
+        "FY2027-28": "0.00",
+        "FY2028-29": "0.00",
+        "FY2029-30": "14.85",
+        "FY2030-31": "33.74",
+    }
+    computed = {c.fiscal_year: Decimal(c.computed) for c in checks if c.output == "iowc_interest_computed"}
+    assert all(v < 0 for y, v in computed.items() if y < "FY2029-30")

@@ -1,0 +1,140 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "JSERC order",
+ "rates": "order/figures-iowc-fy2027-31.json",
+ "places": 2,
+ "note": "JSERC's working capital for JBVNL over the control period FY2026-27 to FY2030-31 (Table 131): the requirement from the printed components, the interest at 11.45 %, and the approval — nil in the three years the computation is negative (para 8.52).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "interest on working capital FY2026-27 (Table 131)",
+   "inputs": {
+    "record:iowc_spares": {
+     "rate": "spares.fy27"
+    },
+    "record:iowc_receivables": {
+     "rate": "receivables.fy27"
+    },
+    "record:iowc_pp_month": {
+     "rate": "pp_month.fy27"
+    },
+    "record:iowc_csd": {
+     "rate": "csd.fy27"
+    },
+    "record:iowc_rate": {
+     "rate": "rate.fy27"
+    }
+   },
+   "checks": {
+    "iowc_requirement": "order:requirement.fy27",
+    "iowc_interest_computed": "order:computed.fy27",
+    "iowc_interest": "order:approved.fy27"
+   }
+  },
+  {
+   "fiscal_year": "FY2027-28",
+   "label": "interest on working capital FY2027-28 (Table 131)",
+   "inputs": {
+    "record:iowc_spares": {
+     "rate": "spares.fy28"
+    },
+    "record:iowc_receivables": {
+     "rate": "receivables.fy28"
+    },
+    "record:iowc_pp_month": {
+     "rate": "pp_month.fy28"
+    },
+    "record:iowc_csd": {
+     "rate": "csd.fy28"
+    },
+    "record:iowc_rate": {
+     "rate": "rate.fy28"
+    }
+   },
+   "checks": {
+    "iowc_requirement": "order:requirement.fy28",
+    "iowc_interest_computed": "order:computed.fy28",
+    "iowc_interest": "order:approved.fy28"
+   }
+  },
+  {
+   "fiscal_year": "FY2028-29",
+   "label": "interest on working capital FY2028-29 (Table 131)",
+   "inputs": {
+    "record:iowc_spares": {
+     "rate": "spares.fy29"
+    },
+    "record:iowc_receivables": {
+     "rate": "receivables.fy29"
+    },
+    "record:iowc_pp_month": {
+     "rate": "pp_month.fy29"
+    },
+    "record:iowc_csd": {
+     "rate": "csd.fy29"
+    },
+    "record:iowc_rate": {
+     "rate": "rate.fy29"
+    }
+   },
+   "checks": {
+    "iowc_requirement": "order:requirement.fy29",
+    "iowc_interest_computed": "order:computed.fy29",
+    "iowc_interest": "order:approved.fy29"
+   }
+  },
+  {
+   "fiscal_year": "FY2029-30",
+   "label": "interest on working capital FY2029-30 (Table 131)",
+   "inputs": {
+    "record:iowc_spares": {
+     "rate": "spares.fy30"
+    },
+    "record:iowc_receivables": {
+     "rate": "receivables.fy30"
+    },
+    "record:iowc_pp_month": {
+     "rate": "pp_month.fy30"
+    },
+    "record:iowc_csd": {
+     "rate": "csd.fy30"
+    },
+    "record:iowc_rate": {
+     "rate": "rate.fy30"
+    }
+   },
+   "checks": {
+    "iowc_requirement": "order:requirement.fy30",
+    "iowc_interest_computed": "order:computed.fy30",
+    "iowc_interest": "order:approved.fy30"
+   }
+  },
+  {
+   "fiscal_year": "FY2030-31",
+   "label": "interest on working capital FY2030-31 (Table 131)",
+   "inputs": {
+    "record:iowc_spares": {
+     "rate": "spares.fy31"
+    },
+    "record:iowc_receivables": {
+     "rate": "receivables.fy31"
+    },
+    "record:iowc_pp_month": {
+     "rate": "pp_month.fy31"
+    },
+    "record:iowc_csd": {
+     "rate": "csd.fy31"
+    },
+    "record:iowc_rate": {
+     "rate": "rate.fy31"
+    }
+   },
+   "checks": {
+    "iowc_requirement": "order:requirement.fy31",
+    "iowc_interest_computed": "order:computed.fy31",
+    "iowc_interest": "order:approved.fy31"
+   }
+  }
+ ]
+}

@@ -1,0 +1,290 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "JSERC order on JBVNL (2026): true-up FY2024-25, APR FY2025-26, business plan and MYT ARR FY2026-27 to FY2030-31 — interest on working capital (Table 131)",
+  "sha256": "0391dd2701c7bbb7a962923212ef5a8ed6c9cdfbfea601df692d7ce4aa119108",
+  "pages": 372
+ },
+ "figures": {
+  "spares.fy27": {
+   "value": "108.11",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Maintenance Spares (@1% GFA) 108.11 127.56 141.11 154.87 167.48",
+   "what": "Table 131, Maintenance Spares (@1% GFA): fy27"
+  },
+  "spares.fy28": {
+   "value": "127.56",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Maintenance Spares (@1% GFA) 108.11 127.56 141.11 154.87 167.48",
+   "what": "Table 131, Maintenance Spares (@1% GFA): fy28"
+  },
+  "spares.fy29": {
+   "value": "141.11",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Maintenance Spares (@1% GFA) 108.11 127.56 141.11 154.87 167.48",
+   "what": "Table 131, Maintenance Spares (@1% GFA): fy29"
+  },
+  "spares.fy30": {
+   "value": "154.87",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Maintenance Spares (@1% GFA) 108.11 127.56 141.11 154.87 167.48",
+   "what": "Table 131, Maintenance Spares (@1% GFA): fy30"
+  },
+  "spares.fy31": {
+   "value": "167.48",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Maintenance Spares (@1% GFA) 108.11 127.56 141.11 154.87 167.48",
+   "what": "Table 131, Maintenance Spares (@1% GFA): fy31"
+  },
+  "receivables.fy27": {
+   "value": "1692.58",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "2 months' Receivables 1692.58 1906.71 2172.68 2414.47 2684.66",
+   "what": "Table 131, 2 months' Receivables: fy27"
+  },
+  "receivables.fy28": {
+   "value": "1906.71",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "2 months' Receivables 1692.58 1906.71 2172.68 2414.47 2684.66",
+   "what": "Table 131, 2 months' Receivables: fy28"
+  },
+  "receivables.fy29": {
+   "value": "2172.68",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "2 months' Receivables 1692.58 1906.71 2172.68 2414.47 2684.66",
+   "what": "Table 131, 2 months' Receivables: fy29"
+  },
+  "receivables.fy30": {
+   "value": "2414.47",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "2 months' Receivables 1692.58 1906.71 2172.68 2414.47 2684.66",
+   "what": "Table 131, 2 months' Receivables: fy30"
+  },
+  "receivables.fy31": {
+   "value": "2684.66",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "2 months' Receivables 1692.58 1906.71 2172.68 2414.47 2684.66",
+   "what": "Table 131, 2 months' Receivables: fy31"
+  },
+  "pp_month.fy27": {
+   "value": "666.87",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: 1 month Power Purchase Cost 666.87 751.71 865.66 967.52 1085.30",
+   "what": "Table 131, Less: 1 month Power Purchase Cost: fy27"
+  },
+  "pp_month.fy28": {
+   "value": "751.71",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: 1 month Power Purchase Cost 666.87 751.71 865.66 967.52 1085.30",
+   "what": "Table 131, Less: 1 month Power Purchase Cost: fy28"
+  },
+  "pp_month.fy29": {
+   "value": "865.66",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: 1 month Power Purchase Cost 666.87 751.71 865.66 967.52 1085.30",
+   "what": "Table 131, Less: 1 month Power Purchase Cost: fy29"
+  },
+  "pp_month.fy30": {
+   "value": "967.52",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: 1 month Power Purchase Cost 666.87 751.71 865.66 967.52 1085.30",
+   "what": "Table 131, Less: 1 month Power Purchase Cost: fy30"
+  },
+  "pp_month.fy31": {
+   "value": "1085.30",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: 1 month Power Purchase Cost 666.87 751.71 865.66 967.52 1085.30",
+   "what": "Table 131, Less: 1 month Power Purchase Cost: fy31"
+  },
+  "csd.fy27": {
+   "value": "1472.15",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: Consumer Security Deposit 1472.15 1472.15 1472.15 1472.15 1472.15",
+   "what": "Table 131, Less: Consumer Security Deposit: fy27"
+  },
+  "csd.fy28": {
+   "value": "1472.15",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: Consumer Security Deposit 1472.15 1472.15 1472.15 1472.15 1472.15",
+   "what": "Table 131, Less: Consumer Security Deposit: fy28"
+  },
+  "csd.fy29": {
+   "value": "1472.15",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: Consumer Security Deposit 1472.15 1472.15 1472.15 1472.15 1472.15",
+   "what": "Table 131, Less: Consumer Security Deposit: fy29"
+  },
+  "csd.fy30": {
+   "value": "1472.15",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: Consumer Security Deposit 1472.15 1472.15 1472.15 1472.15 1472.15",
+   "what": "Table 131, Less: Consumer Security Deposit: fy30"
+  },
+  "csd.fy31": {
+   "value": "1472.15",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Less: Consumer Security Deposit 1472.15 1472.15 1472.15 1472.15 1472.15",
+   "what": "Table 131, Less: Consumer Security Deposit: fy31"
+  },
+  "requirement.fy27": {
+   "value": "-338.32",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Total Working Capital requirement -338.32 -189.59 -24.02 129.67 294.69",
+   "what": "Table 131, Total Working Capital requirement: fy27"
+  },
+  "requirement.fy28": {
+   "value": "-189.59",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Total Working Capital requirement -338.32 -189.59 -24.02 129.67 294.69",
+   "what": "Table 131, Total Working Capital requirement: fy28"
+  },
+  "requirement.fy29": {
+   "value": "-24.02",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Total Working Capital requirement -338.32 -189.59 -24.02 129.67 294.69",
+   "what": "Table 131, Total Working Capital requirement: fy29"
+  },
+  "requirement.fy30": {
+   "value": "129.67",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Total Working Capital requirement -338.32 -189.59 -24.02 129.67 294.69",
+   "what": "Table 131, Total Working Capital requirement: fy30"
+  },
+  "requirement.fy31": {
+   "value": "294.69",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Total Working Capital requirement -338.32 -189.59 -24.02 129.67 294.69",
+   "what": "Table 131, Total Working Capital requirement: fy31"
+  },
+  "rate.fy27": {
+   "value": "11.45",
+   "unit": "percent",
+   "page": 286,
+   "quote": "Interest rate on WC 11.45% 11.45% 11.45% 11.45% 11.45%",
+   "what": "Table 131, Interest rate on WC: fy27"
+  },
+  "rate.fy28": {
+   "value": "11.45",
+   "unit": "percent",
+   "page": 286,
+   "quote": "Interest rate on WC 11.45% 11.45% 11.45% 11.45% 11.45%",
+   "what": "Table 131, Interest rate on WC: fy28"
+  },
+  "rate.fy29": {
+   "value": "11.45",
+   "unit": "percent",
+   "page": 286,
+   "quote": "Interest rate on WC 11.45% 11.45% 11.45% 11.45% 11.45%",
+   "what": "Table 131, Interest rate on WC: fy29"
+  },
+  "rate.fy30": {
+   "value": "11.45",
+   "unit": "percent",
+   "page": 286,
+   "quote": "Interest rate on WC 11.45% 11.45% 11.45% 11.45% 11.45%",
+   "what": "Table 131, Interest rate on WC: fy30"
+  },
+  "rate.fy31": {
+   "value": "11.45",
+   "unit": "percent",
+   "page": 286,
+   "quote": "Interest rate on WC 11.45% 11.45% 11.45% 11.45% 11.45%",
+   "what": "Table 131, Interest rate on WC: fy31"
+  },
+  "computed.fy27": {
+   "value": "-38.74",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (As Computed) -38.74 -21.71 -2.75 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (As Computed): fy27"
+  },
+  "computed.fy28": {
+   "value": "-21.71",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (As Computed) -38.74 -21.71 -2.75 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (As Computed): fy28"
+  },
+  "computed.fy29": {
+   "value": "-2.75",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (As Computed) -38.74 -21.71 -2.75 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (As Computed): fy29"
+  },
+  "computed.fy30": {
+   "value": "14.85",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (As Computed) -38.74 -21.71 -2.75 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (As Computed): fy30"
+  },
+  "computed.fy31": {
+   "value": "33.74",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (As Computed) -38.74 -21.71 -2.75 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (As Computed): fy31"
+  },
+  "approved.fy27": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (Approved) 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (Approved): fy27"
+  },
+  "approved.fy28": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (Approved) 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (Approved): fy28"
+  },
+  "approved.fy29": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (Approved) 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (Approved): fy29"
+  },
+  "approved.fy30": {
+   "value": "14.85",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (Approved) 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (Approved): fy30"
+  },
+  "approved.fy31": {
+   "value": "33.74",
+   "unit": "INR_crore",
+   "page": 286,
+   "quote": "Interest on Working Capital (Approved) 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 131, Interest on Working Capital (Approved): fy31"
+  }
+ }
+}
