@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Any
 
 from .arr.reproduce import load_binding_rates, reproduce_cells
-from .arr.rules import load_rules
+from .arr.rules import load_rules, rules_dir
 from .errors import AppError
 
 
@@ -132,4 +132,76 @@ def reproduction(reproduction_id: str) -> dict[str, Any]:
         "bindings": bindings,
         "counts": dict(counts),
         "findings": findings,
+    }
+
+
+SCHEDULES = {
+    "R-SCH-1": "Sales",
+    "R-SCH-2": "Energy balance and losses",
+    "R-SCH-3": "Power purchase",
+    "R-SCH-4": "Transmission",
+    "R-SCH-5": "O&M",
+    "R-SCH-6": "Capital expenditure and capitalisation",
+    "R-SCH-7": "Gross fixed assets and depreciation",
+    "R-SCH-8": "Loans and interest",
+    "R-SCH-9": "Return on equity and tax",
+    "R-SCH-10": "Interest on working capital",
+    "R-SCH-11": "Non-tariff income",
+    "R-SCH-12": "Revenue",
+    "R-SCH-13": "Subsidy, gap and bad debts",
+    "R-SCH-14": "ARR and cost of supply",
+    "R-SCH-15": "Tariff design and open access",
+    "R-SCH-16": "Cross-schedule reconciliation",
+    "R-DATA": "Records and ledgers",
+    "R-TU": "True-up: sharing and carrying",
+}
+
+
+def compare() -> dict[str, Any]:
+    """Every commission's draft rules side by side, schedule by schedule: what each commission's
+    regulation (as read so far) computes for the same head, in the one rule language.  A reading
+    aid for the reviewer and the petitioner — no rule here is approved or its clause verified."""
+    commissions = sorted(p.name.upper() for p in rules_dir().iterdir() if p.is_dir() and any(p.glob("*.json")))
+    by: dict[str, dict[str, list[dict[str, Any]]]] = {}
+    totals = {}
+    for c in commissions:
+        rs = load_rules(c)
+        totals[c] = {
+            "rules": len(rs),
+            "approved": sum(r.status == "approved" for r in rs),
+            "clauses_verified": sum(r.clause.verified for r in rs),
+        }
+        for r in rs:
+            sched = r.schedule or "unscheduled"
+            sched = "R-TU" if sched.startswith("R-TU") else sched
+            by.setdefault(sched, {}).setdefault(c, []).append(
+                {
+                    "id": r.id,
+                    "title": r.title,
+                    "output": r.output,
+                    "formula": r.formula,
+                    "per": r.per,
+                    "regulation": r.clause.regulation,
+                    "clause": r.clause.clause,
+                    "verified": r.clause.verified,
+                    "from_fy": r.applies.from_fy,
+                    "to_fy": r.applies.to_fy,
+                }
+            )
+
+    def order(k: str) -> tuple[int, str]:
+        tail = k.rsplit("-", 1)[-1]
+        return (int(tail) if tail.isdigit() else 99, k)
+
+    return {
+        "commissions": commissions,
+        "totals": totals,
+        "schedules": [
+            {
+                "schedule": k,
+                "name": SCHEDULES.get(k, k),
+                "commissions": {c: by[k].get(c, []) for c in commissions},
+            }
+            for k in sorted(by, key=order)
+        ],
     }

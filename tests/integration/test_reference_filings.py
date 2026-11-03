@@ -143,3 +143,17 @@ def test_commission_orders_reproduced_from_their_own_figures(client):
     assert client.get("/arr/order-reproductions/nope", headers=headers(CLIENT_A)).status_code == 404
     assert client.get("/arr/order-reproductions/..%2Fx", headers=headers(CLIENT_A)).status_code == 404
     assert client.get("/arr/order-reproductions").status_code in (401, 403)
+
+
+def test_rules_compared_across_commissions(client):
+    """Every commission's draft rules side by side by schedule; nothing approved anywhere."""
+    d = client.get("/arr/rules-compare", headers=headers(CLIENT_A)).json()
+    assert set(d["commissions"]) >= {"UPERC", "UERC", "MPERC", "HPERC", "JSERC", "BERC", "OERC"}
+    assert all(t["approved"] == 0 and t["clauses_verified"] == 0 for t in d["totals"].values())
+    iowc = next(s for s in d["schedules"] if s["schedule"] == "R-SCH-10")
+    assert iowc["name"] == "Interest on working capital"
+    have = {c for c, rules in iowc["commissions"].items() if rules}
+    assert have >= {"UPERC", "UERC", "MPERC", "HPERC", "JSERC", "BERC"}
+    jserc = {r["output"]: r["formula"] for r in iowc["commissions"]["JSERC"]}
+    assert jserc["iowc_interest"].startswith("ifneg(")  # the nil floor
+    assert client.get("/arr/rules-compare").status_code in (401, 403)

@@ -66,6 +66,13 @@ def reference_filing(filing_id: str) -> dict:
     return rf.filing(filing_id)
 
 
+@router.get("/arr/rules-compare", response_model=dict, dependencies=[Depends(require_analyst)])
+def rules_compare() -> dict:
+    """Every commission's draft calculation rules side by side, schedule by schedule — none
+    approved, no clause verified."""
+    return orep.compare()
+
+
 @router.get("/arr/order-reproductions", response_model=list[dict], dependencies=[Depends(require_analyst)])
 def order_reproductions() -> list[dict]:
     """Commission orders of other states reproduced from their own printed figures with each

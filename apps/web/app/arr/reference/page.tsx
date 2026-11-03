@@ -94,7 +94,7 @@ export default async function ReferenceFilings() {
         </div>
       )}
       <p style={{ marginTop: "1rem" }}>
-        <Link href="/arr/rules/UPERC">UPERC calculation rules →</Link> · <Link href="/arr/rules/UERC">UERC →</Link> · <Link href="/arr/rules/MPERC">MPERC →</Link>
+        <Link href="/arr/rules/compare">Calculation rules across commissions →</Link> · <Link href="/arr/rules/UPERC">UPERC rules →</Link>
       </p>
     </>
   );

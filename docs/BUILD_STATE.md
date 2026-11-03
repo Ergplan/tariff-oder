@@ -1005,6 +1005,27 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 139 (2026-11-03): the rules compared across commissions.**
+  - **API (read-only, analyst): `GET /arr/rules-compare`** returns every commission's draft
+    rules grouped by schedule (sales to tariff design, true-up sharing and carrying).  Each rule
+    has its title, output = formula, the clause, whether verified, and its years, plus each
+    commission's totals.  Approved: 0 anywhere.  Clauses verified: 0 anywhere.
+  - **Web: `/arr/rules/compare`** — a panel per schedule and each commission's rules in it.
+    For example, interest on working capital lists six commissions: BERC's 45 days with
+    deductions, HPERC's average deposits, JSERC's nil floor, MPERC's wheeling and supply apart,
+    UERC's month of O&M, and UPERC's NPCL formats.  It is linked from `/arr/reference`.
+  - **The totals:** UPERC 233, UERC 47, MPERC 48, HPERC 12, BERC 5, OERC 5, JSERC 3 — 353
+    draft rules, none approved.
+  - **Checks:**
+    - integration test: the commissions, the schedule, JSERC's floor, nothing approved,
+      authentication;
+    - contracts regenerated, no drift;
+    - `tsc` clean;
+    - screenshots at 1440 and 390 px: no horizontal scroll.
+    Next's dev server again wrote `apps/web/AGENTS.md` and `CLAUDE.md`; they were removed, not
+    committed.
+  Nothing verified, nothing approved.
+
   **Increment 138 (2026-11-03): a seventh commission — OERC's four Odisha DISCOMs, FY2026-27:
   bad debts, RoE and depreciation.**
   - **The order:** OERC's FY2026-27 order for TPWODL, TPNODL, TPSODL and TPCODL (SHA-256
@@ -3458,6 +3479,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 139 (2026-11-03): 509 passed** (+1 integration: the rules compared across commissions).  Ruff, format, contracts (regenerated, no drift) and `tsc` clean; screenshots at 1440 / 390 px.
 - **Increment 138 (2026-11-03): 508 passed** (+1 unit: OERC's bad debts, RoE and depreciation for four DISCOMs; O1, O2).  `check_order_quotes.py`: 76 / 76.  Ruff and format clean.
 - **Increment 137 (2026-11-03): 507 passed** (+1 unit: BERC's working capital per DISCOM).  The first full run failed this test on the claimed interest's bound; it now bounds by the printed rate.  `check_order_quotes.py`: 43 / 43.  Ruff and format clean.
 - **Increment 136 (2026-11-03): 506 passed** (+1 unit: JSERC's MYT working capital, nil for negative years).  `check_order_quotes.py`: 40 / 40.  Ruff and format clean.
@@ -3729,7 +3751,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 138) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 139) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3840,8 +3862,8 @@ entries below are the per-increment history.**
     `/arr/orders/<id>`); increment 135 a fourth commission, HPERC / HPSEBL (working capital, ARR,
     H1); increment 136 a fifth, JSERC / JBVNL's MYT working capital (negative → nil, against
     MPERC's netting); increment 137 a sixth, BERC's working capital for two DISCOMs; increment 138 a seventh, OERC's
-    four DISCOMs — every order in this session) — next deeper in any of the seven, or a
-    cross-commission comparison of the rules;
+    four DISCOMs — every order in this session; increment 139 the rules compared across the
+    seven at `/arr/rules/compare`) — next deeper in any of the seven;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this
