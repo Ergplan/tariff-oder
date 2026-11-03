@@ -460,6 +460,705 @@
    },
    "examples": [],
    "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations"
+  },
+  {
+   "id": "mperc.gfa.net_addition",
+   "version": 1,
+   "status": "draft",
+   "title": "Net addition to GFA: additions less consumer contributions and grants",
+   "output": "gfa_net_addition",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "per": "licensee",
+   "formula": "addition - contributions",
+   "inputs": {
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:gfa_addition"
+    },
+    "contributions": {
+     "unit": "INR_crore",
+     "source": "record:gfa_contributions"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "34.2(e)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "33. Depreciation.- For the purpose of Tariff, depreciation shall be computed in the following manner: (a) The value base for the purpose of depreciation shall be the capital cost of the assets as admitted by the Commission. … (e) Depreciation shall be calculated annually based on 'straight line method' and at rates specified in Annexure II to these Regulations … 34.2 … (e) Provisions related to depreciation, as specified in Regulation 33, shall not be applicable to the extent of such financial support received.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 33–34 (MP DISCOMs FY2026-27 order, pp.97–98), not read from the Regulations; no depreciation on assets from contributions or grants"
+  },
+  {
+   "id": "mperc.gfa.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Net GFA, closing",
+   "output": "gfa_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "per": "licensee",
+   "formula": "opening + net",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:gfa_opening"
+    },
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_net_addition"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "33(a)",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "net of contributions and grants"
+  },
+  {
+   "id": "mperc.dep.average",
+   "version": 1,
+   "status": "draft",
+   "title": "Average net GFA of the year",
+   "output": "gfa_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "per": "licensee",
+   "formula": "(opening + closing) / 2",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:gfa_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_closing"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "33",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "depreciation on the projected average net GFA (para 2.204)"
+  },
+  {
+   "id": "mperc.dep.depreciation",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation: the weighted average rate on the average net GFA",
+   "output": "depreciation",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "per": "licensee",
+   "formula": "rate * average",
+   "inputs": {
+    "average": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_average"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:dep_rate",
+     "note": "derived from the DISCOM's fixed asset register of FY2024-25 (para 2.206) — the order's interim method, not Annexure II class by class"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "33(e)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "33. Depreciation.- For the purpose of Tariff, depreciation shall be computed in the following manner: (a) The value base for the purpose of depreciation shall be the capital cost of the assets as admitted by the Commission. … (e) Depreciation shall be calculated annually based on 'straight line method' and at rates specified in Annexure II to these Regulations … 34.2 … (e) Provisions related to depreciation, as specified in Regulation 33, shall not be applicable to the extent of such financial support received.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 33–34 (MP DISCOMs FY2026-27 order, pp.97–98), not read from the Regulations"
+  },
+  {
+   "id": "mperc.loan.addition",
+   "version": 2,
+   "status": "draft",
+   "title": "Normative loan addition: the net addition to GFA less the equity admitted",
+   "output": "loan_addition",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "per": "licensee",
+   "formula": "net - equity",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_net_addition"
+    },
+    "equity": {
+     "unit": "INR_crore",
+     "source": "rule:equity_admitted"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "32",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Reg. 22 as the order states it (para 2.240): debt-equity 70:30; actual equity if less than 30 %; equity above 30 % a normative loan.  The order admits the lower of 30 % of the net addition and the proposed equity (para 2.241 c)"
+  },
+  {
+   "id": "mperc.loan.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative loan, closing: opening plus addition less repayment",
+   "output": "loan_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "per": "licensee",
+   "formula": "opening + addition - repayment",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:loan_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "rule:loan_addition"
+    },
+    "repayment": {
+     "unit": "INR_crore",
+     "source": "record:loan_repayment",
+     "note": "equal to the depreciation of the year (para 2.221)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "32",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.loan.average",
+   "version": 1,
+   "status": "draft",
+   "title": "Average normative loan of the year",
+   "output": "loan_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "per": "licensee",
+   "formula": "(opening + closing) / 2",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:loan_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:loan_closing"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "32",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.loan.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on project loans: the weighted average rate on the average loan",
+   "output": "loan_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "per": "licensee",
+   "formula": "rate * average",
+   "inputs": {
+    "average": {
+     "unit": "INR_crore",
+     "source": "rule:loan_average"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:loan_rate",
+     "note": "project loans only — perpetual loans, bonds and working capital loans left out (para 2.220 f)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "32",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.loan.other_finance",
+   "version": 1,
+   "status": "draft",
+   "title": "Other finance cost: the actual share of the average loan",
+   "output": "loan_other_finance",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "per": "licensee",
+   "formula": "rate * average",
+   "inputs": {
+    "average": {
+     "unit": "INR_crore",
+     "source": "rule:loan_average"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:finance_rate",
+     "note": "the actual finance cost over the average loan, FY2023-24 and FY2024-25 averaged (para 2.220 g)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "32",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.loan.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest cost admitted on project loans",
+   "output": "loan_interest_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "per": "licensee",
+   "formula": "interest + other",
+   "inputs": {
+    "interest": {
+     "unit": "INR_crore",
+     "source": "rule:loan_interest"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "rule:loan_other_finance"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "32",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.dep.state",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation, the three DISCOMs",
+   "output": "depreciation_state",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:depreciation"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "33",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.loan.total_state",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest cost on project loans, the three DISCOMs",
+   "output": "loan_interest_total_state",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:loan_interest_total"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "32",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.equity.normative",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative equity: 30 % of the net addition to GFA",
+   "output": "equity_normative",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "per": "licensee",
+   "formula": "share * net",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_net_addition"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "30"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "22",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Reg. 22 as the order states it (para 2.240): debt-equity 70:30; actual equity if less than 30 %; equity above 30 % a normative loan.  The order admits the lower of 30 % of the net addition and the proposed equity (para 2.241 c)"
+  },
+  {
+   "id": "mperc.equity.admitted",
+   "version": 1,
+   "status": "draft",
+   "title": "Equity admitted: the lower of the normative 30 % and the proposed equity",
+   "output": "equity_admitted",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "per": "licensee",
+   "formula": "min(normative, proposed)",
+   "inputs": {
+    "normative": {
+     "unit": "INR_crore",
+     "source": "rule:equity_normative"
+    },
+    "proposed": {
+     "unit": "INR_crore",
+     "source": "record:equity_proposed",
+     "note": "the equity infusion the licensee proposes"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "22",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Reg. 22 as the order states it (para 2.240): debt-equity 70:30; actual equity if less than 30 %; equity above 30 % a normative loan.  The order admits the lower of 30 % of the net addition and the proposed equity (para 2.241 c)"
+  },
+  {
+   "id": "mperc.equity.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Equity, closing: opening plus the equity admitted",
+   "output": "equity_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "per": "licensee",
+   "formula": "opening + admitted",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:equity_opening"
+    },
+    "admitted": {
+     "unit": "INR_crore",
+     "source": "rule:equity_admitted"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "22, 31",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.equity.average",
+   "version": 1,
+   "status": "draft",
+   "title": "Average equity of the year",
+   "output": "equity_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "per": "licensee",
+   "formula": "(opening + closing) / 2",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:equity_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:equity_closing"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "31",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "RoE on the average equity (para 2.241 d)"
+  },
+  {
+   "id": "mperc.roe.return",
+   "version": 1,
+   "status": "draft",
+   "title": "Return on equity at the base rate of 14 % on the average equity",
+   "output": "roe_return",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "per": "licensee",
+   "formula": "rate * average",
+   "inputs": {
+    "average": {
+     "unit": "INR_crore",
+     "source": "rule:equity_average"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "14",
+     "note": "Reg. 31.3 base RoE (quoted, p.110); the additional RoE of up to 2 % is for the true-up"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "31.3",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's quotation of Reg. 31 (p.110)"
+  },
+  {
+   "id": "mperc.roe.state",
+   "version": 1,
+   "status": "draft",
+   "title": "Return on equity, the three DISCOMs",
+   "output": "roe_return_state",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:roe_return"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "31",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
   }
  ]
 }

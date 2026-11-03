@@ -1,0 +1,976 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "MPERC order on the ARR and retail supply tariff of the three MP DISCOMs for FY2026-27 (petition 140/2025) — depreciation, interest on project loans and return on equity (Tables 57, 59, 65)",
+  "sha256": "77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb",
+  "pages": 255
+ },
+ "figures": {
+  "dep.opening_fy26.east": {
+   "value": "8972.12",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2025 8,972.12 4,912.17 10,307.47 24,191.76",
+   "what": "Table 57, opening GFA 1 April 2025: east"
+  },
+  "dep.opening_fy26.west": {
+   "value": "4912.17",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2025 8,972.12 4,912.17 10,307.47 24,191.76",
+   "what": "Table 57, opening GFA 1 April 2025: west"
+  },
+  "dep.opening_fy26.central": {
+   "value": "10307.47",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2025 8,972.12 4,912.17 10,307.47 24,191.76",
+   "what": "Table 57, opening GFA 1 April 2025: central"
+  },
+  "dep.opening_fy26.state": {
+   "value": "24191.76",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2025 8,972.12 4,912.17 10,307.47 24,191.76",
+   "what": "Table 57, opening GFA 1 April 2025: state"
+  },
+  "dep.addition_fy26.east": {
+   "value": "1043.00",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2025 8,972.12 4,912.17 10,307.47 24,191.76 Add: Addition during Financial Year 1,043.00 684.10 1,405.34 3,132.43",
+   "what": "Table 57, addition FY2025-26: east"
+  },
+  "dep.addition_fy26.west": {
+   "value": "684.10",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2025 8,972.12 4,912.17 10,307.47 24,191.76 Add: Addition during Financial Year 1,043.00 684.10 1,405.34 3,132.43",
+   "what": "Table 57, addition FY2025-26: west"
+  },
+  "dep.addition_fy26.central": {
+   "value": "1405.34",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2025 8,972.12 4,912.17 10,307.47 24,191.76 Add: Addition during Financial Year 1,043.00 684.10 1,405.34 3,132.43",
+   "what": "Table 57, addition FY2025-26: central"
+  },
+  "dep.addition_fy26.state": {
+   "value": "3132.43",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2025 8,972.12 4,912.17 10,307.47 24,191.76 Add: Addition during Financial Year 1,043.00 684.10 1,405.34 3,132.43",
+   "what": "Table 57, addition FY2025-26: state"
+  },
+  "dep.contribution_fy26.east": {
+   "value": "438.83",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "1,043.00 684.10 1,405.34 3,132.43 Less: Consumer Contribution/Grants in Financial Year 438.83 214.43 812.51 1,465.77",
+   "what": "Table 57, contributions and grants FY2025-26: east"
+  },
+  "dep.contribution_fy26.west": {
+   "value": "214.43",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "1,043.00 684.10 1,405.34 3,132.43 Less: Consumer Contribution/Grants in Financial Year 438.83 214.43 812.51 1,465.77",
+   "what": "Table 57, contributions and grants FY2025-26: west"
+  },
+  "dep.contribution_fy26.central": {
+   "value": "812.51",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "1,043.00 684.10 1,405.34 3,132.43 Less: Consumer Contribution/Grants in Financial Year 438.83 214.43 812.51 1,465.77",
+   "what": "Table 57, contributions and grants FY2025-26: central"
+  },
+  "dep.contribution_fy26.state": {
+   "value": "1465.77",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "1,043.00 684.10 1,405.34 3,132.43 Less: Consumer Contribution/Grants in Financial Year 438.83 214.43 812.51 1,465.77",
+   "what": "Table 57, contributions and grants FY2025-26: state"
+  },
+  "dep.opening_fy27.east": {
+   "value": "9576.28",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2026 9,576.28 5,381.83 10,900.30 25,858.41",
+   "what": "Table 57, opening GFA 1 April 2026: east"
+  },
+  "dep.opening_fy27.west": {
+   "value": "5381.83",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2026 9,576.28 5,381.83 10,900.30 25,858.41",
+   "what": "Table 57, opening GFA 1 April 2026: west"
+  },
+  "dep.opening_fy27.central": {
+   "value": "10900.30",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2026 9,576.28 5,381.83 10,900.30 25,858.41",
+   "what": "Table 57, opening GFA 1 April 2026: central"
+  },
+  "dep.opening_fy27.state": {
+   "value": "25858.41",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2026 9,576.28 5,381.83 10,900.30 25,858.41",
+   "what": "Table 57, opening GFA 1 April 2026: state"
+  },
+  "dep.addition_fy27.east": {
+   "value": "1203.52",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2026 9,576.28 5,381.83 10,900.30 25,858.41 Add: Addition during Financial Year 1,203.52 794.28 1,599.54 3,597.35",
+   "what": "Table 57, addition FY2026-27: east"
+  },
+  "dep.addition_fy27.west": {
+   "value": "794.28",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2026 9,576.28 5,381.83 10,900.30 25,858.41 Add: Addition during Financial Year 1,203.52 794.28 1,599.54 3,597.35",
+   "what": "Table 57, addition FY2026-27: west"
+  },
+  "dep.addition_fy27.central": {
+   "value": "1599.54",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2026 9,576.28 5,381.83 10,900.30 25,858.41 Add: Addition during Financial Year 1,203.52 794.28 1,599.54 3,597.35",
+   "what": "Table 57, addition FY2026-27: central"
+  },
+  "dep.addition_fy27.state": {
+   "value": "3597.35",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Opening GFA as on 1st April, 2026 9,576.28 5,381.83 10,900.30 25,858.41 Add: Addition during Financial Year 1,203.52 794.28 1,599.54 3,597.35",
+   "what": "Table 57, addition FY2026-27: state"
+  },
+  "dep.contribution_fy27.east": {
+   "value": "370.65",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "1,203.52 794.28 1,599.54 3,597.35 Less: Consumer Contribution/Grants in Financial Year 370.65 242.44 794.10 1,407.18",
+   "what": "Table 57, contributions and grants FY2026-27: east"
+  },
+  "dep.contribution_fy27.west": {
+   "value": "242.44",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "1,203.52 794.28 1,599.54 3,597.35 Less: Consumer Contribution/Grants in Financial Year 370.65 242.44 794.10 1,407.18",
+   "what": "Table 57, contributions and grants FY2026-27: west"
+  },
+  "dep.contribution_fy27.central": {
+   "value": "794.10",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "1,203.52 794.28 1,599.54 3,597.35 Less: Consumer Contribution/Grants in Financial Year 370.65 242.44 794.10 1,407.18",
+   "what": "Table 57, contributions and grants FY2026-27: central"
+  },
+  "dep.contribution_fy27.state": {
+   "value": "1407.18",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "1,203.52 794.28 1,599.54 3,597.35 Less: Consumer Contribution/Grants in Financial Year 370.65 242.44 794.10 1,407.18",
+   "what": "Table 57, contributions and grants FY2026-27: state"
+  },
+  "dep.closing_fy27.east": {
+   "value": "10409.16",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Closing GFA as on 31st March, 2027 10,409.16 5,933.68 11,705.74 28,048.58",
+   "what": "Table 57, closing GFA: east"
+  },
+  "dep.closing_fy27.west": {
+   "value": "5933.68",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Closing GFA as on 31st March, 2027 10,409.16 5,933.68 11,705.74 28,048.58",
+   "what": "Table 57, closing GFA: west"
+  },
+  "dep.closing_fy27.central": {
+   "value": "11705.74",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Closing GFA as on 31st March, 2027 10,409.16 5,933.68 11,705.74 28,048.58",
+   "what": "Table 57, closing GFA: central"
+  },
+  "dep.closing_fy27.state": {
+   "value": "28048.58",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Closing GFA as on 31st March, 2027 10,409.16 5,933.68 11,705.74 28,048.58",
+   "what": "Table 57, closing GFA: state"
+  },
+  "dep.average.east": {
+   "value": "9992.72",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Average GFA 9,992.72 5,657.75 11,303.02 26,953.50",
+   "what": "Table 57, average GFA: east"
+  },
+  "dep.average.west": {
+   "value": "5657.75",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Average GFA 9,992.72 5,657.75 11,303.02 26,953.50",
+   "what": "Table 57, average GFA: west"
+  },
+  "dep.average.central": {
+   "value": "11303.02",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Average GFA 9,992.72 5,657.75 11,303.02 26,953.50",
+   "what": "Table 57, average GFA: central"
+  },
+  "dep.average.state": {
+   "value": "26953.50",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Average GFA 9,992.72 5,657.75 11,303.02 26,953.50",
+   "what": "Table 57, average GFA: state"
+  },
+  "dep.rate.east": {
+   "value": "4.00",
+   "unit": "percent",
+   "page": 99,
+   "quote": "Rate of Depreciation 4.00% 3.25% 3.40% 3.59%",
+   "what": "Table 57, rate: east"
+  },
+  "dep.rate.west": {
+   "value": "3.25",
+   "unit": "percent",
+   "page": 99,
+   "quote": "Rate of Depreciation 4.00% 3.25% 3.40% 3.59%",
+   "what": "Table 57, rate: west"
+  },
+  "dep.rate.central": {
+   "value": "3.40",
+   "unit": "percent",
+   "page": 99,
+   "quote": "Rate of Depreciation 4.00% 3.25% 3.40% 3.59%",
+   "what": "Table 57, rate: central"
+  },
+  "dep.rate.state": {
+   "value": "3.59",
+   "unit": "percent",
+   "page": 99,
+   "quote": "Rate of Depreciation 4.00% 3.25% 3.40% 3.59%",
+   "what": "Table 57, rate: state"
+  },
+  "dep.depreciation.east": {
+   "value": "399.71",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Depreciation Admitted 399.71 184.15 384.46 968.32",
+   "what": "Table 57, depreciation admitted: east"
+  },
+  "dep.depreciation.west": {
+   "value": "184.15",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Depreciation Admitted 399.71 184.15 384.46 968.32",
+   "what": "Table 57, depreciation admitted: west"
+  },
+  "dep.depreciation.central": {
+   "value": "384.46",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Depreciation Admitted 399.71 184.15 384.46 968.32",
+   "what": "Table 57, depreciation admitted: central"
+  },
+  "dep.depreciation.state": {
+   "value": "968.32",
+   "unit": "INR_crore",
+   "page": 99,
+   "quote": "Depreciation Admitted 399.71 184.15 384.46 968.32",
+   "what": "Table 57, depreciation admitted: state"
+  },
+  "loan.opening_fy26.east": {
+   "value": "3700.10",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2025 3,700.10 912.49 4,290.10 8,902.68",
+   "what": "Table 59, opening debt 1 April 2025: east"
+  },
+  "loan.opening_fy26.west": {
+   "value": "912.49",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2025 3,700.10 912.49 4,290.10 8,902.68",
+   "what": "Table 59, opening debt 1 April 2025: west"
+  },
+  "loan.opening_fy26.central": {
+   "value": "4290.10",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2025 3,700.10 912.49 4,290.10 8,902.68",
+   "what": "Table 59, opening debt 1 April 2025: central"
+  },
+  "loan.opening_fy26.state": {
+   "value": "8902.68",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2025 3,700.10 912.49 4,290.10 8,902.68",
+   "what": "Table 59, opening debt 1 April 2025: state"
+  },
+  "loan.net_addition_fy26.east": {
+   "value": "604.16",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2025 3,700.10 912.49 4,290.10 8,902.68 Addition to GFA during the year 604.16 469.66 592.83 1,666.66",
+   "what": "Table 59, net addition FY2025-26: east"
+  },
+  "loan.net_addition_fy26.west": {
+   "value": "469.66",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2025 3,700.10 912.49 4,290.10 8,902.68 Addition to GFA during the year 604.16 469.66 592.83 1,666.66",
+   "what": "Table 59, net addition FY2025-26: west"
+  },
+  "loan.net_addition_fy26.central": {
+   "value": "592.83",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2025 3,700.10 912.49 4,290.10 8,902.68 Addition to GFA during the year 604.16 469.66 592.83 1,666.66",
+   "what": "Table 59, net addition FY2025-26: central"
+  },
+  "loan.net_addition_fy26.state": {
+   "value": "1666.66",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2025 3,700.10 912.49 4,290.10 8,902.68 Addition to GFA during the year 604.16 469.66 592.83 1,666.66",
+   "what": "Table 59, net addition FY2025-26: state"
+  },
+  "loan.addition_fy26.east": {
+   "value": "422.91",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "8,902.68 Addition to GFA during the year 604.16 469.66 592.83 1,666.66 70% of addition to net GFA considered as funded through Loan net of Consumer Contribution 422.91 340.46 414.98 1,178.35",
+   "what": "Table 59, loan addition FY2025-26: east"
+  },
+  "loan.addition_fy26.west": {
+   "value": "340.46",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "8,902.68 Addition to GFA during the year 604.16 469.66 592.83 1,666.66 70% of addition to net GFA considered as funded through Loan net of Consumer Contribution 422.91 340.46 414.98 1,178.35",
+   "what": "Table 59, loan addition FY2025-26: west"
+  },
+  "loan.addition_fy26.central": {
+   "value": "414.98",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "8,902.68 Addition to GFA during the year 604.16 469.66 592.83 1,666.66 70% of addition to net GFA considered as funded through Loan net of Consumer Contribution 422.91 340.46 414.98 1,178.35",
+   "what": "Table 59, loan addition FY2025-26: central"
+  },
+  "loan.addition_fy26.state": {
+   "value": "1178.35",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "8,902.68 Addition to GFA during the year 604.16 469.66 592.83 1,666.66 70% of addition to net GFA considered as funded through Loan net of Consumer Contribution 422.91 340.46 414.98 1,178.35",
+   "what": "Table 59, loan addition FY2025-26: state"
+  },
+  "loan.repayment_fy26.east": {
+   "value": "370.97",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "422.91 340.46 414.98 1,178.35 Debt repayment during the year 370.97 167.52 360.68 899.17",
+   "what": "Table 59, repayment FY2025-26: east"
+  },
+  "loan.repayment_fy26.west": {
+   "value": "167.52",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "422.91 340.46 414.98 1,178.35 Debt repayment during the year 370.97 167.52 360.68 899.17",
+   "what": "Table 59, repayment FY2025-26: west"
+  },
+  "loan.repayment_fy26.central": {
+   "value": "360.68",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "422.91 340.46 414.98 1,178.35 Debt repayment during the year 370.97 167.52 360.68 899.17",
+   "what": "Table 59, repayment FY2025-26: central"
+  },
+  "loan.repayment_fy26.state": {
+   "value": "899.17",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "422.91 340.46 414.98 1,178.35 Debt repayment during the year 370.97 167.52 360.68 899.17",
+   "what": "Table 59, repayment FY2025-26: state"
+  },
+  "loan.opening_fy27.east": {
+   "value": "3752.04",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2026 3,752.04 1,085.42 4,344.40 9,181.86",
+   "what": "Table 59, opening debt 1 April 2026: east"
+  },
+  "loan.opening_fy27.west": {
+   "value": "1085.42",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2026 3,752.04 1,085.42 4,344.40 9,181.86",
+   "what": "Table 59, opening debt 1 April 2026: west"
+  },
+  "loan.opening_fy27.central": {
+   "value": "4344.40",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2026 3,752.04 1,085.42 4,344.40 9,181.86",
+   "what": "Table 59, opening debt 1 April 2026: central"
+  },
+  "loan.opening_fy27.state": {
+   "value": "9181.86",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2026 3,752.04 1,085.42 4,344.40 9,181.86",
+   "what": "Table 59, opening debt 1 April 2026: state"
+  },
+  "loan.net_addition_fy27.east": {
+   "value": "832.87",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2026 3,752.04 1,085.42 4,344.40 9,181.86 Addition to GFA during the year 832.87 551.84 805.44 2,190.16",
+   "what": "Table 59, net addition FY2026-27: east"
+  },
+  "loan.net_addition_fy27.west": {
+   "value": "551.84",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2026 3,752.04 1,085.42 4,344.40 9,181.86 Addition to GFA during the year 832.87 551.84 805.44 2,190.16",
+   "what": "Table 59, net addition FY2026-27: west"
+  },
+  "loan.net_addition_fy27.central": {
+   "value": "805.44",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2026 3,752.04 1,085.42 4,344.40 9,181.86 Addition to GFA during the year 832.87 551.84 805.44 2,190.16",
+   "what": "Table 59, net addition FY2026-27: central"
+  },
+  "loan.net_addition_fy27.state": {
+   "value": "2190.16",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Opening Debt associated with GFA as on 1st April, 2026 3,752.04 1,085.42 4,344.40 9,181.86 Addition to GFA during the year 832.87 551.84 805.44 2,190.16",
+   "what": "Table 59, net addition FY2026-27: state"
+  },
+  "loan.addition_fy27.east": {
+   "value": "583.01",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "9,181.86 Addition to GFA during the year 832.87 551.84 805.44 2,190.16 70% of addition to net GFA considered as funded through Loan net of Consumer Contribution 583.01 397.69 563.81 1,544.51",
+   "what": "Table 59, loan addition FY2026-27: east"
+  },
+  "loan.addition_fy27.west": {
+   "value": "397.69",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "9,181.86 Addition to GFA during the year 832.87 551.84 805.44 2,190.16 70% of addition to net GFA considered as funded through Loan net of Consumer Contribution 583.01 397.69 563.81 1,544.51",
+   "what": "Table 59, loan addition FY2026-27: west"
+  },
+  "loan.addition_fy27.central": {
+   "value": "563.81",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "9,181.86 Addition to GFA during the year 832.87 551.84 805.44 2,190.16 70% of addition to net GFA considered as funded through Loan net of Consumer Contribution 583.01 397.69 563.81 1,544.51",
+   "what": "Table 59, loan addition FY2026-27: central"
+  },
+  "loan.addition_fy27.state": {
+   "value": "1544.51",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "9,181.86 Addition to GFA during the year 832.87 551.84 805.44 2,190.16 70% of addition to net GFA considered as funded through Loan net of Consumer Contribution 583.01 397.69 563.81 1,544.51",
+   "what": "Table 59, loan addition FY2026-27: state"
+  },
+  "loan.repayment_fy27.east": {
+   "value": "399.71",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "583.01 397.69 563.81 1,544.51 Debt repayment during the year 399.71 184.15 384.46 968.32",
+   "what": "Table 59, repayment FY2026-27: east"
+  },
+  "loan.repayment_fy27.west": {
+   "value": "184.15",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "583.01 397.69 563.81 1,544.51 Debt repayment during the year 399.71 184.15 384.46 968.32",
+   "what": "Table 59, repayment FY2026-27: west"
+  },
+  "loan.repayment_fy27.central": {
+   "value": "384.46",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "583.01 397.69 563.81 1,544.51 Debt repayment during the year 399.71 184.15 384.46 968.32",
+   "what": "Table 59, repayment FY2026-27: central"
+  },
+  "loan.repayment_fy27.state": {
+   "value": "968.32",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "583.01 397.69 563.81 1,544.51 Debt repayment during the year 399.71 184.15 384.46 968.32",
+   "what": "Table 59, repayment FY2026-27: state"
+  },
+  "loan.closing_fy27.east": {
+   "value": "3935.34",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Closing debt associated with GFA as on 31st March, 2027 3,935.34 1,298.97 4,523.75 9,758.06",
+   "what": "Table 59, closing debt: east"
+  },
+  "loan.closing_fy27.west": {
+   "value": "1298.97",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Closing debt associated with GFA as on 31st March, 2027 3,935.34 1,298.97 4,523.75 9,758.06",
+   "what": "Table 59, closing debt: west"
+  },
+  "loan.closing_fy27.central": {
+   "value": "4523.75",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Closing debt associated with GFA as on 31st March, 2027 3,935.34 1,298.97 4,523.75 9,758.06",
+   "what": "Table 59, closing debt: central"
+  },
+  "loan.closing_fy27.state": {
+   "value": "9758.06",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Closing debt associated with GFA as on 31st March, 2027 3,935.34 1,298.97 4,523.75 9,758.06",
+   "what": "Table 59, closing debt: state"
+  },
+  "loan.average.east": {
+   "value": "3843.69",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Average debt 3,843.69 1,192.20 4,434.07 9,469.96",
+   "what": "Table 59, average debt: east"
+  },
+  "loan.average.west": {
+   "value": "1192.20",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Average debt 3,843.69 1,192.20 4,434.07 9,469.96",
+   "what": "Table 59, average debt: west"
+  },
+  "loan.average.central": {
+   "value": "4434.07",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Average debt 3,843.69 1,192.20 4,434.07 9,469.96",
+   "what": "Table 59, average debt: central"
+  },
+  "loan.average.state": {
+   "value": "9469.96",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Average debt 3,843.69 1,192.20 4,434.07 9,469.96",
+   "what": "Table 59, average debt: state"
+  },
+  "loan.rate.east": {
+   "value": "9.21",
+   "unit": "percent",
+   "page": 104,
+   "quote": "Weighted average rate of interest (%) on all loans as per Petitioner 9.21% 8.77% 10.17% 9.60%",
+   "what": "Table 59, weighted average rate: east"
+  },
+  "loan.rate.west": {
+   "value": "8.77",
+   "unit": "percent",
+   "page": 104,
+   "quote": "Weighted average rate of interest (%) on all loans as per Petitioner 9.21% 8.77% 10.17% 9.60%",
+   "what": "Table 59, weighted average rate: west"
+  },
+  "loan.rate.central": {
+   "value": "10.17",
+   "unit": "percent",
+   "page": 104,
+   "quote": "Weighted average rate of interest (%) on all loans as per Petitioner 9.21% 8.77% 10.17% 9.60%",
+   "what": "Table 59, weighted average rate: central"
+  },
+  "loan.rate.state": {
+   "value": "9.60",
+   "unit": "percent",
+   "page": 104,
+   "quote": "Weighted average rate of interest (%) on all loans as per Petitioner 9.21% 8.77% 10.17% 9.60%",
+   "what": "Table 59, weighted average rate: state"
+  },
+  "loan.interest.east": {
+   "value": "353.87",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Interest on Project Loans 353.87 104.58 450.97 909.42",
+   "what": "Table 59, interest on project loans: east"
+  },
+  "loan.interest.west": {
+   "value": "104.58",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Interest on Project Loans 353.87 104.58 450.97 909.42",
+   "what": "Table 59, interest on project loans: west"
+  },
+  "loan.interest.central": {
+   "value": "450.97",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Interest on Project Loans 353.87 104.58 450.97 909.42",
+   "what": "Table 59, interest on project loans: central"
+  },
+  "loan.interest.state": {
+   "value": "909.42",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Interest on Project Loans 353.87 104.58 450.97 909.42",
+   "what": "Table 59, interest on project loans: state"
+  },
+  "loan.other_finance.east": {
+   "value": "3.91",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Other Finance cost 3.91 24.93 13.57 42.41",
+   "what": "Table 59, other finance cost: east"
+  },
+  "loan.other_finance.west": {
+   "value": "24.93",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Other Finance cost 3.91 24.93 13.57 42.41",
+   "what": "Table 59, other finance cost: west"
+  },
+  "loan.other_finance.central": {
+   "value": "13.57",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Other Finance cost 3.91 24.93 13.57 42.41",
+   "what": "Table 59, other finance cost: central"
+  },
+  "loan.other_finance.state": {
+   "value": "42.41",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Other Finance cost 3.91 24.93 13.57 42.41",
+   "what": "Table 59, other finance cost: state"
+  },
+  "loan.total.east": {
+   "value": "357.78",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Interest cost admitted on project loans 357.78 129.51 464.54 951.83",
+   "what": "Table 59, interest cost admitted: east"
+  },
+  "loan.total.west": {
+   "value": "129.51",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Interest cost admitted on project loans 357.78 129.51 464.54 951.83",
+   "what": "Table 59, interest cost admitted: west"
+  },
+  "loan.total.central": {
+   "value": "464.54",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Interest cost admitted on project loans 357.78 129.51 464.54 951.83",
+   "what": "Table 59, interest cost admitted: central"
+  },
+  "loan.total.state": {
+   "value": "951.83",
+   "unit": "INR_crore",
+   "page": 104,
+   "quote": "Interest cost admitted on project loans 357.78 129.51 464.54 951.83",
+   "what": "Table 59, interest cost admitted: state"
+  },
+  "text.fc_rate.east": {
+   "value": "0.10",
+   "unit": "percent",
+   "page": 103,
+   "quote": "The average of FY 2023-24 and FY 2024-25 works out to 0.10%, 2.09% and 0.31%",
+   "what": "para 2.220 (g), other finance cost as a share of the average loan: east"
+  },
+  "text.fc_rate.west": {
+   "value": "2.09",
+   "unit": "percent",
+   "page": 103,
+   "quote": "The average of FY 2023-24 and FY 2024-25 works out to 0.10%, 2.09% and 0.31%",
+   "what": "para 2.220 (g), other finance cost as a share of the average loan: west"
+  },
+  "text.fc_rate.central": {
+   "value": "0.31",
+   "unit": "percent",
+   "page": 103,
+   "quote": "The average of FY 2023-24 and FY 2024-25 works out to 0.10%, 2.09% and 0.31%",
+   "what": "para 2.220 (g), other finance cost as a share of the average loan: central"
+  },
+  "text.dep_rate.east": {
+   "value": "4.00",
+   "unit": "percent",
+   "page": 98,
+   "quote": "(i.e., 4.00%, 3.25% and 3.40% for East, West and Central DISCOMs",
+   "what": "para 2.206, weighted average depreciation rate from FY2024-25's fixed asset register: east"
+  },
+  "text.dep_rate.west": {
+   "value": "3.25",
+   "unit": "percent",
+   "page": 98,
+   "quote": "(i.e., 4.00%, 3.25% and 3.40% for East, West and Central DISCOMs",
+   "what": "para 2.206, weighted average depreciation rate from FY2024-25's fixed asset register: west"
+  },
+  "text.dep_rate.central": {
+   "value": "3.40",
+   "unit": "percent",
+   "page": 98,
+   "quote": "(i.e., 4.00%, 3.25% and 3.40% for East, West and Central DISCOMs",
+   "what": "para 2.206, weighted average depreciation rate from FY2024-25's fixed asset register: central"
+  },
+  "eq.opening_fy26.east": {
+   "value": "1768.44",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Opening Equity identified with GFA as on 1st April, 2025 1,768.44 1,212.37 2,123.29 5,104.10",
+   "what": "Table 65, opening equity 1 April 2025: east"
+  },
+  "eq.opening_fy26.west": {
+   "value": "1212.37",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Opening Equity identified with GFA as on 1st April, 2025 1,768.44 1,212.37 2,123.29 5,104.10",
+   "what": "Table 65, opening equity 1 April 2025: west"
+  },
+  "eq.opening_fy26.central": {
+   "value": "2123.29",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Opening Equity identified with GFA as on 1st April, 2025 1,768.44 1,212.37 2,123.29 5,104.10",
+   "what": "Table 65, opening equity 1 April 2025: central"
+  },
+  "eq.opening_fy26.state": {
+   "value": "5104.10",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Opening Equity identified with GFA as on 1st April, 2025 1,768.44 1,212.37 2,123.29 5,104.10",
+   "what": "Table 65, opening equity 1 April 2025: state"
+  },
+  "eq.row_fy26.east": {
+   "value": "226.34",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Equity addition admitted during the Year 226.34 129.20 197.31 552.86",
+   "what": "Table 65, the FY2025-26 row labelled 'Equity addition admitted during the Year' (for East and Central it prints the proposed addition; M3): east"
+  },
+  "eq.row_fy26.west": {
+   "value": "129.20",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Equity addition admitted during the Year 226.34 129.20 197.31 552.86",
+   "what": "Table 65, the FY2025-26 row labelled 'Equity addition admitted during the Year' (for East and Central it prints the proposed addition; M3): west"
+  },
+  "eq.row_fy26.central": {
+   "value": "197.31",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Equity addition admitted during the Year 226.34 129.20 197.31 552.86",
+   "what": "Table 65, the FY2025-26 row labelled 'Equity addition admitted during the Year' (for East and Central it prints the proposed addition; M3): central"
+  },
+  "eq.row_fy26.state": {
+   "value": "552.86",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Equity addition admitted during the Year 226.34 129.20 197.31 552.86",
+   "what": "Table 65, the FY2025-26 row labelled 'Equity addition admitted during the Year' (for East and Central it prints the proposed addition; M3): state"
+  },
+  "eq.opening_fy27.east": {
+   "value": "1949.69",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Opening Equity identified with GFA as on 1st April, 2026 1,949.69 1,341.57 2,301.14 5,592.41",
+   "what": "Table 65, opening equity 1 April 2026: east"
+  },
+  "eq.opening_fy27.west": {
+   "value": "1341.57",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Opening Equity identified with GFA as on 1st April, 2026 1,949.69 1,341.57 2,301.14 5,592.41",
+   "what": "Table 65, opening equity 1 April 2026: west"
+  },
+  "eq.opening_fy27.central": {
+   "value": "2301.14",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Opening Equity identified with GFA as on 1st April, 2026 1,949.69 1,341.57 2,301.14 5,592.41",
+   "what": "Table 65, opening equity 1 April 2026: central"
+  },
+  "eq.opening_fy27.state": {
+   "value": "5592.41",
+   "unit": "INR_crore",
+   "page": 111,
+   "quote": "Opening Equity identified with GFA as on 1st April, 2026 1,949.69 1,341.57 2,301.14 5,592.41",
+   "what": "Table 65, opening equity 1 April 2026: state"
+  },
+  "eq.normative_fy27.east": {
+   "value": "249.86",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "30% of addition to net GFA considered as funded through equity net of consumer contribution 249.86 165.55 241.63 657.05",
+   "what": "Table 65, 30 % of the net addition FY2026-27: east"
+  },
+  "eq.normative_fy27.west": {
+   "value": "165.55",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "30% of addition to net GFA considered as funded through equity net of consumer contribution 249.86 165.55 241.63 657.05",
+   "what": "Table 65, 30 % of the net addition FY2026-27: west"
+  },
+  "eq.normative_fy27.central": {
+   "value": "241.63",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "30% of addition to net GFA considered as funded through equity net of consumer contribution 249.86 165.55 241.63 657.05",
+   "what": "Table 65, 30 % of the net addition FY2026-27: central"
+  },
+  "eq.normative_fy27.state": {
+   "value": "657.05",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "30% of addition to net GFA considered as funded through equity net of consumer contribution 249.86 165.55 241.63 657.05",
+   "what": "Table 65, 30 % of the net addition FY2026-27: state"
+  },
+  "eq.proposed_fy27.east": {
+   "value": "293.28",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Proposed Equity addition during the Year 293.28 154.15 379.11 826.54",
+   "what": "Table 65, proposed equity addition FY2026-27: east"
+  },
+  "eq.proposed_fy27.west": {
+   "value": "154.15",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Proposed Equity addition during the Year 293.28 154.15 379.11 826.54",
+   "what": "Table 65, proposed equity addition FY2026-27: west"
+  },
+  "eq.proposed_fy27.central": {
+   "value": "379.11",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Proposed Equity addition during the Year 293.28 154.15 379.11 826.54",
+   "what": "Table 65, proposed equity addition FY2026-27: central"
+  },
+  "eq.proposed_fy27.state": {
+   "value": "826.54",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Proposed Equity addition during the Year 293.28 154.15 379.11 826.54",
+   "what": "Table 65, proposed equity addition FY2026-27: state"
+  },
+  "eq.admitted_fy27.east": {
+   "value": "249.86",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Equity addition admitted during the Year 249.86 154.15 241.63 645.65",
+   "what": "Table 65, equity addition admitted FY2026-27: east"
+  },
+  "eq.admitted_fy27.west": {
+   "value": "154.15",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Equity addition admitted during the Year 249.86 154.15 241.63 645.65",
+   "what": "Table 65, equity addition admitted FY2026-27: west"
+  },
+  "eq.admitted_fy27.central": {
+   "value": "241.63",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Equity addition admitted during the Year 249.86 154.15 241.63 645.65",
+   "what": "Table 65, equity addition admitted FY2026-27: central"
+  },
+  "eq.admitted_fy27.state": {
+   "value": "645.65",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Equity addition admitted during the Year 249.86 154.15 241.63 645.65",
+   "what": "Table 65, equity addition admitted FY2026-27: state"
+  },
+  "eq.closing_fy27.east": {
+   "value": "2199.55",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Closing Equity as on 31st March, 2027 2,199.55 1,495.72 2,542.77 6,238.05",
+   "what": "Table 65, closing equity: east"
+  },
+  "eq.closing_fy27.west": {
+   "value": "1495.72",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Closing Equity as on 31st March, 2027 2,199.55 1,495.72 2,542.77 6,238.05",
+   "what": "Table 65, closing equity: west"
+  },
+  "eq.closing_fy27.central": {
+   "value": "2542.77",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Closing Equity as on 31st March, 2027 2,199.55 1,495.72 2,542.77 6,238.05",
+   "what": "Table 65, closing equity: central"
+  },
+  "eq.closing_fy27.state": {
+   "value": "6238.05",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Closing Equity as on 31st March, 2027 2,199.55 1,495.72 2,542.77 6,238.05",
+   "what": "Table 65, closing equity: state"
+  },
+  "eq.average.east": {
+   "value": "2074.62",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Average Equity 2,074.62 1,418.65 2,421.96 5,915.23",
+   "what": "Table 65, average equity: east"
+  },
+  "eq.average.west": {
+   "value": "1418.65",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Average Equity 2,074.62 1,418.65 2,421.96 5,915.23",
+   "what": "Table 65, average equity: west"
+  },
+  "eq.average.central": {
+   "value": "2421.96",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Average Equity 2,074.62 1,418.65 2,421.96 5,915.23",
+   "what": "Table 65, average equity: central"
+  },
+  "eq.average.state": {
+   "value": "5915.23",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "Average Equity 2,074.62 1,418.65 2,421.96 5,915.23",
+   "what": "Table 65, average equity: state"
+  },
+  "eq.roe.east": {
+   "value": "290.45",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "RoE @ 14% Admitted 290.45 198.61 339.07 828.13",
+   "what": "Table 65, RoE at 14 % admitted: east"
+  },
+  "eq.roe.west": {
+   "value": "198.61",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "RoE @ 14% Admitted 290.45 198.61 339.07 828.13",
+   "what": "Table 65, RoE at 14 % admitted: west"
+  },
+  "eq.roe.central": {
+   "value": "339.07",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "RoE @ 14% Admitted 290.45 198.61 339.07 828.13",
+   "what": "Table 65, RoE at 14 % admitted: central"
+  },
+  "eq.roe.state": {
+   "value": "828.13",
+   "unit": "INR_crore",
+   "page": 112,
+   "quote": "RoE @ 14% Admitted 290.45 198.61 339.07 828.13",
+   "what": "Table 65, RoE at 14 % admitted: state"
+  }
+ }
+}

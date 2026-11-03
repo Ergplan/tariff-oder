@@ -21,6 +21,17 @@
     "MPERC order on the MP DISCOMs FY2026-27, p.106 para 2.228; p.107 Table 61; p.99 Table 57"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "M3",
+   "kind": "inconsistency",
+   "title": "Table 65's FY2025-26 row 'Equity addition admitted' prints East's and Central's proposed equity (226.34, 197.31); the opening equity of FY2026-27 carries the lower 30 % (181.25, 177.85)",
+   "detail": "Para 2.241 (c) admits the lower of 30 % of the net addition and the proposed equity, and 2.242 says East and Central claimed the proposed instead of the lower.  For FY2025-26, Table 65's row labelled 'Equity addition admitted during the Year' prints 226.34 (East) and 197.31 (Central) — above 30 % of their net additions (181.25, 177.85) — yet the opening equity of 1 April 2026 is 1,768.44 + 181.25 = 1,949.69 and 2,123.29 + 177.85 = 2,301.14, and Table 59's loan additions (422.91, 414.98) are the net additions less the same lower figures.  The row therefore prints the proposed equity under the 'admitted' label; the computation uses the admitted.  West's (129.20, below its 30 %) is the same either way.  The FY2026-27 rows are consistent.",
+   "where": [
+    "MPERC order on the MP DISCOMs FY2026-27, pp.111–112 Table 65; p.104 Table 59; para 2.241–2.242",
+    "bindings/approval-dep-loan-fy27.json"
+   ],
+   "for": "reviewer"
   }
  ]
 }

@@ -2298,4 +2298,52 @@ def test_a_third_commission_mperc_working_capital_per_discom_in_one_order():
     for d in ("east", "west", "central"):
         w, r = Decimal(rec[f"w.inventory.{d}"][0]), Decimal(rec[f"r.inventory.{d}"][0])
         assert abs(w / 4 - r) <= Decimal("0.01")
-    assert {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]} == {"M1", "M2"}
+    assert {"M1", "M2"} <= {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+
+
+def test_mperc_depreciation_loan_and_equity_chain_per_discom_across_two_years():
+    """Real data, MPERC, three DISCOMs chained FY2025-26 → FY2026-27, each by its own computed
+    balances (per-category ``computed`` references): net GFA, depreciation at the DISCOM's rate on
+    the average net GFA, equity admitted as the lower of 30 % of the net addition and the proposed,
+    the loan addition as the rest, interest and finance cost on the average loan, RoE at 14 % on the
+    average equity.  Equity and RoE are exact throughout; balances within two paise of the
+    printed; interest, finance cost and depreciation within the precision of their printed rates.
+    Table 65's FY2025-26 'admitted' row prints the proposed equity (M3)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "mperc-discoms-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-dep-loan-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("MPERC"), rates=rec)
+    assert len(checks) == 66 and sum(c.result == "match" for c in checks) == 36
+    equity = [c for c in checks if c.output.startswith(("equity_", "roe_"))]
+    assert len(equity) == 19 and {c.result for c in equity} == {"match"}
+    half = Decimal("0.00005")  # half the last printed digit of a rate in %
+    avg = {}
+    for c in checks:
+        if c.output in ("gfa_average", "loan_average"):
+            avg[(c.output, c.category.rsplit(" order:", 1)[0].rsplit(" ", 1)[1])] = Decimal(c.exact)
+    for c in checks:
+        if c.result == "match":
+            continue
+        gap = abs(Decimal(c.exact) - Decimal(c.filed))
+        who = c.category.rsplit(" order:", 1)[0].rsplit(" ", 1)[1]
+        if c.output in ("depreciation",):
+            assert gap <= avg[("gfa_average", who)] * half + Decimal("0.005"), c.category
+        elif c.output in ("loan_interest", "loan_other_finance"):
+            assert gap <= avg[("loan_average", who)] * half + Decimal("0.01"), c.category
+        elif c.output == "loan_interest_total":
+            assert gap <= avg[("loan_average", who)] * 2 * half + Decimal("0.015"), c.category
+        elif c.output.endswith("_state"):
+            assert gap <= sum(avg.values()) * 2 * half, c.category
+        else:  # balances carried from rounded figures
+            assert gap <= Decimal("0.02"), c.category
+    # the ties: Table 59's repayment is Table 57's depreciation; M3's carried equity is the lower 30 %
+    for d in ("east", "west", "central"):
+        assert rec[f"loan.repayment_fy27.{d}"] == rec[f"dep.depreciation.{d}"]
+    east = Decimal(rec["eq.opening_fy27.east"][0]) - Decimal(rec["eq.opening_fy26.east"][0])
+    assert east == Decimal("181.25") != Decimal(rec["eq.row_fy26.east"][0])
+    assert "M3" in {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}

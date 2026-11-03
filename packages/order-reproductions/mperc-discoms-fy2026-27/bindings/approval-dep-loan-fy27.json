@@ -1,0 +1,347 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "MPERC order",
+ "rates": "order/figures-dep-loan-fy2026-27.json",
+ "places": 2,
+ "note": "MPERC's net GFA, depreciation, normative project loan and equity for the three DISCOMs, FY2025-26 into FY2026-27 (Tables 57, 59, 65): each DISCOM a category, carried from one year to the next by its own computed closing balances.  Equity admitted is the lower of 30 % of the net addition and the proposed equity; the loan addition is the rest.  FY2025-26's proposed equity is Table 65's row labelled 'admitted' (M3); FY2025-26's repayment is a record (that year's depreciation, from an earlier order); FY2026-27's is the order's printed depreciation, which the test ties to Table 57.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "FY2025-26: net GFA and loan (Tables 57, 59)",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.opening_fy26.east"
+      },
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy26.east"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy26.east"
+      },
+      "record:loan_opening": {
+       "rate": "loan.opening_fy26.east"
+      },
+      "record:loan_repayment": {
+       "rate": "loan.repayment_fy26.east"
+      },
+      "record:equity_proposed": {
+       "rate": "eq.row_fy26.east"
+      },
+      "record:equity_opening": {
+       "rate": "eq.opening_fy26.east"
+      }
+     },
+     "checks": {
+      "gfa_net_addition": "order:loan.net_addition_fy26.east",
+      "gfa_closing": "order:dep.opening_fy27.east",
+      "loan_addition": "order:loan.addition_fy26.east",
+      "loan_closing": "order:loan.opening_fy27.east",
+      "equity_closing": "order:eq.opening_fy27.east"
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.opening_fy26.west"
+      },
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy26.west"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy26.west"
+      },
+      "record:loan_opening": {
+       "rate": "loan.opening_fy26.west"
+      },
+      "record:loan_repayment": {
+       "rate": "loan.repayment_fy26.west"
+      },
+      "record:equity_proposed": {
+       "rate": "eq.row_fy26.west"
+      },
+      "record:equity_opening": {
+       "rate": "eq.opening_fy26.west"
+      }
+     },
+     "checks": {
+      "gfa_net_addition": "order:loan.net_addition_fy26.west",
+      "gfa_closing": "order:dep.opening_fy27.west",
+      "loan_addition": "order:loan.addition_fy26.west",
+      "loan_closing": "order:loan.opening_fy27.west",
+      "equity_closing": "order:eq.opening_fy27.west"
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:gfa_opening": {
+       "rate": "dep.opening_fy26.central"
+      },
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy26.central"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy26.central"
+      },
+      "record:loan_opening": {
+       "rate": "loan.opening_fy26.central"
+      },
+      "record:loan_repayment": {
+       "rate": "loan.repayment_fy26.central"
+      },
+      "record:equity_proposed": {
+       "rate": "eq.row_fy26.central"
+      },
+      "record:equity_opening": {
+       "rate": "eq.opening_fy26.central"
+      }
+     },
+     "checks": {
+      "gfa_net_addition": "order:loan.net_addition_fy26.central",
+      "gfa_closing": "order:dep.opening_fy27.central",
+      "loan_addition": "order:loan.addition_fy26.central",
+      "loan_closing": "order:loan.opening_fy27.central",
+      "equity_closing": "order:eq.opening_fy27.central"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "FY2026-27: net GFA and depreciation (Table 57)",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:gfa_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "east",
+       "output": "gfa_closing"
+      },
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy27.east"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy27.east"
+      },
+      "record:dep_rate": {
+       "rate": "dep.rate.east"
+      }
+     },
+     "checks": {
+      "gfa_net_addition": "order:loan.net_addition_fy27.east",
+      "gfa_closing": "order:dep.closing_fy27.east",
+      "gfa_average": "order:dep.average.east",
+      "depreciation": [
+       "order:dep.depreciation.east",
+       "order:loan.repayment_fy27.east"
+      ]
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:gfa_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "west",
+       "output": "gfa_closing"
+      },
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy27.west"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy27.west"
+      },
+      "record:dep_rate": {
+       "rate": "dep.rate.west"
+      }
+     },
+     "checks": {
+      "gfa_net_addition": "order:loan.net_addition_fy27.west",
+      "gfa_closing": "order:dep.closing_fy27.west",
+      "gfa_average": "order:dep.average.west",
+      "depreciation": [
+       "order:dep.depreciation.west",
+       "order:loan.repayment_fy27.west"
+      ]
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:gfa_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "central",
+       "output": "gfa_closing"
+      },
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy27.central"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy27.central"
+      },
+      "record:dep_rate": {
+       "rate": "dep.rate.central"
+      }
+     },
+     "checks": {
+      "gfa_net_addition": "order:loan.net_addition_fy27.central",
+      "gfa_closing": "order:dep.closing_fy27.central",
+      "gfa_average": "order:dep.average.central",
+      "depreciation": [
+       "order:dep.depreciation.central",
+       "order:loan.repayment_fy27.central"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "depreciation_state": "order:dep.depreciation.state"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "FY2026-27: loan, interest and return on equity (Tables 59, 65)",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy27.east"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy27.east"
+      },
+      "record:loan_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "east",
+       "output": "loan_closing"
+      },
+      "record:loan_repayment": {
+       "rate": "loan.repayment_fy27.east"
+      },
+      "record:loan_rate": {
+       "rate": "loan.rate.east"
+      },
+      "record:finance_rate": {
+       "rate": "text.fc_rate.east"
+      },
+      "record:equity_proposed": {
+       "rate": "eq.proposed_fy27.east"
+      },
+      "record:equity_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "east",
+       "output": "equity_closing"
+      }
+     },
+     "checks": {
+      "loan_addition": "order:loan.addition_fy27.east",
+      "loan_closing": "order:loan.closing_fy27.east",
+      "loan_average": "order:loan.average.east",
+      "loan_interest": "order:loan.interest.east",
+      "loan_other_finance": "order:loan.other_finance.east",
+      "loan_interest_total": "order:loan.total.east",
+      "equity_normative": "order:eq.normative_fy27.east",
+      "equity_admitted": "order:eq.admitted_fy27.east",
+      "equity_closing": "order:eq.closing_fy27.east",
+      "equity_average": "order:eq.average.east",
+      "roe_return": "order:eq.roe.east"
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy27.west"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy27.west"
+      },
+      "record:loan_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "west",
+       "output": "loan_closing"
+      },
+      "record:loan_repayment": {
+       "rate": "loan.repayment_fy27.west"
+      },
+      "record:loan_rate": {
+       "rate": "loan.rate.west"
+      },
+      "record:finance_rate": {
+       "rate": "text.fc_rate.west"
+      },
+      "record:equity_proposed": {
+       "rate": "eq.proposed_fy27.west"
+      },
+      "record:equity_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "west",
+       "output": "equity_closing"
+      }
+     },
+     "checks": {
+      "loan_addition": "order:loan.addition_fy27.west",
+      "loan_closing": "order:loan.closing_fy27.west",
+      "loan_average": "order:loan.average.west",
+      "loan_interest": "order:loan.interest.west",
+      "loan_other_finance": "order:loan.other_finance.west",
+      "loan_interest_total": "order:loan.total.west",
+      "equity_normative": "order:eq.normative_fy27.west",
+      "equity_admitted": "order:eq.admitted_fy27.west",
+      "equity_closing": "order:eq.closing_fy27.west",
+      "equity_average": "order:eq.average.west",
+      "roe_return": "order:eq.roe.west"
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:gfa_addition": {
+       "rate": "dep.addition_fy27.central"
+      },
+      "record:gfa_contributions": {
+       "rate": "dep.contribution_fy27.central"
+      },
+      "record:loan_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "central",
+       "output": "loan_closing"
+      },
+      "record:loan_repayment": {
+       "rate": "loan.repayment_fy27.central"
+      },
+      "record:loan_rate": {
+       "rate": "loan.rate.central"
+      },
+      "record:finance_rate": {
+       "rate": "text.fc_rate.central"
+      },
+      "record:equity_proposed": {
+       "rate": "eq.proposed_fy27.central"
+      },
+      "record:equity_opening": {
+       "computed": "FY2025-26: net GFA and loan (Tables 57, 59)",
+       "category": "central",
+       "output": "equity_closing"
+      }
+     },
+     "checks": {
+      "loan_addition": "order:loan.addition_fy27.central",
+      "loan_closing": "order:loan.closing_fy27.central",
+      "loan_average": "order:loan.average.central",
+      "loan_interest": "order:loan.interest.central",
+      "loan_other_finance": "order:loan.other_finance.central",
+      "loan_interest_total": "order:loan.total.central",
+      "equity_normative": "order:eq.normative_fy27.central",
+      "equity_admitted": "order:eq.admitted_fy27.central",
+      "equity_closing": "order:eq.closing_fy27.central",
+      "equity_average": "order:eq.average.central",
+      "roe_return": "order:eq.roe.central"
+     }
+    }
+   },
+   "checks": {
+    "loan_interest_total_state": "order:loan.total.state",
+    "roe_return_state": "order:eq.roe.state"
+   }
+  }
+ ]
+}

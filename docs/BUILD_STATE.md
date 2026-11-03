@@ -1005,6 +1005,36 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 130 (2026-11-03): MPERC — depreciation, project loans and equity for three
+  DISCOMs, chained FY2025-26 → FY2026-27; the engine carries one licensee's balances.**
+  - **Engine:** a computed input may name a category (`{"computed": …, "category": "east",
+    "output": …}`).  One licensee of a combined order, or one asset class, is carried by its own
+    unrounded balance from one evaluation to the next.
+  - **The record:** `order/figures-dep-loan-fy2026-27.json` in the MPERC folder holds 138
+    figures (Tables 57, 59, 65, paras 2.206 and 2.220 (g)), 138 / 138 quotes verified.
+  - **Rules: 18 more draft MPERC rules (30 in all).**
+    - Net GFA (less contributions and grants), its average, and depreciation at the DISCOM's
+      weighted rate (the order's interim method).
+    - Equity: 30% of the net addition, and admitted as the lower of that and the proposed
+      (Reg. 22 as the order states it).
+    - The loan addition as the net addition less the equity admitted.  This replaces a flat-70%
+      draft written first, which West DISCOM disproved: its loans were 72%.
+    - The loan's closing balance and average, and interest and finance cost on the average.
+    - Closing and average equity, and RoE at 14% on the average (Reg. 31.3, quoted).
+    - State sums.
+  - **Binding `approval-dep-loan-fy27.json`: 36 / 66 exact.**
+    - Equity and RoE: 19 / 19.
+    - Every other check within its inputs' printed precision; the test bounds each kind:
+      - balances carried from rounded figures, at most 2 paise;
+      - interest, finance cost and depreciation, within their printed two-decimal rates —
+        Central's finance cost implies 0.306% for "0.31%";
+      - the State sums.
+    - The FY2026-27 repayment is the order's printed depreciation, tied to Table 57.
+  - **Finding `M3` (reviewer):** Table 65's FY2025-26 row "Equity addition admitted" prints
+    East's and Central's proposed equity (226.34, 197.31).  The opening equity of FY2026-27 and
+    Table 59's loans carry the lower 30% (181.25, 177.85).
+  Nothing verified, nothing approved.
+
   **Increment 129 (2026-11-03): a third commission, a combined order — MPERC's working capital for
   the three MP DISCOMs; and checks now round as the rules declare.**
   - **The order:** MPERC's FY2026-27 order for East, West and Central DISCOMs (SHA-256
@@ -3232,6 +3262,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 130 (2026-11-03): 500 passed** (+1 unit: MPERC's depreciation, loan and equity chain per DISCOM, bounded by printed precision; M3).  `check_order_quotes.py`: 138 / 138.  Ruff and format clean.
 - **Increment 129 (2026-11-03): 499 passed** (+1 unit: MPERC's working capital per DISCOM, M1–M2; two earlier tests updated for half-up checks).  `check_order_quotes.py`: 72 / 72.  Ruff and format clean.
 - **Increment 128 (2026-11-03): 498 passed** (+1 unit: UERC's true-up gap carried into the ARR year — exact from the printed gap, bounded end to end).  `check_order_quotes.py`: 62 / 62.  Ruff and format clean.
 - **Increment 127 (2026-11-03): 497 passed** (+1 unit: UERC's true-up loss valuation and sharing; the 2021 / 2024 year selection; U6).  `check_order_quotes.py`: 49 / 49.  Ruff and format clean.
@@ -3494,7 +3525,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 129) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 130) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3598,7 +3629,8 @@ entries below are the per-increment history.**
     the paisa; increment 127 its true-up's loss valuation and sharing under the 2021 Regulations,
     exact; increment 128 its gap carried into FY2026-27's ARR, 343.07 — exact from the printed gap,
     1.7 paise end to end); increment 129 a third commission, MPERC's working capital for three
-    DISCOMs in one order (29 / 30) — next more of MPERC, or HPERC;
+    DISCOMs in one order (29 / 30); increment 130 its depreciation, loans and equity chained per
+    DISCOM across two years (equity and RoE exact, M3) — next MPERC's O&M and ARR summary, or HPERC;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

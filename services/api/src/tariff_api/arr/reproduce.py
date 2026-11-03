@@ -581,7 +581,8 @@ def reproduce_cells(
     and ``"minus"`` may each name several; ``"negate": true`` with its ``"why"`` turns a printed
     deduction into the sign it takes) —
     or what an earlier evaluation of this binding computed (``{"computed": "<its label>",
-    "output": …}``), unrounded: a chain of years carried as the regulator carries it, not
+    "output": …}``, with ``"category"`` for one category's result — a licensee of a combined order,
+    an asset class), unrounded: a chain of years carried as the regulator carries it, not
     restarted from each printed, rounded figure.  A check may name a figure of the record
     (``"order:<key>"``) instead of a cell: the order's own printed result."""
     places = int(binding.get("places", 6))
@@ -602,10 +603,15 @@ def reproduce_cells(
         for source, spec in inputs.items():
             if isinstance(spec, dict):
                 if "computed" in spec:
-                    got = computed.get(spec["computed"], {}).get(spec["output"])
+                    if "category" in spec:  # one licensee's / class's result in an earlier evaluation
+                        got = computed_by_category.get((spec["computed"], spec["category"]), {}).get(spec["output"])
+                    else:
+                        got = computed.get(spec["computed"], {}).get(spec["output"])
                     if got is None:
+                        where = f" for {spec['category']!r}" if "category" in spec else ""
                         raise RuleError(
-                            f"{binding['sheet']}: no earlier evaluation {spec['computed']!r} computed {spec['output']}"
+                            f"{binding['sheet']}: no earlier evaluation {spec['computed']!r} "
+                            f"computed {spec['output']}{where}"
                         )
                     values[source] = got
                     continue
@@ -673,12 +679,15 @@ def reproduce_cells(
 
     out: list[BlockCheck] = []
     computed: dict[str, dict[str, tuple[Decimal, str]]] = {}  # evaluation label → output → (exact, unit)
+    computed_by_category: dict[tuple[str, str], dict[str, tuple[Decimal, str]]] = {}  # (label, category) → …
     for e in binding["evaluations"]:
         fy = e["fiscal_year"]
         cats = {name: read(c.get("inputs", {})) for name, c in e.get("categories", {}).items()}
         ev = RuleSet(rules, fy).evaluate(fy, read(e.get("inputs", {})), cats or None)
         if e.get("label"):
             computed[e["label"]] = {o: (r.value, r.unit) for o, r in ev.results.items()}
+            for name, res in ev.by_category.items():
+                computed_by_category[(e["label"], name)] = {o: (r.value, r.unit) for o, r in res.items()}
         for name, c in e.get("categories", {}).items():
             for output, refs in c.get("checks", {}).items():
                 for ref in [refs] if isinstance(refs, str) else refs:
