@@ -924,6 +924,251 @@
    },
    "examples": [],
    "note": "ESR1's total, carried to the ARR format's row 51"
+  },
+  {
+   "id": "uperc.fmt.pp_fixed_source",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase, one source: fixed charges",
+   "output": "fmt_pp_fixed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "amount",
+   "inputs": {
+    "amount": {
+     "unit": "INR_crore",
+     "source": "record:pp_fixed_charges"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line (or month) of F1 / F3",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.fmt.pp_fixed_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase: fixed charges summed",
+   "output": "fmt_pp_fixed_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "lines",
+   "inputs": {
+    "lines": {
+     "unit": "INR_crore",
+     "source": "sum:fmt_pp_fixed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F1's / F3's total"
+  },
+  {
+   "id": "uperc.fmt.pp_energy_source",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase, one source: energy charges",
+   "output": "fmt_pp_energy",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "amount",
+   "inputs": {
+    "amount": {
+     "unit": "INR_crore",
+     "source": "record:pp_energy_charges"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line (or month) of F1 / F3",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.fmt.pp_energy_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase: energy charges summed",
+   "output": "fmt_pp_energy_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "lines",
+   "inputs": {
+    "lines": {
+     "unit": "INR_crore",
+     "source": "sum:fmt_pp_energy"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F1's / F3's total"
+  },
+  {
+   "id": "uperc.fmt.pp_other_source",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase, one source: other charges",
+   "output": "fmt_pp_other",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "amount",
+   "inputs": {
+    "amount": {
+     "unit": "INR_crore",
+     "source": "record:pp_other_charges"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line (or month) of F1 / F3",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.fmt.pp_other_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase: other charges summed",
+   "output": "fmt_pp_other_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "lines",
+   "inputs": {
+    "lines": {
+     "unit": "INR_crore",
+     "source": "sum:fmt_pp_other"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F1's / F3's total"
+  },
+  {
+   "id": "uperc.fmt.pp_avg_cost",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase: average cost, total cost over units",
+   "output": "fmt_pp_avg_cost",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "cost / mu",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "rule:pp_billed_total"
+    },
+    "mu": {
+     "unit": "MU",
+     "source": "rule:pp_mu_exported_total"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F1's and F3's average cost (Rs/kWh) on the total"
   }
  ]
 }

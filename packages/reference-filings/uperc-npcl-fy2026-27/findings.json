@@ -670,6 +670,19 @@
     "bindings/esr2-sales-at-cagr.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A89",
+   "kind": "inconsistency",
+   "title": "F1's FY2026-27 rows for MPL-BLA Power and MPL-Sai Lilagar carry each other's figures: PPC FY 27 lists the two the other way round",
+   "detail": "PPC FY 27 lists the medium-term sources Maa Durga, MPL-Sai Lilagar, MPL-BLA Power, DIL (rows 14–17); PPC FY 26 had MPL-BLA before MPL-Sai.  F1 keeps FY2025-26's order for FY2026-27 — row 90 'MPL-BLA Power' reads PPC FY 27 row 15 (MPL-Sai Lilagar), row 91 'MPL-Sai Lilagar' reads row 16 (MPL-BLA Power).  So F1 gives MPL-BLA 101.60 and MPL-Sai 103.09, where PPC and F3 (by name) give MPL-Sai 101.60 and MPL-BLA 103.09.  The units are the same for both (173.78 MU) and every total agrees: F1 104 / 104, F3 1,271 / 1,271.  For the petitioner: relabel F1's two rows.",
+   "where": [
+    "F1_PP_Annual rows 90–91 (J, K formulas)",
+    "PPC FY 27 rows 15–16",
+    "F3_PP_Monthly FY2027 rows 23–24",
+    "bindings/f1-power-purchase.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

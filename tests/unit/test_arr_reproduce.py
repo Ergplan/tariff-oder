@@ -2812,3 +2812,40 @@ def test_npcl_revenue_formats_open_access_sales_forecast_and_billing_determinant
     assert (total.computed, total.filed) == ("0.135128", "0.193328")
     ids = {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
     assert {"A85", "A86", "A87", "A88"} <= ids
+
+
+def test_npcl_power_purchase_summary_and_monthly_appropriation():
+    """Real data, NPCL's F1 and F3 (increment 146), all exact: F1's sources as fixed + energy + other
+    with their cost per kWh, totals tied to the ARR's row 8 and the PPC formats (104); F3's twelve
+    months a source, each month's cost and rate and the year from its months, three years (1,271).
+    F3's sources are tied to F1 only where one non-nil F1 row has the same units and cost; F1's
+    FY2026-27 MPL-BLA and MPL-Sai rows read each other's PPC rows (A89)."""
+    from collections import Counter
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("UPERC") == []
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    wb = openpyxl.load_workbook(folder / "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx", data_only=True)
+    rules = load_rules("UPERC")
+    counts = {}
+    for name in (
+        "f1-power-purchase.json",
+        "f3-monthly-2024-25.json",
+        "f3-monthly-2025-26.json",
+        "f3-monthly-2026-27.json",
+    ):
+        checks = reproduce_cells(wb, json.loads((folder / "bindings" / name).read_text()), rules)
+        assert Counter(c.result for c in checks) == {"match": len(checks)}, name
+        counts[name] = len(checks)
+    assert counts["f1-power-purchase.json"] == 104 and sum(counts.values()) - 104 == 1271
+    f1 = wb["F1_PP_Annual"]
+    assert f1["B90"].value.strip().endswith("(MPL-BLA Power)") and f1["B91"].value.strip().endswith("(MPL-Sai Lilagar)")
+    ppc = wb["PPC FY 27"]
+    assert "MPL-Sai" in ppc["B15"].value and "MPL-BLA" in ppc["B16"].value  # PPC's order, which F3 follows
+    assert f1["K90"].value == ppc["L15"].value and f1["K91"].value == ppc["L16"].value  # F1 reads them by position
+    assert f1["K90"].value != f1["K91"].value
+    assert "A89" in {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}

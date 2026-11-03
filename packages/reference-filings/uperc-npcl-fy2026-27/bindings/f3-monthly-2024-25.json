@@ -1,0 +1,5368 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F3_PP_Monthly FY2025",
+ "places": 6,
+ "note": "F3's monthly power purchase, FY2024-25: each source's months — cost as fixed + energy + other, the cost per kWh — and the year's units, charges, cost and average cost from the twelve months.  A source is tied to F1 where its annual units and cost both equal an F1 row's (F3 row→F1 row: 17→16, 19→16, 21→19, 22→20, 28→24, 31→27, 32→28, 33→29).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 17 Dhariwal Infrastructures Ltd.",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W17",
+      "pp_rate_billed": "V17"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG17",
+      "pp_rate_billed": "AF17"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ17",
+      "pp_rate_billed": "AP17"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA17",
+      "pp_rate_billed": "AZ17"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK17",
+      "pp_rate_billed": "BJ17"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU17",
+      "pp_rate_billed": "BT17"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE17",
+      "pp_rate_billed": "CD17"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO17",
+      "pp_rate_billed": "CN17"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY17",
+      "pp_rate_billed": "CX17"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI17",
+      "pp_rate_billed": "DH17"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS17",
+      "pp_rate_billed": "DR17"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT17",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC17",
+      "pp_rate_billed": "EB17"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE17",
+     "F1_PP_Annual!J16"
+    ],
+    "fmt_pp_fixed_total": "EG17",
+    "fmt_pp_energy_total": "EI17",
+    "fmt_pp_other_total": "EK17",
+    "pp_billed_total": [
+     "EN17",
+     "F1_PP_Annual!O16"
+    ],
+    "fmt_pp_avg_cost": "EM17"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 19 Total (a+b+c+d+e)",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W19",
+      "pp_rate_billed": "V19"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG19",
+      "pp_rate_billed": "AF19"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ19",
+      "pp_rate_billed": "AP19"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA19",
+      "pp_rate_billed": "AZ19"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK19",
+      "pp_rate_billed": "BJ19"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU19",
+      "pp_rate_billed": "BT19"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE19",
+      "pp_rate_billed": "CD19"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO19",
+      "pp_rate_billed": "CN19"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY19",
+      "pp_rate_billed": "CX19"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI19",
+      "pp_rate_billed": "DH19"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS19",
+      "pp_rate_billed": "DR19"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT19",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC19",
+      "pp_rate_billed": "EB19"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE19",
+     "F1_PP_Annual!J16"
+    ],
+    "fmt_pp_fixed_total": "EG19",
+    "fmt_pp_energy_total": "EI19",
+    "fmt_pp_other_total": "EK19",
+    "pp_billed_total": [
+     "EN19",
+     "F1_PP_Annual!O16"
+    ],
+    "fmt_pp_avg_cost": "EM19"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 21 Medium Term (TPTCL)",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W21",
+      "pp_rate_billed": "V21"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG21",
+      "pp_rate_billed": "AF21"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ21",
+      "pp_rate_billed": "AP21"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA21",
+      "pp_rate_billed": "AZ21"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK21",
+      "pp_rate_billed": "BJ21"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU21",
+      "pp_rate_billed": "BT21"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE21",
+      "pp_rate_billed": "CD21"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO21",
+      "pp_rate_billed": "CN21"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY21",
+      "pp_rate_billed": "CX21"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI21",
+      "pp_rate_billed": "DH21"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS21",
+      "pp_rate_billed": "DR21"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT21",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC21",
+      "pp_rate_billed": "EB21"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE21",
+     "F1_PP_Annual!J19"
+    ],
+    "fmt_pp_fixed_total": "EG21",
+    "fmt_pp_energy_total": "EI21",
+    "fmt_pp_other_total": "EK21",
+    "pp_billed_total": [
+     "EN21",
+     "F1_PP_Annual!O19"
+    ],
+    "fmt_pp_avg_cost": "EM21"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 22 Medium Term Power (JITPL)",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W22",
+      "pp_rate_billed": "V22"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG22",
+      "pp_rate_billed": "AF22"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ22",
+      "pp_rate_billed": "AP22"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA22",
+      "pp_rate_billed": "AZ22"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK22",
+      "pp_rate_billed": "BJ22"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU22",
+      "pp_rate_billed": "BT22"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE22",
+      "pp_rate_billed": "CD22"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO22",
+      "pp_rate_billed": "CN22"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY22",
+      "pp_rate_billed": "CX22"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI22",
+      "pp_rate_billed": "DH22"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS22",
+      "pp_rate_billed": "DR22"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT22",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC22",
+      "pp_rate_billed": "EB22"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE22",
+     "F1_PP_Annual!J20"
+    ],
+    "fmt_pp_fixed_total": "EG22",
+    "fmt_pp_energy_total": "EI22",
+    "fmt_pp_other_total": "EK22",
+    "pp_billed_total": [
+     "EN22",
+     "F1_PP_Annual!O20"
+    ],
+    "fmt_pp_avg_cost": "EM22"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 28 Open Access",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W28",
+      "pp_rate_billed": "V28"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG28",
+      "pp_rate_billed": "AF28"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ28",
+      "pp_rate_billed": "AP28"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA28",
+      "pp_rate_billed": "AZ28"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK28",
+      "pp_rate_billed": "BJ28"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU28",
+      "pp_rate_billed": "BT28"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE28",
+      "pp_rate_billed": "CD28"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO28",
+      "pp_rate_billed": "CN28"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY28",
+      "pp_rate_billed": "CX28"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI28",
+      "pp_rate_billed": "DH28"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS28",
+      "pp_rate_billed": "DR28"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT28",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC28",
+      "pp_rate_billed": "EB28"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE28",
+     "F1_PP_Annual!J24"
+    ],
+    "fmt_pp_fixed_total": "EG28",
+    "fmt_pp_energy_total": "EI28",
+    "fmt_pp_other_total": "EK28",
+    "pp_billed_total": [
+     "EN28",
+     "F1_PP_Annual!O24"
+    ],
+    "fmt_pp_avg_cost": "EM28"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 31 Solar(Renewable)",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W31",
+      "pp_rate_billed": "V31"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG31",
+      "pp_rate_billed": "AF31"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ31",
+      "pp_rate_billed": "AP31"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA31",
+      "pp_rate_billed": "AZ31"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK31",
+      "pp_rate_billed": "BJ31"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU31",
+      "pp_rate_billed": "BT31"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE31",
+      "pp_rate_billed": "CD31"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO31",
+      "pp_rate_billed": "CN31"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY31",
+      "pp_rate_billed": "CX31"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI31",
+      "pp_rate_billed": "DH31"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS31",
+      "pp_rate_billed": "DR31"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT31",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC31",
+      "pp_rate_billed": "EB31"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE31",
+     "F1_PP_Annual!J27"
+    ],
+    "fmt_pp_fixed_total": "EG31",
+    "fmt_pp_energy_total": "EI31",
+    "fmt_pp_other_total": "EK31",
+    "pp_billed_total": [
+     "EN31",
+     "F1_PP_Annual!O27"
+    ],
+    "fmt_pp_avg_cost": "EM31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 32 Non-Solar (Renewable)",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W32",
+      "pp_rate_billed": "V32"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG32",
+      "pp_rate_billed": "AF32"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ32",
+      "pp_rate_billed": "AP32"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA32",
+      "pp_rate_billed": "AZ32"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK32",
+      "pp_rate_billed": "BJ32"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU32",
+      "pp_rate_billed": "BT32"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE32",
+      "pp_rate_billed": "CD32"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO32",
+      "pp_rate_billed": "CN32"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY32",
+      "pp_rate_billed": "CX32"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI32",
+      "pp_rate_billed": "DH32"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS32",
+      "pp_rate_billed": "DR32"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT32",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC32",
+      "pp_rate_billed": "EB32"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE32",
+     "F1_PP_Annual!J28"
+    ],
+    "fmt_pp_fixed_total": "EG32",
+    "fmt_pp_energy_total": "EI32",
+    "fmt_pp_other_total": "EK32",
+    "pp_billed_total": [
+     "EN32",
+     "F1_PP_Annual!O28"
+    ],
+    "fmt_pp_avg_cost": "EM32"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 33 Power drawn under UI /Sale",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W33",
+      "pp_rate_billed": "V33"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG33",
+      "pp_rate_billed": "AF33"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ33",
+      "pp_rate_billed": "AP33"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA33",
+      "pp_rate_billed": "AZ33"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK33",
+      "pp_rate_billed": "BJ33"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU33",
+      "pp_rate_billed": "BT33"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE33",
+      "pp_rate_billed": "CD33"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO33",
+      "pp_rate_billed": "CN33"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY33",
+      "pp_rate_billed": "CX33"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI33",
+      "pp_rate_billed": "DH33"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS33",
+      "pp_rate_billed": "DR33"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT33",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC33",
+      "pp_rate_billed": "EB33"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE33",
+     "F1_PP_Annual!J29"
+    ],
+    "fmt_pp_fixed_total": "EG33",
+    "fmt_pp_energy_total": "EI33",
+    "fmt_pp_other_total": "EK33",
+    "pp_billed_total": [
+     "EN33",
+     "F1_PP_Annual!O29"
+    ],
+    "fmt_pp_avg_cost": "EM33"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 34 REC",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W34"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG34"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ34"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA34"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK34"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU34"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE34"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO34"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY34"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI34"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS34"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT34",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC34"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE34"
+    ],
+    "fmt_pp_fixed_total": "EG34",
+    "fmt_pp_energy_total": "EI34",
+    "fmt_pp_other_total": "EK34",
+    "pp_billed_total": [
+     "EN34"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 37 STU Charges",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W37"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG37"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ37"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA37"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK37"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU37"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE37"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO37"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY37"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI37"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS37"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT37",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC37"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE37"
+    ],
+    "fmt_pp_fixed_total": "EG37",
+    "fmt_pp_energy_total": "EI37",
+    "fmt_pp_other_total": "EK37",
+    "pp_billed_total": [
+     "EN37"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 38 GNA & TGNA Charges",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W38"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG38"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ38"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA38"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK38"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU38"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE38"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO38"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY38"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI38"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS38"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ38",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT38",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC38"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE38"
+    ],
+    "fmt_pp_fixed_total": "EG38",
+    "fmt_pp_energy_total": "EI38",
+    "fmt_pp_other_total": "EK38",
+    "pp_billed_total": [
+     "EN38"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 41 Total",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W41",
+      "pp_rate_billed": "V41"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG41",
+      "pp_rate_billed": "AF41"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ41",
+      "pp_rate_billed": "AP41"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA41",
+      "pp_rate_billed": "AZ41"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK41",
+      "pp_rate_billed": "BJ41"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU41",
+      "pp_rate_billed": "BT41"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE41",
+      "pp_rate_billed": "CD41"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO41",
+      "pp_rate_billed": "CN41"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY41",
+      "pp_rate_billed": "CX41"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI41",
+      "pp_rate_billed": "DH41"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS41",
+      "pp_rate_billed": "DR41"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT41",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC41",
+      "pp_rate_billed": "EB41"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE41"
+    ],
+    "fmt_pp_fixed_total": "EG41",
+    "fmt_pp_energy_total": "EI41",
+    "fmt_pp_other_total": "EK41",
+    "pp_billed_total": [
+     "EN41"
+    ],
+    "fmt_pp_avg_cost": "EM41"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F3 row 43 Grand Total",
+   "categories": {
+    "month 01": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "P43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "R43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "T43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "N43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "W43",
+      "pp_rate_billed": "V43"
+     }
+    },
+    "month 02": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "Z43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AB43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AD43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "X43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AG43",
+      "pp_rate_billed": "AF43"
+     }
+    },
+    "month 03": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AJ43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AL43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AN43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AH43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "AQ43",
+      "pp_rate_billed": "AP43"
+     }
+    },
+    "month 04": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "AT43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "AV43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "AX43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "AR43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BA43",
+      "pp_rate_billed": "AZ43"
+     }
+    },
+    "month 05": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BD43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BF43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BH43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BB43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BK43",
+      "pp_rate_billed": "BJ43"
+     }
+    },
+    "month 06": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BN43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BP43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "BR43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BL43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "BU43",
+      "pp_rate_billed": "BT43"
+     }
+    },
+    "month 07": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "BX43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "BZ43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CB43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "BV43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CE43",
+      "pp_rate_billed": "CD43"
+     }
+    },
+    "month 08": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CH43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CJ43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CL43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CF43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CO43",
+      "pp_rate_billed": "CN43"
+     }
+    },
+    "month 09": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "CR43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "CT43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "CV43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CP43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "CY43",
+      "pp_rate_billed": "CX43"
+     }
+    },
+    "month 10": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DB43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DD43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DF43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "CZ43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DI43",
+      "pp_rate_billed": "DH43"
+     }
+    },
+    "month 11": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DL43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DN43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DP43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DJ43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "DS43",
+      "pp_rate_billed": "DR43"
+     }
+    },
+    "month 12": {
+     "inputs": {
+      "record:pp_fixed_charges": {
+       "cell": "DV43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_energy_charges": {
+       "cell": "DX43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_other_charges": {
+       "cell": "DZ43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_mu_exported": {
+       "cell": "DT43",
+       "unit": "MU",
+       "blank_is_zero": "a blank cell of the format is nil — the format's own total sums it so"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the format has no rebate column: its total cost is fixed + energy + other"
+      }
+     },
+     "checks": {
+      "pp_billed": "EC43",
+      "pp_rate_billed": "EB43"
+     }
+    }
+   },
+   "checks": {
+    "pp_mu_exported_total": [
+     "EE43"
+    ],
+    "fmt_pp_fixed_total": "EG43",
+    "fmt_pp_energy_total": "EI43",
+    "fmt_pp_other_total": "EK43",
+    "pp_billed_total": [
+     "EN43"
+    ],
+    "fmt_pp_avg_cost": "EM43"
+   }
+  }
+ ]
+}
