@@ -1005,6 +1005,29 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 142 (2026-11-03): JSERC — depreciation, normative loan, equity, return and the ARR over the control period.**
+  - **Two records** in the JSERC folder: `figures-capital-fy2027-31.json` (100 figures: Tables 124,
+    125, 127, 133; paras 4.300–4.301) and `figures-arr-fy2027-31.json` (107 figures: Table 137 and
+    FY2026-27's gap); 207 / 207 quotes verified.
+  - **15 more draft JSERC rules (18 in all, from FY2026-27):** depreciation rate as audited
+    depreciation over audited average GFA (Clause 10.39), depreciation, loan closing / average /
+    interest (repayment = depreciation, 10.23), equity closing / average, equity added since
+    1 April 2026, the return as the order applies it, and the ARR summary to the gap.
+  - **Binding `approval-capital-fy27-31.json`: 34 / 40 exact**, five years chained on computed
+    closings; the rest within the printed precision of the chained additions (≤ 0.0063).  The
+    printed 4.39 % is applied unrounded (at 4.39 %, FY2026-27 would be 517.29, not 517.22).
+  - **Binding `approval-arr-fy27-31.json`: 11 / 26 exact from the printed heads (all within two
+    paise); end to end from the computed heads 13 / 16**, FY2026-27's gap 366.25 exact; FY2029-30
+    a paisa over (its printed power purchase and O&M are each a paisa over their parts).
+  - **Findings `J1`, `J2` (reviewer):**
+    - **J1:** Table 124 is headed "Rs. Crore" but is Rs lakh (para 4.301's lakh table, 22,39,690.88);
+      its average takes IT equipment's restated opening and no other row's.  On other bases the
+      FY2026-27 depreciation is 517.40 or 517.09.
+    - **J2:** the return is 15 % on half of *all* equity added since 1 April 2026; Clause 10.20 as
+      quoted reads the full beginning-of-year equity plus half the year's addition — 356.78 more
+      over FY2027-28 to FY2030-31.
+  Nothing verified, nothing approved.
+
   **Increment 141 (2026-11-03): HPERC — O&M built from its parts, and the PIP's unit.**
   - **The record:** `order/figures-om-fy2026-27.json` in the HPERC folder holds 55 figures
     (Tables 227, 228, 231; para 9.18.7), 55 / 55 quotes verified.
@@ -3508,6 +3531,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 142 (2026-11-03): 513 passed** (+2 unit: JSERC capital chain with J1, J2; JSERC ARR end to end).  `check_order_quotes.py`: 207 / 207.  Ruff and format clean.
 - **Increment 141 (2026-11-03): 511 passed** (+1 unit: HPERC's O&M from its parts; H3, H4).  `check_order_quotes.py`: 55 / 55.  Ruff and format clean.
 - **Increment 140 (2026-11-03): 510 passed** (+1 unit: an amended rule by effective year, synthetic).  Ruff and format clean.
 - **Increment 139 (2026-11-03): 509 passed** (+1 integration: the rules compared across commissions).  Ruff, format, contracts (regenerated, no drift) and `tsc` clean; screenshots at 1440 / 390 px.
@@ -3782,7 +3806,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 141) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 142) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

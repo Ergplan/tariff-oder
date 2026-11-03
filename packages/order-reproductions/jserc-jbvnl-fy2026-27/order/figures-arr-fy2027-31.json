@@ -1,0 +1,759 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "JSERC order on JBVNL (2026): true-up FY2024-25, APR FY2025-26, business plan and MYT ARR FY2026-27 to FY2030-31 — ARR approved for the control period and the FY2026-27 gap (Table 137)",
+  "sha256": "0391dd2701c7bbb7a962923212ef5a8ed6c9cdfbfea601df692d7ce4aa119108",
+  "pages": 372
+ },
+ "figures": {
+  "arr.pp_total.fy27": {
+   "value": "8002.40",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Total Power Purchase Expense 8002.40 9020.50 10387.98 11610.29 13023.62",
+   "what": "Table 137, Total Power Purchase Expense: fy27"
+  },
+  "arr.pp_total.fy28": {
+   "value": "9020.50",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Total Power Purchase Expense 8002.40 9020.50 10387.98 11610.29 13023.62",
+   "what": "Table 137, Total Power Purchase Expense: fy28"
+  },
+  "arr.pp_total.fy29": {
+   "value": "10387.98",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Total Power Purchase Expense 8002.40 9020.50 10387.98 11610.29 13023.62",
+   "what": "Table 137, Total Power Purchase Expense: fy29"
+  },
+  "arr.pp_total.fy30": {
+   "value": "11610.29",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Total Power Purchase Expense 8002.40 9020.50 10387.98 11610.29 13023.62",
+   "what": "Table 137, Total Power Purchase Expense: fy30"
+  },
+  "arr.pp_total.fy31": {
+   "value": "13023.62",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Total Power Purchase Expense 8002.40 9020.50 10387.98 11610.29 13023.62",
+   "what": "Table 137, Total Power Purchase Expense: fy31"
+  },
+  "arr.pp.fy27": {
+   "value": "8746.95",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Power Purchase Expense 8746.95 9664.14 10621.16 11672.77 12828.43",
+   "what": "Table 137, Power Purchase Expense: fy27"
+  },
+  "arr.pp.fy28": {
+   "value": "9664.14",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Power Purchase Expense 8746.95 9664.14 10621.16 11672.77 12828.43",
+   "what": "Table 137, Power Purchase Expense: fy28"
+  },
+  "arr.pp.fy29": {
+   "value": "10621.16",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Power Purchase Expense 8746.95 9664.14 10621.16 11672.77 12828.43",
+   "what": "Table 137, Power Purchase Expense: fy29"
+  },
+  "arr.pp.fy30": {
+   "value": "11672.77",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Power Purchase Expense 8746.95 9664.14 10621.16 11672.77 12828.43",
+   "what": "Table 137, Power Purchase Expense: fy30"
+  },
+  "arr.pp.fy31": {
+   "value": "12828.43",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Power Purchase Expense 8746.95 9664.14 10621.16 11672.77 12828.43",
+   "what": "Table 137, Power Purchase Expense: fy31"
+  },
+  "arr.disallowance.fy27": {
+   "value": "1834.49",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Less: Disallowance due to excess Distribution Loss 1834.49 1777.33 1412.39 1289.02 1080.59",
+   "what": "Table 137, Less: Disallowance due to excess Distribution Loss: fy27"
+  },
+  "arr.disallowance.fy28": {
+   "value": "1777.33",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Less: Disallowance due to excess Distribution Loss 1834.49 1777.33 1412.39 1289.02 1080.59",
+   "what": "Table 137, Less: Disallowance due to excess Distribution Loss: fy28"
+  },
+  "arr.disallowance.fy29": {
+   "value": "1412.39",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Less: Disallowance due to excess Distribution Loss 1834.49 1777.33 1412.39 1289.02 1080.59",
+   "what": "Table 137, Less: Disallowance due to excess Distribution Loss: fy29"
+  },
+  "arr.disallowance.fy30": {
+   "value": "1289.02",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Less: Disallowance due to excess Distribution Loss 1834.49 1777.33 1412.39 1289.02 1080.59",
+   "what": "Table 137, Less: Disallowance due to excess Distribution Loss: fy30"
+  },
+  "arr.disallowance.fy31": {
+   "value": "1080.59",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Less: Disallowance due to excess Distribution Loss 1834.49 1777.33 1412.39 1289.02 1080.59",
+   "what": "Table 137, Less: Disallowance due to excess Distribution Loss: fy31"
+  },
+  "arr.intra.fy27": {
+   "value": "565.32",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Intrastate transmission charges 565.32 587.93 611.45 635.91 661.34",
+   "what": "Table 137, Intrastate transmission charges: fy27"
+  },
+  "arr.intra.fy28": {
+   "value": "587.93",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Intrastate transmission charges 565.32 587.93 611.45 635.91 661.34",
+   "what": "Table 137, Intrastate transmission charges: fy28"
+  },
+  "arr.intra.fy29": {
+   "value": "611.45",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Intrastate transmission charges 565.32 587.93 611.45 635.91 661.34",
+   "what": "Table 137, Intrastate transmission charges: fy29"
+  },
+  "arr.intra.fy30": {
+   "value": "635.91",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Intrastate transmission charges 565.32 587.93 611.45 635.91 661.34",
+   "what": "Table 137, Intrastate transmission charges: fy30"
+  },
+  "arr.intra.fy31": {
+   "value": "661.34",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Intrastate transmission charges 565.32 587.93 611.45 635.91 661.34",
+   "what": "Table 137, Intrastate transmission charges: fy31"
+  },
+  "arr.inter.fy27": {
+   "value": "524.62",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interstate transmission Charge 524.62 545.76 567.76 590.64 614.44",
+   "what": "Table 137, Interstate transmission Charge: fy27"
+  },
+  "arr.inter.fy28": {
+   "value": "545.76",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interstate transmission Charge 524.62 545.76 567.76 590.64 614.44",
+   "what": "Table 137, Interstate transmission Charge: fy28"
+  },
+  "arr.inter.fy29": {
+   "value": "567.76",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interstate transmission Charge 524.62 545.76 567.76 590.64 614.44",
+   "what": "Table 137, Interstate transmission Charge: fy29"
+  },
+  "arr.inter.fy30": {
+   "value": "590.64",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interstate transmission Charge 524.62 545.76 567.76 590.64 614.44",
+   "what": "Table 137, Interstate transmission Charge: fy30"
+  },
+  "arr.inter.fy31": {
+   "value": "614.44",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interstate transmission Charge 524.62 545.76 567.76 590.64 614.44",
+   "what": "Table 137, Interstate transmission Charge: fy31"
+  },
+  "arr.om.fy27": {
+   "value": "1056.97",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Operations and Maintenance Expenses 1056.97 1139.88 1213.44 1285.87 1347.14",
+   "what": "Table 137, Operations and Maintenance Expenses: fy27"
+  },
+  "arr.om.fy28": {
+   "value": "1139.88",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Operations and Maintenance Expenses 1056.97 1139.88 1213.44 1285.87 1347.14",
+   "what": "Table 137, Operations and Maintenance Expenses: fy28"
+  },
+  "arr.om.fy29": {
+   "value": "1213.44",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Operations and Maintenance Expenses 1056.97 1139.88 1213.44 1285.87 1347.14",
+   "what": "Table 137, Operations and Maintenance Expenses: fy29"
+  },
+  "arr.om.fy30": {
+   "value": "1285.87",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Operations and Maintenance Expenses 1056.97 1139.88 1213.44 1285.87 1347.14",
+   "what": "Table 137, Operations and Maintenance Expenses: fy30"
+  },
+  "arr.om.fy31": {
+   "value": "1347.14",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Operations and Maintenance Expenses 1056.97 1139.88 1213.44 1285.87 1347.14",
+   "what": "Table 137, Operations and Maintenance Expenses: fy31"
+  },
+  "arr.employee.fy27": {
+   "value": "272.62",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Employee Expense 272.62 280.77 289.16 297.80 306.70",
+   "what": "Table 137, Employee Expense: fy27"
+  },
+  "arr.employee.fy28": {
+   "value": "280.77",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Employee Expense 272.62 280.77 289.16 297.80 306.70",
+   "what": "Table 137, Employee Expense: fy28"
+  },
+  "arr.employee.fy29": {
+   "value": "289.16",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Employee Expense 272.62 280.77 289.16 297.80 306.70",
+   "what": "Table 137, Employee Expense: fy29"
+  },
+  "arr.employee.fy30": {
+   "value": "297.80",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Employee Expense 272.62 280.77 289.16 297.80 306.70",
+   "what": "Table 137, Employee Expense: fy30"
+  },
+  "arr.employee.fy31": {
+   "value": "306.70",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Employee Expense 272.62 280.77 289.16 297.80 306.70",
+   "what": "Table 137, Employee Expense: fy31"
+  },
+  "arr.terminal.fy27": {
+   "value": "140.97",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Terminal Liability 140.97 146.16 151.55 157.14 162.93",
+   "what": "Table 137, Terminal Liability: fy27"
+  },
+  "arr.terminal.fy28": {
+   "value": "146.16",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Terminal Liability 140.97 146.16 151.55 157.14 162.93",
+   "what": "Table 137, Terminal Liability: fy28"
+  },
+  "arr.terminal.fy29": {
+   "value": "151.55",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Terminal Liability 140.97 146.16 151.55 157.14 162.93",
+   "what": "Table 137, Terminal Liability: fy29"
+  },
+  "arr.terminal.fy30": {
+   "value": "157.14",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Terminal Liability 140.97 146.16 151.55 157.14 162.93",
+   "what": "Table 137, Terminal Liability: fy30"
+  },
+  "arr.terminal.fy31": {
+   "value": "162.93",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Terminal Liability 140.97 146.16 151.55 157.14 162.93",
+   "what": "Table 137, Terminal Liability: fy31"
+  },
+  "arr.ag.fy27": {
+   "value": "123.40",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Administration & General Expense 123.40 127.09 130.89 134.80 138.82",
+   "what": "Table 137, Administration & General Expense: fy27"
+  },
+  "arr.ag.fy28": {
+   "value": "127.09",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Administration & General Expense 123.40 127.09 130.89 134.80 138.82",
+   "what": "Table 137, Administration & General Expense: fy28"
+  },
+  "arr.ag.fy29": {
+   "value": "130.89",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Administration & General Expense 123.40 127.09 130.89 134.80 138.82",
+   "what": "Table 137, Administration & General Expense: fy29"
+  },
+  "arr.ag.fy30": {
+   "value": "134.80",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Administration & General Expense 123.40 127.09 130.89 134.80 138.82",
+   "what": "Table 137, Administration & General Expense: fy30"
+  },
+  "arr.ag.fy31": {
+   "value": "138.82",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Administration & General Expense 123.40 127.09 130.89 134.80 138.82",
+   "what": "Table 137, Administration & General Expense: fy31"
+  },
+  "arr.rm.fy27": {
+   "value": "519.98",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Repair & Maintenance Expense 519.98 585.86 641.84 696.14 738.69",
+   "what": "Table 137, Repair & Maintenance Expense: fy27"
+  },
+  "arr.rm.fy28": {
+   "value": "585.86",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Repair & Maintenance Expense 519.98 585.86 641.84 696.14 738.69",
+   "what": "Table 137, Repair & Maintenance Expense: fy28"
+  },
+  "arr.rm.fy29": {
+   "value": "641.84",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Repair & Maintenance Expense 519.98 585.86 641.84 696.14 738.69",
+   "what": "Table 137, Repair & Maintenance Expense: fy29"
+  },
+  "arr.rm.fy30": {
+   "value": "696.14",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Repair & Maintenance Expense 519.98 585.86 641.84 696.14 738.69",
+   "what": "Table 137, Repair & Maintenance Expense: fy30"
+  },
+  "arr.rm.fy31": {
+   "value": "738.69",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Repair & Maintenance Expense 519.98 585.86 641.84 696.14 738.69",
+   "what": "Table 137, Repair & Maintenance Expense: fy31"
+  },
+  "arr.dep.fy27": {
+   "value": "517.22",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Depreciation 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 137, Depreciation: fy27"
+  },
+  "arr.dep.fy28": {
+   "value": "589.63",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Depreciation 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 137, Depreciation: fy28"
+  },
+  "arr.dep.fy29": {
+   "value": "649.58",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Depreciation 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 137, Depreciation: fy29"
+  },
+  "arr.dep.fy30": {
+   "value": "707.46",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Depreciation 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 137, Depreciation: fy30"
+  },
+  "arr.dep.fy31": {
+   "value": "762.66",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Depreciation 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 137, Depreciation: fy31"
+  },
+  "arr.roe.fy27": {
+   "value": "514.04",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Return on Equity Capital 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 137, Return on Equity Capital: fy27"
+  },
+  "arr.roe.fy28": {
+   "value": "544.53",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Return on Equity Capital 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 137, Return on Equity Capital: fy28"
+  },
+  "arr.roe.fy29": {
+   "value": "575.49",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Return on Equity Capital 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 137, Return on Equity Capital: fy29"
+  },
+  "arr.roe.fy30": {
+   "value": "603.86",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Return on Equity Capital 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 137, Return on Equity Capital: fy30"
+  },
+  "arr.roe.fy31": {
+   "value": "632.09",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Return on Equity Capital 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 137, Return on Equity Capital: fy31"
+  },
+  "arr.loan_interest.fy27": {
+   "value": "488.71",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Long Term Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 137, Interest on Long Term Loan: fy27"
+  },
+  "arr.loan_interest.fy28": {
+   "value": "569.55",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Long Term Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 137, Interest on Long Term Loan: fy28"
+  },
+  "arr.loan_interest.fy29": {
+   "value": "633.48",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Long Term Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 137, Interest on Long Term Loan: fy29"
+  },
+  "arr.loan_interest.fy30": {
+   "value": "688.35",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Long Term Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 137, Interest on Long Term Loan: fy30"
+  },
+  "arr.loan_interest.fy31": {
+   "value": "732.56",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Long Term Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 137, Interest on Long Term Loan: fy31"
+  },
+  "arr.csd.fy27": {
+   "value": "42.55",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Consumer Security Deposit 42.55 42.55 42.55 42.55 42.55",
+   "what": "Table 137, Interest on Consumer Security Deposit: fy27"
+  },
+  "arr.csd.fy28": {
+   "value": "42.55",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Consumer Security Deposit 42.55 42.55 42.55 42.55 42.55",
+   "what": "Table 137, Interest on Consumer Security Deposit: fy28"
+  },
+  "arr.csd.fy29": {
+   "value": "42.55",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Consumer Security Deposit 42.55 42.55 42.55 42.55 42.55",
+   "what": "Table 137, Interest on Consumer Security Deposit: fy29"
+  },
+  "arr.csd.fy30": {
+   "value": "42.55",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Consumer Security Deposit 42.55 42.55 42.55 42.55 42.55",
+   "what": "Table 137, Interest on Consumer Security Deposit: fy30"
+  },
+  "arr.csd.fy31": {
+   "value": "42.55",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Consumer Security Deposit 42.55 42.55 42.55 42.55 42.55",
+   "what": "Table 137, Interest on Consumer Security Deposit: fy31"
+  },
+  "arr.iowc.fy27": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Working Capital Loan 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 137, Interest on Working Capital Loan: fy27"
+  },
+  "arr.iowc.fy28": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Working Capital Loan 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 137, Interest on Working Capital Loan: fy28"
+  },
+  "arr.iowc.fy29": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Working Capital Loan 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 137, Interest on Working Capital Loan: fy29"
+  },
+  "arr.iowc.fy30": {
+   "value": "14.85",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Working Capital Loan 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 137, Interest on Working Capital Loan: fy30"
+  },
+  "arr.iowc.fy31": {
+   "value": "33.74",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Interest on Working Capital Loan 0.00 0.00 0.00 14.85 33.74",
+   "what": "Table 137, Interest on Working Capital Loan: fy31"
+  },
+  "arr.bank.fy27": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Bank/ Finance Charges - - - - -",
+   "what": "Table 137, Bank/ Finance Charges: fy27"
+  },
+  "arr.bank.fy28": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Bank/ Finance Charges - - - - -",
+   "what": "Table 137, Bank/ Finance Charges: fy28"
+  },
+  "arr.bank.fy29": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Bank/ Finance Charges - - - - -",
+   "what": "Table 137, Bank/ Finance Charges: fy29"
+  },
+  "arr.bank.fy30": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Bank/ Finance Charges - - - - -",
+   "what": "Table 137, Bank/ Finance Charges: fy30"
+  },
+  "arr.bank.fy31": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Bank/ Finance Charges - - - - -",
+   "what": "Table 137, Bank/ Finance Charges: fy31"
+  },
+  "arr.expenditure.fy27": {
+   "value": "10621.88",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Total Expenditure 10621.88 11906.64 13502.51 14953.23 16574.37",
+   "what": "Table 137, Total Expenditure: fy27"
+  },
+  "arr.expenditure.fy28": {
+   "value": "11906.64",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Total Expenditure 10621.88 11906.64 13502.51 14953.23 16574.37",
+   "what": "Table 137, Total Expenditure: fy28"
+  },
+  "arr.expenditure.fy29": {
+   "value": "13502.51",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Total Expenditure 10621.88 11906.64 13502.51 14953.23 16574.37",
+   "what": "Table 137, Total Expenditure: fy29"
+  },
+  "arr.expenditure.fy30": {
+   "value": "14953.23",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Total Expenditure 10621.88 11906.64 13502.51 14953.23 16574.37",
+   "what": "Table 137, Total Expenditure: fy30"
+  },
+  "arr.expenditure.fy31": {
+   "value": "16574.37",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Total Expenditure 10621.88 11906.64 13502.51 14953.23 16574.37",
+   "what": "Table 137, Total Expenditure: fy31"
+  },
+  "arr.nti.fy27": {
+   "value": "466.41",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Less: Non-Tariff Income 466.41 466.41 466.41 466.41 466.41",
+   "what": "Table 137, Less: Non-Tariff Income: fy27"
+  },
+  "arr.nti.fy28": {
+   "value": "466.41",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Less: Non-Tariff Income 466.41 466.41 466.41 466.41 466.41",
+   "what": "Table 137, Less: Non-Tariff Income: fy28"
+  },
+  "arr.nti.fy29": {
+   "value": "466.41",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Less: Non-Tariff Income 466.41 466.41 466.41 466.41 466.41",
+   "what": "Table 137, Less: Non-Tariff Income: fy29"
+  },
+  "arr.nti.fy30": {
+   "value": "466.41",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Less: Non-Tariff Income 466.41 466.41 466.41 466.41 466.41",
+   "what": "Table 137, Less: Non-Tariff Income: fy30"
+  },
+  "arr.nti.fy31": {
+   "value": "466.41",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "Less: Non-Tariff Income 466.41 466.41 466.41 466.41 466.41",
+   "what": "Table 137, Less: Non-Tariff Income: fy31"
+  },
+  "arr.arr_net.fy27": {
+   "value": "10155.47",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR after NTI 10,155.47 11,440.23 13036.10 14486.82 16107.96",
+   "what": "Table 137, ARR after NTI: fy27"
+  },
+  "arr.arr_net.fy28": {
+   "value": "11440.23",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR after NTI 10,155.47 11,440.23 13036.10 14486.82 16107.96",
+   "what": "Table 137, ARR after NTI: fy28"
+  },
+  "arr.arr_net.fy29": {
+   "value": "13036.10",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR after NTI 10,155.47 11,440.23 13036.10 14486.82 16107.96",
+   "what": "Table 137, ARR after NTI: fy29"
+  },
+  "arr.arr_net.fy30": {
+   "value": "14486.82",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR after NTI 10,155.47 11,440.23 13036.10 14486.82 16107.96",
+   "what": "Table 137, ARR after NTI: fy30"
+  },
+  "arr.arr_net.fy31": {
+   "value": "16107.96",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR after NTI 10,155.47 11,440.23 13036.10 14486.82 16107.96",
+   "what": "Table 137, ARR after NTI: fy31"
+  },
+  "arr.op1.fy27": {
+   "value": "677.23",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "OP-1 Liquidation 677.23 677.23 677.23 677.23 637.43",
+   "what": "Table 137, OP-1 Liquidation: fy27"
+  },
+  "arr.op1.fy28": {
+   "value": "677.23",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "OP-1 Liquidation 677.23 677.23 677.23 677.23 637.43",
+   "what": "Table 137, OP-1 Liquidation: fy28"
+  },
+  "arr.op1.fy29": {
+   "value": "677.23",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "OP-1 Liquidation 677.23 677.23 677.23 677.23 637.43",
+   "what": "Table 137, OP-1 Liquidation: fy29"
+  },
+  "arr.op1.fy30": {
+   "value": "677.23",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "OP-1 Liquidation 677.23 677.23 677.23 677.23 637.43",
+   "what": "Table 137, OP-1 Liquidation: fy30"
+  },
+  "arr.op1.fy31": {
+   "value": "637.43",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "OP-1 Liquidation 677.23 677.23 677.23 677.23 637.43",
+   "what": "Table 137, OP-1 Liquidation: fy31"
+  },
+  "arr.recoverable.fy27": {
+   "value": "10832.70",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR Recoverable 10,832.70 12117.46 13713.33 15164.05 16745.39",
+   "what": "Table 137, ARR Recoverable: fy27"
+  },
+  "arr.recoverable.fy28": {
+   "value": "12117.46",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR Recoverable 10,832.70 12117.46 13713.33 15164.05 16745.39",
+   "what": "Table 137, ARR Recoverable: fy28"
+  },
+  "arr.recoverable.fy29": {
+   "value": "13713.33",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR Recoverable 10,832.70 12117.46 13713.33 15164.05 16745.39",
+   "what": "Table 137, ARR Recoverable: fy29"
+  },
+  "arr.recoverable.fy30": {
+   "value": "15164.05",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR Recoverable 10,832.70 12117.46 13713.33 15164.05 16745.39",
+   "what": "Table 137, ARR Recoverable: fy30"
+  },
+  "arr.recoverable.fy31": {
+   "value": "16745.39",
+   "unit": "INR_crore",
+   "page": 295,
+   "quote": "ARR Recoverable 10,832.70 12117.46 13713.33 15164.05 16745.39",
+   "what": "Table 137, ARR Recoverable: fy31"
+  },
+  "arr.revenue.fy27": {
+   "value": "10466.45",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Revenue from Sales of power at existing tariff 10466.45",
+   "what": "Table 137, Revenue from Sales of power at existing tariff: fy27"
+  },
+  "arr.gap.fy27": {
+   "value": "366.25",
+   "unit": "INR_crore",
+   "page": 296,
+   "quote": "Net Gap/(Surplus) 366.25",
+   "what": "Table 137, Net Gap/(Surplus): fy27"
+  }
+ }
+}

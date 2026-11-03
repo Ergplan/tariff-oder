@@ -1,0 +1,254 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "JSERC order",
+ "rates": "order/figures-capital-fy2027-31.json",
+ "places": 2,
+ "note": "JSERC's depreciation, normative loan, equity and return on equity for JBVNL over the control period FY2026-27 to FY2030-31 (Tables 124, 125, 127, 133), each year opening on the previous year's computed closings: the rate as the audited depreciation over the audited average GFA (Clause 10.39; printed 4.39 %, applied unrounded), the loan's repayment equal to the year's depreciation, and the return as the order applies it — 14.50 % on the equity before 1 April 2026 and 15.00 % on half the equity added since (J2).  Table 124's figures are Rs lakh under a 'Rs. Crore' heading (J1); the rate, a ratio, is unaffected.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "FY2026-27: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+   "inputs": {
+    "record:dep_audited": {
+     "rate": "t124.depreciation"
+    },
+    "record:gfa_average_audited": {
+     "rate": "t124.average"
+    },
+    "record:gfa_average": {
+     "rate": "dep.avg_gfa.fy27"
+    },
+    "record:loan_addition": {
+     "rate": "loan.addition.fy27"
+    },
+    "record:loan_rate": {
+     "rate": "loan.rate.fy27"
+    },
+    "record:equity_addition": {
+     "rate": "roe.addition.fy27"
+    },
+    "record:equity_before_2026": {
+     "rate": "roe.opening.fy27"
+    },
+    "record:loan_opening": {
+     "rate": "loan.opening.fy27"
+    },
+    "record:equity_opening": {
+     "rate": "roe.opening.fy27"
+    },
+    "record:equity_added_opening": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no equity is added from 1 April 2026 before the control period's first year"
+    }
+   },
+   "checks": {
+    "dep_rate": "order:dep.rate.fy27",
+    "depreciation": "order:dep.cost.fy27",
+    "loan_closing": "order:loan.closing.fy27",
+    "loan_average": "order:loan.average.fy27",
+    "loan_interest": "order:loan.interest.fy27",
+    "equity_closing": "order:roe.closing.fy27",
+    "equity_average": "order:roe.average.fy27",
+    "roe_return": "order:roe.return.fy27"
+   }
+  },
+  {
+   "fiscal_year": "FY2027-28",
+   "label": "FY2027-28: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+   "inputs": {
+    "record:dep_audited": {
+     "rate": "t124.depreciation"
+    },
+    "record:gfa_average_audited": {
+     "rate": "t124.average"
+    },
+    "record:gfa_average": {
+     "rate": "dep.avg_gfa.fy28"
+    },
+    "record:loan_addition": {
+     "rate": "loan.addition.fy28"
+    },
+    "record:loan_rate": {
+     "rate": "loan.rate.fy28"
+    },
+    "record:equity_addition": {
+     "rate": "roe.addition.fy28"
+    },
+    "record:equity_before_2026": {
+     "rate": "roe.opening.fy27"
+    },
+    "record:loan_opening": {
+     "computed": "FY2026-27: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "loan_closing"
+    },
+    "record:equity_opening": {
+     "computed": "FY2026-27: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "equity_closing"
+    },
+    "record:equity_added_opening": {
+     "computed": "FY2026-27: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "equity_added_closing"
+    }
+   },
+   "checks": {
+    "dep_rate": "order:dep.rate.fy28",
+    "depreciation": "order:dep.cost.fy28",
+    "loan_closing": "order:loan.closing.fy28",
+    "loan_average": "order:loan.average.fy28",
+    "loan_interest": "order:loan.interest.fy28",
+    "equity_closing": "order:roe.closing.fy28",
+    "equity_average": "order:roe.average.fy28",
+    "roe_return": "order:roe.return.fy28"
+   }
+  },
+  {
+   "fiscal_year": "FY2028-29",
+   "label": "FY2028-29: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+   "inputs": {
+    "record:dep_audited": {
+     "rate": "t124.depreciation"
+    },
+    "record:gfa_average_audited": {
+     "rate": "t124.average"
+    },
+    "record:gfa_average": {
+     "rate": "dep.avg_gfa.fy29"
+    },
+    "record:loan_addition": {
+     "rate": "loan.addition.fy29"
+    },
+    "record:loan_rate": {
+     "rate": "loan.rate.fy29"
+    },
+    "record:equity_addition": {
+     "rate": "roe.addition.fy29"
+    },
+    "record:equity_before_2026": {
+     "rate": "roe.opening.fy27"
+    },
+    "record:loan_opening": {
+     "computed": "FY2027-28: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "loan_closing"
+    },
+    "record:equity_opening": {
+     "computed": "FY2027-28: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "equity_closing"
+    },
+    "record:equity_added_opening": {
+     "computed": "FY2027-28: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "equity_added_closing"
+    }
+   },
+   "checks": {
+    "dep_rate": "order:dep.rate.fy29",
+    "depreciation": "order:dep.cost.fy29",
+    "loan_closing": "order:loan.closing.fy29",
+    "loan_average": "order:loan.average.fy29",
+    "loan_interest": "order:loan.interest.fy29",
+    "equity_closing": "order:roe.closing.fy29",
+    "equity_average": "order:roe.average.fy29",
+    "roe_return": "order:roe.return.fy29"
+   }
+  },
+  {
+   "fiscal_year": "FY2029-30",
+   "label": "FY2029-30: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+   "inputs": {
+    "record:dep_audited": {
+     "rate": "t124.depreciation"
+    },
+    "record:gfa_average_audited": {
+     "rate": "t124.average"
+    },
+    "record:gfa_average": {
+     "rate": "dep.avg_gfa.fy30"
+    },
+    "record:loan_addition": {
+     "rate": "loan.addition.fy30"
+    },
+    "record:loan_rate": {
+     "rate": "loan.rate.fy30"
+    },
+    "record:equity_addition": {
+     "rate": "roe.addition.fy30"
+    },
+    "record:equity_before_2026": {
+     "rate": "roe.opening.fy27"
+    },
+    "record:loan_opening": {
+     "computed": "FY2028-29: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "loan_closing"
+    },
+    "record:equity_opening": {
+     "computed": "FY2028-29: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "equity_closing"
+    },
+    "record:equity_added_opening": {
+     "computed": "FY2028-29: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "equity_added_closing"
+    }
+   },
+   "checks": {
+    "dep_rate": "order:dep.rate.fy30",
+    "depreciation": "order:dep.cost.fy30",
+    "loan_closing": "order:loan.closing.fy30",
+    "loan_average": "order:loan.average.fy30",
+    "loan_interest": "order:loan.interest.fy30",
+    "equity_closing": "order:roe.closing.fy30",
+    "equity_average": "order:roe.average.fy30",
+    "roe_return": "order:roe.return.fy30"
+   }
+  },
+  {
+   "fiscal_year": "FY2030-31",
+   "label": "FY2030-31: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+   "inputs": {
+    "record:dep_audited": {
+     "rate": "t124.depreciation"
+    },
+    "record:gfa_average_audited": {
+     "rate": "t124.average"
+    },
+    "record:gfa_average": {
+     "rate": "dep.avg_gfa.fy31"
+    },
+    "record:loan_addition": {
+     "rate": "loan.addition.fy31"
+    },
+    "record:loan_rate": {
+     "rate": "loan.rate.fy31"
+    },
+    "record:equity_addition": {
+     "rate": "roe.addition.fy31"
+    },
+    "record:equity_before_2026": {
+     "rate": "roe.opening.fy27"
+    },
+    "record:loan_opening": {
+     "computed": "FY2029-30: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "loan_closing"
+    },
+    "record:equity_opening": {
+     "computed": "FY2029-30: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "equity_closing"
+    },
+    "record:equity_added_opening": {
+     "computed": "FY2029-30: depreciation, normative loan, equity and return (Tables 124, 125, 127, 133)",
+     "output": "equity_added_closing"
+    }
+   },
+   "checks": {
+    "dep_rate": "order:dep.rate.fy31",
+    "depreciation": "order:dep.cost.fy31",
+    "loan_closing": "order:loan.closing.fy31",
+    "loan_average": "order:loan.average.fy31",
+    "loan_interest": "order:loan.interest.fy31",
+    "equity_closing": "order:roe.closing.fy31",
+    "equity_average": "order:roe.average.fy31",
+    "roe_return": "order:roe.return.fy31"
+   }
+  }
+ ]
+}

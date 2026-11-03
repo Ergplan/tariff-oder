@@ -1,4 +1,28 @@
 {
  "status": "found by reproducing the order in the build session; each is a question for the reviewer — none is resolved by the build",
- "findings": []
+ "findings": [
+  {
+   "id": "J1",
+   "kind": "unit and base of a printed table",
+   "title": "Table 124 is headed 'Rs. Crore' but its figures are Rs lakh; its average GFA takes IT equipment's restated opening and no other row's",
+   "detail": "Table 124's total GFA as on 01.04.2024, 2239690.88 under a 'Rs. Crore' heading, is the order's own figure in Rs lakh: para 4.301's table 'Gross Fixed Asset ( Rs Lacs)' totals 22,39,690.88 as on 31-03-2024, and para 4.300 gives the FY2023-24 closing GFA as ₹ 22,396.91 crore. The rate, depreciation over average GFA, is a ratio and unaffected (4.389 %, printed 4.39 %); a reader taking the heading at its word would read a GFA of 22 lakh crore.  Second, the average column is not the mean of the printed columns: IT Equipment has no opening and is averaged at its closing, 1584.88 — the value para 4.301 gives it on the restated opening (nil before the restatement) — while every other row's opening is the pre-restatement 31-03-2024 figure.  On the printed columns' mean the rate is 4.3909 % (FY2026-27 depreciation 517.40); on the restated opening throughout (22,42,411.40 lakh) 4.3883 % (517.09); the order's base gives 4.3894 % and 517.22, which the binding reproduces in all five years.  Over the control period the three bases span 3,225.74 to 3,227.67.  For the reviewer: which opening Clause 10.39's 'Average Gross Fixed Assets as per the latest available Audited Accounts' means — the restated or the original.",
+   "where": [
+    "JSERC order on JBVNL (2026), pp.279–280 Table 124 and para 8.28; p.80 paras 4.300–4.301; p.280 Table 125",
+    "order/figures-capital-fy2027-31.json",
+    "bindings/approval-capital-fy27-31.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "J2",
+   "kind": "rule against regulation",
+   "title": "RoE takes half of all the equity added since 1 April 2026; Clause 10.20 as quoted gives the full equity at the year's beginning and half the year's addition",
+   "detail": "Table 133's return reproduces to the paisa in all five years as 14.50 % on the equity before 1 April 2026 (3,243.33, every year) plus 15.00 % on half the cumulative equity added since — FY2027-28: 470.28 + 15 % × (583.37 + 406.52) / 2 = 544.53.  Neither the printed 'Average Equity' row (4,029.96) nor the opening is the base.  The order quotes Clause 10.20: return 'on equity employed … on assets (in use) capitalised as on the beginning of the year; and … Fifty Percent (50%) of the equity … on assets (in use) Commissioned during the year'.  Read so, a year's addition counts in full from the next year: the same 514.04 in FY2026-27, then 588.28, 649.73, 709.07 and 765.67 against the printed 544.53, 575.49, 603.86 and 632.09 — 356.78 more over FY2027-28 to FY2030-31.  The draft rule reproduces the order's practice and its note says so; for the reviewer: which reading the Commission intends, before either is approved.",
+   "where": [
+    "JSERC order on JBVNL (2026), pp.287–289 paras 8.56–8.61 and Table 133; Clauses 10.19–10.20 as quoted",
+    "bindings/approval-capital-fy27-31.json"
+   ],
+   "for": "reviewer"
+  }
+ ]
 }

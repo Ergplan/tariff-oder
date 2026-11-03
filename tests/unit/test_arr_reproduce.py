@@ -2623,3 +2623,91 @@ def test_hperc_om_built_from_its_parts_and_the_pip_unit():
     h4 = by[("O&M as the MYT order approved it (Tables 227, 228, 231, 232)", "om:text.ag_myt.crore")]
     assert h4.computed == "314.38" and h4.filed == "314.31"
     assert {"H3", "H4"} <= {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+
+
+def test_jserc_depreciation_loan_and_equity_chain_over_the_control_period():
+    """Real data, JSERC / JBVNL FY2026-27 to FY2030-31 (Tables 124, 125, 127, 133), each year opening on
+    the previous year's computed closings: the depreciation rate as audited depreciation over audited
+    average GFA (printed 4.39 %, applied unrounded — at 4.39 % FY2026-27 would be 517.29), the loan's
+    repayment equal to the depreciation, the return as the order applies it (J2).  34 of 40 exact, the
+    rest within the printed precision of the chained additions.  Table 124 is in Rs lakh (J1)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("JSERC") == []
+    folder = ROOT / "packages" / "order-reproductions" / "jserc-jbvnl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-capital-fy27-31.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("JSERC"), rates=rec)
+    years = ["FY2026-27", "FY2027-28", "FY2028-29", "FY2029-30", "FY2030-31"]
+    assert len(checks) == 40 and sum(c.result == "match" for c in checks) == 34
+    for c in checks:  # a paisa per printed addition carried, plus the printed figure's own half paisa
+        assert abs(Decimal(c.exact) - Decimal(c.filed)) <= Decimal("0.005") * (years.index(c.fiscal_year) + 2), c
+    assert all(c.result == "match" for c in checks if c.output in ("dep_rate", "depreciation"))
+    v = {k: Decimal(x[0]) for k, x in rec.items()}
+    ys = ["fy27", "fy28", "fy29", "fy30", "fy31"]
+    assert (Decimal("0.0439") * v["dep.avg_gfa.fy27"]).quantize(Decimal("0.01")) == Decimal("517.29")
+    assert all(v[f"loan.repayment.{y}"] == v[f"dep.cost.{y}"] for y in ys)
+    for a, b in zip(ys, ys[1:], strict=False):
+        assert v[f"loan.opening.{b}"] == v[f"loan.closing.{a}"] and v[f"roe.opening.{b}"] == v[f"roe.closing.{a}"]
+    # J1: the 'Rs. Crore' table is the lakh table of para 4.301; IT equipment averaged at its restated opening
+    assert rec["p80.gfa_lakh_310324"] == ("2239690.88", "INR_lakh") and v["t124.opening"] == v["p80.gfa_lakh_310324"]
+    assert abs(v["t124.opening"] / 100 - v["p80.closing_fy24_crore"]) <= Decimal("0.005")
+    mean = (v["t124.opening"] + v["t124.closing"]) / 2
+    assert abs(v["t124.average"] - mean - v["t124.it_average"] / 2) <= Decimal("0.01")
+    # J2: Clause 10.20 read as the full equity at the year's beginning plus half the year's addition
+    before, added, reading = v["roe.opening.fy27"], Decimal(0), []
+    for y in ys:
+        ret = Decimal("0.145") * before + Decimal("0.15") * (added + v[f"roe.addition.{y}"] / 2)
+        reading.append(ret.quantize(Decimal("0.01")))
+        added += v[f"roe.addition.{y}"]
+    assert reading == [Decimal(x) for x in ("514.04", "588.28", "649.73", "709.07", "765.67")]
+    assert sum(reading[1:]) - sum(v[f"roe.return.{y}"] for y in ys[1:]) == Decimal("356.78")
+    assert {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]} == {"J1", "J2"}
+
+
+def test_jserc_arr_over_the_control_period_end_to_end():
+    """Real data, JSERC / JBVNL ARR FY2026-27 to FY2030-31 (Table 137): from its printed heads within
+    two paise; end to end — depreciation, return, loan interest and working capital as the other
+    JSERC bindings compute them, unrounded — 13 of 16 exact, FY2026-27's gap 366.25 among them;
+    FY2029-30 a paisa over, where its printed power purchase and O&M are each a paisa over their parts."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import RuleSet, load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "jserc-jbvnl-fy2026-27"
+    rules = load_rules("JSERC")
+
+    def run(name):
+        b = json.loads((folder / "bindings" / name).read_text())
+        rec = load_binding_rates(folder, b)
+        return rec, {(c.fiscal_year, c.output): c for c in reproduce_cells(None, b, rules, rates=rec)}
+
+    arec, arr = run("approval-arr-fy27-31.json")
+    assert len(arr) == 26 and all(abs(Decimal(c.exact) - Decimal(c.filed)) <= Decimal("0.02") for c in arr.values())
+    _, cap = run("approval-capital-fy27-31.json")
+    _, iowc = run("approval-iowc-fy27-31.json")
+    exact, off = 0, []
+    years = {"fy27": "FY2026-27", "fy28": "FY2027-28", "fy29": "FY2028-29", "fy30": "FY2029-30", "fy31": "FY2030-31"}
+    for y, fy in years.items():
+        keys = ("pp", "disallowance", "intra", "inter", "employee", "terminal", "ag", "rm", "csd", "bank", "nti", "op1")
+        values = {f"record:arr_{k}": arec[f"arr.{k}.{y}"] for k in keys}
+        values["record:arr_dep"] = (cap[(fy, "depreciation")].exact, "INR_crore")
+        values["record:arr_roe"] = (cap[(fy, "roe_return")].exact, "INR_crore")
+        values["record:arr_loan_interest"] = (cap[(fy, "loan_interest")].exact, "INR_crore")
+        values["record:arr_iowc"] = (iowc[(fy, "iowc_interest")].exact, "INR_crore")
+        if y == "fy27":
+            values["record:arr_revenue"] = arec["arr.revenue.fy27"]
+        ev = RuleSet(rules, fy).evaluate(fy, values)
+        for o in ("arr_expenditure", "arr_net", "arr_recoverable") + (("arr_gap",) if y == "fy27" else ()):
+            got, filed = ev.results[o].rounded, Decimal(arr[(fy, o)].filed)
+            exact += got == filed
+            if got != filed:
+                off.append((fy, o, got - filed))
+    assert exact == 13 and off == [
+        (f, o, Decimal("0.01"))
+        for f, o in [("FY2029-30", "arr_expenditure"), ("FY2029-30", "arr_net"), ("FY2029-30", "arr_recoverable")]
+    ]

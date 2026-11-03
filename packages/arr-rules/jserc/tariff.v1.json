@@ -4,7 +4,7 @@
  "applies": {
   "commission": "JSERC"
  },
- "note": "JSERC's interest on working capital for the retail supply business, as the 2026 MYT order for JBVNL quotes and applies it — the engine's fifth commission.  The control period's years are not bounded here yet.",
+ "note": "JSERC's 2025 Distribution Tariff Regulations as the 2026 MYT order for JBVNL quotes and applies them — the engine's fifth commission: working capital (the control period's years not bounded), depreciation, normative loan, equity and return, and the ARR summary (from FY2026-27).",
  "rules": [
   {
    "id": "jserc.iowc.requirement",
@@ -142,6 +142,665 @@
     }
    ],
    "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.285–286), not read from the Regulations; the order's practice (para 8.52): a negative computation approved as nil — MPERC instead admits and nets a negative (its M1)"
+  },
+  {
+   "id": "jserc.dep.rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation rate: the audited depreciation over the audited average GFA (no fixed asset register)",
+   "output": "dep_rate",
+   "unit": "percent",
+   "schedule": "R-SCH-7",
+   "formula": "depreciation / average",
+   "inputs": {
+    "depreciation": {
+     "unit": "INR_crore",
+     "source": "record:dep_audited",
+     "note": "gross depreciation as per the latest audited accounts"
+    },
+    "average": {
+     "unit": "INR_crore",
+     "source": "record:gfa_average_audited",
+     "note": "average GFA as per the same accounts"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.39",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.39 The Commission may, in the absence of the Fixed Assets Register, calculate Depreciation in percentage (%) arrived by dividing the Depreciation and the Average Gross Fixed Assets as per the latest available Audited Accounts of the Distribution Licensee. The Depreciation (%) so arrived shall be multiplied by the Average GFA approved by the Commission for the relevant Financial Year to arrive at the Depreciation for that Financial Year.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "depreciation": "4.39",
+      "average": "100"
+     },
+     "expected": "4.39",
+     "source": "constructed (not a filing)"
+    }
+   ],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.279–281), not read from the Regulations; a ratio, so the unit of the two figures cancels (Table 124 prints them in Rs lakh under a 'Rs. Crore' heading — J1); the order prints 4.39 % and applies the unrounded ratio"
+  },
+  {
+   "id": "jserc.dep.depreciation",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation: the rate on the average GFA net of consumer contribution and grants",
+   "output": "depreciation",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "formula": "rate * average",
+   "inputs": {
+    "rate": {
+     "unit": "percent",
+     "source": "rule:dep_rate"
+    },
+    "average": {
+     "unit": "INR_crore",
+     "source": "record:gfa_average",
+     "note": "average GFA created out of debt and equity (Clause 10.34's proviso)"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.34, 10.39",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.39 The Commission may, in the absence of the Fixed Assets Register, calculate Depreciation in percentage (%) arrived by dividing the Depreciation and the Average Gross Fixed Assets as per the latest available Audited Accounts of the Distribution Licensee. The Depreciation (%) so arrived shall be multiplied by the Average GFA approved by the Commission for the relevant Financial Year to arrive at the Depreciation for that Financial Year.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.279–281), not read from the Regulations"
+  },
+  {
+   "id": "jserc.loan.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative loan, closing: opening plus addition less repayment equal to the depreciation",
+   "output": "loan_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "opening + addition - repayment",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:loan_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:loan_addition",
+     "note": "70 % of the capitalisation net of consumer contribution (para 8.35)"
+    },
+    "repayment": {
+     "unit": "INR_crore",
+     "source": "rule:depreciation"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.21–10.23",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.23 The repayment for each year of the Control Period shall be deemed to be equal to the depreciation allowed for that year. … 10.26 The rate of interest shall be the weighted average rate of interest calculated on the basis of the actual loan portfolio at the beginning of each year applicable to the Licensee: Provided that Rate of Interest shall not exceed Bank Rate as on April 01 of the respective year of the Control Period plus two hundred (200) basis points. … 10.27 The interest on loan shall be calculated on the normative average loan of the year by applying the weighted average rate of interest.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.282–284), not read from the Regulations"
+  },
+  {
+   "id": "jserc.loan.average",
+   "version": 1,
+   "status": "draft",
+   "title": "Normative loan, average of the opening and the closing",
+   "output": "loan_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "(opening + closing) / 2",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:loan_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:loan_closing"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.27",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.23 The repayment for each year of the Control Period shall be deemed to be equal to the depreciation allowed for that year. … 10.26 The rate of interest shall be the weighted average rate of interest calculated on the basis of the actual loan portfolio at the beginning of each year applicable to the Licensee: Provided that Rate of Interest shall not exceed Bank Rate as on April 01 of the respective year of the Control Period plus two hundred (200) basis points. … 10.27 The interest on loan shall be calculated on the normative average loan of the year by applying the weighted average rate of interest.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.282–284), not read from the Regulations"
+  },
+  {
+   "id": "jserc.loan.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on loan: the rate on the normative average loan",
+   "output": "loan_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-8",
+   "formula": "rate * average",
+   "inputs": {
+    "average": {
+     "unit": "INR_crore",
+     "source": "rule:loan_average"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:loan_rate",
+     "note": "10.20 % as proposed, subject to true-up (para 8.37)"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.26, 10.27",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.23 The repayment for each year of the Control Period shall be deemed to be equal to the depreciation allowed for that year. … 10.26 The rate of interest shall be the weighted average rate of interest calculated on the basis of the actual loan portfolio at the beginning of each year applicable to the Licensee: Provided that Rate of Interest shall not exceed Bank Rate as on April 01 of the respective year of the Control Period plus two hundred (200) basis points. … 10.27 The interest on loan shall be calculated on the normative average loan of the year by applying the weighted average rate of interest.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.282–284), not read from the Regulations"
+  },
+  {
+   "id": "jserc.equity.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Equity, closing: opening plus the year's addition",
+   "output": "equity_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "opening + addition",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:equity_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:equity_addition",
+     "note": "30 % of the capitalisation net of consumer contribution and grants (para 8.57)"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.16–10.17",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "jserc.equity.average",
+   "version": 1,
+   "status": "draft",
+   "title": "Equity, average of the opening and the closing (printed; not the base of the return — J2)",
+   "output": "equity_average",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "(opening + closing) / 2",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:equity_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:equity_closing"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the row Table 133 prints; the order's return is not computed on it"
+  },
+  {
+   "id": "jserc.equity.added_closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Equity added from 1 April 2026, cumulative at the year's close",
+   "output": "equity_added_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "opening + addition",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:equity_added_opening",
+     "note": "nil on 1 April 2026"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:equity_addition"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.19",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the equity on which the 15.00 % rate falls"
+  },
+  {
+   "id": "jserc.roe.return",
+   "version": 1,
+   "status": "draft",
+   "title": "Return on equity as the order applies it: 14.50 % on the equity before 1 April 2026, 15.00 % on half the equity added since",
+   "output": "roe_return",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "rate_before * before + rate_after * added / 2",
+   "inputs": {
+    "before": {
+     "unit": "INR_crore",
+     "source": "record:equity_before_2026",
+     "note": "the opening equity of FY2026-27"
+    },
+    "added": {
+     "unit": "INR_crore",
+     "source": "rule:equity_added_closing"
+    },
+    "rate_before": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "14.50"
+    },
+    "rate_after": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "15.00"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.19, 10.20",
+    "source_id": null,
+    "page": null,
+    "excerpt": "10.19 The base rate of Return on Equity (RoE) shall be 14.50% (post-tax) for assets capitalised prior to April 01, 2026 and 15.00% (post-tax) for assets capitalised from April 01, 2026, provided that in addition to the base RoE, the Commission may allow an additional 0.50% RoE … 10.20 The Licensee to provide Return on equity for each year shall be allowed on equity employed in assets in use considering the following: a) Equity employed in accordance with Clause 10.16 of these Regulations on assets (in use) capitalised as on the beginning of the year; and b) Fifty Percent (50%) of the equity projected to be employed in accordance with Clause 10.17 of these Regulations on assets (in use) Commissioned during the year.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "before": "100",
+      "added": "20"
+     },
+     "expected": "16.00",
+     "source": "constructed (not a filing)"
+    }
+   ],
+   "note": "the excerpt is the order's own quotation (JBVNL MYT order 2026, pp.289–290), not read from the Regulations; the order's practice, reproduced to the paisa in every year: half of all the equity added since 1 April 2026, where Clause 10.20 as quoted reads the full equity on assets in use at the year's beginning plus half the year's addition — the same in FY2026-27, 43.75 a year more from FY2027-28 (J2); the income tax is nil (para 8.60)"
+  },
+  {
+   "id": "jserc.arr.pp_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase with transmission, less the disallowance for excess distribution loss",
+   "output": "arr_pp_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "pp - disallowance + intra + inter",
+   "inputs": {
+    "pp": {
+     "unit": "INR_crore",
+     "source": "record:arr_pp"
+    },
+    "disallowance": {
+     "unit": "INR_crore",
+     "source": "record:arr_disallowance"
+    },
+    "intra": {
+     "unit": "INR_crore",
+     "source": "record:arr_intra"
+    },
+    "inter": {
+     "unit": "INR_crore",
+     "source": "record:arr_inter"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "jserc.arr.om_total",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M: employee, terminal liability, A&G and R&M",
+   "output": "arr_om_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "employee + terminal + ag + rm",
+   "inputs": {
+    "employee": {
+     "unit": "INR_crore",
+     "source": "record:arr_employee"
+    },
+    "terminal": {
+     "unit": "INR_crore",
+     "source": "record:arr_terminal"
+    },
+    "ag": {
+     "unit": "INR_crore",
+     "source": "record:arr_ag"
+    },
+    "rm": {
+     "unit": "INR_crore",
+     "source": "record:arr_rm"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "jserc.arr.expenditure",
+   "version": 1,
+   "status": "draft",
+   "title": "Total expenditure",
+   "output": "arr_expenditure",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "pp + om + dep + roe + loan + csd + iowc + bank",
+   "inputs": {
+    "pp": {
+     "unit": "INR_crore",
+     "source": "rule:arr_pp_total"
+    },
+    "om": {
+     "unit": "INR_crore",
+     "source": "rule:arr_om_total"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:arr_dep"
+    },
+    "roe": {
+     "unit": "INR_crore",
+     "source": "record:arr_roe"
+    },
+    "loan": {
+     "unit": "INR_crore",
+     "source": "record:arr_loan_interest"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "record:arr_csd"
+    },
+    "iowc": {
+     "unit": "INR_crore",
+     "source": "record:arr_iowc"
+    },
+    "bank": {
+     "unit": "INR_crore",
+     "source": "record:arr_bank"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "jserc.arr.net",
+   "version": 1,
+   "status": "draft",
+   "title": "ARR after non-tariff income",
+   "output": "arr_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "expenditure - nti",
+   "inputs": {
+    "expenditure": {
+     "unit": "INR_crore",
+     "source": "rule:arr_expenditure"
+    },
+    "nti": {
+     "unit": "INR_crore",
+     "source": "record:arr_nti"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": "10.53",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "jserc.arr.recoverable",
+   "version": 1,
+   "status": "draft",
+   "title": "ARR recoverable: with the liquidation of the earlier gap (OP-1)",
+   "output": "arr_recoverable",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "net + op1",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:arr_net"
+    },
+    "op1": {
+     "unit": "INR_crore",
+     "source": "record:arr_op1"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": []
+  },
+  {
+   "id": "jserc.arr.gap",
+   "version": 1,
+   "status": "draft",
+   "title": "Gap at the existing tariff: ARR recoverable less revenue",
+   "output": "arr_gap",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-13",
+   "formula": "recoverable - revenue",
+   "inputs": {
+    "recoverable": {
+     "unit": "INR_crore",
+     "source": "rule:arr_recoverable"
+    },
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:arr_revenue"
+    }
+   },
+   "clause": {
+    "regulation": "JSERC (Terms and Conditions for Determination of Distribution Tariff) Regulations, 2025, as the JBVNL MYT order (2026) quotes them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "JSERC",
+    "from_fy": "FY2026-27"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "positive a gap, negative a surplus"
   }
  ]
 }

@@ -1,0 +1,710 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "JSERC order on JBVNL (2026): true-up FY2024-25, APR FY2025-26, business plan and MYT ARR FY2026-27 to FY2030-31 — depreciation, normative loan and return on equity (Tables 124, 125, 127, 133; paras 4.300–4.301)",
+  "sha256": "0391dd2701c7bbb7a962923212ef5a8ed6c9cdfbfea601df692d7ce4aa119108",
+  "pages": 372
+ },
+ "figures": {
+  "t124.opening": {
+   "value": "2239690.88",
+   "unit": "INR_crore",
+   "page": 279,
+   "quote": "Total 2239690.88 2322341.15 2281808.45 100156.82",
+   "what": "Table 124 (headed 'Rs. Crore'): GFA opening 01.04.2024, closing 31.03.2025, average, gross depreciation as per audited account, Total"
+  },
+  "t124.closing": {
+   "value": "2322341.15",
+   "unit": "INR_crore",
+   "page": 279,
+   "quote": "Total 2239690.88 2322341.15 2281808.45 100156.82",
+   "what": "Table 124 (headed 'Rs. Crore'): GFA opening 01.04.2024, closing 31.03.2025, average, gross depreciation as per audited account, Total"
+  },
+  "t124.average": {
+   "value": "2281808.45",
+   "unit": "INR_crore",
+   "page": 279,
+   "quote": "Total 2239690.88 2322341.15 2281808.45 100156.82",
+   "what": "Table 124 (headed 'Rs. Crore'): GFA opening 01.04.2024, closing 31.03.2025, average, gross depreciation as per audited account, Total"
+  },
+  "t124.depreciation": {
+   "value": "100156.82",
+   "unit": "INR_crore",
+   "page": 279,
+   "quote": "Total 2239690.88 2322341.15 2281808.45 100156.82",
+   "what": "Table 124 (headed 'Rs. Crore'): GFA opening 01.04.2024, closing 31.03.2025, average, gross depreciation as per audited account, Total"
+  },
+  "t124.rate": {
+   "value": "4.39",
+   "unit": "percent",
+   "page": 279,
+   "quote": "Weighted Average Depreciation rate 4.39%",
+   "what": "Table 124: weighted average depreciation rate, Weighted Average Depreciation rate"
+  },
+  "t124.it_closing": {
+   "value": "1584.88",
+   "unit": "INR_crore",
+   "page": 279,
+   "quote": "IT Equipment 1584.88 1584.88 237.73",
+   "what": "Table 124 (headed 'Rs. Crore'): IT Equipment — no opening printed; closing 31.03.2025, average, gross depreciation, IT Equipment"
+  },
+  "t124.it_average": {
+   "value": "1584.88",
+   "unit": "INR_crore",
+   "page": 279,
+   "quote": "IT Equipment 1584.88 1584.88 237.73",
+   "what": "Table 124 (headed 'Rs. Crore'): IT Equipment — no opening printed; closing 31.03.2025, average, gross depreciation, IT Equipment"
+  },
+  "t124.it_depreciation": {
+   "value": "237.73",
+   "unit": "INR_crore",
+   "page": 279,
+   "quote": "IT Equipment 1584.88 1584.88 237.73",
+   "what": "Table 124 (headed 'Rs. Crore'): IT Equipment — no opening printed; closing 31.03.2025, average, gross depreciation, IT Equipment"
+  },
+  "p80.gfa_lakh_310324": {
+   "value": "2239690.88",
+   "unit": "INR_lakh",
+   "page": 80,
+   "quote": "Intangible Asset 214.69 317.91 103.22 Total 22,39,690.88 22,42,411.40 2,720.52",
+   "what": "para 4.301, 'Gross Fixed Asset ( Rs Lacs)': as on 31-03-2024, as on '01-04-2025' (the restated opening), difference, Intangible Asset 214.69 317.91 103.22 Total"
+  },
+  "p80.gfa_lakh_restated": {
+   "value": "2242411.40",
+   "unit": "INR_lakh",
+   "page": 80,
+   "quote": "Intangible Asset 214.69 317.91 103.22 Total 22,39,690.88 22,42,411.40 2,720.52",
+   "what": "para 4.301, 'Gross Fixed Asset ( Rs Lacs)': as on 31-03-2024, as on '01-04-2025' (the restated opening), difference, Intangible Asset 214.69 317.91 103.22 Total"
+  },
+  "p80.gfa_lakh_diff": {
+   "value": "2720.52",
+   "unit": "INR_lakh",
+   "page": 80,
+   "quote": "Intangible Asset 214.69 317.91 103.22 Total 22,39,690.88 22,42,411.40 2,720.52",
+   "what": "para 4.301, 'Gross Fixed Asset ( Rs Lacs)': as on 31-03-2024, as on '01-04-2025' (the restated opening), difference, Intangible Asset 214.69 317.91 103.22 Total"
+  },
+  "p80.it_restated": {
+   "value": "1584.88",
+   "unit": "INR_lakh",
+   "page": 80,
+   "quote": "IT Equipment - 1,584.88 1,584.88",
+   "what": "para 4.301: IT Equipment, nil ('-') as on 31-03-2024; as on '01-04-2025' (the restated opening); difference, IT Equipment -"
+  },
+  "p80.it_diff": {
+   "value": "1584.88",
+   "unit": "INR_lakh",
+   "page": 80,
+   "quote": "IT Equipment - 1,584.88 1,584.88",
+   "what": "para 4.301: IT Equipment, nil ('-') as on 31-03-2024; as on '01-04-2025' (the restated opening); difference, IT Equipment -"
+  },
+  "p80.closing_fy24_crore": {
+   "value": "22396.91",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "Closing GFA as per true-up of 2023-24 is ₹ 22,396.91 and opening figure of GFA of ₹ 22,424.11 Cr. as per true-up of FY 24-25",
+   "what": "para 4.300: closing GFA as per true-up of FY2023-24; opening GFA as per true-up of FY2024-25"
+  },
+  "p80.opening_fy25_crore": {
+   "value": "22424.11",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "Closing GFA as per true-up of 2023-24 is ₹ 22,396.91 and opening figure of GFA of ₹ 22,424.11 Cr. as per true-up of FY 24-25",
+   "what": "para 4.300: closing GFA as per true-up of FY2023-24; opening GFA as per true-up of FY2024-25"
+  },
+  "dep.avg_gfa.fy27": {
+   "value": "11783.39",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Average GFA (As approved Commission) 11783.39 13433.22 14798.90 16117.53 17375.30",
+   "what": "Table 125, Average GFA (As approved Commission)"
+  },
+  "dep.avg_gfa.fy28": {
+   "value": "13433.22",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Average GFA (As approved Commission) 11783.39 13433.22 14798.90 16117.53 17375.30",
+   "what": "Table 125, Average GFA (As approved Commission)"
+  },
+  "dep.avg_gfa.fy29": {
+   "value": "14798.90",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Average GFA (As approved Commission) 11783.39 13433.22 14798.90 16117.53 17375.30",
+   "what": "Table 125, Average GFA (As approved Commission)"
+  },
+  "dep.avg_gfa.fy30": {
+   "value": "16117.53",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Average GFA (As approved Commission) 11783.39 13433.22 14798.90 16117.53 17375.30",
+   "what": "Table 125, Average GFA (As approved Commission)"
+  },
+  "dep.avg_gfa.fy31": {
+   "value": "17375.30",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Average GFA (As approved Commission) 11783.39 13433.22 14798.90 16117.53 17375.30",
+   "what": "Table 125, Average GFA (As approved Commission)"
+  },
+  "dep.rate.fy27": {
+   "value": "4.39",
+   "unit": "percent",
+   "page": 280,
+   "quote": "Depreciation Rate 4.39% 4.39% 4.39% 4.39% 4.39%",
+   "what": "Table 125, Depreciation Rate"
+  },
+  "dep.rate.fy28": {
+   "value": "4.39",
+   "unit": "percent",
+   "page": 280,
+   "quote": "Depreciation Rate 4.39% 4.39% 4.39% 4.39% 4.39%",
+   "what": "Table 125, Depreciation Rate"
+  },
+  "dep.rate.fy29": {
+   "value": "4.39",
+   "unit": "percent",
+   "page": 280,
+   "quote": "Depreciation Rate 4.39% 4.39% 4.39% 4.39% 4.39%",
+   "what": "Table 125, Depreciation Rate"
+  },
+  "dep.rate.fy30": {
+   "value": "4.39",
+   "unit": "percent",
+   "page": 280,
+   "quote": "Depreciation Rate 4.39% 4.39% 4.39% 4.39% 4.39%",
+   "what": "Table 125, Depreciation Rate"
+  },
+  "dep.rate.fy31": {
+   "value": "4.39",
+   "unit": "percent",
+   "page": 280,
+   "quote": "Depreciation Rate 4.39% 4.39% 4.39% 4.39% 4.39%",
+   "what": "Table 125, Depreciation Rate"
+  },
+  "dep.cost.fy27": {
+   "value": "517.22",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Depreciation Cost 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 125, Depreciation Cost"
+  },
+  "dep.cost.fy28": {
+   "value": "589.63",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Depreciation Cost 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 125, Depreciation Cost"
+  },
+  "dep.cost.fy29": {
+   "value": "649.58",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Depreciation Cost 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 125, Depreciation Cost"
+  },
+  "dep.cost.fy30": {
+   "value": "707.46",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Depreciation Cost 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 125, Depreciation Cost"
+  },
+  "dep.cost.fy31": {
+   "value": "762.66",
+   "unit": "INR_crore",
+   "page": 280,
+   "quote": "Depreciation Cost 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 125, Depreciation Cost"
+  },
+  "loan.opening.fy27": {
+   "value": "4319.15",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Opening Loan 4319.15 5263.44 5904.20 6516.90 6980.11",
+   "what": "Table 127, Opening Loan"
+  },
+  "loan.opening.fy28": {
+   "value": "5263.44",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Opening Loan 4319.15 5263.44 5904.20 6516.90 6980.11",
+   "what": "Table 127, Opening Loan"
+  },
+  "loan.opening.fy29": {
+   "value": "5904.20",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Opening Loan 4319.15 5263.44 5904.20 6516.90 6980.11",
+   "what": "Table 127, Opening Loan"
+  },
+  "loan.opening.fy30": {
+   "value": "6516.90",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Opening Loan 4319.15 5263.44 5904.20 6516.90 6980.11",
+   "what": "Table 127, Opening Loan"
+  },
+  "loan.opening.fy31": {
+   "value": "6980.11",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Opening Loan 4319.15 5263.44 5904.20 6516.90 6980.11",
+   "what": "Table 127, Opening Loan"
+  },
+  "loan.addition.fy27": {
+   "value": "1461.51",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Addition 1461.51 1230.39 1262.28 1170.66 1166.47",
+   "what": "Table 127, Loan Addition"
+  },
+  "loan.addition.fy28": {
+   "value": "1230.39",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Addition 1461.51 1230.39 1262.28 1170.66 1166.47",
+   "what": "Table 127, Loan Addition"
+  },
+  "loan.addition.fy29": {
+   "value": "1262.28",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Addition 1461.51 1230.39 1262.28 1170.66 1166.47",
+   "what": "Table 127, Loan Addition"
+  },
+  "loan.addition.fy30": {
+   "value": "1170.66",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Addition 1461.51 1230.39 1262.28 1170.66 1166.47",
+   "what": "Table 127, Loan Addition"
+  },
+  "loan.addition.fy31": {
+   "value": "1166.47",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Addition 1461.51 1230.39 1262.28 1170.66 1166.47",
+   "what": "Table 127, Loan Addition"
+  },
+  "loan.repayment.fy27": {
+   "value": "517.22",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Repayment 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 127, Loan Repayment"
+  },
+  "loan.repayment.fy28": {
+   "value": "589.63",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Repayment 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 127, Loan Repayment"
+  },
+  "loan.repayment.fy29": {
+   "value": "649.58",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Repayment 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 127, Loan Repayment"
+  },
+  "loan.repayment.fy30": {
+   "value": "707.46",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Repayment 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 127, Loan Repayment"
+  },
+  "loan.repayment.fy31": {
+   "value": "762.66",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Loan Repayment 517.22 589.63 649.58 707.46 762.66",
+   "what": "Table 127, Loan Repayment"
+  },
+  "loan.closing.fy27": {
+   "value": "5263.44",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Closing Loan 5263.44 5904.20 6516.90 6980.11 7383.91",
+   "what": "Table 127, Closing Loan"
+  },
+  "loan.closing.fy28": {
+   "value": "5904.20",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Closing Loan 5263.44 5904.20 6516.90 6980.11 7383.91",
+   "what": "Table 127, Closing Loan"
+  },
+  "loan.closing.fy29": {
+   "value": "6516.90",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Closing Loan 5263.44 5904.20 6516.90 6980.11 7383.91",
+   "what": "Table 127, Closing Loan"
+  },
+  "loan.closing.fy30": {
+   "value": "6980.11",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Closing Loan 5263.44 5904.20 6516.90 6980.11 7383.91",
+   "what": "Table 127, Closing Loan"
+  },
+  "loan.closing.fy31": {
+   "value": "7383.91",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Closing Loan 5263.44 5904.20 6516.90 6980.11 7383.91",
+   "what": "Table 127, Closing Loan"
+  },
+  "loan.average.fy27": {
+   "value": "4791.30",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Average Loan 4791.30 5583.82 6210.55 6748.50 7182.01",
+   "what": "Table 127, Average Loan"
+  },
+  "loan.average.fy28": {
+   "value": "5583.82",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Average Loan 4791.30 5583.82 6210.55 6748.50 7182.01",
+   "what": "Table 127, Average Loan"
+  },
+  "loan.average.fy29": {
+   "value": "6210.55",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Average Loan 4791.30 5583.82 6210.55 6748.50 7182.01",
+   "what": "Table 127, Average Loan"
+  },
+  "loan.average.fy30": {
+   "value": "6748.50",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Average Loan 4791.30 5583.82 6210.55 6748.50 7182.01",
+   "what": "Table 127, Average Loan"
+  },
+  "loan.average.fy31": {
+   "value": "7182.01",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Average Loan 4791.30 5583.82 6210.55 6748.50 7182.01",
+   "what": "Table 127, Average Loan"
+  },
+  "loan.interest.fy27": {
+   "value": "488.71",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Interest on Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 127, Interest on Loan"
+  },
+  "loan.interest.fy28": {
+   "value": "569.55",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Interest on Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 127, Interest on Loan"
+  },
+  "loan.interest.fy29": {
+   "value": "633.48",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Interest on Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 127, Interest on Loan"
+  },
+  "loan.interest.fy30": {
+   "value": "688.35",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Interest on Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 127, Interest on Loan"
+  },
+  "loan.interest.fy31": {
+   "value": "732.56",
+   "unit": "INR_crore",
+   "page": 282,
+   "quote": "Interest on Loan 488.71 569.55 633.48 688.35 732.56",
+   "what": "Table 127, Interest on Loan"
+  },
+  "loan.rate.fy27": {
+   "value": "10.20",
+   "unit": "percent",
+   "page": 282,
+   "quote": "Interest Rate 10.20% 10.20% 10.20% 10.20% 10.20%",
+   "what": "Table 127, Interest Rate"
+  },
+  "loan.rate.fy28": {
+   "value": "10.20",
+   "unit": "percent",
+   "page": 282,
+   "quote": "Interest Rate 10.20% 10.20% 10.20% 10.20% 10.20%",
+   "what": "Table 127, Interest Rate"
+  },
+  "loan.rate.fy29": {
+   "value": "10.20",
+   "unit": "percent",
+   "page": 282,
+   "quote": "Interest Rate 10.20% 10.20% 10.20% 10.20% 10.20%",
+   "what": "Table 127, Interest Rate"
+  },
+  "loan.rate.fy30": {
+   "value": "10.20",
+   "unit": "percent",
+   "page": 282,
+   "quote": "Interest Rate 10.20% 10.20% 10.20% 10.20% 10.20%",
+   "what": "Table 127, Interest Rate"
+  },
+  "loan.rate.fy31": {
+   "value": "10.20",
+   "unit": "percent",
+   "page": 282,
+   "quote": "Interest Rate 10.20% 10.20% 10.20% 10.20% 10.20%",
+   "what": "Table 127, Interest Rate"
+  },
+  "roe.opening.fy27": {
+   "value": "3243.33",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Opening Balance 3243.33 3826.70 4233.23 4646.12 5024.40",
+   "what": "Table 133, Opening Balance"
+  },
+  "roe.opening.fy28": {
+   "value": "3826.70",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Opening Balance 3243.33 3826.70 4233.23 4646.12 5024.40",
+   "what": "Table 133, Opening Balance"
+  },
+  "roe.opening.fy29": {
+   "value": "4233.23",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Opening Balance 3243.33 3826.70 4233.23 4646.12 5024.40",
+   "what": "Table 133, Opening Balance"
+  },
+  "roe.opening.fy30": {
+   "value": "4646.12",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Opening Balance 3243.33 3826.70 4233.23 4646.12 5024.40",
+   "what": "Table 133, Opening Balance"
+  },
+  "roe.opening.fy31": {
+   "value": "5024.40",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Opening Balance 3243.33 3826.70 4233.23 4646.12 5024.40",
+   "what": "Table 133, Opening Balance"
+  },
+  "roe.addition.fy27": {
+   "value": "583.37",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Addition 583.37 406.52 412.89 378.29 376.37",
+   "what": "Table 133, Addition"
+  },
+  "roe.addition.fy28": {
+   "value": "406.52",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Addition 583.37 406.52 412.89 378.29 376.37",
+   "what": "Table 133, Addition"
+  },
+  "roe.addition.fy29": {
+   "value": "412.89",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Addition 583.37 406.52 412.89 378.29 376.37",
+   "what": "Table 133, Addition"
+  },
+  "roe.addition.fy30": {
+   "value": "378.29",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Addition 583.37 406.52 412.89 378.29 376.37",
+   "what": "Table 133, Addition"
+  },
+  "roe.addition.fy31": {
+   "value": "376.37",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Addition 583.37 406.52 412.89 378.29 376.37",
+   "what": "Table 133, Addition"
+  },
+  "roe.closing.fy27": {
+   "value": "3826.70",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Closing Balance 3826.70 4233.23 4646.12 5024.40 5400.78",
+   "what": "Table 133, Closing Balance"
+  },
+  "roe.closing.fy28": {
+   "value": "4233.23",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Closing Balance 3826.70 4233.23 4646.12 5024.40 5400.78",
+   "what": "Table 133, Closing Balance"
+  },
+  "roe.closing.fy29": {
+   "value": "4646.12",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Closing Balance 3826.70 4233.23 4646.12 5024.40 5400.78",
+   "what": "Table 133, Closing Balance"
+  },
+  "roe.closing.fy30": {
+   "value": "5024.40",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Closing Balance 3826.70 4233.23 4646.12 5024.40 5400.78",
+   "what": "Table 133, Closing Balance"
+  },
+  "roe.closing.fy31": {
+   "value": "5400.78",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Closing Balance 3826.70 4233.23 4646.12 5024.40 5400.78",
+   "what": "Table 133, Closing Balance"
+  },
+  "roe.average.fy27": {
+   "value": "3535.02",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Average Equity 3535.02 4029.96 4439.67 4835.26 5212.59",
+   "what": "Table 133, Average Equity"
+  },
+  "roe.average.fy28": {
+   "value": "4029.96",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Average Equity 3535.02 4029.96 4439.67 4835.26 5212.59",
+   "what": "Table 133, Average Equity"
+  },
+  "roe.average.fy29": {
+   "value": "4439.67",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Average Equity 3535.02 4029.96 4439.67 4835.26 5212.59",
+   "what": "Table 133, Average Equity"
+  },
+  "roe.average.fy30": {
+   "value": "4835.26",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Average Equity 3535.02 4029.96 4439.67 4835.26 5212.59",
+   "what": "Table 133, Average Equity"
+  },
+  "roe.average.fy31": {
+   "value": "5212.59",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Average Equity 3535.02 4029.96 4439.67 4835.26 5212.59",
+   "what": "Table 133, Average Equity"
+  },
+  "roe.return.fy27": {
+   "value": "514.04",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Return On Equity 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 133, Return On Equity"
+  },
+  "roe.return.fy28": {
+   "value": "544.53",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Return On Equity 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 133, Return On Equity"
+  },
+  "roe.return.fy29": {
+   "value": "575.49",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Return On Equity 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 133, Return On Equity"
+  },
+  "roe.return.fy30": {
+   "value": "603.86",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Return On Equity 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 133, Return On Equity"
+  },
+  "roe.return.fy31": {
+   "value": "632.09",
+   "unit": "INR_crore",
+   "page": 289,
+   "quote": "Return On Equity 514.04 544.53 575.49 603.86 632.09",
+   "what": "Table 133, Return On Equity"
+  },
+  "roe.rate_pre.fy27": {
+   "value": "14.50",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity on equity before FY 26-27 14.50% 14.50% 14.50% 14.50% 14.50%",
+   "what": "Table 133, Rate of Equity on equity before FY 26-27"
+  },
+  "roe.rate_pre.fy28": {
+   "value": "14.50",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity on equity before FY 26-27 14.50% 14.50% 14.50% 14.50% 14.50%",
+   "what": "Table 133, Rate of Equity on equity before FY 26-27"
+  },
+  "roe.rate_pre.fy29": {
+   "value": "14.50",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity on equity before FY 26-27 14.50% 14.50% 14.50% 14.50% 14.50%",
+   "what": "Table 133, Rate of Equity on equity before FY 26-27"
+  },
+  "roe.rate_pre.fy30": {
+   "value": "14.50",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity on equity before FY 26-27 14.50% 14.50% 14.50% 14.50% 14.50%",
+   "what": "Table 133, Rate of Equity on equity before FY 26-27"
+  },
+  "roe.rate_pre.fy31": {
+   "value": "14.50",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity on equity before FY 26-27 14.50% 14.50% 14.50% 14.50% 14.50%",
+   "what": "Table 133, Rate of Equity on equity before FY 26-27"
+  },
+  "roe.rate_post.fy27": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity-on- equity addition after FY 26-27 15.00% 15.00% 15.00% 15.00% 15.00%",
+   "what": "Table 133, Rate of Equity-on- equity addition after FY 26-27"
+  },
+  "roe.rate_post.fy28": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity-on- equity addition after FY 26-27 15.00% 15.00% 15.00% 15.00% 15.00%",
+   "what": "Table 133, Rate of Equity-on- equity addition after FY 26-27"
+  },
+  "roe.rate_post.fy29": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity-on- equity addition after FY 26-27 15.00% 15.00% 15.00% 15.00% 15.00%",
+   "what": "Table 133, Rate of Equity-on- equity addition after FY 26-27"
+  },
+  "roe.rate_post.fy30": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity-on- equity addition after FY 26-27 15.00% 15.00% 15.00% 15.00% 15.00%",
+   "what": "Table 133, Rate of Equity-on- equity addition after FY 26-27"
+  },
+  "roe.rate_post.fy31": {
+   "value": "15.00",
+   "unit": "percent",
+   "page": 289,
+   "quote": "Rate of Equity-on- equity addition after FY 26-27 15.00% 15.00% 15.00% 15.00% 15.00%",
+   "what": "Table 133, Rate of Equity-on- equity addition after FY 26-27"
+  }
+ }
+}
