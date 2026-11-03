@@ -1,0 +1,26 @@
+{
+ "status": "found by reproducing the order in the build session; each is a question for the reviewer (and, through the operator, the licensee) — none is resolved by the build",
+ "findings": [
+  {
+   "id": "U1",
+   "kind": "inconsistency",
+   "title": "UPCL's claimed interest on working capital (210.62) is not its stated rate on its stated requirement (12.45 % × 1,678.73 = 209.00)",
+   "detail": "Table 4.50 prints UPCL's claimed working capital requirement 1,678.73 — its five components add to it exactly — and its rate 12.45 %; 12.45 % of 1,678.73 is 209.00, but the claimed interest is 210.62 (an implied rate of 12.546 %).  Table 4.52 carries the same 210.62 as UPCL's claim.  The approved column is consistent (12.38 % × 1,563.67 = 193.58).  The difference does not reach the approval; it is a question about the claim as the order reports it.",
+   "where": [
+    "UERC order on UPCL FY2026-27, p.219 Table 4.50; p.223 Table 4.52",
+    "bindings/approval-iowc-roe-fy27.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "U2",
+   "kind": "unexplained figure",
+   "title": "One month of power purchase (867.48) matches no printed annual total",
+   "detail": "Para 4.13.5 says 'as per the Power Purchase approved, one month of power purchase cost worked out by the Commission is Rs. 867.48 Crore'.  Twelve months of it is 10,409.76; the order prints power purchase with RPO, water tax and arrears of 9,340.23 (Table 4.33, 4.52), 8,338.35 without arrears and water tax, and transmission charges of 1,246.85 (Table 4.36) — 10,587.08 with power purchase.  None gives 867.48.  The figure enters the working capital as a record; the rest of the computation reproduces (14 of 18 checks; the requirement within a paisa).",
+   "where": [
+    "UERC order on UPCL FY2026-27, p.219 para 4.13.5; p.201 Table 4.33; p.203 Table 4.36"
+   ],
+   "for": "reviewer"
+  }
+ ]
+}

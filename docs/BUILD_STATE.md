@@ -1005,6 +1005,41 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 123 (2026-11-03): a second commission — UERC's interest on working capital and
+  return on equity for UPCL, FY2026-27.**
+  - **Why:** the bindings so far were all UPERC / NPCL.  The second NPCL filing is still blocked
+    on the operator.  So the same engine and binding shape is exercised on another commission's
+    order from this session: UERC's of 31 March 2026 for UPCL, SHA-256 `1a929917…eb91`, the
+    loader's `UERC-UPCL-FY2026-27`.
+  - **New folder `packages/order-reproductions/uerc-upcl-fy2026-27/`:**
+    - a manifest giving the order's URL and hash;
+    - the record `order/figures-iowc-roe-fy2026-27.json`: 41 figures from Tables 4.50–4.52 and
+      paras 4.13.1–4.13.4, 41 / 41 quotes verified;
+    - the binding `bindings/approval-iowc-roe-fy27.json`, with no workbook (`reproduce_cells`
+      runs on records alone);
+    - `findings.json`.
+  - **Eight draft UERC rules in `packages/arr-rules/uerc/tariff-2024.v1.json`, from FY2025-26:**
+    the working capital components, requirement and interest (Reg. 33(2)), and RoE at 16.50% on
+    the opening equity with the closing equity (Reg. 26).  The excerpts are the order's own
+    quotation of the Regulations, which are not in this session, and say so.  Nothing is
+    verified.
+  - **14 / 18 match.**  The approved side reproduces:
+    - O&M 967.40 / 12 = 80.62; spares 15% = 145.11;
+    - two months of 12,590.41 = 2,098.40; the shortfall at 99.15% collection = 107.02;
+    - interest 12.38% = 193.58;
+    - RoE 16.50% × 784.01 = 129.36; UPCL's claimed 329.19 likewise.
+    Two differences are rounding, bounded by the test: the requirement 1,563.67 against 1,563.66,
+    and UPCL's closing equity by 0.01.
+  - **Findings `U1`, `U2` (reviewer):**
+    - **U1:** UPCL's claimed interest (210.62, Tables 4.50 and 4.52) is not its 12.45% on its
+      1,678.73, which gives 209.00.
+    - **U2:** the one month of power purchase (867.48) matches no printed annual total, so it
+      enters as a record.
+  - **Seen in passing:** UERC values the distribution-loss variation at the ABR and shares it
+    two-thirds / one-third (p.167).  This is one commission's valuation, a reference for the
+    question increment 122 left to the reviewer, not UPERC's rule.
+  Nothing verified, nothing approved.
+
   **Increment 122 (2026-11-03): R-TU-2 — sharing of controllable gains and losses under the 2025
   Regulations.**
   - **The clause:** Regulation 11 (p.15 of the committed English text), with 33.3 for O&M.
@@ -3025,6 +3060,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 123 (2026-11-03): 493 passed** (+1 unit: UERC's working capital and RoE for UPCL — a second commission, no workbook; U1).  `check_order_quotes.py`: 41 / 41.  Ruff and format clean.
 - **Increment 122 (2026-11-03): 492 passed** (+1 unit: gain / loss sharing — the examples, the year selection, the illustration).  `check_order_quotes.py`: 12 / 12.  Ruff and format clean.
 - **Increment 121 (2026-11-03): 491 passed** (+1 unit: the wheeling / supply allocation).  `check_order_quotes.py`: 62 / 62.  Ruff and format clean.
 - **Increment 120 (2026-11-03): 490 passed** (+1 unit: the open access charges and surcharge).  `check_order_quotes.py`: 159 / 159.  Ruff and format clean.
@@ -3280,7 +3316,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 122) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 123) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3378,6 +3414,8 @@ entries below are the per-increment history.**
       A77, increment 110);
     - LMV-3's local-body column, for the reviewer;
     - HV energy, which waits on the kVAh sold (A55);
+  - more of a second commission's order (increment 123 began with UERC / UPCL: working capital
+    and RoE, 14 / 18) — next its interest on loans and depreciation, from the same order;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

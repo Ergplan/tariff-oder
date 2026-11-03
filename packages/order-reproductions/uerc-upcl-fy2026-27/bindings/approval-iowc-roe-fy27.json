@@ -1,0 +1,171 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "UERC order",
+ "rates": "order/figures-iowc-roe-fy2026-27.json",
+ "places": 2,
+ "note": "UERC's interest on working capital and return on equity for UPCL, FY2026-27, computed with draft UERC rules from the order's own figures — no workbook: the licensee's formats are not in this session.  The one month of power purchase (867.48) is the order's figure: no printed annual total gives it (× 12 = 10,409.76; power purchase with arrears is 9,340.23, with transmission 10,587.08).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "IoWC components, approved (4.13.1–4.13.4)",
+   "inputs": {
+    "record:om_annual": {
+     "rate": "om.approved"
+    },
+    "record:revenue_existing_tariff": {
+     "rate": "revenue.existing"
+    },
+    "record:collection_efficiency": {
+     "rate": "collection.efficiency"
+    }
+   },
+   "checks": {
+    "iowc_om_month": "order:iowc.om_month.approved",
+    "iowc_spares": "order:iowc.spares.approved",
+    "iowc_receivables": "order:iowc.receivables.approved",
+    "iowc_shortfall": "order:iowc.shortfall.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "IoWC requirement, approved (Table 4.50)",
+   "inputs": {
+    "record:iowc_om_month": {
+     "computed": "IoWC components, approved (4.13.1–4.13.4)",
+     "output": "iowc_om_month"
+    },
+    "record:iowc_spares": {
+     "computed": "IoWC components, approved (4.13.1–4.13.4)",
+     "output": "iowc_spares"
+    },
+    "record:iowc_receivables": {
+     "computed": "IoWC components, approved (4.13.1–4.13.4)",
+     "output": "iowc_receivables"
+    },
+    "record:iowc_shortfall": {
+     "computed": "IoWC components, approved (4.13.1–4.13.4)",
+     "output": "iowc_shortfall"
+    },
+    "record:iowc_pp_month": {
+     "rate": "iowc.pp_month.approved"
+    }
+   },
+   "checks": {
+    "iowc_requirement": "order:iowc.requirement.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "IoWC interest, approved (Table 4.50)",
+   "inputs": {
+    "record:iowc_requirement_amount": {
+     "computed": "IoWC requirement, approved (Table 4.50)",
+     "output": "iowc_requirement"
+    },
+    "record:iowc_rate": {
+     "rate": "iowc.rate.approved"
+    }
+   },
+   "checks": {
+    "iowc_interest": [
+     "order:iowc.interest.approved",
+     "order:arr.iowc.approved"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "IoWC components, claimed by UPCL (from its O&M in Table 4.52)",
+   "inputs": {
+    "record:om_annual": {
+     "rate": "arr.om.claimed"
+    }
+   },
+   "checks": {
+    "iowc_om_month": "order:iowc.om_month.claimed",
+    "iowc_spares": "order:iowc.spares.claimed"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "IoWC requirement, claimed by UPCL (Table 4.50)",
+   "inputs": {
+    "record:iowc_om_month": {
+     "rate": "iowc.om_month.claimed"
+    },
+    "record:iowc_spares": {
+     "rate": "iowc.spares.claimed"
+    },
+    "record:iowc_receivables": {
+     "rate": "iowc.receivables.claimed"
+    },
+    "record:iowc_shortfall": {
+     "rate": "iowc.shortfall.claimed"
+    },
+    "record:iowc_pp_month": {
+     "rate": "iowc.pp_month.claimed"
+    }
+   },
+   "checks": {
+    "iowc_requirement": "order:iowc.requirement.claimed"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "IoWC interest, claimed by UPCL (Table 4.50)",
+   "inputs": {
+    "record:iowc_requirement_amount": {
+     "rate": "iowc.requirement.claimed"
+    },
+    "record:iowc_rate": {
+     "rate": "iowc.rate.claimed"
+    }
+   },
+   "checks": {
+    "iowc_interest": [
+     "order:iowc.interest.claimed",
+     "order:arr.iowc.claimed"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "RoE, approved (Table 4.51)",
+   "inputs": {
+    "record:equity_opening": {
+     "rate": "roe.opening.approved"
+    },
+    "record:equity_addition": {
+     "rate": "roe.addition.approved"
+    }
+   },
+   "checks": {
+    "roe_return": [
+     "order:roe.return.approved",
+     "order:arr.roe.approved"
+    ],
+    "equity_closing": "order:roe.closing.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "RoE, claimed (Table 4.51)",
+   "inputs": {
+    "record:equity_opening": {
+     "rate": "roe.opening.claimed"
+    },
+    "record:equity_addition": {
+     "rate": "roe.addition.claimed"
+    }
+   },
+   "checks": {
+    "roe_return": [
+     "order:roe.return.claimed",
+     "order:arr.roe.claimed"
+    ],
+    "equity_closing": "order:roe.closing.claimed"
+   }
+  }
+ ]
+}

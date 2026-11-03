@@ -1,0 +1,297 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UERC order on UPCL: true-up FY2024-25, APR FY2025-26 and ARR FY2026-27 (31 March 2026) — interest on working capital and return on equity for FY2026-27",
+  "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+  "pages": 414
+ },
+ "figures": {
+  "om.approved": {
+   "value": "967.40",
+   "unit": "INR_crore",
+   "page": 218,
+   "quote": "The annual O&M expenses approved by the Commission are Rs. 967.40 Crore",
+   "what": "annual O&M approved for FY2026-27 (4.13.1)"
+  },
+  "revenue.existing": {
+   "value": "12590.41",
+   "unit": "INR_crore",
+   "page": 218,
+   "quote": "expected revenue at existing tariff of Rs. 12590.41 Crore for FY 2026-27, which works out",
+   "what": "revenue at existing tariff (4.13.3)"
+  },
+  "collection.efficiency": {
+   "value": "99.15",
+   "unit": "percent",
+   "page": 218,
+   "quote": "collection efficiency of 99.15% for FY 2026-27",
+   "what": "collection efficiency approved in the business plan (4.13.4)"
+  },
+  "iowc.om_month.claimed": {
+   "value": "101.79",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "O&M expenses for 1 month 101.79 80.62",
+   "what": "Table 4.50, O&M expenses for 1 month: claimed"
+  },
+  "iowc.om_month.approved": {
+   "value": "80.62",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "O&M expenses for 1 month 101.79 80.62",
+   "what": "Table 4.50, O&M expenses for 1 month: approved"
+  },
+  "iowc.spares.claimed": {
+   "value": "183.22",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Maintenance Spares 183.22 145.11",
+   "what": "Table 4.50, Maintenance Spares: claimed"
+  },
+  "iowc.spares.approved": {
+   "value": "145.11",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Maintenance Spares 183.22 145.11",
+   "what": "Table 4.50, Maintenance Spares: approved"
+  },
+  "iowc.receivables.claimed": {
+   "value": "2145.60",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "2 months of expected revenue at prevailing tariffs 2145.60 2098.40",
+   "what": "Table 4.50, 2 months of expected revenue at prevailing tariffs: claimed"
+  },
+  "iowc.receivables.approved": {
+   "value": "2098.40",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "2 months of expected revenue at prevailing tariffs 2145.60 2098.40",
+   "what": "Table 4.50, 2 months of expected revenue at prevailing tariffs: approved"
+  },
+  "iowc.shortfall.claimed": {
+   "value": "109.43",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Capital required to finance shortfall in collection of current dues 109.43 107.02",
+   "what": "Table 4.50, Capital required to finance shortfall in collection of current dues: claimed"
+  },
+  "iowc.shortfall.approved": {
+   "value": "107.02",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Capital required to finance shortfall in collection of current dues 109.43 107.02",
+   "what": "Table 4.50, Capital required to finance shortfall in collection of current dues: approved"
+  },
+  "iowc.pp_month.claimed": {
+   "value": "861.31",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Minus: one month power purchase cost 861.31 867.48",
+   "what": "Table 4.50, Minus: one month power purchase cost: claimed"
+  },
+  "iowc.pp_month.approved": {
+   "value": "867.48",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Minus: one month power purchase cost 861.31 867.48",
+   "what": "Table 4.50, Minus: one month power purchase cost: approved"
+  },
+  "iowc.requirement.claimed": {
+   "value": "1678.73",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Net Working Capital 1678.73 1563.66",
+   "what": "Table 4.50, Net Working Capital: claimed"
+  },
+  "iowc.requirement.approved": {
+   "value": "1563.66",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Net Working Capital 1678.73 1563.66",
+   "what": "Table 4.50, Net Working Capital: approved"
+  },
+  "iowc.rate.claimed": {
+   "value": "12.45",
+   "unit": "percent",
+   "page": 219,
+   "quote": "Rate of Interest on Working Capital 12.45% 12.38%",
+   "what": "Table 4.50, rate of interest: claimed"
+  },
+  "iowc.rate.approved": {
+   "value": "12.38",
+   "unit": "percent",
+   "page": 219,
+   "quote": "Rate of Interest on Working Capital 12.45% 12.38%",
+   "what": "Table 4.50, rate of interest: approved"
+  },
+  "iowc.interest.claimed": {
+   "value": "210.62",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Rate of Interest on Working Capital 12.45% 12.38% Interest on Working Capital 210.62 193.58",
+   "what": "Table 4.50, interest on working capital: claimed"
+  },
+  "iowc.interest.approved": {
+   "value": "193.58",
+   "unit": "INR_crore",
+   "page": 219,
+   "quote": "Rate of Interest on Working Capital 12.45% 12.38% Interest on Working Capital 210.62 193.58",
+   "what": "Table 4.50, interest on working capital: approved"
+  },
+  "roe.opening.claimed": {
+   "value": "1995.09",
+   "unit": "INR_crore",
+   "page": 221,
+   "quote": "Opening Equity 1995.09 784.01",
+   "what": "Table 4.51, Opening Equity: claimed"
+  },
+  "roe.opening.approved": {
+   "value": "784.01",
+   "unit": "INR_crore",
+   "page": 221,
+   "quote": "Opening Equity 1995.09 784.01",
+   "what": "Table 4.51, Opening Equity: approved"
+  },
+  "roe.addition.claimed": {
+   "value": "679.27",
+   "unit": "INR_crore",
+   "page": 221,
+   "quote": "Addition during the year 679.27 163.75",
+   "what": "Table 4.51, Addition during the year: claimed"
+  },
+  "roe.addition.approved": {
+   "value": "163.75",
+   "unit": "INR_crore",
+   "page": 221,
+   "quote": "Addition during the year 679.27 163.75",
+   "what": "Table 4.51, Addition during the year: approved"
+  },
+  "roe.closing.claimed": {
+   "value": "2674.35",
+   "unit": "INR_crore",
+   "page": 221,
+   "quote": "Closing Equity 2674.35 947.76",
+   "what": "Table 4.51, Closing Equity: claimed"
+  },
+  "roe.closing.approved": {
+   "value": "947.76",
+   "unit": "INR_crore",
+   "page": 221,
+   "quote": "Closing Equity 2674.35 947.76",
+   "what": "Table 4.51, Closing Equity: approved"
+  },
+  "roe.rate.claimed": {
+   "value": "16.50",
+   "unit": "percent",
+   "page": 221,
+   "quote": "Rate of Return 16.50% 16.50%",
+   "what": "Table 4.51, rate of return: claimed"
+  },
+  "roe.rate.approved": {
+   "value": "16.50",
+   "unit": "percent",
+   "page": 221,
+   "quote": "Rate of Return 16.50% 16.50%",
+   "what": "Table 4.51, rate of return: approved"
+  },
+  "roe.return.claimed": {
+   "value": "329.19",
+   "unit": "INR_crore",
+   "page": 221,
+   "quote": "Rate of Return 16.50% 16.50% Return on Equity 329.19 129.36",
+   "what": "Table 4.51, return on equity: claimed"
+  },
+  "roe.return.approved": {
+   "value": "129.36",
+   "unit": "INR_crore",
+   "page": 221,
+   "quote": "Rate of Return 16.50% 16.50% Return on Equity 329.19 129.36",
+   "what": "Table 4.51, return on equity: approved"
+  },
+  "arr.pp.claimed": {
+   "value": "9105.64",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "1 Power Purchase Cost including RPO, Water Tax & Arrears 9105.64 9340.23",
+   "what": "Table 4.52, Power Purchase Cost including RPO, Water Tax & Arrears: claimed"
+  },
+  "arr.pp.approved": {
+   "value": "9340.23",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "1 Power Purchase Cost including RPO, Water Tax & Arrears 9105.64 9340.23",
+   "what": "Table 4.52, Power Purchase Cost including RPO, Water Tax & Arrears: approved"
+  },
+  "arr.om.claimed": {
+   "value": "1221.50",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "6 O&M expenses 1221.50 967.40",
+   "what": "Table 4.52, O&M expenses: claimed"
+  },
+  "arr.om.approved": {
+   "value": "967.40",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "6 O&M expenses 1221.50 967.40",
+   "what": "Table 4.52, O&M expenses: approved"
+  },
+  "arr.iowc.claimed": {
+   "value": "210.62",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "8 Interest on Working Capital 210.62 193.58",
+   "what": "Table 4.52, Interest on Working Capital: claimed"
+  },
+  "arr.iowc.approved": {
+   "value": "193.58",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "8 Interest on Working Capital 210.62 193.58",
+   "what": "Table 4.52, Interest on Working Capital: approved"
+  },
+  "arr.roe.claimed": {
+   "value": "329.19",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "9 Return on Equity 329.19 129.36",
+   "what": "Table 4.52, Return on Equity: claimed"
+  },
+  "arr.roe.approved": {
+   "value": "129.36",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "9 Return on Equity 329.19 129.36",
+   "what": "Table 4.52, Return on Equity: approved"
+  },
+  "arr.transmission.pgcil_claimed": {
+   "value": "753.61",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "2 Transmission Charges PGCIL 753.61 595.00 PTCUL & SLDC 615.13 651.85",
+   "what": "Table 4.52, transmission charges: pgcil_claimed"
+  },
+  "arr.transmission.pgcil_approved": {
+   "value": "595.00",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "2 Transmission Charges PGCIL 753.61 595.00 PTCUL & SLDC 615.13 651.85",
+   "what": "Table 4.52, transmission charges: pgcil_approved"
+  },
+  "arr.transmission.ptcul_claimed": {
+   "value": "615.13",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "2 Transmission Charges PGCIL 753.61 595.00 PTCUL & SLDC 615.13 651.85",
+   "what": "Table 4.52, transmission charges: ptcul_claimed"
+  },
+  "arr.transmission.ptcul_approved": {
+   "value": "651.85",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "2 Transmission Charges PGCIL 753.61 595.00 PTCUL & SLDC 615.13 651.85",
+   "what": "Table 4.52, transmission charges: ptcul_approved"
+  }
+ }
+}

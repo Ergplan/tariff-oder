@@ -1,0 +1,16 @@
+{
+ "id": "uerc-upcl-fy2026-27",
+ "status": "a commission order reproduced from its own figures — no petition or formats in this session; nothing reviewed, nothing approved",
+ "commission": "UERC",
+ "licensee": "UPCL",
+ "fiscal_year": "FY2026-27",
+ "order": {
+  "title": "UERC order on UPCL: true-up FY2024-25, APR FY2025-26 and ARR FY2026-27 (31 March 2026)",
+  "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2026/03/202603311394829151.pdf",
+  "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+  "pages": 414,
+  "loaded_by": "scripts/load_real_orders.py (key UERC-UPCL-FY2026-27)"
+ },
+ "rules": "packages/arr-rules/uerc/tariff-2024.v1.json",
+ "why": "the engine's rules and bindings exercised on a second commission's order, so that nothing in them is fitted to UPERC or NPCL"
+}

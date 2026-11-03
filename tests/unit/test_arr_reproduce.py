@@ -1999,3 +1999,43 @@ def test_controllable_gains_and_losses_are_shared_from_the_2025_regulations():
     claimed = sum(Decimal(rec[f"apr.om.{c}.claimed"][0]) for c in cats)
     assert claimed == Decimal(rec["apr.om.total.claimed"][0])
     assert (claimed - total).quantize(Decimal("0.01")) == -ev.results["om_variation_retained_total"].rounded
+
+
+def test_a_second_commission_uerc_working_capital_and_return_reproduce():
+    """Real data, a second commission: UERC's FY2026-27 order for UPCL — interest on working capital
+    (Reg. 33(2) as the order quotes it) and return on equity (Reg. 26(2)) computed with draft UERC
+    rules from the order's own figures, the same engine and binding shape as UPERC's, no workbook.
+    Two differences are rounding; UPCL's claimed interest is not its rate on its requirement (U1)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("UERC") == []
+    rules = load_rules("UERC")
+    assert rules and all(r.status == "draft" and not r.clause.verified for r in rules)
+    folder = ROOT / "packages" / "order-reproductions" / "uerc-upcl-fy2026-27"
+    manifest = json.loads((folder / "manifest.json").read_text())
+    binding = json.loads((folder / "bindings" / "approval-iowc-roe-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    record = json.loads((folder / binding["rates"]).read_text())
+    assert record["document"]["sha256"] == manifest["order"]["sha256"]
+    checks = reproduce_cells(None, binding, rules, rates=rec)
+    differ = {c.category.rsplit(" ", 1)[1]: c for c in checks if c.result != "match"}
+    assert len(checks) == 18 and len(checks) - len(differ) == 14
+    assert set(differ) == {
+        "order:iowc.requirement.approved",
+        "order:iowc.interest.claimed",
+        "order:arr.iowc.claimed",
+        "order:roe.closing.claimed",
+    }
+    # rounding: the requirement from exact components and one printed input (867.48 ± 0.005)
+    req = differ["order:iowc.requirement.approved"]
+    assert abs(Decimal(req.exact) - Decimal(req.filed)) <= Decimal("0.005") + Decimal("0.005")
+    eq = differ["order:roe.closing.claimed"]
+    assert abs(Decimal(eq.exact) - Decimal(eq.filed)) <= Decimal("0.01")  # two printed inputs
+    # U1: 12.45 % of 1,678.73 is 209.00, not the 210.62 claimed — beyond any rounding
+    claimed = differ["order:iowc.interest.claimed"]
+    assert claimed.computed == "209.00" and Decimal(claimed.filed) - Decimal(claimed.exact) > Decimal("1.6")
+    findings = json.loads((folder / "findings.json").read_text())["findings"]
+    assert {f["id"] for f in findings} == {"U1", "U2"}

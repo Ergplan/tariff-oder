@@ -1,0 +1,339 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+ "applies": {
+  "commission": "UERC",
+  "from_fy": "FY2025-26"
+ },
+ "note": "UERC's interest on working capital and return on equity for a distribution licensee, as the FY2026-27 order for UPCL quotes and applies them — the engine's first rules of a second commission.",
+ "rules": [
+  {
+   "id": "uerc.iowc.om_month",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M expenses for one month",
+   "output": "iowc_om_month",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "om / 12",
+   "inputs": {
+    "om": {
+     "unit": "INR_crore",
+     "source": "record:om_annual"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "33(2)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "(2) Distribution a) The Distribution Licensee shall be allowed interest on the estimated level of working capital for the financial year, computed as follows: (i) Operation and maintenance expenses for one month; (ii) Maintenance spares @ 15% of operation and maintenance expenses; plus (iii) Two months equivalent of the expected revenue from sale of electricity at prevailing tariffs; (iv) Capital required to finance such shortfall in collection of current dues as may be allowed by the Commission; minus (v) One month equivalent of cost of power purchased, based on the annual power procurement plan.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.217–218, 220), not read from the Regulations — the Regulations themselves are not in this session; (i)"
+  },
+  {
+   "id": "uerc.iowc.spares",
+   "version": 1,
+   "status": "draft",
+   "title": "Maintenance spares at 15 % of O&M expenses",
+   "output": "iowc_spares",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "rate * om",
+   "inputs": {
+    "om": {
+     "unit": "INR_crore",
+     "source": "record:om_annual"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "15"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "33(2)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "(2) Distribution a) The Distribution Licensee shall be allowed interest on the estimated level of working capital for the financial year, computed as follows: (i) Operation and maintenance expenses for one month; (ii) Maintenance spares @ 15% of operation and maintenance expenses; plus (iii) Two months equivalent of the expected revenue from sale of electricity at prevailing tariffs; (iv) Capital required to finance such shortfall in collection of current dues as may be allowed by the Commission; minus (v) One month equivalent of cost of power purchased, based on the annual power procurement plan.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.217–218, 220), not read from the Regulations — the Regulations themselves are not in this session; (ii)"
+  },
+  {
+   "id": "uerc.iowc.receivables",
+   "version": 1,
+   "status": "draft",
+   "title": "Two months of the expected revenue at prevailing tariffs",
+   "output": "iowc_receivables",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "revenue * 2 / 12",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:revenue_existing_tariff"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "33(2)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "(2) Distribution a) The Distribution Licensee shall be allowed interest on the estimated level of working capital for the financial year, computed as follows: (i) Operation and maintenance expenses for one month; (ii) Maintenance spares @ 15% of operation and maintenance expenses; plus (iii) Two months equivalent of the expected revenue from sale of electricity at prevailing tariffs; (iv) Capital required to finance such shortfall in collection of current dues as may be allowed by the Commission; minus (v) One month equivalent of cost of power purchased, based on the annual power procurement plan.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.217–218, 220), not read from the Regulations — the Regulations themselves are not in this session; (iii)"
+  },
+  {
+   "id": "uerc.iowc.shortfall",
+   "version": 1,
+   "status": "draft",
+   "title": "Capital to finance the shortfall in collection (revenue × (1 − collection efficiency))",
+   "output": "iowc_shortfall",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "revenue * (1 - efficiency)",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:revenue_existing_tariff"
+    },
+    "efficiency": {
+     "unit": "fraction",
+     "source": "record:collection_efficiency",
+     "note": "as approved in the licensee's business plan"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "33(2)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "(2) Distribution a) The Distribution Licensee shall be allowed interest on the estimated level of working capital for the financial year, computed as follows: (i) Operation and maintenance expenses for one month; (ii) Maintenance spares @ 15% of operation and maintenance expenses; plus (iii) Two months equivalent of the expected revenue from sale of electricity at prevailing tariffs; (iv) Capital required to finance such shortfall in collection of current dues as may be allowed by the Commission; minus (v) One month equivalent of cost of power purchased, based on the annual power procurement plan.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.217–218, 220), not read from the Regulations — the Regulations themselves are not in this session; (iv) 'as may be allowed by the Commission' — the order allows the shortfall below the approved collection efficiency (4.13.4)"
+  },
+  {
+   "id": "uerc.iowc.requirement",
+   "version": 1,
+   "status": "draft",
+   "title": "Working capital requirement",
+   "output": "iowc_requirement",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "om_month + spares + receivables + shortfall - pp_month",
+   "inputs": {
+    "om_month": {
+     "unit": "INR_crore",
+     "source": "record:iowc_om_month"
+    },
+    "spares": {
+     "unit": "INR_crore",
+     "source": "record:iowc_spares"
+    },
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "record:iowc_receivables"
+    },
+    "shortfall": {
+     "unit": "INR_crore",
+     "source": "record:iowc_shortfall"
+    },
+    "pp_month": {
+     "unit": "INR_crore",
+     "source": "record:iowc_pp_month",
+     "note": "one month of power purchase, 'based on the annual power procurement plan'"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "33(2)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "(2) Distribution a) The Distribution Licensee shall be allowed interest on the estimated level of working capital for the financial year, computed as follows: (i) Operation and maintenance expenses for one month; (ii) Maintenance spares @ 15% of operation and maintenance expenses; plus (iii) Two months equivalent of the expected revenue from sale of electricity at prevailing tariffs; (iv) Capital required to finance such shortfall in collection of current dues as may be allowed by the Commission; minus (v) One month equivalent of cost of power purchased, based on the annual power procurement plan.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.217–218, 220), not read from the Regulations — the Regulations themselves are not in this session; the components are records so that a claimed column (the licensee's figures) and a computed one go through the same sum"
+  },
+  {
+   "id": "uerc.iowc.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on working capital",
+   "output": "iowc_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "rate * requirement",
+   "inputs": {
+    "requirement": {
+     "unit": "INR_crore",
+     "source": "record:iowc_requirement_amount"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:iowc_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "33(2)",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the rate as the order applies it (12.38 % for FY2026-27); its basis is not quoted in the order's paragraph"
+  },
+  {
+   "id": "uerc.roe.return",
+   "version": 1,
+   "status": "draft",
+   "title": "Return on equity at 16.50 % on the opening equity (distribution licensee, post-tax)",
+   "output": "roe_return",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "rate * opening",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:equity_opening"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "16.50"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "26(2)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "(2) Return on equity shall be computed on at the base rate of 15.5% for thermal generating stations, transmission licensee, SLDC and run of the river hydro generating station and at the base rate of 16.50% for the storage type hydro generating stations and run of river generating station with pondage and distribution licensee on a post-tax basis.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "opening": "100"
+     },
+     "expected": "16.50",
+     "source": "constructed (the Regulation's rate, not a filing)"
+    }
+   ],
+   "note": "the excerpt is the order's own quotation of the Regulation (UPCL FY2026-27 order, pp.217–218, 220), not read from the Regulations — the Regulations themselves are not in this session; on the opening equity, as Reg. 26(1)'s proviso and the order apply it (pro rata only on documentary evidence, at true-up)"
+  },
+  {
+   "id": "uerc.roe.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Closing equity: opening plus additions",
+   "output": "equity_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "formula": "opening + addition",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:equity_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:equity_addition"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "26(1), 24",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the equity base of Regulation 24"
+  }
+ ]
+}
