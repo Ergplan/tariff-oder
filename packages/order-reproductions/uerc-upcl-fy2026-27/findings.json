@@ -21,6 +21,37 @@
     "UERC order on UPCL FY2026-27, p.219 para 4.13.5; p.201 Table 4.33; p.203 Table 4.36"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "U3",
+   "kind": "inconsistency",
+   "title": "UPCL's claimed R&M (637.10) follows from its opening GFA 11,814.94, not the GFAn-1 of 11,682.50 printed in the same row",
+   "detail": "Table 4.43 prints UPCL's K 5.30 %, GFAn-1 11,682.50 and WPI 1.73 %: K × GFA × (1 + WPI) = 629.88, not the claimed 637.10.  With the opening GFA UPCL claims for FY2026-27 in Table 4.38 (11,814.94) the formula gives 637.02 — within K's printed precision of 637.10.  The approved R&M uses the opening GFA of the year (11,152.19), as the order says.  Which GFA UPCL meant is a question for the licensee; it does not change the approval.",
+   "where": [
+    "UERC order on UPCL FY2026-27, p.214 Table 4.43; p.206 Table 4.38",
+    "bindings/approval-om-fy27.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "U4",
+   "kind": "inconsistency",
+   "title": "UPCL's A&G capitalisation rate: 13.26 % in Table 4.44, 13.36 % in the text — the 11.72 capitalised follows from 13.36 %",
+   "detail": "Para 4.11.3 (b) reports UPCL's 'capitalization rate of 13.36 % based on actual capitalization rate of FY 2024-25'; Table 4.44 prints 13.26 %.  13.36 % of the gross 87.72 is 11.72, the figure capitalised; 13.26 % would give 11.63.  The table's rate reads as a misprint.  The approved column (21.42 %) is consistent.",
+   "where": [
+    "UERC order on UPCL FY2026-27, p.214 para 4.11.3 (b); p.215 Table 4.44"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "U5",
+   "kind": "inconsistency",
+   "title": "UPCL's O&M claim: 1,237.35 in Table 4.45, 1,221.50 in Table 4.52 (and in its working capital)",
+   "detail": "Table 4.45 totals UPCL's claimed O&M at 1,237.35 (481.38 + 637.10 + 118.87, which add).  Table 4.52 prints UPCL's O&M as 1,221.50, and UPCL's claimed one month of O&M in its working capital (101.79, Table 4.50) is 1,221.50 / 12.  The note to Table 4.52 says its column is UPCL's revised claim of 20.03.2026, which may explain the 15.85; the order does not say which components changed.",
+   "where": [
+    "UERC order on UPCL FY2026-27, p.215 Table 4.45; p.223 Table 4.52; p.219 Table 4.50"
+   ],
+   "for": "reviewer"
   }
  ]
 }

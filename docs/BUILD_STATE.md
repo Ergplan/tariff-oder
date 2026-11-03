@@ -1005,6 +1005,32 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 125 (2026-11-03): UERC — O&M for UPCL, FY2026-27 (Reg. 84).**
+  - **The record:** `order/figures-om-fy2026-27.json` in the UERC folder holds 50 figures
+    (Tables 4.42–4.45, para 4.11.3 (b), Table 4.38's claimed opening GFA), 50 / 50 quotes
+    verified.
+  - **Eight more draft UERC rules (25 in all):**
+    - employee: EMPn-1 × (1 + Gn) × (1 + CPI), its capitalisation, and net;
+    - R&M: K × GFAn-1 × (1 + WPI);
+    - A&G: A&Gn-1 × (1 + WPI), less capitalisation, plus the data-centre provision and the
+      licence fee;
+    - the O&M total.
+    Capitalisation is the order's practice, which the quoted Regulation does not mention; the
+    rule says so.
+  - **Binding `approval-om-fy27.json`:**
+    - **The approved side:** the total, 967.40, is exact.  Every approved line is within its
+      inputs' printed precision: 6 of 11 checks exact, the rest by at most 1.3 paise.  The total
+      is the annual O&M the working capital uses (increment 123).
+    - **UPCL's claim** reproduces only with the figures its other numbers imply.
+  - **Findings `U3`–`U5` (reviewer):**
+    - **U3:** the claimed R&M (637.10) follows from UPCL's opening GFA of 11,814.94, not the
+      11,682.50 printed in the same row (which gives 629.88).
+    - **U4:** the A&G capitalised (11.72) follows from the 13.36% in the text, not the table's
+      13.26%.
+    - **U5:** UPCL's O&M is 1,237.35 in Table 4.45 but 1,221.50 in Table 4.52 and in its working
+      capital, possibly its revised claim of 20.03.2026.
+  Nothing verified, nothing approved.
+
   **Increment 124 (2026-11-03): UERC — GFA, depreciation, normative loan and interest for UPCL,
   FY2026-27.**
   - **The record:** `order/figures-loan-dep-fy2026-27.json` in the UERC folder holds 52 figures
@@ -3089,6 +3115,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 125 (2026-11-03): 495 passed** (+1 unit: UERC O&M, the approved side within printed precision, UPCL's claim against U3–U5).  `check_order_quotes.py`: 50 / 50.  Ruff and format clean.
 - **Increment 124 (2026-11-03): 494 passed** (+1 unit: UERC depreciation, loan and interest, differences bounded by printed precision; the chain's ties).  `check_order_quotes.py`: 52 / 52.  Ruff and format clean.
 - **Increment 123 (2026-11-03): 493 passed** (+1 unit: UERC's working capital and RoE for UPCL — a second commission, no workbook; U1).  `check_order_quotes.py`: 41 / 41.  Ruff and format clean.
 - **Increment 122 (2026-11-03): 492 passed** (+1 unit: gain / loss sharing — the examples, the year selection, the illustration).  `check_order_quotes.py`: 12 / 12.  Ruff and format clean.
@@ -3346,7 +3373,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 124) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 125) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3446,7 +3473,8 @@ entries below are the per-increment history.**
     - HV energy, which waits on the kVAh sold (A55);
   - more of a second commission's order (increment 123 began with UERC / UPCL: working capital
     and RoE, 14 / 18; increment 124 its depreciation, loan and interest, 5 / 17 exact and the rest
-    within printed precision) — next its O&M (Reg. 84: employee, R&M on K × GFA, A&G by WPI);
+    within printed precision; increment 125 its O&M, 967.40 exact; findings U1–U5) — next its ARR
+    summary end to end (Table 4.52) and the revenue gap;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

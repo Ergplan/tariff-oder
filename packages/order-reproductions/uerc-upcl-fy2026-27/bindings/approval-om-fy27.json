@@ -1,0 +1,162 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "UERC order",
+ "rates": "order/figures-om-fy2026-27.json",
+ "places": 2,
+ "note": "UERC's O&M for UPCL, FY2026-27 (Reg. 84 as the order quotes it): employee from EMPn-1 with Gn and CPI, R&M as K × GFAn-1 × (1 + WPI), A&G from A&Gn-1 with WPI, each less the capitalisation the order applies, plus the data centre provision and the licence fee.  Two more evaluations test UPCL's claim against the GFA and capitalisation rate its other figures imply (U3, U4).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "O&M, approved (Tables 4.42–4.45)",
+   "inputs": {
+    "record:om_emp_prev": {
+     "rate": "emp.prev.approved"
+    },
+    "record:om_emp_growth": {
+     "rate": "emp.growth.approved"
+    },
+    "record:om_cpi": {
+     "rate": "emp.cpi.approved"
+    },
+    "record:om_emp_cap_rate": {
+     "rate": "emp.cap_rate.approved"
+    },
+    "record:om_rm_k": {
+     "rate": "rm.k.approved"
+    },
+    "record:om_gfa_prev": {
+     "rate": "rm.gfa_prev.approved"
+    },
+    "record:om_wpi": {
+     "rate": "rm.wpi.approved"
+    },
+    "record:om_ag_prev": {
+     "rate": "ag.prev.approved"
+    },
+    "record:om_ag_cap_rate": {
+     "rate": "ag.cap_rate.approved"
+    },
+    "record:om_ag_provision": {
+     "rate": "ag.provision.approved"
+    },
+    "record:om_licence_fee": {
+     "rate": "ag.licence_fee.approved"
+    }
+   },
+   "checks": {
+    "om_emp_gross": "order:emp.gross.approved",
+    "om_emp_capitalised": "order:emp.capitalised.approved",
+    "om_emp_net": [
+     "order:emp.net.approved",
+     "order:om.employee.approved"
+    ],
+    "om_rm": [
+     "order:rm.rm.approved",
+     "order:om.rm.approved"
+    ],
+    "om_ag_gross": "order:ag.gross.approved",
+    "om_ag_capitalised": "order:ag.capitalised.approved",
+    "om_ag_total": [
+     "order:ag.total.approved",
+     "order:om.ag.approved"
+    ],
+    "om_total": "order:om.total.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "O&M, claimed (Tables 4.42–4.45)",
+   "inputs": {
+    "record:om_emp_prev": {
+     "rate": "emp.prev.claimed"
+    },
+    "record:om_emp_growth": {
+     "rate": "emp.growth.claimed"
+    },
+    "record:om_cpi": {
+     "rate": "emp.cpi.claimed"
+    },
+    "record:om_emp_cap_rate": {
+     "rate": "emp.cap_rate.claimed"
+    },
+    "record:om_rm_k": {
+     "rate": "rm.k.claimed"
+    },
+    "record:om_gfa_prev": {
+     "rate": "rm.gfa_prev.claimed"
+    },
+    "record:om_wpi": {
+     "rate": "rm.wpi.claimed"
+    },
+    "record:om_ag_prev": {
+     "rate": "ag.prev.claimed"
+    },
+    "record:om_ag_cap_rate": {
+     "rate": "ag.cap_rate.claimed"
+    },
+    "record:om_ag_provision": {
+     "rate": "ag.provision.claimed"
+    },
+    "record:om_licence_fee": {
+     "rate": "ag.licence_fee.claimed"
+    }
+   },
+   "checks": {
+    "om_emp_gross": "order:emp.gross.claimed",
+    "om_emp_capitalised": "order:emp.capitalised.claimed",
+    "om_emp_net": [
+     "order:emp.net.claimed",
+     "order:om.employee.claimed"
+    ],
+    "om_rm": [
+     "order:rm.rm.claimed",
+     "order:om.rm.claimed"
+    ],
+    "om_ag_gross": "order:ag.gross.claimed",
+    "om_ag_capitalised": "order:ag.capitalised.claimed",
+    "om_ag_total": [
+     "order:ag.total.claimed",
+     "order:om.ag.claimed"
+    ],
+    "om_total": "order:om.total.claimed"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "UPCL's R&M with its claimed opening GFA (Table 4.38) — U3",
+   "inputs": {
+    "record:om_rm_k": {
+     "rate": "rm.k.claimed"
+    },
+    "record:om_gfa_prev": {
+     "rate": "gfa.opening_claimed.claimed"
+    },
+    "record:om_wpi": {
+     "rate": "rm.wpi.claimed"
+    }
+   },
+   "checks": {
+    "om_rm": "order:rm.rm.claimed"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "UPCL's A&G capitalised at the 13.36 % its text states — U4",
+   "inputs": {
+    "record:om_ag_prev": {
+     "rate": "ag.prev.claimed"
+    },
+    "record:om_wpi": {
+     "rate": "ag.wpi.claimed"
+    },
+    "record:om_ag_cap_rate": {
+     "rate": "ag.text_cap_rate.claimed"
+    }
+   },
+   "checks": {
+    "om_ag_capitalised": "order:ag.capitalised.claimed"
+   }
+  }
+ ]
+}

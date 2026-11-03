@@ -2038,7 +2038,7 @@ def test_a_second_commission_uerc_working_capital_and_return_reproduce():
     claimed = differ["order:iowc.interest.claimed"]
     assert claimed.computed == "209.00" and Decimal(claimed.filed) - Decimal(claimed.exact) > Decimal("1.6")
     findings = json.loads((folder / "findings.json").read_text())["findings"]
-    assert {f["id"] for f in findings} == {"U1", "U2"}
+    assert {"U1", "U2"} <= {f["id"] for f in findings}
 
 
 def test_uerc_depreciation_loan_and_interest_reproduce_within_printed_precision():
@@ -2085,3 +2085,47 @@ def test_uerc_depreciation_loan_and_interest_reproduce_within_printed_precision(
     assert rec["gfa.opening.approved"] == rec["dep.opening_gfa.approved"]
     iowc = load_binding_rates(folder, {"rates": "order/figures-iowc-roe-fy2026-27.json"})
     assert iowc["roe.addition.approved"] == rec["mof.fy27.equity"]
+
+
+def test_uerc_om_reproduces_and_tests_the_licensees_claim():
+    """Real data, UERC / UPCL FY2026-27: O&M under Reg. 84 — employee from EMPn-1 with Gn and CPI,
+    R&M as K × GFAn-1 × (1 + WPI), A&G from A&Gn-1 with WPI, less capitalisation, plus the data
+    centre provision and the licence fee.  The approved total (967.40) is exact, every approved
+    line within its inputs' printed precision.  UPCL's claim reproduces only with the GFA and capitalisation rate its
+    other figures imply (U3, U4); its total is not Table 4.52's (U5)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "uerc-upcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-om-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("UERC"), rates=rec)
+    approved = [c for c in checks if c.category.startswith("O&M, approved")]
+    assert len(approved) == 11
+    # EMPn-1 printed to ±0.005 and CPI / K to ±0.005 % on bases near 550 and 11,150: a few paise
+    slack = Decimal("0.005") * Decimal("1.04") + Decimal("0.00005") * Decimal("550") + Decimal("0.005")
+    assert all(abs(Decimal(c.exact) - Decimal(c.filed)) <= slack for c in approved)
+    assert next(c for c in approved if c.output == "om_total").result == "match"  # 967.40
+    claimed = {c.category.rsplit(" ", 1)[1]: c for c in checks if c.category.startswith("O&M, claimed")}
+    # U3: the row's own GFA gives 629.88, 7.22 short of the claim — beyond K's precision
+    assert claimed["order:rm.rm.claimed"].computed == "629.88"
+    u3 = next(c for c in checks if "U3" in c.category)
+    k_slack = Decimal(rec["gfa.opening_claimed.claimed"][0]) * Decimal("0.00005") * Decimal("1.0173")
+    assert abs(Decimal(u3.exact) - Decimal(u3.filed)) <= k_slack
+    # U4: 13.26 % gives 11.63; the text's 13.36 % gives the 11.72 capitalised
+    assert claimed["order:ag.capitalised.claimed"].computed == "11.63"
+    assert next(c for c in checks if "U4" in c.category).result == "match"
+    # U5: Table 4.45's claimed total against Table 4.52's (and the working capital's 101.79 × 12)
+    iowc = load_binding_rates(folder, {"rates": "order/figures-iowc-roe-fy2026-27.json"})
+    parts = sum(Decimal(rec[f"om.{k}.claimed"][0]) for k in ("employee", "rm", "ag"))
+    assert parts == Decimal(rec["om.total.claimed"][0]) == Decimal("1237.35")
+    assert Decimal(iowc["arr.om.claimed"][0]) == Decimal("1221.50")
+    assert (Decimal(iowc["arr.om.claimed"][0]) / 12).quantize(Decimal("0.01")) == Decimal(
+        iowc["iowc.om_month.claimed"][0]
+    )
+    # the approved total is the working capital's annual O&M
+    assert rec["om.total.approved"] == iowc["om.approved"]
+    findings = {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+    assert {"U3", "U4", "U5"} <= findings

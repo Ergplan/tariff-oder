@@ -1,0 +1,360 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UERC order on UPCL: true-up FY2024-25, APR FY2025-26 and ARR FY2026-27 (31 March 2026) — O&M expenses for FY2026-27",
+  "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+  "pages": 414
+ },
+ "figures": {
+  "emp.prev.claimed": {
+   "value": "529.14",
+   "unit": "INR_crore",
+   "page": 213,
+   "quote": "EMPn-1 529.14 529.13",
+   "what": "Table 4.42, EMPn-1: claimed"
+  },
+  "emp.prev.approved": {
+   "value": "529.13",
+   "unit": "INR_crore",
+   "page": 213,
+   "quote": "EMPn-1 529.14 529.13",
+   "what": "Table 4.42, EMPn-1: approved"
+  },
+  "emp.growth.claimed": {
+   "value": "0.00",
+   "unit": "percent",
+   "page": 213,
+   "quote": "Gn 0.00% 0.00%",
+   "what": "Table 4.42, Gn: claimed"
+  },
+  "emp.growth.approved": {
+   "value": "0.00",
+   "unit": "percent",
+   "page": 213,
+   "quote": "Gn 0.00% 0.00%",
+   "what": "Table 4.42, Gn: approved"
+  },
+  "emp.cpi.claimed": {
+   "value": "4.48",
+   "unit": "percent",
+   "page": 213,
+   "quote": "CPIinflation 4.48% 3.75%",
+   "what": "Table 4.42, CPI inflation: claimed"
+  },
+  "emp.cpi.approved": {
+   "value": "3.75",
+   "unit": "percent",
+   "page": 213,
+   "quote": "CPIinflation 4.48% 3.75%",
+   "what": "Table 4.42, CPI inflation: approved"
+  },
+  "emp.gross.claimed": {
+   "value": "552.85",
+   "unit": "INR_crore",
+   "page": 213,
+   "quote": "EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) 552.85 548.96",
+   "what": "Table 4.42, EMPn: claimed"
+  },
+  "emp.gross.approved": {
+   "value": "548.96",
+   "unit": "INR_crore",
+   "page": 213,
+   "quote": "EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) 552.85 548.96",
+   "what": "Table 4.42, EMPn: approved"
+  },
+  "emp.cap_rate.claimed": {
+   "value": "12.93",
+   "unit": "percent",
+   "page": 213,
+   "quote": "Capitalisation rate 12.93% 12.93%",
+   "what": "Table 4.42, capitalisation rate: claimed"
+  },
+  "emp.cap_rate.approved": {
+   "value": "12.93",
+   "unit": "percent",
+   "page": 213,
+   "quote": "Capitalisation rate 12.93% 12.93%",
+   "what": "Table 4.42, capitalisation rate: approved"
+  },
+  "emp.capitalised.claimed": {
+   "value": "71.47",
+   "unit": "INR_crore",
+   "page": 213,
+   "quote": "Less: Employee expenses capitalized 71.47 70.98",
+   "what": "Table 4.42, capitalised: claimed"
+  },
+  "emp.capitalised.approved": {
+   "value": "70.98",
+   "unit": "INR_crore",
+   "page": 213,
+   "quote": "Less: Employee expenses capitalized 71.47 70.98",
+   "what": "Table 4.42, capitalised: approved"
+  },
+  "emp.net.claimed": {
+   "value": "481.38",
+   "unit": "INR_crore",
+   "page": 213,
+   "quote": "Net Employee expenses 481.38 477.98",
+   "what": "Table 4.42, net: claimed"
+  },
+  "emp.net.approved": {
+   "value": "477.98",
+   "unit": "INR_crore",
+   "page": 213,
+   "quote": "Net Employee expenses 481.38 477.98",
+   "what": "Table 4.42, net: approved"
+  },
+  "rm.k.claimed": {
+   "value": "5.30",
+   "unit": "percent",
+   "page": 214,
+   "quote": "Table 4.43: R&M Expenses approved by the Commission for FY 2026-27 (Rs. Crore) Particulars Claimed by UPCL Approved K 5.30% 3.56%",
+   "what": "Table 4.43, K: claimed"
+  },
+  "rm.k.approved": {
+   "value": "3.56",
+   "unit": "percent",
+   "page": 214,
+   "quote": "Table 4.43: R&M Expenses approved by the Commission for FY 2026-27 (Rs. Crore) Particulars Claimed by UPCL Approved K 5.30% 3.56%",
+   "what": "Table 4.43, K: approved"
+  },
+  "rm.gfa_prev.claimed": {
+   "value": "11682.50",
+   "unit": "INR_crore",
+   "page": 214,
+   "quote": "GFAn-1 11682.50 11152.19",
+   "what": "Table 4.43, GFAn-1: claimed"
+  },
+  "rm.gfa_prev.approved": {
+   "value": "11152.19",
+   "unit": "INR_crore",
+   "page": 214,
+   "quote": "GFAn-1 11682.50 11152.19",
+   "what": "Table 4.43, GFAn-1: approved"
+  },
+  "rm.wpi.claimed": {
+   "value": "1.73",
+   "unit": "percent",
+   "page": 214,
+   "quote": "WPIinflation 1.73% 0.53%",
+   "what": "Table 4.43, WPI inflation: claimed"
+  },
+  "rm.wpi.approved": {
+   "value": "0.53",
+   "unit": "percent",
+   "page": 214,
+   "quote": "WPIinflation 1.73% 0.53%",
+   "what": "Table 4.43, WPI inflation: approved"
+  },
+  "rm.rm.claimed": {
+   "value": "637.10",
+   "unit": "INR_crore",
+   "page": 214,
+   "quote": "R&Mn = K x (GFAn-1) x (1+WPIinflation) 637.10 399.13",
+   "what": "Table 4.43, R&Mn: claimed"
+  },
+  "rm.rm.approved": {
+   "value": "399.13",
+   "unit": "INR_crore",
+   "page": 214,
+   "quote": "R&Mn = K x (GFAn-1) x (1+WPIinflation) 637.10 399.13",
+   "what": "Table 4.43, R&Mn: approved"
+  },
+  "ag.prev.claimed": {
+   "value": "86.22",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "A&Gn-1 86.22 60.03",
+   "what": "Table 4.44, A&Gn-1: claimed"
+  },
+  "ag.prev.approved": {
+   "value": "60.03",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "A&Gn-1 86.22 60.03",
+   "what": "Table 4.44, A&Gn-1: approved"
+  },
+  "ag.wpi.claimed": {
+   "value": "1.73",
+   "unit": "percent",
+   "page": 215,
+   "quote": "A&Gn-1 86.22 60.03 WPIinflation 1.73% 0.53%",
+   "what": "Table 4.44, WPI inflation: claimed"
+  },
+  "ag.wpi.approved": {
+   "value": "0.53",
+   "unit": "percent",
+   "page": 215,
+   "quote": "A&Gn-1 86.22 60.03 WPIinflation 1.73% 0.53%",
+   "what": "Table 4.44, WPI inflation: approved"
+  },
+  "ag.gross.claimed": {
+   "value": "87.72",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Gross A&G expenses 87.72 60.35",
+   "what": "Table 4.44, gross: claimed"
+  },
+  "ag.gross.approved": {
+   "value": "60.35",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Gross A&G expenses 87.72 60.35",
+   "what": "Table 4.44, gross: approved"
+  },
+  "ag.cap_rate.claimed": {
+   "value": "13.26",
+   "unit": "percent",
+   "page": 215,
+   "quote": "Gross A&G expenses 87.72 60.35 Capitalisation rate 13.26% 21.42%",
+   "what": "Table 4.44, capitalisation rate: claimed"
+  },
+  "ag.cap_rate.approved": {
+   "value": "21.42",
+   "unit": "percent",
+   "page": 215,
+   "quote": "Gross A&G expenses 87.72 60.35 Capitalisation rate 13.26% 21.42%",
+   "what": "Table 4.44, capitalisation rate: approved"
+  },
+  "ag.capitalised.claimed": {
+   "value": "11.72",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Less: A&G expenses capitalized 11.72 12.93",
+   "what": "Table 4.44, capitalised: claimed"
+  },
+  "ag.capitalised.approved": {
+   "value": "12.93",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Less: A&G expenses capitalized 11.72 12.93",
+   "what": "Table 4.44, capitalised: approved"
+  },
+  "ag.net.claimed": {
+   "value": "76.00",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Net A&G expenses 76.00 47.42",
+   "what": "Table 4.44, net: claimed"
+  },
+  "ag.net.approved": {
+   "value": "47.42",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Net A&G expenses 76.00 47.42",
+   "what": "Table 4.44, net: approved"
+  },
+  "ag.provision.claimed": {
+   "value": "36.82",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Provision (Data Centre) 36.82 36.82",
+   "what": "Table 4.44, provision (data centre): claimed"
+  },
+  "ag.provision.approved": {
+   "value": "36.82",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Provision (Data Centre) 36.82 36.82",
+   "what": "Table 4.44, provision (data centre): approved"
+  },
+  "ag.licence_fee.claimed": {
+   "value": "6.05",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "License Fee 6.05 6.05",
+   "what": "Table 4.44, licence fee: claimed"
+  },
+  "ag.licence_fee.approved": {
+   "value": "6.05",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "License Fee 6.05 6.05",
+   "what": "Table 4.44, licence fee: approved"
+  },
+  "ag.total.claimed": {
+   "value": "118.87",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Total A&G Expenses 118.87 90.29",
+   "what": "Table 4.44, total: claimed"
+  },
+  "ag.total.approved": {
+   "value": "90.29",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Total A&G Expenses 118.87 90.29",
+   "what": "Table 4.44, total: approved"
+  },
+  "om.employee.claimed": {
+   "value": "481.38",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Employee expenses 481.38 477.98",
+   "what": "Table 4.45, Employee expenses: claimed"
+  },
+  "om.employee.approved": {
+   "value": "477.98",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Employee expenses 481.38 477.98",
+   "what": "Table 4.45, Employee expenses: approved"
+  },
+  "om.rm.claimed": {
+   "value": "637.10",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "R&M expenses 637.10 399.13",
+   "what": "Table 4.45, R&M expenses: claimed"
+  },
+  "om.rm.approved": {
+   "value": "399.13",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "R&M expenses 637.10 399.13",
+   "what": "Table 4.45, R&M expenses: approved"
+  },
+  "om.ag.claimed": {
+   "value": "118.87",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "A&G expenses 118.87 90.29",
+   "what": "Table 4.45, A&G expenses: claimed"
+  },
+  "om.ag.approved": {
+   "value": "90.29",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "A&G expenses 118.87 90.29",
+   "what": "Table 4.45, A&G expenses: approved"
+  },
+  "om.total.claimed": {
+   "value": "1237.35",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Total O&M expenses 1237.35 967.40",
+   "what": "Table 4.45, Total O&M expenses: claimed"
+  },
+  "om.total.approved": {
+   "value": "967.40",
+   "unit": "INR_crore",
+   "page": 215,
+   "quote": "Total O&M expenses 1237.35 967.40",
+   "what": "Table 4.45, Total O&M expenses: approved"
+  },
+  "ag.text_cap_rate.claimed": {
+   "value": "13.36",
+   "unit": "percent",
+   "page": 214,
+   "quote": "Capitalization rate of 13.36% based on actual capitalization rate of FY 2024-25",
+   "what": "UPCL's A&G capitalisation rate as the order's text states it (4.11.3 b): claimed"
+  },
+  "gfa.opening_claimed.claimed": {
+   "value": "11814.94",
+   "unit": "INR_crore",
+   "page": 206,
+   "quote": "1. Opening Value 11033.06 11814.94 11152.19",
+   "what": "Table 4.38, UPCL's claimed opening GFA for FY2026-27: claimed"
+  }
+ }
+}

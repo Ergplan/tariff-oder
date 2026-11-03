@@ -706,6 +706,345 @@
    },
    "examples": [],
    "note": "Table 4.40's total"
+  },
+  {
+   "id": "uerc.om.emp_gross",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses, gross: EMPn-1 × (1 + Gn) × (1 + CPI inflation)",
+   "output": "om_emp_gross",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "prev * (1 + growth) * (1 + cpi)",
+   "inputs": {
+    "prev": {
+     "unit": "INR_crore",
+     "source": "record:om_emp_prev"
+    },
+    "growth": {
+     "unit": "percent",
+     "source": "record:om_emp_growth",
+     "note": "Gn, set in the MYT order"
+    },
+    "cpi": {
+     "unit": "percent",
+     "source": "record:om_cpi",
+     "note": "the average CPI increase of the preceding three years"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "84(2), 84(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "84. Operation and Maintenance Expenses … (2) The O&M expenses for the nth year … shall be approved based on the formula given below:- O&Mn = R&Mn + EMPn + A&Gn … (3) … EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) R&Mn = K x (GFA n-1) x (1+WPIinflation) and A&Gn = (A&Gn-1) x (1+WPIinflation) + Provision … • CPIinflation – is the average increase in the Consumer Price Index (CPI) for immediately preceding three years; • WPIinflation – is the average increase in the Wholesale Price Index (CPI) for immediately preceding three years; …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations"
+  },
+  {
+   "id": "uerc.om.emp_capitalised",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses capitalised",
+   "output": "om_emp_capitalised",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "rate * gross",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:om_emp_gross"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:om_emp_cap_rate",
+     "note": "the previous year's actual rate, as the order applies it"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "84(2), 84(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "84. Operation and Maintenance Expenses … (2) The O&M expenses for the nth year … shall be approved based on the formula given below:- O&Mn = R&Mn + EMPn + A&Gn … (3) … EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) R&Mn = K x (GFA n-1) x (1+WPIinflation) and A&Gn = (A&Gn-1) x (1+WPIinflation) + Provision … • CPIinflation – is the average increase in the Consumer Price Index (CPI) for immediately preceding three years; • WPIinflation – is the average increase in the Wholesale Price Index (CPI) for immediately preceding three years; …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations; capitalisation is the order's practice; Reg. 84 as quoted does not mention it"
+  },
+  {
+   "id": "uerc.om.emp_net",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses, net of capitalisation",
+   "output": "om_emp_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "gross - capitalised",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:om_emp_gross"
+    },
+    "capitalised": {
+     "unit": "INR_crore",
+     "source": "rule:om_emp_capitalised"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "84(2), 84(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "84. Operation and Maintenance Expenses … (2) The O&M expenses for the nth year … shall be approved based on the formula given below:- O&Mn = R&Mn + EMPn + A&Gn … (3) … EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) R&Mn = K x (GFA n-1) x (1+WPIinflation) and A&Gn = (A&Gn-1) x (1+WPIinflation) + Provision … • CPIinflation – is the average increase in the Consumer Price Index (CPI) for immediately preceding three years; • WPIinflation – is the average increase in the Wholesale Price Index (CPI) for immediately preceding three years; …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations"
+  },
+  {
+   "id": "uerc.om.rm",
+   "version": 1,
+   "status": "draft",
+   "title": "R&M expenses: K × GFAn-1 × (1 + WPI inflation)",
+   "output": "om_rm",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "k * gfa * (1 + wpi)",
+   "inputs": {
+    "k": {
+     "unit": "percent",
+     "source": "record:om_rm_k",
+     "note": "set in the MYT order"
+    },
+    "gfa": {
+     "unit": "INR_crore",
+     "source": "record:om_gfa_prev",
+     "note": "the order uses the opening GFA of the year"
+    },
+    "wpi": {
+     "unit": "percent",
+     "source": "record:om_wpi"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "84(2), 84(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "84. Operation and Maintenance Expenses … (2) The O&M expenses for the nth year … shall be approved based on the formula given below:- O&Mn = R&Mn + EMPn + A&Gn … (3) … EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) R&Mn = K x (GFA n-1) x (1+WPIinflation) and A&Gn = (A&Gn-1) x (1+WPIinflation) + Provision … • CPIinflation – is the average increase in the Consumer Price Index (CPI) for immediately preceding three years; • WPIinflation – is the average increase in the Wholesale Price Index (CPI) for immediately preceding three years; …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations"
+  },
+  {
+   "id": "uerc.om.ag_gross",
+   "version": 1,
+   "status": "draft",
+   "title": "A&G expenses, gross: A&Gn-1 × (1 + WPI inflation)",
+   "output": "om_ag_gross",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "prev * (1 + wpi)",
+   "inputs": {
+    "prev": {
+     "unit": "INR_crore",
+     "source": "record:om_ag_prev"
+    },
+    "wpi": {
+     "unit": "percent",
+     "source": "record:om_wpi"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "84(2), 84(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "84. Operation and Maintenance Expenses … (2) The O&M expenses for the nth year … shall be approved based on the formula given below:- O&Mn = R&Mn + EMPn + A&Gn … (3) … EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) R&Mn = K x (GFA n-1) x (1+WPIinflation) and A&Gn = (A&Gn-1) x (1+WPIinflation) + Provision … • CPIinflation – is the average increase in the Consumer Price Index (CPI) for immediately preceding three years; • WPIinflation – is the average increase in the Wholesale Price Index (CPI) for immediately preceding three years; …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations"
+  },
+  {
+   "id": "uerc.om.ag_capitalised",
+   "version": 1,
+   "status": "draft",
+   "title": "A&G expenses capitalised",
+   "output": "om_ag_capitalised",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "rate * gross",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:om_ag_gross"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:om_ag_cap_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "84(2), 84(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "84. Operation and Maintenance Expenses … (2) The O&M expenses for the nth year … shall be approved based on the formula given below:- O&Mn = R&Mn + EMPn + A&Gn … (3) … EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) R&Mn = K x (GFA n-1) x (1+WPIinflation) and A&Gn = (A&Gn-1) x (1+WPIinflation) + Provision … • CPIinflation – is the average increase in the Consumer Price Index (CPI) for immediately preceding three years; • WPIinflation – is the average increase in the Wholesale Price Index (CPI) for immediately preceding three years; …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations; capitalisation is the order's practice"
+  },
+  {
+   "id": "uerc.om.ag_total",
+   "version": 1,
+   "status": "draft",
+   "title": "A&G expenses: net of capitalisation, plus the provision and the licence fee",
+   "output": "om_ag_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "gross - capitalised + provision + licence_fee",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "rule:om_ag_gross"
+    },
+    "capitalised": {
+     "unit": "INR_crore",
+     "source": "rule:om_ag_capitalised"
+    },
+    "provision": {
+     "unit": "INR_crore",
+     "source": "record:om_ag_provision",
+     "note": "one-time or initiative costs validated by the Commission (here the data centre)"
+    },
+    "licence_fee": {
+     "unit": "INR_crore",
+     "source": "record:om_licence_fee",
+     "note": "allowed by the order on top of the norm"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "84(2), 84(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "84. Operation and Maintenance Expenses … (2) The O&M expenses for the nth year … shall be approved based on the formula given below:- O&Mn = R&Mn + EMPn + A&Gn … (3) … EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) R&Mn = K x (GFA n-1) x (1+WPIinflation) and A&Gn = (A&Gn-1) x (1+WPIinflation) + Provision … • CPIinflation – is the average increase in the Consumer Price Index (CPI) for immediately preceding three years; • WPIinflation – is the average increase in the Wholesale Price Index (CPI) for immediately preceding three years; …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations"
+  },
+  {
+   "id": "uerc.om.total",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M expenses: employee, R&M and A&G",
+   "output": "om_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "employee + rm + ag",
+   "inputs": {
+    "employee": {
+     "unit": "INR_crore",
+     "source": "rule:om_emp_net"
+    },
+    "rm": {
+     "unit": "INR_crore",
+     "source": "rule:om_rm"
+    },
+    "ag": {
+     "unit": "INR_crore",
+     "source": "rule:om_ag_total"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": "84(2), 84(3)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "84. Operation and Maintenance Expenses … (2) The O&M expenses for the nth year … shall be approved based on the formula given below:- O&Mn = R&Mn + EMPn + A&Gn … (3) … EMPn = (EMPn-1) x (1+Gn) x (1+CPIinflation) R&Mn = K x (GFA n-1) x (1+WPIinflation) and A&Gn = (A&Gn-1) x (1+WPIinflation) + Provision … • CPIinflation – is the average increase in the Consumer Price Index (CPI) for immediately preceding three years; • WPIinflation – is the average increase in the Wholesale Price Index (CPI) for immediately preceding three years; …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations"
   }
  ]
 }
