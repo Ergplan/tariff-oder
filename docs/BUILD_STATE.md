@@ -1005,6 +1005,30 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 128 (2026-11-03): UERC — the FY2024-25 true-up gap carried into FY2026-27's ARR,
+  across two regulations.**
+  - **The record:** `order/figures-trueup-summary-fy2024-25.json` in the UERC folder holds 62
+    figures (Tables 3.49, 3.50), 62 / 62 quotes verified.
+  - **Eight more draft UERC rules (47 in all):**
+    - in `tariff-2021.v1.json`: O&M after sharing (the norm less the consumers' signed third),
+      the true-up ARR, the net ARR and the gap (with the deemed revenue on the excess loss);
+    - a new `carrying.v1.json` for both regulations: carrying cost in a year (half a year on the
+      addition), in the year of recovery (half a year on the opening), the closing balance, and
+      the net impact after a correction.  The half-year conventions are the order's practice,
+      read from its figures; the rule says so.
+  - **Binding `trueup-carried-fy25-fy27.json` — one chain across FY2024-25, FY2025-26 and
+    FY2026-27:** the true-up's gap from its heads, then carried to the 343.07 that Table 4.52
+    puts in the ARR.
+    - **From the printed gap (307.12),** the carrying chain is exact: 10 / 10 (18.53, 40.32,
+      22.65; closings 325.65, 365.97, 388.62; 343.07).
+    - **End to end from the heads:** the net ARR, 10,626.83, is exact.  O&M after sharing is
+      893.467 against 893.46, inside its inputs' precision.  That paisa carried three years
+      grows to 1.7 paise: 343.09 against 343.07.  The test bounds it by the growth factor.
+  - **The UERC order now reproduces end to end through 47 draft rules:** the true-up year's
+    sharing and gap, its carrying, and the ARR year's heads, net requirement and surplus.  Six
+    findings (U1–U6) concern UPCL's claim.
+  Nothing verified, nothing approved.
+
   **Increment 127 (2026-11-03): UERC's true-up of FY2024-25 — the distribution loss valued at the
   ABR, and controllable gains and losses shared.**
   - **The record:** `order/figures-trueup-sharing-fy2024-25.json` in the UERC folder holds 49
@@ -3169,6 +3193,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 128 (2026-11-03): 498 passed** (+1 unit: UERC's true-up gap carried into the ARR year — exact from the printed gap, bounded end to end).  `check_order_quotes.py`: 62 / 62.  Ruff and format clean.
 - **Increment 127 (2026-11-03): 497 passed** (+1 unit: UERC's true-up loss valuation and sharing; the 2021 / 2024 year selection; U6).  `check_order_quotes.py`: 49 / 49.  Ruff and format clean.
 - **Increment 126 (2026-11-03): 496 passed** (+1 unit: UERC's revenue requirement and surplus end to end, to the paisa).  `check_order_quotes.py`: 38 / 38.  Ruff and format clean.
 - **Increment 125 (2026-11-03): 495 passed** (+1 unit: UERC O&M, the approved side within printed precision, UPCL's claim against U3–U5).  `check_order_quotes.py`: 50 / 50.  Ruff and format clean.
@@ -3429,7 +3454,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 127) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 128) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3531,7 +3556,8 @@ entries below are the per-increment history.**
     and RoE, 14 / 18; increment 124 its depreciation, loan and interest, 5 / 17 exact and the rest
     within printed precision; increment 125 its O&M, 967.40 exact; findings U1–U5; increment 126 its ARR end to end — 12,591.09, net 12,489.54, surplus 100.87 to
     the paisa; increment 127 its true-up's loss valuation and sharing under the 2021 Regulations,
-    exact) — next the rest of that true-up, or a third commission;
+    exact; increment 128 its gap carried into FY2026-27's ARR, 343.07 — exact from the printed gap,
+    1.7 paise end to end) — next a third commission;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

@@ -1,0 +1,172 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UERC Tariff Regulations, 2021 (Reg. 12(10): a true-up surplus or deficit 'shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33') and the 2024 Regulations' counterpart — as the order applies them",
+ "applies": {
+  "commission": "UERC"
+ },
+ "note": "UERC's carrying cost on a true-up gap as the UPCL FY2026-27 order computes it (Table 3.50): half a year on the year's addition, a full year on the opening balance in a year between, half a year on the opening in the year of recovery; the rate each year's working-capital rate.  The half-year conventions are the order's practice, read from its figures, not quoted Regulation text.",
+ "rules": [
+  {
+   "id": "uerc.cc.in_year",
+   "version": 1,
+   "status": "draft",
+   "title": "Carrying cost in a year: the rate on the opening balance and half the year's addition",
+   "output": "cc_carrying_in_year",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "rate * (opening + addition / 2)",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:cc_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:cc_addition"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:cc_rate",
+     "note": "the year's interest rate on working capital"
+    }
+   },
+   "clause": {
+    "regulation": "UERC Tariff Regulations, 2021 (Reg. 12(10): a true-up surplus or deficit 'shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33') and the 2024 Regulations' counterpart — as the order applies them",
+    "clause": "12(10) (2021)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "The surplus/deficit determined by the Commission in accordance with these Regulations on account of truing up of the ARR of Applicant shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33 of these Regulations.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's practice (Table 3.50)"
+  },
+  {
+   "id": "uerc.cc.recovery_year",
+   "version": 1,
+   "status": "draft",
+   "title": "Carrying cost in the year of recovery: half a year on the opening balance",
+   "output": "cc_carrying_recovery_year",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "rate * opening / 2",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:cc_opening"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:cc_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UERC Tariff Regulations, 2021 (Reg. 12(10): a true-up surplus or deficit 'shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33') and the 2024 Regulations' counterpart — as the order applies them",
+    "clause": "12(10) (2021)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "The surplus/deficit determined by the Commission in accordance with these Regulations on account of truing up of the ARR of Applicant shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33 of these Regulations.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's practice (Table 3.50, FY2026-27)"
+  },
+  {
+   "id": "uerc.cc.closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Closing balance: opening, addition and carrying cost",
+   "output": "cc_closing",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "opening + addition + carrying",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:cc_opening"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:cc_addition"
+    },
+    "carrying": {
+     "unit": "INR_crore",
+     "source": "record:cc_carrying"
+    }
+   },
+   "clause": {
+    "regulation": "UERC Tariff Regulations, 2021 (Reg. 12(10): a true-up surplus or deficit 'shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33') and the 2024 Regulations' counterpart — as the order applies them",
+    "clause": "12(10) (2021)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "The surplus/deficit determined by the Commission in accordance with these Regulations on account of truing up of the ARR of Applicant shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33 of these Regulations.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "uerc.cc.net",
+   "version": 1,
+   "status": "draft",
+   "title": "Truing-up impact in the ARR: the closing balance less any carrying cost recovered",
+   "output": "cc_net_impact",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "closing - recovered",
+   "inputs": {
+    "closing": {
+     "unit": "INR_crore",
+     "source": "rule:cc_closing"
+    },
+    "recovered": {
+     "unit": "INR_crore",
+     "source": "record:cc_recovered",
+     "note": "a correction of carrying cost allowed in error earlier (here FY2022-23's, 45.55)"
+    }
+   },
+   "clause": {
+    "regulation": "UERC Tariff Regulations, 2021 (Reg. 12(10): a true-up surplus or deficit 'shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33') and the 2024 Regulations' counterpart — as the order applies them",
+    "clause": "12(10) (2021)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "The surplus/deficit determined by the Commission in accordance with these Regulations on account of truing up of the ARR of Applicant shall be carried forward to the ensuing financial year, alongwith carrying cost at the rate of interest applicable for the year of the tariff period, determined in accordance with the Regulation 33 of these Regulations.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 3.50's net truing-up impact"
+  }
+ ]
+}

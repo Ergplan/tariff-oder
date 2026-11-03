@@ -1,0 +1,444 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UERC order on UPCL (31 March 2026) — true-up FY2024-25 summary and the gap with carrying cost to FY2026-27",
+  "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+  "pages": 414
+ },
+ "figures": {
+  "t349.pp.order": {
+   "value": "7609.36",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Power Purchase Cost incl. UJVN Arrears & Water Tax 7609.36 7913.00 7913.00",
+   "what": "Table 3.49, Power Purchase Cost incl. UJVN Arrears & Water Tax: order"
+  },
+  "t349.pp.claimed": {
+   "value": "7913.00",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Power Purchase Cost incl. UJVN Arrears & Water Tax 7609.36 7913.00 7913.00",
+   "what": "Table 3.49, Power Purchase Cost incl. UJVN Arrears & Water Tax: claimed"
+  },
+  "t349.pp.approved": {
+   "value": "7913.00",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Power Purchase Cost incl. UJVN Arrears & Water Tax 7609.36 7913.00 7913.00",
+   "what": "Table 3.49, Power Purchase Cost incl. UJVN Arrears & Water Tax: approved"
+  },
+  "t349.pgcil.order": {
+   "value": "765.82",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "PGCIL 765.82 591.82 591.82",
+   "what": "Table 3.49, PGCIL: order"
+  },
+  "t349.pgcil.claimed": {
+   "value": "591.82",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "PGCIL 765.82 591.82 591.82",
+   "what": "Table 3.49, PGCIL: claimed"
+  },
+  "t349.pgcil.approved": {
+   "value": "591.82",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "PGCIL 765.82 591.82 591.82",
+   "what": "Table 3.49, PGCIL: approved"
+  },
+  "t349.ptcul.order": {
+   "value": "380.60",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "PTCUL and SLDC 380.60 384.39 384.39",
+   "what": "Table 3.49, PTCUL and SLDC: order"
+  },
+  "t349.ptcul.claimed": {
+   "value": "384.39",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "PTCUL and SLDC 380.60 384.39 384.39",
+   "what": "Table 3.49, PTCUL and SLDC: claimed"
+  },
+  "t349.ptcul.approved": {
+   "value": "384.39",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "PTCUL and SLDC 380.60 384.39 384.39",
+   "what": "Table 3.49, PTCUL and SLDC: approved"
+  },
+  "t349.interest.order": {
+   "value": "153.05",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Interest on Loan and guarantee fee 153.05 168.00 124.38",
+   "what": "Table 3.49, Interest on Loan and guarantee fee: order"
+  },
+  "t349.interest.claimed": {
+   "value": "168.00",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Interest on Loan and guarantee fee 153.05 168.00 124.38",
+   "what": "Table 3.49, Interest on Loan and guarantee fee: claimed"
+  },
+  "t349.interest.approved": {
+   "value": "124.38",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Interest on Loan and guarantee fee 153.05 168.00 124.38",
+   "what": "Table 3.49, Interest on Loan and guarantee fee: approved"
+  },
+  "t349.dep.order": {
+   "value": "252.95",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Depreciation 252.95 209.86 109.79",
+   "what": "Table 3.49, Depreciation: order"
+  },
+  "t349.dep.claimed": {
+   "value": "209.86",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Depreciation 252.95 209.86 109.79",
+   "what": "Table 3.49, Depreciation: claimed"
+  },
+  "t349.dep.approved": {
+   "value": "109.79",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Depreciation 252.95 209.86 109.79",
+   "what": "Table 3.49, Depreciation: approved"
+  },
+  "t349.om.order": {
+   "value": "791.80",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "O&M expenses after sharing 791.80 868.77 893.46",
+   "what": "Table 3.49, O&M expenses after sharing: order"
+  },
+  "t349.om.claimed": {
+   "value": "868.77",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "O&M expenses after sharing 791.80 868.77 893.46",
+   "what": "Table 3.49, O&M expenses after sharing: claimed"
+  },
+  "t349.om.approved": {
+   "value": "893.46",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "O&M expenses after sharing 791.80 868.77 893.46",
+   "what": "Table 3.49, O&M expenses after sharing: approved"
+  },
+  "t349.iowc.order": {
+   "value": "142.26",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Interest on Working Capital 142.26 181.46 149.07",
+   "what": "Table 3.49, Interest on Working Capital: order"
+  },
+  "t349.iowc.claimed": {
+   "value": "181.46",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Interest on Working Capital 142.26 181.46 149.07",
+   "what": "Table 3.49, Interest on Working Capital: claimed"
+  },
+  "t349.iowc.approved": {
+   "value": "149.07",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Interest on Working Capital 142.26 181.46 149.07",
+   "what": "Table 3.49, Interest on Working Capital: approved"
+  },
+  "t349.roe.order": {
+   "value": "197.80",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Return on Equity 197.80 252.33 76.51",
+   "what": "Table 3.49, Return on Equity: order"
+  },
+  "t349.roe.claimed": {
+   "value": "252.33",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Return on Equity 197.80 252.33 76.51",
+   "what": "Table 3.49, Return on Equity: claimed"
+  },
+  "t349.roe.approved": {
+   "value": "76.51",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Return on Equity 197.80 252.33 76.51",
+   "what": "Table 3.49, Return on Equity: approved"
+  },
+  "t349.arr.order": {
+   "value": "10167.51",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Aggregate Revenue Requirement 10167.51 10874.19 10208.64",
+   "what": "Table 3.49, Aggregate Revenue Requirement: order"
+  },
+  "t349.arr.claimed": {
+   "value": "10874.19",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Aggregate Revenue Requirement 10167.51 10874.19 10208.64",
+   "what": "Table 3.49, Aggregate Revenue Requirement: claimed"
+  },
+  "t349.arr.approved": {
+   "value": "10208.64",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Aggregate Revenue Requirement 10167.51 10874.19 10208.64",
+   "what": "Table 3.49, Aggregate Revenue Requirement: approved"
+  },
+  "t349.nti.order": {
+   "value": "374.86",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Less: Non-Tariff Income 374.86 338.69 479.20",
+   "what": "Table 3.49, Less: Non-Tariff Income: order"
+  },
+  "t349.nti.claimed": {
+   "value": "338.69",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Less: Non-Tariff Income 374.86 338.69 479.20",
+   "what": "Table 3.49, Less: Non-Tariff Income: claimed"
+  },
+  "t349.nti.approved": {
+   "value": "479.20",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Less: Non-Tariff Income 374.86 338.69 479.20",
+   "what": "Table 3.49, Less: Non-Tariff Income: approved"
+  },
+  "t349.prev_gap.order": {
+   "value": "897.38",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Gap/(Surplus) of previous year 897.38 897.38 897.38",
+   "what": "Table 3.49, Gap/(Surplus) of previous year: order"
+  },
+  "t349.prev_gap.claimed": {
+   "value": "897.38",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Gap/(Surplus) of previous year 897.38 897.38 897.38",
+   "what": "Table 3.49, Gap/(Surplus) of previous year: claimed"
+  },
+  "t349.prev_gap.approved": {
+   "value": "897.38",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Gap/(Surplus) of previous year 897.38 897.38 897.38",
+   "what": "Table 3.49, Gap/(Surplus) of previous year: approved"
+  },
+  "t349.net.order": {
+   "value": "10690.03",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Net ARR 10690.03 11432.87 10626.83",
+   "what": "Table 3.49, Net ARR: order"
+  },
+  "t349.net.claimed": {
+   "value": "11432.87",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Net ARR 10690.03 11432.87 10626.83",
+   "what": "Table 3.49, Net ARR: claimed"
+  },
+  "t349.net.approved": {
+   "value": "10626.83",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Net ARR 10690.03 11432.87 10626.83",
+   "what": "Table 3.49, Net ARR: approved"
+  },
+  "t349.revenue.order": {
+   "value": "9997.69",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Revenue Revenue at Existing Tariff 9997.69 10078.47 10078.47",
+   "what": "Table 3.49, Revenue Revenue at Existing Tariff: order"
+  },
+  "t349.revenue.claimed": {
+   "value": "10078.47",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Revenue Revenue at Existing Tariff 9997.69 10078.47 10078.47",
+   "what": "Table 3.49, Revenue Revenue at Existing Tariff: claimed"
+  },
+  "t349.revenue.approved": {
+   "value": "10078.47",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Revenue Revenue at Existing Tariff 9997.69 10078.47 10078.47",
+   "what": "Table 3.49, Revenue Revenue at Existing Tariff: approved"
+  },
+  "t349.sharing_impact.claimed": {
+   "value": "-13.95",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Impact of Sharing on Interest on Working Capital/Rebate & DPS - -13.95 -33.78",
+   "what": "Table 3.49, impact of sharing on IoWC, rebate and DPS: claimed"
+  },
+  "t349.sharing_impact.approved": {
+   "value": "-33.78",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Impact of Sharing on Interest on Working Capital/Rebate & DPS - -13.95 -33.78",
+   "what": "Table 3.49, impact of sharing on IoWC, rebate and DPS: approved"
+  },
+  "t349.addl.approved": {
+   "value": "241.23",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Revenue from Addl Sales. (after sharing) 241.23 Total Revenue 9997.69 10078.47 10319.71",
+   "what": "Table 3.49, deemed revenue and total revenue: approved"
+  },
+  "t349.addl.total_order": {
+   "value": "9997.69",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Revenue from Addl Sales. (after sharing) 241.23 Total Revenue 9997.69 10078.47 10319.71",
+   "what": "Table 3.49, deemed revenue and total revenue: total_order"
+  },
+  "t349.addl.total_claimed": {
+   "value": "10078.47",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Revenue from Addl Sales. (after sharing) 241.23 Total Revenue 9997.69 10078.47 10319.71",
+   "what": "Table 3.49, deemed revenue and total revenue: total_claimed"
+  },
+  "t349.addl.total_approved": {
+   "value": "10319.71",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Revenue from Addl Sales. (after sharing) 241.23 Total Revenue 9997.69 10078.47 10319.71",
+   "what": "Table 3.49, deemed revenue and total revenue: total_approved"
+  },
+  "t349.gap.order": {
+   "value": "692.34",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Adjusted Revenue (Surplus)/Gap 692.34 1354.40 307.12",
+   "what": "Table 3.49, gap: order"
+  },
+  "t349.gap.claimed": {
+   "value": "1354.40",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Adjusted Revenue (Surplus)/Gap 692.34 1354.40 307.12",
+   "what": "Table 3.49, gap: claimed"
+  },
+  "t349.gap.approved": {
+   "value": "307.12",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "Adjusted Revenue (Surplus)/Gap 692.34 1354.40 307.12",
+   "what": "Table 3.49, gap: approved"
+  },
+  "t350.opening.fy26": {
+   "value": "325.65",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Opening Gap/(Surplus) - 325.65 365.97",
+   "what": "Table 3.50, opening: fy26"
+  },
+  "t350.opening.fy27": {
+   "value": "365.97",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Opening Gap/(Surplus) - 325.65 365.97",
+   "what": "Table 3.50, opening: fy27"
+  },
+  "t350.addition.fy25": {
+   "value": "307.12",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Addition 307.12 - -",
+   "what": "Table 3.50, addition: fy25"
+  },
+  "t350.rate.fy25": {
+   "value": "12.07",
+   "unit": "percent",
+   "page": 171,
+   "quote": "Interest Rate 12.07% 12.38% 12.38%",
+   "what": "Table 3.50, interest rate: fy25"
+  },
+  "t350.rate.fy26": {
+   "value": "12.38",
+   "unit": "percent",
+   "page": 171,
+   "quote": "Interest Rate 12.07% 12.38% 12.38%",
+   "what": "Table 3.50, interest rate: fy26"
+  },
+  "t350.rate.fy27": {
+   "value": "12.38",
+   "unit": "percent",
+   "page": 171,
+   "quote": "Interest Rate 12.07% 12.38% 12.38%",
+   "what": "Table 3.50, interest rate: fy27"
+  },
+  "t350.carrying.fy25": {
+   "value": "18.53",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Carrying/(Holding) Cost 18.53 40.32 22.65",
+   "what": "Table 3.50, carrying cost: fy25"
+  },
+  "t350.carrying.fy26": {
+   "value": "40.32",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Carrying/(Holding) Cost 18.53 40.32 22.65",
+   "what": "Table 3.50, carrying cost: fy26"
+  },
+  "t350.carrying.fy27": {
+   "value": "22.65",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Carrying/(Holding) Cost 18.53 40.32 22.65",
+   "what": "Table 3.50, carrying cost: fy27"
+  },
+  "t350.closing.fy25": {
+   "value": "325.65",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Closing Balance 325.65 365.97 388.62",
+   "what": "Table 3.50, closing balance: fy25"
+  },
+  "t350.closing.fy26": {
+   "value": "365.97",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Closing Balance 325.65 365.97 388.62",
+   "what": "Table 3.50, closing balance: fy26"
+  },
+  "t350.closing.fy27": {
+   "value": "388.62",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Closing Balance 325.65 365.97 388.62",
+   "what": "Table 3.50, closing balance: fy27"
+  },
+  "t350.recovery.fy27": {
+   "value": "45.55",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Recovery of additional carrying cost allowed in true up of FY 2022-23 - - 45.55",
+   "what": "Table 3.50, the FY2022-23 carrying cost recovered: fy27"
+  },
+  "t350.net.fy27": {
+   "value": "343.07",
+   "unit": "INR_crore",
+   "page": 171,
+   "quote": "Net truing up impact - - 343.07",
+   "what": "Table 3.50, net truing-up impact: fy27"
+  }
+ }
+}

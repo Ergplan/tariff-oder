@@ -2222,3 +2222,35 @@ def test_uerc_trueup_shares_controllable_gains_and_values_the_loss_at_the_abr():
     u6 = next(c for c in checks if "U6" in c.category)
     assert u6.computed == "14957.27" and u6.filed == "14914.28"
     assert rec["dl.claimed_target.loss"][0] == "13.25" and rec["dl.baseline.target"][0] == "13.00"
+
+
+def test_uerc_trueup_gap_carries_into_the_arr_year_across_two_regulations():
+    """Real data, UERC / UPCL: the FY2024-25 true-up (2021 Regulations) from its heads — O&M after
+    sharing and the sharing's impact from Table 3.48, the deemed revenue on the excess loss from
+    Table 3.46 — gives the gap of 307.12 (to a paisa), and carried with UERC's carrying cost (half
+    a year on the addition, a full year between, half a year in the year of recovery) it is the
+    343.07 in FY2026-27's ARR.  From the printed gap the carrying chain is exact; end to end the
+    O&M's paisa grows to under two."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "uerc-upcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "trueup-carried-fy25-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("UERC"), rates=rec)
+    printed = [c for c in checks if "from the printed gap" in c.category]
+    assert len(printed) == 10 and {c.result for c in printed} == {"match"}
+    end = {c.category.rsplit(" order:", 1)[1]: c for c in checks if "from the printed gap" not in c.category}
+    assert end["tu:t349.net.approved"].result == "match"  # 10,626.83
+    # O&M after sharing: 824.67 + 68.80 is 893.467 against 893.46 — inside the inputs' precision
+    om = end["tu:t349.om.approved"]
+    assert abs(Decimal(om.exact) - Decimal(om.filed)) <= Decimal("0.005") + Decimal("0.005") / 3 * 2 + Decimal("0.005")
+    # that paisa, carried three years at ~12 %, is under two paise in the ARR year
+    gap = end["tu:t349.gap.approved"]
+    impact = end["arr:t452.trueup_gap.approved"]
+    drift = Decimal(gap.exact) - Decimal(gap.filed)
+    growth = (1 + Decimal("0.1207") / 2) * (1 + Decimal("0.1238")) * (1 + Decimal("0.1238") / 2)
+    assert abs(Decimal(impact.exact) - Decimal(impact.filed)) <= abs(drift) * growth + Decimal("0.005")
+    assert impact.filed == "343.07" and Decimal(impact.exact).quantize(Decimal("0.01")) == Decimal("343.09")

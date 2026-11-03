@@ -1,0 +1,352 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "UERC order",
+ "rates": {
+  "tu": "order/figures-trueup-summary-fy2024-25.json",
+  "sh": "order/figures-trueup-sharing-fy2024-25.json",
+  "arr": "order/figures-arr-fy2026-27.json"
+ },
+ "places": 2,
+ "note": "UPCL's true-up of FY2024-25 (Table 3.49) from its heads — O&M after sharing and the sharing's impact computed from Table 3.48, the deemed revenue on the excess loss from Table 3.46 — and its gap carried with carrying cost to FY2026-27 (Table 3.50), where it enters the ARR (Table 4.52): one chain across three years and two regulations.  The carrying chain is evaluated twice: from the gap the heads compute (end to end) and from the printed gap (the carrying arithmetic alone).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "true-up FY2024-25 summary (Table 3.49)",
+   "inputs": {
+    "record:tu_om_normative": {
+     "rate": "sh:share.om.normative"
+    },
+    "record:tu_om_consumer_share": {
+     "rate": "sh:share.om.consumer"
+    },
+    "record:tu_pp": {
+     "rate": "tu:t349.pp.approved"
+    },
+    "record:tu_pgcil": {
+     "rate": "tu:t349.pgcil.approved"
+    },
+    "record:tu_ptcul": {
+     "rate": "tu:t349.ptcul.approved"
+    },
+    "record:tu_interest": {
+     "rate": "tu:t349.interest.approved"
+    },
+    "record:tu_dep": {
+     "rate": "tu:t349.dep.approved"
+    },
+    "record:tu_om": {
+     "rate": "tu:t349.om.approved"
+    },
+    "record:tu_iowc": {
+     "rate": "sh:share.iowc.normative"
+    },
+    "record:tu_sharing": {
+     "rate": "sh:share.iowc.consumer",
+     "plus": [
+      "sh:share.rebate.consumer",
+      "sh:share.dps.consumer"
+     ],
+     "negate": true,
+     "why": "the consumers' third of the gains on IoWC and the rebate (less the DPS loss) is returned: a deduction from the ARR"
+    },
+    "record:tu_roe": {
+     "rate": "tu:t349.roe.approved"
+    },
+    "record:tu_nti": {
+     "rate": "tu:t349.nti.approved"
+    },
+    "record:tu_prev_gap": {
+     "rate": "tu:t349.prev_gap.approved"
+    },
+    "record:tu_revenue": {
+     "rate": "tu:t349.revenue.approved"
+    },
+    "record:tu_deemed_revenue": {
+     "rate": "sh:dl.borne.approved"
+    }
+   },
+   "checks": {
+    "tu_om_after_sharing": "order:tu:t349.om.approved",
+    "tu_arr": "order:tu:t349.arr.approved",
+    "tu_net": "order:tu:t349.net.approved",
+    "tu_gap": [
+     "order:tu:t349.gap.approved",
+     "order:tu:t350.addition.fy25"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "carrying cost FY2024-25 (Table 3.50)",
+   "inputs": {
+    "record:cc_opening": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the gap arises in FY2024-25: nothing carried in"
+    },
+    "record:cc_addition": {
+     "computed": "true-up FY2024-25 summary (Table 3.49)",
+     "output": "tu_gap"
+    },
+    "record:cc_rate": {
+     "rate": "tu:t350.rate.fy25"
+    }
+   },
+   "checks": {
+    "cc_carrying_in_year": "order:tu:t350.carrying.fy25"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "closing FY2024-25",
+   "inputs": {
+    "record:cc_opening": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the gap arises in FY2024-25"
+    },
+    "record:cc_addition": {
+     "computed": "true-up FY2024-25 summary (Table 3.49)",
+     "output": "tu_gap"
+    },
+    "record:cc_carrying": {
+     "computed": "carrying cost FY2024-25 (Table 3.50)",
+     "output": "cc_carrying_in_year"
+    }
+   },
+   "checks": {
+    "cc_closing": [
+     "order:tu:t350.closing.fy25",
+     "order:tu:t350.opening.fy26"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "carrying cost FY2025-26 (Table 3.50)",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "closing FY2024-25",
+     "output": "cc_closing"
+    },
+    "record:cc_addition": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no addition in the year between"
+    },
+    "record:cc_rate": {
+     "rate": "tu:t350.rate.fy26"
+    }
+   },
+   "checks": {
+    "cc_carrying_in_year": "order:tu:t350.carrying.fy26"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "closing FY2025-26",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "closing FY2024-25",
+     "output": "cc_closing"
+    },
+    "record:cc_addition": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no addition in the year between"
+    },
+    "record:cc_carrying": {
+     "computed": "carrying cost FY2025-26 (Table 3.50)",
+     "output": "cc_carrying_in_year"
+    }
+   },
+   "checks": {
+    "cc_closing": [
+     "order:tu:t350.closing.fy26",
+     "order:tu:t350.opening.fy27"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "carrying cost FY2026-27, the year of recovery (Table 3.50)",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "closing FY2025-26",
+     "output": "cc_closing"
+    },
+    "record:cc_rate": {
+     "rate": "tu:t350.rate.fy27"
+    }
+   },
+   "checks": {
+    "cc_carrying_recovery_year": "order:tu:t350.carrying.fy27"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "truing-up impact in the ARR of FY2026-27 (Tables 3.50, 4.52)",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "closing FY2025-26",
+     "output": "cc_closing"
+    },
+    "record:cc_addition": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no addition in the year of recovery"
+    },
+    "record:cc_carrying": {
+     "computed": "carrying cost FY2026-27, the year of recovery (Table 3.50)",
+     "output": "cc_carrying_recovery_year"
+    },
+    "record:cc_recovered": {
+     "rate": "tu:t350.recovery.fy27"
+    }
+   },
+   "checks": {
+    "cc_closing": "order:tu:t350.closing.fy27",
+    "cc_net_impact": [
+     "order:tu:t350.net.fy27",
+     "order:arr:t452.trueup_gap.approved"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "carrying cost FY2024-25 (Table 3.50) — from the printed gap",
+   "inputs": {
+    "record:cc_opening": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the gap arises in FY2024-25: nothing carried in"
+    },
+    "record:cc_addition": {
+     "rate": "tu:t349.gap.approved"
+    },
+    "record:cc_rate": {
+     "rate": "tu:t350.rate.fy25"
+    }
+   },
+   "checks": {
+    "cc_carrying_in_year": "order:tu:t350.carrying.fy25"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "closing FY2024-25 — from the printed gap",
+   "inputs": {
+    "record:cc_opening": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "the gap arises in FY2024-25"
+    },
+    "record:cc_addition": {
+     "rate": "tu:t349.gap.approved"
+    },
+    "record:cc_carrying": {
+     "computed": "carrying cost FY2024-25 (Table 3.50) — from the printed gap",
+     "output": "cc_carrying_in_year"
+    }
+   },
+   "checks": {
+    "cc_closing": [
+     "order:tu:t350.closing.fy25",
+     "order:tu:t350.opening.fy26"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "carrying cost FY2025-26 (Table 3.50) — from the printed gap",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "closing FY2024-25 — from the printed gap",
+     "output": "cc_closing"
+    },
+    "record:cc_addition": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no addition in the year between"
+    },
+    "record:cc_rate": {
+     "rate": "tu:t350.rate.fy26"
+    }
+   },
+   "checks": {
+    "cc_carrying_in_year": "order:tu:t350.carrying.fy26"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "closing FY2025-26 — from the printed gap",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "closing FY2024-25 — from the printed gap",
+     "output": "cc_closing"
+    },
+    "record:cc_addition": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no addition in the year between"
+    },
+    "record:cc_carrying": {
+     "computed": "carrying cost FY2025-26 (Table 3.50) — from the printed gap",
+     "output": "cc_carrying_in_year"
+    }
+   },
+   "checks": {
+    "cc_closing": [
+     "order:tu:t350.closing.fy26",
+     "order:tu:t350.opening.fy27"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "carrying cost FY2026-27, the year of recovery (Table 3.50) — from the printed gap",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "closing FY2025-26 — from the printed gap",
+     "output": "cc_closing"
+    },
+    "record:cc_rate": {
+     "rate": "tu:t350.rate.fy27"
+    }
+   },
+   "checks": {
+    "cc_carrying_recovery_year": "order:tu:t350.carrying.fy27"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "truing-up impact in the ARR of FY2026-27 (Tables 3.50, 4.52) — from the printed gap",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "closing FY2025-26 — from the printed gap",
+     "output": "cc_closing"
+    },
+    "record:cc_addition": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no addition in the year of recovery"
+    },
+    "record:cc_carrying": {
+     "computed": "carrying cost FY2026-27, the year of recovery (Table 3.50) — from the printed gap",
+     "output": "cc_carrying_recovery_year"
+    },
+    "record:cc_recovered": {
+     "rate": "tu:t350.recovery.fy27"
+    }
+   },
+   "checks": {
+    "cc_closing": "order:tu:t350.closing.fy27",
+    "cc_net_impact": [
+     "order:tu:t350.net.fy27",
+     "order:arr:t452.trueup_gap.approved"
+    ]
+   }
+  }
+ ]
+}

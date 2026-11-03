@@ -450,6 +450,209 @@
    },
    "examples": [],
    "note": ""
+  },
+  {
+   "id": "uerc21.tu.om_after_sharing",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M allowed after sharing: the norm less the consumers' share of the variation",
+   "output": "tu_om_after_sharing",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "normative - consumer",
+   "inputs": {
+    "normative": {
+     "unit": "INR_crore",
+     "source": "record:tu_om_normative"
+    },
+    "consumer": {
+     "unit": "INR_crore",
+     "source": "record:tu_om_consumer_share",
+     "note": "signed as the variation: a loss's third is negative, so it is added"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 3.49's 'O&M expenses after sharing' = 824.67 + 68.80"
+  },
+  {
+   "id": "uerc21.tu.arr",
+   "version": 1,
+   "status": "draft",
+   "title": "True-up ARR: the approved heads",
+   "output": "tu_arr",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "pp + pgcil + ptcul + interest + dep + om + iowc + sharing + roe",
+   "inputs": {
+    "pp": {
+     "unit": "INR_crore",
+     "source": "record:tu_pp",
+     "note": "power purchase with arrears and water tax"
+    },
+    "pgcil": {
+     "unit": "INR_crore",
+     "source": "record:tu_pgcil",
+     "note": "PGCIL"
+    },
+    "ptcul": {
+     "unit": "INR_crore",
+     "source": "record:tu_ptcul",
+     "note": "PTCUL and SLDC"
+    },
+    "interest": {
+     "unit": "INR_crore",
+     "source": "record:tu_interest",
+     "note": "interest on loan and guarantee fee"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:tu_dep",
+     "note": "depreciation"
+    },
+    "om": {
+     "unit": "INR_crore",
+     "source": "record:tu_om",
+     "note": "O&M after sharing"
+    },
+    "iowc": {
+     "unit": "INR_crore",
+     "source": "record:tu_iowc",
+     "note": "interest on working capital (normative)"
+    },
+    "sharing": {
+     "unit": "INR_crore",
+     "source": "record:tu_sharing",
+     "note": "the consumers' share of the gains on IoWC, rebate and DPS (negative: returned)"
+    },
+    "roe": {
+     "unit": "INR_crore",
+     "source": "record:tu_roe",
+     "note": "return on equity"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 3.49"
+  },
+  {
+   "id": "uerc21.tu.net",
+   "version": 1,
+   "status": "draft",
+   "title": "True-up net ARR: less non-tariff income, plus the previous year's gap",
+   "output": "tu_net",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "arr - nti + prev_gap",
+   "inputs": {
+    "arr": {
+     "unit": "INR_crore",
+     "source": "rule:tu_arr"
+    },
+    "nti": {
+     "unit": "INR_crore",
+     "source": "record:tu_nti"
+    },
+    "prev_gap": {
+     "unit": "INR_crore",
+     "source": "record:tu_prev_gap"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 3.49"
+  },
+  {
+   "id": "uerc21.tu.gap",
+   "version": 1,
+   "status": "draft",
+   "title": "True-up gap: net ARR less revenue, the deemed revenue on excess loss included",
+   "output": "tu_gap",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "net - revenue - deemed",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:tu_net"
+    },
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:tu_revenue"
+    },
+    "deemed": {
+     "unit": "INR_crore",
+     "source": "record:tu_deemed_revenue",
+     "note": "the licensee's share of the loss above target, valued at the ABR (Table 3.46)"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 3.49"
   }
  ]
 }
