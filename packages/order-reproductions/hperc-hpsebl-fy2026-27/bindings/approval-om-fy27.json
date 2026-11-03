@@ -1,0 +1,152 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "HPERC order",
+ "rates": {
+  "om": "order/figures-om-fy2026-27.json",
+  "ia": "order/figures-iowc-arr-fy2026-27.json"
+ },
+ "places": 2,
+ "note": "HPERC's O&M for HPSEBL, FY2026-27, built from its parts (Tables 227, 228, 231) and carried to Table 232 and the ARR; once with the public interaction programme as the table adds it (0.71 crore) and once as the text approves it (0.71 lakh) — H3; and the MYT order's column, against the text's citation of its A&G (H4).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "O&M approved, built from the table (Tables 227, 228, 231, 232)",
+   "inputs": {
+    "record:emp_salary": {
+     "rate": "om:emp.salary.approved"
+    },
+    "record:emp_arrear": {
+     "rate": "om:emp.arrear.approved"
+    },
+    "record:emp_terminal": {
+     "rate": "om:emp.tb.approved"
+    },
+    "record:emp_pension_arrear": {
+     "rate": "om:emp.pension_arrear.approved"
+    },
+    "record:emp_capitalised": {
+     "rate": "om:emp.capitalised.approved"
+    },
+    "record:emp_other_staff": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "not in the approved column (Table 227 prints a blank)"
+    },
+    "record:rm_gross": {
+     "rate": "om:rm.gross.approved"
+    },
+    "record:rm_it": {
+     "rate": "om:rm.it.approved"
+    },
+    "record:ag_base": {
+     "rate": "om:ag.base.approved"
+    },
+    "record:ag_rental_ipds": {
+     "rate": "om:ag.rental_ipds.approved"
+    },
+    "record:ag_rental_rdss": {
+     "rate": "om:ag.rental_rdss.approved"
+    },
+    "record:ag_it": {
+     "rate": "om:ag.it.approved"
+    },
+    "record:ag_pip": {
+     "rate": "om:ag.pip.approved"
+    }
+   },
+   "checks": {
+    "om_employee_net": "order:om:emp.net.approved",
+    "om_rm_total": "order:om:rm.total.approved",
+    "om_ag_total": "order:om:ag.total.approved",
+    "om_total_built": [
+     "order:ia:om.total.approved",
+     "order:ia:arr.om.approved"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "A&G with the PIP the text approves, 0.71 lakh — H3",
+   "inputs": {
+    "record:ag_base": {
+     "rate": "om:ag.base.approved"
+    },
+    "record:ag_rental_ipds": {
+     "rate": "om:ag.rental_ipds.approved"
+    },
+    "record:ag_rental_rdss": {
+     "rate": "om:ag.rental_rdss.approved"
+    },
+    "record:ag_it": {
+     "rate": "om:ag.it.approved"
+    },
+    "record:ag_pip": {
+     "rate": "om:text.pip.lakh"
+    }
+   },
+   "checks": {
+    "om_ag_total": "order:om:ag.total.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "O&M as the MYT order approved it (Tables 227, 228, 231, 232)",
+   "inputs": {
+    "record:emp_salary": {
+     "rate": "om:emp.salary.myt"
+    },
+    "record:emp_arrear": {
+     "rate": "om:emp.arrear.myt"
+    },
+    "record:emp_terminal": {
+     "rate": "om:emp.tb.myt"
+    },
+    "record:emp_pension_arrear": {
+     "rate": "om:emp.pension_arrear.myt"
+    },
+    "record:emp_capitalised": {
+     "rate": "om:emp.capitalised.myt"
+    },
+    "record:emp_other_staff": {
+     "rate": "om:emp.other_staff.myt"
+    },
+    "record:rm_gross": {
+     "rate": "om:rm.gross.myt"
+    },
+    "record:rm_it": {
+     "rate": "om:rm.it.myt"
+    },
+    "record:ag_base": {
+     "rate": "om:ag.base.myt"
+    },
+    "record:ag_rental_ipds": {
+     "rate": "om:ag.rental_ipds.myt"
+    },
+    "record:ag_rental_rdss": {
+     "rate": "om:ag.rental_rdss.myt"
+    },
+    "record:ag_it": {
+     "rate": "om:ag.it.myt"
+    },
+    "record:ag_pip": {
+     "value": "0",
+     "unit": "INR_crore",
+     "why": "no public interaction programme in this column"
+    }
+   },
+   "checks": {
+    "om_employee_net": [
+     "order:om:emp.net.myt",
+     "order:ia:om.employee.myt"
+    ],
+    "om_rm_total": "order:om:rm.total.myt",
+    "om_ag_total": [
+     "order:om:ag.total.myt",
+     "order:om:text.ag_myt.crore"
+    ],
+    "om_total_built": "order:ia:om.total.myt"
+   }
+  }
+ ]
+}

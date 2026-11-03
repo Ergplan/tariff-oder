@@ -21,6 +21,27 @@
     "HPERC order for HPSEBL FY2026-27, p.376 para 9.20.8 and Table 236"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "H3",
+   "kind": "inconsistency",
+   "title": "The public interaction programme: the text approves Rs. 0.71 lakh; Table 231 adds 0.71 to A&G in Rs. crore — 0.70 crore more in O&M and the ARR",
+   "detail": "Para 9.18.7: 'the Commission … has provisionally approved the Petitioner's claim of Rs. 0.71 Lakh towards the expenditure for PIP'.  Table 231 (in Rs. Cr.) adds 'Public Interaction Program – Provisional 0.71' to A&G: 314.39 + 0.71 = 315.10, carried to Table 232's O&M (3,468.46 — which reproduces exactly from the parts with 0.71 crore) and to the ARR.  At 0.71 lakh A&G would be 314.39 and O&M 3,467.76, the ARR 0.70 crore lower and the surplus 0.70 higher.  The petitioner's PIP table (Table 230) is headed '(Rs.)' with entries such as 0.05 for print media, which suits lakh.  For the reviewer: the unit of the approval.",
+   "where": [
+    "HPERC order for HPSEBL FY2026-27, p.372 para 9.18.7 and Table 230; p.373 Tables 231, 232",
+    "bindings/approval-om-fy27.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "H4",
+   "kind": "inconsistency",
+   "title": "The MYT order's A&G for FY2026-27: 314.31 in the text, 314.39 in Table 231, 314.38 from its parts",
+   "detail": "Para 9.18.7 cites the MYT order's A&G as 'Rs. 314.31 Cr.'; Table 231's MYT column prints 314.39; its four parts (71.02 + 16.54 + 216.82 + 10) add to 314.38.  The approved column's parts likewise add to a paisa below its subtotal.  Small; for the reviewer, which is the MYT order's figure.",
+   "where": [
+    "HPERC order for HPSEBL FY2026-27, p.372 para 9.18.7; p.373 Table 231"
+   ],
+   "for": "reviewer"
   }
  ]
 }

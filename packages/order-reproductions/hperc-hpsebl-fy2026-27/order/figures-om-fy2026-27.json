@@ -1,0 +1,395 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "HPERC tariff order for HPSEBL FY2026-27 — employee, R&M and A&G expenses (Tables 227, 228, 231)",
+  "sha256": "0f3d9e9df0eced38ed2e85df25be55da47f55b071a8f568f6d49d0268e50ec74",
+  "pages": 525
+ },
+ "figures": {
+  "emp.salary.myt": {
+   "value": "815.37",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Salary, allowance and other cost (A) 815.37 865.3 865.3",
+   "what": "Table 227, salary, allowance and other cost: myt"
+  },
+  "emp.salary.petition": {
+   "value": "865.3",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Salary, allowance and other cost (A) 815.37 865.3 865.3",
+   "what": "Table 227, salary, allowance and other cost: petition"
+  },
+  "emp.salary.approved": {
+   "value": "865.3",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Salary, allowance and other cost (A) 815.37 865.3 865.3",
+   "what": "Table 227, salary, allowance and other cost: approved"
+  },
+  "emp.other_staff.myt": {
+   "value": "108.81",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Other Staff Cost (B) 108.81",
+   "what": "Table 227, other staff cost (MYT only): myt"
+  },
+  "emp.arrear.myt": {
+   "value": "89",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Arrear 6th Pay Commission (C) 89 59.3 59.3",
+   "what": "Table 227, 6th pay commission arrear: myt"
+  },
+  "emp.arrear.petition": {
+   "value": "59.3",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Arrear 6th Pay Commission (C) 89 59.3 59.3",
+   "what": "Table 227, 6th pay commission arrear: petition"
+  },
+  "emp.arrear.approved": {
+   "value": "59.3",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Arrear 6th Pay Commission (C) 89 59.3 59.3",
+   "what": "Table 227, 6th pay commission arrear: approved"
+  },
+  "emp.subtotal.myt": {
+   "value": "1013.18",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Sub-Total Salary and other cost existing employees (D=A+B+C) 1013.18 924.60 924.60",
+   "what": "Table 227, salary sub-total: myt"
+  },
+  "emp.subtotal.petition": {
+   "value": "924.60",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Sub-Total Salary and other cost existing employees (D=A+B+C) 1013.18 924.60 924.60",
+   "what": "Table 227, salary sub-total: petition"
+  },
+  "emp.subtotal.approved": {
+   "value": "924.60",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Sub-Total Salary and other cost existing employees (D=A+B+C) 1013.18 924.60 924.60",
+   "what": "Table 227, salary sub-total: approved"
+  },
+  "emp.tb.myt": {
+   "value": "1811",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Terminal Benefits (E1) 1811 1811 1811",
+   "what": "Table 227, terminal benefits: myt"
+  },
+  "emp.tb.petition": {
+   "value": "1811",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Terminal Benefits (E1) 1811 1811 1811",
+   "what": "Table 227, terminal benefits: petition"
+  },
+  "emp.tb.approved": {
+   "value": "1811",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Terminal Benefits (E1) 1811 1811 1811",
+   "what": "Table 227, terminal benefits: approved"
+  },
+  "emp.pension_arrear.myt": {
+   "value": "380",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Pension- Arrear 6th Pay Commission (E2) 380 252.02 252.02",
+   "what": "Table 227, pension arrear: myt"
+  },
+  "emp.pension_arrear.petition": {
+   "value": "252.02",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Pension- Arrear 6th Pay Commission (E2) 380 252.02 252.02",
+   "what": "Table 227, pension arrear: petition"
+  },
+  "emp.pension_arrear.approved": {
+   "value": "252.02",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Pension- Arrear 6th Pay Commission (E2) 380 252.02 252.02",
+   "what": "Table 227, pension arrear: approved"
+  },
+  "emp.gross.myt": {
+   "value": "3204",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Gross Employee expenses (F=D+E) 3,204 2,987.62 2,987.62",
+   "what": "Table 227, gross employee expenses: myt"
+  },
+  "emp.gross.petition": {
+   "value": "2987.62",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Gross Employee expenses (F=D+E) 3,204 2,987.62 2,987.62",
+   "what": "Table 227, gross employee expenses: petition"
+  },
+  "emp.gross.approved": {
+   "value": "2987.62",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Gross Employee expenses (F=D+E) 3,204 2,987.62 2,987.62",
+   "what": "Table 227, gross employee expenses: approved"
+  },
+  "emp.capitalised.myt": {
+   "value": "58.87",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Less: Employee expense capitalised 58.87 - -",
+   "what": "Table 227, capitalised: myt"
+  },
+  "emp.capitalised.petition": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Less: Employee expense capitalised 58.87 - -",
+   "what": "Table 227, capitalised: petition"
+  },
+  "emp.capitalised.approved": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Less: Employee expense capitalised 58.87 - -",
+   "what": "Table 227, capitalised: approved"
+  },
+  "emp.net.myt": {
+   "value": "3145.31",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Net Employee expenses 3,145.31 2,987.62 2,987.62",
+   "what": "Table 227, net employee expenses: myt"
+  },
+  "emp.net.petition": {
+   "value": "2987.62",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Net Employee expenses 3,145.31 2,987.62 2,987.62",
+   "what": "Table 227, net employee expenses: petition"
+  },
+  "emp.net.approved": {
+   "value": "2987.62",
+   "unit": "INR_crore",
+   "page": 368,
+   "quote": "Net Employee expenses 3,145.31 2,987.62 2,987.62",
+   "what": "Table 227, net employee expenses: approved"
+  },
+  "rm.gross.myt": {
+   "value": "128.75",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Gross R&M Expense 128.75 128.75 128.75",
+   "what": "Table 228, gross R&M: myt"
+  },
+  "rm.gross.petition": {
+   "value": "128.75",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Gross R&M Expense 128.75 128.75 128.75",
+   "what": "Table 228, gross R&M: petition"
+  },
+  "rm.gross.approved": {
+   "value": "128.75",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Gross R&M Expense 128.75 128.75 128.75",
+   "what": "Table 228, gross R&M: approved"
+  },
+  "rm.it.myt": {
+   "value": "44.86",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Add: IT related R&M expenses 44.86 37 37",
+   "what": "Table 228, IT related R&M: myt"
+  },
+  "rm.it.petition": {
+   "value": "37",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Add: IT related R&M expenses 44.86 37 37",
+   "what": "Table 228, IT related R&M: petition"
+  },
+  "rm.it.approved": {
+   "value": "37",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Add: IT related R&M expenses 44.86 37 37",
+   "what": "Table 228, IT related R&M: approved"
+  },
+  "rm.total.myt": {
+   "value": "173.61",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Total R&M Expenses 173.61 165.75 165.75",
+   "what": "Table 228, total R&M: myt"
+  },
+  "rm.total.petition": {
+   "value": "165.75",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Total R&M Expenses 173.61 165.75 165.75",
+   "what": "Table 228, total R&M: petition"
+  },
+  "rm.total.approved": {
+   "value": "165.75",
+   "unit": "INR_crore",
+   "page": 369,
+   "quote": "Total R&M Expenses 173.61 165.75 165.75",
+   "what": "Table 228, total R&M: approved"
+  },
+  "ag.base.myt": {
+   "value": "71.02",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Particulars MYT Order Revised Estimate Approved A&G Expenses 71.02 71.02 71.02",
+   "what": "Table 231, A&G expenses (base): myt"
+  },
+  "ag.base.petition": {
+   "value": "71.02",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Particulars MYT Order Revised Estimate Approved A&G Expenses 71.02 71.02 71.02",
+   "what": "Table 231, A&G expenses (base): petition"
+  },
+  "ag.base.approved": {
+   "value": "71.02",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Particulars MYT Order Revised Estimate Approved A&G Expenses 71.02 71.02 71.02",
+   "what": "Table 231, A&G expenses (base): approved"
+  },
+  "ag.rental_ipds.myt": {
+   "value": "16.54",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Smart Meter Rental for Shimla and Dharamshala 16.54 16.54 16.54",
+   "what": "Table 231, smart meter rental (IPDS): myt"
+  },
+  "ag.rental_ipds.petition": {
+   "value": "16.54",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Smart Meter Rental for Shimla and Dharamshala 16.54 16.54 16.54",
+   "what": "Table 231, smart meter rental (IPDS): petition"
+  },
+  "ag.rental_ipds.approved": {
+   "value": "16.54",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Smart Meter Rental for Shimla and Dharamshala 16.54 16.54 16.54",
+   "what": "Table 231, smart meter rental (IPDS): approved"
+  },
+  "ag.rental_rdss.myt": {
+   "value": "216.82",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Smart Meter Rental under RDSS 216.82 219.75 216.82",
+   "what": "Table 231, smart meter rental (RDSS): myt"
+  },
+  "ag.rental_rdss.petition": {
+   "value": "219.75",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Smart Meter Rental under RDSS 216.82 219.75 216.82",
+   "what": "Table 231, smart meter rental (RDSS): petition"
+  },
+  "ag.rental_rdss.approved": {
+   "value": "216.82",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Smart Meter Rental under RDSS 216.82 219.75 216.82",
+   "what": "Table 231, smart meter rental (RDSS): approved"
+  },
+  "ag.it.myt": {
+   "value": "10",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Addl. IT expense 10 10 10",
+   "what": "Table 231, additional IT expense: myt"
+  },
+  "ag.it.petition": {
+   "value": "10",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Addl. IT expense 10 10 10",
+   "what": "Table 231, additional IT expense: petition"
+  },
+  "ag.it.approved": {
+   "value": "10",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Addl. IT expense 10 10 10",
+   "what": "Table 231, additional IT expense: approved"
+  },
+  "ag.subtotal.myt": {
+   "value": "314.39",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Addl. IT expense 10 10 10 A&G Expenses 314.39 317.31 314.39",
+   "what": "Table 231, A&G before the PIP: myt"
+  },
+  "ag.subtotal.petition": {
+   "value": "317.31",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Addl. IT expense 10 10 10 A&G Expenses 314.39 317.31 314.39",
+   "what": "Table 231, A&G before the PIP: petition"
+  },
+  "ag.subtotal.approved": {
+   "value": "314.39",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Addl. IT expense 10 10 10 A&G Expenses 314.39 317.31 314.39",
+   "what": "Table 231, A&G before the PIP: approved"
+  },
+  "ag.pip.approved": {
+   "value": "0.71",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Public Interaction Program -Provisional - - 0.71",
+   "what": "Table 231, public interaction programme (provisional), in the table's Rs. Cr.: approved"
+  },
+  "ag.total.myt": {
+   "value": "314.39",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Total A&G Expenses 314.39 317.31 315.10",
+   "what": "Table 231, total A&G: myt"
+  },
+  "ag.total.petition": {
+   "value": "317.31",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Total A&G Expenses 314.39 317.31 315.10",
+   "what": "Table 231, total A&G: petition"
+  },
+  "ag.total.approved": {
+   "value": "315.10",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Total A&G Expenses 314.39 317.31 315.10",
+   "what": "Table 231, total A&G: approved"
+  },
+  "text.pip.lakh": {
+   "value": "0.71",
+   "unit": "INR_lakh",
+   "page": 372,
+   "quote": "provisionally approved the Petitioner’s claim of Rs. 0.71 Lakh towards the expenditure for PIP",
+   "what": "para 9.18.7: the PIP as the text approves it, in lakh: lakh"
+  },
+  "text.ag_myt.crore": {
+   "value": "314.31",
+   "unit": "INR_crore",
+   "page": 372,
+   "quote": "the Commission had approved A&G expenses of Rs. 314.31 Cr. for FY 2026-27",
+   "what": "para 9.18.7: the MYT order's A&G as the text cites it: crore"
+  }
+ }
+}

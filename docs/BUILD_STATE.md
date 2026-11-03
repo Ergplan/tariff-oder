@@ -1005,6 +1005,22 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 141 (2026-11-03): HPERC — O&M built from its parts, and the PIP's unit.**
+  - **The record:** `order/figures-om-fy2026-27.json` in the HPERC folder holds 55 figures
+    (Tables 227, 228, 231; para 9.18.7), 55 / 55 quotes verified.
+  - **Four more draft HPERC rules (16 in all):** employee expenses, R&M, A&G, and O&M built
+    from the three.
+  - **Binding `approval-om-fy27.json`: 7 / 12 exact.**  Built from its parts, the approved O&M
+    is Table 232's 3,468.46, also the ARR's O&M.  The other differences are a paisa off, except
+    the two below.
+  - **Findings `H3`, `H4` (reviewer):**
+    - **H3:** the text approves the public interaction programme as "Rs. 0.71 Lakh", but Table
+      231 adds 0.71 to A&G in crore.  O&M and the ARR carry the crore.  At lakh, A&G is 314.39
+      and the ARR 0.70 crore lower.
+    - **H4:** the MYT order's A&G is cited as 314.31 in the text, printed 314.39 in the table,
+      and its parts add to 314.38.
+  Nothing verified, nothing approved.
+
   **Increment 140 (2026-11-03): R-APP-3 — an amended clause applies only from its effective
   year.**
   - **The capability was already in the engine.**  A rule id may carry versions with
@@ -3492,6 +3508,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 141 (2026-11-03): 511 passed** (+1 unit: HPERC's O&M from its parts; H3, H4).  `check_order_quotes.py`: 55 / 55.  Ruff and format clean.
 - **Increment 140 (2026-11-03): 510 passed** (+1 unit: an amended rule by effective year, synthetic).  Ruff and format clean.
 - **Increment 139 (2026-11-03): 509 passed** (+1 integration: the rules compared across commissions).  Ruff, format, contracts (regenerated, no drift) and `tsc` clean; screenshots at 1440 / 390 px.
 - **Increment 138 (2026-11-03): 508 passed** (+1 unit: OERC's bad debts, RoE and depreciation for four DISCOMs; O1, O2).  `check_order_quotes.py`: 76 / 76.  Ruff and format clean.
@@ -3765,7 +3782,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 140) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 141) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

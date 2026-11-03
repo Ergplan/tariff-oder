@@ -2523,7 +2523,7 @@ def test_a_fourth_commission_hperc_working_capital_and_arr_arithmetic():
     # H1: the adjustments add to 8,640.69; the order carries 8,641.16, so its surplus is 3.61 not 4.08
     assert checks["adj.total"].computed == "8640.69" and checks["adj.total"].filed == "8641.16"
     assert checks["rev.surplus"].computed == "4.08" and checks["rev.surplus"].filed == "3.61"
-    assert {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]} == {"H1", "H2"}
+    assert {"H1", "H2"} <= {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
 
 
 def test_a_fifth_commission_jserc_working_capital_negative_approved_nil():
@@ -2598,3 +2598,28 @@ def test_a_seventh_commission_oerc_bad_debts_roe_and_depreciation():
     tpcodl = next(c for c in checks if c.category.endswith("roe_p.total.tpcodl"))
     assert tpcodl.computed == "171.20" and tpcodl.filed == "171.14"
     assert {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]} == {"O1", "O2"}
+
+
+def test_hperc_om_built_from_its_parts_and_the_pip_unit():
+    """Real data, HPERC / HPSEBL FY2026-27: employee, R&M and A&G built from their parts give
+    Table 232's O&M (3,468.46) exactly, with the public interaction programme added as 0.71
+    crore; the text approves it as 0.71 lakh, which would make A&G 314.39 (H3).  The MYT
+    column's A&G parts add to 314.38, the table prints 314.39, the text cites 314.31 (H4)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "hperc-hpsebl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-om-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("HPERC"), rates=rec)
+    by = {(c.category.split(" order:")[0], c.category.rsplit(" order:", 1)[1]): c for c in checks}
+    built = by[("O&M approved, built from the table (Tables 227, 228, 231, 232)", "ia:om.total.approved")]
+    assert built.result == "match" and built.computed == "3468.46"
+    h3 = by[("A&G with the PIP the text approves, 0.71 lakh — H3", "om:ag.total.approved")]
+    assert h3.computed == "314.39" and Decimal(h3.filed) - Decimal(h3.exact) > Decimal("0.70")
+    assert rec["om:text.pip.lakh"] == ("0.71", "INR_lakh") and rec["om:ag.pip.approved"] == ("0.71", "INR_crore")
+    h4 = by[("O&M as the MYT order approved it (Tables 227, 228, 231, 232)", "om:text.ag_myt.crore")]
+    assert h4.computed == "314.38" and h4.filed == "314.31"
+    assert {"H3", "H4"} <= {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}

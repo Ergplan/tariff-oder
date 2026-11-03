@@ -504,6 +504,192 @@
    },
    "examples": [],
    "note": "para 11.5"
+  },
+  {
+   "id": "hperc.om.employee",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses: salaries, other staff cost and arrears, terminal benefits and pension arrears, less capitalisation",
+   "output": "om_employee_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "salary + other_staff + arrear + terminal + pension_arrear - capitalised",
+   "inputs": {
+    "salary": {
+     "unit": "INR_crore",
+     "source": "record:emp_salary"
+    },
+    "other_staff": {
+     "unit": "INR_crore",
+     "source": "record:emp_other_staff"
+    },
+    "arrear": {
+     "unit": "INR_crore",
+     "source": "record:emp_arrear",
+     "note": "6th pay commission arrear"
+    },
+    "terminal": {
+     "unit": "INR_crore",
+     "source": "record:emp_terminal"
+    },
+    "pension_arrear": {
+     "unit": "INR_crore",
+     "source": "record:emp_pension_arrear"
+    },
+    "capitalised": {
+     "unit": "INR_crore",
+     "source": "record:emp_capitalised"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 227"
+  },
+  {
+   "id": "hperc.om.rm",
+   "version": 1,
+   "status": "draft",
+   "title": "R&M expenses: gross and IT related",
+   "output": "om_rm_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "gross + it",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "record:rm_gross"
+    },
+    "it": {
+     "unit": "INR_crore",
+     "source": "record:rm_it"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 228"
+  },
+  {
+   "id": "hperc.om.ag",
+   "version": 1,
+   "status": "draft",
+   "title": "A&G expenses: the base, smart-meter rentals, additional IT and the public interaction programme",
+   "output": "om_ag_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "base + rental_ipds + rental_rdss + it + pip",
+   "inputs": {
+    "base": {
+     "unit": "INR_crore",
+     "source": "record:ag_base"
+    },
+    "rental_ipds": {
+     "unit": "INR_crore",
+     "source": "record:ag_rental_ipds"
+    },
+    "rental_rdss": {
+     "unit": "INR_crore",
+     "source": "record:ag_rental_rdss"
+    },
+    "it": {
+     "unit": "INR_crore",
+     "source": "record:ag_it"
+    },
+    "pip": {
+     "unit": "INR_crore",
+     "source": "record:ag_pip",
+     "note": "the public interaction programme — 0.71 in the table's crore, 0.71 lakh in the text (H3)"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 231"
+  },
+  {
+   "id": "hperc.om.total_built",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M expenses built from their parts",
+   "output": "om_total_built",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "employee + rm + ag",
+   "inputs": {
+    "employee": {
+     "unit": "INR_crore",
+     "source": "rule:om_employee_net"
+    },
+    "rm": {
+     "unit": "INR_crore",
+     "source": "rule:om_rm_total"
+    },
+    "ag": {
+     "unit": "INR_crore",
+     "source": "rule:om_ag_total"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 232"
   }
  ]
 }
