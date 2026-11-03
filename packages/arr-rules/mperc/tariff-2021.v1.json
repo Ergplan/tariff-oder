@@ -1159,6 +1159,215 @@
    },
    "examples": [],
    "note": ""
+  },
+  {
+   "id": "mperc.arr.expenses",
+   "version": 1,
+   "status": "draft",
+   "title": "Total expenses admitted: the heads of the ARR",
+   "output": "arr_expenses",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "per": "licensee",
+   "formula": "pp + intra + om + dep + loan_interest + iowc + csd + roe + lease + rnd + bad_debts",
+   "inputs": {
+    "pp": {
+     "unit": "INR_crore",
+     "source": "record:arr_pp",
+     "note": "power purchase with inter-state transmission"
+    },
+    "intra": {
+     "unit": "INR_crore",
+     "source": "record:arr_intra",
+     "note": "intra-state transmission and SLDC"
+    },
+    "om": {
+     "unit": "INR_crore",
+     "source": "record:arr_om",
+     "note": "O&M"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:arr_dep",
+     "note": "depreciation"
+    },
+    "loan_interest": {
+     "unit": "INR_crore",
+     "source": "record:arr_loan_interest",
+     "note": "interest and finance charges on project loans"
+    },
+    "iowc": {
+     "unit": "INR_crore",
+     "source": "record:arr_iowc",
+     "note": "interest on working capital"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "record:arr_csd",
+     "note": "interest on consumer security deposits"
+    },
+    "roe": {
+     "unit": "INR_crore",
+     "source": "record:arr_roe",
+     "note": "return on equity"
+    },
+    "lease": {
+     "unit": "INR_crore",
+     "source": "record:arr_lease",
+     "note": "lease charges for smart meters"
+    },
+    "rnd": {
+     "unit": "INR_crore",
+     "source": "record:arr_rnd",
+     "note": "R&D fund"
+    },
+    "bad_debts": {
+     "unit": "INR_crore",
+     "source": "record:arr_bad_debts",
+     "note": "bad and doubtful debts"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 74"
+  },
+  {
+   "id": "mperc.arr.arr",
+   "version": 1,
+   "status": "draft",
+   "title": "ARR: expenses less other income and non-tariff income",
+   "output": "arr_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "per": "licensee",
+   "formula": "expenses - other_income",
+   "inputs": {
+    "expenses": {
+     "unit": "INR_crore",
+     "source": "rule:arr_expenses"
+    },
+    "other_income": {
+     "unit": "INR_crore",
+     "source": "record:arr_other_income"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 74"
+  },
+  {
+   "id": "mperc.arr.total",
+   "version": 1,
+   "status": "draft",
+   "title": "ARR including the true-ups: plus the transmission company's gap and the DISCOM's own, less the generation company's surplus",
+   "output": "arr_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "per": "licensee",
+   "formula": "arr + transco_gap - genco_surplus + trueup_gap",
+   "inputs": {
+    "arr": {
+     "unit": "INR_crore",
+     "source": "rule:arr_net"
+    },
+    "transco_gap": {
+     "unit": "INR_crore",
+     "source": "record:arr_transco_gap",
+     "note": "MP Transco's true-up gap of FY2024-25, passed through"
+    },
+    "genco_surplus": {
+     "unit": "INR_crore",
+     "source": "record:arr_genco_surplus",
+     "note": "MP Genco's true-up surplus of FY2024-25, passed through"
+    },
+    "trueup_gap": {
+     "unit": "INR_crore",
+     "source": "record:arr_trueup_gap",
+     "note": "the DISCOM's own true-up gap of FY2024-25"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 74; this total is the 'annual revenue from tariff and charges' on which the working capital's receivables are computed (Table 61) — a loop, since the total includes that interest"
+  },
+  {
+   "id": "mperc.arr.total_state",
+   "version": 1,
+   "status": "draft",
+   "title": "ARR including the true-ups, the three DISCOMs",
+   "output": "arr_total_state",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:arr_total"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
   }
  ]
 }

@@ -1,0 +1,352 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "MPERC order",
+ "rates": "order/figures-arr-fy2026-27.json",
+ "places": 2,
+ "note": "MPERC's ARR for the three DISCOMs, FY2026-27 (Table 74), claimed and admitted, each DISCOM a category: the table's arithmetic from its printed heads.  The test computes the admitted side end to end from the heads the other MPERC bindings compute.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ARR admitted (Table 74)",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:arr_pp": {
+       "rate": "arr.pp.east.admitted"
+      },
+      "record:arr_intra": {
+       "rate": "arr.intra.east.admitted"
+      },
+      "record:arr_om": {
+       "rate": "arr.om.east.admitted"
+      },
+      "record:arr_dep": {
+       "rate": "arr.dep.east.admitted"
+      },
+      "record:arr_loan_interest": {
+       "rate": "arr.loan_interest.east.admitted"
+      },
+      "record:arr_iowc": {
+       "rate": "arr.iowc.east.admitted"
+      },
+      "record:arr_csd": {
+       "rate": "arr.csd.east.admitted"
+      },
+      "record:arr_roe": {
+       "rate": "arr.roe.east.admitted"
+      },
+      "record:arr_lease": {
+       "rate": "arr.lease.east.admitted"
+      },
+      "record:arr_rnd": {
+       "rate": "arr.rnd.east.admitted"
+      },
+      "record:arr_bad_debts": {
+       "rate": "arr.bad_debts.east.admitted"
+      },
+      "record:arr_other_income": {
+       "rate": "arr.other_income.east.admitted"
+      },
+      "record:arr_transco_gap": {
+       "rate": "arr.transco_gap.east.admitted"
+      },
+      "record:arr_genco_surplus": {
+       "rate": "arr.genco_surplus.east.admitted"
+      },
+      "record:arr_trueup_gap": {
+       "rate": "arr.trueup_gap.east.admitted"
+      }
+     },
+     "checks": {
+      "arr_expenses": "order:arr.expenses.east.admitted",
+      "arr_net": "order:arr.arr.east.admitted",
+      "arr_total": "order:arr.total.east.admitted"
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:arr_pp": {
+       "rate": "arr.pp.west.admitted"
+      },
+      "record:arr_intra": {
+       "rate": "arr.intra.west.admitted"
+      },
+      "record:arr_om": {
+       "rate": "arr.om.west.admitted"
+      },
+      "record:arr_dep": {
+       "rate": "arr.dep.west.admitted"
+      },
+      "record:arr_loan_interest": {
+       "rate": "arr.loan_interest.west.admitted"
+      },
+      "record:arr_iowc": {
+       "rate": "arr.iowc.west.admitted"
+      },
+      "record:arr_csd": {
+       "rate": "arr.csd.west.admitted"
+      },
+      "record:arr_roe": {
+       "rate": "arr.roe.west.admitted"
+      },
+      "record:arr_lease": {
+       "rate": "arr.lease.west.admitted"
+      },
+      "record:arr_rnd": {
+       "rate": "arr.rnd.west.admitted"
+      },
+      "record:arr_bad_debts": {
+       "rate": "arr.bad_debts.west.admitted"
+      },
+      "record:arr_other_income": {
+       "rate": "arr.other_income.west.admitted"
+      },
+      "record:arr_transco_gap": {
+       "rate": "arr.transco_gap.west.admitted"
+      },
+      "record:arr_genco_surplus": {
+       "rate": "arr.genco_surplus.west.admitted"
+      },
+      "record:arr_trueup_gap": {
+       "rate": "arr.trueup_gap.west.admitted"
+      }
+     },
+     "checks": {
+      "arr_expenses": "order:arr.expenses.west.admitted",
+      "arr_net": "order:arr.arr.west.admitted",
+      "arr_total": "order:arr.total.west.admitted"
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:arr_pp": {
+       "rate": "arr.pp.central.admitted"
+      },
+      "record:arr_intra": {
+       "rate": "arr.intra.central.admitted"
+      },
+      "record:arr_om": {
+       "rate": "arr.om.central.admitted"
+      },
+      "record:arr_dep": {
+       "rate": "arr.dep.central.admitted"
+      },
+      "record:arr_loan_interest": {
+       "rate": "arr.loan_interest.central.admitted"
+      },
+      "record:arr_iowc": {
+       "rate": "arr.iowc.central.admitted"
+      },
+      "record:arr_csd": {
+       "rate": "arr.csd.central.admitted"
+      },
+      "record:arr_roe": {
+       "rate": "arr.roe.central.admitted"
+      },
+      "record:arr_lease": {
+       "rate": "arr.lease.central.admitted"
+      },
+      "record:arr_rnd": {
+       "rate": "arr.rnd.central.admitted"
+      },
+      "record:arr_bad_debts": {
+       "rate": "arr.bad_debts.central.admitted"
+      },
+      "record:arr_other_income": {
+       "rate": "arr.other_income.central.admitted"
+      },
+      "record:arr_transco_gap": {
+       "rate": "arr.transco_gap.central.admitted"
+      },
+      "record:arr_genco_surplus": {
+       "rate": "arr.genco_surplus.central.admitted"
+      },
+      "record:arr_trueup_gap": {
+       "rate": "arr.trueup_gap.central.admitted"
+      }
+     },
+     "checks": {
+      "arr_expenses": "order:arr.expenses.central.admitted",
+      "arr_net": "order:arr.arr.central.admitted",
+      "arr_total": "order:arr.total.central.admitted"
+     }
+    }
+   },
+   "checks": {
+    "arr_total_state": "order:arr.total.state.admitted"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ARR claimed (Table 74)",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:arr_pp": {
+       "rate": "arr.pp.east.claimed"
+      },
+      "record:arr_intra": {
+       "rate": "arr.intra.east.claimed"
+      },
+      "record:arr_om": {
+       "rate": "arr.om.east.claimed"
+      },
+      "record:arr_dep": {
+       "rate": "arr.dep.east.claimed"
+      },
+      "record:arr_loan_interest": {
+       "rate": "arr.loan_interest.east.claimed"
+      },
+      "record:arr_iowc": {
+       "rate": "arr.iowc.east.claimed"
+      },
+      "record:arr_csd": {
+       "rate": "arr.csd.east.claimed"
+      },
+      "record:arr_roe": {
+       "rate": "arr.roe.east.claimed"
+      },
+      "record:arr_lease": {
+       "rate": "arr.lease.east.claimed"
+      },
+      "record:arr_rnd": {
+       "rate": "arr.rnd.east.claimed"
+      },
+      "record:arr_bad_debts": {
+       "rate": "arr.bad_debts.east.claimed"
+      },
+      "record:arr_other_income": {
+       "rate": "arr.other_income.east.claimed"
+      },
+      "record:arr_transco_gap": {
+       "rate": "arr.transco_gap.east.claimed"
+      },
+      "record:arr_genco_surplus": {
+       "rate": "arr.genco_surplus.east.claimed"
+      },
+      "record:arr_trueup_gap": {
+       "rate": "arr.trueup_gap.east.claimed"
+      }
+     },
+     "checks": {
+      "arr_expenses": "order:arr.expenses.east.claimed",
+      "arr_net": "order:arr.arr.east.claimed",
+      "arr_total": "order:arr.total.east.claimed"
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:arr_pp": {
+       "rate": "arr.pp.west.claimed"
+      },
+      "record:arr_intra": {
+       "rate": "arr.intra.west.claimed"
+      },
+      "record:arr_om": {
+       "rate": "arr.om.west.claimed"
+      },
+      "record:arr_dep": {
+       "rate": "arr.dep.west.claimed"
+      },
+      "record:arr_loan_interest": {
+       "rate": "arr.loan_interest.west.claimed"
+      },
+      "record:arr_iowc": {
+       "rate": "arr.iowc.west.claimed"
+      },
+      "record:arr_csd": {
+       "rate": "arr.csd.west.claimed"
+      },
+      "record:arr_roe": {
+       "rate": "arr.roe.west.claimed"
+      },
+      "record:arr_lease": {
+       "rate": "arr.lease.west.claimed"
+      },
+      "record:arr_rnd": {
+       "rate": "arr.rnd.west.claimed"
+      },
+      "record:arr_bad_debts": {
+       "rate": "arr.bad_debts.west.claimed"
+      },
+      "record:arr_other_income": {
+       "rate": "arr.other_income.west.claimed"
+      },
+      "record:arr_transco_gap": {
+       "rate": "arr.transco_gap.west.claimed"
+      },
+      "record:arr_genco_surplus": {
+       "rate": "arr.genco_surplus.west.claimed"
+      },
+      "record:arr_trueup_gap": {
+       "rate": "arr.trueup_gap.west.claimed"
+      }
+     },
+     "checks": {
+      "arr_expenses": "order:arr.expenses.west.claimed",
+      "arr_net": "order:arr.arr.west.claimed",
+      "arr_total": "order:arr.total.west.claimed"
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:arr_pp": {
+       "rate": "arr.pp.central.claimed"
+      },
+      "record:arr_intra": {
+       "rate": "arr.intra.central.claimed"
+      },
+      "record:arr_om": {
+       "rate": "arr.om.central.claimed"
+      },
+      "record:arr_dep": {
+       "rate": "arr.dep.central.claimed"
+      },
+      "record:arr_loan_interest": {
+       "rate": "arr.loan_interest.central.claimed"
+      },
+      "record:arr_iowc": {
+       "rate": "arr.iowc.central.claimed"
+      },
+      "record:arr_csd": {
+       "rate": "arr.csd.central.claimed"
+      },
+      "record:arr_roe": {
+       "rate": "arr.roe.central.claimed"
+      },
+      "record:arr_lease": {
+       "rate": "arr.lease.central.claimed"
+      },
+      "record:arr_rnd": {
+       "rate": "arr.rnd.central.claimed"
+      },
+      "record:arr_bad_debts": {
+       "rate": "arr.bad_debts.central.claimed"
+      },
+      "record:arr_other_income": {
+       "rate": "arr.other_income.central.claimed"
+      },
+      "record:arr_transco_gap": {
+       "rate": "arr.transco_gap.central.claimed"
+      },
+      "record:arr_genco_surplus": {
+       "rate": "arr.genco_surplus.central.claimed"
+      },
+      "record:arr_trueup_gap": {
+       "rate": "arr.trueup_gap.central.claimed"
+      }
+     },
+     "checks": {
+      "arr_expenses": "order:arr.expenses.central.claimed",
+      "arr_net": "order:arr.arr.central.claimed",
+      "arr_total": "order:arr.total.central.claimed"
+     }
+    }
+   },
+   "checks": {
+    "arr_total_state": "order:arr.total.state.claimed"
+   }
+  }
+ ]
+}

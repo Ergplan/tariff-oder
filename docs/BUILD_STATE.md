@@ -1005,6 +1005,33 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 131 (2026-11-03): MPERC — each DISCOM's ARR (Table 74), end to end, and the
+  working capital's loop.**
+  - **The record:** `order/figures-arr-fy2026-27.json` in the MPERC folder holds 144 figures,
+    claimed and admitted for each DISCOM and the State, 144 / 144 quotes verified.
+  - **Four more draft MPERC rules (34 in all):** total expenses (eleven heads), ARR less other
+    income, the total including the FY2024-25 true-ups (MP Transco's gap and MP Genco's surplus
+    passed through, the DISCOM's own gap), and the State sum.
+  - **Binding `approval-arr-fy27.json` (the table's arithmetic):** 5 / 20 checks exact, and
+    every other check within 2 paise of eleven printed heads, on both the claimed and the
+    admitted side.
+  - **End to end (the test):** depreciation, project-loan interest, working capital interest
+    and RoE as the other MPERC bindings compute them, unrounded:
+    | DISCOM | Computed | Printed |
+    |---|---|---|
+    | East | 17,889.43 | 17,889.37 |
+    | West | 24,841.79 | 24,842.10 |
+    | Central | 19,892.55 | 19,892.55 (exact) |
+    | State | 62,623.76 | 62,624.02 |
+    Each DISCOM is within the precision of the rates the order prints to two decimals.  West's
+    0.31 is mostly its 3.25% depreciation rate (184.15 printed implies 3.2548%).
+  - **The loop:** each DISCOM's total including true-ups is the "annual revenue from tariff and
+    charges" whose two months are its working capital receivables (Table 61).  That total
+    includes the working capital interest.  With receivables at the printed total, the interest
+    reproduces exactly (increment 129).  The engine refuses cycles, so the order's fixed point
+    enters as a record; the test ties the two.
+  Nothing verified, nothing approved.
+
   **Increment 130 (2026-11-03): MPERC — depreciation, project loans and equity for three
   DISCOMs, chained FY2025-26 → FY2026-27; the engine carries one licensee's balances.**
   - **Engine:** a computed input may name a category (`{"computed": …, "category": "east",
@@ -3262,6 +3289,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 131 (2026-11-03): 501 passed** (+1 unit: MPERC's ARR per DISCOM, the table and end to end).  `check_order_quotes.py`: 144 / 144.  Ruff and format clean.
 - **Increment 130 (2026-11-03): 500 passed** (+1 unit: MPERC's depreciation, loan and equity chain per DISCOM, bounded by printed precision; M3).  `check_order_quotes.py`: 138 / 138.  Ruff and format clean.
 - **Increment 129 (2026-11-03): 499 passed** (+1 unit: MPERC's working capital per DISCOM, M1–M2; two earlier tests updated for half-up checks).  `check_order_quotes.py`: 72 / 72.  Ruff and format clean.
 - **Increment 128 (2026-11-03): 498 passed** (+1 unit: UERC's true-up gap carried into the ARR year — exact from the printed gap, bounded end to end).  `check_order_quotes.py`: 62 / 62.  Ruff and format clean.
@@ -3525,7 +3553,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 130) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 131) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3630,7 +3658,8 @@ entries below are the per-increment history.**
     exact; increment 128 its gap carried into FY2026-27's ARR, 343.07 — exact from the printed gap,
     1.7 paise end to end); increment 129 a third commission, MPERC's working capital for three
     DISCOMs in one order (29 / 30); increment 130 its depreciation, loans and equity chained per
-    DISCOM across two years (equity and RoE exact, M3) — next MPERC's O&M and ARR summary, or HPERC;
+    DISCOM across two years (equity and RoE exact, M3); increment 131 its ARR per DISCOM end to
+    end, within the printed rates' precision) — next MPERC's O&M (Table 55) or HPERC;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

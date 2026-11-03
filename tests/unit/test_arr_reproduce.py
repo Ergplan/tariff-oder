@@ -2347,3 +2347,80 @@ def test_mperc_depreciation_loan_and_equity_chain_per_discom_across_two_years():
     east = Decimal(rec["eq.opening_fy27.east"][0]) - Decimal(rec["eq.opening_fy26.east"][0])
     assert east == Decimal("181.25") != Decimal(rec["eq.row_fy26.east"][0])
     assert "M3" in {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+
+
+def test_mperc_arr_per_discom_end_to_end_from_the_computed_heads():
+    """Real data, MPERC FY2026-27: Table 74's ARR per DISCOM from its printed heads (within two
+    paise), and end to end — depreciation, interest on project loans, interest on working capital
+    and RoE as the other MPERC bindings compute them, unrounded — within the precision of the
+    rates the order prints (its depreciation and interest rates to two decimals).  The total is
+    the revenue on which the working capital's receivables were computed: the order's loop."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import RuleSet, load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "mperc-discoms-fy2026-27"
+    rules = load_rules("MPERC")
+
+    def run(name):
+        b = json.loads((folder / "bindings" / name).read_text())
+        rec = load_binding_rates(folder, b)
+        return rec, reproduce_cells(None, b, rules, rates=rec)
+
+    rec, table = run("approval-arr-fy27.json")
+    assert all(abs(Decimal(c.exact) - Decimal(c.filed)) <= Decimal("0.02") for c in table)
+    _, dep = run("approval-dep-loan-fy27.json")
+    iowc_rec, iowc = run("approval-iowc-fy27.json")
+
+    def exact(checks, label_part, who, output):
+        return next(
+            Decimal(c.exact)
+            for c in checks
+            if label_part in c.category and f" {who} order:" in c.category and c.output == output
+        )
+
+    discoms = ("east", "west", "central")
+    computed = {
+        d: {
+            "dep": exact(dep, "depreciation (Table 57)", d, "depreciation"),
+            "loan_interest": exact(dep, "loan, interest", d, "loan_interest_total"),
+            "iowc": exact(iowc, "Table 61", d, "iowc_interest"),
+            "roe": exact(dep, "loan, interest", d, "roe_return"),
+        }
+        for d in discoms
+    }
+    cats = {}
+    for d in discoms:
+        values = {
+            f"record:arr_{k}": rec[f"arr.{k}.{d}.admitted"]
+            for k in (
+                "pp",
+                "intra",
+                "om",
+                "csd",
+                "lease",
+                "rnd",
+                "bad_debts",
+                "other_income",
+                "transco_gap",
+                "genco_surplus",
+                "trueup_gap",
+            )
+        }
+        values |= {f"record:arr_{k}": (v, "INR_crore") for k, v in computed[d].items()}
+        cats[d] = values
+    ev = RuleSet(rules, "FY2026-27").evaluate("FY2026-27", {}, cats)
+    half = Decimal("0.00005")
+    for d in discoms:
+        got = ev.by_category[d]["arr_total"].value
+        printed = Decimal(rec[f"arr.total.{d}.admitted"][0])
+        gfa_avg = exact(dep, "depreciation (Table 57)", d, "gfa_average")
+        loan_avg = exact(dep, "loan, interest", d, "loan_average")
+        slack = gfa_avg * half + loan_avg * 2 * half + Decimal("0.1")  # rates printed rounded; rounded balances
+        assert abs(got - printed) <= slack, (d, got, printed)
+        # the loop: the working capital's receivables are two months of this very total
+        assert Decimal(iowc_rec[f"r.revenue.{d}"][0]) == printed
+    assert ev.by_category["east"]["arr_total"].value.quantize(Decimal("0.01")) == Decimal(
+        "17889.43"
+    )  # printed 17,889.37

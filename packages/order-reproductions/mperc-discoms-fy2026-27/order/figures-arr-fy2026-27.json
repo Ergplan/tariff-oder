@@ -1,0 +1,1018 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "MPERC order on the ARR and retail supply tariff of the three MP DISCOMs for FY2026-27 (petition 140/2025) — ARR admitted (Table 74)",
+  "sha256": "77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb",
+  "pages": 255
+ },
+ "figures": {
+  "arr.pp.east.claimed": {
+   "value": "11019.25",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Power Purchase Cost including Inter-State Transmission Charges 11,019.25 10,855.30 19,891.87 17,647.81 11,285.63 12,009.76 42,196.75 40,512.88",
+   "what": "Table 74, Power Purchase Cost including Inter-State Transmission Charges: east, claimed"
+  },
+  "arr.pp.east.admitted": {
+   "value": "10855.30",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Power Purchase Cost including Inter-State Transmission Charges 11,019.25 10,855.30 19,891.87 17,647.81 11,285.63 12,009.76 42,196.75 40,512.88",
+   "what": "Table 74, Power Purchase Cost including Inter-State Transmission Charges: east, admitted"
+  },
+  "arr.pp.west.claimed": {
+   "value": "19891.87",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Power Purchase Cost including Inter-State Transmission Charges 11,019.25 10,855.30 19,891.87 17,647.81 11,285.63 12,009.76 42,196.75 40,512.88",
+   "what": "Table 74, Power Purchase Cost including Inter-State Transmission Charges: west, claimed"
+  },
+  "arr.pp.west.admitted": {
+   "value": "17647.81",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Power Purchase Cost including Inter-State Transmission Charges 11,019.25 10,855.30 19,891.87 17,647.81 11,285.63 12,009.76 42,196.75 40,512.88",
+   "what": "Table 74, Power Purchase Cost including Inter-State Transmission Charges: west, admitted"
+  },
+  "arr.pp.central.claimed": {
+   "value": "11285.63",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Power Purchase Cost including Inter-State Transmission Charges 11,019.25 10,855.30 19,891.87 17,647.81 11,285.63 12,009.76 42,196.75 40,512.88",
+   "what": "Table 74, Power Purchase Cost including Inter-State Transmission Charges: central, claimed"
+  },
+  "arr.pp.central.admitted": {
+   "value": "12009.76",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Power Purchase Cost including Inter-State Transmission Charges 11,019.25 10,855.30 19,891.87 17,647.81 11,285.63 12,009.76 42,196.75 40,512.88",
+   "what": "Table 74, Power Purchase Cost including Inter-State Transmission Charges: central, admitted"
+  },
+  "arr.pp.state.claimed": {
+   "value": "42196.75",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Power Purchase Cost including Inter-State Transmission Charges 11,019.25 10,855.30 19,891.87 17,647.81 11,285.63 12,009.76 42,196.75 40,512.88",
+   "what": "Table 74, Power Purchase Cost including Inter-State Transmission Charges: state, claimed"
+  },
+  "arr.pp.state.admitted": {
+   "value": "40512.88",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Power Purchase Cost including Inter-State Transmission Charges 11,019.25 10,855.30 19,891.87 17,647.81 11,285.63 12,009.76 42,196.75 40,512.88",
+   "what": "Table 74, Power Purchase Cost including Inter-State Transmission Charges: state, admitted"
+  },
+  "arr.intra.east.claimed": {
+   "value": "2182.33",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Intra-State Transmission including SLDC Charges 2,182.33 1,640.61 2,072.38 2,236.60 2,101.70 1,988.28 6,356.42 5,865.49",
+   "what": "Table 74, Intra-State Transmission including SLDC Charges: east, claimed"
+  },
+  "arr.intra.east.admitted": {
+   "value": "1640.61",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Intra-State Transmission including SLDC Charges 2,182.33 1,640.61 2,072.38 2,236.60 2,101.70 1,988.28 6,356.42 5,865.49",
+   "what": "Table 74, Intra-State Transmission including SLDC Charges: east, admitted"
+  },
+  "arr.intra.west.claimed": {
+   "value": "2072.38",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Intra-State Transmission including SLDC Charges 2,182.33 1,640.61 2,072.38 2,236.60 2,101.70 1,988.28 6,356.42 5,865.49",
+   "what": "Table 74, Intra-State Transmission including SLDC Charges: west, claimed"
+  },
+  "arr.intra.west.admitted": {
+   "value": "2236.60",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Intra-State Transmission including SLDC Charges 2,182.33 1,640.61 2,072.38 2,236.60 2,101.70 1,988.28 6,356.42 5,865.49",
+   "what": "Table 74, Intra-State Transmission including SLDC Charges: west, admitted"
+  },
+  "arr.intra.central.claimed": {
+   "value": "2101.70",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Intra-State Transmission including SLDC Charges 2,182.33 1,640.61 2,072.38 2,236.60 2,101.70 1,988.28 6,356.42 5,865.49",
+   "what": "Table 74, Intra-State Transmission including SLDC Charges: central, claimed"
+  },
+  "arr.intra.central.admitted": {
+   "value": "1988.28",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Intra-State Transmission including SLDC Charges 2,182.33 1,640.61 2,072.38 2,236.60 2,101.70 1,988.28 6,356.42 5,865.49",
+   "what": "Table 74, Intra-State Transmission including SLDC Charges: central, admitted"
+  },
+  "arr.intra.state.claimed": {
+   "value": "6356.42",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Intra-State Transmission including SLDC Charges 2,182.33 1,640.61 2,072.38 2,236.60 2,101.70 1,988.28 6,356.42 5,865.49",
+   "what": "Table 74, Intra-State Transmission including SLDC Charges: state, claimed"
+  },
+  "arr.intra.state.admitted": {
+   "value": "5865.49",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Intra-State Transmission including SLDC Charges 2,182.33 1,640.61 2,072.38 2,236.60 2,101.70 1,988.28 6,356.42 5,865.49",
+   "what": "Table 74, Intra-State Transmission including SLDC Charges: state, admitted"
+  },
+  "arr.om.east.claimed": {
+   "value": "2047.54",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "O&M Expenses 2,047.54 2,030.54 1,808.06 1,818.33 1,921.08 1,963.23 5,776.69 5,812.10",
+   "what": "Table 74, O&M Expenses: east, claimed"
+  },
+  "arr.om.east.admitted": {
+   "value": "2030.54",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "O&M Expenses 2,047.54 2,030.54 1,808.06 1,818.33 1,921.08 1,963.23 5,776.69 5,812.10",
+   "what": "Table 74, O&M Expenses: east, admitted"
+  },
+  "arr.om.west.claimed": {
+   "value": "1808.06",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "O&M Expenses 2,047.54 2,030.54 1,808.06 1,818.33 1,921.08 1,963.23 5,776.69 5,812.10",
+   "what": "Table 74, O&M Expenses: west, claimed"
+  },
+  "arr.om.west.admitted": {
+   "value": "1818.33",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "O&M Expenses 2,047.54 2,030.54 1,808.06 1,818.33 1,921.08 1,963.23 5,776.69 5,812.10",
+   "what": "Table 74, O&M Expenses: west, admitted"
+  },
+  "arr.om.central.claimed": {
+   "value": "1921.08",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "O&M Expenses 2,047.54 2,030.54 1,808.06 1,818.33 1,921.08 1,963.23 5,776.69 5,812.10",
+   "what": "Table 74, O&M Expenses: central, claimed"
+  },
+  "arr.om.central.admitted": {
+   "value": "1963.23",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "O&M Expenses 2,047.54 2,030.54 1,808.06 1,818.33 1,921.08 1,963.23 5,776.69 5,812.10",
+   "what": "Table 74, O&M Expenses: central, admitted"
+  },
+  "arr.om.state.claimed": {
+   "value": "5776.69",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "O&M Expenses 2,047.54 2,030.54 1,808.06 1,818.33 1,921.08 1,963.23 5,776.69 5,812.10",
+   "what": "Table 74, O&M Expenses: state, claimed"
+  },
+  "arr.om.state.admitted": {
+   "value": "5812.10",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "O&M Expenses 2,047.54 2,030.54 1,808.06 1,818.33 1,921.08 1,963.23 5,776.69 5,812.10",
+   "what": "Table 74, O&M Expenses: state, admitted"
+  },
+  "arr.dep.east.claimed": {
+   "value": "448.63",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Depreciation 448.63 399.71 344.55 184.15 397.56 384.46 1,190.74 968.32",
+   "what": "Table 74, Depreciation: east, claimed"
+  },
+  "arr.dep.east.admitted": {
+   "value": "399.71",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Depreciation 448.63 399.71 344.55 184.15 397.56 384.46 1,190.74 968.32",
+   "what": "Table 74, Depreciation: east, admitted"
+  },
+  "arr.dep.west.claimed": {
+   "value": "344.55",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Depreciation 448.63 399.71 344.55 184.15 397.56 384.46 1,190.74 968.32",
+   "what": "Table 74, Depreciation: west, claimed"
+  },
+  "arr.dep.west.admitted": {
+   "value": "184.15",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Depreciation 448.63 399.71 344.55 184.15 397.56 384.46 1,190.74 968.32",
+   "what": "Table 74, Depreciation: west, admitted"
+  },
+  "arr.dep.central.claimed": {
+   "value": "397.56",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Depreciation 448.63 399.71 344.55 184.15 397.56 384.46 1,190.74 968.32",
+   "what": "Table 74, Depreciation: central, claimed"
+  },
+  "arr.dep.central.admitted": {
+   "value": "384.46",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Depreciation 448.63 399.71 344.55 184.15 397.56 384.46 1,190.74 968.32",
+   "what": "Table 74, Depreciation: central, admitted"
+  },
+  "arr.dep.state.claimed": {
+   "value": "1190.74",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Depreciation 448.63 399.71 344.55 184.15 397.56 384.46 1,190.74 968.32",
+   "what": "Table 74, Depreciation: state, claimed"
+  },
+  "arr.dep.state.admitted": {
+   "value": "968.32",
+   "unit": "INR_crore",
+   "page": 119,
+   "quote": "Depreciation 448.63 399.71 344.55 184.15 397.56 384.46 1,190.74 968.32",
+   "what": "Table 74, Depreciation: state, admitted"
+  },
+  "arr.loan_interest.east.claimed": {
+   "value": "342.75",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Project Loans 342.75 357.78 101.38 129.51 467.93 464.54 912.06 951.83",
+   "what": "Table 74, On Project Loans: east, claimed"
+  },
+  "arr.loan_interest.east.admitted": {
+   "value": "357.78",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Project Loans 342.75 357.78 101.38 129.51 467.93 464.54 912.06 951.83",
+   "what": "Table 74, On Project Loans: east, admitted"
+  },
+  "arr.loan_interest.west.claimed": {
+   "value": "101.38",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Project Loans 342.75 357.78 101.38 129.51 467.93 464.54 912.06 951.83",
+   "what": "Table 74, On Project Loans: west, claimed"
+  },
+  "arr.loan_interest.west.admitted": {
+   "value": "129.51",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Project Loans 342.75 357.78 101.38 129.51 467.93 464.54 912.06 951.83",
+   "what": "Table 74, On Project Loans: west, admitted"
+  },
+  "arr.loan_interest.central.claimed": {
+   "value": "467.93",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Project Loans 342.75 357.78 101.38 129.51 467.93 464.54 912.06 951.83",
+   "what": "Table 74, On Project Loans: central, claimed"
+  },
+  "arr.loan_interest.central.admitted": {
+   "value": "464.54",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Project Loans 342.75 357.78 101.38 129.51 467.93 464.54 912.06 951.83",
+   "what": "Table 74, On Project Loans: central, admitted"
+  },
+  "arr.loan_interest.state.claimed": {
+   "value": "912.06",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Project Loans 342.75 357.78 101.38 129.51 467.93 464.54 912.06 951.83",
+   "what": "Table 74, On Project Loans: state, claimed"
+  },
+  "arr.loan_interest.state.admitted": {
+   "value": "951.83",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Project Loans 342.75 357.78 101.38 129.51 467.93 464.54 912.06 951.83",
+   "what": "Table 74, On Project Loans: state, admitted"
+  },
+  "arr.iowc.east.claimed": {
+   "value": "44.54",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Working Capital Loans 44.54 70.53 18.63 8.82 57.56 69.57 120.73 148.92",
+   "what": "Table 74, On Working Capital Loans: east, claimed"
+  },
+  "arr.iowc.east.admitted": {
+   "value": "70.53",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Working Capital Loans 44.54 70.53 18.63 8.82 57.56 69.57 120.73 148.92",
+   "what": "Table 74, On Working Capital Loans: east, admitted"
+  },
+  "arr.iowc.west.claimed": {
+   "value": "18.63",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Working Capital Loans 44.54 70.53 18.63 8.82 57.56 69.57 120.73 148.92",
+   "what": "Table 74, On Working Capital Loans: west, claimed"
+  },
+  "arr.iowc.west.admitted": {
+   "value": "8.82",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Working Capital Loans 44.54 70.53 18.63 8.82 57.56 69.57 120.73 148.92",
+   "what": "Table 74, On Working Capital Loans: west, admitted"
+  },
+  "arr.iowc.central.claimed": {
+   "value": "57.56",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Working Capital Loans 44.54 70.53 18.63 8.82 57.56 69.57 120.73 148.92",
+   "what": "Table 74, On Working Capital Loans: central, claimed"
+  },
+  "arr.iowc.central.admitted": {
+   "value": "69.57",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Working Capital Loans 44.54 70.53 18.63 8.82 57.56 69.57 120.73 148.92",
+   "what": "Table 74, On Working Capital Loans: central, admitted"
+  },
+  "arr.iowc.state.claimed": {
+   "value": "120.73",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Working Capital Loans 44.54 70.53 18.63 8.82 57.56 69.57 120.73 148.92",
+   "what": "Table 74, On Working Capital Loans: state, claimed"
+  },
+  "arr.iowc.state.admitted": {
+   "value": "148.92",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Working Capital Loans 44.54 70.53 18.63 8.82 57.56 69.57 120.73 148.92",
+   "what": "Table 74, On Working Capital Loans: state, admitted"
+  },
+  "arr.csd.east.claimed": {
+   "value": "115.75",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Consumer Security Deposit 115.75 108.13 171.80 171.80 123.45 123.45 411.00 403.38",
+   "what": "Table 74, On Consumer Security Deposit: east, claimed"
+  },
+  "arr.csd.east.admitted": {
+   "value": "108.13",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Consumer Security Deposit 115.75 108.13 171.80 171.80 123.45 123.45 411.00 403.38",
+   "what": "Table 74, On Consumer Security Deposit: east, admitted"
+  },
+  "arr.csd.west.claimed": {
+   "value": "171.80",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Consumer Security Deposit 115.75 108.13 171.80 171.80 123.45 123.45 411.00 403.38",
+   "what": "Table 74, On Consumer Security Deposit: west, claimed"
+  },
+  "arr.csd.west.admitted": {
+   "value": "171.80",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Consumer Security Deposit 115.75 108.13 171.80 171.80 123.45 123.45 411.00 403.38",
+   "what": "Table 74, On Consumer Security Deposit: west, admitted"
+  },
+  "arr.csd.central.claimed": {
+   "value": "123.45",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Consumer Security Deposit 115.75 108.13 171.80 171.80 123.45 123.45 411.00 403.38",
+   "what": "Table 74, On Consumer Security Deposit: central, claimed"
+  },
+  "arr.csd.central.admitted": {
+   "value": "123.45",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Consumer Security Deposit 115.75 108.13 171.80 171.80 123.45 123.45 411.00 403.38",
+   "what": "Table 74, On Consumer Security Deposit: central, admitted"
+  },
+  "arr.csd.state.claimed": {
+   "value": "411.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Consumer Security Deposit 115.75 108.13 171.80 171.80 123.45 123.45 411.00 403.38",
+   "what": "Table 74, On Consumer Security Deposit: state, claimed"
+  },
+  "arr.csd.state.admitted": {
+   "value": "403.38",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "On Consumer Security Deposit 115.75 108.13 171.80 171.80 123.45 123.45 411.00 403.38",
+   "what": "Table 74, On Consumer Security Deposit: state, admitted"
+  },
+  "arr.roe.east.claimed": {
+   "value": "312.66",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Return on Equity 312.66 290.45 198.61 198.61 350.88 339.07 862.15 828.13",
+   "what": "Table 74, Return on Equity: east, claimed"
+  },
+  "arr.roe.east.admitted": {
+   "value": "290.45",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Return on Equity 312.66 290.45 198.61 198.61 350.88 339.07 862.15 828.13",
+   "what": "Table 74, Return on Equity: east, admitted"
+  },
+  "arr.roe.west.claimed": {
+   "value": "198.61",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Return on Equity 312.66 290.45 198.61 198.61 350.88 339.07 862.15 828.13",
+   "what": "Table 74, Return on Equity: west, claimed"
+  },
+  "arr.roe.west.admitted": {
+   "value": "198.61",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Return on Equity 312.66 290.45 198.61 198.61 350.88 339.07 862.15 828.13",
+   "what": "Table 74, Return on Equity: west, admitted"
+  },
+  "arr.roe.central.claimed": {
+   "value": "350.88",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Return on Equity 312.66 290.45 198.61 198.61 350.88 339.07 862.15 828.13",
+   "what": "Table 74, Return on Equity: central, claimed"
+  },
+  "arr.roe.central.admitted": {
+   "value": "339.07",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Return on Equity 312.66 290.45 198.61 198.61 350.88 339.07 862.15 828.13",
+   "what": "Table 74, Return on Equity: central, admitted"
+  },
+  "arr.roe.state.claimed": {
+   "value": "862.15",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Return on Equity 312.66 290.45 198.61 198.61 350.88 339.07 862.15 828.13",
+   "what": "Table 74, Return on Equity: state, claimed"
+  },
+  "arr.roe.state.admitted": {
+   "value": "828.13",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Return on Equity 312.66 290.45 198.61 198.61 350.88 339.07 862.15 828.13",
+   "what": "Table 74, Return on Equity: state, admitted"
+  },
+  "arr.lease.east.claimed": {
+   "value": "164.71",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Lease Charges for Smart Meters 164.71 164.71 72.71 72.71 276.20 276.20 513.62 513.62",
+   "what": "Table 74, Lease Charges for Smart Meters: east, claimed"
+  },
+  "arr.lease.east.admitted": {
+   "value": "164.71",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Lease Charges for Smart Meters 164.71 164.71 72.71 72.71 276.20 276.20 513.62 513.62",
+   "what": "Table 74, Lease Charges for Smart Meters: east, admitted"
+  },
+  "arr.lease.west.claimed": {
+   "value": "72.71",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Lease Charges for Smart Meters 164.71 164.71 72.71 72.71 276.20 276.20 513.62 513.62",
+   "what": "Table 74, Lease Charges for Smart Meters: west, claimed"
+  },
+  "arr.lease.west.admitted": {
+   "value": "72.71",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Lease Charges for Smart Meters 164.71 164.71 72.71 72.71 276.20 276.20 513.62 513.62",
+   "what": "Table 74, Lease Charges for Smart Meters: west, admitted"
+  },
+  "arr.lease.central.claimed": {
+   "value": "276.20",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Lease Charges for Smart Meters 164.71 164.71 72.71 72.71 276.20 276.20 513.62 513.62",
+   "what": "Table 74, Lease Charges for Smart Meters: central, claimed"
+  },
+  "arr.lease.central.admitted": {
+   "value": "276.20",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Lease Charges for Smart Meters 164.71 164.71 72.71 72.71 276.20 276.20 513.62 513.62",
+   "what": "Table 74, Lease Charges for Smart Meters: central, admitted"
+  },
+  "arr.lease.state.claimed": {
+   "value": "513.62",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Lease Charges for Smart Meters 164.71 164.71 72.71 72.71 276.20 276.20 513.62 513.62",
+   "what": "Table 74, Lease Charges for Smart Meters: state, claimed"
+  },
+  "arr.lease.state.admitted": {
+   "value": "513.62",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Lease Charges for Smart Meters 164.71 164.71 72.71 72.71 276.20 276.20 513.62 513.62",
+   "what": "Table 74, Lease Charges for Smart Meters: state, admitted"
+  },
+  "arr.rnd.east.claimed": {
+   "value": "4.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "R&D Fund 4.00 2.00 4.00 2.00 4.00 2.00 12.00 6.00",
+   "what": "Table 74, R&D Fund: east, claimed"
+  },
+  "arr.rnd.east.admitted": {
+   "value": "2.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "R&D Fund 4.00 2.00 4.00 2.00 4.00 2.00 12.00 6.00",
+   "what": "Table 74, R&D Fund: east, admitted"
+  },
+  "arr.rnd.west.claimed": {
+   "value": "4.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "R&D Fund 4.00 2.00 4.00 2.00 4.00 2.00 12.00 6.00",
+   "what": "Table 74, R&D Fund: west, claimed"
+  },
+  "arr.rnd.west.admitted": {
+   "value": "2.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "R&D Fund 4.00 2.00 4.00 2.00 4.00 2.00 12.00 6.00",
+   "what": "Table 74, R&D Fund: west, admitted"
+  },
+  "arr.rnd.central.claimed": {
+   "value": "4.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "R&D Fund 4.00 2.00 4.00 2.00 4.00 2.00 12.00 6.00",
+   "what": "Table 74, R&D Fund: central, claimed"
+  },
+  "arr.rnd.central.admitted": {
+   "value": "2.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "R&D Fund 4.00 2.00 4.00 2.00 4.00 2.00 12.00 6.00",
+   "what": "Table 74, R&D Fund: central, admitted"
+  },
+  "arr.rnd.state.claimed": {
+   "value": "12.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "R&D Fund 4.00 2.00 4.00 2.00 4.00 2.00 12.00 6.00",
+   "what": "Table 74, R&D Fund: state, claimed"
+  },
+  "arr.rnd.state.admitted": {
+   "value": "6.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "R&D Fund 4.00 2.00 4.00 2.00 4.00 2.00 12.00 6.00",
+   "what": "Table 74, R&D Fund: state, admitted"
+  },
+  "arr.bad_debts.east.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Bad & Doubtful Debts 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00",
+   "what": "Table 74, Bad & Doubtful Debts: east, claimed"
+  },
+  "arr.bad_debts.east.admitted": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Bad & Doubtful Debts 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00",
+   "what": "Table 74, Bad & Doubtful Debts: east, admitted"
+  },
+  "arr.bad_debts.west.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Bad & Doubtful Debts 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00",
+   "what": "Table 74, Bad & Doubtful Debts: west, claimed"
+  },
+  "arr.bad_debts.west.admitted": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Bad & Doubtful Debts 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00",
+   "what": "Table 74, Bad & Doubtful Debts: west, admitted"
+  },
+  "arr.bad_debts.central.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Bad & Doubtful Debts 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00",
+   "what": "Table 74, Bad & Doubtful Debts: central, claimed"
+  },
+  "arr.bad_debts.central.admitted": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Bad & Doubtful Debts 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00",
+   "what": "Table 74, Bad & Doubtful Debts: central, admitted"
+  },
+  "arr.bad_debts.state.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Bad & Doubtful Debts 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00",
+   "what": "Table 74, Bad & Doubtful Debts: state, claimed"
+  },
+  "arr.bad_debts.state.admitted": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Bad & Doubtful Debts 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00",
+   "what": "Table 74, Bad & Doubtful Debts: state, admitted"
+  },
+  "arr.expenses.east.claimed": {
+   "value": "16682.18",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total Expenses Admitted 16,682.18 15,919.76 24,683.98 22,470.35 16,986.00 17,620.57 58,352.16 56,010.67",
+   "what": "Table 74, Total Expenses Admitted: east, claimed"
+  },
+  "arr.expenses.east.admitted": {
+   "value": "15919.76",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total Expenses Admitted 16,682.18 15,919.76 24,683.98 22,470.35 16,986.00 17,620.57 58,352.16 56,010.67",
+   "what": "Table 74, Total Expenses Admitted: east, admitted"
+  },
+  "arr.expenses.west.claimed": {
+   "value": "24683.98",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total Expenses Admitted 16,682.18 15,919.76 24,683.98 22,470.35 16,986.00 17,620.57 58,352.16 56,010.67",
+   "what": "Table 74, Total Expenses Admitted: west, claimed"
+  },
+  "arr.expenses.west.admitted": {
+   "value": "22470.35",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total Expenses Admitted 16,682.18 15,919.76 24,683.98 22,470.35 16,986.00 17,620.57 58,352.16 56,010.67",
+   "what": "Table 74, Total Expenses Admitted: west, admitted"
+  },
+  "arr.expenses.central.claimed": {
+   "value": "16986.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total Expenses Admitted 16,682.18 15,919.76 24,683.98 22,470.35 16,986.00 17,620.57 58,352.16 56,010.67",
+   "what": "Table 74, Total Expenses Admitted: central, claimed"
+  },
+  "arr.expenses.central.admitted": {
+   "value": "17620.57",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total Expenses Admitted 16,682.18 15,919.76 24,683.98 22,470.35 16,986.00 17,620.57 58,352.16 56,010.67",
+   "what": "Table 74, Total Expenses Admitted: central, admitted"
+  },
+  "arr.expenses.state.claimed": {
+   "value": "58352.16",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total Expenses Admitted 16,682.18 15,919.76 24,683.98 22,470.35 16,986.00 17,620.57 58,352.16 56,010.67",
+   "what": "Table 74, Total Expenses Admitted: state, claimed"
+  },
+  "arr.expenses.state.admitted": {
+   "value": "56010.67",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total Expenses Admitted 16,682.18 15,919.76 24,683.98 22,470.35 16,986.00 17,620.57 58,352.16 56,010.67",
+   "what": "Table 74, Total Expenses Admitted: state, admitted"
+  },
+  "arr.other_income.east.claimed": {
+   "value": "354.14",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Less: Other income and Non- Tariff Income 354.14 247.90 300.41 247.05 138.49 165.39 793.05 660.34",
+   "what": "Table 74, Less: Other income and Non- Tariff Income: east, claimed"
+  },
+  "arr.other_income.east.admitted": {
+   "value": "247.90",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Less: Other income and Non- Tariff Income 354.14 247.90 300.41 247.05 138.49 165.39 793.05 660.34",
+   "what": "Table 74, Less: Other income and Non- Tariff Income: east, admitted"
+  },
+  "arr.other_income.west.claimed": {
+   "value": "300.41",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Less: Other income and Non- Tariff Income 354.14 247.90 300.41 247.05 138.49 165.39 793.05 660.34",
+   "what": "Table 74, Less: Other income and Non- Tariff Income: west, claimed"
+  },
+  "arr.other_income.west.admitted": {
+   "value": "247.05",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Less: Other income and Non- Tariff Income 354.14 247.90 300.41 247.05 138.49 165.39 793.05 660.34",
+   "what": "Table 74, Less: Other income and Non- Tariff Income: west, admitted"
+  },
+  "arr.other_income.central.claimed": {
+   "value": "138.49",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Less: Other income and Non- Tariff Income 354.14 247.90 300.41 247.05 138.49 165.39 793.05 660.34",
+   "what": "Table 74, Less: Other income and Non- Tariff Income: central, claimed"
+  },
+  "arr.other_income.central.admitted": {
+   "value": "165.39",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Less: Other income and Non- Tariff Income 354.14 247.90 300.41 247.05 138.49 165.39 793.05 660.34",
+   "what": "Table 74, Less: Other income and Non- Tariff Income: central, admitted"
+  },
+  "arr.other_income.state.claimed": {
+   "value": "793.05",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Less: Other income and Non- Tariff Income 354.14 247.90 300.41 247.05 138.49 165.39 793.05 660.34",
+   "what": "Table 74, Less: Other income and Non- Tariff Income: state, claimed"
+  },
+  "arr.other_income.state.admitted": {
+   "value": "660.34",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Less: Other income and Non- Tariff Income 354.14 247.90 300.41 247.05 138.49 165.39 793.05 660.34",
+   "what": "Table 74, Less: Other income and Non- Tariff Income: state, admitted"
+  },
+  "arr.arr.east.claimed": {
+   "value": "16328.04",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted 16,328.04 15,671.86 24,383.56 22,223.30 16,847.51 17,455.17 57,559.11 55,350.33",
+   "what": "Table 74, Total ARR Admitted: east, claimed"
+  },
+  "arr.arr.east.admitted": {
+   "value": "15671.86",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted 16,328.04 15,671.86 24,383.56 22,223.30 16,847.51 17,455.17 57,559.11 55,350.33",
+   "what": "Table 74, Total ARR Admitted: east, admitted"
+  },
+  "arr.arr.west.claimed": {
+   "value": "24383.56",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted 16,328.04 15,671.86 24,383.56 22,223.30 16,847.51 17,455.17 57,559.11 55,350.33",
+   "what": "Table 74, Total ARR Admitted: west, claimed"
+  },
+  "arr.arr.west.admitted": {
+   "value": "22223.30",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted 16,328.04 15,671.86 24,383.56 22,223.30 16,847.51 17,455.17 57,559.11 55,350.33",
+   "what": "Table 74, Total ARR Admitted: west, admitted"
+  },
+  "arr.arr.central.claimed": {
+   "value": "16847.51",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted 16,328.04 15,671.86 24,383.56 22,223.30 16,847.51 17,455.17 57,559.11 55,350.33",
+   "what": "Table 74, Total ARR Admitted: central, claimed"
+  },
+  "arr.arr.central.admitted": {
+   "value": "17455.17",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted 16,328.04 15,671.86 24,383.56 22,223.30 16,847.51 17,455.17 57,559.11 55,350.33",
+   "what": "Table 74, Total ARR Admitted: central, admitted"
+  },
+  "arr.arr.state.claimed": {
+   "value": "57559.11",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted 16,328.04 15,671.86 24,383.56 22,223.30 16,847.51 17,455.17 57,559.11 55,350.33",
+   "what": "Table 74, Total ARR Admitted: state, claimed"
+  },
+  "arr.arr.state.admitted": {
+   "value": "55350.33",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted 16,328.04 15,671.86 24,383.56 22,223.30 16,847.51 17,455.17 57,559.11 55,350.33",
+   "what": "Table 74, Total ARR Admitted: state, admitted"
+  },
+  "arr.transco_gap.east.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP Transco True-up of FY 2024-25 0.00 189.57 0.00 56.29 0.00 65.72 0.00 311.58",
+   "what": "Table 74, Revenue Gap of MP Transco True-up of FY 2024-25: east, claimed"
+  },
+  "arr.transco_gap.east.admitted": {
+   "value": "189.57",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP Transco True-up of FY 2024-25 0.00 189.57 0.00 56.29 0.00 65.72 0.00 311.58",
+   "what": "Table 74, Revenue Gap of MP Transco True-up of FY 2024-25: east, admitted"
+  },
+  "arr.transco_gap.west.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP Transco True-up of FY 2024-25 0.00 189.57 0.00 56.29 0.00 65.72 0.00 311.58",
+   "what": "Table 74, Revenue Gap of MP Transco True-up of FY 2024-25: west, claimed"
+  },
+  "arr.transco_gap.west.admitted": {
+   "value": "56.29",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP Transco True-up of FY 2024-25 0.00 189.57 0.00 56.29 0.00 65.72 0.00 311.58",
+   "what": "Table 74, Revenue Gap of MP Transco True-up of FY 2024-25: west, admitted"
+  },
+  "arr.transco_gap.central.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP Transco True-up of FY 2024-25 0.00 189.57 0.00 56.29 0.00 65.72 0.00 311.58",
+   "what": "Table 74, Revenue Gap of MP Transco True-up of FY 2024-25: central, claimed"
+  },
+  "arr.transco_gap.central.admitted": {
+   "value": "65.72",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP Transco True-up of FY 2024-25 0.00 189.57 0.00 56.29 0.00 65.72 0.00 311.58",
+   "what": "Table 74, Revenue Gap of MP Transco True-up of FY 2024-25: central, admitted"
+  },
+  "arr.transco_gap.state.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP Transco True-up of FY 2024-25 0.00 189.57 0.00 56.29 0.00 65.72 0.00 311.58",
+   "what": "Table 74, Revenue Gap of MP Transco True-up of FY 2024-25: state, claimed"
+  },
+  "arr.transco_gap.state.admitted": {
+   "value": "311.58",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP Transco True-up of FY 2024-25 0.00 189.57 0.00 56.29 0.00 65.72 0.00 311.58",
+   "what": "Table 74, Revenue Gap of MP Transco True-up of FY 2024-25: state, admitted"
+  },
+  "arr.genco_surplus.east.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Surplus of MP Genco True-up of FY 2024-25 0.00 0.35 0.00 0.41 0.00 0.40 0.00 1.16",
+   "what": "Table 74, Revenue Surplus of MP Genco True-up of FY 2024-25: east, claimed"
+  },
+  "arr.genco_surplus.east.admitted": {
+   "value": "0.35",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Surplus of MP Genco True-up of FY 2024-25 0.00 0.35 0.00 0.41 0.00 0.40 0.00 1.16",
+   "what": "Table 74, Revenue Surplus of MP Genco True-up of FY 2024-25: east, admitted"
+  },
+  "arr.genco_surplus.west.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Surplus of MP Genco True-up of FY 2024-25 0.00 0.35 0.00 0.41 0.00 0.40 0.00 1.16",
+   "what": "Table 74, Revenue Surplus of MP Genco True-up of FY 2024-25: west, claimed"
+  },
+  "arr.genco_surplus.west.admitted": {
+   "value": "0.41",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Surplus of MP Genco True-up of FY 2024-25 0.00 0.35 0.00 0.41 0.00 0.40 0.00 1.16",
+   "what": "Table 74, Revenue Surplus of MP Genco True-up of FY 2024-25: west, admitted"
+  },
+  "arr.genco_surplus.central.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Surplus of MP Genco True-up of FY 2024-25 0.00 0.35 0.00 0.41 0.00 0.40 0.00 1.16",
+   "what": "Table 74, Revenue Surplus of MP Genco True-up of FY 2024-25: central, claimed"
+  },
+  "arr.genco_surplus.central.admitted": {
+   "value": "0.40",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Surplus of MP Genco True-up of FY 2024-25 0.00 0.35 0.00 0.41 0.00 0.40 0.00 1.16",
+   "what": "Table 74, Revenue Surplus of MP Genco True-up of FY 2024-25: central, admitted"
+  },
+  "arr.genco_surplus.state.claimed": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Surplus of MP Genco True-up of FY 2024-25 0.00 0.35 0.00 0.41 0.00 0.40 0.00 1.16",
+   "what": "Table 74, Revenue Surplus of MP Genco True-up of FY 2024-25: state, claimed"
+  },
+  "arr.genco_surplus.state.admitted": {
+   "value": "1.16",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Surplus of MP Genco True-up of FY 2024-25 0.00 0.35 0.00 0.41 0.00 0.40 0.00 1.16",
+   "what": "Table 74, Revenue Surplus of MP Genco True-up of FY 2024-25: state, admitted"
+  },
+  "arr.trueup_gap.east.claimed": {
+   "value": "2212.27",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP DISCOMs True-up of FY 2024-25 2,212.27 2,028.29 1,724.46 2,562.92 3,878.54 2,372.06 7,815.27 6,963.27",
+   "what": "Table 74, Revenue Gap of MP DISCOMs True-up of FY 2024-25: east, claimed"
+  },
+  "arr.trueup_gap.east.admitted": {
+   "value": "2028.29",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP DISCOMs True-up of FY 2024-25 2,212.27 2,028.29 1,724.46 2,562.92 3,878.54 2,372.06 7,815.27 6,963.27",
+   "what": "Table 74, Revenue Gap of MP DISCOMs True-up of FY 2024-25: east, admitted"
+  },
+  "arr.trueup_gap.west.claimed": {
+   "value": "1724.46",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP DISCOMs True-up of FY 2024-25 2,212.27 2,028.29 1,724.46 2,562.92 3,878.54 2,372.06 7,815.27 6,963.27",
+   "what": "Table 74, Revenue Gap of MP DISCOMs True-up of FY 2024-25: west, claimed"
+  },
+  "arr.trueup_gap.west.admitted": {
+   "value": "2562.92",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP DISCOMs True-up of FY 2024-25 2,212.27 2,028.29 1,724.46 2,562.92 3,878.54 2,372.06 7,815.27 6,963.27",
+   "what": "Table 74, Revenue Gap of MP DISCOMs True-up of FY 2024-25: west, admitted"
+  },
+  "arr.trueup_gap.central.claimed": {
+   "value": "3878.54",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP DISCOMs True-up of FY 2024-25 2,212.27 2,028.29 1,724.46 2,562.92 3,878.54 2,372.06 7,815.27 6,963.27",
+   "what": "Table 74, Revenue Gap of MP DISCOMs True-up of FY 2024-25: central, claimed"
+  },
+  "arr.trueup_gap.central.admitted": {
+   "value": "2372.06",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP DISCOMs True-up of FY 2024-25 2,212.27 2,028.29 1,724.46 2,562.92 3,878.54 2,372.06 7,815.27 6,963.27",
+   "what": "Table 74, Revenue Gap of MP DISCOMs True-up of FY 2024-25: central, admitted"
+  },
+  "arr.trueup_gap.state.claimed": {
+   "value": "7815.27",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP DISCOMs True-up of FY 2024-25 2,212.27 2,028.29 1,724.46 2,562.92 3,878.54 2,372.06 7,815.27 6,963.27",
+   "what": "Table 74, Revenue Gap of MP DISCOMs True-up of FY 2024-25: state, claimed"
+  },
+  "arr.trueup_gap.state.admitted": {
+   "value": "6963.27",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Revenue Gap of MP DISCOMs True-up of FY 2024-25 2,212.27 2,028.29 1,724.46 2,562.92 3,878.54 2,372.06 7,815.27 6,963.27",
+   "what": "Table 74, Revenue Gap of MP DISCOMs True-up of FY 2024-25: state, admitted"
+  },
+  "arr.total.east.claimed": {
+   "value": "18540.31",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted (including True-up) 18,540.31 17,889.37 26,108.02 24,842.10 20,726.05 19,892.55 65,374.38 62,624.02",
+   "what": "Table 74, Total ARR Admitted (including True-up): east, claimed"
+  },
+  "arr.total.east.admitted": {
+   "value": "17889.37",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted (including True-up) 18,540.31 17,889.37 26,108.02 24,842.10 20,726.05 19,892.55 65,374.38 62,624.02",
+   "what": "Table 74, Total ARR Admitted (including True-up): east, admitted"
+  },
+  "arr.total.west.claimed": {
+   "value": "26108.02",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted (including True-up) 18,540.31 17,889.37 26,108.02 24,842.10 20,726.05 19,892.55 65,374.38 62,624.02",
+   "what": "Table 74, Total ARR Admitted (including True-up): west, claimed"
+  },
+  "arr.total.west.admitted": {
+   "value": "24842.10",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted (including True-up) 18,540.31 17,889.37 26,108.02 24,842.10 20,726.05 19,892.55 65,374.38 62,624.02",
+   "what": "Table 74, Total ARR Admitted (including True-up): west, admitted"
+  },
+  "arr.total.central.claimed": {
+   "value": "20726.05",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted (including True-up) 18,540.31 17,889.37 26,108.02 24,842.10 20,726.05 19,892.55 65,374.38 62,624.02",
+   "what": "Table 74, Total ARR Admitted (including True-up): central, claimed"
+  },
+  "arr.total.central.admitted": {
+   "value": "19892.55",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted (including True-up) 18,540.31 17,889.37 26,108.02 24,842.10 20,726.05 19,892.55 65,374.38 62,624.02",
+   "what": "Table 74, Total ARR Admitted (including True-up): central, admitted"
+  },
+  "arr.total.state.claimed": {
+   "value": "65374.38",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted (including True-up) 18,540.31 17,889.37 26,108.02 24,842.10 20,726.05 19,892.55 65,374.38 62,624.02",
+   "what": "Table 74, Total ARR Admitted (including True-up): state, claimed"
+  },
+  "arr.total.state.admitted": {
+   "value": "62624.02",
+   "unit": "INR_crore",
+   "page": 120,
+   "quote": "Total ARR Admitted (including True-up) 18,540.31 17,889.37 26,108.02 24,842.10 20,726.05 19,892.55 65,374.38 62,624.02",
+   "what": "Table 74, Total ARR Admitted (including True-up): state, admitted"
+  }
+ }
+}
