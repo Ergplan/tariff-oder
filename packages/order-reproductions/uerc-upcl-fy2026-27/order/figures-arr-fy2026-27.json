@@ -1,0 +1,276 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UERC order on UPCL: true-up FY2024-25, APR FY2025-26 and ARR FY2026-27 (31 March 2026) — revenue requirement and surplus for FY2026-27",
+  "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+  "pages": 414
+ },
+ "figures": {
+  "t452.pp.claimed": {
+   "value": "9105.64",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "1 Power Purchase Cost including RPO, Water Tax & Arrears 9105.64 9340.23",
+   "what": "Table 4.52, Power Purchase Cost including RPO, Water Tax & Arrears: claimed"
+  },
+  "t452.pp.approved": {
+   "value": "9340.23",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "1 Power Purchase Cost including RPO, Water Tax & Arrears 9105.64 9340.23",
+   "what": "Table 4.52, Power Purchase Cost including RPO, Water Tax & Arrears: approved"
+  },
+  "t452.pgcil.claimed": {
+   "value": "753.61",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "2 Transmission Charges PGCIL 753.61 595.00",
+   "what": "Table 4.52, Transmission Charges PGCIL: claimed"
+  },
+  "t452.pgcil.approved": {
+   "value": "595.00",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "2 Transmission Charges PGCIL 753.61 595.00",
+   "what": "Table 4.52, Transmission Charges PGCIL: approved"
+  },
+  "t452.ptcul.claimed": {
+   "value": "615.13",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "PTCUL & SLDC 615.13 651.85",
+   "what": "Table 4.52, PTCUL & SLDC: claimed"
+  },
+  "t452.ptcul.approved": {
+   "value": "651.85",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "PTCUL & SLDC 615.13 651.85",
+   "what": "Table 4.52, PTCUL & SLDC: approved"
+  },
+  "t452.interest.claimed": {
+   "value": "258.24",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "3 Interest on Loan and finance charges 258.24 94.13",
+   "what": "Table 4.52, Interest on Loan and finance charges: claimed"
+  },
+  "t452.interest.approved": {
+   "value": "94.13",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "3 Interest on Loan and finance charges 258.24 94.13",
+   "what": "Table 4.52, Interest on Loan and finance charges: approved"
+  },
+  "t452.csd.claimed": {
+   "value": "146.25",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "4 Interest on consumer security deposit 146.25 146.25",
+   "what": "Table 4.52, Interest on consumer security deposit: claimed"
+  },
+  "t452.csd.approved": {
+   "value": "146.25",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "4 Interest on consumer security deposit 146.25 146.25",
+   "what": "Table 4.52, Interest on consumer security deposit: approved"
+  },
+  "t452.dep.claimed": {
+   "value": "259.23",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "5 Depreciation 259.23 144.19",
+   "what": "Table 4.52, Depreciation: claimed"
+  },
+  "t452.dep.approved": {
+   "value": "144.19",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "5 Depreciation 259.23 144.19",
+   "what": "Table 4.52, Depreciation: approved"
+  },
+  "t452.om.claimed": {
+   "value": "1221.50",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "6 O&M expenses 1221.50 967.40",
+   "what": "Table 4.52, O&M expenses: claimed"
+  },
+  "t452.om.approved": {
+   "value": "967.40",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "6 O&M expenses 1221.50 967.40",
+   "what": "Table 4.52, O&M expenses: approved"
+  },
+  "t452.smart_meter.claimed": {
+   "value": "327.72",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "7 Smart Meter OPEX Expenses 327.72 215.79",
+   "what": "Table 4.52, Smart Meter OPEX Expenses: claimed"
+  },
+  "t452.smart_meter.approved": {
+   "value": "215.79",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "7 Smart Meter OPEX Expenses 327.72 215.79",
+   "what": "Table 4.52, Smart Meter OPEX Expenses: approved"
+  },
+  "t452.iowc.claimed": {
+   "value": "210.62",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "8 Interest on Working Capital 210.62 193.58",
+   "what": "Table 4.52, Interest on Working Capital: claimed"
+  },
+  "t452.iowc.approved": {
+   "value": "193.58",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "8 Interest on Working Capital 210.62 193.58",
+   "what": "Table 4.52, Interest on Working Capital: approved"
+  },
+  "t452.roe.claimed": {
+   "value": "329.19",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "9 Return on Equity 329.19 129.36",
+   "what": "Table 4.52, Return on Equity: claimed"
+  },
+  "t452.roe.approved": {
+   "value": "129.36",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "9 Return on Equity 329.19 129.36",
+   "what": "Table 4.52, Return on Equity: approved"
+  },
+  "t452.bad_debts.claimed": {
+   "value": "125.48",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "10 Provisions for bad debts 125.48 113.30",
+   "what": "Table 4.52, Provisions for bad debts: claimed"
+  },
+  "t452.bad_debts.approved": {
+   "value": "113.30",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "10 Provisions for bad debts 125.48 113.30",
+   "what": "Table 4.52, Provisions for bad debts: approved"
+  },
+  "t452.arr.claimed": {
+   "value": "13352.61",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "11 Aggregate Revenue Requirement 13352.61 12591.09",
+   "what": "Table 4.52, Aggregate Revenue Requirement: claimed"
+  },
+  "t452.arr.approved": {
+   "value": "12591.09",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "11 Aggregate Revenue Requirement 13352.61 12591.09",
+   "what": "Table 4.52, Aggregate Revenue Requirement: approved"
+  },
+  "t452.nti.claimed": {
+   "value": "338.69",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "12 Less: Non-Tariff Income 338.69 473.60",
+   "what": "Table 4.52, Less: Non-Tariff Income: claimed"
+  },
+  "t452.nti.approved": {
+   "value": "473.60",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "12 Less: Non-Tariff Income 338.69 473.60",
+   "what": "Table 4.52, Less: Non-Tariff Income: approved"
+  },
+  "t452.trueup_gap.claimed": {
+   "value": "1718.06",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "13 True up impact Gap/(Surplus) 1718.06 343.07",
+   "what": "Table 4.52, True up impact Gap/(Surplus): claimed"
+  },
+  "t452.trueup_gap.approved": {
+   "value": "343.07",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "13 True up impact Gap/(Surplus) 1718.06 343.07",
+   "what": "Table 4.52, True up impact Gap/(Surplus): approved"
+  },
+  "t452.additional.claimed": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "14 Additional Claim – Past ARR (EI Certificate) - 28.98",
+   "what": "Table 4.52, Additional Claim – Past ARR (EI Certificate): claimed"
+  },
+  "t452.additional.approved": {
+   "value": "28.98",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "14 Additional Claim – Past ARR (EI Certificate) - 28.98",
+   "what": "Table 4.52, Additional Claim – Past ARR (EI Certificate): approved"
+  },
+  "t452.net.claimed": {
+   "value": "14731.98",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "15 Net Revenue Requirement 14731.98* 12489.54",
+   "what": "Table 4.52, net revenue requirement (UPCL's column: its revised claim of 20.03.2026): claimed"
+  },
+  "t452.net.approved": {
+   "value": "12489.54",
+   "unit": "INR_crore",
+   "page": 223,
+   "quote": "15 Net Revenue Requirement 14731.98* 12489.54",
+   "what": "Table 4.52, net revenue requirement (UPCL's column: its revised claim of 20.03.2026): approved"
+  },
+  "t454.net.claimed": {
+   "value": "14731.98",
+   "unit": "INR_crore",
+   "page": 224,
+   "quote": "Net Revenue Requirement 14731.98 12489.54",
+   "what": "Table 4.54, Net Revenue Requirement: claimed"
+  },
+  "t454.net.approved": {
+   "value": "12489.54",
+   "unit": "INR_crore",
+   "page": 224,
+   "quote": "Net Revenue Requirement 14731.98 12489.54",
+   "what": "Table 4.54, Net Revenue Requirement: approved"
+  },
+  "t454.revenue.claimed": {
+   "value": "12548.05",
+   "unit": "INR_crore",
+   "page": 224,
+   "quote": "Revenue at existing Tariff 12548.05 12590.41",
+   "what": "Table 4.54, Revenue at existing Tariff: claimed"
+  },
+  "t454.revenue.approved": {
+   "value": "12590.41",
+   "unit": "INR_crore",
+   "page": 224,
+   "quote": "Revenue at existing Tariff 12548.05 12590.41",
+   "what": "Table 4.54, Revenue at existing Tariff: approved"
+  },
+  "t454.gap.claimed": {
+   "value": "2183.94",
+   "unit": "INR_crore",
+   "page": 224,
+   "quote": "Revenue Gap/(Surplus) 2183.94 (100.87)",
+   "what": "Table 4.54, Revenue Gap/(Surplus): claimed"
+  },
+  "t454.gap.approved": {
+   "value": "-100.87",
+   "unit": "INR_crore",
+   "page": 224,
+   "quote": "Revenue Gap/(Surplus) 2183.94 (100.87)",
+   "what": "Table 4.54, Revenue Gap/(Surplus): approved"
+  }
+ }
+}

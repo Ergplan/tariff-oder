@@ -1,0 +1,128 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "UERC order",
+ "rates": "order/figures-arr-fy2026-27.json",
+ "places": 2,
+ "note": "UERC's revenue requirement for UPCL, FY2026-27, and the surplus at the existing tariff, from the order's printed heads (Table 4.52's arithmetic).  The test then computes it end to end from the heads the other bindings compute (IoWC, RoE, interest, depreciation, O&M).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "revenue requirement and gap, approved (Tables 4.52, 4.54)",
+   "inputs": {
+    "record:arr_pp": {
+     "rate": "t452.pp.approved"
+    },
+    "record:arr_pgcil": {
+     "rate": "t452.pgcil.approved"
+    },
+    "record:arr_ptcul": {
+     "rate": "t452.ptcul.approved"
+    },
+    "record:arr_interest": {
+     "rate": "t452.interest.approved"
+    },
+    "record:arr_csd": {
+     "rate": "t452.csd.approved"
+    },
+    "record:arr_dep": {
+     "rate": "t452.dep.approved"
+    },
+    "record:arr_om": {
+     "rate": "t452.om.approved"
+    },
+    "record:arr_smart_meter": {
+     "rate": "t452.smart_meter.approved"
+    },
+    "record:arr_iowc": {
+     "rate": "t452.iowc.approved"
+    },
+    "record:arr_roe": {
+     "rate": "t452.roe.approved"
+    },
+    "record:arr_bad_debts": {
+     "rate": "t452.bad_debts.approved"
+    },
+    "record:arr_nti": {
+     "rate": "t452.nti.approved"
+    },
+    "record:arr_trueup_gap": {
+     "rate": "t452.trueup_gap.approved"
+    },
+    "record:arr_additional": {
+     "rate": "t452.additional.approved"
+    },
+    "record:revenue_existing_tariff": {
+     "rate": "t454.revenue.approved"
+    }
+   },
+   "checks": {
+    "arr_gross": "order:t452.arr.approved",
+    "arr_net": [
+     "order:t452.net.approved",
+     "order:t454.net.approved"
+    ],
+    "arr_revenue_gap": "order:t454.gap.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "revenue requirement and gap, claimed (Tables 4.52, 4.54)",
+   "inputs": {
+    "record:arr_pp": {
+     "rate": "t452.pp.claimed"
+    },
+    "record:arr_pgcil": {
+     "rate": "t452.pgcil.claimed"
+    },
+    "record:arr_ptcul": {
+     "rate": "t452.ptcul.claimed"
+    },
+    "record:arr_interest": {
+     "rate": "t452.interest.claimed"
+    },
+    "record:arr_csd": {
+     "rate": "t452.csd.claimed"
+    },
+    "record:arr_dep": {
+     "rate": "t452.dep.claimed"
+    },
+    "record:arr_om": {
+     "rate": "t452.om.claimed"
+    },
+    "record:arr_smart_meter": {
+     "rate": "t452.smart_meter.claimed"
+    },
+    "record:arr_iowc": {
+     "rate": "t452.iowc.claimed"
+    },
+    "record:arr_roe": {
+     "rate": "t452.roe.claimed"
+    },
+    "record:arr_bad_debts": {
+     "rate": "t452.bad_debts.claimed"
+    },
+    "record:arr_nti": {
+     "rate": "t452.nti.claimed"
+    },
+    "record:arr_trueup_gap": {
+     "rate": "t452.trueup_gap.claimed"
+    },
+    "record:arr_additional": {
+     "rate": "t452.additional.claimed"
+    },
+    "record:revenue_existing_tariff": {
+     "rate": "t454.revenue.claimed"
+    }
+   },
+   "checks": {
+    "arr_gross": "order:t452.arr.claimed",
+    "arr_net": [
+     "order:t452.net.claimed",
+     "order:t454.net.claimed"
+    ],
+    "arr_revenue_gap": "order:t454.gap.claimed"
+   }
+  }
+ ]
+}

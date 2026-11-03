@@ -2129,3 +2129,54 @@ def test_uerc_om_reproduces_and_tests_the_licensees_claim():
     assert rec["om.total.approved"] == iowc["om.approved"]
     findings = {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
     assert {"U3", "U4", "U5"} <= findings
+
+
+def test_uerc_revenue_requirement_and_surplus_reproduce_end_to_end():
+    """Real data, UERC / UPCL FY2026-27, end to end: the five heads the other bindings compute
+    (interest on working capital, return on equity, interest on loan with finance charges,
+    depreciation, O&M) — unrounded — with the order's recorded heads (power purchase,
+    transmission, deposits' interest, smart meters, bad debts) give the order's revenue
+    requirement 12,591.09, net 12,489.54 and surplus 100.87 to the paisa.  The printed heads alone
+    add to a paisa less (the order sums unrounded heads)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import RuleSet, load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "uerc-upcl-fy2026-27"
+    rules = load_rules("UERC")
+
+    def run(name):
+        b = json.loads((folder / "bindings" / name).read_text())
+        rec = load_binding_rates(folder, b)
+        return rec, {
+            (c.category.rsplit(" order:", 1)[0], c.output): c for c in reproduce_cells(None, b, rules, rates=rec)
+        }
+
+    arr_rec, arr = run("approval-arr-fy27.json")
+    printed = {c[1]: v for c, v in arr.items() if c[0].endswith("approved (Tables 4.52, 4.54)")}
+    assert printed["arr_gross"].computed == "12591.08" and printed["arr_gross"].filed == "12591.09"
+    _, iowc = run("approval-iowc-roe-fy27.json")
+    _, loan = run("approval-loan-dep-fy27.json")
+    _, om = run("approval-om-fy27.json")
+    computed = {
+        "iowc": iowc[("IoWC interest, approved (Table 4.50)", "iowc_interest")].exact,
+        "roe": iowc[("RoE, approved (Table 4.51)", "roe_return")].exact,
+        "interest": loan[("normative loan and interest, approved (Table 4.40)", "interest_loan_finance")].exact,
+        "dep": loan[("GFA and depreciation, approved (Tables 4.38, 4.41)", "depreciation")].exact,
+        "om": om[("O&M, approved (Tables 4.42–4.45)", "om_total")].exact,
+    }
+    values = {
+        f"record:arr_{k}": arr_rec[f"t452.{k}.approved"]
+        for k in ("pp", "pgcil", "ptcul", "csd", "smart_meter", "bad_debts", "nti", "trueup_gap", "additional")
+    }
+    values |= {f"record:arr_{k}": (v, "INR_crore") for k, v in computed.items()}
+    values["record:revenue_existing_tariff"] = arr_rec["t454.revenue.approved"]
+    ev = RuleSet(rules, "FY2026-27").evaluate("FY2026-27", values)
+    got = {o: ev.results[o].rounded for o in ("arr_gross", "arr_net", "arr_revenue_gap")}
+    assert got == {
+        "arr_gross": Decimal(arr_rec["t452.arr.approved"][0]),
+        "arr_net": Decimal(arr_rec["t454.net.approved"][0]),
+        "arr_revenue_gap": Decimal(arr_rec["t454.gap.approved"][0]),
+    }
+    assert got["arr_revenue_gap"] == Decimal("-100.87")  # a surplus at the existing tariff

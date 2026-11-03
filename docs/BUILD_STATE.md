@@ -1005,6 +1005,27 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 126 (2026-11-03): UERC — UPCL's revenue requirement and surplus for FY2026-27,
+  end to end.**
+  - **The record:** `order/figures-arr-fy2026-27.json` in the UERC folder holds 38 figures
+    (Tables 4.52, 4.54), 38 / 38 quotes verified.
+  - **Three more draft UERC rules (28 in all):** the aggregate revenue requirement (eleven
+    heads), the net requirement (less non-tariff income, plus the true-up gap and past claims),
+    and the gap at the existing tariff.
+  - **Binding `approval-arr-fy27.json`, the table's arithmetic:**
+    - UPCL's claimed column: 3 / 4 exact; its gap is 2,183.93 against 2,183.94 printed.
+    - The approved column: the printed heads add to 12,591.08 against 12,591.09 printed.
+  - **End to end (the test):** the five heads the other UERC bindings compute — working capital
+    interest, RoE, loan interest with finance charges, depreciation, O&M — are taken unrounded,
+    with the order's recorded heads.  This gives the order's 12,591.09, net 12,489.54 and
+    surplus 100.87 to the paisa.  The order evidently sums unrounded heads.
+  - **Where the second commission stands:** UERC's FY2026-27 ARR is reproduced from its own
+    figures through 28 draft rules.  The records are power purchase, transmission, smart-meter
+    OPEX, bad debts, non-tariff income, the true-up gap and the revenue at existing tariff.  The
+    engine needed no change for a second commission; increment 123 confirmed a binding can run
+    without a workbook.  Five findings (U1–U5) concern UPCL's claim as the order reports it.
+  Nothing verified, nothing approved.
+
   **Increment 125 (2026-11-03): UERC — O&M for UPCL, FY2026-27 (Reg. 84).**
   - **The record:** `order/figures-om-fy2026-27.json` in the UERC folder holds 50 figures
     (Tables 4.42–4.45, para 4.11.3 (b), Table 4.38's claimed opening GFA), 50 / 50 quotes
@@ -3115,6 +3136,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 126 (2026-11-03): 496 passed** (+1 unit: UERC's revenue requirement and surplus end to end, to the paisa).  `check_order_quotes.py`: 38 / 38.  Ruff and format clean.
 - **Increment 125 (2026-11-03): 495 passed** (+1 unit: UERC O&M, the approved side within printed precision, UPCL's claim against U3–U5).  `check_order_quotes.py`: 50 / 50.  Ruff and format clean.
 - **Increment 124 (2026-11-03): 494 passed** (+1 unit: UERC depreciation, loan and interest, differences bounded by printed precision; the chain's ties).  `check_order_quotes.py`: 52 / 52.  Ruff and format clean.
 - **Increment 123 (2026-11-03): 493 passed** (+1 unit: UERC's working capital and RoE for UPCL — a second commission, no workbook; U1).  `check_order_quotes.py`: 41 / 41.  Ruff and format clean.
@@ -3373,7 +3395,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 125) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 126) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3473,8 +3495,8 @@ entries below are the per-increment history.**
     - HV energy, which waits on the kVAh sold (A55);
   - more of a second commission's order (increment 123 began with UERC / UPCL: working capital
     and RoE, 14 / 18; increment 124 its depreciation, loan and interest, 5 / 17 exact and the rest
-    within printed precision; increment 125 its O&M, 967.40 exact; findings U1–U5) — next its ARR
-    summary end to end (Table 4.52) and the revenue gap;
+    within printed precision; increment 125 its O&M, 967.40 exact; findings U1–U5; increment 126 its ARR end to end — 12,591.09, net 12,489.54, surplus 100.87 to
+    the paisa) — next its true-up of FY2024-25 or a third commission;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

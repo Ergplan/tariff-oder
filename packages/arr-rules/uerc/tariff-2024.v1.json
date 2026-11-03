@@ -1045,6 +1045,180 @@
    },
    "examples": [],
    "note": "the excerpt is the order's own quotation of Reg. 84 (UPCL FY2026-27 order, pp.210–211), not read from the Regulations"
+  },
+  {
+   "id": "uerc.arr.gross",
+   "version": 1,
+   "status": "draft",
+   "title": "Aggregate revenue requirement: the expense heads and the return together",
+   "output": "arr_gross",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "pp + pgcil + ptcul + interest + csd + dep + om + smart_meter + iowc + roe + bad_debts",
+   "inputs": {
+    "pp": {
+     "unit": "INR_crore",
+     "source": "record:arr_pp",
+     "note": "power purchase with RPO, water tax and arrears"
+    },
+    "pgcil": {
+     "unit": "INR_crore",
+     "source": "record:arr_pgcil",
+     "note": "inter-state transmission (PGCIL)"
+    },
+    "ptcul": {
+     "unit": "INR_crore",
+     "source": "record:arr_ptcul",
+     "note": "intra-state transmission and SLDC (PTCUL)"
+    },
+    "interest": {
+     "unit": "INR_crore",
+     "source": "record:arr_interest",
+     "note": "interest on loan and finance charges"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "record:arr_csd",
+     "note": "interest on consumer security deposits"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:arr_dep",
+     "note": "depreciation"
+    },
+    "om": {
+     "unit": "INR_crore",
+     "source": "record:arr_om",
+     "note": "O&M expenses"
+    },
+    "smart_meter": {
+     "unit": "INR_crore",
+     "source": "record:arr_smart_meter",
+     "note": "smart meter OPEX"
+    },
+    "iowc": {
+     "unit": "INR_crore",
+     "source": "record:arr_iowc",
+     "note": "interest on working capital"
+    },
+    "roe": {
+     "unit": "INR_crore",
+     "source": "record:arr_roe",
+     "note": "return on equity"
+    },
+    "bad_debts": {
+     "unit": "INR_crore",
+     "source": "record:arr_bad_debts",
+     "note": "provision for bad debts"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 4.52 rows 1–10 of the UPCL FY2026-27 order; the heads as UERC lists them"
+  },
+  {
+   "id": "uerc.arr.net",
+   "version": 1,
+   "status": "draft",
+   "title": "Net revenue requirement: less non-tariff income, plus the true-up gap and past claims",
+   "output": "arr_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "arr - nti + trueup_gap + additional",
+   "inputs": {
+    "arr": {
+     "unit": "INR_crore",
+     "source": "rule:arr_gross"
+    },
+    "nti": {
+     "unit": "INR_crore",
+     "source": "record:arr_nti"
+    },
+    "trueup_gap": {
+     "unit": "INR_crore",
+     "source": "record:arr_trueup_gap",
+     "note": "the true-up of earlier years with its carrying cost (a surplus negative)"
+    },
+    "additional": {
+     "unit": "INR_crore",
+     "source": "record:arr_additional",
+     "note": "past ARR items allowed in the year"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 4.52 rows 11–15"
+  },
+  {
+   "id": "uerc.arr.gap",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue gap (surplus negative) at the existing tariff",
+   "output": "arr_revenue_gap",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "net - revenue",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:arr_net"
+    },
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:revenue_existing_tariff"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2024 (the order calls them 'UERC Tariff Regulations, 2024')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 4.54"
   }
  ]
 }
