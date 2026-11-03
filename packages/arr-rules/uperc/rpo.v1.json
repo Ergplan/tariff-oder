@@ -319,6 +319,156 @@
     "feeds": "unrounded"
    },
    "examples": []
+  },
+  {
+   "id": "uperc.rco.mu",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy of an RCO component at NPCL's periphery",
+   "output": "rco_mu",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "mu",
+   "inputs": {
+    "mu": {
+     "unit": "MU",
+     "source": "record:rco_mu"
+    }
+   },
+   "clause": {
+    "regulation": "Renewable Consumption Obligation (Ministry of Power notification of 27.09.2025), as the order of 2 July 2026 computes it: each component's energy at NPCL's periphery as a share of the total energy supplied (Table 6-32)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's computation as it lays it out; the notification is not in this session",
+   "per": "rco_component"
+  },
+  {
+   "id": "uperc.rco.share",
+   "version": 1,
+   "status": "draft",
+   "title": "Share of an RCO component in the energy supplied",
+   "output": "rco_share",
+   "unit": "fraction",
+   "schedule": "R-SCH-3",
+   "formula": "mu / total",
+   "inputs": {
+    "mu": {
+     "unit": "MU",
+     "source": "rule:rco_mu"
+    },
+    "total": {
+     "unit": "MU",
+     "source": "record:rco_total_supplied"
+    }
+   },
+   "clause": {
+    "regulation": "Renewable Consumption Obligation (Ministry of Power notification of 27.09.2025), as the order of 2 July 2026 computes it: each component's energy at NPCL's periphery as a share of the total energy supplied (Table 6-32)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's computation as it lays it out; the notification is not in this session",
+   "per": "rco_component"
+  },
+  {
+   "id": "uperc.rco.renewable",
+   "version": 1,
+   "status": "draft",
+   "title": "Renewable energy at NPCL's periphery, all components",
+   "output": "rco_renewable_mu",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "mu",
+   "inputs": {
+    "mu": {
+     "unit": "MU",
+     "source": "sum:rco_mu"
+    }
+   },
+   "clause": {
+    "regulation": "Renewable Consumption Obligation (Ministry of Power notification of 27.09.2025), as the order of 2 July 2026 computes it: each component's energy at NPCL's periphery as a share of the total energy supplied (Table 6-32)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's computation as it lays it out; the notification is not in this session"
+  },
+  {
+   "id": "uperc.rco.renewable_share",
+   "version": 1,
+   "status": "draft",
+   "title": "Renewable consumption achieved: renewable energy as a share of the energy supplied",
+   "output": "rco_renewable_share",
+   "unit": "fraction",
+   "schedule": "R-SCH-3",
+   "formula": "renewable / total",
+   "inputs": {
+    "renewable": {
+     "unit": "MU",
+     "source": "rule:rco_renewable_mu"
+    },
+    "total": {
+     "unit": "MU",
+     "source": "record:rco_total_supplied"
+    }
+   },
+   "clause": {
+    "regulation": "Renewable Consumption Obligation (Ministry of Power notification of 27.09.2025), as the order of 2 July 2026 computes it: each component's energy at NPCL's periphery as a share of the total energy supplied (Table 6-32)",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's computation as it lays it out; the notification is not in this session"
   }
  ]
 }

@@ -1,0 +1,185 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): the Renewable Consumption Obligation for FY2026-27 (Tables 6-31, 6-32)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "src.wind": {
+   "value": "91.89",
+   "unit": "MU",
+   "page": 239,
+   "quote": "Total 607 91.89 231.37 - 814.54 576.59 3,015.11 4,729.49",
+   "what": "source-wise energy at NPCL's periphery, wind (Table 6-31, total row)"
+  },
+  "src.hydro": {
+   "value": "231.37",
+   "unit": "MU",
+   "page": 239,
+   "quote": "Total 607 91.89 231.37 - 814.54 576.59 3,015.11 4,729.49",
+   "what": "source-wise energy at NPCL's periphery, hydro (Table 6-31, total row)"
+  },
+  "src.other_re": {
+   "value": "814.54",
+   "unit": "MU",
+   "page": 239,
+   "quote": "Total 607 91.89 231.37 - 814.54 576.59 3,015.11 4,729.49",
+   "what": "source-wise energy at NPCL's periphery, other_re (Table 6-31, total row)"
+  },
+  "src.exchange": {
+   "value": "576.59",
+   "unit": "MU",
+   "page": 239,
+   "quote": "Total 607 91.89 231.37 - 814.54 576.59 3,015.11 4,729.49",
+   "what": "source-wise energy at NPCL's periphery, exchange (Table 6-31, total row)"
+  },
+  "src.thermal": {
+   "value": "3015.11",
+   "unit": "MU",
+   "page": 239,
+   "quote": "Total 607 91.89 231.37 - 814.54 576.59 3,015.11 4,729.49",
+   "what": "source-wise energy at NPCL's periphery, thermal (Table 6-31, total row)"
+  },
+  "src.total": {
+   "value": "4729.49",
+   "unit": "MU",
+   "page": 239,
+   "quote": "Total 607 91.89 231.37 - 814.54 576.59 3,015.11 4,729.49",
+   "what": "source-wise energy at NPCL's periphery, total (Table 6-31, total row)"
+  },
+  "rco.target.wind": {
+   "value": "1.97",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Targets as per MOP guidelines 1.97% 1.34% 2.70% 29.94% 35.95%",
+   "what": "RCO target, wind (Table 6-32)"
+  },
+  "rco.target.hydro": {
+   "value": "1.34",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Targets as per MOP guidelines 1.97% 1.34% 2.70% 29.94% 35.95%",
+   "what": "RCO target, hydro (Table 6-32)"
+  },
+  "rco.target.dre": {
+   "value": "2.70",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Targets as per MOP guidelines 1.97% 1.34% 2.70% 29.94% 35.95%",
+   "what": "RCO target, dre (Table 6-32)"
+  },
+  "rco.target.other_re": {
+   "value": "29.94",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Targets as per MOP guidelines 1.97% 1.34% 2.70% 29.94% 35.95%",
+   "what": "RCO target, other_re (Table 6-32)"
+  },
+  "rco.target.total_re": {
+   "value": "35.95",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Targets as per MOP guidelines 1.97% 1.34% 2.70% 29.94% 35.95%",
+   "what": "RCO target, total_re (Table 6-32)"
+  },
+  "rco.mu.wind": {
+   "value": "91.89",
+   "unit": "MU",
+   "page": 239,
+   "quote": "MUs at NPCL Periphery 91.89 231.37 - 814.54 1,137.80 3,015.11 576.59 4,729.49",
+   "what": "energy at NPCL's periphery, wind (Table 6-32)"
+  },
+  "rco.mu.hydro": {
+   "value": "231.37",
+   "unit": "MU",
+   "page": 239,
+   "quote": "MUs at NPCL Periphery 91.89 231.37 - 814.54 1,137.80 3,015.11 576.59 4,729.49",
+   "what": "energy at NPCL's periphery, hydro (Table 6-32)"
+  },
+  "rco.mu.other_re": {
+   "value": "814.54",
+   "unit": "MU",
+   "page": 239,
+   "quote": "MUs at NPCL Periphery 91.89 231.37 - 814.54 1,137.80 3,015.11 576.59 4,729.49",
+   "what": "energy at NPCL's periphery, other_re (Table 6-32)"
+  },
+  "rco.mu.total_re": {
+   "value": "1137.80",
+   "unit": "MU",
+   "page": 239,
+   "quote": "MUs at NPCL Periphery 91.89 231.37 - 814.54 1,137.80 3,015.11 576.59 4,729.49",
+   "what": "energy at NPCL's periphery, total_re (Table 6-32)"
+  },
+  "rco.mu.thermal": {
+   "value": "3015.11",
+   "unit": "MU",
+   "page": 239,
+   "quote": "MUs at NPCL Periphery 91.89 231.37 - 814.54 1,137.80 3,015.11 576.59 4,729.49",
+   "what": "energy at NPCL's periphery, thermal (Table 6-32)"
+  },
+  "rco.mu.exchange": {
+   "value": "576.59",
+   "unit": "MU",
+   "page": 239,
+   "quote": "MUs at NPCL Periphery 91.89 231.37 - 814.54 1,137.80 3,015.11 576.59 4,729.49",
+   "what": "energy at NPCL's periphery, exchange (Table 6-32)"
+  },
+  "rco.mu.total": {
+   "value": "4729.49",
+   "unit": "MU",
+   "page": 239,
+   "quote": "MUs at NPCL Periphery 91.89 231.37 - 814.54 1,137.80 3,015.11 576.59 4,729.49",
+   "what": "energy at NPCL's periphery, total (Table 6-32)"
+  },
+  "rco.achieved.wind": {
+   "value": "1.94",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Achieved by NPCL 1.94% 4.89% 0.00% 17.22% 24.06% 63.75% 12.19%",
+   "what": "RCO achieved, wind (Table 6-32)"
+  },
+  "rco.achieved.hydro": {
+   "value": "4.89",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Achieved by NPCL 1.94% 4.89% 0.00% 17.22% 24.06% 63.75% 12.19%",
+   "what": "RCO achieved, hydro (Table 6-32)"
+  },
+  "rco.achieved.dre": {
+   "value": "0.00",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Achieved by NPCL 1.94% 4.89% 0.00% 17.22% 24.06% 63.75% 12.19%",
+   "what": "RCO achieved, dre (Table 6-32)"
+  },
+  "rco.achieved.other_re": {
+   "value": "17.22",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Achieved by NPCL 1.94% 4.89% 0.00% 17.22% 24.06% 63.75% 12.19%",
+   "what": "RCO achieved, other_re (Table 6-32)"
+  },
+  "rco.achieved.total_re": {
+   "value": "24.06",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Achieved by NPCL 1.94% 4.89% 0.00% 17.22% 24.06% 63.75% 12.19%",
+   "what": "RCO achieved, total_re (Table 6-32)"
+  },
+  "rco.achieved.thermal": {
+   "value": "63.75",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Achieved by NPCL 1.94% 4.89% 0.00% 17.22% 24.06% 63.75% 12.19%",
+   "what": "RCO achieved, thermal (Table 6-32)"
+  },
+  "rco.achieved.exchange": {
+   "value": "12.19",
+   "unit": "percent",
+   "page": 239,
+   "quote": "RCO Achieved by NPCL 1.94% 4.89% 0.00% 17.22% 24.06% 63.75% 12.19%",
+   "what": "RCO achieved, exchange (Table 6-32)"
+  }
+ }
+}

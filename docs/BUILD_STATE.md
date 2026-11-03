@@ -1005,6 +1005,19 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 119 (2026-11-03): the Renewable Consumption Obligation for FY2026-27.**
+  - **The record:** `order/figures-rco-fy2026-27.json` holds 25 figures (Tables 6-31, 6-32),
+    25 / 25 quotes verified.
+  - **Four new draft RCO rules in `rpo.v1.json`:** each component's share of the energy
+    supplied, and the renewable total and its share.
+  - **Binding `approval-rco-fy27.json`: 7 / 7 exact.**  The renewable total is 1,137.80 MU,
+    24.06% against the 35.95% target.
+  - **Ties checked by the test:** the energy supplied is the approved requirement at NPCL's bus;
+    the source columns add to it within rounding.
+  - **Not computed:** a shortfall against the target.  The order states only the 24.06%
+    compliance (para 6.5.48).
+  Nothing verified, nothing approved.
+
   **Increment 118 (2026-11-03): the true-up's power purchase by source.**
   - **The record:** `order/figures-trueup-pp-sources-fy2024-25.json` holds 78 figures (Tables
     4-42 to 4-45), 78 / 78 quotes verified.
@@ -2929,6 +2942,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 119 (2026-11-03): 489 passed** (+1 unit: the RCO).  `check_order_quotes.py`: 25 / 25.  Ruff and format clean.
 - **Increment 118 (2026-11-03): 488 passed** (+1 unit: the true-up's power purchase by source).  `check_order_quotes.py`: 78 / 78.  Ruff and format clean.
 - **Increment 117 (2026-11-03): 487 passed** (+1 unit: NPCL's APR estimate table, its arithmetic and the 2.47 moved).  Ruff, format and `tsc` clean.
 - **Increment 116 (2026-11-03): 486 passed** (+1 unit: the true-up's energy balance and the 1.32 MU).  `check_order_quotes.py`: 40 / 40.  Ruff and format clean.
@@ -3180,7 +3194,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 118) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 119) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

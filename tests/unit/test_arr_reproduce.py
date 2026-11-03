@@ -1829,3 +1829,26 @@ def test_npcl_the_trueup_power_purchase_reproduces_source_by_source():
     ):
         assert Decimal(rows[label]["approved_mu"].replace(",", "")) == v(f"{key}.at_bus")
         assert Decimal(rows[label]["approved_amount"].replace(",", "")) == v(f"{key}.net")
+
+
+def test_npcl_the_renewable_consumption_obligation_reproduces():
+    """Real data: Table 6-32's RCO as the order computes it — every component's share of the energy
+    supplied and the renewable total (24.06 % against the 35.95 % target) — from Table 6-31's
+    source-wise energy; the energy supplied is the approved requirement at NPCL's bus."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-rco-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rec)
+    assert len(checks) == 7 and {c.result for c in checks} == {"match"}
+    parts = sum(Decimal(rec[f"src.{k}"][0]) for k in ("wind", "hydro", "other_re", "exchange", "thermal"))
+    assert abs(parts - Decimal(rec["src.total"][0])) <= Decimal("0.01")  # five rounded columns
+    eb = load_binding_rates(folder, {"rates": "order/figures-energy-balance-fy2026-27.json"})
+    assert rec["rco.mu.total"][0] == rec["src.total"][0] == eb["eb.approved.requirement"][0]

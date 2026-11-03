@@ -12901,6 +12901,88 @@
    ]
   },
   {
+   "binding": "approval-rco-fy27.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "RCO components FY2026-27 (Table 6-32) wind order:rco.achieved.wind",
+     "output": "rco_share",
+     "result": "match",
+     "filed": "1.94",
+     "computed": "1.94",
+     "why": null,
+     "exact": "1.942915620923186220924454857"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "RCO components FY2026-27 (Table 6-32) hydro order:rco.achieved.hydro",
+     "output": "rco_share",
+     "result": "match",
+     "filed": "4.89",
+     "computed": "4.89",
+     "why": null,
+     "exact": "4.892070815246464206500066603"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "RCO components FY2026-27 (Table 6-32) other renewable order:rco.achieved.other_re",
+     "output": "rco_share",
+     "result": "match",
+     "filed": "17.22",
+     "computed": "17.22",
+     "why": null,
+     "exact": "17.22257579569890199577544302"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "RCO components FY2026-27 (Table 6-32) thermal order:rco.achieved.thermal",
+     "output": "rco_share",
+     "result": "match",
+     "filed": "63.75",
+     "computed": "63.75",
+     "why": null,
+     "exact": "63.75127127872138433530888108"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "RCO components FY2026-27 (Table 6-32) exchange / trader order:rco.achieved.exchange",
+     "output": "rco_share",
+     "result": "match",
+     "filed": "12.19",
+     "computed": "12.19",
+     "why": null,
+     "exact": "12.19137792869844317251965857"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "RCO renewable FY2026-27 (Table 6-32) order:rco.mu.total_re",
+     "output": "rco_renewable_mu",
+     "result": "match",
+     "filed": "1137.80",
+     "computed": "1137.80",
+     "why": null,
+     "exact": "1137.80"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "RCO renewable FY2026-27 (Table 6-32) order:rco.achieved.total_re",
+     "output": "rco_renewable_share",
+     "result": "match",
+     "filed": "24.06",
+     "computed": "24.06",
+     "why": null,
+     "exact": "24.05756223186855242319996448"
+    }
+   ]
+  },
+  {
    "binding": "approval-tariff-fy27.json",
    "checks": [
     {

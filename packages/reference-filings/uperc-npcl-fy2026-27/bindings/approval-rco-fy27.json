@@ -1,0 +1,107 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "rates": "order/figures-rco-fy2026-27.json",
+ "places": 2,
+ "note": "The Renewable Consumption Obligation for FY2026-27 as the order computes it (Tables 6-31, 6-32): each component's energy at NPCL's periphery as a share of the 4,729.49 MU supplied; the renewable components together (wind, hydro, other renewable — DRE nil) against the 35.95 % target.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "RCO components FY2026-27 (Table 6-32)",
+   "inputs": {
+    "record:rco_total_supplied": {
+     "rate": "rco.mu.total"
+    }
+   },
+   "categories": {
+    "wind": {
+     "inputs": {
+      "record:rco_mu": {
+       "rate": "rco.mu.wind"
+      }
+     },
+     "checks": {
+      "rco_share": "order:rco.achieved.wind"
+     }
+    },
+    "hydro": {
+     "inputs": {
+      "record:rco_mu": {
+       "rate": "rco.mu.hydro"
+      }
+     },
+     "checks": {
+      "rco_share": "order:rco.achieved.hydro"
+     }
+    },
+    "other renewable": {
+     "inputs": {
+      "record:rco_mu": {
+       "rate": "rco.mu.other_re"
+      }
+     },
+     "checks": {
+      "rco_share": "order:rco.achieved.other_re"
+     }
+    },
+    "thermal": {
+     "inputs": {
+      "record:rco_mu": {
+       "rate": "rco.mu.thermal"
+      }
+     },
+     "checks": {
+      "rco_share": "order:rco.achieved.thermal"
+     }
+    },
+    "exchange / trader": {
+     "inputs": {
+      "record:rco_mu": {
+       "rate": "rco.mu.exchange"
+      }
+     },
+     "checks": {
+      "rco_share": "order:rco.achieved.exchange"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "RCO renewable FY2026-27 (Table 6-32)",
+   "inputs": {
+    "record:rco_total_supplied": {
+     "rate": "rco.mu.total"
+    }
+   },
+   "categories": {
+    "wind": {
+     "inputs": {
+      "record:rco_mu": {
+       "rate": "src.wind"
+      }
+     }
+    },
+    "hydro": {
+     "inputs": {
+      "record:rco_mu": {
+       "rate": "src.hydro"
+      }
+     }
+    },
+    "other renewable": {
+     "inputs": {
+      "record:rco_mu": {
+       "rate": "src.other_re"
+      }
+     }
+    }
+   },
+   "checks": {
+    "rco_renewable_mu": "order:rco.mu.total_re",
+    "rco_renewable_share": "order:rco.achieved.total_re"
+   }
+  }
+ ]
+}
