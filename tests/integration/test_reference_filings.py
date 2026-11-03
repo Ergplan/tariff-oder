@@ -118,3 +118,28 @@ def test_draft_queries_to_the_petitioner_are_a_labelled_draft(client):
     assert "(A44)" in text and "(A46)" in text  # questions to the petitioner, with their ids
     assert "## For the Commission" in text and "(A45)" in text  # the reviewer's own points, apart
     assert client.get("/arr/reference-filings/nope/queries", headers=headers(CLIENT_A)).status_code == 404
+
+
+def test_commission_orders_reproduced_from_their_own_figures(client):
+    """The UERC and MPERC orders reproduced with each commission's draft rules (packages/
+    order-reproductions/), evaluated on request: counts, every check with its gap, findings."""
+    lst = client.get("/arr/order-reproductions", headers=headers(CLIENT_A)).json()
+    by = {x["id"]: x for x in lst}
+    assert set(by) >= {"uerc-upcl-fy2026-27", "mperc-discoms-fy2026-27"}
+    assert by["uerc-upcl-fy2026-27"]["commission"] == "UERC" and by["uerc-upcl-fy2026-27"]["findings"] == 6
+    assert by["mperc-discoms-fy2026-27"]["checks"]["match"] >= 100
+    d = client.get("/arr/order-reproductions/mperc-discoms-fy2026-27", headers=headers(CLIENT_A)).json()
+    assert (
+        d["order"]["sha256"].startswith("77ffe9d2")
+        and d["rules"]["approved"] == 0
+        and d["rules"]["clauses_verified"] == 0
+    )
+    assert {b["binding"] for b in d["bindings"]} >= {"approval-iowc-fy27.json", "approval-dep-loan-fy27.json"}
+    iowc = next(b for b in d["bindings"] if b["binding"] == "approval-iowc-fy27.json")
+    west = next(c for c in iowc["checks"] if c["category"].endswith("west order:r.total.west"))
+    assert west["computed"] == "-94.19" and west["gap"] == "-0.0008"  # unrounded, against the printed
+    assert {f["id"] for f in d["findings"]} >= {"M1", "M2", "M3", "M4"}
+    assert all(r["figures"] > 0 and len(r["sha256"]) == 64 for r in d["records"])
+    assert client.get("/arr/order-reproductions/nope", headers=headers(CLIENT_A)).status_code == 404
+    assert client.get("/arr/order-reproductions/..%2Fx", headers=headers(CLIENT_A)).status_code == 404
+    assert client.get("/arr/order-reproductions").status_code in (401, 403)

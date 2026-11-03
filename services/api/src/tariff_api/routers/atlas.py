@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, Response
 from pydantic import BaseModel, Field
 
 from .. import atlas as atlas_
+from .. import order_reproductions as orep
 from .. import reference_filings as rf
 from ..adapters.identity import Principal
 from ..auth import require_analyst, require_reviewer
@@ -63,6 +64,20 @@ def reference_filing(filing_id: str) -> dict:
     """One reference filing: its documents, the reproduction of each format through the rules,
     the chain from base records, and the findings — for the reviewer."""
     return rf.filing(filing_id)
+
+
+@router.get("/arr/order-reproductions", response_model=list[dict], dependencies=[Depends(require_analyst)])
+def order_reproductions() -> list[dict]:
+    """Commission orders of other states reproduced from their own printed figures with each
+    commission's draft rules: what matched, what differed, the findings."""
+    return orep.reproductions()
+
+
+@router.get("/arr/order-reproductions/{reproduction_id}", response_model=dict, dependencies=[Depends(require_analyst)])
+def order_reproduction(reproduction_id: str) -> dict:
+    """One reproduced order: its manifest (URL, SHA-256), records, every binding's checks and the
+    findings — evaluated on request; nothing verified or approved."""
+    return orep.reproduction(reproduction_id)
 
 
 class AcceptanceIn(BaseModel):
