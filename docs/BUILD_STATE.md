@@ -1023,8 +1023,10 @@ open-access view.
     - The page explains that a difference is not a failure: each test bounds it by the printed
       precision of its inputs.
   - **Contracts:** regenerated, no drift.
-  - **Checks:** `tsc --noEmit` clean.  The pages were not screenshot-checked in this
-    increment.
+  - **Checks:** `tsc --noEmit` clean.  After the commit, screenshots at 1440 and 390 px of
+    `/arr/reference` and both `/arr/orders/<id>` pages showed no horizontal scroll.  Fixed after
+    them: counts listed match-first, and the status sentence capitalised.  Next's dev server
+    wrote `apps/web/AGENTS.md` and `CLAUDE.md` on start-up; they were removed, not committed.
   - **Today:** UERC / UPCL shows 65 match and 56 differ, 6 findings; MPERC / three DISCOMs
     shows 135 match and 60 differ, 4 findings.  Every difference is bounded by its test.
   Nothing verified, nothing approved.

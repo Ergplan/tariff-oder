@@ -80,6 +80,7 @@ export default async function ReferenceFilings() {
                   </td>
                   <td className="mono">
                     {Object.entries(o.checks)
+                      .sort(([a], [b]) => (a === "match" ? -1 : b === "match" ? 1 : a.localeCompare(b)))
                       .map(([k, n]) => `${n} ${k}`)
                       .join(" · ")}
                   </td>

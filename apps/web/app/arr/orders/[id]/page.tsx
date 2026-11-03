@@ -26,11 +26,14 @@ type Reproduction = {
 };
 
 const TONE: Record<string, string> = { match: "ok", differs: "warn", blocked: "danger", no_filed_value: "neutral" };
+const ORDER: Record<string, number> = { match: 0, differs: 1, blocked: 2, no_filed_value: 3 };
 
 function Counts({ counts }: { counts: Record<string, number> }) {
   return (
     <span style={{ display: "inline-flex", gap: "0.3rem", flexWrap: "wrap" }}>
-      {Object.entries(counts).map(([k, n]) => (
+      {Object.entries(counts)
+        .sort(([a], [b]) => (ORDER[a] ?? 9) - (ORDER[b] ?? 9))
+        .map(([k, n]) => (
         <span key={k} className="badge" data-tone={TONE[k] ?? "neutral"}>
           {n} {k.replace(/_/g, " ")}
         </span>
@@ -75,7 +78,7 @@ export default async function OrderReproduction({ params }: { params: Promise<{ 
           </span>
         </div>
         <p className="muted" style={{ maxWidth: "52rem" }}>
-          {r.status}. A difference is not a failure: each binding&apos;s test bounds it by the printed precision of its inputs, and the gap column shows how far the unrounded
+          {r.status.charAt(0).toUpperCase() + r.status.slice(1)}. A difference is not a failure: each binding&apos;s test bounds it by the printed precision of its inputs, and the gap column shows how far the unrounded
           computation lies from the printed figure. The order:{" "}
           <a href={r.order.url} rel="noreferrer">
             source
