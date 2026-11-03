@@ -1,0 +1,353 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UERC order on UPCL (31 March 2026) — true-up FY2024-25: distribution loss, revenue and the sharing of controllable gains and losses",
+  "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+  "pages": 414
+ },
+ "figures": {
+  "dl.sales.claimed": {
+   "value": "14838.22",
+   "unit": "MU",
+   "page": 167,
+   "quote": "1. Actual/ Re-casted Sales (MU) 14838.22 14438.86",
+   "what": "Table 3.46, Actual/ Re-casted Sales (MU): claimed"
+  },
+  "dl.sales.approved": {
+   "value": "14438.86",
+   "unit": "MU",
+   "page": 167,
+   "quote": "1. Actual/ Re-casted Sales (MU) 14838.22 14438.86",
+   "what": "Table 3.46, Actual/ Re-casted Sales (MU): approved"
+  },
+  "dl.loss.claimed": {
+   "value": "13.69",
+   "unit": "percent",
+   "page": 167,
+   "quote": "2. Actual Distribution Loss Level (%) 13.69% 16.02%",
+   "what": "Table 3.46, Actual Distribution Loss Level (%): claimed"
+  },
+  "dl.loss.approved": {
+   "value": "16.02",
+   "unit": "percent",
+   "page": 167,
+   "quote": "2. Actual Distribution Loss Level (%) 13.69% 16.02%",
+   "what": "Table 3.46, Actual Distribution Loss Level (%): approved"
+  },
+  "dl.input.claimed": {
+   "value": "17192.26",
+   "unit": "MU",
+   "page": 167,
+   "quote": "3. Actual Energy Input at T-D Interface (MU) 17192.26 17192.26",
+   "what": "Table 3.46, Actual Energy Input at T-D Interface (MU): claimed"
+  },
+  "dl.input.approved": {
+   "value": "17192.26",
+   "unit": "MU",
+   "page": 167,
+   "quote": "3. Actual Energy Input at T-D Interface (MU) 17192.26 17192.26",
+   "what": "Table 3.46, Actual Energy Input at T-D Interface (MU): approved"
+  },
+  "dl.sales_at_target.claimed": {
+   "value": "14914.28",
+   "unit": "MU",
+   "page": 167,
+   "quote": "4. Sales at Approved Loss of 13.00% (MU) 14914.28 14957.27",
+   "what": "Table 3.46, Sales at Approved Loss of 13.00% (MU): claimed"
+  },
+  "dl.sales_at_target.approved": {
+   "value": "14957.27",
+   "unit": "MU",
+   "page": 167,
+   "quote": "4. Sales at Approved Loss of 13.00% (MU) 14914.28 14957.27",
+   "what": "Table 3.46, Sales at Approved Loss of 13.00% (MU): approved"
+  },
+  "dl.loss_of_sales.claimed": {
+   "value": "76.06",
+   "unit": "MU",
+   "page": 167,
+   "quote": "5. Loss of Sales due to Inefficiency (MU) 76.06 518.41",
+   "what": "Table 3.46, Loss of Sales due to Inefficiency (MU): claimed"
+  },
+  "dl.loss_of_sales.approved": {
+   "value": "518.41",
+   "unit": "MU",
+   "page": 167,
+   "quote": "5. Loss of Sales due to Inefficiency (MU) 76.06 518.41",
+   "what": "Table 3.46, Loss of Sales due to Inefficiency (MU): approved"
+  },
+  "dl.abr.claimed": {
+   "value": "6.79",
+   "unit": "INR_per_kWh",
+   "page": 167,
+   "quote": "7. ABR (Rs./kWh) 6.79 6.98",
+   "what": "Table 3.46, ABR (Rs./kWh): claimed"
+  },
+  "dl.abr.approved": {
+   "value": "6.98",
+   "unit": "INR_per_kWh",
+   "page": 167,
+   "quote": "7. ABR (Rs./kWh) 6.79 6.98",
+   "what": "Table 3.46, ABR (Rs./kWh): approved"
+  },
+  "dl.revenue_lost.claimed": {
+   "value": "51.66",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "8. Loss of Revenue due to higher distribution losses (Rs. Crore) 51.66 361.85",
+   "what": "Table 3.46, Loss of Revenue due to higher distribution losses (Rs. Crore): claimed"
+  },
+  "dl.revenue_lost.approved": {
+   "value": "361.85",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "8. Loss of Revenue due to higher distribution losses (Rs. Crore) 51.66 361.85",
+   "what": "Table 3.46, Loss of Revenue due to higher distribution losses (Rs. Crore): approved"
+  },
+  "dl.borne.claimed": {
+   "value": "34.44",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "9. Losses to borne by Petitioner (2/3rd of 8) (Rs. Crore) 34.44 241.23",
+   "what": "Table 3.46, Losses to borne by Petitioner (2/3rd of 8) (Rs. Crore): claimed"
+  },
+  "dl.borne.approved": {
+   "value": "241.23",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "9. Losses to borne by Petitioner (2/3rd of 8) (Rs. Crore) 34.44 241.23",
+   "what": "Table 3.46, Losses to borne by Petitioner (2/3rd of 8) (Rs. Crore): approved"
+  },
+  "dl.claimed_target.loss": {
+   "value": "13.25",
+   "unit": "percent",
+   "page": 166,
+   "quote": "4. Sales at Actual Energy Input with 13.25% Loss (MU) 14914.28",
+   "what": "Table 3.44 (UPCL's claim): the loss its sales at target use: loss"
+  },
+  "dl.claimed_target.sales": {
+   "value": "14914.28",
+   "unit": "MU",
+   "page": 166,
+   "quote": "4. Sales at Actual Energy Input with 13.25% Loss (MU) 14914.28",
+   "what": "Table 3.44 (UPCL's claim): the loss its sales at target use: sales"
+  },
+  "dl.baseline.actual_claimed": {
+   "value": "13.69",
+   "unit": "percent",
+   "page": 165,
+   "quote": "actual distribution loss is 13.69% for FY 2024-25 as against the baseline value of 13.00% approved",
+   "what": "para 3.3: UPCL's actual loss and the approved baseline: actual_claimed"
+  },
+  "dl.baseline.target": {
+   "value": "13.00",
+   "unit": "percent",
+   "page": 165,
+   "quote": "actual distribution loss is 13.69% for FY 2024-25 as against the baseline value of 13.00% approved",
+   "what": "para 3.3: UPCL's actual loss and the approved baseline: target"
+  },
+  "rev.total": {
+   "value": "10078.47",
+   "unit": "INR_crore",
+   "page": 166,
+   "quote": "Total Revenue 10078.47 The Commission for the computation of ABR",
+   "what": "Table 3.45, revenue for the ABR: total"
+  },
+  "share.om.actual": {
+   "value": "1031.06",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "O&M expenses 1031.06 824.67 (206.39) (68.80) (137.59)",
+   "what": "Table 3.48, O&M expenses: actual"
+  },
+  "share.om.normative": {
+   "value": "824.67",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "O&M expenses 1031.06 824.67 (206.39) (68.80) (137.59)",
+   "what": "Table 3.48, O&M expenses: normative"
+  },
+  "share.om.variation": {
+   "value": "-206.39",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "O&M expenses 1031.06 824.67 (206.39) (68.80) (137.59)",
+   "what": "Table 3.48, O&M expenses: variation"
+  },
+  "share.om.consumer": {
+   "value": "-68.80",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "O&M expenses 1031.06 824.67 (206.39) (68.80) (137.59)",
+   "what": "Table 3.48, O&M expenses: consumer"
+  },
+  "share.om.licensee": {
+   "value": "-137.59",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "O&M expenses 1031.06 824.67 (206.39) (68.80) (137.59)",
+   "what": "Table 3.48, O&M expenses: licensee"
+  },
+  "share.iowc.actual": {
+   "value": "60.32",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "IoWC 60.32 149.07 88.75 29.58 59.17",
+   "what": "Table 3.48, IoWC: actual"
+  },
+  "share.iowc.normative": {
+   "value": "149.07",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "IoWC 60.32 149.07 88.75 29.58 59.17",
+   "what": "Table 3.48, IoWC: normative"
+  },
+  "share.iowc.variation": {
+   "value": "88.75",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "IoWC 60.32 149.07 88.75 29.58 59.17",
+   "what": "Table 3.48, IoWC: variation"
+  },
+  "share.iowc.consumer": {
+   "value": "29.58",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "IoWC 60.32 149.07 88.75 29.58 59.17",
+   "what": "Table 3.48, IoWC: consumer"
+  },
+  "share.iowc.licensee": {
+   "value": "59.17",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "IoWC 60.32 149.07 88.75 29.58 59.17",
+   "what": "Table 3.48, IoWC: licensee"
+  },
+  "share.rebate.actual": {
+   "value": "43.30",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "PP Rebate 43.30 0 43.30 14.43 28.87",
+   "what": "Table 3.48, PP Rebate: actual"
+  },
+  "share.rebate.normative": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "PP Rebate 43.30 0 43.30 14.43 28.87",
+   "what": "Table 3.48, PP Rebate: normative"
+  },
+  "share.rebate.variation": {
+   "value": "43.30",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "PP Rebate 43.30 0 43.30 14.43 28.87",
+   "what": "Table 3.48, PP Rebate: variation"
+  },
+  "share.rebate.consumer": {
+   "value": "14.43",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "PP Rebate 43.30 0 43.30 14.43 28.87",
+   "what": "Table 3.48, PP Rebate: consumer"
+  },
+  "share.rebate.licensee": {
+   "value": "28.87",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "PP Rebate 43.30 0 43.30 14.43 28.87",
+   "what": "Table 3.48, PP Rebate: licensee"
+  },
+  "share.dps.actual": {
+   "value": "-30.72",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "DPS (30.72) 0 (30.72) (10.24) (20.48)",
+   "what": "Table 3.48, DPS: actual"
+  },
+  "share.dps.normative": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "DPS (30.72) 0 (30.72) (10.24) (20.48)",
+   "what": "Table 3.48, DPS: normative"
+  },
+  "share.dps.variation": {
+   "value": "-30.72",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "DPS (30.72) 0 (30.72) (10.24) (20.48)",
+   "what": "Table 3.48, DPS: variation"
+  },
+  "share.dps.consumer": {
+   "value": "-10.24",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "DPS (30.72) 0 (30.72) (10.24) (20.48)",
+   "what": "Table 3.48, DPS: consumer"
+  },
+  "share.dps.licensee": {
+   "value": "-20.48",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "DPS (30.72) 0 (30.72) (10.24) (20.48)",
+   "what": "Table 3.48, DPS: licensee"
+  },
+  "share.dl.actual": {
+   "value": "16.02",
+   "unit": "percent",
+   "page": 169,
+   "quote": "Distribution Loss 16.02% 13.00% (361.85) (120.62) (241.23)",
+   "what": "Table 3.48, distribution loss: actual"
+  },
+  "share.dl.normative": {
+   "value": "13.00",
+   "unit": "percent",
+   "page": 169,
+   "quote": "Distribution Loss 16.02% 13.00% (361.85) (120.62) (241.23)",
+   "what": "Table 3.48, distribution loss: normative"
+  },
+  "share.dl.variation": {
+   "value": "-361.85",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Distribution Loss 16.02% 13.00% (361.85) (120.62) (241.23)",
+   "what": "Table 3.48, distribution loss: variation"
+  },
+  "share.dl.consumer": {
+   "value": "-120.62",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Distribution Loss 16.02% 13.00% (361.85) (120.62) (241.23)",
+   "what": "Table 3.48, distribution loss: consumer"
+  },
+  "share.dl.licensee": {
+   "value": "-241.23",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Distribution Loss 16.02% 13.00% (361.85) (120.62) (241.23)",
+   "what": "Table 3.48, distribution loss: licensee"
+  },
+  "share.total.variation": {
+   "value": "-466.90",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Total (466.90) (155.63) (311.27)",
+   "what": "Table 3.48, total: variation"
+  },
+  "share.total.consumer": {
+   "value": "-155.63",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Total (466.90) (155.63) (311.27)",
+   "what": "Table 3.48, total: consumer"
+  },
+  "share.total.licensee": {
+   "value": "-311.27",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Total (466.90) (155.63) (311.27)",
+   "what": "Table 3.48, total: licensee"
+  }
+ }
+}

@@ -1005,6 +1005,39 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 127 (2026-11-03): UERC's true-up of FY2024-25 — the distribution loss valued at the
+  ABR, and controllable gains and losses shared.**
+  - **The record:** `order/figures-trueup-sharing-fy2024-25.json` in the UERC folder holds 49
+    figures (Tables 3.44–3.46, 3.48, para 3.3), 49 / 49 quotes verified.
+  - **A second UERC rule file, `tariff-2021.v1.json`, for the 2021 Regulations, applying up to
+    FY2024-25 (11 draft rules):**
+    - the actual loss; sales at the approved loss; the sales lost;
+    - the ABR, and the revenue lost at the ABR.  This is the order's method ("the earlier
+      approach"), and the rule says it is not a quoted formula.
+    - the variation on a controllable factor; the consumers' one-third (Reg. 14, quoted by the
+      order); the licensee's balance; three totals.
+    The year selection is tested: FY2024-25 picks these rules, FY2026-27 does not.
+  - **Binding `trueup-sharing-fy25.json`:**
+    - **The Commission's side is exact (20 / 20):**
+      - the loss of 16.02% against 13.00%;
+      - 14,957.27 MU at target; 518.41 MU lost; ABR 6.98; 361.85 lost;
+      - every row of Table 3.48, consumers' and licensee's shares — O&M, distribution loss,
+        working capital, the power purchase rebate and the late-payment surcharge.  The
+        surcharge and rebate enter as negated income, with the reason.
+      The licensee's two-thirds of the loss is Table 3.46's 241.23, the deemed revenue added in
+      the true-up.
+    - **Table 3.48's totals** differ from its rows by one or two paise (unrounded rows),
+      bounded.
+    - **UPCL's side**, at its own 13.25%, is within its printed precision.
+  - **Finding `U6` (reviewer):** Table 3.46's row "Sales at Approved Loss of 13.00%" carries
+    UPCL's sales at 13.25%, as UPCL's Table 3.44 says.  At 13.00% UPCL's own sales would show
+    119.05 MU lost, not 76.06.
+  - **For R-TU-2:** a second commission's sharing is now in the engine.  UERC 2021 passes
+    one-third of a gain or a loss; UPERC 2025 passes two-thirds of a gain and one-third of a
+    loss.  UERC values a loss variation at the ABR.  UPERC's valuation stays the reviewer's
+    question (increment 122).
+  Nothing verified, nothing approved.
+
   **Increment 126 (2026-11-03): UERC — UPCL's revenue requirement and surplus for FY2026-27,
   end to end.**
   - **The record:** `order/figures-arr-fy2026-27.json` in the UERC folder holds 38 figures
@@ -3136,6 +3169,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 127 (2026-11-03): 497 passed** (+1 unit: UERC's true-up loss valuation and sharing; the 2021 / 2024 year selection; U6).  `check_order_quotes.py`: 49 / 49.  Ruff and format clean.
 - **Increment 126 (2026-11-03): 496 passed** (+1 unit: UERC's revenue requirement and surplus end to end, to the paisa).  `check_order_quotes.py`: 38 / 38.  Ruff and format clean.
 - **Increment 125 (2026-11-03): 495 passed** (+1 unit: UERC O&M, the approved side within printed precision, UPCL's claim against U3–U5).  `check_order_quotes.py`: 50 / 50.  Ruff and format clean.
 - **Increment 124 (2026-11-03): 494 passed** (+1 unit: UERC depreciation, loan and interest, differences bounded by printed precision; the chain's ties).  `check_order_quotes.py`: 52 / 52.  Ruff and format clean.
@@ -3395,7 +3429,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 126) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 127) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3496,7 +3530,8 @@ entries below are the per-increment history.**
   - more of a second commission's order (increment 123 began with UERC / UPCL: working capital
     and RoE, 14 / 18; increment 124 its depreciation, loan and interest, 5 / 17 exact and the rest
     within printed precision; increment 125 its O&M, 967.40 exact; findings U1–U5; increment 126 its ARR end to end — 12,591.09, net 12,489.54, surplus 100.87 to
-    the paisa) — next its true-up of FY2024-25 or a third commission;
+    the paisa; increment 127 its true-up's loss valuation and sharing under the 2021 Regulations,
+    exact) — next the rest of that true-up, or a third commission;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

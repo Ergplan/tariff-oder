@@ -2180,3 +2180,45 @@ def test_uerc_revenue_requirement_and_surplus_reproduce_end_to_end():
         "arr_revenue_gap": Decimal(arr_rec["t454.gap.approved"][0]),
     }
     assert got["arr_revenue_gap"] == Decimal("-100.87")  # a surplus at the existing tariff
+
+
+def test_uerc_trueup_shares_controllable_gains_and_values_the_loss_at_the_abr():
+    """Real data, UERC / UPCL true-up FY2024-25 (its 2021 Regulations): the distribution loss above
+    the 13.00 % target as sales lost (input × (1 − target) − sales) valued at the ABR — 361.85 —
+    and every controllable gain or loss shared one-third to consumers (Reg. 14): O&M, the loss,
+    working capital, the power purchase rebate and the late-payment surcharge (Table 3.48).  The
+    2021 rules apply to FY2024-25 only; UPERC's 2025 sharing differs (two-thirds of a gain)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import RuleSet, load_rules
+
+    rules = load_rules("UERC")
+    assert {"share_variation", "dl_revenue_lost"} <= set(RuleSet(rules, "FY2024-25")._order())
+    assert not {"share_variation", "dl_revenue_lost"} & set(RuleSet(rules, "FY2026-27")._order())
+    folder = ROOT / "packages" / "order-reproductions" / "uerc-upcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "trueup-sharing-fy25.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, rules, rates=rec)
+    by = {c.category.rsplit(" order:", 1)[1]: c for c in checks if "U6" not in c.category}
+    # the Commission's side of Table 3.46 and every row of Table 3.48: exact
+    approved = [
+        c
+        for c in checks
+        if "approved (Table 3.46)" in c.category
+        or ("(Table 3.48) " in c.category and "(Table 3.48) order:" not in c.category)
+    ]
+    assert len(approved) == 20 and {c.result for c in approved} == {"match"}
+    assert by["dl.revenue_lost.approved"].computed == "361.85"
+    # the licensee bears two-thirds of the loss: Table 3.46's 241.23, printed as a positive cost
+    assert Decimal(by["share.dl.licensee"].exact).quantize(Decimal("0.01")) == -Decimal(rec["dl.borne.approved"][0])
+    # Table 3.48's totals differ from its rows by a paisa or two (unrounded rows), bounded
+    for k in ("share.total.variation", "share.total.consumer", "share.total.licensee"):
+        assert abs(Decimal(by[k].exact) - Decimal(by[k].filed)) <= Decimal("0.025")
+    # UPCL's side at its 13.25 %: within the printed precision of its figures
+    for k in ("dl.sales_at_target.claimed", "dl.loss_of_sales.claimed", "dl.revenue_lost.claimed"):
+        assert abs(Decimal(by[k].exact) - Decimal(by[k].filed)) <= Decimal("0.02")
+    # U6: at the 13.00 % its row label states, UPCL's sales at target would be 14,957.27
+    u6 = next(c for c in checks if "U6" in c.category)
+    assert u6.computed == "14957.27" and u6.filed == "14914.28"
+    assert rec["dl.claimed_target.loss"][0] == "13.25" and rec["dl.baseline.target"][0] == "13.00"

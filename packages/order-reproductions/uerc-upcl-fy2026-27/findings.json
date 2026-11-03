@@ -52,6 +52,17 @@
     "UERC order on UPCL FY2026-27, p.215 Table 4.45; p.223 Table 4.52; p.219 Table 4.50"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "U6",
+   "kind": "inconsistency",
+   "title": "Table 3.46's row 'Sales at Approved Loss of 13.00 %' carries UPCL's sales at 13.25 %",
+   "detail": "UPCL's column of Table 3.46 prints 14,914.28 MU against the row label 'Sales at Approved Loss of 13.00 % (MU)'; 17,192.26 × (1 − 13.00 %) is 14,957.27, and 14,914.28 is the energy input at 13.25 % — the loss UPCL's own Table 3.44 names ('Sales at Actual Energy Input with 13.25 % Loss').  Para 3.3 gives the approved baseline as 13.00 %.  UPCL's claim therefore measured its excess loss against 13.25 %, understating the loss of sales (76.06 MU against 119.05 MU at 13.00 % on its own sales).  The Commission's column uses 13.00 % and re-cast sales.",
+   "where": [
+    "UERC order on UPCL FY2026-27, p.166 Table 3.44; p.167 Table 3.46; p.165 para 3.3",
+    "bindings/trueup-sharing-fy25.json"
+   ],
+   "for": "reviewer"
   }
  ]
 }

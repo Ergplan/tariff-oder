@@ -1,0 +1,455 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+ "applies": {
+  "commission": "UERC",
+  "to_fy": "FY2024-25"
+ },
+ "note": "UERC's true-up under its 2021 Regulations (to FY2024-25): the distribution-loss variation valued at the ABR, and the sharing of gains and losses on controllable factors — one-third passed on either way (UPERC's 2025 Regulations: two-thirds of a gain, one-third of a loss).",
+ "rules": [
+  {
+   "id": "uerc21.dl.actual_loss",
+   "version": 1,
+   "status": "draft",
+   "title": "Actual distribution loss: 1 − sales / energy input",
+   "output": "dl_actual_loss",
+   "unit": "percent",
+   "schedule": "R-TU",
+   "formula": "1 - sales / input",
+   "inputs": {
+    "sales": {
+     "unit": "MU",
+     "source": "record:dl_sales",
+     "note": "actual sales, re-cast by the Commission where it finds cause"
+    },
+    "input": {
+     "unit": "MU",
+     "source": "record:dl_input",
+     "note": "energy input at the T-D interface"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's method for the distribution loss in the true-up ('in accordance with the earlier approach adopted by the Commission', 3.3), not a formula quoted from the Regulations"
+  },
+  {
+   "id": "uerc21.dl.sales_at_target",
+   "version": 1,
+   "status": "draft",
+   "title": "Sales the input would have given at the approved loss",
+   "output": "dl_sales_at_target",
+   "unit": "MU",
+   "schedule": "R-TU",
+   "formula": "input * (1 - target)",
+   "inputs": {
+    "input": {
+     "unit": "MU",
+     "source": "record:dl_input"
+    },
+    "target": {
+     "unit": "percent",
+     "source": "record:dl_target",
+     "note": "the approved loss for the year"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's method for the distribution loss in the true-up ('in accordance with the earlier approach adopted by the Commission', 3.3), not a formula quoted from the Regulations"
+  },
+  {
+   "id": "uerc21.dl.loss_of_sales",
+   "version": 1,
+   "status": "draft",
+   "title": "Sales lost to the loss above target",
+   "output": "dl_loss_of_sales",
+   "unit": "MU",
+   "schedule": "R-TU",
+   "formula": "at_target - sales",
+   "inputs": {
+    "at_target": {
+     "unit": "MU",
+     "source": "rule:dl_sales_at_target"
+    },
+    "sales": {
+     "unit": "MU",
+     "source": "record:dl_sales"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's method for the distribution loss in the true-up ('in accordance with the earlier approach adopted by the Commission', 3.3), not a formula quoted from the Regulations"
+  },
+  {
+   "id": "uerc21.dl.abr",
+   "version": 1,
+   "status": "draft",
+   "title": "Average billing rate: revenue over sales",
+   "output": "dl_abr",
+   "unit": "INR_per_kWh",
+   "schedule": "R-TU",
+   "formula": "revenue / sales",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:dl_revenue"
+    },
+    "sales": {
+     "unit": "MU",
+     "source": "record:dl_sales"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's method for the distribution loss in the true-up ('in accordance with the earlier approach adopted by the Commission', 3.3), not a formula quoted from the Regulations"
+  },
+  {
+   "id": "uerc21.dl.revenue_lost",
+   "version": 1,
+   "status": "draft",
+   "title": "Revenue lost to the loss above target, at the ABR",
+   "output": "dl_revenue_lost",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "lost * abr",
+   "inputs": {
+    "lost": {
+     "unit": "MU",
+     "source": "rule:dl_loss_of_sales"
+    },
+    "abr": {
+     "unit": "INR_per_kWh",
+     "source": "record:dl_abr_applied",
+     "note": "the ABR as the order prints and applies it"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's method for the distribution loss in the true-up ('in accordance with the earlier approach adopted by the Commission', 3.3), not a formula quoted from the Regulations; a variation of the loss valued at the ABR — the valuation UPERC's 2025 Regulations leave open (increment 122)"
+  },
+  {
+   "id": "uerc21.share.variation",
+   "version": 1,
+   "status": "draft",
+   "title": "Gain (loss negative) on a controllable factor: normative less actual",
+   "output": "share_variation",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "per": "controllable_factor",
+   "formula": "normative - actual",
+   "inputs": {
+    "normative": {
+     "unit": "INR_crore",
+     "source": "record:share_normative"
+    },
+    "actual": {
+     "unit": "INR_crore",
+     "source": "record:share_actual"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": "14(1)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "14. Sharing of Gains and Losses on account of Controllable factors (1) The approved aggregate gain and loss to the Applicant on account of controllable factors shall be dealt with in the following manner: a) 1/3rd of such gain or loss shall be passed on as a rebate or allowed to be recovered in tariffs over such period as may be specified in the Order of the Commission; b) The balance amount of such gain or loss may be utilized or absorbed by the Applicant.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "normative": "100",
+      "actual": "130"
+     },
+     "expected": "-30.00",
+     "source": "constructed to show the rule's arithmetic (not a filing)"
+    }
+   ],
+   "note": "the excerpt is the order's own quotation of the 2021 Regulations (UPCL FY2026-27 order, p.169), not read from the Regulations"
+  },
+  {
+   "id": "uerc21.share.consumer",
+   "version": 1,
+   "status": "draft",
+   "title": "Consumers' share: one-third of the gain or loss",
+   "output": "share_consumer",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "per": "controllable_factor",
+   "formula": "variation / 3",
+   "inputs": {
+    "variation": {
+     "unit": "INR_crore",
+     "source": "rule:share_variation"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": "14(1)(a)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "14. Sharing of Gains and Losses on account of Controllable factors (1) The approved aggregate gain and loss to the Applicant on account of controllable factors shall be dealt with in the following manner: a) 1/3rd of such gain or loss shall be passed on as a rebate or allowed to be recovered in tariffs over such period as may be specified in the Order of the Commission; b) The balance amount of such gain or loss may be utilized or absorbed by the Applicant.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [
+    {
+     "inputs": {
+      "variation": "-30"
+     },
+     "expected": "-10.00",
+     "source": "constructed to show the rule's arithmetic (not a filing)"
+    },
+    {
+     "inputs": {
+      "variation": "30"
+     },
+     "expected": "10.00",
+     "source": "constructed to show the rule's arithmetic (not a filing)"
+    }
+   ],
+   "note": "the excerpt is the order's own quotation of the 2021 Regulations (UPCL FY2026-27 order, p.169), not read from the Regulations"
+  },
+  {
+   "id": "uerc21.share.licensee",
+   "version": 1,
+   "status": "draft",
+   "title": "Licensee's share: the balance, kept or absorbed",
+   "output": "share_licensee",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "per": "controllable_factor",
+   "formula": "variation - consumer",
+   "inputs": {
+    "variation": {
+     "unit": "INR_crore",
+     "source": "rule:share_variation"
+    },
+    "consumer": {
+     "unit": "INR_crore",
+     "source": "rule:share_consumer"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": "14(1)(b)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "14. Sharing of Gains and Losses on account of Controllable factors (1) The approved aggregate gain and loss to the Applicant on account of controllable factors shall be dealt with in the following manner: a) 1/3rd of such gain or loss shall be passed on as a rebate or allowed to be recovered in tariffs over such period as may be specified in the Order of the Commission; b) The balance amount of such gain or loss may be utilized or absorbed by the Applicant.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the 2021 Regulations (UPCL FY2026-27 order, p.169), not read from the Regulations"
+  },
+  {
+   "id": "uerc21.share.variation_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Aggregate gain (loss negative) on controllable factors",
+   "output": "share_variation_total",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:share_variation"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": "14(1)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "14. Sharing of Gains and Losses on account of Controllable factors (1) The approved aggregate gain and loss to the Applicant on account of controllable factors shall be dealt with in the following manner: a) 1/3rd of such gain or loss shall be passed on as a rebate or allowed to be recovered in tariffs over such period as may be specified in the Order of the Commission; b) The balance amount of such gain or loss may be utilized or absorbed by the Applicant.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the aggregate the Regulation shares"
+  },
+  {
+   "id": "uerc21.share.consumer_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Consumers' share, all controllable factors",
+   "output": "share_consumer_total",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:share_consumer"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": "14(1)(a)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "14. Sharing of Gains and Losses on account of Controllable factors (1) The approved aggregate gain and loss to the Applicant on account of controllable factors shall be dealt with in the following manner: a) 1/3rd of such gain or loss shall be passed on as a rebate or allowed to be recovered in tariffs over such period as may be specified in the Order of the Commission; b) The balance amount of such gain or loss may be utilized or absorbed by the Applicant.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "uerc21.share.licensee_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Licensee's share, all controllable factors",
+   "output": "share_licensee_total",
+   "unit": "INR_crore",
+   "schedule": "R-TU",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:share_licensee"
+    }
+   },
+   "clause": {
+    "regulation": "UERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2021 (the order calls them 'UERC Tariff Regulations, 2021')",
+    "clause": "14(1)(b)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "14. Sharing of Gains and Losses on account of Controllable factors (1) The approved aggregate gain and loss to the Applicant on account of controllable factors shall be dealt with in the following manner: a) 1/3rd of such gain or loss shall be passed on as a rebate or allowed to be recovered in tariffs over such period as may be specified in the Order of the Commission; b) The balance amount of such gain or loss may be utilized or absorbed by the Applicant.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "UERC",
+    "to_fy": "FY2024-25"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  }
+ ]
+}

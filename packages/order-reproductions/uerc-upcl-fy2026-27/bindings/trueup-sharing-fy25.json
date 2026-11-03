@@ -1,0 +1,177 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "UERC order",
+ "rates": "order/figures-trueup-sharing-fy2024-25.json",
+ "places": 2,
+ "note": "UERC's FY2024-25 true-up for UPCL under its 2021 Regulations: the distribution loss above the 13.00 % target valued at the ABR (Table 3.46), and the sharing of every controllable gain or loss one-third to consumers (Table 3.48).  The distribution loss's 361.85 is carried from the first evaluation into the sharing.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "distribution loss, approved (Table 3.46)",
+   "inputs": {
+    "record:dl_sales": {
+     "rate": "dl.sales.approved"
+    },
+    "record:dl_input": {
+     "rate": "dl.input.approved"
+    },
+    "record:dl_target": {
+     "rate": "dl.baseline.target"
+    },
+    "record:dl_revenue": {
+     "rate": "rev.total"
+    },
+    "record:dl_abr_applied": {
+     "rate": "dl.abr.approved"
+    }
+   },
+   "checks": {
+    "dl_actual_loss": "order:dl.loss.approved",
+    "dl_sales_at_target": "order:dl.sales_at_target.approved",
+    "dl_loss_of_sales": "order:dl.loss_of_sales.approved",
+    "dl_abr": "order:dl.abr.approved",
+    "dl_revenue_lost": "order:dl.revenue_lost.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "distribution loss, claimed (Table 3.46)",
+   "inputs": {
+    "record:dl_sales": {
+     "rate": "dl.sales.claimed"
+    },
+    "record:dl_input": {
+     "rate": "dl.input.claimed"
+    },
+    "record:dl_target": {
+     "rate": "dl.claimed_target.loss"
+    },
+    "record:dl_revenue": {
+     "rate": "rev.total"
+    },
+    "record:dl_abr_applied": {
+     "rate": "dl.abr.claimed"
+    }
+   },
+   "checks": {
+    "dl_actual_loss": "order:dl.loss.claimed",
+    "dl_sales_at_target": "order:dl.sales_at_target.claimed",
+    "dl_loss_of_sales": "order:dl.loss_of_sales.claimed",
+    "dl_abr": "order:dl.abr.claimed",
+    "dl_revenue_lost": "order:dl.revenue_lost.claimed"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "UPCL's sales at the 13.00 % its row label states — U6",
+   "inputs": {
+    "record:dl_input": {
+     "rate": "dl.input.claimed"
+    },
+    "record:dl_target": {
+     "rate": "dl.baseline.target"
+    },
+    "record:dl_sales": {
+     "rate": "dl.sales.claimed"
+    }
+   },
+   "checks": {
+    "dl_sales_at_target": "order:dl.sales_at_target.claimed"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "sharing of controllable gains and losses (Table 3.48)",
+   "categories": {
+    "O&M": {
+     "inputs": {
+      "record:share_normative": {
+       "rate": "share.om.normative"
+      },
+      "record:share_actual": {
+       "rate": "share.om.actual"
+      }
+     },
+     "checks": {
+      "share_variation": "order:share.om.variation",
+      "share_consumer": "order:share.om.consumer",
+      "share_licensee": "order:share.om.licensee"
+     }
+    },
+    "distribution loss": {
+     "inputs": {
+      "record:share_normative": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "the loss's variation is the revenue lost at the ABR, entered as an actual cost against a nil norm"
+      },
+      "record:share_actual": {
+       "computed": "distribution loss, approved (Table 3.46)",
+       "output": "dl_revenue_lost"
+      }
+     },
+     "checks": {
+      "share_variation": "order:share.dl.variation",
+      "share_consumer": "order:share.dl.consumer",
+      "share_licensee": "order:share.dl.licensee"
+     }
+    },
+    "IoWC": {
+     "inputs": {
+      "record:share_normative": {
+       "rate": "share.iowc.normative"
+      },
+      "record:share_actual": {
+       "rate": "share.iowc.actual"
+      }
+     },
+     "checks": {
+      "share_variation": "order:share.iowc.variation",
+      "share_consumer": "order:share.iowc.consumer",
+      "share_licensee": "order:share.iowc.licensee"
+     }
+    },
+    "PP rebate": {
+     "inputs": {
+      "record:share_normative": {
+       "rate": "share.rebate.normative"
+      },
+      "record:share_actual": {
+       "rate": "share.rebate.actual",
+       "negate": true,
+       "why": "income the licensee earns (a rebate earned, a surcharge paid as a negative): its gain is the actual less the norm, the reverse of an expense's"
+      }
+     },
+     "checks": {
+      "share_variation": "order:share.rebate.variation",
+      "share_consumer": "order:share.rebate.consumer",
+      "share_licensee": "order:share.rebate.licensee"
+     }
+    },
+    "DPS": {
+     "inputs": {
+      "record:share_normative": {
+       "rate": "share.dps.normative"
+      },
+      "record:share_actual": {
+       "rate": "share.dps.actual",
+       "negate": true,
+       "why": "income the licensee earns (a rebate earned, a surcharge paid as a negative): its gain is the actual less the norm, the reverse of an expense's"
+      }
+     },
+     "checks": {
+      "share_variation": "order:share.dps.variation",
+      "share_consumer": "order:share.dps.consumer",
+      "share_licensee": "order:share.dps.licensee"
+     }
+    }
+   },
+   "checks": {
+    "share_variation_total": "order:share.total.variation",
+    "share_consumer_total": "order:share.total.consumer",
+    "share_licensee_total": "order:share.total.licensee"
+   }
+  }
+ ]
+}
