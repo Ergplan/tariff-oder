@@ -1,0 +1,605 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "HPERC tariff order for HPSEBL FY2026-27 — O&M, working capital, ARR, adjustments and surplus (Tables 232–247, para 11.5)",
+  "sha256": "0f3d9e9df0eced38ed2e85df25be55da47f55b071a8f568f6d49d0268e50ec74",
+  "pages": 525
+ },
+ "figures": {
+  "om.employee.myt": {
+   "value": "3145.30",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Employee Expenses 3,145.30 2,987.62 2,987.62",
+   "what": "Table 232, Employee Expenses: myt"
+  },
+  "om.employee.petition": {
+   "value": "2987.62",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Employee Expenses 3,145.30 2,987.62 2,987.62",
+   "what": "Table 232, Employee Expenses: petition"
+  },
+  "om.employee.approved": {
+   "value": "2987.62",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "Employee Expenses 3,145.30 2,987.62 2,987.62",
+   "what": "Table 232, Employee Expenses: approved"
+  },
+  "om.rm.myt": {
+   "value": "173.61",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "R&M expenses 173.61 165.75 165.75",
+   "what": "Table 232, R&M expenses: myt"
+  },
+  "om.rm.petition": {
+   "value": "165.75",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "R&M expenses 173.61 165.75 165.75",
+   "what": "Table 232, R&M expenses: petition"
+  },
+  "om.rm.approved": {
+   "value": "165.75",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "R&M expenses 173.61 165.75 165.75",
+   "what": "Table 232, R&M expenses: approved"
+  },
+  "om.ag.myt": {
+   "value": "314.39",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "A&G Expenses 314.39 317.31 315.10",
+   "what": "Table 232, A&G Expenses: myt"
+  },
+  "om.ag.petition": {
+   "value": "317.31",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "A&G Expenses 314.39 317.31 315.10",
+   "what": "Table 232, A&G Expenses: petition"
+  },
+  "om.ag.approved": {
+   "value": "315.10",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "A&G Expenses 314.39 317.31 315.10",
+   "what": "Table 232, A&G Expenses: approved"
+  },
+  "om.total.myt": {
+   "value": "3633.30",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "O&M Expenses 3,633.30 3,470.68 3,468.46",
+   "what": "Table 232, O&M Expenses: myt"
+  },
+  "om.total.petition": {
+   "value": "3470.68",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "O&M Expenses 3,633.30 3,470.68 3,468.46",
+   "what": "Table 232, O&M Expenses: petition"
+  },
+  "om.total.approved": {
+   "value": "3468.46",
+   "unit": "INR_crore",
+   "page": 373,
+   "quote": "O&M Expenses 3,633.30 3,470.68 3,468.46",
+   "what": "Table 232, O&M Expenses: approved"
+  },
+  "csd.opening": {
+   "value": "578.98",
+   "unit": "INR_crore",
+   "page": 375,
+   "quote": "Opening Security at the beginning of the FY 578.98 Added /refund during the FY 30.01 Closing Security at the end of FY 608.99 Average security to be deducted while working out Working capital requirement 593.98",
+   "what": "Table 234, consumer security deposits FY2026-27: opening"
+  },
+  "csd.added": {
+   "value": "30.01",
+   "unit": "INR_crore",
+   "page": 375,
+   "quote": "Opening Security at the beginning of the FY 578.98 Added /refund during the FY 30.01 Closing Security at the end of FY 608.99 Average security to be deducted while working out Working capital requirement 593.98",
+   "what": "Table 234, consumer security deposits FY2026-27: added"
+  },
+  "csd.closing": {
+   "value": "608.99",
+   "unit": "INR_crore",
+   "page": 375,
+   "quote": "Opening Security at the beginning of the FY 578.98 Added /refund during the FY 30.01 Closing Security at the end of FY 608.99 Average security to be deducted while working out Working capital requirement 593.98",
+   "what": "Table 234, consumer security deposits FY2026-27: closing"
+  },
+  "csd.average": {
+   "value": "593.98",
+   "unit": "INR_crore",
+   "page": 375,
+   "quote": "Opening Security at the beginning of the FY 578.98 Added /refund during the FY 30.01 Closing Security at the end of FY 608.99 Average security to be deducted while working out Working capital requirement 593.98",
+   "what": "Table 234, consumer security deposits FY2026-27: average"
+  },
+  "iowc.om_month.petition": {
+   "value": "289.22",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "O&M Expenses for one month 289.22 289.04",
+   "what": "Table 236, O&M Expenses for one month: petition"
+  },
+  "iowc.om_month.approved": {
+   "value": "289.04",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "O&M Expenses for one month 289.22 289.04",
+   "what": "Table 236, O&M Expenses for one month: approved"
+  },
+  "iowc.receivables.petition": {
+   "value": "1513.50",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Revenue from sale of electricity equivalent to 2 months average billing 1513.50 1,440.80",
+   "what": "Table 236, Revenue from sale of electricity equivalent to 2 months average billing: petition"
+  },
+  "iowc.receivables.approved": {
+   "value": "1440.80",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Revenue from sale of electricity equivalent to 2 months average billing 1513.50 1,440.80",
+   "what": "Table 236, Revenue from sale of electricity equivalent to 2 months average billing: approved"
+  },
+  "iowc.spares.petition": {
+   "value": "5.525",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Maintenance Spares 40% of the R&M expenses for one month netted off for provisions and terminal benefits 5.525 5.53",
+   "what": "Table 236, Maintenance Spares 40% of the R&M expenses for one month netted off for provisions and terminal benefits: petition"
+  },
+  "iowc.spares.approved": {
+   "value": "5.53",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Maintenance Spares 40% of the R&M expenses for one month netted off for provisions and terminal benefits 5.525 5.53",
+   "what": "Table 236, Maintenance Spares 40% of the R&M expenses for one month netted off for provisions and terminal benefits: approved"
+  },
+  "iowc.csd.petition": {
+   "value": "593.98",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Less: Consumer Security Deposit 593.98 593.98",
+   "what": "Table 236, Less: Consumer Security Deposit: petition"
+  },
+  "iowc.csd.approved": {
+   "value": "593.98",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Less: Consumer Security Deposit 593.98 593.98",
+   "what": "Table 236, Less: Consumer Security Deposit: approved"
+  },
+  "iowc.requirement.petition": {
+   "value": "1214.27",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Working Capital Requirement 1,214.27 1,141.38",
+   "what": "Table 236, Working Capital Requirement: petition"
+  },
+  "iowc.requirement.approved": {
+   "value": "1141.38",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Working Capital Requirement 1,214.27 1,141.38",
+   "what": "Table 236, Working Capital Requirement: approved"
+  },
+  "iowc.interest.petition": {
+   "value": "150.23",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Interest on Working Capital 150.23 140.58",
+   "what": "Table 236, Interest on Working Capital: petition"
+  },
+  "iowc.interest.approved": {
+   "value": "140.58",
+   "unit": "INR_crore",
+   "page": 376,
+   "quote": "Interest on Working Capital 150.23 140.58",
+   "what": "Table 236, Interest on Working Capital: approved"
+  },
+  "iowc.rate.petition": {
+   "value": "12.37",
+   "unit": "percent",
+   "page": 376,
+   "quote": "Rate of Interest on Working Capital 12.37% 12.32%",
+   "what": "Table 236, rate: petition"
+  },
+  "iowc.rate.approved": {
+   "value": "12.32",
+   "unit": "percent",
+   "page": 376,
+   "quote": "Rate of Interest on Working Capital 12.37% 12.32%",
+   "what": "Table 236, rate: approved"
+  },
+  "iowc.mclr.rate": {
+   "value": "12.32",
+   "unit": "percent",
+   "page": 376,
+   "quote": "rate of interest applicable for working capital as 12.32% (one-year MCLR: 8.82% and 350 basis points)",
+   "what": "para 9.20.8, the rate as MCLR plus a spread: rate"
+  },
+  "iowc.mclr.mclr": {
+   "value": "8.82",
+   "unit": "percent",
+   "page": 376,
+   "quote": "rate of interest applicable for working capital as 12.32% (one-year MCLR: 8.82% and 350 basis points)",
+   "what": "para 9.20.8, the rate as MCLR plus a spread: mclr"
+  },
+  "iowc.mclr.spread_bp": {
+   "value": "350",
+   "unit": "fraction",
+   "page": 376,
+   "quote": "rate of interest applicable for working capital as 12.32% (one-year MCLR: 8.82% and 350 basis points)",
+   "what": "para 9.20.8, the rate as MCLR plus a spread: spread_bp"
+  },
+  "arr.pp.myt": {
+   "value": "5485.10",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Power Purchase Expenses for Supply in the State 5,485.10 5,684.75 5,678.19",
+   "what": "Table 244, power purchase for supply in the state: myt"
+  },
+  "arr.pp.petition": {
+   "value": "5684.75",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Power Purchase Expenses for Supply in the State 5,485.10 5,684.75 5,678.19",
+   "what": "Table 244, power purchase for supply in the state: petition"
+  },
+  "arr.pp.approved": {
+   "value": "5678.19",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Power Purchase Expenses for Supply in the State 5,485.10 5,684.75 5,678.19",
+   "what": "Table 244, power purchase for supply in the state: approved"
+  },
+  "arr.purchase.myt": {
+   "value": "4636.79",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Cost of electricity purchase including own generation 4,636.79 4,674.64 4,668.08",
+   "what": "Table 244, cost of electricity purchase incl. own generation: myt"
+  },
+  "arr.purchase.petition": {
+   "value": "4674.64",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Cost of electricity purchase including own generation 4,636.79 4,674.64 4,668.08",
+   "what": "Table 244, cost of electricity purchase incl. own generation: petition"
+  },
+  "arr.purchase.approved": {
+   "value": "4668.08",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Cost of electricity purchase including own generation 4,636.79 4,674.64 4,668.08",
+   "what": "Table 244, cost of electricity purchase incl. own generation: approved"
+  },
+  "arr.pgcil.myt": {
+   "value": "579.36",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Power Grid Charges 579.36 500.00 500.00",
+   "what": "Table 244, Power Grid charges: myt"
+  },
+  "arr.pgcil.petition": {
+   "value": "500.00",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Power Grid Charges 579.36 500.00 500.00",
+   "what": "Table 244, Power Grid charges: petition"
+  },
+  "arr.pgcil.approved": {
+   "value": "500.00",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Power Grid Charges 579.36 500.00 500.00",
+   "what": "Table 244, Power Grid charges: approved"
+  },
+  "arr.open_access.myt": {
+   "value": "40.19",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Open Access Charges and Other Charges 40.19 80.00 80.00",
+   "what": "Table 244, open access and other charges: myt"
+  },
+  "arr.open_access.petition": {
+   "value": "80.00",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Open Access Charges and Other Charges 40.19 80.00 80.00",
+   "what": "Table 244, open access and other charges: petition"
+  },
+  "arr.open_access.approved": {
+   "value": "80.00",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Open Access Charges and Other Charges 40.19 80.00 80.00",
+   "what": "Table 244, open access and other charges: approved"
+  },
+  "arr.hpptcl.myt": {
+   "value": "221.28",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "HPPTCL Charges 221.28 415.00 415.00",
+   "what": "Table 244, HPPTCL charges: myt"
+  },
+  "arr.hpptcl.petition": {
+   "value": "415.00",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "HPPTCL Charges 221.28 415.00 415.00",
+   "what": "Table 244, HPPTCL charges: petition"
+  },
+  "arr.hpptcl.approved": {
+   "value": "415.00",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "HPPTCL Charges 221.28 415.00 415.00",
+   "what": "Table 244, HPPTCL charges: approved"
+  },
+  "arr.sldc.myt": {
+   "value": "7.48",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "SLDC Charges 7.48 7.48 7.48",
+   "what": "Table 244, SLDC charges: myt"
+  },
+  "arr.sldc.petition": {
+   "value": "7.48",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "SLDC Charges 7.48 7.48 7.48",
+   "what": "Table 244, SLDC charges: petition"
+  },
+  "arr.sldc.approved": {
+   "value": "7.48",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "SLDC Charges 7.48 7.48 7.48",
+   "what": "Table 244, SLDC charges: approved"
+  },
+  "arr.other.myt": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "SLDC Charges 7.48 7.48 7.48 Other Charges 0.00 7.63 7.63",
+   "what": "Table 244, other charges: myt"
+  },
+  "arr.other.petition": {
+   "value": "7.63",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "SLDC Charges 7.48 7.48 7.48 Other Charges 0.00 7.63 7.63",
+   "what": "Table 244, other charges: petition"
+  },
+  "arr.other.approved": {
+   "value": "7.63",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "SLDC Charges 7.48 7.48 7.48 Other Charges 0.00 7.63 7.63",
+   "what": "Table 244, other charges: approved"
+  },
+  "arr.om.myt": {
+   "value": "3633.30",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Operation & Maintenance Costs 3,633.30 3,470.68 3,468.46",
+   "what": "Table 244, O&M: myt"
+  },
+  "arr.om.petition": {
+   "value": "3470.68",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Operation & Maintenance Costs 3,633.30 3,470.68 3,468.46",
+   "what": "Table 244, O&M: petition"
+  },
+  "arr.om.approved": {
+   "value": "3468.46",
+   "unit": "INR_crore",
+   "page": 381,
+   "quote": "Operation & Maintenance Costs 3,633.30 3,470.68 3,468.46",
+   "what": "Table 244, O&M: approved"
+  },
+  "arr.interest.myt": {
+   "value": "373.87",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Interest & Financing Charges 373.87 381.65 372.01",
+   "what": "Table 244, Interest & Financing Charges: myt"
+  },
+  "arr.interest.petition": {
+   "value": "381.65",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Interest & Financing Charges 373.87 381.65 372.01",
+   "what": "Table 244, Interest & Financing Charges: petition"
+  },
+  "arr.interest.approved": {
+   "value": "372.01",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Interest & Financing Charges 373.87 381.65 372.01",
+   "what": "Table 244, Interest & Financing Charges: approved"
+  },
+  "arr.dep.myt": {
+   "value": "281.11",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Depreciation 281.11 281.11 281.11",
+   "what": "Table 244, Depreciation: myt"
+  },
+  "arr.dep.petition": {
+   "value": "281.11",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Depreciation 281.11 281.11 281.11",
+   "what": "Table 244, Depreciation: petition"
+  },
+  "arr.dep.approved": {
+   "value": "281.11",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Depreciation 281.11 281.11 281.11",
+   "what": "Table 244, Depreciation: approved"
+  },
+  "arr.roe.myt": {
+   "value": "107.85",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Return on Equity 107.85 107.85 107.85",
+   "what": "Table 244, Return on Equity: myt"
+  },
+  "arr.roe.petition": {
+   "value": "107.85",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Return on Equity 107.85 107.85 107.85",
+   "what": "Table 244, Return on Equity: petition"
+  },
+  "arr.roe.approved": {
+   "value": "107.85",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Return on Equity 107.85 107.85 107.85",
+   "what": "Table 244, Return on Equity: approved"
+  },
+  "arr.nti.myt": {
+   "value": "-158.44",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Less: Non-Tariff & Other Income -158.44 -218.44 -218.44",
+   "what": "Table 244, Less: Non-Tariff & Other Income: myt"
+  },
+  "arr.nti.petition": {
+   "value": "-218.44",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Less: Non-Tariff & Other Income -158.44 -218.44 -218.44",
+   "what": "Table 244, Less: Non-Tariff & Other Income: petition"
+  },
+  "arr.nti.approved": {
+   "value": "-218.44",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Less: Non-Tariff & Other Income -158.44 -218.44 -218.44",
+   "what": "Table 244, Less: Non-Tariff & Other Income: approved"
+  },
+  "arr.arr.myt": {
+   "value": "9722.79",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Aggregate Revenue Requirement 9,722.79 9,707.60 9,689.18",
+   "what": "Table 244, Aggregate Revenue Requirement: myt"
+  },
+  "arr.arr.petition": {
+   "value": "9707.60",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Aggregate Revenue Requirement 9,722.79 9,707.60 9,689.18",
+   "what": "Table 244, Aggregate Revenue Requirement: petition"
+  },
+  "arr.arr.approved": {
+   "value": "9689.18",
+   "unit": "INR_crore",
+   "page": 382,
+   "quote": "Aggregate Revenue Requirement 9,722.79 9,707.60 9,689.18",
+   "what": "Table 244, Aggregate Revenue Requirement: approved"
+  },
+  "adj.tu_2223": {
+   "value": "-0.60",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Adjustment of True up Gap of FY 2022-23 -0.60",
+   "what": "Table 247, Adjustment of True up Gap of FY 2022-23"
+  },
+  "adj.tu_2324": {
+   "value": "-6.03",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Adjustment of True up surplus of FY 2023-24 -6.03",
+   "what": "Table 247, Adjustment of True up surplus of FY 2023-24"
+  },
+  "adj.tu_2425": {
+   "value": "-733.79",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Adjustment of True up surplus of FY 2024-25 -733.79",
+   "what": "Table 247, Adjustment of True up surplus of FY 2024-25"
+  },
+  "adj.tu_controllable": {
+   "value": "-421.72",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Adjustment of surplus/gap of True up Controllable Parameters -421.72",
+   "what": "Table 247, Adjustment of surplus/gap of True up Controllable Parameters"
+  },
+  "adj.tu_dep_int_roe": {
+   "value": "-42.35",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Adjustment of True Up of Dep, Interest & ROE FY 25 -42.35",
+   "what": "Table 247, Adjustment of True Up of Dep, Interest & ROE FY 25"
+  },
+  "adj.hpptcl_arrears": {
+   "value": "55",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Provision of arrears towards HPPTCL 55",
+   "what": "Table 247, Provision of arrears towards HPPTCL"
+  },
+  "adj.plant_arrears": {
+   "value": "45",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Provision of arrears towards HPPCL and HPSEBL Plants 45",
+   "what": "Table 247, Provision of arrears towards HPPCL and HPSEBL Plants"
+  },
+  "adj.cgs_arrears": {
+   "value": "56",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Provision of arrears towards Central Generating Stations 56",
+   "what": "Table 247, Provision of arrears towards Central Generating Stations"
+  },
+  "adj.total": {
+   "value": "8641.16",
+   "unit": "INR_crore",
+   "page": 384,
+   "quote": "Total Revenue Requirement for FY 2026-27 8641.16",
+   "what": "Table 247, Total Revenue Requirement for FY 2026-27"
+  },
+  "rev.arr": {
+   "value": "8641.16",
+   "unit": "INR_crore",
+   "page": 403,
+   "quote": "ARR (with Adjustments) 8,641.16 Revenue from Sale of Power to Consumers 8,644.77 Total Revenue 8,644.77 Net Surplus/ (Gap) 3.61",
+   "what": "para 11.5, ARR with adjustments, revenue and surplus at the existing tariff: arr"
+  },
+  "rev.sale": {
+   "value": "8644.77",
+   "unit": "INR_crore",
+   "page": 403,
+   "quote": "ARR (with Adjustments) 8,641.16 Revenue from Sale of Power to Consumers 8,644.77 Total Revenue 8,644.77 Net Surplus/ (Gap) 3.61",
+   "what": "para 11.5, ARR with adjustments, revenue and surplus at the existing tariff: sale"
+  },
+  "rev.total": {
+   "value": "8644.77",
+   "unit": "INR_crore",
+   "page": 403,
+   "quote": "ARR (with Adjustments) 8,641.16 Revenue from Sale of Power to Consumers 8,644.77 Total Revenue 8,644.77 Net Surplus/ (Gap) 3.61",
+   "what": "para 11.5, ARR with adjustments, revenue and surplus at the existing tariff: total"
+  },
+  "rev.surplus": {
+   "value": "3.61",
+   "unit": "INR_crore",
+   "page": 403,
+   "quote": "ARR (with Adjustments) 8,641.16 Revenue from Sale of Power to Consumers 8,644.77 Total Revenue 8,644.77 Net Surplus/ (Gap) 3.61",
+   "what": "para 11.5, ARR with adjustments, revenue and surplus at the existing tariff: surplus"
+  }
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "status": "found by reproducing the order in the build session; each is a question for the reviewer — none is resolved by the build",
+ "findings": [
+  {
+   "id": "H1",
+   "kind": "inconsistency",
+   "title": "Table 247's adjustments add to 8,640.69, but the order carries 8,641.16 — 0.47 more — into the ACoS and the surplus (3.61, which would be 4.08)",
+   "detail": "Table 244's ARR (9,689.18) adds up exactly from its heads.  Table 247 adjusts it by the true-ups of FY2022-23 (−0.60), FY2023-24 (−6.03), FY2024-25 (−733.79), the controllable parameters (−421.72), depreciation, interest and RoE of FY2024-25 (−42.35), and provisions for arrears (+55, +45, +56): 9,689.18 − 1,048.49 = 8,640.69.  The table prints 8,641.16; para 11.2's ACoS (6.75 = 8,641.16 / 12,806.9) and para 11.5's surplus (8,644.77 − 8,641.16 = 3.61) use the printed total.  With the table's own lines the surplus is 4.08.  None of the lines alone is 0.47.  For the reviewer: which line the 0.47 belongs to.",
+   "where": [
+    "HPERC order for HPSEBL FY2026-27, p.382 Table 244; p.384 Table 247; p.402 para 11.2; p.403 para 11.5",
+    "bindings/approval-iowc-arr-fy27.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "H2",
+   "kind": "unexplained figure",
+   "title": "The interest on working capital (140.58) implies a rate of 12.317 %, not the 12.32 % printed (MCLR 8.82 % + 350 bp)",
+   "detail": "Table 236's components reproduce (one month of the approved O&M 3,468.46; two months of the revenue 8,644.77; spares at 40 % of a month's R&M 165.75; less the average deposit 593.98): 1,141.37, against 1,141.38 printed.  12.32 % of it is 140.62; the order prints 140.58, which is 12.3166 % — an MCLR of 8.8166 % printed as 8.82 %.  Within the printed precision of the MCLR; for the reviewer, the unrounded weighted MCLR the order used.",
+   "where": [
+    "HPERC order for HPSEBL FY2026-27, p.376 para 9.20.8 and Table 236"
+   ],
+   "for": "reviewer"
+  }
+ ]
+}

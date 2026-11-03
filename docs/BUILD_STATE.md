@@ -1005,6 +1005,29 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 135 (2026-11-03): a fourth commission — HPERC / HPSEBL, FY2026-27: working
+  capital and the ARR's arithmetic.**
+  - **The order:** HPERC's FY2026-27 order for HPSEBL (SHA-256 `0f3d9e9d…ec74`, the loader's
+    `HPERC-HPSEBL-FY2026-27`).
+  - **New folder `packages/order-reproductions/hperc-hpsebl-fy2026-27/`:** the record holds 85
+    figures (Tables 232, 234, 236, 244, 247; para 11.5), 85 / 85 quotes verified.
+  - **12 draft HPERC rules in `packages/arr-rules/hperc/myt-2023.v1.json`:**
+    - working capital, Reg. 34 as quoted: a month of O&M, two months of revenue, spares at 40%
+      of a month's R&M, less the year's average deposits, at MCLR + 350 bp;
+    - O&M, power purchase, the ARR, the ARR with adjustments, and the surplus.
+    The years the 2023 Regulations govern are not bounded yet.
+  - **Binding `approval-iowc-arr-fy27.json`: 7 / 15 exact.**
+    - Exact: power purchase (5,678.19), the ARR (9,689.18), and the month's O&M, receivables,
+      spares and rate.
+    - The working capital is within its inputs' printed precision.
+  - **Findings `H1`, `H2` (reviewer):**
+    - **H1:** Table 247's adjustments add to 8,640.69, but the order carries 8,641.16 — 0.47
+      more — into its ACoS and its surplus of 3.61, which with the table's lines is 4.08.
+    - **H2:** the working capital interest (140.58) implies an MCLR of 8.8166% printed as 8.82%.
+  - **The desk:** the order is listed on `/arr/reference` and served at
+    `/arr/orders/hperc-hpsebl-fy2026-27` with no change to the API or the pages.
+  Nothing verified, nothing approved.
+
   **Increment 134 (2026-11-03): the reproduced orders on the desk.**
   - **API (read-only, analyst):**
     - `GET /arr/order-reproductions` lists each reproduced order with its check counts and
@@ -3361,6 +3384,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 135 (2026-11-03): 505 passed** (+1 unit: HPERC's working capital and ARR arithmetic, H1, H2).  `check_order_quotes.py`: 85 / 85.  Ruff and format clean.
 - **Increment 134 (2026-11-03): 504 passed** (+1 integration: the reproduced orders' API — counts, gaps, findings, 404s, authentication).  Ruff, format, contracts (regenerated, no drift) and `tsc` clean.
 - **Increment 133 (2026-11-03): 503 passed** (+1 unit: MPERC's wheeling / supply split per DISCOM, M4).  `check_order_quotes.py`: 96 / 96.  Ruff and format clean.
 - **Increment 132 (2026-11-03): 502 passed** (+1 unit: MPERC's escalation, O&M and inventory base).  `check_order_quotes.py`: 83 / 83.  Ruff and format clean.
@@ -3628,7 +3652,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 134) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 135) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3736,7 +3760,8 @@ entries below are the per-increment history.**
     DISCOM across two years (equity and RoE exact, M3); increment 131 its ARR per DISCOM end to
     end, within the printed rates' precision; increment 132 its O&M and the inventory base (M2
     reproduced); increment 133 its wheeling / supply split, M4; increment 134 both orders on the desk,
-    `/arr/orders/<id>`) — next a fourth commission (HPERC);
+    `/arr/orders/<id>`); increment 135 a fourth commission, HPERC / HPSEBL (working capital, ARR,
+    H1)) — next HPERC's O&M and depreciation, or the other orders (BERC, JSERC, OERC);
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

@@ -1,0 +1,121 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "HPERC order",
+ "rates": "order/figures-iowc-arr-fy2026-27.json",
+ "places": 2,
+ "note": "HPERC's working capital for HPSEBL, FY2026-27 (Reg. 34 as quoted: a month of O&M, two months of revenue, spares at 40 % of a month's R&M, less the average deposits, at MCLR + 350 bp), and the ARR's arithmetic: power purchase, the ARR, the adjustments and the surplus at the existing tariff (H1).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "O&M and working capital, approved (Tables 232, 234, 236)",
+   "inputs": {
+    "record:om_employee": {
+     "rate": "om.employee.approved"
+    },
+    "record:rm_annual": {
+     "rate": "om.rm.approved"
+    },
+    "record:om_ag": {
+     "rate": "om.ag.approved"
+    },
+    "record:om_annual": {
+     "rate": "om.total.approved"
+    },
+    "record:revenue_expected": {
+     "rate": "rev.sale"
+    },
+    "record:csd_opening": {
+     "rate": "csd.opening"
+    },
+    "record:csd_closing": {
+     "rate": "csd.closing"
+    },
+    "record:mclr": {
+     "rate": "iowc.mclr.mclr"
+    }
+   },
+   "checks": {
+    "om_total": "order:om.total.approved",
+    "iowc_om_month": "order:iowc.om_month.approved",
+    "iowc_receivables": "order:iowc.receivables.approved",
+    "iowc_spares": "order:iowc.spares.approved",
+    "iowc_csd": [
+     "order:iowc.csd.approved",
+     "order:csd.average"
+    ],
+    "iowc_requirement": "order:iowc.requirement.approved",
+    "iowc_rate": [
+     "order:iowc.rate.approved",
+     "order:iowc.mclr.rate"
+    ],
+    "iowc_interest": "order:iowc.interest.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "ARR, adjustments and surplus, approved (Tables 244, 247, para 11.5)",
+   "inputs": {
+    "record:arr_purchase": {
+     "rate": "arr.purchase.approved"
+    },
+    "record:arr_pgcil": {
+     "rate": "arr.pgcil.approved"
+    },
+    "record:arr_open_access": {
+     "rate": "arr.open_access.approved"
+    },
+    "record:arr_hpptcl": {
+     "rate": "arr.hpptcl.approved"
+    },
+    "record:arr_sldc": {
+     "rate": "arr.sldc.approved"
+    },
+    "record:arr_other": {
+     "rate": "arr.other.approved"
+    },
+    "record:arr_om": {
+     "rate": "arr.om.approved"
+    },
+    "record:arr_interest": {
+     "rate": "arr.interest.approved"
+    },
+    "record:arr_dep": {
+     "rate": "arr.dep.approved"
+    },
+    "record:arr_roe": {
+     "rate": "arr.roe.approved"
+    },
+    "record:arr_nti": {
+     "rate": "arr.nti.approved",
+     "negate": true,
+     "why": "printed as a negative 'Less:' line; the rule subtracts it"
+    },
+    "record:arr_adjustments": {
+     "rate": "adj.tu_2223",
+     "plus": [
+      "adj.tu_2324",
+      "adj.tu_2425",
+      "adj.tu_controllable",
+      "adj.tu_dep_int_roe",
+      "adj.hpptcl_arrears",
+      "adj.plant_arrears",
+      "adj.cgs_arrears"
+     ]
+    },
+    "record:revenue_expected": {
+     "rate": "rev.sale"
+    }
+   },
+   "checks": {
+    "arr_pp": "order:arr.pp.approved",
+    "arr_total": "order:arr.arr.approved",
+    "arr_net": [
+     "order:adj.total",
+     "order:rev.arr"
+    ],
+    "arr_surplus": "order:rev.surplus"
+   }
+  }
+ ]
+}

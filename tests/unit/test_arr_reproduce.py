@@ -2483,3 +2483,44 @@ def test_mperc_wheeling_and_supply_split_and_its_departures_from_the_matrix():
     assert (total * Decimal("0.10")).quantize(Decimal("0.01")) == Decimal("7.05")
     assert rec["al:w.iowc.east"][0] == "23.79" and rec["al:matrix.iowc.wheeling"][0] == "10"
     assert "M4" in {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+
+
+def test_a_fourth_commission_hperc_working_capital_and_arr_arithmetic():
+    """Real data, a fourth commission: HPERC's FY2026-27 order for HPSEBL — interest on working
+    capital (Reg. 34 as quoted: a month of O&M, two months of revenue, spares at 40 % of a month's
+    R&M, less the average deposits, at MCLR + 350 bp) within the printed precision of its inputs,
+    and the ARR's arithmetic: power purchase and the ARR exact; Table 247's adjustments add to
+    0.47 less than the total the order carries into its surplus (H1)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("HPERC") == []
+    folder = ROOT / "packages" / "order-reproductions" / "hperc-hpsebl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-iowc-arr-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    record = json.loads((folder / binding["rates"]).read_text())
+    assert record["document"]["sha256"] == json.loads((folder / "manifest.json").read_text())["order"]["sha256"]
+    checks = {
+        c.category.rsplit(" order:", 1)[1]: c for c in reproduce_cells(None, binding, load_rules("HPERC"), rates=rec)
+    }
+    assert len(checks) == 15 and sum(c.result == "match" for c in checks.values()) == 7
+    for k in (
+        "arr.pp.approved",
+        "arr.arr.approved",
+        "iowc.om_month.approved",
+        "iowc.receivables.approved",
+        "iowc.rate.approved",
+    ):
+        assert checks[k].result == "match", k
+    # working capital: paise from rounded inputs, the interest within the MCLR's printed precision
+    for k in ("om.total.approved", "iowc.csd.approved", "csd.average", "iowc.requirement.approved"):
+        assert abs(Decimal(checks[k].exact) - Decimal(checks[k].filed)) <= Decimal("0.01"), k
+    wc = Decimal(checks["iowc.requirement.approved"].exact)
+    gap = abs(Decimal(checks["iowc.interest.approved"].exact) - Decimal(checks["iowc.interest.approved"].filed))
+    assert gap <= wc * Decimal("0.00005") + Decimal("0.005")  # H2
+    # H1: the adjustments add to 8,640.69; the order carries 8,641.16, so its surplus is 3.61 not 4.08
+    assert checks["adj.total"].computed == "8640.69" and checks["adj.total"].filed == "8641.16"
+    assert checks["rev.surplus"].computed == "4.08" and checks["rev.surplus"].filed == "3.61"
+    assert {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]} == {"H1", "H2"}

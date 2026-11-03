@@ -1,0 +1,17 @@
+{
+ "id": "hperc-hpsebl-fy2026-27",
+ "status": "a commission order reproduced from its own figures — no petition or formats in this session; nothing reviewed, nothing approved",
+ "commission": "HPERC",
+ "licensees": [
+  "HPSEBL"
+ ],
+ "fiscal_year": "FY2026-27",
+ "order": {
+  "title": "HPERC tariff order for HPSEBL, FY2026-27",
+  "url": "https://hperc.org/wp-content/uploads/2026/03/fto2627.pdf",
+  "sha256": "0f3d9e9df0eced38ed2e85df25be55da47f55b071a8f568f6d49d0268e50ec74",
+  "loaded_by": "scripts/load_real_orders.py (key HPERC-HPSEBL-FY2026-27)"
+ },
+ "rules": "packages/arr-rules/hperc/myt-2023.v1.json",
+ "why": "a fourth commission"
+}

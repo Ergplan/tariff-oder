@@ -1,0 +1,509 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+ "applies": {
+  "commission": "HPERC"
+ },
+ "note": "HPERC's interest on working capital (Reg. 34 as the FY2026-27 order for HPSEBL quotes it) and the ARR's arithmetic — the engine's fourth commission.  The years the 2023 Regulations govern (the 5th MYT control period) are not bounded here yet.",
+ "rules": [
+  {
+   "id": "hperc.iowc.om_month",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M expenses for one month",
+   "output": "iowc_om_month",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "om / 12",
+   "inputs": {
+    "om": {
+     "unit": "INR_crore",
+     "source": "record:om_annual"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": "34(a)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "34. Interest on working capital:-The Distribution Licensee shall be allowed interest on estimated level of working capital for the financial year, computed as follows:- (a) O&M expenses for one month; (b) Two months equivalent of expected revenue; (c) Maintenance spares @ 40% of R&M expenses for one month; and Less: (d) Security deposits from consumers, if any: Provided that the interest on working capital shall be on normative basis and rate of interest shall be equal to the weighted average of one year Marginal Cost of Funds based Lending Rate (MCLR) as declared by the State Bank of India from time to time for the financial year in which the application for the determination of tariff is made plus 350 basis points: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 34 (HPSEBL FY2026-27 order, pp.375–376), not read from the Regulations"
+  },
+  {
+   "id": "hperc.iowc.receivables",
+   "version": 1,
+   "status": "draft",
+   "title": "Two months of the expected revenue",
+   "output": "iowc_receivables",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "revenue * 2 / 12",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:revenue_expected",
+     "note": "the revenue from sale at the existing tariff, as the order estimates it"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": "34(b)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "34. Interest on working capital:-The Distribution Licensee shall be allowed interest on estimated level of working capital for the financial year, computed as follows:- (a) O&M expenses for one month; (b) Two months equivalent of expected revenue; (c) Maintenance spares @ 40% of R&M expenses for one month; and Less: (d) Security deposits from consumers, if any: Provided that the interest on working capital shall be on normative basis and rate of interest shall be equal to the weighted average of one year Marginal Cost of Funds based Lending Rate (MCLR) as declared by the State Bank of India from time to time for the financial year in which the application for the determination of tariff is made plus 350 basis points: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 34 (HPSEBL FY2026-27 order, pp.375–376), not read from the Regulations"
+  },
+  {
+   "id": "hperc.iowc.spares",
+   "version": 1,
+   "status": "draft",
+   "title": "Maintenance spares: 40 % of a month's R&M",
+   "output": "iowc_spares",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "rate * rm / 12",
+   "inputs": {
+    "rm": {
+     "unit": "INR_crore",
+     "source": "record:rm_annual",
+     "note": "netted off for provisions and terminal benefits"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "40"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": "34(c)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "34. Interest on working capital:-The Distribution Licensee shall be allowed interest on estimated level of working capital for the financial year, computed as follows:- (a) O&M expenses for one month; (b) Two months equivalent of expected revenue; (c) Maintenance spares @ 40% of R&M expenses for one month; and Less: (d) Security deposits from consumers, if any: Provided that the interest on working capital shall be on normative basis and rate of interest shall be equal to the weighted average of one year Marginal Cost of Funds based Lending Rate (MCLR) as declared by the State Bank of India from time to time for the financial year in which the application for the determination of tariff is made plus 350 basis points: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 34 (HPSEBL FY2026-27 order, pp.375–376), not read from the Regulations"
+  },
+  {
+   "id": "hperc.iowc.csd_average",
+   "version": 1,
+   "status": "draft",
+   "title": "Consumer security deposits: the year's average",
+   "output": "iowc_csd",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "(opening + closing) / 2",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:csd_opening"
+    },
+    "closing": {
+     "unit": "INR_crore",
+     "source": "record:csd_closing"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": "34(d)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "34. Interest on working capital:-The Distribution Licensee shall be allowed interest on estimated level of working capital for the financial year, computed as follows:- (a) O&M expenses for one month; (b) Two months equivalent of expected revenue; (c) Maintenance spares @ 40% of R&M expenses for one month; and Less: (d) Security deposits from consumers, if any: Provided that the interest on working capital shall be on normative basis and rate of interest shall be equal to the weighted average of one year Marginal Cost of Funds based Lending Rate (MCLR) as declared by the State Bank of India from time to time for the financial year in which the application for the determination of tariff is made plus 350 basis points: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the average of the year, as Table 234 deducts it"
+  },
+  {
+   "id": "hperc.iowc.requirement",
+   "version": 1,
+   "status": "draft",
+   "title": "Working capital: O&M, receivables and spares, less the deposits",
+   "output": "iowc_requirement",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "om_month + receivables + spares - csd",
+   "inputs": {
+    "om_month": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_om_month"
+    },
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_receivables"
+    },
+    "spares": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_spares"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_csd"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": "34",
+    "source_id": null,
+    "page": null,
+    "excerpt": "34. Interest on working capital:-The Distribution Licensee shall be allowed interest on estimated level of working capital for the financial year, computed as follows:- (a) O&M expenses for one month; (b) Two months equivalent of expected revenue; (c) Maintenance spares @ 40% of R&M expenses for one month; and Less: (d) Security deposits from consumers, if any: Provided that the interest on working capital shall be on normative basis and rate of interest shall be equal to the weighted average of one year Marginal Cost of Funds based Lending Rate (MCLR) as declared by the State Bank of India from time to time for the financial year in which the application for the determination of tariff is made plus 350 basis points: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 34 (HPSEBL FY2026-27 order, pp.375–376), not read from the Regulations"
+  },
+  {
+   "id": "hperc.iowc.rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Rate of interest on working capital: the MCLR plus 350 basis points",
+   "output": "iowc_rate",
+   "unit": "percent",
+   "schedule": "R-SCH-10",
+   "formula": "mclr + spread",
+   "inputs": {
+    "mclr": {
+     "unit": "percent",
+     "source": "record:mclr",
+     "note": "SBI one-year MCLR, weighted, for the year of application"
+    },
+    "spread": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "3.5"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": "34, proviso",
+    "source_id": null,
+    "page": null,
+    "excerpt": "34. Interest on working capital:-The Distribution Licensee shall be allowed interest on estimated level of working capital for the financial year, computed as follows:- (a) O&M expenses for one month; (b) Two months equivalent of expected revenue; (c) Maintenance spares @ 40% of R&M expenses for one month; and Less: (d) Security deposits from consumers, if any: Provided that the interest on working capital shall be on normative basis and rate of interest shall be equal to the weighted average of one year Marginal Cost of Funds based Lending Rate (MCLR) as declared by the State Bank of India from time to time for the financial year in which the application for the determination of tariff is made plus 350 basis points: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 34 (HPSEBL FY2026-27 order, pp.375–376), not read from the Regulations"
+  },
+  {
+   "id": "hperc.iowc.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on working capital",
+   "output": "iowc_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "rate * requirement",
+   "inputs": {
+    "requirement": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_requirement"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "rule:iowc_rate"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": "34",
+    "source_id": null,
+    "page": null,
+    "excerpt": "34. Interest on working capital:-The Distribution Licensee shall be allowed interest on estimated level of working capital for the financial year, computed as follows:- (a) O&M expenses for one month; (b) Two months equivalent of expected revenue; (c) Maintenance spares @ 40% of R&M expenses for one month; and Less: (d) Security deposits from consumers, if any: Provided that the interest on working capital shall be on normative basis and rate of interest shall be equal to the weighted average of one year Marginal Cost of Funds based Lending Rate (MCLR) as declared by the State Bank of India from time to time for the financial year in which the application for the determination of tariff is made plus 350 basis points: …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 34 (HPSEBL FY2026-27 order, pp.375–376), not read from the Regulations"
+  },
+  {
+   "id": "hperc.om.total",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M expenses: employee, R&M and A&G",
+   "output": "om_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "employee + rm + ag",
+   "inputs": {
+    "employee": {
+     "unit": "INR_crore",
+     "source": "record:om_employee"
+    },
+    "rm": {
+     "unit": "INR_crore",
+     "source": "record:rm_annual"
+    },
+    "ag": {
+     "unit": "INR_crore",
+     "source": "record:om_ag"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 232"
+  },
+  {
+   "id": "hperc.arr.pp",
+   "version": 1,
+   "status": "draft",
+   "title": "Power purchase for supply in the state: purchase, inter-state and intra-state charges",
+   "output": "arr_pp",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "purchase + pgcil + open_access + hpptcl + sldc + other",
+   "inputs": {
+    "purchase": {
+     "unit": "INR_crore",
+     "source": "record:arr_purchase"
+    },
+    "pgcil": {
+     "unit": "INR_crore",
+     "source": "record:arr_pgcil"
+    },
+    "open_access": {
+     "unit": "INR_crore",
+     "source": "record:arr_open_access"
+    },
+    "hpptcl": {
+     "unit": "INR_crore",
+     "source": "record:arr_hpptcl"
+    },
+    "sldc": {
+     "unit": "INR_crore",
+     "source": "record:arr_sldc"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "record:arr_other"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 244"
+  },
+  {
+   "id": "hperc.arr.arr",
+   "version": 1,
+   "status": "draft",
+   "title": "Aggregate revenue requirement: power purchase, O&M, interest, depreciation and RoE, less non-tariff income",
+   "output": "arr_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "pp + om + interest + dep + roe - nti",
+   "inputs": {
+    "pp": {
+     "unit": "INR_crore",
+     "source": "rule:arr_pp"
+    },
+    "om": {
+     "unit": "INR_crore",
+     "source": "record:arr_om"
+    },
+    "interest": {
+     "unit": "INR_crore",
+     "source": "record:arr_interest",
+     "note": "interest on loans, working capital and deposits, with finance charges"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:arr_dep"
+    },
+    "roe": {
+     "unit": "INR_crore",
+     "source": "record:arr_roe"
+    },
+    "nti": {
+     "unit": "INR_crore",
+     "source": "record:arr_nti"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 244"
+  },
+  {
+   "id": "hperc.arr.net",
+   "version": 1,
+   "status": "draft",
+   "title": "ARR with adjustments: the true-ups carried and the provisions for arrears",
+   "output": "arr_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "arr + adjustments",
+   "inputs": {
+    "arr": {
+     "unit": "INR_crore",
+     "source": "rule:arr_total"
+    },
+    "adjustments": {
+     "unit": "INR_crore",
+     "source": "record:arr_adjustments",
+     "note": "true-up surpluses and gaps of earlier years with carrying cost, and provisions for arrears (Table 247)"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 247"
+  },
+  {
+   "id": "hperc.arr.surplus",
+   "version": 1,
+   "status": "draft",
+   "title": "Surplus (gap negative) at the existing tariff: revenue less the ARR with adjustments",
+   "output": "arr_surplus",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-14",
+   "formula": "revenue - net",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:revenue_expected"
+    },
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:arr_net"
+    }
+   },
+   "clause": {
+    "regulation": "HPERC (Terms and Conditions for Determination of Multi Year Tariff) Regulations, 2023 (the order's 'HPERC MYT Regulations, 2023')",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "HPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "para 11.5"
+  }
+ ]
+}
