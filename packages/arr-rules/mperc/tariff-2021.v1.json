@@ -1828,6 +1828,154 @@
    },
    "examples": [],
    "note": ""
+  },
+  {
+   "id": "mperc.alloc.wheeling",
+   "version": 1,
+   "status": "draft",
+   "title": "An ARR item's wheeling share",
+   "output": "alloc_wheeling",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "per": "arr_item",
+   "formula": "total * share",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "record:arr_item_total"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "record:wheeling_share",
+     "note": "the item's wheeling share in the allocation matrix (or the order's own, where the matrix is silent — M4)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "8.11",
+    "source_id": null,
+    "page": null,
+    "excerpt": "8.11. Till such time the complete accounting segregation has not been done between Wheeling and Supply Businesses of the Distribution Licensee, the expenses of the Distribution Licensee shall be apportioned between the Wheeling and Supply Businesses in accordance with the following Allocation Matrix: Operation and Maintenance expenses 70% 30% Depreciation 95% 5% Interest on loan 95% 5% Interest on working capital 10% 90% Return on Equity 90% 10% … Power purchase cost including transmission and SLDC charges 0% 100%",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 8.11 (MP DISCOMs FY2026-27 order, pp.120–121), not read from the Regulations"
+  },
+  {
+   "id": "mperc.alloc.supply",
+   "version": 1,
+   "status": "draft",
+   "title": "An ARR item's supply share",
+   "output": "alloc_supply",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "per": "arr_item",
+   "formula": "total * (1 - share)",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "record:arr_item_total"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "record:wheeling_share",
+     "note": "the item's wheeling share in the allocation matrix (or the order's own, where the matrix is silent — M4)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "8.11",
+    "source_id": null,
+    "page": null,
+    "excerpt": "8.11. Till such time the complete accounting segregation has not been done between Wheeling and Supply Businesses of the Distribution Licensee, the expenses of the Distribution Licensee shall be apportioned between the Wheeling and Supply Businesses in accordance with the following Allocation Matrix: Operation and Maintenance expenses 70% 30% Depreciation 95% 5% Interest on loan 95% 5% Interest on working capital 10% 90% Return on Equity 90% 10% … Power purchase cost including transmission and SLDC charges 0% 100%",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 8.11 (MP DISCOMs FY2026-27 order, pp.120–121), not read from the Regulations"
+  },
+  {
+   "id": "mperc.alloc.wheeling_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Wheeling ARR: the items' wheeling shares",
+   "output": "alloc_wheeling_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:alloc_wheeling"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "8.11",
+    "source_id": null,
+    "page": null,
+    "excerpt": "8.11. Till such time the complete accounting segregation has not been done between Wheeling and Supply Businesses of the Distribution Licensee, the expenses of the Distribution Licensee shall be apportioned between the Wheeling and Supply Businesses in accordance with the following Allocation Matrix: Operation and Maintenance expenses 70% 30% Depreciation 95% 5% Interest on loan 95% 5% Interest on working capital 10% 90% Return on Equity 90% 10% … Power purchase cost including transmission and SLDC charges 0% 100%",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 8.11 (MP DISCOMs FY2026-27 order, pp.120–121), not read from the Regulations; Table 75"
+  },
+  {
+   "id": "mperc.alloc.supply_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Supply ARR: the items' supply shares",
+   "output": "alloc_supply_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-15",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:alloc_supply"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "8.11",
+    "source_id": null,
+    "page": null,
+    "excerpt": "8.11. Till such time the complete accounting segregation has not been done between Wheeling and Supply Businesses of the Distribution Licensee, the expenses of the Distribution Licensee shall be apportioned between the Wheeling and Supply Businesses in accordance with the following Allocation Matrix: Operation and Maintenance expenses 70% 30% Depreciation 95% 5% Interest on loan 95% 5% Interest on working capital 10% 90% Return on Equity 90% 10% … Power purchase cost including transmission and SLDC charges 0% 100%",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 8.11 (MP DISCOMs FY2026-27 order, pp.120–121), not read from the Regulations; Table 76"
   }
  ]
 }

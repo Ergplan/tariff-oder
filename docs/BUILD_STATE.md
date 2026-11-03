@@ -1005,6 +1005,26 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 133 (2026-11-03): MPERC — each DISCOM's ARR split between wheeling and supply, and
+  the order's departures from its matrix.**
+  - **The record:** `order/figures-allocation-fy2026-27.json` in the MPERC folder holds 96
+    figures (the Reg. 8.11 matrix as quoted, Tables 75 and 76), 96 / 96 quotes verified.
+  - **Four more draft MPERC rules (48 in all):** an item's wheeling and supply shares, and the
+    two totals.
+  - **Binding `approval-allocation-fy27.json`: one evaluation per DISCOM, the ARR items as
+    categories.**
+    - Table 74's admitted heads, split by the matrix and by the order's own splits where it
+      departs; each departure is a stated constant with its reason.
+    - 41 / 48 exact; the other 7 a paisa off (half-paise ties).
+    - The two totals add to each DISCOM's ARR, West's a paisa short.
+  - **Finding `M4` (reviewer):**
+    - Working capital interest is put by activity (East: 23.79 wheeling, 46.74 supply) where
+      the quoted matrix says 10:90 of the total (7.05 / 63.48).
+    - Other income and the past true-ups are split 10:90, and the smart-meter lease and R&D are
+      put with loan interest at 95:5.  The matrix as quoted lists none of these.
+    - The effect falls on the wheeling charge.
+  Nothing verified, nothing approved.
+
   **Increment 132 (2026-11-03): MPERC — O&M (escalation, R&M on GFA, DA) and the working
   capital's inventory base (M2).**
   - **The record:** `order/figures-om-fy2026-27.json` in the MPERC folder holds 83 figures
@@ -3315,6 +3335,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 133 (2026-11-03): 503 passed** (+1 unit: MPERC's wheeling / supply split per DISCOM, M4).  `check_order_quotes.py`: 96 / 96.  Ruff and format clean.
 - **Increment 132 (2026-11-03): 502 passed** (+1 unit: MPERC's escalation, O&M and inventory base).  `check_order_quotes.py`: 83 / 83.  Ruff and format clean.
 - **Increment 131 (2026-11-03): 501 passed** (+1 unit: MPERC's ARR per DISCOM, the table and end to end).  `check_order_quotes.py`: 144 / 144.  Ruff and format clean.
 - **Increment 130 (2026-11-03): 500 passed** (+1 unit: MPERC's depreciation, loan and equity chain per DISCOM, bounded by printed precision; M3).  `check_order_quotes.py`: 138 / 138.  Ruff and format clean.
@@ -3580,7 +3601,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 132) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 133) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3687,7 +3708,7 @@ entries below are the per-increment history.**
     DISCOMs in one order (29 / 30); increment 130 its depreciation, loans and equity chained per
     DISCOM across two years (equity and RoE exact, M3); increment 131 its ARR per DISCOM end to
     end, within the printed rates' precision; increment 132 its O&M and the inventory base (M2
-    reproduced)) — next HPERC, or MPERC's wheeling / supply split (Tables 75–76);
+    reproduced); increment 133 its wheeling / supply split, M4) — next a fourth commission (HPERC);
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

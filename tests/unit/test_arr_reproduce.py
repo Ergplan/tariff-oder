@@ -2454,3 +2454,32 @@ def test_mperc_om_escalation_da_and_the_inventory_base():
     # the year's DA is 64 %: three months at 61, six at 64, three at 67
     da = next(c for c in checks if c.output == "om_da" and " east " in c.category)
     assert Decimal(da.exact) == Decimal(rec["om:om.basic.east"][0]) * Decimal("0.64")
+
+
+def test_mperc_wheeling_and_supply_split_and_its_departures_from_the_matrix():
+    """Real data, MPERC FY2026-27: each DISCOM's admitted ARR split between wheeling and supply
+    (Tables 75, 76) by the Reg. 8.11 matrix as the order quotes it, and — where the order departs
+    from it or goes beyond it — by the order's own split, each stated with its reason (M4): working
+    capital interest by activity rather than 10:90; other income and past true-ups at 10:90.  The
+    two totals add to the ARR including the true-ups."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "mperc-discoms-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-allocation-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("MPERC"), rates=rec)
+    assert len(checks) == 48 and sum(c.result == "match" for c in checks) == 41
+    assert all(abs(Decimal(c.exact) - Decimal(c.filed)) <= Decimal("0.015") for c in checks)
+    for d in ("east", "west", "central"):
+        w, s = Decimal(rec[f"al:w.total.{d}"][0]), Decimal(rec[f"al:s.total.{d}"][0])
+        assert abs(w + s - Decimal(rec[f"arr:arr.total.{d}.admitted"][0])) <= Decimal(
+            "0.01"
+        )  # West's halves a paisa short
+    # M4: the matrix's 10 % of East's working capital interest would be 7.05, the order puts 23.79
+    total = Decimal(rec["arr:arr.iowc.east.admitted"][0])
+    assert (total * Decimal("0.10")).quantize(Decimal("0.01")) == Decimal("7.05")
+    assert rec["al:w.iowc.east"][0] == "23.79" and rec["al:matrix.iowc.wheeling"][0] == "10"
+    assert "M4" in {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}

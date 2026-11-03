@@ -33,6 +33,17 @@
     "bindings/approval-dep-loan-fy27.json"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "M4",
+   "kind": "rule against regulation",
+   "title": "The wheeling / supply split departs from the Reg. 8.11 matrix as quoted: working capital interest by activity, not 10:90; other income and past true-ups split 10:90 though the matrix does not list them",
+   "detail": "The matrix the order quotes (pp.120–121) splits interest on working capital 10 % wheeling / 90 % supply.  Tables 75–76 instead put each activity's own computed interest (Table 61) in its business: East 23.79 wheeling and 46.74 supply, where the matrix gives 7.05 and 63.48 of the 70.53; West 20.60 and −11.77 where it gives 0.88 and 7.94.  The order also splits other income and the true-ups of past years (MP Transco's and Genco's passed through, the DISCOMs' own) 10:90, and puts lease charges for smart meters and the R&D fund with interest on project loans at 95:5 — none of which the matrix as quoted lists; deposit interest goes 100 % to supply.  Every figure reproduces with those splits (41 of 48 exact, the rest a paisa).  The effect is on the wheeling charge open access consumers pay.  For the reviewer: whether the Regulations (beyond the extract) provide these splits.",
+   "where": [
+    "MPERC order on the MP DISCOMs FY2026-27, pp.120–122 (Reg. 8.11 as quoted; Tables 75, 76); p.107 Table 61",
+    "bindings/approval-allocation-fy27.json"
+   ],
+   "for": "reviewer"
   }
  ]
 }

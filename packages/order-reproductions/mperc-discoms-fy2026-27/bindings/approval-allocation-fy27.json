@@ -1,0 +1,512 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "MPERC order",
+ "rates": {
+  "al": "order/figures-allocation-fy2026-27.json",
+  "arr": "order/figures-arr-fy2026-27.json",
+  "iw": "order/figures-iowc-fy2026-27.json"
+ },
+ "places": 2,
+ "note": "MPERC's wheeling and supply ARR for each DISCOM, FY2026-27 (Tables 75, 76): Table 74's admitted heads split by the Reg. 8.11 matrix — and, where the order departs from or goes beyond the matrix as quoted, by its own split, each with its reason (M4).  The two totals add to the DISCOM's ARR including the true-ups.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "wheeling and supply ARR, east (Tables 75, 76)",
+   "categories": {
+    "power purchase with transmission": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.pp.east.admitted",
+       "plus": [
+        "arr:arr.intra.east.admitted"
+       ]
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.pp.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.pp.east"
+     }
+    },
+    "O&M": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.om.east.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.om.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.om.east",
+      "alloc_supply": "order:al:s.om.east"
+     }
+    },
+    "depreciation": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.dep.east.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.dep.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.dep.east",
+      "alloc_supply": "order:al:s.dep.east"
+     }
+    },
+    "project-loan interest, smart-meter lease and R&D": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.loan_interest.east.admitted",
+       "plus": [
+        "arr:arr.lease.east.admitted",
+        "arr:arr.rnd.east.admitted"
+       ]
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.loan.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.loan.east",
+      "alloc_supply": "order:al:s.loan.east"
+     }
+    },
+    "working capital interest, wheeling": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "iw:w.interest.east"
+      },
+      "record:wheeling_share": {
+       "value": "100",
+       "unit": "percent",
+       "why": "the order puts the wheeling activity's computed interest wholly in wheeling, not the matrix's 10 % of the total (M4)"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.iowc.east"
+     }
+    },
+    "working capital interest, supply": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "iw:r.interest.east"
+      },
+      "record:wheeling_share": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the supply activity's computed interest wholly in supply (M4)"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.iowc.east"
+     }
+    },
+    "return on equity": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.roe.east.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.roe.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.roe.east",
+      "alloc_supply": "order:al:s.roe.east"
+     }
+    },
+    "consumer security deposit interest": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.csd.east.admitted"
+      },
+      "record:wheeling_share": {
+       "value": "0",
+       "unit": "percent",
+       "why": "Table 76 puts 100 % of it in supply; the matrix as quoted does not list it"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.csd.east"
+     }
+    },
+    "other income": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.other_income.east.admitted",
+       "negate": true,
+       "why": "income, deducted"
+      },
+      "record:wheeling_share": {
+       "value": "10",
+       "unit": "percent",
+       "why": "the order's 10:90, not in the matrix as quoted (M4)"
+      }
+     },
+     "checks": {}
+    },
+    "true-ups of past years": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.transco_gap.east.admitted",
+       "plus": [
+        "arr:arr.trueup_gap.east.admitted"
+       ],
+       "minus": "arr:arr.genco_surplus.east.admitted"
+      },
+      "record:wheeling_share": {
+       "value": "10",
+       "unit": "percent",
+       "why": "the order's 10:90, not in the matrix as quoted (M4)"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.trueups.east",
+      "alloc_supply": "order:al:s.trueups.east"
+     }
+    }
+   },
+   "checks": {
+    "alloc_wheeling_total": "order:al:w.total.east",
+    "alloc_supply_total": "order:al:s.total.east"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "wheeling and supply ARR, west (Tables 75, 76)",
+   "categories": {
+    "power purchase with transmission": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.pp.west.admitted",
+       "plus": [
+        "arr:arr.intra.west.admitted"
+       ]
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.pp.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.pp.west"
+     }
+    },
+    "O&M": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.om.west.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.om.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.om.west",
+      "alloc_supply": "order:al:s.om.west"
+     }
+    },
+    "depreciation": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.dep.west.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.dep.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.dep.west",
+      "alloc_supply": "order:al:s.dep.west"
+     }
+    },
+    "project-loan interest, smart-meter lease and R&D": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.loan_interest.west.admitted",
+       "plus": [
+        "arr:arr.lease.west.admitted",
+        "arr:arr.rnd.west.admitted"
+       ]
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.loan.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.loan.west",
+      "alloc_supply": "order:al:s.loan.west"
+     }
+    },
+    "working capital interest, wheeling": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "iw:w.interest.west"
+      },
+      "record:wheeling_share": {
+       "value": "100",
+       "unit": "percent",
+       "why": "the order puts the wheeling activity's computed interest wholly in wheeling, not the matrix's 10 % of the total (M4)"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.iowc.west"
+     }
+    },
+    "working capital interest, supply": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "iw:r.interest.west"
+      },
+      "record:wheeling_share": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the supply activity's computed interest wholly in supply (M4)"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.iowc.west"
+     }
+    },
+    "return on equity": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.roe.west.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.roe.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.roe.west",
+      "alloc_supply": "order:al:s.roe.west"
+     }
+    },
+    "consumer security deposit interest": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.csd.west.admitted"
+      },
+      "record:wheeling_share": {
+       "value": "0",
+       "unit": "percent",
+       "why": "Table 76 puts 100 % of it in supply; the matrix as quoted does not list it"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.csd.west"
+     }
+    },
+    "other income": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.other_income.west.admitted",
+       "negate": true,
+       "why": "income, deducted"
+      },
+      "record:wheeling_share": {
+       "value": "10",
+       "unit": "percent",
+       "why": "the order's 10:90, not in the matrix as quoted (M4)"
+      }
+     },
+     "checks": {}
+    },
+    "true-ups of past years": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.transco_gap.west.admitted",
+       "plus": [
+        "arr:arr.trueup_gap.west.admitted"
+       ],
+       "minus": "arr:arr.genco_surplus.west.admitted"
+      },
+      "record:wheeling_share": {
+       "value": "10",
+       "unit": "percent",
+       "why": "the order's 10:90, not in the matrix as quoted (M4)"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.trueups.west",
+      "alloc_supply": "order:al:s.trueups.west"
+     }
+    }
+   },
+   "checks": {
+    "alloc_wheeling_total": "order:al:w.total.west",
+    "alloc_supply_total": "order:al:s.total.west"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "wheeling and supply ARR, central (Tables 75, 76)",
+   "categories": {
+    "power purchase with transmission": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.pp.central.admitted",
+       "plus": [
+        "arr:arr.intra.central.admitted"
+       ]
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.pp.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.pp.central"
+     }
+    },
+    "O&M": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.om.central.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.om.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.om.central",
+      "alloc_supply": "order:al:s.om.central"
+     }
+    },
+    "depreciation": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.dep.central.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.dep.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.dep.central",
+      "alloc_supply": "order:al:s.dep.central"
+     }
+    },
+    "project-loan interest, smart-meter lease and R&D": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.loan_interest.central.admitted",
+       "plus": [
+        "arr:arr.lease.central.admitted",
+        "arr:arr.rnd.central.admitted"
+       ]
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.loan.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.loan.central",
+      "alloc_supply": "order:al:s.loan.central"
+     }
+    },
+    "working capital interest, wheeling": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "iw:w.interest.central"
+      },
+      "record:wheeling_share": {
+       "value": "100",
+       "unit": "percent",
+       "why": "the order puts the wheeling activity's computed interest wholly in wheeling, not the matrix's 10 % of the total (M4)"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.iowc.central"
+     }
+    },
+    "working capital interest, supply": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "iw:r.interest.central"
+      },
+      "record:wheeling_share": {
+       "value": "0",
+       "unit": "percent",
+       "why": "the supply activity's computed interest wholly in supply (M4)"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.iowc.central"
+     }
+    },
+    "return on equity": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.roe.central.admitted"
+      },
+      "record:wheeling_share": {
+       "rate": "al:matrix.roe.wheeling"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.roe.central",
+      "alloc_supply": "order:al:s.roe.central"
+     }
+    },
+    "consumer security deposit interest": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.csd.central.admitted"
+      },
+      "record:wheeling_share": {
+       "value": "0",
+       "unit": "percent",
+       "why": "Table 76 puts 100 % of it in supply; the matrix as quoted does not list it"
+      }
+     },
+     "checks": {
+      "alloc_supply": "order:al:s.csd.central"
+     }
+    },
+    "other income": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.other_income.central.admitted",
+       "negate": true,
+       "why": "income, deducted"
+      },
+      "record:wheeling_share": {
+       "value": "10",
+       "unit": "percent",
+       "why": "the order's 10:90, not in the matrix as quoted (M4)"
+      }
+     },
+     "checks": {}
+    },
+    "true-ups of past years": {
+     "inputs": {
+      "record:arr_item_total": {
+       "rate": "arr:arr.transco_gap.central.admitted",
+       "plus": [
+        "arr:arr.trueup_gap.central.admitted"
+       ],
+       "minus": "arr:arr.genco_surplus.central.admitted"
+      },
+      "record:wheeling_share": {
+       "value": "10",
+       "unit": "percent",
+       "why": "the order's 10:90, not in the matrix as quoted (M4)"
+      }
+     },
+     "checks": {
+      "alloc_wheeling": "order:al:w.trueups.central",
+      "alloc_supply": "order:al:s.trueups.central"
+     }
+    }
+   },
+   "checks": {
+    "alloc_wheeling_total": "order:al:w.total.central",
+    "alloc_supply_total": "order:al:s.total.central"
+   }
+  }
+ ]
+}

@@ -1,0 +1,682 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "MPERC order on the ARR and retail supply tariff of the three MP DISCOMs for FY2026-27 (petition 140/2025) — wheeling and supply ARR (Tables 75, 76) and the allocation matrix",
+  "sha256": "77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb",
+  "pages": 255
+ },
+ "figures": {
+  "matrix.om.wheeling": {
+   "value": "70",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Operation and Maintenance expenses 70% 30%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Operation and Maintenance expenses: wheeling"
+  },
+  "matrix.om.supply": {
+   "value": "30",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Operation and Maintenance expenses 70% 30%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Operation and Maintenance expenses: supply"
+  },
+  "matrix.dep.wheeling": {
+   "value": "95",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Depreciation 95% 5%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Depreciation: wheeling"
+  },
+  "matrix.dep.supply": {
+   "value": "5",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Depreciation 95% 5%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Depreciation: supply"
+  },
+  "matrix.loan.wheeling": {
+   "value": "95",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Interest on loan 95% 5%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Interest on loan: wheeling"
+  },
+  "matrix.loan.supply": {
+   "value": "5",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Interest on loan 95% 5%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Interest on loan: supply"
+  },
+  "matrix.iowc.wheeling": {
+   "value": "10",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Interest on working capital 10% 90%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Interest on working capital: wheeling"
+  },
+  "matrix.iowc.supply": {
+   "value": "90",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Interest on working capital 10% 90%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Interest on working capital: supply"
+  },
+  "matrix.roe.wheeling": {
+   "value": "90",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Return on Equity 90% 10%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Return on Equity: wheeling"
+  },
+  "matrix.roe.supply": {
+   "value": "10",
+   "unit": "percent",
+   "page": 120,
+   "quote": "Return on Equity 90% 10%",
+   "what": "Reg. 8.11 allocation matrix as the order quotes it, Return on Equity: supply"
+  },
+  "matrix.pp.wheeling": {
+   "value": "0",
+   "unit": "percent",
+   "page": 121,
+   "quote": "Power purchase cost including transmission and SLDC charges 0% 100%",
+   "what": "Reg. 8.11 allocation matrix, power purchase: wheeling"
+  },
+  "matrix.pp.supply": {
+   "value": "100",
+   "unit": "percent",
+   "page": 121,
+   "quote": "Power purchase cost including transmission and SLDC charges 0% 100%",
+   "what": "Reg. 8.11 allocation matrix, power purchase: supply"
+  },
+  "w.om.east": {
+   "value": "1421.38",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "70% of Operation and Maintenance expenses for Wheeling Business 1,421.38 1,272.83 1,374.26 4,068.47",
+   "what": "Table 75, 70% of Operation and Maintenance expenses for Wheeling Business: east"
+  },
+  "w.om.west": {
+   "value": "1272.83",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "70% of Operation and Maintenance expenses for Wheeling Business 1,421.38 1,272.83 1,374.26 4,068.47",
+   "what": "Table 75, 70% of Operation and Maintenance expenses for Wheeling Business: west"
+  },
+  "w.om.central": {
+   "value": "1374.26",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "70% of Operation and Maintenance expenses for Wheeling Business 1,421.38 1,272.83 1,374.26 4,068.47",
+   "what": "Table 75, 70% of Operation and Maintenance expenses for Wheeling Business: central"
+  },
+  "w.om.state": {
+   "value": "4068.47",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "70% of Operation and Maintenance expenses for Wheeling Business 1,421.38 1,272.83 1,374.26 4,068.47",
+   "what": "Table 75, 70% of Operation and Maintenance expenses for Wheeling Business: state"
+  },
+  "w.dep.east": {
+   "value": "379.73",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "95% of Depreciation for Wheeling Business 379.73 174.94 365.24 919.90",
+   "what": "Table 75, 95% of Depreciation for Wheeling Business: east"
+  },
+  "w.dep.west": {
+   "value": "174.94",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "95% of Depreciation for Wheeling Business 379.73 174.94 365.24 919.90",
+   "what": "Table 75, 95% of Depreciation for Wheeling Business: west"
+  },
+  "w.dep.central": {
+   "value": "365.24",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "95% of Depreciation for Wheeling Business 379.73 174.94 365.24 919.90",
+   "what": "Table 75, 95% of Depreciation for Wheeling Business: central"
+  },
+  "w.dep.state": {
+   "value": "919.90",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "95% of Depreciation for Wheeling Business 379.73 174.94 365.24 919.90",
+   "what": "Table 75, 95% of Depreciation for Wheeling Business: state"
+  },
+  "w.loan.east": {
+   "value": "498.27",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "95% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Wheeling Business 498.27 194.01 705.61 1,397.88",
+   "what": "Table 75, 95% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Wheeling Business: east"
+  },
+  "w.loan.west": {
+   "value": "194.01",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "95% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Wheeling Business 498.27 194.01 705.61 1,397.88",
+   "what": "Table 75, 95% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Wheeling Business: west"
+  },
+  "w.loan.central": {
+   "value": "705.61",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "95% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Wheeling Business 498.27 194.01 705.61 1,397.88",
+   "what": "Table 75, 95% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Wheeling Business: central"
+  },
+  "w.loan.state": {
+   "value": "1397.88",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "95% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Wheeling Business 498.27 194.01 705.61 1,397.88",
+   "what": "Table 75, 95% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Wheeling Business: state"
+  },
+  "w.iowc.east": {
+   "value": "23.79",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Interest on Working Capital for Wheeling Business 23.79 20.60 22.97 67.35",
+   "what": "Table 75, Interest on Working Capital for Wheeling Business: east"
+  },
+  "w.iowc.west": {
+   "value": "20.60",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Interest on Working Capital for Wheeling Business 23.79 20.60 22.97 67.35",
+   "what": "Table 75, Interest on Working Capital for Wheeling Business: west"
+  },
+  "w.iowc.central": {
+   "value": "22.97",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Interest on Working Capital for Wheeling Business 23.79 20.60 22.97 67.35",
+   "what": "Table 75, Interest on Working Capital for Wheeling Business: central"
+  },
+  "w.iowc.state": {
+   "value": "67.35",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Interest on Working Capital for Wheeling Business 23.79 20.60 22.97 67.35",
+   "what": "Table 75, Interest on Working Capital for Wheeling Business: state"
+  },
+  "w.roe.east": {
+   "value": "261.40",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "90% of Return on Equity for Wheeling Business 261.40 178.75 305.17 745.32",
+   "what": "Table 75, 90% of Return on Equity for Wheeling Business: east"
+  },
+  "w.roe.west": {
+   "value": "178.75",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "90% of Return on Equity for Wheeling Business 261.40 178.75 305.17 745.32",
+   "what": "Table 75, 90% of Return on Equity for Wheeling Business: west"
+  },
+  "w.roe.central": {
+   "value": "305.17",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "90% of Return on Equity for Wheeling Business 261.40 178.75 305.17 745.32",
+   "what": "Table 75, 90% of Return on Equity for Wheeling Business: central"
+  },
+  "w.roe.state": {
+   "value": "745.32",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "90% of Return on Equity for Wheeling Business 261.40 178.75 305.17 745.32",
+   "what": "Table 75, 90% of Return on Equity for Wheeling Business: state"
+  },
+  "w.other_income.east": {
+   "value": "24.79",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "10% of other income and Non-Tariff Income for Wheeling Business 24.79 24.70 16.54 66.03",
+   "what": "Table 75, 10% of other income and Non-Tariff Income for Wheeling Business: east"
+  },
+  "w.other_income.west": {
+   "value": "24.70",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "10% of other income and Non-Tariff Income for Wheeling Business 24.79 24.70 16.54 66.03",
+   "what": "Table 75, 10% of other income and Non-Tariff Income for Wheeling Business: west"
+  },
+  "w.other_income.central": {
+   "value": "16.54",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "10% of other income and Non-Tariff Income for Wheeling Business 24.79 24.70 16.54 66.03",
+   "what": "Table 75, 10% of other income and Non-Tariff Income for Wheeling Business: central"
+  },
+  "w.other_income.state": {
+   "value": "66.03",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "10% of other income and Non-Tariff Income for Wheeling Business 24.79 24.70 16.54 66.03",
+   "what": "Table 75, 10% of other income and Non-Tariff Income for Wheeling Business: state"
+  },
+  "w.trueups.east": {
+   "value": "221.75",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "10% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs 221.75 261.88 243.74 727.37",
+   "what": "Table 75, 10% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs: east"
+  },
+  "w.trueups.west": {
+   "value": "261.88",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "10% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs 221.75 261.88 243.74 727.37",
+   "what": "Table 75, 10% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs: west"
+  },
+  "w.trueups.central": {
+   "value": "243.74",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "10% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs 221.75 261.88 243.74 727.37",
+   "what": "Table 75, 10% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs: central"
+  },
+  "w.trueups.state": {
+   "value": "727.37",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "10% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs 221.75 261.88 243.74 727.37",
+   "what": "Table 75, 10% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs: state"
+  },
+  "w.total.east": {
+   "value": "2781.52",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Total for Wheeling Business 2,781.52 2,078.30 3,000.43 7,860.26",
+   "what": "Table 75, Total for Wheeling Business: east"
+  },
+  "w.total.west": {
+   "value": "2078.30",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Total for Wheeling Business 2,781.52 2,078.30 3,000.43 7,860.26",
+   "what": "Table 75, Total for Wheeling Business: west"
+  },
+  "w.total.central": {
+   "value": "3000.43",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Total for Wheeling Business 2,781.52 2,078.30 3,000.43 7,860.26",
+   "what": "Table 75, Total for Wheeling Business: central"
+  },
+  "w.total.state": {
+   "value": "7860.26",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Total for Wheeling Business 2,781.52 2,078.30 3,000.43 7,860.26",
+   "what": "Table 75, Total for Wheeling Business: state"
+  },
+  "base.loan.east": {
+   "value": "524.49",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund 524.49 204.22 742.74 1,471.46",
+   "what": "Table 75, interest on project loans with smart-meter lease and R&D: east"
+  },
+  "base.loan.west": {
+   "value": "204.22",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund 524.49 204.22 742.74 1,471.46",
+   "what": "Table 75, interest on project loans with smart-meter lease and R&D: west"
+  },
+  "base.loan.central": {
+   "value": "742.74",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund 524.49 204.22 742.74 1,471.46",
+   "what": "Table 75, interest on project loans with smart-meter lease and R&D: central"
+  },
+  "base.loan.state": {
+   "value": "1471.46",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund 524.49 204.22 742.74 1,471.46",
+   "what": "Table 75, interest on project loans with smart-meter lease and R&D: state"
+  },
+  "base.trueups.east": {
+   "value": "2217.51",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Wheeling Business 2,217.51 2,618.80 2,437.38 7,273.69",
+   "what": "Table 75, the true-ups' impact (all of it): east"
+  },
+  "base.trueups.west": {
+   "value": "2618.80",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Wheeling Business 2,217.51 2,618.80 2,437.38 7,273.69",
+   "what": "Table 75, the true-ups' impact (all of it): west"
+  },
+  "base.trueups.central": {
+   "value": "2437.38",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Wheeling Business 2,217.51 2,618.80 2,437.38 7,273.69",
+   "what": "Table 75, the true-ups' impact (all of it): central"
+  },
+  "base.trueups.state": {
+   "value": "7273.69",
+   "unit": "INR_crore",
+   "page": 121,
+   "quote": "Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Wheeling Business 2,217.51 2,618.80 2,437.38 7,273.69",
+   "what": "Table 75, the true-ups' impact (all of it): state"
+  },
+  "s.pp.east": {
+   "value": "12495.91",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "100% of Power Purchase Cost including transmission and SLDC charges for Supply Business 12,495.91 19,884.42 13,998.04 46,378.37",
+   "what": "Table 76, 100% of Power Purchase Cost including transmission and SLDC charges for Supply Business: east"
+  },
+  "s.pp.west": {
+   "value": "19884.42",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "100% of Power Purchase Cost including transmission and SLDC charges for Supply Business 12,495.91 19,884.42 13,998.04 46,378.37",
+   "what": "Table 76, 100% of Power Purchase Cost including transmission and SLDC charges for Supply Business: west"
+  },
+  "s.pp.central": {
+   "value": "13998.04",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "100% of Power Purchase Cost including transmission and SLDC charges for Supply Business 12,495.91 19,884.42 13,998.04 46,378.37",
+   "what": "Table 76, 100% of Power Purchase Cost including transmission and SLDC charges for Supply Business: central"
+  },
+  "s.pp.state": {
+   "value": "46378.37",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "100% of Power Purchase Cost including transmission and SLDC charges for Supply Business 12,495.91 19,884.42 13,998.04 46,378.37",
+   "what": "Table 76, 100% of Power Purchase Cost including transmission and SLDC charges for Supply Business: state"
+  },
+  "s.om.east": {
+   "value": "609.16",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "30% of Operation and Maintenance expenses for Supply Business 609.16 545.50 588.97 1,743.63",
+   "what": "Table 76, 30% of Operation and Maintenance expenses for Supply Business: east"
+  },
+  "s.om.west": {
+   "value": "545.50",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "30% of Operation and Maintenance expenses for Supply Business 609.16 545.50 588.97 1,743.63",
+   "what": "Table 76, 30% of Operation and Maintenance expenses for Supply Business: west"
+  },
+  "s.om.central": {
+   "value": "588.97",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "30% of Operation and Maintenance expenses for Supply Business 609.16 545.50 588.97 1,743.63",
+   "what": "Table 76, 30% of Operation and Maintenance expenses for Supply Business: central"
+  },
+  "s.om.state": {
+   "value": "1743.63",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "30% of Operation and Maintenance expenses for Supply Business 609.16 545.50 588.97 1,743.63",
+   "what": "Table 76, 30% of Operation and Maintenance expenses for Supply Business: state"
+  },
+  "s.dep.east": {
+   "value": "19.99",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "5% of Depreciation for Supply Business 19.99 9.21 19.22 48.42",
+   "what": "Table 76, 5% of Depreciation for Supply Business: east"
+  },
+  "s.dep.west": {
+   "value": "9.21",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "5% of Depreciation for Supply Business 19.99 9.21 19.22 48.42",
+   "what": "Table 76, 5% of Depreciation for Supply Business: west"
+  },
+  "s.dep.central": {
+   "value": "19.22",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "5% of Depreciation for Supply Business 19.99 9.21 19.22 48.42",
+   "what": "Table 76, 5% of Depreciation for Supply Business: central"
+  },
+  "s.dep.state": {
+   "value": "48.42",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "5% of Depreciation for Supply Business 19.99 9.21 19.22 48.42",
+   "what": "Table 76, 5% of Depreciation for Supply Business: state"
+  },
+  "s.loan.east": {
+   "value": "26.22",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "5% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Supply Business 26.22 10.21 37.14 73.57",
+   "what": "Table 76, 5% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Supply Business: east"
+  },
+  "s.loan.west": {
+   "value": "10.21",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "5% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Supply Business 26.22 10.21 37.14 73.57",
+   "what": "Table 76, 5% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Supply Business: west"
+  },
+  "s.loan.central": {
+   "value": "37.14",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "5% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Supply Business 26.22 10.21 37.14 73.57",
+   "what": "Table 76, 5% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Supply Business: central"
+  },
+  "s.loan.state": {
+   "value": "73.57",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "5% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Supply Business 26.22 10.21 37.14 73.57",
+   "what": "Table 76, 5% of Interest on Project Loans, Lease Charges for Smart Meters and R&D Fund for Supply Business: state"
+  },
+  "s.iowc.east": {
+   "value": "46.74",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Interest on Working Capital for Supply Business 46.74 -11.77 46.60 81.57",
+   "what": "Table 76, Interest on Working Capital for Supply Business: east"
+  },
+  "s.iowc.west": {
+   "value": "-11.77",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Interest on Working Capital for Supply Business 46.74 -11.77 46.60 81.57",
+   "what": "Table 76, Interest on Working Capital for Supply Business: west"
+  },
+  "s.iowc.central": {
+   "value": "46.60",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Interest on Working Capital for Supply Business 46.74 -11.77 46.60 81.57",
+   "what": "Table 76, Interest on Working Capital for Supply Business: central"
+  },
+  "s.iowc.state": {
+   "value": "81.57",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Interest on Working Capital for Supply Business 46.74 -11.77 46.60 81.57",
+   "what": "Table 76, Interest on Working Capital for Supply Business: state"
+  },
+  "s.roe.east": {
+   "value": "29.04",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "10% of Return on Equity for Supply Business 29.04 19.86 33.91 82.81",
+   "what": "Table 76, 10% of Return on Equity for Supply Business: east"
+  },
+  "s.roe.west": {
+   "value": "19.86",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "10% of Return on Equity for Supply Business 29.04 19.86 33.91 82.81",
+   "what": "Table 76, 10% of Return on Equity for Supply Business: west"
+  },
+  "s.roe.central": {
+   "value": "33.91",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "10% of Return on Equity for Supply Business 29.04 19.86 33.91 82.81",
+   "what": "Table 76, 10% of Return on Equity for Supply Business: central"
+  },
+  "s.roe.state": {
+   "value": "82.81",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "10% of Return on Equity for Supply Business 29.04 19.86 33.91 82.81",
+   "what": "Table 76, 10% of Return on Equity for Supply Business: state"
+  },
+  "s.csd.east": {
+   "value": "108.13",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "100% of Interest on Consumer Security Deposit for Supply Business 108.13 171.80 123.45 403.38",
+   "what": "Table 76, 100% of Interest on Consumer Security Deposit for Supply Business: east"
+  },
+  "s.csd.west": {
+   "value": "171.80",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "100% of Interest on Consumer Security Deposit for Supply Business 108.13 171.80 123.45 403.38",
+   "what": "Table 76, 100% of Interest on Consumer Security Deposit for Supply Business: west"
+  },
+  "s.csd.central": {
+   "value": "123.45",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "100% of Interest on Consumer Security Deposit for Supply Business 108.13 171.80 123.45 403.38",
+   "what": "Table 76, 100% of Interest on Consumer Security Deposit for Supply Business: central"
+  },
+  "s.csd.state": {
+   "value": "403.38",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "100% of Interest on Consumer Security Deposit for Supply Business 108.13 171.80 123.45 403.38",
+   "what": "Table 76, 100% of Interest on Consumer Security Deposit for Supply Business: state"
+  },
+  "s.other_income.east": {
+   "value": "223.11",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "90% of other income and Non-Tariff Income for Supply Business 223.11 222.34 148.85 594.31",
+   "what": "Table 76, 90% of other income and Non-Tariff Income for Supply Business: east"
+  },
+  "s.other_income.west": {
+   "value": "222.34",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "90% of other income and Non-Tariff Income for Supply Business 223.11 222.34 148.85 594.31",
+   "what": "Table 76, 90% of other income and Non-Tariff Income for Supply Business: west"
+  },
+  "s.other_income.central": {
+   "value": "148.85",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "90% of other income and Non-Tariff Income for Supply Business 223.11 222.34 148.85 594.31",
+   "what": "Table 76, 90% of other income and Non-Tariff Income for Supply Business: central"
+  },
+  "s.other_income.state": {
+   "value": "594.31",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "90% of other income and Non-Tariff Income for Supply Business 223.11 222.34 148.85 594.31",
+   "what": "Table 76, 90% of other income and Non-Tariff Income for Supply Business: state"
+  },
+  "s.trueups.east": {
+   "value": "1995.76",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "90% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Supply Business 1,995.76 2,356.92 2,193.64 6,546.32",
+   "what": "Table 76, 90% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Supply Business: east"
+  },
+  "s.trueups.west": {
+   "value": "2356.92",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "90% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Supply Business 1,995.76 2,356.92 2,193.64 6,546.32",
+   "what": "Table 76, 90% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Supply Business: west"
+  },
+  "s.trueups.central": {
+   "value": "2193.64",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "90% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Supply Business 1,995.76 2,356.92 2,193.64 6,546.32",
+   "what": "Table 76, 90% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Supply Business: central"
+  },
+  "s.trueups.state": {
+   "value": "6546.32",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "90% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Supply Business 1,995.76 2,356.92 2,193.64 6,546.32",
+   "what": "Table 76, 90% of Impact of True-Ups of Past Years of MP Transco, Genco and DISCOMs for Supply Business: state"
+  },
+  "s.total.east": {
+   "value": "15107.85",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Total for Supply Business 15,107.85 22,763.79 16,892.12 54,763.76",
+   "what": "Table 76, Total for Supply Business: east"
+  },
+  "s.total.west": {
+   "value": "22763.79",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Total for Supply Business 15,107.85 22,763.79 16,892.12 54,763.76",
+   "what": "Table 76, Total for Supply Business: west"
+  },
+  "s.total.central": {
+   "value": "16892.12",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Total for Supply Business 15,107.85 22,763.79 16,892.12 54,763.76",
+   "what": "Table 76, Total for Supply Business: central"
+  },
+  "s.total.state": {
+   "value": "54763.76",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Total for Supply Business 15,107.85 22,763.79 16,892.12 54,763.76",
+   "what": "Table 76, Total for Supply Business: state"
+  },
+  "base.pp.east": {
+   "value": "12495.91",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Power Purchase Cost including transmission and SLDC charges 12,495.91 19,884.42 13,998.04 46,378.37",
+   "what": "Table 76, power purchase with transmission and SLDC: east"
+  },
+  "base.pp.west": {
+   "value": "19884.42",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Power Purchase Cost including transmission and SLDC charges 12,495.91 19,884.42 13,998.04 46,378.37",
+   "what": "Table 76, power purchase with transmission and SLDC: west"
+  },
+  "base.pp.central": {
+   "value": "13998.04",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Power Purchase Cost including transmission and SLDC charges 12,495.91 19,884.42 13,998.04 46,378.37",
+   "what": "Table 76, power purchase with transmission and SLDC: central"
+  },
+  "base.pp.state": {
+   "value": "46378.37",
+   "unit": "INR_crore",
+   "page": 122,
+   "quote": "Power Purchase Cost including transmission and SLDC charges 12,495.91 19,884.42 13,998.04 46,378.37",
+   "what": "Table 76, power purchase with transmission and SLDC: state"
+  }
+ }
+}
