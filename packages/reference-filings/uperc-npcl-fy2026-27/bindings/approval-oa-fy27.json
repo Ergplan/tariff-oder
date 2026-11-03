@@ -1,0 +1,851 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F33_CSS",
+ "rates": {
+  "oa": "order/figures-open-access-fy2026-27.json",
+  "pp": "order/figures-pp-fy2026-27.json"
+ },
+ "places": 2,
+ "note": "The order's open access charges for FY2026-27 (Tables 9-5 to 9-14), computed from its own figures: the per-unit DC, TC, PC and WC over the retail sales; D by voltage; the average power purchase cost (Table 6-82) and its fixed part (DIL's and the medium-term sources' fixed charges over the ex-bus energy — a reproduction, the order does not say so); the cost of supply by voltage with R = 0; HV-2 up to 66 kV at the average of the 66 kV and 33 kV costs; the surcharge T − C capped at 20 % of the cost of supply (below 11 kV: 20 % of the ACoS); approved at the lower of the FY2025-26 approval and this year's.  NPCL's own surcharges as the order reports them (p.316: one loss, its carrying cost as R, no cap) — the 'claimed' column of Table 9-14.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "DC (Table 9-6)",
+   "inputs": {
+    "record:charge_amount": {
+     "rate": "oa:dc.supply_arr",
+     "minus": "oa:dc.pp_transmission"
+    },
+    "record:charge_energy": {
+     "rate": "oa:dc.sales"
+    }
+   },
+   "checks": {
+    "charge_per_unit": "order:oa:dc.rate"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "TC (Table 9-7)",
+   "inputs": {
+    "record:charge_amount": {
+     "rate": "oa:tc.cost"
+    },
+    "record:charge_energy": {
+     "rate": "oa:tc.sales"
+    }
+   },
+   "checks": {
+    "charge_per_unit": "order:oa:tc.rate"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "PC (Table 9-8)",
+   "inputs": {
+    "record:charge_amount": {
+     "rate": "oa:pc.cost"
+    },
+    "record:charge_energy": {
+     "rate": "oa:pc.sales"
+    }
+   },
+   "checks": {
+    "charge_per_unit": "order:oa:pc.rate"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "WC (Tables 9-5, 9-9)",
+   "inputs": {
+    "record:charge_amount": {
+     "rate": "oa:wc.arr"
+    },
+    "record:charge_energy": {
+     "rate": "oa:wc.sales"
+    }
+   },
+   "checks": {
+    "charge_per_unit": [
+     "order:oa:wc.rate",
+     "order:oa:wheel.rate"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "APPC (Table 6-82)",
+   "inputs": {
+    "record:charge_amount": {
+     "rate": "oa:t682.pp_cost.approved",
+     "minus": "oa:t682.transmission.approved"
+    },
+    "record:charge_energy": {
+     "rate": "oa:t682.ex_bus.approved"
+    }
+   },
+   "checks": {
+    "charge_per_unit": [
+     "order:oa:t682.appc.approved",
+     "order:oa:cos.above132.pp",
+     "order:oa:cos.at33.pp",
+     "order:oa:cos.at11.pp",
+     "order:oa:cos.lv.pp"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "power purchase fixed per unit (Table 9-12)",
+   "inputs": {
+    "record:charge_amount": {
+     "rate": "pp:dil.fixed",
+     "plus": [
+      "pp:mt.total.fixed"
+     ]
+    },
+    "record:charge_energy": {
+     "rate": "oa:t682.ex_bus.approved"
+    }
+   },
+   "checks": {
+    "charge_per_unit": [
+     "order:oa:cos.above132.pp_fixed",
+     "order:oa:cos.at33.pp_fixed",
+     "order:oa:cos.at11.pp_fixed",
+     "order:oa:cos.lv.pp_fixed"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "power purchase variable per unit (Table 9-12)",
+   "inputs": {
+    "record:charge_amount": {
+     "rate": "oa:t682.pp_cost.approved",
+     "minus": [
+      "oa:t682.transmission.approved",
+      "pp:dil.fixed",
+      "pp:mt.total.fixed"
+     ]
+    },
+    "record:charge_energy": {
+     "rate": "oa:t682.ex_bus.approved"
+    }
+   },
+   "checks": {
+    "charge_per_unit": [
+     "order:oa:cos.above132.pp_variable",
+     "order:oa:cos.at33.pp_variable",
+     "order:oa:cos.at11.pp_variable",
+     "order:oa:cos.lv.pp_variable"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "D above 33 kV (Table 9-10)",
+   "inputs": {
+    "record:charge_pc": {
+     "computed": "PC (Table 9-8)",
+     "output": "charge_per_unit"
+    },
+    "record:charge_tc": {
+     "computed": "TC (Table 9-7)",
+     "output": "charge_per_unit"
+    },
+    "record:charge_dc": {
+     "computed": "DC (Table 9-6)",
+     "output": "charge_per_unit"
+    },
+    "record:charge_wc": {
+     "value": "0",
+     "unit": "INR_per_kWh",
+     "why": "consumers above 33 kV pay no wheeling: Table 9-10 prints D = PC+TC+DC for them"
+    }
+   },
+   "checks": {
+    "d_voltage": [
+     "order:oa:d.above33",
+     "order:oa:cos.above132.d"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "D up to 33 kV (Table 9-10)",
+   "inputs": {
+    "record:charge_pc": {
+     "computed": "PC (Table 9-8)",
+     "output": "charge_per_unit"
+    },
+    "record:charge_tc": {
+     "computed": "TC (Table 9-7)",
+     "output": "charge_per_unit"
+    },
+    "record:charge_dc": {
+     "computed": "DC (Table 9-6)",
+     "output": "charge_per_unit"
+    },
+    "record:charge_wc": {
+     "computed": "WC (Tables 9-5, 9-9)",
+     "output": "charge_per_unit"
+    }
+   },
+   "checks": {
+    "d_voltage": [
+     "order:oa:d.upto33",
+     "order:oa:cos.at33.d",
+     "order:oa:cos.at11.d",
+     "order:oa:cos.lv.d"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply above132 (Table 9-12)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "computed": "APPC (Table 6-82)",
+     "output": "charge_per_unit"
+    },
+    "record:loss_inter": {
+     "rate": "oa:loss.inter"
+    },
+    "record:loss_intra": {
+     "rate": "oa:loss.intra"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:loss.above33"
+    },
+    "record:wheeling_voltage": {
+     "computed": "D above 33 kV (Table 9-10)",
+     "output": "d_voltage"
+    },
+    "record:regulatory_asset_per_unit": {
+     "value": "0",
+     "unit": "INR_per_kWh",
+     "why": "R = 0, as there is no Regulatory Surcharge at present (the note under Table 9-12)"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "order:oa:cos.above132.total"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply at33 (Table 9-12)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "computed": "APPC (Table 6-82)",
+     "output": "charge_per_unit"
+    },
+    "record:loss_inter": {
+     "rate": "oa:loss.inter"
+    },
+    "record:loss_intra": {
+     "rate": "oa:loss.intra"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:loss.at33"
+    },
+    "record:wheeling_voltage": {
+     "computed": "D up to 33 kV (Table 9-10)",
+     "output": "d_voltage"
+    },
+    "record:regulatory_asset_per_unit": {
+     "value": "0",
+     "unit": "INR_per_kWh",
+     "why": "R = 0, as there is no Regulatory Surcharge at present (the note under Table 9-12)"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "order:oa:cos.at33.total"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply at11 (Table 9-12)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "computed": "APPC (Table 6-82)",
+     "output": "charge_per_unit"
+    },
+    "record:loss_inter": {
+     "rate": "oa:loss.inter"
+    },
+    "record:loss_intra": {
+     "rate": "oa:loss.intra"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:loss.at11"
+    },
+    "record:wheeling_voltage": {
+     "computed": "D up to 33 kV (Table 9-10)",
+     "output": "d_voltage"
+    },
+    "record:regulatory_asset_per_unit": {
+     "value": "0",
+     "unit": "INR_per_kWh",
+     "why": "R = 0, as there is no Regulatory Surcharge at present (the note under Table 9-12)"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "order:oa:cos.at11.total"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply lv (Table 9-12)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "computed": "APPC (Table 6-82)",
+     "output": "charge_per_unit"
+    },
+    "record:loss_inter": {
+     "rate": "oa:loss.inter"
+    },
+    "record:loss_intra": {
+     "rate": "oa:loss.intra"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:loss.below11"
+    },
+    "record:wheeling_voltage": {
+     "computed": "D up to 33 kV (Table 9-10)",
+     "output": "d_voltage"
+    },
+    "record:regulatory_asset_per_unit": {
+     "value": "0",
+     "unit": "INR_per_kWh",
+     "why": "R = 0, as there is no Regulatory Surcharge at present (the note under Table 9-12)"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": [
+     "order:oa:cos.lv.total"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "cost of supply 11 kV up to 66 kV (note under Table 9-13)",
+   "inputs": {
+    "record:cost_of_supply_lower": {
+     "computed": "cost of supply above132 (Table 9-12)",
+     "output": "cost_of_supply_voltage"
+    },
+    "record:cost_of_supply_upper": {
+     "computed": "cost of supply at33 (Table 9-12)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "cost_of_supply_average": "order:oa:css.hv2_66.cos"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS HV-1 at 11 kV (Table 9-13)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:css.hv1_11.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "cost of supply at11 (Table 9-12)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": "order:oa:css.hv1_11.computed",
+    "css_capped_cos": [
+     "order:oa:css.hv1_11.capped",
+     "order:oa:css.hv1_11.computed_9_14"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS approved HV-1 at 11 kV (Table 9-14)",
+   "inputs": {
+    "record:css_previous": {
+     "rate": "oa:css.hv1_11.previous"
+    },
+    "record:css_this_year": {
+     "computed": "CSS HV-1 at 11 kV (Table 9-13)",
+     "output": "css_capped_cos"
+    }
+   },
+   "checks": {
+    "css_approved": "order:oa:css.hv1_11.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS HV-1 above 11 kV (Table 9-13)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:css.hv1_33.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "cost of supply at33 (Table 9-12)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": "order:oa:css.hv1_33.computed",
+    "css_capped_cos": [
+     "order:oa:css.hv1_33.capped",
+     "order:oa:css.hv1_33.computed_9_14"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS approved HV-1 above 11 kV (Table 9-14)",
+   "inputs": {
+    "record:css_previous": {
+     "rate": "oa:css.hv1_33.previous"
+    },
+    "record:css_this_year": {
+     "computed": "CSS HV-1 above 11 kV (Table 9-13)",
+     "output": "css_capped_cos"
+    }
+   },
+   "checks": {
+    "css_approved": "order:oa:css.hv1_33.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS HV-2 at 11 kV (Table 9-13)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:css.hv2_11.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "cost of supply at11 (Table 9-12)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": "order:oa:css.hv2_11.computed",
+    "css_capped_cos": [
+     "order:oa:css.hv2_11.capped",
+     "order:oa:css.hv2_11.computed_9_14"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS approved HV-2 at 11 kV (Table 9-14)",
+   "inputs": {
+    "record:css_previous": {
+     "rate": "oa:css.hv2_11.previous"
+    },
+    "record:css_this_year": {
+     "computed": "CSS HV-2 at 11 kV (Table 9-13)",
+     "output": "css_capped_cos"
+    }
+   },
+   "checks": {
+    "css_approved": "order:oa:css.hv2_11.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS HV-2 above 11 kV up to 66 kV (Table 9-13)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:css.hv2_66.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "cost of supply 11 kV up to 66 kV (note under Table 9-13)",
+     "output": "cost_of_supply_average"
+    }
+   },
+   "checks": {
+    "css_computed": "order:oa:css.hv2_66.computed",
+    "css_capped_cos": [
+     "order:oa:css.hv2_66.capped",
+     "order:oa:css.hv2_66.computed_9_14"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS approved HV-2 above 11 kV up to 66 kV (Table 9-14)",
+   "inputs": {
+    "record:css_previous": {
+     "rate": "oa:css.hv2_66.previous"
+    },
+    "record:css_this_year": {
+     "computed": "CSS HV-2 above 11 kV up to 66 kV (Table 9-13)",
+     "output": "css_capped_cos"
+    }
+   },
+   "checks": {
+    "css_approved": "order:oa:css.hv2_66.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS HV-2 above 66 kV up to 132 kV (Table 9-13)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:css.hv2_132.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "cost of supply above132 (Table 9-12)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": "order:oa:css.hv2_132.computed",
+    "css_capped_cos": [
+     "order:oa:css.hv2_132.capped",
+     "order:oa:css.hv2_132.computed_9_14"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS approved HV-2 above 66 kV up to 132 kV (Table 9-14)",
+   "inputs": {
+    "record:css_previous": {
+     "rate": "oa:css.hv2_132.previous"
+    },
+    "record:css_this_year": {
+     "computed": "CSS HV-2 above 66 kV up to 132 kV (Table 9-13)",
+     "output": "css_capped_cos"
+    }
+   },
+   "checks": {
+    "css_approved": "order:oa:css.hv2_132.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS HV-2 at 132 kV (Table 9-13)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:css.hv2_132plus.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "cost of supply above132 (Table 9-12)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": "order:oa:css.hv2_132plus.computed",
+    "css_capped_cos": [
+     "order:oa:css.hv2_132plus.capped",
+     "order:oa:css.hv2_132plus.computed_9_14"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS approved HV-2 at 132 kV (Table 9-14)",
+   "inputs": {
+    "record:css_previous": {
+     "rate": "oa:css.hv2_132plus.previous"
+    },
+    "record:css_this_year": {
+     "computed": "CSS HV-2 at 132 kV (Table 9-13)",
+     "output": "css_capped_cos"
+    }
+   },
+   "checks": {
+    "css_approved": "order:oa:css.hv2_132plus.approved"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS below 11 kV: 20 % of the ACoS (note under Table 9-13)",
+   "inputs": {
+    "record:cost_of_supply": {
+     "rate": "oa:t682.acos.approved"
+    }
+   },
+   "checks": {
+    "css_cap": [
+     "order:oa:css.lv.cap_on_acos",
+     "order:oa:css.lv.computed_9_14"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CSS approved below 11 kV (Table 9-14)",
+   "inputs": {
+    "record:css_previous": {
+     "rate": "oa:css.lv.previous"
+    },
+    "record:css_this_year": {
+     "computed": "CSS below 11 kV: 20 % of the ACoS (note under Table 9-13)",
+     "output": "css_cap"
+    }
+   },
+   "checks": {
+    "css_approved": [
+     "order:oa:css.lv.approved",
+     "order:oa:css.lv.table_9_13",
+     "order:oa:css.lv.ceiling"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's cost of supply hv2_132 (p.316)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "rate": "oa:npcl.hv2_132.c"
+    },
+    "record:loss_inter": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_intra": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:npcl.hv2_132.l"
+    },
+    "record:wheeling_voltage": {
+     "rate": "oa:npcl.hv2_132.d"
+    },
+    "record:regulatory_asset_per_unit": {
+     "rate": "oa:npcl.hv2_132.r"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": "order:oa:npcl.hv2_132.cos"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's CSS hv2_132 (p.316)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:npcl.hv2_132.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "NPCL's cost of supply hv2_132 (p.316)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": [
+     "order:oa:npcl.hv2_132.css",
+     "order:oa:css.hv2_132plus.claimed"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's cost of supply hv1_33 (p.316)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "rate": "oa:npcl.hv1_33.c"
+    },
+    "record:loss_inter": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_intra": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:npcl.hv1_33.l"
+    },
+    "record:wheeling_voltage": {
+     "rate": "oa:npcl.hv1_33.d"
+    },
+    "record:regulatory_asset_per_unit": {
+     "rate": "oa:npcl.hv1_33.r"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": "order:oa:npcl.hv1_33.cos"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's CSS hv1_33 (p.316)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:npcl.hv1_33.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "NPCL's cost of supply hv1_33 (p.316)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": [
+     "order:oa:npcl.hv1_33.css",
+     "order:oa:css.hv1_33.claimed"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's cost of supply hv2_33 (p.316)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "rate": "oa:npcl.hv2_33.c"
+    },
+    "record:loss_inter": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_intra": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:npcl.hv2_33.l"
+    },
+    "record:wheeling_voltage": {
+     "rate": "oa:npcl.hv2_33.d"
+    },
+    "record:regulatory_asset_per_unit": {
+     "rate": "oa:npcl.hv2_33.r"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": "order:oa:npcl.hv2_33.cos"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's CSS hv2_33 (p.316)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:npcl.hv2_33.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "NPCL's cost of supply hv2_33 (p.316)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {}
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's cost of supply hv1_11 (p.316)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "rate": "oa:npcl.hv1_11.c"
+    },
+    "record:loss_inter": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_intra": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:npcl.hv1_11.l"
+    },
+    "record:wheeling_voltage": {
+     "rate": "oa:npcl.hv1_11.d"
+    },
+    "record:regulatory_asset_per_unit": {
+     "rate": "oa:npcl.hv1_11.r"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": "order:oa:npcl.hv1_11.cos"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's CSS hv1_11 (p.316)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:npcl.hv1_11.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "NPCL's cost of supply hv1_11 (p.316)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": [
+     "order:oa:npcl.hv1_11.css",
+     "order:oa:css.hv1_11.claimed"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's cost of supply hv2_11 (p.316)",
+   "inputs": {
+    "record:pp_cost_per_unit": {
+     "rate": "oa:npcl.hv2_11.c"
+    },
+    "record:loss_inter": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_intra": {
+     "value": "0",
+     "unit": "fraction",
+     "why": "NPCL's submission applies a single loss L to the cost: C / (1 - L/100) (the header of its table, p.316)"
+    },
+    "record:loss_distribution_voltage": {
+     "rate": "oa:npcl.hv2_11.l"
+    },
+    "record:wheeling_voltage": {
+     "rate": "oa:npcl.hv2_11.d"
+    },
+    "record:regulatory_asset_per_unit": {
+     "rate": "oa:npcl.hv2_11.r"
+    }
+   },
+   "checks": {
+    "cost_of_supply_voltage": "order:oa:npcl.hv2_11.cos"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "NPCL's CSS hv2_11 (p.316)",
+   "inputs": {
+    "record:tariff_abr": {
+     "rate": "oa:npcl.hv2_11.t"
+    },
+    "record:cost_of_supply": {
+     "computed": "NPCL's cost of supply hv2_11 (p.316)",
+     "output": "cost_of_supply_voltage"
+    }
+   },
+   "checks": {
+    "css_computed": [
+     "order:oa:npcl.hv2_11.css",
+     "order:oa:css.hv2_11.claimed"
+    ]
+   }
+  }
+ ]
+}

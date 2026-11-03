@@ -1005,6 +1005,38 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 120 (2026-11-03): open access charges and the cross-subsidy surcharge for FY2026-27.**
+  - **The record:** `order/figures-open-access-fy2026-27.json` holds 159 figures (Tables 9-5 to
+    9-14, Table 6-82's APPC and ACoS, NPCL's own surcharge table on p.316), 159 / 159 quotes
+    verified.
+  - **Six new draft rules in `open-access.v1.json`:**
+    - D by voltage;
+    - the average cost of supply for 66 kV;
+    - T − C;
+    - the cap at 20% of the cost of supply, and the surcharge capped never negative;
+    - the lower of last year's approval and this year's.
+    The existing cap-on-tariff rule (NPCL's F33) stays, beside the order's.
+  - **Engine:** a binding's order input may now add (`plus`) and take away (`minus`) several
+    recorded figures.
+  - **Binding `approval-oa-fy27.json`: 69 / 71 match.**
+    - DC 0.23, TC 0.51, PC 0.58, WC 1.03.
+    - D 1.32 / 2.35.
+    - The APPC 4.91 from Table 6-82.  Its fixed part, 1.21, reproduces as DIL's and the
+      medium-term sources' fixed charges over the ex-bus energy.  This is an inference; the
+      order does not state it.
+    - The cost of supply 6.59, 7.65, 7.75; the 66 kV average 7.12.
+    - Every surcharge computed, capped and approved, and NPCL's four claims (p.316).
+    Two differ, both bounded by the test:
+    - the LV cost of supply prints the ACoS 7.98 where the formula gives 8.01 (A80);
+    - HV-1 above 11 kV's T − C is 2.54 against 2.55 (within T's printed precision).
+  - **Findings:**
+    - **A80 (reviewer):** three readings of the 20% cap, and the LV row.  None changes
+      FY2026-27's approvals.
+    - **A81 (petitioner):** NPCL's claims are uncapped while its F33 proposes 1.21.  F33 types
+      last year's HV-1 approval as 1.86 where the order says 1.40.
+    - **A51** gains the order's reading.
+  Nothing verified, nothing approved.
+
   **Increment 119 (2026-11-03): the Renewable Consumption Obligation for FY2026-27.**
   - **The record:** `order/figures-rco-fy2026-27.json` holds 25 figures (Tables 6-31, 6-32),
     25 / 25 quotes verified.
@@ -2942,6 +2974,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 120 (2026-11-03): 490 passed** (+1 unit: the open access charges and surcharge).  `check_order_quotes.py`: 159 / 159.  Ruff and format clean.
 - **Increment 119 (2026-11-03): 489 passed** (+1 unit: the RCO).  `check_order_quotes.py`: 25 / 25.  Ruff and format clean.
 - **Increment 118 (2026-11-03): 488 passed** (+1 unit: the true-up's power purchase by source).  `check_order_quotes.py`: 78 / 78.  Ruff and format clean.
 - **Increment 117 (2026-11-03): 487 passed** (+1 unit: NPCL's APR estimate table, its arithmetic and the 2.47 moved).  Ruff, format and `tsc` clean.
@@ -3194,7 +3227,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 119) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 120) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3231,7 +3264,7 @@ entries below are the per-increment history.**
   ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
   `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
-  held by the operator).  **160 draft UPERC rules** in 23 files reproduce the filed formats.
+  held by the operator).  **231 draft UPERC rules** in 27 files reproduce the filed formats.
   `/arr/reference/uperc-npcl-fy2026-27` shows the following:
   - **End to end from the schedules:** the regulatory asset is carried from year to year as
     computed (increment 95).  The net ARR and gap of the ARR and APR years match (3,481.83 and
@@ -3255,12 +3288,13 @@ entries below are the per-increment history.**
     line by line, so every line of the true-up's −123.38 has its reason (A70, A71); and the
     APR's +92.64 likewise, reproduced from the Commission's computations (A72, A73); and the
     revenue gap (surplus) carried to FY2026-27 with its carrying cost (A74); the tariff design
-    summary — ABR, ACoS, cross-subsidy levels (A75 for the FPPAS monthly sales).  The order misprints one line of
+    summary — ABR, ACoS, cross-subsidy levels (A75 for the FPPAS monthly sales); the open access
+    charges and the cross-subsidy surcharge by voltage, computed, capped and approved (A80, A81).  The order misprints one line of
     its own summary (A61).
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **47 findings (A29–A79):** 27 for the petitioner, collected in the draft queries; 20 for the
+  - **49 findings (A29–A81):** 28 for the petitioner, collected in the draft queries; 21 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

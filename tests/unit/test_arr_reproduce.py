@@ -1852,3 +1852,45 @@ def test_npcl_the_renewable_consumption_obligation_reproduces():
     assert abs(parts - Decimal(rec["src.total"][0])) <= Decimal("0.01")  # five rounded columns
     eb = load_binding_rates(folder, {"rates": "order/figures-energy-balance-fy2026-27.json"})
     assert rec["rco.mu.total"][0] == rec["src.total"][0] == eb["eb.approved.requirement"][0]
+
+
+def test_npcl_the_open_access_charges_and_surcharge_reproduce():
+    """Real data: Tables 9-5 to 9-14 from the order's own figures — DC, TC, PC and WC per unit, D by
+    voltage, the APPC (Table 6-82) and its fixed part, the cost of supply by voltage, the surcharge
+    T − C capped at 20 % of the cost of supply, approved at the lower of last year's, and NPCL's own
+    claims (p.316).  Two printed figures differ, each bounded: the LV cost of supply is the ACoS,
+    not the formula (A80); HV-1 above 11 kV's T − C is within T's printed precision."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-oa-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rec)
+    differ = {c.category: c for c in checks if c.result != "match"}
+    assert len(checks) == 71 and {c.result for c in checks} <= {"match", "differs"}
+    assert set(differ) == {
+        "cost of supply lv (Table 9-12) order:oa:cos.lv.total",
+        "CSS HV-1 above 11 kV (Table 9-13) order:oa:css.hv1_33.computed",
+    }
+    # the LV row prints the ACoS (Table 6-82), not the formula's 8.0055
+    lv = differ["cost of supply lv (Table 9-12) order:oa:cos.lv.total"]
+    assert Decimal(lv.filed) == Decimal(rec["oa:t682.acos.approved"][0]) and lv.computed == "8.01"
+    # 10.20 printed − 7.6532 = 2.5468; T is printed to two places, so 2.54 is within reach
+    hv = differ["CSS HV-1 above 11 kV (Table 9-13) order:oa:css.hv1_33.computed"]
+    assert abs(Decimal(hv.exact) - Decimal(hv.filed)) <= Decimal("0.005") + Decimal("0.005")
+    # DC's printed net (100.79) is its two rounded figures' difference (100.78) to the last digit
+    net = Decimal(rec["oa:dc.supply_arr"][0]) - Decimal(rec["oa:dc.pp_transmission"][0])
+    assert abs(net - Decimal(rec["oa:dc.net"][0])) <= Decimal("0.01")
+    # every approval is the lower of last year's and this year's; the cap never binds the result
+    for cat in ("lv", "hv1_11", "hv1_33", "hv2_11", "hv2_66", "hv2_132", "hv2_132plus"):
+        prev, this = Decimal(rec[f"oa:css.{cat}.previous"][0]), Decimal(rec[f"oa:css.{cat}.computed_9_14"][0])
+        assert Decimal(rec[f"oa:css.{cat}.approved"][0]) == min(prev, this)
+    # NPCL's own HV-2 at 33 kV is negative and printed "-" (nil)
+    npcl = [c for c in checks if c.category.startswith("NPCL's cost of supply hv2_33")]
+    assert len(npcl) == 1 and Decimal(rec["oa:npcl.hv2_33.t"][0]) < Decimal(npcl[0].exact)

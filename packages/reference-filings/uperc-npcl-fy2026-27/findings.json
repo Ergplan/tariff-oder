@@ -205,7 +205,7 @@
    "id": "A51",
    "kind": "rule against regulation",
    "title": "Cross-subsidy surcharge capped at 20 % of the ABR, where the 2025 Regulations say 20 % of the average cost of supply",
-   "detail": "The candidate clause (MYT Distribution Regulations 2025, p.48) reads: 'the Cross Subsidy Surcharge shall not exceed 20% of the Average Cost of Supply'.  F33 caps at 20 % of each category's average billing rate (G107 = MIN(20 % × D107, F107)), although its own column header says 'with a cap of 20% of ACoS'; the draft rule uperc.oa.css follows F33.  At ACoS 7.91 Rs/kWh the cap would be 1.58; the surcharges computed for FY2026-27 (1.21) are below either cap, so the figures do not change this year — the rule does.  The reviewer should verify the clause and amend the draft rule.",
+   "detail": "The candidate clause (MYT Distribution Regulations 2025, p.48) reads: 'the Cross Subsidy Surcharge shall not exceed 20% of the Average Cost of Supply'.  F33 caps at 20 % of each category's average billing rate (G107 = MIN(20 % × D107, F107)), although its own column header says 'with a cap of 20% of ACoS'; the draft rule uperc.oa.css follows F33.  At ACoS 7.91 Rs/kWh the cap would be 1.58; the surcharges computed for FY2026-27 (1.21) are below either cap, so the figures do not change this year — the rule does.  The reviewer should verify the clause and amend the draft rule.  The order itself (Table 9-13) caps HV categories at 20 % of each voltage's cost of supply and LV at 20 % of the ACoS — a third reading (A80).",
    "where": [
     "MYT Distribution Regulations 2025 p.48",
     "F33_CSS G107:G117, F75:F80",
@@ -554,6 +554,31 @@
     "Tariff order FY2026-27 pp.179–180 Table 5-18, p.207 Table 5-48",
     "order-decisions.json (source_tables, apr)",
     "ARR!K20:K24"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A80",
+   "kind": "rule against regulation",
+   "title": "The order caps the HV surcharges at 20 % of each voltage's cost of supply, the LV one at 20 % of the ACoS, and prints the ACoS (7.98) as the LV cost of supply where its formula gives 8.01",
+   "detail": "Reproduced from the order's own figures (bindings/approval-oa-fy27.json, 69 of 71 checks match): DC 0.23, TC 0.51, PC 0.58 and WC 1.03 over the 4,399.84 MU of retail sales; D 1.32 above 33 kV and 2.35 up to 33 kV; the APPC 4.91 = (2,958.85 − 481.49) / 5,043.87 (Table 6-82), its fixed part 1.21 = DIL's and the medium-term sources' fixed charges (222.06 + 388.57) over the ex-bus energy — the order does not say so, the figure reproduces; the cost of supply C / ((1 − L1)(1 − L2)(1 − L3)) + D, with R = 0, gives 6.59, 7.65 and 7.75 as printed.  Three readings of the cap remain open.  (1) Table 9-13 caps HV categories at 20 % of the voltage's cost of supply (Y = Min(C × 0.2, D): 1.55 at 11 kV, 1.53 above 11 kV); the candidate clause (2025 Regulations p.48, A51) says 20 % of the average cost of supply, which at the ACoS of 7.98 would cap both at 1.60; NPCL's F33 caps at 20 % of the tariff (2.06, 2.04).  (2) Supply below 11 kV is capped at 20 % of the ACoS (the note under Table 9-13: 1.60).  (3) Table 9-12's LV row prints 7.98 — the ACoS of Table 6-82 — where the formula with the 6.97 % loss gives 8.0055 (8.01).  None of this changes FY2026-27: every approval is the lower of the FY2025-26 approval and this year's (Table 9-14: 1.46, 1.33, 1.40, 0.57, 0.51, 0.36, 0.36), and 20 % of either 7.98 or 8.01 is 1.60.  It would change a year in which this year's figure is the lower.  Also: HV-2 above 11 kV up to 66 kV takes the average of the 66 kV and 33 kV costs (7.12, the note under Table 9-13) — the order's choice; and HV-1 above 11 kV prints T − C as 2.54 where 10.20 − 7.65 = 2.55 (within T's printed precision).  For the reviewer: which cap the 2025 Regulations require, and whether the LV row should carry the formula's cost.",
+   "where": [
+    "Tariff order FY2026-27 pp.315–321 Tables 9-5 to 9-14, p.294 Table 6-82",
+    "MYT Distribution Regulations 2025 p.48 (candidate clause)",
+    "bindings/approval-oa-fy27.json",
+    "packages/arr-rules/uperc/open-access.v1.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "A81",
+   "kind": "inconsistency",
+   "title": "NPCL's claimed surcharges are uncapped while its F33 caps them to 1.21; F33 types last year's approval for HV-1 above 11 kV as 1.86, the order says 1.40",
+   "detail": "The order reports NPCL's surcharges (p.316) and they reproduce: S = T − [C / (1 − L/100) + D + R] with C 6.12, one loss per voltage, its carrying cost as R (0.18–0.21) — 1.72 (HV-1 at 11 kV), 2.02 (HV-1 at 33 kV), 0.03 (HV-2 at 11 kV), 0.53 (HV-2 at 132 kV), the 'claimed' column of Table 9-14.  None is capped: 1.72 exceeds 20 % of NPCL's own 7.54 (1.51), 2.02 exceeds 20 % of 7.16 (1.43).  NPCL's F33 types these in H75:H80 ('Petitioner') beside its own computation under the three-loss formula (G75:G76 = 1.21, capped at 20 % of the tariff) and proposes the lower — 1.21 (I75 = MIN(G75, H75)).  So the format proposes 1.21 and 1.21 where the narrative claims 1.72 and 2.02.  And F33's 'CSS approved by the Commission in previous T.O.' for HV-1 supply above 11 kV is 1.86 (H108) where Table 9-14 prints 1.40 for the order of 22.11.2025; the other four rows agree (1.33, 0.57, 0.59, 0.36).  For the petitioner: which surcharge is claimed, why uncapped, and the source of the 1.86.",
+   "where": [
+    "Tariff order FY2026-27 p.316 (para 9.3.2), p.321 Table 9-14",
+    "F33_CSS G75:I80, H107:H111",
+    "bindings/approval-oa-fy27.json"
    ],
    "for": "petitioner"
   }

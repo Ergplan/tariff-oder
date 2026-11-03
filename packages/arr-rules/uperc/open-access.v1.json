@@ -182,6 +182,247 @@
     "feeds": "unrounded"
    },
    "examples": []
+  },
+  {
+   "id": "uperc.oa.d_voltage",
+   "version": 1,
+   "status": "draft",
+   "title": "D at a voltage: the transmission, distribution and wheeling charges it pays",
+   "output": "d_voltage",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "pc + tc + dc + wc",
+   "inputs": {
+    "pc": {
+     "unit": "INR_per_kWh",
+     "source": "record:charge_pc"
+    },
+    "tc": {
+     "unit": "INR_per_kWh",
+     "source": "record:charge_tc"
+    },
+    "dc": {
+     "unit": "INR_per_kWh",
+     "source": "record:charge_dc"
+    },
+    "wc": {
+     "unit": "INR_per_kWh",
+     "source": "record:charge_wc",
+     "note": "nil for consumers above 33 kV, who use no distribution wires (Table 9-10: PC+TC+DC)"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "UPERC order on NPCL FY2026-27, Table 9-10: above 33 kV D = PC + TC + DC; up to 33 kV D = PC + TC + DC + WC"
+  },
+  {
+   "id": "uperc.oa.cos_average",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost of supply for a voltage between two computed voltages (their average)",
+   "output": "cost_of_supply_average",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "(lower + upper) / 2",
+   "inputs": {
+    "lower": {
+     "unit": "INR_per_kWh",
+     "source": "record:cost_of_supply_lower"
+    },
+    "upper": {
+     "unit": "INR_per_kWh",
+     "source": "record:cost_of_supply_upper"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's note under Table 9-13: HV-2 supply above 11 kV up to 66 kV takes the average of the cost of supply at 66 kV and above 11 kV — the order's choice, not a formula of the Regulations as read"
+  },
+  {
+   "id": "uperc.oa.css_computed",
+   "version": 1,
+   "status": "draft",
+   "title": "Cross-subsidy surcharge computed (tariff less cost of supply)",
+   "output": "css_computed",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "t - cos",
+   "inputs": {
+    "t": {
+     "unit": "INR_per_kWh",
+     "source": "record:tariff_abr"
+    },
+    "cos": {
+     "unit": "INR_per_kWh",
+     "source": "record:cost_of_supply"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 9-13 column D = T − C, before any cap; may be negative"
+  },
+  {
+   "id": "uperc.oa.css_cap_on_cos",
+   "version": 1,
+   "status": "draft",
+   "title": "The cap: a share of the cost of supply",
+   "output": "css_cap",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "cap * cos",
+   "inputs": {
+    "cos": {
+     "unit": "INR_per_kWh",
+     "source": "record:cost_of_supply"
+    },
+    "cap": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "20",
+     "note": "20 % — of the voltage's cost of supply as the order applies it to HV (Table 9-13: Y = Min(C × 0.2, D)); of the ACoS for supply below 11 kV (its note); the candidate clause says the average cost of supply (A51, A80)"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order caps at 20 % of the cost of supply it computed; NPCL's F33 caps at 20 % of the tariff (uperc.oa.css)"
+  },
+  {
+   "id": "uperc.oa.css_capped_on_cos",
+   "version": 1,
+   "status": "draft",
+   "title": "Cross-subsidy surcharge capped at the share of the cost of supply, never negative",
+   "output": "css_capped_cos",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "ifneg(computed, computed - computed, min(cap, computed))",
+   "inputs": {
+    "computed": {
+     "unit": "INR_per_kWh",
+     "source": "rule:css_computed"
+    },
+    "cap": {
+     "unit": "INR_per_kWh",
+     "source": "rule:css_cap"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 9-13 column Y = Min(C × 0.2, D)"
+  },
+  {
+   "id": "uperc.oa.css_lower_of_previous",
+   "version": 1,
+   "status": "draft",
+   "title": "Cross-subsidy surcharge approved: the lower of last year's approval and this year's",
+   "output": "css_approved",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-15",
+   "formula": "min(previous, this_year)",
+   "inputs": {
+    "previous": {
+     "unit": "INR_per_kWh",
+     "source": "record:css_previous",
+     "note": "approved in the previous tariff order"
+    },
+    "this_year": {
+     "unit": "INR_per_kWh",
+     "source": "record:css_this_year",
+     "note": "this year's surcharge, capped"
+    }
+   },
+   "clause": {
+    "regulation": "National Tariff Policy, 2016 (para 8.5.1) as UPERC applies it — cross-subsidy surcharge: S = T − [C / ((1 − L1)(1 − L2)(1 − L3)) + D + R], capped at 20 % of T",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 4,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 9-14: 'lower of the CSS computed in this Tariff Order and approved by the Commission in Tariff Order dated November 22, 2025' — the order's decision for FY2026-27 (para 9.3.10), to reduce cross subsidy gradually"
   }
  ]
 }

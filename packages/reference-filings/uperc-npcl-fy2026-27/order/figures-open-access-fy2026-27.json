@@ -1,0 +1,1123 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): open access charges FY2026-27 — wheeling, the components of D, losses, cost of supply by voltage, CSS (Tables 9-5 to 9-14)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "wheel.arr": {
+   "value": "451.70",
+   "unit": "INR_crore",
+   "page": 315,
+   "quote": "Wheeling Tariff Rs. Cr. 451.70 Energy Handled (Retail Sales) MU 4,399.84 Average Wheeling Charges Rs./kWh 1.03",
+   "what": "wheeling charges (Table 9-5): arr"
+  },
+  "wheel.sales": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 315,
+   "quote": "Wheeling Tariff Rs. Cr. 451.70 Energy Handled (Retail Sales) MU 4,399.84 Average Wheeling Charges Rs./kWh 1.03",
+   "what": "wheeling charges (Table 9-5): sales"
+  },
+  "wheel.rate": {
+   "value": "1.03",
+   "unit": "INR_per_kWh",
+   "page": 315,
+   "quote": "Wheeling Tariff Rs. Cr. 451.70 Energy Handled (Retail Sales) MU 4,399.84 Average Wheeling Charges Rs./kWh 1.03",
+   "what": "wheeling charges (Table 9-5): rate"
+  },
+  "dc.supply_arr": {
+   "value": "3059.63",
+   "unit": "INR_crore",
+   "page": 317,
+   "quote": "Supply ARR Rs. Cr. 3,059.63 Power Purchase and Transmission cost Rs. Cr. 2,958.85 Supply ARR excluding Power Purchase Rs. Cr. 100.79 Retail Sale MU 4,399.84 Average Supply/Distribution charge (DC) ((C/D) *10) Rs./kWh 0.23",
+   "what": "distribution / retail supply charge DC (Table 9-6): supply_arr"
+  },
+  "dc.pp_transmission": {
+   "value": "2958.85",
+   "unit": "INR_crore",
+   "page": 317,
+   "quote": "Supply ARR Rs. Cr. 3,059.63 Power Purchase and Transmission cost Rs. Cr. 2,958.85 Supply ARR excluding Power Purchase Rs. Cr. 100.79 Retail Sale MU 4,399.84 Average Supply/Distribution charge (DC) ((C/D) *10) Rs./kWh 0.23",
+   "what": "distribution / retail supply charge DC (Table 9-6): pp_transmission"
+  },
+  "dc.net": {
+   "value": "100.79",
+   "unit": "INR_crore",
+   "page": 317,
+   "quote": "Supply ARR Rs. Cr. 3,059.63 Power Purchase and Transmission cost Rs. Cr. 2,958.85 Supply ARR excluding Power Purchase Rs. Cr. 100.79 Retail Sale MU 4,399.84 Average Supply/Distribution charge (DC) ((C/D) *10) Rs./kWh 0.23",
+   "what": "distribution / retail supply charge DC (Table 9-6): net"
+  },
+  "dc.sales": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 317,
+   "quote": "Supply ARR Rs. Cr. 3,059.63 Power Purchase and Transmission cost Rs. Cr. 2,958.85 Supply ARR excluding Power Purchase Rs. Cr. 100.79 Retail Sale MU 4,399.84 Average Supply/Distribution charge (DC) ((C/D) *10) Rs./kWh 0.23",
+   "what": "distribution / retail supply charge DC (Table 9-6): sales"
+  },
+  "dc.rate": {
+   "value": "0.23",
+   "unit": "INR_per_kWh",
+   "page": 317,
+   "quote": "Supply ARR Rs. Cr. 3,059.63 Power Purchase and Transmission cost Rs. Cr. 2,958.85 Supply ARR excluding Power Purchase Rs. Cr. 100.79 Retail Sale MU 4,399.84 Average Supply/Distribution charge (DC) ((C/D) *10) Rs./kWh 0.23",
+   "what": "distribution / retail supply charge DC (Table 9-6): rate"
+  },
+  "tc.cost": {
+   "value": "224.28",
+   "unit": "INR_crore",
+   "page": 318,
+   "quote": "Transmission Cost (A) Rs. Cr. 224.28 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Transmission Charge (TC) ((A/B) * 10) Rs./kWh 0.51",
+   "what": "intra-state transmission charge TC (Table 9-7): cost"
+  },
+  "tc.sales": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 318,
+   "quote": "Transmission Cost (A) Rs. Cr. 224.28 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Transmission Charge (TC) ((A/B) * 10) Rs./kWh 0.51",
+   "what": "intra-state transmission charge TC (Table 9-7): sales"
+  },
+  "tc.rate": {
+   "value": "0.51",
+   "unit": "INR_per_kWh",
+   "page": 318,
+   "quote": "Transmission Cost (A) Rs. Cr. 224.28 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Transmission Charge (TC) ((A/B) * 10) Rs./kWh 0.51",
+   "what": "intra-state transmission charge TC (Table 9-7): rate"
+  },
+  "pc.cost": {
+   "value": "257.21",
+   "unit": "INR_crore",
+   "page": 318,
+   "quote": "Transmission Cost (A) Rs. Cr. 257.21 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Transmission Charge (PC) ((A/B) * 10) Rs./kWh 0.58",
+   "what": "inter-state transmission charge PC (Table 9-8): cost"
+  },
+  "pc.sales": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 318,
+   "quote": "Transmission Cost (A) Rs. Cr. 257.21 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Transmission Charge (PC) ((A/B) * 10) Rs./kWh 0.58",
+   "what": "inter-state transmission charge PC (Table 9-8): sales"
+  },
+  "pc.rate": {
+   "value": "0.58",
+   "unit": "INR_per_kWh",
+   "page": 318,
+   "quote": "Transmission Cost (A) Rs. Cr. 257.21 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Transmission Charge (PC) ((A/B) * 10) Rs./kWh 0.58",
+   "what": "inter-state transmission charge PC (Table 9-8): rate"
+  },
+  "wc.arr": {
+   "value": "451.70",
+   "unit": "INR_crore",
+   "page": 318,
+   "quote": "Wheeling Tariff (A) Rs. Cr. 451.70 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Wheeling Charges (WC) ((A/B) * 10) Rs./kWh 1.03",
+   "what": "wheeling charge WC (Table 9-9): arr"
+  },
+  "wc.sales": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 318,
+   "quote": "Wheeling Tariff (A) Rs. Cr. 451.70 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Wheeling Charges (WC) ((A/B) * 10) Rs./kWh 1.03",
+   "what": "wheeling charge WC (Table 9-9): sales"
+  },
+  "wc.rate": {
+   "value": "1.03",
+   "unit": "INR_per_kWh",
+   "page": 318,
+   "quote": "Wheeling Tariff (A) Rs. Cr. 451.70 Energy Handled (Retail Sales) (B) MU 4,399.84 Average Wheeling Charges (WC) ((A/B) * 10) Rs./kWh 1.03",
+   "what": "wheeling charge WC (Table 9-9): rate"
+  },
+  "d.above33": {
+   "value": "1.32",
+   "unit": "INR_per_kWh",
+   "page": 318,
+   "quote": "HV Categories above 132 kV Rs. /kWh (PC+TC+DC) 1.32 HV Categories above 66 KV and up to 132 kV (132 kV) HV Categories at 66 KV (66 kV) HV Categories above 11 kV and up to 33 kV (PC+TC+DC+WC) 2.35",
+   "what": "D by voltage (Table 9-10): above33"
+  },
+  "d.upto33": {
+   "value": "2.35",
+   "unit": "INR_per_kWh",
+   "page": 318,
+   "quote": "HV Categories above 132 kV Rs. /kWh (PC+TC+DC) 1.32 HV Categories above 66 KV and up to 132 kV (132 kV) HV Categories at 66 KV (66 kV) HV Categories above 11 kV and up to 33 kV (PC+TC+DC+WC) 2.35",
+   "what": "D by voltage (Table 9-10): upto33"
+  },
+  "loss.inter": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 319,
+   "quote": "Inter State Transmission Losses 3.58% Intra State Transmission Losses 3.18% Loss above 33 kV Level 0.09% Loss at 33 kV Level 0.79% Loss at 11 kV Level 2.58% Loss below 11kV Level 6.97%",
+   "what": "voltage-wise losses for CSS (Table 9-11): inter"
+  },
+  "loss.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 319,
+   "quote": "Inter State Transmission Losses 3.58% Intra State Transmission Losses 3.18% Loss above 33 kV Level 0.09% Loss at 33 kV Level 0.79% Loss at 11 kV Level 2.58% Loss below 11kV Level 6.97%",
+   "what": "voltage-wise losses for CSS (Table 9-11): intra"
+  },
+  "loss.above33": {
+   "value": "0.09",
+   "unit": "percent",
+   "page": 319,
+   "quote": "Inter State Transmission Losses 3.58% Intra State Transmission Losses 3.18% Loss above 33 kV Level 0.09% Loss at 33 kV Level 0.79% Loss at 11 kV Level 2.58% Loss below 11kV Level 6.97%",
+   "what": "voltage-wise losses for CSS (Table 9-11): above33"
+  },
+  "loss.at33": {
+   "value": "0.79",
+   "unit": "percent",
+   "page": 319,
+   "quote": "Inter State Transmission Losses 3.58% Intra State Transmission Losses 3.18% Loss above 33 kV Level 0.09% Loss at 33 kV Level 0.79% Loss at 11 kV Level 2.58% Loss below 11kV Level 6.97%",
+   "what": "voltage-wise losses for CSS (Table 9-11): at33"
+  },
+  "loss.at11": {
+   "value": "2.58",
+   "unit": "percent",
+   "page": 319,
+   "quote": "Inter State Transmission Losses 3.58% Intra State Transmission Losses 3.18% Loss above 33 kV Level 0.09% Loss at 33 kV Level 0.79% Loss at 11 kV Level 2.58% Loss below 11kV Level 6.97%",
+   "what": "voltage-wise losses for CSS (Table 9-11): at11"
+  },
+  "loss.below11": {
+   "value": "6.97",
+   "unit": "percent",
+   "page": 319,
+   "quote": "Inter State Transmission Losses 3.58% Intra State Transmission Losses 3.18% Loss above 33 kV Level 0.09% Loss at 33 kV Level 0.79% Loss at 11 kV Level 2.58% Loss below 11kV Level 6.97%",
+   "what": "voltage-wise losses for CSS (Table 9-11): below11"
+  },
+  "cos.above132.d": {
+   "value": "1.32",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 132 kV 1.32 1.21 3.70 4.91 3.58% 3.18% 0.09% 0 6.59",
+   "what": "cost of supply, HV Categories above 132 kV (Table 9-12): d"
+  },
+  "cos.above132.pp_fixed": {
+   "value": "1.21",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 132 kV 1.32 1.21 3.70 4.91 3.58% 3.18% 0.09% 0 6.59",
+   "what": "cost of supply, HV Categories above 132 kV (Table 9-12): pp_fixed"
+  },
+  "cos.above132.pp_variable": {
+   "value": "3.70",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 132 kV 1.32 1.21 3.70 4.91 3.58% 3.18% 0.09% 0 6.59",
+   "what": "cost of supply, HV Categories above 132 kV (Table 9-12): pp_variable"
+  },
+  "cos.above132.pp": {
+   "value": "4.91",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 132 kV 1.32 1.21 3.70 4.91 3.58% 3.18% 0.09% 0 6.59",
+   "what": "cost of supply, HV Categories above 132 kV (Table 9-12): pp"
+  },
+  "cos.above132.l3": {
+   "value": "0.09",
+   "unit": "percent",
+   "page": 319,
+   "quote": "HV Categories above 132 kV 1.32 1.21 3.70 4.91 3.58% 3.18% 0.09% 0 6.59",
+   "what": "cost of supply, HV Categories above 132 kV (Table 9-12): l3"
+  },
+  "cos.above132.total": {
+   "value": "6.59",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 132 kV 1.32 1.21 3.70 4.91 3.58% 3.18% 0.09% 0 6.59",
+   "what": "cost of supply, HV Categories above 132 kV (Table 9-12): total"
+  },
+  "cos.at33.d": {
+   "value": "2.35",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 11 kV and up to 33 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 0.79% 0 7.65",
+   "what": "cost of supply, HV Categories above 11 kV and up to 33 kV (Table 9-12): d"
+  },
+  "cos.at33.pp_fixed": {
+   "value": "1.21",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 11 kV and up to 33 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 0.79% 0 7.65",
+   "what": "cost of supply, HV Categories above 11 kV and up to 33 kV (Table 9-12): pp_fixed"
+  },
+  "cos.at33.pp_variable": {
+   "value": "3.70",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 11 kV and up to 33 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 0.79% 0 7.65",
+   "what": "cost of supply, HV Categories above 11 kV and up to 33 kV (Table 9-12): pp_variable"
+  },
+  "cos.at33.pp": {
+   "value": "4.91",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 11 kV and up to 33 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 0.79% 0 7.65",
+   "what": "cost of supply, HV Categories above 11 kV and up to 33 kV (Table 9-12): pp"
+  },
+  "cos.at33.l3": {
+   "value": "0.79",
+   "unit": "percent",
+   "page": 319,
+   "quote": "HV Categories above 11 kV and up to 33 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 0.79% 0 7.65",
+   "what": "cost of supply, HV Categories above 11 kV and up to 33 kV (Table 9-12): l3"
+  },
+  "cos.at33.total": {
+   "value": "7.65",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV Categories above 11 kV and up to 33 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 0.79% 0 7.65",
+   "what": "cost of supply, HV Categories above 11 kV and up to 33 kV (Table 9-12): total"
+  },
+  "cos.at11.d": {
+   "value": "2.35",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV at 11 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 2.58% 0 7.75",
+   "what": "cost of supply, HV at 11 kV (Table 9-12): d"
+  },
+  "cos.at11.pp_fixed": {
+   "value": "1.21",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV at 11 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 2.58% 0 7.75",
+   "what": "cost of supply, HV at 11 kV (Table 9-12): pp_fixed"
+  },
+  "cos.at11.pp_variable": {
+   "value": "3.70",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV at 11 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 2.58% 0 7.75",
+   "what": "cost of supply, HV at 11 kV (Table 9-12): pp_variable"
+  },
+  "cos.at11.pp": {
+   "value": "4.91",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV at 11 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 2.58% 0 7.75",
+   "what": "cost of supply, HV at 11 kV (Table 9-12): pp"
+  },
+  "cos.at11.l3": {
+   "value": "2.58",
+   "unit": "percent",
+   "page": 319,
+   "quote": "HV at 11 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 2.58% 0 7.75",
+   "what": "cost of supply, HV at 11 kV (Table 9-12): l3"
+  },
+  "cos.at11.total": {
+   "value": "7.75",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "HV at 11 kV 2.35 1.21 3.70 4.91 3.58% 3.18% 2.58% 0 7.75",
+   "what": "cost of supply, HV at 11 kV (Table 9-12): total"
+  },
+  "cos.lv.d": {
+   "value": "2.35",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "LV Categories below 11 KV 2.35 1.21 3.70 4.91 3.58% 3.18% 6.97% 0 7.98",
+   "what": "cost of supply, LV Categories below 11 KV (Table 9-12): d"
+  },
+  "cos.lv.pp_fixed": {
+   "value": "1.21",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "LV Categories below 11 KV 2.35 1.21 3.70 4.91 3.58% 3.18% 6.97% 0 7.98",
+   "what": "cost of supply, LV Categories below 11 KV (Table 9-12): pp_fixed"
+  },
+  "cos.lv.pp_variable": {
+   "value": "3.70",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "LV Categories below 11 KV 2.35 1.21 3.70 4.91 3.58% 3.18% 6.97% 0 7.98",
+   "what": "cost of supply, LV Categories below 11 KV (Table 9-12): pp_variable"
+  },
+  "cos.lv.pp": {
+   "value": "4.91",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "LV Categories below 11 KV 2.35 1.21 3.70 4.91 3.58% 3.18% 6.97% 0 7.98",
+   "what": "cost of supply, LV Categories below 11 KV (Table 9-12): pp"
+  },
+  "cos.lv.l3": {
+   "value": "6.97",
+   "unit": "percent",
+   "page": 319,
+   "quote": "LV Categories below 11 KV 2.35 1.21 3.70 4.91 3.58% 3.18% 6.97% 0 7.98",
+   "what": "cost of supply, LV Categories below 11 KV (Table 9-12): l3"
+  },
+  "cos.lv.total": {
+   "value": "7.98",
+   "unit": "INR_per_kWh",
+   "page": 319,
+   "quote": "LV Categories below 11 KV 2.35 1.21 3.70 4.91 3.58% 3.18% 6.97% 0 7.98",
+   "what": "cost of supply, LV Categories below 11 KV (Table 9-12): total"
+  },
+  "css.hv1_11.abr": {
+   "value": "10.29",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply at 11 kV 10.29 10.29 7.75 2.54 1.55",
+   "what": "CSS computed, HV1 Supply at 11 kV (Table 9-13): abr"
+  },
+  "css.hv1_11.t": {
+   "value": "10.29",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply at 11 kV 10.29 10.29 7.75 2.54 1.55",
+   "what": "CSS computed, HV1 Supply at 11 kV (Table 9-13): t"
+  },
+  "css.hv1_11.cos": {
+   "value": "7.75",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply at 11 kV 10.29 10.29 7.75 2.54 1.55",
+   "what": "CSS computed, HV1 Supply at 11 kV (Table 9-13): cos"
+  },
+  "css.hv1_11.computed": {
+   "value": "2.54",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply at 11 kV 10.29 10.29 7.75 2.54 1.55",
+   "what": "CSS computed, HV1 Supply at 11 kV (Table 9-13): computed"
+  },
+  "css.hv1_11.capped": {
+   "value": "1.55",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply at 11 kV 10.29 10.29 7.75 2.54 1.55",
+   "what": "CSS computed, HV1 Supply at 11 kV (Table 9-13): capped"
+  },
+  "css.hv1_33.abr": {
+   "value": "10.20",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply above 11 kV 10.20 10.20 7.65 2.54 1.53",
+   "what": "CSS computed, HV1 Supply above 11 kV (Table 9-13): abr"
+  },
+  "css.hv1_33.t": {
+   "value": "10.20",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply above 11 kV 10.20 10.20 7.65 2.54 1.53",
+   "what": "CSS computed, HV1 Supply above 11 kV (Table 9-13): t"
+  },
+  "css.hv1_33.cos": {
+   "value": "7.65",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply above 11 kV 10.20 10.20 7.65 2.54 1.53",
+   "what": "CSS computed, HV1 Supply above 11 kV (Table 9-13): cos"
+  },
+  "css.hv1_33.computed": {
+   "value": "2.54",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply above 11 kV 10.20 10.20 7.65 2.54 1.53",
+   "what": "CSS computed, HV1 Supply above 11 kV (Table 9-13): computed"
+  },
+  "css.hv1_33.capped": {
+   "value": "1.53",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV1 Supply above 11 kV 10.20 10.20 7.65 2.54 1.53",
+   "what": "CSS computed, HV1 Supply above 11 kV (Table 9-13): capped"
+  },
+  "css.hv2_11.abr": {
+   "value": "8.41",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV 8.41 8.41 7.75 0.66 0.66",
+   "what": "CSS computed, HV2 Supply at 11 kV (Table 9-13): abr"
+  },
+  "css.hv2_11.t": {
+   "value": "8.41",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV 8.41 8.41 7.75 0.66 0.66",
+   "what": "CSS computed, HV2 Supply at 11 kV (Table 9-13): t"
+  },
+  "css.hv2_11.cos": {
+   "value": "7.75",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV 8.41 8.41 7.75 0.66 0.66",
+   "what": "CSS computed, HV2 Supply at 11 kV (Table 9-13): cos"
+  },
+  "css.hv2_11.computed": {
+   "value": "0.66",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV 8.41 8.41 7.75 0.66 0.66",
+   "what": "CSS computed, HV2 Supply at 11 kV (Table 9-13): computed"
+  },
+  "css.hv2_11.capped": {
+   "value": "0.66",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV 8.41 8.41 7.75 0.66 0.66",
+   "what": "CSS computed, HV2 Supply at 11 kV (Table 9-13): capped"
+  },
+  "css.hv2_66.abr": {
+   "value": "7.63",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV up to 66 kV 7.63 7.63 7.12 0.51 0.51",
+   "what": "CSS computed, HV2 Supply at 11 kV up to 66 kV (Table 9-13): abr"
+  },
+  "css.hv2_66.t": {
+   "value": "7.63",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV up to 66 kV 7.63 7.63 7.12 0.51 0.51",
+   "what": "CSS computed, HV2 Supply at 11 kV up to 66 kV (Table 9-13): t"
+  },
+  "css.hv2_66.cos": {
+   "value": "7.12",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV up to 66 kV 7.63 7.63 7.12 0.51 0.51",
+   "what": "CSS computed, HV2 Supply at 11 kV up to 66 kV (Table 9-13): cos"
+  },
+  "css.hv2_66.computed": {
+   "value": "0.51",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV up to 66 kV 7.63 7.63 7.12 0.51 0.51",
+   "what": "CSS computed, HV2 Supply at 11 kV up to 66 kV (Table 9-13): computed"
+  },
+  "css.hv2_66.capped": {
+   "value": "0.51",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 11 kV up to 66 kV 7.63 7.63 7.12 0.51 0.51",
+   "what": "CSS computed, HV2 Supply at 11 kV up to 66 kV (Table 9-13): capped"
+  },
+  "css.hv2_132.abr": {
+   "value": "7.40",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 66 kV up to 132 kV 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 66 kV up to 132 kV (Table 9-13): abr"
+  },
+  "css.hv2_132.t": {
+   "value": "7.40",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 66 kV up to 132 kV 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 66 kV up to 132 kV (Table 9-13): t"
+  },
+  "css.hv2_132.cos": {
+   "value": "6.59",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 66 kV up to 132 kV 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 66 kV up to 132 kV (Table 9-13): cos"
+  },
+  "css.hv2_132.computed": {
+   "value": "0.81",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 66 kV up to 132 kV 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 66 kV up to 132 kV (Table 9-13): computed"
+  },
+  "css.hv2_132.capped": {
+   "value": "0.81",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 66 kV up to 132 kV 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 66 kV up to 132 kV (Table 9-13): capped"
+  },
+  "css.hv2_132plus.abr": {
+   "value": "7.40",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 132 kV# 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 132 kV# (Table 9-13): abr"
+  },
+  "css.hv2_132plus.t": {
+   "value": "7.40",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 132 kV# 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 132 kV# (Table 9-13): t"
+  },
+  "css.hv2_132plus.cos": {
+   "value": "6.59",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 132 kV# 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 132 kV# (Table 9-13): cos"
+  },
+  "css.hv2_132plus.computed": {
+   "value": "0.81",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 132 kV# 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 132 kV# (Table 9-13): computed"
+  },
+  "css.hv2_132plus.capped": {
+   "value": "0.81",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "HV2 Supply at 132 kV# 7.40 7.40 6.59 0.81 0.81",
+   "what": "CSS computed, HV2 Supply at 132 kV# (Table 9-13): capped"
+  },
+  "css.lv.previous": {
+   "value": "1.46",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "Supply below 11 kV 1.46 - 1.60 1.46",
+   "what": "CSS approved, Supply below 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): previous"
+  },
+  "css.lv.claimed": {
+   "value": "0",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "Supply below 11 kV 1.46 - 1.60 1.46",
+   "what": "CSS approved, Supply below 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): claimed"
+  },
+  "css.lv.computed_9_14": {
+   "value": "1.60",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "Supply below 11 kV 1.46 - 1.60 1.46",
+   "what": "CSS approved, Supply below 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): computed_9_14"
+  },
+  "css.lv.approved": {
+   "value": "1.46",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "Supply below 11 kV 1.46 - 1.60 1.46",
+   "what": "CSS approved, Supply below 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): approved"
+  },
+  "css.hv1_11.previous": {
+   "value": "1.33",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-1 Supply at 11 kV 1.33 1.72 1.55 1.33",
+   "what": "CSS approved, HV-1 Supply at 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): previous"
+  },
+  "css.hv1_11.claimed": {
+   "value": "1.72",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-1 Supply at 11 kV 1.33 1.72 1.55 1.33",
+   "what": "CSS approved, HV-1 Supply at 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): claimed"
+  },
+  "css.hv1_11.computed_9_14": {
+   "value": "1.55",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-1 Supply at 11 kV 1.33 1.72 1.55 1.33",
+   "what": "CSS approved, HV-1 Supply at 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): computed_9_14"
+  },
+  "css.hv1_11.approved": {
+   "value": "1.33",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-1 Supply at 11 kV 1.33 1.72 1.55 1.33",
+   "what": "CSS approved, HV-1 Supply at 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): approved"
+  },
+  "css.hv1_33.previous": {
+   "value": "1.40",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-1 Supply above 11 kV 1.40 2.02 1.53 1.40",
+   "what": "CSS approved, HV-1 Supply above 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): previous"
+  },
+  "css.hv1_33.claimed": {
+   "value": "2.02",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-1 Supply above 11 kV 1.40 2.02 1.53 1.40",
+   "what": "CSS approved, HV-1 Supply above 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): claimed"
+  },
+  "css.hv1_33.computed_9_14": {
+   "value": "1.53",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-1 Supply above 11 kV 1.40 2.02 1.53 1.40",
+   "what": "CSS approved, HV-1 Supply above 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): computed_9_14"
+  },
+  "css.hv1_33.approved": {
+   "value": "1.40",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-1 Supply above 11 kV 1.40 2.02 1.53 1.40",
+   "what": "CSS approved, HV-1 Supply above 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): approved"
+  },
+  "css.hv2_11.previous": {
+   "value": "0.57",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 11 kV 0.57 0.03 0.66 0.57",
+   "what": "CSS approved, HV-2 Supply at 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): previous"
+  },
+  "css.hv2_11.claimed": {
+   "value": "0.03",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 11 kV 0.57 0.03 0.66 0.57",
+   "what": "CSS approved, HV-2 Supply at 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): claimed"
+  },
+  "css.hv2_11.computed_9_14": {
+   "value": "0.66",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 11 kV 0.57 0.03 0.66 0.57",
+   "what": "CSS approved, HV-2 Supply at 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): computed_9_14"
+  },
+  "css.hv2_11.approved": {
+   "value": "0.57",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 11 kV 0.57 0.03 0.66 0.57",
+   "what": "CSS approved, HV-2 Supply at 11 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): approved"
+  },
+  "css.hv2_66.previous": {
+   "value": "0.59",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 11 kV up to 66 kV 0.59 - 0.51 0.51",
+   "what": "CSS approved, HV-2 Supply at 11 kV up to 66 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): previous"
+  },
+  "css.hv2_66.claimed": {
+   "value": "0",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 11 kV up to 66 kV 0.59 - 0.51 0.51",
+   "what": "CSS approved, HV-2 Supply at 11 kV up to 66 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): claimed"
+  },
+  "css.hv2_66.computed_9_14": {
+   "value": "0.51",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 11 kV up to 66 kV 0.59 - 0.51 0.51",
+   "what": "CSS approved, HV-2 Supply at 11 kV up to 66 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): computed_9_14"
+  },
+  "css.hv2_66.approved": {
+   "value": "0.51",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 11 kV up to 66 kV 0.59 - 0.51 0.51",
+   "what": "CSS approved, HV-2 Supply at 11 kV up to 66 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): approved"
+  },
+  "css.hv2_132.previous": {
+   "value": "0.36",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 66 kV up to 132 kV 0.36 - 0.81 0.36",
+   "what": "CSS approved, HV-2 Supply at 66 kV up to 132 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): previous"
+  },
+  "css.hv2_132.claimed": {
+   "value": "0",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 66 kV up to 132 kV 0.36 - 0.81 0.36",
+   "what": "CSS approved, HV-2 Supply at 66 kV up to 132 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): claimed"
+  },
+  "css.hv2_132.computed_9_14": {
+   "value": "0.81",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 66 kV up to 132 kV 0.36 - 0.81 0.36",
+   "what": "CSS approved, HV-2 Supply at 66 kV up to 132 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): computed_9_14"
+  },
+  "css.hv2_132.approved": {
+   "value": "0.36",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 66 kV up to 132 kV 0.36 - 0.81 0.36",
+   "what": "CSS approved, HV-2 Supply at 66 kV up to 132 kV (Table 9-14: the lower of the FY2025-26 approval and the computed): approved"
+  },
+  "css.hv2_132plus.previous": {
+   "value": "0.36",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 132 kV# 0.36 0.53 0.81 0.36",
+   "what": "CSS approved, HV-2 Supply at 132 kV# (Table 9-14: the lower of the FY2025-26 approval and the computed): previous"
+  },
+  "css.hv2_132plus.claimed": {
+   "value": "0.53",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 132 kV# 0.36 0.53 0.81 0.36",
+   "what": "CSS approved, HV-2 Supply at 132 kV# (Table 9-14: the lower of the FY2025-26 approval and the computed): claimed"
+  },
+  "css.hv2_132plus.computed_9_14": {
+   "value": "0.81",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 132 kV# 0.36 0.53 0.81 0.36",
+   "what": "CSS approved, HV-2 Supply at 132 kV# (Table 9-14: the lower of the FY2025-26 approval and the computed): computed_9_14"
+  },
+  "css.hv2_132plus.approved": {
+   "value": "0.36",
+   "unit": "INR_per_kWh",
+   "page": 321,
+   "quote": "HV-2 Supply at 132 kV# 0.36 0.53 0.81 0.36",
+   "what": "CSS approved, HV-2 Supply at 132 kV# (Table 9-14: the lower of the FY2025-26 approval and the computed): approved"
+  },
+  "css.lv.table_9_13": {
+   "value": "1.46",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "Supply below 11 kV* 1.46 HV1",
+   "what": "CSS for supply below 11 kV kept at the FY2025-26 ceiling (Table 9-13): table_9_13"
+  },
+  "css.lv.ceiling": {
+   "value": "1.46",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "*The CSS for supply below 11kV has been kept as ceiling of Rs. 1.46/ kWh (As approved in TO of FY 2025-26) as 20% of ACOS is Rs. 1.60/kWh",
+   "what": "the note under Table 9-13: ceiling"
+  },
+  "css.lv.cap_on_acos": {
+   "value": "1.60",
+   "unit": "INR_per_kWh",
+   "page": 320,
+   "quote": "*The CSS for supply below 11kV has been kept as ceiling of Rs. 1.46/ kWh (As approved in TO of FY 2025-26) as 20% of ACOS is Rs. 1.60/kWh",
+   "what": "the note under Table 9-13: cap_on_acos"
+  },
+  "t682.sales.claimed": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 294,
+   "quote": "Total Sales (MU) A 4,399.84 4,399.84",
+   "what": "Table 6-82, sales: claimed"
+  },
+  "t682.sales.approved": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 294,
+   "quote": "Total Sales (MU) A 4,399.84 4,399.84",
+   "what": "Table 6-82, sales: approved"
+  },
+  "t682.ex_bus.claimed": {
+   "value": "5066.34",
+   "unit": "MU",
+   "page": 294,
+   "quote": "Total Power Purchase (Ex-Bus) (MU) E 5,066.34 5,043.87",
+   "what": "Table 6-82, ex_bus: claimed"
+  },
+  "t682.ex_bus.approved": {
+   "value": "5043.87",
+   "unit": "MU",
+   "page": 294,
+   "quote": "Total Power Purchase (Ex-Bus) (MU) E 5,066.34 5,043.87",
+   "what": "Table 6-82, ex_bus: approved"
+  },
+  "t682.pp_cost.claimed": {
+   "value": "2894.69",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Toal Power Purchase Cost (CTU & STU Charges) (Rs. Cr.) F 2,894.69 2,958.85",
+   "what": "Table 6-82, pp_cost: claimed"
+  },
+  "t682.pp_cost.approved": {
+   "value": "2958.85",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Toal Power Purchase Cost (CTU & STU Charges) (Rs. Cr.) F 2,894.69 2,958.85",
+   "what": "Table 6-82, pp_cost: approved"
+  },
+  "t682.transmission.claimed": {
+   "value": "446.36",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Transmission & SLDC Charges (Rs. Cr.) G 446.36 481.49",
+   "what": "Table 6-82, transmission: claimed"
+  },
+  "t682.transmission.approved": {
+   "value": "481.49",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Transmission & SLDC Charges (Rs. Cr.) G 446.36 481.49",
+   "what": "Table 6-82, transmission: approved"
+  },
+  "t682.arr.claimed": {
+   "value": "3481.82",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Aggregate Revenue Requirement (Rs. Cr.) H 3,481.82 3,511.33",
+   "what": "Table 6-82, arr: claimed"
+  },
+  "t682.arr.approved": {
+   "value": "3511.33",
+   "unit": "INR_crore",
+   "page": 294,
+   "quote": "Aggregate Revenue Requirement (Rs. Cr.) H 3,481.82 3,511.33",
+   "what": "Table 6-82, arr: approved"
+  },
+  "t682.appc.claimed": {
+   "value": "4.83",
+   "unit": "INR_per_kWh",
+   "page": 294,
+   "quote": "APPC (Rs./kWh) I=(F-G)/E*10 4.83 4.91",
+   "what": "Table 6-82, appc: claimed"
+  },
+  "t682.appc.approved": {
+   "value": "4.91",
+   "unit": "INR_per_kWh",
+   "page": 294,
+   "quote": "APPC (Rs./kWh) I=(F-G)/E*10 4.83 4.91",
+   "what": "Table 6-82, appc: approved"
+  },
+  "t682.acos.claimed": {
+   "value": "7.91",
+   "unit": "INR_per_kWh",
+   "page": 294,
+   "quote": "ACoS (Rs./kWh) L=H/A*10 7.91 7.98",
+   "what": "Table 6-82, acos: claimed"
+  },
+  "t682.acos.approved": {
+   "value": "7.98",
+   "unit": "INR_per_kWh",
+   "page": 294,
+   "quote": "ACoS (Rs./kWh) L=H/A*10 7.91 7.98",
+   "what": "Table 6-82, acos: approved"
+  },
+  "npcl.hv2_132.t": {
+   "value": "6.66",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "1 Large & Heavy Power (HV-2)* 6.66 - - 6.12 0.09% 6.13 0.53",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2)*: t"
+  },
+  "npcl.hv2_132.d": {
+   "value": "0",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "1 Large & Heavy Power (HV-2)* 6.66 - - 6.12 0.09% 6.13 0.53",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2)*: d"
+  },
+  "npcl.hv2_132.r": {
+   "value": "0",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "1 Large & Heavy Power (HV-2)* 6.66 - - 6.12 0.09% 6.13 0.53",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2)*: r"
+  },
+  "npcl.hv2_132.c": {
+   "value": "6.12",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "1 Large & Heavy Power (HV-2)* 6.66 - - 6.12 0.09% 6.13 0.53",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2)*: c"
+  },
+  "npcl.hv2_132.l": {
+   "value": "0.09",
+   "unit": "percent",
+   "page": 316,
+   "quote": "1 Large & Heavy Power (HV-2)* 6.66 - - 6.12 0.09% 6.13 0.53",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2)*: l"
+  },
+  "npcl.hv2_132.cos": {
+   "value": "6.13",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "1 Large & Heavy Power (HV-2)* 6.66 - - 6.12 0.09% 6.13 0.53",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2)*: cos"
+  },
+  "npcl.hv2_132.css": {
+   "value": "0.53",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "1 Large & Heavy Power (HV-2)* 6.66 - - 6.12 0.09% 6.13 0.53",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2)*: css"
+  },
+  "npcl.hv1_33.t": {
+   "value": "9.18",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "2 Non Industrial Bulk Load (HV-1)# 9.18 0.78 0.21 6.12 0.79% 7.16 2.02",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1)#: t"
+  },
+  "npcl.hv1_33.d": {
+   "value": "0.78",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "2 Non Industrial Bulk Load (HV-1)# 9.18 0.78 0.21 6.12 0.79% 7.16 2.02",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1)#: d"
+  },
+  "npcl.hv1_33.r": {
+   "value": "0.21",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "2 Non Industrial Bulk Load (HV-1)# 9.18 0.78 0.21 6.12 0.79% 7.16 2.02",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1)#: r"
+  },
+  "npcl.hv1_33.c": {
+   "value": "6.12",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "2 Non Industrial Bulk Load (HV-1)# 9.18 0.78 0.21 6.12 0.79% 7.16 2.02",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1)#: c"
+  },
+  "npcl.hv1_33.l": {
+   "value": "0.79",
+   "unit": "percent",
+   "page": 316,
+   "quote": "2 Non Industrial Bulk Load (HV-1)# 9.18 0.78 0.21 6.12 0.79% 7.16 2.02",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1)#: l"
+  },
+  "npcl.hv1_33.cos": {
+   "value": "7.16",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "2 Non Industrial Bulk Load (HV-1)# 9.18 0.78 0.21 6.12 0.79% 7.16 2.02",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1)#: cos"
+  },
+  "npcl.hv1_33.css": {
+   "value": "2.02",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "2 Non Industrial Bulk Load (HV-1)# 9.18 0.78 0.21 6.12 0.79% 7.16 2.02",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1)#: css"
+  },
+  "npcl.hv2_33.t": {
+   "value": "6.87",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "3 Large & Heavy Power (HV-2) 6.87 0.78 0.21 6.12 0.79% 7.16 -",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): t"
+  },
+  "npcl.hv2_33.d": {
+   "value": "0.78",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "3 Large & Heavy Power (HV-2) 6.87 0.78 0.21 6.12 0.79% 7.16 -",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): d"
+  },
+  "npcl.hv2_33.r": {
+   "value": "0.21",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "3 Large & Heavy Power (HV-2) 6.87 0.78 0.21 6.12 0.79% 7.16 -",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): r"
+  },
+  "npcl.hv2_33.c": {
+   "value": "6.12",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "3 Large & Heavy Power (HV-2) 6.87 0.78 0.21 6.12 0.79% 7.16 -",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): c"
+  },
+  "npcl.hv2_33.l": {
+   "value": "0.79",
+   "unit": "percent",
+   "page": 316,
+   "quote": "3 Large & Heavy Power (HV-2) 6.87 0.78 0.21 6.12 0.79% 7.16 -",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): l"
+  },
+  "npcl.hv2_33.cos": {
+   "value": "7.16",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "3 Large & Heavy Power (HV-2) 6.87 0.78 0.21 6.12 0.79% 7.16 -",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): cos"
+  },
+  "npcl.hv2_33.css": {
+   "value": "0",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "3 Large & Heavy Power (HV-2) 6.87 0.78 0.21 6.12 0.79% 7.16 -",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): css"
+  },
+  "npcl.hv1_11.t": {
+   "value": "9.26",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "4 Non Industrial Bulk Load (HV-1) 9.26 1.08 0.18 6.12 2.58% 7.54 1.72",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1): t"
+  },
+  "npcl.hv1_11.d": {
+   "value": "1.08",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "4 Non Industrial Bulk Load (HV-1) 9.26 1.08 0.18 6.12 2.58% 7.54 1.72",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1): d"
+  },
+  "npcl.hv1_11.r": {
+   "value": "0.18",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "4 Non Industrial Bulk Load (HV-1) 9.26 1.08 0.18 6.12 2.58% 7.54 1.72",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1): r"
+  },
+  "npcl.hv1_11.c": {
+   "value": "6.12",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "4 Non Industrial Bulk Load (HV-1) 9.26 1.08 0.18 6.12 2.58% 7.54 1.72",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1): c"
+  },
+  "npcl.hv1_11.l": {
+   "value": "2.58",
+   "unit": "percent",
+   "page": 316,
+   "quote": "4 Non Industrial Bulk Load (HV-1) 9.26 1.08 0.18 6.12 2.58% 7.54 1.72",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1): l"
+  },
+  "npcl.hv1_11.cos": {
+   "value": "7.54",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "4 Non Industrial Bulk Load (HV-1) 9.26 1.08 0.18 6.12 2.58% 7.54 1.72",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1): cos"
+  },
+  "npcl.hv1_11.css": {
+   "value": "1.72",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "4 Non Industrial Bulk Load (HV-1) 9.26 1.08 0.18 6.12 2.58% 7.54 1.72",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Non Industrial Bulk Load (HV-1): css"
+  },
+  "npcl.hv2_11.t": {
+   "value": "7.57",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "5 Large & Heavy Power (HV-2) 7.57 1.08 0.18 6.12 2.58% 7.54 0.03",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): t"
+  },
+  "npcl.hv2_11.d": {
+   "value": "1.08",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "5 Large & Heavy Power (HV-2) 7.57 1.08 0.18 6.12 2.58% 7.54 0.03",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): d"
+  },
+  "npcl.hv2_11.r": {
+   "value": "0.18",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "5 Large & Heavy Power (HV-2) 7.57 1.08 0.18 6.12 2.58% 7.54 0.03",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): r"
+  },
+  "npcl.hv2_11.c": {
+   "value": "6.12",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "5 Large & Heavy Power (HV-2) 7.57 1.08 0.18 6.12 2.58% 7.54 0.03",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): c"
+  },
+  "npcl.hv2_11.l": {
+   "value": "2.58",
+   "unit": "percent",
+   "page": 316,
+   "quote": "5 Large & Heavy Power (HV-2) 7.57 1.08 0.18 6.12 2.58% 7.54 0.03",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): l"
+  },
+  "npcl.hv2_11.cos": {
+   "value": "7.54",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "5 Large & Heavy Power (HV-2) 7.57 1.08 0.18 6.12 2.58% 7.54 0.03",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): cos"
+  },
+  "npcl.hv2_11.css": {
+   "value": "0.03",
+   "unit": "INR_per_kWh",
+   "page": 316,
+   "quote": "5 Large & Heavy Power (HV-2) 7.57 1.08 0.18 6.12 2.58% 7.54 0.03",
+   "what": "NPCL's CSS as submitted (para 9.3.2), Large & Heavy Power (HV-2): css"
+  }
+ }
+}

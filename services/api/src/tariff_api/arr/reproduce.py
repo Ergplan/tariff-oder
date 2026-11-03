@@ -570,7 +570,8 @@ def reproduce_cells(
     as the binding's ``workbooks`` names them) — a utility's record checked against the formats.
     An input may also be a commission order's rate (``{"rate": "lmv6.base"}``), from the rate
     record the binding names (``rates``: see ``load_rate_record``, ``load_binding_rates``) — never a
-    figure typed here; ``{"rate": a, "minus": b}`` is one recorded figure less another —
+    figure typed here; ``{"rate": a, "minus": b}`` is one recorded figure less another (``"plus"``
+    and ``"minus"`` may each name several) —
     or what an earlier evaluation of this binding computed (``{"computed": "<its label>",
     "output": …}``), unrounded: a chain of years carried as the regulator carries it, not
     restarted from each printed, rounded figure.  A check may name a figure of the record
@@ -601,17 +602,24 @@ def reproduce_cells(
                     values[source] = got
                     continue
                 if "rate" in spec:
-                    for key in [spec["rate"], *([spec["minus"]] if "minus" in spec else [])]:
+                    plus, minus = ([v] if isinstance(v := spec.get(k, []), str) else list(v) for k in ("plus", "minus"))
+                    for key in [spec["rate"], *plus, *minus]:
                         if not rates or key not in rates:
                             raise RuleError(f"{binding['sheet']}: rate {key!r} is not in the rate record")
                     values[source] = rates[spec["rate"]]
-                    if "minus" in spec:
-                        # one recorded figure less another (a year's deduction between two printed
-                        # balances) — derived, never typed; the units must agree
-                        (a, ua), (b, ub) = rates[spec["rate"]], rates[spec["minus"]]
-                        if ua != ub:
-                            raise RuleError(f"{binding['sheet']}: {spec['rate']} ({ua}) minus {spec['minus']} ({ub})")
-                        values[source] = (str(Decimal(a) - Decimal(b)), ua)
+                    if plus or minus:
+                        # recorded figures added or taken away (a year's deduction between two
+                        # printed balances; the fixed charges of several sources) — derived, never
+                        # typed; the units must agree
+                        a, ua = rates[spec["rate"]]
+                        total = Decimal(a)
+                        for sign, key in [(1, k) for k in plus] + [(-1, k) for k in minus]:
+                            b, ub = rates[key]
+                            if ua != ub:
+                                how = "plus" if sign > 0 else "minus"
+                                raise RuleError(f"{binding['sheet']}: {spec['rate']} ({ua}) {how} {key} ({ub})")
+                            total += sign * Decimal(b)
+                        values[source] = (str(total), ua)
                     continue
                 if "value" in spec:
                     if not spec.get("why"):
