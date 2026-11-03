@@ -1,0 +1,334 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "PPC FY 25",
+ "rates": "order/figures-trueup-pp-sources-fy2024-25.json",
+ "places": 2,
+ "note": "The true-up's power purchase by source as the Commission approved it (Tables 4-42 to 4-45), with the same rules as the ARR year's: the energy billed, the inter-state loss to UP's periphery, the intra-state loss to NPCL's bus; the net cost — fixed and variable charges less the rebate; each renewable source's amount from its units and rate.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "DIL, true-up FY2024-25 (Table 4-42)",
+   "categories": {
+    "DIL": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.dil.billed"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "tu.dil.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "tu.dil.intra"
+      },
+      "record:pp_energy_charges": {
+       "rate": "tu.dil.variable"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "no other charges in the table"
+      },
+      "record:pp_fixed_charges": {
+       "rate": "tu.dil.fixed"
+      },
+      "record:pp_rebate": {
+       "rate": "tu.dil.rebate"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:tu.dil.at_state",
+      "ppp_at_periphery": "order:tu.dil.at_bus",
+      "pp_net": "order:tu.dil.net"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "medium term, true-up FY2024-25 (Table 4-43)",
+   "categories": {
+    "TPTCL (JITPL)": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.tptcl.billed"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "tu.tptcl.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "tu.tptcl.intra"
+      },
+      "record:pp_energy_charges": {
+       "rate": "tu.tptcl.variable"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "no other charges in the table"
+      },
+      "record:pp_fixed_charges": {
+       "rate": "tu.tptcl.fixed"
+      },
+      "record:pp_rebate": {
+       "rate": "tu.tptcl.rebate"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:tu.tptcl.at_state",
+      "ppp_at_periphery": "order:tu.tptcl.at_bus",
+      "pp_net": "order:tu.tptcl.net"
+     }
+    },
+    "JITPL": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.jitpl.billed"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "tu.jitpl.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "tu.jitpl.intra"
+      },
+      "record:pp_energy_charges": {
+       "rate": "tu.jitpl.variable"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "no other charges in the table"
+      },
+      "record:pp_fixed_charges": {
+       "rate": "tu.jitpl.fixed"
+      },
+      "record:pp_rebate": {
+       "rate": "tu.jitpl.rebate"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:tu.jitpl.at_state",
+      "ppp_at_periphery": "order:tu.jitpl.at_bus",
+      "pp_net": "order:tu.jitpl.net"
+     }
+    }
+   },
+   "checks": {
+    "ppp_units_total": "order:tu.mt.billed",
+    "ppp_at_state_total": "order:tu.mt.at_state",
+    "ppp_at_periphery_total": "order:tu.mt.at_bus",
+    "pp_net_total": "order:tu.mt.net"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "exchange, true-up FY2024-25 (Table 4-44)",
+   "categories": {
+    "IEX": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.px.billed"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "tu.px.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "tu.px.intra"
+      },
+      "record:pp_energy_charges": {
+       "rate": "tu.px.variable"
+      },
+      "record:pp_other_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "no other charges in the table"
+      },
+      "record:pp_fixed_charges": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "an exchange purchase has no fixed charge"
+      },
+      "record:pp_rebate": {
+       "value": "0",
+       "unit": "INR_crore",
+       "why": "no rebate on exchange purchases"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:tu.px.at_state",
+      "ppp_at_periphery": "order:tu.px.at_bus",
+      "pp_net": "order:tu.px.net"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "renewable, true-up FY2024-25 (Table 4-45)",
+   "categories": {
+    "PTC wind": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.ptc.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.ptc.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.ptc.amount"
+     }
+    },
+    "GNIDA solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.gnida.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.gnida.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.gnida.amount"
+     }
+    },
+    "APPCPL solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.appcpl.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.appcpl.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.appcpl.amount"
+     }
+    },
+    "Adani solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.adani.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.adani.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.adani.amount"
+     }
+    },
+    "Tata solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.tata.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.tata.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.tata.amount"
+     }
+    },
+    "TPTCL (TPSL) solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.tpsl.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.tpsl.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.tpsl.amount"
+     }
+    },
+    "net metering, settled": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.netmeter.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.netmeter.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.netmeter.amount"
+     }
+    },
+    "net metering, net feed": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.netfeed.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.netfeed.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.netfeed.amount"
+     }
+    },
+    "exchange, renewable": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "tu.re.px.mu"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "tu.re.px.rate"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "the table prints one rate per unit"
+      }
+     },
+     "checks": {
+      "ppp_cost": "order:tu.re.px.amount"
+     }
+    }
+   }
+  }
+ ]
+}

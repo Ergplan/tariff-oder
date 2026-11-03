@@ -1005,6 +1005,22 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 118 (2026-11-03): the true-up's power purchase by source.**
+  - **The record:** `order/figures-trueup-pp-sources-fy2024-25.json` holds 78 figures (Tables
+    4-42 to 4-45), 78 / 78 quotes verified.
+  - **The rules:** the power-plan rules now apply in every year, not only projections.
+  - **Binding `approval-trueup-pp-sources-fy25.json`, with the ARR year's rules and the existing
+    billed and rebate rules:**
+    - DIL, TPTCL (JITPL), JITPL and the exchange: energy billed through both losses to NPCL's
+      bus, and the net cost (fixed and variable less the rebate);
+    - nine renewable amounts from units and rate.
+    9 / 25 match exactly.  The test bounds every difference by the printed precision of its
+    inputs, comparing the printed figure with the unrounded result.  The order's own JITPL net
+    (359.30) is a unit below its printed parts.
+  - **Ties checked by the test:** each source's energy at the bus and net cost are Table 4-52's
+    line.
+  Nothing verified, nothing approved.
+
   **Increment 117 (2026-11-03): NPCL's APR power purchase estimate checked — the line the
   Commission took provisionally.**
   - **Table 5-18 read by word position (pp.179–180):** 49 rows, wrapped labels joined.
@@ -2913,6 +2929,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 118 (2026-11-03): 488 passed** (+1 unit: the true-up's power purchase by source).  `check_order_quotes.py`: 78 / 78.  Ruff and format clean.
 - **Increment 117 (2026-11-03): 487 passed** (+1 unit: NPCL's APR estimate table, its arithmetic and the 2.47 moved).  Ruff, format and `tsc` clean.
 - **Increment 116 (2026-11-03): 486 passed** (+1 unit: the true-up's energy balance and the 1.32 MU).  `check_order_quotes.py`: 40 / 40.  Ruff and format clean.
 - **Increment 115 (2026-11-03): 485 passed** (+1 unit: the energy balance, both columns).  `check_order_quotes.py`: 26 / 26.  Ruff and format clean.
@@ -3163,7 +3180,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 117) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 118) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

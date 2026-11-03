@@ -14636,6 +14636,286 @@
    ]
   },
   {
+   "binding": "approval-trueup-pp-sources-fy25.json",
+   "checks": [
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DIL, true-up FY2024-25 (Table 4-42) DIL order:tu.dil.at_state",
+     "output": "ppp_at_state",
+     "result": "differs",
+     "filed": "1277.72",
+     "computed": "1277.74",
+     "why": null,
+     "exact": "1277.740919"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DIL, true-up FY2024-25 (Table 4-42) DIL order:tu.dil.at_bus",
+     "output": "ppp_at_periphery",
+     "result": "differs",
+     "filed": "1237.09",
+     "computed": "1237.11",
+     "why": null,
+     "exact": "1237.1087577758"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "DIL, true-up FY2024-25 (Table 4-42) DIL order:tu.dil.net",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "539.30",
+     "computed": "539.30",
+     "why": null,
+     "exact": "539.30"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) TPTCL (JITPL) order:tu.tptcl.at_state",
+     "output": "ppp_at_state",
+     "result": "differs",
+     "filed": "727.15",
+     "computed": "727.17",
+     "why": null,
+     "exact": "727.171104"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) TPTCL (JITPL) order:tu.tptcl.at_bus",
+     "output": "ppp_at_periphery",
+     "result": "differs",
+     "filed": "704.03",
+     "computed": "704.05",
+     "why": null,
+     "exact": "704.0470628928"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) TPTCL (JITPL) order:tu.tptcl.net",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "306.51",
+     "computed": "306.51",
+     "why": null,
+     "exact": "306.51"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) JITPL order:tu.jitpl.at_state",
+     "output": "ppp_at_state",
+     "result": "match",
+     "filed": "663.39",
+     "computed": "663.39",
+     "why": null,
+     "exact": "663.389020"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) JITPL order:tu.jitpl.at_bus",
+     "output": "ppp_at_periphery",
+     "result": "differs",
+     "filed": "642.30",
+     "computed": "642.29",
+     "why": null,
+     "exact": "642.2932491640"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) JITPL order:tu.jitpl.net",
+     "output": "pp_net",
+     "result": "differs",
+     "filed": "359.30",
+     "computed": "359.31",
+     "why": null,
+     "exact": "359.31"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) order:tu.mt.billed",
+     "output": "ppp_units_total",
+     "result": "match",
+     "filed": "1443.16",
+     "computed": "1443.16",
+     "why": null,
+     "exact": "1443.16"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) order:tu.mt.at_state",
+     "output": "ppp_at_state_total",
+     "result": "differs",
+     "filed": "1390.54",
+     "computed": "1390.56",
+     "why": null,
+     "exact": "1390.560124"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) order:tu.mt.at_bus",
+     "output": "ppp_at_periphery_total",
+     "result": "differs",
+     "filed": "1346.32",
+     "computed": "1346.34",
+     "why": null,
+     "exact": "1346.3403120568"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "medium term, true-up FY2024-25 (Table 4-43) order:tu.mt.net",
+     "output": "pp_net_total",
+     "result": "differs",
+     "filed": "665.81",
+     "computed": "665.82",
+     "why": null,
+     "exact": "665.82"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "exchange, true-up FY2024-25 (Table 4-44) IEX order:tu.px.at_state",
+     "output": "ppp_at_state",
+     "result": "differs",
+     "filed": "1035.56",
+     "computed": "1035.52",
+     "why": null,
+     "exact": "1035.522072"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "exchange, true-up FY2024-25 (Table 4-44) IEX order:tu.px.at_bus",
+     "output": "ppp_at_periphery",
+     "result": "differs",
+     "filed": "1002.63",
+     "computed": "1002.59",
+     "why": null,
+     "exact": "1002.5924701104"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "exchange, true-up FY2024-25 (Table 4-44) IEX order:tu.px.net",
+     "output": "pp_net",
+     "result": "match",
+     "filed": "668.17",
+     "computed": "668.17",
+     "why": null,
+     "exact": "668.17"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) PTC wind order:tu.re.ptc.amount",
+     "output": "ppp_cost",
+     "result": "differs",
+     "filed": "11.70",
+     "computed": "11.69",
+     "why": null,
+     "exact": "11.69175"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) GNIDA solar order:tu.re.gnida.amount",
+     "output": "ppp_cost",
+     "result": "match",
+     "filed": "0.64",
+     "computed": "0.64",
+     "why": null,
+     "exact": "0.63664"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) APPCPL solar order:tu.re.appcpl.amount",
+     "output": "ppp_cost",
+     "result": "match",
+     "filed": "0.17",
+     "computed": "0.17",
+     "why": null,
+     "exact": "0.17216"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) Adani solar order:tu.re.adani.amount",
+     "output": "ppp_cost",
+     "result": "differs",
+     "filed": "16.28",
+     "computed": "16.29",
+     "why": null,
+     "exact": "16.29264"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) Tata solar order:tu.re.tata.amount",
+     "output": "ppp_cost",
+     "result": "differs",
+     "filed": "14.13",
+     "computed": "14.15",
+     "why": null,
+     "exact": "14.14584"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) TPTCL (TPSL) solar order:tu.re.tpsl.amount",
+     "output": "ppp_cost",
+     "result": "match",
+     "filed": "19.69",
+     "computed": "19.69",
+     "why": null,
+     "exact": "19.6863"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) net metering, settled order:tu.re.netmeter.amount",
+     "output": "ppp_cost",
+     "result": "match",
+     "filed": "0.08",
+     "computed": "0.08",
+     "why": null,
+     "exact": "0.0800"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) net metering, net feed order:tu.re.netfeed.amount",
+     "output": "ppp_cost",
+     "result": "differs",
+     "filed": "0.59",
+     "computed": "0.60",
+     "why": null,
+     "exact": "0.5968"
+    },
+    {
+     "table": "PPC FY 25",
+     "fiscal_year": "FY2024-25",
+     "category": "renewable, true-up FY2024-25 (Table 4-45) exchange, renewable order:tu.re.px.amount",
+     "output": "ppp_cost",
+     "result": "differs",
+     "filed": "86.22",
+     "computed": "86.25",
+     "why": null,
+     "exact": "86.24709"
+    }
+   ]
+  },
+  {
    "binding": "approval-wc-fy27.json",
    "checks": [
     {

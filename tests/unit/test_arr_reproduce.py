@@ -1780,3 +1780,52 @@ def test_npcl_the_trueup_energy_balance_shows_the_excess_energy_disallowed():
     excess = (total["claimed"] - total["approved"]).quantize(Decimal("0.01"))
     pp = load_binding_rates(folder, {"rates": "order/figures-trueup-power-purchase-fy2024-25.json"})
     assert excess == Decimal(rec["eb25.excess"][0]) == Decimal(pp["excess.mu"][0]) == Decimal("1.32")
+
+
+def test_npcl_the_trueup_power_purchase_reproduces_source_by_source():
+    """Real data: the true-up's purchases as approved (Tables 4-42 to 4-45) with the ARR year's
+    rules — the energy billed through the two losses to NPCL's bus, the net cost (fixed and
+    variable less the rebate), each renewable amount from its units and rate — within the printed
+    precision of losses, rates and rounded parts; each source is Table 4-52's line."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-trueup-pp-sources-fy25.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rec)
+    assert len(checks) == 25
+
+    def v(key):
+        return Decimal(rec[key][0])
+
+    for c in checks:
+        ref = c.category.split(" order:")[-1]
+        key = ref.rsplit(".", 1)[0]
+        diff = abs(Decimal(c.filed) - Decimal(c.exact))  # the printed figure against the unrounded result
+        if key == "tu.mt":  # the medium-term totals: two sources, each within its own bound
+            bound = 2 * v("tu.mt.billed") * Decimal("0.00005") + Decimal("0.02")
+        elif c.output.startswith(("ppp_at_state", "ppp_at_periphery")):
+            bound = 2 * v(f"{key}.billed") * Decimal("0.00005") + Decimal("0.01")
+        elif c.output.startswith("pp_net"):
+            bound = Decimal("0.02")  # four parts printed to two places
+        else:  # a renewable amount: units and rate each printed to two places
+            bound = (v(f"{key}.mu") + v(f"{key}.rate")) * Decimal("0.0005") + Decimal("0.005")
+        assert diff <= bound, (ref, c.output, diff, bound)
+    rep = json.loads((folder / "order-decisions.json").read_text())
+    rows = {
+        r["label"]: r["cells"] for r in next(t for t in rep["source_tables"] if t["proceeding"] == "true_up")["rows"]
+    }
+    for label, key in (
+        ("DIL Thermal", "tu.dil"),
+        ("TPTCL(Source-JITPL) Thermal", "tu.tptcl"),
+        ("JITPL Thermal", "tu.jitpl"),
+        ("Power Exchange Exchange", "tu.px"),
+    ):
+        assert Decimal(rows[label]["approved_mu"].replace(",", "")) == v(f"{key}.at_bus")
+        assert Decimal(rows[label]["approved_amount"].replace(",", "")) == v(f"{key}.net")

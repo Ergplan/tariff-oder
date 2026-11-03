@@ -1,0 +1,556 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): true-up of FY2024-25, power purchase by source (Tables 4-42 to 4-45)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "tu.dil.billed": {
+   "value": "1325.87",
+   "unit": "MU",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): billed"
+  },
+  "tu.dil.ists": {
+   "value": "3.63",
+   "unit": "percent",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): ists"
+  },
+  "tu.dil.at_state": {
+   "value": "1277.72",
+   "unit": "MU",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): at_state"
+  },
+  "tu.dil.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): intra"
+  },
+  "tu.dil.at_bus": {
+   "value": "1237.09",
+   "unit": "MU",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): at_bus"
+  },
+  "tu.dil.fixed": {
+   "value": "219.89",
+   "unit": "INR_crore",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): fixed"
+  },
+  "tu.dil.variable": {
+   "value": "327.62",
+   "unit": "INR_crore",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): variable"
+  },
+  "tu.dil.rebate": {
+   "value": "8.21",
+   "unit": "INR_crore",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): rebate"
+  },
+  "tu.dil.net": {
+   "value": "539.30",
+   "unit": "INR_crore",
+   "page": 78,
+   "quote": "Long Term Power 1,325.87 3.63% 1,277.72 3.18% 1,237.09 219.89 327.62 (8.21) 539.30",
+   "what": "DIL, true-up FY2024-25 (Table 4-42): net"
+  },
+  "tu.tptcl.billed": {
+   "value": "754.64",
+   "unit": "MU",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): billed"
+  },
+  "tu.tptcl.ists": {
+   "value": "3.64",
+   "unit": "percent",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): ists"
+  },
+  "tu.tptcl.at_state": {
+   "value": "727.15",
+   "unit": "MU",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): at_state"
+  },
+  "tu.tptcl.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): intra"
+  },
+  "tu.tptcl.at_bus": {
+   "value": "704.03",
+   "unit": "MU",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): at_bus"
+  },
+  "tu.tptcl.fixed": {
+   "value": "152.64",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): fixed"
+  },
+  "tu.tptcl.variable": {
+   "value": "156.97",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): variable"
+  },
+  "tu.tptcl.rebate": {
+   "value": "3.10",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): rebate"
+  },
+  "tu.tptcl.net": {
+   "value": "306.51",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "TPTCL (Source- JITPL) 754.64 3.64% 727.15 3.18% 704.03 152.64 156.97 (3.10) 306.51",
+   "what": "TPTCL (JITPL), true-up FY2024-25 (Table 4-43): net"
+  },
+  "tu.jitpl.billed": {
+   "value": "688.52",
+   "unit": "MU",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): billed"
+  },
+  "tu.jitpl.ists": {
+   "value": "3.65",
+   "unit": "percent",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): ists"
+  },
+  "tu.jitpl.at_state": {
+   "value": "663.39",
+   "unit": "MU",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): at_state"
+  },
+  "tu.jitpl.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): intra"
+  },
+  "tu.jitpl.at_bus": {
+   "value": "642.30",
+   "unit": "MU",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): at_bus"
+  },
+  "tu.jitpl.fixed": {
+   "value": "183.92",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): fixed"
+  },
+  "tu.jitpl.variable": {
+   "value": "179.02",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): variable"
+  },
+  "tu.jitpl.rebate": {
+   "value": "3.63",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): rebate"
+  },
+  "tu.jitpl.net": {
+   "value": "359.30",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "JITPL 688.52 3.65% 663.39 3.18% 642.30 183.92 179.02 (3.63) 359.30",
+   "what": "JITPL, true-up FY2024-25 (Table 4-43): net"
+  },
+  "tu.mt.billed": {
+   "value": "1443.16",
+   "unit": "MU",
+   "page": 80,
+   "quote": "Total 1,443.16 1,390.54 1,346.32 336.56 335.98 (6.73) 665.81",
+   "what": "medium term total, true-up FY2024-25 (Table 4-43): billed"
+  },
+  "tu.mt.at_state": {
+   "value": "1390.54",
+   "unit": "MU",
+   "page": 80,
+   "quote": "Total 1,443.16 1,390.54 1,346.32 336.56 335.98 (6.73) 665.81",
+   "what": "medium term total, true-up FY2024-25 (Table 4-43): at_state"
+  },
+  "tu.mt.at_bus": {
+   "value": "1346.32",
+   "unit": "MU",
+   "page": 80,
+   "quote": "Total 1,443.16 1,390.54 1,346.32 336.56 335.98 (6.73) 665.81",
+   "what": "medium term total, true-up FY2024-25 (Table 4-43): at_bus"
+  },
+  "tu.mt.fixed": {
+   "value": "336.56",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "Total 1,443.16 1,390.54 1,346.32 336.56 335.98 (6.73) 665.81",
+   "what": "medium term total, true-up FY2024-25 (Table 4-43): fixed"
+  },
+  "tu.mt.variable": {
+   "value": "335.98",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "Total 1,443.16 1,390.54 1,346.32 336.56 335.98 (6.73) 665.81",
+   "what": "medium term total, true-up FY2024-25 (Table 4-43): variable"
+  },
+  "tu.mt.rebate": {
+   "value": "6.73",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "Total 1,443.16 1,390.54 1,346.32 336.56 335.98 (6.73) 665.81",
+   "what": "medium term total, true-up FY2024-25 (Table 4-43): rebate"
+  },
+  "tu.mt.net": {
+   "value": "665.81",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "Total 1,443.16 1,390.54 1,346.32 336.56 335.98 (6.73) 665.81",
+   "what": "medium term total, true-up FY2024-25 (Table 4-43): net"
+  },
+  "tu.px.billed": {
+   "value": "1072.08",
+   "unit": "MU",
+   "page": 80,
+   "quote": "Power Exchange 1,072.08 3.41% 1,035.56 3.18% 1,002.63 668.17 668.17",
+   "what": "exchange, true-up FY2024-25 (Table 4-44): billed"
+  },
+  "tu.px.ists": {
+   "value": "3.41",
+   "unit": "percent",
+   "page": 80,
+   "quote": "Power Exchange 1,072.08 3.41% 1,035.56 3.18% 1,002.63 668.17 668.17",
+   "what": "exchange, true-up FY2024-25 (Table 4-44): ists"
+  },
+  "tu.px.at_state": {
+   "value": "1035.56",
+   "unit": "MU",
+   "page": 80,
+   "quote": "Power Exchange 1,072.08 3.41% 1,035.56 3.18% 1,002.63 668.17 668.17",
+   "what": "exchange, true-up FY2024-25 (Table 4-44): at_state"
+  },
+  "tu.px.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 80,
+   "quote": "Power Exchange 1,072.08 3.41% 1,035.56 3.18% 1,002.63 668.17 668.17",
+   "what": "exchange, true-up FY2024-25 (Table 4-44): intra"
+  },
+  "tu.px.at_bus": {
+   "value": "1002.63",
+   "unit": "MU",
+   "page": 80,
+   "quote": "Power Exchange 1,072.08 3.41% 1,035.56 3.18% 1,002.63 668.17 668.17",
+   "what": "exchange, true-up FY2024-25 (Table 4-44): at_bus"
+  },
+  "tu.px.variable": {
+   "value": "668.17",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "Power Exchange 1,072.08 3.41% 1,035.56 3.18% 1,002.63 668.17 668.17",
+   "what": "exchange, true-up FY2024-25 (Table 4-44): variable"
+  },
+  "tu.px.net": {
+   "value": "668.17",
+   "unit": "INR_crore",
+   "page": 80,
+   "quote": "Power Exchange 1,072.08 3.41% 1,035.56 3.18% 1,002.63 668.17 668.17",
+   "what": "exchange, true-up FY2024-25 (Table 4-44): net"
+  },
+  "tu.re.ptc.mu": {
+   "value": "32.75",
+   "unit": "MU",
+   "page": 83,
+   "quote": "1 PTC (Wind) 32.75 3.57 11.70 32.75 3.57 11.70",
+   "what": "PTC (Wind), renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.ptc.rate": {
+   "value": "3.57",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "1 PTC (Wind) 32.75 3.57 11.70 32.75 3.57 11.70",
+   "what": "PTC (Wind), renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.ptc.amount": {
+   "value": "11.70",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "1 PTC (Wind) 32.75 3.57 11.70 32.75 3.57 11.70",
+   "what": "PTC (Wind), renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.gnida.mu": {
+   "value": "0.92",
+   "unit": "MU",
+   "page": 83,
+   "quote": "2 GNIDA (Solar) 0.92 6.92 0.64 0.92 6.92 0.64",
+   "what": "GNIDA (Solar), renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.gnida.rate": {
+   "value": "6.92",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "2 GNIDA (Solar) 0.92 6.92 0.64 0.92 6.92 0.64",
+   "what": "GNIDA (Solar), renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.gnida.amount": {
+   "value": "0.64",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "2 GNIDA (Solar) 0.92 6.92 0.64 0.92 6.92 0.64",
+   "what": "GNIDA (Solar), renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.appcpl.mu": {
+   "value": "0.32",
+   "unit": "MU",
+   "page": 83,
+   "quote": "3 APPCPL-Solar 0.32 5.38 0.17 0.32 5.38 0.17",
+   "what": "APPCPL-Solar, renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.appcpl.rate": {
+   "value": "5.38",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "3 APPCPL-Solar 0.32 5.38 0.17 0.32 5.38 0.17",
+   "what": "APPCPL-Solar, renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.appcpl.amount": {
+   "value": "0.17",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "3 APPCPL-Solar 0.32 5.38 0.17 0.32 5.38 0.17",
+   "what": "APPCPL-Solar, renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.adani.mu": {
+   "value": "52.22",
+   "unit": "MU",
+   "page": 83,
+   "quote": "4 Adani (Solar) 52.22 3.12 16.28 52.22 3.12 16.28",
+   "what": "Adani (Solar), renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.adani.rate": {
+   "value": "3.12",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "4 Adani (Solar) 52.22 3.12 16.28 52.22 3.12 16.28",
+   "what": "Adani (Solar), renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.adani.amount": {
+   "value": "16.28",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "4 Adani (Solar) 52.22 3.12 16.28 52.22 3.12 16.28",
+   "what": "Adani (Solar), renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.tata.mu": {
+   "value": "42.48",
+   "unit": "MU",
+   "page": 83,
+   "quote": "5 Tata (Solar) 42.48 3.33 14.13 42.48 3.33 14.13",
+   "what": "Tata (Solar), renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.tata.rate": {
+   "value": "3.33",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "5 Tata (Solar) 42.48 3.33 14.13 42.48 3.33 14.13",
+   "what": "Tata (Solar), renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.tata.amount": {
+   "value": "14.13",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "5 Tata (Solar) 42.48 3.33 14.13 42.48 3.33 14.13",
+   "what": "Tata (Solar), renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.tpsl.mu": {
+   "value": "46.65",
+   "unit": "MU",
+   "page": 83,
+   "quote": "1 TPTCL (TPSL) 46.65 4.22 19.69 46.65 4.22 19.69",
+   "what": "TPTCL (TPSL), renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.tpsl.rate": {
+   "value": "4.22",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "1 TPTCL (TPSL) 46.65 4.22 19.69 46.65 4.22 19.69",
+   "what": "TPTCL (TPSL), renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.tpsl.amount": {
+   "value": "19.69",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "1 TPTCL (TPSL) 46.65 4.22 19.69 46.65 4.22 19.69",
+   "what": "TPTCL (TPSL), renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.netmeter.mu": {
+   "value": "0.40",
+   "unit": "MU",
+   "page": 83,
+   "quote": "2 Net Metering 0.40 2.00 0.08 0.40 2.00 0.08",
+   "what": "Net Metering, renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.netmeter.rate": {
+   "value": "2.00",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "2 Net Metering 0.40 2.00 0.08 0.40 2.00 0.08",
+   "what": "Net Metering, renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.netmeter.amount": {
+   "value": "0.08",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "2 Net Metering 0.40 2.00 0.08 0.40 2.00 0.08",
+   "what": "Net Metering, renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.netfeed.mu": {
+   "value": "1.60",
+   "unit": "MU",
+   "page": 83,
+   "quote": "3 Net Metering (Net Feed In) 1.60 3.73 0.59 1.60 3.73 0.59",
+   "what": "Net Metering (Net Feed In), renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.netfeed.rate": {
+   "value": "3.73",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "3 Net Metering (Net Feed In) 1.60 3.73 0.59 1.60 3.73 0.59",
+   "what": "Net Metering (Net Feed In), renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.netfeed.amount": {
+   "value": "0.59",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "3 Net Metering (Net Feed In) 1.60 3.73 0.59 1.60 3.73 0.59",
+   "what": "Net Metering (Net Feed In), renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.px.mu": {
+   "value": "143.03",
+   "unit": "MU",
+   "page": 83,
+   "quote": "4 Power Exchange 143.03 6.03 86.22 143.03 6.03 86.22",
+   "what": "Power Exchange, renewable, true-up FY2024-25 approved (Table 4-45): mu"
+  },
+  "tu.re.px.rate": {
+   "value": "6.03",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "4 Power Exchange 143.03 6.03 86.22 143.03 6.03 86.22",
+   "what": "Power Exchange, renewable, true-up FY2024-25 approved (Table 4-45): rate"
+  },
+  "tu.re.px.amount": {
+   "value": "86.22",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "4 Power Exchange 143.03 6.03 86.22 143.03 6.03 86.22",
+   "what": "Power Exchange, renewable, true-up FY2024-25 approved (Table 4-45): amount"
+  },
+  "tu.re.A.mu": {
+   "value": "128.70",
+   "unit": "MU",
+   "page": 83,
+   "quote": "Sub Total (A) 128.70 3.33 42.92 128.70 3.33 42.92",
+   "what": "renewable long term, approved (Table 4-45): mu"
+  },
+  "tu.re.A.rate": {
+   "value": "3.33",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "Sub Total (A) 128.70 3.33 42.92 128.70 3.33 42.92",
+   "what": "renewable long term, approved (Table 4-45): rate"
+  },
+  "tu.re.A.amount": {
+   "value": "42.92",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "Sub Total (A) 128.70 3.33 42.92 128.70 3.33 42.92",
+   "what": "renewable long term, approved (Table 4-45): amount"
+  },
+  "tu.re.B.mu": {
+   "value": "191.67",
+   "unit": "MU",
+   "page": 83,
+   "quote": "Sub Total (B) 191.67 6.40 122.57 191.67 6.40 122.57",
+   "what": "renewable short term, approved (Table 4-45): mu"
+  },
+  "tu.re.B.rate": {
+   "value": "6.40",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "Sub Total (B) 191.67 6.40 122.57 191.67 6.40 122.57",
+   "what": "renewable short term, approved (Table 4-45): rate"
+  },
+  "tu.re.B.amount": {
+   "value": "122.57",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "Sub Total (B) 191.67 6.40 122.57 191.67 6.40 122.57",
+   "what": "renewable short term, approved (Table 4-45): amount"
+  },
+  "tu.re.rec.amount": {
+   "value": "15.99",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "5 REC Purchase - - 15.99 - - 15.99",
+   "what": "REC purchase, approved (Table 4-45): amount"
+  },
+  "tu.re.total.mu": {
+   "value": "320.37",
+   "unit": "MU",
+   "page": 83,
+   "quote": "C Total (A+B) 320.37 5.17 165.49 320.37 5.17 165.49",
+   "what": "renewable total, approved (Table 4-45): mu"
+  },
+  "tu.re.total.rate": {
+   "value": "5.17",
+   "unit": "INR_per_kWh",
+   "page": 83,
+   "quote": "C Total (A+B) 320.37 5.17 165.49 320.37 5.17 165.49",
+   "what": "renewable total, approved (Table 4-45): rate"
+  },
+  "tu.re.total.amount": {
+   "value": "165.49",
+   "unit": "INR_crore",
+   "page": 83,
+   "quote": "C Total (A+B) 320.37 5.17 165.49 320.37 5.17 165.49",
+   "what": "renewable total, approved (Table 4-45): amount"
+  }
+ }
+}
