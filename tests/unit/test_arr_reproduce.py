@@ -1922,6 +1922,9 @@ def test_npcl_the_wheeling_and_supply_allocation_reproduces():
         "other interest order:a:alloc.other_interest.supply",
         "order:a:alloc.total.supply",
         "order:oa:dc.supply_arr",
+        "order:a:alloc.total.wheeling",  # 451.705: the items' half-paise, printed 451.70
+        "order:oa:wheel.arr",
+        "order:oa:wc.arr",
     }
     half = Decimal("0.005")
     # an item of n printed inputs, times its share, then printed: n × 0.005 × share + 0.005
@@ -1930,7 +1933,13 @@ def test_npcl_the_wheeling_and_supply_allocation_reproduces():
     )
     other = differ["other interest order:a:alloc.other_interest.supply"]
     assert abs(Decimal(other.exact) - Decimal(other.filed)) <= 2 * half * Decimal("0.9") + half
-    for key in ("order:a:alloc.total.supply", "order:oa:dc.supply_arr"):  # 3,059.635: the items' half-paise
+    for key in (
+        "order:a:alloc.total.supply",
+        "order:oa:dc.supply_arr",
+        "order:a:alloc.total.wheeling",
+        "order:oa:wheel.arr",
+        "order:oa:wc.arr",
+    ):  # 3,059.635 and 451.705: the items' half-paise
         assert abs(Decimal(differ[key].exact) - Decimal(differ[key].filed)) <= Decimal("0.01")
     # the two printed totals are the approved net ARR, to the paisa
     total = Decimal(rec["a:alloc.total.wheeling"][0]) + Decimal(rec["a:alloc.total.supply"][0])
@@ -2022,8 +2031,9 @@ def test_a_second_commission_uerc_working_capital_and_return_reproduce():
     assert record["document"]["sha256"] == manifest["order"]["sha256"]
     checks = reproduce_cells(None, binding, rules, rates=rec)
     differ = {c.category.rsplit(" ", 1)[1]: c for c in checks if c.result != "match"}
-    assert len(checks) == 18 and len(checks) - len(differ) == 14
+    assert len(checks) == 18 and len(checks) - len(differ) == 13
     assert set(differ) == {
+        "order:iowc.spares.claimed",  # 15 % of 1,221.50 is 183.225, printed 183.22
         "order:iowc.requirement.approved",
         "order:iowc.interest.claimed",
         "order:arr.iowc.claimed",
@@ -2032,6 +2042,8 @@ def test_a_second_commission_uerc_working_capital_and_return_reproduce():
     # rounding: the requirement from exact components and one printed input (867.48 ± 0.005)
     req = differ["order:iowc.requirement.approved"]
     assert abs(Decimal(req.exact) - Decimal(req.filed)) <= Decimal("0.005") + Decimal("0.005")
+    sp = differ["order:iowc.spares.claimed"]
+    assert abs(Decimal(sp.exact) - Decimal(sp.filed)) <= Decimal("0.15") * Decimal("0.005") + Decimal("0.005")
     eq = differ["order:roe.closing.claimed"]
     assert abs(Decimal(eq.exact) - Decimal(eq.filed)) <= Decimal("0.01")  # two printed inputs
     # U1: 12.45 % of 1,678.73 is 209.00, not the 210.62 claimed — beyond any rounding
@@ -2254,3 +2266,36 @@ def test_uerc_trueup_gap_carries_into_the_arr_year_across_two_regulations():
     growth = (1 + Decimal("0.1207") / 2) * (1 + Decimal("0.1238")) * (1 + Decimal("0.1238") / 2)
     assert abs(Decimal(impact.exact) - Decimal(impact.filed)) <= abs(drift) * growth + Decimal("0.005")
     assert impact.filed == "343.07" and Decimal(impact.exact).quantize(Decimal("0.01")) == Decimal("343.09")
+
+
+def test_a_third_commission_mperc_working_capital_per_discom_in_one_order():
+    """Real data, a third commission and a combined order: MPERC's interest on working capital for
+    East, West and Central DISCOMs, FY2026-27 (Table 61), each DISCOM a category of one evaluation
+    and the State the sum — wheeling (inventory, a month of O&M, wheeling receivables) and supply
+    (inventory and two months' receivables less a month of power purchase and the deposits) apart,
+    at 12.50 %.  West's negative supply working capital and its negative interest reproduce (M1)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("MPERC") == []
+    folder = ROOT / "packages" / "order-reproductions" / "mperc-discoms-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-iowc-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    record = json.loads((folder / binding["rates"]).read_text())
+    assert record["document"]["sha256"] == json.loads((folder / "manifest.json").read_text())["order"]["sha256"]
+    checks = reproduce_cells(None, binding, load_rules("MPERC"), rates=rec)
+    differ = [c for c in checks if c.result != "match"]
+    assert len(checks) == 30 and [c.category.rsplit(" order:", 1)[1] for c in differ] == ["r.total.state"]
+    # the State column adds unrounded rows: its 652.57 against the printed rows' 652.58
+    rows = sum(Decimal(rec[f"r.total.{d}"][0]) for d in ("east", "west", "central"))
+    assert rows == Decimal("652.58") and abs(Decimal(differ[0].exact) - Decimal(differ[0].filed)) <= Decimal("0.015")
+    west = {c.output: c for c in checks if " west order:" in c.category}
+    assert west["iowc_r_total"].computed == "-94.19" and west["iowc_r_interest"].computed == "-11.77"
+    assert west["iowc_interest"].computed == "8.82"  # netted against the wheeling 20.60
+    # the inventory's 80:20 split between wheeling and supply holds on every DISCOM (M2: its base is not printed)
+    for d in ("east", "west", "central"):
+        w, r = Decimal(rec[f"w.inventory.{d}"][0]), Decimal(rec[f"r.inventory.{d}"][0])
+        assert abs(w / 4 - r) <= Decimal("0.01")
+    assert {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]} == {"M1", "M2"}

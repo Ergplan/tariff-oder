@@ -1,0 +1,19 @@
+{
+ "id": "mperc-discoms-fy2026-27",
+ "status": "a commission order reproduced from its own figures — no petition or formats in this session; nothing reviewed, nothing approved",
+ "commission": "MPERC",
+ "licensees": [
+  "MPPKVVCL (East)",
+  "MPPaKVVCL (West)",
+  "MPMKVVCL (Central)"
+ ],
+ "fiscal_year": "FY2026-27",
+ "order": {
+  "title": "MPERC order on the ARR and retail supply tariff of the MP DISCOMs for FY2026-27 (petition 140/2025)",
+  "url": "https://mperc.in/uploads/petition_order_document/MPERC_Pno_140_2025_State_DISCOMs_ARR_RST__ORDER_FY_2026_27_FINAL_ORDER.pdf",
+  "sha256": "77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb",
+  "loaded_by": "scripts/load_real_orders.py (key MPERC-DISCOMs-FY2026-27)"
+ },
+ "rules": "packages/arr-rules/mperc/tariff-2021.v1.json",
+ "why": "a third commission, and a combined order: three licensees' figures side by side, evaluated as categories of one binding"
+}

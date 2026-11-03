@@ -1,0 +1,138 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "MPERC order",
+ "rates": "order/figures-iowc-fy2026-27.json",
+ "places": 2,
+ "note": "MPERC's interest on working capital for East, West and Central DISCOMs, FY2026-27 (Table 61), each DISCOM a category of one evaluation and the State the sum — one combined order, three licensees.  The inventory is a record: its GFA base is not printed beside it.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "interest on working capital (Table 61)",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:iowc_om": {
+       "rate": "w.om.east"
+      },
+      "record:iowc_wheeling_revenue": {
+       "rate": "w.revenue.east"
+      },
+      "record:iowc_w_inventory": {
+       "rate": "w.inventory.east"
+      },
+      "record:iowc_rate": {
+       "rate": "w.rate.east"
+      },
+      "record:iowc_revenue": {
+       "rate": "r.revenue.east"
+      },
+      "record:iowc_pp": {
+       "rate": "r.pp.east"
+      },
+      "record:iowc_r_inventory": {
+       "rate": "r.inventory.east"
+      },
+      "record:iowc_csd": {
+       "rate": "r.csd.east"
+      }
+     },
+     "checks": {
+      "iowc_w_om_month": "order:w.om_month.east",
+      "iowc_w_receivables": "order:w.receivables.east",
+      "iowc_w_total": "order:w.total.east",
+      "iowc_w_interest": "order:w.interest.east",
+      "iowc_r_receivables": "order:r.receivables.east",
+      "iowc_r_pp_month": "order:r.pp_month.east",
+      "iowc_r_total": "order:r.total.east",
+      "iowc_r_interest": "order:r.interest.east",
+      "iowc_interest": "order:total.interest.east"
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:iowc_om": {
+       "rate": "w.om.west"
+      },
+      "record:iowc_wheeling_revenue": {
+       "rate": "w.revenue.west"
+      },
+      "record:iowc_w_inventory": {
+       "rate": "w.inventory.west"
+      },
+      "record:iowc_rate": {
+       "rate": "w.rate.west"
+      },
+      "record:iowc_revenue": {
+       "rate": "r.revenue.west"
+      },
+      "record:iowc_pp": {
+       "rate": "r.pp.west"
+      },
+      "record:iowc_r_inventory": {
+       "rate": "r.inventory.west"
+      },
+      "record:iowc_csd": {
+       "rate": "r.csd.west"
+      }
+     },
+     "checks": {
+      "iowc_w_om_month": "order:w.om_month.west",
+      "iowc_w_receivables": "order:w.receivables.west",
+      "iowc_w_total": "order:w.total.west",
+      "iowc_w_interest": "order:w.interest.west",
+      "iowc_r_receivables": "order:r.receivables.west",
+      "iowc_r_pp_month": "order:r.pp_month.west",
+      "iowc_r_total": "order:r.total.west",
+      "iowc_r_interest": "order:r.interest.west",
+      "iowc_interest": "order:total.interest.west"
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:iowc_om": {
+       "rate": "w.om.central"
+      },
+      "record:iowc_wheeling_revenue": {
+       "rate": "w.revenue.central"
+      },
+      "record:iowc_w_inventory": {
+       "rate": "w.inventory.central"
+      },
+      "record:iowc_rate": {
+       "rate": "w.rate.central"
+      },
+      "record:iowc_revenue": {
+       "rate": "r.revenue.central"
+      },
+      "record:iowc_pp": {
+       "rate": "r.pp.central"
+      },
+      "record:iowc_r_inventory": {
+       "rate": "r.inventory.central"
+      },
+      "record:iowc_csd": {
+       "rate": "r.csd.central"
+      }
+     },
+     "checks": {
+      "iowc_w_om_month": "order:w.om_month.central",
+      "iowc_w_receivables": "order:w.receivables.central",
+      "iowc_w_total": "order:w.total.central",
+      "iowc_w_interest": "order:w.interest.central",
+      "iowc_r_receivables": "order:r.receivables.central",
+      "iowc_r_pp_month": "order:r.pp_month.central",
+      "iowc_r_total": "order:r.total.central",
+      "iowc_r_interest": "order:r.interest.central",
+      "iowc_interest": "order:total.interest.central"
+     }
+    }
+   },
+   "checks": {
+    "iowc_w_total_state": "order:w.total.state",
+    "iowc_r_total_state": "order:r.total.state",
+    "iowc_interest_state": "order:total.interest.state"
+   }
+  }
+ ]
+}

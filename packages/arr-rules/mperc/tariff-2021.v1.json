@@ -1,0 +1,465 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+ "applies": {
+  "commission": "MPERC"
+ },
+ "note": "MPERC's interest on working capital for a distribution licensee, wheeling and supply apart, as the FY2026-27 order for the three MP DISCOMs quotes and applies it — the engine's third commission.  The years the 2021 Regulations govern are not established here, so the rules carry no year bounds yet.",
+ "rules": [
+  {
+   "id": "mperc.iowc.w_om_month",
+   "version": 1,
+   "status": "draft",
+   "title": "Wheeling: O&M expenses for one month",
+   "output": "iowc_w_om_month",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "om / 12",
+   "inputs": {
+    "om": {
+     "unit": "INR_crore",
+     "source": "record:iowc_om"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.2(i)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations; the order puts the whole month of O&M in the wheeling activity, none in supply (Reg. 23.1(ii) names it for both)"
+  },
+  {
+   "id": "mperc.iowc.w_receivables",
+   "version": 1,
+   "status": "draft",
+   "title": "Wheeling: two months of the wheeling charges billed",
+   "output": "iowc_w_receivables",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "revenue * 2 / 12",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:iowc_wheeling_revenue",
+     "note": "three years' average of the audited wheeling revenue (para 2.228)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.2",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations; the order includes wheeling receivables, which Reg. 23.2 as quoted does not list"
+  },
+  {
+   "id": "mperc.iowc.w_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Wheeling working capital: inventory, one month of O&M and the wheeling receivables",
+   "output": "iowc_w_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "inventory + om_month + receivables",
+   "inputs": {
+    "inventory": {
+     "unit": "INR_crore",
+     "source": "record:iowc_w_inventory",
+     "note": "two months of 1 % of the previous year's GFA, 80 % to wheeling (the order's practice)"
+    },
+    "om_month": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_w_om_month"
+    },
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_w_receivables"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.2",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations"
+  },
+  {
+   "id": "mperc.iowc.w_interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on the wheeling working capital",
+   "output": "iowc_w_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "rate * total",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_w_total"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:iowc_rate",
+     "note": "the Base Rate (SBI one-year MCLR) on 1 April plus 350 basis points: 9.00 % + 3.50 % = 12.50 % for FY2026-27 (para 2.229)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "38",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations"
+  },
+  {
+   "id": "mperc.iowc.r_receivables",
+   "version": 1,
+   "status": "draft",
+   "title": "Supply: two months of average billing",
+   "output": "iowc_r_receivables",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "revenue * 2 / 12",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:iowc_revenue"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.1(i)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations"
+  },
+  {
+   "id": "mperc.iowc.r_pp_month",
+   "version": 1,
+   "status": "draft",
+   "title": "Supply: one month of power purchase",
+   "output": "iowc_r_pp_month",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "pp / 12",
+   "inputs": {
+    "pp": {
+     "unit": "INR_crore",
+     "source": "record:iowc_pp"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.1(i)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations"
+  },
+  {
+   "id": "mperc.iowc.r_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Supply working capital: inventory and receivables, less a month of power purchase and the security deposits",
+   "output": "iowc_r_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "inventory + receivables - pp_month - csd",
+   "inputs": {
+    "inventory": {
+     "unit": "INR_crore",
+     "source": "record:iowc_r_inventory",
+     "note": "20 % of the inventory (the order's practice)"
+    },
+    "receivables": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_r_receivables"
+    },
+    "pp_month": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_r_pp_month"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "record:iowc_csd",
+     "note": "the closing balance of the year (para 2.228)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.1",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations; may be negative — the order admits a negative supply working capital and its negative interest (West DISCOM: −94.19, −11.77); the prepaid consumers' amounts of Reg. 23.1(i) are not in the order's table"
+  },
+  {
+   "id": "mperc.iowc.r_interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on the supply working capital",
+   "output": "iowc_r_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "rate * total",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_r_total"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:iowc_rate",
+     "note": "the Base Rate (SBI one-year MCLR) on 1 April plus 350 basis points: 9.00 % + 3.50 % = 12.50 % for FY2026-27 (para 2.229)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "38",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations; negative when the working capital is"
+  },
+  {
+   "id": "mperc.iowc.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on working capital: wheeling and supply",
+   "output": "iowc_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "wheeling + supply",
+   "inputs": {
+    "wheeling": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_w_interest"
+    },
+    "supply": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_r_interest"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23, 38",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations; the order nets a negative supply interest against the wheeling interest"
+  },
+  {
+   "id": "mperc.iowc.w_total_state",
+   "version": 1,
+   "status": "draft",
+   "title": "Wheeling working capital, the three DISCOMs",
+   "output": "iowc_w_total_state",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:iowc_w_total"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.2",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations"
+  },
+  {
+   "id": "mperc.iowc.r_total_state",
+   "version": 1,
+   "status": "draft",
+   "title": "Supply working capital, the three DISCOMs",
+   "output": "iowc_r_total_state",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:iowc_r_total"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.1",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations"
+  },
+  {
+   "id": "mperc.iowc.interest_state",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on working capital, the three DISCOMs",
+   "output": "iowc_interest_state",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:iowc_interest"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23, 38",
+    "source_id": null,
+    "page": null,
+    "excerpt": "23. Working capital.- 23.1. Working capital for supply activity of the Licensee shall consist of: (i)Receivables of two months of average billing reduced by power purchase cost of one month, consumer security deposit, and any amount paid by the prepaid consumers, (ii)O&M expenses for one month, and (iii)Inventory (meters, metering equipment, testing equipment are particularly relevant in case of supply activity) for 2 months based on annual requirement considered at 1% of the Gross Fixed Assets for previous year. 23.2. Working capital for wheeling activity of the Licensee shall consist of: (i)O and M expenses for one month, and (ii)Inventory (excluding meters, etc., which are considered part of supply activity) for 2 months based on annual requirement considered at 1% of the gross fixed assets for previous year. … 38. Interest charges on working capital.- Working capital shall be computed as provided in these Regulations and Rate of interest on working capital shall be equal to the Base Rate as on 1st April of the relevant Year plus 350 basis points. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Regs. 23 and 38 (MP DISCOMs FY2026-27 order, pp.105–106), not read from the Regulations"
+  }
+ ]
+}

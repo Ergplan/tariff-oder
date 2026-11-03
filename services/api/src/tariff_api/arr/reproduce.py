@@ -303,7 +303,7 @@ def reproduce_blocks(blocks: list, binding: dict[str, Any], rules: list[Rule]) -
                     why = ev.blocked_by_category.get(r.label, {}).get(output, "not computed")
                     out.append(BlockCheck(b.title, b.fiscal_year, r.label, output, "blocked", filed=filed, why=why))
                     continue
-                got, want = res.value.quantize(q), Decimal(filed).quantize(q)
+                got, want = _at(res.value, q), _at(Decimal(filed), q)
                 out.append(
                     BlockCheck(
                         b.title,
@@ -327,7 +327,7 @@ def reproduce_blocks(blocks: list, binding: dict[str, Any], rules: list[Rule]) -
                     )
                 )
             else:
-                got, want = res.value.quantize(q), Decimal(filed).quantize(q)
+                got, want = _at(res.value, q), _at(Decimal(filed), q)
                 out.append(
                     BlockCheck(
                         b.title,
@@ -375,8 +375,8 @@ def reproduce_period_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) 
                     BlockCheck(binding["sheet"], t["fiscal_year"], ref, output, "blocked", why=ev.blocked.get(output))
                 )
                 continue
-            want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q)
-            got = res.value.quantize(q)
+            want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q, rounding=ROUND_HALF_UP)
+            got = res.value.quantize(q, rounding=ROUND_HALF_UP)
             result = "match" if got == want else "differs"
             check = BlockCheck(
                 binding["sheet"], t["fiscal_year"], ref, output, result, filed=str(want), computed=str(got)
@@ -458,8 +458,8 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
                 why = ev.blocked_by_category.get(cat, {}).get(output)
                 out.append(BlockCheck(binding["sheet"], fy, cat, output, "blocked", why=why))
                 continue
-            want = Decimal(repr(filed)).quantize(q)
-            got = Q.of(res.value, res.unit).to(units.get(col, res.unit)).quantize(q)
+            want = Decimal(repr(filed)).quantize(q, rounding=ROUND_HALF_UP)
+            got = Q.of(res.value, res.unit).to(units.get(col, res.unit)).quantize(q, rounding=ROUND_HALF_UP)
             out.append(
                 BlockCheck(
                     binding["sheet"],
@@ -483,8 +483,8 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
             if not isinstance(filed, int | float) or isinstance(filed, bool):
                 out.append(BlockCheck(binding["sheet"], fy, label, output, "no_filed_value", computed=str(res.value)))
                 continue
-            want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q)
-            got = res.value.quantize(q)
+            want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q, rounding=ROUND_HALF_UP)
+            got = res.value.quantize(q, rounding=ROUND_HALF_UP)
             result = "match" if got == want else "differs"
             check = BlockCheck(binding["sheet"], fy, label, output, result, filed=str(want), computed=str(got))
             check.exact = str(res.value)
@@ -502,6 +502,13 @@ def _stored(value: Any) -> Decimal | None:
     if isinstance(value, int):
         return Decimal(value)
     return None
+
+
+def _at(v: Decimal, q: Decimal) -> Decimal:
+    """A figure at a check's printed precision, rounded half-up — as every rule declares and as the
+    regulators' tables print.  (Decimal's own default, half-even, turned exact half-paise the
+    other way: 183.225 → 183.22.)"""
+    return v.quantize(q, rounding=ROUND_HALF_UP)
 
 
 RATE_KEYS = {"value", "unit", "page", "quote", "what"}
@@ -658,7 +665,7 @@ def reproduce_cells(
             filed = _stored(at(ref))
         if filed is None:
             return BlockCheck(binding["sheet"], fy, tag, output, "no_filed_value", computed=str(res.value))
-        want, got = filed.quantize(q), res.value.quantize(q)
+        want, got = filed.quantize(q, rounding=ROUND_HALF_UP), res.value.quantize(q, rounding=ROUND_HALF_UP)
         result = "match" if got == want else "differs"
         check = BlockCheck(binding["sheet"], fy, tag, output, result, filed=str(want), computed=str(got))
         check.exact = str(res.value)

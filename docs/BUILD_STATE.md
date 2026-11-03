@@ -1005,6 +1005,45 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 129 (2026-11-03): a third commission, a combined order — MPERC's working capital for
+  the three MP DISCOMs; and checks now round as the rules declare.**
+  - **The order:** MPERC's FY2026-27 order for East, West and Central DISCOMs (SHA-256
+    `77ffe9d2…1afb`, the loader's `MPERC-DISCOMs-FY2026-27`).
+  - **New folder `packages/order-reproductions/mperc-discoms-fy2026-27/`:** the manifest, the
+    record (Table 61, 72 figures, 72 / 72 quotes verified), the binding and the findings.
+  - **12 draft MPERC rules in `packages/arr-rules/mperc/tariff-2021.v1.json`,** from Regs. 23
+    and 38 as the order quotes them:
+    - wheeling: a month of O&M, wheeling receivables, the working capital;
+    - supply: two months' receivables, a month of power purchase, the working capital less the
+      deposits;
+    - interest on each at the Base Rate + 350 bp (12.50%), and their sum;
+    - State totals.
+    The years the 2021 Regulations govern are not established here, so the rules carry no year
+    bounds yet; the file says so.
+  - **Binding `approval-iowc-fy27.json`: each DISCOM a category of one evaluation, the State the
+    sum — 29 / 30 match.**
+    - The State supply total adds unrounded rows (652.57 against the printed rows' 652.58).
+    - West's negative supply working capital (−94.19) and its negative interest (−11.77),
+      netted to 8.82, reproduce.
+  - **Findings `M1`, `M2` (reviewer):**
+    - **M1:** a negative working capital admitted and netted, where Reg. 38 as quoted does not
+      say.  UPERC's practice was nil (increment 111).
+    - **M2:** the inventory's GFA base is not printed.  21.07 implies about 15,802.50 for East,
+      against Table 57's net 9,576.28.  The 80:20 split holds.
+  - **Engine defect found and fixed — checks rounded half-to-even:**
+    - Nine of the twelve check sites in `reproduce.py` used Decimal's default rounding, while all
+      292 rules (UPERC 233, UERC 47, MPERC 12) round half-up and three sites already used it.  Central DISCOM's receivables
+      (3,315.425) showed it.  Every site now rounds half-up (`_at`).
+    - **Effect on earlier results, at exact half-paise only:**
+      - NPCL's `reproduction.json`: 4 checks turn to "differs" — the three wheeling totals of
+        increment 121 (451.705, printed 451.70) and Table 4-99's A5 vehicles average (0.705,
+        printed 0.70) — and 1 turns to "match", Table 4-100's B2 buildings average.
+      - Increment 121's allocation is now 24 / 31; the test bounds the wheeling total like the
+        supply total.
+      - Increment 123's UERC working capital is now 13 / 18: UPCL's claimed spares, 183.225,
+        printed 183.22, now differ within precision.
+  Nothing verified, nothing approved.
+
   **Increment 128 (2026-11-03): UERC — the FY2024-25 true-up gap carried into FY2026-27's ARR,
   across two regulations.**
   - **The record:** `order/figures-trueup-summary-fy2024-25.json` in the UERC folder holds 62
@@ -3193,6 +3232,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 129 (2026-11-03): 499 passed** (+1 unit: MPERC's working capital per DISCOM, M1–M2; two earlier tests updated for half-up checks).  `check_order_quotes.py`: 72 / 72.  Ruff and format clean.
 - **Increment 128 (2026-11-03): 498 passed** (+1 unit: UERC's true-up gap carried into the ARR year — exact from the printed gap, bounded end to end).  `check_order_quotes.py`: 62 / 62.  Ruff and format clean.
 - **Increment 127 (2026-11-03): 497 passed** (+1 unit: UERC's true-up loss valuation and sharing; the 2021 / 2024 year selection; U6).  `check_order_quotes.py`: 49 / 49.  Ruff and format clean.
 - **Increment 126 (2026-11-03): 496 passed** (+1 unit: UERC's revenue requirement and surplus end to end, to the paisa).  `check_order_quotes.py`: 38 / 38.  Ruff and format clean.
@@ -3454,7 +3494,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 128) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 129) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3557,7 +3597,8 @@ entries below are the per-increment history.**
     within printed precision; increment 125 its O&M, 967.40 exact; findings U1–U5; increment 126 its ARR end to end — 12,591.09, net 12,489.54, surplus 100.87 to
     the paisa; increment 127 its true-up's loss valuation and sharing under the 2021 Regulations,
     exact; increment 128 its gap carried into FY2026-27's ARR, 343.07 — exact from the printed gap,
-    1.7 paise end to end) — next a third commission;
+    1.7 paise end to end); increment 129 a third commission, MPERC's working capital for three
+    DISCOMs in one order (29 / 30) — next more of MPERC, or HPERC;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

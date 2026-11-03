@@ -1,0 +1,514 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "MPERC order on the ARR and retail supply tariff of the three MP DISCOMs for FY2026-27 (petition 140/2025) — interest on working capital (Table 61)",
+  "sha256": "77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb",
+  "pages": 255
+ },
+ "figures": {
+  "w.inventory.east": {
+   "value": "21.07",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "For wheeling Activity A) 1/6th of annual requirement of inventory for previous year 6 21.07 12.76 20.11 53.94",
+   "what": "Table 61, wheeling, inventory (2 months): east"
+  },
+  "w.inventory.west": {
+   "value": "12.76",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "For wheeling Activity A) 1/6th of annual requirement of inventory for previous year 6 21.07 12.76 20.11 53.94",
+   "what": "Table 61, wheeling, inventory (2 months): west"
+  },
+  "w.inventory.central": {
+   "value": "20.11",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "For wheeling Activity A) 1/6th of annual requirement of inventory for previous year 6 21.07 12.76 20.11 53.94",
+   "what": "Table 61, wheeling, inventory (2 months): central"
+  },
+  "w.inventory.state": {
+   "value": "53.94",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "For wheeling Activity A) 1/6th of annual requirement of inventory for previous year 6 21.07 12.76 20.11 53.94",
+   "what": "Table 61, wheeling, inventory (2 months): state"
+  },
+  "w.om.east": {
+   "value": "2030.54",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) i) Total of O&M Expenses 2,030.54 1,818.33 1,963.23 5,812.10",
+   "what": "Table 61, wheeling, total O&M: east"
+  },
+  "w.om.west": {
+   "value": "1818.33",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) i) Total of O&M Expenses 2,030.54 1,818.33 1,963.23 5,812.10",
+   "what": "Table 61, wheeling, total O&M: west"
+  },
+  "w.om.central": {
+   "value": "1963.23",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) i) Total of O&M Expenses 2,030.54 1,818.33 1,963.23 5,812.10",
+   "what": "Table 61, wheeling, total O&M: central"
+  },
+  "w.om.state": {
+   "value": "5812.10",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) i) Total of O&M Expenses 2,030.54 1,818.33 1,963.23 5,812.10",
+   "what": "Table 61, wheeling, total O&M: state"
+  },
+  "w.om_month.east": {
+   "value": "169.21",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) ii) 1/12th (1 Months) of total O&M Expenses 169.21 151.53 163.60 484.34",
+   "what": "Table 61, wheeling, one month of O&M: east"
+  },
+  "w.om_month.west": {
+   "value": "151.53",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) ii) 1/12th (1 Months) of total O&M Expenses 169.21 151.53 163.60 484.34",
+   "what": "Table 61, wheeling, one month of O&M: west"
+  },
+  "w.om_month.central": {
+   "value": "163.60",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) ii) 1/12th (1 Months) of total O&M Expenses 169.21 151.53 163.60 484.34",
+   "what": "Table 61, wheeling, one month of O&M: central"
+  },
+  "w.om_month.state": {
+   "value": "484.34",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) ii) 1/12th (1 Months) of total O&M Expenses 169.21 151.53 163.60 484.34",
+   "what": "Table 61, wheeling, one month of O&M: state"
+  },
+  "w.revenue.east": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) i) Annual Revenue from wheeling charges 0.00 2.95 0.08 3.03",
+   "what": "Table 61, wheeling, annual revenue from wheeling charges: east"
+  },
+  "w.revenue.west": {
+   "value": "2.95",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) i) Annual Revenue from wheeling charges 0.00 2.95 0.08 3.03",
+   "what": "Table 61, wheeling, annual revenue from wheeling charges: west"
+  },
+  "w.revenue.central": {
+   "value": "0.08",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) i) Annual Revenue from wheeling charges 0.00 2.95 0.08 3.03",
+   "what": "Table 61, wheeling, annual revenue from wheeling charges: central"
+  },
+  "w.revenue.state": {
+   "value": "3.03",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) i) Annual Revenue from wheeling charges 0.00 2.95 0.08 3.03",
+   "what": "Table 61, wheeling, annual revenue from wheeling charges: state"
+  },
+  "w.receivables.east": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) ii) Receivables equivalent to 2 months average billing of wheeling charges 6 0.00 0.49 0.01 0.50",
+   "what": "Table 61, wheeling, receivables: east"
+  },
+  "w.receivables.west": {
+   "value": "0.49",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) ii) Receivables equivalent to 2 months average billing of wheeling charges 6 0.00 0.49 0.01 0.50",
+   "what": "Table 61, wheeling, receivables: west"
+  },
+  "w.receivables.central": {
+   "value": "0.01",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) ii) Receivables equivalent to 2 months average billing of wheeling charges 6 0.00 0.49 0.01 0.50",
+   "what": "Table 61, wheeling, receivables: central"
+  },
+  "w.receivables.state": {
+   "value": "0.50",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) ii) Receivables equivalent to 2 months average billing of wheeling charges 6 0.00 0.49 0.01 0.50",
+   "what": "Table 61, wheeling, receivables: state"
+  },
+  "w.total.east": {
+   "value": "190.28",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "D) Total Working capital (A+B(ii)+C(ii)) 190.28 164.78 183.73 538.79",
+   "what": "Table 61, wheeling, working capital: east"
+  },
+  "w.total.west": {
+   "value": "164.78",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "D) Total Working capital (A+B(ii)+C(ii)) 190.28 164.78 183.73 538.79",
+   "what": "Table 61, wheeling, working capital: west"
+  },
+  "w.total.central": {
+   "value": "183.73",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "D) Total Working capital (A+B(ii)+C(ii)) 190.28 164.78 183.73 538.79",
+   "what": "Table 61, wheeling, working capital: central"
+  },
+  "w.total.state": {
+   "value": "538.79",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "D) Total Working capital (A+B(ii)+C(ii)) 190.28 164.78 183.73 538.79",
+   "what": "Table 61, wheeling, working capital: state"
+  },
+  "w.rate.east": {
+   "value": "12.50",
+   "unit": "percent",
+   "page": 107,
+   "quote": "E) Rate of Interest 12.50% 12.50% 12.50% 12.50%",
+   "what": "Table 61, wheeling, rate: east"
+  },
+  "w.rate.west": {
+   "value": "12.50",
+   "unit": "percent",
+   "page": 107,
+   "quote": "E) Rate of Interest 12.50% 12.50% 12.50% 12.50%",
+   "what": "Table 61, wheeling, rate: west"
+  },
+  "w.rate.central": {
+   "value": "12.50",
+   "unit": "percent",
+   "page": 107,
+   "quote": "E) Rate of Interest 12.50% 12.50% 12.50% 12.50%",
+   "what": "Table 61, wheeling, rate: central"
+  },
+  "w.rate.state": {
+   "value": "12.50",
+   "unit": "percent",
+   "page": 107,
+   "quote": "E) Rate of Interest 12.50% 12.50% 12.50% 12.50%",
+   "what": "Table 61, wheeling, rate: state"
+  },
+  "w.interest.east": {
+   "value": "23.79",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "F) Interest on Working Capital for Wheeling Activity 23.79 20.60 22.97 67.35",
+   "what": "Table 61, wheeling, interest: east"
+  },
+  "w.interest.west": {
+   "value": "20.60",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "F) Interest on Working Capital for Wheeling Activity 23.79 20.60 22.97 67.35",
+   "what": "Table 61, wheeling, interest: west"
+  },
+  "w.interest.central": {
+   "value": "22.97",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "F) Interest on Working Capital for Wheeling Activity 23.79 20.60 22.97 67.35",
+   "what": "Table 61, wheeling, interest: central"
+  },
+  "w.interest.state": {
+   "value": "67.35",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "F) Interest on Working Capital for Wheeling Activity 23.79 20.60 22.97 67.35",
+   "what": "Table 61, wheeling, interest: state"
+  },
+  "r.inventory.east": {
+   "value": "5.27",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "For Retail Sale Activity A) 1/6th of annual requirement of inventory for previous year 6 5.27 3.19 5.03 13.48",
+   "what": "Table 61, retail, inventory (2 months): east"
+  },
+  "r.inventory.west": {
+   "value": "3.19",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "For Retail Sale Activity A) 1/6th of annual requirement of inventory for previous year 6 5.27 3.19 5.03 13.48",
+   "what": "Table 61, retail, inventory (2 months): west"
+  },
+  "r.inventory.central": {
+   "value": "5.03",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "For Retail Sale Activity A) 1/6th of annual requirement of inventory for previous year 6 5.27 3.19 5.03 13.48",
+   "what": "Table 61, retail, inventory (2 months): central"
+  },
+  "r.inventory.state": {
+   "value": "13.48",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "For Retail Sale Activity A) 1/6th of annual requirement of inventory for previous year 6 5.27 3.19 5.03 13.48",
+   "what": "Table 61, retail, inventory (2 months): state"
+  },
+  "r.revenue.east": {
+   "value": "17889.37",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) i) Annual Revenue from Tariff and charges 17,889.37 24,842.10 19,892.55 62,624.02",
+   "what": "Table 61, retail, annual revenue: east"
+  },
+  "r.revenue.west": {
+   "value": "24842.10",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) i) Annual Revenue from Tariff and charges 17,889.37 24,842.10 19,892.55 62,624.02",
+   "what": "Table 61, retail, annual revenue: west"
+  },
+  "r.revenue.central": {
+   "value": "19892.55",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) i) Annual Revenue from Tariff and charges 17,889.37 24,842.10 19,892.55 62,624.02",
+   "what": "Table 61, retail, annual revenue: central"
+  },
+  "r.revenue.state": {
+   "value": "62624.02",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) i) Annual Revenue from Tariff and charges 17,889.37 24,842.10 19,892.55 62,624.02",
+   "what": "Table 61, retail, annual revenue: state"
+  },
+  "r.receivables.east": {
+   "value": "2981.56",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) ii) Receivables equivalent to 2 months average billing (B(i)/6) 2,981.56 4,140.35 3,315.43 10,437.34",
+   "what": "Table 61, retail, receivables: east"
+  },
+  "r.receivables.west": {
+   "value": "4140.35",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) ii) Receivables equivalent to 2 months average billing (B(i)/6) 2,981.56 4,140.35 3,315.43 10,437.34",
+   "what": "Table 61, retail, receivables: west"
+  },
+  "r.receivables.central": {
+   "value": "3315.43",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) ii) Receivables equivalent to 2 months average billing (B(i)/6) 2,981.56 4,140.35 3,315.43 10,437.34",
+   "what": "Table 61, retail, receivables: central"
+  },
+  "r.receivables.state": {
+   "value": "10437.34",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "B) ii) Receivables equivalent to 2 months average billing (B(i)/6) 2,981.56 4,140.35 3,315.43 10,437.34",
+   "what": "Table 61, retail, receivables: state"
+  },
+  "r.pp.east": {
+   "value": "10855.30",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) Annual Power Purchase expenses 10,855.30 17,647.81 12,009.76 40,512.88",
+   "what": "Table 61, retail, annual power purchase: east"
+  },
+  "r.pp.west": {
+   "value": "17647.81",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) Annual Power Purchase expenses 10,855.30 17,647.81 12,009.76 40,512.88",
+   "what": "Table 61, retail, annual power purchase: west"
+  },
+  "r.pp.central": {
+   "value": "12009.76",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) Annual Power Purchase expenses 10,855.30 17,647.81 12,009.76 40,512.88",
+   "what": "Table 61, retail, annual power purchase: central"
+  },
+  "r.pp.state": {
+   "value": "40512.88",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) Annual Power Purchase expenses 10,855.30 17,647.81 12,009.76 40,512.88",
+   "what": "Table 61, retail, annual power purchase: state"
+  },
+  "r.pp_month.east": {
+   "value": "904.61",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) i) 1/12th (1 Months) of power purchase expenses (C/12) 904.61 1,470.65 1,000.81 3,376.07",
+   "what": "Table 61, retail, one month of power purchase: east"
+  },
+  "r.pp_month.west": {
+   "value": "1470.65",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) i) 1/12th (1 Months) of power purchase expenses (C/12) 904.61 1,470.65 1,000.81 3,376.07",
+   "what": "Table 61, retail, one month of power purchase: west"
+  },
+  "r.pp_month.central": {
+   "value": "1000.81",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) i) 1/12th (1 Months) of power purchase expenses (C/12) 904.61 1,470.65 1,000.81 3,376.07",
+   "what": "Table 61, retail, one month of power purchase: central"
+  },
+  "r.pp_month.state": {
+   "value": "3376.07",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) i) 1/12th (1 Months) of power purchase expenses (C/12) 904.61 1,470.65 1,000.81 3,376.07",
+   "what": "Table 61, retail, one month of power purchase: state"
+  },
+  "r.csd.east": {
+   "value": "1708.28",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "D Consumer Security Deposit 1,708.28 2,767.08 1,946.81 6,422.18",
+   "what": "Table 61, retail, consumer security deposit: east"
+  },
+  "r.csd.west": {
+   "value": "2767.08",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "D Consumer Security Deposit 1,708.28 2,767.08 1,946.81 6,422.18",
+   "what": "Table 61, retail, consumer security deposit: west"
+  },
+  "r.csd.central": {
+   "value": "1946.81",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "D Consumer Security Deposit 1,708.28 2,767.08 1,946.81 6,422.18",
+   "what": "Table 61, retail, consumer security deposit: central"
+  },
+  "r.csd.state": {
+   "value": "6422.18",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "D Consumer Security Deposit 1,708.28 2,767.08 1,946.81 6,422.18",
+   "what": "Table 61, retail, consumer security deposit: state"
+  },
+  "r.total.east": {
+   "value": "373.94",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "E) Total Working capital (A+B (ii) - C (i) - D) 373.94 (94.19) 372.83 652.57",
+   "what": "Table 61, retail, working capital: east"
+  },
+  "r.total.west": {
+   "value": "-94.19",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "E) Total Working capital (A+B (ii) - C (i) - D) 373.94 (94.19) 372.83 652.57",
+   "what": "Table 61, retail, working capital: west"
+  },
+  "r.total.central": {
+   "value": "372.83",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "E) Total Working capital (A+B (ii) - C (i) - D) 373.94 (94.19) 372.83 652.57",
+   "what": "Table 61, retail, working capital: central"
+  },
+  "r.total.state": {
+   "value": "652.57",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "E) Total Working capital (A+B (ii) - C (i) - D) 373.94 (94.19) 372.83 652.57",
+   "what": "Table 61, retail, working capital: state"
+  },
+  "r.rate.east": {
+   "value": "12.50",
+   "unit": "percent",
+   "page": 107,
+   "quote": "F) Rate of Interest 12.50% 12.50% 12.50% 12.50%",
+   "what": "Table 61, retail, rate: east"
+  },
+  "r.rate.west": {
+   "value": "12.50",
+   "unit": "percent",
+   "page": 107,
+   "quote": "F) Rate of Interest 12.50% 12.50% 12.50% 12.50%",
+   "what": "Table 61, retail, rate: west"
+  },
+  "r.rate.central": {
+   "value": "12.50",
+   "unit": "percent",
+   "page": 107,
+   "quote": "F) Rate of Interest 12.50% 12.50% 12.50% 12.50%",
+   "what": "Table 61, retail, rate: central"
+  },
+  "r.rate.state": {
+   "value": "12.50",
+   "unit": "percent",
+   "page": 107,
+   "quote": "F) Rate of Interest 12.50% 12.50% 12.50% 12.50%",
+   "what": "Table 61, retail, rate: state"
+  },
+  "r.interest.east": {
+   "value": "46.74",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "G) Interest on Working capital for Retail Sale Activity 46.74 (11.77) 46.60 81.57",
+   "what": "Table 61, retail, interest: east"
+  },
+  "r.interest.west": {
+   "value": "-11.77",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "G) Interest on Working capital for Retail Sale Activity 46.74 (11.77) 46.60 81.57",
+   "what": "Table 61, retail, interest: west"
+  },
+  "r.interest.central": {
+   "value": "46.60",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "G) Interest on Working capital for Retail Sale Activity 46.74 (11.77) 46.60 81.57",
+   "what": "Table 61, retail, interest: central"
+  },
+  "r.interest.state": {
+   "value": "81.57",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "G) Interest on Working capital for Retail Sale Activity 46.74 (11.77) 46.60 81.57",
+   "what": "Table 61, retail, interest: state"
+  },
+  "total.interest.east": {
+   "value": "70.53",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) Total Interest on Working Capital admitted 70.53 8.82 69.57 148.92",
+   "what": "Table 61, total interest admitted: east"
+  },
+  "total.interest.west": {
+   "value": "8.82",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) Total Interest on Working Capital admitted 70.53 8.82 69.57 148.92",
+   "what": "Table 61, total interest admitted: west"
+  },
+  "total.interest.central": {
+   "value": "69.57",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) Total Interest on Working Capital admitted 70.53 8.82 69.57 148.92",
+   "what": "Table 61, total interest admitted: central"
+  },
+  "total.interest.state": {
+   "value": "148.92",
+   "unit": "INR_crore",
+   "page": 107,
+   "quote": "C) Total Interest on Working Capital admitted 70.53 8.82 69.57 148.92",
+   "what": "Table 61, total interest admitted: state"
+  }
+ }
+}
