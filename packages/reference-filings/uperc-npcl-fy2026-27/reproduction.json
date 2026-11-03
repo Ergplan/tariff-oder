@@ -16326,6 +16326,846 @@
    ]
   },
   {
+   "binding": "bs1-profit-and-loss.json",
+   "checks": [
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2022-23",
+     "category": "BS1 FY2022-23 total income C9",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2220.262566",
+     "computed": "2220.262566",
+     "why": null,
+     "exact": "2220.26256551905058"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2022-23",
+     "category": "BS1 FY2022-23 total expenses C21",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2369.935422",
+     "computed": "2369.935422",
+     "why": null,
+     "exact": "2369.935421846342805"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2022-23",
+     "category": "BS1 FY2022-23 profit before rate-regulated activity C22",
+     "output": "difference",
+     "result": "match",
+     "filed": "-149.672856",
+     "computed": "-149.672856",
+     "why": null,
+     "exact": "-149.6728563272932"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2022-23",
+     "category": "BS1 FY2022-23 profit before tax C24",
+     "output": "difference",
+     "result": "match",
+     "filed": "101.025208",
+     "computed": "101.025208",
+     "why": null,
+     "exact": "101.02520845830466"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2022-23",
+     "category": "BS1 FY2022-23 profit before tax BS3!D8",
+     "output": "difference",
+     "result": "differs",
+     "filed": "45.173351",
+     "computed": "101.025208",
+     "why": null,
+     "exact": "101.02520845830466"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2022-23",
+     "category": "BS1 FY2022-23 profit C31",
+     "output": "difference",
+     "result": "match",
+     "filed": "75.599184",
+     "computed": "75.599184",
+     "why": null,
+     "exact": "75.59918399351834"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2022-23",
+     "category": "BS1 FY2022-23 profit C35",
+     "output": "difference",
+     "result": "match",
+     "filed": "75.599184",
+     "computed": "75.599184",
+     "why": null,
+     "exact": "75.59918399351834"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2023-24",
+     "category": "BS1 FY2023-24 total income D9",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2339.749784",
+     "computed": "2339.749784",
+     "why": null,
+     "exact": "2339.74978359955298"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2023-24",
+     "category": "BS1 FY2023-24 total expenses D21",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2265.767897",
+     "computed": "2265.767897",
+     "why": null,
+     "exact": "2265.767896972882629"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2023-24",
+     "category": "BS1 FY2023-24 profit before rate-regulated activity D22",
+     "output": "difference",
+     "result": "match",
+     "filed": "73.981887",
+     "computed": "73.981887",
+     "why": null,
+     "exact": "73.9818866266703"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2023-24",
+     "category": "BS1 FY2023-24 profit before tax D24",
+     "output": "difference",
+     "result": "match",
+     "filed": "111.208816",
+     "computed": "111.208816",
+     "why": null,
+     "exact": "111.20881604199679"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2023-24",
+     "category": "BS1 FY2023-24 profit before tax BS3!E8",
+     "output": "difference",
+     "result": "differs",
+     "filed": "47.668055",
+     "computed": "111.208816",
+     "why": null,
+     "exact": "111.20881604199679"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2023-24",
+     "category": "BS1 FY2023-24 profit D31",
+     "output": "difference",
+     "result": "match",
+     "filed": "84.749690",
+     "computed": "84.749690",
+     "why": null,
+     "exact": "84.749690404562535"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2023-24",
+     "category": "BS1 FY2023-24 profit D35",
+     "output": "difference",
+     "result": "match",
+     "filed": "84.749690",
+     "computed": "84.749690",
+     "why": null,
+     "exact": "84.749690404562535"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2024-25",
+     "category": "BS1 FY2024-25 total income E9",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2650.678551",
+     "computed": "2650.678551",
+     "why": null,
+     "exact": "2650.678551179084198"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2024-25",
+     "category": "BS1 FY2024-25 total expenses E21",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2845.609559",
+     "computed": "2845.609559",
+     "why": null,
+     "exact": "2845.609559177623527"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2024-25",
+     "category": "BS1 FY2024-25 profit before rate-regulated activity E22",
+     "output": "difference",
+     "result": "match",
+     "filed": "-194.931008",
+     "computed": "-194.931008",
+     "why": null,
+     "exact": "-194.9310079985394"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2024-25",
+     "category": "BS1 FY2024-25 profit before tax E24",
+     "output": "difference",
+     "result": "match",
+     "filed": "120.731917",
+     "computed": "120.731917",
+     "why": null,
+     "exact": "120.7319170965304"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2024-25",
+     "category": "BS1 FY2024-25 profit before tax BS3!F8",
+     "output": "difference",
+     "result": "differs",
+     "filed": "91.491461",
+     "computed": "120.731917",
+     "why": null,
+     "exact": "120.7319170965304"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2024-25",
+     "category": "BS1 FY2024-25 profit E31",
+     "output": "difference",
+     "result": "match",
+     "filed": "92.150769",
+     "computed": "92.150769",
+     "why": null,
+     "exact": "92.150768531958353"
+    },
+    {
+     "table": "BS1",
+     "fiscal_year": "FY2024-25",
+     "category": "BS1 FY2024-25 profit E35",
+     "output": "difference",
+     "result": "match",
+     "filed": "92.150769",
+     "computed": "92.150769",
+     "why": null,
+     "exact": "92.150768531958353"
+    }
+   ]
+  },
+  {
+   "binding": "bs2-balance-sheet.json",
+   "checks": [
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 non-current assets C8",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1449.180913",
+     "computed": "1449.180913",
+     "why": null,
+     "exact": "1449.18091276770953407"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 current assets C24",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "344.165632",
+     "computed": "344.165632",
+     "why": null,
+     "exact": "344.1656323733760935"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 total assets and regulatory deferral C38",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1708.196505",
+     "computed": "1708.196505",
+     "why": null,
+     "exact": "1708.19650475807302757"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 total assets and regulatory deferral C64",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1708.196505",
+     "computed": "1708.196505",
+     "why": null,
+     "exact": "1708.19650475807302757"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 equity C41",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "513.868223",
+     "computed": "513.868223",
+     "why": null,
+     "exact": "513.8682229906942"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 non-current liabilities C46",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "844.526799",
+     "computed": "844.526799",
+     "why": null,
+     "exact": "844.5267985226668"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 current liabilities C55",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "349.801483",
+     "computed": "349.801483",
+     "why": null,
+     "exact": "349.801483244711738"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 equity and liabilities C64",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1708.196505",
+     "computed": "1708.196505",
+     "why": null,
+     "exact": "1708.196504758072738"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2022-23",
+     "category": "BS2 FY2022-23 equity and liabilities C38",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1708.196505",
+     "computed": "1708.196505",
+     "why": null,
+     "exact": "1708.196504758072738"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 non-current assets D8",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1549.671196",
+     "computed": "1549.671196",
+     "why": null,
+     "exact": "1549.67119580964949"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 current assets D24",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "285.716143",
+     "computed": "285.716143",
+     "why": null,
+     "exact": "285.7161430010374692"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 total assets and regulatory deferral D38",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1787.464228",
+     "computed": "1787.464228",
+     "why": null,
+     "exact": "1787.4642278430008492"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 total assets and regulatory deferral D64",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1787.464228",
+     "computed": "1787.464228",
+     "why": null,
+     "exact": "1787.4642278430008492"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 equity D41",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "535.077152",
+     "computed": "535.077152",
+     "why": null,
+     "exact": "535.07715193009415"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 non-current liabilities D46",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "845.763679",
+     "computed": "845.763679",
+     "why": null,
+     "exact": "845.76367856166574"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 current liabilities D55",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "406.623397",
+     "computed": "406.623397",
+     "why": null,
+     "exact": "406.62339735124067"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 equity and liabilities D64",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1787.464228",
+     "computed": "1787.464228",
+     "why": null,
+     "exact": "1787.46422784300056"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2023-24",
+     "category": "BS2 FY2023-24 equity and liabilities D38",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1787.464228",
+     "computed": "1787.464228",
+     "why": null,
+     "exact": "1787.46422784300056"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 non-current assets E8",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1681.334876",
+     "computed": "1681.334876",
+     "why": null,
+     "exact": "1681.3348760720402499"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 current assets E24",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "263.725567",
+     "computed": "263.725567",
+     "why": null,
+     "exact": "263.7255667510900719"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 total assets and regulatory deferral E38",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2212.800257",
+     "computed": "2212.800257",
+     "why": null,
+     "exact": "2212.8002569505140218"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 total assets and regulatory deferral E64",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2212.800257",
+     "computed": "2212.800257",
+     "why": null,
+     "exact": "2212.8002569505140218"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 equity E41",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "597.993684",
+     "computed": "597.993684",
+     "why": null,
+     "exact": "597.9936837257942"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 non-current liabilities E46",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "929.569473",
+     "computed": "929.569473",
+     "why": null,
+     "exact": "929.56947250041986"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 current liabilities E55",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "685.237101",
+     "computed": "685.237101",
+     "why": null,
+     "exact": "685.23710072429981"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 equity and liabilities E64",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2212.800257",
+     "computed": "2212.800257",
+     "why": null,
+     "exact": "2212.80025695051387"
+    },
+    {
+     "table": "BS2",
+     "fiscal_year": "FY2024-25",
+     "category": "BS2 FY2024-25 equity and liabilities E38",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "2212.800257",
+     "computed": "2212.800257",
+     "why": null,
+     "exact": "2212.80025695051387"
+    }
+   ]
+  },
+  {
+   "binding": "bs3-cash-flow.json",
+   "checks": [
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 adjustments D20",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "133.606891",
+     "computed": "133.606891",
+     "why": null,
+     "exact": "133.606891462712809"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 operating profit before working capital D21",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "178.780242",
+     "computed": "178.780242",
+     "why": null,
+     "exact": "178.78024199529921"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 working capital D35",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-207.655455",
+     "computed": "-207.655455",
+     "why": null,
+     "exact": "-207.655454595816259"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 operating D37",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-54.301237",
+     "computed": "-54.301237",
+     "why": null,
+     "exact": "-54.30123706530337"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 investing D46",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "97.867483",
+     "computed": "97.867483",
+     "why": null,
+     "exact": "97.86748301209140202"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 financing D59",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-44.002471",
+     "computed": "-44.002471",
+     "why": null,
+     "exact": "-44.002470946787906"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 net change D60",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-0.436225",
+     "computed": "-0.436225",
+     "why": null,
+     "exact": "-0.43622499999987"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 cash at the end D62",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "0.282628",
+     "computed": "0.282628",
+     "why": null,
+     "exact": "0.2826280000006705"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2022-23",
+     "category": "BS3 FY2022-23 cash at the end BS2!C29",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "0.282628",
+     "computed": "0.282628",
+     "why": null,
+     "exact": "0.2826280000006705"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 adjustments E20",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "152.489452",
+     "computed": "152.489452",
+     "why": null,
+     "exact": "152.48945228146222901"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 operating profit before working capital E21",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "200.157507",
+     "computed": "200.157507",
+     "why": null,
+     "exact": "200.15750685829638"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 working capital E35",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "7.908551",
+     "computed": "7.908551",
+     "why": null,
+     "exact": "7.9085510780405392"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 operating E37",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "181.606932",
+     "computed": "181.606932",
+     "why": null,
+     "exact": "181.606932298902691"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 investing E46",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-104.455776",
+     "computed": "-104.455776",
+     "why": null,
+     "exact": "-104.45577557556096700"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 financing E59",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-75.688534",
+     "computed": "-75.688534",
+     "why": null,
+     "exact": "-75.688533623341713"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 net change E60",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1.462623",
+     "computed": "1.462623",
+     "why": null,
+     "exact": "1.46262309999999"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 cash at the end E62",
+     "output": "lines_crore_total",
+     "result": "differs",
+     "filed": "1.755251",
+     "computed": "1.745251",
+     "why": null,
+     "exact": "1.74525110000064385"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2023-24",
+     "category": "BS3 FY2023-24 cash at the end BS2!D29",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1.745251",
+     "computed": "1.745251",
+     "why": null,
+     "exact": "1.74525110000064385"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 adjustments F20",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "185.472750",
+     "computed": "185.472750",
+     "why": null,
+     "exact": "185.472750384237427"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 operating profit before working capital F21",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "276.964212",
+     "computed": "276.964212",
+     "why": null,
+     "exact": "276.96421162300112"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 working capital F35",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-82.461640",
+     "computed": "-82.461640",
+     "why": null,
+     "exact": "-82.46163953972197108"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 operating F37",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "165.921424",
+     "computed": "165.921424",
+     "why": null,
+     "exact": "165.921423518707083"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 investing F46",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-150.347870",
+     "computed": "-150.347870",
+     "why": null,
+     "exact": "-150.3478698771941354"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 financing F59",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-15.687478",
+     "computed": "-15.687478",
+     "why": null,
+     "exact": "-15.687478363021273"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 net change F60",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "-0.113925",
+     "computed": "-0.113925",
+     "why": null,
+     "exact": "-0.11392472150829"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 cash at the end F62",
+     "output": "lines_crore_total",
+     "result": "match",
+     "filed": "1.641326",
+     "computed": "1.641326",
+     "why": null,
+     "exact": "1.64132637849236064"
+    },
+    {
+     "table": "BS3",
+     "fiscal_year": "FY2024-25",
+     "category": "BS3 FY2024-25 cash at the end BS2!E29",
+     "output": "lines_crore_total",
+     "result": "differs",
+     "filed": "1.637545",
+     "computed": "1.641326",
+     "why": null,
+     "exact": "1.64132637849236064"
+    }
+   ]
+  },
+  {
    "binding": "esr1-open-access.json",
    "checks": [
     {
@@ -80709,529 +81549,602 @@
     "title": "Profit & Loss Account",
     "sheet": "BS1",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "BS2",
     "title": "Balance Sheet",
     "sheet": "BS2",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "BS3",
     "title": "Cash Flow Statement",
     "sheet": "BS3",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "Energy Balance",
     "title": "Energy Balance",
     "sheet": "Energy Balance",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ARR",
     "title": "Annual Revenue Requirement",
     "sheet": "ARR",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "True up-snapshot",
     "title": "True-Up Snapshot",
     "sheet": "True up-snapshot",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "APR Snapshot",
     "title": "APR Snapshot",
     "sheet": "APR Snapshot",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ARR snapshot",
     "title": "ARR Snapshot",
     "sheet": "ARR snapshot",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR1_OA",
     "title": "Revenue from Open Access Customers",
     "sheet": "ESR1_OA",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR2_Sales Forecast",
     "title": "Determination of CAGR of Energy Sales Forecast",
     "sheet": "ESR2_Sales Forecast",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR3_Curr Tariff - FY24",
     "title": "Revenue from Current Tariffs in Ensuing Year",
     "sheet": "ESR_3 Curr Tariff FY24",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR3_Curr Tariff - FY25",
     "title": "Revenue from Current Tariffs in Ensuing Year",
     "sheet": "ESR_3 Curr Tariff FY25",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR3_Curr Tariff - FY26",
     "title": "Revenue from Current Tariffs in Ensuing Year",
     "sheet": "ESR_3 Curr Tariff FY26",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR3_Curr Tariff - FY27",
     "title": "Revenue from Current Tariffs in Ensuing Year",
     "sheet": "ESR_3 Curr Tariff FY27",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR4_Prop Tariff",
     "title": "Revenue from Proposed Tariffs",
     "sheet": "ESR4_Prop Tariff",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR4A_Prop Tariff Rate Sch.",
     "title": "Rate Schedule for Proposed Tariff",
     "sheet": "ESR4A_Prop Tariff Rate Sch.",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR5_BD&Rev",
     "title": "Consumer No., Connected Load, Sales & Revenue Details",
     "sheet": "ESR5_BD&Rev",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "ESR6_Subsidy",
     "title": "Revenue from Tariff Subsidy",
     "sheet": "ESR6_Subsidy",
     "alias_why": null,
-    "status": "blank"
+    "status": "blank",
+    "why": null
    },
    {
     "format": "ESR7_BD monthly",
     "title": "BD monthly",
     "sheet": null,
     "alias_why": null,
-    "status": "missing"
+    "status": "missing",
+    "why": null
    },
    {
     "format": "F1_PP_Annual",
     "title": "Summary of Power Purchase from Own Stations and Other Sources",
     "sheet": "F1_PP_Annual",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F2_PP_Assump",
     "title": "Assumptions For Power Purchase",
     "sheet": "F2_PP_Assump",
     "alias_why": null,
-    "status": "present"
+    "status": "no_arithmetic",
+    "why": "the assumptions for power purchase in words (quantum, fixed and energy charges by group of sources); its only numbers are serial numbers"
    },
    {
     "format": "F3_PP_Monthly - FY 25",
     "title": "Power Purchase & Monthly Appropriation of Power Purchase",
     "sheet": "F3_PP_Monthly FY2025",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F3_PP_Monthly - FY 26",
     "title": "Power Purchase & Monthly Appropriation of Power Purchase",
     "sheet": "F3_PP_Monthly FY2026",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F3_PP_Monthly - FY 27",
     "title": "Power Purchase & Monthly Appropriation of Power Purchase",
     "sheet": "F3_PP_Monthly FY2027",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F4_PP_MOD",
     "title": "Merit Order Despatch",
     "sheet": "F4_PP_MOD",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F5_PP_Renew",
     "title": "PPA-wise renewable energy procured",
     "sheet": "F5_PP_Renew",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F6_PP6_RPO",
     "title": "Details of Renewable Purchase Obligation",
     "sheet": "F6_PP6_RPO",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F7_PP_Comp Bid",
     "title": "Details for power procured via competitive bidding for True-up Year : FY 2024-25",
     "sheet": "F7_PP_Comp Bid",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F8_PP_Short Term",
     "title": "Information on short-term power procurement",
     "sheet": "F8_PP_Short Term",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F9_PP_plan",
     "title": "Power Procurement (in MWs)",
     "sheet": "F9_PP_plan",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F10_PP_BST",
     "title": "Bulk Supply Tariff Details",
     "sheet": "F10_PP_BST",
     "alias_why": null,
-    "status": "blank"
+    "status": "blank",
+    "why": null
    },
    {
     "format": "PPC FY 24",
     "title": "Financial Year 2023-24",
     "sheet": "PPC FY 24",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "PPC FY 25",
     "title": "Financial Year 2024-25",
     "sheet": "PPC FY 25",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "PPC FY 26",
     "title": "Financial Year 2025-26",
     "sheet": "PPC FY 26",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "PPC FY 27",
     "title": "Financial Year 2026-27",
     "sheet": "PPC FY 27",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F11_CAP_Asset not in use",
     "title": "Statement of Assets Not in Use",
     "sheet": "F11_CAP_Asset not in use",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F12_CAP_Cons Contri",
     "title": "Consumer contributions and grants towards cost of capital assets",
     "sheet": "F12_CAP_Cons Contri",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F13_CAP_Plan",
     "title": "Investment Plan - Master",
     "sheet": "F13_CAP_Plan",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F14_CAP_Cap Cost",
     "title": "Statement of Capital Cost",
     "sheet": "F14_CAP_Cap Cost",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F15_CAP_CWIP",
     "title": "Statement of Capital Works in Progress",
     "sheet": "F15_CAP_CWIP",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F16_CAP_CAPEX & CAPITALISATION - Till FY 25",
     "title": "Capex and Capitalisation Details",
     "sheet": "F16_CAP_CAPEX & CAP. till 25 ",
     "alias_why": "the sheet is named in short",
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F16_CAP_CAPEX & CAPITALISATION - FY 26",
     "title": "Capex and Capitalisation Details",
     "sheet": "F16_CAP_CAPEX & CAP. after FY25",
     "alias_why": "the sheet covers FY2025-26 and FY2026-27 under the name 'after FY25'",
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F17_O&M_CPI",
     "title": "Consumer Price Inflation",
     "sheet": "F17_O&M_CPI",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F18_O&M_WPI",
     "title": "Wholesale Price Inflation",
     "sheet": "F18_O&M_WPI",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F19_O&M_EE n AG base",
     "title": "Base year determination for Employee and A&G expenses",
     "sheet": "F19_O&M_EE n AG base",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F20_O&M_EE",
     "title": "Employee Expenses",
     "sheet": "F20_O&M_EE",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F21_O&M_EE (A)",
     "title": "Component wise Details of Employee Expenses",
     "sheet": "F21_O&M_EE (A)",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F22_O&M_R&M - FY 26",
     "title": "R&M Expenses - FY 26 and FY 27",
     "sheet": "F22_O&M_R&M after FY25",
     "alias_why": "listed twice in the index (also as 'FY 26 and FY 27'); one sheet covers both",
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F22_O&M_R&M - till FY 25",
     "title": "R&M Expenses - Till FY 25",
     "sheet": "F22_O&M_R&M till FY25",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F22_O&M_R&M - FY 26 and FY 27",
     "title": "R&M Expenses - FY 26 and FY 27",
     "sheet": "F22_O&M_R&M after FY25",
     "alias_why": "the sheet covers FY2025-26 and FY2026-27 under the name 'after FY25'",
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F23_O&M_A&G",
     "title": "Componentwise Details of Administration & General Expenses",
     "sheet": "F23_O&M_A&G",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F24_Dep",
     "title": "Calculation of Depreciation Rate",
     "sheet": "F24_Dep",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F25_IOL",
     "title": "Interest on Normative Loan",
     "sheet": "F25_IOL",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F26_ROE",
     "title": "Return of Equity",
     "sheet": "F26_ROE",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F27_Work Cap",
     "title": "Working Capital Requirements",
     "sheet": "F27_Work Cap",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F28_NTI",
     "title": "Details of Non-tariff Income",
     "sheet": "F28_NTI",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F29_Income Tax",
     "title": "Income Tax Provisions",
     "sheet": "F29_Income Tax",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F30_CSD monthly",
     "title": "Monthly details of Consumer Security Deposit for True up year",
     "sheet": "F30_CSD monthly",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F30A_CSD",
     "title": "Consumer Security Deposit",
     "sheet": "F30A_CSD",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F31_Recievables",
     "title": "Statement of Receivables",
     "sheet": "F31_Recievables",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F32_Wheeling-Supply",
     "title": "Allocation of Wheeling & Retail Supply and Cross Subsidy Surcharge",
     "sheet": "F32_Wheeling-Supply",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "F33_CSS",
     "title": "Details of Cross Subsidy Surchage",
     "sheet": "F33_CSS",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P1_DL",
     "title": "Distribution Loss",
     "sheet": "P1_DL",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P1A_DL HT-LT",
     "title": "Distribution Losses in LT and HT system",
     "sheet": "P1A_DL HT-LT",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P2_AVG Supply HRS",
     "title": "Avg. No. of Hour Supply Per day",
     "sheet": "P2_AVG Supply HRS",
     "alias_why": null,
-    "status": "read"
+    "status": "no_arithmetic",
+    "why": "hours of supply a day by category, typed as ranges ('19-23') or 24; no total or derived figure"
    },
    {
     "format": "P3_Bad Debts",
     "title": "Bad Debts, Debits, Write-offs and any other items",
     "sheet": "P3_Bad Debts",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P4_Phy Stat",
     "title": "Details of Physical statistics of the network",
     "sheet": "P4_Phy Stat",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P5_Arrear",
     "title": "Analysis of  Revenue Arrears",
     "sheet": "P5_Arrear",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P6_Cons Complaints",
     "title": "Consumer Complaint",
     "sheet": "P6_Cons Complaints",
     "alias_why": null,
-    "status": "present"
+    "status": "no_arithmetic",
+    "why": "complaints by type and half-year, typed counts; the format has no total or derived figure"
    },
    {
     "format": "P7_Trans Failure",
     "title": "Failure of Transformers",
     "sheet": "P7_Trans Failure",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P8_Elec Accidents",
     "title": "Electrical Accidents",
     "sheet": "P8_Elec Accidents",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P9_Peak Demand",
     "title": "Peak Demand in MW",
     "sheet": "P9_Peak Demand",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    },
    {
     "format": "P10_Pending Cases",
     "title": "Details of Pending Cases as on date of filing",
     "sheet": "P10_Pending Cases",
     "alias_why": null,
-    "status": "present"
+    "status": "no_arithmetic",
+    "why": "pending cases: descriptions, forums, dates and amounts in words; its only numbers are serial numbers (3 is skipped)"
    },
    {
     "format": "P11_Land",
     "title": "Details of Land Assets",
     "sheet": "P11_Land",
     "alias_why": null,
-    "status": "reproduced"
+    "status": "reproduced",
+    "why": null
    }
   ],
   "not_in_index": [
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 6,
-   "reproduced": 64,
+   "reproduced": 67,
    "blank": 2,
    "missing": 1,
-   "read": 1
+   "no_arithmetic": 4
   }
  },
  "coverage": {

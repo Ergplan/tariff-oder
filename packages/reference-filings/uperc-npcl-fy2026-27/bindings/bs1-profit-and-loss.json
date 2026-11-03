@@ -1,0 +1,702 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "BS1",
+ "places": 6,
+ "note": "BS1's profit and loss account — built from the ARR format's rows — three years: total income and expenses from their lines, the profit before the rate-regulated movement, before tax and after; the profit before tax against the cash flow's opening line (BS3 row 8), which is a different figure in every year (A93).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS1 FY2022-23 total income",
+   "categories": {
+    "row 7": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C7",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "C9"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS1 FY2022-23 total expenses",
+   "categories": {
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "C21"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS1 FY2022-23 profit before rate-regulated activity",
+   "inputs": {
+    "record:diff_a": {
+     "cell": "C9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    },
+    "record:diff_b": {
+     "cell": "C21",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    }
+   },
+   "checks": {
+    "difference": "C22"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS1 FY2022-23 profit before tax",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "BS1 FY2022-23 profit before rate-regulated activity",
+     "output": "difference"
+    },
+    "record:diff_b": {
+     "cell": "C23",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    }
+   },
+   "checks": {
+    "difference": [
+     "C24",
+     "BS3!D8"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS1 FY2022-23 tax",
+   "categories": {
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C29",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C30",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": []
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS1 FY2022-23 profit",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "BS1 FY2022-23 profit before tax",
+     "output": "difference"
+    },
+    "record:diff_b": {
+     "computed": "BS1 FY2022-23 tax",
+     "output": "lines_crore_total"
+    }
+   },
+   "checks": {
+    "difference": [
+     "C31",
+     "C35"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS1 FY2023-24 total income",
+   "categories": {
+    "row 7": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D7",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS1 FY2023-24 total expenses",
+   "categories": {
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D21"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS1 FY2023-24 profit before rate-regulated activity",
+   "inputs": {
+    "record:diff_a": {
+     "cell": "D9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    },
+    "record:diff_b": {
+     "cell": "D21",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    }
+   },
+   "checks": {
+    "difference": "D22"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS1 FY2023-24 profit before tax",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "BS1 FY2023-24 profit before rate-regulated activity",
+     "output": "difference"
+    },
+    "record:diff_b": {
+     "cell": "D23",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    }
+   },
+   "checks": {
+    "difference": [
+     "D24",
+     "BS3!E8"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS1 FY2023-24 tax",
+   "categories": {
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D29",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D30",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": []
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS1 FY2023-24 profit",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "BS1 FY2023-24 profit before tax",
+     "output": "difference"
+    },
+    "record:diff_b": {
+     "computed": "BS1 FY2023-24 tax",
+     "output": "lines_crore_total"
+    }
+   },
+   "checks": {
+    "difference": [
+     "D31",
+     "D35"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS1 FY2024-25 total income",
+   "categories": {
+    "row 7": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E7",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E9"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS1 FY2024-25 total expenses",
+   "categories": {
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E21"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS1 FY2024-25 profit before rate-regulated activity",
+   "inputs": {
+    "record:diff_a": {
+     "cell": "E9",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    },
+    "record:diff_b": {
+     "cell": "E21",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    }
+   },
+   "checks": {
+    "difference": "E22"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS1 FY2024-25 profit before tax",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "BS1 FY2024-25 profit before rate-regulated activity",
+     "output": "difference"
+    },
+    "record:diff_b": {
+     "cell": "E23",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+    }
+   },
+   "checks": {
+    "difference": [
+     "E24",
+     "BS3!F8"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS1 FY2024-25 tax",
+   "categories": {
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E29",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E30",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": []
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS1 FY2024-25 profit",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "BS1 FY2024-25 profit before tax",
+     "output": "difference"
+    },
+    "record:diff_b": {
+     "computed": "BS1 FY2024-25 tax",
+     "output": "lines_crore_total"
+    }
+   },
+   "checks": {
+    "difference": [
+     "E31",
+     "E35"
+    ]
+   }
+  }
+ ]
+}

@@ -22,5 +22,11 @@
    "sheet": "F22_O&M_R&M after FY25",
    "why": "listed twice in the index (also as 'FY 26 and FY 27'); one sheet covers both"
   }
+ },
+ "no_arithmetic": {
+  "F2_PP_Assump": "the assumptions for power purchase in words (quantum, fixed and energy charges by group of sources); its only numbers are serial numbers",
+  "P2_AVG Supply HRS": "hours of supply a day by category, typed as ranges ('19-23') or 24; no total or derived figure",
+  "P6_Cons Complaints": "complaints by type and half-year, typed counts; the format has no total or derived figure",
+  "P10_Pending Cases": "pending cases: descriptions, forums, dates and amounts in words; its only numbers are serial numbers (3 is skipped)"
  }
 }

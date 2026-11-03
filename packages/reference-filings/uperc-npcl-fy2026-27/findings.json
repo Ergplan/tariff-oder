@@ -719,6 +719,30 @@
     "bindings/p8-accidents.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A93",
+   "kind": "inconsistency",
+   "title": "The cash flow (BS3) opens on a profit before tax that is not the profit and loss account's (BS1) in any year",
+   "detail": "BS1's profit before tax is 101.03 (FY2022-23), 111.21 (FY2023-24) and 120.73 (FY2024-25), and reproduces from its lines (18 / 18).  BS3's first line, 'Net Profit/(Loss) before Taxation', is 45.17, 47.67 and 91.49: the first two typed, the third built as F26's return on equity less the income tax paid, less dividends, less a typed 22.07.  A cash flow statement opens on the profit and loss account's profit before tax.  BS3's own sections and totals reproduce (25 / 27; A94).  For the petitioner: the profit BS3 should open on, and what the 22.07 is.",
+   "where": [
+    "BS1 row 24",
+    "BS3 row 8 (F8: =F26_ROE!G14-F36-SUM(F57:F58)-22.07)",
+    "bindings/bs1-profit-and-loss.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A94",
+   "kind": "inconsistency",
+   "title": "BS3's cash at the end of FY2023-24 adds a typed 0.01; carried forward, FY2024-25 ends 0.0038 above the balance sheet's cash",
+   "detail": "FY2023-24's cash at the end, from BS3's own opening and net change, is 1.745251 — the balance sheet's cash (BS2) exactly; BS3 prints 1.755251, its formula adding 0.01 (=E60+E61+0.01).  FY2024-25 opens on that 1.755251 and ends at 1.641326, against the balance sheet's 1.637545 — 0.003781 over (on the unadjusted opening it would be 0.0062 under).  FY2022-23 agrees exactly.  For the petitioner: reconcile the cash flow to the balance sheet without the literal.",
+   "where": [
+    "BS3 rows 60–62",
+    "BS2 row 29",
+    "bindings/bs3-cash-flow.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

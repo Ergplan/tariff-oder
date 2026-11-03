@@ -41,7 +41,14 @@ type Filing = {
     list: string;
     counts: Counts;
     not_in_index: string[];
-    formats: { format: string; title: string; sheet: string | null; alias_why: string | null; status: string }[];
+    formats: {
+      format: string;
+      title: string;
+      sheet: string | null;
+      alias_why: string | null;
+      status: string;
+      why?: string | null;
+    }[];
   } | null;
   decisions: {
     order: { title: string; sha256: string };
@@ -130,6 +137,7 @@ const TONE: Record<string, string> = {
   reproduced: "ok",
   read: "neutral",
   present: "neutral",
+  no_arithmetic: "neutral",
   blank: "warn",
   missing: "bad",
   match: "ok",
@@ -515,7 +523,7 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
           </table>
         </div>
       </Panel>
-      <Panel num="06" title="Every format accounted for" aside="each format the filing lists — reproduced, read, present, blank or missing">
+      <Panel num="06" title="Every format accounted for" aside="each format the filing lists — reproduced, read, present, no arithmetic, blank or missing">
         {!f.accounting ? (
           <p className="muted">No index of formats.</p>
         ) : (
@@ -551,8 +559,9 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                         </td>
                         <td>
                           <span className="badge" data-tone={TONE[x.status] ?? "neutral"}>
-                            {x.status}
+                            {x.status.replace("_", " ")}
                           </span>
+                          {x.why ? <div className="muted">{x.why}</div> : null}
                         </td>
                       </tr>
                     ))}

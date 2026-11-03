@@ -1637,6 +1637,44 @@
    },
    "examples": [],
    "note": "P1A's overall loss, carried to the ARR format's row 10"
+  },
+  {
+   "id": "uperc.fmt.difference",
+   "version": 1,
+   "status": "draft",
+   "title": "One figure less another",
+   "output": "difference",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-16",
+   "formula": "a - b",
+   "inputs": {
+    "a": {
+     "unit": "INR_crore",
+     "source": "record:diff_a"
+    },
+    "b": {
+     "unit": "INR_crore",
+     "source": "record:diff_b"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a statement's line that is one line less another (profit before tax, a year's movement)"
   }
  ]
 }

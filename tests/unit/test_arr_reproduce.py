@@ -2910,3 +2910,34 @@ def test_npcl_performance_formats_losses_network_arrears_failures_accidents_peak
         got = [(c.category.rsplit(" ", 1)[1], c.computed, c.filed) for c in checks if c.result != "match"]
         assert got == differs, name
     assert {"A90", "A91", "A92"} <= {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}
+
+
+def test_npcl_accounts_profit_and_loss_balance_sheet_and_cash_flow():
+    """Real data, NPCL's BS1, BS2 and BS3 (increment 149): the profit and loss account from its
+    lines to profit before and after tax (18 / 18); the balance sheet's groups and its balance —
+    assets with the deferral balance against equity and liabilities, each from its lines (27 / 27);
+    the cash flow's sections and year-end cash (25 / 27).  The cash flow opens on a profit that is
+    not BS1's in any year (A93); its year-end cash adds a typed 0.01 and misses BS2's (A94)."""
+    from collections import Counter
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("UPERC") == []
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    wb = openpyxl.load_workbook(folder / "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx", data_only=True)
+    rules = load_rules("UPERC")
+    run = lambda n: reproduce_cells(wb, json.loads((folder / "bindings" / n).read_text()), rules)  # noqa: E731
+    bs1, bs2, bs3 = run("bs1-profit-and-loss.json"), run("bs2-balance-sheet.json"), run("bs3-cash-flow.json")
+    assert Counter(c.result for c in bs2) == {"match": 27}
+    assert [c.category.rsplit(" ", 1)[1] for c in bs1 if c.result != "match"] == ["BS3!D8", "BS3!E8", "BS3!F8"]
+    assert {c.category.rsplit(" ", 1)[1]: c.computed for c in bs1 if c.category.endswith(" E24")} == {
+        "E24": "120.731917"
+    }
+    assert [(c.category.rsplit(" ", 1)[1], c.computed, c.filed) for c in bs3 if c.result != "match"] == [
+        ("E62", "1.745251", "1.755251"),
+        ("BS2!E29", "1.641326", "1.637545"),
+    ]
+    assert {"A93", "A94"} <= {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}

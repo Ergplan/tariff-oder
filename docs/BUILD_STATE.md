@@ -1005,6 +1005,37 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 149 (2026-11-03): NPCL — the accounts (BS1–BS3), and every format of the filing accounted for.**
+  - **One more format rule (45; UPERC 280):** a difference (one line less another).
+  - **Checks:**
+    - **`bs1-profit-and-loss.json` 18 / 21.**  Income, expenses, profit before the rate-regulated
+      movement, before tax and after: all exact from the lines.  The three differences are the
+      profit before tax against the cash flow's opening line (A93).
+    - **`bs2-balance-sheet.json` 27 / 27.**  Each group from its lines, and the balance: assets with
+      the deferral balance against equity and liabilities, each side from its lines, in all three
+      years.
+    - **`bs3-cash-flow.json` 25 / 27.**  Each section, the net change and the year-end cash; two
+      differences (A94).
+  - **Findings (petitioner):**
+    - **`A93`:** the cash flow opens on a profit before tax that is never BS1's (45.17 / 47.67 /
+      91.49 against 101.03 / 111.21 / 120.73).  FY2024-25's is built from F26's RoE less tax and
+      dividends, less a typed 22.07.
+    - **`A94`:** FY2023-24's year-end cash adds a typed 0.01.  Computed, it equals the balance
+      sheet's exactly; carried forward, FY2024-25 ends 0.0038 over the balance sheet's.
+  - **A new accounting status, `no_arithmetic`.**  `formats-index.json` declares it with a reason
+    for each format; `scripts/reproduce_formats.py` reports it; the reference page shows the
+    reason (typechecked, not screenshot-checked).  It covers four formats: F2 (assumptions in
+    words), P2 (hours of supply as typed ranges), P6 (typed complaint counts), P10 (pending cases
+    in words).
+  - **Formats accounted: 67 reproduced, 4 with no arithmetic, 2 blank (ESR6 subsidy, F10 bulk
+    supply tariff), 1 missing (ESR7, monthly billing determinants).**
+    - **The operator's direction from increment 143 is done for the formats:** every one of NPCL's
+      formats with figures to compute is now checked by a binding.
+    - **It is not done for reliability:** every rule is a draft and every clause unverified; the
+      sign-off panel has nothing signed; the 13 findings of increments 143–149 (A82–A94: 12 for
+      the petitioner, A85 for the reviewer) await answers.
+  Nothing verified, nothing approved.
+
   **Increment 148 (2026-11-03): NPCL — the performance formats with arithmetic: losses by voltage (P1A), the network (P4), arrears (P5), transformer failures (P7), accidents (P8), peak demand (P9), land (P11).**
   - **10 more format rules (44; UPERC 279):**
     - a stock rolled forward, a ratio, a shortfall (never negative), a figure grown at a rate,
@@ -3651,6 +3682,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 149 (2026-11-03): 521 passed** (+1 unit: NPCL BS1, BS2, BS3; A93, A94; the accounting's `no_arithmetic`).  Ruff and format clean; web `tsc --noEmit` clean.
 - **Increment 148 (2026-11-03): 520 passed** (+1 unit: NPCL P1A, P4, P5, P7, P8, P9, P11; A90–A92).  Ruff and format clean.
 - **Increment 147 (2026-11-03): 519 passed** (+1 unit: NPCL F4, F5, F7, F8, F9, 106 checks exact).  Ruff and format clean.
 - **Increment 146 (2026-11-03): 518 passed** (+1 unit: NPCL F1 and F3, 1,375 checks exact; A89).  Ruff and format clean.
@@ -3932,7 +3964,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 148) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 149) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3969,7 +4001,7 @@ entries below are the per-increment history.**
   ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
   `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
-  held by the operator).  **279 draft UPERC rules** in 30 files reproduce the filed formats.
+  held by the operator).  **280 draft UPERC rules** in 30 files reproduce the filed formats.
   `/arr/reference/uperc-npcl-fy2026-27` shows the following:
   - **End to end from the schedules:** the regulatory asset is carried from year to year as
     computed (increment 95).  The net ARR and gap of the ARR and APR years match (3,481.83 and
@@ -3977,8 +4009,9 @@ entries below are the per-increment history.**
     gap as 0.25 (10 / 12 there).
   - **How each ARR figure is established:** FY2026-27 is 17 computed, 19 tied, 10 records, none
     differing.
-  - **Formats accounted, against the filing's index:** 64 reproduced, 1 read, 6 present, 2
-    blank, 1 missing (increment 148; the operator's direction is to close every one).
+  - **Formats accounted, against the filing's index:** 67 reproduced, 4 with no
+    arithmetic (text or typed figures, each with its reason), 2 blank, 1 missing — every format
+    with figures to compute is checked (increments 143–149, the operator's direction).
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
   - **What the Commission decided** (the FY2026-27 order, read row by row with pages): the order
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.
@@ -4000,7 +4033,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **60 findings (A29–A92):** 38 for the petitioner, collected in the draft queries; 22 for the
+  - **62 findings (A29–A94):** 40 for the petitioner, collected in the draft queries; 22 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 
@@ -4023,6 +4056,11 @@ entries below are the per-increment history.**
      the projection years' depreciation by class.
 
   **Engineering next, smallest first:**
+  - **NPCL, after the whole suite (increments 143–149):** the formats are all checked; what is
+    left is depth, not breadth:
+    - ESR7 (not filed), on which the month-on-month sales projection (A88) and FPPAS wait;
+    - F13's financing columns (A84), on which a plan-level loan / equity check waits;
+    - the reviewer's verification of Reg. 30.2 and the formats' rules.
   - the rest of revenue from the rate schedule.  Increment 91 computed energy charges for 45 LT
     slabs from the order's rates (40 match).  Increment 92 checked the existing tariff NPCL states
     in ESR4A against the order: 47 / 47 energy rates, HV per kVAh.  Still to do:

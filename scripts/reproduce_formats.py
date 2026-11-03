@@ -90,8 +90,9 @@ def pipeline(name: str, binding: dict, folder: Path, rules: list, sheets: dict, 
 def accounting(folder: Path, sheets: dict) -> dict | None:
     """Every format the filing's index lists, accounted for (R-ACC-3): **missing** (no sheet),
     **blank** (a sheet with no number), **present** (numbers, not read), **read** (the reference
-    reads it), **reproduced** (a binding computes from or checks it) — and the sheets the index
-    does not list.  Names are matched exactly or through the declared aliases, each with its
+    reads it), **reproduced** (a binding computes from or checks it), **no_arithmetic** (declared
+    in the index file with its reason: text or typed figures with nothing to compute) — and the
+    sheets the index does not list.  Names are matched exactly or through the declared aliases, each with its
     reason; never by resemblance."""
     import re
 
@@ -134,12 +135,21 @@ def accounting(folder: Path, sheets: dict) -> dict | None:
             status = "missing"
         elif sheet in used:
             status = "reproduced"
+        elif name in cfg.get("no_arithmetic", {}):
+            status = "no_arithmetic"
         elif sheet in sheets:
             status = "read"
         else:
             status = "present" if numbers[sheet] else "blank"
         out.append(
-            {"format": name, "title": title, "sheet": sheet, "alias_why": alias and alias["why"], "status": status}
+            {
+                "format": name,
+                "title": title,
+                "sheet": sheet,
+                "alias_why": alias and alias["why"],
+                "status": status,
+                "why": cfg.get("no_arithmetic", {}).get(name) if status == "no_arithmetic" else None,
+            }
         )
     extra = [n for n in wb.sheetnames if n not in listed and n != cfg["index_sheet"]]
     counts: dict[str, int] = {}

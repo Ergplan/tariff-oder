@@ -1,0 +1,1584 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "BS3",
+ "places": 6,
+ "note": "BS3's cash flow, three years: each section from its lines, the net change, and the cash at the year's end as the opening plus the change — against the line itself and against the balance sheet's cash (BS2 row 29), which it misses by 0.0100 in FY2023-24 (whose formula adds a literal 0.01) and 0.0038 in FY2024-25 (A94).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS3 FY2022-23 adjustments",
+   "categories": {
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D20"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS3 FY2022-23 operating profit before working capital",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D21"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS3 FY2022-23 working capital",
+   "categories": {
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D29",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D30",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D35"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS3 FY2022-23 operating",
+   "categories": {
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D35",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D36",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D37"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS3 FY2022-23 investing",
+   "categories": {
+    "row 39": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D39",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 40": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D40",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 41": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 42": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D42",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 43": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 44": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D44",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 45": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D45",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D46"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS3 FY2022-23 financing",
+   "categories": {
+    "row 48": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D48",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 49": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D49",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 50": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D50",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 51": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D51",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 52": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D52",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 53": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D53",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 54": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D54",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 55": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D55",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 56": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D56",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 57": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D57",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 58": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D58",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D59"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS3 FY2022-23 net change",
+   "categories": {
+    "row 37": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 46": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D46",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D59",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D60"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "BS3 FY2022-23 cash at the end",
+   "categories": {
+    "row 60": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D60",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 61": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D61",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": [
+     "D62",
+     "BS2!C29"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS3 FY2023-24 adjustments",
+   "categories": {
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E20"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS3 FY2023-24 operating profit before working capital",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E21"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS3 FY2023-24 working capital",
+   "categories": {
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E29",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E30",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E35"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS3 FY2023-24 operating",
+   "categories": {
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E35",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E36",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E37"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS3 FY2023-24 investing",
+   "categories": {
+    "row 39": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E39",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 40": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E40",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 41": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 42": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E42",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 43": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 44": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E44",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 45": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E45",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E46"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS3 FY2023-24 financing",
+   "categories": {
+    "row 48": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E48",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 49": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E49",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 50": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E50",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 51": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E51",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 52": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E52",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 53": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E53",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 54": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E54",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 55": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E55",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 56": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E56",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 57": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E57",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 58": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E58",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E59"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS3 FY2023-24 net change",
+   "categories": {
+    "row 37": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 46": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E46",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E59",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E60"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "BS3 FY2023-24 cash at the end",
+   "categories": {
+    "row 60": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E60",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 61": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E61",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": [
+     "E62",
+     "BS2!D29"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS3 FY2024-25 adjustments",
+   "categories": {
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F20"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS3 FY2024-25 operating profit before working capital",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F21"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS3 FY2024-25 working capital",
+   "categories": {
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F29",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F30",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F31",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F32",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F33",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F34",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F35"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS3 FY2024-25 operating",
+   "categories": {
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F35",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F36",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F37"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS3 FY2024-25 investing",
+   "categories": {
+    "row 39": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F39",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 40": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F40",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 41": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F41",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 42": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F42",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 43": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F43",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 44": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F44",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 45": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F45",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F46"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS3 FY2024-25 financing",
+   "categories": {
+    "row 48": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F48",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 49": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F49",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 50": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F50",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 51": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F51",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 52": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F52",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 53": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F53",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 54": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F54",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 55": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F55",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 56": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F56",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 57": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F57",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 58": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F58",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F59"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS3 FY2024-25 net change",
+   "categories": {
+    "row 37": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F37",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 46": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F46",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F59",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F60"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "BS3 FY2024-25 cash at the end",
+   "categories": {
+    "row 60": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F60",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    },
+    "row 61": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F61",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the statement is nil — the statement's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": [
+     "F62",
+     "BS2!E29"
+    ]
+   }
+  }
+ ]
+}
