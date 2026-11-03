@@ -1005,6 +1005,21 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 117 (2026-11-03): NPCL's APR power purchase estimate checked — the line the
+  Commission took provisionally.**
+  - **Table 5-18 read by word position (pp.179–180):** 49 rows, wrapped labels joined.
+  - **Engine:** a source table now names its own sides (`sides`: here the original approval
+    against NPCL's estimate) and its row-code pattern.  A decision is computed only where an
+    approval is set against a claim.  Panel 06d shows the named sides.
+  - **NPCL's estimate holds its own arithmetic throughout (78 / 79 overall):**
+    - every MU × rate, every group and the MU total;
+    - the additional claims A–H, including the 118.55 supplement;
+    - its sub-total is the format's plus that supplement (A72).
+  - **A79 (petitioner):** the side restating the order of 22.11.2025 prints power purchase 2.47
+    below its own rows (and the format's 2,192.18), and transmission 2.47 above the format's
+    440.03.  The total agrees; the table does not say why.
+  Nothing verified, nothing approved.
+
   **Increment 116 (2026-11-03): the true-up's energy balance — where the 1.32 MU disallowed
   comes from.**
   - **The record:** `order/figures-energy-balance-fy2024-25.json` holds 40 figures (Table 4-19,
@@ -2898,6 +2913,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 117 (2026-11-03): 487 passed** (+1 unit: NPCL's APR estimate table, its arithmetic and the 2.47 moved).  Ruff, format and `tsc` clean.
 - **Increment 116 (2026-11-03): 486 passed** (+1 unit: the true-up's energy balance and the 1.32 MU).  `check_order_quotes.py`: 40 / 40.  Ruff and format clean.
 - **Increment 115 (2026-11-03): 485 passed** (+1 unit: the energy balance, both columns).  `check_order_quotes.py`: 26 / 26.  Ruff and format clean.
 - **Increment 114 (2026-11-03): 484 passed** (+1 unit: the ARR year's power purchase by source, differences bounded by input precision, tied to Table 6-35).  `check_order_quotes.py`: 154 / 154.  Ruff and format clean.
@@ -3147,7 +3163,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 116) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 117) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3213,7 +3229,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **46 findings (A29–A78):** 26 for the petitioner, collected in the draft queries; 20 for the
+  - **47 findings (A29–A79):** 27 for the petitioner, collected in the draft queries; 20 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

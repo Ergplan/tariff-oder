@@ -347,3 +347,22 @@ def test_npcl_every_line_of_the_three_decisions_has_its_reason():
     assert arr["difference"] == "0.00"
     statuses = [x["status"] for t in rep["tables"] for x in t["explanation"]["lines"]]
     assert len(statuses) == 36 and statuses.count("reproduced") == 22  # 9 + 6 + 7
+
+
+def test_npcl_the_apr_estimate_holds_its_arithmetic_and_moves_2_47():
+    """Real data: Table 5-18, NPCL's APR estimate the Commission took provisionally, read by
+    position with its own sides (the original approval, the estimate): the estimate's arithmetic
+    holds throughout and its sub-total is the format's plus the 118.55 supplement (A72); the
+    restated approval's power purchase sub-total is 2.47 below its rows (A79)."""
+    from decimal import Decimal
+
+    rep = json.loads(
+        (ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27" / "order-decisions.json").read_text()
+    )
+    t = next(t for t in rep["source_tables"] if t["proceeding"] == "apr")
+    assert t["sides"] == ["approved_before", "claimed"] and t["decisions"] == []
+    assert {c["result"] for c in t["arithmetic"] if c["side"] == "claimed"} == {"match"}
+    off = [c for c in t["arithmetic"] if c["result"] != "match"]
+    assert len(off) == 1 and off[0]["side"] == "approved_before" and off[0]["difference"] == "-2.47"
+    sub, trans = t["against_format"]
+    assert Decimal(sub["printed"]) - Decimal(sub["format"]) == Decimal("118.55") and trans["result"] == "match"

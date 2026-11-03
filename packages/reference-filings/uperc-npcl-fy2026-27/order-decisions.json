@@ -2718,6 +2718,10 @@
     243
    ],
    "anchors": "the page's two 'MUs' and two 'Amount' header words (claimed left, approved right); the rate column midway",
+   "sides": [
+    "claimed",
+    "approved"
+   ],
    "rows": [
     {
      "code": "A",
@@ -4146,6 +4150,10 @@
     89
    ],
    "anchors": "each page's two 'Periphery', 'kWh' and 'Cr.' header words (claimed left, approved right); a source's name is centred on the lines around its figures, so lines within 7 points belong to its label",
+   "sides": [
+    "claimed",
+    "approved"
+   ],
    "rows": [
     {
      "code": null,
@@ -4952,6 +4960,1294 @@
      "decision": "-0.34"
     }
    ]
+  },
+  {
+   "proceeding": "apr",
+   "fiscal_year": "FY2025-26",
+   "title": "TABLE 5-18 TOTAL POWER PURCHASE COST SUBMITTED BY THE PETITIONER ESTIMATED FOR FY 2025-26 (IN RS. CR.)",
+   "pages": [
+    179,
+    180
+   ],
+   "anchors": "each page's two 'MUs', 'kWh' and 'Cr.)' header words: the original approval left, NPCL's APR estimate right; a row's serial and wrapped label lines within 7 points belong to its label",
+   "sides": [
+    "approved_before",
+    "claimed"
+   ],
+   "rows": [
+    {
+     "code": null,
+     "label": "1 Long Term - Genco (DIL)",
+     "cells": {
+      "approved_before_mu": "1,273.27",
+      "approved_before_rate": "4.20",
+      "approved_before_amount": "534.52",
+      "claimed_mu": "1,188.47",
+      "claimed_rate": "4.50",
+      "claimed_amount": "534.52"
+     },
+     "quote": "1 Long Term - Genco (DIL) 1,273.27 4.20 534.52 1,188.47 4.50 534.52",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "2 Medium Term",
+     "cells": {
+      "approved_before_mu": "2,196.57",
+      "approved_before_rate": "4.95",
+      "approved_before_amount": "1,087.14",
+      "claimed_mu": "2,039.26",
+      "claimed_rate": "5.31",
+      "claimed_amount": "1,083.30"
+     },
+     "quote": "2 Medium Term 2,196.57 4.95 1,087.14 2,039.26 5.31 1,083.30",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "a TPTCL (JIPL, Odisha)",
+     "cells": {
+      "approved_before_mu": "744.60",
+      "approved_before_rate": "4.20",
+      "approved_before_amount": "313.08",
+      "claimed_mu": "695.02",
+      "claimed_rate": "4.46",
+      "claimed_amount": "309.76"
+     },
+     "quote": "a TPTCL (JIPL, Odisha) 744.60 4.20 313.08 695.02 4.46 309.76",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "b JIPL, Odisha",
+     "cells": {
+      "approved_before_mu": "707.37",
+      "approved_before_rate": "5.21",
+      "approved_before_amount": "368.26",
+      "claimed_mu": "660.25",
+      "claimed_rate": "5.61",
+      "claimed_amount": "370.66"
+     },
+     "quote": "b JIPL, Odisha 707.37 5.21 368.26 660.25 5.61 370.66",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "c Maa Durga",
+     "cells": {
+      "approved_before_mu": "186.15",
+      "approved_before_rate": "5.49",
+      "approved_before_amount": "102.20",
+      "claimed_mu": "173.75",
+      "claimed_rate": "5.93",
+      "claimed_amount": "103.09"
+     },
+     "quote": "c Maa Durga 186.15 5.49 102.20 173.75 5.93 103.09",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "d MPL – BLA Power",
+     "cells": {
+      "approved_before_mu": "186.15",
+      "approved_before_rate": "5.49",
+      "approved_before_amount": "102.20",
+      "claimed_mu": "173.75",
+      "claimed_rate": "5.93",
+      "claimed_amount": "103.09"
+     },
+     "quote": "d MPL – BLA Power 186.15 5.49 102.20 173.75 5.93 103.09",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "e MPL – Sai Lilagar",
+     "cells": {
+      "approved_before_mu": "186.15",
+      "approved_before_rate": "5.41",
+      "approved_before_amount": "100.71",
+      "claimed_mu": "162.74",
+      "claimed_rate": "5.84",
+      "claimed_amount": "95.10"
+     },
+     "quote": "e MPL – Sai Lilagar 186.15 5.41 100.71 162.74 5.84 95.10",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "f DIL",
+     "cells": {
+      "approved_before_mu": "186.15",
+      "approved_before_rate": "5.41",
+      "approved_before_amount": "100.71",
+      "claimed_mu": "173.75",
+      "claimed_rate": "5.85",
+      "claimed_amount": "101.60"
+     },
+     "quote": "f DIL 186.15 5.41 100.71 173.75 5.85 101.60",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "3 Short Term",
+     "cells": {
+      "approved_before_mu": "543.28",
+      "approved_before_rate": "4.88",
+      "approved_before_amount": "265.33",
+      "claimed_mu": "781.61",
+      "claimed_rate": "5.82",
+      "claimed_amount": "455.03"
+     },
+     "quote": "3 Short Term 543.28 4.88 265.33 781.61 5.82 455.03",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "Power Exchanges (Apr-2025 to a Sep-2025)",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "252.32",
+      "claimed_rate": "7.03",
+      "claimed_amount": "177.35"
+     },
+     "quote": "Power Exchanges (Apr-2025 to a - - - 252.32 7.03 177.35 Sep-2025)",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "b AEL (Adani Power, Chhattisgarh)",
+     "cells": {
+      "approved_before_mu": "171.86",
+      "approved_before_rate": "5.31",
+      "approved_before_amount": "91.29",
+      "claimed_mu": "144.84",
+      "claimed_rate": "5.69",
+      "claimed_amount": "82.43"
+     },
+     "quote": "b AEL (Adani Power, Chhattisgarh) 171.86 5.31 91.29 144.84 5.69 82.43",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "c Instinct Infra. (JPL, Raigarh)",
+     "cells": {
+      "approved_before_mu": "29.76",
+      "approved_before_rate": "5.58",
+      "approved_before_amount": "16.61",
+      "claimed_mu": "27.76",
+      "claimed_rate": "5.97",
+      "claimed_amount": "16.58"
+     },
+     "quote": "c Instinct Infra. (JPL, Raigarh) 29.76 5.58 16.61 27.76 5.97 16.58",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "d MPL (BLA, MP)",
+     "cells": {
+      "approved_before_mu": "18.60",
+      "approved_before_rate": "5.18",
+      "approved_before_amount": "9.63",
+      "claimed_mu": "14.60",
+      "claimed_rate": "5.56",
+      "claimed_amount": "8.12"
+     },
+     "quote": "d MPL (BLA, MP) 18.60 5.18 9.63 14.60 5.56 8.12",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "e MPL (DB Power, Chhattisgarh)",
+     "cells": {
+      "approved_before_mu": "3.72",
+      "approved_before_rate": "5.64",
+      "approved_before_amount": "2.10",
+      "claimed_mu": "3.40",
+      "claimed_rate": "6.04",
+      "claimed_amount": "2.05"
+     },
+     "quote": "e MPL (DB Power, Chhattisgarh) 3.72 5.64 2.10 3.40 6.04 2.05",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "f MPL (MSPL, Raipur)",
+     "cells": {
+      "approved_before_mu": "36.72",
+      "approved_before_rate": "5.27",
+      "approved_before_amount": "19.35",
+      "claimed_mu": "26.70",
+      "claimed_rate": "5.65",
+      "claimed_amount": "15.08"
+     },
+     "quote": "f MPL (MSPL, Raipur) 36.72 5.27 19.35 26.70 5.65 15.08",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "g MPL (Thanush, Karnataka)",
+     "cells": {
+      "approved_before_mu": "15.29",
+      "approved_before_rate": "5.19",
+      "approved_before_amount": "7.93",
+      "claimed_mu": "11.39",
+      "claimed_rate": "5.56",
+      "claimed_amount": "6.33"
+     },
+     "quote": "g MPL (Thanush, Karnataka) 15.29 5.19 7.93 11.39 5.56 6.33",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "h PTC (CSPL, Chhattisgarh)",
+     "cells": {
+      "approved_before_mu": "32.33",
+      "approved_before_rate": "5.28",
+      "approved_before_amount": "17.07",
+      "claimed_mu": "24.67",
+      "claimed_rate": "5.67",
+      "claimed_amount": "13.98"
+     },
+     "quote": "h PTC (CSPL, Chhattisgarh) 32.33 5.28 17.07 24.67 5.67 13.98",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "Inter-State Power from Trader/ i Generator/ PXs",
+     "cells": {
+      "approved_before_mu": "235.00",
+      "approved_before_rate": "4.31",
+      "approved_before_amount": "101.34",
+      "claimed_mu": "275.93",
+      "claimed_rate": "4.82",
+      "claimed_amount": "133.12"
+     },
+     "quote": "Inter-State Power from Trader/ i 235.00 4.31 101.34 275.93 4.82 133.12 Generator/ PXs",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "4 Banking",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "-"
+     },
+     "quote": "4 Banking - - - - - -",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "5 Renewable Sources",
+     "cells": {
+      "approved_before_mu": "704.84",
+      "approved_before_rate": "4.33",
+      "approved_before_amount": "305.20",
+      "claimed_mu": "342.22",
+      "claimed_rate": "5.06",
+      "claimed_amount": "173.32"
+     },
+     "quote": "5 Renewable Sources 704.84 4.33 305.20 342.22 5.06 173.32",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "a LT Wind Power (PTC)",
+     "cells": {
+      "approved_before_mu": "35.50",
+      "approved_before_rate": "3.53",
+      "approved_before_amount": "12.53",
+      "claimed_mu": "31.37",
+      "claimed_rate": "3.65",
+      "claimed_amount": "11.44"
+     },
+     "quote": "a LT Wind Power (PTC) 35.50 3.53 12.53 31.37 3.65 11.44",
+     "page": 179
+    },
+    {
+     "code": null,
+     "label": "b LT Solar Power (Adani Energy)",
+     "cells": {
+      "approved_before_mu": "62.19",
+      "approved_before_rate": "3.08",
+      "approved_before_amount": "19.15",
+      "claimed_mu": "53.24",
+      "claimed_rate": "3.18",
+      "claimed_amount": "16.94"
+     },
+     "quote": "b LT Solar Power (Adani Energy) 62.19 3.08 19.15 53.24 3.18 16.94",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "c LT Solar Power (Tata Power)",
+     "cells": {
+      "approved_before_mu": "46.41",
+      "approved_before_rate": "3.08",
+      "approved_before_amount": "14.30",
+      "claimed_mu": "42.59",
+      "claimed_rate": "3.18",
+      "claimed_amount": "13.55"
+     },
+     "quote": "c LT Solar Power (Tata Power) 46.41 3.08 14.30 42.59 3.18 13.55",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "d LT Solar Power (GNIDA)",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "1.16",
+      "claimed_rate": "7.06",
+      "claimed_amount": "0.82"
+     },
+     "quote": "d LT Solar Power (GNIDA) - - - 1.16 7.06 0.82",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "e LT Solar Power (APPCPL)",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "0.46",
+      "claimed_rate": "5.49",
+      "claimed_amount": "0.26"
+     },
+     "quote": "e LT Solar Power (APPCPL) - - - 0.46 5.49 0.26",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "f PTC (Khalez Khola, Sikkim)",
+     "cells": {
+      "approved_before_mu": "10.92",
+      "approved_before_rate": "5.59",
+      "approved_before_amount": "6.10",
+      "claimed_mu": "9.96",
+      "claimed_rate": "5.98",
+      "claimed_amount": "5.96"
+     },
+     "quote": "f PTC (Khalez Khola, Sikkim) 10.92 5.59 6.10 9.96 5.98 5.96",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "g PTC (Lower Lagyap, Sikkim)",
+     "cells": {
+      "approved_before_mu": "34.80",
+      "approved_before_rate": "5.59",
+      "approved_before_amount": "19.45",
+      "claimed_mu": "31.87",
+      "claimed_rate": "5.98",
+      "claimed_amount": "19.05"
+     },
+     "quote": "g PTC (Lower Lagyap, Sikkim) 34.80 5.59 19.45 31.87 5.98 19.05",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "h PTC (Meyong Chu, Sikkim)",
+     "cells": {
+      "approved_before_mu": "12.36",
+      "approved_before_rate": "5.59",
+      "approved_before_amount": "6.91",
+      "claimed_mu": "11.29",
+      "claimed_rate": "5.98",
+      "claimed_amount": "6.75"
+     },
+     "quote": "h PTC (Meyong Chu, Sikkim) 12.36 5.59 6.91 11.29 5.98 6.75",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "i PTC (Rabaom Chu, Sikkim)",
+     "cells": {
+      "approved_before_mu": "19.56",
+      "approved_before_rate": "5.59",
+      "approved_before_amount": "10.93",
+      "claimed_mu": "17.92",
+      "claimed_rate": "5.98",
+      "claimed_amount": "10.71"
+     },
+     "quote": "i PTC (Rabaom Chu, Sikkim) 19.56 5.59 10.93 17.92 5.98 10.71",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "PTC (GoHP – NJHPS, Himachal j Pradesh)",
+     "cells": {
+      "approved_before_mu": "80.88",
+      "approved_before_rate": "5.50",
+      "approved_before_amount": "44.46",
+      "claimed_mu": "74.96",
+      "claimed_rate": "5.89",
+      "claimed_amount": "44.14"
+     },
+     "quote": "PTC (GoHP – NJHPS, Himachal j 80.88 5.50 44.46 74.96 5.89 44.14 Pradesh)",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "k Power Exchanges (Renewable)",
+     "cells": {
+      "approved_before_mu": "402.22",
+      "approved_before_rate": "4.26",
+      "approved_before_amount": "171.36",
+      "claimed_mu": "67.42",
+      "claimed_rate": "6.48",
+      "claimed_amount": "43.71"
+     },
+     "quote": "k Power Exchanges (Renewable) 402.22 4.26 171.36 67.42 6.48 43.71",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "6 REC Purchase",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "13.57"
+     },
+     "quote": "6 REC Purchase - - - - - 13.57",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "Adjustment - Sale at Power 7 Exchanges",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "(78.98)",
+      "claimed_rate": "3.68",
+      "claimed_amount": "(29.09)"
+     },
+     "quote": "Adjustment - Sale at Power 7 - - - (78.98) 3.68 (29.09) Exchanges",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "8 Sale of Power/ UI",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "(13.19)",
+      "claimed_rate": "(6.85)",
+      "claimed_amount": "9.03"
+     },
+     "quote": "8 Sale of Power/ UI - - - (13.19) (6.85) 9.03",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "9 Additional Claims",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "177.36"
+     },
+     "quote": "9 Additional Claims - - - - - 177.36",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "A Additional Coal for FY 2024-25",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "27.14"
+     },
+     "quote": "A Additional Coal for FY 2024-25 - - - - - 27.14",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "B Change in Law for FY 2024-25",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "4.91"
+     },
+     "quote": "B Change in Law for FY 2024-25 - - - - - 4.91",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "C Incentive for FY 2024-25",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "3.37"
+     },
+     "quote": "C Incentive for FY 2024-25 - - - - - 3.37",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "D Incentive for FY 2023-24",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "2.63"
+     },
+     "quote": "D Incentive for FY 2023-24 - - - - - 2.63",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "E Incentive for FY 2022-23",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "6.64"
+     },
+     "quote": "E Incentive for FY 2022-23 - - - - - 6.64",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "F Expenses",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "8.20"
+     },
+     "quote": "F Expenses - - - - - 8.20",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "G Carrying Cost on above",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "-",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "5.91"
+     },
+     "quote": "G Carrying Cost on above - - - - - 5.91",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "Additional Claim of impact of DIL H True-up on PPC for FY 2025-26",
+     "cells": {
+      "claimed_amount": "118.55"
+     },
+     "quote": "Additional Claim of impact of DIL H 118.55 True-up on PPC for FY 2025-26",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "Sub-Total of Power Purchase Cost",
+     "cells": {
+      "approved_before_mu": "4,717.95",
+      "approved_before_rate": "4.64",
+      "approved_before_amount": "2,189.72",
+      "claimed_mu": "4,259.39",
+      "claimed_rate": "5.67",
+      "claimed_amount": "2,417.03"
+     },
+     "quote": "Sub-Total of Power Purchase 4,717.95 4.64 2,189.72 4,259.39 5.67 2,417.03 Cost",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "10 GNA and T-GNA Charges",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "0.53",
+      "approved_before_amount": "249.65",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "230.18"
+     },
+     "quote": "10 GNA and T-GNA Charges - 0.53 249.65 - - 230.18",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "11 UPPTCL Charges",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "0.40",
+      "approved_before_amount": "192.31",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "158.70"
+     },
+     "quote": "11 UPPTCL Charges - 0.40 192.31 - - 158.70",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "UPSLDC Charges and Application 12 Charges",
+     "cells": {
+      "approved_before_mu": "-",
+      "approved_before_rate": "-",
+      "approved_before_amount": "0.54",
+      "claimed_mu": "-",
+      "claimed_rate": "-",
+      "claimed_amount": "0.89"
+     },
+     "quote": "UPSLDC Charges and Application 12 - - 0.54 - - 0.89 Charges",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "Sub-Total of Transmission Charges",
+     "cells": {
+      "approved_before_amount": "442.50",
+      "claimed_amount": "389.77"
+     },
+     "quote": "Sub-Total of Transmission 442.50 389.77 Charges",
+     "page": 180
+    },
+    {
+     "code": null,
+     "label": "13 Total PPC for FY 2025-26",
+     "cells": {
+      "approved_before_mu": "4,717.95",
+      "approved_before_rate": "5.58",
+      "approved_before_amount": "2,632.22",
+      "claimed_mu": "4,259.39",
+      "claimed_rate": "6.59",
+      "claimed_amount": "2,806.80"
+     },
+     "quote": "13 Total PPC for FY 2025-26 4,717.95 5.58 2,632.22 4,259.39 6.59 2,806.80",
+     "page": 180
+    }
+   ],
+   "arithmetic": [
+    {
+     "side": "approved_before",
+     "check": "1 Long Term - Genco (DIL): amount = MU × rate",
+     "printed": "534.52",
+     "computed": "534.77",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "2 Medium Term: amount = MU × rate",
+     "printed": "1087.14",
+     "computed": "1087.30",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "a TPTCL (JIPL, Odisha): amount = MU × rate",
+     "printed": "313.08",
+     "computed": "312.73",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "b JIPL, Odisha: amount = MU × rate",
+     "printed": "368.26",
+     "computed": "368.54",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "c Maa Durga: amount = MU × rate",
+     "printed": "102.20",
+     "computed": "102.20",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "d MPL – BLA Power: amount = MU × rate",
+     "printed": "102.20",
+     "computed": "102.20",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "e MPL – Sai Lilagar: amount = MU × rate",
+     "printed": "100.71",
+     "computed": "100.71",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "f DIL: amount = MU × rate",
+     "printed": "100.71",
+     "computed": "100.71",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "3 Short Term: amount = MU × rate",
+     "printed": "265.33",
+     "computed": "265.12",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "b AEL (Adani Power, Chhattisgarh): amount = MU × rate",
+     "printed": "91.29",
+     "computed": "91.26",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "c Instinct Infra. (JPL, Raigarh): amount = MU × rate",
+     "printed": "16.61",
+     "computed": "16.61",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "d MPL (BLA, MP): amount = MU × rate",
+     "printed": "9.63",
+     "computed": "9.63",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "e MPL (DB Power, Chhattisgarh): amount = MU × rate",
+     "printed": "2.10",
+     "computed": "2.10",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "f MPL (MSPL, Raipur): amount = MU × rate",
+     "printed": "19.35",
+     "computed": "19.35",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "g MPL (Thanush, Karnataka): amount = MU × rate",
+     "printed": "7.93",
+     "computed": "7.94",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "h PTC (CSPL, Chhattisgarh): amount = MU × rate",
+     "printed": "17.07",
+     "computed": "17.07",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "Inter-State Power from Trader/ i Generator/ PXs: amount = MU × rate",
+     "printed": "101.34",
+     "computed": "101.28",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "5 Renewable Sources: amount = MU × rate",
+     "printed": "305.20",
+     "computed": "305.20",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "a LT Wind Power (PTC): amount = MU × rate",
+     "printed": "12.53",
+     "computed": "12.53",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "b LT Solar Power (Adani Energy): amount = MU × rate",
+     "printed": "19.15",
+     "computed": "19.15",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "c LT Solar Power (Tata Power): amount = MU × rate",
+     "printed": "14.30",
+     "computed": "14.29",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "f PTC (Khalez Khola, Sikkim): amount = MU × rate",
+     "printed": "6.10",
+     "computed": "6.10",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "g PTC (Lower Lagyap, Sikkim): amount = MU × rate",
+     "printed": "19.45",
+     "computed": "19.45",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "h PTC (Meyong Chu, Sikkim): amount = MU × rate",
+     "printed": "6.91",
+     "computed": "6.91",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "i PTC (Rabaom Chu, Sikkim): amount = MU × rate",
+     "printed": "10.93",
+     "computed": "10.93",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "PTC (GoHP – NJHPS, Himachal j Pradesh): amount = MU × rate",
+     "printed": "44.46",
+     "computed": "44.48",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "k Power Exchanges (Renewable): amount = MU × rate",
+     "printed": "171.36",
+     "computed": "171.35",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "Sub-Total of Power Purchase Cost: amount = MU × rate",
+     "printed": "2189.72",
+     "computed": "2189.13",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "13 Total PPC for FY 2025-26: amount = MU × rate",
+     "printed": "2632.22",
+     "computed": "2632.62",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "2 Medium Term = a TPTCL (JIPL, Odisha) + b JIPL, Odisha + c Maa Durga + d MPL – BLA Power + e MPL – Sai Lilagar + f DIL",
+     "printed": "1087.14",
+     "computed": "1087.16",
+     "difference": "-0.02",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "3 Short Term = Power Exchanges (Apr-2025 to a Sep-2025) + b AEL (Adani Power, Chhattisgarh) + c Instinct Infra. (JPL, Raigarh) + d MPL (BLA, MP) + e MPL (DB Power, Chhattisgarh) + f MPL (MSPL, Raipur) + g MPL (Thanush, Karnataka) + h PTC (CSPL, Chhattisgarh) + Inter-State Power from Trader/ i Generator/ PXs",
+     "printed": "265.33",
+     "computed": "265.32",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "5 Renewable Sources = a LT Wind Power (PTC) + b LT Solar Power (Adani Energy) + c LT Solar Power (Tata Power) + d LT Solar Power (GNIDA) + e LT Solar Power (APPCPL) + f PTC (Khalez Khola, Sikkim) + g PTC (Lower Lagyap, Sikkim) + h PTC (Meyong Chu, Sikkim) + i PTC (Rabaom Chu, Sikkim) + PTC (GoHP – NJHPS, Himachal j Pradesh) + k Power Exchanges (Renewable)",
+     "printed": "305.20",
+     "computed": "305.19",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "9 Additional Claims = A Additional Coal for FY 2024-25 + B Change in Law for FY 2024-25 + C Incentive for FY 2024-25 + D Incentive for FY 2023-24 + E Incentive for FY 2022-23 + F Expenses + G Carrying Cost on above + Additional Claim of impact of DIL H True-up on PPC for FY 2025-26",
+     "printed": "0",
+     "computed": "0",
+     "difference": "0",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "Sub-Total of Power Purchase Cost = 1 Long Term - Genco (DIL) + 2 Medium Term + 3 Short Term + 4 Banking + 5 Renewable Sources + 6 REC Purchase + Adjustment - Sale at Power 7 Exchanges + 8 Sale of Power/ UI + 9 Additional Claims",
+     "printed": "2189.72",
+     "computed": "2192.19",
+     "difference": "-2.47",
+     "result": "differs"
+    },
+    {
+     "side": "approved_before",
+     "check": "Sub-Total of Power Purchase Cost = 1 Long Term - Genco (DIL) + 2 Medium Term + 3 Short Term + 5 Renewable Sources + Adjustment - Sale at Power 7 Exchanges + 8 Sale of Power/ UI",
+     "printed": "4717.95",
+     "computed": "4717.96",
+     "difference": "-0.01",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "Sub-Total of Transmission Charges = 10 GNA and T-GNA Charges + 11 UPPTCL Charges + UPSLDC Charges and Application 12 Charges",
+     "printed": "442.50",
+     "computed": "442.50",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "approved_before",
+     "check": "13 Total PPC for FY 2025-26 = Sub-Total of Power Purchase Cost + Sub-Total of Transmission Charges",
+     "printed": "2632.22",
+     "computed": "2632.22",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "1 Long Term - Genco (DIL): amount = MU × rate",
+     "printed": "534.52",
+     "computed": "534.81",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "2 Medium Term: amount = MU × rate",
+     "printed": "1083.30",
+     "computed": "1082.85",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "a TPTCL (JIPL, Odisha): amount = MU × rate",
+     "printed": "309.76",
+     "computed": "309.98",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "b JIPL, Odisha: amount = MU × rate",
+     "printed": "370.66",
+     "computed": "370.40",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "c Maa Durga: amount = MU × rate",
+     "printed": "103.09",
+     "computed": "103.03",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "d MPL – BLA Power: amount = MU × rate",
+     "printed": "103.09",
+     "computed": "103.03",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "e MPL – Sai Lilagar: amount = MU × rate",
+     "printed": "95.10",
+     "computed": "95.04",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "f DIL: amount = MU × rate",
+     "printed": "101.60",
+     "computed": "101.64",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "3 Short Term: amount = MU × rate",
+     "printed": "455.03",
+     "computed": "454.90",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Power Exchanges (Apr-2025 to a Sep-2025): amount = MU × rate",
+     "printed": "177.35",
+     "computed": "177.38",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "b AEL (Adani Power, Chhattisgarh): amount = MU × rate",
+     "printed": "82.43",
+     "computed": "82.41",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "c Instinct Infra. (JPL, Raigarh): amount = MU × rate",
+     "printed": "16.58",
+     "computed": "16.57",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "d MPL (BLA, MP): amount = MU × rate",
+     "printed": "8.12",
+     "computed": "8.12",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "e MPL (DB Power, Chhattisgarh): amount = MU × rate",
+     "printed": "2.05",
+     "computed": "2.05",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "f MPL (MSPL, Raipur): amount = MU × rate",
+     "printed": "15.08",
+     "computed": "15.09",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "g MPL (Thanush, Karnataka): amount = MU × rate",
+     "printed": "6.33",
+     "computed": "6.33",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "h PTC (CSPL, Chhattisgarh): amount = MU × rate",
+     "printed": "13.98",
+     "computed": "13.99",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Inter-State Power from Trader/ i Generator/ PXs: amount = MU × rate",
+     "printed": "133.12",
+     "computed": "133.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "5 Renewable Sources: amount = MU × rate",
+     "printed": "173.32",
+     "computed": "173.16",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "a LT Wind Power (PTC): amount = MU × rate",
+     "printed": "11.44",
+     "computed": "11.45",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "b LT Solar Power (Adani Energy): amount = MU × rate",
+     "printed": "16.94",
+     "computed": "16.93",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "c LT Solar Power (Tata Power): amount = MU × rate",
+     "printed": "13.55",
+     "computed": "13.54",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "d LT Solar Power (GNIDA): amount = MU × rate",
+     "printed": "0.82",
+     "computed": "0.82",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "e LT Solar Power (APPCPL): amount = MU × rate",
+     "printed": "0.26",
+     "computed": "0.25",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "f PTC (Khalez Khola, Sikkim): amount = MU × rate",
+     "printed": "5.96",
+     "computed": "5.96",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "g PTC (Lower Lagyap, Sikkim): amount = MU × rate",
+     "printed": "19.05",
+     "computed": "19.06",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "h PTC (Meyong Chu, Sikkim): amount = MU × rate",
+     "printed": "6.75",
+     "computed": "6.75",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "i PTC (Rabaom Chu, Sikkim): amount = MU × rate",
+     "printed": "10.71",
+     "computed": "10.72",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "PTC (GoHP – NJHPS, Himachal j Pradesh): amount = MU × rate",
+     "printed": "44.14",
+     "computed": "44.15",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "k Power Exchanges (Renewable): amount = MU × rate",
+     "printed": "43.71",
+     "computed": "43.69",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Adjustment - Sale at Power 7 Exchanges: amount = MU × rate",
+     "printed": "-29.09",
+     "computed": "-29.06",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "8 Sale of Power/ UI: amount = MU × rate",
+     "printed": "9.03",
+     "computed": "9.04",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Sub-Total of Power Purchase Cost: amount = MU × rate",
+     "printed": "2417.03",
+     "computed": "2415.07",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "13 Total PPC for FY 2025-26: amount = MU × rate",
+     "printed": "2806.80",
+     "computed": "2806.94",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "2 Medium Term = a TPTCL (JIPL, Odisha) + b JIPL, Odisha + c Maa Durga + d MPL – BLA Power + e MPL – Sai Lilagar + f DIL",
+     "printed": "1083.30",
+     "computed": "1083.30",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "3 Short Term = Power Exchanges (Apr-2025 to a Sep-2025) + b AEL (Adani Power, Chhattisgarh) + c Instinct Infra. (JPL, Raigarh) + d MPL (BLA, MP) + e MPL (DB Power, Chhattisgarh) + f MPL (MSPL, Raipur) + g MPL (Thanush, Karnataka) + h PTC (CSPL, Chhattisgarh) + Inter-State Power from Trader/ i Generator/ PXs",
+     "printed": "455.03",
+     "computed": "455.04",
+     "difference": "-0.01",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "5 Renewable Sources = a LT Wind Power (PTC) + b LT Solar Power (Adani Energy) + c LT Solar Power (Tata Power) + d LT Solar Power (GNIDA) + e LT Solar Power (APPCPL) + f PTC (Khalez Khola, Sikkim) + g PTC (Lower Lagyap, Sikkim) + h PTC (Meyong Chu, Sikkim) + i PTC (Rabaom Chu, Sikkim) + PTC (GoHP – NJHPS, Himachal j Pradesh) + k Power Exchanges (Renewable)",
+     "printed": "173.32",
+     "computed": "173.33",
+     "difference": "-0.01",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "9 Additional Claims = A Additional Coal for FY 2024-25 + B Change in Law for FY 2024-25 + C Incentive for FY 2024-25 + D Incentive for FY 2023-24 + E Incentive for FY 2022-23 + F Expenses + G Carrying Cost on above + Additional Claim of impact of DIL H True-up on PPC for FY 2025-26",
+     "printed": "177.36",
+     "computed": "177.35",
+     "difference": "0.01",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Sub-Total of Power Purchase Cost = 1 Long Term - Genco (DIL) + 2 Medium Term + 3 Short Term + 4 Banking + 5 Renewable Sources + 6 REC Purchase + Adjustment - Sale at Power 7 Exchanges + 8 Sale of Power/ UI + 9 Additional Claims",
+     "printed": "2417.03",
+     "computed": "2417.04",
+     "difference": "-0.01",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Sub-Total of Power Purchase Cost = 1 Long Term - Genco (DIL) + 2 Medium Term + 3 Short Term + 5 Renewable Sources + Adjustment - Sale at Power 7 Exchanges + 8 Sale of Power/ UI",
+     "printed": "4259.39",
+     "computed": "4259.39",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "Sub-Total of Transmission Charges = 10 GNA and T-GNA Charges + 11 UPPTCL Charges + UPSLDC Charges and Application 12 Charges",
+     "printed": "389.77",
+     "computed": "389.77",
+     "difference": "0.00",
+     "result": "match"
+    },
+    {
+     "side": "claimed",
+     "check": "13 Total PPC for FY 2025-26 = Sub-Total of Power Purchase Cost + Sub-Total of Transmission Charges",
+     "printed": "2806.80",
+     "computed": "2806.80",
+     "difference": "0.00",
+     "result": "match"
+    }
+   ],
+   "against_format": [
+    {
+     "row": "Sub-Total of Power Purchase Cost",
+     "cells": [
+      "ARR!L20",
+      "ARR!L21",
+      "ARR!L22"
+     ],
+     "printed": "2417.03",
+     "format": "2298.48",
+     "result": "differs"
+    },
+    {
+     "row": "Sub-Total of Transmission Charges",
+     "cells": [
+      "ARR!L23",
+      "ARR!L24"
+     ],
+     "printed": "389.77",
+     "format": "389.77",
+     "result": "match"
+    }
+   ],
+   "decisions": []
   }
  ]
 }

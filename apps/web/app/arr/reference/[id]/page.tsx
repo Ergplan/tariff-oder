@@ -81,6 +81,7 @@ type Filing = {
       arithmetic: { side: string; check: string; printed: string; computed: string; result: string }[];
       against_format: { row: string; printed: string; format: string; result: string }[];
       decisions?: { line: string; claimed: string; approved: string; decision: string }[];
+      sides?: string[];
     }[];
   } | null;
   checklist: {
@@ -740,8 +741,9 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                       <thead>
                         <tr>
                           <th>Source</th>
-                          <th>Claimed MU · Rs/kWh · Rs cr</th>
-                          <th>Approved MU · Rs/kWh · Rs cr</th>
+                          {(t.sides ?? ["claimed", "approved"]).map((side) => (
+                            <th key={side}>{side.replace("_", " ")} MU · Rs/kWh · Rs cr</th>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
@@ -750,8 +752,11 @@ export default async function ReferenceFiling({ params }: { params: Promise<{ id
                             <td>
                               <span className="mono">{r.code ?? ""}</span> {r.label}
                             </td>
-                            <td className="mono">{[r.cells.claimed_mu, r.cells.claimed_rate, r.cells.claimed_amount].filter(Boolean).join(" · ")}</td>
-                            <td className="mono">{[r.cells.approved_mu, r.cells.approved_rate, r.cells.approved_amount].filter(Boolean).join(" · ")}</td>
+                            {(t.sides ?? ["claimed", "approved"]).map((side) => (
+                              <td key={side} className="mono">
+                                {[r.cells[`${side}_mu`], r.cells[`${side}_rate`], r.cells[`${side}_amount`]].filter(Boolean).join(" · ")}
+                              </td>
+                            ))}
                           </tr>
                         ))}
                       </tbody>

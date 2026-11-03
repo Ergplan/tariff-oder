@@ -81,14 +81,27 @@ def main() -> int:
                 named = t.get("anchor_words", {"mu": "MUs", "amount": "Amount"})
                 xs = {f: sorted((w[0] + w[2]) / 2 for w in words if w[4] == word) for f, word in named.items()}
                 anchors = {}
-                for i, side in enumerate(("claimed", "approved")):
+                for i, side in enumerate(t.get("sides", ["claimed", "approved"])):
                     for f in ("mu", "rate", "amount"):
                         anchors[f"{side}_{f}"] = xs[f][i] if f in xs else (xs["mu"][i] + xs["amount"][i]) / 2
                 stop = t["stop"] if pno == t["pages"][-1] else None
-                found = rows_by_position(words, anchors, t["start"], stop, label_span=t.get("label_span", 0))
+                found = rows_by_position(
+                    words,
+                    anchors,
+                    t["start"],
+                    stop,
+                    code=t.get("code", r"^[A-Z](\.\d+)?$"),
+                    label_span=t.get("label_span", 0),
+                )
                 rows += [r | {"page": pno} for r in found]
-        own = check_sources(rows, ["claimed", "approved"], t["sums"])
-        decided = source_decisions(rows, skip=tuple(x["total"] for x in t["sums"]))
+        sides = t.get("sides", ["claimed", "approved"])
+        own = check_sources(rows, sides, t["sums"])
+        # a decision only where the table sets an approval against a claim
+        decided = (
+            source_decisions(rows, skip=tuple(x["total"] for x in t["sums"]))
+            if sides == ["claimed", "approved"]
+            else []
+        )
         fmt = []
         for f in t.get("format", []):
             row = next(r for r in rows if (r["code"] or r["label"]) == f["row"])
@@ -108,7 +121,9 @@ def main() -> int:
         print(f"sources  {len(rows)} rows; the table's own arithmetic {dict(counts)}; ", end="")
         print(f"against the format {[x['result'] for x in fmt]}; {len(decided)} lines changed by the decision")
         keep = {k: t[k] for k in ("proceeding", "fiscal_year", "title", "pages", "anchors")}
-        sources.append(keep | {"rows": rows, "arithmetic": own, "against_format": fmt, "decisions": decided})
+        sources.append(
+            keep | {"sides": sides, "rows": rows, "arithmetic": own, "against_format": fmt, "decisions": decided}
+        )
     report = {
         "order": spec["order"],
         "status": (

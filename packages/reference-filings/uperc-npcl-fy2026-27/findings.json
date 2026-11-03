@@ -544,6 +544,18 @@
     "bindings/approval-pp-fy27.json"
    ],
    "for": "reviewer"
+  },
+  {
+   "id": "A79",
+   "kind": "inconsistency",
+   "title": "NPCL's APR power purchase estimate (Table 5-18) holds its own arithmetic; its restatement of the approved FY2025-26 moves 2.47 from power purchase to transmission",
+   "detail": "Read by word position (order-decisions.json, source_tables, apr): NPCL's estimate side adds up throughout — every MU × rate, every group, the MU total, and the additional claims A–H (177.36) including the supplementary 118.55 for DIL's true-up — and its sub-total (2,417.03) is the format's (ARR!L20:L22, 2,298.48) plus that supplement (A72).  On the side restating the Commission's order of 22.11.2025, the power purchase sub-total is printed 2,189.72 while its rows add to 2,192.19 — the format's and the APR summary's 2,192.18 — and the transmission sub-total 442.50 (its three rows) against the format's 440.03: 2.47 less on one line, 2.47 more on the other, the total (2,632.22) the same.  The table does not say why.  For the petitioner: which classification is the order's.",
+   "where": [
+    "Tariff order FY2026-27 pp.179–180 Table 5-18, p.207 Table 5-48",
+    "order-decisions.json (source_tables, apr)",
+    "ARR!K20:K24"
+   ],
+   "for": "petitioner"
   }
  ]
 }

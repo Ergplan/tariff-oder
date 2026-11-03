@@ -575,6 +575,144 @@
      ]
     }
    ]
+  },
+  {
+   "proceeding": "apr",
+   "fiscal_year": "FY2025-26",
+   "title": "TABLE 5-18 TOTAL POWER PURCHASE COST SUBMITTED BY THE PETITIONER ESTIMATED FOR FY 2025-26 (IN RS. CR.)",
+   "pages": [
+    179,
+    180
+   ],
+   "start": "kWh",
+   "stop": "Commission’s Analysis",
+   "sides": [
+    "approved_before",
+    "claimed"
+   ],
+   "code": "^$",
+   "label_span": 7,
+   "anchor_words": {
+    "mu": "MUs",
+    "rate": "kWh",
+    "amount": "Cr.)"
+   },
+   "anchors": "each page's two 'MUs', 'kWh' and 'Cr.)' header words: the original approval left, NPCL's APR estimate right; a row's serial and wrapped label lines within 7 points belong to its label",
+   "note": "NPCL's own estimate, which the Commission takes provisionally (para 5.4.24): its arithmetic checked, not a decision",
+   "sums": [
+    {
+     "total": "2 Medium Term",
+     "parts": [
+      "a TPTCL (JIPL, Odisha)",
+      "b JIPL, Odisha",
+      "c Maa Durga",
+      "d MPL – BLA Power",
+      "e MPL – Sai Lilagar",
+      "f DIL"
+     ]
+    },
+    {
+     "total": "3 Short Term",
+     "parts": [
+      "Power Exchanges (Apr-2025 to a Sep-2025)",
+      "b AEL (Adani Power, Chhattisgarh)",
+      "c Instinct Infra. (JPL, Raigarh)",
+      "d MPL (BLA, MP)",
+      "e MPL (DB Power, Chhattisgarh)",
+      "f MPL (MSPL, Raipur)",
+      "g MPL (Thanush, Karnataka)",
+      "h PTC (CSPL, Chhattisgarh)",
+      "Inter-State Power from Trader/ i Generator/ PXs"
+     ]
+    },
+    {
+     "total": "5 Renewable Sources",
+     "parts": [
+      "a LT Wind Power (PTC)",
+      "b LT Solar Power (Adani Energy)",
+      "c LT Solar Power (Tata Power)",
+      "d LT Solar Power (GNIDA)",
+      "e LT Solar Power (APPCPL)",
+      "f PTC (Khalez Khola, Sikkim)",
+      "g PTC (Lower Lagyap, Sikkim)",
+      "h PTC (Meyong Chu, Sikkim)",
+      "i PTC (Rabaom Chu, Sikkim)",
+      "PTC (GoHP – NJHPS, Himachal j Pradesh)",
+      "k Power Exchanges (Renewable)"
+     ]
+    },
+    {
+     "total": "9 Additional Claims",
+     "parts": [
+      "A Additional Coal for FY 2024-25",
+      "B Change in Law for FY 2024-25",
+      "C Incentive for FY 2024-25",
+      "D Incentive for FY 2023-24",
+      "E Incentive for FY 2022-23",
+      "F Expenses",
+      "G Carrying Cost on above",
+      "Additional Claim of impact of DIL H True-up on PPC for FY 2025-26"
+     ]
+    },
+    {
+     "total": "Sub-Total of Power Purchase Cost",
+     "parts": [
+      "1 Long Term - Genco (DIL)",
+      "2 Medium Term",
+      "3 Short Term",
+      "4 Banking",
+      "5 Renewable Sources",
+      "6 REC Purchase",
+      "Adjustment - Sale at Power 7 Exchanges",
+      "8 Sale of Power/ UI",
+      "9 Additional Claims"
+     ]
+    },
+    {
+     "total": "Sub-Total of Power Purchase Cost",
+     "parts": [
+      "1 Long Term - Genco (DIL)",
+      "2 Medium Term",
+      "3 Short Term",
+      "5 Renewable Sources",
+      "Adjustment - Sale at Power 7 Exchanges",
+      "8 Sale of Power/ UI"
+     ],
+     "field": "mu"
+    },
+    {
+     "total": "Sub-Total of Transmission Charges",
+     "parts": [
+      "10 GNA and T-GNA Charges",
+      "11 UPPTCL Charges",
+      "UPSLDC Charges and Application 12 Charges"
+     ]
+    },
+    {
+     "total": "13 Total PPC for FY 2025-26",
+     "parts": [
+      "Sub-Total of Power Purchase Cost",
+      "Sub-Total of Transmission Charges"
+     ]
+    }
+   ],
+   "format": [
+    {
+     "row": "Sub-Total of Power Purchase Cost",
+     "cells": [
+      "ARR!L20",
+      "ARR!L21",
+      "ARR!L22"
+     ]
+    },
+    {
+     "row": "Sub-Total of Transmission Charges",
+     "cells": [
+      "ARR!L23",
+      "ARR!L24"
+     ]
+    }
+   ]
   }
  ]
 }
