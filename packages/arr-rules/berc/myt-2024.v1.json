@@ -1,0 +1,217 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "BERC (Multi Year Distribution Tariff) Regulations, 2024",
+ "applies": {
+  "commission": "BERC"
+ },
+ "note": "BERC's interest on working capital for a distribution licensee (Reg. 26 as the FY2026-27 order for NBPDCL and SBPDCL quotes and summarises it) — the engine's sixth commission.",
+ "rules": [
+  {
+   "id": "berc.iowc.subtotal",
+   "version": 1,
+   "status": "draft",
+   "title": "Working capital before deductions: 45 days of revenue and spares",
+   "output": "iowc_subtotal",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "revenue + spares",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:iowc_revenue_45d",
+     "note": "45 days equivalent of expected revenue"
+    },
+    "spares": {
+     "unit": "INR_crore",
+     "source": "record:iowc_spares",
+     "note": "40 % of a month's R&M"
+    }
+   },
+   "clause": {
+    "regulation": "BERC (Multi Year Distribution Tariff) Regulations, 2024",
+    "clause": "26",
+    "source_id": null,
+    "page": null,
+    "excerpt": "Regulation 26 as the order quotes and summarises it (pp.469–470): 45 days equivalent of expected revenue and 40 % of one month of R&M expense, less the power purchase cost with transmission and load despatch charges for one month, depreciation, RoE and contribution to contingency reserve for 45 days, and consumer security deposits; '… Provided also that if the State Government is providing resource gap grant and/or direct subsidy to consumers, the working capital shall be reduced by 45 days equivalent of that amount.'  The rate: the SBI one-year MCLR plus 150 basis points.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "BERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation and summary of Reg. 26 (NBPDCL & SBPDCL FY2026-27 order, pp.469–470), not read from the Regulations"
+  },
+  {
+   "id": "berc.iowc.deductions",
+   "version": 1,
+   "status": "draft",
+   "title": "Deductions: a month of power purchase, 45 days of depreciation, RoE and contingency reserve, the deposits, and 45 days of any grant",
+   "output": "iowc_deductions",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "pp_month + dep_roe + csd + grant",
+   "inputs": {
+    "pp_month": {
+     "unit": "INR_crore",
+     "source": "record:iowc_pp_month"
+    },
+    "dep_roe": {
+     "unit": "INR_crore",
+     "source": "record:iowc_dep_roe_45d"
+    },
+    "csd": {
+     "unit": "INR_crore",
+     "source": "record:iowc_csd"
+    },
+    "grant": {
+     "unit": "INR_crore",
+     "source": "record:iowc_grant_45d",
+     "note": "resource gap grant or direct subsidy, 45 days"
+    }
+   },
+   "clause": {
+    "regulation": "BERC (Multi Year Distribution Tariff) Regulations, 2024",
+    "clause": "26",
+    "source_id": null,
+    "page": null,
+    "excerpt": "Regulation 26 as the order quotes and summarises it (pp.469–470): 45 days equivalent of expected revenue and 40 % of one month of R&M expense, less the power purchase cost with transmission and load despatch charges for one month, depreciation, RoE and contribution to contingency reserve for 45 days, and consumer security deposits; '… Provided also that if the State Government is providing resource gap grant and/or direct subsidy to consumers, the working capital shall be reduced by 45 days equivalent of that amount.'  The rate: the SBI one-year MCLR plus 150 basis points.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "BERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation and summary of Reg. 26 (NBPDCL & SBPDCL FY2026-27 order, pp.469–470), not read from the Regulations"
+  },
+  {
+   "id": "berc.iowc.net",
+   "version": 1,
+   "status": "draft",
+   "title": "Net working capital requirement",
+   "output": "iowc_net",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "subtotal - deductions",
+   "inputs": {
+    "subtotal": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_subtotal"
+    },
+    "deductions": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_deductions"
+    }
+   },
+   "clause": {
+    "regulation": "BERC (Multi Year Distribution Tariff) Regulations, 2024",
+    "clause": "26",
+    "source_id": null,
+    "page": null,
+    "excerpt": "Regulation 26 as the order quotes and summarises it (pp.469–470): 45 days equivalent of expected revenue and 40 % of one month of R&M expense, less the power purchase cost with transmission and load despatch charges for one month, depreciation, RoE and contribution to contingency reserve for 45 days, and consumer security deposits; '… Provided also that if the State Government is providing resource gap grant and/or direct subsidy to consumers, the working capital shall be reduced by 45 days equivalent of that amount.'  The rate: the SBI one-year MCLR plus 150 basis points.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "BERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation and summary of Reg. 26 (NBPDCL & SBPDCL FY2026-27 order, pp.469–470), not read from the Regulations"
+  },
+  {
+   "id": "berc.iowc.interest",
+   "version": 1,
+   "status": "draft",
+   "title": "Interest on working capital",
+   "output": "iowc_interest",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "rate * net",
+   "inputs": {
+    "net": {
+     "unit": "INR_crore",
+     "source": "rule:iowc_net"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:iowc_rate"
+    }
+   },
+   "clause": {
+    "regulation": "BERC (Multi Year Distribution Tariff) Regulations, 2024",
+    "clause": "26",
+    "source_id": null,
+    "page": null,
+    "excerpt": "Regulation 26 as the order quotes and summarises it (pp.469–470): 45 days equivalent of expected revenue and 40 % of one month of R&M expense, less the power purchase cost with transmission and load despatch charges for one month, depreciation, RoE and contribution to contingency reserve for 45 days, and consumer security deposits; '… Provided also that if the State Government is providing resource gap grant and/or direct subsidy to consumers, the working capital shall be reduced by 45 days equivalent of that amount.'  The rate: the SBI one-year MCLR plus 150 basis points.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "BERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation and summary of Reg. 26 (NBPDCL & SBPDCL FY2026-27 order, pp.469–470), not read from the Regulations"
+  },
+  {
+   "id": "berc.iowc.rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Rate of interest on working capital: the MCLR plus 150 basis points",
+   "output": "iowc_rate_computed",
+   "unit": "percent",
+   "schedule": "R-SCH-10",
+   "formula": "mclr + spread",
+   "inputs": {
+    "mclr": {
+     "unit": "percent",
+     "source": "record:mclr",
+     "note": "SBI one-year MCLR (8.75 % as the order applies it)"
+    },
+    "spread": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "1.5"
+    }
+   },
+   "clause": {
+    "regulation": "BERC (Multi Year Distribution Tariff) Regulations, 2024",
+    "clause": "26",
+    "source_id": null,
+    "page": null,
+    "excerpt": "Regulation 26 as the order quotes and summarises it (pp.469–470): 45 days equivalent of expected revenue and 40 % of one month of R&M expense, less the power purchase cost with transmission and load despatch charges for one month, depreciation, RoE and contribution to contingency reserve for 45 days, and consumer security deposits; '… Provided also that if the State Government is providing resource gap grant and/or direct subsidy to consumers, the working capital shall be reduced by 45 days equivalent of that amount.'  The rate: the SBI one-year MCLR plus 150 basis points.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "BERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation and summary of Reg. 26 (NBPDCL & SBPDCL FY2026-27 order, pp.469–470), not read from the Regulations"
+  }
+ ]
+}

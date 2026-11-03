@@ -1,0 +1,311 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "BERC tariff order for NBPDCL and SBPDCL, FY2026-27 — interest on working capital (Tables 6.81, 6.82)",
+  "sha256": "a247053b586fd8909e14b00280d24e0d39357b94bdb36e7b670f21e5aa794537",
+  "pages": 612
+ },
+ "figures": {
+  "claim.revenue.nbpdcl": {
+   "value": "2168.51",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "1 45 days equivalent of expected revenue 2,168.51 2,437.47",
+   "what": "Table 6.81 (claimed), 45 days of expected revenue: nbpdcl"
+  },
+  "claim.revenue.sbpdcl": {
+   "value": "2437.47",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "1 45 days equivalent of expected revenue 2,168.51 2,437.47",
+   "what": "Table 6.81 (claimed), 45 days of expected revenue: sbpdcl"
+  },
+  "claim.spares.nbpdcl": {
+   "value": "9.26",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "2 Maintenance spares @40% of R&M expenses for one month 9.26 13.12",
+   "what": "Table 6.81, spares: nbpdcl"
+  },
+  "claim.spares.sbpdcl": {
+   "value": "13.12",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "2 Maintenance spares @40% of R&M expenses for one month 9.26 13.12",
+   "what": "Table 6.81, spares: sbpdcl"
+  },
+  "claim.pp_month.nbpdcl": {
+   "value": "1119.84",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "3 Less: (i) Power purchase cost, Load dispatch charges and transmission charges for one month. 1,119.84 1,314.60",
+   "what": "Table 6.81, a month of power purchase: nbpdcl"
+  },
+  "claim.pp_month.sbpdcl": {
+   "value": "1314.60",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "3 Less: (i) Power purchase cost, Load dispatch charges and transmission charges for one month. 1,119.84 1,314.60",
+   "what": "Table 6.81, a month of power purchase: sbpdcl"
+  },
+  "claim.dep_roe.nbpdcl": {
+   "value": "160.37",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "(ii) Depreciation, ROE, and contribution to contingency reserve equivalent to 45 days. 160.37 147.92",
+   "what": "Table 6.81, 45 days of depreciation, RoE and contingency reserve: nbpdcl"
+  },
+  "claim.dep_roe.sbpdcl": {
+   "value": "147.92",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "(ii) Depreciation, ROE, and contribution to contingency reserve equivalent to 45 days. 160.37 147.92",
+   "what": "Table 6.81, 45 days of depreciation, RoE and contingency reserve: sbpdcl"
+  },
+  "claim.csd.nbpdcl": {
+   "value": "527.15",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "(iii) Amount of security deposits from consumers, if any, held during the year 527.15 856.13",
+   "what": "Table 6.81, security deposits: nbpdcl"
+  },
+  "claim.csd.sbpdcl": {
+   "value": "856.13",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "(iii) Amount of security deposits from consumers, if any, held during the year 527.15 856.13",
+   "what": "Table 6.81, security deposits: sbpdcl"
+  },
+  "claim.grant.nbpdcl": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "(iv) Grant received from the State Govt. for power purchase and other O&M expenses etc equivalent to 45 days. - -",
+   "what": "Table 6.81, grant for 45 days: nbpdcl"
+  },
+  "claim.grant.sbpdcl": {
+   "value": "0",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "(iv) Grant received from the State Govt. for power purchase and other O&M expenses etc equivalent to 45 days. - -",
+   "what": "Table 6.81, grant for 45 days: sbpdcl"
+  },
+  "claim.net.nbpdcl": {
+   "value": "370.41",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "4 Net working capital 370.41 131.93",
+   "what": "Table 6.81, net working capital: nbpdcl"
+  },
+  "claim.net.sbpdcl": {
+   "value": "131.93",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "4 Net working capital 370.41 131.93",
+   "what": "Table 6.81, net working capital: sbpdcl"
+  },
+  "claim.rate.nbpdcl": {
+   "value": "10.38",
+   "unit": "percent",
+   "page": 469,
+   "quote": "5 Interest rate 10.38% 10.38%",
+   "what": "Table 6.81, rate: nbpdcl"
+  },
+  "claim.rate.sbpdcl": {
+   "value": "10.38",
+   "unit": "percent",
+   "page": 469,
+   "quote": "5 Interest rate 10.38% 10.38%",
+   "what": "Table 6.81, rate: sbpdcl"
+  },
+  "claim.interest.nbpdcl": {
+   "value": "38.46",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "6 Interest on working capital 38.46 13.70",
+   "what": "Table 6.81, interest: nbpdcl"
+  },
+  "claim.interest.sbpdcl": {
+   "value": "13.70",
+   "unit": "INR_crore",
+   "page": 469,
+   "quote": "6 Interest on working capital 38.46 13.70",
+   "what": "Table 6.81, interest: sbpdcl"
+  },
+  "app.spares.nbpdcl": {
+   "value": "8.73",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "1 Maintenance spares @40% of R&M expenses for one month 8.73 11.62",
+   "what": "Table 6.82 (approved), spares: nbpdcl"
+  },
+  "app.spares.sbpdcl": {
+   "value": "11.62",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "1 Maintenance spares @40% of R&M expenses for one month 8.73 11.62",
+   "what": "Table 6.82 (approved), spares: sbpdcl"
+  },
+  "app.revenue.nbpdcl": {
+   "value": "2220.34",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "2 45 days equivalent of expected revenue 2220.34 2512.27",
+   "what": "Table 6.82, 45 days of expected revenue: nbpdcl"
+  },
+  "app.revenue.sbpdcl": {
+   "value": "2512.27",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "2 45 days equivalent of expected revenue 2220.34 2512.27",
+   "what": "Table 6.82, 45 days of expected revenue: sbpdcl"
+  },
+  "app.subtotal.nbpdcl": {
+   "value": "2229.06",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "3 Sub-total (1+2) 2229.06 2523.89",
+   "what": "Table 6.82, sub-total: nbpdcl"
+  },
+  "app.subtotal.sbpdcl": {
+   "value": "2523.89",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "3 Sub-total (1+2) 2229.06 2523.89",
+   "what": "Table 6.82, sub-total: sbpdcl"
+  },
+  "app.pp_month.nbpdcl": {
+   "value": "1083.48",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "4 Less: (i) Power purchase cost, transmission charges and load dispatch charges of one month 1083.48 1292.90",
+   "what": "Table 6.82, a month of power purchase: nbpdcl"
+  },
+  "app.pp_month.sbpdcl": {
+   "value": "1292.90",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "4 Less: (i) Power purchase cost, transmission charges and load dispatch charges of one month 1083.48 1292.90",
+   "what": "Table 6.82, a month of power purchase: sbpdcl"
+  },
+  "app.dep_roe.nbpdcl": {
+   "value": "147.08",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "(ii) Depreciation, return on equity and contribution to contingency reserve for 45 days 147.08 144.12",
+   "what": "Table 6.82, 45 days of depreciation, RoE and contingency reserve: nbpdcl"
+  },
+  "app.dep_roe.sbpdcl": {
+   "value": "144.12",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "(ii) Depreciation, return on equity and contribution to contingency reserve for 45 days 147.08 144.12",
+   "what": "Table 6.82, 45 days of depreciation, RoE and contingency reserve: sbpdcl"
+  },
+  "app.csd.nbpdcl": {
+   "value": "603.94",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "(iii) Security Deposits from consumers 603.94 890.67",
+   "what": "Table 6.82, security deposits: nbpdcl"
+  },
+  "app.csd.sbpdcl": {
+   "value": "890.67",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "(iii) Security Deposits from consumers 603.94 890.67",
+   "what": "Table 6.82, security deposits: sbpdcl"
+  },
+  "app.grant.nbpdcl": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "(iv) Resource Gap grant / subsidy for 45 days 0.00 0.00",
+   "what": "Table 6.82, resource gap grant / subsidy: nbpdcl"
+  },
+  "app.grant.sbpdcl": {
+   "value": "0.00",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "(iv) Resource Gap grant / subsidy for 45 days 0.00 0.00",
+   "what": "Table 6.82, resource gap grant / subsidy: sbpdcl"
+  },
+  "app.deductions.nbpdcl": {
+   "value": "1834.50",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "5 Sub-total (4(i)+4(ii)+4(iii)+4(iv)) 1834.50 2327.69",
+   "what": "Table 6.82, deductions: nbpdcl"
+  },
+  "app.deductions.sbpdcl": {
+   "value": "2327.69",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "5 Sub-total (4(i)+4(ii)+4(iii)+4(iv)) 1834.50 2327.69",
+   "what": "Table 6.82, deductions: sbpdcl"
+  },
+  "app.net.nbpdcl": {
+   "value": "394.56",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "6 Net working capital requirement (3-5) 394.56 196.20",
+   "what": "Table 6.82, net working capital: nbpdcl"
+  },
+  "app.net.sbpdcl": {
+   "value": "196.20",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "6 Net working capital requirement (3-5) 394.56 196.20",
+   "what": "Table 6.82, net working capital: sbpdcl"
+  },
+  "app.rate.nbpdcl": {
+   "value": "10.25",
+   "unit": "percent",
+   "page": 470,
+   "quote": "7 Rate of interest % 10.25% 10.25%",
+   "what": "Table 6.82, rate: nbpdcl"
+  },
+  "app.rate.sbpdcl": {
+   "value": "10.25",
+   "unit": "percent",
+   "page": 470,
+   "quote": "7 Rate of interest % 10.25% 10.25%",
+   "what": "Table 6.82, rate: sbpdcl"
+  },
+  "app.interest.nbpdcl": {
+   "value": "40.44",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "8 Interest on working capital (6*7) 40.44 20.11",
+   "what": "Table 6.82, interest: nbpdcl"
+  },
+  "app.interest.sbpdcl": {
+   "value": "20.11",
+   "unit": "INR_crore",
+   "page": 470,
+   "quote": "8 Interest on working capital (6*7) 40.44 20.11",
+   "what": "Table 6.82, interest: sbpdcl"
+  },
+  "rate.rate": {
+   "value": "10.25",
+   "unit": "percent",
+   "page": 470,
+   "quote": "rate of interest at 10.25% (8.75% plus 1.50%",
+   "what": "p.470, the rate as MCLR plus a spread: rate"
+  },
+  "rate.mclr": {
+   "value": "8.75",
+   "unit": "percent",
+   "page": 470,
+   "quote": "rate of interest at 10.25% (8.75% plus 1.50%",
+   "what": "p.470, the rate as MCLR plus a spread: mclr"
+  },
+  "rate.spread": {
+   "value": "1.50",
+   "unit": "percent",
+   "page": 470,
+   "quote": "rate of interest at 10.25% (8.75% plus 1.50%",
+   "what": "p.470, the rate as MCLR plus a spread: spread"
+  }
+ }
+}

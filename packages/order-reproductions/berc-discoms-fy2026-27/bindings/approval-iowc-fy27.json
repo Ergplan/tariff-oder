@@ -1,0 +1,153 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "BERC order",
+ "rates": "order/figures-iowc-fy2026-27.json",
+ "places": 2,
+ "note": "BERC's interest on working capital for NBPDCL and SBPDCL, FY2026-27 (Tables 6.81, 6.82): each DISCOM a category, claimed and approved — 45 days of revenue and spares, less a month of power purchase, 45 days of depreciation, RoE and contingency reserve, the deposits and any grant, at MCLR + 150 bp.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "interest on working capital, approved (Table 6.82)",
+   "categories": {
+    "nbpdcl": {
+     "inputs": {
+      "record:iowc_revenue_45d": {
+       "rate": "app.revenue.nbpdcl"
+      },
+      "record:iowc_spares": {
+       "rate": "app.spares.nbpdcl"
+      },
+      "record:iowc_pp_month": {
+       "rate": "app.pp_month.nbpdcl"
+      },
+      "record:iowc_dep_roe_45d": {
+       "rate": "app.dep_roe.nbpdcl"
+      },
+      "record:iowc_csd": {
+       "rate": "app.csd.nbpdcl"
+      },
+      "record:iowc_grant_45d": {
+       "rate": "app.grant.nbpdcl"
+      },
+      "record:iowc_rate": {
+       "rate": "app.rate.nbpdcl"
+      }
+     },
+     "checks": {
+      "iowc_net": "order:app.net.nbpdcl",
+      "iowc_interest": "order:app.interest.nbpdcl",
+      "iowc_subtotal": "order:app.subtotal.nbpdcl",
+      "iowc_deductions": "order:app.deductions.nbpdcl"
+     }
+    },
+    "sbpdcl": {
+     "inputs": {
+      "record:iowc_revenue_45d": {
+       "rate": "app.revenue.sbpdcl"
+      },
+      "record:iowc_spares": {
+       "rate": "app.spares.sbpdcl"
+      },
+      "record:iowc_pp_month": {
+       "rate": "app.pp_month.sbpdcl"
+      },
+      "record:iowc_dep_roe_45d": {
+       "rate": "app.dep_roe.sbpdcl"
+      },
+      "record:iowc_csd": {
+       "rate": "app.csd.sbpdcl"
+      },
+      "record:iowc_grant_45d": {
+       "rate": "app.grant.sbpdcl"
+      },
+      "record:iowc_rate": {
+       "rate": "app.rate.sbpdcl"
+      }
+     },
+     "checks": {
+      "iowc_net": "order:app.net.sbpdcl",
+      "iowc_interest": "order:app.interest.sbpdcl",
+      "iowc_subtotal": "order:app.subtotal.sbpdcl",
+      "iowc_deductions": "order:app.deductions.sbpdcl"
+     }
+    }
+   },
+   "inputs": {
+    "record:mclr": {
+     "rate": "rate.mclr"
+    }
+   },
+   "checks": {
+    "iowc_rate_computed": [
+     "order:rate.rate",
+     "order:app.rate.nbpdcl"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "interest on working capital, claimed by the DISCOMs (Table 6.81)",
+   "categories": {
+    "nbpdcl": {
+     "inputs": {
+      "record:iowc_revenue_45d": {
+       "rate": "claim.revenue.nbpdcl"
+      },
+      "record:iowc_spares": {
+       "rate": "claim.spares.nbpdcl"
+      },
+      "record:iowc_pp_month": {
+       "rate": "claim.pp_month.nbpdcl"
+      },
+      "record:iowc_dep_roe_45d": {
+       "rate": "claim.dep_roe.nbpdcl"
+      },
+      "record:iowc_csd": {
+       "rate": "claim.csd.nbpdcl"
+      },
+      "record:iowc_grant_45d": {
+       "rate": "claim.grant.nbpdcl"
+      },
+      "record:iowc_rate": {
+       "rate": "claim.rate.nbpdcl"
+      }
+     },
+     "checks": {
+      "iowc_net": "order:claim.net.nbpdcl",
+      "iowc_interest": "order:claim.interest.nbpdcl"
+     }
+    },
+    "sbpdcl": {
+     "inputs": {
+      "record:iowc_revenue_45d": {
+       "rate": "claim.revenue.sbpdcl"
+      },
+      "record:iowc_spares": {
+       "rate": "claim.spares.sbpdcl"
+      },
+      "record:iowc_pp_month": {
+       "rate": "claim.pp_month.sbpdcl"
+      },
+      "record:iowc_dep_roe_45d": {
+       "rate": "claim.dep_roe.sbpdcl"
+      },
+      "record:iowc_csd": {
+       "rate": "claim.csd.sbpdcl"
+      },
+      "record:iowc_grant_45d": {
+       "rate": "claim.grant.sbpdcl"
+      },
+      "record:iowc_rate": {
+       "rate": "claim.rate.sbpdcl"
+      }
+     },
+     "checks": {
+      "iowc_net": "order:claim.net.sbpdcl",
+      "iowc_interest": "order:claim.interest.sbpdcl"
+     }
+    }
+   }
+  }
+ ]
+}

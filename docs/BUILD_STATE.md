@@ -1005,6 +1005,33 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 137 (2026-11-03): a sixth commission — BERC's working capital for NBPDCL and
+  SBPDCL, FY2026-27.**
+  - **The order:** BERC's FY2026-27 order for the two Bihar DISCOMs (SHA-256 `a247053b…4537`,
+    the loader's `BERC-DISCOMs-FY2026-27`).
+  - **New folder `packages/order-reproductions/berc-discoms-fy2026-27/`:** the record holds
+    Tables 6.81 and 6.82 and the rate (43 figures, 43 / 43 quotes verified).
+  - **Five draft BERC rules in `packages/arr-rules/berc/myt-2024.v1.json`** (Reg. 26 as the
+    order quotes and summarises it):
+    - the sub-total: 45 days of revenue and spares;
+    - the deductions: a month of power purchase, 45 days of depreciation, RoE and contingency
+      reserve, the deposits, and 45 days of any grant;
+    - the net requirement; the interest; and the rate, MCLR + 150 bp (10.25%).
+  - **Binding `approval-iowc-fy27.json`: claimed and approved, each DISCOM a category, 10 / 14
+    exact.**  The sums are a paisa off at most.  NBPDCL's claimed interest (38.449 against 38.46)
+    is within its printed rate.  Approved interest: 40.44 (NBPDCL), 20.11 (SBPDCL).
+  - **Six commissions now run on one engine:** UPERC, UERC, MPERC, HPERC, JSERC and BERC.
+    Each new commission needed draft rules, records and a binding, but no engine change.
+    Their formulas for the same head differ, all within the one rule language:
+    - **working capital:**
+      - UERC: a month of O&M with spares, less a month of power purchase;
+      - MPERC: wheeling and supply apart, a negative admitted;
+      - HPERC: average deposits;
+      - JSERC: a negative floored at nil;
+      - BERC: 45 days, with depreciation and RoE deducted;
+    - **controllable sharing:** UPERC 2025 and UERC 2021.
+  Nothing verified, nothing approved.
+
   **Increment 136 (2026-11-03): a fifth commission — JSERC / JBVNL, the MYT working capital
   FY2026-27 to FY2030-31.**
   - **The order:** JSERC's 2026 MYT order for JBVNL (SHA-256 `0391dd27…9108`, the loader's
@@ -3408,6 +3435,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 137 (2026-11-03): 507 passed** (+1 unit: BERC's working capital per DISCOM).  The first full run failed this test on the claimed interest's bound; it now bounds by the printed rate.  `check_order_quotes.py`: 43 / 43.  Ruff and format clean.
 - **Increment 136 (2026-11-03): 506 passed** (+1 unit: JSERC's MYT working capital, nil for negative years).  `check_order_quotes.py`: 40 / 40.  Ruff and format clean.
 - **Increment 135 (2026-11-03): 505 passed** (+1 unit: HPERC's working capital and ARR arithmetic, H1, H2).  `check_order_quotes.py`: 85 / 85.  Ruff and format clean.
 - **Increment 134 (2026-11-03): 504 passed** (+1 integration: the reproduced orders' API — counts, gaps, findings, 404s, authentication).  Ruff, format, contracts (regenerated, no drift) and `tsc` clean.
@@ -3677,7 +3705,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 136) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 137) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3787,7 +3815,8 @@ entries below are the per-increment history.**
     reproduced); increment 133 its wheeling / supply split, M4; increment 134 both orders on the desk,
     `/arr/orders/<id>`); increment 135 a fourth commission, HPERC / HPSEBL (working capital, ARR,
     H1); increment 136 a fifth, JSERC / JBVNL's MYT working capital (negative → nil, against
-    MPERC's netting)) — next BERC or OERC, or deeper in any of the five;
+    MPERC's netting); increment 137 a sixth, BERC's working capital for two DISCOMs) — next OERC,
+    or deeper in any of the six;
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

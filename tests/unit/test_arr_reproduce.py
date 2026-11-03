@@ -2553,3 +2553,26 @@ def test_a_fifth_commission_jserc_working_capital_negative_approved_nil():
     }
     computed = {c.fiscal_year: Decimal(c.computed) for c in checks if c.output == "iowc_interest_computed"}
     assert all(v < 0 for y, v in computed.items() if y < "FY2029-30")
+
+
+def test_a_sixth_commission_berc_working_capital_per_discom():
+    """Real data, a sixth commission: BERC's working capital for NBPDCL and SBPDCL, FY2026-27
+    (Reg. 26 as the order quotes it): 45 days of revenue and spares, less a month of power
+    purchase, 45 days of depreciation, RoE and contingency reserve, the deposits and any grant, at
+    MCLR + 150 bp — claimed and approved, each DISCOM a category; within a paisa throughout."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("BERC") == []
+    folder = ROOT / "packages" / "order-reproductions" / "berc-discoms-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-iowc-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("BERC"), rates=rec)
+    assert len(checks) == 14 and sum(c.result == "match" for c in checks) == 10
+    for c in checks:  # sums a paisa; the interest within its printed rate (NBPDCL's claim: 38.449 against 38.46)
+        slack = Decimal("0.0185") if c.output == "iowc_interest" else Decimal("0.01")
+        assert abs(Decimal(c.exact) - Decimal(c.filed)) <= slack, c.category
+    approved = {c.category.rsplit(" order:", 1)[1]: c.computed for c in checks if c.output == "iowc_interest"}
+    assert approved["app.interest.nbpdcl"] == "40.44" and approved["app.interest.sbpdcl"] == "20.11"

@@ -1,0 +1,18 @@
+{
+ "id": "berc-discoms-fy2026-27",
+ "status": "a commission order reproduced from its own figures — no petition or formats in this session; nothing reviewed, nothing approved",
+ "commission": "BERC",
+ "licensees": [
+  "NBPDCL",
+  "SBPDCL"
+ ],
+ "fiscal_year": "FY2026-27",
+ "order": {
+  "title": "BERC tariff order for NBPDCL and SBPDCL, FY2026-27",
+  "url": "https://berc.co.in/images/pdf/tariff-order/2026-27/DISCOMs_FO_TARIFF_CN_50_51_DT_180326.pdf",
+  "sha256": "a247053b586fd8909e14b00280d24e0d39357b94bdb36e7b670f21e5aa794537",
+  "loaded_by": "scripts/load_real_orders.py (key BERC-DISCOMs-FY2026-27)"
+ },
+ "rules": "packages/arr-rules/berc/myt-2024.v1.json",
+ "why": "a sixth commission; two licensees in one order"
+}
