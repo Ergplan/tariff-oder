@@ -11347,6 +11347,242 @@
    ]
   },
   {
+   "binding": "approval-energy-balance-fy25.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, before (Table 4-19) order:eb25.before.dist_loss_mu",
+     "output": "dist_loss_mu",
+     "result": "match",
+     "filed": "303.36",
+     "computed": "303.36",
+     "why": null,
+     "exact": "303.360000000000308241736231"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, before (Table 4-19) order:eb25.before.requirement",
+     "output": "energy_input_dist",
+     "result": "match",
+     "filed": "4007.46",
+     "computed": "4007.46",
+     "why": null,
+     "exact": "4007.460000000000308241736231"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, before (Table 4-19) order:eb25.before.net_at_bus",
+     "output": "eb_net_at_bus",
+     "result": "match",
+     "filed": "4027.75",
+     "computed": "4027.75",
+     "why": null,
+     "exact": "4027.750000000000308241736231"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, before (Table 4-19) order:eb25.before.at_state",
+     "output": "eb_at_state",
+     "result": "match",
+     "filed": "4160.04",
+     "computed": "4160.04",
+     "why": null,
+     "exact": "4160.039248089238079158992182"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, before (Table 4-19) order:eb25.before.net_at_state",
+     "output": "eb_net_at_state",
+     "result": "match",
+     "filed": "4018.76",
+     "computed": "4018.76",
+     "why": null,
+     "exact": "4018.759248089238079158992182"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, before (Table 4-19) order:eb25.before.at_ctu",
+     "output": "eb_at_ctu",
+     "result": "match",
+     "filed": "4176.20",
+     "computed": "4176.20",
+     "why": null,
+     "exact": "4176.202065976554171421585973"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, before (Table 4-19) order:eb25.before.total",
+     "output": "eb_total",
+     "result": "match",
+     "filed": "4297.19",
+     "computed": "4297.19",
+     "why": null,
+     "exact": "4297.192065976554171421585973"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, claimed (Table 4-19) order:eb25.claimed.dist_loss_mu",
+     "output": "dist_loss_mu",
+     "result": "match",
+     "filed": "290.83",
+     "computed": "290.83",
+     "why": null,
+     "exact": "290.825891862408340080138207"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, claimed (Table 4-19) order:eb25.claimed.requirement",
+     "output": "energy_input_dist",
+     "result": "match",
+     "filed": "3888.46",
+     "computed": "3888.46",
+     "why": null,
+     "exact": "3888.455181306250340080138207"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, claimed (Table 4-19) order:eb25.claimed.net_at_bus",
+     "output": "eb_net_at_bus",
+     "result": "differs",
+     "filed": "3902.37",
+     "computed": "3902.38",
+     "why": null,
+     "exact": "3902.375181306250340080138207"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, claimed (Table 4-19) order:eb25.claimed.at_state",
+     "output": "eb_at_state",
+     "result": "match",
+     "filed": "4031.82",
+     "computed": "4031.82",
+     "why": null,
+     "exact": "4031.818790160295312499599743"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, claimed (Table 4-19) order:eb25.claimed.net_at_state",
+     "output": "eb_net_at_state",
+     "result": "match",
+     "filed": "3900.19",
+     "computed": "3900.19",
+     "why": null,
+     "exact": "3900.188790160295312499599743"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, claimed (Table 4-19) order:eb25.claimed.at_ctu",
+     "output": "eb_at_ctu",
+     "result": "differs",
+     "filed": "4044.08",
+     "computed": "4044.16",
+     "why": null,
+     "exact": "4044.160918872143625569887747"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, claimed (Table 4-19) order:eb25.claimed.total",
+     "output": "eb_total",
+     "result": "differs",
+     "filed": "4161.80",
+     "computed": "4161.87",
+     "why": null,
+     "exact": "4161.870918872143625569887747"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, approved (Table 4-19) order:eb25.approved.dist_loss_mu",
+     "output": "dist_loss_mu",
+     "result": "match",
+     "filed": "290.83",
+     "computed": "290.83",
+     "why": null,
+     "exact": "290.825891862408340080138207"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, approved (Table 4-19) order:eb25.approved.requirement",
+     "output": "energy_input_dist",
+     "result": "match",
+     "filed": "3888.46",
+     "computed": "3888.46",
+     "why": null,
+     "exact": "3888.455181306250340080138207"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, approved (Table 4-19) order:eb25.approved.net_at_bus",
+     "output": "eb_net_at_bus",
+     "result": "differs",
+     "filed": "3902.37",
+     "computed": "3902.38",
+     "why": null,
+     "exact": "3902.375181306250340080138207"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, approved (Table 4-19) order:eb25.approved.at_state",
+     "output": "eb_at_state",
+     "result": "differs",
+     "filed": "4030.54",
+     "computed": "4030.55",
+     "why": null,
+     "exact": "4030.546561977122846602084494"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, approved (Table 4-19) order:eb25.approved.net_at_state",
+     "output": "eb_net_at_state",
+     "result": "differs",
+     "filed": "3898.91",
+     "computed": "3898.92",
+     "why": null,
+     "exact": "3898.916561977122846602084494"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, approved (Table 4-19) order:eb25.approved.at_ctu",
+     "output": "eb_at_ctu",
+     "result": "differs",
+     "filed": "4042.76",
+     "computed": "4042.84",
+     "why": null,
+     "exact": "4042.841727475241441934969405"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2024-25",
+     "category": "energy balance FY2024-25, approved (Table 4-19) order:eb25.approved.total",
+     "output": "eb_total",
+     "result": "differs",
+     "filed": "4160.48",
+     "computed": "4160.55",
+     "why": null,
+     "exact": "4160.551727475241441934969405"
+    }
+   ]
+  },
+  {
    "binding": "approval-energy-balance-fy27.json",
    "checks": [
     {

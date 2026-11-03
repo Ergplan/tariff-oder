@@ -1749,3 +1749,34 @@ def test_npcl_the_arr_years_energy_balance_reproduces_claimed_and_approved():
     assert rows["F"]["approved_mu"].replace(",", "") == rec["eb.approved.requirement"][0]
     pp = load_binding_rates(folder, {"rates": "order/figures-pp-fy2026-27.json"})
     assert pp["gna.scheduled"][0] == rec["eb.claimed.total"][0] != rec["eb.approved.total"][0]
+
+
+def test_npcl_the_trueup_energy_balance_shows_the_excess_energy_disallowed():
+    """Real data: Table 4-19 in its three columns with the ARR year's rules — the original
+    approval to the last place; the claim and the true-up within the printed precision of the
+    losses.  The claimed and approved totals differ only by the intra-state loss (3.21 % against
+    3.18 %), and the computed difference is the 1.32 MU disallowed from the power purchase (A70)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-energy-balance-fy25.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rec)
+    assert {c.result for c in checks if "before" in c.category} == {"match"}
+    for c in checks:
+        bound = Decimal(c.filed) * 2 * Decimal("0.00005") / Decimal("0.96") + Decimal("0.01")
+        assert abs(Decimal(c.filed) - Decimal(c.computed)) <= bound, c
+    total = {
+        ("claimed" if "claimed" in c.category else "approved"): Decimal(c.exact)
+        for c in checks
+        if c.output == "eb_total" and "before" not in c.category
+    }
+    excess = (total["claimed"] - total["approved"]).quantize(Decimal("0.01"))
+    pp = load_binding_rates(folder, {"rates": "order/figures-trueup-power-purchase-fy2024-25.json"})
+    assert excess == Decimal(rec["eb25.excess"][0]) == Decimal(pp["excess.mu"][0]) == Decimal("1.32")

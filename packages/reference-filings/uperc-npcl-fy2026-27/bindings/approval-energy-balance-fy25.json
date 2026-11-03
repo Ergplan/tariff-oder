@@ -1,0 +1,123 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "rates": "order/figures-energy-balance-fy2024-25.json",
+ "places": 2,
+ "note": "The true-up's energy balance for FY2024-25 (Table 4-19) in its three columns — the original approval, NPCL's claim, the true-up approval — with the same rules as the ARR year's.  The true-up takes NPCL's audited sales and its actual distribution loss (lower than approved, para 4.3.12) and the approved intra-state loss of 3.18 % for NPCL's 3.21 %: the claimed and approved totals differ by the 1.32 MU disallowed from the power purchase (para 4.3.14; A70).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "energy balance FY2024-25, before (Table 4-19)",
+   "inputs": {
+    "fact:E.SALES": {
+     "cell": "Energy Balance!J8",
+     "unit": "MU",
+     "why": "NPCL's audited figure unrounded (its Energy Balance sheet, true-up FY2024-25), which the order adopts (para 4.3.12–4.3.13) and prints rounded"
+    },
+    "assumption:dist_loss": {
+     "cell": "Energy Balance!J11",
+     "unit": "fraction",
+     "why": "NPCL's audited figure unrounded (its Energy Balance sheet, true-up FY2024-25), which the order adopts (para 4.3.12–4.3.13) and prints rounded"
+    },
+    "record:energy_at_bus": {
+     "rate": "eb25.before.at_bus"
+    },
+    "assumption:intra_state_loss": {
+     "rate": "eb25.before.intra"
+    },
+    "record:energy_state_sources": {
+     "rate": "eb25.before.state_sources"
+    },
+    "assumption:inter_state_loss": {
+     "rate": "eb25.before.inter"
+    }
+   },
+   "checks": {
+    "dist_loss_mu": "order:eb25.before.dist_loss_mu",
+    "energy_input_dist": "order:eb25.before.requirement",
+    "eb_net_at_bus": "order:eb25.before.net_at_bus",
+    "eb_at_state": "order:eb25.before.at_state",
+    "eb_net_at_state": "order:eb25.before.net_at_state",
+    "eb_at_ctu": "order:eb25.before.at_ctu",
+    "eb_total": "order:eb25.before.total"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "energy balance FY2024-25, claimed (Table 4-19)",
+   "inputs": {
+    "fact:E.SALES": {
+     "cell": "Energy Balance!L8",
+     "unit": "MU",
+     "why": "NPCL's audited figure unrounded (its Energy Balance sheet, true-up FY2024-25), which the order adopts (para 4.3.12–4.3.13) and prints rounded"
+    },
+    "assumption:dist_loss": {
+     "cell": "Energy Balance!L11",
+     "unit": "fraction",
+     "why": "NPCL's audited figure unrounded (its Energy Balance sheet, true-up FY2024-25), which the order adopts (para 4.3.12–4.3.13) and prints rounded"
+    },
+    "record:energy_at_bus": {
+     "rate": "eb25.claimed.at_bus"
+    },
+    "assumption:intra_state_loss": {
+     "cell": "Energy Balance!L17",
+     "unit": "fraction",
+     "why": "NPCL's claimed intra-state loss unrounded (its Energy Balance L17), printed 3.21 %"
+    },
+    "record:energy_state_sources": {
+     "rate": "eb25.claimed.state_sources"
+    },
+    "assumption:inter_state_loss": {
+     "rate": "eb25.claimed.inter"
+    }
+   },
+   "checks": {
+    "dist_loss_mu": "order:eb25.claimed.dist_loss_mu",
+    "energy_input_dist": "order:eb25.claimed.requirement",
+    "eb_net_at_bus": "order:eb25.claimed.net_at_bus",
+    "eb_at_state": "order:eb25.claimed.at_state",
+    "eb_net_at_state": "order:eb25.claimed.net_at_state",
+    "eb_at_ctu": "order:eb25.claimed.at_ctu",
+    "eb_total": "order:eb25.claimed.total"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "energy balance FY2024-25, approved (Table 4-19)",
+   "inputs": {
+    "fact:E.SALES": {
+     "cell": "Energy Balance!L8",
+     "unit": "MU",
+     "why": "NPCL's audited figure unrounded (its Energy Balance sheet, true-up FY2024-25), which the order adopts (para 4.3.12–4.3.13) and prints rounded"
+    },
+    "assumption:dist_loss": {
+     "cell": "Energy Balance!L11",
+     "unit": "fraction",
+     "why": "NPCL's audited figure unrounded (its Energy Balance sheet, true-up FY2024-25), which the order adopts (para 4.3.12–4.3.13) and prints rounded"
+    },
+    "record:energy_at_bus": {
+     "rate": "eb25.approved.at_bus"
+    },
+    "assumption:intra_state_loss": {
+     "rate": "eb25.approved.intra"
+    },
+    "record:energy_state_sources": {
+     "rate": "eb25.approved.state_sources"
+    },
+    "assumption:inter_state_loss": {
+     "rate": "eb25.approved.inter"
+    }
+   },
+   "checks": {
+    "dist_loss_mu": "order:eb25.approved.dist_loss_mu",
+    "energy_input_dist": "order:eb25.approved.requirement",
+    "eb_net_at_bus": "order:eb25.approved.net_at_bus",
+    "eb_at_state": "order:eb25.approved.at_state",
+    "eb_net_at_state": "order:eb25.approved.net_at_state",
+    "eb_at_ctu": "order:eb25.approved.at_ctu",
+    "eb_total": "order:eb25.approved.total"
+   }
+  }
+ ]
+}

@@ -1005,6 +1005,21 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 116 (2026-11-03): the true-up's energy balance — where the 1.32 MU disallowed
+  comes from.**
+  - **The record:** `order/figures-energy-balance-fy2024-25.json` holds 40 figures (Table 4-19,
+    three columns; para 4.3.14), 40 / 40 quotes verified.
+  - **The rules:** the five energy-balance rules of increment 115 now apply in every year.  They
+    are the order's layout, not a 2025-only clause.
+  - **Binding `approval-energy-balance-fy25.json`:**
+    - the original approval reproduces 7 / 7;
+    - the claim and the true-up are within the printed precision of the inter-state loss and of
+      the energy delivered at the bus.
+  - **Ties checked by the test:** the computed claimed total less the approved total is 1.32 MU.
+    That is the excess the order disallows (para 4.3.14) and prices at 2.57 (A70).  The
+    power-purchase decision's one computed line now reproduces from its source.
+  Nothing verified, nothing approved.
+
   **Increment 115 (2026-11-03): the ARR year's energy balance, claimed and approved.**
   - **The record:** `order/figures-energy-balance-fy2026-27.json` holds 26 figures (Table 6-9),
     26 / 26 quotes verified.
@@ -2883,6 +2898,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 116 (2026-11-03): 486 passed** (+1 unit: the true-up's energy balance and the 1.32 MU).  `check_order_quotes.py`: 40 / 40.  Ruff and format clean.
 - **Increment 115 (2026-11-03): 485 passed** (+1 unit: the energy balance, both columns).  `check_order_quotes.py`: 26 / 26.  Ruff and format clean.
 - **Increment 114 (2026-11-03): 484 passed** (+1 unit: the ARR year's power purchase by source, differences bounded by input precision, tied to Table 6-35).  `check_order_quotes.py`: 154 / 154.  Ruff and format clean.
 - **Increment 113 (2026-11-02): 483 passed** (+2 unit: aliased records and one figure less another, synthetic; the APR's depreciation exactly).  Ruff and format clean.
@@ -3131,7 +3147,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 115) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 116) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):

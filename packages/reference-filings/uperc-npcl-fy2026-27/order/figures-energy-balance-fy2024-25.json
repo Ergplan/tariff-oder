@@ -1,0 +1,329 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): true-up of FY2024-25, energy balance (Table 4-19) and the excess quantum (para 4.3.14)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "eb25.before.sales": {
+   "value": "3704.10",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Sales MU 3,704.10 3,597.63 3,597.63",
+   "what": "energy balance FY2024-25, before: sales (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.sales": {
+   "value": "3597.63",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Sales MU 3,704.10 3,597.63 3,597.63",
+   "what": "energy balance FY2024-25, claimed: sales (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.sales": {
+   "value": "3597.63",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Sales MU 3,704.10 3,597.63 3,597.63",
+   "what": "energy balance FY2024-25, approved: sales (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.dist_loss": {
+   "value": "7.57",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Distribution Loss % 7.57% 7.48% 7.48%",
+   "what": "energy balance FY2024-25, before: dist_loss (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.dist_loss": {
+   "value": "7.48",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Distribution Loss % 7.57% 7.48% 7.48%",
+   "what": "energy balance FY2024-25, claimed: dist_loss (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.dist_loss": {
+   "value": "7.48",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Distribution Loss % 7.57% 7.48% 7.48%",
+   "what": "energy balance FY2024-25, approved: dist_loss (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.dist_loss_mu": {
+   "value": "303.36",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Distribution Loss MU 303.36 290.83 290.83",
+   "what": "energy balance FY2024-25, before: dist_loss_mu (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.dist_loss_mu": {
+   "value": "290.83",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Distribution Loss MU 303.36 290.83 290.83",
+   "what": "energy balance FY2024-25, claimed: dist_loss_mu (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.dist_loss_mu": {
+   "value": "290.83",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Distribution Loss MU 303.36 290.83 290.83",
+   "what": "energy balance FY2024-25, approved: dist_loss_mu (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.requirement": {
+   "value": "4007.46",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at NPCL MU 4,007.46 3,888.46 3,888.46",
+   "what": "energy balance FY2024-25, before: requirement (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.requirement": {
+   "value": "3888.46",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at NPCL MU 4,007.46 3,888.46 3,888.46",
+   "what": "energy balance FY2024-25, claimed: requirement (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.requirement": {
+   "value": "3888.46",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at NPCL MU 4,007.46 3,888.46 3,888.46",
+   "what": "energy balance FY2024-25, approved: requirement (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.at_bus": {
+   "value": "-20.29",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Available/Delivered at NPCL Bus MU (20.29) (13.92) (13.92)",
+   "what": "energy balance FY2024-25, before: at_bus (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.at_bus": {
+   "value": "-13.92",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Available/Delivered at NPCL Bus MU (20.29) (13.92) (13.92)",
+   "what": "energy balance FY2024-25, claimed: at_bus (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.at_bus": {
+   "value": "-13.92",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Available/Delivered at NPCL Bus MU (20.29) (13.92) (13.92)",
+   "what": "energy balance FY2024-25, approved: at_bus (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.net_at_bus": {
+   "value": "4027.75",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Net Energy requirement at NPCL Bus MU 4,027.75 3,902.37 3,902.37",
+   "what": "energy balance FY2024-25, before: net_at_bus (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.net_at_bus": {
+   "value": "3902.37",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Net Energy requirement at NPCL Bus MU 4,027.75 3,902.37 3,902.37",
+   "what": "energy balance FY2024-25, claimed: net_at_bus (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.net_at_bus": {
+   "value": "3902.37",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Net Energy requirement at NPCL Bus MU 4,027.75 3,902.37 3,902.37",
+   "what": "energy balance FY2024-25, approved: net_at_bus (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Intra State Losses % 3.18% 3.21% 3.18%",
+   "what": "energy balance FY2024-25, before: intra (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.intra": {
+   "value": "3.21",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Intra State Losses % 3.18% 3.21% 3.18%",
+   "what": "energy balance FY2024-25, claimed: intra (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Intra State Losses % 3.18% 3.21% 3.18%",
+   "what": "energy balance FY2024-25, approved: intra (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.at_state": {
+   "value": "4160.04",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at STU/UP Periphery MU 4,160.04 4,031.82 4,030.54",
+   "what": "energy balance FY2024-25, before: at_state (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.at_state": {
+   "value": "4031.82",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at STU/UP Periphery MU 4,160.04 4,031.82 4,030.54",
+   "what": "energy balance FY2024-25, claimed: at_state (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.at_state": {
+   "value": "4030.54",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at STU/UP Periphery MU 4,160.04 4,031.82 4,030.54",
+   "what": "energy balance FY2024-25, approved: at_state (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.state_sources": {
+   "value": "141.28",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy from sources connected at STU Bus MU 141.28 131.63 131.63",
+   "what": "energy balance FY2024-25, before: state_sources (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.state_sources": {
+   "value": "131.63",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy from sources connected at STU Bus MU 141.28 131.63 131.63",
+   "what": "energy balance FY2024-25, claimed: state_sources (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.state_sources": {
+   "value": "131.63",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy from sources connected at STU Bus MU 141.28 131.63 131.63",
+   "what": "energy balance FY2024-25, approved: state_sources (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.net_at_state": {
+   "value": "4018.76",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Net Energy Requirement at STU Bus MU 4,018.76 3,900.19 3,898.91",
+   "what": "energy balance FY2024-25, before: net_at_state (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.net_at_state": {
+   "value": "3900.19",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Net Energy Requirement at STU Bus MU 4,018.76 3,900.19 3,898.91",
+   "what": "energy balance FY2024-25, claimed: net_at_state (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.net_at_state": {
+   "value": "3898.91",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Net Energy Requirement at STU Bus MU 4,018.76 3,900.19 3,898.91",
+   "what": "energy balance FY2024-25, approved: net_at_state (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.inter": {
+   "value": "3.77",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Inter-State Losses % 3.77% 3.56% 3.56%",
+   "what": "energy balance FY2024-25, before: inter (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.inter": {
+   "value": "3.56",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Inter-State Losses % 3.77% 3.56% 3.56%",
+   "what": "energy balance FY2024-25, claimed: inter (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.inter": {
+   "value": "3.56",
+   "unit": "percent",
+   "page": 57,
+   "quote": "Inter-State Losses % 3.77% 3.56% 3.56%",
+   "what": "energy balance FY2024-25, approved: inter (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.at_ctu": {
+   "value": "4176.20",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at CTU Bus MU 4,176.20 4,044.08 4,042.76",
+   "what": "energy balance FY2024-25, before: at_ctu (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.at_ctu": {
+   "value": "4044.08",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at CTU Bus MU 4,176.20 4,044.08 4,042.76",
+   "what": "energy balance FY2024-25, claimed: at_ctu (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.at_ctu": {
+   "value": "4042.76",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Energy Requirement at CTU Bus MU 4,176.20 4,044.08 4,042.76",
+   "what": "energy balance FY2024-25, approved: at_ctu (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.before.total": {
+   "value": "4297.19",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Total Energy Requirement MU 4,297.19 4,161.80 4,160.48",
+   "what": "energy balance FY2024-25, before: total (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.claimed.total": {
+   "value": "4161.80",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Total Energy Requirement MU 4,297.19 4,161.80 4,160.48",
+   "what": "energy balance FY2024-25, claimed: total (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.approved.total": {
+   "value": "4160.48",
+   "unit": "MU",
+   "page": 57,
+   "quote": "Total Energy Requirement MU 4,297.19 4,161.80 4,160.48",
+   "what": "energy balance FY2024-25, approved: total (Table 4-19)",
+   "header": "Particulars UOM Approved in TO for FY 2024-25 dtd 10.10.2024 Claimed Approved"
+  },
+  "eb25.excess": {
+   "value": "1.32",
+   "unit": "MU",
+   "page": 56,
+   "quote": "Intra-State Transmission Loss of 3.21%, whereas the approved loss for FY 2024-25 is 3.18%. This deviation results in a difference of 1.32 MU",
+   "what": "the excess quantum disallowed (para 4.3.14)"
+  }
+ }
+}
