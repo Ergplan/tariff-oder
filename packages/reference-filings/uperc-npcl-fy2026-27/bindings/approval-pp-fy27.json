@@ -1,0 +1,464 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "PPC FY 27",
+ "rates": "order/figures-pp-fy2026-27.json",
+ "places": 2,
+ "note": "The Commission's power purchase for FY2026-27 reproduced source by source from its own tables with draft rules that follow its projection: energy from the contracted capacity at its PLF over the year's 8,760 hours, the inter-state (3.58 %) and intra-state (3.18 %) losses to NPCL's periphery, fixed and energy charges at the approved rates on the energy available, the landed cost per unit at the periphery (Table 6-27); DIL and the renewable sources on the loss chain and their approved cost (Tables 6-26, 6-28 — DIL's rates come from its true-up order, not in this session); the exchange at the 14-month IEX average (para 6.5.51); the GNA charges from the base cost (Table 6-34).  The test ties the parts to Table 6-35.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "medium term FY2026-27 (Table 6-27)",
+   "inputs": {
+    "assumption:hours_in_year": {
+     "value": "8760",
+     "unit": "hour",
+     "why": "FY2026-27: 365 days × 24 hours (April 2026 to March 2027, February with 28 days)"
+    }
+   },
+   "categories": {
+    "JITPL": {
+     "inputs": {
+      "record:ppp_capacity": {
+       "rate": "mt.jitpl.mw"
+      },
+      "record:ppp_plf": {
+       "rate": "mt.jitpl.plf"
+      },
+      "record:ppp_units": {
+       "rate": "mt.jitpl.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "mt.jitpl.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "mt.jitpl.intra"
+      },
+      "record:ppp_fixed_rate": {
+       "rate": "mt.jitpl.fixed_rate"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "mt.jitpl.energy_rate"
+      }
+     },
+     "checks": {
+      "ppp_units_capacity": "order:mt.jitpl.units",
+      "ppp_at_state": "order:mt.jitpl.at_state",
+      "ppp_at_periphery": "order:mt.jitpl.at_periphery",
+      "ppp_fixed": "order:mt.jitpl.fixed",
+      "ppp_energy": "order:mt.jitpl.energy",
+      "ppp_cost": "order:mt.jitpl.cost",
+      "ppp_landed": "order:mt.jitpl.landed"
+     }
+    },
+    "Maa Durga": {
+     "inputs": {
+      "record:ppp_capacity": {
+       "rate": "mt.maadurga.mw"
+      },
+      "record:ppp_plf": {
+       "rate": "mt.maadurga.plf"
+      },
+      "record:ppp_units": {
+       "rate": "mt.maadurga.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "mt.maadurga.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "mt.maadurga.intra"
+      },
+      "record:ppp_fixed_rate": {
+       "rate": "mt.maadurga.fixed_rate"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "mt.maadurga.energy_rate"
+      }
+     },
+     "checks": {
+      "ppp_units_capacity": "order:mt.maadurga.units",
+      "ppp_at_state": "order:mt.maadurga.at_state",
+      "ppp_at_periphery": "order:mt.maadurga.at_periphery",
+      "ppp_fixed": "order:mt.maadurga.fixed",
+      "ppp_energy": "order:mt.maadurga.energy",
+      "ppp_cost": "order:mt.maadurga.cost",
+      "ppp_landed": "order:mt.maadurga.landed"
+     }
+    },
+    "MPL-BLA Power": {
+     "inputs": {
+      "record:ppp_capacity": {
+       "rate": "mt.mpl_bla.mw"
+      },
+      "record:ppp_plf": {
+       "rate": "mt.mpl_bla.plf"
+      },
+      "record:ppp_units": {
+       "rate": "mt.mpl_bla.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "mt.mpl_bla.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "mt.mpl_bla.intra"
+      },
+      "record:ppp_fixed_rate": {
+       "rate": "mt.mpl_bla.fixed_rate"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "mt.mpl_bla.energy_rate"
+      }
+     },
+     "checks": {
+      "ppp_units_capacity": "order:mt.mpl_bla.units",
+      "ppp_at_state": "order:mt.mpl_bla.at_state",
+      "ppp_at_periphery": "order:mt.mpl_bla.at_periphery",
+      "ppp_fixed": "order:mt.mpl_bla.fixed",
+      "ppp_energy": "order:mt.mpl_bla.energy",
+      "ppp_cost": "order:mt.mpl_bla.cost",
+      "ppp_landed": "order:mt.mpl_bla.landed"
+     }
+    },
+    "MPL-Sai Lilagar": {
+     "inputs": {
+      "record:ppp_capacity": {
+       "rate": "mt.mpl_sai.mw"
+      },
+      "record:ppp_plf": {
+       "rate": "mt.mpl_sai.plf"
+      },
+      "record:ppp_units": {
+       "rate": "mt.mpl_sai.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "mt.mpl_sai.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "mt.mpl_sai.intra"
+      },
+      "record:ppp_fixed_rate": {
+       "rate": "mt.mpl_sai.fixed_rate"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "mt.mpl_sai.energy_rate"
+      }
+     },
+     "checks": {
+      "ppp_units_capacity": "order:mt.mpl_sai.units",
+      "ppp_at_state": "order:mt.mpl_sai.at_state",
+      "ppp_at_periphery": "order:mt.mpl_sai.at_periphery",
+      "ppp_fixed": "order:mt.mpl_sai.fixed",
+      "ppp_energy": "order:mt.mpl_sai.energy",
+      "ppp_cost": "order:mt.mpl_sai.cost",
+      "ppp_landed": "order:mt.mpl_sai.landed"
+     }
+    },
+    "DIL (medium term)": {
+     "inputs": {
+      "record:ppp_capacity": {
+       "rate": "mt.dil.mw"
+      },
+      "record:ppp_plf": {
+       "rate": "mt.dil.plf"
+      },
+      "record:ppp_units": {
+       "rate": "mt.dil.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "mt.dil.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "mt.dil.intra"
+      },
+      "record:ppp_fixed_rate": {
+       "rate": "mt.dil.fixed_rate"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "mt.dil.energy_rate"
+      }
+     },
+     "checks": {
+      "ppp_units_capacity": "order:mt.dil.units",
+      "ppp_at_state": "order:mt.dil.at_state",
+      "ppp_at_periphery": "order:mt.dil.at_periphery",
+      "ppp_fixed": "order:mt.dil.fixed",
+      "ppp_energy": "order:mt.dil.energy",
+      "ppp_cost": "order:mt.dil.cost",
+      "ppp_landed": "order:mt.dil.landed"
+     }
+    }
+   },
+   "checks": {
+    "ppp_units_total": "order:mt.total.units",
+    "ppp_at_state_total": "order:mt.total.at_state",
+    "ppp_at_periphery_total": "order:mt.total.at_periphery",
+    "ppp_fixed_total": "order:mt.total.fixed",
+    "ppp_energy_total": "order:mt.total.energy",
+    "ppp_cost_total": "order:mt.total.cost",
+    "ppp_landed_total": "order:mt.total.landed"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "DIL long term FY2026-27 (Table 6-26)",
+   "categories": {
+    "DIL": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "dil.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "dil.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "dil.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "dil.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:dil.at_state",
+      "ppp_at_periphery": "order:dil.at_periphery",
+      "ppp_landed_given": "order:dil.landed"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "renewable FY2026-27 (Table 6-28)",
+   "categories": {
+    "SJVNL FDRE": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "re.sjvnl.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "re.sjvnl.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "re.sjvnl.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "re.sjvnl.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:re.sjvnl.at_state",
+      "ppp_at_periphery": "order:re.sjvnl.at_periphery",
+      "ppp_landed_given": "order:re.sjvnl.landed"
+     }
+    },
+    "PTC LT wind": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "re.ptc_wind.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "re.ptc_wind.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "re.ptc_wind.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "re.ptc_wind.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:re.ptc_wind.at_state",
+      "ppp_at_periphery": "order:re.ptc_wind.at_periphery",
+      "ppp_landed_given": "order:re.ptc_wind.landed"
+     }
+    },
+    "GNIDA LT solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "re.gnida.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "re.gnida.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "re.gnida.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "re.gnida.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:re.gnida.at_state",
+      "ppp_at_periphery": "order:re.gnida.at_periphery",
+      "ppp_landed_given": "order:re.gnida.landed"
+     }
+    },
+    "Adani solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "re.adani.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "re.adani.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "re.adani.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "re.adani.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:re.adani.at_state",
+      "ppp_at_periphery": "order:re.adani.at_periphery",
+      "ppp_landed_given": "order:re.adani.landed"
+     }
+    },
+    "Tata solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "re.tata.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "re.tata.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "re.tata.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "re.tata.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:re.tata.at_state",
+      "ppp_at_periphery": "order:re.tata.at_periphery",
+      "ppp_landed_given": "order:re.tata.landed"
+     }
+    },
+    "EEPTPL solar": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "re.eeptpl_solar.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "re.eeptpl_solar.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "re.eeptpl_solar.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "re.eeptpl_solar.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:re.eeptpl_solar.at_state",
+      "ppp_at_periphery": "order:re.eeptpl_solar.at_periphery",
+      "ppp_landed_given": "order:re.eeptpl_solar.landed"
+     }
+    },
+    "EEPTPL non-solar 1": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "re.eeptpl_ns1.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "re.eeptpl_ns1.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "re.eeptpl_ns1.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "re.eeptpl_ns1.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:re.eeptpl_ns1.at_state",
+      "ppp_at_periphery": "order:re.eeptpl_ns1.at_periphery",
+      "ppp_landed_given": "order:re.eeptpl_ns1.landed"
+     }
+    },
+    "EEPTPL non-solar 2": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "re.eeptpl_ns2.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "re.eeptpl_ns2.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "re.eeptpl_ns2.intra"
+      },
+      "record:ppp_cost_given": {
+       "rate": "re.eeptpl_ns2.cost"
+      }
+     },
+     "checks": {
+      "ppp_at_state": "order:re.eeptpl_ns2.at_state",
+      "ppp_at_periphery": "order:re.eeptpl_ns2.at_periphery",
+      "ppp_landed_given": "order:re.eeptpl_ns2.landed"
+     }
+    }
+   },
+   "checks": {
+    "ppp_units_total": "order:re.total.units",
+    "ppp_at_state_total": "order:re.total.at_state",
+    "ppp_at_periphery_total": "order:re.total.at_periphery",
+    "ppp_cost_given_total": "order:re.total.cost",
+    "ppp_landed_given_total": "order:re.total.landed"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "exchange FY2026-27 (para 6.5.51)",
+   "categories": {
+    "IEX DAM": {
+     "inputs": {
+      "record:ppp_units": {
+       "rate": "px.units"
+      },
+      "record:ppp_ists_loss": {
+       "rate": "dil.ists"
+      },
+      "record:ppp_intra_loss": {
+       "rate": "dil.intra"
+      },
+      "record:ppp_fixed_rate": {
+       "value": "0",
+       "unit": "INR_per_kWh",
+       "why": "an exchange purchase carries no fixed charge"
+      },
+      "record:ppp_energy_rate": {
+       "rate": "px.rate"
+      }
+     },
+     "checks": {
+      "ppp_at_periphery": "order:px.at_periphery"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "GNA FY2026-27 (Table 6-34)",
+   "inputs": {
+    "record:gna_base_cost": {
+     "rate": "gna.base"
+    },
+    "record:gna_quantum": {
+     "rate": "gna.quantum"
+    },
+    "record:gna_energy": {
+     "rate": "gna.energy"
+    },
+    "assumption:months_in_year_gna": {
+     "value": "12",
+     "unit": "month",
+     "why": "a year's GNA at the monthly base cost"
+    }
+   },
+   "checks": {
+    "gna_charges": "order:gna.charges",
+    "gna_rate": "order:gna.rate"
+   }
+  }
+ ]
+}

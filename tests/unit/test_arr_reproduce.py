@@ -1658,3 +1658,62 @@ def test_npcl_the_apr_depreciation_reproduces_between_two_printed_balances():
     wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
     checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=load_binding_rates(folder, binding))
     assert len(checks) == 5 and {c.result for c in checks} == {"match"}
+
+
+def test_npcl_the_arr_years_power_purchase_reproduces_source_by_source():
+    """Real data: the Commission's FY2026-27 power purchase from its own tables — energy from the
+    contracted capacity at its PLF, the two losses to NPCL's periphery, charges at the approved
+    rates, the landed cost; DIL and the renewables on the loss chain and their approved cost; the
+    exchange; GNA from the base cost.  Where a figure differs, the difference is within what the
+    order's printed inputs allow (rates to two places, losses to two places of a percent, small
+    costs to two places); the parts are Table 6-35's lines (A64)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-pp-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rec)
+    assert len(checks) == 77
+
+    def v(key):
+        return Decimal(rec[key][0])
+
+    half_rate = Decimal("0.005") / 10  # a rate printed to two places, Rs/kWh, per MU in crore
+    half_loss = Decimal("0.00005")  # a loss printed to two places of a percent
+    for c in checks:
+        if c.result == "match":
+            continue
+        key = c.category.split(" order:")[-1].rsplit(".", 1)[0]
+        diff = abs(Decimal(c.filed) - Decimal(c.computed))
+        if key.endswith("total"):
+            bound = Decimal("0.16")  # five to eight rounded sources
+        elif c.output in ("ppp_fixed", "ppp_energy"):
+            bound = v(f"{key}.units") * half_rate + Decimal("0.005")
+        elif c.output == "ppp_cost":
+            bound = 2 * v(f"{key}.units") * half_rate + Decimal("0.005")
+        elif c.output in ("ppp_at_state", "ppp_at_periphery"):
+            units = v("px.units") if key == "px" else v(f"{key}.units")
+            bound = 2 * units * half_loss + Decimal("0.005")
+        elif c.output == "ppp_landed_given":
+            bound = Decimal("0.005") / v(f"{key}.at_periphery") * 10 + Decimal("0.005")
+        else:
+            raise AssertionError(c)
+        assert diff <= bound, (c.category, c.output, diff, bound)
+    # JITPL, at 95 MW, to the last place; GNA from the base cost exactly
+    assert all(c.result == "match" for c in checks if "JITPL" in c.category or c.output.startswith("gna"))
+    # the parts are Table 6-35's lines
+    rep = json.loads((folder / "order-decisions.json").read_text())
+    rows = {r["code"]: r["cells"] for r in next(t for t in rep["source_tables"] if t["proceeding"] == "arr")["rows"]}
+    assert rows["A"]["approved_amount"] == rec["dil.cost"][0] and rows["A"]["approved_mu"] == "1,188.64"
+    assert rows["B"]["approved_amount"] == rec["mt.total.cost"][0]
+    assert rows["E"]["approved_amount"] == rec["re.total.cost"][0]
+    assert rows["C.22"]["approved_mu"] == rec["px.at_periphery"][0]
+    exchange = v("px.units") * v("px.rate") / 10
+    assert abs(exchange - Decimal(rows["C.22"]["approved_amount"])) <= v("px.units") * half_rate
+    assert v("gna.charges") + v("tgna.charges") == v("gna.total") == Decimal(rows["I"]["approved_amount"])

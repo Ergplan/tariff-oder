@@ -269,7 +269,8 @@
       "amount": "62.16",
       "what": "the surplus sale and DSM not allowed"
      }
-    ]
+    ],
+    "binding": "approval-pp-fy27.json"
    },
    "transmission": {
     "reason": "UPPTCL at its own tariff order",

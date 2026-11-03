@@ -1,0 +1,1088 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): power purchase approved for FY2026-27 by source (Tables 6-26 to 6-28, 6-33, 6-34, para 6.5.51)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "dil.units": {
+   "value": "1273.27",
+   "unit": "MU",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): units"
+  },
+  "dil.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): ists"
+  },
+  "dil.at_state": {
+   "value": "1227.68",
+   "unit": "MU",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): at_state"
+  },
+  "dil.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): intra"
+  },
+  "dil.at_periphery": {
+   "value": "1188.64",
+   "unit": "MU",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): at_periphery"
+  },
+  "dil.fixed": {
+   "value": "222.06",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): fixed"
+  },
+  "dil.energy": {
+   "value": "358.68",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): energy"
+  },
+  "dil.cost": {
+   "value": "580.74",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): cost"
+  },
+  "dil.landed": {
+   "value": "4.89",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "Long Term Power from DIL 1,273.27 3.58% 1,227.68 3.18% 1,188.64 222.06 358.68 580.74 4.89",
+   "what": "DIL, long term (Table 6-26): landed"
+  },
+  "mt.jitpl.mw": {
+   "value": "95",
+   "unit": "MW",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): mw"
+  },
+  "mt.jitpl.plf": {
+   "value": "85",
+   "unit": "percent",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): plf"
+  },
+  "mt.jitpl.fixed_rate": {
+   "value": "2.61",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): fixed_rate"
+  },
+  "mt.jitpl.energy_rate": {
+   "value": "2.63",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): energy_rate"
+  },
+  "mt.jitpl.units": {
+   "value": "707.37",
+   "unit": "MU",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): units"
+  },
+  "mt.jitpl.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): ists"
+  },
+  "mt.jitpl.at_state": {
+   "value": "682.05",
+   "unit": "MU",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): at_state"
+  },
+  "mt.jitpl.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): intra"
+  },
+  "mt.jitpl.at_periphery": {
+   "value": "660.36",
+   "unit": "MU",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): at_periphery"
+  },
+  "mt.jitpl.fixed": {
+   "value": "184.62",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): fixed"
+  },
+  "mt.jitpl.energy": {
+   "value": "186.04",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): energy"
+  },
+  "mt.jitpl.cost": {
+   "value": "370.66",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): cost"
+  },
+  "mt.jitpl.landed": {
+   "value": "5.61",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "JITPL 95 85% 2.61 2.63 707.37 3.58% 682.05 3.18% 660.36 184.62 186.04 370.66 5.61",
+   "what": "JITPL, medium term (Table 6-27): landed"
+  },
+  "mt.maadurga.mw": {
+   "value": "25",
+   "unit": "MW",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): mw"
+  },
+  "mt.maadurga.plf": {
+   "value": "85",
+   "unit": "percent",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): plf"
+  },
+  "mt.maadurga.fixed_rate": {
+   "value": "2.76",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): fixed_rate"
+  },
+  "mt.maadurga.energy_rate": {
+   "value": "2.78",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): energy_rate"
+  },
+  "mt.maadurga.units": {
+   "value": "186.15",
+   "unit": "MU",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): units"
+  },
+  "mt.maadurga.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): ists"
+  },
+  "mt.maadurga.at_state": {
+   "value": "179.49",
+   "unit": "MU",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): at_state"
+  },
+  "mt.maadurga.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): intra"
+  },
+  "mt.maadurga.at_periphery": {
+   "value": "173.78",
+   "unit": "MU",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): at_periphery"
+  },
+  "mt.maadurga.fixed": {
+   "value": "51.36",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): fixed"
+  },
+  "mt.maadurga.energy": {
+   "value": "51.73",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): energy"
+  },
+  "mt.maadurga.cost": {
+   "value": "103.09",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): cost"
+  },
+  "mt.maadurga.landed": {
+   "value": "5.93",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "Maa Durga 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "Maa Durga, medium term (Table 6-27): landed"
+  },
+  "mt.mpl_bla.mw": {
+   "value": "25",
+   "unit": "MW",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): mw"
+  },
+  "mt.mpl_bla.plf": {
+   "value": "85",
+   "unit": "percent",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): plf"
+  },
+  "mt.mpl_bla.fixed_rate": {
+   "value": "2.76",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): fixed_rate"
+  },
+  "mt.mpl_bla.energy_rate": {
+   "value": "2.78",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): energy_rate"
+  },
+  "mt.mpl_bla.units": {
+   "value": "186.15",
+   "unit": "MU",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): units"
+  },
+  "mt.mpl_bla.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): ists"
+  },
+  "mt.mpl_bla.at_state": {
+   "value": "179.49",
+   "unit": "MU",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): at_state"
+  },
+  "mt.mpl_bla.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): intra"
+  },
+  "mt.mpl_bla.at_periphery": {
+   "value": "173.78",
+   "unit": "MU",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): at_periphery"
+  },
+  "mt.mpl_bla.fixed": {
+   "value": "51.36",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): fixed"
+  },
+  "mt.mpl_bla.energy": {
+   "value": "51.73",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): energy"
+  },
+  "mt.mpl_bla.cost": {
+   "value": "103.09",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): cost"
+  },
+  "mt.mpl_bla.landed": {
+   "value": "5.93",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "MPL-BLA Power 25 85% 2.76 2.78 186.15 3.58% 179.49 3.18% 173.78 51.36 51.73 103.09 5.93",
+   "what": "MPL-BLA Power, medium term (Table 6-27): landed"
+  },
+  "mt.mpl_sai.mw": {
+   "value": "25",
+   "unit": "MW",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): mw"
+  },
+  "mt.mpl_sai.plf": {
+   "value": "85",
+   "unit": "percent",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): plf"
+  },
+  "mt.mpl_sai.fixed_rate": {
+   "value": "2.72",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): fixed_rate"
+  },
+  "mt.mpl_sai.energy_rate": {
+   "value": "2.74",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): energy_rate"
+  },
+  "mt.mpl_sai.units": {
+   "value": "186.15",
+   "unit": "MU",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): units"
+  },
+  "mt.mpl_sai.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): ists"
+  },
+  "mt.mpl_sai.at_state": {
+   "value": "179.49",
+   "unit": "MU",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): at_state"
+  },
+  "mt.mpl_sai.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): intra"
+  },
+  "mt.mpl_sai.at_periphery": {
+   "value": "173.78",
+   "unit": "MU",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): at_periphery"
+  },
+  "mt.mpl_sai.fixed": {
+   "value": "50.61",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): fixed"
+  },
+  "mt.mpl_sai.energy": {
+   "value": "50.99",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): energy"
+  },
+  "mt.mpl_sai.cost": {
+   "value": "101.60",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): cost"
+  },
+  "mt.mpl_sai.landed": {
+   "value": "5.85",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "MPL-Sai Lilagar 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "MPL-Sai Lilagar, medium term (Table 6-27): landed"
+  },
+  "mt.dil.mw": {
+   "value": "25",
+   "unit": "MW",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): mw"
+  },
+  "mt.dil.plf": {
+   "value": "85",
+   "unit": "percent",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): plf"
+  },
+  "mt.dil.fixed_rate": {
+   "value": "2.72",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): fixed_rate"
+  },
+  "mt.dil.energy_rate": {
+   "value": "2.74",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): energy_rate"
+  },
+  "mt.dil.units": {
+   "value": "186.15",
+   "unit": "MU",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): units"
+  },
+  "mt.dil.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): ists"
+  },
+  "mt.dil.at_state": {
+   "value": "179.49",
+   "unit": "MU",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): at_state"
+  },
+  "mt.dil.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): intra"
+  },
+  "mt.dil.at_periphery": {
+   "value": "173.78",
+   "unit": "MU",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): at_periphery"
+  },
+  "mt.dil.fixed": {
+   "value": "50.61",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): fixed"
+  },
+  "mt.dil.energy": {
+   "value": "50.99",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): energy"
+  },
+  "mt.dil.cost": {
+   "value": "101.60",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): cost"
+  },
+  "mt.dil.landed": {
+   "value": "5.85",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "DIL 25 85% 2.72 2.74 186.15 3.58% 179.49 3.18% 173.78 50.61 50.99 101.60 5.85",
+   "what": "DIL, medium term (Table 6-27): landed"
+  },
+  "mt.total.units": {
+   "value": "1451.97",
+   "unit": "MU",
+   "page": 235,
+   "quote": "TOTAL 1,451.97 1,399.99 1,355.47 388.57 391.47 780.04 5.75",
+   "what": "medium term, total (Table 6-27): units"
+  },
+  "mt.total.at_state": {
+   "value": "1399.99",
+   "unit": "MU",
+   "page": 235,
+   "quote": "TOTAL 1,451.97 1,399.99 1,355.47 388.57 391.47 780.04 5.75",
+   "what": "medium term, total (Table 6-27): at_state"
+  },
+  "mt.total.at_periphery": {
+   "value": "1355.47",
+   "unit": "MU",
+   "page": 235,
+   "quote": "TOTAL 1,451.97 1,399.99 1,355.47 388.57 391.47 780.04 5.75",
+   "what": "medium term, total (Table 6-27): at_periphery"
+  },
+  "mt.total.fixed": {
+   "value": "388.57",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "TOTAL 1,451.97 1,399.99 1,355.47 388.57 391.47 780.04 5.75",
+   "what": "medium term, total (Table 6-27): fixed"
+  },
+  "mt.total.energy": {
+   "value": "391.47",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "TOTAL 1,451.97 1,399.99 1,355.47 388.57 391.47 780.04 5.75",
+   "what": "medium term, total (Table 6-27): energy"
+  },
+  "mt.total.cost": {
+   "value": "780.04",
+   "unit": "INR_crore",
+   "page": 235,
+   "quote": "TOTAL 1,451.97 1,399.99 1,355.47 388.57 391.47 780.04 5.75",
+   "what": "medium term, total (Table 6-27): cost"
+  },
+  "mt.total.landed": {
+   "value": "5.75",
+   "unit": "INR_per_kWh",
+   "page": 235,
+   "quote": "TOTAL 1,451.97 1,399.99 1,355.47 388.57 391.47 780.04 5.75",
+   "what": "medium term, total (Table 6-27): landed"
+  },
+  "re.sjvnl.units": {
+   "value": "609.35",
+   "unit": "MU",
+   "page": 236,
+   "quote": "SJVNL (100 MW FDRE-based power) - 609.35 3.58% 587.54 3.18% 568.86 271.16 4.77",
+   "what": "SJVNL (100 MW FDRE-based power), renewable (Table 6-28): units"
+  },
+  "re.sjvnl.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 236,
+   "quote": "SJVNL (100 MW FDRE-based power) - 609.35 3.58% 587.54 3.18% 568.86 271.16 4.77",
+   "what": "SJVNL (100 MW FDRE-based power), renewable (Table 6-28): ists"
+  },
+  "re.sjvnl.at_state": {
+   "value": "587.54",
+   "unit": "MU",
+   "page": 236,
+   "quote": "SJVNL (100 MW FDRE-based power) - 609.35 3.58% 587.54 3.18% 568.86 271.16 4.77",
+   "what": "SJVNL (100 MW FDRE-based power), renewable (Table 6-28): at_state"
+  },
+  "re.sjvnl.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 236,
+   "quote": "SJVNL (100 MW FDRE-based power) - 609.35 3.58% 587.54 3.18% 568.86 271.16 4.77",
+   "what": "SJVNL (100 MW FDRE-based power), renewable (Table 6-28): intra"
+  },
+  "re.sjvnl.at_periphery": {
+   "value": "568.86",
+   "unit": "MU",
+   "page": 236,
+   "quote": "SJVNL (100 MW FDRE-based power) - 609.35 3.58% 587.54 3.18% 568.86 271.16 4.77",
+   "what": "SJVNL (100 MW FDRE-based power), renewable (Table 6-28): at_periphery"
+  },
+  "re.sjvnl.cost": {
+   "value": "271.16",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "SJVNL (100 MW FDRE-based power) - 609.35 3.58% 587.54 3.18% 568.86 271.16 4.77",
+   "what": "SJVNL (100 MW FDRE-based power), renewable (Table 6-28): cost"
+  },
+  "re.sjvnl.landed": {
+   "value": "4.77",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "SJVNL (100 MW FDRE-based power) - 609.35 3.58% 587.54 3.18% 568.86 271.16 4.77",
+   "what": "SJVNL (100 MW FDRE-based power), renewable (Table 6-28): landed"
+  },
+  "re.ptc_wind.units": {
+   "value": "35.07",
+   "unit": "MU",
+   "page": 236,
+   "quote": "PTC (LT Wind Power) 10 35.07 0.00% 35.07 3.18% 33.95 12.38 3.65",
+   "what": "PTC (LT Wind Power), renewable (Table 6-28): units"
+  },
+  "re.ptc_wind.ists": {
+   "value": "0.00",
+   "unit": "percent",
+   "page": 236,
+   "quote": "PTC (LT Wind Power) 10 35.07 0.00% 35.07 3.18% 33.95 12.38 3.65",
+   "what": "PTC (LT Wind Power), renewable (Table 6-28): ists"
+  },
+  "re.ptc_wind.at_state": {
+   "value": "35.07",
+   "unit": "MU",
+   "page": 236,
+   "quote": "PTC (LT Wind Power) 10 35.07 0.00% 35.07 3.18% 33.95 12.38 3.65",
+   "what": "PTC (LT Wind Power), renewable (Table 6-28): at_state"
+  },
+  "re.ptc_wind.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 236,
+   "quote": "PTC (LT Wind Power) 10 35.07 0.00% 35.07 3.18% 33.95 12.38 3.65",
+   "what": "PTC (LT Wind Power), renewable (Table 6-28): intra"
+  },
+  "re.ptc_wind.at_periphery": {
+   "value": "33.95",
+   "unit": "MU",
+   "page": 236,
+   "quote": "PTC (LT Wind Power) 10 35.07 0.00% 35.07 3.18% 33.95 12.38 3.65",
+   "what": "PTC (LT Wind Power), renewable (Table 6-28): at_periphery"
+  },
+  "re.ptc_wind.cost": {
+   "value": "12.38",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "PTC (LT Wind Power) 10 35.07 0.00% 35.07 3.18% 33.95 12.38 3.65",
+   "what": "PTC (LT Wind Power), renewable (Table 6-28): cost"
+  },
+  "re.ptc_wind.landed": {
+   "value": "3.65",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "PTC (LT Wind Power) 10 35.07 0.00% 35.07 3.18% 33.95 12.38 3.65",
+   "what": "PTC (LT Wind Power), renewable (Table 6-28): landed"
+  },
+  "re.gnida.units": {
+   "value": "1.58",
+   "unit": "MU",
+   "page": 236,
+   "quote": "GNIDA (LT Solar Power) 1 1.58 0.00% 1.58 0.00% 1.58 1.11 7.06",
+   "what": "GNIDA (LT Solar Power), renewable (Table 6-28): units"
+  },
+  "re.gnida.ists": {
+   "value": "0.00",
+   "unit": "percent",
+   "page": 236,
+   "quote": "GNIDA (LT Solar Power) 1 1.58 0.00% 1.58 0.00% 1.58 1.11 7.06",
+   "what": "GNIDA (LT Solar Power), renewable (Table 6-28): ists"
+  },
+  "re.gnida.at_state": {
+   "value": "1.58",
+   "unit": "MU",
+   "page": 236,
+   "quote": "GNIDA (LT Solar Power) 1 1.58 0.00% 1.58 0.00% 1.58 1.11 7.06",
+   "what": "GNIDA (LT Solar Power), renewable (Table 6-28): at_state"
+  },
+  "re.gnida.intra": {
+   "value": "0.00",
+   "unit": "percent",
+   "page": 236,
+   "quote": "GNIDA (LT Solar Power) 1 1.58 0.00% 1.58 0.00% 1.58 1.11 7.06",
+   "what": "GNIDA (LT Solar Power), renewable (Table 6-28): intra"
+  },
+  "re.gnida.at_periphery": {
+   "value": "1.58",
+   "unit": "MU",
+   "page": 236,
+   "quote": "GNIDA (LT Solar Power) 1 1.58 0.00% 1.58 0.00% 1.58 1.11 7.06",
+   "what": "GNIDA (LT Solar Power), renewable (Table 6-28): at_periphery"
+  },
+  "re.gnida.cost": {
+   "value": "1.11",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "GNIDA (LT Solar Power) 1 1.58 0.00% 1.58 0.00% 1.58 1.11 7.06",
+   "what": "GNIDA (LT Solar Power), renewable (Table 6-28): cost"
+  },
+  "re.gnida.landed": {
+   "value": "7.06",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "GNIDA (LT Solar Power) 1 1.58 0.00% 1.58 0.00% 1.58 1.11 7.06",
+   "what": "GNIDA (LT Solar Power), renewable (Table 6-28): landed"
+  },
+  "re.adani.units": {
+   "value": "53.66",
+   "unit": "MU",
+   "page": 236,
+   "quote": "Adani (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "Adani (Solar Power), renewable (Table 6-28): units"
+  },
+  "re.adani.ists": {
+   "value": "0.00",
+   "unit": "percent",
+   "page": 236,
+   "quote": "Adani (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "Adani (Solar Power), renewable (Table 6-28): ists"
+  },
+  "re.adani.at_state": {
+   "value": "53.66",
+   "unit": "MU",
+   "page": 236,
+   "quote": "Adani (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "Adani (Solar Power), renewable (Table 6-28): at_state"
+  },
+  "re.adani.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 236,
+   "quote": "Adani (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "Adani (Solar Power), renewable (Table 6-28): intra"
+  },
+  "re.adani.at_periphery": {
+   "value": "51.95",
+   "unit": "MU",
+   "page": 236,
+   "quote": "Adani (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "Adani (Solar Power), renewable (Table 6-28): at_periphery"
+  },
+  "re.adani.cost": {
+   "value": "16.53",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "Adani (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "Adani (Solar Power), renewable (Table 6-28): cost"
+  },
+  "re.adani.landed": {
+   "value": "3.18",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "Adani (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "Adani (Solar Power), renewable (Table 6-28): landed"
+  },
+  "re.tata.units": {
+   "value": "53.66",
+   "unit": "MU",
+   "page": 236,
+   "quote": "TATA (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "TATA (Solar Power), renewable (Table 6-28): units"
+  },
+  "re.tata.ists": {
+   "value": "0.00",
+   "unit": "percent",
+   "page": 236,
+   "quote": "TATA (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "TATA (Solar Power), renewable (Table 6-28): ists"
+  },
+  "re.tata.at_state": {
+   "value": "53.66",
+   "unit": "MU",
+   "page": 236,
+   "quote": "TATA (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "TATA (Solar Power), renewable (Table 6-28): at_state"
+  },
+  "re.tata.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 236,
+   "quote": "TATA (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "TATA (Solar Power), renewable (Table 6-28): intra"
+  },
+  "re.tata.at_periphery": {
+   "value": "51.95",
+   "unit": "MU",
+   "page": 236,
+   "quote": "TATA (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "TATA (Solar Power), renewable (Table 6-28): at_periphery"
+  },
+  "re.tata.cost": {
+   "value": "16.53",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "TATA (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "TATA (Solar Power), renewable (Table 6-28): cost"
+  },
+  "re.tata.landed": {
+   "value": "3.18",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "TATA (Solar Power) 25 53.66 0.00% 53.66 3.18% 51.95 16.53 3.18",
+   "what": "TATA (Solar Power), renewable (Table 6-28): landed"
+  },
+  "re.eeptpl_solar.units": {
+   "value": "82.35",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Solar 50 82.35 3.58% 79.40 3.18% 76.88 25.94 3.37",
+   "what": "EEPTPL – Solar, renewable (Table 6-28): units"
+  },
+  "re.eeptpl_solar.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 236,
+   "quote": "EEPTPL – Solar 50 82.35 3.58% 79.40 3.18% 76.88 25.94 3.37",
+   "what": "EEPTPL – Solar, renewable (Table 6-28): ists"
+  },
+  "re.eeptpl_solar.at_state": {
+   "value": "79.40",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Solar 50 82.35 3.58% 79.40 3.18% 76.88 25.94 3.37",
+   "what": "EEPTPL – Solar, renewable (Table 6-28): at_state"
+  },
+  "re.eeptpl_solar.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 236,
+   "quote": "EEPTPL – Solar 50 82.35 3.58% 79.40 3.18% 76.88 25.94 3.37",
+   "what": "EEPTPL – Solar, renewable (Table 6-28): intra"
+  },
+  "re.eeptpl_solar.at_periphery": {
+   "value": "76.88",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Solar 50 82.35 3.58% 79.40 3.18% 76.88 25.94 3.37",
+   "what": "EEPTPL – Solar, renewable (Table 6-28): at_periphery"
+  },
+  "re.eeptpl_solar.cost": {
+   "value": "25.94",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "EEPTPL – Solar 50 82.35 3.58% 79.40 3.18% 76.88 25.94 3.37",
+   "what": "EEPTPL – Solar, renewable (Table 6-28): cost"
+  },
+  "re.eeptpl_solar.landed": {
+   "value": "3.37",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "EEPTPL – Solar 50 82.35 3.58% 79.40 3.18% 76.88 25.94 3.37",
+   "what": "EEPTPL – Solar, renewable (Table 6-28): landed"
+  },
+  "re.eeptpl_ns1.units": {
+   "value": "33.12",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 1 15 33.12 3.58% 31.93 3.18% 30.92 17.81 5.76",
+   "what": "EEPTPL – Non-Solar 1, renewable (Table 6-28): units"
+  },
+  "re.eeptpl_ns1.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 1 15 33.12 3.58% 31.93 3.18% 30.92 17.81 5.76",
+   "what": "EEPTPL – Non-Solar 1, renewable (Table 6-28): ists"
+  },
+  "re.eeptpl_ns1.at_state": {
+   "value": "31.93",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 1 15 33.12 3.58% 31.93 3.18% 30.92 17.81 5.76",
+   "what": "EEPTPL – Non-Solar 1, renewable (Table 6-28): at_state"
+  },
+  "re.eeptpl_ns1.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 1 15 33.12 3.58% 31.93 3.18% 30.92 17.81 5.76",
+   "what": "EEPTPL – Non-Solar 1, renewable (Table 6-28): intra"
+  },
+  "re.eeptpl_ns1.at_periphery": {
+   "value": "30.92",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 1 15 33.12 3.58% 31.93 3.18% 30.92 17.81 5.76",
+   "what": "EEPTPL – Non-Solar 1, renewable (Table 6-28): at_periphery"
+  },
+  "re.eeptpl_ns1.cost": {
+   "value": "17.81",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 1 15 33.12 3.58% 31.93 3.18% 30.92 17.81 5.76",
+   "what": "EEPTPL – Non-Solar 1, renewable (Table 6-28): cost"
+  },
+  "re.eeptpl_ns1.landed": {
+   "value": "5.76",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 1 15 33.12 3.58% 31.93 3.18% 30.92 17.81 5.76",
+   "what": "EEPTPL – Non-Solar 1, renewable (Table 6-28): landed"
+  },
+  "re.eeptpl_ns2.units": {
+   "value": "44.16",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 2 20 44.16 3.58% 42.58 3.18% 41.23 23.74 5.76",
+   "what": "EEPTPL – Non-Solar 2, renewable (Table 6-28): units"
+  },
+  "re.eeptpl_ns2.ists": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 2 20 44.16 3.58% 42.58 3.18% 41.23 23.74 5.76",
+   "what": "EEPTPL – Non-Solar 2, renewable (Table 6-28): ists"
+  },
+  "re.eeptpl_ns2.at_state": {
+   "value": "42.58",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 2 20 44.16 3.58% 42.58 3.18% 41.23 23.74 5.76",
+   "what": "EEPTPL – Non-Solar 2, renewable (Table 6-28): at_state"
+  },
+  "re.eeptpl_ns2.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 2 20 44.16 3.58% 42.58 3.18% 41.23 23.74 5.76",
+   "what": "EEPTPL – Non-Solar 2, renewable (Table 6-28): intra"
+  },
+  "re.eeptpl_ns2.at_periphery": {
+   "value": "41.23",
+   "unit": "MU",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 2 20 44.16 3.58% 42.58 3.18% 41.23 23.74 5.76",
+   "what": "EEPTPL – Non-Solar 2, renewable (Table 6-28): at_periphery"
+  },
+  "re.eeptpl_ns2.cost": {
+   "value": "23.74",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 2 20 44.16 3.58% 42.58 3.18% 41.23 23.74 5.76",
+   "what": "EEPTPL – Non-Solar 2, renewable (Table 6-28): cost"
+  },
+  "re.eeptpl_ns2.landed": {
+   "value": "5.76",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "EEPTPL – Non-Solar 2 20 44.16 3.58% 42.58 3.18% 41.23 23.74 5.76",
+   "what": "EEPTPL – Non-Solar 2, renewable (Table 6-28): landed"
+  },
+  "re.total.units": {
+   "value": "912.94",
+   "unit": "MU",
+   "page": 236,
+   "quote": "TOTAL 912.94 885.41 857.30 385.20 4.49",
+   "what": "renewable, total (Table 6-28): units"
+  },
+  "re.total.at_state": {
+   "value": "885.41",
+   "unit": "MU",
+   "page": 236,
+   "quote": "TOTAL 912.94 885.41 857.30 385.20 4.49",
+   "what": "renewable, total (Table 6-28): at_state"
+  },
+  "re.total.at_periphery": {
+   "value": "857.30",
+   "unit": "MU",
+   "page": 236,
+   "quote": "TOTAL 912.94 885.41 857.30 385.20 4.49",
+   "what": "renewable, total (Table 6-28): at_periphery"
+  },
+  "re.total.cost": {
+   "value": "385.20",
+   "unit": "INR_crore",
+   "page": 236,
+   "quote": "TOTAL 912.94 885.41 857.30 385.20 4.49",
+   "what": "renewable, total (Table 6-28): cost"
+  },
+  "re.total.landed": {
+   "value": "4.49",
+   "unit": "INR_per_kWh",
+   "page": 236,
+   "quote": "TOTAL 912.94 885.41 857.30 385.20 4.49",
+   "what": "renewable, total (Table 6-28): landed"
+  },
+  "px.units": {
+   "value": "617.63",
+   "unit": "MU",
+   "page": 240,
+   "quote": "approves the procurement of 617.63 MUs of short-term power through the Power Exchange at a rate of Rs. 4.67/kWh",
+   "what": "exchange purchase approved (para 6.5.51)"
+  },
+  "px.rate": {
+   "value": "4.67",
+   "unit": "INR_per_kWh",
+   "page": 240,
+   "quote": "approves the procurement of 617.63 MUs of short-term power through the Power Exchange at a rate of Rs. 4.67/kWh",
+   "what": "exchange rate, the 14-month IEX DAM average (para 6.5.51)"
+  },
+  "px.at_periphery": {
+   "value": "576.59",
+   "unit": "MU",
+   "page": 238,
+   "quote": "21 Power Purchase from Exchange EXCHANG E 2026-2027 576.59 576.59",
+   "what": "exchange purchase at NPCL's periphery (Table 6-31, row 21)"
+  },
+  "st.total": {
+   "value": "751.49",
+   "unit": "MU",
+   "page": 240,
+   "quote": "APPCPL - PD Sikkim - RE RTC Up to 25 MW 01.06.2026 to 30.09.2026 59.40 Total 751.49",
+   "what": "short-term agreements approved, energy at NPCL (Table 6-33, total)"
+  },
+  "gna.base": {
+   "value": "357616.00",
+   "unit": "INR_per_MW_month",
+   "page": 241,
+   "quote": "Base Cost* Rs./ MW/ Month 3,57,616.00",
+   "what": "GNA base cost (Table 6-34; October 2025's) (Table 6-34)"
+  },
+  "gna.scheduled": {
+   "value": "5066.34",
+   "unit": "MU",
+   "page": 241,
+   "quote": "Total Energy Scheduled @ ISTS PP ISTS MUs 5,066.34",
+   "what": "energy scheduled at the ISTS (Table 6-34)"
+  },
+  "gna.quantum": {
+   "value": "501.00",
+   "unit": "MW",
+   "page": 241,
+   "quote": "GNA Quantum MW 501.00",
+   "what": "GNA quantum (Table 6-34)"
+  },
+  "gna.energy": {
+   "value": "4388.76",
+   "unit": "MU",
+   "page": 241,
+   "quote": "Energy under GNA capacity MUs 4,388.76",
+   "what": "energy under GNA capacity (Table 6-34)"
+  },
+  "gna.charges": {
+   "value": "215.00",
+   "unit": "INR_crore",
+   "page": 241,
+   "quote": "GNA Charges Rs./ kWh 0.49 Rs. Cr. 215.00",
+   "what": "GNA charges (Table 6-34)"
+  },
+  "gna.rate": {
+   "value": "0.49",
+   "unit": "INR_per_kWh",
+   "page": 241,
+   "quote": "GNA Charges Rs./ kWh 0.49 Rs. Cr.",
+   "what": "GNA charges per unit (Table 6-34)"
+  },
+  "tgna.charges": {
+   "value": "42.21",
+   "unit": "INR_crore",
+   "page": 241,
+   "quote": "T-GNA Charges Rs./ kWh 0.54 Rs. Cr. 42.21",
+   "what": "T-GNA charges (Table 6-34)"
+  },
+  "gna.total": {
+   "value": "257.21",
+   "unit": "INR_crore",
+   "page": 241,
+   "quote": "Rs. Cr. 42.21 Total Rs. Cr. 257.21",
+   "what": "GNA and T-GNA, total (Table 6-34)"
+  }
+ }
+}

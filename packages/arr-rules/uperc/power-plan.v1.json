@@ -1,0 +1,811 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC MYT Regulations 2025 — projected power purchase by source",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "The projection of a year's power purchase source by source, as an order lays it out.",
+ "rules": [
+  {
+   "id": "uperc.ppplan.units_capacity",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy available from a contracted capacity",
+   "output": "ppp_units_capacity",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "capacity * plf * hours",
+   "inputs": {
+    "capacity": {
+     "unit": "MW",
+     "source": "record:ppp_capacity"
+    },
+    "plf": {
+     "unit": "fraction",
+     "source": "record:ppp_plf"
+    },
+    "hours": {
+     "unit": "hour",
+     "source": "assumption:hours_in_year"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.units",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy available at the generator's bus",
+   "output": "ppp_units",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "units",
+   "inputs": {
+    "units": {
+     "unit": "MU",
+     "source": "record:ppp_units"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.at_state",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy at the state periphery, after the inter-state loss",
+   "output": "ppp_at_state",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "units * (1 - loss)",
+   "inputs": {
+    "units": {
+     "unit": "MU",
+     "source": "rule:ppp_units"
+    },
+    "loss": {
+     "unit": "fraction",
+     "source": "record:ppp_ists_loss"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.at_periphery",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy at NPCL's periphery, after the intra-state loss",
+   "output": "ppp_at_periphery",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "at_state * (1 - loss)",
+   "inputs": {
+    "at_state": {
+     "unit": "MU",
+     "source": "rule:ppp_at_state"
+    },
+    "loss": {
+     "unit": "fraction",
+     "source": "record:ppp_intra_loss"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.fixed",
+   "version": 1,
+   "status": "draft",
+   "title": "Fixed charges of a source",
+   "output": "ppp_fixed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "units * rate",
+   "inputs": {
+    "units": {
+     "unit": "MU",
+     "source": "rule:ppp_units"
+    },
+    "rate": {
+     "unit": "INR_per_kWh",
+     "source": "record:ppp_fixed_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.energy",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy charges of a source",
+   "output": "ppp_energy",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "units * rate",
+   "inputs": {
+    "units": {
+     "unit": "MU",
+     "source": "rule:ppp_units"
+    },
+    "rate": {
+     "unit": "INR_per_kWh",
+     "source": "record:ppp_energy_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.cost",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost of a source: fixed and energy charges",
+   "output": "ppp_cost",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "fixed + energy",
+   "inputs": {
+    "fixed": {
+     "unit": "INR_crore",
+     "source": "rule:ppp_fixed"
+    },
+    "energy": {
+     "unit": "INR_crore",
+     "source": "rule:ppp_energy"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.landed",
+   "version": 1,
+   "status": "draft",
+   "title": "Landed cost per unit at NPCL's periphery",
+   "output": "ppp_landed",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "cost / energy",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "rule:ppp_cost"
+    },
+    "energy": {
+     "unit": "MU",
+     "source": "rule:ppp_at_periphery"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.cost_given",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost of a source as approved (its charges taken from the generator's tariff)",
+   "output": "ppp_cost_given",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "cost",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "record:ppp_cost_given"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.landed_given",
+   "version": 1,
+   "status": "draft",
+   "title": "Landed cost per unit at NPCL's periphery, on the approved cost",
+   "output": "ppp_landed_given",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "cost / energy",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "rule:ppp_cost_given"
+    },
+    "energy": {
+     "unit": "MU",
+     "source": "rule:ppp_at_periphery"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations",
+   "per": "pp_source"
+  },
+  {
+   "id": "uperc.ppplan.units_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy available, all sources",
+   "output": "ppp_units_total",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "units",
+   "inputs": {
+    "units": {
+     "unit": "MU",
+     "source": "sum:ppp_units"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.at_state_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy at the state periphery, all sources",
+   "output": "ppp_at_state_total",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "e",
+   "inputs": {
+    "e": {
+     "unit": "MU",
+     "source": "sum:ppp_at_state"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.at_periphery_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy at NPCL's periphery, all sources",
+   "output": "ppp_at_periphery_total",
+   "unit": "MU",
+   "schedule": "R-SCH-3",
+   "formula": "e",
+   "inputs": {
+    "e": {
+     "unit": "MU",
+     "source": "sum:ppp_at_periphery"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.fixed_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Fixed charges, all sources",
+   "output": "ppp_fixed_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "c",
+   "inputs": {
+    "c": {
+     "unit": "INR_crore",
+     "source": "sum:ppp_fixed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.energy_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy charges, all sources",
+   "output": "ppp_energy_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "c",
+   "inputs": {
+    "c": {
+     "unit": "INR_crore",
+     "source": "sum:ppp_energy"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.cost_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost, all sources",
+   "output": "ppp_cost_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "c",
+   "inputs": {
+    "c": {
+     "unit": "INR_crore",
+     "source": "sum:ppp_cost"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.landed_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Landed cost per unit at NPCL's periphery, all sources",
+   "output": "ppp_landed_total",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "cost / energy",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "rule:ppp_cost_total"
+    },
+    "energy": {
+     "unit": "MU",
+     "source": "rule:ppp_at_periphery_total"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.cost_given_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Cost as approved, all sources",
+   "output": "ppp_cost_given_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "c",
+   "inputs": {
+    "c": {
+     "unit": "INR_crore",
+     "source": "sum:ppp_cost_given"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.landed_given_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Landed cost per unit as approved, all sources",
+   "output": "ppp_landed_given_total",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "cost / energy",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "rule:ppp_cost_given_total"
+    },
+    "energy": {
+     "unit": "MU",
+     "source": "rule:ppp_at_periphery_total"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.gna_charges",
+   "version": 1,
+   "status": "draft",
+   "title": "GNA charges: the base cost of the quantum for the year",
+   "output": "gna_charges",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-3",
+   "formula": "base * quantum * months",
+   "inputs": {
+    "base": {
+     "unit": "INR_per_MW_month",
+     "source": "record:gna_base_cost"
+    },
+    "quantum": {
+     "unit": "MW",
+     "source": "record:gna_quantum"
+    },
+    "months": {
+     "unit": "month",
+     "source": "assumption:months_in_year_gna"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  },
+  {
+   "id": "uperc.ppplan.gna_rate",
+   "version": 1,
+   "status": "draft",
+   "title": "GNA charges per unit under GNA capacity",
+   "output": "gna_rate",
+   "unit": "INR_per_kWh",
+   "schedule": "R-SCH-3",
+   "formula": "charges / energy",
+   "inputs": {
+    "charges": {
+     "unit": "INR_crore",
+     "source": "rule:gna_charges"
+    },
+    "energy": {
+     "unit": "MU",
+     "source": "record:gna_energy"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC MYT Regulations 2025 — projected power purchase, as the order of 2 July 2026 computes it (Tables 6-26 to 6-28, para 6.5.51): energy available at the generator, the inter- and intra-state losses to NPCL's periphery, fixed and energy charges at the approved rates, the landed cost per unit",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC",
+    "from_fy": "FY2025-26"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "draft: the order's projection as it lays it out; unverified until a person reads the Regulations"
+  }
+ ]
+}

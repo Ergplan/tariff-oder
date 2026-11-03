@@ -58,6 +58,8 @@ UNITS: dict[str, tuple[Decimal, dict[str, int]]] = {
     "MVA": (Decimal(10) ** 3, {"apparent_power": 1}),
     "INR_per_kW_month": (Decimal(1), {"money": 1, "power": -1, "time": -1}),
     "INR_per_kVA_month": (Decimal(1), {"money": 1, "apparent_power": -1, "time": -1}),
+    "INR_per_MW_month": (Decimal("0.001"), {"money": 1, "power": -1, "time": -1}),
+    "hour": (Decimal(1), {"energy": 1, "power": -1}),
     "month": (Decimal(1), {"time": 1}),
     "year": (Decimal(12), {"time": 1}),
     "fraction": (Decimal(1), {}),

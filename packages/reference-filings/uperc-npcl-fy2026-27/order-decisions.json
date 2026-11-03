@@ -2532,6 +2532,7 @@
         "what": "the surplus sale and DSM not allowed"
        }
       ],
+      "binding": "approval-pp-fy27.json",
       "parts_sum": "29.05",
       "parts_result": "match"
      },

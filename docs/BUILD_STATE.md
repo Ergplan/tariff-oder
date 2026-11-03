@@ -1005,6 +1005,28 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 114 (2026-11-03): the ARR year's power purchase reproduced source by source.**
+  - **The record:** `order/figures-pp-fy2026-27.json` holds 154 figures (Tables 6-26 to 6-28,
+    6-31, 6-33 and 6-34, para 6.5.51), 154 / 154 quotes verified.
+  - **Units:** INR per MW-month, and `hour` (energy per power, so MW × hours is energy).
+  - **New draft rules `power-plan.v1.json` (22):**
+    - energy from contracted capacity × PLF × 8,760 hours;
+    - the inter- and intra-state losses to NPCL's periphery;
+    - fixed and energy charges at the approved rates;
+    - the landed cost per unit, and totals;
+    - GNA charges from the base cost.
+  - **Binding `approval-pp-fy27.json`: 53 / 77 match.**  JITPL matches to the last place, and
+    GNA exactly (215.00).  The test bounds every difference by that output's own input
+    precision:
+    - the four 25 MW contracts are within the rounding of their printed rates;
+    - losses are printed to two places of a percent;
+    - GNIDA's small cost is printed to two places.
+  - **Ties checked by the test:** the parts against Table 6-35's lines — DIL 580.74, medium term
+    780.04, renewables 385.20, exchange 576.59 MU and 288.44, GNA and T-GNA 257.21.
+  - **Still read:** the short-term contracts' rates and DIL's charges come from orders not in
+    this session.  T-GNA's 42.21 does not follow from the figures printed.
+  Nothing verified, nothing approved.
+
   **Increment 113 (2026-11-02): the APR's depreciation reproduced class by class between two
   printed balances.**
   - **The problem:** Table 5-40 prints only the APR's part totals.  The FY2025-26 per-class
@@ -2841,6 +2863,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 114 (2026-11-03): 484 passed** (+1 unit: the ARR year's power purchase by source, differences bounded by input precision, tied to Table 6-35).  `check_order_quotes.py`: 154 / 154.  Ruff and format clean.
 - **Increment 113 (2026-11-02): 483 passed** (+2 unit: aliased records and one figure less another, synthetic; the APR's depreciation exactly).  Ruff and format clean.
 - **Increment 112 (2026-11-02): 481 passed** (+1 unit: the true-up's bad debts and non-tariff income).  `check_order_quotes.py`: 16 / 16.  Ruff and format clean.
 - **Increment 111 (2026-11-02): 480 passed** (+1 unit: the ARR year's working capital).  `check_order_quotes.py`: 17 / 17.  Ruff and format clean.
@@ -3087,7 +3110,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-02, after increment 113) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 114) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
