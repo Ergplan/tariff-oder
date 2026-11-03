@@ -1005,6 +1005,26 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 115 (2026-11-03): the ARR year's energy balance, claimed and approved.**
+  - **The record:** `order/figures-energy-balance-fy2026-27.json` holds 26 figures (Table 6-9),
+    26 / 26 quotes verified.
+  - **Five new draft energy-balance rules (from FY2025-26), following the order's layout:**
+    - net requirement at NPCL's bus;
+    - grossed up for the intra-state loss;
+    - less the sources at the STU bus;
+    - grossed up for the inter-state loss;
+    - the total.
+    Two of the order's printed formula labels are slips; its figures follow the arithmetic.
+  - **Binding `approval-energy-balance-fy27.json`, both columns:** 9 / 14 match, the rest within
+    the printed precision of the losses.  NPCL's unrounded sales and intra-state loss are fed
+    from its own Energy Balance sheet.
+  - **Ties checked by the test:** the approved requirement at the bus is Table 6-35's import
+    (4,729.49).
+  - **A78 (reviewer):** the GNA table takes 5,066.34 MU at the ISTS, which is NPCL's claimed
+    total; the approved balance gives 5,043.87.  This is a question: T-GNA's derivation is not
+    established.
+  Nothing verified, nothing approved.
+
   **Increment 114 (2026-11-03): the ARR year's power purchase reproduced source by source.**
   - **The record:** `order/figures-pp-fy2026-27.json` holds 154 figures (Tables 6-26 to 6-28,
     6-31, 6-33 and 6-34, para 6.5.51), 154 / 154 quotes verified.
@@ -2863,6 +2883,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 115 (2026-11-03): 485 passed** (+1 unit: the energy balance, both columns).  `check_order_quotes.py`: 26 / 26.  Ruff and format clean.
 - **Increment 114 (2026-11-03): 484 passed** (+1 unit: the ARR year's power purchase by source, differences bounded by input precision, tied to Table 6-35).  `check_order_quotes.py`: 154 / 154.  Ruff and format clean.
 - **Increment 113 (2026-11-02): 483 passed** (+2 unit: aliased records and one figure less another, synthetic; the APR's depreciation exactly).  Ruff and format clean.
 - **Increment 112 (2026-11-02): 481 passed** (+1 unit: the true-up's bad debts and non-tariff income).  `check_order_quotes.py`: 16 / 16.  Ruff and format clean.
@@ -3110,7 +3131,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 114) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 115) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3176,7 +3197,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **45 findings (A29–A77):** 26 for the petitioner, collected in the draft queries; 19 for the
+  - **46 findings (A29–A78):** 26 for the petitioner, collected in the draft queries; 20 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

@@ -1,0 +1,82 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "ARR",
+ "rates": "order/figures-energy-balance-fy2026-27.json",
+ "places": 2,
+ "note": "The energy balance for FY2026-27 as NPCL claimed it and as the Commission approved it (Table 6-9), with the same rules: sales grossed up for the 6.97 % distribution loss, less what is delivered at NPCL's bus, grossed up for the intra-state loss, less what is connected at the STU bus, grossed up for the inter-state loss.  The Commission takes UPPTCL's approved 3.18 % (para 6.4.2) for NPCL's 3.35 %, and the delivered-at-bus 1.58 (GNIDA's solar) for NPCL's −140.23 (its surplus sale, not allowed, para 6.5.53).  Two of the order's printed formula labels are slips; its figures follow the arithmetic.  NPCL's sales, and its intra-state loss in the claimed column, are its own unrounded figures.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "energy balance FY2026-27, claimed (Table 6-9)",
+   "inputs": {
+    "fact:E.SALES": {
+     "cell": "Energy Balance!O8",
+     "unit": "MU",
+     "why": "NPCL's projected sales unrounded (its Energy Balance O8): the order adopts them ('Claimed' = 'Approved', 4,399.84)"
+    },
+    "assumption:dist_loss": {
+     "rate": "eb.claimed.dist_loss"
+    },
+    "record:energy_at_bus": {
+     "rate": "eb.claimed.at_bus"
+    },
+    "assumption:intra_state_loss": {
+     "cell": "Energy Balance!O17",
+     "unit": "fraction",
+     "why": "NPCL's intra-state loss unrounded (its Energy Balance O17, 3.3503 %), which the order prints as 3.35 %"
+    },
+    "record:energy_state_sources": {
+     "rate": "eb.claimed.state_sources"
+    },
+    "assumption:inter_state_loss": {
+     "rate": "eb.claimed.inter"
+    }
+   },
+   "checks": {
+    "dist_loss_mu": "order:eb.claimed.dist_loss_mu",
+    "energy_input_dist": "order:eb.claimed.requirement",
+    "eb_net_at_bus": "order:eb.claimed.net_at_bus",
+    "eb_at_state": "order:eb.claimed.at_state",
+    "eb_net_at_state": "order:eb.claimed.net_at_state",
+    "eb_at_ctu": "order:eb.claimed.at_ctu",
+    "eb_total": "order:eb.claimed.total"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "energy balance FY2026-27, approved (Table 6-9)",
+   "inputs": {
+    "fact:E.SALES": {
+     "cell": "Energy Balance!O8",
+     "unit": "MU",
+     "why": "NPCL's projected sales unrounded (its Energy Balance O8): the order adopts them ('Claimed' = 'Approved', 4,399.84)"
+    },
+    "assumption:dist_loss": {
+     "rate": "eb.approved.dist_loss"
+    },
+    "record:energy_at_bus": {
+     "rate": "eb.approved.at_bus"
+    },
+    "assumption:intra_state_loss": {
+     "rate": "eb.approved.intra"
+    },
+    "record:energy_state_sources": {
+     "rate": "eb.approved.state_sources"
+    },
+    "assumption:inter_state_loss": {
+     "rate": "eb.approved.inter"
+    }
+   },
+   "checks": {
+    "dist_loss_mu": "order:eb.approved.dist_loss_mu",
+    "energy_input_dist": "order:eb.approved.requirement",
+    "eb_net_at_bus": "order:eb.approved.net_at_bus",
+    "eb_at_state": "order:eb.approved.at_state",
+    "eb_net_at_state": "order:eb.approved.net_at_state",
+    "eb_at_ctu": "order:eb.approved.at_ctu",
+    "eb_total": "order:eb.approved.total"
+   }
+  }
+ ]
+}

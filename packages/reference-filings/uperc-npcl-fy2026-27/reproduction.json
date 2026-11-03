@@ -11347,6 +11347,165 @@
    ]
   },
   {
+   "binding": "approval-energy-balance-fy27.json",
+   "checks": [
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, claimed (Table 6-9) order:eb.claimed.dist_loss_mu",
+     "output": "dist_loss_mu",
+     "result": "match",
+     "filed": "329.65",
+     "computed": "329.65",
+     "why": null,
+     "exact": "329.645323572127195850800817"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, claimed (Table 6-9) order:eb.claimed.requirement",
+     "output": "energy_input_dist",
+     "result": "match",
+     "filed": "4729.49",
+     "computed": "4729.49",
+     "why": null,
+     "exact": "4729.488143072126195850800817"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, claimed (Table 6-9) order:eb.claimed.net_at_bus",
+     "output": "eb_net_at_bus",
+     "result": "match",
+     "filed": "4869.72",
+     "computed": "4869.72",
+     "why": null,
+     "exact": "4869.718143072126195850800817"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, claimed (Table 6-9) order:eb.claimed.at_state",
+     "output": "eb_at_state",
+     "result": "match",
+     "filed": "5038.53",
+     "computed": "5038.53",
+     "why": null,
+     "exact": "5038.526018654541845838272664"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, claimed (Table 6-9) order:eb.claimed.net_at_state",
+     "output": "eb_net_at_state",
+     "result": "match",
+     "filed": "4661.58",
+     "computed": "4661.58",
+     "why": null,
+     "exact": "4661.576018654541845838272664"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, claimed (Table 6-9) order:eb.claimed.at_ctu",
+     "output": "eb_at_ctu",
+     "result": "differs",
+     "filed": "4829.62",
+     "computed": "4829.65",
+     "why": null,
+     "exact": "4829.647760727871783918641384"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, claimed (Table 6-9) order:eb.claimed.total",
+     "output": "eb_total",
+     "result": "differs",
+     "filed": "5066.34",
+     "computed": "5066.37",
+     "why": null,
+     "exact": "5066.367760727871783918641384"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, approved (Table 6-9) order:eb.approved.dist_loss_mu",
+     "output": "dist_loss_mu",
+     "result": "match",
+     "filed": "329.65",
+     "computed": "329.65",
+     "why": null,
+     "exact": "329.645323572127195850800817"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, approved (Table 6-9) order:eb.approved.requirement",
+     "output": "energy_input_dist",
+     "result": "match",
+     "filed": "4729.49",
+     "computed": "4729.49",
+     "why": null,
+     "exact": "4729.488143072126195850800817"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, approved (Table 6-9) order:eb.approved.net_at_bus",
+     "output": "eb_net_at_bus",
+     "result": "match",
+     "filed": "4727.91",
+     "computed": "4727.91",
+     "why": null,
+     "exact": "4727.908143072126195850800817"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, approved (Table 6-9) order:eb.approved.at_state",
+     "output": "eb_at_state",
+     "result": "differs",
+     "filed": "4883.20",
+     "computed": "4883.19",
+     "why": null,
+     "exact": "4883.193702821861387988846124"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, approved (Table 6-9) order:eb.approved.net_at_state",
+     "output": "eb_net_at_state",
+     "result": "differs",
+     "filed": "4284.86",
+     "computed": "4284.85",
+     "why": null,
+     "exact": "4284.853702821861387988846124"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, approved (Table 6-9) order:eb.approved.at_ctu",
+     "output": "eb_at_ctu",
+     "result": "differs",
+     "filed": "4443.96",
+     "computed": "4443.95",
+     "why": null,
+     "exact": "4443.947005623170906439375777"
+    },
+    {
+     "table": "ARR",
+     "fiscal_year": "FY2026-27",
+     "category": "energy balance FY2026-27, approved (Table 6-9) order:eb.approved.total",
+     "output": "eb_total",
+     "result": "match",
+     "filed": "5043.87",
+     "computed": "5043.87",
+     "why": null,
+     "exact": "5043.867005623170906439375777"
+    }
+   ]
+  },
+  {
    "binding": "approval-gap.json",
    "checks": [
     {

@@ -531,6 +531,18 @@
     "order/figures-fixed-charges-fy2026-27.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A78",
+   "kind": "question",
+   "title": "The GNA table takes the energy scheduled at the ISTS as 5,066.34 MU — NPCL's claimed total requirement — where the approved energy balance gives 5,043.87",
+   "detail": "The energy balance reproduces in both columns with the same rules (bindings/approval-energy-balance-fy27.json; differences within the printed precision of the losses): the Commission takes UPPTCL's 3.18 % for NPCL's 3.35 % and the 1.58 MU delivered at the bus for NPCL's −140.23 (its surplus sale, not allowed), and approves a total requirement of 5,043.87 MU (Table 6-9; also Table 6-82's 'Total Power Purchase (Ex-Bus)').  Table 6-34 computes the GNA and T-GNA charges on 'Total Energy Scheduled @ ISTS PP' of 5,066.34 — the claimed total — and 4,388.76 under GNA capacity.  The GNA charges (215.00) depend on the quantum, not the energy, and reproduce exactly; T-GNA (42.21) does not follow from the printed figures (0.54 × the 677.58 beyond GNA capacity would be 36.59), so whether the claimed rather than the approved energy reaches it is not established.  For the reviewer — a question, not an established error.",
+   "where": [
+    "Tariff order FY2026-27 pp.218–219 Table 6-9, p.241 Table 6-34, p.294 Table 6-82",
+    "bindings/approval-energy-balance-fy27.json",
+    "bindings/approval-pp-fy27.json"
+   ],
+   "for": "reviewer"
   }
  ]
 }

@@ -1,0 +1,218 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "UPERC order on NPCL's petition No. 2330/2025 (2 July 2026): energy balance FY2026-27, claimed and approved (Table 6-9)",
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "pages": 423
+ },
+ "figures": {
+  "eb.claimed.sales": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 218,
+   "quote": "A Energy Sales MU A 4,399.84 4,399.84",
+   "what": "energy balance FY2026-27, claimed: sales (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.sales": {
+   "value": "4399.84",
+   "unit": "MU",
+   "page": 218,
+   "quote": "A Energy Sales MU A 4,399.84 4,399.84",
+   "what": "energy balance FY2026-27, approved: sales (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.dist_loss": {
+   "value": "6.97",
+   "unit": "percent",
+   "page": 218,
+   "quote": "Distribution Loss % B 6.97% 6.97%",
+   "what": "energy balance FY2026-27, claimed: dist_loss (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.dist_loss": {
+   "value": "6.97",
+   "unit": "percent",
+   "page": 218,
+   "quote": "Distribution Loss % B 6.97% 6.97%",
+   "what": "energy balance FY2026-27, approved: dist_loss (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.dist_loss_mu": {
+   "value": "329.65",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Distribution Loss MU C=A*(1-1/(1-B)) 329.65 329.65",
+   "what": "energy balance FY2026-27, claimed: dist_loss_mu (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.dist_loss_mu": {
+   "value": "329.65",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Distribution Loss MU C=A*(1-1/(1-B)) 329.65 329.65",
+   "what": "energy balance FY2026-27, approved: dist_loss_mu (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.requirement": {
+   "value": "4729.49",
+   "unit": "MU",
+   "page": 219,
+   "quote": "C Energy Requirement at NPCL MU D=A+B 4,729.49 4,729.49",
+   "what": "energy balance FY2026-27, claimed: requirement (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.requirement": {
+   "value": "4729.49",
+   "unit": "MU",
+   "page": 219,
+   "quote": "C Energy Requirement at NPCL MU D=A+B 4,729.49 4,729.49",
+   "what": "energy balance FY2026-27, approved: requirement (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.at_bus": {
+   "value": "-140.23",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Energy Available/Delivered at NPCL Bus MU E (140.23) 1.58",
+   "what": "energy balance FY2026-27, claimed: at_bus (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.at_bus": {
+   "value": "1.58",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Energy Available/Delivered at NPCL Bus MU E (140.23) 1.58",
+   "what": "energy balance FY2026-27, approved: at_bus (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.net_at_bus": {
+   "value": "4869.72",
+   "unit": "MU",
+   "page": 219,
+   "quote": "D Net Energy requirement at NPCL Bus MU F=D-E 4,869.72 4,727.91",
+   "what": "energy balance FY2026-27, claimed: net_at_bus (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.net_at_bus": {
+   "value": "4727.91",
+   "unit": "MU",
+   "page": 219,
+   "quote": "D Net Energy requirement at NPCL Bus MU F=D-E 4,869.72 4,727.91",
+   "what": "energy balance FY2026-27, approved: net_at_bus (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.intra": {
+   "value": "3.35",
+   "unit": "percent",
+   "page": 219,
+   "quote": "E Intra State Losses % G 3.35% 3.18%",
+   "what": "energy balance FY2026-27, claimed: intra (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.intra": {
+   "value": "3.18",
+   "unit": "percent",
+   "page": 219,
+   "quote": "E Intra State Losses % G 3.35% 3.18%",
+   "what": "energy balance FY2026-27, approved: intra (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.at_state": {
+   "value": "5038.53",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Energy Requirement at STU/UP Periphery MU H=F/(1-E) 5,038.53 4,883.20",
+   "what": "energy balance FY2026-27, claimed: at_state (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.at_state": {
+   "value": "4883.20",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Energy Requirement at STU/UP Periphery MU H=F/(1-E) 5,038.53 4,883.20",
+   "what": "energy balance FY2026-27, approved: at_state (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.state_sources": {
+   "value": "376.95",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Energy from sources connected at STU Bus MU I 376.95 598.34",
+   "what": "energy balance FY2026-27, claimed: state_sources (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.state_sources": {
+   "value": "598.34",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Energy from sources connected at STU Bus MU I 376.95 598.34",
+   "what": "energy balance FY2026-27, approved: state_sources (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.net_at_state": {
+   "value": "4661.58",
+   "unit": "MU",
+   "page": 219,
+   "quote": "E Net Energy Requirement at STU Bus MU J=H-I 4,661.58 4,284.86",
+   "what": "energy balance FY2026-27, claimed: net_at_state (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.net_at_state": {
+   "value": "4284.86",
+   "unit": "MU",
+   "page": 219,
+   "quote": "E Net Energy Requirement at STU Bus MU J=H-I 4,661.58 4,284.86",
+   "what": "energy balance FY2026-27, approved: net_at_state (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.inter": {
+   "value": "3.48",
+   "unit": "percent",
+   "page": 219,
+   "quote": "F Inter-State Losses % K 3.48% 3.58%",
+   "what": "energy balance FY2026-27, claimed: inter (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.inter": {
+   "value": "3.58",
+   "unit": "percent",
+   "page": 219,
+   "quote": "F Inter-State Losses % K 3.48% 3.58%",
+   "what": "energy balance FY2026-27, approved: inter (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.at_ctu": {
+   "value": "4829.62",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Energy Requirement at CTU Bus MU L=J/(1-K) 4,829.62 4,443.96",
+   "what": "energy balance FY2026-27, claimed: at_ctu (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.at_ctu": {
+   "value": "4443.96",
+   "unit": "MU",
+   "page": 219,
+   "quote": "Energy Requirement at CTU Bus MU L=J/(1-K) 4,829.62 4,443.96",
+   "what": "energy balance FY2026-27, approved: at_ctu (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.claimed.total": {
+   "value": "5066.34",
+   "unit": "MU",
+   "page": 219,
+   "quote": "G Total Energy Requirement MU M=E+I+L 5,066.34 5,043.87",
+   "what": "energy balance FY2026-27, claimed: total (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  },
+  "eb.approved.total": {
+   "value": "5043.87",
+   "unit": "MU",
+   "page": 219,
+   "quote": "G Total Energy Requirement MU M=E+I+L 5,066.34 5,043.87",
+   "what": "energy balance FY2026-27, approved: total (Table 6-9)",
+   "header": "S. No. Particulars Units Formula Claimed Approved"
+  }
+ }
+}

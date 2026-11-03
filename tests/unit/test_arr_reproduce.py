@@ -1717,3 +1717,35 @@ def test_npcl_the_arr_years_power_purchase_reproduces_source_by_source():
     exchange = v("px.units") * v("px.rate") / 10
     assert abs(exchange - Decimal(rows["C.22"]["approved_amount"])) <= v("px.units") * half_rate
     assert v("gna.charges") + v("tgna.charges") == v("gna.total") == Decimal(rows["I"]["approved_amount"])
+
+
+def test_npcl_the_arr_years_energy_balance_reproduces_claimed_and_approved():
+    """Real data: Table 6-9's energy balance in both columns with the same rules — sales grossed up
+    for the distribution loss, less what is delivered at NPCL's bus, the intra-state loss, less what
+    is connected at the STU bus, the inter-state loss.  Differences are within the printed
+    precision of the losses; the approved requirement at NPCL's bus is Table 6-35's import, and the
+    GNA table's energy is the claimed total, not the approved (A78)."""
+    from decimal import Decimal
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-energy-balance-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    wb = openpyxl.load_workbook(folder / binding["workbook"], data_only=True)
+    checks = reproduce_cells(wb, binding, load_rules("UPERC"), rates=rec)
+    assert len(checks) == 14
+    for c in checks:
+        assert c.result == "match" or c.output in ("eb_at_state", "eb_net_at_state", "eb_at_ctu", "eb_total"), c
+        # two losses printed to two places of a percent, on about 5,000 MU
+        assert abs(Decimal(c.filed) - Decimal(c.computed)) <= Decimal(c.filed) * 2 * Decimal("0.00005") / Decimal(
+            "0.96"
+        )
+    rep = json.loads((folder / "order-decisions.json").read_text())
+    rows = {r["code"]: r["cells"] for r in next(t for t in rep["source_tables"] if t["proceeding"] == "arr")["rows"]}
+    assert rows["F"]["approved_mu"].replace(",", "") == rec["eb.approved.requirement"][0]
+    pp = load_binding_rates(folder, {"rates": "order/figures-pp-fy2026-27.json"})
+    assert pp["gna.scheduled"][0] == rec["eb.claimed.total"][0] != rec["eb.approved.total"][0]
