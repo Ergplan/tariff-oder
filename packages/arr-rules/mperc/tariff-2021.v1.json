@@ -1368,6 +1368,466 @@
    },
    "examples": [],
    "note": ""
+  },
+  {
+   "id": "mperc.esc.average5",
+   "version": 1,
+   "status": "draft",
+   "title": "Average yearly inflation over five years",
+   "output": "esc_average",
+   "unit": "percent",
+   "schedule": "R-SCH-5",
+   "formula": "(y1 + y2 + y3 + y4 + y5) / 5",
+   "inputs": {
+    "y1": {
+     "unit": "percent",
+     "source": "record:esc_y1"
+    },
+    "y2": {
+     "unit": "percent",
+     "source": "record:esc_y2"
+    },
+    "y3": {
+     "unit": "percent",
+     "source": "record:esc_y3"
+    },
+    "y4": {
+     "unit": "percent",
+     "source": "record:esc_y4"
+    },
+    "y5": {
+     "unit": "percent",
+     "source": "record:esc_y5"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "36.3",
+    "source_id": null,
+    "page": null,
+    "excerpt": "36.3. The Employee expenses and Administrative and General expenses for each subsequent year shall be determined by escalating these Base Year expenses of FY 2021-22 by an inflation factor with 30% weight-age to the average yearly inflation derived based on the monthly Wholesale Price Index of the respective past five financial years … and 70% weight-age to the average yearly inflation derived based on the monthly Consumer Price Index for Industrial Workers (all-India) of the past five financial years … 36.4. The R and M Expenses shall be allowed on the opening GFA of the financial year @ 2.3% for East Discom, @ 2.3% for West Discom, @ 2.3% for Central Discom, and @ 5% for SEZ Pithampur. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 36 (MP DISCOMs FY2026-27 order, p.93), not read from the Regulations; the yearly inflations as the order prints them"
+  },
+  {
+   "id": "mperc.esc.rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Escalation rate: 30 % of the WPI average and 70 % of the CPI average",
+   "output": "esc_rate",
+   "unit": "percent",
+   "schedule": "R-SCH-5",
+   "formula": "w_wpi * wpi + w_cpi * cpi",
+   "inputs": {
+    "wpi": {
+     "unit": "percent",
+     "source": "record:esc_wpi"
+    },
+    "cpi": {
+     "unit": "percent",
+     "source": "record:esc_cpi"
+    },
+    "w_wpi": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "30"
+    },
+    "w_cpi": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "70"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "36.3",
+    "source_id": null,
+    "page": null,
+    "excerpt": "36.3. The Employee expenses and Administrative and General expenses for each subsequent year shall be determined by escalating these Base Year expenses of FY 2021-22 by an inflation factor with 30% weight-age to the average yearly inflation derived based on the monthly Wholesale Price Index of the respective past five financial years … and 70% weight-age to the average yearly inflation derived based on the monthly Consumer Price Index for Industrial Workers (all-India) of the past five financial years … 36.4. The R and M Expenses shall be allowed on the opening GFA of the financial year @ 2.3% for East Discom, @ 2.3% for West Discom, @ 2.3% for Central Discom, and @ 5% for SEZ Pithampur. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 36 (MP DISCOMs FY2026-27 order, p.93), not read from the Regulations"
+  },
+  {
+   "id": "mperc.om.rm",
+   "version": 1,
+   "status": "draft",
+   "title": "R&M expenses at 2.30 % of the opening GFA",
+   "output": "om_rm",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "per": "licensee",
+   "formula": "rate * gfa",
+   "inputs": {
+    "gfa": {
+     "unit": "INR_crore",
+     "source": "record:om_gfa",
+     "note": "the opening gross GFA of the year"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "2.3",
+     "note": "East, West and Central DISCOMs; 5 % for SEZ Pithampur; up to 1 % more on performance, at true-up"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "36.4",
+    "source_id": null,
+    "page": null,
+    "excerpt": "36.3. The Employee expenses and Administrative and General expenses for each subsequent year shall be determined by escalating these Base Year expenses of FY 2021-22 by an inflation factor with 30% weight-age to the average yearly inflation derived based on the monthly Wholesale Price Index of the respective past five financial years … and 70% weight-age to the average yearly inflation derived based on the monthly Consumer Price Index for Industrial Workers (all-India) of the past five financial years … 36.4. The R and M Expenses shall be allowed on the opening GFA of the financial year @ 2.3% for East Discom, @ 2.3% for West Discom, @ 2.3% for Central Discom, and @ 5% for SEZ Pithampur. …",
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of Reg. 36 (MP DISCOMs FY2026-27 order, p.93), not read from the Regulations"
+  },
+  {
+   "id": "mperc.om.da_rate",
+   "version": 1,
+   "status": "draft",
+   "title": "Dearness allowance for the year: the quarters' rates weighted by months",
+   "output": "om_da_rate",
+   "unit": "percent",
+   "schedule": "R-SCH-5",
+   "formula": "(q1 * 3 + q23 * 6 + q4 * 3) / 12",
+   "inputs": {
+    "q1": {
+     "unit": "percent",
+     "source": "record:da_q1",
+     "note": "April–June"
+    },
+    "q23": {
+     "unit": "percent",
+     "source": "record:da_q23",
+     "note": "July–December"
+    },
+    "q4": {
+     "unit": "percent",
+     "source": "record:da_q4",
+     "note": "January–March"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "36",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the order's projection (para 2.190): 3 % added each half year; DA for regular employees only"
+  },
+  {
+   "id": "mperc.om.da",
+   "version": 1,
+   "status": "draft",
+   "title": "Dearness allowance: the year's DA rate on basic pay",
+   "output": "om_da",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "per": "licensee",
+   "formula": "rate * basic",
+   "inputs": {
+    "basic": {
+     "unit": "INR_crore",
+     "source": "record:om_basic"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "rule:om_da_rate"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "36",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "regular employees only (para 2.197)"
+  },
+  {
+   "id": "mperc.om.employee",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses: basic, outsourced, other allowances, DA and terminal benefits",
+   "output": "om_employee",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "per": "licensee",
+   "formula": "basic + outsource + other_allowance + da + terminal",
+   "inputs": {
+    "basic": {
+     "unit": "INR_crore",
+     "source": "record:om_basic"
+    },
+    "outsource": {
+     "unit": "INR_crore",
+     "source": "record:om_outsource"
+    },
+    "other_allowance": {
+     "unit": "INR_crore",
+     "source": "record:om_other_allowance"
+    },
+    "da": {
+     "unit": "INR_crore",
+     "source": "rule:om_da"
+    },
+    "terminal": {
+     "unit": "INR_crore",
+     "source": "record:om_terminal"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "36",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 55"
+  },
+  {
+   "id": "mperc.om.total",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M expenses: R&M, employee, A&G, other, fees and the terminal benefit fund, less capitalisation, plus RDSS OPEX",
+   "output": "om_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "per": "licensee",
+   "formula": "rm + employee + ag + other + fees + tb_fund - capitalised + rdss",
+   "inputs": {
+    "rm": {
+     "unit": "INR_crore",
+     "source": "rule:om_rm"
+    },
+    "employee": {
+     "unit": "INR_crore",
+     "source": "rule:om_employee"
+    },
+    "ag": {
+     "unit": "INR_crore",
+     "source": "record:om_ag"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "record:om_other"
+    },
+    "fees": {
+     "unit": "INR_crore",
+     "source": "record:om_fees"
+    },
+    "tb_fund": {
+     "unit": "INR_crore",
+     "source": "record:om_tb_fund",
+     "note": "Rs 70 crore per DISCOM to the terminal benefit trust (para 2.192)"
+    },
+    "capitalised": {
+     "unit": "INR_crore",
+     "source": "record:om_capitalised"
+    },
+    "rdss": {
+     "unit": "INR_crore",
+     "source": "record:om_rdss",
+     "note": "Part A of RDSS's OPEX, over and above the norm (para 2.195)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "36",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "Table 55"
+  },
+  {
+   "id": "mperc.om.total_state",
+   "version": 1,
+   "status": "draft",
+   "title": "O&M expenses, the three DISCOMs",
+   "output": "om_total_state",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "items",
+   "inputs": {
+    "items": {
+     "unit": "INR_crore",
+     "source": "sum:om_total"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "36",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
+  },
+  {
+   "id": "mperc.gfa.previous_gross",
+   "version": 1,
+   "status": "draft",
+   "title": "Gross GFA at the start of the previous year: this year's opening less the previous year's additions",
+   "output": "gfa_previous_gross",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "opening - addition",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:gfa_opening_gross",
+     "note": "Table 55's opening GFA"
+    },
+    "addition": {
+     "unit": "INR_crore",
+     "source": "record:gfa_addition_previous",
+     "note": "Table 57's additions of the previous year"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.1(iii), 23.2(ii)",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the base of the inventory, as its figures reproduce (M2)"
+  },
+  {
+   "id": "mperc.iowc.inventory",
+   "version": 1,
+   "status": "draft",
+   "title": "Inventory for working capital: two months of 1 % of the previous year's GFA, a share to each activity",
+   "output": "iowc_inventory",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-10",
+   "per": "licensee",
+   "formula": "rate * gfa * 2 / 12 * share",
+   "inputs": {
+    "gfa": {
+     "unit": "INR_crore",
+     "source": "rule:gfa_previous_gross"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "1"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "record:inventory_share",
+     "note": "80 % wheeling, 20 % supply — the order's practice (para 2.228)"
+    }
+   },
+   "clause": {
+    "regulation": "MPERC (Terms and Conditions for Determination of Tariff for Supply and Wheeling of Electricity and Methods and Principles for Fixation of Charges) Regulations, 2021",
+    "clause": "23.1(iii), 23.2(ii)",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "MPERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": ""
   }
  ]
 }

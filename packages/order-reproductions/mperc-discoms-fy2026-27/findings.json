@@ -15,10 +15,11 @@
   {
    "id": "M2",
    "kind": "unexplained figure",
-   "title": "The inventory's GFA base is not printed: 21.07 implies 15,802.50 for East, against Table 57's opening GFA of 9,576.28",
-   "detail": "Para 2.228: 'one percent of opening Gross Fixed Asset has been pro-rated to two months … divided into wheeling and retail inventory in the ratio of 80:20'.  East's wheeling inventory 21.07 is 1 % × GFA × 2/12 × 80 % only for a GFA near 15,802.50 (West 12.76 → 9,570; Central 20.11 → 15,082.50).  Table 57's opening GFA for FY2026-27 is net of consumer contributions and grants (9,576.28; 5,381.83; 10,900.30), and gives smaller inventories.  The base is presumably the gross GFA; the order does not print it.  The 80:20 split itself holds on every DISCOM.  The inventory enters the binding as a record.",
+   "title": "The inventory's GFA base is not printed beside it — it reproduces as the gross GFA at the start of the previous year (Table 55's opening GFA less Table 57's FY2025-26 additions)",
+   "detail": "Para 2.228: 'one percent of opening Gross Fixed Asset has been pro-rated to two months … divided into wheeling and retail inventory in the ratio of 80:20'.  East's wheeling inventory 21.07 is 1 % × GFA × 2/12 × 80 % only for a GFA near 15,802.50 (West 12.76 → 9,570; Central 20.11 → 15,082.50).  Table 57's opening GFA for FY2026-27 is net of consumer contributions and grants (9,576.28; 5,381.83; 10,900.30), and gives smaller inventories.  The base is presumably the gross GFA; the order does not print it.  The 80:20 split itself holds on every DISCOM.  The inventory enters the binding as a record.  Increment 132: Table 55 prints the opening gross GFA of FY2026-27 for R&M (East 16,845.65); less the FY2025-26 additions of Table 57 (1,043.00) it is 15,802.65, and 1 % of it for two months at 80 % is 21.07 — East, West and Central, wheeling and supply, all six inventories reproduce exactly.  So 'the Gross Fixed Assets for previous year' (Reg. 23) reads as the gross GFA at the start of the previous year.  For the reviewer: confirm that reading.",
    "where": [
-    "MPERC order on the MP DISCOMs FY2026-27, p.106 para 2.228; p.107 Table 61; p.99 Table 57"
+    "MPERC order on the MP DISCOMs FY2026-27, p.106 para 2.228; p.107 Table 61; p.99 Table 57",
+    "p.95 Table 55; bindings/approval-om-fy27.json"
    ],
    "for": "reviewer"
   },

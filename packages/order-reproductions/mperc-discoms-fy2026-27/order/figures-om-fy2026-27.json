@@ -1,0 +1,591 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "MPERC order on the ARR and retail supply tariff of the three MP DISCOMs for FY2026-27 (petition 140/2025) — escalation, DA and O&M admitted (Tables 54, 55)",
+  "sha256": "77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb",
+  "pages": 255
+ },
+ "figures": {
+  "esc.avg_fy20_24.wpi": {
+   "value": "4.93",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Average from FY20 to FY24 4.93% 5.78%",
+   "what": "Table 54, five-year average inflation FY20–FY24: wpi"
+  },
+  "esc.avg_fy20_24.cpi": {
+   "value": "5.78",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Average from FY20 to FY24 4.93% 5.78%",
+   "what": "Table 54, five-year average inflation FY20–FY24: cpi"
+  },
+  "esc.avg_fy21_25.wpi": {
+   "value": "5.05",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Average from FY21 to FY25 5.05% 4.95%",
+   "what": "Table 54, five-year average inflation FY21–FY25: wpi"
+  },
+  "esc.avg_fy21_25.cpi": {
+   "value": "4.95",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Average from FY21 to FY25 5.05% 4.95%",
+   "what": "Table 54, five-year average inflation FY21–FY25: cpi"
+  },
+  "esc.weight.wpi": {
+   "value": "30",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Weightage 30% 70%",
+   "what": "Table 54, weights: wpi"
+  },
+  "esc.weight.cpi": {
+   "value": "70",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Weightage 30% 70%",
+   "what": "Table 54, weights: cpi"
+  },
+  "esc.rate.fy25": {
+   "value": "5.53",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Escalation rate for FY 2024-25 (4.93%*30%+5.78%*70%) 5.53% Escalation rate for FY 2025-26 (5.05%*30%+4.95%*70%) 4.98%",
+   "what": "Table 54, escalation rates: fy25"
+  },
+  "esc.rate.fy26": {
+   "value": "4.98",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Escalation rate for FY 2024-25 (4.93%*30%+5.78%*70%) 5.53% Escalation rate for FY 2025-26 (5.05%*30%+4.95%*70%) 4.98%",
+   "what": "Table 54, escalation rates: fy26"
+  },
+  "esc.yearly.wpi_fy20": {
+   "value": "1.68",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): wpi_fy20"
+  },
+  "esc.yearly.cpi_fy20": {
+   "value": "7.53",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): cpi_fy20"
+  },
+  "esc.yearly.wpi_fy21": {
+   "value": "1.29",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): wpi_fy21"
+  },
+  "esc.yearly.cpi_fy21": {
+   "value": "5.02",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): cpi_fy21"
+  },
+  "esc.yearly.wpi_fy22": {
+   "value": "13.00",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): wpi_fy22"
+  },
+  "esc.yearly.cpi_fy22": {
+   "value": "5.13",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): cpi_fy22"
+  },
+  "esc.yearly.wpi_fy23": {
+   "value": "9.41",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): wpi_fy23"
+  },
+  "esc.yearly.cpi_fy23": {
+   "value": "6.05",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): cpi_fy23"
+  },
+  "esc.yearly.wpi_fy24_fall": {
+   "value": "0.73",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): wpi_fy24_fall"
+  },
+  "esc.yearly.cpi_fy24": {
+   "value": "5.19",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): cpi_fy24"
+  },
+  "esc.yearly.wpi_fy25": {
+   "value": "2.27",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): wpi_fy25"
+  },
+  "esc.yearly.cpi_fy25": {
+   "value": "3.38",
+   "unit": "percent",
+   "page": 94,
+   "quote": "FY 2019-20 121.80 1.68% 322.50 7.53% FY 2020-21 123.38 1.29% 338.69 5.02% FY 2021-22 139.41 13.00% 356.06 5.13% FY 2022-23 152.53 9.41% 377.62 6.05% FY 2023-24 151.42 (0.73%) 397.20 5.19% FY 2024-25 154.86 2.27% 410.64 3.38%",
+   "what": "Table 54, yearly WPI and CPI inflation (FY2023-24's WPI printed in brackets: a fall): cpi_fy25"
+  },
+  "da.q1": {
+   "value": "61",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Dearness Allowance (DA) applicable for the 1st Quarter (April 2026 to June 2026) as 61%. Subsequently, for the 2nd and 3rd Quarters (July 2026 to December 2026), the Commission has considered an increase in DA of 3% over the 1st Quarter, resulting in a DA of 64%. For the 4th Quarter (January 2027 to March 2027), the Commission has considered a DA of 67%",
+   "what": "para 2.190, DA as a share of basic pay by quarter: q1"
+  },
+  "da.q2_q3": {
+   "value": "64",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Dearness Allowance (DA) applicable for the 1st Quarter (April 2026 to June 2026) as 61%. Subsequently, for the 2nd and 3rd Quarters (July 2026 to December 2026), the Commission has considered an increase in DA of 3% over the 1st Quarter, resulting in a DA of 64%. For the 4th Quarter (January 2027 to March 2027), the Commission has considered a DA of 67%",
+   "what": "para 2.190, DA as a share of basic pay by quarter: q2_q3"
+  },
+  "da.q4": {
+   "value": "67",
+   "unit": "percent",
+   "page": 94,
+   "quote": "Dearness Allowance (DA) applicable for the 1st Quarter (April 2026 to June 2026) as 61%. Subsequently, for the 2nd and 3rd Quarters (July 2026 to December 2026), the Commission has considered an increase in DA of 3% over the 1st Quarter, resulting in a DA of 64%. For the 4th Quarter (January 2027 to March 2027), the Commission has considered a DA of 67%",
+   "what": "para 2.190, DA as a share of basic pay by quarter: q4"
+  },
+  "om.gfa.east": {
+   "value": "16845.65",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Opening GFA 16,845.65 10,254.05 16,487.68 43,587.37",
+   "what": "Table 55, opening GFA (gross): east"
+  },
+  "om.gfa.west": {
+   "value": "10254.05",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Opening GFA 16,845.65 10,254.05 16,487.68 43,587.37",
+   "what": "Table 55, opening GFA (gross): west"
+  },
+  "om.gfa.central": {
+   "value": "16487.68",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Opening GFA 16,845.65 10,254.05 16,487.68 43,587.37",
+   "what": "Table 55, opening GFA (gross): central"
+  },
+  "om.gfa.state": {
+   "value": "43587.37",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Opening GFA 16,845.65 10,254.05 16,487.68 43,587.37",
+   "what": "Table 55, opening GFA (gross): state"
+  },
+  "om.rm.east": {
+   "value": "387.45",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Repair and Maintenance Expenses @ 2.30% 387.45 235.84 379.22 1,002.51",
+   "what": "Table 55, R&M at 2.30 %: east"
+  },
+  "om.rm.west": {
+   "value": "235.84",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Repair and Maintenance Expenses @ 2.30% 387.45 235.84 379.22 1,002.51",
+   "what": "Table 55, R&M at 2.30 %: west"
+  },
+  "om.rm.central": {
+   "value": "379.22",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Repair and Maintenance Expenses @ 2.30% 387.45 235.84 379.22 1,002.51",
+   "what": "Table 55, R&M at 2.30 %: central"
+  },
+  "om.rm.state": {
+   "value": "1002.51",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Repair and Maintenance Expenses @ 2.30% 387.45 235.84 379.22 1,002.51",
+   "what": "Table 55, R&M at 2.30 %: state"
+  },
+  "om.basic.east": {
+   "value": "555.33",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Basic Salary 555.33 468.08 493.07 1,516.48",
+   "what": "Table 55, basic salary: east"
+  },
+  "om.basic.west": {
+   "value": "468.08",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Basic Salary 555.33 468.08 493.07 1,516.48",
+   "what": "Table 55, basic salary: west"
+  },
+  "om.basic.central": {
+   "value": "493.07",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Basic Salary 555.33 468.08 493.07 1,516.48",
+   "what": "Table 55, basic salary: central"
+  },
+  "om.basic.state": {
+   "value": "1516.48",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Basic Salary 555.33 468.08 493.07 1,516.48",
+   "what": "Table 55, basic salary: state"
+  },
+  "om.outsource.east": {
+   "value": "337.58",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Outsource Employee Expenses 337.58 410.25 363.55 1,111.39",
+   "what": "Table 55, outsourced employees: east"
+  },
+  "om.outsource.west": {
+   "value": "410.25",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Outsource Employee Expenses 337.58 410.25 363.55 1,111.39",
+   "what": "Table 55, outsourced employees: west"
+  },
+  "om.outsource.central": {
+   "value": "363.55",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Outsource Employee Expenses 337.58 410.25 363.55 1,111.39",
+   "what": "Table 55, outsourced employees: central"
+  },
+  "om.outsource.state": {
+   "value": "1111.39",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Outsource Employee Expenses 337.58 410.25 363.55 1,111.39",
+   "what": "Table 55, outsourced employees: state"
+  },
+  "om.other_allowance.east": {
+   "value": "63.61",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Other Allowance 63.61 70.29 64.00 197.90",
+   "what": "Table 55, other allowances: east"
+  },
+  "om.other_allowance.west": {
+   "value": "70.29",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Other Allowance 63.61 70.29 64.00 197.90",
+   "what": "Table 55, other allowances: west"
+  },
+  "om.other_allowance.central": {
+   "value": "64.00",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Other Allowance 63.61 70.29 64.00 197.90",
+   "what": "Table 55, other allowances: central"
+  },
+  "om.other_allowance.state": {
+   "value": "197.90",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Other Allowance 63.61 70.29 64.00 197.90",
+   "what": "Table 55, other allowances: state"
+  },
+  "om.da.east": {
+   "value": "355.41",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Dearness Allowance 355.41 299.57 315.57 970.55",
+   "what": "Table 55, dearness allowance: east"
+  },
+  "om.da.west": {
+   "value": "299.57",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Dearness Allowance 355.41 299.57 315.57 970.55",
+   "what": "Table 55, dearness allowance: west"
+  },
+  "om.da.central": {
+   "value": "315.57",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Dearness Allowance 355.41 299.57 315.57 970.55",
+   "what": "Table 55, dearness allowance: central"
+  },
+  "om.da.state": {
+   "value": "970.55",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Dearness Allowance 355.41 299.57 315.57 970.55",
+   "what": "Table 55, dearness allowance: state"
+  },
+  "om.terminal.east": {
+   "value": "34.67",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Terminal Benefits 34.67 39.45 35.37 109.49",
+   "what": "Table 55, terminal benefits: east"
+  },
+  "om.terminal.west": {
+   "value": "39.45",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Terminal Benefits 34.67 39.45 35.37 109.49",
+   "what": "Table 55, terminal benefits: west"
+  },
+  "om.terminal.central": {
+   "value": "35.37",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Terminal Benefits 34.67 39.45 35.37 109.49",
+   "what": "Table 55, terminal benefits: central"
+  },
+  "om.terminal.state": {
+   "value": "109.49",
+   "unit": "INR_crore",
+   "page": 95,
+   "quote": "Terminal Benefits 34.67 39.45 35.37 109.49",
+   "what": "Table 55, terminal benefits: state"
+  },
+  "om.employee.east": {
+   "value": "1346.61",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Employee Expenses 1,346.61 1,287.64 1,271.57 3,905.81",
+   "what": "Table 55, employee expenses: east"
+  },
+  "om.employee.west": {
+   "value": "1287.64",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Employee Expenses 1,346.61 1,287.64 1,271.57 3,905.81",
+   "what": "Table 55, employee expenses: west"
+  },
+  "om.employee.central": {
+   "value": "1271.57",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Employee Expenses 1,346.61 1,287.64 1,271.57 3,905.81",
+   "what": "Table 55, employee expenses: central"
+  },
+  "om.employee.state": {
+   "value": "3905.81",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Employee Expenses 1,346.61 1,287.64 1,271.57 3,905.81",
+   "what": "Table 55, employee expenses: state"
+  },
+  "om.ag.east": {
+   "value": "151.28",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Administrative and General Expenses 151.28 168.27 148.73 468.28",
+   "what": "Table 55, A&G: east"
+  },
+  "om.ag.west": {
+   "value": "168.27",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Administrative and General Expenses 151.28 168.27 148.73 468.28",
+   "what": "Table 55, A&G: west"
+  },
+  "om.ag.central": {
+   "value": "148.73",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Administrative and General Expenses 151.28 168.27 148.73 468.28",
+   "what": "Table 55, A&G: central"
+  },
+  "om.ag.state": {
+   "value": "468.28",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Administrative and General Expenses 151.28 168.27 148.73 468.28",
+   "what": "Table 55, A&G: state"
+  },
+  "om.other.east": {
+   "value": "3.55",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Other Expenses (Rates & Taxes etc.) 3.55 2.60 5.53 11.68",
+   "what": "Table 55, other expenses: east"
+  },
+  "om.other.west": {
+   "value": "2.60",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Other Expenses (Rates & Taxes etc.) 3.55 2.60 5.53 11.68",
+   "what": "Table 55, other expenses: west"
+  },
+  "om.other.central": {
+   "value": "5.53",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Other Expenses (Rates & Taxes etc.) 3.55 2.60 5.53 11.68",
+   "what": "Table 55, other expenses: central"
+  },
+  "om.other.state": {
+   "value": "11.68",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Other Expenses (Rates & Taxes etc.) 3.55 2.60 5.53 11.68",
+   "what": "Table 55, other expenses: state"
+  },
+  "om.fees.east": {
+   "value": "1.40",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "MPERC fees 1.40 1.88 1.57 4.85",
+   "what": "Table 55, MPERC fees: east"
+  },
+  "om.fees.west": {
+   "value": "1.88",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "MPERC fees 1.40 1.88 1.57 4.85",
+   "what": "Table 55, MPERC fees: west"
+  },
+  "om.fees.central": {
+   "value": "1.57",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "MPERC fees 1.40 1.88 1.57 4.85",
+   "what": "Table 55, MPERC fees: central"
+  },
+  "om.fees.state": {
+   "value": "4.85",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "MPERC fees 1.40 1.88 1.57 4.85",
+   "what": "Table 55, MPERC fees: state"
+  },
+  "om.tb_fund.east": {
+   "value": "70.00",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Provision for Terminal Benefit Trust Fund 70.00 70.00 70.00 210.00",
+   "what": "Table 55, terminal benefit trust fund: east"
+  },
+  "om.tb_fund.west": {
+   "value": "70.00",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Provision for Terminal Benefit Trust Fund 70.00 70.00 70.00 210.00",
+   "what": "Table 55, terminal benefit trust fund: west"
+  },
+  "om.tb_fund.central": {
+   "value": "70.00",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Provision for Terminal Benefit Trust Fund 70.00 70.00 70.00 210.00",
+   "what": "Table 55, terminal benefit trust fund: central"
+  },
+  "om.tb_fund.state": {
+   "value": "210.00",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Provision for Terminal Benefit Trust Fund 70.00 70.00 70.00 210.00",
+   "what": "Table 55, terminal benefit trust fund: state"
+  },
+  "om.capitalised.east": {
+   "value": "56.13",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "O&M Expenses Capitalised (56.13) (19.77) (22.21) (98.11)",
+   "what": "Table 55, O&M capitalised (printed in brackets: a deduction): east"
+  },
+  "om.capitalised.west": {
+   "value": "19.77",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "O&M Expenses Capitalised (56.13) (19.77) (22.21) (98.11)",
+   "what": "Table 55, O&M capitalised (printed in brackets: a deduction): west"
+  },
+  "om.capitalised.central": {
+   "value": "22.21",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "O&M Expenses Capitalised (56.13) (19.77) (22.21) (98.11)",
+   "what": "Table 55, O&M capitalised (printed in brackets: a deduction): central"
+  },
+  "om.capitalised.state": {
+   "value": "98.11",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "O&M Expenses Capitalised (56.13) (19.77) (22.21) (98.11)",
+   "what": "Table 55, O&M capitalised (printed in brackets: a deduction): state"
+  },
+  "om.rdss.east": {
+   "value": "126.39",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Additional Operational Expenditure (RDSS) 126.39 71.87 108.82 307.08",
+   "what": "Table 55, additional OPEX (RDSS): east"
+  },
+  "om.rdss.west": {
+   "value": "71.87",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Additional Operational Expenditure (RDSS) 126.39 71.87 108.82 307.08",
+   "what": "Table 55, additional OPEX (RDSS): west"
+  },
+  "om.rdss.central": {
+   "value": "108.82",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Additional Operational Expenditure (RDSS) 126.39 71.87 108.82 307.08",
+   "what": "Table 55, additional OPEX (RDSS): central"
+  },
+  "om.rdss.state": {
+   "value": "307.08",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Additional Operational Expenditure (RDSS) 126.39 71.87 108.82 307.08",
+   "what": "Table 55, additional OPEX (RDSS): state"
+  },
+  "om.total.east": {
+   "value": "2030.54",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Total O&M Expenses 2,030.54 1,818.33 1,963.23 5,812.10",
+   "what": "Table 55, total O&M: east"
+  },
+  "om.total.west": {
+   "value": "1818.33",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Total O&M Expenses 2,030.54 1,818.33 1,963.23 5,812.10",
+   "what": "Table 55, total O&M: west"
+  },
+  "om.total.central": {
+   "value": "1963.23",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Total O&M Expenses 2,030.54 1,818.33 1,963.23 5,812.10",
+   "what": "Table 55, total O&M: central"
+  },
+  "om.total.state": {
+   "value": "5812.10",
+   "unit": "INR_crore",
+   "page": 96,
+   "quote": "Total O&M Expenses 2,030.54 1,818.33 1,963.23 5,812.10",
+   "what": "Table 55, total O&M: state"
+  }
+ }
+}

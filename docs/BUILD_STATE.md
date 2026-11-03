@@ -1005,6 +1005,32 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 132 (2026-11-03): MPERC — O&M (escalation, R&M on GFA, DA) and the working
+  capital's inventory base (M2).**
+  - **The record:** `order/figures-om-fy2026-27.json` in the MPERC folder holds 83 figures
+    (Table 54's yearly inflations, averages, weights and rates; para 2.190's DA; Table 55),
+    83 / 83 quotes verified.
+  - **Ten more draft MPERC rules (44 in all):**
+    - escalation: the five-year average of yearly inflation, and the rate at 30% WPI and 70%
+      CPI (Reg. 36.3, as the order quotes it);
+    - R&M at 2.30% of the opening GFA (Reg. 36.4);
+    - DA: the year's month-weighted rate on basic pay;
+    - employee expenses; the O&M total, less capitalisation and plus RDSS OPEX; the State sum;
+    - the inventory's base, the gross GFA at the start of the previous year, and the inventory.
+  - **Binding `approval-om-fy27.json`: 24 / 31 exact.**
+    - Exact: every escalation figure (4.93, 5.78, 5.05, 4.95 → 5.53, 4.98); R&M for all three
+      DISCOMs; DA at 64% of basic.  The O&M totals are the ARR's and the working capital's.
+    - Central's DA is a paisa off (basic printed rounded), and that carries into its employee
+      and O&M totals.  These and the other differences are within printed precision, bounded.
+  - **Finding M2, the inventory base, resolved by reproduction.**  1% of Table 55's opening
+    gross GFA less Table 57's FY2025-26 additions, for two months at 80% / 20%, gives all six
+    inventories exactly.  So "the Gross Fixed Assets for previous year" reads as the gross GFA
+    at the start of the previous year.  The finding stays open for the reviewer to confirm.
+  - **Not reproduced:** the employee and A&G base (three years' actuals, not printed beside
+    the table) and the capitalisation, which the stated shares (3.75%, 1.46%, 1.53%) do not
+    give from the printed heads.  Both are records.
+  Nothing verified, nothing approved.
+
   **Increment 131 (2026-11-03): MPERC — each DISCOM's ARR (Table 74), end to end, and the
   working capital's loop.**
   - **The record:** `order/figures-arr-fy2026-27.json` in the MPERC folder holds 144 figures,
@@ -3289,6 +3315,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 132 (2026-11-03): 502 passed** (+1 unit: MPERC's escalation, O&M and inventory base).  `check_order_quotes.py`: 83 / 83.  Ruff and format clean.
 - **Increment 131 (2026-11-03): 501 passed** (+1 unit: MPERC's ARR per DISCOM, the table and end to end).  `check_order_quotes.py`: 144 / 144.  Ruff and format clean.
 - **Increment 130 (2026-11-03): 500 passed** (+1 unit: MPERC's depreciation, loan and equity chain per DISCOM, bounded by printed precision; M3).  `check_order_quotes.py`: 138 / 138.  Ruff and format clean.
 - **Increment 129 (2026-11-03): 499 passed** (+1 unit: MPERC's working capital per DISCOM, M1–M2; two earlier tests updated for half-up checks).  `check_order_quotes.py`: 72 / 72.  Ruff and format clean.
@@ -3553,7 +3580,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 131) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 132) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3659,7 +3686,8 @@ entries below are the per-increment history.**
     1.7 paise end to end); increment 129 a third commission, MPERC's working capital for three
     DISCOMs in one order (29 / 30); increment 130 its depreciation, loans and equity chained per
     DISCOM across two years (equity and RoE exact, M3); increment 131 its ARR per DISCOM end to
-    end, within the printed rates' precision) — next MPERC's O&M (Table 55) or HPERC;
+    end, within the printed rates' precision; increment 132 its O&M and the inventory base (M2
+    reproduced)) — next HPERC, or MPERC's wheeling / supply split (Tables 75–76);
   - the same end-to-end computation for the second reference filing (FY2025-26), to show the
     bindings are not fitted to one petition — **blocked on the operator**: its documents
     (87, listed in `packages/reference-filings/uperc-npcl-fy2025-26.json`) are not in this

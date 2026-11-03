@@ -1,0 +1,414 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "MPERC order",
+ "rates": {
+  "om": "order/figures-om-fy2026-27.json",
+  "dl": "order/figures-dep-loan-fy2026-27.json",
+  "iw": "order/figures-iowc-fy2026-27.json",
+  "arr": "order/figures-arr-fy2026-27.json"
+ },
+ "places": 2,
+ "note": "MPERC's O&M for the three DISCOMs, FY2026-27: the escalation rates from the yearly WPI and CPI inflation (Table 54), R&M at 2.30 % of the opening GFA, DA at the year's weighted rate on basic pay, employee expenses and the O&M total (Table 55); and the working capital's inventory from the previous year's gross GFA (M2).  The employee and A&G base, and the capitalisation, are records: their three-year actuals and bases are not printed.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "WPI average FY20–FY24 (Table 54)",
+   "inputs": {
+    "record:esc_y1": {
+     "rate": "om:esc.yearly.wpi_fy20"
+    },
+    "record:esc_y2": {
+     "rate": "om:esc.yearly.wpi_fy21"
+    },
+    "record:esc_y3": {
+     "rate": "om:esc.yearly.wpi_fy22"
+    },
+    "record:esc_y4": {
+     "rate": "om:esc.yearly.wpi_fy23"
+    },
+    "record:esc_y5": {
+     "rate": "om:esc.yearly.wpi_fy24_fall",
+     "negate": true,
+     "why": "FY2023-24's WPI inflation is printed in brackets: a fall"
+    }
+   },
+   "checks": {
+    "esc_average": "order:om:esc.avg_fy20_24.wpi"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CPI average FY20–FY24 (Table 54)",
+   "inputs": {
+    "record:esc_y1": {
+     "rate": "om:esc.yearly.cpi_fy20"
+    },
+    "record:esc_y2": {
+     "rate": "om:esc.yearly.cpi_fy21"
+    },
+    "record:esc_y3": {
+     "rate": "om:esc.yearly.cpi_fy22"
+    },
+    "record:esc_y4": {
+     "rate": "om:esc.yearly.cpi_fy23"
+    },
+    "record:esc_y5": {
+     "rate": "om:esc.yearly.cpi_fy24"
+    }
+   },
+   "checks": {
+    "esc_average": "order:om:esc.avg_fy20_24.cpi"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "WPI average FY21–FY25 (Table 54)",
+   "inputs": {
+    "record:esc_y1": {
+     "rate": "om:esc.yearly.wpi_fy21"
+    },
+    "record:esc_y2": {
+     "rate": "om:esc.yearly.wpi_fy22"
+    },
+    "record:esc_y3": {
+     "rate": "om:esc.yearly.wpi_fy23"
+    },
+    "record:esc_y4": {
+     "rate": "om:esc.yearly.wpi_fy24_fall",
+     "negate": true,
+     "why": "FY2023-24's WPI inflation is printed in brackets: a fall"
+    },
+    "record:esc_y5": {
+     "rate": "om:esc.yearly.wpi_fy25"
+    }
+   },
+   "checks": {
+    "esc_average": "order:om:esc.avg_fy21_25.wpi"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "CPI average FY21–FY25 (Table 54)",
+   "inputs": {
+    "record:esc_y1": {
+     "rate": "om:esc.yearly.cpi_fy21"
+    },
+    "record:esc_y2": {
+     "rate": "om:esc.yearly.cpi_fy22"
+    },
+    "record:esc_y3": {
+     "rate": "om:esc.yearly.cpi_fy23"
+    },
+    "record:esc_y4": {
+     "rate": "om:esc.yearly.cpi_fy24"
+    },
+    "record:esc_y5": {
+     "rate": "om:esc.yearly.cpi_fy25"
+    }
+   },
+   "checks": {
+    "esc_average": "order:om:esc.avg_fy21_25.cpi"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "escalation rate fy25 (Table 54)",
+   "inputs": {
+    "record:esc_wpi": {
+     "computed": "WPI average FY20–FY24 (Table 54)",
+     "output": "esc_average"
+    },
+    "record:esc_cpi": {
+     "computed": "CPI average FY20–FY24 (Table 54)",
+     "output": "esc_average"
+    }
+   },
+   "checks": {
+    "esc_rate": "order:om:esc.rate.fy25"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "escalation rate fy26 (Table 54)",
+   "inputs": {
+    "record:esc_wpi": {
+     "computed": "WPI average FY21–FY25 (Table 54)",
+     "output": "esc_average"
+    },
+    "record:esc_cpi": {
+     "computed": "CPI average FY21–FY25 (Table 54)",
+     "output": "esc_average"
+    }
+   },
+   "checks": {
+    "esc_rate": "order:om:esc.rate.fy26"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "O&M admitted (Table 55)",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:om_basic": {
+       "rate": "om:om.basic.east"
+      },
+      "record:om_outsource": {
+       "rate": "om:om.outsource.east"
+      },
+      "record:om_other_allowance": {
+       "rate": "om:om.other_allowance.east"
+      },
+      "record:om_terminal": {
+       "rate": "om:om.terminal.east"
+      },
+      "record:om_ag": {
+       "rate": "om:om.ag.east"
+      },
+      "record:om_other": {
+       "rate": "om:om.other.east"
+      },
+      "record:om_fees": {
+       "rate": "om:om.fees.east"
+      },
+      "record:om_tb_fund": {
+       "rate": "om:om.tb_fund.east"
+      },
+      "record:om_capitalised": {
+       "rate": "om:om.capitalised.east"
+      },
+      "record:om_rdss": {
+       "rate": "om:om.rdss.east"
+      },
+      "record:om_gfa": {
+       "rate": "om:om.gfa.east"
+      }
+     },
+     "checks": {
+      "om_rm": "order:om:om.rm.east",
+      "om_da": "order:om:om.da.east",
+      "om_employee": "order:om:om.employee.east",
+      "om_total": [
+       "order:om:om.total.east",
+       "order:arr:arr.om.east.admitted",
+       "order:iw:w.om.east"
+      ]
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:om_basic": {
+       "rate": "om:om.basic.west"
+      },
+      "record:om_outsource": {
+       "rate": "om:om.outsource.west"
+      },
+      "record:om_other_allowance": {
+       "rate": "om:om.other_allowance.west"
+      },
+      "record:om_terminal": {
+       "rate": "om:om.terminal.west"
+      },
+      "record:om_ag": {
+       "rate": "om:om.ag.west"
+      },
+      "record:om_other": {
+       "rate": "om:om.other.west"
+      },
+      "record:om_fees": {
+       "rate": "om:om.fees.west"
+      },
+      "record:om_tb_fund": {
+       "rate": "om:om.tb_fund.west"
+      },
+      "record:om_capitalised": {
+       "rate": "om:om.capitalised.west"
+      },
+      "record:om_rdss": {
+       "rate": "om:om.rdss.west"
+      },
+      "record:om_gfa": {
+       "rate": "om:om.gfa.west"
+      }
+     },
+     "checks": {
+      "om_rm": "order:om:om.rm.west",
+      "om_da": "order:om:om.da.west",
+      "om_employee": "order:om:om.employee.west",
+      "om_total": [
+       "order:om:om.total.west",
+       "order:arr:arr.om.west.admitted",
+       "order:iw:w.om.west"
+      ]
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:om_basic": {
+       "rate": "om:om.basic.central"
+      },
+      "record:om_outsource": {
+       "rate": "om:om.outsource.central"
+      },
+      "record:om_other_allowance": {
+       "rate": "om:om.other_allowance.central"
+      },
+      "record:om_terminal": {
+       "rate": "om:om.terminal.central"
+      },
+      "record:om_ag": {
+       "rate": "om:om.ag.central"
+      },
+      "record:om_other": {
+       "rate": "om:om.other.central"
+      },
+      "record:om_fees": {
+       "rate": "om:om.fees.central"
+      },
+      "record:om_tb_fund": {
+       "rate": "om:om.tb_fund.central"
+      },
+      "record:om_capitalised": {
+       "rate": "om:om.capitalised.central"
+      },
+      "record:om_rdss": {
+       "rate": "om:om.rdss.central"
+      },
+      "record:om_gfa": {
+       "rate": "om:om.gfa.central"
+      }
+     },
+     "checks": {
+      "om_rm": "order:om:om.rm.central",
+      "om_da": "order:om:om.da.central",
+      "om_employee": "order:om:om.employee.central",
+      "om_total": [
+       "order:om:om.total.central",
+       "order:arr:arr.om.central.admitted",
+       "order:iw:w.om.central"
+      ]
+     }
+    }
+   },
+   "inputs": {
+    "record:da_q1": {
+     "rate": "om:da.q1"
+    },
+    "record:da_q23": {
+     "rate": "om:da.q2_q3"
+    },
+    "record:da_q4": {
+     "rate": "om:da.q4"
+    }
+   },
+   "checks": {
+    "om_total_state": "order:om:om.total.state"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "inventory, wheeling (Table 61) — M2",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:gfa_opening_gross": {
+       "rate": "om:om.gfa.east"
+      },
+      "record:gfa_addition_previous": {
+       "rate": "dl:dep.addition_fy26.east"
+      }
+     },
+     "checks": {
+      "iowc_inventory": "order:iw:w.inventory.east"
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:gfa_opening_gross": {
+       "rate": "om:om.gfa.west"
+      },
+      "record:gfa_addition_previous": {
+       "rate": "dl:dep.addition_fy26.west"
+      }
+     },
+     "checks": {
+      "iowc_inventory": "order:iw:w.inventory.west"
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:gfa_opening_gross": {
+       "rate": "om:om.gfa.central"
+      },
+      "record:gfa_addition_previous": {
+       "rate": "dl:dep.addition_fy26.central"
+      }
+     },
+     "checks": {
+      "iowc_inventory": "order:iw:w.inventory.central"
+     }
+    }
+   },
+   "inputs": {
+    "record:inventory_share": {
+     "value": "80",
+     "unit": "percent",
+     "why": "the order divides the inventory 80:20 between wheeling and supply (para 2.228)"
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "inventory, supply (Table 61) — M2",
+   "categories": {
+    "east": {
+     "inputs": {
+      "record:gfa_opening_gross": {
+       "rate": "om:om.gfa.east"
+      },
+      "record:gfa_addition_previous": {
+       "rate": "dl:dep.addition_fy26.east"
+      }
+     },
+     "checks": {
+      "iowc_inventory": "order:iw:r.inventory.east"
+     }
+    },
+    "west": {
+     "inputs": {
+      "record:gfa_opening_gross": {
+       "rate": "om:om.gfa.west"
+      },
+      "record:gfa_addition_previous": {
+       "rate": "dl:dep.addition_fy26.west"
+      }
+     },
+     "checks": {
+      "iowc_inventory": "order:iw:r.inventory.west"
+     }
+    },
+    "central": {
+     "inputs": {
+      "record:gfa_opening_gross": {
+       "rate": "om:om.gfa.central"
+      },
+      "record:gfa_addition_previous": {
+       "rate": "dl:dep.addition_fy26.central"
+      }
+     },
+     "checks": {
+      "iowc_inventory": "order:iw:r.inventory.central"
+     }
+    }
+   },
+   "inputs": {
+    "record:inventory_share": {
+     "value": "20",
+     "unit": "percent",
+     "why": "the order divides the inventory 80:20 between wheeling and supply (para 2.228)"
+    }
+   }
+  }
+ ]
+}

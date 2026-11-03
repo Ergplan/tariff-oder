@@ -2424,3 +2424,33 @@ def test_mperc_arr_per_discom_end_to_end_from_the_computed_heads():
     assert ev.by_category["east"]["arr_total"].value.quantize(Decimal("0.01")) == Decimal(
         "17889.43"
     )  # printed 17,889.37
+
+
+def test_mperc_om_escalation_da_and_the_inventory_base():
+    """Real data, MPERC FY2026-27: the escalation rates from the yearly WPI and CPI inflation
+    (30 / 70 on five-year averages, Table 54), R&M at 2.30 % of the opening GFA, DA at the year's
+    month-weighted rate on basic pay, employee expenses and the O&M total per DISCOM (Table 55) —
+    the same O&M the ARR and the working capital use; and the working capital's inventory from the
+    gross GFA at the start of the previous year, exact for all six (M2's base)."""
+    from decimal import Decimal
+
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "order-reproductions" / "mperc-discoms-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-om-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("MPERC"), rates=rec)
+    assert len(checks) == 31 and sum(c.result == "match" for c in checks) == 24
+    exact = [c for c in checks if c.output in ("esc_average", "esc_rate", "om_rm", "iowc_inventory")]
+    assert len(exact) == 15 and {c.result for c in exact} == {"match"}
+    # the rest: basic pay and four other heads printed to the paisa, DA at 64 % of basic
+    slack = Decimal("0.005") * Decimal("0.64") + Decimal("0.005") * 5 + Decimal("0.005")
+    for c in checks:
+        if c.result != "match":
+            assert abs(Decimal(c.exact) - Decimal(c.filed)) <= (slack * 3 if c.output.endswith("_state") else slack), (
+                c.category
+            )
+    # the year's DA is 64 %: three months at 61, six at 64, three at 67
+    da = next(c for c in checks if c.output == "om_da" and " east " in c.category)
+    assert Decimal(da.exact) == Decimal(rec["om:om.basic.east"][0]) * Decimal("0.64")
