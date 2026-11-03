@@ -30599,6 +30599,176 @@
    ]
   },
   {
+   "binding": "f20-employees.json",
+   "checks": [
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2020-21",
+     "category": "F20 by grade C12",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "56.294245",
+     "computed": "56.294245",
+     "why": null,
+     "exact": "56.294245436716099"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2020-21",
+     "category": "F20 by grade F21_O&M_EE (A)!D29",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "56.294245",
+     "computed": "56.294245",
+     "why": null,
+     "exact": "56.294245436716099"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2020-21",
+     "category": "F20 by grade B12",
+     "output": "employee_grades_count_total",
+     "result": "match",
+     "filed": "470.000000",
+     "computed": "470.000000",
+     "why": null,
+     "exact": "470"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2021-22",
+     "category": "F20 by grade E12",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "68.264270",
+     "computed": "68.264270",
+     "why": null,
+     "exact": "68.264270401999992"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2021-22",
+     "category": "F20 by grade F21_O&M_EE (A)!E29",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "68.264270",
+     "computed": "68.264270",
+     "why": null,
+     "exact": "68.264270401999992"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2021-22",
+     "category": "F20 by grade D12",
+     "output": "employee_grades_count_total",
+     "result": "match",
+     "filed": "490.000000",
+     "computed": "490.000000",
+     "why": null,
+     "exact": "490"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2022-23",
+     "category": "F20 by grade G12",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "73.265053",
+     "computed": "73.265053",
+     "why": null,
+     "exact": "73.265053107999984"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2022-23",
+     "category": "F20 by grade F21_O&M_EE (A)!F29",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "73.265053",
+     "computed": "73.265053",
+     "why": null,
+     "exact": "73.265053107999984"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2022-23",
+     "category": "F20 by grade F12",
+     "output": "employee_grades_count_total",
+     "result": "match",
+     "filed": "524.000000",
+     "computed": "524.000000",
+     "why": null,
+     "exact": "524"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2023-24",
+     "category": "F20 by grade I12",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "77.516074",
+     "computed": "77.516074",
+     "why": null,
+     "exact": "77.516073880000003"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2023-24",
+     "category": "F20 by grade F21_O&M_EE (A)!I29",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "77.516074",
+     "computed": "77.516074",
+     "why": null,
+     "exact": "77.516073880000003"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2023-24",
+     "category": "F20 by grade H12",
+     "output": "employee_grades_count_total",
+     "result": "match",
+     "filed": "549.000000",
+     "computed": "549.000000",
+     "why": null,
+     "exact": "549"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2024-25",
+     "category": "F20 by grade K12",
+     "output": "employee_grades_cost_total",
+     "result": "match",
+     "filed": "95.445614",
+     "computed": "95.445614",
+     "why": null,
+     "exact": "95.445614058999989"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2024-25",
+     "category": "F20 by grade F21_O&M_EE (A)!L29",
+     "output": "employee_grades_cost_total",
+     "result": "differs",
+     "filed": "95.419847",
+     "computed": "95.445614",
+     "why": null,
+     "exact": "95.445614058999989"
+    },
+    {
+     "table": "F20_O&M_EE",
+     "fiscal_year": "FY2024-25",
+     "category": "F20 by grade J12",
+     "output": "employee_grades_count_total",
+     "result": "match",
+     "filed": "639.000000",
+     "computed": "639.000000",
+     "why": null,
+     "exact": "639"
+    }
+   ]
+  },
+  {
    "binding": "f22-rm-ties.json",
    "checks": [
     {
@@ -33402,6 +33572,220 @@
      "computed": "0.098262",
      "why": null,
      "exact": "0.09826164383561643835616438356"
+    }
+   ]
+  },
+  {
+   "binding": "f28-nti.json",
+   "checks": [
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2023-24",
+     "category": "F28 claimed C25",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "16.319196",
+     "computed": "16.319196",
+     "why": null,
+     "exact": "16.31919610799988499"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2023-24",
+     "category": "F28 claimed ARR!G50",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "16.319196",
+     "computed": "16.319196",
+     "why": null,
+     "exact": "16.31919610799988499"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2023-24",
+     "category": "F28 claimed C28",
+     "output": "nti_format_grand_total",
+     "result": "match",
+     "filed": "16.361196",
+     "computed": "16.361196",
+     "why": null,
+     "exact": "16.36119610799988499"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2023-24",
+     "category": "F28 claimed ARR!G49",
+     "output": "nti_other_business",
+     "result": "match",
+     "filed": "0.042000",
+     "computed": "0.042000",
+     "why": null,
+     "exact": "0.042"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2024-25",
+     "category": "F28 approved in the FY2024-25 order D25",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "53.010000",
+     "computed": "53.010000",
+     "why": null,
+     "exact": "53.01"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2024-25",
+     "category": "F28 approved in the FY2024-25 order ARR!H50",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "53.010000",
+     "computed": "53.010000",
+     "why": null,
+     "exact": "53.01"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2024-25",
+     "category": "F28 approved in the FY2024-25 order D28",
+     "output": "nti_format_grand_total",
+     "result": "match",
+     "filed": "53.010000",
+     "computed": "53.010000",
+     "why": null,
+     "exact": "53.01"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2024-25",
+     "category": "F28 claimed F25",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "10.659830",
+     "computed": "10.659830",
+     "why": null,
+     "exact": "10.659830189"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2024-25",
+     "category": "F28 claimed ARR!J50",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "10.659830",
+     "computed": "10.659830",
+     "why": null,
+     "exact": "10.659830189"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2024-25",
+     "category": "F28 claimed F28",
+     "output": "nti_format_grand_total",
+     "result": "match",
+     "filed": "10.701830",
+     "computed": "10.701830",
+     "why": null,
+     "exact": "10.701830188999999996"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2024-25",
+     "category": "F28 claimed ARR!J49",
+     "output": "nti_other_business",
+     "result": "match",
+     "filed": "0.042000",
+     "computed": "0.042000",
+     "why": null,
+     "exact": "0.041999999999999996"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2025-26",
+     "category": "F28 estimated H25",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "9.524607",
+     "computed": "9.524607",
+     "why": null,
+     "exact": "9.524606709358907"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2025-26",
+     "category": "F28 estimated ARR!L50",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "9.524607",
+     "computed": "9.524607",
+     "why": null,
+     "exact": "9.524606709358907"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2025-26",
+     "category": "F28 estimated H28",
+     "output": "nti_format_grand_total",
+     "result": "match",
+     "filed": "9.729214",
+     "computed": "9.729214",
+     "why": null,
+     "exact": "9.72921440935890697"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2025-26",
+     "category": "F28 estimated ARR!L49",
+     "output": "nti_other_business",
+     "result": "match",
+     "filed": "0.204608",
+     "computed": "0.204608",
+     "why": null,
+     "exact": "0.20460769999999997"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2026-27",
+     "category": "F28 projected I25",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "10.290365",
+     "computed": "10.290365",
+     "why": null,
+     "exact": "10.2903650528824531"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2026-27",
+     "category": "F28 projected ARR!M50",
+     "output": "nti_format_total",
+     "result": "match",
+     "filed": "10.290365",
+     "computed": "10.290365",
+     "why": null,
+     "exact": "10.2903650528824531"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2026-27",
+     "category": "F28 projected I28",
+     "output": "nti_format_grand_total",
+     "result": "match",
+     "filed": "11.265736",
+     "computed": "11.265736",
+     "why": null,
+     "exact": "11.2657357378139599"
+    },
+    {
+     "table": "F28_NTI",
+     "fiscal_year": "FY2026-27",
+     "category": "F28 projected ARR!M49",
+     "output": "nti_other_business",
+     "result": "match",
+     "filed": "0.975371",
+     "computed": "0.975371",
+     "why": null,
+     "exact": "0.9753706849315068"
     }
    ]
   },
@@ -58492,7 +58876,7 @@
     "title": "Employee Expenses",
     "sheet": "F20_O&M_EE",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F21_O&M_EE (A)",
@@ -58562,7 +58946,7 @@
     "title": "Details of Non-tariff Income",
     "sheet": "F28_NTI",
     "alias_why": null,
-    "status": "read"
+    "status": "reproduced"
    },
    {
     "format": "F29_Income Tax",
@@ -58695,9 +59079,9 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 22,
-   "reproduced": 40,
-   "read": 9,
+   "present": 21,
+   "reproduced": 42,
+   "read": 8,
    "blank": 2,
    "missing": 1
   }
@@ -60989,9 +61373,9 @@
       "filed": "0"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_other_business",
+      "computed": "0.042000",
       "filed": "0.04"
      },
      "H": {
@@ -61007,9 +61391,9 @@
       "filed": "0.04"
      },
      "J": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_other_business",
+      "computed": "0.042000",
       "filed": "0.04"
      },
      "K": {
@@ -61019,15 +61403,15 @@
       "filed": "0"
      },
      "L": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_other_business",
+      "computed": "0.204608",
       "filed": "0.2"
      },
      "M": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_other_business",
+      "computed": "0.975371",
       "filed": "0.98"
      }
     }
@@ -61062,15 +61446,15 @@
       "filed": "16.32"
      },
      "G": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_format_total",
+      "computed": "16.319196",
       "filed": "16.32"
      },
      "H": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_format_total",
+      "computed": "53.010000",
       "filed": "53.01"
      },
      "I": {
@@ -61080,9 +61464,9 @@
       "filed": "10.66"
      },
      "J": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_format_total",
+      "computed": "10.659830",
       "filed": "10.66"
      },
      "K": {
@@ -61092,15 +61476,15 @@
       "filed": "63.99"
      },
      "L": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_format_total",
+      "computed": "9.524607",
       "filed": "9.52"
      },
      "M": {
-      "status": "record",
-      "source": null,
-      "computed": null,
+      "status": "tied",
+      "source": "f28-nti.json: nti_format_total",
+      "computed": "10.290365",
       "filed": "10.29"
      }
     }
@@ -61975,14 +62359,15 @@
     "differs": 2
    },
    "G": {
-    "tied": 11,
+    "tied": 13,
     "computed": 11,
-    "record": 15,
+    "record": 13,
     "differs": 6
    },
    "H": {
-    "record": 28,
+    "record": 27,
     "computed": 12,
+    "tied": 1,
     "differs": 2
    },
    "I": {
@@ -61991,10 +62376,10 @@
     "tied": 1
    },
    "J": {
-    "tied": 12,
+    "tied": 14,
     "computed": 16,
     "differs": 3,
-    "record": 10
+    "record": 8
    },
    "K": {
     "record": 26,
@@ -62002,14 +62387,14 @@
     "differs": 6
    },
    "L": {
-    "tied": 16,
+    "tied": 18,
     "computed": 17,
-    "record": 13
+    "record": 11
    },
    "M": {
-    "tied": 16,
+    "tied": 18,
     "computed": 17,
-    "record": 13
+    "record": 11
    }
   }
  }

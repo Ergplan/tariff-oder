@@ -2711,3 +2711,30 @@ def test_jserc_arr_over_the_control_period_end_to_end():
         (f, o, Decimal("0.01"))
         for f, o in [("FY2029-30", "arr_expenditure"), ("FY2029-30", "arr_net"), ("FY2029-30", "arr_recoverable")]
     ]
+
+
+def test_npcl_non_tariff_income_and_employees_by_grade_formats_add_up():
+    """Real data, NPCL's F28 and F20 (increment 143): non-tariff income head by head to its total
+    and to the ARR format's rows 49–50, in every column with heads (19 / 19; A82 on the approved
+    columns); employees and their cost by grade to F20's totals and to F21's gross cost — equal to
+    the sixth place but in FY2024-25, where the grades add to 2.58 lakh more (A83)."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("UPERC") == []
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    wb = openpyxl.load_workbook(folder / "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx", data_only=True)
+    rules = load_rules("UPERC")
+    run = lambda n: reproduce_cells(wb, json.loads((folder / "bindings" / n).read_text()), rules)  # noqa: E731
+    nti = run("f28-nti.json")
+    assert len(nti) == 19 and all(c.result == "match" for c in nti)
+    assert {c.category.rsplit(" ", 1)[1] for c in nti} >= {"ARR!M50", "ARR!M49", "ARR!H50"}
+    emp = run("f20-employees.json")
+    assert len(emp) == 15
+    assert [(c.fiscal_year, c.category.split(" ", 3)[-1], c.computed, c.filed) for c in emp if c.result != "match"] == [
+        ("FY2024-25", "F21_O&M_EE (A)!L29", "95.445614", "95.419847")
+    ]
+    findings = {f["id"]: f for f in json.loads((folder / "findings.json").read_text())["findings"]}
+    assert findings["A82"]["for"] == findings["A83"]["for"] == "petitioner"

@@ -582,6 +582,31 @@
     "bindings/approval-oa-fy27.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A82",
+   "kind": "presentation",
+   "title": "F28's approved column for FY2024-25 has one figure, 53.01, on the line 'Income from rent of land or buildings'; the APR's approved 63.99 is a total with no heads",
+   "detail": "F28's 'Approved (in TO)' column for FY2024-25 is blank but for D8, 53.01, on the first head ('Income from rent of land or buildings'); the format's total (D25) and the ARR format's row 50 (H50) take it as the whole approved non-tariff income.  The format cannot say whether the Commission approved 53.01 of rent or the total was entered on the first line.  The FY2025-26 approved column types its total (G25, 63.99) with no heads at all.  Every other column's heads add to its total and are carried to rows 49–50 of the ARR format exactly (19 / 19).  For the petitioner: enter the approved figures by head, or as a total on the total line.",
+   "where": [
+    "F28_NTI D8, D25, G25",
+    "ARR!H50, K50",
+    "bindings/f28-nti.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A83",
+   "kind": "inconsistency",
+   "title": "F20's employee cost for FY2024-25 by grade adds to 95.445614; F21's components, carried to the ARR, add to 95.419847",
+   "detail": "F20 (employees by grade) and F21 (employee cost by component) are two views of one cost.  For FY2020-21 to FY2023-24 their totals agree to the sixth place.  For FY2024-25, F20's four grades add to 95.445614 (K12) and F21's components to 95.419847 (L29), the gross employee cost the ARR format carries (J27) — 0.025767 crore (2.58 lakh) apart.  The head counts add up in every year (639 for FY2024-25).  For the petitioner: which figure is the year's cost, and where the 2.58 lakh lies.",
+   "where": [
+    "F20_O&M_EE K8:K12",
+    "F21_O&M_EE (A) L29",
+    "ARR!J27",
+    "bindings/f20-employees.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

@@ -1,0 +1,314 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F20_O&M_EE",
+ "places": 6,
+ "note": "F20's employees and their cost by grade, FY2020-21 to FY2024-25, to its totals — and each year's cost against F21's gross employee cost, which the ARR format's row 27 carries by formula (checked against F21, not the ARR cell, so that a difference is F20's).  FY2024-25's grades add to 95.445614, F21's components to 95.419847 (A83).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2020-21",
+   "label": "F20 by grade",
+   "categories": {
+    "GM & above": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "B8",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "C8",
+       "INR_crore"
+      ]
+     }
+    },
+    "Mgr to DGM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "B9",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "C9",
+       "INR_crore"
+      ]
+     }
+    },
+    "MT to DM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "B10",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "C10",
+       "INR_crore"
+      ]
+     }
+    },
+    "Staff": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "B11",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "C11",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "employee_grades_cost_total": [
+     "C12",
+     "F21_O&M_EE (A)!D29"
+    ],
+    "employee_grades_count_total": "B12"
+   }
+  },
+  {
+   "fiscal_year": "FY2021-22",
+   "label": "F20 by grade",
+   "categories": {
+    "GM & above": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "D8",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "E8",
+       "INR_crore"
+      ]
+     }
+    },
+    "Mgr to DGM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "D9",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "E9",
+       "INR_crore"
+      ]
+     }
+    },
+    "MT to DM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "D10",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "E10",
+       "INR_crore"
+      ]
+     }
+    },
+    "Staff": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "D11",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "E11",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "employee_grades_cost_total": [
+     "E12",
+     "F21_O&M_EE (A)!E29"
+    ],
+    "employee_grades_count_total": "D12"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "F20 by grade",
+   "categories": {
+    "GM & above": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "F8",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "G8",
+       "INR_crore"
+      ]
+     }
+    },
+    "Mgr to DGM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "F9",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "G9",
+       "INR_crore"
+      ]
+     }
+    },
+    "MT to DM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "F10",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "G10",
+       "INR_crore"
+      ]
+     }
+    },
+    "Staff": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "F11",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "G11",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "employee_grades_cost_total": [
+     "G12",
+     "F21_O&M_EE (A)!F29"
+    ],
+    "employee_grades_count_total": "F12"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F20 by grade",
+   "categories": {
+    "GM & above": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "H8",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "I8",
+       "INR_crore"
+      ]
+     }
+    },
+    "Mgr to DGM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "H9",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "I9",
+       "INR_crore"
+      ]
+     }
+    },
+    "MT to DM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "H10",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "I10",
+       "INR_crore"
+      ]
+     }
+    },
+    "Staff": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "H11",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "I11",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "employee_grades_cost_total": [
+     "I12",
+     "F21_O&M_EE (A)!I29"
+    ],
+    "employee_grades_count_total": "H12"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F20 by grade",
+   "categories": {
+    "GM & above": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "J8",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "K8",
+       "INR_crore"
+      ]
+     }
+    },
+    "Mgr to DGM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "J9",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "K9",
+       "INR_crore"
+      ]
+     }
+    },
+    "MT to DM": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "J10",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "K10",
+       "INR_crore"
+      ]
+     }
+    },
+    "Staff": {
+     "inputs": {
+      "record:employee_grade_count": [
+       "J11",
+       "number"
+      ],
+      "record:employee_grade_cost": [
+       "K11",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "employee_grades_cost_total": [
+     "K12",
+     "F21_O&M_EE (A)!L29"
+    ],
+    "employee_grades_count_total": "J12"
+   }
+  }
+ ]
+}

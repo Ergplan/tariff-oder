@@ -34,12 +34,12 @@ def test_the_npcl_reference_filing_and_its_reproduction(client):
     assert chain["FY2026-27 · Projected"] == {"match": 12}
     assert {x["id"] for x in f["findings"]} >= {"A29", "A35", "A39", "A40", "A41"}
     # how each ARR figure is established: the projected column's power purchase is tied to its
-    # schedule, the chain computes the net ARR, non-tariff income is still a record (on trust)
+    # schedule, the chain computes the net ARR, non-tariff income is tied to F28's heads (increment 143)
     cov = f["coverage"]
     m = {c["column"] for c in cov["columns"] if c["fiscal_year"] == "FY2026-27" and c["voice"] == "petitioned"}
     (col,) = m
     by_row = {line["row"]: line["cells"].get(col, {}).get("status") for line in cov["lines"]}
-    assert by_row[20] == "tied" and by_row[53] == "computed" and by_row[50] == "record"
+    assert by_row[20] == "tied" and by_row[53] == "computed" and by_row[50] == "tied" and by_row[49] == "tied"
     assert cov["summary"][col].get("differs", 0) == 0
     # end to end: the projected column's chain fed by the schedules reproduces the net ARR
     (end,) = [p for p in f["pipeline"] if p["fiscal_year"] == "FY2026-27"]

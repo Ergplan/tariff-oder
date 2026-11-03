@@ -1,0 +1,293 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "UPERC's tariff formats as NPCL filed them (Appendix-II): each format's own totals",
+ "applies": {
+  "commission": "UPERC"
+ },
+ "note": "The arithmetic of the formats themselves — lines adding to their totals, totals carried to the ARR format — so that every format of the filing is checked, not only those a regulation computes.  Not regulation: where a format and a regulation differ, the regulation's rule governs.",
+ "rules": [
+  {
+   "id": "uperc.fmt.nti_head",
+   "version": 1,
+   "status": "draft",
+   "title": "Non-tariff income, one head of F28",
+   "output": "nti_head_amount",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-11",
+   "formula": "amount",
+   "inputs": {
+    "amount": {
+     "unit": "INR_crore",
+     "source": "record:nti_head"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line of F28; a blank line is nil only where the binding says so",
+   "per": "nti_head"
+  },
+  {
+   "id": "uperc.fmt.nti_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Non-tariff income: the heads of F28 summed",
+   "output": "nti_format_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-11",
+   "formula": "heads",
+   "inputs": {
+    "heads": {
+     "unit": "INR_crore",
+     "source": "sum:nti_head_amount"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F28's 'Total Non-Tariff Income', carried to the ARR format's row 50"
+  },
+  {
+   "id": "uperc.fmt.nti_other_business",
+   "version": 1,
+   "status": "draft",
+   "title": "Income from other business: telecom and other",
+   "output": "nti_other_business",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-11",
+   "formula": "telecom + other",
+   "inputs": {
+    "telecom": {
+     "unit": "INR_crore",
+     "source": "record:nti_telecom"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "record:nti_other_business"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F28's rows 18–19 (net of the 30 % sharing), carried to the ARR format's row 49"
+  },
+  {
+   "id": "uperc.fmt.nti_grand_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Non-tariff income with other business",
+   "output": "nti_format_grand_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-11",
+   "formula": "nti + other",
+   "inputs": {
+    "nti": {
+     "unit": "INR_crore",
+     "source": "rule:nti_format_total"
+    },
+    "other": {
+     "unit": "INR_crore",
+     "source": "rule:nti_other_business"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F28's last 'Total'"
+  },
+  {
+   "id": "uperc.fmt.employee_grade_cost",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses, one grade of F20",
+   "output": "employee_grade_cost",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "cost",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "record:employee_grade_cost"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line of F20",
+   "per": "employee_grade"
+  },
+  {
+   "id": "uperc.fmt.employee_grade_count",
+   "version": 1,
+   "status": "draft",
+   "title": "Employees, one grade of F20",
+   "output": "employee_grade_count",
+   "unit": "number",
+   "schedule": "R-SCH-5",
+   "formula": "count",
+   "inputs": {
+    "count": {
+     "unit": "number",
+     "source": "record:employee_grade_count"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line of F20",
+   "per": "employee_grade"
+  },
+  {
+   "id": "uperc.fmt.employee_cost_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Employee expenses: the grades of F20 summed",
+   "output": "employee_grades_cost_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-5",
+   "formula": "grades",
+   "inputs": {
+    "grades": {
+     "unit": "INR_crore",
+     "source": "sum:employee_grade_cost"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F20's total; the same year's F21 total (gross employee cost, the ARR's row 27) should agree"
+  },
+  {
+   "id": "uperc.fmt.employee_count_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Employees: the grades of F20 summed",
+   "output": "employee_grades_count_total",
+   "unit": "number",
+   "schedule": "R-SCH-5",
+   "formula": "grades",
+   "inputs": {
+    "grades": {
+     "unit": "number",
+     "source": "sum:employee_grade_count"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F20's total number of employees"
+  }
+ ]
+}

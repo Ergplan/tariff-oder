@@ -1,0 +1,903 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F28_NTI",
+ "places": 6,
+ "note": "F28's non-tariff income: its seventeen heads to its total, carried to the ARR format's row 50; telecom and other business to row 49; the two to the format's last total.  Columns: FY2023-24 claimed, FY2024-25 approved in the FY2024-25 order (one figure, 53.01, entered on the first head — A82) and claimed, FY2025-26 estimated, FY2026-27 projected.  The APR column's approved 63.99 is typed as a total with no heads, and the audited column is empty: neither is reproduced.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F28 claimed",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "C24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "inputs": {
+    "record:nti_telecom": {
+     "cell": "C26",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    },
+    "record:nti_other_business": {
+     "cell": "C27",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "nti_format_total": [
+     "C25",
+     "ARR!G50"
+    ],
+    "nti_format_grand_total": "C28",
+    "nti_other_business": "ARR!G49"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F28 approved in the FY2024-25 order",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "D24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "inputs": {
+    "record:nti_telecom": {
+     "cell": "D26",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    },
+    "record:nti_other_business": {
+     "cell": "D27",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "nti_format_total": [
+     "D25",
+     "ARR!H50"
+    ],
+    "nti_format_grand_total": "D28"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F28 claimed",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "F24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "inputs": {
+    "record:nti_telecom": {
+     "cell": "F26",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    },
+    "record:nti_other_business": {
+     "cell": "F27",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "nti_format_total": [
+     "F25",
+     "ARR!J50"
+    ],
+    "nti_format_grand_total": "F28",
+    "nti_other_business": "ARR!J49"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F28 estimated",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "H24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "inputs": {
+    "record:nti_telecom": {
+     "cell": "H26",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    },
+    "record:nti_other_business": {
+     "cell": "H27",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "nti_format_total": [
+     "H25",
+     "ARR!L50"
+    ],
+    "nti_format_grand_total": "H28",
+    "nti_other_business": "ARR!L49"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F28 projected",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:nti_head": {
+       "cell": "I24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+      }
+     }
+    }
+   },
+   "inputs": {
+    "record:nti_telecom": {
+     "cell": "I26",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    },
+    "record:nti_other_business": {
+     "cell": "I27",
+     "unit": "INR_crore",
+     "blank_is_zero": "a blank line of the format is nil — the format's own total sums it so"
+    }
+   },
+   "checks": {
+    "nti_format_total": [
+     "I25",
+     "ARR!M50"
+    ],
+    "nti_format_grand_total": "I28",
+    "nti_other_business": "ARR!M49"
+   }
+  }
+ ]
+}
