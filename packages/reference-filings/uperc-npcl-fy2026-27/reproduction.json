@@ -30012,6 +30012,659 @@
    ]
   },
   {
+   "binding": "f11-assets-not-in-use.json",
+   "checks": [
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use row 8 F8",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.428912",
+     "computed": "0.428912",
+     "why": null,
+     "exact": "0.4289116800000001"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use row 9 F9",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "2.500728",
+     "computed": "2.500728",
+     "why": null,
+     "exact": "2.5007276969999993"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use row 10 F10",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0E-9"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use row 11 F11",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.276213",
+     "computed": "0.276213",
+     "why": null,
+     "exact": "0.2762134789999999"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use row 12 F12",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.823353",
+     "computed": "0.823353",
+     "why": null,
+     "exact": "0.8233527300000007"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use C13",
+     "output": "retired_cost_total",
+     "result": "match",
+     "filed": "11.736184",
+     "computed": "11.736184",
+     "why": null,
+     "exact": "11.7361837060000004"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use F14_CAP_Cap Cost!G13",
+     "output": "retired_cost_total",
+     "result": "match",
+     "filed": "11.736184",
+     "computed": "11.736184",
+     "why": null,
+     "exact": "11.7361837060000004"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use E13",
+     "output": "retired_accdep_total",
+     "result": "match",
+     "filed": "7.706978",
+     "computed": "7.706978",
+     "why": null,
+     "exact": "7.7069781200000004"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use F14_CAP_Cap Cost!G35",
+     "output": "retired_accdep_total",
+     "result": "match",
+     "filed": "7.706978",
+     "computed": "7.706978",
+     "why": null,
+     "exact": "7.7069781200000004"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2024-25",
+     "category": "F11 assets not in use F13",
+     "output": "retired_wdv_total",
+     "result": "match",
+     "filed": "4.029206",
+     "computed": "4.029206",
+     "why": null,
+     "exact": "4.0292055860000000"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use row 18 F18",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "1.073510",
+     "computed": "1.073510",
+     "why": null,
+     "exact": "1.0735100585242948"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use row 19 F19",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "4.764666",
+     "computed": "4.764666",
+     "why": null,
+     "exact": "4.764665733922345"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use row 20 F20",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use row 21 F21",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.942581",
+     "computed": "0.942581",
+     "why": null,
+     "exact": "0.9425811126290116"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use row 22 F22",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use C23",
+     "output": "retired_cost_total",
+     "result": "match",
+     "filed": "15.000000",
+     "computed": "15.000000",
+     "why": null,
+     "exact": "15.0000000000000013"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use F14_CAP_Cap Cost!H13",
+     "output": "retired_cost_total",
+     "result": "match",
+     "filed": "15.000000",
+     "computed": "15.000000",
+     "why": null,
+     "exact": "15.0000000000000013"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use E23",
+     "output": "retired_accdep_total",
+     "result": "match",
+     "filed": "8.219243",
+     "computed": "8.219243",
+     "why": null,
+     "exact": "8.2192430949243499"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use F14_CAP_Cap Cost!H35",
+     "output": "retired_accdep_total",
+     "result": "match",
+     "filed": "8.219243",
+     "computed": "8.219243",
+     "why": null,
+     "exact": "8.2192430949243499"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2025-26",
+     "category": "F11 assets not in use F23",
+     "output": "retired_wdv_total",
+     "result": "match",
+     "filed": "6.780757",
+     "computed": "6.780757",
+     "why": null,
+     "exact": "6.7807569050756514"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use row 28 F28",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.836961",
+     "computed": "0.836961",
+     "why": null,
+     "exact": "0.8369611940862217"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use row 29 F29",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "4.496736",
+     "computed": "4.496736",
+     "why": null,
+     "exact": "4.496735535889430"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use row 30 F30",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use row 31 F31",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "1.346358",
+     "computed": "1.346358",
+     "why": null,
+     "exact": "1.3463582847698117"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use row 32 F32",
+     "output": "retired_class_wdv",
+     "result": "match",
+     "filed": "0.000000",
+     "computed": "0.000000",
+     "why": null,
+     "exact": "0"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use C33",
+     "output": "retired_cost_total",
+     "result": "match",
+     "filed": "15.000000",
+     "computed": "15.000000",
+     "why": null,
+     "exact": "15.0000000000000013"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use F14_CAP_Cap Cost!I13",
+     "output": "retired_cost_total",
+     "result": "match",
+     "filed": "15.000000",
+     "computed": "15.000000",
+     "why": null,
+     "exact": "15.0000000000000013"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use E33",
+     "output": "retired_accdep_total",
+     "result": "match",
+     "filed": "8.319945",
+     "computed": "8.319945",
+     "why": null,
+     "exact": "8.3199449852545379"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use F14_CAP_Cap Cost!I35",
+     "output": "retired_accdep_total",
+     "result": "match",
+     "filed": "8.319945",
+     "computed": "8.319945",
+     "why": null,
+     "exact": "8.3199449852545379"
+    },
+    {
+     "table": "F11_CAP_Asset not in use",
+     "fiscal_year": "FY2026-27",
+     "category": "F11 assets not in use F33",
+     "output": "retired_wdv_total",
+     "result": "match",
+     "filed": "6.680055",
+     "computed": "6.680055",
+     "why": null,
+     "exact": "6.6800550147454634"
+    }
+   ]
+  },
+  {
+   "binding": "f12-consumer-contributions.json",
+   "checks": [
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2024-25",
+     "category": "F12 FY2024-25 J9",
+     "output": "cc_balance_closing",
+     "result": "match",
+     "filed": "438.295267",
+     "computed": "438.295267",
+     "why": null,
+     "exact": "438.29526677999894"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2024-25",
+     "category": "F12 FY2024-25 F9",
+     "output": "cc_balance_closing",
+     "result": "match",
+     "filed": "438.295267",
+     "computed": "438.295267",
+     "why": null,
+     "exact": "438.29526677999894"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2024-25",
+     "category": "F12 FY2024-25 J13",
+     "output": "cc_balance_closing",
+     "result": "match",
+     "filed": "438.295267",
+     "computed": "438.295267",
+     "why": null,
+     "exact": "438.29526677999894"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2024-25",
+     "category": "F12 FY2024-25 F13",
+     "output": "cc_balance_closing",
+     "result": "match",
+     "filed": "438.295267",
+     "computed": "438.295267",
+     "why": null,
+     "exact": "438.29526677999894"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2024-25",
+     "category": "F12 FY2024-25 I9",
+     "output": "cc_retirement_signed",
+     "result": "match",
+     "filed": "-2.178464",
+     "computed": "-2.178464",
+     "why": null,
+     "exact": "-2.178464178"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2024-25",
+     "category": "F12 FY2024-25 E9",
+     "output": "cc_retirement_signed",
+     "result": "match",
+     "filed": "-2.178464",
+     "computed": "-2.178464",
+     "why": null,
+     "exact": "-2.178464178"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2025-26",
+     "category": "F12 FY2025-26 N9",
+     "output": "cc_balance_closing",
+     "result": "match",
+     "filed": "468.747405",
+     "computed": "468.747405",
+     "why": null,
+     "exact": "468.74740540859881"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2025-26",
+     "category": "F12 FY2025-26 N13",
+     "output": "cc_balance_closing",
+     "result": "match",
+     "filed": "468.747405",
+     "computed": "468.747405",
+     "why": null,
+     "exact": "468.74740540859881"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2026-27",
+     "category": "F12 FY2026-27 R9",
+     "output": "cc_balance_closing",
+     "result": "match",
+     "filed": "499.854722",
+     "computed": "499.854722",
+     "why": null,
+     "exact": "499.854721960400884"
+    },
+    {
+     "table": "F12_CAP_Cons Contri",
+     "fiscal_year": "FY2026-27",
+     "category": "F12 FY2026-27 R13",
+     "output": "cc_balance_closing",
+     "result": "match",
+     "filed": "499.854722",
+     "computed": "499.854722",
+     "why": null,
+     "exact": "499.854721960400884"
+    }
+   ]
+  },
+  {
+   "binding": "f13-investment-plan.json",
+   "checks": [
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2022-23",
+     "category": "F13 FY2022-23 E29",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "133.897969",
+     "computed": "133.897969",
+     "why": null,
+     "exact": "133.89796915700002674"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2022-23",
+     "category": "F13 FY2022-23 F24_Dep!C29",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "133.897969",
+     "computed": "133.897969",
+     "why": null,
+     "exact": "133.89796915700002674"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2022-23",
+     "category": "F13 FY2022-23 F22_O&M_R&M after FY25!E26",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "133.897969",
+     "computed": "133.897969",
+     "why": null,
+     "exact": "133.89796915700002674"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2022-23",
+     "category": "F13 FY2022-23 F12",
+     "output": "capex_plan_equity",
+     "result": "match",
+     "filed": "133.897969",
+     "computed": "133.897969",
+     "why": null,
+     "exact": "133.89796915700002674"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2023-24",
+     "category": "F13 FY2023-24 E49",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "162.058229",
+     "computed": "162.058229",
+     "why": null,
+     "exact": "162.0582290099998693"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2023-24",
+     "category": "F13 FY2023-24 F14_CAP_Cap Cost!E11",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "162.058229",
+     "computed": "162.058229",
+     "why": null,
+     "exact": "162.0582290099998693"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2023-24",
+     "category": "F13 FY2023-24 F32",
+     "output": "capex_plan_equity",
+     "result": "match",
+     "filed": "162.058229",
+     "computed": "162.058229",
+     "why": null,
+     "exact": "162.0582290099998693"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2024-25",
+     "category": "F13 FY2024-25 E69",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "302.594942",
+     "computed": "302.594942",
+     "why": null,
+     "exact": "302.5949422930001869"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2024-25",
+     "category": "F13 FY2024-25 F14_CAP_Cap Cost!G11",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "302.594942",
+     "computed": "302.594942",
+     "why": null,
+     "exact": "302.5949422930001869"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2024-25",
+     "category": "F13 FY2024-25 F52",
+     "output": "capex_plan_equity",
+     "result": "match",
+     "filed": "302.594942",
+     "computed": "302.594942",
+     "why": null,
+     "exact": "302.5949422930001869"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2025-26",
+     "category": "F13 FY2025-26 E98",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "475.635159",
+     "computed": "475.635159",
+     "why": null,
+     "exact": "475.6351592053644130"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2025-26",
+     "category": "F13 FY2025-26 F16_CAP_CAPEX & CAP. after FY25!B32",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "475.635159",
+     "computed": "475.635159",
+     "why": null,
+     "exact": "475.6351592053644130"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2025-26",
+     "category": "F13 FY2025-26 APR Snapshot!J83",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "475.635159",
+     "computed": "475.635159",
+     "why": null,
+     "exact": "475.6351592053644130"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2025-26",
+     "category": "F13 FY2025-26 F72",
+     "output": "capex_plan_equity",
+     "result": "match",
+     "filed": "475.635159",
+     "computed": "475.635159",
+     "why": null,
+     "exact": "475.6351592053644130"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2026-27",
+     "category": "F13 FY2026-27 E126",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "503.210162",
+     "computed": "503.210162",
+     "why": null,
+     "exact": "503.2101621042075102"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2026-27",
+     "category": "F13 FY2026-27 F16_CAP_CAPEX & CAP. after FY25!D32",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "503.210162",
+     "computed": "503.210162",
+     "why": null,
+     "exact": "503.2101621042075102"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2026-27",
+     "category": "F13 FY2026-27 ARR snapshot!J70",
+     "output": "capex_schemes_total",
+     "result": "match",
+     "filed": "503.210162",
+     "computed": "503.210162",
+     "why": null,
+     "exact": "503.2101621042075102"
+    },
+    {
+     "table": "F13_CAP_Plan",
+     "fiscal_year": "FY2026-27",
+     "category": "F13 FY2026-27 F101",
+     "output": "capex_plan_equity",
+     "result": "match",
+     "filed": "503.210162",
+     "computed": "503.210162",
+     "why": null,
+     "exact": "503.2101621042075102"
+    }
+   ]
+  },
+  {
    "binding": "f16-capitalisation-till25.json",
    "checks": [
     {
@@ -58806,21 +59459,21 @@
     "title": "Statement of Assets Not in Use",
     "sheet": "F11_CAP_Asset not in use",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F12_CAP_Cons Contri",
     "title": "Consumer contributions and grants towards cost of capital assets",
     "sheet": "F12_CAP_Cons Contri",
     "alias_why": null,
-    "status": "read"
+    "status": "reproduced"
    },
    {
     "format": "F13_CAP_Plan",
     "title": "Investment Plan - Master",
     "sheet": "F13_CAP_Plan",
     "alias_why": null,
-    "status": "present"
+    "status": "reproduced"
    },
    {
     "format": "F14_CAP_Cap Cost",
@@ -59079,9 +59732,9 @@
    "F19A-O&M Normative"
   ],
   "counts": {
-   "present": 21,
-   "reproduced": 42,
-   "read": 8,
+   "present": 19,
+   "reproduced": 45,
+   "read": 7,
    "blank": 2,
    "missing": 1
   }

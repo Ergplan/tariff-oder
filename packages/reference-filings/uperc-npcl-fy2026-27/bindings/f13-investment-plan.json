@@ -1,0 +1,930 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F13_CAP_Plan",
+ "places": 6,
+ "note": "F13's investment plan, FY2022-23 to FY2026-27: the schemes to each year's total, carried to F24 and F22 (FY2022-23), F14's additions (FY2023-24, FY2024-25), F16 and the APR / ARR snapshots (FY2025-26, FY2026-27); and the 'Equity Amount' column as its formula computes it — the whole capex, the grants, consumer contribution and loan columns being blank (A84).  The lines 'Nil' and 'Included Above' carry no figure.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "F13 FY2022-23",
+   "categories": {
+    "row 12": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E12",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E13",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E14",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E15",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E16",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E17",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E18",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E19",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E20",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E21",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E22",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E23",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E24",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E25",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E26",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "inputs": {
+    "record:capex_plan_grants": {
+     "cell": "G12",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_cc": {
+     "cell": "H12",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_loan": {
+     "cell": "I12",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    }
+   },
+   "checks": {
+    "capex_schemes_total": [
+     "E29",
+     "F24_Dep!C29",
+     "F22_O&M_R&M after FY25!E26"
+    ],
+    "capex_plan_equity": "F12"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F13 FY2023-24",
+   "categories": {
+    "row 32": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E32",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E33",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E34",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E35",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E36",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 37": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E37",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 38": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E38",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 39": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E39",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 40": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E40",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 41": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E41",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 42": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E42",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 43": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E43",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 44": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E44",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 45": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E45",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 46": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E46",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "inputs": {
+    "record:capex_plan_grants": {
+     "cell": "G32",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_cc": {
+     "cell": "H32",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_loan": {
+     "cell": "I32",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    }
+   },
+   "checks": {
+    "capex_schemes_total": [
+     "E49",
+     "F14_CAP_Cap Cost!E11"
+    ],
+    "capex_plan_equity": "F32"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F13 FY2024-25",
+   "categories": {
+    "row 52": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E52",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 53": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E53",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 54": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E54",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 55": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E55",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 56": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E56",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 57": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E57",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 58": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E58",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 59": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E59",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 60": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E60",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 61": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E61",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 62": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E62",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 63": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E63",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 64": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E64",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 65": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E65",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 66": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E66",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "inputs": {
+    "record:capex_plan_grants": {
+     "cell": "G52",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_cc": {
+     "cell": "H52",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_loan": {
+     "cell": "I52",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    }
+   },
+   "checks": {
+    "capex_schemes_total": [
+     "E69",
+     "F14_CAP_Cap Cost!G11"
+    ],
+    "capex_plan_equity": "F52"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F13 FY2025-26",
+   "categories": {
+    "row 72": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E72",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 73": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E73",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 74": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E74",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 75": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E75",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 76": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E76",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 77": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E77",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 78": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E78",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 79": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E79",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 80": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E80",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 81": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E81",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 82": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E82",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 83": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E83",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 84": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E84",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 85": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E85",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 86": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E86",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 87": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E87",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 88": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E88",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 89": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E89",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 90": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E90",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 91": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E91",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 92": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E92",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 93": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E93",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 94": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E94",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 95": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E95",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 96": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E96",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 97": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E97",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "inputs": {
+    "record:capex_plan_grants": {
+     "cell": "G72",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_cc": {
+     "cell": "H72",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_loan": {
+     "cell": "I72",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    }
+   },
+   "checks": {
+    "capex_schemes_total": [
+     "E98",
+     "F16_CAP_CAPEX & CAP. after FY25!B32",
+     "APR Snapshot!J83"
+    ],
+    "capex_plan_equity": "F72"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F13 FY2026-27",
+   "categories": {
+    "row 101": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E101",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 102": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E102",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 103": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E103",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 104": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E104",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 105": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E105",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 106": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E106",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 107": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E107",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 108": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E108",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 109": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E109",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 110": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E110",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 111": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E111",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 112": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E112",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 113": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E113",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 114": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E114",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 115": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E115",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 116": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E116",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 117": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E117",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 118": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E118",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 119": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E119",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 120": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E120",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 121": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E121",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 122": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E122",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 123": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E123",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 124": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E124",
+       "INR_crore"
+      ]
+     }
+    },
+    "row 125": {
+     "inputs": {
+      "record:capex_scheme_amount": [
+       "E125",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "inputs": {
+    "record:capex_plan_grants": {
+     "cell": "G101",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_cc": {
+     "cell": "H101",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    },
+    "record:capex_plan_loan": {
+     "cell": "I101",
+     "unit": "INR_crore",
+     "blank_is_zero": "the financing column is blank in F13 (A84)"
+    }
+   },
+   "checks": {
+    "capex_schemes_total": [
+     "E126",
+     "F16_CAP_CAPEX & CAP. after FY25!D32",
+     "ARR snapshot!J70"
+    ],
+    "capex_plan_equity": "F101"
+   }
+  }
+ ]
+}

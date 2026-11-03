@@ -1005,6 +1005,25 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 144 (2026-11-03): NPCL — the capital formats: assets not in use (F11), consumer contributions (F12), the investment plan (F13).**
+  - **9 more draft rules in `uperc/formats.v1.json` (17; UPERC 250):** per-class cost, depreciation
+    and written-down value of withdrawn assets with their totals; the consumer-contribution roll
+    forward; the release on retirement; F13's equity column.  F13 reuses `uperc.capex.scheme`.
+  - **`f11-assets-not-in-use.json`: 30 / 30** — three years, class by class, totals carried to F14's
+    deletions (row 13) and depreciation (row 35).
+  - **`f12-consumer-contributions.json`: 10 / 10** — three years chained on computed closings; the
+    FY2024-25 opening is a literal in F12's own formulas (378.83, stated with its reason).  The
+    release on retirement (−2.178) is F14's retired consumer-funded block (4.979) less its
+    depreciation (2.800), exactly.
+  - **`f13-investment-plan.json`: 18 / 18** — five years of schemes to totals, carried to F24 and
+    F22 (FY2022-23), F14 (FY2023-24, FY2024-25), F16 and the snapshots (FY2025-26, FY2026-27).
+  - **Finding `A84` (petitioner):** F13's grants, consumer-contribution and loan columns are blank,
+    so its equity column is the whole capex; F14 funds the plan 70:30 net of contributions.
+  - **Not counted:** F12's FY2024-25 closing also appears in the balance sheet (BS2!E59).  That tie
+    is left to the accounts increment, so that one cell does not count BS2 as reproduced.
+  - **Formats accounted: 45 reproduced, 7 read, 19 present, 2 blank, 1 missing.**
+  Nothing verified, nothing approved.
+
   **Increment 143 (2026-11-03): NPCL — the whole ARR suite, first: non-tariff income (F28) and employees by grade (F20).**
   - **Direction (operator, 2026-11-03):** focus on NPCL and finish the whole ARR suite — every
     format of the filing's index checked, not only those a regulation computes.  Before this
@@ -3551,6 +3570,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 144 (2026-11-03): 515 passed** (+1 unit: NPCL F11, F12, F13, all exact).  Ruff and format clean.
 - **Increment 143 (2026-11-03): 514 passed** (+1 unit: NPCL F28 and F20; one integration assertion now expects non-tariff income tied, not a record).  Ruff and format clean.
 - **Increment 142 (2026-11-03): 513 passed** (+2 unit: JSERC capital chain with J1, J2; JSERC ARR end to end).  `check_order_quotes.py`: 207 / 207.  Ruff and format clean.
 - **Increment 141 (2026-11-03): 511 passed** (+1 unit: HPERC's O&M from its parts; H3, H4).  `check_order_quotes.py`: 55 / 55.  Ruff and format clean.
@@ -3827,7 +3847,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 143) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 144) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3864,7 +3884,7 @@ entries below are the per-increment history.**
   ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
   `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
-  held by the operator).  **241 draft UPERC rules** in 29 files reproduce the filed formats.
+  held by the operator).  **250 draft UPERC rules** in 29 files reproduce the filed formats.
   `/arr/reference/uperc-npcl-fy2026-27` shows the following:
   - **End to end from the schedules:** the regulatory asset is carried from year to year as
     computed (increment 95).  The net ARR and gap of the ARR and APR years match (3,481.83 and
@@ -3872,8 +3892,8 @@ entries below are the per-increment history.**
     gap as 0.25 (10 / 12 there).
   - **How each ARR figure is established:** FY2026-27 is 17 computed, 18 tied, 11 records, none
     differing.
-  - **Formats accounted, against the filing's index:** 42 reproduced, 8 read, 21 present, 2
-    blank, 1 missing (increment 143; the operator's direction is to close every one).
+  - **Formats accounted, against the filing's index:** 45 reproduced, 7 read, 19 present, 2
+    blank, 1 missing (increment 144; the operator's direction is to close every one).
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
   - **What the Commission decided** (the FY2026-27 order, read row by row with pages): the order
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.
@@ -3895,7 +3915,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **51 findings (A29–A83):** 30 for the petitioner, collected in the draft queries; 21 for the
+  - **52 findings (A29–A84):** 31 for the petitioner, collected in the draft queries; 21 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

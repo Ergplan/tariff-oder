@@ -1,0 +1,285 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F11_CAP_Asset not in use",
+ "places": 6,
+ "note": "F11's assets withdrawn from use, class by class (cost less accumulated depreciation), FY2024-25 to FY2026-27, to its totals — the cost carried to F14's deletions (row 13), the depreciation to F14's row 35.  The projection years' classes are F24's retirements by formula (F24 is reproduced).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F11 assets not in use",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:retired_cost": [
+       "C8",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E8",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F8"
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:retired_cost": [
+       "C9",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E9",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F9"
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:retired_cost": [
+       "C10",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E10",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F10"
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:retired_cost": [
+       "C11",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E11",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F11"
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:retired_cost": [
+       "C12",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E12",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F12"
+     }
+    }
+   },
+   "checks": {
+    "retired_cost_total": [
+     "C13",
+     "F14_CAP_Cap Cost!G13"
+    ],
+    "retired_accdep_total": [
+     "E13",
+     "F14_CAP_Cap Cost!G35"
+    ],
+    "retired_wdv_total": "F13"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F11 assets not in use",
+   "categories": {
+    "row 18": {
+     "inputs": {
+      "record:retired_cost": [
+       "C18",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E18",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F18"
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:retired_cost": [
+       "C19",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E19",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F19"
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:retired_cost": [
+       "C20",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E20",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F20"
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:retired_cost": [
+       "C21",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E21",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F21"
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:retired_cost": [
+       "C22",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E22",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F22"
+     }
+    }
+   },
+   "checks": {
+    "retired_cost_total": [
+     "C23",
+     "F14_CAP_Cap Cost!H13"
+    ],
+    "retired_accdep_total": [
+     "E23",
+     "F14_CAP_Cap Cost!H35"
+    ],
+    "retired_wdv_total": "F23"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F11 assets not in use",
+   "categories": {
+    "row 28": {
+     "inputs": {
+      "record:retired_cost": [
+       "C28",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E28",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F28"
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:retired_cost": [
+       "C29",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E29",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F29"
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:retired_cost": [
+       "C30",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E30",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F30"
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:retired_cost": [
+       "C31",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E31",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F31"
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:retired_cost": [
+       "C32",
+       "INR_crore"
+      ],
+      "record:retired_acc_dep": [
+       "E32",
+       "INR_crore"
+      ]
+     },
+     "checks": {
+      "retired_class_wdv": "F32"
+     }
+    }
+   },
+   "checks": {
+    "retired_cost_total": [
+     "C33",
+     "F14_CAP_Cap Cost!I13"
+    ],
+    "retired_accdep_total": [
+     "E33",
+     "F14_CAP_Cap Cost!I35"
+    ],
+    "retired_wdv_total": "F33"
+   }
+  }
+ ]
+}

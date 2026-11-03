@@ -607,6 +607,18 @@
     "bindings/f20-employees.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A84",
+   "kind": "presentation",
+   "title": "F13's investment plan shows every year's capex as equity: its grants, consumer contribution and loan columns are blank",
+   "detail": "F13's 'Source of financing' columns — capital subsidies / grants, consumer contribution, loan — are blank in all five years, so its 'Equity Amount' column (total less the three) is the whole capex: 475.64 for FY2025-26 and 503.21 for FY2026-27.  The financing the petition claims on is elsewhere: F14 funds the capitalisation net of consumer contributions 70:30 (FY2025-26: consumer contribution 61.39 from F12, debt 270.97, equity 116.13), and F12 carries the consumer contributions.  F13's schemes add to its totals and the totals are carried to F14, F16, F22, F24 and the snapshots exactly (18 / 18).  For the petitioner: fill F13's financing columns as F14 funds the plan.",
+   "where": [
+    "F13_CAP_Plan F12:I126",
+    "F14_CAP_Cap Cost rows 27–30",
+    "bindings/f13-investment-plan.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

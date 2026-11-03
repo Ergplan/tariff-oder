@@ -2738,3 +2738,38 @@ def test_npcl_non_tariff_income_and_employees_by_grade_formats_add_up():
     ]
     findings = {f["id"]: f for f in json.loads((folder / "findings.json").read_text())["findings"]}
     assert findings["A82"]["for"] == findings["A83"]["for"] == "petitioner"
+
+
+def test_npcl_assets_not_in_use_consumer_contributions_and_the_investment_plan():
+    """Real data, NPCL's F11, F12 and F13 (increment 144), all exact: assets withdrawn class by class
+    to F14's deletions and depreciation; consumer contributions rolled forward three years on
+    computed closings, FY2024-25's release on retirement being F14's retired consumer-funded block
+    less its depreciation; the investment plan's schemes to
+    totals carried to F14, F16, F22, F24 and the snapshots — its 'equity' the whole capex (A84)."""
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import load_rules
+
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    wb = openpyxl.load_workbook(folder / "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx", data_only=True)
+    rules = load_rules("UPERC")
+    run = lambda n: reproduce_cells(wb, json.loads((folder / "bindings" / n).read_text()), rules)  # noqa: E731
+    counts = {}
+    for name in ("f11-assets-not-in-use.json", "f12-consumer-contributions.json", "f13-investment-plan.json"):
+        checks = run(name)
+        assert all(c.result == "match" for c in checks), name
+        counts[name] = len(checks)
+    assert counts == {
+        "f11-assets-not-in-use.json": 30,
+        "f12-consumer-contributions.json": 10,
+        "f13-investment-plan.json": 18,
+    }
+    cc = {
+        (c.fiscal_year, c.output, c.category.rsplit(" ", 1)[1]): c.computed
+        for c in run("f12-consumer-contributions.json")
+    }
+    assert cc[("FY2024-25", "cc_retirement_signed", "I9")] == "-2.178464"
+    assert cc[("FY2024-25", "cc_balance_closing", "J9")] == "438.295267"
+    assert cc[("FY2026-27", "cc_balance_closing", "R9")] == "499.854722"
+    assert "A84" in {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}

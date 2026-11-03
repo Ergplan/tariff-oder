@@ -1,0 +1,110 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F12_CAP_Cons Contri",
+ "places": 6,
+ "note": "F12's consumer contributions rolled forward FY2024-25 to FY2026-27, each year opening on the previous year's computed closing: additions, amortisation (negative; the projection years' from F24) and the release on retirement — FY2024-25's −2.178 is F14's retired consumer-funded block (4.979) less its accumulated depreciation (2.800).  Grants and subsidies (rows 10–12) are nil throughout.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F12 FY2024-25",
+   "inputs": {
+    "record:cc_opening": {
+     "value": "378.827886143999",
+     "unit": "INR_crore",
+     "why": "a literal in F12's formulas F9 and J9 — the opening balance of FY2024-25 (no format carries it)"
+    },
+    "record:cc_additions": [
+     "G9",
+     "INR_crore"
+    ],
+    "record:cc_amortisation": [
+     "H9",
+     "INR_crore"
+    ],
+    "record:cc_retirement": {
+     "cell": "I9",
+     "unit": "INR_crore"
+    },
+    "record:retired_gross_from_cc": [
+     "F14_CAP_Cap Cost!G33",
+     "INR_crore"
+    ],
+    "record:retired_acc_dep_cc": [
+     "F14_CAP_Cap Cost!G36",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "cc_balance_closing": [
+     "J9",
+     "F9",
+     "J13",
+     "F13"
+    ],
+    "cc_retirement_signed": [
+     "I9",
+     "E9"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F12 FY2025-26",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "F12 FY2024-25",
+     "output": "cc_balance_closing"
+    },
+    "record:cc_additions": [
+     "K9",
+     "INR_crore"
+    ],
+    "record:cc_amortisation": [
+     "L9",
+     "INR_crore"
+    ],
+    "record:cc_retirement": {
+     "cell": "M9",
+     "unit": "INR_crore",
+     "blank_is_zero": "no consumer-funded asset retired in the year (F14 row 33 is nil)"
+    }
+   },
+   "checks": {
+    "cc_balance_closing": [
+     "N9",
+     "N13"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F12 FY2026-27",
+   "inputs": {
+    "record:cc_opening": {
+     "computed": "F12 FY2025-26",
+     "output": "cc_balance_closing"
+    },
+    "record:cc_additions": [
+     "O9",
+     "INR_crore"
+    ],
+    "record:cc_amortisation": [
+     "P9",
+     "INR_crore"
+    ],
+    "record:cc_retirement": {
+     "cell": "Q9",
+     "unit": "INR_crore",
+     "blank_is_zero": "no consumer-funded asset retired in the year (F14 row 33 is nil)"
+    }
+   },
+   "checks": {
+    "cc_balance_closing": [
+     "R9",
+     "R13"
+    ]
+   }
+  }
+ ]
+}

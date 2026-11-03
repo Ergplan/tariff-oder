@@ -288,6 +288,351 @@
    },
    "examples": [],
    "note": "F20's total number of employees"
+  },
+  {
+   "id": "uperc.fmt.retired_class_cost",
+   "version": 1,
+   "status": "draft",
+   "title": "Assets not in use, one class: historical cost (F11)",
+   "output": "retired_class_cost",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "cost",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "record:retired_cost"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line of F11",
+   "per": "retired_class"
+  },
+  {
+   "id": "uperc.fmt.retired_class_accdep",
+   "version": 1,
+   "status": "draft",
+   "title": "Assets not in use, one class: accumulated depreciation on withdrawal (F11)",
+   "output": "retired_class_accdep",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "dep",
+   "inputs": {
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:retired_acc_dep"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a line of F11",
+   "per": "retired_class"
+  },
+  {
+   "id": "uperc.fmt.retired_class_wdv",
+   "version": 1,
+   "status": "draft",
+   "title": "Assets not in use, one class: written-down value on withdrawal",
+   "output": "retired_class_wdv",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "cost - dep",
+   "inputs": {
+    "cost": {
+     "unit": "INR_crore",
+     "source": "record:retired_cost"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:retired_acc_dep"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F11's last column",
+   "per": "retired_class"
+  },
+  {
+   "id": "uperc.fmt.retired_cost_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Assets not in use: historical cost, the classes summed",
+   "output": "retired_cost_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "classes",
+   "inputs": {
+    "classes": {
+     "unit": "INR_crore",
+     "source": "sum:retired_class_cost"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F11's total, carried to F14's deletions (row 13)"
+  },
+  {
+   "id": "uperc.fmt.retired_accdep_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Assets not in use: accumulated depreciation, the classes summed",
+   "output": "retired_accdep_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "classes",
+   "inputs": {
+    "classes": {
+     "unit": "INR_crore",
+     "source": "sum:retired_class_accdep"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F11's total, carried to F14's row 35"
+  },
+  {
+   "id": "uperc.fmt.retired_wdv_total",
+   "version": 1,
+   "status": "draft",
+   "title": "Assets not in use: written-down value, the classes summed",
+   "output": "retired_wdv_total",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "classes",
+   "inputs": {
+    "classes": {
+     "unit": "INR_crore",
+     "source": "sum:retired_class_wdv"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F11's total"
+  },
+  {
+   "id": "uperc.fmt.cc_closing",
+   "version": 1,
+   "status": "draft",
+   "title": "Consumer contributions: the year's closing balance (F12)",
+   "output": "cc_balance_closing",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "opening + additions + amortisation + retirement",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:cc_opening"
+    },
+    "additions": {
+     "unit": "INR_crore",
+     "source": "record:cc_additions"
+    },
+    "amortisation": {
+     "unit": "INR_crore",
+     "source": "record:cc_amortisation",
+     "note": "negative, as F12 signs it"
+    },
+    "retirement": {
+     "unit": "INR_crore",
+     "source": "record:cc_retirement",
+     "note": "negative, as F12 signs it"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F12's balance at the end of the year: amortisation and retirement are entered as negatives"
+  },
+  {
+   "id": "uperc.fmt.cc_retirement",
+   "version": 1,
+   "status": "draft",
+   "title": "Consumer contributions released on retirement: the retired contributed block less its depreciation",
+   "output": "cc_retirement_signed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "dep - gross",
+   "inputs": {
+    "gross": {
+     "unit": "INR_crore",
+     "source": "record:retired_gross_from_cc",
+     "note": "F14 row 33"
+    },
+    "dep": {
+     "unit": "INR_crore",
+     "source": "record:retired_acc_dep_cc",
+     "note": "F14 row 36"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "negative, as F12 enters it: the written-down value of the consumer-funded assets retired"
+  },
+  {
+   "id": "uperc.fmt.capex_plan_equity",
+   "version": 1,
+   "status": "draft",
+   "title": "Investment plan: the equity column, the capex less grants, consumer contribution and loan",
+   "output": "capex_plan_equity",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-6",
+   "formula": "total - grants - cc - loan",
+   "inputs": {
+    "total": {
+     "unit": "INR_crore",
+     "source": "rule:capex_schemes_total"
+    },
+    "grants": {
+     "unit": "INR_crore",
+     "source": "record:capex_plan_grants"
+    },
+    "cc": {
+     "unit": "INR_crore",
+     "source": "record:capex_plan_cc"
+    },
+    "loan": {
+     "unit": "INR_crore",
+     "source": "record:capex_plan_loan"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "F13's 'Equity Amount' column as its formula computes it"
   }
  ]
 }
