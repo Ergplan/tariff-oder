@@ -2876,3 +2876,37 @@ def test_npcl_merit_order_renewables_bids_short_term_and_the_procurement_plan():
     for name, n in expected.items():
         checks = reproduce_cells(wb, json.loads((folder / "bindings" / name).read_text()), rules)
         assert Counter(c.result for c in checks) == {"match": n}, name
+
+
+def test_npcl_performance_formats_losses_network_arrears_failures_accidents_peak_and_land():
+    """Real data, NPCL's P1A, P4, P5, P7, P8, P9 and P11 (increment 148): losses by voltage carried
+    from 33 kV down to LT, against the ARR's rows 8–10 (55 / 56; A90); the network's stocks rolled
+    forward and totalled (77 / 78; LT meters 939 over, A91); arrears; transformer failure rates
+    and counts against P4 (92); accidents (4 / 5; A92); peak shortfalls and the projection at 11 %;
+    the leasehold land's addition, in rupees, against F13's scheme in crore."""
+    from collections import Counter
+
+    import openpyxl
+
+    from tariff_api.arr.reproduce import reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("UPERC") == []
+    folder = ROOT / "packages" / "reference-filings" / "uperc-npcl-fy2026-27"
+    wb = openpyxl.load_workbook(folder / "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx", data_only=True)
+    rules = load_rules("UPERC")
+    expected = {
+        "p1a-losses-by-voltage.json": ({"match": 55, "differs": 1}, [("FY25!F136", "3597.62685", "3597.62929")]),
+        "p4-physical-statistics.json": ({"match": 77, "differs": 1}, [("H30", "183601.000", "184540.000")]),
+        "p5-arrears.json": ({"match": 8}, []),
+        "p7-transformer-failures.json": ({"match": 92}, []),
+        "p8-accidents.json": ({"match": 4, "differs": 1}, [("G9", "3", "2")]),
+        "p9-peak-demand.json": ({"match": 12}, []),
+        "p11-land.json": ({"match": 2}, []),
+    }
+    for name, (counts, differs) in expected.items():
+        checks = reproduce_cells(wb, json.loads((folder / "bindings" / name).read_text()), rules)
+        assert Counter(c.result for c in checks) == counts, name
+        got = [(c.category.rsplit(" ", 1)[1], c.computed, c.filed) for c in checks if c.result != "match"]
+        assert got == differs, name
+    assert {"A90", "A91", "A92"} <= {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]}

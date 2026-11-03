@@ -1,0 +1,210 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "P9_Peak Demand",
+ "places": 0,
+ "note": "P9's peak demand in MW, five years: the shortfall of restricted demand against the peak availability assessed, and the unrestricted demand over the restricted (the load restricted); FY2026-27's unrestricted peak at 11 % over FY2025-26 and its restricted peak in the same proportion — the format rounds both to whole MW.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P9 restricted FY2022-23",
+   "inputs": {
+    "record:demand": [
+     "C14",
+     "number"
+    ],
+    "record:available": [
+     "C17",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "C20"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P9 restricted by FY2022-23",
+   "inputs": {
+    "record:demand": [
+     "C15",
+     "number"
+    ],
+    "record:available": [
+     "C14",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "C21"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P9 restricted FY2023-24",
+   "inputs": {
+    "record:demand": [
+     "D14",
+     "number"
+    ],
+    "record:available": [
+     "D17",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "D20"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P9 restricted by FY2023-24",
+   "inputs": {
+    "record:demand": [
+     "D15",
+     "number"
+    ],
+    "record:available": [
+     "D14",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "D21"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P9 restricted FY2024-25",
+   "inputs": {
+    "record:demand": [
+     "E14",
+     "number"
+    ],
+    "record:available": [
+     "E17",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "E20"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P9 restricted by FY2024-25",
+   "inputs": {
+    "record:demand": [
+     "E15",
+     "number"
+    ],
+    "record:available": [
+     "E14",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "E21"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P9 restricted FY2025-26",
+   "inputs": {
+    "record:demand": [
+     "F14",
+     "number"
+    ],
+    "record:available": [
+     "F17",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "F20"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P9 restricted by FY2025-26",
+   "inputs": {
+    "record:demand": [
+     "F15",
+     "number"
+    ],
+    "record:available": [
+     "F14",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "F21"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P9 restricted FY2026-27",
+   "inputs": {
+    "record:demand": [
+     "G14",
+     "number"
+    ],
+    "record:available": [
+     "G17",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "G20"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P9 restricted by FY2026-27",
+   "inputs": {
+    "record:demand": [
+     "G15",
+     "number"
+    ],
+    "record:available": [
+     "G14",
+     "number"
+    ]
+   },
+   "checks": {
+    "shortfall": "G21"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P9 projected peak",
+   "inputs": {
+    "record:grown_previous": [
+     "F15",
+     "number"
+    ],
+    "record:growth_rate": {
+     "value": "0.11",
+     "unit": "fraction",
+     "why": "a literal in P9's formula G15 (=ROUND(F15*1.11,0)); the narrative cites an 11 % CAGR of peak load"
+    },
+    "record:scaled_part": [
+     "F14",
+     "number"
+    ],
+    "record:scaled_whole": [
+     "F15",
+     "number"
+    ],
+    "record:scaled_new_whole": [
+     "G15",
+     "number"
+    ]
+   },
+   "checks": {
+    "grown": "G15",
+    "scaled": "G14"
+   }
+  }
+ ]
+}

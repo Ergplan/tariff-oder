@@ -1,0 +1,2629 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "P7_Trans Failure",
+ "places": 6,
+ "note": "P7's transformers and failures by rating, three years: the totals, each failure rate, and the counts at the year's end against P4's (power and distribution transformers).  The power transformers' failures sum rows 11–13 only (the format's own range); rows 14–15 have none.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 total 9 C",
+   "categories": {
+    "row 11": {
+     "inputs": {
+      "record:line_number": [
+       "C11",
+       "number"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_number": [
+       "C12",
+       "number"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_number": [
+       "C13",
+       "number"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_number": [
+       "C14",
+       "number"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_number": [
+       "C15",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C9"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 total 9 D",
+   "categories": {
+    "row 11": {
+     "inputs": {
+      "record:line_number": [
+       "D11",
+       "number"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_number": [
+       "D12",
+       "number"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_number": [
+       "D13",
+       "number"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_number": [
+       "D14",
+       "number"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_number": [
+       "D15",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "D9"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 9 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D9",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C9",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E9"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 11 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D11",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C11",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E11"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 12 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D12",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C12",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E12"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 13 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D13",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C13",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E13"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 total 17 C",
+   "categories": {
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "C19",
+       "number"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_number": [
+       "C20",
+       "number"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_number": [
+       "C21",
+       "number"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_number": [
+       "C22",
+       "number"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_number": [
+       "C23",
+       "number"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_number": [
+       "C24",
+       "number"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_number": [
+       "C25",
+       "number"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_number": [
+       "C26",
+       "number"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_number": [
+       "C27",
+       "number"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_number": [
+       "C28",
+       "number"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_number": [
+       "C29",
+       "number"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_number": [
+       "C30",
+       "number"
+      ]
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_number": [
+       "C31",
+       "number"
+      ]
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_number": [
+       "C32",
+       "number"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_number": [
+       "C33",
+       "number"
+      ]
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "C34",
+       "number"
+      ]
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_number": [
+       "C35",
+       "number"
+      ]
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_number": [
+       "C36",
+       "number"
+      ]
+     }
+    },
+    "row 37": {
+     "inputs": {
+      "record:line_number": [
+       "C37",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "C17"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 total 17 D",
+   "categories": {
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "D19",
+       "number"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_number": [
+       "D20",
+       "number"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_number": [
+       "D21",
+       "number"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_number": [
+       "D22",
+       "number"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_number": [
+       "D23",
+       "number"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_number": [
+       "D24",
+       "number"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_number": [
+       "D25",
+       "number"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_number": [
+       "D26",
+       "number"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_number": [
+       "D27",
+       "number"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_number": [
+       "D28",
+       "number"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_number": [
+       "D29",
+       "number"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_number": [
+       "D30",
+       "number"
+      ]
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_number": [
+       "D31",
+       "number"
+      ]
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_number": [
+       "D32",
+       "number"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_number": [
+       "D33",
+       "number"
+      ]
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "D34",
+       "number"
+      ]
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_number": [
+       "D35",
+       "number"
+      ]
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_number": [
+       "D36",
+       "number"
+      ]
+     }
+    },
+    "row 37": {
+     "inputs": {
+      "record:line_number": [
+       "D37",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "D17"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 17 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D17",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C17",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E17"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 19 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D19",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C19",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E19"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 20 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D20",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C20",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E20"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 21 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D21",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C21",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E21"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 22 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D22",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C22",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E22"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 23 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D23",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C23",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E23"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 24 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D24",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C24",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E24"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 25 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D25",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C25",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E25"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 26 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D26",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C26",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E26"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 27 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D27",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C27",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E27"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 28 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D28",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C28",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E28"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 29 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D29",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C29",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E29"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 30 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D30",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C30",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E30"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 31 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D31",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C31",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E31"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 32 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D32",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C32",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E32"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 33 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D33",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C33",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E33"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 34 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D34",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C34",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E34"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 35 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D35",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C35",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E35"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 36 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D36",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C36",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E36"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P7 rate 37 FY2022-23",
+   "inputs": {
+    "record:ratio_part": [
+     "D37",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "C37",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "E37"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 total 9 F",
+   "categories": {
+    "row 11": {
+     "inputs": {
+      "record:line_number": [
+       "F11",
+       "number"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_number": [
+       "F12",
+       "number"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_number": [
+       "F13",
+       "number"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_number": [
+       "F14",
+       "number"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_number": [
+       "F15",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "F9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 total 9 G",
+   "categories": {
+    "row 11": {
+     "inputs": {
+      "record:line_number": [
+       "G11",
+       "number"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_number": [
+       "G12",
+       "number"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_number": [
+       "G13",
+       "number"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_number": [
+       "G14",
+       "number"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_number": [
+       "G15",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "G9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 9 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G9",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F9",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 11 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G11",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F11",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H11"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 12 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G12",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F12",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H12"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 13 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G13",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F13",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H13"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 14 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G14",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F14",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H14"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 15 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G15",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F15",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H15"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 total 17 F",
+   "categories": {
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "F19",
+       "number"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_number": [
+       "F20",
+       "number"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_number": [
+       "F21",
+       "number"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_number": [
+       "F22",
+       "number"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_number": [
+       "F23",
+       "number"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_number": [
+       "F24",
+       "number"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_number": [
+       "F25",
+       "number"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_number": [
+       "F26",
+       "number"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_number": [
+       "F27",
+       "number"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_number": [
+       "F28",
+       "number"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_number": [
+       "F29",
+       "number"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_number": [
+       "F30",
+       "number"
+      ]
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_number": [
+       "F31",
+       "number"
+      ]
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_number": [
+       "F32",
+       "number"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_number": [
+       "F33",
+       "number"
+      ]
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "F34",
+       "number"
+      ]
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_number": [
+       "F35",
+       "number"
+      ]
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_number": [
+       "F36",
+       "number"
+      ]
+     }
+    },
+    "row 37": {
+     "inputs": {
+      "record:line_number": [
+       "F37",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "F17"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 total 17 G",
+   "categories": {
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "G19",
+       "number"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_number": [
+       "G20",
+       "number"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_number": [
+       "G21",
+       "number"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_number": [
+       "G22",
+       "number"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_number": [
+       "G23",
+       "number"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_number": [
+       "G24",
+       "number"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_number": [
+       "G25",
+       "number"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_number": [
+       "G26",
+       "number"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_number": [
+       "G27",
+       "number"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_number": [
+       "G28",
+       "number"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_number": [
+       "G29",
+       "number"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_number": [
+       "G30",
+       "number"
+      ]
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_number": [
+       "G31",
+       "number"
+      ]
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_number": [
+       "G32",
+       "number"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_number": [
+       "G33",
+       "number"
+      ]
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "G34",
+       "number"
+      ]
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_number": [
+       "G35",
+       "number"
+      ]
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_number": [
+       "G36",
+       "number"
+      ]
+     }
+    },
+    "row 37": {
+     "inputs": {
+      "record:line_number": [
+       "G37",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "G17"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 17 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G17",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F17",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H17"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 19 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G19",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F19",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H19"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 20 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G20",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F20",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H20"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 21 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G21",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F21",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H21"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 22 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G22",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F22",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H22"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 23 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G23",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F23",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H23"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 24 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G24",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F24",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H24"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 25 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G25",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F25",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H25"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 26 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G26",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F26",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H26"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 27 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G27",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F27",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H27"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 28 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G28",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F28",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H28"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 29 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G29",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F29",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H29"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 30 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G30",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F30",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H30"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 31 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G31",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F31",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H31"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 32 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G32",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F32",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H32"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 33 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G33",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F33",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H33"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 34 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G34",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F34",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H34"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 35 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G35",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F35",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H35"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 36 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G36",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F36",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H36"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 rate 37 FY2023-24",
+   "inputs": {
+    "record:ratio_part": [
+     "G37",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "F37",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "H37"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 total 9 I",
+   "categories": {
+    "row 11": {
+     "inputs": {
+      "record:line_number": [
+       "I11",
+       "number"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_number": [
+       "I12",
+       "number"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_number": [
+       "I13",
+       "number"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_number": [
+       "I14",
+       "number"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_number": [
+       "I15",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "I9"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 total 9 J",
+   "categories": {
+    "row 11": {
+     "inputs": {
+      "record:line_number": [
+       "J11",
+       "number"
+      ]
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_number": [
+       "J12",
+       "number"
+      ]
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_number": [
+       "J13",
+       "number"
+      ]
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_number": [
+       "J14",
+       "number"
+      ]
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_number": [
+       "J15",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "J9"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 9 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J9",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I9",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K9"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 11 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J11",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I11",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K11"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 12 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J12",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I12",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K12"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 13 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J13",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I13",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K13"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 14 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J14",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I14",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K14"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 15 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J15",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I15",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K15"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 total 17 I",
+   "categories": {
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "I19",
+       "number"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_number": [
+       "I20",
+       "number"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_number": [
+       "I21",
+       "number"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_number": [
+       "I22",
+       "number"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_number": [
+       "I23",
+       "number"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_number": [
+       "I24",
+       "number"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_number": [
+       "I25",
+       "number"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_number": [
+       "I26",
+       "number"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_number": [
+       "I27",
+       "number"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_number": [
+       "I28",
+       "number"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_number": [
+       "I29",
+       "number"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_number": [
+       "I30",
+       "number"
+      ]
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_number": [
+       "I31",
+       "number"
+      ]
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_number": [
+       "I32",
+       "number"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_number": [
+       "I33",
+       "number"
+      ]
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "I34",
+       "number"
+      ]
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_number": [
+       "I35",
+       "number"
+      ]
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_number": [
+       "I36",
+       "number"
+      ]
+     }
+    },
+    "row 37": {
+     "inputs": {
+      "record:line_number": [
+       "I37",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "I17"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 total 17 J",
+   "categories": {
+    "row 19": {
+     "inputs": {
+      "record:line_number": [
+       "J19",
+       "number"
+      ]
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_number": [
+       "J20",
+       "number"
+      ]
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_number": [
+       "J21",
+       "number"
+      ]
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_number": [
+       "J22",
+       "number"
+      ]
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_number": [
+       "J23",
+       "number"
+      ]
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_number": [
+       "J24",
+       "number"
+      ]
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_number": [
+       "J25",
+       "number"
+      ]
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_number": [
+       "J26",
+       "number"
+      ]
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_number": [
+       "J27",
+       "number"
+      ]
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_number": [
+       "J28",
+       "number"
+      ]
+     }
+    },
+    "row 29": {
+     "inputs": {
+      "record:line_number": [
+       "J29",
+       "number"
+      ]
+     }
+    },
+    "row 30": {
+     "inputs": {
+      "record:line_number": [
+       "J30",
+       "number"
+      ]
+     }
+    },
+    "row 31": {
+     "inputs": {
+      "record:line_number": [
+       "J31",
+       "number"
+      ]
+     }
+    },
+    "row 32": {
+     "inputs": {
+      "record:line_number": [
+       "J32",
+       "number"
+      ]
+     }
+    },
+    "row 33": {
+     "inputs": {
+      "record:line_number": [
+       "J33",
+       "number"
+      ]
+     }
+    },
+    "row 34": {
+     "inputs": {
+      "record:line_number": [
+       "J34",
+       "number"
+      ]
+     }
+    },
+    "row 35": {
+     "inputs": {
+      "record:line_number": [
+       "J35",
+       "number"
+      ]
+     }
+    },
+    "row 36": {
+     "inputs": {
+      "record:line_number": [
+       "J36",
+       "number"
+      ]
+     }
+    },
+    "row 37": {
+     "inputs": {
+      "record:line_number": [
+       "J37",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "J17"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 17 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J17",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I17",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K17"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 19 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J19",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I19",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K19"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 20 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J20",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I20",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K20"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 21 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J21",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I21",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K21"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 22 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J22",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I22",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K22"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 23 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J23",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I23",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K23"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 24 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J24",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I24",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K24"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 25 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J25",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I25",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K25"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 26 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J26",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I26",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K26"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 27 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J27",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I27",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K27"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 28 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J28",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I28",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K28"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 29 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J29",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I29",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K29"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 30 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J30",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I30",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K30"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 31 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J31",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I31",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 32 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J32",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I32",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K32"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 33 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J33",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I33",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K33"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 34 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J34",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I34",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K34"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 35 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J35",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I35",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K35"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 36 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J36",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I36",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K36"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 rate 37 FY2024-25",
+   "inputs": {
+    "record:ratio_part": [
+     "J37",
+     "number"
+    ],
+    "record:ratio_whole": [
+     "I37",
+     "number"
+    ]
+   },
+   "checks": {
+    "ratio": "K37"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 F9 against P4",
+   "categories": {
+    "count": {
+     "inputs": {
+      "record:line_number": [
+       "F9",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P4_Phy Stat!E23"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 I9 against P4",
+   "categories": {
+    "count": {
+     "inputs": {
+      "record:line_number": [
+       "I9",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P4_Phy Stat!H23"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P7 F17 against P4",
+   "categories": {
+    "count": {
+     "inputs": {
+      "record:line_number": [
+       "F17",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P4_Phy Stat!E26"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P7 I17 against P4",
+   "categories": {
+    "count": {
+     "inputs": {
+      "record:line_number": [
+       "I17",
+       "number"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "P4_Phy Stat!H26"
+   }
+  }
+ ]
+}

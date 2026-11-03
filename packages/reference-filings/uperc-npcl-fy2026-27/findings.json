@@ -683,6 +683,42 @@
     "bindings/f1-power-purchase.json"
    ],
    "for": "petitioner"
+  },
+  {
+   "id": "A90",
+   "kind": "inconsistency",
+   "title": "P1A's FY2024-25 sales by voltage add to 3,597.6268 MU; ESR3's, carried to the ARR, to 3,597.6293",
+   "detail": "P1A's energy sold at each voltage (rows A2, B2, C2, D2) adds to 3,597.626845 MU for FY2024-25 against ESR3's 3,597.629289 MU in the ARR format's row 9 — 0.0024 MU (2,444 kWh) apart; its loss, 7.47928 %, against the ARR's 7.47921 %.  The other three years agree (FY2023-24 exactly, FY2025-26 and FY2026-27 to the fifth place), and every level's loss, passage and share reproduces (55 / 56).  For the petitioner: which sales figure, and the voltage that carries the 0.0024 MU.",
+   "where": [
+    "P1A_DL HT-LT E10, E17, E24, E31, E37, E38",
+    "ARR!J9, J10",
+    "bindings/p1a-losses-by-voltage.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A91",
+   "kind": "inconsistency",
+   "title": "P4's LT meters at the end of FY2024-25 (184,540) are 939 more than FY2023-24's end, plus additions, less withdrawals (183,601)",
+   "detail": "P4 rolls each stock forward: FY2023-24's LT meters end at 159,292; FY2024-25 adds 29,579 and withdraws 5,270, which gives 183,601; P4 prints 184,540.  Every other stock — lines, substations, transformers, HT and interface meters — rolls exactly, as do LT meters in FY2025-26 and FY2026-27 from the printed 184,540 (77 / 78).  P4's total meters for FY2025-26 and FY2026-27 equal ESR2's consumers (216,992; 249,556); for FY2024-25, 186,484 against ESR5's 187,154 consumers.  For the petitioner: the 939 meters not accounted by the year's additions and withdrawals.",
+   "where": [
+    "P4_Phy Stat E30:H30, H35",
+    "ESR2_Sales Forecast AA64, AD64",
+    "ESR5_BD&Rev N181",
+    "bindings/p4-physical-statistics.json"
+   ],
+   "for": "petitioner"
+  },
+  {
+   "id": "A92",
+   "kind": "inconsistency",
+   "title": "P8 gives FY2022-23's HV accidents a total of 2 where its entries — one fatal, two non-fatal — add to 3",
+   "detail": "P8's HV line for FY2022-23 has one fatal and two non-fatal human accidents and no animal accidents (NIL), and a total of 2.  The other years' lines add to their totals (4 / 5).  For the petitioner: the right count.",
+   "where": [
+    "P8_Elec Accidents C9:G9",
+    "bindings/p8-accidents.json"
+   ],
+   "for": "petitioner"
   }
  ]
 }

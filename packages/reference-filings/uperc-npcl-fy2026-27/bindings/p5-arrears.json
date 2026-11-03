@@ -1,0 +1,81 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "P5_Arrear",
+ "places": 6,
+ "note": "P5's revenue arrears, two years: the year's end as the beginning, plus billed, less realised (both F31's), FY2024-25 beginning on FY2023-24's computed end; and the percentage change.  Only the first line is filled.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P5 FY2023-24",
+   "inputs": {
+    "record:stock_opening": [
+     "C8",
+     "number"
+    ],
+    "record:stock_additions": [
+     "D8",
+     "number"
+    ],
+    "record:stock_withdrawals": [
+     "E8",
+     "number"
+    ],
+    "record:current_value": [
+     "F8",
+     "number"
+    ],
+    "record:previous_value": [
+     "C8",
+     "number"
+    ]
+   },
+   "checks": {
+    "stock_closing": [
+     "F8",
+     "F15"
+    ],
+    "pct_change": [
+     "G8",
+     "G15"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P5 FY2024-25",
+   "inputs": {
+    "record:stock_opening": {
+     "computed": "P5 FY2023-24",
+     "output": "stock_closing"
+    },
+    "record:stock_additions": [
+     "D19",
+     "number"
+    ],
+    "record:stock_withdrawals": [
+     "E19",
+     "number"
+    ],
+    "record:current_value": [
+     "F19",
+     "number"
+    ],
+    "record:previous_value": [
+     "C19",
+     "number"
+    ]
+   },
+   "checks": {
+    "stock_closing": [
+     "F19",
+     "F26"
+    ],
+    "pct_change": [
+     "G19",
+     "G26"
+    ]
+   }
+  }
+ ]
+}

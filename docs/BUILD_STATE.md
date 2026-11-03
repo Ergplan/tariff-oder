@@ -1005,6 +1005,30 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 148 (2026-11-03): NPCL — the performance formats with arithmetic: losses by voltage (P1A), the network (P4), arrears (P5), transformer failures (P7), accidents (P8), peak demand (P9), land (P11).**
+  - **10 more format rules (44; UPERC 279):**
+    - a stock rolled forward, a ratio, a shortfall (never negative), a figure grown at a rate,
+      and a part scaled with its whole;
+    - a level's energy lost or passed down, its loss share (computed or given), and the
+      distribution loss as 1 − out / in.
+  - **Checks:**
+    - **`p1a-losses-by-voltage.json` 55 / 56.**  Energy passed from 33 kV to 11 kV to LT is carried
+      as computed.  Energy in is tied to the ARR's row 8, energy out to ESR3's sales (which the
+      ARR's row 9 carries), the loss to row 10.  Checked to five places.
+    - **`p4-physical-statistics.json` 77 / 78.**  Each stock opens on the printed year before.
+    - `p5-arrears.json` 8 / 8, `p7-transformer-failures.json` 92 / 92 (counts tied to P4),
+      `p9-peak-demand.json` 12 / 12 (whole MW), `p11-land.json` 2 / 2.  P11's addition in rupees
+      equals F13's leasehold-land scheme in crore, converted by the engine's units.
+    - **`p8-accidents.json` 4 / 5.**
+  - **Findings (petitioner):**
+    - **`A90`:** P1A's FY2024-25 sales by voltage are 0.0024 MU short of ESR3's.
+    - **`A91`:** P4's FY2024-25 LT meters are 939 above the roll forward.
+    - **`A92`:** P8's FY2022-23 HV total is 2 where its entries add to 3.
+  - **Formats accounted: 64 reproduced, 1 read, 6 present, 2 blank, 1 missing.**  Left: BS1–BS3 (the
+    accounts); F2, P2, P6, P10, which hold text or typed statistics with no arithmetic; ESR6 and
+    F10 (blank); ESR7 (not filed).
+  Nothing verified, nothing approved.
+
   **Increment 147 (2026-11-03): NPCL — the rest of power purchase: merit order (F4), renewables (F5), competitive bids (F7), short term (F8), the procurement plan (F9).**
   - **2 more format rules (34; UPERC 269):** a monthly average, and a PPA's levelised tariff as
     capacity + energy charges.
@@ -3627,6 +3651,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 148 (2026-11-03): 520 passed** (+1 unit: NPCL P1A, P4, P5, P7, P8, P9, P11; A90–A92).  Ruff and format clean.
 - **Increment 147 (2026-11-03): 519 passed** (+1 unit: NPCL F4, F5, F7, F8, F9, 106 checks exact).  Ruff and format clean.
 - **Increment 146 (2026-11-03): 518 passed** (+1 unit: NPCL F1 and F3, 1,375 checks exact; A89).  Ruff and format clean.
 - **Increment 145 (2026-11-03): 517 passed** (+2 unit: `root()` and its refusals; NPCL ESR1, ESR2, ESR5).  Ruff and format clean.
@@ -3907,7 +3932,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 147) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 148) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -3944,7 +3969,7 @@ entries below are the per-increment history.**
   ARR petition FY2026-27** — under the binding `docs/arr-filing-requirements.md`, tracked in
   `docs/requirements-matrix.md` (every row `proposed`; nothing approved by the build).  The
   operator's zip is hashed (69 of 72 documents; Annexure-34 and -40 absent; Annexure B, 2.5 GB,
-  held by the operator).  **269 draft UPERC rules** in 30 files reproduce the filed formats.
+  held by the operator).  **279 draft UPERC rules** in 30 files reproduce the filed formats.
   `/arr/reference/uperc-npcl-fy2026-27` shows the following:
   - **End to end from the schedules:** the regulatory asset is carried from year to year as
     computed (increment 95).  The net ARR and gap of the ARR and APR years match (3,481.83 and
@@ -3952,8 +3977,8 @@ entries below are the per-increment history.**
     gap as 0.25 (10 / 12 there).
   - **How each ARR figure is established:** FY2026-27 is 17 computed, 19 tied, 10 records, none
     differing.
-  - **Formats accounted, against the filing's index:** 57 reproduced, 4 read, 10 present, 2
-    blank, 1 missing (increment 147; the operator's direction is to close every one).
+  - **Formats accounted, against the filing's index:** 64 reproduced, 1 read, 6 present, 2
+    blank, 1 missing (increment 148; the operator's direction is to close every one).
   - **The true-up reconciled to the trial balance:** 11 of 13 claims agree.
   - **What the Commission decided** (the FY2026-27 order, read row by row with pages): the order
     read the petition as filed (claimed figures to the last place), and its arithmetic holds.
@@ -3975,7 +4000,7 @@ entries below are the per-increment history.**
   - **The narrative against the formats:** the nine summary tables are 232 / 253 figures matching
     (all differences in approved columns: A56–A58).  Every text-table figure is traced by value
     (1736 traced, 1538 untraced).
-  - **57 findings (A29–A89):** 35 for the petitioner, collected in the draft queries; 22 for the
+  - **60 findings (A29–A92):** 38 for the petitioner, collected in the draft queries; 22 for the
     reviewer.
   - **The sign-off panel:** nothing signed.
 

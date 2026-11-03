@@ -1,0 +1,47 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "P11_Land",
+ "places": 6,
+ "note": "P11's land asset: the closing gross block as the opening plus the addition less the retirement (in rupees), and the addition — Rs 1.84 crore of leasehold land — against F13's FY2024-25 'Leasehold Land' scheme.",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P11 leasehold land",
+   "inputs": {
+    "record:stock_opening": [
+     "K6",
+     "number"
+    ],
+    "record:stock_additions": [
+     "L6",
+     "number"
+    ],
+    "record:stock_withdrawals": [
+     "M6",
+     "number"
+    ]
+   },
+   "checks": {
+    "stock_closing": "N6"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P11 addition against F13",
+   "categories": {
+    "addition": {
+     "inputs": {
+      "record:line_crore": [
+       "L6",
+       "INR"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F13_CAP_Plan!E66"
+   }
+  }
+ ]
+}

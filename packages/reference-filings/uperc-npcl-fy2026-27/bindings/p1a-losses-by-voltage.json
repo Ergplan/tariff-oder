@@ -1,0 +1,737 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "P1A_DL HT-LT",
+ "places": 5,
+ "note": "P1A's losses by voltage, four years: each level's loss or energy passed down, its loss share, the energy passed from 33 kV to 11 kV to LT carried as computed; energy in against the ARR format's row 8, energy out against ESR3's sales (which the ARR's row 9 carries), the distribution loss against row 10 — to five places, the sixth carrying the sheets' float.  FY2024-25's sales by voltage add to 0.0024 MU less than ESR3's (A90).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P1A FY2023-24 A 33 kV and above",
+   "inputs": {
+    "record:level_received": [
+     "D9",
+     "MU"
+    ],
+    "record:level_sold": [
+     "D10",
+     "MU"
+    ],
+    "record:level_passed": {
+     "value": "0",
+     "unit": "MU",
+     "why": "nothing passes down from the level above 33 kV: P1A's row A3 is nil"
+    }
+   },
+   "checks": {
+    "level_lost": "D12",
+    "level_loss_share": "D13"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P1A FY2023-24 B 33 kV",
+   "inputs": {
+    "record:level_received": [
+     "D16",
+     "MU"
+    ],
+    "record:level_sold": [
+     "D17",
+     "MU"
+    ],
+    "record:level_lost": [
+     "D19",
+     "MU"
+    ]
+   },
+   "checks": {
+    "level_passed": "D18",
+    "level_loss_share_given": "D20"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P1A FY2023-24 C 11 kV",
+   "inputs": {
+    "record:level_received": {
+     "computed": "P1A FY2023-24 B 33 kV",
+     "output": "level_passed"
+    },
+    "record:level_sold": [
+     "D24",
+     "MU"
+    ],
+    "record:level_lost": [
+     "D26",
+     "MU"
+    ]
+   },
+   "checks": {
+    "level_passed": "D25",
+    "level_loss_share_given": "D27"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P1A FY2023-24 D LT",
+   "inputs": {
+    "record:level_received": {
+     "computed": "P1A FY2023-24 C 11 kV",
+     "output": "level_passed"
+    },
+    "record:level_sold": [
+     "D31",
+     "MU"
+    ],
+    "record:level_passed": {
+     "value": "0",
+     "unit": "MU",
+     "why": "LT is the lowest level"
+    }
+   },
+   "checks": {
+    "level_lost": "D32",
+    "level_loss_share": "D33"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P1A FY2023-24 energy in",
+   "categories": {
+    "above 33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "D9",
+       "MU"
+      ]
+     }
+    },
+    "33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "D16",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "D36",
+     "ARR!G8"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P1A FY2023-24 energy out",
+   "categories": {
+    "above 33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "D10",
+       "MU"
+      ]
+     }
+    },
+    "33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "D17",
+       "MU"
+      ]
+     }
+    },
+    "11 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "D24",
+       "MU"
+      ]
+     }
+    },
+    "LT": {
+     "inputs": {
+      "record:line_mu": [
+       "D31",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "D37",
+     "ESR_3 Curr Tariff FY24!E140"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P1A FY2023-24 overall",
+   "inputs": {
+    "record:energy_in": {
+     "computed": "P1A FY2023-24 energy in",
+     "output": "lines_mu_total"
+    },
+    "record:energy_out": {
+     "computed": "P1A FY2023-24 energy out",
+     "output": "lines_mu_total"
+    }
+   },
+   "checks": {
+    "fmt_distribution_loss": [
+     "D38",
+     "ARR!G10"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P1A FY2024-25 A 33 kV and above",
+   "inputs": {
+    "record:level_received": [
+     "E9",
+     "MU"
+    ],
+    "record:level_sold": [
+     "E10",
+     "MU"
+    ],
+    "record:level_passed": {
+     "value": "0",
+     "unit": "MU",
+     "why": "nothing passes down from the level above 33 kV: P1A's row A3 is nil"
+    }
+   },
+   "checks": {
+    "level_lost": "E12",
+    "level_loss_share": "E13"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P1A FY2024-25 B 33 kV",
+   "inputs": {
+    "record:level_received": [
+     "E16",
+     "MU"
+    ],
+    "record:level_sold": [
+     "E17",
+     "MU"
+    ],
+    "record:level_lost": [
+     "E19",
+     "MU"
+    ]
+   },
+   "checks": {
+    "level_passed": "E18",
+    "level_loss_share_given": "E20"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P1A FY2024-25 C 11 kV",
+   "inputs": {
+    "record:level_received": {
+     "computed": "P1A FY2024-25 B 33 kV",
+     "output": "level_passed"
+    },
+    "record:level_sold": [
+     "E24",
+     "MU"
+    ],
+    "record:level_lost": [
+     "E26",
+     "MU"
+    ]
+   },
+   "checks": {
+    "level_passed": "E25",
+    "level_loss_share_given": "E27"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P1A FY2024-25 D LT",
+   "inputs": {
+    "record:level_received": {
+     "computed": "P1A FY2024-25 C 11 kV",
+     "output": "level_passed"
+    },
+    "record:level_sold": [
+     "E31",
+     "MU"
+    ],
+    "record:level_passed": {
+     "value": "0",
+     "unit": "MU",
+     "why": "LT is the lowest level"
+    }
+   },
+   "checks": {
+    "level_lost": "E32",
+    "level_loss_share": "E33"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P1A FY2024-25 energy in",
+   "categories": {
+    "above 33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "E9",
+       "MU"
+      ]
+     }
+    },
+    "33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "E16",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "E36",
+     "ARR!J8"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P1A FY2024-25 energy out",
+   "categories": {
+    "above 33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "E10",
+       "MU"
+      ]
+     }
+    },
+    "33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "E17",
+       "MU"
+      ]
+     }
+    },
+    "11 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "E24",
+       "MU"
+      ]
+     }
+    },
+    "LT": {
+     "inputs": {
+      "record:line_mu": [
+       "E31",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "E37",
+     "ESR_3 Curr Tariff FY25!F136"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P1A FY2024-25 overall",
+   "inputs": {
+    "record:energy_in": {
+     "computed": "P1A FY2024-25 energy in",
+     "output": "lines_mu_total"
+    },
+    "record:energy_out": {
+     "computed": "P1A FY2024-25 energy out",
+     "output": "lines_mu_total"
+    }
+   },
+   "checks": {
+    "fmt_distribution_loss": [
+     "E38",
+     "ARR!J10"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P1A FY2025-26 A 33 kV and above",
+   "inputs": {
+    "record:level_received": [
+     "F9",
+     "MU"
+    ],
+    "record:level_sold": [
+     "F10",
+     "MU"
+    ],
+    "record:level_passed": {
+     "value": "0",
+     "unit": "MU",
+     "why": "nothing passes down from the level above 33 kV: P1A's row A3 is nil"
+    }
+   },
+   "checks": {
+    "level_lost": "F12",
+    "level_loss_share": "F13"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P1A FY2025-26 B 33 kV",
+   "inputs": {
+    "record:level_received": [
+     "F16",
+     "MU"
+    ],
+    "record:level_sold": [
+     "F17",
+     "MU"
+    ],
+    "record:level_lost": [
+     "F19",
+     "MU"
+    ]
+   },
+   "checks": {
+    "level_passed": "F18",
+    "level_loss_share_given": "F20"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P1A FY2025-26 C 11 kV",
+   "inputs": {
+    "record:level_received": {
+     "computed": "P1A FY2025-26 B 33 kV",
+     "output": "level_passed"
+    },
+    "record:level_sold": [
+     "F24",
+     "MU"
+    ],
+    "record:level_lost": [
+     "F26",
+     "MU"
+    ]
+   },
+   "checks": {
+    "level_passed": "F25",
+    "level_loss_share_given": "F27"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P1A FY2025-26 D LT",
+   "inputs": {
+    "record:level_received": {
+     "computed": "P1A FY2025-26 C 11 kV",
+     "output": "level_passed"
+    },
+    "record:level_sold": [
+     "F31",
+     "MU"
+    ],
+    "record:level_passed": {
+     "value": "0",
+     "unit": "MU",
+     "why": "LT is the lowest level"
+    }
+   },
+   "checks": {
+    "level_lost": "F32",
+    "level_loss_share": "F33"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P1A FY2025-26 energy in",
+   "categories": {
+    "above 33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "F9",
+       "MU"
+      ]
+     }
+    },
+    "33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "F16",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "F36",
+     "ARR!L8"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P1A FY2025-26 energy out",
+   "categories": {
+    "above 33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "F10",
+       "MU"
+      ]
+     }
+    },
+    "33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "F17",
+       "MU"
+      ]
+     }
+    },
+    "11 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "F24",
+       "MU"
+      ]
+     }
+    },
+    "LT": {
+     "inputs": {
+      "record:line_mu": [
+       "F31",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "F37",
+     "ESR_3 Curr Tariff FY26!F138"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "P1A FY2025-26 overall",
+   "inputs": {
+    "record:energy_in": {
+     "computed": "P1A FY2025-26 energy in",
+     "output": "lines_mu_total"
+    },
+    "record:energy_out": {
+     "computed": "P1A FY2025-26 energy out",
+     "output": "lines_mu_total"
+    }
+   },
+   "checks": {
+    "fmt_distribution_loss": [
+     "F38",
+     "ARR!L10"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P1A FY2026-27 A 33 kV and above",
+   "inputs": {
+    "record:level_received": [
+     "G9",
+     "MU"
+    ],
+    "record:level_sold": [
+     "G10",
+     "MU"
+    ],
+    "record:level_passed": {
+     "value": "0",
+     "unit": "MU",
+     "why": "nothing passes down from the level above 33 kV: P1A's row A3 is nil"
+    }
+   },
+   "checks": {
+    "level_lost": "G12",
+    "level_loss_share": "G13"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P1A FY2026-27 B 33 kV",
+   "inputs": {
+    "record:level_received": [
+     "G16",
+     "MU"
+    ],
+    "record:level_sold": [
+     "G17",
+     "MU"
+    ],
+    "record:level_lost": [
+     "G19",
+     "MU"
+    ]
+   },
+   "checks": {
+    "level_passed": "G18",
+    "level_loss_share_given": "G20"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P1A FY2026-27 C 11 kV",
+   "inputs": {
+    "record:level_received": {
+     "computed": "P1A FY2026-27 B 33 kV",
+     "output": "level_passed"
+    },
+    "record:level_sold": [
+     "G24",
+     "MU"
+    ],
+    "record:level_lost": [
+     "G26",
+     "MU"
+    ]
+   },
+   "checks": {
+    "level_passed": "G25",
+    "level_loss_share_given": "G27"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P1A FY2026-27 D LT",
+   "inputs": {
+    "record:level_received": {
+     "computed": "P1A FY2026-27 C 11 kV",
+     "output": "level_passed"
+    },
+    "record:level_sold": [
+     "G31",
+     "MU"
+    ],
+    "record:level_passed": {
+     "value": "0",
+     "unit": "MU",
+     "why": "LT is the lowest level"
+    }
+   },
+   "checks": {
+    "level_lost": "G32",
+    "level_loss_share": "G33"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P1A FY2026-27 energy in",
+   "categories": {
+    "above 33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "G9",
+       "MU"
+      ]
+     }
+    },
+    "33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "G16",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "G36",
+     "ARR!M8"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P1A FY2026-27 energy out",
+   "categories": {
+    "above 33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "G10",
+       "MU"
+      ]
+     }
+    },
+    "33 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "G17",
+       "MU"
+      ]
+     }
+    },
+    "11 kV": {
+     "inputs": {
+      "record:line_mu": [
+       "G24",
+       "MU"
+      ]
+     }
+    },
+    "LT": {
+     "inputs": {
+      "record:line_mu": [
+       "G31",
+       "MU"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_mu_total": [
+     "G37",
+     "ESR_3 Curr Tariff FY27!F138"
+    ]
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "P1A FY2026-27 overall",
+   "inputs": {
+    "record:energy_in": {
+     "computed": "P1A FY2026-27 energy in",
+     "output": "lines_mu_total"
+    },
+    "record:energy_out": {
+     "computed": "P1A FY2026-27 energy out",
+     "output": "lines_mu_total"
+    }
+   },
+   "checks": {
+    "fmt_distribution_loss": [
+     "G38",
+     "ARR!M10"
+    ]
+   }
+  }
+ ]
+}

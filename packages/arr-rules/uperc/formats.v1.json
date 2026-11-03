@@ -1241,6 +1241,402 @@
    },
    "examples": [],
    "note": "F7: the levelised tariff payable as per the PPA against its two charges"
+  },
+  {
+   "id": "uperc.fmt.stock_closing",
+   "version": 1,
+   "status": "draft",
+   "title": "A stock at the year's end: the opening, plus additions, less withdrawals",
+   "output": "stock_closing",
+   "unit": "number",
+   "schedule": "R-SCH-16",
+   "formula": "opening + additions - withdrawals",
+   "inputs": {
+    "opening": {
+     "unit": "number",
+     "source": "record:stock_opening"
+    },
+    "additions": {
+     "unit": "number",
+     "source": "record:stock_additions"
+    },
+    "withdrawals": {
+     "unit": "number",
+     "source": "record:stock_withdrawals"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P4's 'at the end of year' (lines, substations, transformers, meters); P5's arrears at the end of the year"
+  },
+  {
+   "id": "uperc.fmt.ratio",
+   "version": 1,
+   "status": "draft",
+   "title": "A part over its whole",
+   "output": "ratio",
+   "unit": "fraction",
+   "schedule": "R-SCH-16",
+   "formula": "part / whole",
+   "inputs": {
+    "part": {
+     "unit": "number",
+     "source": "record:ratio_part"
+    },
+    "whole": {
+     "unit": "number",
+     "source": "record:ratio_whole"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "a format's '%' column (P7's failure rate)"
+  },
+  {
+   "id": "uperc.fmt.shortfall",
+   "version": 1,
+   "status": "draft",
+   "title": "A shortfall: the excess of a demand over what meets it, never negative",
+   "output": "shortfall",
+   "unit": "number",
+   "schedule": "R-SCH-16",
+   "formula": "max(demand - available, 0)",
+   "inputs": {
+    "demand": {
+     "unit": "number",
+     "source": "record:demand"
+    },
+    "available": {
+     "unit": "number",
+     "source": "record:available"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P9's shortfall rows"
+  },
+  {
+   "id": "uperc.fmt.grown",
+   "version": 1,
+   "status": "draft",
+   "title": "A figure grown at a rate",
+   "output": "grown",
+   "unit": "number",
+   "schedule": "R-SCH-16",
+   "formula": "previous * (1 + growth)",
+   "inputs": {
+    "previous": {
+     "unit": "number",
+     "source": "record:grown_previous"
+    },
+    "growth": {
+     "unit": "fraction",
+     "source": "record:growth_rate"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P9's projected unrestricted peak"
+  },
+  {
+   "id": "uperc.fmt.scaled",
+   "version": 1,
+   "status": "draft",
+   "title": "A part scaled with its whole",
+   "output": "scaled",
+   "unit": "number",
+   "schedule": "R-SCH-16",
+   "formula": "part / whole * new_whole",
+   "inputs": {
+    "part": {
+     "unit": "number",
+     "source": "record:scaled_part"
+    },
+    "whole": {
+     "unit": "number",
+     "source": "record:scaled_whole"
+    },
+    "new_whole": {
+     "unit": "number",
+     "source": "record:scaled_new_whole"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P9's projected restricted peak, in the proportion of the year before, on the projected unrestricted peak as printed"
+  },
+  {
+   "id": "uperc.fmt.level_lost",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy lost at a voltage level: received less sold less passed down",
+   "output": "level_lost",
+   "unit": "MU",
+   "schedule": "R-SCH-2",
+   "formula": "received - sold - passed",
+   "inputs": {
+    "received": {
+     "unit": "MU",
+     "source": "record:level_received"
+    },
+    "sold": {
+     "unit": "MU",
+     "source": "record:level_sold"
+    },
+    "passed": {
+     "unit": "MU",
+     "source": "record:level_passed"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P1A rows A4 and D3"
+  },
+  {
+   "id": "uperc.fmt.level_passed",
+   "version": 1,
+   "status": "draft",
+   "title": "Energy passed to the next lower level: received less sold less lost",
+   "output": "level_passed",
+   "unit": "MU",
+   "schedule": "R-SCH-2",
+   "formula": "received - sold - lost",
+   "inputs": {
+    "received": {
+     "unit": "MU",
+     "source": "record:level_received"
+    },
+    "sold": {
+     "unit": "MU",
+     "source": "record:level_sold"
+    },
+    "lost": {
+     "unit": "MU",
+     "source": "record:level_lost"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P1A rows B3 and C3"
+  },
+  {
+   "id": "uperc.fmt.level_loss_share",
+   "version": 1,
+   "status": "draft",
+   "title": "A level's loss as a share of the energy it received (loss computed)",
+   "output": "level_loss_share",
+   "unit": "fraction",
+   "schedule": "R-SCH-2",
+   "formula": "lost / received",
+   "inputs": {
+    "lost": {
+     "unit": "MU",
+     "source": "rule:level_lost"
+    },
+    "received": {
+     "unit": "MU",
+     "source": "record:level_received"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P1A rows A5 and D4"
+  },
+  {
+   "id": "uperc.fmt.level_loss_share_given",
+   "version": 1,
+   "status": "draft",
+   "title": "A level's loss as a share of the energy it received (loss given)",
+   "output": "level_loss_share_given",
+   "unit": "fraction",
+   "schedule": "R-SCH-2",
+   "formula": "lost / received",
+   "inputs": {
+    "lost": {
+     "unit": "MU",
+     "source": "record:level_lost"
+    },
+    "received": {
+     "unit": "MU",
+     "source": "record:level_received"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P1A rows B5 and C5"
+  },
+  {
+   "id": "uperc.fmt.distribution_loss",
+   "version": 1,
+   "status": "draft",
+   "title": "Distribution loss: one less energy out over energy in",
+   "output": "fmt_distribution_loss",
+   "unit": "fraction",
+   "schedule": "R-SCH-2",
+   "formula": "1 - out / in_",
+   "inputs": {
+    "out": {
+     "unit": "MU",
+     "source": "record:energy_out"
+    },
+    "in_": {
+     "unit": "MU",
+     "source": "record:energy_in"
+    }
+   },
+   "clause": {
+    "regulation": "UPERC tariff formats (Appendix-II of the petition), as NPCL filed them",
+    "clause": null,
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "UPERC"
+   },
+   "rounding": {
+    "places": 6,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "P1A's overall loss, carried to the ARR format's row 10"
   }
  ]
 }

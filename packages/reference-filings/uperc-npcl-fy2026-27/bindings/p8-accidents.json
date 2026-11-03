@@ -1,0 +1,228 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "P8_Elec Accidents",
+ "places": 0,
+ "note": "P8's electrical accidents, three years: fatal and non-fatal, human and animal, to each line's total.  FY2022-23's HV line totals 2 where its entries add to 3 (A92).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "P8 HV FY2022-23",
+   "categories": {
+    "C": {
+     "inputs": {
+      "record:line_number": [
+       "C9",
+       "number"
+      ]
+     }
+    },
+    "D": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "E": {
+     "inputs": {
+      "record:line_number": [
+       "E9",
+       "number"
+      ]
+     }
+    },
+    "F": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "G9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P8 HV FY2023-24",
+   "categories": {
+    "H": {
+     "inputs": {
+      "record:line_number": [
+       "H9",
+       "number"
+      ]
+     }
+    },
+    "I": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "J": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "K": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "L9"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "P8 LV FY2023-24",
+   "categories": {
+    "H": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "I": {
+     "inputs": {
+      "record:line_number": [
+       "I10",
+       "number"
+      ]
+     }
+    },
+    "J": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "K": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "L10"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P8 HV FY2024-25",
+   "categories": {
+    "M": {
+     "inputs": {
+      "record:line_number": [
+       "M9",
+       "number"
+      ]
+     }
+    },
+    "N": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "O": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "P": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "Q9"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "P8 LV FY2024-25",
+   "categories": {
+    "M": {
+     "inputs": {
+      "record:line_number": [
+       "M10",
+       "number"
+      ]
+     }
+    },
+    "N": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "O": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    },
+    "P": {
+     "inputs": {
+      "record:line_number": {
+       "value": "0",
+       "unit": "number",
+       "why": "'NIL' in the format: none"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_number_total": "Q10"
+   }
+  }
+ ]
+}
