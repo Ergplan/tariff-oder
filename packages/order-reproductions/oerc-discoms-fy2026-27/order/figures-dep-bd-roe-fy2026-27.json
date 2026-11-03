@@ -1,0 +1,542 @@
+{
+ "status": "read from the order's text layer, each figure with its row's quote — not reviewed",
+ "document": {
+  "title": "OERC order on the ARR and retail supply tariff of TPCODL, TPWODL, TPSODL and TPNODL, FY2026-27 — depreciation, bad debts, RoE (Tables 72, 74–77)",
+  "sha256": "d58d281787d4dd34e7b895add2e7cb37dbf3b9e8d5f1a1ea208dc57ceffde0ab",
+  "pages": 246
+ },
+ "figures": {
+  "dep.existing.tpwodl": {
+   "value": "11.48",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "On existing (Transferred) assets 11.48 8.84 4.21 12.12",
+   "what": "Table 72, depreciation on transferred assets: tpwodl"
+  },
+  "dep.existing.tpnodl": {
+   "value": "8.84",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "On existing (Transferred) assets 11.48 8.84 4.21 12.12",
+   "what": "Table 72, depreciation on transferred assets: tpnodl"
+  },
+  "dep.existing.tpsodl": {
+   "value": "4.21",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "On existing (Transferred) assets 11.48 8.84 4.21 12.12",
+   "what": "Table 72, depreciation on transferred assets: tpsodl"
+  },
+  "dep.existing.tpcodl": {
+   "value": "12.12",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "On existing (Transferred) assets 11.48 8.84 4.21 12.12",
+   "what": "Table 72, depreciation on transferred assets: tpcodl"
+  },
+  "dep.new.tpwodl": {
+   "value": "130.69",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "On newly created assets 130.69 119.58 105.50 147.64",
+   "what": "Table 72, depreciation on new assets: tpwodl"
+  },
+  "dep.new.tpnodl": {
+   "value": "119.58",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "On newly created assets 130.69 119.58 105.50 147.64",
+   "what": "Table 72, depreciation on new assets: tpnodl"
+  },
+  "dep.new.tpsodl": {
+   "value": "105.50",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "On newly created assets 130.69 119.58 105.50 147.64",
+   "what": "Table 72, depreciation on new assets: tpsodl"
+  },
+  "dep.new.tpcodl": {
+   "value": "147.64",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "On newly created assets 130.69 119.58 105.50 147.64",
+   "what": "Table 72, depreciation on new assets: tpcodl"
+  },
+  "dep.total.tpwodl": {
+   "value": "142.17",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "Total Depreciation approved 142.17 128.42 109.71 159.76",
+   "what": "Table 72, depreciation approved: tpwodl"
+  },
+  "dep.total.tpnodl": {
+   "value": "128.42",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "Total Depreciation approved 142.17 128.42 109.71 159.76",
+   "what": "Table 72, depreciation approved: tpnodl"
+  },
+  "dep.total.tpsodl": {
+   "value": "109.71",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "Total Depreciation approved 142.17 128.42 109.71 159.76",
+   "what": "Table 72, depreciation approved: tpsodl"
+  },
+  "dep.total.tpcodl": {
+   "value": "159.76",
+   "unit": "INR_crore",
+   "page": 167,
+   "quote": "Total Depreciation approved 142.17 128.42 109.71 159.76",
+   "what": "Table 72, depreciation approved: tpcodl"
+  },
+  "bd.proposed_revenue.tpwodl": {
+   "value": "6284.29",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Proposed revenue 6284.29 4,693.77 2368.40 6662.22",
+   "what": "Table 74, revenue proposed: tpwodl"
+  },
+  "bd.proposed_revenue.tpnodl": {
+   "value": "4693.77",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Proposed revenue 6284.29 4,693.77 2368.40 6662.22",
+   "what": "Table 74, revenue proposed: tpnodl"
+  },
+  "bd.proposed_revenue.tpsodl": {
+   "value": "2368.40",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Proposed revenue 6284.29 4,693.77 2368.40 6662.22",
+   "what": "Table 74, revenue proposed: tpsodl"
+  },
+  "bd.proposed_revenue.tpcodl": {
+   "value": "6662.22",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Proposed revenue 6284.29 4,693.77 2368.40 6662.22",
+   "what": "Table 74, revenue proposed: tpcodl"
+  },
+  "bd.proposed.tpwodl": {
+   "value": "62.84",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Bad and Doubtful Debt 62.84 46.94 23.68 66.62",
+   "what": "Table 74, bad and doubtful debts proposed: tpwodl"
+  },
+  "bd.proposed.tpnodl": {
+   "value": "46.94",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Bad and Doubtful Debt 62.84 46.94 23.68 66.62",
+   "what": "Table 74, bad and doubtful debts proposed: tpnodl"
+  },
+  "bd.proposed.tpsodl": {
+   "value": "23.68",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Bad and Doubtful Debt 62.84 46.94 23.68 66.62",
+   "what": "Table 74, bad and doubtful debts proposed: tpsodl"
+  },
+  "bd.proposed.tpcodl": {
+   "value": "66.62",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Bad and Doubtful Debt 62.84 46.94 23.68 66.62",
+   "what": "Table 74, bad and doubtful debts proposed: tpcodl"
+  },
+  "bd.approved_revenue.tpwodl": {
+   "value": "6463.77",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Approved revenue 6463.77 4,619.21 2320.74 6682.00",
+   "what": "Table 75, revenue approved: tpwodl"
+  },
+  "bd.approved_revenue.tpnodl": {
+   "value": "4619.21",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Approved revenue 6463.77 4,619.21 2320.74 6682.00",
+   "what": "Table 75, revenue approved: tpnodl"
+  },
+  "bd.approved_revenue.tpsodl": {
+   "value": "2320.74",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Approved revenue 6463.77 4,619.21 2320.74 6682.00",
+   "what": "Table 75, revenue approved: tpsodl"
+  },
+  "bd.approved_revenue.tpcodl": {
+   "value": "6682.00",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Approved revenue 6463.77 4,619.21 2320.74 6682.00",
+   "what": "Table 75, revenue approved: tpcodl"
+  },
+  "bd.approved.tpwodl": {
+   "value": "64.64",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Bad and Doubtful debt 64.64 46.19 23.21 66.82",
+   "what": "Table 75, bad and doubtful debts approved: tpwodl"
+  },
+  "bd.approved.tpnodl": {
+   "value": "46.19",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Bad and Doubtful debt 64.64 46.19 23.21 66.82",
+   "what": "Table 75, bad and doubtful debts approved: tpnodl"
+  },
+  "bd.approved.tpsodl": {
+   "value": "23.21",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Bad and Doubtful debt 64.64 46.19 23.21 66.82",
+   "what": "Table 75, bad and doubtful debts approved: tpsodl"
+  },
+  "bd.approved.tpcodl": {
+   "value": "66.82",
+   "unit": "INR_crore",
+   "page": 168,
+   "quote": "Bad and Doubtful debt 64.64 46.19 23.21 66.82",
+   "what": "Table 75, bad and doubtful debts approved: tpcodl"
+  },
+  "roe_p.opening.tpwodl": {
+   "value": "1006.16",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Opening balance 01.04.2026 1,006.16 876.59 743.24 974.00",
+   "what": "Table 76 (proposed), opening equity: tpwodl"
+  },
+  "roe_p.opening.tpnodl": {
+   "value": "876.59",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Opening balance 01.04.2026 1,006.16 876.59 743.24 974.00",
+   "what": "Table 76 (proposed), opening equity: tpnodl"
+  },
+  "roe_p.opening.tpsodl": {
+   "value": "743.24",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Opening balance 01.04.2026 1,006.16 876.59 743.24 974.00",
+   "what": "Table 76 (proposed), opening equity: tpsodl"
+  },
+  "roe_p.opening.tpcodl": {
+   "value": "974.00",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Opening balance 01.04.2026 1,006.16 876.59 743.24 974.00",
+   "what": "Table 76 (proposed), opening equity: tpcodl"
+  },
+  "roe_p.additions.tpwodl": {
+   "value": "173.83",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Additions 173.83 157.7 128.5 192.03",
+   "what": "Table 76, additions: tpwodl"
+  },
+  "roe_p.additions.tpnodl": {
+   "value": "157.7",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Additions 173.83 157.7 128.5 192.03",
+   "what": "Table 76, additions: tpnodl"
+  },
+  "roe_p.additions.tpsodl": {
+   "value": "128.5",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Additions 173.83 157.7 128.5 192.03",
+   "what": "Table 76, additions: tpsodl"
+  },
+  "roe_p.additions.tpcodl": {
+   "value": "192.03",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Additions 173.83 157.7 128.5 192.03",
+   "what": "Table 76, additions: tpcodl"
+  },
+  "roe_p.closing.tpwodl": {
+   "value": "1179.99",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Closing balance 31.03.2027 1179.99 1034.29 871.74 1166.03",
+   "what": "Table 76, closing equity: tpwodl"
+  },
+  "roe_p.closing.tpnodl": {
+   "value": "1034.29",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Closing balance 31.03.2027 1179.99 1034.29 871.74 1166.03",
+   "what": "Table 76, closing equity: tpnodl"
+  },
+  "roe_p.closing.tpsodl": {
+   "value": "871.74",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Closing balance 31.03.2027 1179.99 1034.29 871.74 1166.03",
+   "what": "Table 76, closing equity: tpsodl"
+  },
+  "roe_p.closing.tpcodl": {
+   "value": "1166.03",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Closing balance 31.03.2027 1179.99 1034.29 871.74 1166.03",
+   "what": "Table 76, closing equity: tpcodl"
+  },
+  "roe_p.rate.tpwodl": {
+   "value": "16.00",
+   "unit": "percent",
+   "page": 169,
+   "quote": "ROE rate 16.00% 16.00% 16.00% 16.00%",
+   "what": "Table 76, rate: tpwodl"
+  },
+  "roe_p.rate.tpnodl": {
+   "value": "16.00",
+   "unit": "percent",
+   "page": 169,
+   "quote": "ROE rate 16.00% 16.00% 16.00% 16.00%",
+   "what": "Table 76, rate: tpnodl"
+  },
+  "roe_p.rate.tpsodl": {
+   "value": "16.00",
+   "unit": "percent",
+   "page": 169,
+   "quote": "ROE rate 16.00% 16.00% 16.00% 16.00%",
+   "what": "Table 76, rate: tpsodl"
+  },
+  "roe_p.rate.tpcodl": {
+   "value": "16.00",
+   "unit": "percent",
+   "page": 169,
+   "quote": "ROE rate 16.00% 16.00% 16.00% 16.00%",
+   "what": "Table 76, rate: tpcodl"
+  },
+  "roe_p.on_opening.tpwodl": {
+   "value": "160.99",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "ROE on Opening Balance (16%) 160.99 140.25 118.92 155.84",
+   "what": "Table 76, RoE on the opening balance: tpwodl"
+  },
+  "roe_p.on_opening.tpnodl": {
+   "value": "140.25",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "ROE on Opening Balance (16%) 160.99 140.25 118.92 155.84",
+   "what": "Table 76, RoE on the opening balance: tpnodl"
+  },
+  "roe_p.on_opening.tpsodl": {
+   "value": "118.92",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "ROE on Opening Balance (16%) 160.99 140.25 118.92 155.84",
+   "what": "Table 76, RoE on the opening balance: tpsodl"
+  },
+  "roe_p.on_opening.tpcodl": {
+   "value": "155.84",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "ROE on Opening Balance (16%) 160.99 140.25 118.92 155.84",
+   "what": "Table 76, RoE on the opening balance: tpcodl"
+  },
+  "roe_p.on_additions.tpwodl": {
+   "value": "13.91",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "ROE on Additions 13.91 12.62 10.28 15.36",
+   "what": "Table 76, RoE on the additions: tpwodl"
+  },
+  "roe_p.on_additions.tpnodl": {
+   "value": "12.62",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "ROE on Additions 13.91 12.62 10.28 15.36",
+   "what": "Table 76, RoE on the additions: tpnodl"
+  },
+  "roe_p.on_additions.tpsodl": {
+   "value": "10.28",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "ROE on Additions 13.91 12.62 10.28 15.36",
+   "what": "Table 76, RoE on the additions: tpsodl"
+  },
+  "roe_p.on_additions.tpcodl": {
+   "value": "15.36",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "ROE on Additions 13.91 12.62 10.28 15.36",
+   "what": "Table 76, RoE on the additions: tpcodl"
+  },
+  "roe_p.total.tpwodl": {
+   "value": "174.89",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Return on Equity (post tax) 174.89 152.87 129.20 171.14",
+   "what": "Table 76, RoE proposed: tpwodl"
+  },
+  "roe_p.total.tpnodl": {
+   "value": "152.87",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Return on Equity (post tax) 174.89 152.87 129.20 171.14",
+   "what": "Table 76, RoE proposed: tpnodl"
+  },
+  "roe_p.total.tpsodl": {
+   "value": "129.20",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Return on Equity (post tax) 174.89 152.87 129.20 171.14",
+   "what": "Table 76, RoE proposed: tpsodl"
+  },
+  "roe_p.total.tpcodl": {
+   "value": "171.14",
+   "unit": "INR_crore",
+   "page": 169,
+   "quote": "Return on Equity (post tax) 174.89 152.87 129.20 171.14",
+   "what": "Table 76, RoE proposed: tpcodl"
+  },
+  "roe_a.reserve.tpwodl": {
+   "value": "300.00",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "a. Reserve Price 300.00 250.00 200.00 300.00",
+   "what": "Table 77 (approved), reserve price: tpwodl"
+  },
+  "roe_a.reserve.tpnodl": {
+   "value": "250.00",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "a. Reserve Price 300.00 250.00 200.00 300.00",
+   "what": "Table 77 (approved), reserve price: tpnodl"
+  },
+  "roe_a.reserve.tpsodl": {
+   "value": "200.00",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "a. Reserve Price 300.00 250.00 200.00 300.00",
+   "what": "Table 77 (approved), reserve price: tpsodl"
+  },
+  "roe_a.reserve.tpcodl": {
+   "value": "300.00",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "a. Reserve Price 300.00 250.00 200.00 300.00",
+   "what": "Table 77 (approved), reserve price: tpcodl"
+  },
+  "roe_a.assets.tpwodl": {
+   "value": "1988.61",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "b. Asset put to use up to 2025-26 1988.61 1811.11 1648.89 2157.53",
+   "what": "Table 77, assets put to use up to FY2025-26: tpwodl"
+  },
+  "roe_a.assets.tpnodl": {
+   "value": "1811.11",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "b. Asset put to use up to 2025-26 1988.61 1811.11 1648.89 2157.53",
+   "what": "Table 77, assets put to use up to FY2025-26: tpnodl"
+  },
+  "roe_a.assets.tpsodl": {
+   "value": "1648.89",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "b. Asset put to use up to 2025-26 1988.61 1811.11 1648.89 2157.53",
+   "what": "Table 77, assets put to use up to FY2025-26: tpsodl"
+  },
+  "roe_a.assets.tpcodl": {
+   "value": "2157.53",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "b. Asset put to use up to 2025-26 1988.61 1811.11 1648.89 2157.53",
+   "what": "Table 77, assets put to use up to FY2025-26: tpcodl"
+  },
+  "roe_a.thirty.tpwodl": {
+   "value": "596.583",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "c. 30% of asset put to use (b*30%) 596.583 543.333 494.667 647.259",
+   "what": "Table 77, 30 % of the assets: tpwodl"
+  },
+  "roe_a.thirty.tpnodl": {
+   "value": "543.333",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "c. 30% of asset put to use (b*30%) 596.583 543.333 494.667 647.259",
+   "what": "Table 77, 30 % of the assets: tpnodl"
+  },
+  "roe_a.thirty.tpsodl": {
+   "value": "494.667",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "c. 30% of asset put to use (b*30%) 596.583 543.333 494.667 647.259",
+   "what": "Table 77, 30 % of the assets: tpsodl"
+  },
+  "roe_a.thirty.tpcodl": {
+   "value": "647.259",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "c. 30% of asset put to use (b*30%) 596.583 543.333 494.667 647.259",
+   "what": "Table 77, 30 % of the assets: tpcodl"
+  },
+  "roe_a.opening.tpwodl": {
+   "value": "896.58",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "d. Opening equity for calculation of ROE(a+c) 896.58 793.33 694.67 947.26",
+   "what": "Table 77, opening equity: tpwodl"
+  },
+  "roe_a.opening.tpnodl": {
+   "value": "793.33",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "d. Opening equity for calculation of ROE(a+c) 896.58 793.33 694.67 947.26",
+   "what": "Table 77, opening equity: tpnodl"
+  },
+  "roe_a.opening.tpsodl": {
+   "value": "694.67",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "d. Opening equity for calculation of ROE(a+c) 896.58 793.33 694.67 947.26",
+   "what": "Table 77, opening equity: tpsodl"
+  },
+  "roe_a.opening.tpcodl": {
+   "value": "947.26",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "d. Opening equity for calculation of ROE(a+c) 896.58 793.33 694.67 947.26",
+   "what": "Table 77, opening equity: tpcodl"
+  },
+  "roe_a.roe.tpwodl": {
+   "value": "143.45",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "e. ROE @16% (d*16%) 143.45 126.93 111.15 151.56",
+   "what": "Table 77, RoE approved: tpwodl"
+  },
+  "roe_a.roe.tpnodl": {
+   "value": "126.93",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "e. ROE @16% (d*16%) 143.45 126.93 111.15 151.56",
+   "what": "Table 77, RoE approved: tpnodl"
+  },
+  "roe_a.roe.tpsodl": {
+   "value": "111.15",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "e. ROE @16% (d*16%) 143.45 126.93 111.15 151.56",
+   "what": "Table 77, RoE approved: tpsodl"
+  },
+  "roe_a.roe.tpcodl": {
+   "value": "151.56",
+   "unit": "INR_crore",
+   "page": 170,
+   "quote": "e. ROE @16% (d*16%) 143.45 126.93 111.15 151.56",
+   "what": "Table 77, RoE approved: tpcodl"
+  }
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "status": "found by reproducing the order in the build session; each is a question for the reviewer — none is resolved by the build",
+ "findings": [
+  {
+   "id": "O1",
+   "kind": "rule against regulation",
+   "title": "Approved RoE is 16 % of the opening equity; Reg. 3.6.4 as the order quotes it says the normative average equity of the year",
+   "detail": "Table 77 computes each DISCOM's equity as the reserve price plus 30 % of the assets put to use up to FY2025-26, and RoE as 16 % of it (TPWODL: 300.00 + 596.58 = 896.58; 143.45) — exact for all four.  The order quotes Reg. 3.6.4: 'The return on equity shall be calculated on the normative average equity of the year.'  The DISCOMs' proposals (Table 76) did take the average — 16 % on the opening balance and on half the year's additions (TPWODL 160.99 + 13.91).  The approval leaves out the year's additions altogether.  For the reviewer: whether the reserve-price construction (Reg. 3.6.1) displaces 3.6.4's average for the approval.",
+   "where": [
+    "OERC order on the Odisha DISCOMs FY2026-27, pp.169–170 Tables 76, 77; Regs. 3.6.1, 3.6.4, 3.5.2 (b) as quoted",
+    "bindings/approval-dep-bd-roe-fy27.json"
+   ],
+   "for": "reviewer"
+  },
+  {
+   "id": "O2",
+   "kind": "inconsistency",
+   "title": "TPCODL's proposed RoE: its rows add to 171.20 (155.84 + 15.36); Table 76 prints 171.14",
+   "detail": "16 % of the opening 974.00 is 155.84 and 16 % of half the additions 192.03 is 15.36, both as printed; their sum is 171.20, against the total 171.14.  The other three DISCOMs' rows add to their totals.  A question on the proposal as the order reports it; it does not reach the approval (151.56).",
+   "where": [
+    "OERC order on the Odisha DISCOMs FY2026-27, p.169 Table 76"
+   ],
+   "for": "reviewer"
+  }
+ ]
+}

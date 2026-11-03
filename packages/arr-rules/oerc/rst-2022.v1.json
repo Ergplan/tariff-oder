@@ -1,0 +1,218 @@
+{
+ "status": "draft — clauses not verified, nobody has approved them",
+ "regulation": "OERC (Terms and Conditions for Determination of Wheeling Tariff and Retail Supply Tariff) Regulations, 2022",
+ "applies": {
+  "commission": "OERC"
+ },
+ "note": "OERC's bad debts, depreciation total and return on equity for the four Odisha DISCOMs as the FY2026-27 order quotes and applies them — the engine's seventh commission.",
+ "rules": [
+  {
+   "id": "oerc.bad_debts",
+   "version": 1,
+   "status": "draft",
+   "title": "Bad and doubtful debts: 1 % of the revenue",
+   "output": "bad_debts",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-13",
+   "per": "licensee",
+   "formula": "rate * revenue",
+   "inputs": {
+    "revenue": {
+     "unit": "INR_crore",
+     "source": "record:revenue_billed"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "1"
+    }
+   },
+   "clause": {
+    "regulation": "OERC (Terms and Conditions for Determination of Wheeling Tariff and Retail Supply Tariff) Regulations, 2022",
+    "clause": "5.8.1",
+    "source_id": null,
+    "page": null,
+    "excerpt": "5.8.1 The commission shall allow a provision for bad debts as a pass through in the ARR as a prudent commercial practice in the revenue requirement of the licensee. The provision of bad and doubtful debts during the control period shall be allowed on normative basis of 1% of the total annual revenue billed for sale of electricity.",
+    "verified": false
+   },
+   "applies": {
+    "commission": "OERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulations (Odisha DISCOMs FY2026-27 order, pp.168–170), not read from the Regulations"
+  },
+  {
+   "id": "oerc.dep.total",
+   "version": 1,
+   "status": "draft",
+   "title": "Depreciation: on transferred assets (pre-1992 rates) and on new assets (Annexure-II rates)",
+   "output": "depreciation",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-7",
+   "per": "licensee",
+   "formula": "existing + new",
+   "inputs": {
+    "existing": {
+     "unit": "INR_crore",
+     "source": "record:dep_existing"
+    },
+    "new": {
+     "unit": "INR_crore",
+     "source": "record:dep_new"
+    }
+   },
+   "clause": {
+    "regulation": "OERC (Terms and Conditions for Determination of Wheeling Tariff and Retail Supply Tariff) Regulations, 2022",
+    "clause": "3.8.4, 3.8.5",
+    "source_id": null,
+    "page": null,
+    "excerpt": null,
+    "verified": false
+   },
+   "applies": {
+    "commission": "OERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulations (Odisha DISCOMs FY2026-27 order, pp.168–170), not read from the Regulations; Table 72"
+  },
+  {
+   "id": "oerc.roe.opening_equity",
+   "version": 1,
+   "status": "draft",
+   "title": "Equity for RoE: the reserve price and 30 % of the assets put to use",
+   "output": "roe_equity_opening",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "per": "licensee",
+   "formula": "reserve + share * assets",
+   "inputs": {
+    "reserve": {
+     "unit": "INR_crore",
+     "source": "record:reserve_price",
+     "note": "the vesting orders' reserve price"
+    },
+    "assets": {
+     "unit": "INR_crore",
+     "source": "record:assets_put_to_use",
+     "note": "up to the previous year, net of grants and contributions"
+    },
+    "share": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "30"
+    }
+   },
+   "clause": {
+    "regulation": "OERC (Terms and Conditions for Determination of Wheeling Tariff and Retail Supply Tariff) Regulations, 2022",
+    "clause": "3.6.1, 3.5.2(b)",
+    "source_id": null,
+    "page": null,
+    "excerpt": "3.6.1. Return on equity on approved reserve price (INR 300 Crore for TPCODL, INR 300 Crore for TPWODL, INR 250 Crore for TPNODL and INR 200 Crore for TPSODL) … 3.6.4. The return on equity shall be calculated on the normative average equity of the year. … 3.5.2 (b) … where the actual equity employed is less than 30% of capital cost approved by the Commission, the actual equity shall be considered and the balance amount in excess of 70% normative loan shall be considered as normative loan",
+    "verified": false
+   },
+   "applies": {
+    "commission": "OERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulations (Odisha DISCOMs FY2026-27 order, pp.168–170), not read from the Regulations; the order's Table 77"
+  },
+  {
+   "id": "oerc.roe.approved",
+   "version": 1,
+   "status": "draft",
+   "title": "RoE at 16 % on the opening equity (the order's method)",
+   "output": "roe_approved",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "per": "licensee",
+   "formula": "rate * equity",
+   "inputs": {
+    "equity": {
+     "unit": "INR_crore",
+     "source": "rule:roe_equity_opening"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "regulation",
+     "value": "16"
+    }
+   },
+   "clause": {
+    "regulation": "OERC (Terms and Conditions for Determination of Wheeling Tariff and Retail Supply Tariff) Regulations, 2022",
+    "clause": "3.6",
+    "source_id": null,
+    "page": null,
+    "excerpt": "3.6.1. Return on equity on approved reserve price (INR 300 Crore for TPCODL, INR 300 Crore for TPWODL, INR 250 Crore for TPNODL and INR 200 Crore for TPSODL) … 3.6.4. The return on equity shall be calculated on the normative average equity of the year. … 3.5.2 (b) … where the actual equity employed is less than 30% of capital cost approved by the Commission, the actual equity shall be considered and the balance amount in excess of 70% normative loan shall be considered as normative loan",
+    "verified": false
+   },
+   "applies": {
+    "commission": "OERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulations (Odisha DISCOMs FY2026-27 order, pp.168–170), not read from the Regulations; on the opening equity, as Table 77 computes it — Reg. 3.6.4 as quoted says the normative average equity (O1)"
+  },
+  {
+   "id": "oerc.roe.proposed",
+   "version": 1,
+   "status": "draft",
+   "title": "RoE as the DISCOMs propose it: 16 % on the opening balance and on half the year's additions",
+   "output": "roe_proposed",
+   "unit": "INR_crore",
+   "schedule": "R-SCH-9",
+   "per": "licensee",
+   "formula": "rate * (opening + additions / 2)",
+   "inputs": {
+    "opening": {
+     "unit": "INR_crore",
+     "source": "record:equity_opening"
+    },
+    "additions": {
+     "unit": "INR_crore",
+     "source": "record:equity_additions"
+    },
+    "rate": {
+     "unit": "percent",
+     "source": "record:roe_rate"
+    }
+   },
+   "clause": {
+    "regulation": "OERC (Terms and Conditions for Determination of Wheeling Tariff and Retail Supply Tariff) Regulations, 2022",
+    "clause": "3.6.4",
+    "source_id": null,
+    "page": null,
+    "excerpt": "3.6.1. Return on equity on approved reserve price (INR 300 Crore for TPCODL, INR 300 Crore for TPWODL, INR 250 Crore for TPNODL and INR 200 Crore for TPSODL) … 3.6.4. The return on equity shall be calculated on the normative average equity of the year. … 3.5.2 (b) … where the actual equity employed is less than 30% of capital cost approved by the Commission, the actual equity shall be considered and the balance amount in excess of 70% normative loan shall be considered as normative loan",
+    "verified": false
+   },
+   "applies": {
+    "commission": "OERC"
+   },
+   "rounding": {
+    "places": 2,
+    "mode": "half_up",
+    "feeds": "unrounded"
+   },
+   "examples": [],
+   "note": "the excerpt is the order's own quotation of the Regulations (Odisha DISCOMs FY2026-27 order, pp.168–170), not read from the Regulations; the proposal's 'RoE on additions' is 16 % of half the additions — the average equity of Reg. 3.6.4"
+  }
+ ]
+}

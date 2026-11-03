@@ -1,0 +1,202 @@
+{
+ "type": "cells",
+ "workbook": null,
+ "sheet": "OERC order",
+ "rates": "order/figures-dep-bd-roe-fy2026-27.json",
+ "places": 2,
+ "note": "OERC's bad and doubtful debts (1 % of revenue), depreciation and return on equity for the four Odisha DISCOMs, FY2026-27 — approved and proposed, each DISCOM a category.  The approval's RoE is on the opening equity; the proposals' on the average (O1).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "approved: depreciation, bad debts, RoE (Tables 72, 75, 77)",
+   "categories": {
+    "tpwodl": {
+     "inputs": {
+      "record:revenue_billed": {
+       "rate": "bd.approved_revenue.tpwodl"
+      },
+      "record:dep_existing": {
+       "rate": "dep.existing.tpwodl"
+      },
+      "record:dep_new": {
+       "rate": "dep.new.tpwodl"
+      },
+      "record:reserve_price": {
+       "rate": "roe_a.reserve.tpwodl"
+      },
+      "record:assets_put_to_use": {
+       "rate": "roe_a.assets.tpwodl"
+      }
+     },
+     "checks": {
+      "bad_debts": "order:bd.approved.tpwodl",
+      "depreciation": "order:dep.total.tpwodl",
+      "roe_equity_opening": "order:roe_a.opening.tpwodl",
+      "roe_approved": "order:roe_a.roe.tpwodl"
+     }
+    },
+    "tpnodl": {
+     "inputs": {
+      "record:revenue_billed": {
+       "rate": "bd.approved_revenue.tpnodl"
+      },
+      "record:dep_existing": {
+       "rate": "dep.existing.tpnodl"
+      },
+      "record:dep_new": {
+       "rate": "dep.new.tpnodl"
+      },
+      "record:reserve_price": {
+       "rate": "roe_a.reserve.tpnodl"
+      },
+      "record:assets_put_to_use": {
+       "rate": "roe_a.assets.tpnodl"
+      }
+     },
+     "checks": {
+      "bad_debts": "order:bd.approved.tpnodl",
+      "depreciation": "order:dep.total.tpnodl",
+      "roe_equity_opening": "order:roe_a.opening.tpnodl",
+      "roe_approved": "order:roe_a.roe.tpnodl"
+     }
+    },
+    "tpsodl": {
+     "inputs": {
+      "record:revenue_billed": {
+       "rate": "bd.approved_revenue.tpsodl"
+      },
+      "record:dep_existing": {
+       "rate": "dep.existing.tpsodl"
+      },
+      "record:dep_new": {
+       "rate": "dep.new.tpsodl"
+      },
+      "record:reserve_price": {
+       "rate": "roe_a.reserve.tpsodl"
+      },
+      "record:assets_put_to_use": {
+       "rate": "roe_a.assets.tpsodl"
+      }
+     },
+     "checks": {
+      "bad_debts": "order:bd.approved.tpsodl",
+      "depreciation": "order:dep.total.tpsodl",
+      "roe_equity_opening": "order:roe_a.opening.tpsodl",
+      "roe_approved": "order:roe_a.roe.tpsodl"
+     }
+    },
+    "tpcodl": {
+     "inputs": {
+      "record:revenue_billed": {
+       "rate": "bd.approved_revenue.tpcodl"
+      },
+      "record:dep_existing": {
+       "rate": "dep.existing.tpcodl"
+      },
+      "record:dep_new": {
+       "rate": "dep.new.tpcodl"
+      },
+      "record:reserve_price": {
+       "rate": "roe_a.reserve.tpcodl"
+      },
+      "record:assets_put_to_use": {
+       "rate": "roe_a.assets.tpcodl"
+      }
+     },
+     "checks": {
+      "bad_debts": "order:bd.approved.tpcodl",
+      "depreciation": "order:dep.total.tpcodl",
+      "roe_equity_opening": "order:roe_a.opening.tpcodl",
+      "roe_approved": "order:roe_a.roe.tpcodl"
+     }
+    }
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "proposed by the DISCOMs: bad debts, RoE (Tables 74, 76)",
+   "categories": {
+    "tpwodl": {
+     "inputs": {
+      "record:revenue_billed": {
+       "rate": "bd.proposed_revenue.tpwodl"
+      },
+      "record:equity_opening": {
+       "rate": "roe_p.opening.tpwodl"
+      },
+      "record:equity_additions": {
+       "rate": "roe_p.additions.tpwodl"
+      },
+      "record:roe_rate": {
+       "rate": "roe_p.rate.tpwodl"
+      }
+     },
+     "checks": {
+      "bad_debts": "order:bd.proposed.tpwodl",
+      "roe_proposed": "order:roe_p.total.tpwodl"
+     }
+    },
+    "tpnodl": {
+     "inputs": {
+      "record:revenue_billed": {
+       "rate": "bd.proposed_revenue.tpnodl"
+      },
+      "record:equity_opening": {
+       "rate": "roe_p.opening.tpnodl"
+      },
+      "record:equity_additions": {
+       "rate": "roe_p.additions.tpnodl"
+      },
+      "record:roe_rate": {
+       "rate": "roe_p.rate.tpnodl"
+      }
+     },
+     "checks": {
+      "bad_debts": "order:bd.proposed.tpnodl",
+      "roe_proposed": "order:roe_p.total.tpnodl"
+     }
+    },
+    "tpsodl": {
+     "inputs": {
+      "record:revenue_billed": {
+       "rate": "bd.proposed_revenue.tpsodl"
+      },
+      "record:equity_opening": {
+       "rate": "roe_p.opening.tpsodl"
+      },
+      "record:equity_additions": {
+       "rate": "roe_p.additions.tpsodl"
+      },
+      "record:roe_rate": {
+       "rate": "roe_p.rate.tpsodl"
+      }
+     },
+     "checks": {
+      "bad_debts": "order:bd.proposed.tpsodl",
+      "roe_proposed": "order:roe_p.total.tpsodl"
+     }
+    },
+    "tpcodl": {
+     "inputs": {
+      "record:revenue_billed": {
+       "rate": "bd.proposed_revenue.tpcodl"
+      },
+      "record:equity_opening": {
+       "rate": "roe_p.opening.tpcodl"
+      },
+      "record:equity_additions": {
+       "rate": "roe_p.additions.tpcodl"
+      },
+      "record:roe_rate": {
+       "rate": "roe_p.rate.tpcodl"
+      }
+     },
+     "checks": {
+      "bad_debts": "order:bd.proposed.tpcodl",
+      "roe_proposed": "order:roe_p.total.tpcodl"
+     }
+    }
+   }
+  }
+ ]
+}

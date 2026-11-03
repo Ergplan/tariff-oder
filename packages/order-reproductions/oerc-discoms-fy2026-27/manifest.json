@@ -1,0 +1,20 @@
+{
+ "id": "oerc-discoms-fy2026-27",
+ "status": "a commission order reproduced from its own figures — no petition or formats in this session; nothing reviewed, nothing approved",
+ "commission": "OERC",
+ "licensees": [
+  "TPWODL",
+  "TPNODL",
+  "TPSODL",
+  "TPCODL"
+ ],
+ "fiscal_year": "FY2026-27",
+ "order": {
+  "title": "OERC order on the ARR and retail supply tariff of the four Odisha DISCOMs, FY2026-27",
+  "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/DISCOM_TARIFF_ORDER_FY_2026-27.pdf",
+  "sha256": "d58d281787d4dd34e7b895add2e7cb37dbf3b9e8d5f1a1ea208dc57ceffde0ab",
+  "loaded_by": "scripts/load_real_orders.py (key OERC-DISCOMs-FY2026-27)"
+ },
+ "rules": "packages/arr-rules/oerc/rst-2022.v1.json",
+ "why": "a seventh commission; four licensees in one order"
+}

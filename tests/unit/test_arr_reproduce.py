@@ -2576,3 +2576,25 @@ def test_a_sixth_commission_berc_working_capital_per_discom():
         assert abs(Decimal(c.exact) - Decimal(c.filed)) <= slack, c.category
     approved = {c.category.rsplit(" order:", 1)[1]: c.computed for c in checks if c.output == "iowc_interest"}
     assert approved["app.interest.nbpdcl"] == "40.44" and approved["app.interest.sbpdcl"] == "20.11"
+
+
+def test_a_seventh_commission_oerc_bad_debts_roe_and_depreciation():
+    """Real data, a seventh commission and four licensees in one order: OERC's bad and doubtful
+    debts at 1 % of revenue, depreciation, and return on equity for the Odisha DISCOMs, FY2026-27
+    — approved (equity as the reserve price plus 30 % of the assets put to use, 16 % on it) and
+    proposed (16 % on the opening and half the additions).  All exact but TPCODL's proposal, whose
+    own rows add to 171.20 against the 171.14 printed (O2); the approval's RoE is on the opening
+    equity where the quoted regulation says the average (O1)."""
+    from tariff_api.arr.reproduce import load_binding_rates, reproduce_cells
+    from tariff_api.arr.rules import check_all, load_rules
+
+    assert check_all("OERC") == []
+    folder = ROOT / "packages" / "order-reproductions" / "oerc-discoms-fy2026-27"
+    binding = json.loads((folder / "bindings" / "approval-dep-bd-roe-fy27.json").read_text())
+    rec = load_binding_rates(folder, binding)
+    checks = reproduce_cells(None, binding, load_rules("OERC"), rates=rec)
+    differ = [c.category.rsplit(" order:", 1)[1] for c in checks if c.result != "match"]
+    assert len(checks) == 24 and differ == ["roe_p.total.tpcodl"]
+    tpcodl = next(c for c in checks if c.category.endswith("roe_p.total.tpcodl"))
+    assert tpcodl.computed == "171.20" and tpcodl.filed == "171.14"
+    assert {f["id"] for f in json.loads((folder / "findings.json").read_text())["findings"]} == {"O1", "O2"}
