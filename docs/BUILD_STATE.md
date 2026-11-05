@@ -3781,7 +3781,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) â
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
-- **Increment 151 (2026-11-05):** the new integration tests, 2 / 2 (`test_petition_workbooks.py`, about 105 s), and the fill unit tests, 3 / 3.  Ruff and format clean; contracts regenerated.  Full suite: result recorded in the next commit (running when this one was made).
+- **Increment 151 (2026-11-05): 526 passed.**  The new integration tests, 2 / 2 (`test_petition_workbooks.py`, about 105 s), and the fill unit tests, 3 / 3.  Ruff and format clean; contracts regenerated.  **Full suite: 526 passed** (+2 integration), 8 min 41 s, local PostgreSQL 16 with pgvector.
 - **Increment 150 (2026-11-05): 524 passed** (+3 unit: the fill's rules on a synthetic workbook, the fill map's limit, NPCL's round trip live).  Ruff and format clean.
 - **Increment 149 (2026-11-03): 521 passed** (+1 unit: NPCL BS1, BS2, BS3; A93, A94; the accounting's `no_arithmetic`).  Ruff and format clean; web `tsc --noEmit` clean.
 - **Increment 148 (2026-11-03): 520 passed** (+1 unit: NPCL P1A, P4, P5, P7, P8, P9, P11; A90â€“A92).  Ruff and format clean.
