@@ -1247,6 +1247,42 @@ class OrganisationMember(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
 
+class PetitionWorkbook(Base):
+    """A case's formats workbook (increment 151): the inputs a petitioner uploads, or the workbook
+    the rule engine filled from them, laid out as the reference filing ``package``.  A filled
+    workbook is a working draft from draft rules; no status here files anything."""
+
+    __tablename__ = "petition_workbooks"
+    __table_args__ = (
+        CheckConstraint("role in ('inputs', 'filled')", name="ck_petition_workbook_role"),
+        CheckConstraint(
+            "status in ('stored', 'queued', 'running', 'filled', 'failed')", name="ck_petition_workbook_status"
+        ),
+        CheckConstraint("role = 'inputs' or inputs_id is not null", name="ck_petition_workbook_filled_from"),
+        Index("ix_petition_workbooks_case_id", "case_id"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
+    case_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("arr_cases.id"), nullable=False)
+    role: Mapped[str] = mapped_column(String(12), nullable=False)
+    package: Mapped[str] = mapped_column(String(120), nullable=False)
+    filename: Mapped[str] = mapped_column(String(300), nullable=False)
+    object_key: Mapped[str | None] = mapped_column(String(512))
+    sha256: Mapped[str | None] = mapped_column(String(64))
+    size_bytes: Mapped[int | None] = mapped_column(Integer)
+    inputs_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("petition_workbooks.id"))
+    status: Mapped[str] = mapped_column(String(12), nullable=False)
+    summary: Mapped[dict | None] = mapped_column(JSONB)
+    report_key: Mapped[str | None] = mapped_column(String(512))
+    job_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    error: Mapped[str | None] = mapped_column(Text)
+    created_by: Mapped[str] = mapped_column(String(320), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+
 class ArrCase(Base):
     """A client's ARR process for one licensee (ADR-0019): the filing it prepares, its
     assumption set, and the formulation and draft it reached."""

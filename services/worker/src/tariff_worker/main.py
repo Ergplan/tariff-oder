@@ -19,6 +19,7 @@ from .stages.grid import grid_source
 from .stages.inventory import inventory_source
 from .stages.localise import localise_source
 from .stages.parse import parse_source
+from .stages.petition import petition_fill
 from .stages.triage import triage_source
 from .stages.validate import validate_source
 
@@ -36,6 +37,8 @@ HANDLERS = {
     "arr_validate_source": arr_validate_source,
     # the regulatory library (ADR-0019)
     "acquire_library_entry": acquire_library_entry,
+    # the petition fill (increment 151)
+    "petition_fill": petition_fill,
 }
 
 

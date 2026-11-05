@@ -7,8 +7,9 @@ organisation; another organisation's case is not found."""
 from __future__ import annotations
 
 import uuid
+from typing import Annotated
 
-from fastapi import APIRouter, Depends, Request, Response
+from fastapi import APIRouter, Depends, File, Request, Response, UploadFile
 from sqlalchemy import select
 
 from .. import workspace as ws
@@ -27,6 +28,8 @@ from ..schemas import (
     ArrCaseUpdate,
     ArrFormulationOut,
     FilingDraftOut,
+    PetitionLayoutOut,
+    PetitionWorkbookOut,
 )
 
 router = APIRouter(prefix="/cases", tags=["arr cases"])
@@ -302,3 +305,154 @@ def activity(case_id: uuid.UUID, principal: Principal = Depends(require_analyst)
             }
             for e in s.execute(q).scalars()
         ]
+
+
+# ------------------------------------------------------------------ the petition fill (increment 151)
+
+
+def _workbook_out(w) -> PetitionWorkbookOut:
+    return PetitionWorkbookOut.model_validate(w, from_attributes=True)
+
+
+@router.get("/{case_id}/petition/layout", response_model=PetitionLayoutOut)
+def petition_layout(case_id: uuid.UUID, principal: Principal = Depends(require_analyst)) -> PetitionLayoutOut:
+    """Which filed workbook the case's petition fill follows — its years, the cells a fill writes —
+    or why the engine cannot fill this licensee's formats."""
+    from ..arr import petition
+
+    with session_scope() as s:
+        case = _case(s, case_id, principal)
+        return PetitionLayoutOut(**petition.layout(case, s.get(Utility, case.utility_id)))
+
+
+@router.get("/{case_id}/petition/template")
+def petition_template(case_id: uuid.UUID, principal: Principal = Depends(require_analyst)) -> Response:
+    """The inputs template: the filed workbook with every cell a fill writes blanked."""
+    from ..arr import petition
+    from .arr import _disposition
+
+    with session_scope() as s:
+        case = _case(s, case_id, principal)
+        package = petition._package_for(s.get(Utility, case.utility_id))
+    return Response(
+        petition.template_bytes(package),
+        media_type=petition.XLSX,
+        headers={"Content-Disposition": _disposition(f"{package}-inputs-template.xlsx")},
+    )
+
+
+@router.get("/{case_id}/petition/workbooks", response_model=list[PetitionWorkbookOut])
+def petition_workbooks(
+    case_id: uuid.UUID, principal: Principal = Depends(require_analyst)
+) -> list[PetitionWorkbookOut]:
+    from ..arr import petition
+
+    with session_scope() as s:
+        return [_workbook_out(w) for w in petition.workbooks(s, _case(s, case_id, principal))]
+
+
+@router.post("/{case_id}/petition/workbooks", response_model=PetitionWorkbookOut, status_code=201)
+def upload_petition_workbook(
+    case_id: uuid.UUID,
+    request: Request,
+    file: Annotated[UploadFile, File()],
+    principal: Principal = Depends(require_analyst),
+) -> PetitionWorkbookOut:
+    """Upload the petition's inputs workbook (XLSX, laid out as the filed workbook)."""
+    from ..arr import petition
+    from ..arr.cases import _audit
+
+    settings = request.app.state.settings
+    storage: ObjectStore = request.app.state.adapters.storage
+    data = file.file.read(settings.max_upload_bytes + 1)
+    if len(data) > settings.max_upload_bytes:
+        raise AppError("source_too_large", "the workbook is larger than the upload limit")
+    with session_scope() as s:
+        case = _case(s, case_id, principal, "write")
+        w = petition.store_inputs(
+            s,
+            storage,
+            case,
+            s.get(Utility, case.utility_id),
+            filename=file.filename or "",
+            data=data,
+            actor=principal.email,
+        )
+        _audit(
+            s,
+            principal.email,
+            "arr_case.petition_inputs_uploaded",
+            case,
+            after={"workbook_id": str(w.id), "sha256": w.sha256},
+        )
+        s.flush()
+        s.refresh(w)
+        return _workbook_out(w)
+
+
+@router.post("/{case_id}/petition/workbooks/{workbook_id}/fill", response_model=PetitionWorkbookOut, status_code=202)
+def fill_petition_workbook(
+    case_id: uuid.UUID, workbook_id: uuid.UUID, principal: Principal = Depends(require_analyst)
+) -> PetitionWorkbookOut:
+    """Queue the fill of an uploaded inputs workbook; returns the filled workbook, queued."""
+    from ..arr import petition
+    from ..arr.cases import _audit
+
+    with session_scope() as s:
+        case = _case(s, case_id, principal, "write")
+        w = petition.request_fill(s, case, petition.workbook(s, case, workbook_id), actor=principal.email)
+        _audit(
+            s,
+            principal.email,
+            "arr_case.petition_fill_requested",
+            case,
+            after={"workbook_id": str(w.id), "inputs_id": str(workbook_id)},
+        )
+        s.flush()
+        s.refresh(w)
+        return _workbook_out(w)
+
+
+@router.get("/{case_id}/petition/workbooks/{workbook_id}", response_model=PetitionWorkbookOut)
+def get_petition_workbook(
+    case_id: uuid.UUID, workbook_id: uuid.UUID, principal: Principal = Depends(require_analyst)
+) -> PetitionWorkbookOut:
+    from ..arr import petition
+
+    with session_scope() as s:
+        return _workbook_out(petition.workbook(s, _case(s, case_id, principal), workbook_id))
+
+
+@router.get("/{case_id}/petition/workbooks/{workbook_id}/report")
+def petition_workbook_report(
+    case_id: uuid.UUID, workbook_id: uuid.UUID, request: Request, principal: Principal = Depends(require_analyst)
+) -> dict:
+    """The fill's full report: every figure written (binding, output, pass), every entered figure
+    checked, every cell left blank with the engine's reason, every conflict."""
+    from ..arr import petition
+
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        w = petition.workbook(s, _case(s, case_id, principal), workbook_id)
+        return petition.report(storage, w)
+
+
+@router.get("/{case_id}/petition/workbooks/{workbook_id}/download")
+def download_petition_workbook(
+    case_id: uuid.UUID, workbook_id: uuid.UUID, request: Request, principal: Principal = Depends(require_analyst)
+) -> Response:
+    """The workbook itself: the uploaded inputs, or the filled working draft."""
+    from ..arr import petition
+    from .arr import _disposition
+
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        w = petition.workbook(s, _case(s, case_id, principal), workbook_id)
+        if not w.object_key:
+            raise AppError("not_found", "the workbook has not been filled yet")
+        key, name = w.object_key, w.filename
+    return Response(
+        storage.get(ObjectStore.ARTEFACTS, key),
+        media_type=petition.XLSX,
+        headers={"Content-Disposition": _disposition(name)},
+    )

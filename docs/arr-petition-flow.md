@@ -79,11 +79,26 @@ FY2022-23 columns) and the figures that follow from them through the chain.
 
 Smallest first:
 
-1. **Into the case flow** (increment 151): a case of UPERC / NPCL gets a *formats workbook* — the
-   inputs template downloaded, the filled-in workbook uploaded, the fill run as a job, the filled
-   workbook and its report stored as a draft (`FilingDraft`, watermarked), readiness counting the
-   map's blank input cells and the blocked outputs.
-2. **The client page** (increment 152): the case shows, format by format, cells filled / checked /
+1. **Into the case flow — done (increment 151).**  A UPERC / NPCL case has a formats workbook
+   (`arr/petition.py`, table `petition_workbooks`, routes `/cases/{id}/petition/…`):
+   - `GET …/layout`: the filing the fill follows, its years, the cells a fill writes, and a
+     warning when the case's years are not the layout's;
+   - `GET …/template`: the inputs template;
+   - `POST …/workbooks`: upload an inputs workbook.  It is checked to be an XLSX laid out as
+     the filing, and compared with the filed inputs: blank / changed / as filed, fill cells
+     already entered, formulas saved without a value;
+   - `POST …/workbooks/{id}/fill`: queues the `petition_fill` job (about 90 s);
+   - `GET …/workbooks/{id}`, `…/report`, `…/download`: the filled workbook (shaded, a Fill
+     trace sheet, a WORKING DRAFT header on every sheet) and its full report.
+   It is stored as its own table, not as a `FilingDraft`: a draft there is a DOCX and XLSX
+   rendered from a frozen formulation, while a filled workbook is the petitioner's own
+   workbook completed.
+   **Uploading the filed workbook itself** (formulas with their saved values) runs the engine
+   as a pure check: every map cell is already entered, so nothing is written and every figure
+   is checked.  On NPCL's filing (run 2026-11-05): 0 written, 4,606 agree, 59 differ (the
+   known differences, A40, A41, A83 and the rest, and the ties that repeat them), 0 conflicts,
+   one pass.
+2. **The client page** (increment 152, next): the case shows, format by format, cells filled / checked /
    differing / blocked, and offers the downloads.
 3. **The narrative** (later): the nine narrative summary tables bound in increment 93 filled from
    the filled formats.

@@ -3,6 +3,12 @@
   "commission": "UPERC",
   "licensee": "NPCL",
   "title": "NPCL tariff petition: true-up FY2024-25, APR FY2025-26, ARR FY2026-27",
+  "petition_years": {
+    "true_up": "FY2024-25",
+    "apr": "FY2025-26",
+    "arr": "FY2026-27",
+    "note": "the years of the filed workbook's layout (its title); a fill writes figures into these columns"
+  },
   "proceedings": [
     {
       "kind": "true_up",

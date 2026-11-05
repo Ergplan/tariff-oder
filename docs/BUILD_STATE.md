@@ -1005,6 +1005,59 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 151 (2026-11-05): the petition fill in the case flow — a UPERC / NPCL case fills its formats workbook.**
+  - **Direction (operator, 2026-11-05):** next round NPCL's petition is filled; make the
+    application ready.  This increment does the API and the job; the client page is next.
+  - **Storage:** migration `0022_petition_workbooks`, model `PetitionWorkbook`.  A row is a
+    case's *inputs* workbook (uploaded) or a *filled* one (made from an inputs row).  Statuses:
+    stored, queued, running, filled, failed.  None of them files anything; check constraints
+    enforce the role, the status, and that a filled row names its inputs.
+  - **Service `arr/petition.py`:**
+    - **Layout:** a case's licensee and commission are matched to a reference filing that has
+      a fill map.  Today that is only `uperc-npcl-fy2026-27`; its manifest now states its
+      `petition_years` (true-up FY2024-25, APR FY2025-26, ARR FY2026-27, from its title).  If
+      none of the case's years is in the layout, a warning says the bindings have not been
+      moved a year.  A licensee without a fill map is told so.
+    - **Inputs template:** the filing with the 4,492 fill-map cells blanked, plus an
+      "About this template" sheet (3.5 s to build).
+    - **Upload checks:** the file must be an XLSX, a valid zip with `xl/workbook.xml`.  Macros
+      are refused, and so is a file that inflates past 400 MB, before any XML is parsed.
+      Every sheet the fill writes must be present.
+    - **Upload summary:**
+      - the 18,358 numeric cells the fill does not write, counted blank / changed / as filed;
+      - the fill-map cells already entered (these will be checked, not overwritten);
+      - formula cells saved without a value (the fill would see these as blank).
+      The upload check takes about 6 s and 220 MB.
+    - **The fill as a job:** job type `petition_fill`, in `services/worker/.../stages/petition.py`,
+      not retried.  The filled workbook is stored under `petition/<utility>/<case>/<id>/`
+      together with its full report.  Each sheet carries a "WORKING DRAFT" header, the cells
+      are shaded and a "Fill trace" sheet is added.  A failure is recorded on the row.
+  - **Routes `/cases/{id}/petition/…`:** layout, template, list workbooks, upload, fill (202),
+    one workbook, report, download.  Access works as for cases: a viewer may read and download
+    but not upload or fill, and another organisation gets 404.  Uploads and fill requests are
+    in the case's activity.
+  - **The fill report now separates two kinds of uncomputed output** (`petition_fill.fill`):
+    - *blocked* is a fill-map cell left blank;
+    - *not printed* is an output the engine could not compute in a cell the filed format leaves
+      blank, such as rates on empty tariff rows.
+    On NPCL's template, all 278 such outputs were the second kind; none were blocked.
+  - **Tested** (`tests/integration/test_petition_workbooks.py`, through the API and the
+    in-process worker, about 100 s):
+    - an NPCL case: layout, template, the refused uploads, upload, fill, report, download;
+    - all 4,492 cells written, 0 blocked, 0 conflicts, the draft header present;
+    - access for viewers and other organisations, and the activity trail;
+    - a FY2027-28 case gets the year warning; PVVNL has no layout.
+  - **The filed workbook itself, uploaded, is a pure check** (run once by script, not in the
+    test): 0 cells written, 4,606 agree, 59 differ (the known differences and the ties that
+    repeat them), 0 conflicts, one pass.
+  - **What this does not prove:** the template *is* the filing blanked, so the test shows the
+    fill writing the filing's own figures back.  It does not show that a new petition's
+    inputs give a right petition.  That is the reviewer's check, cell by cell, on the first
+    real fill.
+  - **Not yet:** the client page (increment 152).  `readiness` does not yet count the fill;
+    the upload summary carries the counts for the page to show.
+  Nothing verified, nothing approved; a filled workbook is a working draft from draft rules.
+
   **Increment 150 (2026-11-05): the ARR petition flow checked, and the rule engine fills NPCL's formats workbook.**
   - **Direction (operator, 2026-11-05):** check the flow of the ARR petition; in the next round
     NPCL's petition will be filled — make the application ready.
@@ -3626,6 +3679,8 @@ make tf-plan ENV=dev              # requires gcloud auth + filled envs/dev.tfvar
   dispositions.  `0007_conditions`: `condition_records` (verbatim provisions, footnotes and
   clause conditions, unique per source/page/line/kind/text hash).
 - API contract exported to `packages/contracts/openapi.json`; types generated; no drift.
+- Migration `0022_petition_workbooks` (increment 151): a case's formats workbooks, inputs and
+  filled; routes `/cases/{id}/petition/…`; job type `petition_fill`.
 - Config: `ocr_engine/ocr_lang/ocr_dpi/ocr_psm/ocr_min_confidence`, `primary_reader`.
 - Adapters: storage (filesystem, gcs), secrets (env, secret_manager), identity (local, iap).
 - Reading profiles: none yet (`packages/reading-profiles/` holds a README; Milestone 3).
@@ -3726,6 +3781,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 151 (2026-11-05):** the new integration tests, 2 / 2 (`test_petition_workbooks.py`, about 105 s), and the fill unit tests, 3 / 3.  Ruff and format clean; contracts regenerated.  Full suite: result recorded in the next commit (running when this one was made).
 - **Increment 150 (2026-11-05): 524 passed** (+3 unit: the fill's rules on a synthetic workbook, the fill map's limit, NPCL's round trip live).  Ruff and format clean.
 - **Increment 149 (2026-11-03): 521 passed** (+1 unit: NPCL BS1, BS2, BS3; A93, A94; the accounting's `no_arithmetic`).  Ruff and format clean; web `tsc --noEmit` clean.
 - **Increment 148 (2026-11-03): 520 passed** (+1 unit: NPCL P1A, P4, P5, P7, P8, P9, P11; A90–A92).  Ruff and format clean.
@@ -4102,9 +4158,14 @@ entries below are the per-increment history.**
 
   **Engineering next, smallest first:**
   - **Filling NPCL's petition in the application (operator's direction, 2026-11-05;
-    `docs/arr-petition-flow.md`):** the engine fills NPCL's formats workbook (increment 150).
-    Next: the case flow (inputs template, upload, fill as a job, filled workbook as a draft,
-    readiness from the fill); then the client page; then the narrative tables.
+    `docs/arr-petition-flow.md`):**
+    - done: the engine fills NPCL's formats workbook (increment 150), and a case does so
+      through the API as a job (increment 151);
+    - next, smallest first:
+      1. the client case page: layout, template download, upload, fill, the report format by
+         format, downloads (increment 152);
+      2. the narrative tables from the filled formats;
+      3. the year shift for a FY2027-28 layout, if the operator chooses that petition.
   - **NPCL, after the whole suite (increments 143–149):** the formats are all checked; what is
     left is depth, not breadth:
     - ESR7 (not filed), on which the month-on-month sales projection (A88) and FPPAS wait;

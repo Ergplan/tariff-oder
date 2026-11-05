@@ -1493,6 +1493,49 @@ class FilingDraftOut(BaseModel):
     watermark: str
 
 
+# ------------------------------------------------------------------ petition fill (increment 151)
+
+
+class PetitionLayoutOut(BaseModel):
+    """Which filed workbook a case's petition fill follows (increment 151), or why there is none."""
+
+    available: bool
+    why: str | None = None
+    package: str | None = None
+    title: str | None = None
+    workbook: str | None = None
+    years: dict[str, str] = Field(default_factory=dict)
+    cells_filled: int = 0
+    cells_computed: int = 0
+    cells_carried: int = 0
+    bindings: int = 0
+    bindings_left_out: int = 0
+    sheets: int = 0
+    warnings: list[str] = Field(default_factory=list)
+    status: str | None = None
+
+
+class PetitionWorkbookOut(BaseModel):
+    """A case's formats workbook: an uploaded inputs workbook, or one the engine filled from it — a
+    working draft from draft rules (no status here files anything)."""
+
+    id: uuid.UUID
+    case_id: uuid.UUID
+    role: Literal["inputs", "filled"]
+    package: str
+    filename: str
+    sha256: str | None = None
+    size_bytes: int | None = None
+    inputs_id: uuid.UUID | None = None
+    status: Literal["stored", "queued", "running", "filled", "failed"]
+    summary: dict[str, Any] | None = None
+    job_id: uuid.UUID | None = None
+    error: str | None = None
+    created_by: str
+    created_at: datetime
+    updated_at: datetime
+
+
 # ------------------------------------------------------------------ client application (ADR-0019)
 
 

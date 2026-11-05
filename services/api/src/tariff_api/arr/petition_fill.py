@@ -103,6 +103,9 @@ class FillReport:
     checked: list[Checked] = field(default_factory=list)
     blocked: list[Blocked] = field(default_factory=list)
     conflicts: list[Conflict] = field(default_factory=list)
+    # outputs the engine could not compute in cells outside the fill map — cells the filed format
+    # leaves blank (an implied rate on an empty row): not the fill's to write, so not "blocked"
+    not_printed: int = 0
     status: str = "working draft — every rule a draft, nothing verified or approved; not a filing"
 
     def summary(self) -> dict[str, Any]:
@@ -124,6 +127,7 @@ class FillReport:
             "differs": sum(c.result == "differs" for c in self.checked),
             "blocked": len(self.blocked),
             "conflicts": len(self.conflicts),
+            "not_printed": self.not_printed,
             "by_sheet": dict(sorted(by_sheet.items())),
         }
 
@@ -370,7 +374,10 @@ def fill(
             continue
         seen.add(key)
         if c.result == "blocked" or (c.result == "no_filed_value" and getattr(c, "fill", None) is None):
-            report.blocked.append(Blocked(cell, name, c.output, c.fiscal_year, c.why))
+            if targets is None or cell in targets:
+                report.blocked.append(Blocked(cell, name, c.output, c.fiscal_year, c.why))
+            else:
+                report.not_printed += 1  # an output the format does not print (a rate on a blank row)
             continue
         if cell in written and written[cell].binding == name:
             continue
