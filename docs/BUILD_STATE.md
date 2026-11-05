@@ -1005,6 +1005,47 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 152 (2026-11-05): the formats workbook on the client case page.**
+  - **Panel "Formats workbook"** on the case page, for annual / MYT cases and for true-up /
+    APR cases (`apps/web/app/client/cases/[id]/petition.tsx`, `petition-upload.tsx`). It
+    shows:
+    - **The layout:** the filing, its years, the cells a fill writes, the bindings left out,
+      and the case-year warning when there is one.
+    - **Step 1:** download the inputs template.
+    - **Step 2:** upload an inputs workbook (editors and owners only).  Each upload is listed
+      with its comparison against the filed inputs: changed / as filed / blank, fill cells
+      already entered, formulas saved without a value.  A Fill button is beside each.
+    - **Step 3:** each filled workbook with its status.  The page refreshes every 10 s while
+      a fill is queued or running.  For a filled workbook it shows the counts (computed,
+      carried, entered figures that agree or differ, left blank, conflicts, passes) and
+      downloads of the workbook and the full JSON report.
+    - **Format by format:** a table per sheet, then, for the latest fill, the conflicts, the
+      entered figures that differ from the computation (the first 200) and the cells left
+      blank with the engine's reason.
+    - A "working draft · not filed" mark on the panel and on every filled workbook.
+  - **The client proxy** (`app/api/client/[...path]`) passes a multipart body through
+    unchanged, so the upload goes through the same allow-listed proxy as every other case
+    action.
+  - **Checked in the browser against the running stack** (API, worker, web at 1440 px and
+    390 px; local PostgreSQL; an NPCL case):
+    - template downloaded and uploaded through the form: 18,358 input cells as filed,
+      0 changed;
+    - Fill clicked, the job queued, and the worker drained it;
+    - the page then showed 4,397 computed, 95 carried, 160 entered figures agreeing,
+      9 differing, 0 left blank, 0 conflicts, 11 passes, and 278 outputs the formats do not
+      print;
+    - the 9 are the filing's own known findings, for example BS3!D8 entered 45.17 against
+      101.03 computed (A93).
+  - **Page width:** no horizontal scroll at 390 px.
+    - The upload input was 11 px too wide; fixed.
+    - The readiness panel's "missing FY…" badges were 8 px too wide (not new); they now wrap.
+  - `tsc --noEmit` clean.  No API change, so no new tests; the API is covered by
+    `test_petition_workbooks.py`.
+  - **For the next round (filling NPCL's petition):** open an NPCL case and download the
+    template.  Replace the inputs with the petition's figures, upload, and fill.  Then review
+    the differences and the blank cells format by format.  The layout is FY2026-27's (see
+    increment 150 for the year shift).
+
   **Increment 151 (2026-11-05): the petition fill in the case flow — a UPERC / NPCL case fills its formats workbook.**
   - **Direction (operator, 2026-11-05):** next round NPCL's petition is filled; make the
     application ready.  This increment does the API and the job; the client page is next.
@@ -3781,6 +3822,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 152 (2026-11-05):** web only — `tsc --noEmit` clean; checked in the browser against the running stack (template, upload, fill through the worker, results) at 1440 px and 390 px.  Python suite unchanged at 526.
 - **Increment 151 (2026-11-05): 526 passed.**  The new integration tests, 2 / 2 (`test_petition_workbooks.py`, about 105 s), and the fill unit tests, 3 / 3.  Ruff and format clean; contracts regenerated.  **Full suite: 526 passed** (+2 integration), 8 min 41 s, local PostgreSQL 16 with pgvector.
 - **Increment 150 (2026-11-05): 524 passed** (+3 unit: the fill's rules on a synthetic workbook, the fill map's limit, NPCL's round trip live).  Ruff and format clean.
 - **Increment 149 (2026-11-03): 521 passed** (+1 unit: NPCL BS1, BS2, BS3; A93, A94; the accounting's `no_arithmetic`).  Ruff and format clean; web `tsc --noEmit` clean.
@@ -4162,10 +4204,11 @@ entries below are the per-increment history.**
     - done: the engine fills NPCL's formats workbook (increment 150), and a case does so
       through the API as a job (increment 151);
     - next, smallest first:
-      1. the client case page: layout, template download, upload, fill, the report format by
-         format, downloads (increment 152);
+      1. the client case page — done (increment 152);
       2. the narrative tables from the filled formats;
-      3. the year shift for a FY2027-28 layout, if the operator chooses that petition.
+      3. the year shift for a FY2027-28 layout, if the operator chooses that petition;
+      4. `readiness` counting the fill (inputs still as filed, blank cells) so the case's next
+         step names it.
   - **NPCL, after the whole suite (increments 143–149):** the formats are all checked; what is
     left is depth, not breadth:
     - ESR7 (not filed), on which the month-on-month sales projection (A88) and FPPAS wait;

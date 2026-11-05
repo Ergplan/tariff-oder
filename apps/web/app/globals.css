@@ -276,7 +276,8 @@ tr[data-kind="group"] td { font-weight: 600; }
 .form-grid label { display: flex; flex-direction: column; font-size: 0.85rem; gap: 0.2rem; }
 .action { display: inline-flex; flex-direction: column; gap: 0.3rem; margin-right: 0.5rem; }
 button[data-tone="plain"] { background: var(--surface); color: var(--accent-text); border: 1px solid var(--accent); }
-.card .cov-table td { white-space: normal; }
+.card .cov-table td { white-space: normal; overflow-wrap: anywhere; }
+.card .cov-table .badge { white-space: normal; }
 .arr-review { display: grid; grid-template-columns: 15rem minmax(0, 1fr) 24rem; gap: 1rem; align-items: start; }
 .arr-grid { overflow-x: auto; }
 .arr-rail { display: flex; flex-direction: column; gap: 0.4rem; position: sticky; top: 0.5rem; }

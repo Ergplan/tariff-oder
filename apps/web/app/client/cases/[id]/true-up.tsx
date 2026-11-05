@@ -4,6 +4,7 @@ import { apiTry } from "@/lib/api";
 import { ActionButton } from "../../actions";
 import ActualForm from "./actual-form";
 import CaseActivity from "./activity";
+import PetitionWorkbook from "./petition";
 import { Eyebrow, NextAction, Panel, Stepper, TRUE_UP_STEPS } from "../../studio";
 
 type Ref = Record<string, string | number | boolean | null | Record<string, unknown>>;
@@ -257,7 +258,10 @@ export default async function TrueUpCase({ c, role }: { c: ArrCaseOut; role: str
         </p>
       ) : null}
       </Panel>
-      <Panel num="04" title="Activity">
+      <Panel num="04" title="Formats workbook" aside={<span className="watermark">Working draft · not filed</span>}>
+        <PetitionWorkbook caseId={c.id} canEdit={canEdit} />
+      </Panel>
+      <Panel num="05" title="Activity">
         <CaseActivity caseId={c.id} />
       </Panel>
     </>

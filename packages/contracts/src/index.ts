@@ -110,6 +110,9 @@ export type MeOut = components["schemas"]["Me"];
 export type OrganisationOut = components["schemas"]["OrganisationOut"];
 export type ArrCaseOut = components["schemas"]["ArrCaseOut"];
 export type ArrActualOut = components["schemas"]["ArrActualOut"];
+// the petition fill in the case flow (increment 151)
+export type PetitionLayoutOut = components["schemas"]["PetitionLayoutOut"];
+export type PetitionWorkbookOut = components["schemas"]["PetitionWorkbookOut"];
 export type CoverageOut = components["schemas"]["CoverageOut"];
 export type LibraryEntryOut = components["schemas"]["LibraryEntryOut"];
 export type Decides = components["schemas"]["Decides"];

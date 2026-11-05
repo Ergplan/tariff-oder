@@ -98,7 +98,7 @@ Smallest first:
    is checked.  On NPCL's filing (run 2026-11-05): 0 written, 4,606 agree, 59 differ (the
    known differences, A40, A41, A83 and the rest, and the ties that repeat them), 0 conflicts,
    one pass.
-2. **The client page** (increment 152, next): the case shows, format by format, cells filled / checked /
+2. **The client page — done (increment 152).**  The case page's "Formats workbook" panel walks through the layout, the template, the upload, the fill and the results format by format.  Before that increment the plan read: the case shows, format by format, cells filled / checked /
    differing / blocked, and offers the downloads.
 3. **The narrative** (later): the nine narrative summary tables bound in increment 93 filled from
    the filled formats.

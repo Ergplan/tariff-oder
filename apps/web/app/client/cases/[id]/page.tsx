@@ -6,6 +6,7 @@ import { ActionButton } from "../../actions";
 import AssumptionForm from "./assumption-form";
 import TrueUpCase from "./true-up";
 import CaseActivity from "./activity";
+import PetitionWorkbook from "./petition";
 import { ARR_STEPS, Eyebrow, NextAction, Panel, Stepper } from "../../studio";
 
 export const dynamic = "force-dynamic";
@@ -281,7 +282,10 @@ export default async function CasePage({ params }: { params: Promise<{ id: strin
         </p>
       ) : null}
       </Panel>
-      <Panel num="05" title="Activity">
+      <Panel num="05" title="Formats workbook" aside={<span className="watermark">Working draft · not filed</span>}>
+        <PetitionWorkbook caseId={c.id} canEdit={canEdit} />
+      </Panel>
+      <Panel num="06" title="Activity">
         <CaseActivity caseId={c.id} />
       </Panel>
     </>

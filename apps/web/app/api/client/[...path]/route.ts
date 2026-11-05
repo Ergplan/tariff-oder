@@ -12,8 +12,11 @@ async function forward(req: NextRequest, ctx: { params: Promise<{ path: string[]
   if (!path.length || !ALLOWED.includes(path[0])) return new NextResponse("not found", { status: 404 });
   const identity = await identityHeaders();
   const url = `${API_BASE}/${path.map(encodeURIComponent).join("/")}${req.nextUrl.search}`;
-  const body = method === "GET" || method === "DELETE" ? undefined : await req.text();
-  const res = await fetch(url, { method, headers: { "content-type": "application/json", ...identity }, body });
+  // a file upload (a case's petition workbook) is forwarded as the multipart body it is
+  const type = req.headers.get("content-type") || "";
+  const multipart = type.startsWith("multipart/form-data");
+  const body = method === "GET" || method === "DELETE" ? undefined : multipart ? await req.arrayBuffer() : await req.text();
+  const res = await fetch(url, { method, headers: { "content-type": multipart ? type : "application/json", ...identity }, body });
   const headers: Record<string, string> = { "content-type": res.headers.get("content-type") || "application/json" };
   const cd = res.headers.get("content-disposition");
   if (cd) headers["content-disposition"] = cd;
