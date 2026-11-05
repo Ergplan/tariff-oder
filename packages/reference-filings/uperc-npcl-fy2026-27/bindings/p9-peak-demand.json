@@ -206,5 +206,7 @@
     "scaled": "G14"
    }
   }
- ]
+ ],
+ "fill_places": 0,
+ "fill_places_why": "P9 rounds its projected peaks to whole MW (G15 =ROUND(F15*1.11,0), G14 =ROUND(F14/F15*G15,0))"
 }

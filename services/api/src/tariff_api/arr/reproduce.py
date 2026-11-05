@@ -45,6 +45,10 @@ class OutputCheck:
     why: str | None = None
     rule: str | None = None
     exact: str | None = None  # the computed value unrounded, in the rule's unit (to feed a later year)
+    cell: str | None = None  # "Sheet!A1": the cell the output belongs in (petition fill)
+    fill: str | None = None  # the computed value unrounded, in the cell's unit — what a fill writes
+    tie: bool = False  # the cell is another format's figure carried here: checked, written only if blank
+    primary: str | None = None  # for a tie, the cell it repeats ("Sheet!A1"): a fill copies that cell's figure
 
 
 @dataclass
@@ -70,6 +74,8 @@ def reproduce(
     rules: list[Rule],
     sheets: dict[str, dict] | None = None,
     fed: dict[tuple[str, str], dict[str, tuple[Decimal | str, str]]] | None = None,
+    *,
+    fill: bool = False,
 ) -> FormatReproduction:
     """``sheet`` is one sheet of a reference (as `scripts/build_reference.py` writes it).  A bound
     row is a row number of that sheet, or ``"<other sheet>!<row>"`` — an input or a check taken
@@ -155,6 +161,22 @@ def reproduce(
         table, n, _ = where(ref)
         return table[n]
 
+    def cell_of(ref: int | str, col: tuple[str, str, str]) -> dict[str, Any]:
+        """The cell an output belongs in: its row, in the column of this year and voice — on this
+        sheet, or (a figure carried from another format) on the other sheet, then a tie."""
+        from openpyxl.utils import get_column_letter
+
+        base, k = offset_of(ref)
+        if k:
+            return {}
+        name = sheet["sheet"] if isinstance(base, int) else str(base).rpartition("!")[0]
+        n = base if isinstance(base, int) else int(str(base).rpartition("!")[2])
+        cols = sheet.get("columns", []) if isinstance(base, int) else (sheets or {}).get(name, {}).get("columns", [])
+        idx = next((c["index"] for c in cols if (c["fiscal_year"], c["voice"], c["words"]) == col), None)
+        if idx is None:
+            return {}
+        return {"cell": f"{name}!{get_column_letter(idx + 1)}{n}", "tie": not isinstance(base, int)}
+
     def res_sources(output: str, ev: Any) -> set[str]:
         """The non-rule sources the year's rule for ``output`` read directly."""
         rule = next((r for r in rules if r.output == output and r.id == ev.results[output].rule), None)
@@ -196,7 +218,7 @@ def reproduce(
             elif c and c["state"] in states_as_zero:
                 # declared by the binding with its reason: "Incl. in A&G" / "NA" add nothing to a sum
                 values[source] = ("0", c["unit"] or row_of(row)["unit"] or default_unit)
-            elif c is None and row in blank_is_zero:
+            elif (c is None or c["state"] == "blank") and row in blank_is_zero:
                 # declared by the binding, with its reason: the petitioner's formula reads this
                 # blank cell as zero.  Never assumed: an undeclared blank blocks.
                 values[source] = ("0", row_of(row)["unit"] or default_unit)
@@ -210,8 +232,30 @@ def reproduce(
         for output, row in binding["outputs"].items():
             c = cell(row, col)
             base = dict(output=output, row=row, label=row_of(row)["label"], fiscal_year=fy, voice=voice, words=words)
-            if c is None:
-                out.checks.append(OutputCheck(**base, result="no_filed_value"))
+            base.update(cell_of(row, col))
+            if c is None or c["state"] == "blank":
+                if fill and ev is not None and output in ev.results:
+                    res = ev.results[output]
+                    unit = (c or {}).get("unit") or row_of(row)["unit"] or default_unit or res.unit
+                    try:
+                        value = Q.of(res.value, res.unit).to(unit)
+                    except RuleError:
+                        value = None
+                    if value is not None:
+                        out.checks.append(
+                            OutputCheck(
+                                **base,
+                                result="no_filed_value",
+                                computed=str(value),
+                                unit=unit,
+                                rule=f"{res.rule} v{res.version} ({res.status})",
+                                exact=str(res.value),
+                                fill=str(value),
+                            )
+                        )
+                        continue
+                why = (ev.blocked.get(output) if ev is not None else str(rs)) if fill else None
+                out.checks.append(OutputCheck(**base, result="no_filed_value", why=why))
                 continue
             if c["state"] != "value" or c["displayed"] is None:
                 out.checks.append(OutputCheck(**base, result="not_a_value", filed=c["printed"]))
@@ -245,6 +289,7 @@ def reproduce(
                     unit=unit,
                     rule=f"{res.rule} v{res.version} ({res.status})",
                     exact=str(res.value),
+                    fill=str(Q.of(res.value, res.unit).to(unit)),
                 )
             )
     return out
@@ -261,6 +306,10 @@ class BlockCheck:
     computed: str | None = None
     why: str | None = None
     exact: str | None = None  # the computed value unrounded, in the rule's unit (to feed another binding)
+    cell: str | None = None  # "Sheet!A1": the cell checked (petition fill)
+    fill: str | None = None  # the computed value unrounded, in the cell's unit — what a fill writes
+    tie: bool = False  # the cell is another format's figure carried here: checked, written only if blank
+    primary: str | None = None  # for a tie, the cell it repeats ("Sheet!A1"): a fill copies that cell's figure
 
 
 def reproduce_blocks(blocks: list, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
@@ -342,7 +391,9 @@ def reproduce_blocks(blocks: list, binding: dict[str, Any], rules: list[Rule]) -
     return out
 
 
-def reproduce_period_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
+def reproduce_period_table(
+    wb: Any, binding: dict[str, Any], rules: list[Rule], *, fill: bool = False
+) -> list[BlockCheck]:
     """A table of periods within a year (e.g. the SBI MCLR revisions of F27: from, to, days,
     rate), each period a category, read by cell address from the filed workbook, and the derived
     figures checked against the cells the format prints them in (``"Sheet!E34"``)."""
@@ -375,18 +426,32 @@ def reproduce_period_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) 
                     BlockCheck(binding["sheet"], t["fiscal_year"], ref, output, "blocked", why=ev.blocked.get(output))
                 )
                 continue
+            where = dict(cell=ref, fill=str(res.value), tie=sheet != binding["sheet"])
+            if not isinstance(filed, int | float) or isinstance(filed, bool):
+                out.append(
+                    BlockCheck(
+                        binding["sheet"],
+                        t["fiscal_year"],
+                        ref,
+                        output,
+                        "no_filed_value",
+                        computed=str(res.value),
+                        **where,
+                    )
+                )
+                continue
             want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q, rounding=ROUND_HALF_UP)
             got = res.value.quantize(q, rounding=ROUND_HALF_UP)
             result = "match" if got == want else "differs"
             check = BlockCheck(
-                binding["sheet"], t["fiscal_year"], ref, output, result, filed=str(want), computed=str(got)
+                binding["sheet"], t["fiscal_year"], ref, output, result, filed=str(want), computed=str(got), **where
             )
             check.exact = str(res.value)
             out.append(check)
     return out
 
 
-def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> list[BlockCheck]:
+def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule], *, fill: bool = False) -> list[BlockCheck]:
     """A table whose rows are categories and whose columns are fixed attributes (UPERC's power
     purchase summary: one row per source; MU, charges, rates), read by cell address.  Each row with
     a label and at least one bound value is a category; per-category outputs are checked against
@@ -451,15 +516,37 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
     for cat, r in rows_of.items():
         for output, col in binding.get("outputs", {}).items():
             filed = ws.cell(r, col_of(col)).value
-            if not isinstance(filed, int | float):
+            here = f"{binding['sheet']}!{col}{r}"
+            if not isinstance(filed, int | float) or isinstance(filed, bool):
+                if not fill:
+                    continue
+                res = ev.by_category.get(cat, {}).get(output)
+                if res is None:
+                    why = ev.blocked_by_category.get(cat, {}).get(output)
+                    out.append(BlockCheck(binding["sheet"], fy, cat, output, "blocked", why=why, cell=here))
+                    continue
+                value = Q.of(res.value, res.unit).to(units.get(col, res.unit))
+                out.append(
+                    BlockCheck(
+                        binding["sheet"],
+                        fy,
+                        cat,
+                        output,
+                        "no_filed_value",
+                        computed=str(value),
+                        cell=here,
+                        fill=str(value),
+                    )
+                )
                 continue
             res = ev.by_category.get(cat, {}).get(output)
             if res is None:
                 why = ev.blocked_by_category.get(cat, {}).get(output)
-                out.append(BlockCheck(binding["sheet"], fy, cat, output, "blocked", why=why))
+                out.append(BlockCheck(binding["sheet"], fy, cat, output, "blocked", why=why, cell=here))
                 continue
             want = Decimal(repr(filed)).quantize(q, rounding=ROUND_HALF_UP)
-            got = Q.of(res.value, res.unit).to(units.get(col, res.unit)).quantize(q, rounding=ROUND_HALF_UP)
+            value = Q.of(res.value, res.unit).to(units.get(col, res.unit))
+            got = value.quantize(q, rounding=ROUND_HALF_UP)
             out.append(
                 BlockCheck(
                     binding["sheet"],
@@ -469,24 +556,56 @@ def reproduce_row_table(wb: Any, binding: dict[str, Any], rules: list[Rule]) -> 
                     "match" if got == want else "differs",
                     filed=str(want),
                     computed=str(got),
+                    cell=here,
+                    fill=str(value),
                 )
             )
     for output, refs in binding.get("totals", {}).items():
-        for ref in [refs] if isinstance(refs, str) else refs:
+        lst = [refs] if isinstance(refs, str) else refs
+        for i, ref in enumerate(lst):
             sheet, _, cell = ref.rpartition("!")
             filed = wb[sheet or binding["sheet"]][cell].value
             res = ev.results.get(output)
             label = f"TOTAL {ref}"
+            first = lst[0] if "!" in lst[0] else f"{binding['sheet']}!{lst[0]}"
+            where = dict(
+                cell=f"{sheet or binding['sheet']}!{cell}",
+                tie=i > 0 or (sheet or binding["sheet"]) != binding["sheet"],
+                primary=first if i > 0 else None,
+            )
             if res is None:
-                out.append(BlockCheck(binding["sheet"], fy, label, output, "blocked", why=ev.blocked.get(output)))
+                out.append(
+                    BlockCheck(binding["sheet"], fy, label, output, "blocked", why=ev.blocked.get(output), **where)
+                )
                 continue
             if not isinstance(filed, int | float) or isinstance(filed, bool):
-                out.append(BlockCheck(binding["sheet"], fy, label, output, "no_filed_value", computed=str(res.value)))
+                out.append(
+                    BlockCheck(
+                        binding["sheet"],
+                        fy,
+                        label,
+                        output,
+                        "no_filed_value",
+                        computed=str(res.value),
+                        fill=str(res.value),
+                        **where,
+                    )
+                )
                 continue
             want = Decimal(repr(filed) if isinstance(filed, float) else str(filed)).quantize(q, rounding=ROUND_HALF_UP)
             got = res.value.quantize(q, rounding=ROUND_HALF_UP)
             result = "match" if got == want else "differs"
-            check = BlockCheck(binding["sheet"], fy, label, output, result, filed=str(want), computed=str(got))
+            check = BlockCheck(
+                binding["sheet"],
+                fy,
+                label,
+                output,
+                result,
+                filed=str(want),
+                computed=str(got),
+                fill=str(res.value),
+                **where,
+            )
             check.exact = str(res.value)
             out.append(check)
     return out
@@ -562,6 +681,8 @@ def reproduce_cells(
     rules: list[Rule],
     others: dict[str, Any] | None = None,
     rates: dict[str, tuple[str, str]] | None = None,
+    *,
+    fill: bool = False,
 ) -> list[BlockCheck]:
     """Workings laid out freely on a sheet (e.g. NPCL's base-year determination of employee and
     A&G expenses: five years' actuals, their average, the year-by-year escalation, the growth
@@ -584,7 +705,10 @@ def reproduce_cells(
     "output": …}``, with ``"category"`` for one category's result — a licensee of a combined order,
     an asset class), unrounded: a chain of years carried as the regulator carries it, not
     restarted from each printed, rounded figure.  A check may name a figure of the record
-    (``"order:<key>"``) instead of a cell: the order's own printed result."""
+    (``"order:<key>"``) instead of a cell: the order's own printed result.
+
+    ``fill``: an input taken from an earlier evaluation that computed nothing is left absent (its
+    outputs block) instead of refused — a workbook being filled has blanks still to fill."""
     places = int(binding.get("places", 6))
     q = Decimal(1).scaleb(-places)
 
@@ -607,6 +731,8 @@ def reproduce_cells(
                         got = computed_by_category.get((spec["computed"], spec["category"]), {}).get(spec["output"])
                     else:
                         got = computed.get(spec["computed"], {}).get(spec["output"])
+                    if got is None and fill:
+                        continue  # filling: an earlier evaluation still blocked leaves this input absent
                     if got is None:
                         where = f" for {spec['category']!r}" if "category" in spec else ""
                         raise RuleError(
@@ -657,10 +783,23 @@ def reproduce_cells(
                 values[source] = (v, unit)
         return values
 
-    def check(fy: str, label: str, output: str, ref: str, res: Any, why: str | None) -> BlockCheck:
+    def full(ref: str) -> str | None:
+        if ref.startswith("order:") or "::" in ref:
+            return None
+        return f"{ref.rpartition('!')[0] if '!' in ref else binding['sheet']}!{ref.rpartition('!')[2]}"
+
+    def check(
+        fy: str, label: str, output: str, ref: str, res: Any, why: str | None, first: str | None = None
+    ) -> BlockCheck:
+        """``first``: the output's first cell when ``ref`` is a later one (a tie repeating it)."""
         tag = f"{label} {ref}".strip()
+        sheet_of = ref.rpartition("!")[0] if "!" in ref else binding["sheet"]
+        where: dict[str, Any] = {}
+        if full(ref):
+            tie = first is not None or sheet_of != binding["sheet"]
+            where = dict(cell=full(ref), tie=tie, primary=first if first and full(first) else None)
         if res is None:
-            return BlockCheck(binding["sheet"], fy, tag, output, "blocked", why=why)
+            return BlockCheck(binding["sheet"], fy, tag, output, "blocked", why=why, **where)
         if ref.startswith("order:"):
             if not rates or ref[6:] not in rates:
                 raise RuleError(f"{binding['sheet']}: {ref} is not in the record")
@@ -670,10 +809,21 @@ def reproduce_cells(
         else:
             filed = _stored(at(ref))
         if filed is None:
-            return BlockCheck(binding["sheet"], fy, tag, output, "no_filed_value", computed=str(res.value))
+            return BlockCheck(
+                binding["sheet"],
+                fy,
+                tag,
+                output,
+                "no_filed_value",
+                computed=str(res.value),
+                fill=str(res.value),
+                **where,
+            )
         want, got = filed.quantize(q, rounding=ROUND_HALF_UP), res.value.quantize(q, rounding=ROUND_HALF_UP)
         result = "match" if got == want else "differs"
-        check = BlockCheck(binding["sheet"], fy, tag, output, result, filed=str(want), computed=str(got))
+        check = BlockCheck(
+            binding["sheet"], fy, tag, output, result, filed=str(want), computed=str(got), fill=str(res.value), **where
+        )
         check.exact = str(res.value)
         return check
 
@@ -690,13 +840,19 @@ def reproduce_cells(
                 computed_by_category[(e["label"], name)] = {o: (r.value, r.unit) for o, r in res.items()}
         for name, c in e.get("categories", {}).items():
             for output, refs in c.get("checks", {}).items():
-                for ref in [refs] if isinstance(refs, str) else refs:
+                lst = [refs] if isinstance(refs, str) else refs
+                for i, ref in enumerate(lst):
                     res = ev.by_category.get(name, {}).get(output)
                     why = ev.blocked_by_category.get(name, {}).get(output)
-                    out.append(check(fy, f"{e.get('label', '')} {name}".strip(), output, ref, res, why))
+                    first = full(lst[0]) if i else None
+                    out.append(check(fy, f"{e.get('label', '')} {name}".strip(), output, ref, res, why, first))
         for output, refs in e.get("checks", {}).items():
-            for ref in [refs] if isinstance(refs, str) else refs:
-                out.append(check(fy, e.get("label", ""), output, ref, ev.results.get(output), ev.blocked.get(output)))
+            lst = [refs] if isinstance(refs, str) else refs
+            for i, ref in enumerate(lst):
+                first = full(lst[0]) if i else None
+                out.append(
+                    check(fy, e.get("label", ""), output, ref, ev.results.get(output), ev.blocked.get(output), first)
+                )
     return out
 
 

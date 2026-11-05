@@ -1,0 +1,2227 @@
+{
+ "type": "cells",
+ "workbook": "4. Appendix-II MYT Tariff Formats ARR FY 2026-27.xlsx",
+ "sheet": "F21_O&M_EE (A)",
+ "places": 6,
+ "note": "F21's employee costs: the twenty-one components to the total employee cost (row 29), FY2019-20 to FY2024-25, and the net after capitalisation (row 31); for FY2025-26 and FY2026-27 the total is F19's normative employee cost (K18, L18), as F21 carries it.  The ARR format's row 27 carries row 29; F20's grades are checked against it (A83).",
+ "evaluations": [
+  {
+   "fiscal_year": "FY2019-20",
+   "label": "F21 FY2019-20 C gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "C28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "C29"
+   }
+  },
+  {
+   "fiscal_year": "FY2019-20",
+   "label": "F21 FY2019-20 C net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2019-20 C gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "C30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "C31"
+   }
+  },
+  {
+   "fiscal_year": "FY2020-21",
+   "label": "F21 FY2020-21 D gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "D28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "D29"
+   }
+  },
+  {
+   "fiscal_year": "FY2020-21",
+   "label": "F21 FY2020-21 D net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2020-21 D gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "D30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "D31"
+   }
+  },
+  {
+   "fiscal_year": "FY2021-22",
+   "label": "F21 FY2021-22 E gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "E28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "E29"
+   }
+  },
+  {
+   "fiscal_year": "FY2021-22",
+   "label": "F21 FY2021-22 E net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2021-22 E gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "E30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "E31"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "F21 FY2022-23 F gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "F28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "F29"
+   }
+  },
+  {
+   "fiscal_year": "FY2022-23",
+   "label": "F21 FY2022-23 F net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2022-23 F gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "F30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "F31"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F21 FY2023-24 G gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "G28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "G29"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F21 FY2023-24 G net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2023-24 G gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "G30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "G31"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F21 FY2023-24 H gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "H28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "H29"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F21 FY2023-24 H net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2023-24 H gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "H30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "H31"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F21 FY2023-24 I gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "I28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "I29"
+   }
+  },
+  {
+   "fiscal_year": "FY2023-24",
+   "label": "F21 FY2023-24 I net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2023-24 I gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "I30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "I31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F21 FY2024-25 J gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "J28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "J29"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F21 FY2024-25 J net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2024-25 J gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "J30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "J31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F21 FY2024-25 K gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "K28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "K29"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F21 FY2024-25 K net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2024-25 K gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "K30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "K31"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F21 FY2024-25 L gross",
+   "categories": {
+    "row 8": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L8",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 9": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L9",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 10": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L10",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 11": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L11",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 12": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L12",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 13": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L13",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 14": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L14",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 15": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L15",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 16": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L16",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 17": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L17",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 18": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L18",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 19": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L19",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 20": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L20",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 21": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L21",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 22": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L22",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 23": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L23",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 24": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L24",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 25": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L25",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 26": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L26",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 27": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L27",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    },
+    "row 28": {
+     "inputs": {
+      "record:line_crore": {
+       "cell": "L28",
+       "unit": "INR_crore",
+       "blank_is_zero": "a blank component of F21 is nil — F21's own total sums it so"
+      }
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "L29"
+   }
+  },
+  {
+   "fiscal_year": "FY2024-25",
+   "label": "F21 FY2024-25 L net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2024-25 L gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "L30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "L31"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F21 FY2025-26 M gross",
+   "categories": {
+    "normative (F19)": {
+     "inputs": {
+      "record:line_crore": [
+       "F19_O&M_EE n AG base!K18",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "M29"
+   }
+  },
+  {
+   "fiscal_year": "FY2025-26",
+   "label": "F21 FY2025-26 M net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2025-26 M gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "M30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "M31"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F21 FY2026-27 N gross",
+   "categories": {
+    "normative (F19)": {
+     "inputs": {
+      "record:line_crore": [
+       "F19_O&M_EE n AG base!L18",
+       "INR_crore"
+      ]
+     }
+    }
+   },
+   "checks": {
+    "lines_crore_total": "N29"
+   }
+  },
+  {
+   "fiscal_year": "FY2026-27",
+   "label": "F21 FY2026-27 N net",
+   "inputs": {
+    "record:diff_a": {
+     "computed": "F21 FY2026-27 N gross",
+     "output": "lines_crore_total"
+    },
+    "record:diff_b": [
+     "N30",
+     "INR_crore"
+    ]
+   },
+   "checks": {
+    "difference": "N31"
+   }
+  }
+ ]
+}

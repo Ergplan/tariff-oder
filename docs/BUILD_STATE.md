@@ -1005,6 +1005,50 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 150 (2026-11-05): the ARR petition flow checked, and the rule engine fills NPCL's formats workbook.**
+  - **Direction (operator, 2026-11-05):** check the flow of the ARR petition; in the next round
+    NPCL's petition will be filled — make the application ready.
+  - **The flow checked** (`docs/arr-petition-flow.md`).  The client case flow — case, readiness,
+    assumptions, formulate, freeze, draft — does not use the rule engine (R-RULE-3).  Its UPERC
+    plan is a 16-line skeleton and its template two sheets, so a case cannot draft NPCL's 74
+    formats.  The engine (280 draft rules, 112 bindings) could check those formats but not write
+    them.
+  - **Fill mode in the engine (`arr/reproduce.py`):**
+    - every result names its cell and gives the unrounded figure in the cell's unit (`fill`);
+    - it marks a tie (a figure carried from another format) and the cell the tie repeats
+      (`primary`);
+    - filling, an output whose cell is blank is still computed;
+    - an input from an earlier, still-blocked evaluation is absent, not an error.
+    - Checks are unchanged.
+  - **`arr/petition_fill.py` and `scripts/petition_fill.py`:**
+    - **The fill map** (`fill-map.json`, 4,492 cells): 4,406 the bindings compute and the filing
+      prints, plus 86 carried cells whose formula in the filing links them to the format they
+      repeat.
+    - **The fill:** passes until nothing changes; a binding is re-run only when a sheet it reads
+      was written.  Blanks are filled; an entered figure is never overwritten, only checked; a
+      carried cell copies the figure it repeats; blocked outputs stay blank with the engine's
+      reason; conflicts are reported.
+    - **The output:** computed cells shaded green and carried blue, a "Fill trace" sheet, a JSON
+      report.
+    - **The inputs template:** the filing with the map blanked.
+    - **Left out:** 28 verification-only bindings — order approvals, annexures, the ledger, the
+      pipeline.  Two are newly declared `"fill": false` with a reason: `chain-arr.json` (the
+      end-to-end check) and `esr2-sales-at-cagr.json` (the comparison with Reg. 30.2).  P9
+      declares `fill_places: 0` (the format rounds to whole MW).
+    - A new `f21-employee-components.json` binds F21's own totals (24 / 24), so F20's figure no
+      longer stands in for F21's (A83).
+  - **The round trip on NPCL's FY2026-27 filing** (`fill-roundtrip.json`; tested live):
+    - **Known differences kept as filed** (the 49 cells whose reproduction already differs):
+      **4,443 / 4,443 cells refilled equal to the filing at its printed precision**, no
+      conflict, none left blank, 10 passes.
+    - **None kept:** 4,427 / 4,492; the 65 others are the known differences and what follows from
+      them through the chain.
+    - A fill takes about 75 s.
+  - **Not yet in the application:** no API, case or page uses the fill.  That is the next increment.
+  - **A decision for the operator:** the fill map is tied to the FY2026-27 layout.  A FY2027-28
+    petition shifts every year column, and the bindings would first have to move a year.
+  Nothing verified, nothing approved; a filled workbook is a working draft from draft rules.
+
   **Increment 149 (2026-11-03): NPCL — the accounts (BS1–BS3), and every format of the filing accounted for.**
   - **One more format rule (45; UPERC 280):** a difference (one line less another).
   - **Checks:**
@@ -3682,6 +3726,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 150 (2026-11-05): 524 passed** (+3 unit: the fill's rules on a synthetic workbook, the fill map's limit, NPCL's round trip live).  Ruff and format clean.
 - **Increment 149 (2026-11-03): 521 passed** (+1 unit: NPCL BS1, BS2, BS3; A93, A94; the accounting's `no_arithmetic`).  Ruff and format clean; web `tsc --noEmit` clean.
 - **Increment 148 (2026-11-03): 520 passed** (+1 unit: NPCL P1A, P4, P5, P7, P8, P9, P11; A90–A92).  Ruff and format clean.
 - **Increment 147 (2026-11-03): 519 passed** (+1 unit: NPCL F4, F5, F7, F8, F9, 106 checks exact).  Ruff and format clean.
@@ -3964,7 +4009,7 @@ readers, tesseract OCR by subprocess, agreement classes, no grids from OCR yet.
 
 ## Next smallest actionable task
 
-**Where things stand (2026-11-03, after increment 149) — `/arr/readings` shows the same, live — read this entry first; the numbered
+**Where things stand (2026-11-03, after increment 150) — `/arr/readings` shows the same, live — read this entry first; the numbered
 entries below are the per-increment history.**
 
 - *Human decisions that now gate real data* (nothing below can be done by engineering):
@@ -4056,6 +4101,10 @@ entries below are the per-increment history.**
      the projection years' depreciation by class.
 
   **Engineering next, smallest first:**
+  - **Filling NPCL's petition in the application (operator's direction, 2026-11-05;
+    `docs/arr-petition-flow.md`):** the engine fills NPCL's formats workbook (increment 150).
+    Next: the case flow (inputs template, upload, fill as a job, filled workbook as a draft,
+    readiness from the fill); then the client page; then the narrative tables.
   - **NPCL, after the whole suite (increments 143–149):** the formats are all checked; what is
     left is depth, not breadth:
     - ESR7 (not filed), on which the month-on-month sales projection (A88) and FPPAS wait;

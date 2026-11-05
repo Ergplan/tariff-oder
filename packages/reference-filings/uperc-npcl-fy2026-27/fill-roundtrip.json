@@ -1,0 +1,468 @@
+{
+ "package": "uperc-npcl-fy2026-27",
+ "map": 4492,
+ "known_differences": [
+  "ARR!E62",
+  "ARR!E63",
+  "ARR!F62",
+  "ARR!F63",
+  "ARR!G63",
+  "ARR!H62",
+  "ARR!H63",
+  "ARR!K54",
+  "ARR!K56",
+  "ARR!K58",
+  "ARR!K61",
+  "ARR!K62",
+  "ARR!K63",
+  "BS3!E62",
+  "ESR5_BD&Rev!U110",
+  "ESR5_BD&Rev!U128",
+  "ESR5_BD&Rev!U153",
+  "ESR5_BD&Rev!U179",
+  "ESR5_BD&Rev!U181",
+  "ESR5_BD&Rev!U31",
+  "ESR5_BD&Rev!U43",
+  "ESR5_BD&Rev!U52",
+  "ESR5_BD&Rev!U63",
+  "ESR5_BD&Rev!U69",
+  "ESR5_BD&Rev!U88",
+  "ESR5_BD&Rev!U97",
+  "ESR_3 Curr Tariff FY25!N136",
+  "F18_O&M_WPI!E21",
+  "F25_IOL!D10",
+  "F25_IOL!D12",
+  "F25_IOL!D13",
+  "F25_IOL!D15",
+  "F26_ROE!D10",
+  "F26_ROE!D11",
+  "F26_ROE!D9",
+  "F27_Work Cap!C12",
+  "F27_Work Cap!C14",
+  "F27_Work Cap!C16",
+  "F27_Work Cap!C8",
+  "F27_Work Cap!J10",
+  "F27_Work Cap!J12",
+  "F27_Work Cap!J14",
+  "F30_CSD monthly!M10",
+  "F30_CSD monthly!N10",
+  "P1_DL!D11",
+  "P1_DL!D12",
+  "P1_DL!D13",
+  "P4_Phy Stat!H30",
+  "P8_Elec Accidents!G9"
+ ],
+ "runs": {
+  "known_kept": {
+   "targets": 4443,
+   "reproduced": 4443,
+   "differs": 0,
+   "not_filled": 0,
+   "passes": 10,
+   "conflicts": [],
+   "differing": [],
+   "blank": []
+  },
+  "none_kept": {
+   "targets": 4492,
+   "reproduced": 4427,
+   "differs": 65,
+   "not_filled": 0,
+   "passes": 11,
+   "conflicts": [],
+   "differing": [
+    {
+     "cell": "ARR!E62",
+     "filed": "120.84156767951599",
+     "filled": "59.976513370348",
+     "known": true
+    },
+    {
+     "cell": "ARR!E63",
+     "filed": "1328.6639161851474",
+     "filled": "1267.7988618759791",
+     "known": true
+    },
+    {
+     "cell": "ARR!F62",
+     "filed": "3.2850092226170666",
+     "filled": "3.283946097617068",
+     "known": true
+    },
+    {
+     "cell": "ARR!F63",
+     "filed": "47.88111096768619",
+     "filled": "47.870047842686084",
+     "known": true
+    },
+    {
+     "cell": "ARR!G63",
+     "filed": "47.92311096768611",
+     "filled": "47.913110967686094",
+     "known": true
+    },
+    {
+     "cell": "ARR!H62",
+     "filed": "122.33838435360873",
+     "filled": "56.04869418915332",
+     "known": true
+    },
+    {
+     "cell": "ARR!H63",
+     "filed": "1254.4255283192442",
+     "filled": "1188.1358381547886",
+     "known": true
+    },
+    {
+     "cell": "ARR!I59",
+     "filed": "47.92311096768611",
+     "filled": "47.913110967686094",
+     "known": false
+    },
+    {
+     "cell": "ARR!I63",
+     "filed": "-267.7398141273837",
+     "filled": "-267.7509523465618",
+     "known": false
+    },
+    {
+     "cell": "ARR!J13",
+     "filed": "2922.7788255223586",
+     "filled": "2922.738825522358",
+     "known": false
+    },
+    {
+     "cell": "ARR!J14",
+     "filed": "-288.17623307699995",
+     "filled": "-288.136233077",
+     "known": false
+    },
+    {
+     "cell": "ARR!J59",
+     "filed": "47.92311096768611",
+     "filled": "47.913110967686094",
+     "known": false
+    },
+    {
+     "cell": "ARR!J63",
+     "filed": "-267.7398141273837",
+     "filled": "-267.75095234656305",
+     "known": false
+    },
+    {
+     "cell": "ARR!K54",
+     "filed": "-25.970000000000038",
+     "filled": "-25.96000000000003",
+     "known": true
+    },
+    {
+     "cell": "ARR!K56",
+     "filed": "-25.970000000000038",
+     "filled": "-25.96000000000003",
+     "known": true
+    },
+    {
+     "cell": "ARR!K58",
+     "filed": "-25.970000000000038",
+     "filled": "-25.96000000000003",
+     "known": true
+    },
+    {
+     "cell": "ARR!K61",
+     "filed": "1216.62",
+     "filled": "1216.6299999999999",
+     "known": true
+    },
+    {
+     "cell": "ARR!K62",
+     "filed": "77.3",
+     "filled": "62.24900625",
+     "known": true
+    },
+    {
+     "cell": "ARR!K63",
+     "filed": "1293.9199999999998",
+     "filled": "1278.87900625",
+     "known": true
+    },
+    {
+     "cell": "ARR!L59",
+     "filed": "-267.7398141273837",
+     "filled": "-267.75095234656305",
+     "known": false
+    },
+    {
+     "cell": "ARR!L61",
+     "filed": "-583.6092348759046",
+     "filled": "-583.620373095085",
+     "known": false
+    },
+    {
+     "cell": "ARR!L63",
+     "filed": "-629.3692462598314",
+     "filled": "-629.3815818375735",
+     "known": false
+    },
+    {
+     "cell": "ARR!M59",
+     "filed": "-629.3692462598314",
+     "filled": "-629.3815818375735",
+     "known": false
+    },
+    {
+     "cell": "ARR!M61",
+     "filed": "-919.1562275262785",
+     "filled": "-919.1685631040192",
+     "known": false
+    },
+    {
+     "cell": "ARR!M63",
+     "filed": "-1002.3894717422819",
+     "filled": "-1002.4031333946298",
+     "known": false
+    },
+    {
+     "cell": "BS3!E62",
+     "filed": "1.7552511000006439",
+     "filled": "1.7452511000007005",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U110",
+     "filed": "0.02660574984567933",
+     "filled": "0.0029514463139893917",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U128",
+     "filed": "0.14459136918983703",
+     "filled": "0.03063381545194662",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U153",
+     "filed": "0.1384513973220427",
+     "filled": "0.11086653255372123",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U179",
+     "filed": "23.845112060030388",
+     "filled": "5.160445548715471",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U181",
+     "filed": "0.1933276327003193",
+     "filled": "0.13512807684915393",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U31",
+     "filed": "0.3362668074948844",
+     "filled": "0.2563115934773137",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U43",
+     "filed": "0.5073957627461575",
+     "filled": "0.24504882390912344",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U52",
+     "filed": "-0.09694957128328828",
+     "filled": "-0.04164096203727306",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U63",
+     "filed": "0.15184855182444815",
+     "filled": "0.13730021902395503",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U69",
+     "filed": "0.1285734443882165",
+     "filled": "0.17974811678725097",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U88",
+     "filed": "0.13288701570373407",
+     "filled": "0.1072406541393491",
+     "known": true
+    },
+    {
+     "cell": "ESR5_BD&Rev!U97",
+     "filed": "0.1130953459961935",
+     "filled": "0.04834836604005519",
+     "known": true
+    },
+    {
+     "cell": "ESR_3 Curr Tariff FY25!N136",
+     "filed": "-288.17623307699995",
+     "filled": "-288.136233077",
+     "known": true
+    },
+    {
+     "cell": "F25_IOL!D10",
+     "filed": "49.48750085859991",
+     "filled": "53.037743602899916",
+     "known": true
+    },
+    {
+     "cell": "F25_IOL!D12",
+     "filed": "502.8027136366657",
+     "filled": "506.3414847474657",
+     "known": true
+    },
+    {
+     "cell": "F25_IOL!D13",
+     "filed": "511.22270674066624",
+     "filled": "512.9920922960663",
+     "known": true
+    },
+    {
+     "cell": "F25_IOL!D15",
+     "filed": "50.67368854361711",
+     "filled": "50.84907451799911",
+     "known": true
+    },
+    {
+     "cell": "F26_ROE!D10",
+     "filed": "21.20892893939996",
+     "filled": "22.730461544099963",
+     "known": true
+    },
+    {
+     "cell": "F26_ROE!D11",
+     "filed": "535.0771519300941",
+     "filled": "535.0651536297942",
+     "known": true
+    },
+    {
+     "cell": "F26_ROE!D9",
+     "filed": "0",
+     "filled": "1.533530905",
+     "known": true
+    },
+    {
+     "cell": "F27_Work Cap!C12",
+     "filed": "10.561711942711895",
+     "filled": "10.426255059606426",
+     "known": true
+    },
+    {
+     "cell": "F27_Work Cap!C14",
+     "filed": "10.561711942711895",
+     "filled": "10.426255059606426",
+     "known": true
+    },
+    {
+     "cell": "F27_Work Cap!C16",
+     "filed": "1.0869159036934672",
+     "filled": "1.0729759059629216",
+     "known": true
+    },
+    {
+     "cell": "F27_Work Cap!C8",
+     "filed": "13.458380241438784",
+     "filled": "13.322923358333332",
+     "known": true
+    },
+    {
+     "cell": "F27_Work Cap!J10",
+     "filed": "370.25",
+     "filled": "371.38625",
+     "known": true
+    },
+    {
+     "cell": "F27_Work Cap!J12",
+     "filed": "40.30000000000001",
+     "filled": "41.43875",
+     "known": true
+    },
+    {
+     "cell": "F27_Work Cap!J14",
+     "filed": "-1194.39",
+     "filled": "-1193.25125",
+     "known": true
+    },
+    {
+     "cell": "F30_CSD monthly!M10",
+     "filed": "1.890090177615626",
+     "filled": "2.080173965304374",
+     "known": true
+    },
+    {
+     "cell": "F30_CSD monthly!N10",
+     "filed": "24.79",
+     "filled": "24.980083787688745",
+     "known": true
+    },
+    {
+     "cell": "P1_DL!D11",
+     "filed": "0.07479277047394084",
+     "filled": "0.07479214194381201",
+     "known": true
+    },
+    {
+     "cell": "P1_DL!D12",
+     "filed": "0.074500349016364",
+     "filled": "0.07230099207852492",
+     "known": true
+    },
+    {
+     "cell": "P1_DL!D13",
+     "filed": "0.0742",
+     "filled": "0.06970036526137091",
+     "known": true
+    },
+    {
+     "cell": "P4_Phy Stat!H30",
+     "filed": "184540",
+     "filled": "183601.0",
+     "known": true
+    },
+    {
+     "cell": "P4_Phy Stat!H35",
+     "filed": "186484",
+     "filled": "185545.0",
+     "known": false
+    },
+    {
+     "cell": "P4_Phy Stat!K30",
+     "filed": "214818",
+     "filled": "213879.0",
+     "known": false
+    },
+    {
+     "cell": "P4_Phy Stat!K35",
+     "filed": "216992",
+     "filled": "216053.0",
+     "known": false
+    },
+    {
+     "cell": "P4_Phy Stat!N30",
+     "filed": "247199",
+     "filled": "246260.0",
+     "known": false
+    },
+    {
+     "cell": "P4_Phy Stat!N35",
+     "filed": "249556",
+     "filled": "248617.0",
+     "known": false
+    },
+    {
+     "cell": "P8_Elec Accidents!G9",
+     "filed": "2",
+     "filled": "3.0",
+     "known": true
+    }
+   ],
+   "blank": []
+  }
+ }
+}
