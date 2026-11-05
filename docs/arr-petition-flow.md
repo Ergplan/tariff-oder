@@ -100,8 +100,17 @@ Smallest first:
    one pass.
 2. **The client page — done (increment 152).**  The case page's "Formats workbook" panel walks through the layout, the template, the upload, the fill and the results format by format.  Before that increment the plan read: the case shows, format by format, cells filled / checked /
    differing / blocked, and offers the downloads.
-3. **The narrative** (later): the nine narrative summary tables bound in increment 93 filled from
-   the filled formats.
+3. **The narrative — summary tables done (increment 153).**  `arr/narrative_fill.py` writes the
+   nine summary tables bound in increment 93 (five DOCX files) from the filled workbook, as part
+   of the fill job.  It works at the printed precision and style.  Changed cells are shaded
+   green.  A cell merged over two rows is left as filed (A56).  Rows the binding does not cover
+   are the petitioner's own, shaded yellow.  The prose and the other tables are as filed.
+   Download: `GET …/workbooks/{id}/narrative` (a ZIP).  Refilled from the filing's own
+   workbook it changes exactly 20 cells, all differences increment 93 found.
+   **The template now keeps 179 cells as filed:** the Commission's figures quoted from its
+   orders (143 cells in approved and trued-up columns) and the cells the petitioner computes
+   another way (36).  Before, the draft rules recomputed the order's approved carrying costs.
+   The prose remains: its figures are traced (increment 93), not rewritten.
 
 **A decision for the operator — which petition is filled next round.**  The fill map and the
 bindings are tied to the FY2026-27 workbook's layout (one column per year and voice).  Filling the

@@ -1005,6 +1005,63 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 153 (2026-11-05): the narrative's summary tables filled from the formats — and the template keeps the Commission's figures.**
+  - **Direction (operator, 2026-11-05):** "do the narrative tables next".
+  - **`arr/narrative_fill.py`:** the nine summary tables increment 93 bound row by row to the
+    ARR format are now *written* from a workbook, not only checked.  They are in the true-up,
+    APR and ARR texts, the executive summary and Form-1: five DOCX files.
+    - **Bound figures:** each is the sum of the format cells its row names, with its sign.  It
+      is written at the cell's printed precision and style (thousands commas, Indian or
+      international grouping, brackets or a minus, a dash for nil, %).  Changed cells are
+      shaded green.  A nil figure the filing leaves blank stays blank.
+    - **Merged cells:** a cell merged down over two rows is left as filed and reported.  In
+      Form-1's Table-II, 53.01 is printed once for both open access and NTI (A56).
+    - **Unbound figures:** figures in rows the binding does not cover are the petitioner's
+      own, shaded yellow and listed: loss on sale of retired assets, efficiency gains, and
+      power purchase provisions (A58).
+    - **The rest:** the prose and every other table stay as filed.  A first paragraph in each
+      document says so.
+  - **Round trip on the filing** (`tests/unit/test_narrative_fill.py`): filled from NPCL's own
+    workbook, the fill changes exactly 20 cells.  All 20 are among the 21 increment 93 found
+    differing (A56, A57, A58 and last-place roundings).  The 21st is the merged cell, left as
+    filed.  Read back, 252 of 253 figures match; the one left is that merged cell.  A figure
+    changed in the workbook reaches all three tables that restate it.  `render` is tested
+    style by style.
+  - **In the case flow:** the fill job also fills the narrative.  It stores a ZIP (the five
+    documents plus the tables' report), returned by `GET …/workbooks/{id}/narrative`.  The
+    workbook summary and the panel show updated / already right / merged / petitioner's
+    own.  The layout says 9 tables in 5 documents.
+  - **What the narrative fill exposed, and the change made:**
+    - Filled from the inputs template, the narrative's *approved* carrying costs moved by
+      Rs 66 crore and Rs 15 crore: (122.34) → (56.05) for FY2024-25, and (77.30) → (62.25)
+      for FY2025-26.
+    - The cause: the template blanked every cell the engine could compute, including the
+      Commission's own figures quoted from its orders (approved and trued-up columns).  The
+      draft rules then recomputed them; 16 of those 143 cells differ.
+    - **The template now keeps 179 cells as filed** (`petition._kept_cells`), shaded yellow
+      and listed on a "Kept cells" sheet with the reason for each:
+      - the 143 order-quoted cells (columns `reference.json` marks `restated`): to be
+        entered from the order;
+      - 36 more cells whose reproduction is a known difference (`fill-roundtrip.json`): the
+        petitioner's own method.
+    - The fill still checks each kept cell and never overwrites it.  The layout reports the
+      counts, and the panel says what they are.
+    - **Result:** filled from the new template, the 4,492 map cells equal the filing at its
+      printed precision, and the narrative changes exactly the same 20 cells as filling from
+      the filing itself.
+    - **Limit:** order-quoted cells are recognised only on the 25 sheets where `reference.json`
+      records column voices.  Approved columns elsewhere are still blanked.
+  - **Checked in the browser on the running stack:** a new template uploaded and filled
+    through the panel; 4,244 computed, 69 carried, 289 entered figures agree, 59 differ, 0 left
+    blank, 0 conflicts; 20 narrative figures updated, 231 already right, 2 merged, 7 the
+    petitioner's own.  No horizontal scroll at 390 px.  Form-1 was rendered to PDF: Table-II
+    shows the green cells, the merged 53.01 and the yellow provisions row.  Once filled, that
+    table's k = i − j no longer adds up, because the formats carry no provisions row (A58,
+    the reviewer's).
+  - **Found while checking:** none in the application.  My browser script raced once (it
+    clicked Fill on the older upload before the new row appeared), and was rerun.
+  Nothing verified, nothing approved; the filled narrative is a working draft, not a filing.
+
   **Increment 152 (2026-11-05): the formats workbook on the client case page.**
   - **Panel "Formats workbook"** on the case page, for annual / MYT cases and for true-up /
     APR cases (`apps/web/app/client/cases/[id]/petition.tsx`, `petition-upload.tsx`). It
@@ -3822,6 +3879,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 153 (2026-11-05): 541 passed** (+15 unit: `render` in twelve printed styles; NPCL's nine tables refilled from the filing — 20 cells changed, the merged A56 cell left, 252 / 253 read back; a changed figure reaching all three tables; a missing document or table refused.  The integration test now also checks the kept cells, the narrative summary and its ZIP).  Ruff and format clean; contracts regenerated; web `tsc --noEmit` clean.
 - **Increment 152 (2026-11-05):** web only — `tsc --noEmit` clean; checked in the browser against the running stack (template, upload, fill through the worker, results) at 1440 px and 390 px.  Python suite unchanged at 526.
 - **Increment 151 (2026-11-05): 526 passed.**  The new integration tests, 2 / 2 (`test_petition_workbooks.py`, about 105 s), and the fill unit tests, 3 / 3.  Ruff and format clean; contracts regenerated.  **Full suite: 526 passed** (+2 integration), 8 min 41 s, local PostgreSQL 16 with pgvector.
 - **Increment 150 (2026-11-05): 524 passed** (+3 unit: the fill's rules on a synthetic workbook, the fill map's limit, NPCL's round trip live).  Ruff and format clean.
@@ -4205,9 +4263,14 @@ entries below are the per-increment history.**
       through the API as a job (increment 151);
     - next, smallest first:
       1. the client case page — done (increment 152);
-      2. the narrative tables from the filled formats;
-      3. the year shift for a FY2027-28 layout, if the operator chooses that petition;
-      4. `readiness` counting the fill (inputs still as filed, blank cells) so the case's next
+      2. the narrative tables from the filled formats — done (increment 153), and the template
+         keeps the Commission's figures (179 cells);
+      3. column voices for the remaining sheets of `reference.json`, so their approved columns
+         are kept too;
+      4. the narrative's prose: the figures it restates (increment 93's trace) listed per
+         paragraph for the petitioner to update;
+      5. the year shift for a FY2027-28 layout, if the operator chooses that petition;
+      6. `readiness` counting the fill (inputs still as filed, blank cells) so the case's next
          step names it.
   - **NPCL, after the whole suite (increments 143–149):** the formats are all checked; what is
     left is depth, not breadth:

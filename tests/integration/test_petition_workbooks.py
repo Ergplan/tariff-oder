@@ -66,6 +66,8 @@ def test_npcl_case_fills_its_formats_workbook(client, runner):
     lay = client.get(f"{base}/layout", headers=headers(CLIENT_A)).json()
     assert lay["available"] and lay["package"] == "uperc-npcl-fy2026-27"
     assert lay["years"]["arr"] == "FY2026-27" and lay["warnings"] == []
+    assert (lay["narrative_tables"], lay["narrative_documents"]) == (9, 5)
+    assert (lay["cells_kept_order"], lay["cells_kept_own"]) == (143, 36)
     assert lay["cells_filled"] == lay["cells_computed"] + lay["cells_carried"] > 4000
 
     # another organisation does not see the case; a viewer reads but does not change it
@@ -74,7 +76,7 @@ def test_npcl_case_fills_its_formats_workbook(client, runner):
     assert r.status_code == 200
     template = r.content
     tw = openpyxl.load_workbook(io.BytesIO(template), data_only=True)
-    assert "About this template" in tw.sheetnames
+    assert "About this template" in tw.sheetnames and tw["Kept cells"].max_row == lay["cells_kept"] + 1
     assert (
         client.post(f"{base}/workbooks", files=_xlsx("in.xlsx", template), headers=headers(CLIENT_A_VIEWER)).status_code
         == 403
@@ -97,7 +99,8 @@ def test_npcl_case_fills_its_formats_workbook(client, runner):
     assert inputs["role"] == "inputs" and inputs["status"] == "stored"
     s = inputs["summary"]["inputs"]
     assert s["inputs_blank"] == 0 and s["inputs_changed"] == 0 and s["inputs_as_filed"] == s["input_cells"] > 0
-    assert s["fill_cells_entered"] == 0
+    # the template keeps the Commission's figures and the petitioner's own methods as filed
+    assert s["fill_cells_entered"] == lay["cells_kept"] == lay["cells_kept_order"] + lay["cells_kept_own"]
 
     assert client.post(f"{base}/workbooks/{inputs['id']}/fill", headers=headers(CLIENT_A_VIEWER)).status_code == 403
     r = client.post(f"{base}/workbooks/{inputs['id']}/fill", headers=headers(CLIENT_A))
@@ -113,14 +116,14 @@ def test_npcl_case_fills_its_formats_workbook(client, runner):
     w = client.get(f"{base}/workbooks/{filled['id']}", headers=headers(CLIENT_A)).json()
     assert w["status"] == "filled", w
     summ = w["summary"]
-    assert summ["computed"] + summ["carried"] == lay["cells_filled"]
+    assert summ["computed"] + summ["carried"] == lay["cells_filled"] - lay["cells_kept"]
     # every map cell written; the outputs the engine could not compute are all cells the filed
     # format leaves blank (rates on empty tariff rows), counted apart from the blocked
     assert summ["conflicts"] == 0 and summ["blocked"] == 0 and summ["not_printed"] > 0
     assert "not a filing" in summ["status"]
 
     rep = client.get(f"{base}/workbooks/{filled['id']}/report", headers=headers(CLIENT_A_VIEWER)).json()
-    assert len(rep["written"]) == lay["cells_filled"] and rep["package"] == "uperc-npcl-fy2026-27"
+    assert len(rep["written"]) == lay["cells_filled"] - lay["cells_kept"] and rep["package"] == "uperc-npcl-fy2026-27"
 
     r = client.get(f"{base}/workbooks/{filled['id']}/download", headers=headers(CLIENT_A))
     assert r.status_code == 200
@@ -132,6 +135,21 @@ def test_npcl_case_fills_its_formats_workbook(client, runner):
     cell = rep["written"][0]["cell"]
     sheet, _, ref = cell.rpartition("!")
     assert filed[sheet][ref].value is None and fw[sheet][ref].value is not None
+
+    # the narrative's nine summary tables, filled from the filled workbook (increment 153)
+    nar = summ["narrative"]
+    assert (nar["documents"], nar["tables"], nar["own"]) == (5, 9, 7) and nar["merged"] == 2
+    assert nar["written"] + nar["unchanged"] + nar["merged"] == 253
+    assert nar["written"] == 20  # the 20 cells increment 93 found differing (A56, A57, A58, roundings)
+    r = client.get(f"{base}/workbooks/{filled['id']}/narrative", headers=headers(CLIENT_A_VIEWER))
+    assert r.status_code == 200 and r.headers["content-type"] == "application/zip"
+    import zipfile
+
+    with zipfile.ZipFile(io.BytesIO(r.content)) as z:
+        names = z.namelist()
+        assert len([n for n in names if n.endswith(".docx")]) == 5 and "narrative-tables-report.json" in names
+    assert client.get(f"{base}/workbooks/{inputs['id']}/narrative", headers=headers(CLIENT_A)).status_code == 404
+    assert client.get(f"{base}/workbooks/{filled['id']}/narrative", headers=headers(CLIENT_B)).status_code == 404
 
     listed = client.get(f"{base}/workbooks", headers=headers(CLIENT_A)).json()
     assert [x["role"] for x in listed] == ["inputs", "filled"]

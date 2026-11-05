@@ -26,6 +26,7 @@ type FillSummary = {
   blocked: number;
   conflicts: number;
   not_printed?: number;
+  narrative?: { documents: number; tables: number; written: number; unchanged: number; merged: number; own: number };
   by_sheet: Record<string, SheetCounts>;
   status: string;
 };
@@ -96,10 +97,23 @@ export default async function PetitionWorkbook({ caseId, canEdit }: { caseId: st
           <p className="muted">
             {l.bindings} bindings fill; {l.bindings_left_out} verification-only bindings (order approvals, annexures, the ledger) are left out.
           </p>
+          {l.narrative_tables ? (
+            <p className="muted">
+              Then the narrative: {l.narrative_tables} summary tables in {l.narrative_documents} documents are filled from the formats. The prose is not.
+            </p>
+          ) : null}
         </div>
         <div className="card">
           <h3>1 · Inputs template</h3>
           <p className="muted">The filed workbook with every cell a fill writes blanked. Replace the other figures with the petition&apos;s inputs.</p>
+          {l.cells_kept ? (
+            <p className="muted">
+              <span className="badge" data-tone="warn">
+                {fmt(l.cells_kept)} kept as filed
+              </span>{" "}
+              shaded yellow: {fmt(l.cells_kept_order)} figures quoted from the Commission&apos;s orders (enter the order&apos;s figure) and {fmt(l.cells_kept_own)} the petitioner computes another way than the draft rules. The fill checks them and never overwrites them.
+            </p>
+          ) : null}
           <a className="btn primary" href={`/api/client${base}/template`}>
             Download the template
           </a>
@@ -217,6 +231,33 @@ export default async function PetitionWorkbook({ caseId, canEdit }: { caseId: st
                   <a href={`/api/client${base}/workbooks/${w.id}/report`}>Full report (JSON)</a>
                   <span className="muted"> · green cells computed, blue carried; the &ldquo;Fill trace&rdquo; sheet gives each figure&apos;s binding and pass.</span>
                 </p>
+                {s.narrative ? (
+                  <p>
+                    <a className="btn" href={`/api/client${base}/workbooks/${w.id}/narrative`}>
+                      Narrative documents (DOCX, zip)
+                    </a>{" "}
+                    <span className="badge" data-tone="ok">
+                      {fmt(s.narrative.written)} table figures updated
+                    </span>{" "}
+                    <span className="badge" data-tone="neutral">
+                      {fmt(s.narrative.unchanged)} already right
+                    </span>{" "}
+                    {s.narrative.merged ? (
+                      <span className="badge" data-tone="warn" title="one printed figure spans two rows: left as filed">
+                        {fmt(s.narrative.merged)} in merged cells, left as filed
+                      </span>
+                    ) : null}{" "}
+                    {s.narrative.own ? (
+                      <span className="badge" data-tone="warn" title="rows not taken from the formats, shaded yellow">
+                        {fmt(s.narrative.own)} the petitioner&apos;s own
+                      </span>
+                    ) : null}
+                    <span className="muted">
+                      {" "}
+                      · {s.narrative.tables} summary tables in {s.narrative.documents} documents; the prose and the other tables are as filed.
+                    </span>
+                  </p>
+                ) : null}
                 <details>
                   <summary>Format by format ({Object.keys(s.by_sheet).length})</summary>
                   <div className="table-wrap">

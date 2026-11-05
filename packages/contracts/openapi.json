@@ -6558,6 +6558,31 @@
             "title": "Cells Filled",
             "type": "integer"
           },
+          "cells_kept": {
+            "default": 0,
+            "title": "Cells Kept",
+            "type": "integer"
+          },
+          "cells_kept_order": {
+            "default": 0,
+            "title": "Cells Kept Order",
+            "type": "integer"
+          },
+          "cells_kept_own": {
+            "default": 0,
+            "title": "Cells Kept Own",
+            "type": "integer"
+          },
+          "narrative_documents": {
+            "default": 0,
+            "title": "Narrative Documents",
+            "type": "integer"
+          },
+          "narrative_tables": {
+            "default": 0,
+            "title": "Narrative Tables",
+            "type": "integer"
+          },
           "package": {
             "anyOf": [
               {
@@ -17554,6 +17579,118 @@
           }
         },
         "summary": "Fill Petition Workbook",
+        "tags": [
+          "arr cases"
+        ]
+      }
+    },
+    "/cases/{case_id}/petition/workbooks/{workbook_id}/narrative": {
+      "get": {
+        "description": "The filing's narrative documents with their summary tables filled from the filled\nworkbook (a ZIP: the DOCX files and the tables' report).  The prose is as filed.",
+        "operationId": "download_petition_narrative_cases__case_id__petition_workbooks__workbook_id__narrative_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "case_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Case Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "workbook_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Workbook Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Download Petition Narrative",
         "tags": [
           "arr cases"
         ]

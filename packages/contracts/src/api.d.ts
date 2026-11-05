@@ -1033,6 +1033,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/cases/{case_id}/petition/workbooks/{workbook_id}/narrative": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Download Petition Narrative
+         * @description The filing's narrative documents with their summary tables filled from the filled
+         *     workbook (a ZIP: the DOCX files and the tables' report).  The prose is as filed.
+         */
+        get: operations["download_petition_narrative_cases__case_id__petition_workbooks__workbook_id__narrative_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/cases/{case_id}/petition/workbooks/{workbook_id}/report": {
         parameters: {
             query?: never;
@@ -4929,6 +4950,31 @@ export interface components {
              * @default 0
              */
             cells_filled: number;
+            /**
+             * Cells Kept
+             * @default 0
+             */
+            cells_kept: number;
+            /**
+             * Cells Kept Order
+             * @default 0
+             */
+            cells_kept_order: number;
+            /**
+             * Cells Kept Own
+             * @default 0
+             */
+            cells_kept_own: number;
+            /**
+             * Narrative Documents
+             * @default 0
+             */
+            narrative_documents: number;
+            /**
+             * Narrative Tables
+             * @default 0
+             */
+            narrative_tables: number;
             /** Package */
             package?: string | null;
             /**
@@ -11691,6 +11737,92 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["PetitionWorkbookOut"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    download_petition_narrative_cases__case_id__petition_workbooks__workbook_id__narrative_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                case_id: string;
+                workbook_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
                 };
             };
             /** @description Unauthorized */

@@ -25,6 +25,7 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import re
 import uuid
 import zipfile
 from functools import lru_cache
@@ -78,7 +79,43 @@ def _package(package: str) -> dict[str, Any]:
         "map_doc": fmap,
         "book": book,
         "layout": layout,
+        "kept": _kept_cells(folder, fmap["cells"], layout),
     }
+
+
+ORDER_FIGURE = "the Commission's figure, quoted from an order (an approved or trued-up column): enter it from the order"
+OWN_METHOD = (
+    "the petitioner computes this figure another way than the draft rules (its reproduction differs from the "
+    "filing): enter your own; the fill checks it"
+)
+
+
+def _kept_cells(folder: Path, fmap: dict[str, Any], layout: dict[str, Any]) -> dict[str, str]:
+    """Fill-map cells the inputs template keeps as filed rather than blanking (increment 153), with
+    the reason: a figure quoted from the Commission's orders (a column the layout marks
+    ``restated``) is the order's, never the draft rules' recomputation; and a figure whose
+    reproduction differs from the filing (``fill-roundtrip.json``, the known differences) is
+    computed by the petitioner another way.  The fill still checks each one and reports a
+    difference; it never overwrites an entered figure."""
+    from openpyxl.utils import get_column_letter
+
+    restated: set[tuple[str, str]] = set()
+    sheets = layout.get("sheets", {})
+    for sh in sheets.values() if isinstance(sheets, dict) else sheets:
+        for c in sh.get("columns", []):
+            if c.get("restated"):
+                restated.add((sh["sheet"], get_column_letter(c["index"])))
+    kept: dict[str, str] = {}
+    for cell in fmap:
+        sheet, _, ref = cell.rpartition("!")
+        if (sheet, re.match(r"[A-Z]+", ref).group()) in restated:
+            kept[cell] = ORDER_FIGURE
+    rt = folder / "fill-roundtrip.json"
+    if rt.exists():
+        for d in json.loads(rt.read_text()).get("runs", {}).get("none_kept", {}).get("differing", []):
+            if d.get("known") and d["cell"] in fmap:
+                kept.setdefault(d["cell"], OWN_METHOD)
+    return dict(sorted(kept.items()))
 
 
 @lru_cache(maxsize=4)
@@ -145,6 +182,11 @@ def layout(case: ArrCase, utility: Utility) -> dict[str, Any]:
         "bindings": len(p["map_doc"].get("bindings", [])),
         "bindings_left_out": len(p["map_doc"].get("skipped", [])),
         "sheets": len(_required_sheets(package)),
+        "cells_kept": len(p["kept"]),
+        "cells_kept_order": sum(v == ORDER_FIGURE for v in p["kept"].values()),
+        "cells_kept_own": sum(v == OWN_METHOD for v in p["kept"].values()),
+        "narrative_tables": len((_narrative_binding(package) or {}).get("tables", [])),
+        "narrative_documents": len({t["document"] for t in (_narrative_binding(package) or {}).get("tables", [])}),
         "warnings": warnings,
         "status": "draft rules, none approved, no clause verified: a filled workbook is a working draft",
     }
@@ -159,24 +201,39 @@ def _package_for(utility: Utility) -> str:
 
 @lru_cache(maxsize=4)
 def template_bytes(package: str) -> bytes:
-    """The inputs template: the filed workbook (values) with every fill-map cell blanked, and a
-    note sheet saying so."""
+    """The inputs template: the filed workbook (values) with the fill-map cells blanked — except
+    the kept cells (``_kept_cells``: the Commission's figures and the petitioner's own methods),
+    left as filed and shaded yellow — and two sheets saying so."""
     import openpyxl
+    from openpyxl.styles import PatternFill
 
     from .petition_fill import inputs_template, to_bytes
 
     p = _package(package)
-    wb = inputs_template(openpyxl.load_workbook(p["book"], data_only=True), p["map"])
+    kept = p["kept"]
+    wb = inputs_template(openpyxl.load_workbook(p["book"], data_only=True), [c for c in p["map"] if c not in kept])
+    yellow = PatternFill("solid", start_color="FFF2CC", end_color="FFF2CC")
+    for cell in kept:
+        sheet, _, ref = cell.rpartition("!")
+        wb[sheet][ref].fill = yellow
     ws = wb.create_sheet("About this template")
     for line in (
         "Inputs template for a petition fill (working draft).",
         f"Layout: {p['manifest'].get('title')} — workbook {p['book'].name}.",
-        f"{len(p['map'])} cells are blank: the fill computes them from the rest.  The other figures are "
+        f"{len(p['map']) - len(kept)} cells are blank: the fill computes them from the rest.  The other figures are "
         "the filing's own as filed; replace them with the petition's inputs.",
+        f"{len(kept)} cells the fill could compute are kept as filed and shaded yellow (sheet 'Kept cells'): the "
+        "Commission's figures quoted from its orders, and figures the petitioner computes another way.  Replace "
+        "them with the order's figure or your own; the fill checks them and never overwrites them.",
         "Figures entered in a blank cell are kept and checked, never overwritten.",
         "Every rule is a draft; nothing is verified or approved; the filled workbook is not a filing.",
     ):
         ws.append([line])
+    ks = wb.create_sheet("Kept cells")
+    ks.append(["cell", "filed figure", "why it is kept"])
+    for cell, why in kept.items():
+        sheet, _, ref = cell.rpartition("!")
+        ks.append([cell, wb[sheet][ref].value, why])
     return to_bytes(wb)
 
 
@@ -332,8 +389,35 @@ def request_fill(session: Any, case: ArrCase, inputs: PetitionWorkbook, *, actor
     return row
 
 
-def fill_workbook(package: str, data: bytes) -> tuple[bytes, dict[str, Any]]:
-    """Fill an inputs workbook laid out as ``package``: the filled bytes and the full report."""
+def _narrative_binding(package: str) -> dict[str, Any] | None:
+    path = _package(package)["folder"] / "narrative" / "summary-tables.json"
+    return json.loads(path.read_text()) if path.exists() else None
+
+
+def fill_narrative(package: str, wb: Any) -> tuple[bytes, dict[str, Any]] | None:
+    """The filing's narrative documents with their bound summary tables filled from ``wb``
+    (``narrative_fill``), as one ZIP with the report; None when the layout binds no narrative."""
+    from .narrative_fill import fill_narrative as fill_tables
+
+    binding = _narrative_binding(package)
+    if binding is None:
+        return None
+    folder = _package(package)["folder"]
+    docs = {t["document"]: (folder / t["document"]).read_bytes() for t in binding["tables"]}
+    out, rep = fill_tables(binding, wb, docs)
+    report = rep.as_dict()
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+        for name, data in out.items():
+            z.writestr(name, data)
+        z.writestr("narrative-tables-report.json", json.dumps(report, ensure_ascii=False, indent=1))
+    return buf.getvalue(), report
+
+
+def fill_workbook(package: str, data: bytes) -> tuple[bytes, dict[str, Any], bytes | None]:
+    """Fill an inputs workbook laid out as ``package``: the filled bytes, the full report (with
+    the narrative tables' report under ``narrative``) and the filled narrative documents (a ZIP,
+    or None when the layout binds no narrative)."""
     import openpyxl
 
     from . import petition_fill as pf
@@ -344,10 +428,14 @@ def fill_workbook(package: str, data: bytes) -> tuple[bytes, dict[str, Any]]:
     bindings, _ = pf.fill_bindings(p["folder"])
     wb = openpyxl.load_workbook(io.BytesIO(data), data_only=True)
     rep = pf.fill(wb, p["layout"], bindings, rules, package, targets=set(p["map"]))
+    narrative = fill_narrative(package, wb)
     pf.mark(wb, rep)
     for ws in wb.worksheets:
         ws.oddHeader.center.text = DRAFT_HEADER
-    return pf.to_bytes(wb), rep.as_dict()
+    report = rep.as_dict()
+    if narrative is not None:
+        report["narrative"] = narrative[1]
+    return pf.to_bytes(wb), report, narrative[0] if narrative else None
 
 
 def run_fill(session_scope: Any, storage: ObjectStore, workbook_id: uuid.UUID) -> dict[str, Any]:
@@ -366,7 +454,7 @@ def run_fill(session_scope: Any, storage: ObjectStore, workbook_id: uuid.UUID) -
         row.status, row.error = "running", None
     try:
         data = storage.get(ObjectStore.ARTEFACTS, key)
-        filled, report = fill_workbook(package, data)
+        filled, report, narrative = fill_workbook(package, data)
     except Exception as exc:  # noqa: BLE001 - every failure is recorded on the row
         with session_scope() as s:
             row = s.get(PetitionWorkbook, workbook_id)
@@ -375,13 +463,24 @@ def run_fill(session_scope: Any, storage: ObjectStore, workbook_id: uuid.UUID) -
     blob = json.dumps(report, ensure_ascii=False, indent=1).encode()
     storage.put(ObjectStore.ARTEFACTS, f"{prefix}/filled.xlsx", filled, XLSX)
     storage.put(ObjectStore.ARTEFACTS, f"{prefix}/report.json", blob, "application/json")
+    if narrative is not None:
+        storage.put(ObjectStore.ARTEFACTS, f"{prefix}/narrative.zip", narrative, "application/zip")
     with session_scope() as s:
         row = s.get(PetitionWorkbook, workbook_id)
         row.object_key, row.report_key = f"{prefix}/filled.xlsx", f"{prefix}/report.json"
         row.sha256, row.size_bytes = hashlib.sha256(filled).hexdigest(), len(filled)
         row.summary = {**report["summary"], "status": report["status"]}
+        if "narrative" in report:
+            row.summary["narrative"] = report["narrative"]["summary"]
         row.status = "filled"
         return {"status": "filled", **{k: v for k, v in report["summary"].items() if k != "by_sheet"}}
+
+
+def narrative_zip(storage: ObjectStore, row: PetitionWorkbook) -> bytes:
+    """The filled narrative documents of a filled workbook (a ZIP)."""
+    if row.role != "filled" or not row.object_key or not (row.summary or {}).get("narrative"):
+        raise AppError("not_found", "no narrative tables: the workbook has not been filled, or its layout binds none")
+    return storage.get(ObjectStore.ARTEFACTS, row.object_key.rsplit("/", 1)[0] + "/narrative.zip")
 
 
 def report(storage: ObjectStore, row: PetitionWorkbook) -> dict[str, Any]:

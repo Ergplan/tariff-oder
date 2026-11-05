@@ -456,3 +456,21 @@ def download_petition_workbook(
         media_type=petition.XLSX,
         headers={"Content-Disposition": _disposition(name)},
     )
+
+
+@router.get("/{case_id}/petition/workbooks/{workbook_id}/narrative")
+def download_petition_narrative(
+    case_id: uuid.UUID, workbook_id: uuid.UUID, request: Request, principal: Principal = Depends(require_analyst)
+) -> Response:
+    """The filing's narrative documents with their summary tables filled from the filled
+    workbook (a ZIP: the DOCX files and the tables' report).  The prose is as filed."""
+    from ..arr import petition
+    from .arr import _disposition
+
+    storage: ObjectStore = request.app.state.adapters.storage
+    with session_scope() as s:
+        w = petition.workbook(s, _case(s, case_id, principal), workbook_id)
+        data, stem = petition.narrative_zip(storage, w), w.filename.rsplit(".", 1)[0]
+    return Response(
+        data, media_type="application/zip", headers={"Content-Disposition": _disposition(f"{stem}-narrative.zip")}
+    )

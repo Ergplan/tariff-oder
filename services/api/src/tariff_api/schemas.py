@@ -1511,6 +1511,12 @@ class PetitionLayoutOut(BaseModel):
     bindings: int = 0
     bindings_left_out: int = 0
     sheets: int = 0
+    # fill-map cells the template keeps as filed (increment 153): order figures, the petitioner's own methods
+    cells_kept: int = 0
+    cells_kept_order: int = 0
+    cells_kept_own: int = 0
+    narrative_tables: int = 0  # the narrative's summary tables a fill updates (increment 153)
+    narrative_documents: int = 0
     warnings: list[str] = Field(default_factory=list)
     status: str | None = None
 
