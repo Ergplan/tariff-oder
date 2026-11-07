@@ -111,7 +111,7 @@ export default async function PetitionWorkbook({ caseId, canEdit }: { caseId: st
               <span className="badge" data-tone="warn">
                 {fmt(l.cells_kept)} kept as filed
               </span>{" "}
-              shaded yellow: {fmt(l.cells_kept_order)} figures quoted from the Commission&apos;s orders (enter the order&apos;s figure) and {fmt(l.cells_kept_own)} the petitioner computes another way than the draft rules. The fill checks them and never overwrites them.
+              shaded yellow: {fmt(l.cells_kept_order)} figures quoted from the Commission&apos;s orders (enter the order&apos;s figure), {fmt(l.cells_kept_rate ?? 0)} tariff rates (enter the rate; the fill never backs a rate out of revenue ÷ units) and {fmt(l.cells_kept_own)} the petitioner computes another way than the draft rules. The fill checks them and never overwrites them.
             </p>
           ) : null}
           <a className="btn primary" href={`/api/client${base}/template`}>

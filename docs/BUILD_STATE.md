@@ -1005,6 +1005,57 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 154 (2026-11-07): every fill-map column labelled, and the kept cells corrected.**
+  - **Direction (operator, 2026-11-07):** "label the remaining sheets' columns next".
+  - **The header reader (`arr/reference.py`) labels only part of the map.** It reads a year
+    and a voice from header rows that name two or more years; it has run on the 25 mapped
+    sheets.  Across the 60 sheets with fill-map cells, 33 had no labels and 6 had only some.
+    These sheets name one year per sheet (PPC FY 25, F3 monthly), stack years in row blocks
+    (F24, F1, F13), or print the voice only in the title.
+  - **`column-labels.json` (100 hand labels, `scripts/npcl_column_labels.py`):** each label
+    gives a year, a voice and a basis that quotes the printed words it rests on (cell and
+    text).  A label may carry a row range.  All 4,492 map cells now have a label.
+    - **Commission figures (`restated`):** ESR5's "(Previous Year Trued-Up) FY 22-23"
+      billing determinants (48 cells).
+    - **Tariff rates (`input`):** the current-tariff sheets' rate columns (ESR_3 FY24, FY25,
+      FY27) are the tariff the Commission's order sets.  The proposed tariff's rates (ESR4)
+      are the petitioner's.  Both are entered, not backed out of revenue ÷ units, which is
+      how the bindings check them.  504 cells.
+    - **Row range:** the ARR snapshot's column D is "Approved in Tariff Order" in its upper
+      table (D4).  Below row 79 the same column holds the ARR year's claimed energy, ABR and
+      ACoS, so D88–D90 are the petitioner's.
+    - **Voices left to the reviewer (`not_printed`):** columns where the sheet gives a past
+      year but not whether the figure is audited or trued-up.  These are F19's base years,
+      F20's "Past years", P3, P7, P8 and P11: 25 columns, 86 map cells.  They are not
+      guessed into the kept set.
+    - **P4:** under the true-up year's "Trued-Up" heading, the voice row reads "Claimed".
+      These are the petitioner's figures, not the Commission's.
+  - **The kept-cell bug, fixed** (see the correction under increment 153): `column_labels()`
+    converts the 0-based index.  The template now keeps **717 cells**:
+    - 182 Commission figures (ARR 66, ESR5 48, Energy Balance 25, F27 17, F17 10, F18 10,
+      F21 4, F28 2);
+    - 504 tariff rates;
+    - 31 cells the petitioner computes another way.
+  - **Round trip of the new template:** 4,489 of 4,492 map cells equal the filing to four
+    decimals.
+    - F26_ROE!D12 and D14 are equal at the printed two decimals.
+    - F25_IOL!D9 is filed as a typed 0 and filled as 0.0115 (0.01 crore).  It is a follow-on
+      of the FY2023-24 column's known differences (D10–D15, kept); the engine reads 0 = 0
+      from the filed inputs.
+    - The narrative changes the same 20 cells as before.
+  - **Guards** (`tests/unit/test_column_labels.py`, 6 tests):
+    - every map cell has a label;
+    - every hand label's quotes are checked against the workbook (the test caught my own
+      "(audited accounts)" appended to five quotes, now moved to a note);
+    - every order-quoted column, from either source, has an order word in its own header
+      (an index slip fails this);
+    - the kept counts and named cells (ARR!C46 kept, ARR!B46 not; the ESR3 and ESR4 rates;
+      ESR5's 48);
+    - a row range wins over its column;
+    - unprinted voices are not kept.
+  - The layout reports `cells_kept_rate` and `cells_labelled`.  The panel names the rates.
+  Nothing verified, nothing approved: the labels are for the reviewer to confirm.
+
   **Increment 153 (2026-11-05): the narrative's summary tables filled from the formats — and the template keeps the Commission's figures.**
   - **Direction (operator, 2026-11-05):** "do the narrative tables next".
   - **`arr/narrative_fill.py`:** the nine summary tables increment 93 bound row by row to the
@@ -1051,6 +1102,12 @@ open-access view.
       the filing itself.
     - **Limit:** order-quoted cells are recognised only on the 25 sheets where `reference.json`
       records column voices.  Approved columns elsewhere are still blanked.
+    - **Corrected in increment 154:** the "143 order-quoted cells" were the wrong cells.
+      `reference.json` counts a column's `index` from 0, and `_kept_cells` read it as counting
+      from 1, so every kept "approved" or "trued-up" column was the one to its left (ARR's
+      trued-up column is C; B was kept).  The round trip still matched because the engine
+      reproduces most approved cells, and because the known-difference cells were kept
+      correctly.  Increment 154 fixes the index and pins the right columns with a test.
   - **Checked in the browser on the running stack:** a new template uploaded and filled
     through the panel; 4,244 computed, 69 carried, 289 entered figures agree, 59 differ, 0 left
     blank, 0 conflicts; 20 narrative figures updated, 231 already right, 2 merged, 7 the
@@ -3879,6 +3936,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 154 (2026-11-07): 547 passed** (+6 unit: every map cell labelled; hand-label quotes checked against the workbook; an order word in every order-quoted column's own header; the kept counts and named cells; a row range over its column; unprinted voices not kept.  The integration test checks the new counts).  Ruff and format clean; contracts regenerated; web `tsc --noEmit` clean.
 - **Increment 153 (2026-11-05): 541 passed** (+15 unit: `render` in twelve printed styles; NPCL's nine tables refilled from the filing — 20 cells changed, the merged A56 cell left, 252 / 253 read back; a changed figure reaching all three tables; a missing document or table refused.  The integration test now also checks the kept cells, the narrative summary and its ZIP).  Ruff and format clean; contracts regenerated; web `tsc --noEmit` clean.
 - **Increment 152 (2026-11-05):** web only — `tsc --noEmit` clean; checked in the browser against the running stack (template, upload, fill through the worker, results) at 1440 px and 390 px.  Python suite unchanged at 526.
 - **Increment 151 (2026-11-05): 526 passed.**  The new integration tests, 2 / 2 (`test_petition_workbooks.py`, about 105 s), and the fill unit tests, 3 / 3.  Ruff and format clean; contracts regenerated.  **Full suite: 526 passed** (+2 integration), 8 min 41 s, local PostgreSQL 16 with pgvector.
@@ -4263,10 +4321,11 @@ entries below are the per-increment history.**
       through the API as a job (increment 151);
     - next, smallest first:
       1. the client case page — done (increment 152);
-      2. the narrative tables from the filled formats — done (increment 153), and the template
-         keeps the Commission's figures (179 cells);
-      3. column voices for the remaining sheets of `reference.json`, so their approved columns
-         are kept too;
+      2. the narrative tables from the filled formats — done (increment 153);
+      3. column labels for every fill-map column — done (increment 154); the template keeps
+         717 cells (182 Commission figures, 504 tariff rates, 31 the petitioner's own
+         methods); 25 columns (86 map cells) whose voice the sheet does not print are left
+         to the reviewer;
       4. the narrative's prose: the figures it restates (increment 93's trace) listed per
          paragraph for the petitioner to update;
       5. the year shift for a FY2027-28 layout, if the operator chooses that petition;

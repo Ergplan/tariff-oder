@@ -107,9 +107,13 @@ Smallest first:
    are the petitioner's own, shaded yellow.  The prose and the other tables are as filed.
    Download: `GET …/workbooks/{id}/narrative` (a ZIP).  Refilled from the filing's own
    workbook it changes exactly 20 cells, all differences increment 93 found.
-   **The template now keeps 179 cells as filed:** the Commission's figures quoted from its
-   orders (143 cells in approved and trued-up columns) and the cells the petitioner computes
-   another way (36).  Before, the draft rules recomputed the order's approved carrying costs.
+   **The template keeps cells as filed** that the draft rules must not recompute.  Before
+   this, the rules recomputed the order's approved carrying costs.  In increment 154, after
+   every fill-map column was labelled (`column-labels.json`) and a column-index error in
+   increment 153 was fixed, the template keeps 717 cells:
+   - 182 Commission figures, from approved and trued-up columns;
+   - 504 tariff rates, entered rather than backed out of revenue ÷ units;
+   - 31 cells the petitioner computes another way.
    The prose remains: its figures are traced (increment 93), not rewritten.
 
 **A decision for the operator — which petition is filled next round.**  The fill map and the

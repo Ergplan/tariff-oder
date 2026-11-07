@@ -6573,6 +6573,16 @@
             "title": "Cells Kept Own",
             "type": "integer"
           },
+          "cells_kept_rate": {
+            "default": 0,
+            "title": "Cells Kept Rate",
+            "type": "integer"
+          },
+          "cells_labelled": {
+            "default": 0,
+            "title": "Cells Labelled",
+            "type": "integer"
+          },
           "narrative_documents": {
             "default": 0,
             "title": "Narrative Documents",

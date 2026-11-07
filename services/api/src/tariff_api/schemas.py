@@ -1515,6 +1515,8 @@ class PetitionLayoutOut(BaseModel):
     cells_kept: int = 0
     cells_kept_order: int = 0
     cells_kept_own: int = 0
+    cells_kept_rate: int = 0  # tariff rates, entered (increment 154)
+    cells_labelled: int = 0  # fill-map cells whose column has a year / voice label
     narrative_tables: int = 0  # the narrative's summary tables a fill updates (increment 153)
     narrative_documents: int = 0
     warnings: list[str] = Field(default_factory=list)

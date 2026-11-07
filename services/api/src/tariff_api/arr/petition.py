@@ -80,35 +80,95 @@ def _package(package: str) -> dict[str, Any]:
         "book": book,
         "layout": layout,
         "kept": _kept_cells(folder, fmap["cells"], layout),
+        "labels": column_labels(folder, layout),
     }
 
 
 ORDER_FIGURE = "the Commission's figure, quoted from an order (an approved or trued-up column): enter it from the order"
+TARIFF_RATE = (
+    "a tariff rate (the tariff in force or the one proposed): an input, never an average backed out of "
+    "revenue ÷ units; enter the rate"
+)
 OWN_METHOD = (
     "the petitioner computes this figure another way than the draft rules (its reproduction differs from the "
     "filing): enter your own; the fill checks it"
 )
 
 
-def _kept_cells(folder: Path, fmap: dict[str, Any], layout: dict[str, Any]) -> dict[str, str]:
-    """Fill-map cells the inputs template keeps as filed rather than blanking (increment 153), with
-    the reason: a figure quoted from the Commission's orders (a column the layout marks
-    ``restated``) is the order's, never the draft rules' recomputation; and a figure whose
-    reproduction differs from the filing (``fill-roundtrip.json``, the known differences) is
-    computed by the petitioner another way.  The fill still checks each one and reports a
-    difference; it never overwrites an entered figure."""
+def column_labels(folder: Path, layout: dict[str, Any]) -> list[dict[str, Any]]:
+    """Every column label of a package: the header reader's (``reference.json``, whose column
+    ``index`` counts from 0) and the hand labels (``column-labels.json``, for the columns the reader
+    cannot read — a year per sheet, years in row blocks, a voice in the title).  Each: sheet,
+    column letter, rows (a range or None for the whole column), fiscal_year, voice, restated, input,
+    source."""
     from openpyxl.utils import get_column_letter
 
-    restated: set[tuple[str, str]] = set()
+    out: list[dict[str, Any]] = []
     sheets = layout.get("sheets", {})
     for sh in sheets.values() if isinstance(sheets, dict) else sheets:
         for c in sh.get("columns", []):
-            if c.get("restated"):
-                restated.add((sh["sheet"], get_column_letter(c["index"])))
+            out.append(
+                {
+                    "sheet": sh["sheet"],
+                    "column": get_column_letter(int(c["index"]) + 1),
+                    "rows": None,
+                    "fiscal_year": c.get("fiscal_year"),
+                    "voice": c.get("voice"),
+                    "restated": bool(c.get("restated")),
+                    "input": False,
+                    "source": "header",
+                    "words": c.get("words", ""),
+                }
+            )
+    hand = folder / "column-labels.json"
+    if hand.exists():
+        for lab in json.loads(hand.read_text())["labels"]:
+            for col in lab["columns"]:
+                out.append(
+                    {
+                        "sheet": lab["sheet"],
+                        "column": col,
+                        "rows": lab.get("rows"),
+                        "fiscal_year": lab.get("fiscal_year"),
+                        "voice": lab.get("voice"),
+                        "restated": bool(lab.get("restated")),
+                        "input": bool(lab.get("input")),
+                        "source": "hand",
+                        "words": lab.get("basis", ""),
+                    }
+                )
+    return out
+
+
+def label_of(labels: list[dict[str, Any]], cell: str) -> dict[str, Any] | None:
+    """The label covering ``cell`` ("Sheet!B12"): a hand label with a row range first, then a whole
+    column's."""
+    sheet, _, ref = cell.rpartition("!")
+    m = re.match(r"([A-Z]+)(\d+)", ref)
+    col, row = m.group(1), int(m.group(2))
+    hits = [lab for lab in labels if lab["sheet"] == sheet and lab["column"] == col]
+    ranged = [lab for lab in hits if lab["rows"] and lab["rows"][0] <= row <= lab["rows"][1]]
+    whole = [lab for lab in hits if not lab["rows"]]
+    return (ranged or whole or [None])[0]
+
+
+def _kept_cells(folder: Path, fmap: dict[str, Any], layout: dict[str, Any]) -> dict[str, str]:
+    """Fill-map cells the inputs template keeps as filed rather than blanking (increments 153–154),
+    with the reason: a figure quoted from the Commission's orders (a column labelled ``restated``)
+    is the order's, never the draft rules' recomputation; a tariff rate (labelled ``input``) is
+    entered, never backed out of revenue ÷ units; and a figure whose reproduction differs from the
+    filing (``fill-roundtrip.json``, the known differences) is computed by the petitioner another
+    way.  The fill still checks each one and reports a difference; it never overwrites an entered
+    figure."""
+    labels = column_labels(folder, layout)
     kept: dict[str, str] = {}
     for cell in fmap:
-        sheet, _, ref = cell.rpartition("!")
-        if (sheet, re.match(r"[A-Z]+", ref).group()) in restated:
+        lab = label_of(labels, cell)
+        if lab is None:
+            continue
+        if lab["input"]:
+            kept[cell] = TARIFF_RATE
+        elif lab["restated"]:
             kept[cell] = ORDER_FIGURE
     rt = folder / "fill-roundtrip.json"
     if rt.exists():
@@ -185,6 +245,8 @@ def layout(case: ArrCase, utility: Utility) -> dict[str, Any]:
         "cells_kept": len(p["kept"]),
         "cells_kept_order": sum(v == ORDER_FIGURE for v in p["kept"].values()),
         "cells_kept_own": sum(v == OWN_METHOD for v in p["kept"].values()),
+        "cells_kept_rate": sum(v == TARIFF_RATE for v in p["kept"].values()),
+        "cells_labelled": sum(label_of(p["labels"], c) is not None for c in p["map"]),
         "narrative_tables": len((_narrative_binding(package) or {}).get("tables", [])),
         "narrative_documents": len({t["document"] for t in (_narrative_binding(package) or {}).get("tables", [])}),
         "warnings": warnings,

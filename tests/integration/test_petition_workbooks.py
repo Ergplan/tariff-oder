@@ -67,7 +67,8 @@ def test_npcl_case_fills_its_formats_workbook(client, runner):
     assert lay["available"] and lay["package"] == "uperc-npcl-fy2026-27"
     assert lay["years"]["arr"] == "FY2026-27" and lay["warnings"] == []
     assert (lay["narrative_tables"], lay["narrative_documents"]) == (9, 5)
-    assert (lay["cells_kept_order"], lay["cells_kept_own"]) == (143, 36)
+    assert (lay["cells_kept_order"], lay["cells_kept_rate"], lay["cells_kept_own"]) == (182, 504, 31)
+    assert lay["cells_labelled"] == lay["cells_filled"]
     assert lay["cells_filled"] == lay["cells_computed"] + lay["cells_carried"] > 4000
 
     # another organisation does not see the case; a viewer reads but does not change it
@@ -100,7 +101,11 @@ def test_npcl_case_fills_its_formats_workbook(client, runner):
     s = inputs["summary"]["inputs"]
     assert s["inputs_blank"] == 0 and s["inputs_changed"] == 0 and s["inputs_as_filed"] == s["input_cells"] > 0
     # the template keeps the Commission's figures and the petitioner's own methods as filed
-    assert s["fill_cells_entered"] == lay["cells_kept"] == lay["cells_kept_order"] + lay["cells_kept_own"]
+    assert (
+        s["fill_cells_entered"]
+        == lay["cells_kept"]
+        == lay["cells_kept_order"] + lay["cells_kept_rate"] + lay["cells_kept_own"]
+    )
 
     assert client.post(f"{base}/workbooks/{inputs['id']}/fill", headers=headers(CLIENT_A_VIEWER)).status_code == 403
     r = client.post(f"{base}/workbooks/{inputs['id']}/fill", headers=headers(CLIENT_A))

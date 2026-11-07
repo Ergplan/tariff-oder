@@ -4966,6 +4966,16 @@ export interface components {
              */
             cells_kept_own: number;
             /**
+             * Cells Kept Rate
+             * @default 0
+             */
+            cells_kept_rate: number;
+            /**
+             * Cells Labelled
+             * @default 0
+             */
+            cells_labelled: number;
+            /**
              * Narrative Documents
              * @default 0
              */

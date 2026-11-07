@@ -1,0 +1,1980 @@
+{
+ "package": "uperc-npcl-fy2026-27",
+ "status": "hand labels for the fill-map columns reference.json's header reader does not label (written 2026-11-07 from the printed headers quoted in `basis`); for the reviewer to confirm.  `restated`: the Commission's figure quoted from an order — the inputs template keeps it as filed.  `input`: a tariff rate — kept as filed, never backed out of revenue ÷ units.  `not_printed`: the sheet does not say whether a past year's figure is audited or trued-up — kept out of the kept set, for the reviewer.  `by_row_block`: the sheet stacks years in row blocks.",
+ "labels": [
+  {
+   "sheet": "ESR5_BD&Rev",
+   "columns": [
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "final_true_up",
+   "restated": true,
+   "input": false,
+   "rows": null,
+   "basis": "B6: (Previous Year Trued-Up) FY 22-23; B5: No. of Consumers (Nos.); E5: Revenue (Rs. Crore)",
+   "note": "billing determinants as the Commission trued them up for FY2022-23"
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY24",
+   "columns": [
+    "F",
+    "G"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "approved",
+   "restated": true,
+   "input": true,
+   "rows": null,
+   "basis": "A3: Revenue from Current Tariffs in Ensuing Year; C5: True Up; C6: FY 23-24; C7: Audited — F8: Rate of Energy Charge (Rs/KWh or Rs./KVAh ); G8: Rate of Fixed Charges or Demand Charge (Rs/KVA or Rs./KW or Rs./BHP)",
+   "note": "the tariff in force, as the Commission's order sets it: an input, never an average backed out of revenue ÷ units"
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY25",
+   "columns": [
+    "G",
+    "H"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "approved",
+   "restated": true,
+   "input": true,
+   "rows": null,
+   "basis": "C3: Revenue from Current Tariffs in Ensuing Year; D5: True up; D6: FY 24-25; D7: Actual — G8: Rate of Energy Charge (Rs/KWh or Rs./KVAh ); H8: Rate of Fixed Charges or Demand Charge (Rs/KVA or Rs./KW or Rs./BHP)",
+   "note": "the tariff in force, as the Commission's order sets it: an input, never an average backed out of revenue ÷ units"
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY27",
+   "columns": [
+    "G",
+    "H"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "approved",
+   "restated": true,
+   "input": true,
+   "rows": null,
+   "basis": "B3: Revenue from Current Tariffs in Ensuing Year; B5: ARR; B6: FY 26-27; B7: Projected — G8: Rate of Energy Charge (Rs/KWh or Rs./KVAh ); H8: Rate of Fixed Charges or Demand Charge (Rs/KVA or Rs./KW or Rs./BHP)",
+   "note": "the tariff in force, as the Commission's order sets it: an input, never an average backed out of revenue ÷ units"
+  },
+  {
+   "sheet": "ESR4_Prop Tariff",
+   "columns": [
+    "G",
+    "H"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": true,
+   "rows": null,
+   "basis": "B3: Revenue from Proposed Tariffs; B5: ARR; B6: FY 26-27; B7: Projected — G8: Rate of Energy Charge (Rs/KWh or Rs./KVAh ); H8: Rate of Fixed Charges or Demand Charge (Rs/KVA or Rs./KW or Rs./BHP)",
+   "note": "the tariff the petitioner proposes: an input, never an average backed out of revenue ÷ units"
+  },
+  {
+   "sheet": "BS1",
+   "columns": [
+    "C"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Profit & Loss Account; C6: FY 22-23",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "BS1",
+   "columns": [
+    "D"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Profit & Loss Account; D6: FY 23-24",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "BS1",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Profit & Loss Account; E6: FY 24-25",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "BS2",
+   "columns": [
+    "C"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Balance Sheet; C6: FY 22-23",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "BS2",
+   "columns": [
+    "D"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Balance Sheet; D6: FY 23-24",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "BS2",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Balance Sheet; E6: FY 24-25",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "BS3",
+   "columns": [
+    "D"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Cash Flow Statement",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "BS3",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Cash Flow Statement",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "BS3",
+   "columns": [
+    "F"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Cash Flow Statement",
+   "note": "the audited accounts' statements"
+  },
+  {
+   "sheet": "ARR snapshot",
+   "columns": [
+    "D"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": [
+    79,
+    200
+   ],
+   "basis": "B79: Retail Sales (Audited) (MU); B88: ABR (Excluding Subsidy) (Rs. /kWhr)(Rs. /kWhr); B90: ACOS (Rs. /kWhr)",
+   "note": "below row 79 column D holds the ARR year's claimed energy, ABR and ACoS — not the upper table's 'Approved in Tariff Order' (D4)"
+  },
+  {
+   "sheet": "ESR1_OA",
+   "columns": [
+    "J"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C5: Past Year data; C6: FY 2023-24; C7: Claimed; J8: Total",
+   "note": null
+  },
+  {
+   "sheet": "ESR1_OA",
+   "columns": [
+    "R"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "K5: True up; K6: FY 2024-25; K7: Audited; R8: Total",
+   "note": null
+  },
+  {
+   "sheet": "ESR1_OA",
+   "columns": [
+    "Z"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "S5: APR; S6: FY 2025-26; S7: Estimated; Z8: Total",
+   "note": null
+  },
+  {
+   "sheet": "ESR1_OA",
+   "columns": [
+    "AH"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "AA5: ARR; AA6: FY 2026-27; AA7: Projected; AH8: Total",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "C",
+    "D",
+    "E"
+   ],
+   "fiscal_year": "FY2017-18",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "C6: Audited; C7: FY 2017-18",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "F",
+    "G",
+    "H"
+   ],
+   "fiscal_year": "FY2018-19",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "F6: Audited; F7: FY 2018-19",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "I",
+    "J",
+    "K"
+   ],
+   "fiscal_year": "FY2019-20",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "I6: Audited; I7: FY 2019-20",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "L",
+    "M",
+    "N"
+   ],
+   "fiscal_year": "FY2020-21",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "L6: Audited; L7: FY 2020-21",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "O",
+    "P",
+    "Q"
+   ],
+   "fiscal_year": "FY2021-22",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "O6: Audited; O7: FY 2021-22",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "R",
+    "S",
+    "T"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "R6: Audited; R7: FY 2022-23",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "U",
+    "V",
+    "W"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "U6: Audited; U7: FY 2023-24",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "X",
+    "Y",
+    "Z"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "X6: True Up; X7: FY 2024-25",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "AA",
+    "AB",
+    "AC"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "AA6: APR; AA7: FY 2025-26",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "AD",
+    "AE",
+    "AF"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": [
+    60,
+    200
+   ],
+   "basis": "AD6: ARR; AD7: FY 2026-27",
+   "note": null
+  },
+  {
+   "sheet": "ESR2_Sales Forecast",
+   "columns": [
+    "AG",
+    "AH",
+    "AI"
+   ],
+   "fiscal_year": null,
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "AG6: 7 Years CAGR (till FY25)",
+   "note": "a growth rate the petitioner computes"
+  },
+  {
+   "sheet": "ESR4_Prop Tariff",
+   "columns": [
+    "F",
+    "N",
+    "O"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B3: Revenue from Proposed Tariffs; B5: ARR; B6: FY 26-27; B7: Projected",
+   "note": null
+  },
+  {
+   "sheet": "ESR5_BD&Rev",
+   "columns": [
+    "N",
+    "P",
+    "R",
+    "T",
+    "U"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "N6: True-Up Claimed FY 24-25",
+   "note": null
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY24",
+   "columns": [
+    "E",
+    "P"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Revenue from Current Tariffs in Ensuing Year; C5: True Up; C6: FY 23-24; C7: Audited",
+   "note": null
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY25",
+   "columns": [
+    "F",
+    "N",
+    "O"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C3: Revenue from Current Tariffs in Ensuing Year; D5: True up; D6: FY 24-25; D7: Actual",
+   "note": null
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY26",
+   "columns": [
+    "F",
+    "N",
+    "O"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B3: Revenue from Current Tariffs in Ensuing Year; B5: APR; B6: FY 25-26; B7: Projected",
+   "note": null
+  },
+  {
+   "sheet": "ESR_3 Curr Tariff FY27",
+   "columns": [
+    "F",
+    "N",
+    "O"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B3: Revenue from Current Tariffs in Ensuing Year; B5: ARR; B6: FY 26-27; B7: Projected",
+   "note": null
+  },
+  {
+   "sheet": "F11_CAP_Asset not in use",
+   "columns": [
+    "C",
+    "E",
+    "F"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A5: Financial Year 2024-25",
+   "note": null
+  },
+  {
+   "sheet": "F12_CAP_Cons Contri",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C5: True-Up; C6: FY 2024-25; C7: Audited",
+   "note": null
+  },
+  {
+   "sheet": "F12_CAP_Cons Contri",
+   "columns": [
+    "I",
+    "J"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C5: True-Up; C6: FY 2024-25; G7: Claimed",
+   "note": null
+  },
+  {
+   "sheet": "F12_CAP_Cons Contri",
+   "columns": [
+    "N"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "K5: APR; K6: FY 2025-26; K7: Estimated",
+   "note": null
+  },
+  {
+   "sheet": "F12_CAP_Cons Contri",
+   "columns": [
+    "R"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "O5: ARR; O6: FY 2026-27; O7: Projected",
+   "note": null
+  },
+  {
+   "sheet": "F13_CAP_Plan",
+   "columns": [
+    "E",
+    "F"
+   ],
+   "fiscal_year": null,
+   "voice": "by_row_block",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A11: FY 2022-23",
+   "note": "years in row blocks (column A); the petitioner's plan"
+  },
+  {
+   "sheet": "F16_CAP_CAPEX & CAP. after FY25",
+   "columns": [
+    "C"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B3: APR; B4: FY 2025-26",
+   "note": null
+  },
+  {
+   "sheet": "F16_CAP_CAPEX & CAP. after FY25",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "D3: ARR; D4: FY 2026-27",
+   "note": null
+  },
+  {
+   "sheet": "F16_CAP_CAPEX & CAP. till 25 ",
+   "columns": [
+    "C"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B3: Past Year; B4: FY 2023-24",
+   "note": null
+  },
+  {
+   "sheet": "F16_CAP_CAPEX & CAP. till 25 ",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "D3: True up; D4: FY 2024-25",
+   "note": null
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "C"
+   ],
+   "fiscal_year": "FY2020-21",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C6: FY 2020-21",
+   "note": "the sheet prints the year, not whether the figure is audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "D"
+   ],
+   "fiscal_year": "FY2021-22",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "D6: FY 2021-22",
+   "note": "the sheet prints the year, not whether the figure is audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "E6: FY 2022-23",
+   "note": "the sheet prints the year, not whether the figure is audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "F"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "F6: FY 2023-24",
+   "note": "the sheet prints the year, not whether the figure is audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "G"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "G6: FY 2024-25",
+   "note": "the sheet prints the year, not whether the figure is audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "H"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "H6: Average of last 5 years as Middle Year (FY 2022-23)",
+   "note": "an average the petitioner computes"
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "I"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "I6: FY 2023-24",
+   "note": "for the reviewer"
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "J"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "J6: FY2024-25",
+   "note": "for the reviewer"
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "K"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "K6: APR; K7: FY2025-26",
+   "note": null
+  },
+  {
+   "sheet": "F19_O&M_EE n AG base",
+   "columns": [
+    "L"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "L6: ARR; L7: FY 2026-27",
+   "note": null
+  },
+  {
+   "sheet": "F1_PP_Annual",
+   "columns": [
+    "J",
+    "K",
+    "L",
+    "N",
+    "O",
+    "P"
+   ],
+   "fiscal_year": null,
+   "voice": "by_row_block",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A6: FY 2024-25",
+   "note": "years in row blocks (column A)"
+  },
+  {
+   "sheet": "F20_O&M_EE",
+   "columns": [
+    "B",
+    "C"
+   ],
+   "fiscal_year": "FY2020-21",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B5: Past years; B6: FY 2020-21",
+   "note": "the sheet prints 'Past years', not audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F20_O&M_EE",
+   "columns": [
+    "D",
+    "E"
+   ],
+   "fiscal_year": "FY2021-22",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B5: Past years; D6: FY 2021-22",
+   "note": "the sheet prints 'Past years', not audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F20_O&M_EE",
+   "columns": [
+    "F",
+    "G"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B5: Past years; F6: FY 2022-23",
+   "note": "the sheet prints 'Past years', not audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F20_O&M_EE",
+   "columns": [
+    "H",
+    "I"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "H5: Past years; H6: FY 2023-24",
+   "note": "the sheet prints 'Past years', not audited or trued-up: for the reviewer"
+  },
+  {
+   "sheet": "F20_O&M_EE",
+   "columns": [
+    "J",
+    "K"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "J5: True up; J6: FY 2024-25",
+   "note": "the true-up year's own figures"
+  },
+  {
+   "sheet": "F24_Dep",
+   "columns": [
+    "E",
+    "G",
+    "I",
+    "J"
+   ],
+   "fiscal_year": null,
+   "voice": "by_row_block",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A7: FY 2022-23; A4: Fixed Assets and Depreciation For past year, True Up year, APR year and ARR",
+   "note": "years in row blocks (column A)"
+  },
+  {
+   "sheet": "F30_CSD monthly",
+   "columns": [
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Monthly details of Consumer Security Deposit for True up year",
+   "note": null
+  },
+  {
+   "sheet": "F32_Wheeling-Supply",
+   "columns": [
+    "F",
+    "H"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "K5: ARR SUMMARY FOR FY 2026-27 (Rs. Crore); L6: (ARR Claimed)",
+   "note": null
+  },
+  {
+   "sheet": "F33_CSS",
+   "columns": [
+    "C",
+    "D",
+    "F",
+    "G",
+    "I",
+    "J"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Details of Cross Subsidy Surchage",
+   "note": "the ARR year's cross-subsidy surcharge as the petitioner computes it"
+  },
+  {
+   "sheet": "F3_PP_Monthly FY2025",
+   "columns": [
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "AA",
+    "AB",
+    "AC",
+    "AD",
+    "AE",
+    "AF",
+    "AG",
+    "AH",
+    "AI",
+    "AJ",
+    "AK",
+    "AL",
+    "AM",
+    "AN",
+    "AO",
+    "AP",
+    "AQ",
+    "AR",
+    "AS",
+    "AT",
+    "AU",
+    "AV",
+    "AW",
+    "AX",
+    "AY",
+    "AZ",
+    "BA",
+    "BB",
+    "BC",
+    "BD",
+    "BE",
+    "BF",
+    "BG",
+    "BH",
+    "BI",
+    "BJ",
+    "BK",
+    "BL",
+    "BM",
+    "BN",
+    "BO",
+    "BP",
+    "BQ",
+    "BR",
+    "BS",
+    "BT",
+    "BU",
+    "BV",
+    "BW",
+    "BX",
+    "BY",
+    "BZ",
+    "CA",
+    "CB",
+    "CC",
+    "CD",
+    "CE",
+    "CF",
+    "CG",
+    "CH",
+    "CI",
+    "CJ",
+    "CK",
+    "CL",
+    "CM",
+    "CN",
+    "CO",
+    "CP",
+    "CQ",
+    "CR",
+    "CS",
+    "CT",
+    "CU",
+    "CV",
+    "CW",
+    "CX",
+    "CY",
+    "CZ",
+    "DA",
+    "DB",
+    "DC",
+    "DD",
+    "DE",
+    "DF",
+    "DG",
+    "DH",
+    "DI",
+    "DJ",
+    "DK",
+    "DL",
+    "DM",
+    "DN",
+    "DO",
+    "DP",
+    "DQ",
+    "DR",
+    "DS",
+    "DT",
+    "DU",
+    "DV",
+    "DW",
+    "DX",
+    "DY",
+    "DZ",
+    "EA",
+    "EB",
+    "EC",
+    "ED",
+    "EE",
+    "EF",
+    "EG",
+    "EH",
+    "EI",
+    "EJ",
+    "EK",
+    "EL",
+    "EM",
+    "EN",
+    "EO",
+    "EP"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A1: Form No: F3_PP_Monthly, True-up, FY2024-25",
+   "note": null
+  },
+  {
+   "sheet": "F3_PP_Monthly FY2026",
+   "columns": [
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "AA",
+    "AB",
+    "AC",
+    "AD",
+    "AE",
+    "AF",
+    "AG",
+    "AH",
+    "AI",
+    "AJ",
+    "AK",
+    "AL",
+    "AM",
+    "AN",
+    "AO",
+    "AP",
+    "AQ",
+    "AR",
+    "AS",
+    "AT",
+    "AU",
+    "AV",
+    "AW",
+    "AX",
+    "AY",
+    "AZ",
+    "BA",
+    "BB",
+    "BC",
+    "BD",
+    "BE",
+    "BF",
+    "BG",
+    "BH",
+    "BI",
+    "BJ",
+    "BK",
+    "BL",
+    "BM",
+    "BN",
+    "BO",
+    "BP",
+    "BQ",
+    "BR",
+    "BS",
+    "BT",
+    "BU",
+    "BV",
+    "BW",
+    "BX",
+    "BY",
+    "BZ",
+    "CA",
+    "CB",
+    "CC",
+    "CD",
+    "CE",
+    "CF",
+    "CG",
+    "CH",
+    "CI",
+    "CJ",
+    "CK",
+    "CL",
+    "CM",
+    "CN",
+    "CO",
+    "CP",
+    "CQ",
+    "CR",
+    "CS",
+    "CT",
+    "CU",
+    "CV",
+    "CW",
+    "CX",
+    "CY",
+    "CZ",
+    "DA",
+    "DB",
+    "DC",
+    "DD",
+    "DE",
+    "DF",
+    "DG",
+    "DH",
+    "DI",
+    "DJ",
+    "DK",
+    "DL",
+    "DM",
+    "DN",
+    "DO",
+    "DP",
+    "DQ",
+    "DR",
+    "DS",
+    "DT",
+    "DU",
+    "DV",
+    "DW",
+    "DX",
+    "DY",
+    "DZ",
+    "EA",
+    "EB",
+    "EC",
+    "ED",
+    "EE",
+    "EF",
+    "EG",
+    "EH",
+    "EI",
+    "EJ",
+    "EK",
+    "EL",
+    "EM",
+    "EN",
+    "EO",
+    "EP",
+    "EQ",
+    "ER",
+    "ES",
+    "ET",
+    "EU",
+    "EV",
+    "EW",
+    "EX",
+    "EY",
+    "EZ",
+    "FA",
+    "FB",
+    "FC",
+    "FD",
+    "FE",
+    "FF",
+    "FG",
+    "FH",
+    "FI",
+    "FJ",
+    "FK",
+    "FL",
+    "FM",
+    "FN"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A1: Form No: F3_PP_Monthly: APR, FY 2025-26",
+   "note": null
+  },
+  {
+   "sheet": "F3_PP_Monthly FY2027",
+   "columns": [
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "AA",
+    "AB",
+    "AC",
+    "AD",
+    "AE",
+    "AF",
+    "AG",
+    "AH",
+    "AI",
+    "AJ",
+    "AK",
+    "AL",
+    "AM",
+    "AN",
+    "AO",
+    "AP",
+    "AQ",
+    "AR",
+    "AS",
+    "AT",
+    "AU",
+    "AV",
+    "AW",
+    "AX",
+    "AY",
+    "AZ",
+    "BA",
+    "BB",
+    "BC",
+    "BD",
+    "BE",
+    "BF",
+    "BG",
+    "BH",
+    "BI",
+    "BJ",
+    "BK",
+    "BL",
+    "BM",
+    "BN",
+    "BO",
+    "BP",
+    "BQ",
+    "BR",
+    "BS",
+    "BT",
+    "BU",
+    "BV",
+    "BW",
+    "BX",
+    "BY",
+    "BZ",
+    "CA",
+    "CB",
+    "CC",
+    "CD",
+    "CE",
+    "CF",
+    "CG",
+    "CH",
+    "CI",
+    "CJ",
+    "CK",
+    "CL",
+    "CM",
+    "CN",
+    "CO",
+    "CP",
+    "CQ",
+    "CR",
+    "CS",
+    "CT",
+    "CU",
+    "CV",
+    "CW",
+    "CX",
+    "CY",
+    "CZ",
+    "DA",
+    "DB",
+    "DC",
+    "DD",
+    "DE",
+    "DF",
+    "DG",
+    "DH",
+    "DI",
+    "DJ",
+    "DK",
+    "DL",
+    "DM",
+    "DN",
+    "DO",
+    "DP",
+    "DQ",
+    "DR",
+    "DS",
+    "DT",
+    "DU",
+    "DV",
+    "DW",
+    "DX",
+    "DY",
+    "DZ",
+    "EA",
+    "EB",
+    "EC",
+    "ED",
+    "EE",
+    "EF",
+    "EG",
+    "EH",
+    "EI",
+    "EJ",
+    "EK",
+    "EL",
+    "EM",
+    "EN",
+    "EO",
+    "EP",
+    "EQ",
+    "ER",
+    "ES",
+    "ET",
+    "EU",
+    "EV",
+    "EW",
+    "EX",
+    "EY",
+    "EZ",
+    "FA",
+    "FB",
+    "FC",
+    "FD",
+    "FE",
+    "FF",
+    "FG",
+    "FH",
+    "FI",
+    "FJ",
+    "FK",
+    "FL",
+    "FM",
+    "FN"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A1: Form No: F3_PP_Monthly: APR, FY 2026-27",
+   "note": null
+  },
+  {
+   "sheet": "F4_PP_MOD",
+   "columns": [
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "D6: Units (MU)",
+   "note": null
+  },
+  {
+   "sheet": "F4_PP_MOD",
+   "columns": [
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "M6: Units (MU)",
+   "note": null
+  },
+  {
+   "sheet": "F4_PP_MOD",
+   "columns": [
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "AA",
+    "AB",
+    "AC",
+    "AD"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "V6: Units (MU)",
+   "note": null
+  },
+  {
+   "sheet": "F5_PP_Renew",
+   "columns": [
+    "J"
+   ],
+   "fiscal_year": null,
+   "voice": "by_row_block",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A6: FY 2024-25",
+   "note": "years in row blocks (column A)"
+  },
+  {
+   "sheet": "F6_PP6_RPO",
+   "columns": [
+    "D"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "D6: FY 2024-25; D7: Quantum (MU)",
+   "note": null
+  },
+  {
+   "sheet": "F6_PP6_RPO",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "E7: Quantum (MU)",
+   "note": null
+  },
+  {
+   "sheet": "F6_PP6_RPO",
+   "columns": [
+    "F"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "F7: Quantum (MU)",
+   "note": null
+  },
+  {
+   "sheet": "F7_PP_Comp Bid",
+   "columns": [
+    "B",
+    "C"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A3: Details for power procured via competitive bidding for True-up Year : FY 2024-25",
+   "note": null
+  },
+  {
+   "sheet": "F8_PP_Short Term",
+   "columns": [
+    "F",
+    "G",
+    "H"
+   ],
+   "fiscal_year": null,
+   "voice": "by_row_block",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A9: FY 2024-25",
+   "note": "years in row blocks (column A)"
+  },
+  {
+   "sheet": "F9_PP_plan",
+   "columns": [
+    "C",
+    "D"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B5: True-up; B6: FY 2024-25; B7: Estimated",
+   "note": null
+  },
+  {
+   "sheet": "F9_PP_plan",
+   "columns": [
+    "F",
+    "G"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "E5: APR; E6: FY 2025-26; E7: Projected",
+   "note": null
+  },
+  {
+   "sheet": "F9_PP_plan",
+   "columns": [
+    "I",
+    "J"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "H5: ARR; H6: FY 2026-27; H7: Projected",
+   "note": null
+  },
+  {
+   "sheet": "P11_Land",
+   "columns": [
+    "N"
+   ],
+   "fiscal_year": null,
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "N5: Gross Block (Closing)",
+   "note": "the sheet prints no year: for the reviewer"
+  },
+  {
+   "sheet": "P1_DL",
+   "columns": [
+    "D"
+   ],
+   "fiscal_year": null,
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "D6: Claimed",
+   "note": "years by row (column C)"
+  },
+  {
+   "sheet": "P3_Bad Debts",
+   "columns": [
+    "C"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C6: FY 2023-24; C7: 98.11838815664194",
+   "note": "'Past year': for the reviewer"
+  },
+  {
+   "sheet": "P3_Bad Debts",
+   "columns": [
+    "D"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "D6: FY 2024-25; D7: 96.3778703681625",
+   "note": null
+  },
+  {
+   "sheet": "P3_Bad Debts",
+   "columns": [
+    "E"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "E6: FY 2025-26; E7: 96.71986177407867",
+   "note": null
+  },
+  {
+   "sheet": "P4_Phy Stat",
+   "columns": [
+    "D",
+    "E"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C5: Past Year; C6: FY 2023-24; C7: Claimed",
+   "note": null
+  },
+  {
+   "sheet": "P4_Phy Stat",
+   "columns": [
+    "G",
+    "H"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "F5: Trued-Up; F6: FY 2024-25; F7: Claimed",
+   "note": "under the true-up year's 'Trued-Up' heading the voice row reads 'Claimed': the petitioner's"
+  },
+  {
+   "sheet": "P4_Phy Stat",
+   "columns": [
+    "J",
+    "K"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "I5: APR; I6: FY 2025-26; I7: Estimated",
+   "note": null
+  },
+  {
+   "sheet": "P4_Phy Stat",
+   "columns": [
+    "M",
+    "N"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "L5: ARR; L6: FY 2026-27; L7: Projected",
+   "note": null
+  },
+  {
+   "sheet": "P5_Arrear",
+   "columns": [
+    "F",
+    "G"
+   ],
+   "fiscal_year": null,
+   "voice": "by_row_block",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A7: FY 2023-24",
+   "note": "years in row blocks (column A)"
+  },
+  {
+   "sheet": "P7_Trans Failure",
+   "columns": [
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+   ],
+   "fiscal_year": null,
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C6: FY 2022-23; F6: FY 2023-24",
+   "note": "'Past Year': for the reviewer"
+  },
+  {
+   "sheet": "P7_Trans Failure",
+   "columns": [
+    "I",
+    "J",
+    "K"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "I5: True-Up; I6: FY 2024-25",
+   "note": null
+  },
+  {
+   "sheet": "P8_Elec Accidents",
+   "columns": [
+    "G"
+   ],
+   "fiscal_year": "FY2022-23",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "C5: Past year; C6: FY 2022-23",
+   "note": "'Past year': for the reviewer"
+  },
+  {
+   "sheet": "P8_Elec Accidents",
+   "columns": [
+    "L"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "not_printed",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "H5: Past year; H6: FY 2023-24",
+   "note": "'Past year': for the reviewer"
+  },
+  {
+   "sheet": "P8_Elec Accidents",
+   "columns": [
+    "Q"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "M5: True- Up; M6: FY 2024-25",
+   "note": null
+  },
+  {
+   "sheet": "PPC FY 24",
+   "columns": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S"
+   ],
+   "fiscal_year": "FY2023-24",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B3: Financial Year 2023-24",
+   "note": null
+  },
+  {
+   "sheet": "PPC FY 25",
+   "columns": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "AA",
+    "AB",
+    "AC",
+    "AD",
+    "AE",
+    "AF",
+    "AG",
+    "AH"
+   ],
+   "fiscal_year": "FY2024-25",
+   "voice": "actual",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "B5: Financial Year 2024-25",
+   "note": null
+  },
+  {
+   "sheet": "PPC FY 26",
+   "columns": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X"
+   ],
+   "fiscal_year": "FY2025-26",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A5: Ref No.",
+   "note": null
+  },
+  {
+   "sheet": "PPC FY 27",
+   "columns": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "AA",
+    "AB",
+    "AC"
+   ],
+   "fiscal_year": "FY2026-27",
+   "voice": "petitioned",
+   "restated": false,
+   "input": false,
+   "rows": null,
+   "basis": "A5: Financial Year 2026-27",
+   "note": null
+  }
+ ]
+}
