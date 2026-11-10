@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARR 101 — filing an Aggregate Revenue Requirement, step by step</title>
+    <meta name="description" content="A ten-step guide to an electricity distribution licensee's ARR filing, worked through for a fictional 150-consumer utility." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <h1>ARR 101</h1>
+        <p>How a distribution licensee files its Aggregate Revenue Requirement, in ten steps.</p>
+      </div>
+      <button type="button" id="reset" title="Put every answer back to the sample utility's">Reset to sample answers</button>
+    </header>
+    <p class="banner">
+      <b>A learning example.</b> The utility and all its figures are invented (150 consumers of every type). The norms are
+      illustrative. A real filing follows your own Commission's regulations and formats.
+    </p>
+    <div class="bar"><div id="progress"></div></div>
+    <div class="layout">
+      <nav aria-label="Steps"><ol id="nav"></ol></nav>
+      <main id="step" tabindex="-1"></main>
+      <aside aria-label="Running result">
+        <h3>Running result</h3>
+        <dl>
+          <dt>ARR</dt>
+          <dd><span id="sumArr"></span> <small>Rs lakh</small></dd>
+          <dt>Revenue at existing tariff</dt>
+          <dd><span id="sumRev"></span> <small>Rs lakh</small></dd>
+          <dt>Gap to recover</dt>
+          <dd><span id="sumGap"></span> <small>Rs lakh</small></dd>
+          <dt>Average cost of supply</dt>
+          <dd><span id="sumAcos"></span> <small>Rs/kWh</small></dd>
+        </dl>
+        <p class="sample">Updates as you change any answer. Your answers stay in this browser only.</p>
+      </aside>
+    </div>
+    <footer>Money in Rs lakh (1 lakh = 1,00,000), energy in MWh (1 MWh = 1,000 kWh). Not legal or regulatory advice.</footer>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
