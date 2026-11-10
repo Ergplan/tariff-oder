@@ -172,5 +172,11 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// a link to a step (#capital) works without a reload
+window.addEventListener("hashchange", () => {
+  const i = STEPS.findIndex((x) => `#${x.id}` === location.hash);
+  if (i >= 0 && i !== current) go(i);
+});
+
 renderNav();
 renderStep();
