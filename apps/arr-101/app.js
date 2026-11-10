@@ -1,6 +1,8 @@
 import { SAMPLE, compute } from "./calc.js";
 import { STEPS, esc } from "./steps.js";
 import { UPERC, UPERC_SOURCE } from "./uperc.js";
+import { METHOD } from "./method.js";
+import { FORMATS } from "./formats.js";
 
 const KEY = "arr101.v1";
 const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -43,6 +45,58 @@ function input(path, { kind, step, label } = {}) {
   if (kind === "check") return `<input type="checkbox" data-path="${path}" ${v ? "checked" : ""} aria-label="${esc(label || path)}">`;
   if (kind === "text") return `<input type="text" data-path="${path}" value="${esc(v)}" aria-label="${esc(label || path)}">`;
   return `<input type="number" inputmode="decimal" step="${step || "any"}" data-path="${path}" value="${esc(v)}" aria-label="${esc(label || path)}">`;
+}
+
+const n0 = (v) => Number(v).toLocaleString("en-IN");
+const pct1 = (a, b) => (b ? ((a / b) * 100).toFixed(1) : "0.0");
+
+function methodHtml(id) {
+  const m = METHOD[id] || [];
+  return m.length
+    ? `<h3>Method</h3><div class="method">${m.map((x) => `<div><code>${esc(x[0])}</code>${x[1] ? `<span>${esc(x[1])}</span>` : ""}</div>`).join("")}</div>`
+    : "";
+}
+
+function formatsHtml(id) {
+  const fs = FORMATS.formats.filter((f) => f.step === id);
+  const t = FORMATS.totals;
+  const sum = (k) => fs.reduce((a, f) => a + f[k], 0);
+  const overall =
+    id === "filing"
+      ? `<div class="stats">
+          <div><b>${t.formats}</b><span>formats in the petition</span></div>
+          <div><b>${n0(t.entered)}</b><span>figures entered by hand</span></div>
+          <div><b>${n0(t.computed)}</b><span>figures worked out from them</span></div>
+          <div><b>${pct1(t.agree, t.checked)}%</b><span>reproduced: ${n0(t.agree)} of ${n0(t.checked)} recomputed figures equal the filed ones</span></div>
+        </div>`
+      : "";
+  if (!fs.length) return "";
+  const rows = fs
+    .map((f) => {
+      const measured = f.checked
+        ? `<div class="meter" title="${f.agree} of ${f.checked}"><i style="width:${(f.agree / f.checked) * 100}%"></i></div><small>${n0(f.agree)} / ${n0(f.checked)} reproduced</small>`
+        : `<small>${esc(f.sameSheetAs ? "same sheet as above" : f.status === "checked" ? "nothing to recompute" : f.status)}</small>`;
+      return `<details class="fmt"><summary>
+          <span class="code">${esc(f.code)}</span>
+          <span class="what"><b>${esc(f.title)}</b><em>${esc(f.purpose)}</em></span>
+          <span class="n"><b>${n0(f.entered)}</b><small>entered</small></span>
+          <span class="n"><b>${n0(f.computed)}</b><small>worked out</small></span>
+          <span class="m">${measured}</span>
+        </summary>
+        <div class="more">${
+          f.computes.length ? `<p>Worked out in this format:</p><ul>${f.computes.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>` : `<p>${esc(f.why || "Every figure in this format is entered; no rule computes any of them.")}</p>`
+        }</div></details>`;
+    })
+    .join("");
+  return `<h3>Evidence: the formats <span class="tag">${fs.length} of ${t.formats + t.workingSheets}</span></h3>
+    <p class="sample">${esc(FORMATS.source)} ${esc(FORMATS.method)} ${esc(FORMATS.caveat)}</p>
+    ${overall}
+    <div class="stats small">
+      <div><b>${n0(sum("entered"))}</b><span>entered in this step's formats</span></div>
+      <div><b>${n0(sum("computed"))}</b><span>worked out</span></div>
+      <div><b>${sum("checked") ? pct1(sum("agree"), sum("checked")) + "%" : "n/a"}</b><span>reproduced (${n0(sum("agree"))} of ${n0(sum("checked"))})</span></div>
+    </div>
+    <div class="fmts">${rows}</div>`;
 }
 
 function renderNav() {
@@ -94,9 +148,11 @@ function renderStep() {
     <h2>${s.title}</h2>
     <p class="plain">${s.plain}</p>
     ${points}
+    ${methodHtml(s.id)}
     ${hasQuestions ? `<h3>Questions to answer</h3>${sources}${grid}${qs}` : ""}
     ${checklist}
     <div id="workingWrap"><h3>The working</h3><div id="working"></div></div>
+    ${formatsHtml(s.id)}
     <h3>UPERC check <span class="tag">Uttar Pradesh</span></h3>
     <p class="sample">What the ${UPERC_SOURCE.title} say for this step, with the regulation and page. ${UPERC_SOURCE.status}</p>
     <div id="uperc"></div>

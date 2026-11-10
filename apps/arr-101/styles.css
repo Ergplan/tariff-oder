@@ -81,6 +81,38 @@ table.grid th:not(:first-child) { text-align: right; }
 .calc small, aside small { font: 0.66rem var(--mono); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .warn { border: 1px solid var(--bad); color: var(--bad); padding: 10px 14px; margin: 10px 0; font-weight: 600; }
 
+/* method: the relations, in mono */
+.method { border-bottom: 1px solid var(--hair); }
+.method div { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px; padding: 11px 0; border-top: 1px solid var(--hair); align-items: baseline; }
+.method div:first-child { border-top: 0; }
+.method code { font: 600 0.92rem var(--mono); white-space: pre-wrap; }
+.method span { color: var(--muted); font: 0.72rem/1.5 var(--mono); }
+
+/* evidence: measured counts per format */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); margin: 16px 0 0; }
+.stats div { padding: 16px 16px 14px; border-right: 1px solid var(--line); }
+.stats div:last-child { border-right: 0; }
+.stats b { display: block; font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.stats span { display: block; margin-top: 8px; color: var(--muted); font: 0.66rem/1.5 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.stats.small { grid-template-columns: repeat(3, minmax(0, 1fr)); border-color: var(--hair); }
+.stats.small div { border-color: var(--hair); }
+.stats.small b { font-size: 1.4rem; }
+.fmts { margin-top: 12px; border-top: 1px solid var(--line); }
+.fmt { border-bottom: 1px solid var(--hair); }
+.fmt summary { display: grid; grid-template-columns: 150px minmax(0, 1fr) 76px 76px 150px; gap: 14px; padding: 12px 0; align-items: start; cursor: pointer; list-style: none; }
+.fmt summary::-webkit-details-marker { display: none; }
+.fmt summary:hover { background: var(--paper); }
+.fmt .code { font: 700 0.72rem var(--mono); letter-spacing: 0.02em; overflow-wrap: anywhere; }
+.fmt .what b { display: block; font-size: 0.92rem; }
+.fmt .what em { display: block; font-style: normal; color: var(--muted); font-size: 0.86rem; margin-top: 2px; }
+.fmt .n { text-align: right; }
+.fmt .n b { display: block; font-variant-numeric: tabular-nums; font-size: 1rem; }
+.fmt small { font: 0.62rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.meter { height: 6px; background: var(--hair); margin: 6px 0 5px; }
+.meter i { display: block; height: 100%; background: var(--ink); }
+.fmt .more { padding: 0 0 14px 164px; color: var(--muted); font-size: 0.88rem; }
+.fmt .more ul { margin: 4px 0 0; padding-left: 18px; }
+
 /* UPERC checks */
 .reg { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--hair); }
 .reg .cite { font: 700 0.8rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
@@ -130,6 +162,13 @@ footer { padding: 18px 32px 28px; color: var(--muted); font: 0.68rem/1.6 var(--m
   .q:not(:has(input[type="text"])) .a { max-width: 240px; }
   .calc { flex-direction: column; gap: 2px; }
   .reg { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .method div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .stats, .stats.small { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats div { border-bottom: 1px solid var(--hair); }
+  .fmt summary { grid-template-columns: minmax(0, 1fr) 64px 64px; }
+  .fmt .code { grid-column: 1 / -1; }
+  .fmt .m { grid-column: 1 / -1; }
+  .fmt .more { padding-left: 0; }
   .reg .cite small { display: inline; margin-left: 10px; }
 }
 @media print {

@@ -43,3 +43,26 @@ def test_every_step_has_uperc_checks():
     for s in steps:
         block = re.search(rf"^  {s}: \[(.*?)^  \],", src, re.M | re.S)
         assert block and block.group(1).count("reg: ") >= 3, s
+
+
+def test_formats_evidence_matches_the_round_trip_experiment():
+    """apps/arr-101/formats.js (scripts/arr101_formats.py): all 74 formats of the petition's index and the one
+    working sheet, each placed in a step of the guide; the recomputed / reproduced totals are the round-trip
+    experiment's own (fill-roundtrip.json), and no figure of the petition is in the file — only counts."""
+    import json
+
+    src = (APP / "formats.js").read_text()
+    doc = json.loads(src[src.index("{") : src.rindex("}") + 1])
+    steps = set(re.findall(r'^    id: "(\w+)",', (APP / "steps.js").read_text(), re.M))
+    fs = doc["formats"]
+    assert doc["totals"]["formats"] == 74 and len(fs) == 75
+    assert {f["step"] for f in fs} == steps
+    trip = json.loads(
+        (PDF.parents[2] / "reference-filings" / "uperc-npcl-fy2026-27" / "fill-roundtrip.json").read_text()
+    )
+    run = trip["runs"]["none_kept"]
+    assert sum(f["checked"] for f in fs) == run["targets"] == doc["totals"]["checked"]
+    assert sum(f["agree"] for f in fs) == run["reproduced"] == doc["totals"]["agree"]
+    assert all(f["purpose"] and 0 <= f["agree"] <= f["checked"] for f in fs)
+    allowed = {"code", "title", "step", "purpose", "status", "why", "entered", "computed", "checked", "agree"}
+    assert all(set(f) == allowed | {"sameSheetAs", "computes"} for f in fs)
