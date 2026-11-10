@@ -2,7 +2,8 @@ import { SAMPLE, compute } from "./calc.js";
 import { STEPS, esc } from "./steps.js";
 import { UPERC, UPERC_SOURCE } from "./uperc.js";
 import { METHOD } from "./method.js";
-import { FORMATS } from "./formats.js";
+import { buildFormats, KINDS } from "./formats-sample.js";
+import { workbook } from "./xlsx.js";
 
 const KEY = "arr101.v1";
 const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -57,53 +58,79 @@ function methodHtml(id) {
     : "";
 }
 
-function formatsHtml(id) {
-  const fs = FORMATS.formats.filter((f) => f.step === id);
-  const t = FORMATS.totals;
-  const sum = (k) => fs.reduce((a, f) => a + f[k], 0);
-  const overall =
-    id === "filing"
-      ? `<div class="stats">
-          <div><b>${t.formats}</b><span>formats in the petition</span></div>
-          <div><b>${n0(t.entered)}</b><span>figures typed in by the utility</span></div>
-          <div><b>${n0(t.computed)}</b><span>figures calculated from those by formula</span></div>
-          <div><b>${pct1(t.agree, t.checked)}%</b><span>of the calculated figures came out the same when we recalculated them (${n0(t.agree)} of ${n0(t.checked)})</span></div>
-        </div>`
-      : "";
+const SOURCE = {
+  answers: ["From your answers", "ok"],
+  illustrative: ["Partly illustrative", "warn"],
+  none: ["Not in this sample", "none"],
+};
+const openFormats = new Set();
+
+function cell(v, dp) {
+  if (dp === null || dp === undefined) return esc(v ?? "");
+  const n = Number(v);
+  if (!Number.isFinite(n)) return esc(v ?? "");
+  const t = Math.abs(n).toLocaleString("en-IN", { minimumFractionDigits: dp, maximumFractionDigits: dp });
+  return n < 0 && Number(t.replace(/,/g, "")) !== 0 ? `(${t})` : t;
+}
+
+function tableHtml(t) {
+  const th = t.head.map((h, i) => `<th class="${t.dp[i] != null ? "num" : ""}">${esc(h)}</th>`).join("");
+  const tr = (r) => r.map((v, i) => `<td class="${t.dp[i] != null ? "num" : ""}">${cell(v, t.dp[i])}</td>`).join("");
+  return `<div class="scroll"><table class="ftab"><thead><tr>${th}</tr></thead><tbody>${t.rows.map((r) => `<tr>${tr(r)}</tr>`).join("")}</tbody>${
+    t.foot ? `<tfoot><tr>${t.foot.map((v, i) => `<td class="${t.dp[i] != null ? "num" : ""}">${v === null ? "" : cell(v, i ? t.dp[i] : null)}</td>`).join("")}</tr></tfoot>` : ""
+  }</table></div>`;
+}
+
+function formatsHtml(id, r) {
+  const fs = buildFormats(state, r).filter((f) => f.step === id);
   if (!fs.length) return "";
-  const rows = fs
-    .map((f) => {
-      const measured = f.checked
-        ? `<div class="meter" title="${f.agree} of ${f.checked}"><i style="width:${(f.agree / f.checked) * 100}%"></i></div><small>${n0(f.agree)} of ${n0(f.checked)} match</small>`
-        : `<small>${esc(f.sameSheetAs ? "same sheet as above" : f.status === "checked" ? "nothing to calculate" : f.status)}</small>`;
-      return `<details class="fmt"><summary>
-          <span class="code">${esc(f.code)}</span>
-          <span class="what"><b>${esc(f.title)}</b><em>${esc(f.purpose)}</em></span>
-          <span class="n"><b>${n0(f.entered)}</b><small>typed in</small></span>
-          <span class="n"><b>${n0(f.computed)}</b><small>calculated</small></span>
-          <span class="m">${measured}</span>
-        </summary>
-        <div class="more">${
-          f.computes.length ? `<p>Calculated in this table:</p><ul>${f.computes.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>` : `<p>${esc(f.why || "Every figure in this table is typed in; none is calculated from the others.")}</p>`
-        }</div></details>`;
-    })
-    .join("");
-  return `<h3>In a real petition <span class="tag">${fs.length} of ${t.formats + t.workingSheets} tables</span></h3>
-    <p class="lead">A petition is filed as a spreadsheet of tables, called formats. These are the ${fs.length} tables for this step from a real one:
-      Noida Power Company Limited (NPCL), Uttar Pradesh, FY 2026-27. Click a table to see what it calculates.</p>
-    <dl class="key">
-      <dt>Typed in</dt><dd>figures the utility enters by hand</dd>
-      <dt>Calculated</dt><dd>figures that follow from those by formula: totals, rates, averages</dd>
-      <dt>Match</dt><dd>we cleared every calculated figure, recalculated it with our own rules, and counted how many came out the same as NPCL's</dd>
-    </dl>
-    ${overall}
-    <div class="stats small">
-      <div><b>${n0(sum("entered"))}</b><span>typed in</span></div>
-      <div><b>${n0(sum("computed"))}</b><span>calculated</span></div>
-      <div><b>${sum("checked") ? pct1(sum("agree"), sum("checked")) + "%" : "n/a"}</b><span>match when recalculated (${n0(sum("agree"))} of ${n0(sum("checked"))})</span></div>
-    </div>
-    <div class="fmts">${rows}</div>
-    <p class="sample">Source: NPCL's public petition. Only counts are shown, no NPCL figures. Our rules are drafts that nobody has approved, so a figure that does not match is a difference from our rule, not proof of an error in the petition.</p>`;
+  return `<p class="lead">A petition is filed as a set of tables called formats. These ${fs.length} are the ones this step produces, laid out as UPERC's and filled with the sample utility's numbers. They change as you change an answer.</p>
+    <div class="fmts">${fs
+      .map((f) => {
+        const [label, tone] = SOURCE[f.source];
+        return `<details class="fmt" data-code="${esc(f.code)}" ${openFormats.has(f.code) ? "open" : ""}><summary>
+            <span class="code">${esc(f.code)}</span>
+            <span class="what"><b>${esc(f.title)}</b><em>${esc(f.purpose)}</em></span>
+            <span class="src" data-tone="${tone}">${label}</span>
+          </summary>
+          <div class="more">${f.tables.map(tableHtml).join("")}${f.note ? `<p class="sample">${esc(f.note)}</p>` : ""}</div>
+        </details>`;
+      })
+      .join("")}</div>`;
+}
+
+function download() {
+  const r = compute(state);
+  const F = buildFormats(state, r);
+  const cover = [
+    [{ b: "ARR 101: the sample utility's formats" }],
+    [state.utility],
+    [`ARR year ${state.arrYear}. Money in Rs lakh, energy in MWh.`],
+    ["A learning example: the utility and its figures are invented. Formats marked illustrative use invented figures beyond the answers."],
+    [],
+    [{ b: "Format" }, { b: "Title" }, { b: "Source" }],
+    ...F.map((f) => [f.code, f.title, SOURCE[f.source][0]]),
+  ];
+  const sheets = [{ name: "Index", rows: cover }];
+  for (const f of F) {
+    const rows = [[{ b: `${f.code}: ${f.title}` }], [f.purpose], []];
+    for (const t of f.tables) {
+      rows.push(t.head.map((h) => ({ b: h })));
+      for (const x of t.rows) rows.push(x.map((v, i) => (t.dp[i] != null && Number.isFinite(Number(v)) ? Number(v) : v)));
+      if (t.foot) rows.push(t.foot.map((v, i) => (i === 0 ? { b: v } : v)));
+      rows.push([]);
+    }
+    if (f.note) rows.push([f.note]);
+    sheets.push({ name: f.code, rows });
+  }
+  const url = URL.createObjectURL(workbook(sheets));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "arr-101-sample-formats.xlsx";
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function renderNav() {
@@ -159,7 +186,9 @@ function renderStep() {
     ${hasQuestions ? `<h3>Questions to answer</h3>${sources}${grid}${qs}` : ""}
     ${checklist}
     <div id="workingWrap"><h3>The working</h3><div id="working"></div></div>
-    ${formatsHtml(s.id)}
+    <h3>Your formats <span class="tag">all ${KINDS} kinds</span></h3>
+    <div id="formats"></div>
+    <p><button type="button" id="xlsx">Download all ${KINDS} formats (.xlsx)</button></p>
     <h3>UPERC check <span class="tag">Uttar Pradesh</span></h3>
     <p class="sample">What the ${UPERC_SOURCE.title} say for this step, with the regulation and page. ${UPERC_SOURCE.status}</p>
     <div id="uperc"></div>
@@ -177,6 +206,9 @@ function renderWorking() {
   const html = STEPS[current].working(r, state);
   $("workingWrap").hidden = !html;
   $("working").innerHTML = html;
+  // keep open tables open across the redraw: read the state from the page itself
+  for (const d of document.querySelectorAll("#formats .fmt")) d.open ? openFormats.add(d.dataset.code) : openFormats.delete(d.dataset.code);
+  $("formats").innerHTML = formatsHtml(STEPS[current].id, r);
   $("uperc").innerHTML = (UPERC[STEPS[current].id] || [])
     .map((c) => {
       const res = c.check ? c.check(state, r) : null;
@@ -218,6 +250,14 @@ document.addEventListener("input", (e) => {
     renderWorking();
   }
 });
+document.addEventListener(
+  "toggle",
+  (e) => {
+    const d = e.target;
+    if (d.classList?.contains("fmt")) d.open ? openFormats.add(d.dataset.code) : openFormats.delete(d.dataset.code);
+  },
+  true,
+);
 document.addEventListener("click", (e) => {
   const a = e.target.closest("[data-step]");
   if (a) {
@@ -227,6 +267,7 @@ document.addEventListener("click", (e) => {
   if (e.target.id === "next") return go(current + 1);
   if (e.target.id === "prev") return go(current - 1);
   if (e.target.id === "print") return window.print();
+  if (e.target.id === "xlsx") return download();
   if (e.target.id === "reset") {
     state = clone(SAMPLE);
     done = {};
