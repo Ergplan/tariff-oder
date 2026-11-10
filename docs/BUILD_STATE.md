@@ -1,6 +1,6 @@
 # BUILD_STATE
 
-Last updated: 2026-11-01 (increment 42: a third real order (HPERC), short-form years, Amount columns, the unit veto; increment 41: a reading preview at the chapter checkpoint; increment 40: the identity checks run over both real orders; increment 39: a second real order (BERC, combined), the mapping workbench; increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
+Last updated: 2026-11-10 (increment 155: ARR 101, a public walkthrough with the sample utility's 64 formats, on Vercel; increments 43–154 are recorded under "Current milestone and status"; increment 42: a third real order (HPERC), short-form years, Amount columns, the unit veto; increment 41: a reading preview at the chapter checkpoint; increment 40: the identity checks run over both real orders; increment 39: a second real order (BERC, combined), the mapping workbench; increment 38: the value reader measured and fixed on the real order's tables; increment 37: the first real ARR order through the reader — chapter proposal fixed against it; increment 36: case activity and the history workbook; increment 35: combined orders read per licensee; increment 34: benchmarks across licensees; increment 33: discovery profiles for five commissions, each run live; increment 32: UPERC's year-by-year listing; increment 31: true-up and APR cases, ADR-0020). Branch `claude/keen-tesla-r9mvv5`.
 Increments so far: (1) Milestone 0 + Milestone 1; (2) dev-project wiring and bucket ingest;
 (3) first verification against the real project; (4) Milestone 2a — page triage; (5) Milestone
 2b — OCR, second reader, table grids with agreement classes, heading inventory; (6) first
@@ -1004,6 +1004,63 @@ open-access view.
   Checked by screenshots at 1440 px and 390 px of the home, the new-petition flow, an annual ARR
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
+
+  **Increment 155 (2026-11-10): ARR 101 — a public walkthrough of an ARR filing on Vercel, with the sample utility's own formats.**
+  - **Directions (operator):** a Vercel frontend "like ARR 101" that walks through the key filing
+    steps for a small utility with 150 consumers of all types, using simple questions and sample answers.
+    It must have "uperc regulations check for every step" and an Anduril-style day-mode UI, and should feel
+    "scientific rather than theoretical".  Then the correction: "we did not want NPCL formats, we wanted
+    sample ARR to output these formats with sample numbers".
+  - **What it is:** `apps/arr-101/`, a static site with no build step.  It is separate from the
+    studio and has no backend, no database and no tariff-engine call.  Its ten steps are filing,
+    sales, energy balance, power purchase, O&M, capital, working capital, revenue, ARR and
+    checks.  Each step shows:
+    - questions, with sample answers the reader can change;
+    - the method as explicit relations (`method.js`);
+    - the live working (`calc.js`);
+    - the formats the step produces;
+    - UPERC checks, 43 in all (`uperc.js`).  Each check quotes the UPERC MYT Distribution
+      Regulations 2025 with its page.  `tests/unit/test_arr101_uperc.py` checks every quote
+      against the text of its page in the regulation PDF.
+  - **The sample formats (`formats-sample.js`):** the sample utility fills **64 kinds of format**
+    (BS1–BS3, the energy balance, P1–P11, ESR1–ESR7, F1–F33, PPC, the ARR summary).  The format
+    codes follow UPERC's filing set; no NPCL figure is used.
+    - **Source badges:** "From your answers" means the format comes from the reader's answers.
+      "Partly illustrative" means it also uses small invented constants (`EXTRA`: past years,
+      monthly shape, staff, arrears, network and others), stated in the format's note.  "Not in
+      this sample" means the format needs a past order, a true-up or open-access consumers the
+      sample utility does not have.
+    - **Updates:** the formats update live as answers change.
+    - **Download:** `xlsx.js` is a small XLSX writer with no dependency.  It builds one workbook:
+      an index sheet plus 64 format sheets.
+    - **These are invented sample figures for teaching. No figure is a real tariff value.**
+  - **Removed:** the NPCL format counts and their script (`formats.js`,
+    `scripts/arr101_formats.py`) were built on a misreading of the direction.  They are gone.
+  - **Deployed:** Vercel project `arr-101`, production, from this branch, at https://arr-101.vercel.app.
+    This is not Google Cloud and not the studio.
+  - **A broken intermediate deploy:** commit b9cdb1e held only the deletions.  `git add` stopped
+    on a path already removed, so the new files were not in it.  It was pushed and deployed, so
+    the live page was probably broken until d582ba4 (all files) was redeployed.  Verified after
+    the redeploy, through the agent proxy:
+    - 64 formats across the ten steps;
+    - the ARR shows 110.19;
+    - the workbook downloads (`arr-101-sample-formats.xlsx`, 65 sheets, read back with openpyxl);
+    - no page errors.
+  - **Tests:** `node --test apps/arr-101/calc.test.mjs apps/arr-101/formats.test.mjs` passes 7 of 7:
+    - the sample's worked figures;
+    - exactly 64 formats, every cell finite;
+    - each format agrees with the working (ARR, revenue, consumers, power purchase, depreciation,
+      interest, RoE, IoWC);
+    - cross-consistency: BS2 balances, BS3 net change equals BS1 profit, HT + LT loss equals the
+      total, the F32 total equals the ARR.
+
+    pytest on `test_arr101_uperc.py` passes 2 of 2.  The browser was checked at 1440 px and 390 px:
+    no horizontal scroll, and an open format stays open while inputs change.
+  - **Not done / limits:**
+    - The illustrative constants are not checked against any real utility.
+    - The tariff proposal is a uniform factor across categories, not a cross-subsidy design.
+    - Each UPERC check tests the sample against one clause.  It is not a compliance review.
+    - No reviewer has looked at the site.
 
   **Increment 154 (2026-11-07): every fill-map column labelled, and the kept cells corrected.**
   - **Direction (operator, 2026-11-07):** "label the remaining sheets' columns next".
@@ -3936,6 +3993,7 @@ level), N11 (green-tariff exclusions) handled+tested; S2 (summary vs schedule) �
 Run in this session against PostgreSQL 16.15 on :5433 (`uv run pytest -q`), tesseract 5
 installed:
 
+- **Increment 155 (2026-11-10):** ARR 101 only. `node --test` passes 7 of 7 (calc, plus 64 formats: count, agreement, cross-consistency), and `tests/unit/test_arr101_uperc.py` passes 2 of 2 (43 quotes found on their pages).  The live site was checked in the browser: 64 formats, the workbook (65 sheets) downloads, no page errors.  The full Python suite was not rerun.  This increment changed no package source; it only deleted a script and changed the ARR 101 test file.
 - **Increment 154 (2026-11-07): 547 passed** (+6 unit: every map cell labelled; hand-label quotes checked against the workbook; an order word in every order-quoted column's own header; the kept counts and named cells; a row range over its column; unprinted voices not kept.  The integration test checks the new counts).  Ruff and format clean; contracts regenerated; web `tsc --noEmit` clean.
 - **Increment 153 (2026-11-05): 541 passed** (+15 unit: `render` in twelve printed styles; NPCL's nine tables refilled from the filing — 20 cells changed, the merged A56 cell left, 252 / 253 read back; a changed figure reaching all three tables; a missing document or table refused.  The integration test now also checks the kept cells, the narrative summary and its ZIP).  Ruff and format clean; contracts regenerated; web `tsc --noEmit` clean.
 - **Increment 152 (2026-11-05):** web only — `tsc --noEmit` clean; checked in the browser against the running stack (template, upload, fill through the worker, results) at 1440 px and 390 px.  Python suite unchanged at 526.
