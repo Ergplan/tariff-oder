@@ -66,3 +66,11 @@ def test_formats_evidence_matches_the_round_trip_experiment():
     assert all(f["purpose"] and 0 <= f["agree"] <= f["checked"] for f in fs)
     allowed = {"code", "title", "step", "purpose", "status", "why", "entered", "computed", "checked", "agree"}
     assert all(set(f) == allowed | {"sameSheetAs", "computes"} for f in fs)
+
+
+def test_formats_calculated_is_what_the_experiment_recalculated():
+    import json
+
+    src = (APP / "formats.js").read_text()
+    fs = json.loads(src[src.index("{") : src.rindex("}") + 1])["formats"]
+    assert all(f["computed"] == f["checked"] for f in fs)

@@ -6,9 +6,9 @@
 Source: NPCL's filed FY2026-27 formats workbook (packages/reference-filings/uperc-npcl-fy2026-27), a public
 filing.  For each format the script MEASURES, from this repository's own records:
 
-- entered: numeric cells the petitioner types (cells no rule computes, plus the cells the inputs template keeps
-  as filed — the Commission's figures, tariff rates, the petitioner's own methods);
-- computed: cells the draft rules work out from the rest (the fill map, less the kept cells);
+- entered: numeric cells no rule computes — the petitioner types them;
+- computed: cells a draft rule works out from the others (the fill map), every one of them recomputed in the
+  experiment below;
 - checked / agree: the round-trip experiment (fill-roundtrip.json): every cell a rule computes is blanked,
   recomputed and compared with the filed figure at its printed precision.  A difference is a difference
   from DRAFT rules: it does not say the filing is
@@ -132,18 +132,15 @@ def main() -> int:
     rules = {r.output: r.title for r in load_rules("UPERC")}
     rep = json.loads((p["folder"] / "reproduction.json").read_text())
     inputs, _ = pt._inputs_of_filing(PACKAGE)
-    kept = p["kept"]
 
     def sheet_of(cell: str) -> str:
         return cell.rpartition("!")[0]
 
     n_inputs = collections.Counter(sheet_of(c) for c in inputs)
     n_map = collections.Counter(sheet_of(c) for c in p["map"])
-    n_kept = collections.Counter(sheet_of(c) for c in kept)
     outputs: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
     for cell, v in p["map"].items():
-        if cell not in kept:
-            outputs[sheet_of(cell)][v["output"]] += 1
+        outputs[sheet_of(cell)][v["output"]] += 1
     # the round-trip experiment (fill-roundtrip.json, run "none_kept"): every fill-map cell blanked,
     # recomputed by the rules and compared with the filed figure at its printed precision
     trip = json.loads((p["folder"] / "fill-roundtrip.json").read_text())["runs"]["none_kept"]
@@ -178,8 +175,8 @@ def main() -> int:
                 "purpose": text,
                 "status": STATUS[a["status"]],
                 "why": a.get("why"),
-                "entered": (n_inputs.get(s, 0) + n_kept.get(s, 0)) if s else 0,
-                "computed": (n_map.get(s, 0) - n_kept.get(s, 0)) if s else 0,
+                "entered": n_inputs.get(s, 0) if s else 0,
+                "computed": n_map.get(s, 0) if s else 0,
                 "checked": checked,
                 "agree": agree,
                 "sameSheetAs": None if first or not sheet else sheet.strip(),

@@ -113,6 +113,11 @@ table.grid th:not(:first-child) { text-align: right; }
 .fmt .more { padding: 0 0 14px 164px; color: var(--muted); font-size: 0.88rem; }
 .fmt .more ul { margin: 4px 0 0; padding-left: 18px; }
 
+.lead { font-size: 1rem; max-width: 62ch; margin-top: 4px; }
+.key { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 6px 16px; margin: 14px 0 0; padding: 12px 0; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); font-size: 0.9rem; }
+.key dt { font: 700 0.68rem var(--mono); letter-spacing: 0.1em; text-transform: uppercase; padding-top: 3px; }
+.key dd { margin: 0; color: var(--muted); }
+
 /* UPERC checks */
 .reg { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--hair); }
 .reg .cite { font: 700 0.8rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }

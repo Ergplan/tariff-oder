@@ -65,38 +65,45 @@ function formatsHtml(id) {
     id === "filing"
       ? `<div class="stats">
           <div><b>${t.formats}</b><span>formats in the petition</span></div>
-          <div><b>${n0(t.entered)}</b><span>figures entered by hand</span></div>
-          <div><b>${n0(t.computed)}</b><span>figures worked out from them</span></div>
-          <div><b>${pct1(t.agree, t.checked)}%</b><span>reproduced: ${n0(t.agree)} of ${n0(t.checked)} recomputed figures equal the filed ones</span></div>
+          <div><b>${n0(t.entered)}</b><span>figures typed in by the utility</span></div>
+          <div><b>${n0(t.computed)}</b><span>figures calculated from those by formula</span></div>
+          <div><b>${pct1(t.agree, t.checked)}%</b><span>of the calculated figures came out the same when we recalculated them (${n0(t.agree)} of ${n0(t.checked)})</span></div>
         </div>`
       : "";
   if (!fs.length) return "";
   const rows = fs
     .map((f) => {
       const measured = f.checked
-        ? `<div class="meter" title="${f.agree} of ${f.checked}"><i style="width:${(f.agree / f.checked) * 100}%"></i></div><small>${n0(f.agree)} / ${n0(f.checked)} reproduced</small>`
-        : `<small>${esc(f.sameSheetAs ? "same sheet as above" : f.status === "checked" ? "nothing to recompute" : f.status)}</small>`;
+        ? `<div class="meter" title="${f.agree} of ${f.checked}"><i style="width:${(f.agree / f.checked) * 100}%"></i></div><small>${n0(f.agree)} of ${n0(f.checked)} match</small>`
+        : `<small>${esc(f.sameSheetAs ? "same sheet as above" : f.status === "checked" ? "nothing to calculate" : f.status)}</small>`;
       return `<details class="fmt"><summary>
           <span class="code">${esc(f.code)}</span>
           <span class="what"><b>${esc(f.title)}</b><em>${esc(f.purpose)}</em></span>
-          <span class="n"><b>${n0(f.entered)}</b><small>entered</small></span>
-          <span class="n"><b>${n0(f.computed)}</b><small>worked out</small></span>
+          <span class="n"><b>${n0(f.entered)}</b><small>typed in</small></span>
+          <span class="n"><b>${n0(f.computed)}</b><small>calculated</small></span>
           <span class="m">${measured}</span>
         </summary>
         <div class="more">${
-          f.computes.length ? `<p>Worked out in this format:</p><ul>${f.computes.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>` : `<p>${esc(f.why || "Every figure in this format is entered; no rule computes any of them.")}</p>`
+          f.computes.length ? `<p>Calculated in this table:</p><ul>${f.computes.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>` : `<p>${esc(f.why || "Every figure in this table is typed in; none is calculated from the others.")}</p>`
         }</div></details>`;
     })
     .join("");
-  return `<h3>Evidence: the formats <span class="tag">${fs.length} of ${t.formats + t.workingSheets}</span></h3>
-    <p class="sample">${esc(FORMATS.source)} ${esc(FORMATS.method)} ${esc(FORMATS.caveat)}</p>
+  return `<h3>In a real petition <span class="tag">${fs.length} of ${t.formats + t.workingSheets} tables</span></h3>
+    <p class="lead">A petition is filed as a spreadsheet of tables, called formats. These are the ${fs.length} tables for this step from a real one:
+      Noida Power Company Limited (NPCL), Uttar Pradesh, FY 2026-27. Click a table to see what it calculates.</p>
+    <dl class="key">
+      <dt>Typed in</dt><dd>figures the utility enters by hand</dd>
+      <dt>Calculated</dt><dd>figures that follow from those by formula: totals, rates, averages</dd>
+      <dt>Match</dt><dd>we cleared every calculated figure, recalculated it with our own rules, and counted how many came out the same as NPCL's</dd>
+    </dl>
     ${overall}
     <div class="stats small">
-      <div><b>${n0(sum("entered"))}</b><span>entered in this step's formats</span></div>
-      <div><b>${n0(sum("computed"))}</b><span>worked out</span></div>
-      <div><b>${sum("checked") ? pct1(sum("agree"), sum("checked")) + "%" : "n/a"}</b><span>reproduced (${n0(sum("agree"))} of ${n0(sum("checked"))})</span></div>
+      <div><b>${n0(sum("entered"))}</b><span>typed in</span></div>
+      <div><b>${n0(sum("computed"))}</b><span>calculated</span></div>
+      <div><b>${sum("checked") ? pct1(sum("agree"), sum("checked")) + "%" : "n/a"}</b><span>match when recalculated (${n0(sum("agree"))} of ${n0(sum("checked"))})</span></div>
     </div>
-    <div class="fmts">${rows}</div>`;
+    <div class="fmts">${rows}</div>
+    <p class="sample">Source: NPCL's public petition. Only counts are shown, no NPCL figures. Our rules are drafts that nobody has approved, so a figure that does not match is a difference from our rule, not proof of an error in the petition.</p>`;
 }
 
 function renderNav() {

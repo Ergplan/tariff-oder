@@ -6,8 +6,8 @@ export const FORMATS = {
  "totals": {
   "formats": 74,
   "workingSheets": 1,
-  "entered": 19001,
-  "computed": 3775,
+  "entered": 18284,
+  "computed": 4492,
   "checked": 4492,
   "agree": 4427
  },
@@ -52,8 +52,8 @@ export const FORMATS = {
    "purpose": "The audited cash flow statement, three years.",
    "status": "checked",
    "why": null,
-   "entered": 71,
-   "computed": 23,
+   "entered": 70,
+   "computed": 24,
    "checked": 24,
    "agree": 23,
    "sameSheetAs": null,
@@ -68,8 +68,8 @@ export const FORMATS = {
    "purpose": "Sales, losses and energy purchased for every year in the petition, on one page.",
    "status": "checked",
    "why": null,
-   "entered": 101,
-   "computed": 30,
+   "entered": 76,
+   "computed": 55,
    "checked": 55,
    "agree": 55,
    "sameSheetAs": null,
@@ -87,8 +87,8 @@ export const FORMATS = {
    "purpose": "The summary of the whole petition: every cost head, revenue and the gap, for each year and voice.",
    "status": "checked",
    "why": null,
-   "entered": 340,
-   "computed": 136,
+   "entered": 271,
+   "computed": 205,
    "checked": 205,
    "agree": 180,
    "sameSheetAs": null,
@@ -185,15 +185,16 @@ export const FORMATS = {
    "purpose": "Revenue at the current tariff, category by category and slab by slab, for one year.",
    "status": "checked",
    "why": null,
-   "entered": 1194,
-   "computed": 80,
+   "entered": 1082,
+   "computed": 192,
    "checked": 192,
    "agree": 192,
    "sameSheetAs": null,
    "computes": [
     "Revenue of a category as billed, in the seven-column layout (FY2023-24 ESR-3)",
-    "Units sold",
-    "Revenue as billed, total (seven-column layout)"
+    "Energy charge the category's revenue implies",
+    "Fixed charge per unit the category's revenue implies",
+    "Units sold"
    ]
   },
   {
@@ -203,15 +204,16 @@ export const FORMATS = {
    "purpose": "Revenue at the current tariff, category by category and slab by slab, for one year.",
    "status": "checked",
    "why": null,
-   "entered": 860,
-   "computed": 97,
+   "entered": 727,
+   "computed": 230,
    "checked": 230,
    "agree": 229,
    "sameSheetAs": null,
    "computes": [
     "Revenue of a category at the current tariff (excluding duty and cess)",
-    "Units sold",
-    "Revenue from the current tariff"
+    "Energy charge the category's revenue implies",
+    "Fixed charge per unit the category's revenue implies",
+    "Units sold"
    ]
   },
   {
@@ -240,16 +242,16 @@ export const FORMATS = {
    "purpose": "Revenue at the current tariff, category by category and slab by slab, for one year.",
    "status": "checked",
    "why": null,
-   "entered": 1174,
-   "computed": 106,
+   "entered": 1044,
+   "computed": 236,
    "checked": 236,
    "agree": 236,
    "sameSheetAs": null,
    "computes": [
     "Revenue of a category at the current tariff (excluding duty and cess)",
-    "Units sold",
-    "Regulatory discount, total",
-    "Revenue from the current tariff"
+    "Energy charge the category's revenue implies",
+    "Fixed charge per unit the category's revenue implies",
+    "Units sold"
    ]
   },
   {
@@ -259,16 +261,16 @@ export const FORMATS = {
    "purpose": "Revenue the proposed tariff would bring, category by category.",
    "status": "checked",
    "why": null,
-   "entered": 1227,
-   "computed": 106,
+   "entered": 1097,
+   "computed": 236,
    "checked": 236,
    "agree": 236,
    "sameSheetAs": null,
    "computes": [
     "Revenue of a category at the current tariff (excluding duty and cess)",
-    "Units sold",
-    "Regulatory discount, total",
-    "Revenue from the current tariff"
+    "Energy charge the category's revenue implies",
+    "Fixed charge per unit the category's revenue implies",
+    "Units sold"
    ]
   },
   {
@@ -292,15 +294,16 @@ export const FORMATS = {
    "purpose": "Consumers, connected load, sales and revenue by category: the billing determinants.",
    "status": "checked",
    "why": null,
-   "entered": 338,
-   "computed": 48,
+   "entered": 278,
+   "computed": 108,
    "checked": 108,
    "agree": 96,
    "sameSheetAs": null,
    "computes": [
     "A format's lines summed (number)",
     "A format's lines summed (MU)",
-    "A format's lines summed (Rs crore)"
+    "A format's lines summed (Rs crore)",
+    "Change on the previous year, as a fraction"
    ]
   },
   {
@@ -743,15 +746,15 @@ export const FORMATS = {
    "purpose": "Consumer price inflation: the index that escalates employee cost.",
    "status": "checked",
    "why": null,
-   "entered": 87,
-   "computed": 5,
+   "entered": 77,
+   "computed": 15,
    "checked": 15,
    "agree": 15,
    "sameSheetAs": null,
    "computes": [
-    "Escalation factor: the average increase of the three preceding years",
     "Price index, average of the year's twelve months",
-    "Price index, increase over the previous year"
+    "Price index, increase over the previous year",
+    "Escalation factor: the average increase of the three preceding years"
    ]
   },
   {
@@ -761,15 +764,15 @@ export const FORMATS = {
    "purpose": "Wholesale price inflation: the index that escalates A&G expenses.",
    "status": "checked",
    "why": null,
-   "entered": 88,
-   "computed": 5,
+   "entered": 78,
+   "computed": 15,
    "checked": 15,
    "agree": 15,
    "sameSheetAs": null,
    "computes": [
-    "Escalation factor: the average increase of the three preceding years",
     "Price index, average of the year's twelve months",
-    "Price index, increase over the previous year"
+    "Price index, increase over the previous year",
+    "Escalation factor: the average increase of the three preceding years"
    ]
   },
   {
@@ -815,8 +818,8 @@ export const FORMATS = {
    "purpose": "Employee expenses component by component: salaries, allowances, terminal benefits.",
    "status": "checked",
    "why": null,
-   "entered": 105,
-   "computed": 20,
+   "entered": 101,
+   "computed": 24,
    "checked": 24,
    "agree": 24,
    "sameSheetAs": null,
@@ -913,16 +916,16 @@ export const FORMATS = {
    "purpose": "Interest on the normative loan: opening, addition, repayment, average, rate, interest.",
    "status": "checked",
    "why": null,
-   "entered": 58,
-   "computed": 22,
+   "entered": 54,
+   "computed": 26,
    "checked": 26,
    "agree": 22,
    "sameSheetAs": null,
    "computes": [
-    "Normative loan retired with the assets",
     "Normative loan added with the capitalisation",
     "Normative loan, closing balance",
-    "Normative loan, average of the year"
+    "Normative loan, average of the year",
+    "Interest on the normative long-term loan"
    ]
   },
   {
@@ -932,16 +935,16 @@ export const FORMATS = {
    "purpose": "Return on equity: opening, addition, average equity and the return.",
    "status": "checked",
    "why": null,
-   "entered": 34,
-   "computed": 22,
+   "entered": 31,
+   "computed": 25,
    "checked": 25,
    "agree": 22,
    "sameSheetAs": null,
    "computes": [
-    "Normative equity, average of the year",
-    "Return on equity",
     "Normative equity added with the capitalisation",
-    "Normative equity, closing balance"
+    "Normative equity, closing balance",
+    "Normative equity, average of the year",
+    "Return on equity"
    ]
   },
   {
@@ -951,8 +954,8 @@ export const FORMATS = {
    "purpose": "Working capital requirement and the interest on it.",
    "status": "checked",
    "why": null,
-   "entered": 152,
-   "computed": 27,
+   "entered": 135,
+   "computed": 44,
    "checked": 44,
    "agree": 37,
    "sameSheetAs": null,
@@ -970,8 +973,8 @@ export const FORMATS = {
    "purpose": "Non-tariff income, item by item.",
    "status": "checked",
    "why": null,
-   "entered": 56,
-   "computed": 8,
+   "entered": 54,
+   "computed": 10,
    "checked": 10,
    "agree": 10,
    "sameSheetAs": null,
@@ -1006,14 +1009,15 @@ export const FORMATS = {
    "purpose": "Consumer security deposits month by month for the true-up year.",
    "status": "checked",
    "why": null,
-   "entered": 68,
-   "computed": 23,
+   "entered": 66,
+   "computed": 25,
    "checked": 25,
    "agree": 23,
    "sameSheetAs": null,
    "computes": [
+    "Interest on security deposit for the month",
     "Security deposit at the end of the month",
-    "Interest on security deposit for the month"
+    "Interest on security deposit, the sum of the months"
    ]
   },
   {
@@ -1087,8 +1091,8 @@ export const FORMATS = {
    "purpose": "Distribution loss claimed against approved, year by year.",
    "status": "checked",
    "why": null,
-   "entered": 29,
-   "computed": 1,
+   "entered": 26,
+   "computed": 4,
    "checked": 4,
    "agree": 1,
    "sameSheetAs": null,
@@ -1155,8 +1159,8 @@ export const FORMATS = {
    "purpose": "The network in numbers: line lengths, substations, transformers, added and withdrawn.",
    "status": "checked",
    "why": null,
-   "entered": 151,
-   "computed": 77,
+   "entered": 150,
+   "computed": 78,
    "checked": 78,
    "agree": 72,
    "sameSheetAs": null,
@@ -1220,8 +1224,8 @@ export const FORMATS = {
    "purpose": "Electrical accidents, fatal and non-fatal.",
    "status": "checked",
    "why": null,
-   "entered": 7,
-   "computed": 4,
+   "entered": 6,
+   "computed": 5,
    "checked": 5,
    "agree": 4,
    "sameSheetAs": null,
