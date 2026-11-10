@@ -1,5 +1,6 @@
 import { SAMPLE, compute } from "./calc.js";
 import { STEPS, esc } from "./steps.js";
+import { UPERC, UPERC_SOURCE } from "./uperc.js";
 
 const KEY = "arr101.v1";
 const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -96,6 +97,9 @@ function renderStep() {
     ${hasQuestions ? `<h3>Questions to answer</h3>${sources}${grid}${qs}` : ""}
     ${checklist}
     <div id="workingWrap"><h3>The working</h3><div id="working"></div></div>
+    <h3>UPERC check <span class="tag">Uttar Pradesh</span></h3>
+    <p class="sample">What the ${UPERC_SOURCE.title} say for this step, with the regulation and page. ${UPERC_SOURCE.status}</p>
+    <div id="uperc"></div>
     <h3>Watch out</h3>
     <ul class="watch">${s.watch.map((w) => `<li>${w}</li>`).join("")}</ul>
     <div class="pager">
@@ -110,6 +114,16 @@ function renderWorking() {
   const html = STEPS[current].working(r, state);
   $("workingWrap").hidden = !html;
   $("working").innerHTML = html;
+  $("uperc").innerHTML = (UPERC[STEPS[current].id] || [])
+    .map((c) => {
+      const res = c.check ? c.check(state, r) : null;
+      const tone = res ? (res.ok === true ? "ok" : res.ok === false ? "bad" : "note") : "";
+      const label = { ok: "Matches", bad: "Differs", note: "Note" }[tone];
+      return `<div class="reg"><div class="cite">Reg. ${c.reg}<small>page ${c.page}</small></div><div><p>${esc(c.says)}</p><blockquote>“${esc(c.quote)}”</blockquote>${
+        res ? `<p class="verdict" data-tone="${tone}"><b>${label}:</b> ${esc(res.text)}</p>` : ""
+      }</div></div>`;
+    })
+    .join("");
   $("sumArr").textContent = r.arr.toLocaleString("en-IN", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
   $("sumRev").textContent = r.revenue.toLocaleString("en-IN", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
   $("sumGap").textContent = r.totalGap.toLocaleString("en-IN", { maximumFractionDigits: 2, minimumFractionDigits: 2 });

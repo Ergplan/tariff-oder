@@ -71,6 +71,15 @@ table.grid td input { min-width: 84px; }
 .calc div span { color: var(--muted); font-size: 0.85rem; }
 .calc strong { font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 1.05rem; }
 .calc small, aside small { font-weight: 400; color: var(--muted); font-size: 0.75rem; }
+.tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 999px; background: var(--soft); color: var(--accent); vertical-align: middle; margin-left: 6px; }
+.reg { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.reg .cite { font-weight: 700; font-variant-numeric: tabular-nums; }
+.reg .cite small { display: block; font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+.reg p { margin: 0; }
+.reg blockquote { margin: 6px 0 0; padding-left: 10px; border-left: 3px solid var(--line); color: var(--muted); font-size: 0.86rem; }
+.verdict { margin-top: 8px !important; padding: 7px 10px; border-radius: 6px; font-size: 0.9rem; background: var(--soft); }
+.verdict[data-tone="ok"] { background: var(--soft); color: var(--accent); }
+.verdict[data-tone="bad"] { background: var(--warn-bg); color: var(--warn); }
 .warn { background: var(--warn-bg); color: var(--warn); padding: 8px 12px; border-radius: 8px; margin: 6px 0; }
 .watch { margin: 0; padding-left: 20px; }
 .watch li { margin: 6px 0; }
@@ -98,6 +107,8 @@ footer { max-width: 1192px; margin: 0 auto; padding: 0 24px 32px; color: var(--m
   .q { grid-template-columns: minmax(0, 1fr); }
   .q .a { max-width: 220px; }
   .calc { flex-direction: column; gap: 2px; }
+  .reg { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .reg .cite small { display: inline; margin-left: 8px; }
 }
 @media print {
   nav, .pager, #reset, .bar { display: none; }
