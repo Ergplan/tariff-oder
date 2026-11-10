@@ -48,7 +48,7 @@ function input(path, { kind, step, label } = {}) {
 function renderNav() {
   $("nav").innerHTML = STEPS.map(
     (s, i) =>
-      `<li><a href="#${s.id}" data-step="${i}" ${i === current ? 'aria-current="step"' : ""}><span class="n">${i + 1}</span><span>${s.title}</span></a></li>`,
+      `<li><a href="#${s.id}" data-step="${i}" ${i === current ? 'aria-current="step"' : ""}><span class="n">${String(i + 1).padStart(2, "0")}</span><span>${s.title}</span></a></li>`,
   ).join("");
   $("progress").style.width = `${((current + 1) / STEPS.length) * 100}%`;
 }
@@ -90,7 +90,7 @@ function renderStep() {
     : "";
   const hasQuestions = qs || grid || sources;
   $("step").innerHTML = `
-    <p class="eyebrow">Step ${current + 1} of ${STEPS.length}</p>
+    <p class="eyebrow">Step ${String(current + 1).padStart(2, "0")} / ${STEPS.length}</p>
     <h2>${s.title}</h2>
     <p class="plain">${s.plain}</p>
     ${points}
@@ -103,8 +103,8 @@ function renderStep() {
     <h3>Watch out</h3>
     <ul class="watch">${s.watch.map((w) => `<li>${w}</li>`).join("")}</ul>
     <div class="pager">
-      <button type="button" id="prev" ${current === 0 ? "disabled" : ""}>← Back</button>
-      ${current === STEPS.length - 1 ? `<button type="button" id="print" class="primary">Print this guide's result</button>` : `<button type="button" id="next" class="primary">Next: ${STEPS[current + 1].title} →</button>`}
+      <button type="button" id="prev" ${current === 0 ? "disabled" : ""}>Back</button>
+      ${current === STEPS.length - 1 ? `<button type="button" id="print" class="primary">Print this guide's result</button>` : `<button type="button" id="next" class="primary">Next — ${STEPS[current + 1].title}</button>`}
     </div>`;
   renderWorking();
 }
