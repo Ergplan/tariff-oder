@@ -22,7 +22,14 @@ export async function GET(req: Request) {
   const g = await ingestGuard(req, false);
   if (g instanceof Response) return g;
   try {
-    return Response.json({ sessions: await sessions(g.sql) });
+    // the function-to-database round trip: five sequential trivial queries
+    const times: number[] = [];
+    for (let i = 0; i < 5; i++) {
+      const t0 = performance.now();
+      await g.sql`SELECT 1`;
+      times.push(Math.round(performance.now() - t0));
+    }
+    return Response.json({ round_trip_ms: times, region: process.env.VERCEL_REGION ?? null, sessions: await sessions(g.sql) });
   } catch (e) {
     return dbError(e);
   }

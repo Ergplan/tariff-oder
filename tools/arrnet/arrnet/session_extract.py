@@ -8,7 +8,7 @@ fed back through the unchanged Extractor (``_take``: unknown codes, utilities, p
 paragraphs dropped; numbers parsed from ``value_printed``), and the unchanged Verifier checks
 every quote against the page's text layer before anything is stored.
 
-    python -I -m arrnet.session_extract prepare DIR [--only UPERC] [--manifest F ...]
+    python -I -m arrnet.session_extract prepare DIR [--only UPERC] [--manifest F ...] [--more N]
     python -I -m arrnet.session_extract check DIR KEY [KEY ...]     # a reply, before it is used
     python -I -m arrnet.session_extract status DIR
     python -I -m arrnet.run read --reader llm --replies DIR [--only UPERC] ...
@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -70,19 +71,60 @@ class FileClient:
         return SimpleNamespace(content=[SimpleNamespace(type="text", text=text)], stop_reason="end_turn", usage=usage)
 
 
+is_contents = lx.is_contents
+DIRECTIVE = re.compile(r"\b(directs?|directed|directive|direction)\b", re.I)
+
+
+def score(text: str) -> float:
+    """How much a page is worth reading: key-parameter terms, directives and printed figures."""
+    figures = len(re.findall(r"\d[\d,]*\.\d+", text))
+    return 2 * len(lx.KEY_PAGES.findall(text)) + 3 * len(DIRECTIVE.findall(text)) + min(figures, 60) / 10
+
+
+def choose_more(order: dict[str, Any], pages: list[dict[str, Any]], n: int, taken: set[int]) -> list[int]:
+    """Round 2: the best-scoring pages not yet taken, never a contents page."""
+    cands = [
+        (score(p["text"]), p["page"])
+        for p in pages
+        if p["has_text_layer"] and p["page"] not in taken and not is_contents(p["text"]) and score(p["text"]) >= 4
+    ]
+    return sorted(pg for _, pg in sorted(cands, reverse=True)[:n])
+
+
+def _index(d: Path) -> list[dict[str, Any]]:
+    p = Path(d) / "index.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else []
+
+
 def extractor(d: str | Path) -> lx.Extractor:
-    return lx.Extractor(FileClient(d), is_real=True, provider=PROVIDER, model=MODEL, priced=False)
+    """The Extractor answered from ``d``: it reads exactly the pages that were packeted (every
+    round), so a reply is never asked for a page nobody was given."""
+    index = _index(Path(d))
+
+    def choose(order: dict[str, Any], pages: list[dict[str, Any]], cap: int) -> list[int]:
+        mine = sorted({x["page"] for x in index if x["order_url"] == order["url"]})
+        return mine if index else lx._choose_pages(order, pages, cap)
+
+    return lx.Extractor(FileClient(d), is_real=True, provider=PROVIDER, model=MODEL, priced=False, choose=choose)
 
 
-def packets(order: dict[str, Any], ex: lx.Extractor) -> list[dict[str, Any]]:
-    """The requests the Extractor would send for this order, one per target page."""
+def packets(
+    order: dict[str, Any], ex: lx.Extractor, more: int = 0, taken: set[int] | None = None
+) -> list[dict[str, Any]]:
+    """The requests the Extractor would send for this order, one per target page (``more``:
+    round 2, that many further pages beyond ``taken``)."""
     doc = store.read(order.get("sha256") or "", "pages")
     if not doc:
         return []
     pages = doc["pages"]
     by_page = {p["page"]: p for p in pages}
     out = []
-    for pg in lx._choose_pages(order, pages, int(ex.pol["extractor"]["max_pages_per_order"])):
+    chosen = (
+        choose_more(order, pages, more, taken or set())
+        if more
+        else lx._choose_pages(order, pages, int(ex.pol["extractor"]["max_pages_per_order"]))
+    )
+    for pg in chosen:
         p = by_page[pg]
         if not p["has_text_layer"]:
             continue
@@ -94,19 +136,26 @@ def packets(order: dict[str, Any], ex: lx.Extractor) -> list[dict[str, Any]]:
     return out
 
 
-def prepare(d: Path, orders: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def prepare(d: Path, orders: list[dict[str, Any]], more: int = 0) -> list[dict[str, Any]]:
+    """Write the packets.  ``more``: a further round of that many pages per order, added to the
+    existing index (pages already packeted are never sent again)."""
     ex = extractor(d)
+    old = _index(d) if more else []
     (d / "packets").mkdir(parents=True, exist_ok=True)
     (d / "replies").mkdir(parents=True, exist_ok=True)
     sch = lx.schema(ex.heads, [p["code"] for p in ex.params])
     (d / "schema.json").write_text(json.dumps(sch, indent=1), encoding="utf-8")
     (d / "system.txt").write_text(lx.SYSTEM, encoding="utf-8")
-    index = []
+    index = list(old)
     uniq, _ = manifest.unique_files(orders)
     for o in uniq:
-        for pk in packets(o, ex):
+        taken = {x["page"] for x in old if x["order_url"] == o["url"]}
+        for pk in packets(o, ex, more, taken):
             (d / "packets" / f"{pk['key']}.txt").write_text(pk["message"], encoding="utf-8")
-            index.append({k: pk[k] for k in ("key", "order_url", "sha256", "page")} | {"licensees": o.get("licensees")})
+            index.append(
+                {k: pk[k] for k in ("key", "order_url", "sha256", "page")}
+                | {"licensees": o.get("licensees"), "round": 2 if more else 1}
+            )
     (d / "index.json").write_text(json.dumps(index, indent=1), encoding="utf-8")
     return index
 
@@ -161,12 +210,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("keys", nargs="*")
     ap.add_argument("--only")
     ap.add_argument("--manifest", action="append")
+    ap.add_argument("--more", type=int, default=0, help="prepare: a further round of N pages per order")
     a = ap.parse_args(argv)
     d = Path(a.dir)
     if a.step == "prepare":
         orders = manifest.select(manifest.load(a.manifest), a.only, None)
-        index = prepare(d, orders)
-        print(json.dumps({"packets": len(index), "orders": len({x["order_url"] for x in index})}))
+        before = len(_index(d)) if a.more else 0
+        index = prepare(d, orders, a.more)
+        print(json.dumps({"packets": len(index), "new": len(index) - before,
+                          "orders": len({x["order_url"] for x in index})}))  # fmt: skip
     elif a.step == "check":
         for k in a.keys:
             print(json.dumps(check(d, k)))

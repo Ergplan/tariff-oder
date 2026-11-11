@@ -138,17 +138,34 @@ def user_message(
     return "\n\n".join(parts)
 
 
+CONTENTS = re.compile(r"\b(table of contents|list of tables|list of figures|contents|index)\b", re.I)
+
+
+def is_contents(text: str) -> bool:
+    """A contents or list-of-tables page: a heading saying so near the top, or most lines are
+    'Table x-y ... <page>' entries or dotted leaders."""
+    lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+    if not lines:
+        return True
+    if CONTENTS.search(" ".join(lines[:8])):
+        return True
+    entries = sum(1 for ln in lines if re.match(r"^(table|figure)\s*[\d.\-–]+", ln, re.I) or re.search(r"\.{5,}", ln))
+    return entries >= 6 and entries >= len(lines) / 4
+
+
 def _choose_pages(order: dict[str, Any], pages: list[dict[str, Any]], cap: int) -> list[int]:
     sha = order.get("sha256") or ""
     tl = store.read(sha, "textlayer") or {}
     dl = store.read(sha, "docling") or {}
-    chosen: list[int] = []
+    by_page = {p["page"]: p["text"] for p in pages}
+    chosen: list[int] = []  # never a contents or list-of-tables page: its "tables" hold no figures
     for t in (tl.get("tables") or []) + (dl.get("tables") or []):
         for p in t.get("pages") or [t["page"]]:
-            if p not in chosen:
+            if p not in chosen and not is_contents(by_page.get(p, "")):
                 chosen.append(p)
     for p in pages:
-        if p["has_text_layer"] and KEY_PAGES.search(p["text"]) and p["page"] not in chosen:
+        key = p["has_text_layer"] and KEY_PAGES.search(p["text"])
+        if key and p["page"] not in chosen and not is_contents(p["text"]):
             chosen.append(p["page"])
     return sorted(chosen[:cap])
 
@@ -166,6 +183,7 @@ class Extractor(Reader):
         provider: str = "anthropic",
         model: str | None = None,
         priced: bool = True,
+        choose: Any = None,
     ) -> None:
         """``provider``/``model``/``priced`` describe who answers: the Anthropic API (priced from
         policy.yaml), or a non-API answerer such as this repository's session agents
@@ -174,6 +192,7 @@ class Extractor(Reader):
         self.provider = provider
         self.model = model or self.pol["models"]["extractor"]
         self.priced = priced
+        self.choose = choose  # (order, pages, cap) -> target pages; default: _choose_pages
         self.effort = (self.pol.get("effort") or {}).get("extractor", "medium")
         self.version = f"{VERSION} {self.model}"
         self.is_real = is_real
@@ -196,7 +215,7 @@ class Extractor(Reader):
             return self.skipped("no page text (run the courier first)", **base)
         pages = doc["pages"]
         by_page = {p["page"]: p for p in pages}
-        targets = _choose_pages(order, pages, int(self.pol["extractor"]["max_pages_per_order"]))
+        targets = (self.choose or _choose_pages)(order, pages, int(self.pol["extractor"]["max_pages_per_order"]))
         out = ParseResult(self.name, self.version, "ok", pages=targets, **base)
         sch = schema(self.heads, [p["code"] for p in self.params])
         t0 = time.monotonic()
@@ -288,7 +307,9 @@ class Extractor(Reader):
         dropped = out.extra.setdefault("dropped", 0)
         for kind, items in (("line", data.get("lines") or []), ("parameter", data.get("parameters") or [])):
             for x in items:
-                v = number(str(x.get("value_printed", "")).replace(" ", ""))
+                # a percentage or a footnote mark printed with the number ("14.50%", "2,834.38*")
+                # is not part of the value: the number is still parsed from the printed text
+                v = number(str(x.get("value_printed", "")).replace(" ", "").rstrip("%*").rstrip())
                 ok = (
                     x.get("page") == pg
                     and v is not None

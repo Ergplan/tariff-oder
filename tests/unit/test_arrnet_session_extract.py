@@ -45,7 +45,7 @@ def test_packets_replies_and_provenance(order, tmp_path):
                    "quote": "Net ARR 9,675.43 9,646.75"}],
         "parameters": [
             {"code": "distribution_loss_pct", "utility": "UPCL", "fiscal_year": "FY2026-27", "voice": "approved",
-             "label": "distribution loss", "value_printed": "12.50", "unit": "%", "page": 2,
+             "label": "distribution loss", "value_printed": "12.50%", "unit": "%", "page": 2,
              "quote": "The Commission approves the distribution loss of 12.50% for FY 2026-27."},
             # a number not on the page: the evidence check must reject it
             {"code": "avg_cost_of_supply", "utility": "UPCL", "fiscal_year": "FY2026-27", "voice": "approved",
@@ -57,7 +57,8 @@ def test_packets_replies_and_provenance(order, tmp_path):
         reply["lines"][0]["head"] = se.extractor(d).heads[0]
     (d / "replies" / f"{key}.json").write_text(json.dumps(reply))
     rep = se.check(d, key)
-    assert rep["ok"] and rep["kept"]["parameters"] == 2
+    assert rep["ok"] and rep["kept"]["parameters"] == 2  # "12.50%" is parsed, not dropped
+    assert rep["dropped_by_filter"] == 0
     assert rep["fail_evidence_count"] == 1 and rep["fail_evidence"][0]["value_printed"] == "7.77"
 
     res = se.extractor(d).read(order)
