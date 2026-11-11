@@ -75,7 +75,7 @@ def llama_transport(calls, status_seq=("RUNNING", "COMPLETED")):
             body = {"job": {"id": "job-fixture", "status": st, "error_message": None, "usage": {"credits": 12.0}}}
             if st == "COMPLETED":
                 body["markdown"] = {"pages": [{"page_number": p, "success": True, "markdown": LLAMA_MD if p == 5 else "text"}
-                                              for p in (4, 5, 6)]}
+                                              for p in (5,)]}
             return httpx.Response(200, json=body)
         return httpx.Response(404)
 
@@ -99,10 +99,11 @@ def test_llamaparse_reads_a_recorded_shape_fixture(order):
     assert res.is_real is False and res.status == "ok"
     up = calls[0]
     assert up.headers["authorization"] == "Bearer fixture-key"
-    assert b'"target_pages": "4-6"' in up.content  # only the selected pages are parsed
+    assert b'"target_pages": "5"' in up.content  # only the selected pages are parsed
     by = {(v["label"], v["voice"]): v for v in res.values}
     assert by[("Net ARR", "approved")]["value"] == 9646.75 and by[("Net ARR", "approved")]["page"] == 5
-    assert res.cost_usd == pytest.approx(12.0 * 1.5 / 1000)
+    assert res.cost_usd == 0.0 and "12.0 credits" in res.note  # credits, not money
+    assert res.extra["usd_equivalent"] == pytest.approx(12.0 * 1.5 / 1000)
     assert store.read_jsonl("spend") == []  # a fixture spends nothing
 
 

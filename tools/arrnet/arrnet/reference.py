@@ -115,6 +115,19 @@ def transco_codes() -> set[str]:
     return {t["code"] for t in registry_transco()["utilities"]}
 
 
+def reading_groups(order: dict[str, Any]) -> list[tuple[list[str], str]]:
+    """(licensees, kind) per reading pass.  A combined order (DISCOM and TRANSCO licensees) is
+    read once for its DISCOMs as a distribution order and once for its TRANSCOs as a transmission
+    order, so that each pass keeps arrdb's filters for its kind."""
+    lic = list(order.get("licensees") or [])
+    tr = transco_codes()
+    t = [x for x in lic if x in tr]
+    d = [x for x in lic if x not in tr]
+    if t and d:
+        return [(d, "discom"), (t, "transco")]
+    return [(lic, reader_kind(order))]
+
+
 def reader_kind(order: dict[str, Any]) -> str:
     """'transco' for a transmission order (or a combined order whose licensee is a TRANSCO): the
     readers then keep transmission tables and skip generation, distribution and SLDC tables."""

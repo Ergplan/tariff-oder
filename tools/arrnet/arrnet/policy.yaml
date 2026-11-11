@@ -16,7 +16,7 @@ prices_usd_per_mtok:
   claude-opus-5-5: {input: 4.00, output: 20.00, cache_read: 0.20, cache_write: 5.00}
 
 llamaparse:
-  tier: cost_effective
+  tier: fast   # cheapest; its current version returns markdown with pipe tables (checked on a real page 2026-11-11)
   # credits per page and price, from developers.llamaindex.ai/llamaparse/general/pricing (read 2026-11-11)
   credits_per_page: {fast: 1, cost_effective: 3, agentic: 10, agentic_plus: 25}
   usd_per_1000_credits: 1.50

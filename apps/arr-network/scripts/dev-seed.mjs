@@ -69,6 +69,7 @@ async function batch(kind, rows, size = 1000) {
 const nn = (v) => (v === null || v === undefined || v === "" ? undefined : v);
 const strip = (o) => Object.fromEntries(Object.entries(o).filter(([, v]) => v !== undefined));
 
+const startedAt = new Date().toISOString();
 if (process.argv.includes("--migrate")) console.log("migrate:", await call("/api/ingest/migrate"));
 
 // ---- reference
@@ -164,4 +165,10 @@ const factRows = [...facts.values()].map((v) => {
 console.log(`facts: ${factRows.length} (${collapsed} readings share a fact's key with another row of the same page and were not made separate facts)`);
 await batch("facts", factRows, 1000);
 
+// a record of this run itself, so /agents shows what loaded the data
+await batch("agent_runs", [{
+  agent: "dev-seed", version: "1", is_real: true, started_at: startedAt, finished_at: new Date().toISOString(),
+  outcome: rejectedTotal ? "partial" : "ok", rows_written: posted, rows_rejected: rejectedTotal, cost_usd: 0,
+  note: `loaded apps/arr-db/data/arr.sqlite (${READER.reader_version}, one reader) through the ingest API`,
+}]);
 console.log(`done: ${posted} rows written, ${rejectedTotal} rejected`);

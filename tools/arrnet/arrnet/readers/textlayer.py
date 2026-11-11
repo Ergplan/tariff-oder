@@ -10,7 +10,7 @@ from typing import Any
 
 from ..arrdb_bridge import infer_units, read_tables, stage_of
 from ..reference import aliases as all_aliases
-from ..reference import reader_kind
+from ..reference import reading_groups
 from .base import ParseResult, Reader
 from .interpret import tables_to_rows
 
@@ -25,13 +25,18 @@ class TextLayerReader(Reader):
         if not pdf_path:
             return self.skipped("the order's file is not in the cache")
         t0 = time.monotonic()
-        lic = list(order.get("licensees") or [])
         al = all_aliases()
+        tables: list[dict[str, Any]] = []
+        seen: set[tuple] = set()
         try:
-            res = read_tables(str(pdf_path), lic, {k: al.get(k, []) for k in lic}, kind=reader_kind(order))
+            for lic, kind in reading_groups(order):
+                res = read_tables(str(pdf_path), lic, {k: al.get(k, []) for k in lic}, kind=kind)
+                for t in res["tables"]:
+                    if (t["page"], t["title"]) not in seen:  # a table both passes keep is read once
+                        seen.add((t["page"], t["title"]))
+                        tables.append(t)
         except Exception as e:  # a damaged PDF is reported, not fatal
             return ParseResult(self.name, self.version, "failed", note=f"{type(e).__name__}: {e}"[:300])
-        tables = res["tables"]
         infer_units(tables)
         trows, vrows = tables_to_rows(tables, order.get("arr_year"), stage_of)
         status_read = (

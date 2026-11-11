@@ -37,7 +37,7 @@ def make_reader(name: str, args: argparse.Namespace) -> Reader:
     if name == "llamaparse":
         from .readers.llamaparse_reader import LlamaParseReader
 
-        return LlamaParseReader()
+        return LlamaParseReader(max_total_pages=args.max_total_pages)
     if name == "llm":
         from .readers.llm_extractor import Extractor
 
@@ -183,6 +183,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--manifest", action="append", help="orders file (default tools/arrdb/data/orders.json)")
     ap.add_argument("--dry-run", metavar="DIR", help="write the batches as JSONL to DIR instead of the ingest API")
     ap.add_argument("--max-pages", type=int, help="Docling: pages converted per order")
+    ap.add_argument("--max-total-pages", type=int, help="LlamaParse: pages sent across all orders of this run")
     ap.add_argument("--no-embed", action="store_true", help="Librarian: post chunks without embeddings")
     ap.add_argument("--download", action="store_true", help="Courier: download orders missing from the cache")
     a = ap.parse_args(argv)

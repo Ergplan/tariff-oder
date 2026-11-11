@@ -87,12 +87,15 @@ def grid_to_table(
     """A table (arrdb's Table shape: title, page, pages, unit, factor, columns, lines) from a cell
     grid.  ``row_pages`` gives each grid row's page (a table continued over pages)."""
     grid = [[clean_cell(c) for c in r] for r in grid]
-    grid = [r for r in grid if any(r)]
+    row_pages = list(row_pages) if row_pages else [page] * len(grid)
+    if len(row_pages) != len(grid):
+        raise ValueError(f"{len(grid)} rows but {len(row_pages)} row pages")
+    kept = [(r, p) for r, p in zip(grid, row_pages, strict=True) if any(r)]
+    grid, row_pages = [r for r, _ in kept], [p for _, p in kept]
     if len(grid) < 2:
         return None
     width = max(len(r) for r in grid)
     grid = [r + [""] * (width - len(r)) for r in grid]
-    row_pages = row_pages or [page] * len(grid)
     # header rows: given by the reader, else the rows above the first row that has a label and a number
     if header_rows is None:
         header_rows = 0
@@ -285,3 +288,11 @@ def markdown_tables(md: str) -> list[tuple[int, list[list[str]]]]:
         else:
             i += 1
     return out
+
+
+def group_for(title: str, groups: list[tuple[list[str], str]], aliases: dict[str, list[str]]) -> list[str] | None:
+    """The licensees of the first reading pass whose title filter keeps this table, or None."""
+    for lic, kind in groups:
+        if title_ok(title, lic, aliases, kind):
+            return lic
+    return None

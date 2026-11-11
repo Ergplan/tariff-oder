@@ -26,9 +26,9 @@ import pymupdf
 from .. import store
 from ..arrdb_bridge import TITLE, stage_of
 from ..reference import aliases as all_aliases
-from ..reference import reader_kind
+from ..reference import reader_kind, reading_groups
 from .base import ParseResult, Reader
-from .interpret import grid_to_table, tables_to_rows, title_ok
+from .interpret import grid_to_table, group_for, tables_to_rows, title_ok
 
 TITLE_LINE = re.compile(r"^\s*table\b.{0,200}$", re.I | re.M)
 
@@ -146,6 +146,7 @@ class DoclingReader(Reader):
         aliases = {k: al.get(k, []) for k in lic}
         src = pymupdf.open(str(pdf_path))
         kind = reader_kind(order)
+        groups = reading_groups(order)
         pages, why = select_pages(order, len(src), self.max_pages, lic, aliases, self.max_ocr_pages, kind=kind)
         if not pages:
             return ParseResult(self.name, self.version, "ok", note="no page to convert: no ARR table title found", extra=why)
@@ -169,14 +170,15 @@ class DoclingReader(Reader):
                     page_texts[str(p)] = doc.export_to_markdown(page_no=i + 1)
         tables = []
         for r in raw:
-            if not r["title"] or not title_ok(r["title"], lic, aliases, kind):
+            glic = group_for(r["title"], groups, aliases) if r["title"] else None
+            if glic is None:
                 continue
             t = grid_to_table(
                 r["grid"],
                 title=r["title"],
                 page=r["page"],
                 row_pages=r["row_pages"],
-                licensees=lic,
+                licensees=glic,
                 aliases=aliases,
                 above=r["above"],
                 header_rows=r["header_rows"] or None,

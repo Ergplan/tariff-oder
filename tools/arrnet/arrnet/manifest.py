@@ -25,14 +25,21 @@ def load(paths: list[str | Path] | None = None) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
     seen_url: set[str] = set()
     SKIPPED.clear()
+    by_url: dict[str, dict[str, Any]] = {}
     for p in paths:
         d = json.loads(Path(p).read_text())
         for o in d["orders"] if isinstance(d, dict) else d:
+            lic = [LICENSEE_CODES.get(x, x) for x in o.get("licensees") or []]
             if o["url"] in seen_url:
+                # the same order in two manifests (CSERC's combined DISCOM + TRANSCO orders): one order
+                prev = by_url.get(o["url"])
+                if prev is not None and None not in lic:
+                    prev["licensees"] += [x for x in lic if x not in prev["licensees"]]
+                    if (o.get("utility_kind") or "discom") != prev["utility_kind"]:
+                        prev["utility_kind"] = "mixed"
                 continue
             seen_url.add(o["url"])
             o = dict(o)
-            lic = [LICENSEE_CODES.get(x, x) for x in o.get("licensees") or []]
             if any(x is None for x in lic):
                 SKIPPED.append({"url": o["url"], "title": o.get("title"), "why": "licensee is not a utility (STU)"})
                 continue
@@ -42,6 +49,7 @@ def load(paths: list[str | Path] | None = None) -> list[dict[str, Any]]:
             o.setdefault("utility_kind", "discom")
             o["arr_year"] = arr_year_of(o)
             out.append(o)
+            by_url[o["url"]] = o
     return out
 
 

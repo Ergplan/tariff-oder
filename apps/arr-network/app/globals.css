@@ -24,7 +24,7 @@ h1, h2, h3, h4, p { margin: 0; }
 a { color: var(--ink); }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 code, pre, textarea, kbd { font-family: var(--mono); }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.sr { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip { position: absolute; left: -9999px; top: 0; background: var(--accent); padding: 8px 12px; z-index: 10; }
 .skip:focus { left: 8px; }
 
@@ -105,7 +105,7 @@ form.search button { border: 0; border-left: 2px solid var(--ink); padding: 0 24
 .statelist small { margin-left: auto; font: 0.68rem var(--mono); color: var(--muted); white-space: nowrap; }
 
 /* tables */
-.tablewrap { overflow-x: auto; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); max-width: 100%; }
+.tablewrap { position: relative; overflow-x: auto; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); max-width: 100%; }
 .tablewrap.tall { max-height: 640px; overflow-y: auto; }
 table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
 th { position: sticky; top: 0; background: var(--bg); font: 600 0.66rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; z-index: 1; }
