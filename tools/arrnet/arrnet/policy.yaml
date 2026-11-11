@@ -1,0 +1,52 @@
+# ARR Network policy: the Director's rules and the spend limits, as data.
+# The spend caps are enforced in code (arrnet/spend.py) before every paid call; a model cannot
+# raise them.  The operator sets them: with a cap of 0, no paid call is made.
+
+models:
+  extractor: claude-sonnet-5-5   # the current Sonnet-class model (volume)
+  director: claude-opus-5-5      # the current Opus-class model
+effort:
+  extractor: medium
+  director: medium
+
+# USD per million tokens, from the claude-api skill's model table (cached 2026-11-03).
+# Cache writes (5-minute TTL) are 1.25x input.  Re-check before changing a model.
+prices_usd_per_mtok:
+  claude-sonnet-5-5: {input: 2.00, output: 10.00, cache_read: 0.10, cache_write: 2.50}
+  claude-opus-5-5: {input: 4.00, output: 20.00, cache_read: 0.20, cache_write: 5.00}
+
+llamaparse:
+  tier: cost_effective
+  # credits per page and price, from developers.llamaindex.ai/llamaparse/general/pricing (read 2026-11-11)
+  credits_per_page: {fast: 1, cost_effective: 3, agentic: 10, agentic_plus: 25}
+  usd_per_1000_credits: 1.50
+  max_pages_per_order: 20
+  poll_seconds: 5
+  timeout_seconds: 900
+
+budget:
+  daily_usd: 0.0          # all paid calls together, per UTC day; set by the operator
+  per_agent_daily_usd:    # optional tighter caps
+    extractor: 0.0
+    llamaparse: 0.0
+    director: 0.0
+
+docling:
+  max_pages_per_order: 24
+  max_ocr_pages_per_order: 6   # pages without a text layer, converted with OCR (slow on CPU)
+
+extractor:
+  max_pages_per_order: 12
+  max_tokens: 16000
+
+queue:
+  max_attempts: 3         # a work item that failed this often is parked for a person
+  priorities:             # lower runs first
+    fetch: 10
+    parse:textlayer: 20
+    parse:docling: 40
+    parse:llamaparse: 60
+    extract: 70
+    verify: 80
+    index: 90
+    audit: 95

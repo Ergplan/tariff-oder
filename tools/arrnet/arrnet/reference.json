@@ -1,0 +1,769 @@
+{
+ "note": "Seed reference data for the ARR Network.  DISCOMs and commission names come from tools/arrdb/registry.json (one source of truth); heads from arrdb.heads.  This file holds what the registry does not: state codes (as apps/arr-network/data/india-states.json), the states each commission serves, the state transmission utilities, and the key parameters of ARCHITECTURE.md.  Utility names are reference data: only utilities whose existence and official name are known are listed; any not listed are absent, not unknown.  No figure.",
+ "states": [
+  {
+   "code": "AN",
+   "name": "Andaman and Nicobar",
+   "kind": "union_territory"
+  },
+  {
+   "code": "AP",
+   "name": "Andhra Pradesh",
+   "kind": "state"
+  },
+  {
+   "code": "AR",
+   "name": "Arunachal Pradesh",
+   "kind": "state"
+  },
+  {
+   "code": "AS",
+   "name": "Assam",
+   "kind": "state"
+  },
+  {
+   "code": "BR",
+   "name": "Bihar",
+   "kind": "state"
+  },
+  {
+   "code": "CG",
+   "name": "Chhattisgarh",
+   "kind": "state"
+  },
+  {
+   "code": "CH",
+   "name": "Chandigarh",
+   "kind": "union_territory"
+  },
+  {
+   "code": "DH",
+   "name": "Dadra and Nagar Haveli and Daman and Diu",
+   "kind": "union_territory"
+  },
+  {
+   "code": "DL",
+   "name": "Delhi",
+   "kind": "union_territory"
+  },
+  {
+   "code": "GA",
+   "name": "Goa",
+   "kind": "state"
+  },
+  {
+   "code": "GJ",
+   "name": "Gujarat",
+   "kind": "state"
+  },
+  {
+   "code": "HP",
+   "name": "Himachal Pradesh",
+   "kind": "state"
+  },
+  {
+   "code": "HR",
+   "name": "Haryana",
+   "kind": "state"
+  },
+  {
+   "code": "JH",
+   "name": "Jharkhand",
+   "kind": "state"
+  },
+  {
+   "code": "JK",
+   "name": "Jammu and Kashmir",
+   "kind": "union_territory"
+  },
+  {
+   "code": "KA",
+   "name": "Karnataka",
+   "kind": "state"
+  },
+  {
+   "code": "KL",
+   "name": "Kerala",
+   "kind": "state"
+  },
+  {
+   "code": "LA",
+   "name": "Ladakh",
+   "kind": "union_territory"
+  },
+  {
+   "code": "LD",
+   "name": "Lakshadweep",
+   "kind": "union_territory"
+  },
+  {
+   "code": "MH",
+   "name": "Maharashtra",
+   "kind": "state"
+  },
+  {
+   "code": "ML",
+   "name": "Meghalaya",
+   "kind": "state"
+  },
+  {
+   "code": "MN",
+   "name": "Manipur",
+   "kind": "state"
+  },
+  {
+   "code": "MP",
+   "name": "Madhya Pradesh",
+   "kind": "state"
+  },
+  {
+   "code": "MZ",
+   "name": "Mizoram",
+   "kind": "state"
+  },
+  {
+   "code": "NL",
+   "name": "Nagaland",
+   "kind": "state"
+  },
+  {
+   "code": "OD",
+   "name": "Odisha",
+   "kind": "state"
+  },
+  {
+   "code": "PB",
+   "name": "Punjab",
+   "kind": "state"
+  },
+  {
+   "code": "PY",
+   "name": "Puducherry",
+   "kind": "union_territory"
+  },
+  {
+   "code": "RJ",
+   "name": "Rajasthan",
+   "kind": "state"
+  },
+  {
+   "code": "SK",
+   "name": "Sikkim",
+   "kind": "state"
+  },
+  {
+   "code": "TN",
+   "name": "Tamil Nadu",
+   "kind": "state"
+  },
+  {
+   "code": "TR",
+   "name": "Tripura",
+   "kind": "state"
+  },
+  {
+   "code": "TS",
+   "name": "Telangana",
+   "kind": "state"
+  },
+  {
+   "code": "UK",
+   "name": "Uttarakhand",
+   "kind": "state"
+  },
+  {
+   "code": "UP",
+   "name": "Uttar Pradesh",
+   "kind": "state"
+  },
+  {
+   "code": "WB",
+   "name": "West Bengal",
+   "kind": "state"
+  }
+ ],
+ "commission_states": {
+  "UPERC": [
+   "UP"
+  ],
+  "BERC": [
+   "BR"
+  ],
+  "HPERC": [
+   "HP"
+  ],
+  "JSERC": [
+   "JH"
+  ],
+  "MPERC": [
+   "MP"
+  ],
+  "OERC": [
+   "OD"
+  ],
+  "UERC": [
+   "UK"
+  ],
+  "JERC-GOA-UT": [
+   "GA",
+   "AN",
+   "CH",
+   "DH",
+   "LD",
+   "PY"
+  ],
+  "DERC": [
+   "DL"
+  ],
+  "CSERC": [
+   "CG"
+  ],
+  "KSERC": [
+   "KL"
+  ],
+  "MERC": [
+   "MH"
+  ],
+  "GERC": [
+   "GJ"
+  ],
+  "KERC": [
+   "KA"
+  ],
+  "TNERC": [
+   "TN"
+  ],
+  "APERC": [
+   "AP"
+  ],
+  "TGERC": [
+   "TS"
+  ],
+  "PSERC": [
+   "PB"
+  ],
+  "HERC": [
+   "HR"
+  ],
+  "RERC": [
+   "RJ"
+  ],
+  "WBERC": [
+   "WB"
+  ],
+  "AERC": [
+   "AS"
+  ],
+  "JKERC": [
+   "JK",
+   "LA"
+  ],
+  "JERC-MM": [
+   "MN",
+   "MZ"
+  ],
+  "TERC": [
+   "TR"
+  ],
+  "MSERC": [
+   "ML"
+  ],
+  "SSERC": [
+   "SK"
+  ],
+  "NERC": [
+   "NL"
+  ],
+  "APSERC": [
+   "AR"
+  ]
+ },
+ "utility_states": {
+  "GOA-ED": "GA",
+  "PED-PY": "PY",
+  "JPDCL": "JK",
+  "KPDCL": "JK",
+  "MSPDCL": "MN",
+  "PED-MZ": "MZ"
+ },
+ "ownership_overrides": {
+  "SAIL-BSP": {
+   "ownership": "central",
+   "why": "SAIL is a central public sector undertaking; the registry lists it as state-owned"
+  }
+ },
+ "transcos": [
+  {
+   "code": "UPPTCL",
+   "name": "Uttar Pradesh Power Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "UPERC",
+   "state": "UP",
+   "ownership": "state",
+   "aliases": [
+    "UPPTCL"
+   ]
+  },
+  {
+   "code": "BSPTCL",
+   "name": "Bihar State Power Transmission Company Ltd",
+   "kind": "transco",
+   "commission": "BERC",
+   "state": "BR",
+   "ownership": "state",
+   "aliases": [
+    "BSPTCL"
+   ]
+  },
+  {
+   "code": "HPPTCL",
+   "name": "Himachal Pradesh Power Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "HPERC",
+   "state": "HP",
+   "ownership": "state",
+   "aliases": [
+    "HPPTCL"
+   ]
+  },
+  {
+   "code": "JUSNL",
+   "name": "Jharkhand Urja Sancharan Nigam Ltd",
+   "kind": "transco",
+   "commission": "JSERC",
+   "state": "JH",
+   "ownership": "state",
+   "aliases": [
+    "JUSNL"
+   ]
+  },
+  {
+   "code": "MPPTCL",
+   "name": "Madhya Pradesh Power Transmission Company Ltd",
+   "kind": "transco",
+   "commission": "MPERC",
+   "state": "MP",
+   "ownership": "state",
+   "aliases": [
+    "MPPTCL",
+    "MP Transco"
+   ]
+  },
+  {
+   "code": "OPTCL",
+   "name": "Odisha Power Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "OERC",
+   "state": "OD",
+   "ownership": "state",
+   "aliases": [
+    "OPTCL"
+   ]
+  },
+  {
+   "code": "PTCUL",
+   "name": "Power Transmission Corporation of Uttarakhand Ltd",
+   "kind": "transco",
+   "commission": "UERC",
+   "state": "UK",
+   "ownership": "state",
+   "aliases": [
+    "PTCUL"
+   ]
+  },
+  {
+   "code": "DTL",
+   "name": "Delhi Transco Ltd",
+   "kind": "transco",
+   "commission": "DERC",
+   "state": "DL",
+   "ownership": "state",
+   "aliases": [
+    "Delhi Transco"
+   ]
+  },
+  {
+   "code": "CSPTCL",
+   "name": "Chhattisgarh State Power Transmission Company Ltd",
+   "kind": "transco",
+   "commission": "CSERC",
+   "state": "CG",
+   "ownership": "state",
+   "aliases": [
+    "CSPTCL"
+   ]
+  },
+  {
+   "code": "MSETCL",
+   "name": "Maharashtra State Electricity Transmission Company Ltd",
+   "kind": "transco",
+   "commission": "MERC",
+   "state": "MH",
+   "ownership": "state",
+   "aliases": [
+    "MSETCL",
+    "Mahatransco"
+   ]
+  },
+  {
+   "code": "GETCO",
+   "name": "Gujarat Energy Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "GERC",
+   "state": "GJ",
+   "ownership": "state",
+   "aliases": [
+    "GETCO"
+   ]
+  },
+  {
+   "code": "KPTCL",
+   "name": "Karnataka Power Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "KERC",
+   "state": "KA",
+   "ownership": "state",
+   "aliases": [
+    "KPTCL"
+   ]
+  },
+  {
+   "code": "TANTRANSCO",
+   "name": "Tamil Nadu Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "TNERC",
+   "state": "TN",
+   "ownership": "state",
+   "aliases": [
+    "TANTRANSCO"
+   ]
+  },
+  {
+   "code": "APTRANSCO",
+   "name": "Transmission Corporation of Andhra Pradesh Ltd",
+   "kind": "transco",
+   "commission": "APERC",
+   "state": "AP",
+   "ownership": "state",
+   "aliases": [
+    "APTRANSCO"
+   ]
+  },
+  {
+   "code": "TGTRANSCO",
+   "name": "Transmission Corporation of Telangana Ltd",
+   "kind": "transco",
+   "commission": "TGERC",
+   "state": "TS",
+   "ownership": "state",
+   "aliases": [
+    "TGTRANSCO",
+    "TSTRANSCO"
+   ]
+  },
+  {
+   "code": "PSTCL",
+   "name": "Punjab State Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "PSERC",
+   "state": "PB",
+   "ownership": "state",
+   "aliases": [
+    "PSTCL"
+   ]
+  },
+  {
+   "code": "HVPNL",
+   "name": "Haryana Vidyut Prasaran Nigam Ltd",
+   "kind": "transco",
+   "commission": "HERC",
+   "state": "HR",
+   "ownership": "state",
+   "aliases": [
+    "HVPNL"
+   ]
+  },
+  {
+   "code": "RVPNL",
+   "name": "Rajasthan Rajya Vidyut Prasaran Nigam Ltd",
+   "kind": "transco",
+   "commission": "RERC",
+   "state": "RJ",
+   "ownership": "state",
+   "aliases": [
+    "RVPN",
+    "RVPNL"
+   ]
+  },
+  {
+   "code": "WBSETCL",
+   "name": "West Bengal State Electricity Transmission Company Ltd",
+   "kind": "transco",
+   "commission": "WBERC",
+   "state": "WB",
+   "ownership": "state",
+   "aliases": [
+    "WBSETCL"
+   ]
+  },
+  {
+   "code": "AEGCL",
+   "name": "Assam Electricity Grid Corporation Ltd",
+   "kind": "transco",
+   "commission": "AERC",
+   "state": "AS",
+   "ownership": "state",
+   "aliases": [
+    "AEGCL"
+   ]
+  },
+  {
+   "code": "JKPTCL",
+   "name": "Jammu and Kashmir Power Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "JKERC",
+   "state": "JK",
+   "ownership": "state",
+   "aliases": [
+    "JKPTCL"
+   ]
+  },
+  {
+   "code": "MePTCL",
+   "name": "Meghalaya Power Transmission Corporation Ltd",
+   "kind": "transco",
+   "commission": "MSERC",
+   "state": "ML",
+   "ownership": "state",
+   "aliases": [
+    "MePTCL"
+   ]
+  }
+ ],
+ "parameter_defs": [
+  {
+   "code": "energy_sales_mu",
+   "name": "Energy sales",
+   "unit": "MU",
+   "grp": "sales_energy",
+   "sort": 10
+  },
+  {
+   "code": "energy_input_mu",
+   "name": "Energy input / power purchase quantum",
+   "unit": "MU",
+   "grp": "sales_energy",
+   "sort": 20
+  },
+  {
+   "code": "distribution_loss_pct",
+   "name": "Distribution loss",
+   "unit": "%",
+   "grp": "sales_energy",
+   "sort": 30
+  },
+  {
+   "code": "atc_loss_pct",
+   "name": "AT&C loss",
+   "unit": "%",
+   "grp": "sales_energy",
+   "sort": 40
+  },
+  {
+   "code": "collection_efficiency_pct",
+   "name": "Collection efficiency",
+   "unit": "%",
+   "grp": "sales_energy",
+   "sort": 50
+  },
+  {
+   "code": "transmission_loss_pct",
+   "name": "Transmission loss",
+   "unit": "%",
+   "grp": "sales_energy",
+   "sort": 60
+  },
+  {
+   "code": "avg_power_purchase_cost",
+   "name": "Average power purchase cost",
+   "unit": "Rs/kWh",
+   "grp": "cost_revenue",
+   "sort": 70
+  },
+  {
+   "code": "avg_cost_of_supply",
+   "name": "Average cost of supply",
+   "unit": "Rs/kWh",
+   "grp": "cost_revenue",
+   "sort": 80
+  },
+  {
+   "code": "avg_billing_rate",
+   "name": "Average billing rate",
+   "unit": "Rs/kWh",
+   "grp": "cost_revenue",
+   "sort": 90
+  },
+  {
+   "code": "revenue_existing_tariff",
+   "name": "Revenue at existing tariff",
+   "unit": "Rs crore",
+   "grp": "cost_revenue",
+   "sort": 100
+  },
+  {
+   "code": "revenue_approved_tariff",
+   "name": "Revenue at approved tariff",
+   "unit": "Rs crore",
+   "grp": "cost_revenue",
+   "sort": 110
+  },
+  {
+   "code": "revenue_gap",
+   "name": "Revenue gap / (surplus)",
+   "unit": "Rs crore",
+   "grp": "cost_revenue",
+   "sort": 120
+  },
+  {
+   "code": "regulatory_asset",
+   "name": "Regulatory asset",
+   "unit": "Rs crore",
+   "grp": "cost_revenue",
+   "sort": 130
+  },
+  {
+   "code": "regulatory_asset_recovery",
+   "name": "Regulatory asset recovery",
+   "unit": "Rs crore",
+   "grp": "cost_revenue",
+   "sort": 140
+  },
+  {
+   "code": "subsidy",
+   "name": "Subsidy",
+   "unit": "Rs crore",
+   "grp": "cost_revenue",
+   "sort": 150
+  },
+  {
+   "code": "tariff_change_pct",
+   "name": "Tariff change approved",
+   "unit": "%",
+   "grp": "cost_revenue",
+   "sort": 160
+  },
+  {
+   "code": "roe_rate_pct",
+   "name": "Return on equity rate",
+   "unit": "%",
+   "grp": "norms_rates",
+   "sort": 170
+  },
+  {
+   "code": "loan_interest_rate_pct",
+   "name": "Interest rate on loans",
+   "unit": "%",
+   "grp": "norms_rates",
+   "sort": 180
+  },
+  {
+   "code": "iowc_rate_pct",
+   "name": "Interest rate on working capital",
+   "unit": "%",
+   "grp": "norms_rates",
+   "sort": 190
+  },
+  {
+   "code": "om_escalation_pct",
+   "name": "O&M escalation",
+   "unit": "%",
+   "grp": "norms_rates",
+   "sort": 200
+  },
+  {
+   "code": "depreciation_rate_pct",
+   "name": "Depreciation rate",
+   "unit": "%",
+   "grp": "norms_rates",
+   "sort": 210
+  },
+  {
+   "code": "debt_equity",
+   "name": "Debt:equity",
+   "unit": "ratio",
+   "grp": "norms_rates",
+   "sort": 220
+  },
+  {
+   "code": "capex",
+   "name": "Capital expenditure",
+   "unit": "Rs crore",
+   "grp": "capital",
+   "sort": 230
+  },
+  {
+   "code": "capitalisation",
+   "name": "Capitalisation",
+   "unit": "Rs crore",
+   "grp": "capital",
+   "sort": 240
+  },
+  {
+   "code": "gfa_opening",
+   "name": "Gross fixed assets, opening",
+   "unit": "Rs crore",
+   "grp": "capital",
+   "sort": 250
+  },
+  {
+   "code": "gfa_closing",
+   "name": "Gross fixed assets, closing",
+   "unit": "Rs crore",
+   "grp": "capital",
+   "sort": 260
+  },
+  {
+   "code": "transmission_arr",
+   "name": "Transmission ARR",
+   "unit": "Rs crore",
+   "grp": "transmission",
+   "sort": 270
+  },
+  {
+   "code": "transmission_charges",
+   "name": "Transmission charges",
+   "unit": "Rs crore",
+   "grp": "transmission",
+   "sort": 280
+  },
+  {
+   "code": "transmission_capacity_mw",
+   "name": "Transmission capacity",
+   "unit": "MW",
+   "grp": "transmission",
+   "sort": 290
+  },
+  {
+   "code": "transformation_capacity_mva",
+   "name": "Transformation capacity",
+   "unit": "MVA",
+   "grp": "transmission",
+   "sort": 300
+  },
+  {
+   "code": "line_length_ckm",
+   "name": "Line length",
+   "unit": "ckm",
+   "grp": "transmission",
+   "sort": 310
+  },
+  {
+   "code": "availability_pct",
+   "name": "Transmission system availability",
+   "unit": "%",
+   "grp": "transmission",
+   "sort": 320
+  }
+ ]
+}
