@@ -56,7 +56,7 @@ export default async function Home() {
              (SELECT count(DISTINCT utility) FROM v_arr WHERE utility <> 'TOTAL') AS utilities_with_arr,
              (SELECT count(*) FROM commissions) AS commissions,
              (SELECT count(DISTINCT reader) FROM parses) AS readers,
-             (SELECT count(*) FROM paragraphs WHERE kind <> 'text') AS key_paragraphs`;
+             (SELECT count(*) FROM paragraphs WHERE kind IN ('ruling', 'directive', 'reasoning', 'submission')) AS key_paragraphs`;
     return { states, totals };
   });
   if (!res.ok) return <DbDown state={res} />;

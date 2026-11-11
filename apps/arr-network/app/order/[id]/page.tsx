@@ -22,7 +22,7 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
   const res = await load(async (sql) => {
     const [o] = await sql`SELECT o.*, c.name AS commission_name FROM orders o JOIN commissions c ON c.code = o.commission WHERE o.order_id = ${oid}`;
     if (!o) return null;
-    const [utils, parses, tables, facts, readings, paragraphs, states] = await Promise.all([
+    const [utils, parses, tables, facts, readings, paragraphs, states, keyParams] = await Promise.all([
       sql`SELECT u.code, u.name, u.kind, u.state FROM order_utilities ou JOIN utilities u ON u.code = ou.utility WHERE ou.order_id = ${oid} ORDER BY u.code`,
       sql`SELECT p.*, (SELECT count(*) FROM parsed_tables t WHERE t.parse_id = p.parse_id)::int AS tables,
                  (SELECT count(*) FROM arr_values v WHERE v.parse_id = p.parse_id)::int AS readings
@@ -39,14 +39,18 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
           JOIN facts f ON f.fact_id = r.fact_id
           WHERE f.order_id = ${oid} AND f.consensus = 'conflict' ORDER BY r.fact_id, v.reader`,
       sql`SELECT paragraph_id, page, seq, kind, kind_by, utility, topic, text, summary FROM paragraphs
-          WHERE order_id = ${oid} AND kind <> 'text' ORDER BY page, seq`,
+          WHERE order_id = ${oid} AND kind IN ('ruling', 'directive', 'reasoning', 'submission') ORDER BY page, seq`,
       sql`SELECT DISTINCT s.code, s.name FROM order_utilities ou JOIN utilities u ON u.code = ou.utility JOIN states s ON s.code = u.state WHERE ou.order_id = ${oid}`,
+      sql`SELECT p.parameter_id, p.code, d.name, d.grp, d.sort, p.utility, p.label, p.fiscal_year, p.voice, p.value_printed, p.unit,
+                 p.page, p.quote, p.consensus, p.reviewed_by, p.reader
+          FROM parameters p JOIN parameter_defs d ON d.code = p.code WHERE p.order_id = ${oid}
+          ORDER BY d.grp, d.sort, p.utility NULLS LAST, p.fiscal_year, p.voice, p.page`,
     ]);
-    return { o, utils, parses, tables, facts, readings, paragraphs, states };
+    return { o, utils, parses, tables, facts, readings, paragraphs, states, keyParams };
   });
   if (!res.ok) return <DbDown state={res} />;
   if (!res.data) notFound();
-  const { o, utils, parses, tables, facts, readings, paragraphs, states } = res.data;
+  const { o, utils, parses, tables, facts, readings, paragraphs, states, keyParams } = res.data;
   const url = o.url as string;
   const byTable = new Map<number | null, R[]>();
   for (const f of facts) {
@@ -239,6 +243,29 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
             </details>
           );
         })}
+
+        <h3>Key parameters <span className="tag">{keyParams.length}</span></h3>
+        {keyParams.length ? (
+          <div className="tablewrap">
+            <table>
+              <thead><tr><th>Parameter</th><th>Utility</th><th>Year</th><th>Voice</th><th className="num">Value</th><th>Reader</th><th>Page</th><th>As printed</th></tr></thead>
+              <tbody>
+                {keyParams.map((p) => (
+                  <tr key={p.parameter_id as number}>
+                    <td>{p.name as string}<br /><span className="note">{p.label as string}</span></td>
+                    <td className="mono">{(p.utility as string) ?? "not printed"}</td>
+                    <td className="mono">{(p.fiscal_year as string) ?? "—"}</td>
+                    <td>{p.voice ? VOICE_WORDS[p.voice as string] : "—"}</td>
+                    <td className="num">{p.value_printed as string} {(p.unit as string) ?? ""}</td>
+                    <td><Consensus c={p.consensus as string} reviewedBy={p.reviewed_by as string} /> <span className="note">{p.reader as string}</span></td>
+                    <td><PageLink url={url} page={p.page as number} /></td>
+                    <td className="quote">{p.quote as string}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : <p className="note">No key parameter (sales, losses, average cost of supply, rates…) has been read from this order yet.</p>}
 
         <h3>Key paragraphs <span className="tag">{paragraphs.length}</span></h3>
         {paragraphs.length ? paragraphs.map((p) => (

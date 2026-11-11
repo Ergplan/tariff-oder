@@ -18,7 +18,7 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
       sql`SELECT fact_id, utility, fiscal_year, voice, stage, head, label, value_crore, value, unit, page, quote, consensus, readers,
                  is_headline, headline_why, set_aside, reviewed_by, reviewed_at
           FROM facts WHERE order_id = ${oid} ORDER BY page, utility, fiscal_year, voice, fact_id`,
-      sql`SELECT page, seq, kind, kind_by, utility, topic, text, summary FROM paragraphs WHERE order_id = ${oid} AND kind <> 'text' ORDER BY page, seq`,
+      sql`SELECT page, seq, kind, kind_by, utility, topic, text, summary FROM paragraphs WHERE order_id = ${oid} AND kind IN ('ruling', 'directive', 'reasoning', 'submission') ORDER BY page, seq`,
     ]);
     return { order: { ...order, utilities: utilities.map((u) => u.utility) }, parses, tables, facts, key_paragraphs: paragraphs };
   });
