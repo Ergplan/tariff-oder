@@ -90,12 +90,13 @@ def main() -> int:
     ap.add_argument("dir")
     ap.add_argument("--kinds", help="only these kinds, comma-separated")
     ap.add_argument("--skip", help="leave out these kinds, comma-separated")
+    ap.add_argument("--max-rows", type=int, default=250, help="rows per request (each row is its own savepoint)")
     ap.add_argument("--all-paragraphs", action="store_true", help="send every paragraph, not only those chunks use")
     a = ap.parse_args()
     d = Path(a.dir)
     only = set(a.kinds.split(",")) if a.kinds else None
     skip = set(a.skip.split(",")) if a.skip else set()
-    sink = HttpSink()
+    sink = HttpSink(max_rows=a.max_rows)
     # paragraphs are kept only where a chunk points at them: the rest are unclassified plain text
     # (no LLM classified them) and their words are already in the chunks
     wanted: set[tuple] | None = None

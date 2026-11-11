@@ -100,7 +100,7 @@ class HttpSink(Sink):
         *,
         retries: int = 4,
         backoff: float = 1.5,
-        timeout: float = 120.0,
+        timeout: float = 320.0,  # longer than the API's 300 s limit: a retry never overlaps a running batch
         transport: httpx.BaseTransport | None = None,
         max_rows: int = MAX_ROWS,
         max_bytes: int = MAX_BYTES,

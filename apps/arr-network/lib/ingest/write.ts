@@ -288,6 +288,10 @@ export async function writeBatch(sql: Sql, kind: string, rows: unknown[]): Promi
   const rejected: Rejected[] = [];
   let written = 0;
   await sql.begin(async (tx) => {
+    // a batch never waits long on another's locks, and never leaves its own open: a function
+    // stopped at its time limit must not hold rows that every later batch needs
+    await tx`SET LOCAL lock_timeout = '30s'`;
+    await tx`SET LOCAL idle_in_transaction_session_timeout = '60s'`;
     const refs = await loadRefs(tx);
     const L = new Lookup(tx);
     const valid: { index: number; row: Row }[] = [];
