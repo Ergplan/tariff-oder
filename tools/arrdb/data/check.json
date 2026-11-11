@@ -1,0 +1,23 @@
+{
+ "counts": {
+  "not_in_a_table_the_reader_read": 2315,
+  "comparable": 364,
+  "value_found": 337,
+  "voice_checked": 223,
+  "voice_agrees": 223,
+  "zero_skipped": 27,
+  "licensee_checked": 128,
+  "licensee_agrees": 128
+ },
+ "missed": [],
+ "disagreements": [],
+ "summary": {
+  "orders_measured": 5,
+  "comparable_nonzero": 337,
+  "found": 337,
+  "voice_checked": 223,
+  "voice_agrees": 223,
+  "licensee_checked": 128,
+  "licensee_agrees": 128
+ }
+}

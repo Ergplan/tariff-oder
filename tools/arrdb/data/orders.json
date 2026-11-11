@@ -1,0 +1,2806 @@
+[
+ {
+  "url": "https://berc.co.in/images/pdf/tariff-order/2026-27/DISCOMs_FO_TARIFF_CN_50_51_DT_180326.pdf",
+  "commission": "BERC",
+  "title": "Tariff Order of DISCOMS (NBPDCL & SBPDCL) for FY 2026-27",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders (SBPDCL)",
+  "licensees": [
+   "NBPDCL",
+   "SBPDCL"
+  ],
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "found_by": "discovery profile berc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "a247053b586fd8909e14b00280d24e0d39357b94bdb36e7b670f21e5aa794537",
+  "bytes": 10083015,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-DISCOM-2025-26/Tariff_Chart_FY_2025-26.pdf",
+  "commission": "BERC",
+  "title": "Tariff Order of DISCOMS (NBPDCL & SBPDCL) for FY 2025-26",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders (SBPDCL)",
+  "licensees": [
+   "NBPDCL",
+   "SBPDCL"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "discovery profile berc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "d2b53c16bcab618469d4ce01e11ed9def5bebebbe6f755fd5002649af649df2d",
+  "bytes": 197252,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-DISCOM-2025-26/TO_DISCOMS_FY_25-26.pdf",
+  "commission": "BERC",
+  "title": "Tariff Order of DISCOMS (NBPDCL & SBPDCL) for FY 2025-26",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders (SBPDCL)",
+  "licensees": [
+   "NBPDCL",
+   "SBPDCL"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "discovery profile berc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "2661e60baafc77a5af64952e7cddab0d6ff15cb88c519a55dd78e773a40b0e4b",
+  "bytes": 14166864,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://berc.co.in/images/pdf/tariff-order/press-release-hindi-DISCOM-2024-25/press-release-DISCOM-hindi.pdf",
+  "commission": "BERC",
+  "title": "Tariff Order of DISCOMS (NBPDCL & SBPDCL) for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders (SBPDCL)",
+  "licensees": [
+   "NBPDCL",
+   "SBPDCL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "discovery profile berc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "09568e0af6ff5a4191e53ab4b477fa1059d05d173b0ed217c643e7a6f2580b73",
+  "bytes": 350010,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://berc.co.in/images/pdf/tariff-order/press-release-english-DISCOM-2024-25/press-release-DISCOM.pdf",
+  "commission": "BERC",
+  "title": "Tariff Order of DISCOMS (NBPDCL & SBPDCL) for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders (SBPDCL)",
+  "licensees": [
+   "NBPDCL",
+   "SBPDCL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "discovery profile berc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "cffee01d1da7175079d770509f9875b5a58f40a9d7e73435dbae285927619aa1",
+  "bytes": 128768,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-DISCOM-2024-25/Tariff-chart.pdf",
+  "commission": "BERC",
+  "title": "Tariff Order of DISCOMS (NBPDCL & SBPDCL) for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders (SBPDCL)",
+  "licensees": [
+   "NBPDCL",
+   "SBPDCL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "discovery profile berc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "d9dad13855fecbe797c98ce3523519a09ac295f7e611b3da9b069ec7efa0fa76",
+  "bytes": 53932,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-DISCOM-2024-25/NBPDCL-SBPDCL-Final-01.03.2024.pdf",
+  "commission": "BERC",
+  "title": "Tariff Order of DISCOMS (NBPDCL & SBPDCL) for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders (SBPDCL)",
+  "licensees": [
+   "NBPDCL",
+   "SBPDCL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "discovery profile berc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "09d2277c5bb393188d2e5df452a77129593532abc5af87454a575610de925ce9",
+  "bytes": 5472315,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-2023-24/NB-SB-Tar-Ord.pdf",
+  "commission": "BERC",
+  "title": "Tariff Order of North Bihar Power Distribution Company Ltd. (NBPDCL) & South Bihar Power Distribution Company Ltd. (SBPDCL) for FY 2023-24",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders (SBPDCL)",
+  "licensees": [
+   "NBPDCL",
+   "SBPDCL"
+  ],
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "found_by": "discovery profile berc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "25480bd63c4c6bd50902fc03e0364821e212e64e7fc3bf9f57eff4c08dbc3455",
+  "bytes": 17745390,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/2026/03/fto2627.pdf",
+  "commission": "HPERC",
+  "title": "Determination of Aggregate Revenue Requirement and Tariff for FY 2026-27 & Final True up of FY 2023-24 of 4th MYT Control Period & Provisional True up of Controllable and Uncontrollable Parameters of FY 2024-25 of 5th MYT Control Period & True up of Controllable Parameter for 4th MYT Control Period ",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2023-24",
+   "FY2024-25",
+   "FY2026-27"
+  ],
+  "decides": [
+   {
+    "fy": "FY2023-24",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2026-27",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "0f3d9e9df0eced38ed2e85df25be55da47f55b071a8f568f6d49d0268e50ec74",
+  "bytes": 11490431,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/tariff2025-26.pdf",
+  "commission": "HPERC",
+  "title": "Determination of Aggregate Revenue Requirement and Tariff for FY 2025-26 & Final True-up of FY 2022-23 of 4th MYT Control Period & Provisional True-up of FY 2023-24 of 4th MYT Control Period & True up of Controllable Parameter for 4th MYT Control Period (FY 2019-20 – FY 2023-24) for Himachal Pradesh",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2025-26"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2023-24",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2025-26",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "964c9ea8c4e3148286989ead5aafec609c6c99a201d65e91aeb453f3d3ede947",
+  "bytes": 5996536,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/tohpsebl23.pdf",
+  "commission": "HPERC",
+  "title": "Fourth Annual Performance Review Order For 4th MYT Control Period (FY20-FY 2023-24) & Determination of Tariff for FY 2023-24 & True-up of FY 2021-22 of 4th MYT Control Period for HPSEB Ltd.",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [
+   "FY2021-22",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2021-22",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "c9a56575c47c93aca24b870e64c05dd1c58a6065aa02f60d2b32fd972579ddd7",
+  "bytes": 2718443,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/hpsebrevisedtariff7-22.pdf",
+  "commission": "HPERC",
+  "title": "Revised Tariff Order w.r.t Domestic Tariff Category w.e.f 01 July,2022",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "5eaa1fd7cf518a2f385910d5e66daba5c5e9d7282b35725309d5b2e9c8f606c6",
+  "bytes": 151047,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/ftariff22-23.pdf",
+  "commission": "HPERC",
+  "title": "Mid-Term Performance Review Order For 4th MYT Control Period (FY20-FY 2023-24) & Determination of Tariff for FY 2022-23 & True-up of FY 2018-19,20,21",
+  "kind": "mid_term_review",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [
+   "FY2018-19",
+   "FY2022-23",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2018-19",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "e38e507f718af77d994afcc25591f0e8846fe1c07827a67691ac2182090e801b",
+  "bytes": 6774545,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/tariff21-22.pdf",
+  "commission": "HPERC",
+  "title": "Second Annual Performance Review Order For 4th MYT Control Period (FY20-FY 2023-24), Determination of Tariff for FY 2021-22 and True up for FY 2018-19 and FY 2019-20.",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [
+   "FY2018-19",
+   "FY2019-20",
+   "FY2021-22",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2018-19",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "663252660a1208cbd7c245a1cf6453e69b807b798f836b29cc51e87cac1cd83a",
+  "bytes": 3806218,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/to060620.pdf",
+  "commission": "HPERC",
+  "title": "First Annual Performance Review Order For 4th MYT Control Period (FY20-FY 2023-24) & Determination of Tariff for FY 2020-21 Including True-up of FY 2017-18",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [
+   "FY2017-18",
+   "FY2020-21",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2017-18",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "5e53bfe15db7a8f4eff944947910e65a0d25e3e5a405714dc2f5db2098dca5c1",
+  "bytes": 2819090,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/Distribution19.pdf",
+  "commission": "HPERC",
+  "title": "MYT Tariff for HPSEBL for 4th control period (FY2019-20 to FY2023-24) & True Up FY2017",
+  "kind": "myt_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2023-24"
+  ],
+  "decides": [],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "afbcee11c336914ea0443c41354c167ead1d857447fd74a9875db75ab8216f90",
+  "bytes": 4190269,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/to2016.pdf",
+  "commission": "HPERC",
+  "title": "First Annual Performance Review Order for 3rd MYT Control Period (FY15-19) & Determination of Tariff for FY-16 for HPSEB Ltd.",
+  "kind": "myt_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "ad4a19f2377341dc170e8904ac8732e4fd69c6b0a19beedca3dd45216feb1e9d",
+  "bytes": 1776237,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/trueup11-12.pdf",
+  "commission": "HPERC",
+  "title": "True Up Order for FY-11 and FY-12 for HPSEB Ltd.",
+  "kind": "arr_true_up_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "c3b5bb6b7299f7e0d194f73930c122105a1ac25d8e31daaf37b41a9fdc0a8e41",
+  "bytes": 507202,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/tariff14.pdf",
+  "commission": "HPERC",
+  "title": "True Up For FY-12 and APR for FY-14 Under 2nd MYT Period for HPSEBL.",
+  "kind": "myt_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "bd3a9a0aea5685047ceab2ce045d8bfb5e82580def8976bf23b51cb0a7d3a68c",
+  "bytes": 1725498,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/baspa12.pdf",
+  "commission": "HPERC",
+  "title": "True Up Order for 1st MYT Control Period (FY 09-11) of Baspa-II.",
+  "kind": "myt_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "691f9e0668fbb1839666edbe73b39fa6b5034b4f37685f45825d9dedc3acb229",
+  "bytes": 586782,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://hperc.org/wp-content/uploads/file/to9-11.pdf",
+  "commission": "HPERC",
+  "title": "MYT- Tariff Order for FY 2009-2011",
+  "kind": "myt_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "HPSEBL"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "discovery profile hperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "b000c89cf03de9e1021b31fa812a687b12a95cf1c1030a24c4f0b56731fb5d32",
+  "bytes": 3684511,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2026/05/True-up-of-FY-2024-25-for-ED-Goa-Order-Dated-6-May-2026.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "Approval for True-up of FY 2024-25 for Electricity Department, Government of Goa (EDG)",
+  "kind": "arr_true_up_order",
+  "listing": "Tariff orders (Goa)",
+  "licensees": [
+   "GOA-ED"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2024-25",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "1c4f8eca1fccd9daeb411085b4c439c6a66cda1f1805f3c1df91e045a5b255d5",
+  "bytes": 3487687,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2025/09/ED-Goa_TARIFF_ORDER_True-up-for-the-FY-2023-24-APR-for-FY-2024-25-and-ARR-and-Determination-of-Retail-Tariff-for-FY-2025-25-to-FY-2029-30.-D-O-O-30_09_2025.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "True-up for FY 2023-24, Annual Performance Review for FY 2024- 25, Aggregate Revenue Requirement (ARR) and Determination of Retail Tariff for MYT Control Period FY 2025-26 to FY 2029-30",
+  "kind": "myt_order",
+  "listing": "Tariff orders (Goa)",
+  "licensees": [
+   "GOA-ED"
+  ],
+  "years": [
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [
+   {
+    "fy": "FY2023-24",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "provisional_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "8c2b13e3b240a0d46c88a6bbf4567d40e028c08da5a91294c970bde2966b2293",
+  "bytes": 12738916,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2024/06/True-up-for-the-FY-2022-23-APR-for-FY-2023-24-ARR-for-FY-2024-25-and-determination-of-Retail-Tariff-for-FY-2024-25.-Petition-No.-115-2023.-D-O-O-13.06.2024.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "Approval for the True-up for FY 2022-23, Annual Perfromance Review (APR) for FY 2023-24, Aggregate Revenue Requirement (ARR) and Determination of Retail Tariff for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Goa)",
+  "licensees": [
+   "GOA-ED"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "133313880409fdc2d7d6eebf70d8fb9d163eccaa482bc6f31081fb613922b4ed",
+  "bytes": 2463721,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2023/11/95-edgoaorder_1066.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "TARIFF ORDER Approval of Annual Performance Review of FY 2022-23, Aggregate Revenue Requirements (ARR) and Determination of Retail Tariff for FY 2023-24 Petition No. 95/2022 for Electricity Department, Government of Goa (ED-Goa) 30th March 2023",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Goa)",
+  "licensees": [
+   "GOA-ED"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "provisional_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "76aff61baa0c1c819b48ee943f2eaf6de39785974bfcca5fd9bea24b4da2982a",
+  "bytes": 2963342,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2023/11/63-22-23-GED-Tariff-Order_1205.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "TARIFF ORDER Approval of Aggregate Revenue Requirements (ARR) for 3rd MYT Control Period from FY 2022-23 to FY 2024-25 and Determination of Retail Tariff for FY 2022-23 Petition No. 63/2021 for Electricity Department, Government of Goa (ED-Goa) 31st March 2022",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Goa)",
+  "licensees": [
+   "GOA-ED"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "7ca87f6b7f7d09cf45632a489d6605c0f461d53b2aea654b660d7622a319c641",
+  "bytes": 2736892,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2026/05/Final-Order-PED-2024-25_14-05-2026.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "Approval of True-up of FY 2024-25 for Electricity Department, Government of Puducherry (PED)",
+  "kind": "arr_true_up_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2024-25",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "8b3dd34f8d3f089d30f060c456219aa6de670ef7b83cee052dee4b3cf1b05ae0",
+  "bytes": 2094957,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2025/09/PED_TARIFF_ORDER_True-up-for-the-FY-2023-24-APR-for-FY-2024-25-and-ARR-and-Determination-of-Retail-Tariff-for-FY-2025-25-to-FY-2029-30.-D-O-O-24_09_2025.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "True-up for the FY 2023-24, Annual Performance Review for FY 2024-25, Aggregate Revenue Requirement and Determination of Retail Tariff for 4th MYT Control Period (FY 2025-26 to FY 2029-30",
+  "kind": "myt_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [
+   {
+    "fy": "FY2023-24",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "provisional_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "ad0725e63f5ca06bfc0f925941b068fb9c27bd814ca59f142d7d22b6b8fe97e1",
+  "bytes": 10312875,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2025/07/Certified-copy-of-Tariff-Order-of-PPCL-P.No_.-137-of-2025.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "Aggregate Revenue Requirement (ARR) for the 4th Control Period (FY 2025-26 to FY 2029-30) and Determination of Generation Tariff filed by PPCL",
+  "kind": "myt_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "0c91028df4b97dfd77cb43818a24b2a7f14a933489f8ca4b07f8265185b0852d",
+  "bytes": 601998,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2024/06/True-up-for-the-FY-2022-23-APR-for-FY-2023-24-ARR-for-FY-2024-25-and-Determination-of-Retail-Tariff-for-FY-2024-25.-Petition-No.-116-2023.-D-O-O-12.06.2024.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "Approval of the True-up for FY 2022-23, Annual Performance Review (APR) for FY 2023-24, Aggregate Revenue Requirement (ARR) and Determination of Retail Tariff for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "6e60db1e82e1ebd5122fc0910bc73eca81a35654ecc57b35577ed1eb456182ed",
+  "bytes": 1664234,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2024/06/Petition-No.-114-2023.-D-O-O-10.06.2024.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "Approval of the True-up for FY 2021-22, Aggregate Revenue Requirement (ARR) for FY 2024-25 and Determination of Generation Tariff for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2021-22",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2021-22",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "eebaba0ceea78d1ce6bf9b7c17bf7226a74dd16a9bc15aa668b45f6ef7b4ec66",
+  "bytes": 2377389,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2023/11/96EDPORDER_1517.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "TARIFF ORDER True-up for FY 2021-22, Annual Performance Review for FY 2022-23 and Aggregate Revenue Requirement (ARR) and Determination of Retail Tariff for the FY 2023-24 Petition No. 96/2022 for Electricity Department, Government of Puducherry (PED) 30th March 2023",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2021-22",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2022-23",
+    "value_type": "provisional_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "74e64ef1f157c1ddba221aed7b06a554a08386a5b4a8139379782f32b686bd42",
+  "bytes": 2451469,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2023/11/88ppcltariff_1987-1.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "True-up of the FY 2020-21 and FY 2021-22 Aggregate Revenue Requirement(ARR) and Determination of Generation Tariff for the FY 2023-24. Petition No. 88/2022 for Puducherry Power Corporation Limited(PPCL) 28th March 2023.",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2020-21",
+   "FY2021-22",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2020-21",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "97677e63dd996ffd95bf35e510f79a8f0e01f92da7508844168351106218cd08",
+  "bytes": 3092884,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2023/11/60-22-23-PPCL-Tariff_1060.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "TARIFF ORDER True-up of the FY 2019-20, Aggregate Revenue Requirement (ARR) for the 3rd MYT Control Period (FY 2022-23 to FY 2024-25) and Determination of Generation Tariff for the FY 2022-23 Petition No. 60/2021 For Puducherry Power Corporation Limited (PPCL) 31st March 2022",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2022-23",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2019-20",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "f2ceeaebb0e93f128eff107a8f80d86a84cc22fafa2f77f1dfa0852c161daf11",
+  "bytes": 662734,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2023/11/70-22-23-PED-Tariff_1286-1.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "TARIFF ORDER True-up for FY 2020-21, Annual Performance Review for FY 2021-22 and Aggregate Revenue Requirement (ARR) 3rd Control Period and Determination of Retail Tariff for the FY 2022-23 Petition No. 70/2021 for Electricity Department, Government of Puducherry (PED) 31st March 2022",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2020-21",
+   "FY2021-22",
+   "FY2022-23"
+  ],
+  "decides": [
+   {
+    "fy": "FY2020-21",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2021-22",
+    "value_type": "provisional_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "18c8b78108e80c40cd6bc2f08d7602ba946b8e12ed60e7cd81e7079e97d14e61",
+  "bytes": 3353143,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2023/11/60-22-23-PPCL-Tariff_1060-1.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "TARIFF ORDER True-up of the FY 2019-20, Aggregate Revenue Requirement (ARR) for the 3rd MYT Control Period (FY 2022-23 to FY 2024-25) and Determination of Generation Tariff for the FY 2022-23 Petition No. 60/2021 For Puducherry Power Corporation Limited (PPCL) 31st March 2022",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2022-23",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2019-20",
+    "value_type": "final_true_up"
+   }
+  ],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "f2ceeaebb0e93f128eff107a8f80d86a84cc22fafa2f77f1dfa0852c161daf11",
+  "bytes": 662734,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jercuts.gov.in/wp-content/uploads/2023/11/39-TariffOrder39_1831-2.pdf",
+  "commission": "JERC-GOA-UT",
+  "title": "TARIFF ORDER Petition no 39/2011 Determination of Project Specific Tariff of M/S Saheli Exports Private Ltd for 1MWp Solar Power Plant at Karaikal, Puducherry",
+  "kind": "tariff_order",
+  "listing": "Tariff orders (Puducherry)",
+  "licensees": [
+   "PED-PY"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "discovery profile jerc-goa-ut-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "6aac2dae27153e93e3ef39422553ebda094330e112206053bbde1c570f89152c",
+  "bytes": 857658,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "http://jserc.org/pdf/tariff_order/jbvnl-2025.pdf",
+  "commission": "JSERC",
+  "title": "Order on True-up for FY 2023-24, Annual Performance Review for FY 2024-25, and Aggregate Revenue Requirement & Tariff for FY 2025-26 for Jharkhand Bijli Vitran Nigam Limited (JBVNL)",
+  "kind": "tariff_order",
+  "listing": "Tariff orders",
+  "licensees": [
+   "JBVNL"
+  ],
+  "years": [
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26"
+  ],
+  "decides": [
+   {
+    "fy": "FY2023-24",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2025-26",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile jserc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "76909d1642b99d26b07a143fd02a24e6fe77518f81cbe5886dae59e4780139ed",
+  "bytes": 3937904,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jserc.org/pdf/tariff_order/jbvnl2024b.pdf",
+  "commission": "JSERC",
+  "title": "Order on True-up for FY 2022-23, Annual Performance Review for FY 2023-24, and Aggregate Revenue Requirement & Tariff for FY 2024-25 for Jharkhand Biji Vitran Nigam Limited (JBVNL)",
+  "kind": "tariff_order",
+  "listing": "Tariff orders",
+  "licensees": [
+   "JBVNL"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2023-24",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile jserc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "dbd315b5b96b015ac307041c3b5fc44d2cbdaece0dbc38861f31d44cc1fb61d9",
+  "bytes": 4518198,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jserc.org/pdf/tariff_order/jbvnl2024a.pdf",
+  "commission": "JSERC",
+  "title": "Order on True up for 2021-22, Annual Performance Review for FY 2022-23 and Aggregate Revenue Requirment & Tariff for FY 2023-24 for Jharkhand Bijli Vitran Nigam Limited (JBVNL)",
+  "kind": "tariff_order",
+  "listing": "Tariff orders",
+  "licensees": [
+   "JBVNL"
+  ],
+  "years": [
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2021-22",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2022-23",
+    "value_type": "provisional_true_up"
+   }
+  ],
+  "found_by": "discovery profile jserc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "13b9df8cd9ade0566c601f8aa261283f527e7bf7a967352c67bd3556ba45d7b0",
+  "bytes": 3926931,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jserc.org/pdf/tariff_order/jbvnl2024.pdf",
+  "commission": "JSERC",
+  "title": "Order on True up for 2020-21, Annual Performance Review for FY 2021-22 and Aggregate Revenue Requirment & Tariff for FY 2022-23 for Jharkhand Bijli Vitran Nigam Limited (JBVNL)",
+  "kind": "tariff_order",
+  "listing": "Tariff orders",
+  "licensees": [
+   "JBVNL"
+  ],
+  "years": [
+   "FY2020-21",
+   "FY2021-22",
+   "FY2022-23"
+  ],
+  "decides": [
+   {
+    "fy": "FY2020-21",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2021-22",
+    "value_type": "provisional_true_up"
+   }
+  ],
+  "found_by": "discovery profile jserc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "5e953daa07149502115187058c37670b910140ddc8883b09f92c2d407fd954b1",
+  "bytes": 2600187,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://mperc.in/uploads/petition_order_document/MPERC_Pno_140_2025_State_DISCOMs_ARR_RST__ORDER_FY_2026_27_FINAL_ORDER.pdf",
+  "commission": "MPERC",
+  "title": "Tariff Order FY-2026-27 26/03/2026 Tariff order 2026-27",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "MPPKVVCL",
+   "MPMKVVCL",
+   "MPPaKVVCL"
+  ],
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "found_by": "discovery profile mperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb",
+  "bytes": 2972410,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://mperc.in/uploads/petition_order_document/Final_State_DISCOMs_ARR_and_Retail_Supply_Tariff_Order_FY_2025-26_29_03_2025_3.pdf",
+  "commission": "MPERC",
+  "title": "Tariff Order FY-2025-26 29/03/2025 Tariff order 2025-26",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "MPPKVVCL",
+   "MPMKVVCL",
+   "MPPaKVVCL"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "discovery profile mperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "66254f461e5d360d42d6216aaf824e0baa8bdab943248aeb241c34940b2693c2",
+  "bytes": 2308121,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://mperc.in/uploads/petition_order_document/Final_MP_DISCOMs_ARR_Order_FY_2024-25-SD.pdf",
+  "commission": "MPERC",
+  "title": "Tariff Order FY-2024-25 06/03/2024 Tariff order 2024-25",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "MPPKVVCL",
+   "MPMKVVCL",
+   "MPPaKVVCL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "discovery profile mperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "8dad250f64f0e5ff5686511a25accef0143784cce64bd131252f0b46e416d6c6",
+  "bytes": 3389753,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://mperc.in/uploads/petition_order_document/MPERC_PNo_138_2025_State_DISCOMs_True-up_Order_FY_2024_25.pdf",
+  "commission": "MPERC",
+  "title": "True Up Order FY-2024-25 25/03/2026",
+  "kind": "arr_true_up_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "MPPKVVCL",
+   "MPMKVVCL",
+   "MPPaKVVCL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "discovery profile mperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "8d46fc988fb500844c378b941a1c950b8bf1859b7c761ca36a11127d4f8ff810",
+  "bytes": 1516980,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://mperc.in/old_website/DISCOMs_RST_ARR-Order-FY-2023-24-PNo-84-2022.pdf",
+  "commission": "MPERC",
+  "title": "Tariff Order FY-2023-24 28/03/2023 Tariff order 2023-24",
+  "kind": "tariff_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "MPPKVVCL",
+   "MPMKVVCL",
+   "MPPaKVVCL"
+  ],
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "found_by": "discovery profile mperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "06c5200ff51ab8db90058c3f1e8eb35c326b806714b36cc89dc5026b043fd41e",
+  "bytes": 3430517,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://mperc.in/uploads/petition_order_document/Final_State_DISCOMs_True-up_Order_for_FY_2023-24_28_03_2025.pdf",
+  "commission": "MPERC",
+  "title": "True Up Order FY-2023-24 28/03/2025",
+  "kind": "arr_true_up_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "MPPKVVCL",
+   "MPMKVVCL",
+   "MPPaKVVCL"
+  ],
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "found_by": "discovery profile mperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "34776340087e950b1fb1195058eec770a21f3e407744ed4751afec46436d396b",
+  "bytes": 1361101,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://mperc.in/old_website/31032022-DISCOM-MYT-Order-FY-2022-23-to-FY-2026-27.pdf",
+  "commission": "MPERC",
+  "title": "Tariff Order FY-2022-23 31/03/2022",
+  "kind": "myt_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "MPPKVVCL",
+   "MPMKVVCL",
+   "MPPaKVVCL"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2026-27"
+  ],
+  "decides": [],
+  "found_by": "discovery profile mperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "032d4c3679cd738ccaaade8761de6cc47ecb51deaa7a37bc89edce13aca2678c",
+  "bytes": 11635858,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://mperc.in/uploads/petition_order_document/Final_State_DISCOMs_True-up_Order_for_FY_2022-23_-_SD.pdf",
+  "commission": "MPERC",
+  "title": "True Up Order FY-2022-23 05/03/2024",
+  "kind": "arr_true_up_order",
+  "listing": "Distribution tariff orders",
+  "licensees": [
+   "MPPKVVCL",
+   "MPMKVVCL",
+   "MPPaKVVCL"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "discovery profile mperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "14d5dbd48918a20cead4a5104e77bf7b4267c4c82e4fa928b9f70ae42132de22",
+  "bytes": 1190361,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/DISCOM_TARIFF_ORDER_FY_2026-27.pdf",
+  "commission": "OERC",
+  "title": "Aggregate Revenue Requirement, Wheeling Tariff &Retail Supply Tariff for the FY 2026-27",
+  "kind": "tariff_order",
+  "listing": "Distribution retail supply orders",
+  "licensees": [
+   "TPCODL",
+   "TPWODL",
+   "TPSODL",
+   "TPNODL"
+  ],
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "found_by": "discovery profile oerc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "d58d281787d4dd34e7b895add2e7cb37dbf3b9e8d5f1a1ea208dc57ceffde0ab",
+  "bytes": 2899149,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/DISCOM_TARIFF_ORDER_FY_2025-26.pdf",
+  "commission": "OERC",
+  "title": "Aggregate Revenue Requirement, Wheeling Tariff &Retail Supply Tariff for the FY 2025-26",
+  "kind": "tariff_order",
+  "listing": "Distribution retail supply orders",
+  "licensees": [
+   "TPCODL",
+   "TPWODL",
+   "TPSODL",
+   "TPNODL"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "discovery profile oerc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "de53fe6fc5afb70f9f45e2eb94a977bcbd2c791fe63eb9f713f8b9ab2fc069fb",
+  "bytes": 2582905,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/DISCOM_TARIFF_ORDER_FY_2024-25.pdf",
+  "commission": "OERC",
+  "title": "Aggregate Revenue Requirement, Wheeling Tariff & Retail Supply Tariff for the FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "Distribution retail supply orders",
+  "licensees": [
+   "TPCODL",
+   "TPWODL",
+   "TPSODL",
+   "TPNODL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "discovery profile oerc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "0948e8b01e4b084b1b715e59dbfa83fe92adc0f45085b1237fbfd82322aa95c2",
+  "bytes": 2927012,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/DISCOM_TARIFF_ORDER_FY_2023-24.pdf",
+  "commission": "OERC",
+  "title": "Annual Revenue Requirement and Retail Supply Tariff for the FY 2023-24.",
+  "kind": "tariff_order",
+  "listing": "Distribution retail supply orders",
+  "licensees": [
+   "TPCODL",
+   "TPWODL",
+   "TPSODL",
+   "TPNODL"
+  ],
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2023-24",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile oerc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "514471ae360f3329336c030c37c45cff7944ac5493e798c3192459a993e8c321",
+  "bytes": 2309184,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/DISCOMTariffOrder22-23Final.pdf",
+  "commission": "OERC",
+  "title": "Annual Revenue Requirement and Retail Supply Tariff for the FY 2022-23.",
+  "kind": "tariff_order",
+  "listing": "Distribution retail supply orders",
+  "licensees": [
+   "TPCODL",
+   "TPWODL",
+   "TPSODL",
+   "TPNODL"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile oerc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "0ee12bb2268be23d2abdbc06eb722369eefa3869e38a773b8a078155e3723e77",
+  "bytes": 1246623,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2025/04/20250428261984844.pdf",
+  "commission": "UERC",
+  "title": "Tariff Orders for FY 2025-26. 1. UPCL",
+  "kind": "tariff_order",
+  "listing": "Documents FY2025-26",
+  "licensees": [
+   "UPCL"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "discovery profile uerc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "5fc2d18f3b19793e67ecba4fe5bfc60b3e6b9401e20c418dc89255eb273bc41e",
+  "bytes": 6464794,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2026/03/202603311394829151.pdf",
+  "commission": "UERC",
+  "title": "Tariff Order of UPCL for FY 2026-27",
+  "kind": "tariff_order",
+  "listing": "Documents FY2026-27",
+  "licensees": [
+   "UPCL"
+  ],
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "found_by": "discovery profile uerc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+  "bytes": 6555477,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/NPCLFY2022-23DigitallySigned-pdf727202265312PM.pdf",
+  "commission": "UPERC",
+  "title": "Order dated 20/07/22 for Petition Number 1797 of 2021 - NPCL - Petition for Truing Up for FY 2020-21 , APR for FY 2021-22 and Approval of ARR for FY 2022-23 (Digitally Signed)",
+  "kind": "arr_true_up_order",
+  "listing": "Tariff orders FY2022-23",
+  "licensees": [
+   "NPCL"
+  ],
+  "years": [
+   "FY2020-21",
+   "FY2021-22",
+   "FY2022-23"
+  ],
+  "decides": [
+   {
+    "fy": "FY2020-21",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2021-22",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2022-23",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "16908c4c53555dfaba6e578cb98c8fb53abd215084231ab1c0aab4ec1db9982e",
+  "bytes": 5248975,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/OrderStateDiscomsDigitallySigned-pdf726202220241PM.pdf",
+  "commission": "UPERC",
+  "title": "Order dated 20/07/22 - Petition Number 1833, 1834,1835,1836,1837- Truing Up for FY 2020-21, APR for FY 2021-22 and Approval of ARR for FY 2022-23 of UP State Discoms (Digitally Signed)",
+  "kind": "arr_true_up_order",
+  "listing": "Tariff orders FY2022-23",
+  "licensees": [
+   "DVVNL",
+   "KESCO",
+   "MVVNL",
+   "PUVVNL",
+   "PVVNL"
+  ],
+  "years": [
+   "FY2020-21",
+   "FY2021-22",
+   "FY2022-23"
+  ],
+  "decides": [
+   {
+    "fy": "FY2020-21",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2021-22",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2022-23",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "93066357ffcacac3705aa2cecae32642e7903b7ef900d39c7a678cf4453ce94b",
+  "bytes": 10652309,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/TariffOrderNPCLDigitallySigned-pdf332024100507PM.pdf",
+  "commission": "UPERC",
+  "title": "Tariff Order dated 24/05/23 - NPCL - True-UP petition for FY 2021-22, APR Petition for FY 2022-23 and ARR and Tariff Petition For 2023-24 (Digitally Signed Copy)",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2023-24",
+  "licensees": [
+   "NPCL"
+  ],
+  "years": [
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2023-24",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "16545bdc25ca5d74b322cfc3b213cc764ea076d293c1655cc05101faa456819b",
+  "bytes": 13310499,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/TariffOrderStateDiscomsDigitallySigned-pdf525202322444AM.pdf",
+  "commission": "UPERC",
+  "title": "Tariff Order dated 24/05/23 for UP State Discoms- True-UP for FY 2021-22, APR Petition for FY 2022-23 and ARR and Tariff for 2023-24",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2023-24",
+  "licensees": [
+   "DVVNL",
+   "KESCO",
+   "MVVNL",
+   "PUVVNL",
+   "PVVNL"
+  ],
+  "years": [
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24"
+  ],
+  "decides": [
+   {
+    "fy": "FY2021-22",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2023-24",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "5d239da5fbdfe837faa17983cbf24937270b817e83e9bb8bfca0731d39d2d681",
+  "bytes": 10406715,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/NPCL_FinalOrderwithCorrigendum-pdf1017202465739PM.pdf",
+  "commission": "UPERC",
+  "title": "NPCL Tariff Order with Corrigendum for True-up for FY 2022-23, APR for 2023-24 and ARR and Tariff for FY 2024-25 in Petition no 2039/2023",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2024-25",
+  "licensees": [
+   "NPCL"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2023-24",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "cff63ef09fd6982a6533a345a036511bd549843521b9292a442f5bda5809bf32",
+  "bytes": 17915500,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/UPPCLOrderwithCorrigendum-pdf1017202471822PM.pdf",
+  "commission": "UPERC",
+  "title": "State Discoms Tariff Order with Corrigendum for True-up for FY 2022-23, APR for 2023-24 and ARR and Tariff for FY 2024-25 in Petition no 2040/2023, 2041/2023, 2042/2023, 2043/2023 and 2048/2023",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2024-25",
+  "licensees": [
+   "DVVNL",
+   "KESCO",
+   "MVVNL",
+   "PUVVNL",
+   "PVVNL"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2023-24",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "78ac5d8d2448b607d29ebbb7c5f77091374c2092836005afd6f7989ba83632c9",
+  "bytes": 38933217,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/NPCL_TariffOrderFY2024-25_DSC-pdf1010202474242PM.pdf",
+  "commission": "UPERC",
+  "title": "Tariff Order dated 10/10/24- NPCL- Petition for True-up for FY 2022-23, APR for 2023-24 and ARR and Tariff for FY 2024-25 in Petition no 2039/2023 (Digitally Signed)",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2024-25",
+  "licensees": [
+   "NPCL"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2023-24",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "ad338e601fdc42a2b9c8b46e46e4471843ffa3592533763e10f46b2b6821ade1",
+  "bytes": 9441823,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/UPPCLTariffOrderDSC-pdf1010202472857PM.pdf",
+  "commission": "UPERC",
+  "title": "Tariff Order dated 10/10/24- State Discoms- Petition for True-up for FY 2022-23, APR for 2023-24 and ARR and Tariff for FY 2024-25 in Petition no 2040/2023, 2041/2023, 2042/2023, 2043/2023 and 2048/2023 (Digitally Signed)",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2024-25",
+  "licensees": [
+   "DVVNL",
+   "KESCO",
+   "MVVNL",
+   "PUVVNL",
+   "PVVNL"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [
+   {
+    "fy": "FY2022-23",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2023-24",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "f00511de5922026ebbc46983e8f7ebe6269fa076b95c52b30462e5eb2f886808",
+  "bytes": 16375998,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/NPCLTariffOrderFY2025-26-pdf1122202564833PM.pdf",
+  "commission": "UPERC",
+  "title": "NPCL Tariff Order for True-up for FY 2023-24, APR for 2024-25 and ARR and Tariff for FY 2025-26 in Petition no 2168/2024",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2025-26",
+  "licensees": [
+   "NPCL"
+  ],
+  "years": [
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26"
+  ],
+  "decides": [
+   {
+    "fy": "FY2023-24",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2025-26",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "7922703dec79c7e16bc2f04eba08bc14a1e52c625669fd28f51e3290084717aa",
+  "bytes": 9545505,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/UPPCLTariffOrderFY2025-26-pdf1122202564623PM.pdf",
+  "commission": "UPERC",
+  "title": "State Discoms Tariff Order for True-up for FY 2023-24, APR for 2024-25 and ARR and Tariff for FY 2025-26 in Petition no 2162/2024, 2163/2024, 2164/2024, 2165/2024 and 2176/2024",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2025-26",
+  "licensees": [
+   "DVVNL",
+   "KESCO",
+   "MVVNL",
+   "PUVVNL",
+   "PVVNL"
+  ],
+  "years": [
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26"
+  ],
+  "decides": [
+   {
+    "fy": "FY2023-24",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2024-25",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2025-26",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "e687a4c7cc2037b00abe50f2037b88afc203a45c71915277136ca03ea36cb7c5",
+  "bytes": 11495384,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/NPCL_TariffOrder-pdf72202631759PM.pdf",
+  "commission": "UPERC",
+  "title": "NPCL Tariff Order for True-up for FY 2024-25, APR for 2025-26 and ARR and Tariff for FY 2026-27 in Petition no 2330 of 2025",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2026-27",
+  "licensees": [
+   "NPCL"
+  ],
+  "years": [
+   "FY2024-25",
+   "FY2025-26",
+   "FY2026-27"
+  ],
+  "decides": [
+   {
+    "fy": "FY2024-25",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2025-26",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2026-27",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+  "bytes": 6314646,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.uperc.org/App_File/UPPCLTariffOrder-pdf72202630151PM.pdf",
+  "commission": "UPERC",
+  "title": "State Discoms Tariff Order dated 02/07/26 for True-up for FY 2024-25, APR for 2025-26 and ARR and Tariff for FY 2026-27 in Petition nos. 2314, 2315, 2316, 2317, 2318 of 2025",
+  "kind": "tariff_order",
+  "listing": "Tariff orders FY2026-27",
+  "licensees": [
+   "DVVNL",
+   "KESCO",
+   "MVVNL",
+   "PUVVNL",
+   "PVVNL"
+  ],
+  "years": [
+   "FY2024-25",
+   "FY2025-26",
+   "FY2026-27"
+  ],
+  "decides": [
+   {
+    "fy": "FY2024-25",
+    "value_type": "final_true_up"
+   },
+   {
+    "fy": "FY2025-26",
+    "value_type": "provisional_true_up"
+   },
+   {
+    "fy": "FY2026-27",
+    "value_type": "approved"
+   }
+  ],
+  "found_by": "discovery profile uperc-discovery v1",
+  "http": 200,
+  "error": null,
+  "sha256": "3a046bfa2e2fb0e76aa93dca2d1ecc602ef09a62ba72977fb8351b7a01ab8d95",
+  "bytes": 12308139,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.derc.gov.in/sites/default/files/Preface%20to%20the%20True-up%20Order%20of%20FY%202022-23_0.pdf",
+  "commission": "DERC",
+  "title": "Preface to the True-up Order for FY 2022-23",
+  "kind": "true-up",
+  "listing": "https://www.derc.gov.in/tarriff-orders",
+  "licensees": [
+   "BRPL",
+   "BYPL",
+   "TPDDL",
+   "NDMC"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "9d3570b46c4e7b0b38e1768944defb483d6aa64087da8f95d178a5b0b5858d33",
+  "bytes": 776555,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.derc.gov.in/sites/default/files/NDMC%20final%20to%20Upload_0.pdf",
+  "commission": "DERC",
+  "title": "NDMC-New Delhi Municipal Council",
+  "kind": "true-up",
+  "listing": "https://www.derc.gov.in/tarriff-orders",
+  "licensees": [
+   "NDMC"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "f0ceaacc17da9a7b8db962dff036dc52f840c3d822c1f8787060be31f3ea8faa",
+  "bytes": 3548677,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.derc.gov.in/sites/default/files/BRPL%20To%20Upload_0.pdf",
+  "commission": "DERC",
+  "title": "BRPL - BSES Rajdhani Power Limited",
+  "kind": "true-up",
+  "listing": "https://www.derc.gov.in/tarriff-orders",
+  "licensees": [
+   "BRPL"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "67ae010ae44098e057b2121530c6a63adcbec160eee885f1b904db71dad9e4c2",
+  "bytes": 2442013,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.derc.gov.in/sites/default/files/BYPL%20to%20upload_0.pdf",
+  "commission": "DERC",
+  "title": "BYPL - BSES Yamuna Power Limited",
+  "kind": "true-up",
+  "listing": "https://www.derc.gov.in/tarriff-orders",
+  "licensees": [
+   "BYPL"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "cca1c77200e0e50d5d5d8bba510f23170e74c2888bd58092feabd4b045aaa50b",
+  "bytes": 2556179,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.derc.gov.in/sites/default/files/TPDDL%20Final%20to%20Upload_0.pdf",
+  "commission": "DERC",
+  "title": "TPDDL -Tata Power Delhi Distribution Limited",
+  "kind": "true-up",
+  "listing": "https://www.derc.gov.in/tarriff-orders",
+  "licensees": [
+   "TPDDL"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "b3ab693943bfcebd3cfccfd1f3e3e8f37df607982ac4c1236da97e0f68294bca",
+  "bytes": 2773579,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/16-07-2026_1784180584.pdf",
+  "commission": "CSERC",
+  "title": "Tariff Order for CSPDCL for FY 2026-30 and retail tariff for FY 2026-27",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "7c77f6d68eb43a622ab905baa9c136e79975017d048e53b7ecd395f0ea1d5fd8",
+  "bytes": 2128082,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/24-06-2026_17823016931.pdf",
+  "commission": "CSERC",
+  "title": "Tariff Order for CSPDCL for FY 2026-30 and retail tariff for FY 2026-27",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "fd43a2261ae7950057138a47ca429fb69919d04b637b64d1262d46190065ebf9",
+  "bytes": 371626,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/01-08-2025_1754032900.pdf",
+  "commission": "CSERC",
+  "title": "Tariff Order in respect of CSPGCL, CSPTCL, CSLDC CSPDCL for FY 2025-26",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "8b3d10d4540da6a8c8ca2b090f91856e5fdb16c2b9525410780088b2258c6b03",
+  "bytes": 4836620,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/17522356311.pdf",
+  "commission": "CSERC",
+  "title": "Tariff Order in respect of CSPGCL, CSPTCL, CSLDC CSPDCL for FY 2025-26",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "600d182822a853f9e6bf67d1b3f2dd727d11ff4817e0d04f9a860907c8a00478",
+  "bytes": 376763,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1718713223.pdf",
+  "commission": "CSERC",
+  "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "eb2c8fb6554fb07102c0f509b77fa14022b51cb8aa0ea57cbc2d4c3ca330b629",
+  "bytes": 3477657,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/17187132231.pdf",
+  "commission": "CSERC",
+  "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "932b847c3d08dae0785592bfb505e3a0cae7967c6d611f14722ff13834fdb5d2",
+  "bytes": 279099,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1683185806.pdf",
+  "commission": "CSERC",
+  "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2023-24",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "9b993a414dd44cefb2896af6c5fa17450c327e128bf71568f3d23e5a9bcd9f55",
+  "bytes": 3889269,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/16831858061.pdf",
+  "commission": "CSERC",
+  "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2023-24",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "e2a089f9cdc81fea87c51376d6cd6d37c2ba605317ed27844392c11e29cfe5fe",
+  "bytes": 360030,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1651330549.pdf",
+  "commission": "CSERC",
+  "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2022-23",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "9d817a9be263d98f0033dbb7c1d13ba39988351a04f23ab741e1ccb2013dae32",
+  "bytes": 6663633,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/16513305491.pdf",
+  "commission": "CSERC",
+  "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2022-23",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "CSPDCL"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "45c973c2cc9325c2fe0dcd2c5f4601ad669bab9b02e248f9d30c91838630b6fe",
+  "bytes": 177300,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1753423236.pdf",
+  "commission": "CSERC",
+  "title": "Order passed in petition No. 2 of 2025 filed by Jindal Steel Power Ltd. for Licensed Distribution Business for determination of ARR and retail tariff for FY 2025-26.",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "JSPL-D"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "bc3eaac07f2af4ab6a3a3084342c72be20e8773b80b5466ed34bea74728da329",
+  "bytes": 831448,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1715583468.pdf",
+  "commission": "CSERC",
+  "title": "Order passed in petition No. 101 of 2023 filed by Jindal Steel Power Ltd. for Licensed Distribution Business for determination of ARR and retail tariff for FY 2024-25.",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "JSPL-D"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "b50578a58e022eb713d24282118e229f03c89ef01b44b8c10f4eef636b794845",
+  "bytes": 1307618,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1704871182.pdf",
+  "commission": "CSERC",
+  "title": "Order passed in petition No. 15 of 2023 filed by Jindal Steel Power Ltd. (Distribution Business) for determination of retail tariff for FY 2023-24.",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "JSPL-D"
+  ],
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "cc4072e98cca1125236093f767fadc0cbcfb3350e42a1fe700122d728304e725",
+  "bytes": 1267060,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1669805149.pdf",
+  "commission": "CSERC",
+  "title": "Order passed in petition No. 46 of 2022 filed by Jindal Steel Power Ltd. for Licensed Distribution Business for determination of ARR for FY 2022-23 to 2024-25 and retail tariff for FY 2022-23",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "JSPL-D"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "2542bf77cf241a4688f002793c8234c352f5ebc2b6c7980125d6dc830298b52f",
+  "bytes": 2697578,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1753423370.pdf",
+  "commission": "CSERC",
+  "title": "Retail Tariff order for FY 2025-26",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "SAIL-BSP"
+  ],
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "7ea95d95ed4ae0223526a086707e0910627ff43e2122069d91b51ac4afae3def",
+  "bytes": 999139,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1719301108.pdf",
+  "commission": "CSERC",
+  "title": "Retail Tariff order for FY 2024-25",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "SAIL-BSP"
+  ],
+  "years": [
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "b181c62496afcb6ec871a1c46b46f6df2ee8109a610bc75e9f29b7bb222a4122",
+  "bytes": 846011,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1718713423.pdf",
+  "commission": "CSERC",
+  "title": "Retail Tariff order for FY 2023-24",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "SAIL-BSP"
+  ],
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "291e4ad2f01c746d0553838ce11adbc748a8a0cb96cd5b74e4dbd98f575922fd",
+  "bytes": 498408,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/1661254864.pdf",
+  "commission": "CSERC",
+  "title": "Retail Tariff order for FY 2022-23",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "SAIL-BSP"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "fad4251bb3952e7719580859901b8b4d947fc75154cf81bb6083c9a8bc3f9507",
+  "bytes": 1415552,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/./upload_terrif_order/16612548641.pdf",
+  "commission": "CSERC",
+  "title": "Retail Tariff order for FY 2022-23",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "SAIL-BSP"
+  ],
+  "years": [
+   "FY2022-23"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "b2ed75882f0f4cf416ef264c7dd638b3bd7c7d5dab7f86aa7a9b71ecc3772b60",
+  "bytes": 200074,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/order/O-29-2026_6204-1787668617-.pdf",
+  "commission": "CSERC",
+  "title": "Petition for determination of Annual Revenue Requirement and Retail Supply Tariff for FY 2026-27 to FY 2029-30 along with Revised Estimate for FY 2025-26 and True-Up for FY 2024-25 for the licensed distribution business under Section 61, 62 and 86 (1) (a) of the Electricity Act, 2003 read with the relevant provisions of the Chhattisgarh State Electricity Regulatory Commission’s Conduct of Business Regulations and Terms and Conditions for determination of Tariff Regulations and its amendments thereof.",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "JSPL-D"
+  ],
+  "years": [
+   "FY2024-25",
+   "FY2025-26",
+   "FY2026-27",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "4efd29955da68a1b5fa6b938355f44d41d37b0c4c5a73c37063edebb5e64de38",
+  "bytes": 234186,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://cserc.gov.in/upload/order/O-29-2026_6204-1787668682-.pdf",
+  "commission": "CSERC",
+  "title": "Petition for determination of Annual Revenue Requirement and Retail Supply Tariff for FY 2026-27 to FY 2029-30 along with Revised Estimate for FY 2025-26 and True-Up for FY 2024-25 for the licensed distribution business under Section 61, 62 and 86 (1) (a) of the Electricity Act, 2003 read with the relevant provisions of the Chhattisgarh State Electricity Regulatory Commission’s Conduct of Business Regulations and Terms and Conditions for determination of Tariff Regulations and its amendments thereof.",
+  "kind": "tariff_order",
+  "listing": "https://cserc.gov.in/Welcome/show_tariff_orders",
+  "licensees": [
+   "JSPL-D"
+  ],
+  "years": [
+   "FY2024-25",
+   "FY2025-26",
+   "FY2026-27",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "fad2f6ca790bc08321ffeb0b7ce7f71d23773e57a937795a08bb097bc53bf211",
+  "bytes": 286754,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2023/04/Order-226-of2022.pdf",
+  "commission": "MERC",
+  "title": "Case of Maharashtra State Electricity Distribution Company Limited for Final True Up of FY 2019-20, FY 2020-21 & FY 2021-22, Provisional True Up for FY 2022-23 and Revised Tariff & Projection for FY 2023-24 to FY 2024-25 under Section 62 of The Electricity Act, 2003 and MERC MYT Regulations, 2019",
+  "kind": "MTR",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "MSEDCL"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2020-21",
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "02e533278dcf2f7484fded191844d3b594648fd654b9f9cc63c15955ed86bbae",
+  "bytes": 8929897,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/03/MSEDCL-MYT-Order_Case_no_217-of-2024.pdf",
+  "commission": "MERC",
+  "title": "Case of Maharashtra State Electricity Distribution Co. Ltd. for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional Truing-up of ARR for FY 2024-25 and approval of ARR and Tariff for FY 2025-26 to FY 2029-30 for its Distribution Business in accordance with the Maharashtra Electricity Regulatory Commission (Multi Year Tariff) Regulations, 2024",
+  "kind": "MYT",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "MSEDCL"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "934701e580059cdf7923aa066117364c413ace1bf7a3c0a599c05357a7558671",
+  "bytes": 12902570,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-225-of-2022.pdf",
+  "commission": "MERC",
+  "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2021-22 and FY 2021-22, Provisional Truing-up of ARR for FY 2022-23, and approval of Revised ARR and Tariff for FY 2023-24 and FY 2024-25",
+  "kind": "MTR",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "TPC-D"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "c16b4ca31ed947515e99f288d475e1d587a20cbe034f218bbb37adaed20ebb6d",
+  "bytes": 5016202,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2023/04/Corrigendum-Order-Case-No.-225-of-2022-TPC-D-MTR.pdf",
+  "commission": "MERC",
+  "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2021-22 and FY 2021-22, Provisional Truing-up of ARR for FY 2022-23, and approval of Revised ARR and Tariff for FY 2023-24 and FY 2024-25",
+  "kind": "MTR",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "TPC-D"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "a7a879932168705aefc2ab64e9f4a7c3095d5e689c57dc4933f28943f839c890",
+  "bytes": 279402,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2024/02/Order-in-Case-No.-225-of-2022-remand-from-APTEL.pdf",
+  "commission": "MERC",
+  "title": "Petition of The Tata Power Company Ltd. (Distribution) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2021-22 and FY 2021- 22, Provisional Truing-up of ARR for FY 2022-23, and approval of Revised ARR and Tariff for FY 2023-24 and FY 2024-25. Case No. 225 of 2022 (Re-opened in pursuance of Hon’ble APTEL’s Judgement dated 5 January, 2024 in Appeal No. 369 of 2023.)",
+  "kind": "MTR re-determination on APTEL remand",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "TPC-D"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "5a4d144f147d9deb60f568442b9b26029c9bdab2a60a268511e4f8d22038c841",
+  "bytes": 349004,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2024/03/Final-Order-Case-No.-237-of-2023_TPC-D.pdf",
+  "commission": "MERC",
+  "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of Truing-up of Aggregate Revenue Requirement (ARR) for FY 2022-23, Provisional Truing-up of ARR for FY 2023-24, and approval of Revised ARR and Tariff for FY 2024-25",
+  "kind": "true-up / revised ARR & tariff FY2024-25",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "TPC-D"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "fd53b5c1995a3dcd058e1e1a1a46a557f2c3c2baab175fadef7d1984bcb86bd4",
+  "bytes": 3284458,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/03/Final-MYT-Order-Case-No.-210-of-2024_TPC-D-280325.pdf",
+  "commission": "MERC",
+  "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of Truing-up of Aggregate Revenue Requirement (ARR) for FY 2023-24, Provisional Truing-up of ARR for FY 2024-25, and Determination of ARR & Tariff for the 5th Control Period from FY 2025-26 to FY 2029-30.",
+  "kind": "MYT",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "TPC-D"
+  ],
+  "years": [
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "10571990a3929b7156085cb882e7cb49bf2d82b261f47d56c4d657148fa05a95",
+  "bytes": 5408871,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/04/Corrigendum-Errata-Case-No-210-of-2024_TPC-D-MYT.pdf",
+  "commission": "MERC",
+  "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of Truing-up of Aggregate Revenue Requirement (ARR) for FY 2023-24, Provisional Truing-up of ARR for FY 2024-25, and Determination of ARR & Tariff for the 5th Control Period from FY 2025-26 to FY 2029-30.",
+  "kind": "MYT",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "TPC-D"
+  ],
+  "years": [
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "e080de80afb3e883e28b090da8fa282e811a490d266cf285613b2522d3c9dba5",
+  "bytes": 355767,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-231-of-2022.pdf",
+  "commission": "MERC",
+  "title": "Case of Adani Electricity Mumbai Limited (Distribution Business) for Approval of Truing-up of FY 2019-20 to FY 2021-22, Provisional Truing-up for FY 2022-23 and Revised Aggregate Revenue Requirement for FY 2023-24 and FY 2024-25",
+  "kind": "MTR",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "AEML-D"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "fd1c1d80d23953d9663ba49098d947e177e0de866d194c613de076b0f35849ea",
+  "bytes": 6710022,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2023/04/Corrigendum-Order-Case-No.-231-of-2022-AEML-D-MTR.pdf",
+  "commission": "MERC",
+  "title": "Case of Adani Electricity Mumbai Limited (Distribution Business) for Approval of Truing-up of FY 2019-20 to FY 2021-22, Provisional Truing-up for FY 2022-23 and Revised Aggregate Revenue Requirement for FY 2023-24 and FY 2024-25",
+  "kind": "MTR",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "AEML-D"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "fce3689ff369a301c865f06b3ad012948565da30453c9eea8c6003eeb598752c",
+  "bytes": 214580,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/03/AEML-D-Complete-Final-MYT-Order-28.03.2025-SD.pdf",
+  "commission": "MERC",
+  "title": "Case of Adani Electricity Mumbai Limited (Distribution Business) for Approval of Truing-up of FY 2022-23 and FY 2023-24, Provisional Truing-up for FY 2024-25, and ARR and Tariff for 5th Control Period from FY 2025-26 to FY 2029-30",
+  "kind": "MYT",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "AEML-D"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "2a404108b2b676a474c053e240008fb963b371f8ec72cd9ba4880b1315a77d55",
+  "bytes": 3846925,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/04/Errata-and-Corrigendum-Case-No.-211-of-2024.pdf",
+  "commission": "MERC",
+  "title": "Case of Adani Electricity Mumbai Limited (Distribution Business) for Approval of Truing-up of FY 2022-23 and FY 2023-24, Provisional Truing-up for FY 2024-25, and ARR and Tariff for 5th Control Period from FY 2025-26 to FY 2029-30",
+  "kind": "MYT",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "AEML-D"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "fc16a30868869c46a5d7d9e7061eaa3939791281267c98dadb036cb5f6332222",
+  "bytes": 315418,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-212-of-2022-2.pdf",
+  "commission": "MERC",
+  "title": "Petition of Brihanmumbai Electric Supply and Transport Undertaking (BEST) for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2020-21 and FY 2021-22, Provisional Truing-up of ARR FY 2022-23 and revised ARR & Tariff for FY 2023-24 and FY 2024-25",
+  "kind": "MTR",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "BEST"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2020-21",
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "18355b042c10b886d9ebcee14e61d6b6c5bbe2c4cacb9218c375b9a458f0e397",
+  "bytes": 5327632,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2023/04/Corringendum-Order-Case-No.-212-of-2022-BEST-MTR.pdf",
+  "commission": "MERC",
+  "title": "Petition of Brihanmumbai Electric Supply and Transport Undertaking (BEST) for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2020-21 and FY 2021-22, Provisional Truing-up of ARR FY 2022-23 and revised ARR & Tariff for FY 2023-24 and FY 2024-25",
+  "kind": "MTR",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "BEST"
+  ],
+  "years": [
+   "FY2019-20",
+   "FY2020-21",
+   "FY2021-22",
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "8adc76ff2a9dc1da35f81e0028ce649c5b811678d281c0277ebc1a77a113b7c0",
+  "bytes": 290112,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/03/Final-MYT-Order_BEST_207-of-2024_for-uploading-_1.pdf",
+  "commission": "MERC",
+  "title": "Case of The Brihanmumbai Electric Supply and Transport Undertaking (BEST) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional True-up of FY 2024-25 and ARR Projections and Multi Year Tariff for 5th Control Period from FY 2025-26 to FY 2029-30",
+  "kind": "MYT",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "BEST"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "34f5c954391dc1adb0c23a6a8868f2f61993f1ea0eba2742f3f44b4211ff7dc9",
+  "bytes": 6111474,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/04/Corrigendum-Errata-207-of-2024_BEST.pdf",
+  "commission": "MERC",
+  "title": "Case of The Brihanmumbai Electric Supply and Transport Undertaking (BEST) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional True-up of FY 2024-25 and ARR Projections and Multi Year Tariff for 5th Control Period from FY 2025-26 to FY 2029-30",
+  "kind": "MYT",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "BEST"
+  ],
+  "years": [
+   "FY2022-23",
+   "FY2023-24",
+   "FY2024-25",
+   "FY2025-26",
+   "FY2029-30"
+  ],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "1fee5ea37fd924d370aa4a33bc25612fd0f415a47f4bd96948f2cf7ff4a3bb56",
+  "bytes": 350298,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2026/04/MSEDCL-MYT-Orders.pdf",
+  "commission": "MERC",
+  "title": "Maharashtra State Electricity Distribution Company Ltd",
+  "kind": "current tariff order (MYT)",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "MSEDCL"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "23607d2d34b09d5c054665605546d652e7acf1c35b4855dd0b72f8cf8d226432",
+  "bytes": 46506,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/04/AEML-D-Complete-Final-MYT-Order-28.03.2025-SD.pdf",
+  "commission": "MERC",
+  "title": "Adani Electricity Mumbai Limited",
+  "kind": "current tariff order (MYT)",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "AEML-D"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "2a404108b2b676a474c053e240008fb963b371f8ec72cd9ba4880b1315a77d55",
+  "bytes": 3846925,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/04/Final-MYT-Order-Case-No.-210-of-2024_TPC-D-280325.pdf",
+  "commission": "MERC",
+  "title": "The Tata Power Company Ltd",
+  "kind": "current tariff order (MYT)",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "TPC-D"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "10571990a3929b7156085cb882e7cb49bf2d82b261f47d56c4d657148fa05a95",
+  "bytes": 5408871,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://merc.gov.in/wp-content/uploads/2025/04/Final-MYT-Order_BEST_207-of-2024_for-uploading-_1.pdf",
+  "commission": "MERC",
+  "title": "BEST Undertaking",
+  "kind": "current tariff order (MYT)",
+  "listing": "https://merc.gov.in/orders/",
+  "licensees": [
+   "BEST"
+  ],
+  "years": [],
+  "decides": [],
+  "found_by": "listing page read on 2026-11-11 (no discovery profile yet)",
+  "http": 200,
+  "error": null,
+  "sha256": "34f5c954391dc1adb0c23a6a8868f2f61993f1ea0eba2742f3f44b4211ff7dc9",
+  "bytes": 6111474,
+  "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://jserc.org/pdf/tariff_order/JBVNL-2026.pdf",
+  "commission": "JSERC",
+  "title": "JSERC JBVNL MYT TrueUp APR Order 2026",
+  "sha256": "0391dd2701c7bbb7a962923212ef5a8ed6c9cdfbfea601df692d7ce4aa119108",
+  "licensees": [
+   "JBVNL"
+  ],
+  "arr_year": "FY2026-27",
+  "kind": "tariff_order",
+  "years": [],
+  "decides": [],
+  "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py",
+  "http": 200,
+  "error": null,
+  "bytes": 3665495,
+  "fetched_on": "2026-11-11"
+ }
+]

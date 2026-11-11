@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DISCOM ARR Database</title>
+  <meta name="description" content="Revenue requirements of Indian electricity distribution companies, read from state commission tariff orders. Ask in plain English; see the SQL, the answer and the page it came from.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>DISCOM ARR Database</h1>
+      <p>Revenue requirements of Indian DISCOMs, read from state commission tariff orders</p>
+    </div>
+    <nav aria-label="Sections">
+      <a href="#ask">Ask</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#method">Method</a>
+      <a href="#schema">Tables</a>
+    </nav>
+  </header>
+  <div class="banner" id="banner">Loading the database…</div>
+
+  <main>
+    <section id="ask" aria-labelledby="ask-h">
+      <p class="eyebrow">Ask in plain English</p>
+      <h2 id="ask-h">What did the Commission approve?</h2>
+      <form id="form" class="ask" autocomplete="off">
+        <label for="question" class="sr">Your question</label>
+        <input id="question" type="text" placeholder="e.g. Which discom has the highest approved ARR in FY2026-27?" disabled>
+        <button type="submit" id="go" disabled>Ask</button>
+      </form>
+      <div class="chips" id="examples" aria-label="Example questions"></div>
+
+      <div id="answer" hidden>
+        <h3>How the question was read</h3>
+        <ol class="explain" id="explain"></ol>
+        <ul class="assumed" id="assumed"></ul>
+
+        <h3>The SQL <span class="tag">editable</span></h3>
+        <textarea id="sql" spellcheck="false" rows="10" aria-label="SQL query"></textarea>
+        <p class="row"><button type="button" id="run">Run SQL</button> <button type="button" id="csv" class="ghost">Download CSV</button> <span id="status" class="note"></span></p>
+
+        <h3>The answer <span class="tag" id="count"></span></h3>
+        <div class="tablewrap"><table id="result"></table></div>
+        <p class="note">Rs crore unless a column says otherwise. Select a row to see the line as printed in the order and open the order at that page.</p>
+        <div id="evidence" class="evidence" hidden></div>
+      </div>
+    </section>
+
+    <section id="coverage" aria-labelledby="cov-h">
+      <p class="eyebrow">What the database holds</p>
+      <h2 id="cov-h">Coverage</h2>
+      <p class="plain" id="cov-intro"></p>
+      <h3>Commissions</h3>
+      <div class="tablewrap"><table id="cov-comm"></table></div>
+      <h3>DISCOMs</h3>
+      <div class="tablewrap"><table id="cov-discom"></table></div>
+    </section>
+
+    <section id="method" aria-labelledby="method-h">
+      <p class="eyebrow">How it was built, and how far to trust it</p>
+      <h2 id="method-h">Method</h2>
+      <dl class="points">
+        <dt>1 · Find the orders</dt>
+        <dd>Each commission's tariff-order listing pages were read, and every ARR, true-up, review and multi-year order for a distribution licensee from FY2022-23 onwards was downloaded. Each file is kept with its SHA-256 and its URL.</dd>
+        <dt>2 · Find the ARR tables</dt>
+        <dd>Every page's text layer is split into rows and columns. A table is taken when its printed title names the revenue requirement (“Summary of ARR”, “Aggregate Revenue Requirement approved…”). Tables for only the wires or only the supply business are left out. Scanned pages without a text layer are skipped and counted, not guessed.</dd>
+        <dt>3 · Give each column a meaning</dt>
+        <dd>From the column header: which DISCOM (combined orders print one column group per DISCOM), which year, and whose figure: claimed by the DISCOM, approved by the Commission, an earlier approval quoted for comparison, or actual. Where the header is silent, the table title or the sentence just above it is used, and each value records which of these it came from.</dd>
+        <dt>4 · Keep the evidence</dt>
+        <dd>Every value keeps its printed row label, the page, and the line exactly as printed. A value whose unit is not printed near its table keeps no Rs crore figure. The one exception: three or more of its figures are printed in crore in another table of the same order.</dd>
+        <dt>5 · Measure it</dt>
+        <dd id="accuracy"></dd>
+        <dt>6 · Ask</dt>
+        <dd>The question box writes one SQL query. It runs in your browser on the same database file, and nothing is sent anywhere. The translator works from fixed rules (no AI model) and lists every choice it made. You can edit the SQL and run your own.</dd>
+      </dl>
+      <h3>Limits — read before using a figure</h3>
+      <ul class="limits">
+        <li>Nothing here has been reviewed by a person. Check any figure you use against its page; every row links to it.</li>
+        <li>Commissions define the bottom line differently. Some print a net ARR after non-tariff income, some include the past years' true-up gap, some include carrying cost. The printed label says which, so compare labels before comparing DISCOMs.</li>
+        <li>Coverage is uneven. Many commission websites (Gujarat, Karnataka, Tamil Nadu, Andhra Pradesh, Telangana, Punjab, Haryana, Rajasthan, West Bengal, Assam and others) could not be reached from the build machine. Kerala's order list needs a source the build was not permitted to fetch. These DISCOMs are listed with no data, never with guessed data.</li>
+        <li>Some orders print their ARR tables in layouts the reader does not yet handle, or only as scans. Those orders are listed under Coverage with what was found.</li>
+      </ul>
+    </section>
+
+    <section id="schema" aria-labelledby="schema-h">
+      <p class="eyebrow">For writing your own SQL</p>
+      <h2 id="schema-h">Tables</h2>
+      <div id="schema-list" class="schema"></div>
+    </section>
+  </main>
+  <footer class="foot"><span id="foot"></span></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

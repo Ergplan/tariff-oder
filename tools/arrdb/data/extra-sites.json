@@ -1,0 +1,938 @@
+{
+ "checked_on": "2026-11-11",
+ "sites": [
+  {
+   "commission": "DERC",
+   "listing_urls": [
+    "https://www.derc.gov.in/tarriff-orders",
+    "https://www.derc.gov.in/tarriff-orders?page=1",
+    "https://www.derc.gov.in/tarriff-orders?page=2",
+    "https://www.derc.gov.in/tarriff-orders?page=3",
+    "https://www.derc.gov.in/tarriff-orders?page=4",
+    "https://www.derc.gov.in/tarriff-orders?page=5",
+    "https://www.derc.gov.in/tarriff-orders?page=6",
+    "https://www.derc.gov.in/tarriff-orders?page=7",
+    "https://www.derc.gov.in/tarriff-orders?page=8",
+    "https://www.derc.gov.in/tarriff-orders?page=9",
+    "https://www.derc.gov.in/tarriff-orders?page=10",
+    "https://www.derc.gov.in/tarriff-orders?page=11",
+    "https://www.derc.gov.in/tarriff-orders?page=12",
+    "https://www.derc.gov.in/tarriff-orders?page=13"
+   ],
+   "notes": "Drupal view, 14 pages x 10 rows, grouped by caption. No tariff orders listed after 'Tariff Orders for FY 2021-22' (dated 12/10/2021); the only in-range DISCOM orders are 'True Up Orders for FY 2022-23' (published 31/12/2025). Row titles are licensee names only, so fiscal_year_of_arr is taken from the section caption. No MES entry on the listing. FY 2021-22 true-up orders (published 25/10/2025) are listed separately in out_of_range_orders. Generation (IPGCL, PPCL) and transmission (DTL) rows excluded.",
+   "orders": [
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/Preface%20to%20the%20True-up%20Order%20of%20FY%202022-23_0.pdf",
+     "title": "Preface to the True-up Order for FY 2022-23",
+     "listing_section": "True Up Orders for FY 2022-23",
+     "link_text": "Download (758.35 KB)",
+     "published_date": "31/12/2025",
+     "licensees": [
+      "BRPL",
+      "BYPL",
+      "TPDDL",
+      "NDMC"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "note": "Preface common to all FY 2022-23 true-up orders (also covers IPGCL/PPCL); not licensee-specific",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/NDMC%20final%20to%20Upload_0.pdf",
+     "title": "NDMC-New Delhi Municipal Council",
+     "listing_section": "True Up Orders for FY 2022-23",
+     "link_text": "Download (3.38 MB)",
+     "published_date": "31/12/2025",
+     "licensees": [
+      "NDMC"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/BRPL%20To%20Upload_0.pdf",
+     "title": "BRPL - BSES Rajdhani Power Limited",
+     "listing_section": "True Up Orders for FY 2022-23",
+     "link_text": "Download (2.33 MB)",
+     "published_date": "31/12/2025",
+     "licensees": [
+      "BRPL"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/BYPL%20to%20upload_0.pdf",
+     "title": "BYPL - BSES Yamuna Power Limited",
+     "listing_section": "True Up Orders for FY 2022-23",
+     "link_text": "Download (2.44 MB)",
+     "published_date": "31/12/2025",
+     "licensees": [
+      "BYPL"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/TPDDL%20Final%20to%20Upload_0.pdf",
+     "title": "TPDDL -Tata Power Delhi Distribution Limited",
+     "listing_section": "True Up Orders for FY 2022-23",
+     "link_text": "Download (2.65 MB)",
+     "published_date": "31/12/2025",
+     "licensees": [
+      "TPDDL"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    }
+   ],
+   "out_of_range_orders": [
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/Petition%20No.%2071_2022.pdf",
+     "title": "BRPL-BSES Rajdhani Power Ltd.",
+     "listing_section": "True Up Orders for FY 2021-22",
+     "link_text": "Download (59.67 KB)",
+     "published_date": "02/12/2025",
+     "licensees": [
+      "BRPL"
+     ],
+     "fiscal_year_of_arr": "FY2021-22",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "note": "Row titled only with licensee name; file name 'Petition No. 71_2022.pdf' (likely a separate order in petition 71/2022, not verified)",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/Preface%20to%20the%20True-up%20Order%20of%20FY%202021-22.pdf",
+     "title": "Preface to the True-up Order of FY 2021-22",
+     "listing_section": "True Up Orders for FY 2021-22",
+     "link_text": "Download (584.15 KB)",
+     "published_date": "25/10/2025",
+     "licensees": [
+      "BRPL",
+      "BYPL",
+      "TPDDL",
+      "NDMC"
+     ],
+     "fiscal_year_of_arr": "FY2021-22",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "note": "Preface common to all FY 2022-23 true-up orders (also covers IPGCL/PPCL); not licensee-specific",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/True-up%20of%20FY%202021-22%20_%20NDMC.pdf",
+     "title": "NDMC-New Delhi Municipal Council",
+     "listing_section": "True Up Orders for FY 2021-22",
+     "link_text": "Download (2.55 MB)",
+     "published_date": "25/10/2025",
+     "licensees": [
+      "NDMC"
+     ],
+     "fiscal_year_of_arr": "FY2021-22",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/True-up%20of%20FY%202021-22%20_%20BRPL.pdf",
+     "title": "BRPL - BSES Rajdhani Power Limited",
+     "listing_section": "True Up Orders for FY 2021-22",
+     "link_text": "Download (2.59 MB)",
+     "published_date": "25/10/2025",
+     "licensees": [
+      "BRPL"
+     ],
+     "fiscal_year_of_arr": "FY2021-22",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/True-up%20of%20FY%202021-22%20_%20BYPL.pdf",
+     "title": "BYPL - BSES Yamuna Limited",
+     "listing_section": "True Up Orders for FY 2021-22",
+     "link_text": "Download (2.49 MB)",
+     "published_date": "25/10/2025",
+     "licensees": [
+      "BYPL"
+     ],
+     "fiscal_year_of_arr": "FY2021-22",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://www.derc.gov.in/sites/default/files/True-up%20of%20FY%202021-22%20_%20TPDDL.pdf",
+     "title": "TPDDL -Tata Power Delhi Distribution Limited",
+     "listing_section": "True Up Orders for FY 2021-22",
+     "link_text": "Download (3.09 MB)",
+     "published_date": "25/10/2025",
+     "licensees": [
+      "TPDDL"
+     ],
+     "fiscal_year_of_arr": "FY2021-22",
+     "fiscal_year_source": "listing section caption",
+     "kind": "true-up",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    }
+   ]
+  },
+  {
+   "commission": "CSERC",
+   "listing_urls": [
+    "https://cserc.gov.in/Welcome/show_tariff_orders",
+    "https://cserc.gov.in/Welcome/show_order_passed_in_petition_new"
+   ],
+   "notes": "Plain HTML table. CSPDCL ARR/true-up is decided inside the combined annual tariff orders (CSPGCL+CSPTCL+SLDC+CSPDCL) up to FY 2025-26; FY 2026-27 order is 'Tariff Order for CSPDCL for FY 2026-30 and retail tariff for FY 2026-27'. Each row has an 'Order' PDF and usually a 'Tariff Schedule' PDF; both recorded. Also included: the two other distribution licensees listed (Jindal Steel and Power Ltd. distribution business; SAIL Bhilai Steel Plant) — filter by licensees if only CSPDCL is wanted. JSPL transmission and CPP generation orders excluded. The petitions page (default year view = 2026) was only scanned for ARR/true-up items; earlier years of that page (cmbYear filter) were not crawled.",
+   "orders": [
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/16-07-2026_1784180584.pdf",
+     "title": "Tariff Order for CSPDCL for FY 2026-30 and retail tariff for FY 2026-27",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Order",
+     "order_date": "15-06-2026",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2026-30, FY2026-27",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/24-06-2026_17823016931.pdf",
+     "title": "Tariff Order for CSPDCL for FY 2026-30 and retail tariff for FY 2026-27",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Tariff Schedule",
+     "order_date": "15-06-2026",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2026-30, FY2026-27",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/01-08-2025_1754032900.pdf",
+     "title": "Tariff Order in respect of CSPGCL, CSPTCL, CSLDC CSPDCL for FY 2025-26",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Order",
+     "order_date": "11-07-2025",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2025-26",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/17522356311.pdf",
+     "title": "Tariff Order in respect of CSPGCL, CSPTCL, CSLDC CSPDCL for FY 2025-26",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Tariff Schedule",
+     "order_date": "11-07-2025",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2025-26",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1718713223.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2024-25",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Order",
+     "order_date": "01-06-2024",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2024-25",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/17187132231.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2024-25",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Tariff Schedule",
+     "order_date": "01-06-2024",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2024-25",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1683185806.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2023-24",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Order",
+     "order_date": "28-03-2023",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2023-24",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/16831858061.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2023-24",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Tariff Schedule",
+     "order_date": "28-03-2023",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2023-24",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1651330549.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2022-23",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Order",
+     "order_date": "13-04-2022",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/16513305491.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2022-23",
+     "listing_section": "State Power Companies / Board",
+     "link_text": "Tariff Schedule",
+     "order_date": "13-04-2022",
+     "licensees": [
+      "CSPDCL"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1753423236.pdf",
+     "title": "Order passed in petition No. 2 of 2025 filed by Jindal Steel Power Ltd. for Licensed Distribution Business for determination of ARR and retail tariff for FY 2025-26.",
+     "listing_section": "Jindal Steel and Power Ltd. (Transmission, Distribution, Business)",
+     "link_text": "Order",
+     "order_date": "23-07-2025",
+     "licensees": [
+      "Jindal Steel and Power Ltd. (licensed distribution business)"
+     ],
+     "fiscal_year_of_arr": "FY2025-26",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1715583468.pdf",
+     "title": "Order passed in petition No. 101 of 2023 filed by Jindal Steel Power Ltd. for Licensed Distribution Business for determination of ARR and retail tariff for FY 2024-25.",
+     "listing_section": "Jindal Steel and Power Ltd. (Transmission, Distribution, Business)",
+     "link_text": "Order",
+     "order_date": "10-05-2024",
+     "licensees": [
+      "Jindal Steel and Power Ltd. (licensed distribution business)"
+     ],
+     "fiscal_year_of_arr": "FY2024-25",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1704871182.pdf",
+     "title": "Order passed in petition No. 15 of 2023 filed by Jindal Steel Power Ltd. (Distribution Business) for determination of retail tariff for FY 2023-24.",
+     "listing_section": "Jindal Steel and Power Ltd. (Transmission, Distribution, Business)",
+     "link_text": "Order",
+     "order_date": "10-01-2024",
+     "licensees": [
+      "Jindal Steel and Power Ltd. (licensed distribution business)"
+     ],
+     "fiscal_year_of_arr": "FY2023-24",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1669805149.pdf",
+     "title": "Order passed in petition No. 46 of 2022 filed by Jindal Steel Power Ltd. for Licensed Distribution Business for determination of ARR for FY 2022-23 to 2024-25 and retail tariff for FY 2022-23",
+     "listing_section": "Jindal Steel and Power Ltd. (Transmission, Distribution, Business)",
+     "link_text": "Order",
+     "order_date": "28-11-2022",
+     "licensees": [
+      "Jindal Steel and Power Ltd. (licensed distribution business)"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1753423370.pdf",
+     "title": "Retail Tariff order for FY 2025-26",
+     "listing_section": "SAIL - Bhilai Steel Plant (Distribution)",
+     "link_text": "Order",
+     "order_date": "23-07-2025",
+     "licensees": [
+      "SAIL - Bhilai Steel Plant (distribution)"
+     ],
+     "fiscal_year_of_arr": "FY2025-26",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1719301108.pdf",
+     "title": "Retail Tariff order for FY 2024-25",
+     "listing_section": "SAIL - Bhilai Steel Plant (Distribution)",
+     "link_text": "Order",
+     "order_date": "24-06-2024",
+     "licensees": [
+      "SAIL - Bhilai Steel Plant (distribution)"
+     ],
+     "fiscal_year_of_arr": "FY2024-25",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1718713423.pdf",
+     "title": "Retail Tariff order for FY 2023-24",
+     "listing_section": "SAIL - Bhilai Steel Plant (Distribution)",
+     "link_text": "Order",
+     "order_date": "14-09-2023",
+     "licensees": [
+      "SAIL - Bhilai Steel Plant (distribution)"
+     ],
+     "fiscal_year_of_arr": "FY2023-24",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1661254864.pdf",
+     "title": "Retail Tariff order for FY 2022-23",
+     "listing_section": "SAIL - Bhilai Steel Plant (Distribution)",
+     "link_text": "Order",
+     "order_date": "23-08-2022",
+     "licensees": [
+      "SAIL - Bhilai Steel Plant (distribution)"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/16612548641.pdf",
+     "title": "Retail Tariff order for FY 2022-23",
+     "listing_section": "SAIL - Bhilai Steel Plant (Distribution)",
+     "link_text": "Tariff Schedule",
+     "order_date": "23-08-2022",
+     "licensees": [
+      "SAIL - Bhilai Steel Plant (distribution)"
+     ],
+     "fiscal_year_of_arr": "FY2022-23",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/order/O-29-2026_6204-1787668617-.pdf",
+     "title": "Petition for determination of Annual Revenue Requirement and Retail Supply Tariff for FY 2026-27 to FY 2029-30 along with Revised Estimate for FY 2025-26 and True-Up for FY 2024-25 for the licensed distribution business under Section 61, 62 and 86 (1) (a) of the Electricity Act, 2003 read with the relevant provisions of the Chhattisgarh State Electricity Regulatory Commission’s Conduct of Business Regulations and Terms and Conditions for determination of Tariff Regulations and its amendments thereof.",
+     "listing_section": "Order Passed In Petitions (Petition No. 18/2026, JINDAL STEEL AND POWER LIMITED)",
+     "link_text": "Operative Order passed on",
+     "order_date": "25-08-2026",
+     "licensees": [
+      "Jindal Steel and Power Ltd. (licensed distribution business)"
+     ],
+     "fiscal_year_of_arr": "FY2026-27 to FY2029-30 (title: 'FY 2026-27 to FY 2029-30'; also RE FY2025-26, true-up FY2024-25)",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://cserc.gov.in/upload/order/O-29-2026_6204-1787668682-.pdf",
+     "title": "Petition for determination of Annual Revenue Requirement and Retail Supply Tariff for FY 2026-27 to FY 2029-30 along with Revised Estimate for FY 2025-26 and True-Up for FY 2024-25 for the licensed distribution business under Section 61, 62 and 86 (1) (a) of the Electricity Act, 2003 read with the relevant provisions of the Chhattisgarh State Electricity Regulatory Commission’s Conduct of Business Regulations and Terms and Conditions for determination of Tariff Regulations and its amendments thereof.",
+     "listing_section": "Order Passed In Petitions (Petition No. 18/2026, JINDAL STEEL AND POWER LIMITED)",
+     "link_text": "Tariff Schedule",
+     "order_date": "25-08-2026",
+     "licensees": [
+      "Jindal Steel and Power Ltd. (licensed distribution business)"
+     ],
+     "fiscal_year_of_arr": "FY2026-27 to FY2029-30 (title: 'FY 2026-27 to FY 2029-30'; also RE FY2025-26, true-up FY2024-25)",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    }
+   ]
+  },
+  {
+   "commission": "KSERC",
+   "listing_urls": [
+    "https://erckerala.org/orderpage"
+   ],
+   "notes": "NOT COLLECTED. erckerala.org is a client-side React app (HTML shell only; 'You need to enable JavaScript'). Its bundle /static/js/main.bb703140.js loads the order list from the API base 'https://dev.erckerala.org/api' (endpoints 'orders' and 'licensees'). The request to https://dev.erckerala.org/api/orders was refused by this session's permission policy (auto-mode classifier), so no orders were retrieved. Needs user approval for that host, or a headless browser rendering https://erckerala.org/orderpage.",
+   "orders": []
+  },
+  {
+   "commission": "MERC",
+   "listing_urls": [
+    "https://merc.gov.in/orders/",
+    "https://merc.gov.in/wp-admin/admin-ajax.php?action=getpostsfororderdatatables",
+    "https://merc.gov.in/electric/distribution/"
+   ],
+   "notes": "WordPress site; the Orders table is filled client-side from admin-ajax.php?action=getpostsfororderdatatables (same host, 4104 orders, JSON). Selected orders for MSEDCL, TPC-D, AEML-D and BEST dated 2023-2026: MTR orders of 31-03-2023 (cover provisional true-up FY2022-23 and revised ARR FY2023-24/FY2024-25), TPC-D order of 06-03-2024 (true-up FY2022-23, revised ARR FY2024-25), the 5th-control-period MYT orders of 28-03-2025 (true-up FY2022-23/FY2023-24, ARR FY2025-26 to FY2029-30), plus corrigenda and review orders on those (tagged in 'kind'; drop them if only primary ARR orders are wanted). 'Appendix - List of Objectors' attachments excluded. Excluded: transmission (TPC-T, AEML-T, MSETCL, InSTS), generation, RE/PPA adoption, IA-only orders. Smaller distribution licensees (Mindspace, Gigaplex, KRCIPPL, JNPA, LBSCML, MADC, NUPLLP, EON Kharadi I/II, MITL Bidkin/Shendra, SEZ Bio-Tech, AEML SEEPZ) also have MYT orders of 28-03-2025 (NUPLLP 22-10-2026) on the same listings but were not requested and are not included.",
+   "orders": [
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/04/Order-226-of2022.pdf",
+     "title": "Case of Maharashtra State Electricity Distribution Company Limited for Final True Up of FY 2019-20, FY 2020-21 & FY 2021-22, Provisional True Up for FY 2022-23 and Revised Tariff & Projection for FY 2023-24 to FY 2024-25 under Section 62 of The Electricity Act, 2003 and MERC MYT Regulations, 2019",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Order-226 of 2022",
+     "case_no": "226 of 2022",
+     "order_date": "31-03-2023",
+     "licensees": [
+      "MSEDCL"
+     ],
+     "kind": "MTR",
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/04/Corrigendum-Order_MSEDCL_MTR.pdf",
+     "title": "Case of Maharashtra State Electricity Distribution Company Limited for Final True Up of FY 2019-20, FY 2020-21 & FY 2021-22, Provisional True Up for FY 2022-23 and Revised Tariff & Projection for FY 2023-24 to FY 2024-25 under Section 62 of The Electricity Act, 2003 and MERC MYT Regulations, 2019",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: CORRIGENDUM ORDER",
+     "link_text": "Corrigendum Order_MSEDCL_MTR",
+     "case_no": "226 of 2022",
+     "order_date": "28-04-2023",
+     "licensees": [
+      "MSEDCL"
+     ],
+     "kind": "corrigendum to MTR",
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2024/12/Order-in-Case-No.102-of-2023.pdf",
+     "title": "Case of Maharashtra State Electricity Distribution Co. Ltd. seeking review of the MTR Order dated 31 March 2023 issued in Case No 226 of 2022",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Tariff Related",
+     "link_text": "Order-in-Case-No.102-of-2023.pdf",
+     "case_no": "102 of 2023",
+     "order_date": "31-12-2024",
+     "licensees": [
+      "MSEDCL"
+     ],
+     "kind": "review of MTR",
+     "fiscal_year_of_arr": null,
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/MSEDCL-MYT-Order_Case_no_217-of-2024.pdf",
+     "title": "Case of Maharashtra State Electricity Distribution Co. Ltd. for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional Truing-up of ARR for FY 2024-25 and approval of ARR and Tariff for FY 2025-26 to FY 2029-30 for its Distribution Business in accordance with the Maharashtra Electricity Regulatory Commission (Multi Year Tariff) Regulations, 2024",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "MSEDCL MYT Order_Case_no_217 of 2024",
+     "case_no": "217 of 2024",
+     "order_date": "28-03-2025",
+     "licensees": [
+      "MSEDCL"
+     ],
+     "kind": "MYT",
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/06/Order_Case-No.75-of-2025.pdf",
+     "title": "In the matter of Case of Maharashtra State Electricity Distribution Co. Ltd. seeking review of the MYT Order dated 28 March 2025 issued in Case No. 217 of 2024",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Order_Case No.75 of 2025",
+     "case_no": "75 of 2025",
+     "order_date": "25-06-2025",
+     "licensees": [
+      "MSEDCL"
+     ],
+     "kind": "review of MYT",
+     "fiscal_year_of_arr": null,
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2026/03/MSEDCL-Order_75-of-2025_25032026.pdf",
+     "title": "In the matter of Case of Maharashtra State Electricity Distribution Co. Ltd. seeking review of the MYT Order dated 28 March 2025 issued in Case No. 217 of 2024 ( Consequent to Order dated 3 November 2025 passed by the Hon’ble High Court in Writ Petition 19437 of 2025 and batch and the Hon’ble Supreme Court’s Order dated 17 November 2025 & 9 February 2026)",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Order in Case No. 75 of 2025",
+     "case_no": "75 of 2025",
+     "order_date": "25-03-2026",
+     "licensees": [
+      "MSEDCL"
+     ],
+     "kind": "review of MYT (post High Court/Supreme Court orders)",
+     "fiscal_year_of_arr": null,
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-225-of-2022.pdf",
+     "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2021-22 and FY 2021-22, Provisional Truing-up of ARR for FY 2022-23, and approval of Revised ARR and Tariff for FY 2023-24 and FY 2024-25",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Order-225 of 2022",
+     "case_no": "225 of 2022",
+     "order_date": "31-03-2023",
+     "licensees": [
+      "TPC-D"
+     ],
+     "kind": "MTR",
+     "fiscal_year_of_arr": "FY2019-20, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/04/Corrigendum-Order-Case-No.-225-of-2022-TPC-D-MTR.pdf",
+     "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2021-22 and FY 2021-22, Provisional Truing-up of ARR for FY 2022-23, and approval of Revised ARR and Tariff for FY 2023-24 and FY 2024-25",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Corrigendum-Order-Case-No.-225-of-2022-TPC-D-MTR",
+     "case_no": "225 of 2022",
+     "order_date": "31-03-2023",
+     "licensees": [
+      "TPC-D"
+     ],
+     "kind": "MTR",
+     "fiscal_year_of_arr": "FY2019-20, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/11/Order-76-of-2023.pdf",
+     "title": "Case filed by Tata Power Company Limited (Distribution) seeking review of Mid Term Tariff Order passed by the Commission in Case No 225 of 2022 dated 31 March 2023.",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Tariff Related",
+     "link_text": "Order-76 of 2023",
+     "case_no": "76 of 2023",
+     "order_date": "03-11-2023",
+     "licensees": [
+      "TPC-D"
+     ],
+     "kind": "review of MTR",
+     "fiscal_year_of_arr": null,
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2024/02/Order-in-Case-No.-225-of-2022-remand-from-APTEL.pdf",
+     "title": "Petition of The Tata Power Company Ltd. (Distribution) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2021-22 and FY 2021- 22, Provisional Truing-up of ARR for FY 2022-23, and approval of Revised ARR and Tariff for FY 2023-24 and FY 2024-25. Case No. 225 of 2022 (Re-opened in pursuance of Hon’ble APTEL’s Judgement dated 5 January, 2024 in Appeal No. 369 of 2023.)",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Tariff Related",
+     "link_text": "Order in Case No. 225 of 2022 - remand from APTEL",
+     "case_no": "225 of 2022 (Remand from APTEL)",
+     "order_date": "23-02-2024",
+     "licensees": [
+      "TPC-D"
+     ],
+     "kind": "MTR re-determination on APTEL remand",
+     "fiscal_year_of_arr": "FY2019-20, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2024/03/Final-Order-Case-No.-237-of-2023_TPC-D.pdf",
+     "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of Truing-up of Aggregate Revenue Requirement (ARR) for FY 2022-23, Provisional Truing-up of ARR for FY 2023-24, and approval of Revised ARR and Tariff for FY 2024-25",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Tariff Related",
+     "link_text": "Final-Order-Case-No.-237-of-2023_TPC-D.pdf",
+     "case_no": "237 of 2023",
+     "order_date": "06-03-2024",
+     "licensees": [
+      "TPC-D"
+     ],
+     "kind": "true-up / revised ARR & tariff FY2024-25",
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/Final-MYT-Order-Case-No.-210-of-2024_TPC-D-280325.pdf",
+     "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of Truing-up of Aggregate Revenue Requirement (ARR) for FY 2023-24, Provisional Truing-up of ARR for FY 2024-25, and Determination of ARR & Tariff for the 5th Control Period from FY 2025-26 to FY 2029-30.",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Final MYT Order Case No. 210 of 2024_TPC-D 280325",
+     "case_no": "210 of 2024",
+     "order_date": "28-03-2025",
+     "licensees": [
+      "TPC-D"
+     ],
+     "kind": "MYT",
+     "fiscal_year_of_arr": "FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/04/Corrigendum-Errata-Case-No-210-of-2024_TPC-D-MYT.pdf",
+     "title": "Case of The Tata Power Company Ltd. (Distribution) for approval of Truing-up of Aggregate Revenue Requirement (ARR) for FY 2023-24, Provisional Truing-up of ARR for FY 2024-25, and Determination of ARR & Tariff for the 5th Control Period from FY 2025-26 to FY 2029-30.",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Corrigendum Errata -Case No 210 of 2024_TPC-D MYT",
+     "case_no": "210 of 2024",
+     "order_date": "28-03-2025",
+     "licensees": [
+      "TPC-D"
+     ],
+     "kind": "MYT",
+     "fiscal_year_of_arr": "FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-231-of-2022.pdf",
+     "title": "Case of Adani Electricity Mumbai Limited (Distribution Business) for Approval of Truing-up of FY 2019-20 to FY 2021-22, Provisional Truing-up for FY 2022-23 and Revised Aggregate Revenue Requirement for FY 2023-24 and FY 2024-25",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Order-231 of 2022",
+     "case_no": "231 of 2022",
+     "order_date": "31-03-2023",
+     "licensees": [
+      "AEML-D"
+     ],
+     "kind": "MTR",
+     "fiscal_year_of_arr": "FY2019-20, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/04/Corrigendum-Order-Case-No.-231-of-2022-AEML-D-MTR.pdf",
+     "title": "Case of Adani Electricity Mumbai Limited (Distribution Business) for Approval of Truing-up of FY 2019-20 to FY 2021-22, Provisional Truing-up for FY 2022-23 and Revised Aggregate Revenue Requirement for FY 2023-24 and FY 2024-25",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Corrigendum-Order-Case-No.-231-of-2022-AEML-D-MTR",
+     "case_no": "231 of 2022",
+     "order_date": "31-03-2023",
+     "licensees": [
+      "AEML-D"
+     ],
+     "kind": "MTR",
+     "fiscal_year_of_arr": "FY2019-20, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/AEML-D-Complete-Final-MYT-Order-28.03.2025-SD.pdf",
+     "title": "Case of Adani Electricity Mumbai Limited (Distribution Business) for Approval of Truing-up of FY 2022-23 and FY 2023-24, Provisional Truing-up for FY 2024-25, and ARR and Tariff for 5th Control Period from FY 2025-26 to FY 2029-30",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "AEML-D Complete Final MYT Order",
+     "case_no": "211 of 2024",
+     "order_date": "28-03-2025",
+     "licensees": [
+      "AEML-D"
+     ],
+     "kind": "MYT",
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/04/Errata-and-Corrigendum-Case-No.-211-of-2024.pdf",
+     "title": "Case of Adani Electricity Mumbai Limited (Distribution Business) for Approval of Truing-up of FY 2022-23 and FY 2023-24, Provisional Truing-up for FY 2024-25, and ARR and Tariff for 5th Control Period from FY 2025-26 to FY 2029-30",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Errata and Corrigendum-Case No. 211 of 2024",
+     "case_no": "211 of 2024",
+     "order_date": "28-03-2025",
+     "licensees": [
+      "AEML-D"
+     ],
+     "kind": "MYT",
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/12/Order-Case-No.-99-of-2025.pdf",
+     "title": "Case of Adani Electricity Mumbai Limited - Distribution (AEML-D) seeking review of the Multi Year Tariff Order dated 28 March 2025 in Case No. 211 of 2024 And Interlocutory application seeking amendment of the Petition in Case No. 99 of 2025.",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Order - Case No. 99 of 2025",
+     "case_no": "99 of 2025 and IA. No. 93 of 2025",
+     "order_date": "02-12-2025",
+     "licensees": [
+      "AEML-D"
+     ],
+     "kind": "review of MYT",
+     "fiscal_year_of_arr": null,
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-212-of-2022-2.pdf",
+     "title": "Petition of Brihanmumbai Electric Supply and Transport Undertaking (BEST) for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2020-21 and FY 2021-22, Provisional Truing-up of ARR FY 2022-23 and revised ARR & Tariff for FY 2023-24 and FY 2024-25",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Order-212 of 2022",
+     "case_no": "212 of 2022",
+     "order_date": "31-03-2023",
+     "licensees": [
+      "BEST"
+     ],
+     "kind": "MTR",
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/04/Corringendum-Order-Case-No.-212-of-2022-BEST-MTR.pdf",
+     "title": "Petition of Brihanmumbai Electric Supply and Transport Undertaking (BEST) for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2020-21 and FY 2021-22, Provisional Truing-up of ARR FY 2022-23 and revised ARR & Tariff for FY 2023-24 and FY 2024-25",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Corringendum-Order-Case-No.-212-of-2022-BEST-MTR",
+     "case_no": "212 of 2022",
+     "order_date": "31-03-2023",
+     "licensees": [
+      "BEST"
+     ],
+     "kind": "MTR",
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/Final-MYT-Order_BEST_207-of-2024_for-uploading-_1.pdf",
+     "title": "Case of The Brihanmumbai Electric Supply and Transport Undertaking (BEST) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional True-up of FY 2024-25 and ARR Projections and Multi Year Tariff for 5th Control Period from FY 2025-26 to FY 2029-30",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Final MYT Order_BEST_207 of 2024_for uploading _1",
+     "case_no": "207 of 2024",
+     "order_date": "28-03-2025",
+     "licensees": [
+      "BEST"
+     ],
+     "kind": "MYT",
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/04/Corrigendum-Errata-207-of-2024_BEST.pdf",
+     "title": "Case of The Brihanmumbai Electric Supply and Transport Undertaking (BEST) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional True-up of FY 2024-25 and ARR Projections and Multi Year Tariff for 5th Control Period from FY 2025-26 to FY 2029-30",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Multi Year Tariff MYT",
+     "link_text": "Corrigendum Errata 207 of 2024_BEST",
+     "case_no": "207 of 2024",
+     "order_date": "28-03-2025",
+     "licensees": [
+      "BEST"
+     ],
+     "kind": "MYT",
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2026/04/Order-in-Case-No-104-of-2025.pdf",
+     "title": "Case of Brihanmumbai Electric Supply & Transport Undertaking (BEST) seeking review of the Multi-Year Tariff (MYT) Order dated 28 March 2025 in Case No. 207 of 2024.",
+     "listing_section": "Orders (merc.gov.in/orders/), Order Type: Clarification or Review",
+     "link_text": "Order in Case No 104 of 2025",
+     "case_no": "104 of 2025",
+     "order_date": "22-04-2026",
+     "licensees": [
+      "BEST"
+     ],
+     "kind": "review of MYT",
+     "fiscal_year_of_arr": null,
+     "fiscal_year_source": "FY mentions in title, in order of appearance",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2026/04/MSEDCL-MYT-Orders.pdf",
+     "title": "Maharashtra State Electricity Distribution Company Ltd",
+     "listing_section": "Electricity Tariff/FAC > Distribution, column 'Current Tariff Order' (icon link, no text)",
+     "link_text": null,
+     "licensees": [
+      "MSEDCL"
+     ],
+     "kind": "current tariff order (MYT)",
+     "fiscal_year_of_arr": null,
+     "note": "Title on site is only the licensee name; year not stated on the listing; this URL differs from the copy on the Orders listing",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/04/AEML-D-Complete-Final-MYT-Order-28.03.2025-SD.pdf",
+     "title": "Adani Electricity Mumbai Limited",
+     "listing_section": "Electricity Tariff/FAC > Distribution, column 'Current Tariff Order' (icon link, no text)",
+     "link_text": null,
+     "licensees": [
+      "AEML-D"
+     ],
+     "kind": "current tariff order (MYT)",
+     "fiscal_year_of_arr": null,
+     "note": "Title on site is only the licensee name; year not stated on the listing; this URL differs from the copy on the Orders listing",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/04/Final-MYT-Order-Case-No.-210-of-2024_TPC-D-280325.pdf",
+     "title": "The Tata Power Company Ltd",
+     "listing_section": "Electricity Tariff/FAC > Distribution, column 'Current Tariff Order' (icon link, no text)",
+     "link_text": null,
+     "licensees": [
+      "TPC-D"
+     ],
+     "kind": "current tariff order (MYT)",
+     "fiscal_year_of_arr": null,
+     "note": "Title on site is only the licensee name; year not stated on the listing; this URL differs from the copy on the Orders listing",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/04/Final-MYT-Order_BEST_207-of-2024_for-uploading-_1.pdf",
+     "title": "BEST Undertaking",
+     "listing_section": "Electricity Tariff/FAC > Distribution, column 'Current Tariff Order' (icon link, no text)",
+     "link_text": null,
+     "licensees": [
+      "BEST"
+     ],
+     "kind": "current tariff order (MYT)",
+     "fiscal_year_of_arr": null,
+     "note": "Title on site is only the licensee name; year not stated on the listing; this URL differs from the copy on the Orders listing",
+     "http": 206,
+     "http_content_type": "application/pdf"
+    }
+   ]
+  }
+ ],
+ "http_check": "curl -L -r 0-1023 with generic UA, 30s timeout, run 2026-11-11; 206 = partial content (range honoured); http_content_type recorded"
+}

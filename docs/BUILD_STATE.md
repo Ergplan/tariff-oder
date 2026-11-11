@@ -1005,6 +1005,94 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 156 (2026-11-11): the project narrowed to a DISCOM ARR database with plain-English → SQL; ARR 101 replaced.**
+  - **Directions (operator, 2026-11-11):**
+    - "we will not go ahead with the project".
+    - Then: "Only scrap the tariff orders and make a database of all Discoms ARRs, with NL to SQL
+      queries with explanations".
+    - "change the vercel site accordingly".
+    - "continue for next 12 hours".
+  - **Nothing was shut down.** The `dev` stack on Google Cloud and the studio code are untouched.
+    I listed what is still running for the operator to decide on. No decision has been given yet.
+  - **Scraping (`tools/arrdb/arrdb/scrape.py`):**
+    - **Sources:** the existing discovery profiles were run for UPERC, BERC, HPERC, JSERC,
+      MPERC, OERC, UERC and JERC Goa/UTs. DERC, CSERC and MERC have no profile, so a sub-agent
+      read their listing pages; that list is `tools/arrdb/data/extra-sites.json`, and each URL
+      was checked with a 1 KB range request. The ten orders read in earlier increments are in
+      `known-orders.json`.
+    - **Downloads:** 115 order URLs were fetched and all 115 downloaded. Each file is kept by
+      SHA-256 in the session cache; the PDFs are not committed. `tools/arrdb/data/orders.json`
+      lists each URL, SHA-256 and size.
+    - **Unreachable from this session's network:** the commission sites of Gujarat, Karnataka,
+      Tamil Nadu, Andhra Pradesh, Telangana, Punjab, Haryana, Rajasthan, West Bengal, Assam,
+      J&K, Manipur/Mizoram, Tripura, Meghalaya, Sikkim, Nagaland and Arunachal Pradesh. They
+      either did not answer or could not be connected to.
+    - **Kerala (KSERC):** its order list loads from `dev.erckerala.org/api/orders`. This
+      session's permission policy refused that request, and it was not worked around.
+    - All of these DISCOMs are in the database's reference list with no figures.
+  - **Reading (`tools/arrdb/arrdb/reader.py`, `heads.py`, `build.py`):**
+    - **What it does:** reads the text layer of each order. A table is taken when its printed
+      title names the ARR. Each column is given a DISCOM, a year and a voice. Every value keeps
+      its page and the line as printed.
+    - **Skipped tables:** wires-only or supply-only tables, consumer-category splits,
+      generation or transmission companies' tables in combined orders, and tables of contents.
+    - **Bottom line:** one is chosen per order, DISCOM, year and voice (`arr_headline`). One
+      more than five times away from the same DISCOM's median is set aside with its reason
+      (12 set aside, all visible in the table).
+    - **Result:** 111 orders in the database, after files duplicated across URLs were merged.
+      82 had ARR tables read, 27 had none found, and 2 have no text layer. 483 tables,
+      24,512 values. 625 bottom lines are in use, covering 31 of the 67 listed DISCOMs.
+  - **Measured (`arrdb.check`, `tools/arrdb/data/check.json`):** the reader was compared with
+    every hand-read figure in `packages/order-reproductions` and `packages/reference-filings`
+    that comes from a table it read (10 orders).
+    - It found 337 of 337 non-zero figures with the same number on the same page. 27 zero
+      figures (dashes) were not compared.
+    - It agreed on the voice 223 of 223 times and on the DISCOM 128 of 128 times.
+    - **The other 72 orders read have no hand-read figures: their accuracy is not measured.**
+    - **Problems found by eye and fixed during the build:**
+      - MSEDCL's agricultural / non-agricultural split was taken for MSEDCL's whole ARR.
+      - Maharashtra's wires-only tables were taken for the whole ARR.
+      - Odisha's ten-column table had adjacent columns merged, so values landed in the wrong
+        columns.
+      - Generation-company tables in Chhattisgarh's combined orders were read as CSPDCL's.
+      - An "Approved" column inside a petitioner's table was read as this order's approval.
+    - More such cases surely remain.
+  - **Plain English → SQL (`apps/arr-db/nl2sql.js`):**
+    - **What it handles:** fixed rules, no model. It reads DISCOMs by code or name, states,
+      commissions and ownership; years written as FY2026-27, 2026-27 or FY27, plus ranges and
+      "last N years"; claimed or approved; ARR, APR, true-up or MYT stage; and the cost head.
+    - **Question types:** lists, rankings, totals and averages (which name the DISCOMs counted),
+      shares of the ARR, claimed versus approved (both figures from the same order), trends,
+      and questions about the database itself.
+    - **Rules it applies and explains:** where several orders decide the same year, the newest
+      order is used; state totals are left out unless asked for. It lists every choice it made
+      and every assumption.
+    - **The SQL:** shown and editable; it runs in the browser through sql.js.
+  - **Site:** `apps/arr-db` replaces `apps/arr-101` (deleted; it remains in git history) as the
+    Vercel project `arr-101`, at the same address, https://arr-101.vercel.app. It has four parts:
+    - the question box, the explanation, the SQL, and the answer with the page and quote of each
+      row;
+    - coverage by commission and DISCOM;
+    - the method, with the measured accuracy (read from the database);
+    - the limits;
+    - the schema.
+  - **Tests:**
+    - `node --test apps/arr-db/nl2sql.test.mjs`: 11 of 11 pass. They cover how years are read,
+      that every example runs, UPCL's FY2026-27 net ARR and MP's Table 74 totals matching the
+      hand-read figures, claimed − approved arithmetic, ranking, sums, and meta questions.
+    - `tests/unit/test_arrdb_reader.py`: 4 of 4 pass, on a synthetic order page (grouped
+      header, dash, brackets, wrapped label, footer), plus the head, voice, year and stage rules.
+    - Ruff check and format are clean.
+    - Browser at 1440 px and 390 px (local, sql.js served locally): every example answers, there
+      are no page errors, and nothing scrolls sideways.
+  - **Not done / next smallest tasks:**
+    - Read the 27 orders where no ARR table was found; most are MERC mid-term reviews and BERC
+      annexures.
+    - Add discovery profiles for DERC, CSERC and MERC so their lists are not hand-collected.
+    - Ask the operator whether to allow `dev.erckerala.org` for Kerala.
+    - Measure more orders by reading a sample by hand.
+    - Decide what to keep running on Google Cloud.
+
   **Increment 155 (2026-11-10): ARR 101 — a public walkthrough of an ARR filing on Vercel, with the sample utility's own formats.**
   - **Directions (operator):** a Vercel frontend "like ARR 101" that walks through the key filing
     steps for a small utility with 150 consumers of all types, using simple questions and sample answers.

@@ -1,0 +1,156 @@
+{
+ "note": "Orders read row by row in the build session (their hand-read figures measure the reader). The ARR year is the year whose ARR each order approves, from its title page.",
+ "orders": [
+  {
+   "url": "https://www.uperc.org/App_File/NPCL_TariffOrder-pdf72202631759PM.pdf",
+   "commission": "UPERC",
+   "title": "NPCL TariffOrder FY2026-27 UPERC",
+   "sha256": "ff36813e2671e0498b78784afec73f548626d9779af8d1c1bb79585a4e174b1a",
+   "licensees": [
+    "NPCL"
+   ],
+   "arr_year": "FY2026-27",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://berc.co.in/images/pdf/tariff-order/2026-27/DISCOMs_FO_TARIFF_CN_50_51_DT_180326.pdf",
+   "commission": "BERC",
+   "title": "BERC DISCOMs TariffOrder FY2026-27",
+   "sha256": "a247053b586fd8909e14b00280d24e0d39357b94bdb36e7b670f21e5aa794537",
+   "licensees": [
+    "NBPDCL",
+    "SBPDCL"
+   ],
+   "arr_year": "FY2026-27",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://hperc.org/wp-content/uploads/2026/03/fto2627.pdf",
+   "commission": "HPERC",
+   "title": "HPERC HPSEBL TariffOrder FY2026-27",
+   "sha256": "0f3d9e9df0eced38ed2e85df25be55da47f55b071a8f568f6d49d0268e50ec74",
+   "licensees": [
+    "HPSEBL"
+   ],
+   "arr_year": "FY2026-27",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://jserc.org/pdf/tariff_order/JBVNL-2026.pdf",
+   "commission": "JSERC",
+   "title": "JSERC JBVNL MYT TrueUp APR Order 2026",
+   "sha256": "0391dd2701c7bbb7a962923212ef5a8ed6c9cdfbfea601df692d7ce4aa119108",
+   "licensees": [
+    "JBVNL"
+   ],
+   "arr_year": "FY2026-27",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/DISCOM_TARIFF_ORDER_FY_2026-27.pdf",
+   "commission": "OERC",
+   "title": "OERC DISCOM TARIFF ORDER FY 2026-27",
+   "sha256": "d58d281787d4dd34e7b895add2e7cb37dbf3b9e8d5f1a1ea208dc57ceffde0ab",
+   "licensees": [
+    "TPCODL",
+    "TPWODL",
+    "TPSODL",
+    "TPNODL"
+   ],
+   "arr_year": "FY2026-27",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/DISCOM_TARIFF_ORDER_FY_2025-26.pdf",
+   "commission": "OERC",
+   "title": "OERC DISCOM TARIFF ORDER FY 2025-26",
+   "sha256": "de53fe6fc5afb70f9f45e2eb94a977bcbd2c791fe63eb9f713f8b9ab2fc069fb",
+   "licensees": [
+    "TPCODL",
+    "TPWODL",
+    "TPSODL",
+    "TPNODL"
+   ],
+   "arr_year": "FY2025-26",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://mperc.in/uploads/petition_order_document/MPERC_Pno_140_2025_State_DISCOMs_ARR_RST__ORDER_FY_2026_27_FINAL_ORDER.pdf",
+   "commission": "MPERC",
+   "title": "MPERC State DISCOMs ARR RST Order FY2026-27",
+   "sha256": "77ffe9d2e48277354348b32ab3a90d74639a4b406757ae8e658197bd79f91afb",
+   "licensees": [
+    "MPPKVVCL",
+    "MPMKVVCL",
+    "MPPaKVVCL"
+   ],
+   "arr_year": "FY2026-27",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://mperc.in/uploads/petition_order_document/Final_State_DISCOMs_ARR_and_Retail_Supply_Tariff_Order_FY_2025-26_29_03_2025_3.pdf",
+   "commission": "MPERC",
+   "title": "MPERC State DISCOMs ARR RST Order FY2025-26",
+   "sha256": "66254f461e5d360d42d6216aaf824e0baa8bdab943248aeb241c34940b2693c2",
+   "licensees": [
+    "MPPKVVCL",
+    "MPMKVVCL",
+    "MPPaKVVCL"
+   ],
+   "arr_year": "FY2025-26",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2026/03/202603311394829151.pdf",
+   "commission": "UERC",
+   "title": "UERC UPCL TariffOrder FY2026-27",
+   "sha256": "1a9299178035d9e9460733256419710b2c3d5d7cc98b3703be60130aea99eb91",
+   "licensees": [
+    "UPCL"
+   ],
+   "arr_year": "FY2026-27",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  },
+  {
+   "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2025/04/20250428261984844.pdf",
+   "commission": "UERC",
+   "title": "UERC UPCL MYT TariffOrder FY2025-26",
+   "sha256": "5fc2d18f3b19793e67ecba4fe5bfc60b3e6b9401e20c418dc89255eb273bc41e",
+   "licensees": [
+    "UPCL"
+   ],
+   "arr_year": "FY2025-26",
+   "kind": "tariff_order",
+   "years": [],
+   "decides": [],
+   "found_by": "read in the build session; URL and SHA-256 in scripts/load_real_orders.py"
+  }
+ ]
+}
