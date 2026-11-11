@@ -1005,6 +1005,66 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 157 (2026-11-11): the ARR Network — agents read every ARR order; India map → state → utility on Vercel with Neon.**
+  - **Direction (operator, 2026-11-11):** "incubate this ARR agent network as a startup of agents, managed by
+    agents for a collection of all ARR orders of discoms … Map of India, state selection then discom selection
+    then ARR orders data both transco and discoms … postgres and vector. Use llaparse, docling, and LLM API …".
+    Then: "The UI should show map of India and then drill down to ARR details for each discom." The operator
+    added Neon (Postgres) to the Vercel project and said "deploy it now".
+  - **Design:** `docs/arr-network/ARCHITECTURE.md` describes eleven agents and the trust classes: one
+    reader, two agree, three agree, conflict. Only a person sets "reviewed". `INGEST.md` defines the write
+    API. `apps/arr-network/db/migrations` holds the schema: Postgres with pgvector, two migrations.
+  - **Application `apps/arr-network`** (Next.js 16, built by an Opus sub-agent and reviewed here):
+    - Pages: an India map with real state boundaries, then state, utility (DISCOM or TRANSCO), order and
+      figure citation. Also search (full text fused with vectors), ask (plain-English → read-only SQL with an
+      explanation), and agents (runs, queue, spend, metrics, findings, briefs).
+    - Ingest API: validates every row, refuses any review field, and checks that a number is on its page
+      when that page's text is stored.
+    - Tests:
+      - `tsc` clean;
+      - app tests pass;
+      - builds with and without a database;
+      - driven in Chromium at 1440 px and 390 px on the local data, with no page errors and no overflow.
+  - **Pipeline `tools/arrnet`** (built by an Opus sub-agent and reviewed here): courier, three readers,
+    verifier, librarian (bge-small embeddings), auditor, and a rule-based director.
+    - Readers: the text layer (`arrdb.reader`), Docling, and LlamaParse.
+    - 50 tests pass; ruff clean.
+    - Real runs on 168 order files (36,284 pages): 35,199 text-layer values; Docling on the ten
+      hand-read orders (134 pages); LlamaParse for real on 96 pages (96 credits, through the operator's
+      key, which the proxy injects).
+    - Gold accuracy:
+
+      | Reader | Values found | Voice agrees | Utility agrees |
+      | --- | --- | --- | --- |
+      | Text layer | 337/337 | 223/223 | 128/128 |
+      | Docling | 337/337 | 223/223 | 128/128 |
+      | LlamaParse | 239/239 measurable | 127/127 | 16/32 |
+
+      LlamaParse loses the utility when a header runs over several rows.
+    - Facts: 26,365 in total. 1,320 have two readers agreeing, 937 three, and 23 are conflicts.
+      Evidence rejections: 0. Cross-order agreement: 269/353.
+    - Coverage: 31 of 67 DISCOMs and 18 of 19 TRANSCOs have a headline ARR.
+  - **TRANSCOs:** 63 orders found on 11 commission sites, all downloaded; 19 utilities in
+    `tools/arrdb/registry-transco.json`. `read_tables(kind="transco")` reads 54 of the 63. The other 9 are
+    5 scanned duplicates, 2 MPPTCL orders and 2 STU pool orders.
+  - **Not run:**
+    - **LLM Extractor and the Director's narrative.** The operator declined to provide a model key. Both
+      are built and tested on labelled fixtures only. Key parameters and key paragraphs are therefore empty.
+    - **Embeddings for orders beyond the ten hand-read ones.** They take hours on this CPU.
+    - **Docling on the 72 queued orders.**
+  - **Deployed:**
+    - Vercel project `arr-101`, now with root `apps/arr-network`, Next.js, functions in `sin1`.
+    - `DATABASE_URL` comes from the Neon integration. `INGEST_TOKEN` is a sensitive env var; it was
+      generated in the session, so it should be rotated.
+    - Migrations applied on Neon through `/api/ingest/migrate`.
+    - Data loaded by `python -m arrnet.replay` from the pipeline's dry-run output. Results are below.
+  - **Known defects:**
+    - 4,509 figures share a fact's natural key with a different-valued figure. They are kept in
+      `arr_values` but not in `facts`; the schema needs a column to tell them apart.
+    - Text-layer readings with a cut-off wrapped label never meet Docling's full label in consensus.
+    - The query embedder is untested on Vercel.
+    - The Mac mini the operator connected exposes no folder to this session.
+
   **Increment 156 (2026-11-11): the project narrowed to a DISCOM ARR database with plain-English → SQL; ARR 101 replaced.**
   - **Directions (operator, 2026-11-11):**
     - "we will not go ahead with the project".
