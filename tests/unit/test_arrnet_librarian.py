@@ -57,8 +57,11 @@ def test_small_paragraphs_are_joined_up_to_the_minimum():
 def test_index_order_never_crosses_pages_and_reports_missing_embeddings(tmp_path, monkeypatch):
     monkeypatch.setenv("ARRNET_STATE", str(tmp_path))
     sha = "a" * 64
-    pages = [{"page": 1, "text": PAGE, "has_text_layer": True}, {"page": 2, "text": PAGE, "has_text_layer": True},
-             {"page": 3, "text": "", "has_text_layer": False}]
+    pages = [
+        {"page": 1, "text": PAGE, "has_text_layer": True},
+        {"page": 2, "text": PAGE, "has_text_layer": True},
+        {"page": 3, "text": "", "has_text_layer": False},
+    ]
     store.write(sha, "pages", {"order": {}, "pages": pages})
     sink = DryRunSink(tmp_path / "dry")
     s = librarian.index_order({"url": "https://example.org/o.pdf", "sha256": sha}, sink, embed=False)

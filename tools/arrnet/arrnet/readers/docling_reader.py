@@ -149,7 +149,9 @@ class DoclingReader(Reader):
         groups = reading_groups(order)
         pages, why = select_pages(order, len(src), self.max_pages, lic, aliases, self.max_ocr_pages, kind=kind)
         if not pages:
-            return ParseResult(self.name, self.version, "ok", note="no page to convert: no ARR table title found", extra=why)
+            return ParseResult(
+                self.name, self.version, "ok", note="no page to convert: no ARR table title found", extra=why
+            )
         ocr_pages = set(why["ocr_pages"])
         raw: list[dict[str, Any]] = []  # candidate tables before the title filter
         page_texts: dict[str, str] = {}
@@ -161,7 +163,9 @@ class DoclingReader(Reader):
             try:
                 doc, ok = self._convert(src, group, ocr)
             except Exception as e:
-                return ParseResult(self.name, self.version, "failed", note=f"{type(e).__name__}: {e}"[:300], pages=pages)
+                return ParseResult(
+                    self.name, self.version, "failed", note=f"{type(e).__name__}: {e}"[:300], pages=pages
+                )
             if not ok:
                 status = "partial"
             self._collect(doc, group, raw)

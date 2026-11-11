@@ -60,7 +60,10 @@ def page_ranges(pages: list[int]) -> str:
 
 
 def tables_from_pages(
-    md_pages: list[tuple[int, str]], licensees: list[str], aliases: dict[str, list[str]], kind: str = "discom",
+    md_pages: list[tuple[int, str]],
+    licensees: list[str],
+    aliases: dict[str, list[str]],
+    kind: str = "discom",
     groups: list[tuple[list[str], str]] | None = None,
 ) -> tuple[list[dict[str, Any]], int]:
     """arrdb-shaped tables from (page, markdown) pairs; a titled pipe table, or the continuation of
@@ -83,8 +86,15 @@ def tables_from_pages(
                 raw[-1]["last_page"] = pg
                 continue
             raw.append(
-                {"title": title, "page": pg, "last_page": pg, "grid": grid, "row_pages": [pg] * len(grid),
-                 "width": width, "above": " ".join(before[-3:])}
+                {
+                    "title": title,
+                    "page": pg,
+                    "last_page": pg,
+                    "grid": grid,
+                    "row_pages": [pg] * len(grid),
+                    "width": width,
+                    "above": " ".join(before[-3:]),
+                }
             )
     tables = []
     for r in raw:
@@ -92,8 +102,13 @@ def tables_from_pages(
         if glic is None:
             continue
         t = grid_to_table(
-            r["grid"], title=r["title"], page=r["page"], row_pages=r["row_pages"], licensees=glic,
-            aliases=aliases, above=r["above"],
+            r["grid"],
+            title=r["title"],
+            page=r["page"],
+            row_pages=r["row_pages"],
+            licensees=glic,
+            aliases=aliases,
+            above=r["above"],
         )
         if t:
             t["unit_from"] = "printed with the table" if t["unit"] else None
@@ -142,19 +157,38 @@ class LlamaParseReader(Reader):
             cap = min(cap, self.pages_left)
         if cap <= 0:
             return self.skipped("the run's page allowance is used up", is_real=self.is_real, provider="llamaindex")
-        pages, why = select_pages(order, n_pages, cap, lic, aliases, int(lp.get("max_ocr_pages_per_order", 0)),
-                                  neighbours=int(lp.get("neighbours", 0)), kind=kind)
+        pages, why = select_pages(
+            order,
+            n_pages,
+            cap,
+            lic,
+            aliases,
+            int(lp.get("max_ocr_pages_per_order", 0)),
+            neighbours=int(lp.get("neighbours", 0)),
+            kind=kind,
+        )
         pages = pages[:cap]
         if not pages:
-            return ParseResult(self.name, self.version, "ok", is_real=self.is_real, provider="llamaindex",
-                               note="no page to parse: no ARR table title found")
+            return ParseResult(
+                self.name,
+                self.version,
+                "ok",
+                is_real=self.is_real,
+                provider="llamaindex",
+                note="no page to parse: no ARR table title found",
+            )
         per_page = lp["credits_per_page"][tier] * lp["usd_per_1000_credits"] / 1000.0
         estimate = len(pages) * per_page
         t0 = time.monotonic()
         cfg = {"tier": tier, "version": "latest", "page_ranges": {"target_pages": page_ranges(pages)}}
         sha = order.get("sha256") or ""
         raw = store.read(sha, "llamaparse_raw") if self.reuse_raw and sha else None
-        if raw and raw.get("is_real") == self.is_real and raw.get("configuration") == cfg and (raw.get("response") or {}).get("job", {}).get("status") == "COMPLETED":
+        if (
+            raw
+            and raw.get("is_real") == self.is_real
+            and raw.get("configuration") == cfg
+            and (raw.get("response") or {}).get("job", {}).get("status") == "COMPLETED"
+        ):
             # the same pages in the same tier were parsed before: read the kept response, no new call
             d, job_id, reused = raw["response"], raw["job_id"], True
             status = "COMPLETED"
@@ -165,8 +199,11 @@ class LlamaParseReader(Reader):
                 return out
             d, job_id, status = out
             if sha:
-                store.write(sha, "llamaparse_raw", {"configuration": cfg, "job_id": job_id, "response": d,
-                                                   "is_real": self.is_real})
+                store.write(
+                    sha,
+                    "llamaparse_raw",
+                    {"configuration": cfg, "job_id": job_id, "response": d, "is_real": self.is_real},
+                )
         job = d.get("job") or {}
         usage = job.get("usage") or d.get("usage") or {}
         credits = usage.get("credits")
@@ -174,11 +211,23 @@ class LlamaParseReader(Reader):
         # ledger keeps the policy-price equivalent so that the daily cap still counts it
         equiv = credits * lp["usd_per_1000_credits"] / 1000.0 if credits is not None else estimate
         cost = 0.0
-        cost_note = (f"; the API reported {credits} credits (about ${equiv:.4f} at the policy price; not a billed amount)"
-                     if credits is not None else f"; the API reported no credits yet (estimate ${estimate:.4f})")
+        cost_note = (
+            f"; the API reported {credits} credits (about ${equiv:.4f} at the policy price; not a billed amount)"
+            if credits is not None
+            else f"; the API reported no credits yet (estimate ${estimate:.4f})"
+        )
         if self.is_real and not reused:
-            self.budget.record("llamaparse", "llamaindex", tier, equiv, is_real=True, job_id=job_id,
-                               credits=credits, estimated_from_credits=True, order_url=order["url"])
+            self.budget.record(
+                "llamaparse",
+                "llamaindex",
+                tier,
+                equiv,
+                is_real=True,
+                job_id=job_id,
+                credits=credits,
+                estimated_from_credits=True,
+                order_url=order["url"],
+            )
         if status != "COMPLETED":
             res = self._failed(f"job {status}: {job.get('error_message')}{cost_note}", pages)
             return res
@@ -207,9 +256,17 @@ class LlamaParseReader(Reader):
             page_texts={str(p): md for p, md in md_pages},
             pages=pages,
             seconds=time.monotonic() - t0,
-            note=(f"{len(got)} of {len(pages)} pages parsed ({why['why']}); {found} tables, {len(trows)} ARR tables, "
-                  f"{len(vrows)} values{cost_note}"),
-            extra={"job_id": job_id, "reused_kept_response": reused, "credits": credits, "usd_equivalent": equiv, "page_numbers_remapped": remap},
+            note=(
+                f"{len(got)} of {len(pages)} pages parsed ({why['why']}); {found} tables, {len(trows)} ARR tables, "
+                f"{len(vrows)} values{cost_note}"
+            ),
+            extra={
+                "job_id": job_id,
+                "reused_kept_response": reused,
+                "credits": credits,
+                "usd_equivalent": equiv,
+                "page_numbers_remapped": remap,
+            },
         )
 
     def _call(self, pdf_path, cfg: dict[str, Any], pages: list[int], estimate: float):
@@ -251,5 +308,6 @@ class LlamaParseReader(Reader):
                 return self._failed(f"{type(e).__name__}: {e}"[:300], pages)
 
     def _failed(self, why: str, pages: list[int]) -> ParseResult:
-        return ParseResult(self.name, self.version, "failed", is_real=self.is_real, provider="llamaindex",
-                           note=why, pages=pages)
+        return ParseResult(
+            self.name, self.version, "failed", is_real=self.is_real, provider="llamaindex", note=why, pages=pages
+        )

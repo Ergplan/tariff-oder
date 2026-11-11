@@ -152,7 +152,9 @@ class HttpSink(Sink):
             for rej in d.get("rejected") or []:
                 i = int(rej.get("index", -1))
                 row = b[i][1] if 0 <= i < len(b) else None
-                res.rejected.append({"index": b[i][0] if row is not None else i, "reason": rej.get("reason"), "row": row})
+                res.rejected.append(
+                    {"index": b[i][0] if row is not None else i, "reason": rej.get("reason"), "row": row}
+                )
             total.add(res)
         return total
 
@@ -217,7 +219,9 @@ class DryRunSink(Sink):
                     why = self._reason(kind, r)
                     if why:
                         res.rejected.append({"index": i, "reason": why, "row": r})
-                        rej.write(json.dumps({"kind": kind, "reason": why, "row": r}, ensure_ascii=False, default=str) + "\n")
+                        rej.write(
+                            json.dumps({"kind": kind, "reason": why, "row": r}, ensure_ascii=False, default=str) + "\n"
+                        )
                     else:
                         out.write(_encode(r).decode() + "\n")
                         res.written += 1

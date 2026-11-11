@@ -40,7 +40,9 @@ class TextLayerReader(Reader):
         infer_units(tables)
         trows, vrows = tables_to_rows(tables, order.get("arr_year"), stage_of)
         status_read = (
-            "read" if tables else ("no_text_layer" if res["pages_without_text"] > 0.5 * res["pages"] else "no_tables_found")
+            "read"
+            if tables
+            else ("no_text_layer" if res["pages_without_text"] > 0.5 * res["pages"] else "no_tables_found")
         )
         return ParseResult(
             self.name,

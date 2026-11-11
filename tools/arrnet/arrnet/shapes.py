@@ -143,8 +143,15 @@ def check(kind: str, row: dict[str, Any]) -> str | None:
         return f"voice {row['voice']!r} not allowed"
     if row.get("stage") is not None and row["stage"] not in STAGES:
         return f"stage {row['stage']!r} not allowed"
-    if kind == "facts" and row["consensus"] not in CONSENSUS:
-        return f"consensus {row['consensus']!r} not allowed"
+    if kind == "facts":
+        if row["consensus"] not in CONSENSUS:
+            return f"consensus {row['consensus']!r} not allowed"
+        need = {"single": 1, "agreed_2": 2, "agreed_3": 3, "conflict": 2}[row["consensus"]]
+        if len(set(row["readers"])) < need:
+            return f"consensus {row['consensus']} needs {need} distinct readers"
+        differ = any(g.get("agrees") is False for g in row["readings"])
+        if (row["consensus"] == "conflict") != differ:
+            return "a conflict needs a reading that does not agree, and only a conflict has one"
     if kind in ("parses", "parsed_tables", "arr_values", "parameters") and row["reader"] not in READERS:
         return f"reader {row['reader']!r} not allowed"
     if kind == "parses" and row["status"] not in PARSE_STATUS:

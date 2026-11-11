@@ -61,7 +61,11 @@ class PageIndex:
 
 def evidence(item: dict[str, Any], idx: PageIndex, reader_texts: dict[str, str]) -> tuple[bool, str, str | None]:
     """(passes, reason, source) for one reading."""
-    page, quote, printed = item.get("page"), _ws(str(item.get("quote") or "")), _ws(str(item.get("value_printed") or ""))
+    page, quote, printed = (
+        item.get("page"),
+        _ws(str(item.get("quote") or "")),
+        _ws(str(item.get("value_printed") or "")),
+    )
     if not isinstance(page, int) or page < 1:
         return False, "no page", None
     if not quote:
@@ -142,7 +146,14 @@ def consensus(readings: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     best, best_score = c, s
             if best is None:
                 clusters.append(
-                    {"value": r["value"], "page": r["page"], "nlabel": nl, "readers": {r["reader"]}, "agree": [r], "differ": []}
+                    {
+                        "value": r["value"],
+                        "page": r["page"],
+                        "nlabel": nl,
+                        "readers": {r["reader"]},
+                        "agree": [r],
+                        "differ": [],
+                    }
                 )
             else:
                 best["readers"].add(r["reader"])
@@ -180,7 +191,9 @@ def consensus(readings: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "page": rep["page"],
                     "quote": rep["quote"],
                     "consensus": cls,
-                    "readers": sorted(c["readers"], key=lambda x: rank.get(x, 9)),
+                    # the readers behind the fact; in a conflict, every reader involved (``readings``
+                    # says which gave this value: the application needs two readers for a conflict)
+                    "readers": sorted(c["readers"] | {x["reader"] for x in c["differ"]}, key=lambda x: rank.get(x, 9)),
                     "readings": [
                         {
                             "reader": x["reader"],
@@ -285,7 +298,13 @@ def verify_order(order: dict[str, Any], include_fixtures: bool = False) -> dict[
                     )
         prim = primary_keys(ok_values)
         for v in ok_values:
-            v["is_primary"] = (v.get("table_page"), v.get("table_title"), v.get("utility"), v.get("fiscal_year"), v.get("voice")) in prim
+            v["is_primary"] = (
+                v.get("table_page"),
+                v.get("table_title"),
+                v.get("utility"),
+                v.get("fiscal_year"),
+                v.get("voice"),
+            ) in prim
             seq += 1
             readings.append({**v, "reader": name, "reader_version": ver, "_seq": seq})
         per_reader[name] = {
@@ -297,22 +316,38 @@ def verify_order(order: dict[str, Any], include_fixtures: bool = False) -> dict[
             "rejected_parameters": sum(1 for x in rejections if x["reader"] == name and x["kind"] == "parameter"),
             "evidence_sources": dict(srcs),
             "pages": r.get("pages") or [],
-            "parse": {k: r.get(k) for k in ("status", "provider", "model", "is_real", "pages_parsed", "cost_usd", "note")},
+            "parse": {
+                k: r.get(k) for k in ("status", "provider", "model", "is_real", "pages_parsed", "cost_usd", "note")
+            },
         }
     facts = consensus(readings)
     headlines(facts)
-    seen: set[tuple] = set()
-    unique, dup = [], 0
+    # the facts' natural key (utility, year, voice, head, label, page) holds one figure: the same
+    # figure printed in two tables of a page is one fact; two columns of one voice in a table (an
+    # "MTR order" and a "revised" column both read as approved) cannot both be facts — the first
+    # (a headline first) is kept and the others stay as readings in arr_values, counted here
+    seen: dict[tuple, float] = {}
+    unique, dup_same, dup_diff = [], 0, 0
     for f in sorted(facts, key=lambda f: (not f.get("is_headline"), f["_seq"])):
         k = (f["utility"], f["fiscal_year"], f["voice"], f["head"], f["label"], f["page"])
         if k in seen:
-            dup += 1  # the same natural key twice (one label in two columns of the same voice): kept once
+            if abs(seen[k] - f["value"]) <= TOL:
+                dup_same += 1
+            else:
+                dup_diff += 1
             continue
-        seen.add(k)
+        seen[k] = f["value"]
         unique.append(f)
     unique.sort(key=lambda f: f["_seq"])
-    return {"order": {k: order.get(k) for k in ("url", "sha256", "commission", "arr_year")}, "readers": per_reader,
-            "facts": unique, "duplicate_fact_keys": dup, "rejections": rejections}
+    return {
+        "order": {k: order.get(k) for k in ("url", "sha256", "commission", "arr_year")},
+        "readers": per_reader,
+        "facts": unique,
+        "duplicate_fact_keys": dup_same + dup_diff,
+        "duplicate_same_value": dup_same,
+        "duplicate_other_value": dup_diff,
+        "rejections": rejections,
+    }
 
 
 def fact_row(order_url: str, f: dict[str, Any]) -> dict[str, Any]:

@@ -82,7 +82,9 @@ def test_ocr_page_is_checked_against_the_readers_own_text_and_says_so(idx):
 def test_consensus_single_agreed_and_three_readers():
     facts = verifier.consensus([reading("textlayer", 5678.19)])
     assert [f["consensus"] for f in facts] == ["single"]
-    facts = verifier.consensus([reading("textlayer", 5678.19), reading("docling", 5678.19, label="Power purchase cost")])
+    facts = verifier.consensus(
+        [reading("textlayer", 5678.19), reading("docling", 5678.19, label="Power purchase cost")]
+    )
     assert [f["consensus"] for f in facts] == ["agreed_2"]
     assert facts[0]["readers"] == ["textlayer", "docling"]
     assert facts[0]["label"] == "Power Purchase Cost"  # the text-layer reading represents the fact
@@ -96,15 +98,20 @@ def test_consensus_conflict_keeps_every_candidate():
     f = facts[0]
     assert f["consensus"] == "conflict" and f["value"] == 5678.19
     assert {(r["reader"], r["agrees"]) for r in f["readings"]} == {("textlayer", True), ("docling", False)}
+    assert f["readers"] == ["textlayer", "docling"]  # every reader involved; the application needs two
 
 
 def test_different_labels_and_values_are_different_figures():
-    facts = verifier.consensus([reading("textlayer", 5678.19), reading("docling", 3468.46, label="O&M Expenses", head="power_purchase")])
+    facts = verifier.consensus(
+        [reading("textlayer", 5678.19), reading("docling", 3468.46, label="O&M Expenses", head="power_purchase")]
+    )
     assert sorted(f["consensus"] for f in facts) == ["single", "single"]
 
 
 def test_one_reader_never_agrees_with_itself():
-    facts = verifier.consensus([reading("textlayer", 5678.19), reading("textlayer", 5678.19, label="Total power purchase")])
+    facts = verifier.consensus(
+        [reading("textlayer", 5678.19), reading("textlayer", 5678.19, label="Total power purchase")]
+    )
     assert all(f["consensus"] == "single" for f in facts) and len(facts) == 2
 
 
@@ -113,9 +120,17 @@ def test_readings_without_utility_year_or_voice_make_no_fact():
 
 
 def test_headline_is_the_net_arr_row_of_the_main_table():
-    rs = [reading("textlayer", v, label=lab, head=h, _seq=i) for i, (v, lab, h) in enumerate(
-        [(5678.19, "Power Purchase Cost", "power_purchase"), (3468.46, "O&M Expenses", "om"),
-         (9200.0, "Aggregate Revenue Requirement", "arr"), (9146.65, "Net ARR", "net_arr")])]
+    rs = [
+        reading("textlayer", v, label=lab, head=h, _seq=i)
+        for i, (v, lab, h) in enumerate(
+            [
+                (5678.19, "Power Purchase Cost", "power_purchase"),
+                (3468.46, "O&M Expenses", "om"),
+                (9200.0, "Aggregate Revenue Requirement", "arr"),
+                (9146.65, "Net ARR", "net_arr"),
+            ]
+        )
+    ]
     facts = verifier.consensus(rs)
     verifier.headlines(facts)
     heads = [f for f in facts if f.get("is_headline")]
@@ -133,11 +148,31 @@ def test_fixture_results_are_never_verified_into_real_output(tmp_path, monkeypat
     sha = "f" * 64
     store.write(sha, "pages", {"order": {}, "pages": [{"page": 10, "text": PAGE_TEXT, "has_text_layer": True}]})
     base = {"reader_version": "x", "status": "ok", "tables": [], "parameters": [], "page_texts": {}, "pages": [10]}
-    store.write(sha, "textlayer", {**base, "reader": "textlayer", "is_real": True,
-                                   "values": [{k: v for k, v in reading("textlayer", 5678.19).items() if k not in ("reader", "reader_version")}]})
-    store.write(sha, "llm", {**base, "reader": "llm", "is_real": False,
-                             "values": [{k: v for k, v in reading("llm", 5678.19).items() if k not in ("reader", "reader_version")}]})
-    v = verifier.verify_order({"url": "https://example.org/o.pdf", "sha256": sha, "commission": "UERC", "arr_year": "FY2026-27"})
+    store.write(
+        sha,
+        "textlayer",
+        {
+            **base,
+            "reader": "textlayer",
+            "is_real": True,
+            "values": [
+                {k: v for k, v in reading("textlayer", 5678.19).items() if k not in ("reader", "reader_version")}
+            ],
+        },
+    )
+    store.write(
+        sha,
+        "llm",
+        {
+            **base,
+            "reader": "llm",
+            "is_real": False,
+            "values": [{k: v for k, v in reading("llm", 5678.19).items() if k not in ("reader", "reader_version")}],
+        },
+    )
+    v = verifier.verify_order(
+        {"url": "https://example.org/o.pdf", "sha256": sha, "commission": "UERC", "arr_year": "FY2026-27"}
+    )
     assert set(v["readers"]) == {"textlayer"}
     assert v["facts"][0]["consensus"] == "single"
 
@@ -150,9 +185,24 @@ def test_rejected_readings_are_counted_and_not_posted(tmp_path, monkeypatch):
     store.write(sha, "pages", {"order": {}, "pages": [{"page": 10, "text": PAGE_TEXT, "has_text_layer": True}]})
     vals = [reading("docling", 5678.19), reading("docling", 1234.56, label="Made up")]
     vals = [{k: v for k, v in x.items() if k not in ("reader", "reader_version")} for x in vals]
-    store.write(sha, "docling", {"reader": "docling", "reader_version": "d", "status": "ok", "is_real": True, "tables": [],
-                                 "values": vals, "parameters": [], "page_texts": {}, "pages": [10]})
-    v = verifier.verify_order({"url": "https://example.org/o.pdf", "sha256": sha, "commission": "UERC", "arr_year": "FY2026-27"})
+    store.write(
+        sha,
+        "docling",
+        {
+            "reader": "docling",
+            "reader_version": "d",
+            "status": "ok",
+            "is_real": True,
+            "tables": [],
+            "values": vals,
+            "parameters": [],
+            "page_texts": {},
+            "pages": [10],
+        },
+    )
+    v = verifier.verify_order(
+        {"url": "https://example.org/o.pdf", "sha256": sha, "commission": "UERC", "arr_year": "FY2026-27"}
+    )
     assert v["readers"]["docling"]["rejected_values"] == 1
     sink = DryRunSink(tmp_path / "dry")
     verifier.post_order(sink, v)

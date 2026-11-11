@@ -28,7 +28,13 @@ def state(tmp_path, monkeypatch):
 
 
 def order(c: str) -> dict:
-    return {"url": f"https://example.org/{c}.pdf", "sha256": c * 64, "commission": "UERC", "title": c, "licensees": ["UPCL"]}
+    return {
+        "url": f"https://example.org/{c}.pdf",
+        "sha256": c * 64,
+        "commission": "UERC",
+        "title": c,
+        "licensees": ["UPCL"],
+    }
 
 
 def kinds(q: director.Queue, target: str) -> set[str]:
@@ -111,19 +117,25 @@ def test_brief_without_a_model_is_labelled_not_real(state, monkeypatch):
 def test_model_may_only_reorder_or_park_planned_items(state):
     from types import SimpleNamespace
 
-    reply = {"narrative": "Fixture narrative.", "priorities": [{"kind": "fetch", "target": "l" * 64, "priority": 1,
-                                                                 "reason": "first"},
-                                                                {"kind": "parse:llamaparse", "target": "zzz", "priority": 1,
-                                                                 "reason": "not planned"}],
-             "park": [{"kind": "audit", "target": "all", "reason": "wait"}]}
+    reply = {
+        "narrative": "Fixture narrative.",
+        "priorities": [
+            {"kind": "fetch", "target": "l" * 64, "priority": 1, "reason": "first"},
+            {"kind": "parse:llamaparse", "target": "zzz", "priority": 1, "reason": "not planned"},
+        ],
+        "park": [{"kind": "audit", "target": "all", "reason": "wait"}],
+    }
 
     class Fake:  # FIXTURE: Messages API shape, not a model's output
         def count_tokens(self, **r):
             return SimpleNamespace(input_tokens=10)
 
         def create(self, **r):
-            return SimpleNamespace(stop_reason="end_turn", content=[SimpleNamespace(type="text", text=json.dumps(reply))],
-                                   usage=SimpleNamespace(input_tokens=10, output_tokens=10))
+            return SimpleNamespace(
+                stop_reason="end_turn",
+                content=[SimpleNamespace(type="text", text=json.dumps(reply))],
+                usage=SimpleNamespace(input_tokens=10, output_tokens=10),
+            )
 
     q = director.Queue(pol(cap=1.0))
     o = order("l")

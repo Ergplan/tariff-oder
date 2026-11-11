@@ -146,7 +146,11 @@ def grid_to_table(
         label_cells = [c for c in r[:first_val] if c]
         while len(label_cells) > 1 and SERIAL_CELL.match(label_cells[0]):
             label_cells.pop(0)  # a serial number before the label
-        if len(label_cells) == 1 and SERIAL_CELL.match(label_cells[0]) and not re.search(r"[a-z]{3}", label_cells[0], re.I):
+        if (
+            len(label_cells) == 1
+            and SERIAL_CELL.match(label_cells[0])
+            and not re.search(r"[a-z]{3}", label_cells[0], re.I)
+        ):
             label_cells = []
         ltext = " ".join(label_cells).strip(" :-")
         vals = [(k, r[j]) for k, j in enumerate(value_cols) if r[j] and is_num(r[j])]

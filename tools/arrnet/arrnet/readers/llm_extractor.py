@@ -120,7 +120,9 @@ def _block(page: int, text: str, target: bool, tag: str = "document_page") -> st
     return f'<{tag} number="{page}" target="{"yes" if target else "no"}">\n{safe}\n</{tag}>'
 
 
-def user_message(order: dict[str, Any], page: int, text: str, nxt: tuple[int, str] | None, paras: list[dict], params: list[dict]) -> str:
+def user_message(
+    order: dict[str, Any], page: int, text: str, nxt: tuple[int, str] | None, paras: list[dict], params: list[dict]
+) -> str:
     lic = ", ".join(order.get("licensees") or []) or "(none listed)"
     plist = "\n".join(f"- {p['code']}: {p['name']} ({p['unit']})" for p in params)
     numbered = "\n".join(f"[{p['seq']}] {p['text'][:300]}" for p in paras if p["kind"] == "text")
@@ -154,8 +156,14 @@ def _choose_pages(order: dict[str, Any], pages: list[dict[str, Any]], cap: int) 
 class Extractor(Reader):
     name = "llm"
 
-    def __init__(self, client: Any = None, *, is_real: bool = True, pol: dict[str, Any] | None = None,
-                 budget: Budget | None = None) -> None:
+    def __init__(
+        self,
+        client: Any = None,
+        *,
+        is_real: bool = True,
+        pol: dict[str, Any] | None = None,
+        budget: Budget | None = None,
+    ) -> None:
         self.pol = pol or policy()
         self.model = self.pol["models"]["extractor"]
         self.effort = (self.pol.get("effort") or {}).get("extractor", "medium")
@@ -196,8 +204,11 @@ class Extractor(Reader):
             req = {"model": self.model, "system": SYSTEM, "messages": [{"role": "user", "content": msg}]}
             try:
                 counted = self.client.messages.count_tokens(**req).input_tokens
-                est = token_cost(self.pol, self.model, {"input_tokens": counted,
-                                                         "output_tokens": int(self.pol["extractor"]["max_tokens"]) // 4})
+                est = token_cost(
+                    self.pol,
+                    self.model,
+                    {"input_tokens": counted, "output_tokens": int(self.pol["extractor"]["max_tokens"]) // 4},
+                )
                 if self.is_real:
                     self.budget.reserve("extractor", est)
                 resp = self.client.messages.create(
@@ -221,11 +232,21 @@ class Extractor(Reader):
                 "cache_creation_input_tokens": getattr(u, "cache_creation_input_tokens", 0) or 0,
             }
             cost = token_cost(self.pol, self.model, usage)
-            out.input_tokens += usage["input_tokens"] + usage["cache_read_input_tokens"] + usage["cache_creation_input_tokens"]
+            out.input_tokens += (
+                usage["input_tokens"] + usage["cache_read_input_tokens"] + usage["cache_creation_input_tokens"]
+            )
             out.output_tokens += usage["output_tokens"]
             out.cost_usd += cost
-            self.budget.record("extractor", "anthropic", self.model, cost, is_real=self.is_real,
-                               order_url=order["url"], page=pg, **usage)
+            self.budget.record(
+                "extractor",
+                "anthropic",
+                self.model,
+                cost,
+                is_real=self.is_real,
+                order_url=order["url"],
+                page=pg,
+                **usage,
+            )
             out.pages_parsed += 1
             if resp.stop_reason in ("refusal", "max_tokens"):
                 notes.append(f"page {pg}: stop_reason {resp.stop_reason}, output not used")
@@ -240,10 +261,12 @@ class Extractor(Reader):
                 continue
             self._take(order, pg, data, {x["seq"] for x in paras if x["kind"] == "text"}, out)
         out.seconds = time.monotonic() - t0
-        out.note = (f"{out.pages_parsed} of {len(targets)} pages read; {len(out.values)} lines, "
-                    f"{len(out.parameters)} parameters, {len(out.paragraphs)} paragraphs classified; "
-                    f"{out.input_tokens} in / {out.output_tokens} out tokens, ${out.cost_usd:.4f}"
-                    + (f"; {'; '.join(notes)}" if notes else ""))
+        out.note = (
+            f"{out.pages_parsed} of {len(targets)} pages read; {len(out.values)} lines, "
+            f"{len(out.parameters)} parameters, {len(out.paragraphs)} paragraphs classified; "
+            f"{out.input_tokens} in / {out.output_tokens} out tokens, ${out.cost_usd:.4f}"
+            + (f"; {'; '.join(notes)}" if notes else "")
+        )
         return out
 
     def _take(self, order: dict[str, Any], pg: int, data: dict[str, Any], seqs: set[int], out: ParseResult) -> None:
@@ -271,23 +294,49 @@ class Extractor(Reader):
                 fy = x.get("fiscal_year") if re.fullmatch(r"FY20\d\d-\d\d", str(x.get("fiscal_year"))) else None
                 unit_name, factor = unit_of([x.get("unit") or ""])
                 if kind == "line":
-                    out.values.append({
-                        "utility": x.get("utility"), "fiscal_year": fy, "voice": x.get("voice"),
-                        "stage": stage_of(fy, order.get("arr_year")), "head": x["head"], "label": x["label"],
-                        "value_printed": x["value_printed"], "value": v, "unit": unit_name or x.get("unit"),
-                        "value_crore": round(v * factor, 4) if factor else None, "page": pg, "quote": x["quote"],
-                    })
+                    out.values.append(
+                        {
+                            "utility": x.get("utility"),
+                            "fiscal_year": fy,
+                            "voice": x.get("voice"),
+                            "stage": stage_of(fy, order.get("arr_year")),
+                            "head": x["head"],
+                            "label": x["label"],
+                            "value_printed": x["value_printed"],
+                            "value": v,
+                            "unit": unit_name or x.get("unit"),
+                            "value_crore": round(v * factor, 4) if factor else None,
+                            "page": pg,
+                            "quote": x["quote"],
+                        }
+                    )
                 else:
-                    out.parameters.append({
-                        "utility": x.get("utility"), "fiscal_year": fy, "voice": x.get("voice"), "code": x["code"],
-                        "label": x["label"], "value_printed": x["value_printed"], "value": v,
-                        "unit": x.get("unit") or codes[x["code"]]["unit"], "page": pg, "quote": x["quote"],
-                    })
+                    out.parameters.append(
+                        {
+                            "utility": x.get("utility"),
+                            "fiscal_year": fy,
+                            "voice": x.get("voice"),
+                            "code": x["code"],
+                            "label": x["label"],
+                            "value_printed": x["value_printed"],
+                            "value": v,
+                            "unit": x.get("unit") or codes[x["code"]]["unit"],
+                            "page": pg,
+                            "quote": x["quote"],
+                        }
+                    )
         for p in data.get("paragraphs") or []:
             if p.get("page") == pg and p.get("seq") in seqs and p.get("kind") in KINDS:
                 topic = p.get("topic") if p.get("topic") in HEAD_NAMES or p.get("topic") in codes else None
-                out.paragraphs.append({"page": pg, "seq": p["seq"], "kind": p["kind"], "topic": topic,
-                                       "summary": str(p.get("summary", ""))[:500]})
+                out.paragraphs.append(
+                    {
+                        "page": pg,
+                        "seq": p["seq"],
+                        "kind": p["kind"],
+                        "topic": topic,
+                        "summary": str(p.get("summary", ""))[:500],
+                    }
+                )
             else:
                 dropped += 1
         out.extra["dropped"] = dropped

@@ -83,7 +83,9 @@ class Budget:
         if mine is not None and self.spent(agent) + estimate_usd > float(mine):
             raise BudgetExceeded(f"{agent}: estimated ${estimate_usd:.4f} would pass its daily cap ${float(mine):.2f}")
 
-    def record(self, agent: str, provider: str, model: str | None, cost_usd: float, *, is_real: bool, **kw: Any) -> None:
+    def record(
+        self, agent: str, provider: str, model: str | None, cost_usd: float, *, is_real: bool, **kw: Any
+    ) -> None:
         store.append_jsonl(
             self.ledger,
             [

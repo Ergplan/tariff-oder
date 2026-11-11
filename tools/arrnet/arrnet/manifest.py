@@ -11,7 +11,6 @@ from typing import Any
 from . import config
 from .arrdb_bridge import arr_year_of
 
-
 # a manifest's licensee name -> the utility code; None: not a utility (the order is skipped)
 LICENSEE_CODES: dict[str, str | None] = {"JSPL": "JSPL-T", "STU": None}
 SKIPPED: list[dict[str, Any]] = []
@@ -69,9 +68,7 @@ def unique_files(orders: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], li
     return keep, dup
 
 
-def select(
-    orders: list[dict[str, Any]], only: str | None = None, limit: int | None = None
-) -> list[dict[str, Any]]:
+def select(orders: list[dict[str, Any]], only: str | None = None, limit: int | None = None) -> list[dict[str, Any]]:
     if only:
         wanted = {x.strip().upper() for x in only.split(",")}
         orders = [o for o in orders if o["commission"].upper() in wanted]

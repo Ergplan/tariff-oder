@@ -11,7 +11,6 @@ import pytest
 
 pytest.importorskip("arrnet")
 import pymupdf  # noqa: E402
-
 from arrnet.arrdb_bridge import stage_of  # noqa: E402
 from arrnet.readers import interpret  # noqa: E402
 
@@ -26,8 +25,9 @@ GRID = [
 
 
 def test_grid_is_read_with_arrdb_meaning():
-    t = interpret.grid_to_table(GRID, title="Table 4.52: ARR for FY 2026-27 (Rs. Crore)", page=7, row_pages=None,
-                                licensees=["UPCL"], aliases={})
+    t = interpret.grid_to_table(
+        GRID, title="Table 4.52: ARR for FY 2026-27 (Rs. Crore)", page=7, row_pages=None, licensees=["UPCL"], aliases={}
+    )
     assert t and t["unit"] == "crore"
     cols = {c["index"]: c for c in t["columns"]}
     assert [cols[i]["voice"] for i in sorted(cols)] == ["claimed", "approved"]
@@ -51,7 +51,7 @@ def test_title_filter_is_arrdbs():
 
 def test_markdown_tables_are_found_and_separators_dropped():
     md = "Table 4: ARR (Rs crore)\n\n| Particulars | Approved |\n|---|---|\n| O&M | 12.50 |\n\ntext"
-    (start, grid), = interpret.markdown_tables(md)
+    ((start, grid),) = interpret.markdown_tables(md)
     assert start == 2 and grid == [["Particulars", "Approved"], ["O&M", "12.50"]]
 
 
@@ -59,11 +59,24 @@ def test_docling_table_grid_repeats_spanning_header_cells():
     from arrnet.readers.docling_reader import table_grid
 
     def cell(r, c, text, header=False, cspan=1):
-        return SimpleNamespace(start_row_offset_idx=r, end_row_offset_idx=r + 1, start_col_offset_idx=c,
-                               end_col_offset_idx=c + cspan, text=text, column_header=header)
+        return SimpleNamespace(
+            start_row_offset_idx=r,
+            end_row_offset_idx=r + 1,
+            start_col_offset_idx=c,
+            end_col_offset_idx=c + cspan,
+            text=text,
+            column_header=header,
+        )
 
-    cells = [cell(0, 0, "Particulars", True), cell(0, 1, "NBPDCL", True, 2), cell(1, 1, "Claimed", True),
-             cell(1, 2, "Approved", True), cell(2, 0, "O&M"), cell(2, 1, "10.5"), cell(2, 2, "9.5")]
+    cells = [
+        cell(0, 0, "Particulars", True),
+        cell(0, 1, "NBPDCL", True, 2),
+        cell(1, 1, "Claimed", True),
+        cell(1, 2, "Approved", True),
+        cell(2, 0, "O&M"),
+        cell(2, 1, "10.5"),
+        cell(2, 2, "9.5"),
+    ]
     tb = SimpleNamespace(data=SimpleNamespace(num_rows=3, num_cols=3, table_cells=cells))
     grid, n_head = table_grid(tb)
     assert n_head == 2 and grid[0] == ["Particulars", "NBPDCL", "NBPDCL"] and grid[2] == ["O&M", "10.5", "9.5"]
@@ -71,9 +84,8 @@ def test_docling_table_grid_repeats_spanning_header_cells():
 
 def test_textlayer_reader_emits_what_arrdb_build_stores(tmp_path):
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from test_arrdb_reader import _page  # the synthetic order page of the arrdb reader's test
-
     from arrnet.readers.textlayer import TextLayerReader
+    from test_arrdb_reader import _page  # the synthetic order page of the arrdb reader's test
 
     pdf = tmp_path / "order.pdf"
     _page(pdf)
@@ -86,3 +98,22 @@ def test_textlayer_reader_emits_what_arrdb_build_stores(tmp_path):
     assert len(res.values) == sum(len(t["lines"]) for t in raw["tables"])
     assert all(v["page"] >= 1 and v["quote"] for v in res.values)
     assert pymupdf.open(str(pdf)).page_count == res.pages_parsed
+
+
+def test_a_skipped_run_never_replaces_an_earlier_reading(tmp_path, monkeypatch):
+    monkeypatch.setenv("ARRNET_STATE", str(tmp_path))
+    from arrnet import run, store
+    from arrnet.ingest import DryRunSink
+    from arrnet.readers.base import ParseResult, Reader
+
+    class NoKey(Reader):
+        name, version = "llamaparse", "v"
+
+        def read(self, order, pdf_path):
+            return self.skipped("no key")
+
+    sha = "c" * 64
+    store.write(sha, "llamaparse", {**ParseResult("llamaparse", "v", "ok", values=[{"x": 1}]).to_dict()})
+    o = {"url": "https://example.org/o.pdf", "sha256": sha, "commission": "UERC", "title": "t"}
+    run.read([o], DryRunSink(tmp_path / "dry"), NoKey(), log=lambda *_: None)
+    assert store.read(sha, "llamaparse")["status"] == "ok"

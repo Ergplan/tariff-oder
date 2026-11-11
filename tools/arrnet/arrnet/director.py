@@ -55,29 +55,50 @@ class Queue:
         if it and it["state"] in ("queued", "claimed"):
             if priority is not None and priority != it["priority"]:
                 it["priority"] = priority
-                self.decisions.append({"action": "reprioritise", "kind": kind, "target": target, "priority": priority,
-                                       "reason": reason, "by": by})
+                self.decisions.append(
+                    {
+                        "action": "reprioritise",
+                        "kind": kind,
+                        "target": target,
+                        "priority": priority,
+                        "reason": reason,
+                        "by": by,
+                    }
+                )
             return False
         if it and it["state"] == "parked":
             return False
         if it and it["state"] == "failed" and it["attempts"] >= int(self.pol["queue"]["max_attempts"]):
             self.park(kind, target, f"failed {it['attempts']} times: {it.get('error')}", by=by)
             return False
-        self.items[k] = {"kind": kind, "target": target, "state": "queued", "priority": prio,
-                         "attempts": (it or {}).get("attempts", 0), "error": (it or {}).get("error"), "created_by": by}
-        self.decisions.append({"action": "enqueue", "kind": kind, "target": target, "priority": prio, "reason": reason, "by": by})
+        self.items[k] = {
+            "kind": kind,
+            "target": target,
+            "state": "queued",
+            "priority": prio,
+            "attempts": (it or {}).get("attempts", 0),
+            "error": (it or {}).get("error"),
+            "created_by": by,
+        }
+        self.decisions.append(
+            {"action": "enqueue", "kind": kind, "target": target, "priority": prio, "reason": reason, "by": by}
+        )
         return True
 
     def park(self, kind: str, target: str, reason: str, by: str = "director") -> None:
         k = self.key(kind, target)
-        it = self.items.setdefault(k, {"kind": kind, "target": target, "priority": 100, "attempts": 0, "created_by": by})
+        it = self.items.setdefault(
+            k, {"kind": kind, "target": target, "priority": 100, "attempts": 0, "created_by": by}
+        )
         it["state"] = "parked"
         it["error"] = reason
         self.decisions.append({"action": "park", "kind": kind, "target": target, "reason": reason, "by": by})
 
     def claim(self, kinds: list[str] | None = None, limit: int = 1) -> list[dict[str, Any]]:
-        ready = sorted((i for i in self.items.values() if i["state"] == "queued" and (not kinds or i["kind"] in kinds)),
-                       key=lambda i: (i["priority"], i["kind"], i["target"]))[:limit]
+        ready = sorted(
+            (i for i in self.items.values() if i["state"] == "queued" and (not kinds or i["kind"] in kinds)),
+            key=lambda i: (i["priority"], i["kind"], i["target"]),
+        )[:limit]
         for i in ready:
             i["state"] = "claimed"
             i["attempts"] = i.get("attempts", 0) + 1
@@ -121,22 +142,36 @@ def order_state(o: dict[str, Any]) -> dict[str, Any]:
     d = store.state_dir() / "orders" / sha
     if v is not None:
         vt = (d / "verified.json").stat().st_mtime
-        st["stale"] = any((d / f"{r}.json").exists() and (d / f"{r}.json").stat().st_mtime > vt
-                          for r in ("textlayer", "docling", "llamaparse", "llm"))
+        st["stale"] = any(
+            (d / f"{r}.json").exists() and (d / f"{r}.json").stat().st_mtime > vt
+            for r in ("textlayer", "docling", "llamaparse", "llm")
+        )
     return st
 
 
-def plan(orders: list[dict[str, Any]], q: Queue, budget: Budget | None = None,
-         keys: dict[str, bool] | None = None) -> dict[str, Any]:
+def plan(
+    orders: list[dict[str, Any]], q: Queue, budget: Budget | None = None, keys: dict[str, bool] | None = None
+) -> dict[str, Any]:
     """Apply the rules; return what was planned and what is blocked, with reasons."""
     pol = q.pol
     budget = budget or Budget(pol)
-    keys = keys if keys is not None else {
-        "llamaparse": bool(os.environ.get("LLAMA_CLOUD_API_KEY")), "extractor": bool(os.environ.get("ANTHROPIC_API_KEY"))}
+    keys = (
+        keys
+        if keys is not None
+        else {
+            "llamaparse": bool(os.environ.get("LLAMA_CLOUD_API_KEY")),
+            "extractor": bool(os.environ.get("ANTHROPIC_API_KEY")),
+        }
+    )
     blocked: Counter = Counter()
     lp = pol["llamaparse"]
-    est = {"llamaparse": lp["max_pages_per_order"] * lp["credits_per_page"][lp["tier"]] * lp["usd_per_1000_credits"] / 1000,
-           "extractor": 0.05 * pol["extractor"]["max_pages_per_order"]}  # rough per-order estimates for planning
+    est = {
+        "llamaparse": lp["max_pages_per_order"]
+        * lp["credits_per_page"][lp["tier"]]
+        * lp["usd_per_1000_credits"]
+        / 1000,
+        "extractor": 0.05 * pol["extractor"]["max_pages_per_order"],
+    }  # rough per-order estimates for planning
     planned_cost = Counter()
 
     def paid(kind: str, target: str, reason: str) -> None:
@@ -163,16 +198,28 @@ def plan(orders: list[dict[str, Any]], q: Queue, budget: Budget | None = None,
             q.enqueue("parse:textlayer", t, "not read yet")
             continue
         if not s["docling"] and (s["textlayer_tables"] == 0 or s["pages_without_text"] > 0):
-            why = "the text layer found no ARR table" if s["textlayer_tables"] == 0 else f"{s['pages_without_text']} pages without a text layer"
+            why = (
+                "the text layer found no ARR table"
+                if s["textlayer_tables"] == 0
+                else f"{s['pages_without_text']} pages without a text layer"
+            )
             q.enqueue("parse:docling", t, why)
         if s.get("verified") and s["docling"] and not s["llamaparse"]:
             disagree = s.get("conflicts", 0) + s.get("single_on_shared_pages", 0)
             if s.get("facts_on_shared_pages") and disagree > 0.2 * s["facts_on_shared_pages"]:
-                paid("parse:llamaparse", t, f"text layer and Docling disagree on {disagree} of {s['facts_on_shared_pages']} figures")
+                paid(
+                    "parse:llamaparse",
+                    t,
+                    f"text layer and Docling disagree on {disagree} of {s['facts_on_shared_pages']} figures",
+                )
         if not s["llm"] and s["textlayer_tables"] > 0:
             paid("extract", t, "ARR tables read; key parameters and paragraphs not extracted")
         if not s["verified"] or s.get("stale"):
-            q.enqueue("verify", t, "readings not verified yet" if not s["verified"] else "a reader ran after the last verification")
+            q.enqueue(
+                "verify",
+                t,
+                "readings not verified yet" if not s["verified"] else "a reader ran after the last verification",
+            )
         if not s["indexed"]:
             q.enqueue("index", t, "paragraphs not indexed")
     q.enqueue("audit", "all", "after every run")
@@ -190,29 +237,53 @@ def brief(orders: list[dict[str, Any]], q: Queue, planned: dict[str, Any], narra
     budget = Budget(q.pol)
     queued = Counter(i["kind"] for i in q.items.values() if i["state"] == "queued")
     parked = [i for i in q.items.values() if i["state"] == "parked"]
-    lines = ["# ARR Network — Director's brief", "",
-             f"Written {dt.datetime.now(dt.UTC).isoformat(timespec='minutes')} by "
-             + ("the rule-based planner (no model)." if narrative is None else f"{q.pol['models']['director']} (narrative) and the rule-based planner."),
-             "Nothing here is reviewed: consensus classes are machine agreement, not a person's check.", ""]
+    lines = [
+        "# ARR Network — Director's brief",
+        "",
+        f"Written {dt.datetime.now(dt.UTC).isoformat(timespec='minutes')} by "
+        + (
+            "the rule-based planner (no model)."
+            if narrative is None
+            else f"{q.pol['models']['director']} (narrative) and the rule-based planner."
+        ),
+        "Nothing here is reviewed: consensus classes are machine agreement, not a person's check.",
+        "",
+    ]
     if narrative:
         lines += ["## Summary", "", narrative.strip(), ""]
     lines += ["## Done", ""]
     lines += [f"- {a}: {n} runs" for a, n in sorted(by_agent.items())] or ["- nothing yet"]
     lines += ["", "## Failed", ""]
     lines += [f"- {r['agent']} {r.get('order_url', '')}: {r.get('note', '')[:160]}" for r in failed[:20]] or ["- none"]
-    cov = audit.get("coverage") or {}
-    lines += ["", "## Coverage", "",
-              f"- orders: {len(orders)}; read by the text layer: {sum(1 for s in states if s.get('textlayer'))}; "
-              f"by Docling: {sum(1 for s in states if s.get('docling'))}; verified: {sum(1 for s in states if s.get('verified'))}; "
-              f"indexed: {sum(1 for s in states if s.get('indexed'))}"]
+    cov = (audit.get("coverage") or {}).get("discom") or {}
+    lines += [
+        "",
+        "## Coverage",
+        "",
+        f"- orders: {len(orders)}; read by the text layer: {sum(1 for s in states if s.get('textlayer'))}; "
+        f"by Docling: {sum(1 for s in states if s.get('docling'))}; "
+        f"verified: {sum(1 for s in states if s.get('verified'))}; "
+        f"indexed: {sum(1 for s in states if s.get('indexed'))}",
+    ]
     if cov:
-        lines.append(f"- DISCOMs with a headline ARR: {cov.get('utilities_with_headline')} of {cov.get('discoms')}")
+        lines.append(f"- DISCOMs with a headline ARR: {cov.get('utilities_with_headline')} of {cov.get('listed')}")
+        tcov = (audit.get("coverage") or {}).get("transco") or {}
+        if tcov:
+            lines.append(
+                f"- TRANSCOs with a headline ARR: {tcov.get('utilities_with_headline')} of {tcov.get('listed')}"
+            )
     g = (audit.get("gold") or {}).get("textlayer")
     if g:
-        lines.append(f"- text layer on hand-read figures: {g['found']}/{g['comparable_nonzero']} found, "
-                     f"voice {g['voice_agrees']}/{g['voice_checked']}, utility {g['licensee_agrees']}/{g['licensee_checked']}")
-    lines += ["", "## Spend", "",
-              f"- today: ${budget.spent():.4f} of the daily cap ${float(q.pol['budget']['daily_usd']):.2f}"]
+        lines.append(
+            f"- text layer on hand-read figures: {g['found']}/{g['comparable_nonzero']} found, "
+            f"voice {g['voice_agrees']}/{g['voice_checked']}, utility {g['licensee_agrees']}/{g['licensee_checked']}"
+        )
+    lines += [
+        "",
+        "## Spend",
+        "",
+        f"- today: ${budget.spent():.4f} of the daily cap ${float(q.pol['budget']['daily_usd']):.2f}",
+    ]
     lines += ["", "## Next", ""]
     lines += [f"- {k}: {n} queued" for k, n in sorted(queued.items())] or ["- nothing queued"]
     for k, n in sorted((planned.get("blocked") or {}).items()):
@@ -227,12 +298,29 @@ DIRECTOR_SCHEMA = {
     "type": "object",
     "properties": {
         "narrative": {"type": "string"},
-        "priorities": {"type": "array", "items": {"type": "object", "properties": {
-            "kind": {"type": "string"}, "target": {"type": "string"}, "priority": {"type": "integer"},
-            "reason": {"type": "string"}}, "required": ["kind", "target", "priority", "reason"], "additionalProperties": False}},
-        "park": {"type": "array", "items": {"type": "object", "properties": {
-            "kind": {"type": "string"}, "target": {"type": "string"}, "reason": {"type": "string"}},
-            "required": ["kind", "target", "reason"], "additionalProperties": False}},
+        "priorities": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "kind": {"type": "string"},
+                    "target": {"type": "string"},
+                    "priority": {"type": "integer"},
+                    "reason": {"type": "string"},
+                },
+                "required": ["kind", "target", "priority", "reason"],
+                "additionalProperties": False,
+            },
+        },
+        "park": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {"kind": {"type": "string"}, "target": {"type": "string"}, "reason": {"type": "string"}},
+                "required": ["kind", "target", "reason"],
+                "additionalProperties": False,
+            },
+        },
     },
     "required": ["narrative", "priorities", "park"],
     "additionalProperties": False,
@@ -246,17 +334,27 @@ for a person, each with a reason. You may only refer to items in the queue you a
 cannot change any figure, consensus class or review."""
 
 
-def llm_direct(q: Queue, summary: dict[str, Any], client: Any, budget: Budget, *, is_real: bool = True) -> tuple[str | None, dict]:
+def llm_direct(
+    q: Queue, summary: dict[str, Any], client: Any, budget: Budget, *, is_real: bool = True
+) -> tuple[str | None, dict]:
     pol = q.pol
     model = pol["models"]["director"]
-    req = {"model": model, "system": DIRECTOR_SYSTEM,
-           "messages": [{"role": "user", "content": json.dumps(summary, default=str)[:200000]}]}
+    req = {
+        "model": model,
+        "system": DIRECTOR_SYSTEM,
+        "messages": [{"role": "user", "content": json.dumps(summary, default=str)[:200000]}],
+    }
     n_in = client.messages.count_tokens(**req).input_tokens
     if is_real:
         budget.reserve("director", token_cost(pol, model, {"input_tokens": n_in, "output_tokens": 4000}))
-    resp = client.messages.create(**req, max_tokens=8000, output_config={
-        "effort": (pol.get("effort") or {}).get("director", "medium"),
-        "format": {"type": "json_schema", "schema": DIRECTOR_SCHEMA}})
+    resp = client.messages.create(
+        **req,
+        max_tokens=8000,
+        output_config={
+            "effort": (pol.get("effort") or {}).get("director", "medium"),
+            "format": {"type": "json_schema", "schema": DIRECTOR_SCHEMA},
+        },
+    )
     usage = {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens}
     cost = token_cost(pol, model, usage)
     budget.record("director", "anthropic", model, cost, is_real=is_real, **usage)
@@ -266,7 +364,9 @@ def llm_direct(q: Queue, summary: dict[str, Any], client: Any, budget: Budget, *
     queued = {Queue.key(i["kind"], i["target"]) for i in q.items.values() if i["state"] == "queued"}
     for p in data.get("priorities", []):
         if Queue.key(p["kind"], p["target"]) in queued:  # only items the rules planned
-            q.enqueue(p["kind"], p["target"], f"model: {p['reason'][:200]}", priority=int(p["priority"]), by="director:llm")
+            q.enqueue(
+                p["kind"], p["target"], f"model: {p['reason'][:200]}", priority=int(p["priority"]), by="director:llm"
+            )
     for p in data.get("park", []):
         if Queue.key(p["kind"], p["target"]) in queued:
             q.park(p["kind"], p["target"], f"model: {p['reason'][:200]}", by="director:llm")
@@ -284,25 +384,40 @@ def direct(orders: list[dict[str, Any]], sink: Sink, *, client: Any = None) -> d
 
         client = anthropic.Anthropic()
     if client is not None:
-        summary = {"planned": planned, "decisions": q.decisions[-200:],
-                   "queue": [i for i in q.items.values() if i["state"] in ("queued", "failed", "parked")][:300],
-                   "audit": store.read_global("auditor-last", {}).get("report", {}).get("coverage"),
-                   "spent_today": budget.spent()}
+        summary = {
+            "planned": planned,
+            "decisions": q.decisions[-200:],
+            "queue": [i for i in q.items.values() if i["state"] in ("queued", "failed", "parked")][:300],
+            "audit": store.read_global("auditor-last", {}).get("report", {}).get("coverage"),
+            "spent_today": budget.spent(),
+        }
         try:
             narrative, extra = llm_direct(q, summary, client, budget)
         except BudgetExceeded as e:
             extra = {"note": f"model not called: {e}"}
     body = brief(orders, q, planned, narrative)
     q.save()
-    items = [{"kind": d["kind"], "target": d["target"], "priority": d.get("priority", 100), "created_by": d["by"]}
-             for d in q.decisions if d["action"] == "enqueue"]
+    items = [
+        {"kind": d["kind"], "target": d["target"], "priority": d.get("priority", 100), "created_by": d["by"]}
+        for d in q.decisions
+        if d["action"] == "enqueue"
+    ]
     w = sink.post("work_items", items).written if items else 0
-    w += sink.post("briefs", [{"written_by": "director", "is_real": narrative is not None, "body": body,
-                               "decisions": q.decisions[:500]}]).written
+    w += sink.post(
+        "briefs",
+        [{"written_by": "director", "is_real": narrative is not None, "body": body, "decisions": q.decisions[:500]}],
+    ).written
     store.write_global("brief", {"body": body, "decisions": q.decisions})
-    run.post(sink, "ok", extra.get("note") or f"{len(q.decisions)} decisions",
-             is_real=True, rows_written=w,
-             provider="anthropic" if narrative else None, model=q.pol["models"]["director"] if narrative else None,
-             input_tokens=extra.get("input_tokens", 0), output_tokens=extra.get("output_tokens", 0),
-             cost_usd=round(extra.get("cost_usd", 0.0), 6))
+    run.post(
+        sink,
+        "ok",
+        extra.get("note") or f"{len(q.decisions)} decisions",
+        is_real=True,
+        rows_written=w,
+        provider="anthropic" if narrative else None,
+        model=q.pol["models"]["director"] if narrative else None,
+        input_tokens=extra.get("input_tokens", 0),
+        output_tokens=extra.get("output_tokens", 0),
+        cost_usd=round(extra.get("cost_usd", 0.0), 6),
+    )
     return {"planned": planned, "decisions": len(q.decisions), "brief": body}

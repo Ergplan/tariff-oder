@@ -33,7 +33,10 @@ def make_reader(name: str, args: argparse.Namespace) -> Reader:
         from .spend import policy
 
         d = policy()["docling"]
-        return DoclingReader(max_pages=args.max_pages or int(d["max_pages_per_order"]), max_ocr_pages=int(d.get("max_ocr_pages_per_order", 6)))
+        return DoclingReader(
+            max_pages=args.max_pages or int(d["max_pages_per_order"]),
+            max_ocr_pages=int(d.get("max_ocr_pages_per_order", 6)),
+        )
     if name == "llamaparse":
         from .readers.llamaparse_reader import LlamaParseReader
 
@@ -58,14 +61,29 @@ def read(orders: list[dict[str, Any]], sink: Sink, reader: Reader, log=print) ->
         except Exception as e:  # one order's failure does not stop the others
             res = reader.skipped(f"{type(e).__name__}: {e}"[:300])
             res.status = "failed"
+        prev = store.read(o["sha256"], reader.name)
+        if res.status == "skipped" and prev and prev.get("status") in ("ok", "partial"):
+            # a skipped run (no key, no budget) never replaces an earlier reading
+            run.post(sink, "skipped", f"{res.note}; the earlier {prev['reader_version']} reading is kept")
+            stats["status"]["skipped"] = stats["status"].get("skipped", 0) + 1
+            continue
         store.write(o["sha256"], reader.name, res.to_dict())
         sink.post("parses", [res.parse_row(o["url"])])
         if reader.name == "textlayer" and res.status == "ok":
             doc = store.read(o["sha256"], "pages")
             if doc:
                 sink.post("orders", [{**doc["order"], "read_status": res.extra["read_status"]}])
-        run.post(sink, res.status, res.note, provider=res.provider, model=res.model, is_real=res.is_real,
-                 input_tokens=res.input_tokens, output_tokens=res.output_tokens, cost_usd=round(res.cost_usd, 6))
+        run.post(
+            sink,
+            res.status,
+            res.note,
+            provider=res.provider,
+            model=res.model,
+            is_real=res.is_real,
+            input_tokens=res.input_tokens,
+            output_tokens=res.output_tokens,
+            cost_usd=round(res.cost_usd, 6),
+        )
         stats["orders"] += 1
         stats["tables"] += len(res.tables)
         stats["values"] += len(res.values)
@@ -87,20 +105,34 @@ def verify(orders: list[dict[str, Any]], sink: Sink, log=print) -> dict[str, Any
         results.append(v)
         runs.append(r)
     set_aside = verifier.set_aside_outliers([f for v in results for f in v["facts"]])
-    totals: dict[str, Any] = {"orders": 0, "facts": 0, "set_aside": set_aside, "rejected": {}, "consensus": {},
-                              "duplicate_fact_keys": 0, "api_rejected": 0}
+    totals: dict[str, Any] = {
+        "orders": 0,
+        "facts": 0,
+        "set_aside": set_aside,
+        "rejected": {},
+        "consensus": {},
+        "duplicate_fact_keys": 0,
+        "duplicate_same_value": 0,
+        "duplicate_other_value": 0,
+        "api_rejected": 0,
+    }
     for v, r in zip(results, runs, strict=True):
         store.write(v["order"]["sha256"], "verified", v)
         if v["rejections"]:
             store.append_jsonl("rejections", v["rejections"])
         n = verifier.post_order(sink, v)
         rej = len(v["rejections"])
-        r.post(sink, "ok" if not n["rejected"] else "partial",
-               f"{len(v['facts'])} facts; {rej} readings rejected for evidence; {n['rejected']} rows refused by the API",
-               rows_written=n["written"], rows_rejected=rej)
+        r.post(
+            sink,
+            "ok" if not n["rejected"] else "partial",
+            f"{len(v['facts'])} facts; {rej} readings rejected for evidence; {n['rejected']} rows refused by the API",
+            rows_written=n["written"],
+            rows_rejected=rej,
+        )
         totals["orders"] += 1
         totals["facts"] += len(v["facts"])
-        totals["duplicate_fact_keys"] += v["duplicate_fact_keys"]
+        for k in ("duplicate_fact_keys", "duplicate_same_value", "duplicate_other_value"):
+            totals[k] += v[k]
         totals["api_rejected"] += n["rejected"]
         for x in v["rejections"]:
             totals["rejected"][x["reader"]] = totals["rejected"].get(x["reader"], 0) + 1
@@ -174,8 +206,9 @@ def work(orders: list[dict[str, Any]], sink: Sink, args: argparse.Namespace, log
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="python -m arrnet.run", description=__doc__,
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap = argparse.ArgumentParser(
+        prog="python -m arrnet.run", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     ap.add_argument("step", choices=["seed", "courier", "read", "verify", "index", "audit", "direct", "work", "all"])
     ap.add_argument("--reader", choices=READERS)
     ap.add_argument("--only", help="commission code(s), comma-separated")
@@ -208,11 +241,26 @@ def main(argv: list[str] | None = None) -> int:
     elif a.step == "audit":
         out = auditor.run(orders, sink)
         out = {k: v for k, v in out.items() if k not in ("gold",)} | {
-            "gold": {r: {k: g[k] for k in ("found", "comparable_nonzero", "voice_agrees", "voice_checked",
-                                         "licensee_agrees", "licensee_checked")} for r, g in out["gold"].items()}}
+            "gold": {
+                r: {
+                    k: g[k]
+                    for k in (
+                        "found",
+                        "comparable_nonzero",
+                        "voice_agrees",
+                        "voice_checked",
+                        "licensee_agrees",
+                        "licensee_checked",
+                    )
+                }
+                for r, g in out["gold"].items()
+            }
+        }
         for k in ("gold_common_set",):
-            out[k] = {r: {kk: g[kk] for kk in ("found", "comparable_nonzero", "voice_agrees", "voice_checked")}
-                      for r, g in out.get(k, {}).items()}
+            out[k] = {
+                r: {kk: g[kk] for kk in ("found", "comparable_nonzero", "voice_agrees", "voice_checked")}
+                for r, g in out.get(k, {}).items()
+            }
     elif a.step == "direct":
         res = director.direct(orders, sink)
         print(res["brief"])

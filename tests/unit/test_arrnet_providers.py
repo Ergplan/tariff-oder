@@ -16,7 +16,6 @@ import pytest
 pytest.importorskip("arrnet")
 import httpx  # noqa: E402
 import pymupdf  # noqa: E402
-
 from arrnet import store  # noqa: E402
 from arrnet.spend import Budget  # noqa: E402
 
@@ -49,8 +48,13 @@ def order(tmp_path, monkeypatch):
     pages = [{"page": i, "text": PAGE5 if i == 5 else "word " * 30, "has_text_layer": True} for i in range(1, 7)]
     store.write(sha, "pages", {"order": {}, "pages": pages})
     store.write(sha, "textlayer", {"tables": [{"page": 5, "pages": [5]}]})
-    return {"url": "https://example.org/o.pdf", "sha256": sha, "licensees": ["UPCL"], "arr_year": "FY2026-27",
-            "commission": "UERC"}, pdf
+    return {
+        "url": "https://example.org/o.pdf",
+        "sha256": sha,
+        "licensees": ["UPCL"],
+        "arr_year": "FY2026-27",
+        "commission": "UERC",
+    }, pdf
 
 
 # ------------------------------------------------------------------ LlamaParse
@@ -74,8 +78,11 @@ def llama_transport(calls, status_seq=("RUNNING", "COMPLETED")):
             st = seq.pop(0) if seq else "COMPLETED"
             body = {"job": {"id": "job-fixture", "status": st, "error_message": None, "usage": {"credits": 12.0}}}
             if st == "COMPLETED":
-                body["markdown"] = {"pages": [{"page_number": p, "success": True, "markdown": LLAMA_MD if p == 5 else "text"}
-                                              for p in (5,)]}
+                body["markdown"] = {
+                    "pages": [
+                        {"page_number": p, "success": True, "markdown": LLAMA_MD if p == 5 else "text"} for p in (5,)
+                    ]
+                }
             return httpx.Response(200, json=body)
         return httpx.Response(404)
 
@@ -94,7 +101,9 @@ def test_llamaparse_reads_a_recorded_shape_fixture(order):
     from arrnet.readers.llamaparse_reader import LlamaParseReader
 
     calls = []
-    r = LlamaParseReader("fixture-key", transport=llama_transport(calls), is_real=False, pol=policy(), sleep=lambda s: None)
+    r = LlamaParseReader(
+        "fixture-key", transport=llama_transport(calls), is_real=False, pol=policy(), sleep=lambda s: None
+    )
     res = r.read(*order)
     assert res.is_real is False and res.status == "ok"
     up = calls[0]
@@ -139,8 +148,9 @@ class FakeMessages:
         return SimpleNamespace(
             stop_reason=self.stop_reason,
             content=[SimpleNamespace(type="text", text=json.dumps(self.reply))],
-            usage=SimpleNamespace(input_tokens=1200, output_tokens=300, cache_read_input_tokens=0,
-                                  cache_creation_input_tokens=0),
+            usage=SimpleNamespace(
+                input_tokens=1200, output_tokens=300, cache_read_input_tokens=0, cache_creation_input_tokens=0
+            ),
         )
 
 
@@ -154,20 +164,57 @@ SEQ = _seq_of_ruling()
 
 REPLY = {
     "lines": [
-        {"utility": "UPCL", "fiscal_year": "FY2026-27", "voice": "approved", "head": "net_arr", "label": "Net ARR",
-         "value_printed": "9,646.75", "unit": "Rs. Crore", "page": 5, "quote": "Net ARR 9,675.43 9,646.75"},
-        {"utility": "NOPE", "fiscal_year": "FY2026-27", "voice": "approved", "head": "om", "label": "x",
-         "value_printed": "1.0", "unit": None, "page": 5, "quote": "x 1.0"},  # unknown utility: dropped
-        {"utility": "UPCL", "fiscal_year": "FY2026-27", "voice": "approved", "head": "om", "label": "O&M",
-         "value_printed": "3,468.46", "unit": "Rs. Crore", "page": 9, "quote": "O&M 3,468.46"},  # wrong page: dropped
+        {
+            "utility": "UPCL",
+            "fiscal_year": "FY2026-27",
+            "voice": "approved",
+            "head": "net_arr",
+            "label": "Net ARR",
+            "value_printed": "9,646.75",
+            "unit": "Rs. Crore",
+            "page": 5,
+            "quote": "Net ARR 9,675.43 9,646.75",
+        },
+        {
+            "utility": "NOPE",
+            "fiscal_year": "FY2026-27",
+            "voice": "approved",
+            "head": "om",
+            "label": "x",
+            "value_printed": "1.0",
+            "unit": None,
+            "page": 5,
+            "quote": "x 1.0",
+        },  # unknown utility: dropped
+        {
+            "utility": "UPCL",
+            "fiscal_year": "FY2026-27",
+            "voice": "approved",
+            "head": "om",
+            "label": "O&M",
+            "value_printed": "3,468.46",
+            "unit": "Rs. Crore",
+            "page": 9,
+            "quote": "O&M 3,468.46",
+        },  # wrong page: dropped
     ],
     "parameters": [
-        {"code": "distribution_loss_pct", "utility": "UPCL", "fiscal_year": "FY2026-27", "voice": "approved",
-         "label": "distribution loss", "value_printed": "12.50", "unit": "%", "page": 5,
-         "quote": "The Commission approves the distribution loss of 12.50% for FY 2026-27."},
+        {
+            "code": "distribution_loss_pct",
+            "utility": "UPCL",
+            "fiscal_year": "FY2026-27",
+            "voice": "approved",
+            "label": "distribution loss",
+            "value_printed": "12.50",
+            "unit": "%",
+            "page": 5,
+            "quote": "The Commission approves the distribution loss of 12.50% for FY 2026-27.",
+        },
     ],
-    "paragraphs": [{"page": 5, "seq": SEQ, "kind": "ruling", "topic": "distribution_loss_pct", "summary": "Loss approved."},
-                   {"page": 5, "seq": 99, "kind": "ruling", "topic": None, "summary": "no such paragraph"}],
+    "paragraphs": [
+        {"page": 5, "seq": SEQ, "kind": "ruling", "topic": "distribution_loss_pct", "summary": "Loss approved."},
+        {"page": 5, "seq": 99, "kind": "ruling", "topic": None, "summary": "no such paragraph"},
+    ],
 }
 
 
