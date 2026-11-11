@@ -252,24 +252,37 @@ def nearest(cols: list[Column], x: float) -> int:
 
 
 def label_header(cols: list[Column], header_rows: list[Row]) -> None:
-    """Give each column the header words above it: a phrase belongs to every column it overlaps
-    horizontally (a licensee or year printed over two columns belongs to both), else to the
-    nearest column within reach.  Phrases left of the first column head the label column."""
+    """Give each column the header words above it.  A header row with fewer phrases than
+    columns is a group row (a licensee or a year over several columns): each column takes the
+    phrase whose span, widened to the midpoints between phrases, holds its centre."""
     for r in header_rows:
-        for p in phrases(r.words):
-            if len(p) == 1 and len(p[0].text) <= 1:
-                continue
-            x0, x1 = p[0].x0, p[-1].x1
-            if x1 < cols[0].x0 - 30:
-                continue
-            text = " ".join(w.text for w in p)
-            hit = [c for c in cols if min(c.x1 + 6, x1) - max(c.x0 - 6, x0) > 0]
-            if not hit:
-                c = min(cols, key=lambda c: abs(c.xc - (x0 + x1) / 2))
-                if abs(c.xc - (x0 + x1) / 2) <= 40:
-                    hit = [c]
-            for c in hit:
-                c.header.append(text)
+        ps = [p for p in phrases(r.words) if not (len(p) == 1 and len(p[0].text) <= 1)]
+        if not ps:
+            continue
+        # phrases left of the first column are the label column's header ("Particulars")
+        ps = [p for p in ps if p[-1].x1 > cols[0].x0 - 30]
+        if not ps:
+            continue
+        if len(ps) >= len(cols):
+            for p in ps:
+                i = nearest(cols, (p[0].x0 + p[-1].x1) / 2)
+                cols[i].header.append(" ".join(w.text for w in p))
+        else:
+            centres = [(p[0].x0 + p[-1].x1) / 2 for p in ps]
+            bounds = [
+                (
+                    -1e9 if i == 0 else (centres[i - 1] + centres[i]) / 2,
+                    1e9 if i == len(ps) - 1 else (centres[i] + centres[i + 1]) / 2,
+                )
+                for i in range(len(ps))
+            ]
+            for c in cols:
+                for p, (lo, hi) in zip(ps, bounds, strict=True):
+                    pc = (p[0].x0 + p[-1].x1) / 2
+                    reach = max(60.0, 1.5 * (p[-1].x1 - p[0].x0))
+                    if lo <= c.xc < hi and abs(c.xc - pc) <= reach:
+                        c.header.append(" ".join(w.text for w in p))
+                        break
 
 
 def unit_of(texts: list[str]) -> tuple[str | None, float | None]:

@@ -20,8 +20,8 @@
   "licensee_checked": 128,
   "licensee_agrees": 128,
   "cross_order": {
-   "pairs": 269,
-   "agree": 211,
+   "pairs": 242,
+   "agree": 178,
    "by_commission": {
     "CSERC": {
      "pairs": 44,
@@ -32,24 +32,24 @@
      "agree": 32
     },
     "JERC-GOA-UT": {
-     "pairs": 34,
-     "agree": 23
+     "pairs": 22,
+     "agree": 12
     },
     "JSERC": {
      "pairs": 40,
      "agree": 19
     },
     "MERC": {
-     "pairs": 15,
-     "agree": 3
+     "pairs": 14,
+     "agree": 2
     },
     "OERC": {
      "pairs": 4,
      "agree": 3
     },
     "UPERC": {
-     "pairs": 98,
-     "agree": 92
+     "pairs": 84,
+     "agree": 71
     }
    }
   }
