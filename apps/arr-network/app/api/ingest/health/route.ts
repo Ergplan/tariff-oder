@@ -19,8 +19,10 @@ export async function GET(req: Request) {
     const counts: Record<string, number> = {};
     const q = TABLES.map((t) => `SELECT '${t}' AS t, count(*)::int AS n FROM ${t}`).join(" UNION ALL ");
     for (const r of await g.sql.unsafe(q)) counts[r.t as string] = r.n as number;
+    const [{ mb }] = await g.sql`SELECT round(pg_database_size(current_database()) / 1048576.0)::int AS mb`;
     return Response.json({
       schema_version: applied[applied.length - 1] ?? null,
+      database_mb: mb,
       applied,
       pending: MIGRATION_VERSIONS.filter((v) => !applied.includes(v)),
       counts,
