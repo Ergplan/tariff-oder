@@ -163,9 +163,17 @@ class Extractor(Reader):
         is_real: bool = True,
         pol: dict[str, Any] | None = None,
         budget: Budget | None = None,
+        provider: str = "anthropic",
+        model: str | None = None,
+        priced: bool = True,
     ) -> None:
+        """``provider``/``model``/``priced`` describe who answers: the Anthropic API (priced from
+        policy.yaml), or a non-API answerer such as this repository's session agents
+        (``session_extract``), which is recorded under its own provider and model, at no API cost."""
         self.pol = pol or policy()
-        self.model = self.pol["models"]["extractor"]
+        self.provider = provider
+        self.model = model or self.pol["models"]["extractor"]
+        self.priced = priced
         self.effort = (self.pol.get("effort") or {}).get("extractor", "medium")
         self.version = f"{VERSION} {self.model}"
         self.is_real = is_real
@@ -180,7 +188,7 @@ class Extractor(Reader):
         self.heads = sorted(HEAD_NAMES)
 
     def read(self, order: dict[str, Any], pdf_path: str | Path | None = None) -> ParseResult:
-        base = {"is_real": self.is_real, "provider": "anthropic", "model": self.model}
+        base = {"is_real": self.is_real, "provider": self.provider, "model": self.model}
         if self.client is None:
             return self.skipped("ANTHROPIC_API_KEY is not set", **base)
         doc = store.read(order.get("sha256") or "", "pages")
@@ -204,12 +212,16 @@ class Extractor(Reader):
             req = {"model": self.model, "system": SYSTEM, "messages": [{"role": "user", "content": msg}]}
             try:
                 counted = self.client.messages.count_tokens(**req).input_tokens
-                est = token_cost(
-                    self.pol,
-                    self.model,
-                    {"input_tokens": counted, "output_tokens": int(self.pol["extractor"]["max_tokens"]) // 4},
+                est = (
+                    token_cost(
+                        self.pol,
+                        self.model,
+                        {"input_tokens": counted, "output_tokens": int(self.pol["extractor"]["max_tokens"]) // 4},
+                    )
+                    if self.priced
+                    else 0.0
                 )
-                if self.is_real:
+                if self.is_real and self.priced:
                     self.budget.reserve("extractor", est)
                 resp = self.client.messages.create(
                     **req,
@@ -231,7 +243,7 @@ class Extractor(Reader):
                 "cache_read_input_tokens": getattr(u, "cache_read_input_tokens", 0) or 0,
                 "cache_creation_input_tokens": getattr(u, "cache_creation_input_tokens", 0) or 0,
             }
-            cost = token_cost(self.pol, self.model, usage)
+            cost = token_cost(self.pol, self.model, usage) if self.priced else 0.0
             out.input_tokens += (
                 usage["input_tokens"] + usage["cache_read_input_tokens"] + usage["cache_creation_input_tokens"]
             )
@@ -239,7 +251,7 @@ class Extractor(Reader):
             out.cost_usd += cost
             self.budget.record(
                 "extractor",
-                "anthropic",
+                self.provider,
                 self.model,
                 cost,
                 is_real=self.is_real,

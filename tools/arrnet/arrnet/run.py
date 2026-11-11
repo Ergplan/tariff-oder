@@ -42,6 +42,10 @@ def make_reader(name: str, args: argparse.Namespace) -> Reader:
 
         return LlamaParseReader(max_total_pages=args.max_total_pages)
     if name == "llm":
+        if getattr(args, "replies", None):
+            from .session_extract import extractor
+
+            return extractor(args.replies)  # answered by session agents, recorded as such
         from .readers.llm_extractor import Extractor
 
         return Extractor()
@@ -221,6 +225,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--dry-run", metavar="DIR", help="write the batches as JSONL to DIR instead of the ingest API")
     ap.add_argument("--max-pages", type=int, help="Docling: pages converted per order")
     ap.add_argument("--max-total-pages", type=int, help="LlamaParse: pages sent across all orders of this run")
+    ap.add_argument("--replies", metavar="DIR", help="Extractor: answers written by session agents (session_extract)")
     ap.add_argument("--no-embed", action="store_true", help="Librarian: post chunks without embeddings")
     ap.add_argument("--download", action="store_true", help="Courier: download orders missing from the cache")
     a = ap.parse_args(argv)
