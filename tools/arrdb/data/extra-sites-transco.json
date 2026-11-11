@@ -1,0 +1,996 @@
+{
+ "checked_on": "2026-11-11",
+ "sites": [
+  {
+   "commission": "UPERC",
+   "listing_urls": [
+    "https://www.uperc.org/Tariff_Order_Users.aspx"
+   ],
+   "notes": "ASP.NET page: current FY (2026-27) shown by default; earlier years via 'Previous Years' link then Financial Year drop-down (ddlFYear) and Show button, driven by HTTP form postbacks (VIEWSTATE) from a normal browser-style session; no request was refused. Checked FY 2026-27, 2025-26, 2024-25, 2023-24, 2022-23 views. Only UPPTCL rows kept (discom, NPCL/NIDP, UPSLDC, APTEL-appeal rows excluded). Every order appears twice (digitally signed + scanned) and both are listed. Older titles print only 'UPPTCL'; the 2026-27 title prints the full name.",
+   "orders": [
+    {
+     "url": "https://www.uperc.org/App_File/UPPTCL_TariffOrder_26_27_DigitallySigned-pdf415202651905PM.pdf",
+     "title": "Order dated 15/04/26 True-up for FY 2024-25, Annual Performance Review for FY 2025-26, Annual Revenue Requirement and Intra-State Tariff for FY 2026-27 for Uttar Pradesh Power Transmission Corporation Limited and State Transmission Utility in Petition no 2320/2025. Digitally Signed.",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "Uttar Pradesh Power Transmission Corporation Limited"
+     },
+     "fiscal_year_of_arr": "FY2024-25, FY2025-26, FY2026-27",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2026-2027 drop-down (Previous Years). Digitally signed copy of the order. Title names UPPTCL and the State Transmission Utility together.",
+     "http": 206
+    },
+    {
+     "url": "https://www.uperc.org/App_File/UPPTCLTariffOrderScanned-pdf415202661835PM.pdf",
+     "title": "Order dated 15/04/26 True-up for FY 2024-25, Annual Performance Review for FY 2025-26, Annual Revenue Requirement and Intra-State Tariff for FY 2026-27 for Uttar Pradesh Power Transmission Corporation Limited and State Transmission Utility in Petition no 2320/2025 (Scanned)",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "Uttar Pradesh Power Transmission Corporation Limited"
+     },
+     "fiscal_year_of_arr": "FY2024-25, FY2025-26, FY2026-27",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2026-2027 drop-down (Previous Years). Scanned copy of the order. Title names UPPTCL and the State Transmission Utility together.",
+     "http": 206
+    },
+    {
+     "url": "https://www.uperc.org/App_File/TariffOrderUPPTCL(2166of2024)Scanned-pdf982025125128PM.pdf",
+     "title": "Tariff Order dated 08/09/25 for 2166 of 2024 - UPPTCL - True UP FY 2023-24, Annual Performance Review FY 2024-25 and ARR for FY 2025-26 - Scanned",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "UPPTCL"
+     },
+     "fiscal_year_of_arr": "FY2023-24, FY2024-25, FY2025-26",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2025-2026 drop-down (Previous Years). Scanned copy of the order.",
+     "http": 206
+    },
+    {
+     "url": "https://www.uperc.org/App_File/UPPTCLTariffOrderDigitallySigned-pdf982025120732PM.pdf",
+     "title": "Tariff Order dated 08/09/25 for 2166 of 2024 - UPPTCL - True UP FY 2023-24, Annual Performance Review FY 2024-25 and ARR for FY 2025-26 - Digitally Signed",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "UPPTCL"
+     },
+     "fiscal_year_of_arr": "FY2023-24, FY2024-25, FY2025-26",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2025-2026 drop-down (Previous Years). Digitally signed copy of the order.",
+     "http": 206
+    },
+    {
+     "url": "https://www.uperc.org/App_File/TariffOrderPetition2044of2023(UPPTCL)-PDF1010202461542PM.pdf",
+     "title": "Tariff Order dated 10/10/24 - UPPTCL - Petition for True-up for FY 2022-23, APR for 2023-24 and ARR/Tariff for FY 2024-25 in Petition no 2044/2023",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "UPPTCL"
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2024-2025 drop-down (Previous Years).",
+     "http": 206
+    },
+    {
+     "url": "https://www.uperc.org/App_File/UPPTCLTariffOrderDSC-pdf1010202475156PM.pdf",
+     "title": "Tariff Order dated 10/10/24 - UPPTCL - Petition for True-up for FY 2022-23, APR for 2023-24 and ARR/Tariff for FY 2024-25 in Petition no 2044/2023 (Digitally Signed)",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "UPPTCL"
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2024-2025 drop-down (Previous Years). Digitally signed copy of the order.",
+     "http": 206
+    },
+    {
+     "url": "https://www.uperc.org/App_File/TariffOrderUPPTCLDigitallySigned-pdf525202324857AM.pdf",
+     "title": "Tariff Order dated 25/05/2023 for UPPTCL True-up FY 2021-22, APR FY 2022-23, ARR and Tariff FY 2023-24 (Digitally Signed)",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "UPPTCL"
+     },
+     "fiscal_year_of_arr": "FY2021-22, FY2022-23, FY2023-24",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2023-2024 drop-down (Previous Years). Digitally signed copy of the order.",
+     "http": 206
+    },
+    {
+     "url": "https://www.uperc.org/App_File/UPPTCLTariffScanned-pdf525202324932AM.pdf",
+     "title": "Tariff Order dated 25/05/2023 for UPPTCL True-up FY 2021-22, APR FY 2022-23, ARR and Tariff FY 2023-24 (Scanned)",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "UPPTCL"
+     },
+     "fiscal_year_of_arr": "FY2021-22, FY2022-23, FY2023-24",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2023-2024 drop-down (Previous Years). Scanned copy of the order.",
+     "http": 206
+    },
+    {
+     "url": "https://www.uperc.org/App_File/UPPTCLScanned-PDF726202220822PM.pdf",
+     "title": "Order dated 20/07/22 for Petition Number 1839 of 2022 - UPPTCL - Petition for Truing Up for FY 2020-21 , APR for FY 2021-22 and Approval of ARR for FY 2022-23 (Scanned)",
+     "licensees": [
+      "UPPTCL"
+     ],
+     "licensee_names": {
+      "UPPTCL": "UPPTCL"
+     },
+     "fiscal_year_of_arr": "FY2020-21, FY2021-22, FY2022-23",
+     "kind": "true-up + APR + ARR/tariff order",
+     "note": "Listed under UPERC Tariff Orders, Financial Year 2022-2023 drop-down (Previous Years). Scanned copy of the order.",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "UERC",
+   "listing_urls": [
+    "https://uerc.gov.in/",
+    "https://uerc.uk.gov.in/tariff-orders/",
+    "https://uerc.uk.gov.in/tariff-order-2026-27/",
+    "https://uerc.uk.gov.in/document-category/2022-23/",
+    "https://uerc.uk.gov.in/document-category/2023-24/",
+    "https://uerc.uk.gov.in/document-category/2024-25/",
+    "https://uerc.uk.gov.in/document-category/2025-26/"
+   ],
+   "notes": "uerc.gov.in redirects/links to uerc.uk.gov.in (first request to uerc.gov.in failed once with a connection error, later requests succeeded). Per-year document categories hold the PTCUL order as a row 'Tariff Orders for FY x. 2. PTCUL' (UPCL, UJVN, SLDC etc. in other rows). Salient-feature summaries (Hindi/English), 'Admittance order' rows (petition admittance, e.g. PTCUL true-up/APR/MYT admittance orders) and business-plan admittance orders were excluded; the Dec-2025 PTCUL admittance order (FY2024-25 true-up, FY2025-26 APR and ARR) is on the 2026-27 page but is not a tariff order. The 2026-27 page also has an untitled-licensee 'Suo-moto review Tariff Order' (not clearly PTCUL) which was excluded. Titles are the row text without the 'Accessible Version : View (size)' suffix. Order PDFs for FY2022-23..2025-26 carry no ARR-year detail beyond the FY in the title.",
+   "orders": [
+    {
+     "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2025/04/20250429668952075.pdf",
+     "title": "Tariff Orders for FY 2022-23. 2. PTCUL",
+     "licensees": [
+      "PTCUL"
+     ],
+     "licensee_names": {
+      "PTCUL": "PTCUL (full name printed on site only in the Admittance-order rows: Power Transmission Corporation of Uttarakhand Limited)"
+     },
+     "fiscal_year_of_arr": "FY2022-23",
+     "kind": "tariff order",
+     "note": "Row on https://uerc.uk.gov.in/document-category/2022-23/ ; link text 'View'.",
+     "http": 206
+    },
+    {
+     "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2025/04/202504282111223869.pdf",
+     "title": "Tariff Orders for FY 2023-24. 2. PTCUL",
+     "licensees": [
+      "PTCUL"
+     ],
+     "licensee_names": {
+      "PTCUL": "PTCUL (full name printed on site only in the Admittance-order rows: Power Transmission Corporation of Uttarakhand Limited)"
+     },
+     "fiscal_year_of_arr": "FY2023-24",
+     "kind": "tariff order",
+     "note": "Row on https://uerc.uk.gov.in/document-category/2023-24/ ; link text 'View'.",
+     "http": 206
+    },
+    {
+     "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2025/04/202504281166763915.pdf",
+     "title": "Tariff Orders for FY 2024-25. 2. PTCUL",
+     "licensees": [
+      "PTCUL"
+     ],
+     "licensee_names": {
+      "PTCUL": "PTCUL (full name printed on site only in the Admittance-order rows: Power Transmission Corporation of Uttarakhand Limited)"
+     },
+     "fiscal_year_of_arr": "FY2024-25",
+     "kind": "tariff order",
+     "note": "Row on https://uerc.uk.gov.in/document-category/2024-25/ ; link text 'View'.",
+     "http": 206
+    },
+    {
+     "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2025/04/20250428350329698.pdf",
+     "title": "Tariff Orders for FY 2025-26. 2. PTCUL",
+     "licensees": [
+      "PTCUL"
+     ],
+     "licensee_names": {
+      "PTCUL": "PTCUL (full name printed on site only in the Admittance-order rows: Power Transmission Corporation of Uttarakhand Limited)"
+     },
+     "fiscal_year_of_arr": "FY2025-26",
+     "kind": "tariff order",
+     "note": "Row on https://uerc.uk.gov.in/document-category/2025-26/ ; link text 'View'.",
+     "http": 206
+    },
+    {
+     "url": "https://cdnbbsr.s3waas.gov.in/s3cf05968255451bdefe3c5bc64d550517/uploads/2026/03/202603311775803083.pdf",
+     "title": "Tariff Orders for FY 2026-27 - 2. PTCUL",
+     "licensees": [
+      "PTCUL"
+     ],
+     "licensee_names": {
+      "PTCUL": "PTCUL"
+     },
+     "fiscal_year_of_arr": "FY2026-27",
+     "kind": "tariff order",
+     "note": "Link text 'PTCUL' under heading 'Tariff Orders for FY 2026-27' on https://uerc.uk.gov.in/tariff-order-2026-27/ .",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "MPERC",
+   "listing_urls": [
+    "https://mperc.in/page/transmission-tariff-orders-2",
+    "https://mperc.in/page/tariff-orders-issued-by-mperc"
+   ],
+   "notes": "The Transmission Tariff Orders page lists, newest first: True-up FY2022-23 (28/02/2024), True-up FY2021-22, FY2020-21, FY2019-20, then the MYT order FY2019-20..FY2023-24 and older. Nothing later than the FY2022-23 true-up (no true-up for FY2023-24 or later, no MYT for FY2024-25 onward) is listed on that page as of the check date; the petitions database (https://mperc.in/petition?status=Disposed) was not searched exhaustively.",
+   "orders": [
+    {
+     "url": "https://mperc.in/old_website/19052021-Pno.45%20of%202020-MYT%20MPPTCL-Order.pdf",
+     "title": "FY-2023-24 IN THE MATTER OF determination of Transmission Tariff for MYT control period from FY 2019-20 to FY 2023-24.",
+     "licensees": [
+      "MPPTCL"
+     ],
+     "licensee_names": {
+      "MPPTCL": "Madhya Pradesh Power Transmission Company Limited (printed in older row titles on the same page)"
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24",
+     "kind": "MYT",
+     "note": "Row labelled FY-2023-24 on the Transmission Tariff Orders page; order file name says Pno.45 of 2020 (19-05-2021). MYT control period covers FY2022-23 and FY2023-24.",
+     "http": 206
+    },
+    {
+     "url": "https://mperc.in/uploads/petition_order_document/04032024-PNo-70-2023-Final-Order-28-02-2024.pdf",
+     "title": "FY-2022-23 True Up Order for FY-2022-23 issued in Petition No 70 of 2023 on 28/02/2024",
+     "licensees": [
+      "MPPTCL"
+     ],
+     "licensee_names": {
+      "MPPTCL": "Madhya Pradesh Power Transmission Company Limited (printed in older row titles on the same page)"
+     },
+     "fiscal_year_of_arr": "FY2022-23",
+     "kind": "true-up",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "OERC",
+   "listing_urls": [
+    "https://www.orierc.org/Tariff_OPTCL.aspx",
+    "https://www.orierc.org/OPTCL.aspx"
+   ],
+   "notes": "Tariff_OPTCL.aspx lists one annual ARR/transmission tariff order per FY (hrefs are '/CuteSoft_Client/CuteEditor/Dialogs/../../../CuteSoft_Client/writereaddata/upload/<file>'; normalised here to the equivalent path). SLDC and GRIDCO are separate pages and excluded. OPTCL.aspx holds only filings (zip) for FY2021-22 and FY2022-23, not orders.",
+   "orders": [
+    {
+     "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/OPTCL_TARIFF_ORDER_FY_2026-27.pdf",
+     "title": "CASE NO. 121/2025 Aggregate Revenue Requirement & Transmission Tariff for the year FY 2026-27 (M/s OPTCL).",
+     "licensees": [
+      "OPTCL"
+     ],
+     "licensee_names": {
+      "OPTCL": "OPTCL (site prints 'M/s OPTCL')"
+     },
+     "fiscal_year_of_arr": "FY2026-27",
+     "kind": "tariff order",
+     "http": 206
+    },
+    {
+     "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/OPTCL_TARIFF_ORDER_FY_2025-26.pdf",
+     "title": "CASE NO. 93/2024 Aggregate Revenue Requirement & Transmission Tariff for the year FY 2025-26 (M/s OPTCL).",
+     "licensees": [
+      "OPTCL"
+     ],
+     "licensee_names": {
+      "OPTCL": "OPTCL (site prints 'M/s OPTCL')"
+     },
+     "fiscal_year_of_arr": "FY2025-26",
+     "kind": "tariff order",
+     "http": 206
+    },
+    {
+     "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/OPTCL_TARIFF_ORDER_FY_2024-25.pdf",
+     "title": "CASE NO. 113/2023 Aggregate Revenue Requirement & Transmission Tariff for the year FY 2024-25 (M/s OPTCL).",
+     "licensees": [
+      "OPTCL"
+     ],
+     "licensee_names": {
+      "OPTCL": "OPTCL (site prints 'M/s OPTCL')"
+     },
+     "fiscal_year_of_arr": "FY2024-25",
+     "kind": "tariff order",
+     "http": 206
+    },
+    {
+     "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/OPTCL_TARIFF_ORDER_FY_2023-24.pdf",
+     "title": "CASE NO. 76/2022 Annual Revenue Requirement and determination of Transmission Tariff for the year FY 2023-24 (M/s OPTCL).",
+     "licensees": [
+      "OPTCL"
+     ],
+     "licensee_names": {
+      "OPTCL": "OPTCL (site prints 'M/s OPTCL')"
+     },
+     "fiscal_year_of_arr": "FY2023-24",
+     "kind": "tariff order",
+     "http": 206
+    },
+    {
+     "url": "https://www.orierc.org/CuteSoft_Client/writereaddata/upload/OPTCL-TrfOrderFY-2022-23.pdf",
+     "title": "CASE NO. 105/2021 Annual Revenue Requirement and determination of Transmission Tariff for the year FY 2022-23 (M/s OPTCL).",
+     "licensees": [
+      "OPTCL"
+     ],
+     "licensee_names": {
+      "OPTCL": "OPTCL (site prints 'M/s OPTCL')"
+     },
+     "fiscal_year_of_arr": "FY2022-23",
+     "kind": "tariff order",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "BERC",
+   "listing_urls": [
+    "https://berc.co.in/orders/tariff/transmission",
+    "https://berc.co.in/orders/truing-up"
+   ],
+   "notes": "Joomla listing /orders/tariff/transmission (first page of 25 rows read; page 2 '?start=25' starts at FY2021-22 and older). Each row is a detail page whose PDF is in an embedded pdf.js viewer. BSPTCL and BGCL both listed; SLDC rows and press-release rows excluded. The truing-up listing holds only old BSEB/BSPHCL items (FY2006-07..FY2012-13).",
+   "orders": [
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/2026-27/BSPTCL_FTO_CN_52_DT_180326.pdf",
+     "title": "Tariff Order of BIHAR STATE POWER TRANSMISSION COMPANY LTD. (BSPTCL) for FY 2026-27",
+     "licensees": [
+      "BSPTCL"
+     ],
+     "licensee_names": {
+      "BSPTCL": "BIHAR STATE POWER TRANSMISSION COMPANY LTD. (BSPTCL)"
+     },
+     "fiscal_year_of_arr": "FY2026-27",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/3290-... (spaces percent-encoded).",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/2026-27/BGCL_FTO_CN_54_DT_18032026.pdf",
+     "title": "Tariff Order of BIHAR GRID COMPANY LTD. (BGCL) for FY 2026-27 - CORRIGENDUM DATED 25.05.2026 IN CASE NO. 54/2025",
+     "licensees": [
+      "BGCL"
+     ],
+     "licensee_names": {
+      "BGCL": "BIHAR GRID COMPANY LTD. (BGCL)"
+     },
+     "fiscal_year_of_arr": "FY2026-27",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/3291-... (spaces percent-encoded). The detail page title carries 'CORRIGENDUM DATED 25.05.2026'; the page embeds two PDFs: this final tariff order (case 54/2025, dated 18/03/2026) and a separate corrigendum PDF (https://berc.co.in/images/pdf/tariff-order/2026-27/BGCL_Corrigendum_Final_-_25052026.pdf) which is not listed.",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-Transmission-2025-26/V4_F__BSPTCL_Tariff_Order_FY_25-26.pdf",
+     "title": "Tariff Order of BIHAR STATE POWER TRANSMISSION COMPANY LTD. (BSPTCL) for FY 2025-26",
+     "licensees": [
+      "BSPTCL"
+     ],
+     "licensee_names": {
+      "BSPTCL": "BIHAR STATE POWER TRANSMISSION COMPANY LTD. (BSPTCL)"
+     },
+     "fiscal_year_of_arr": "FY2025-26",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/2963-... (spaces percent-encoded).",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-Transmission-2025-26/V4_Draft_Order_BGCL_FY_25-26.pdf",
+     "title": "Tariff Order of BIHAR GRID COMPANY LTD. (BGCL) for FY 2025-26",
+     "licensees": [
+      "BGCL"
+     ],
+     "licensee_names": {
+      "BGCL": "BIHAR GRID COMPANY LTD. (BGCL)"
+     },
+     "fiscal_year_of_arr": "FY2025-26",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/2962-... (spaces percent-encoded). The file name says 'V4_Draft_Order_BGCL_FY_25-26' although the page title says Tariff Order; flagged for reviewer.",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-DISCOM-2024-25/BSPTCL-FinalT.OFY2024-25.pdf",
+     "title": "Tariff Order of BIHAR STATE POWER TRANSMISSION COMPANY LTD. (BSPTCL) for FY 2024-25",
+     "licensees": [
+      "BSPTCL"
+     ],
+     "licensee_names": {
+      "BSPTCL": "BIHAR STATE POWER TRANSMISSION COMPANY LTD. (BSPTCL)"
+     },
+     "fiscal_year_of_arr": "FY2024-25",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/2763-... (spaces percent-encoded).",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-DISCOM-2024-25/BGCL-FinalTO%20FY-2024-25.pdf",
+     "title": "Tariff Order of BIHAR GRID COMPANY LTD. (BGCL) for FY 2024-25",
+     "licensees": [
+      "BGCL"
+     ],
+     "licensee_names": {
+      "BGCL": "BIHAR GRID COMPANY LTD. (BGCL)"
+     },
+     "fiscal_year_of_arr": "FY2024-25",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/2762-... (spaces percent-encoded).",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-2023-24/BSPTCL_-Tar-Ord.pdf",
+     "title": "Tariff Order of Bihar State Power Transmission Co. Ltd.(BSPTCL) for FY 2023-24",
+     "licensees": [
+      "BSPTCL"
+     ],
+     "licensee_names": {
+      "BSPTCL": "BIHAR STATE POWER TRANSMISSION COMPANY LTD. (BSPTCL)"
+     },
+     "fiscal_year_of_arr": "FY2023-24",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/2614-... (spaces percent-encoded).",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/tariff-order-2023-24/BGCL-Tar-Ord.pdf",
+     "title": "Tariff Order of Bihar Grid Company Ltd. (BGCL) for FY 2023-24",
+     "licensees": [
+      "BGCL"
+     ],
+     "licensee_names": {
+      "BGCL": "BIHAR GRID COMPANY LTD. (BGCL)"
+     },
+     "fiscal_year_of_arr": "FY2023-24",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/2616-... (spaces percent-encoded).",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/Tariff-Orders-2022-23/BSPTCL%20Tariff%20Order%20for%20FY%202022-23.pdf",
+     "title": "Tariff Order of Bihar State Power Transmission Co. Ltd.(BSPTCL) for FY 2022-23",
+     "licensees": [
+      "BSPTCL"
+     ],
+     "licensee_names": {
+      "BSPTCL": "BIHAR STATE POWER TRANSMISSION COMPANY LTD. (BSPTCL)"
+     },
+     "fiscal_year_of_arr": "FY2022-23",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/2464-... (spaces percent-encoded).",
+     "http": 206
+    },
+    {
+     "url": "https://berc.co.in/images/pdf/tariff-order/Tariff-Orders-2022-23/BGCL%20Tariff%20Order%20for%20FY%202022-23.pdf",
+     "title": "Tariff Order of Bihar Grid Co. Ltd. (BGCL) for FY 2022-23",
+     "licensees": [
+      "BGCL"
+     ],
+     "licensee_names": {
+      "BGCL": "BIHAR GRID COMPANY LTD. (BGCL)"
+     },
+     "fiscal_year_of_arr": "FY2022-23",
+     "kind": "tariff order",
+     "note": "PDF address taken from the embedded viewer (viewer.html?file=...) on the detail page https://berc.co.in/orders/tariff/transmission/2462-... (spaces percent-encoded).",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "HPERC",
+   "listing_urls": [
+    "https://hperc.org/order_type/transmission/"
+   ],
+   "notes": "Transmission order list (single page, newest first back to 2012). Besides the two ARR/MYT/MTR orders kept, the list holds many asset-wise 'Approval of Capital Cost and Determination of Tariff ... for <substation/line> ... of HPPTCL' orders (e.g. 12-26mazra.pdf, 223-25charor.pdf, 210-25Sunda.pdf, 217-25gummatrans.pdf, 146-24Dehan.pdf, 101-24gumma.pdf, 116-24.pdf, 99-2024.pdf, 28-24.pdf, 01-24.pdf, 41-23.pdf, 27-23.pdf, 28-23.pdf, 28-2022.. etc.) and review-petition orders (14-25n.pdf, 15-25-Urni.pdf, 29-25.pdf); these are project-specific transmission asset tariffs, not utility ARR/true-up/MYT orders, and were excluded - say if you want them. 36-22rdss.pdf (true-up of FY2014-15..FY2018-19) is out of range.",
+   "orders": [
+    {
+     "url": "https://hperc.org/wp-content/uploads/file/HPPTCLMYT25.pdf",
+     "title": "Multi Year Tariff Order For Himachal Pradesh Power Transmission Corporation Limited (HPPTCL) FY 2024-25 to FY 2028-29 for Approval of the Five-Year Business Plan and MYT Petition for the Fifth Control Period from FY 2024-25 to FY 2028-29",
+     "licensees": [
+      "HPPTCL"
+     ],
+     "licensee_names": {
+      "HPPTCL": "Himachal Pradesh Power Transmission Corporation Limited (printed in the MYT title; MTR title prints 'HPPTC Ltd.')"
+     },
+     "fiscal_year_of_arr": "FY2024-25 to FY2028-29",
+     "kind": "MYT",
+     "note": "Petition 30/2024, dated 22-01-2025 per the listing row. Control period FY2024-25 to FY2028-29.",
+     "http": 206
+    },
+    {
+     "url": "https://hperc.org/wp-content/uploads/file/HPPTCL%20MTR24.pdf",
+     "title": "Before Hon’ble HPERC in the Matter of True Up of FY 2019-20, FY 2020-21 & FY 2021-22 and Mid-Term Review for the FY 2022-23 and FY 2023-24 for HPPTC Ltd.",
+     "licensees": [
+      "HPPTCL"
+     ],
+     "licensee_names": {
+      "HPPTCL": "Himachal Pradesh Power Transmission Corporation Limited (printed in the MYT title; MTR title prints 'HPPTC Ltd.')"
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24",
+     "kind": "MTR",
+     "note": "Petition 29/2024, dated 05-06-2024 per the listing row. In-range part is the mid-term review for FY2022-23 and FY2023-24.",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "JSERC",
+   "listing_urls": [
+    "https://jserc.org/tariff.aspx"
+   ],
+   "notes": "Single table of ~180 rows (Description, Date). JUSNL rows for true-up of FY2017-18 (jusnl2023.pdf), FY2018-19 (jusnl2023-trueup.pdf) and older are out of range; SLDC-JUSNL charges orders (sldc2024.pdf, sldc-2024.pdf, sldc-2025.pdf), JBVNL and generation rows excluded. Some links on the site are http:// and are recorded as printed; relative links resolved against https://jserc.org/. First request to jserc.org failed once at the proxy (tunnel closed), retry succeeded.",
+   "orders": [
+    {
+     "url": "http://jserc.org/pdf/tariff_order/jusnl-2025.pdf",
+     "title": "Order on Provisional True-up for FY 2023-24, APR for FY 2024-25 and ARR and Tariff Petition for FY 2025-26 for Jharkhand Urja Sancharan Nigam Limited (JUSNL)",
+     "licensees": [
+      "JUSNL"
+     ],
+     "licensee_names": {
+      "JUSNL": "Jharkhand Urja Sancharan Nigam Limited"
+     },
+     "fiscal_year_of_arr": "FY2023-24, FY2024-25, FY2025-26",
+     "kind": "true-up + APR + ARR/tariff",
+     "note": "Listing row 152, date shown 17.04.2025. ",
+     "http": 206
+    },
+    {
+     "url": "https://jserc.org/pdf/tariff_order/JUSNL-2026.pdf",
+     "title": "Order on Provisional True-up for FY 2024-25, APR for FY 2025-26 and ARR for MYT Control Period FY 2026-27 to FY 2030-31 and Tariff Petition for FY 2026-27 for Jharkhand Urja Sancharan Nigam Limited",
+     "licensees": [
+      "JUSNL"
+     ],
+     "licensee_names": {
+      "JUSNL": "Jharkhand Urja Sancharan Nigam Limited"
+     },
+     "fiscal_year_of_arr": "FY2024-25, FY2025-26, FY2026-27, FY2030-31",
+     "kind": "MYT",
+     "note": "Listing row 169, date shown 25.03.2026. ",
+     "http": 206
+    },
+    {
+     "url": "https://jserc.org/pdf/tariff_order/jusnl2023a.pdf",
+     "title": "Order on True-up for FY 2019-20, Annual Performance Review of FY 2020-21, Business Plan& Multi Year Tariff for the Control Period FY 2021-22 to FY 2025-26 for Jharkhand Urja Sancharan Nigam Limited (JUSNL)",
+     "licensees": [
+      "JUSNL"
+     ],
+     "licensee_names": {
+      "JUSNL": "Jharkhand Urja Sancharan Nigam Limited"
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2025-26",
+     "kind": "MYT",
+     "note": "Listing row 111, date shown 23.06.2023. Business Plan/MYT control period FY2021-22 to FY2025-26 includes FY2022-23 onward.",
+     "http": 206
+    },
+    {
+     "url": "https://jserc.org/pdf/tariff_order/jusnl2024.pdf",
+     "title": "Order on True-up for FY 2022-23, APR for FY 2023-24, Business Plan for FY 2021-22 to FY 2025-26, ARR and Tariff Petition for FY 2024-25 for Jharkhand Urja Sancharan Nigam Limited (JUSNL)",
+     "licensees": [
+      "JUSNL"
+     ],
+     "licensee_names": {
+      "JUSNL": "Jharkhand Urja Sancharan Nigam Limited"
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2021-22, FY2025-26, FY2024-25",
+     "kind": "true-up + APR + ARR/tariff",
+     "note": "Listing row 136, date shown 03.07.2024. ",
+     "http": 206
+    },
+    {
+     "url": "https://jserc.org/pdf/tariff_order/jusnl2024a.pdf",
+     "title": "Order on True-up for FY 2020-21 & FY 2021-22 APR for FY 2022-23 & ARR and Tariff Petition for FY 2023-24 for Jharkhand Urja Sancharan Nigam Limited (JUSNL)",
+     "licensees": [
+      "JUSNL"
+     ],
+     "licensee_names": {
+      "JUSNL": "Jharkhand Urja Sancharan Nigam Limited"
+     },
+     "fiscal_year_of_arr": "FY2020-21, FY2021-22, FY2022-23, FY2023-24",
+     "kind": "true-up + APR + ARR/tariff",
+     "note": "Listing row 135, date shown 03.07.2024. ",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "CSERC",
+   "listing_urls": [
+    "https://cserc.gov.in/Welcome/show_tariff_orders"
+   ],
+   "notes": "Tariff Order page, first table = state utilities. Newest row (15-06-2026) is 'Tariff Order for CSPDCL for FY 2026-30 and retail tariff for FY 2026-27' (distribution only; no CSPTCL/transmission order for FY2026-27 is listed as of the check date) and was excluded. Combined orders up to FY2025-26 listed once under CSPTCL. Two Jindal Steel Power Ltd. licensed-transmission ARR orders from the same page are included separately. Other CSERC tables on the page (JSPL distribution, retail, BSP) excluded. The 'Order passed in petitions' and 'Other Orders' pages were not searched for separate CSPTCL true-up orders. URLs contain '/./' exactly as the site prints them.",
+   "orders": [
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/01-08-2025_1754032900.pdf",
+     "title": "Tariff Order in respect of CSPGCL, CSPTCL, CSLDC CSPDCL for FY 2025-26",
+     "licensees": [
+      "CSPTCL"
+     ],
+     "licensee_names": {
+      "CSPTCL": "CSPTCL (abbreviation only on site)"
+     },
+     "fiscal_year_of_arr": "FY2025-26",
+     "kind": "combined",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL (listed once, under CSPTCL). Listing date 11-07-2025; this is the 'Order' button (the second 'Tariff Schedule' button is a separate PDF).",
+     "http": 206
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1718713223.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2024-25",
+     "licensees": [
+      "CSPTCL"
+     ],
+     "licensee_names": {
+      "CSPTCL": "CSPTCL (abbreviation only on site)"
+     },
+     "fiscal_year_of_arr": "FY2024-25",
+     "kind": "combined",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL (listed once, under CSPTCL). Listing date 01-06-2024; this is the 'Order' button (the second 'Tariff Schedule' button is a separate PDF).",
+     "http": 206
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1683185806.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2023-24",
+     "licensees": [
+      "CSPTCL"
+     ],
+     "licensee_names": {
+      "CSPTCL": "CSPTCL (abbreviation only on site)"
+     },
+     "fiscal_year_of_arr": "FY2023-24",
+     "kind": "combined",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL (listed once, under CSPTCL). Listing date 28-03-2023; this is the 'Order' button (the second 'Tariff Schedule' button is a separate PDF).",
+     "http": 206
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1651330549.pdf",
+     "title": "Detail Tariff Order for CSPGCL, CSPTCL, SLDC and CSPDCL for FY 2022-23",
+     "licensees": [
+      "CSPTCL"
+     ],
+     "licensee_names": {
+      "CSPTCL": "CSPTCL (abbreviation only on site)"
+     },
+     "fiscal_year_of_arr": "FY2022-23",
+     "kind": "combined",
+     "note": "Combined order for CSPGCL, CSPTCL, SLDC and CSPDCL (listed once, under CSPTCL). Listing date 13-04-2022; this is the 'Order' button (the second 'Tariff Schedule' button is a separate PDF).",
+     "http": 206
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1680680877.pdf",
+     "title": "Order passed in petition No. 45 of 2022 filed by Jindal Steel Power Ltd. for Licensed Transmission Business for determination of ARR for FY 2022-23 to 2024-25 and transmission tariff for FY 2022-23",
+     "licensees": [
+      "JSPL"
+     ],
+     "licensee_names": {
+      "JSPL": "Jindal Steel Power Ltd."
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Private transmission licensee (not CSPTCL); on the Tariff Order page, listing date 28-10-2022.",
+     "http": 206
+    },
+    {
+     "url": "https://cserc.gov.in/upload/./upload_terrif_order/1753423568.pdf",
+     "title": "Order passed in petition No. 01 of 2025 filed by Jindal Steel Power Ltd. for Licensed Transmission Business for determination of ARR for FY 2025-26.",
+     "licensees": [
+      "JSPL"
+     ],
+     "licensee_names": {
+      "JSPL": "Jindal Steel Power Ltd."
+     },
+     "fiscal_year_of_arr": "FY2025-26",
+     "kind": "tariff order",
+     "note": "Private transmission licensee (not CSPTCL); on the Tariff Order page, listing date 23-07-2025.",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "MERC",
+   "listing_urls": [
+    "https://merc.gov.in/orders/",
+    "https://merc.gov.in/wp-admin/admin-ajax.php?action=getpostsfororderdatatables"
+   ],
+   "notes": "Used the previously saved admin-ajax listing (orders_ajax.json, 4104 rows) from the earlier run's work directory rather than re-fetching it; rows filtered to transmission-licensee MYT/true-up/ARR orders. Two batches: 31-03-2023 (MTR/true-up FY2019-20..FY2021-22, provisional FY2022-23, revised FY2023-24/2024-25; includes FY2022-23 onward) and 28-03-2025 (true-up FY2022-23, FY2023-24, provisional FY2024-25, ARR for 5th control period FY2025-26..FY2029-30). Excluded: review-petition orders (e.g. cases 94 of 2023, 96 of 2023, 100 of 2023, 137 of 2023, 91 of 2023, 94/103 of 2025), STU Fees and Charges orders (183 of 2024, 91 of 2025), TBCB 'adoption of transmission charges' orders for new SPV licensees (2026), Kharghar Vikhroli COD order, DDF/Ambernath order. No MYT/true-up order after 28-03-2025 for any transmission licensee is in the listing (no FY2026-27 transmission tariff order).",
+   "orders": [
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-239-of-2022.pdf",
+     "title": "Case of State Transmission Utility (STU) for Truing-up of Intra-State Transmission System Tariff (InSTS) for FY 2020-21 and FY 2021-22 and determination of revised InSTS Tariff for FY 2023-24 and FY 2024-25",
+     "licensees": [
+      "STU"
+     ],
+     "licensee_names": {
+      "STU": "State Transmission Utility (STU)"
+     },
+     "fiscal_year_of_arr": "FY2020-21, FY2021-22, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 239 of 2022; attachment name 'Order-239 of 2022'. Intra-State Transmission System (InSTS) pooled tariff order of the State Transmission Utility, not an individual licensee ARR.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-238-of-2022.pdf",
+     "title": "Case of Adani Transmission (India) Ltd. for Truing-Up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2020-21, and FY 2021-22, Provisional Truing-Up of ARR for FY 2022-23 and Revised Projection of ARR for the MYT Control period FY 2023-24 to FY 2024-25",
+     "licensees": [
+      "ATIL"
+     ],
+     "licensee_names": {
+      "ATIL": "Adani Transmission (India) Limited"
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 238 of 2022; attachment name 'Order-238 of 2022'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-237-of-2022.pdf",
+     "title": "Case of Maharashtra Eastern Grid Power Transmission Co. Ltd. for Truing-Up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2020-21 & FY 2021-22, Provisional Truing-up of FY 2022-23, and Revised Projection of ARR for the MYT Control Period FY 2023-24 to FY 2024-25.",
+     "licensees": [
+      "MEGPTCL"
+     ],
+     "licensee_names": {
+      "MEGPTCL": "Maharashtra Eastern Grid Power Transmission Co. Ltd."
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 237 of 2022; attachment name 'Order-237 of 2022'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-234-of-2022-1.pdf",
+     "title": "Case of Amravati Power Transmission Co. Ltd. for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2020-21 and FY 2021-22, Provisional Truing- up of ARR for FY 2022-23 and revised estimates of ARR for FY 2023-24 and FY 2024-25",
+     "licensees": [
+      "APTCL"
+     ],
+     "licensee_names": {
+      "APTCL": "Amravati Power Transmission Co. Ltd."
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 234 of 2022; attachment name 'Order-234 of 2022'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-232-of-2022.pdf",
+     "title": "Case of Maharashtra State Electricity Transmission Co. Ltd. for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2019-20 to FY 2021-22, Provisional Truing-Up of Aggregate Revenue Requirement for FY 2022-23 and revised Aggregate Revenue Requirement for FY 2023-24 to FY 2024-25",
+     "licensees": [
+      "MSETCL"
+     ],
+     "licensee_names": {
+      "MSETCL": "Maharashtra State Electricity Transmission Co. Ltd."
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 232 of 2022; attachment name 'Order- 232 of 2022'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-230-of-2022.pdf",
+     "title": "Case of Adani Electricity Mumbai Limited – Transmission (AEML-T) for Truing-up of Aggregate Revenue Requirement (ARR) for FY2019-20, FY 2020-21 and FY 2021-22, Provisional Truing-up of ARR for FY2022-23 and approval of Revised ARR for FY 2023-24 and FY 2024-25",
+     "licensees": [
+      "AEML-T"
+     ],
+     "licensee_names": {
+      "AEML-T": "Adani Electricity Mumbai Limited – Transmission (AEML-T)"
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 230 of 2022; attachment name 'Order-230 of 2022'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-224-of-2022.pdf",
+     "title": "Petition of Vidarbha Industries Power Ltd. (Transmission Business) for Truing-up of Aggregate Revenue Requirement (ARR) FY 2019-20, FY 2020-21 and FY 2021-22, Provisional Truing-up of ARR FY 2022-23 and revised ARR for FY 2023-24 and FY 2024-25",
+     "licensees": [
+      "VIPL-T"
+     ],
+     "licensee_names": {
+      "VIPL-T": "Vidarbha Industries Power Ltd. (Transmission Business)"
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 224 of 2022; attachment name 'Order-224 of 2022'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-217-of-2022-1.pdf",
+     "title": "Case of The Tata Power Company Ltd. (Transmission) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2019-20, FY 2020-21 and FY 2021-22, Provisional True-up of FY 2022-23 and Revised Projections of ARR for FY 2023-24 and FY 2024-25",
+     "licensees": [
+      "TPC-T"
+     ],
+     "licensee_names": {
+      "TPC-T": "The Tata Power Company Ltd. (Transmission)"
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 217 of 2022; attachment name 'Order-217 of 2022'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2023/03/Order-213-of-2022.pdf",
+     "title": "Case of Jaigad Power Transco Ltd. for Truing-up of Aggregate Revenue Requirement (ARR) FY 2019-20,FY 2020-21 and FY 2021-22, Provisional Truing-up of FY 2022-23 and revised ARR for FY 2023-24 and FY 2024-25",
+     "licensees": [
+      "JPTL"
+     ],
+     "licensee_names": {
+      "JPTL": "Jaigad Power Transco Ltd."
+     },
+     "fiscal_year_of_arr": "FY2019-20, FY2020-21, FY2021-22, FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 31-03-2023, case 213 of 2022; attachment name 'Order-213 of 2022'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/MYT-Order-for-InSTS-Case-No.208-of-2024_28-03-2025_uploaded.pdf",
+     "title": "Case of State Transmission Utility (STU) for Truing-up of Intra-State Transmission System Tariff (InSTS) for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, and approval of ARR for 5th MYT Control Period from FY 2025-26 to FY 2029-30.",
+     "licensees": [
+      "STU"
+     ],
+     "licensee_names": {
+      "STU": "State Transmission Utility (STU)"
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2025-26, FY2029-30",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 208 of 2024; attachment name 'MYT Order for InSTS (Case No.208 of 2024)_28 03 2025_uploaded'. Intra-State Transmission System (InSTS) pooled tariff order of the State Transmission Utility, not an individual licensee ARR.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/Final-MYT-Order-TPC-T-Case-No.-185-of-2024_for-upload.pdf",
+     "title": "Case of The Tata Power Company Ltd. (Transmission) for approval of True-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional True-up of FY 2024-25 and Multi Year Tariff Projections for 5th Control Period from FY 2025-26 to FY 2029-30",
+     "licensees": [
+      "TPC-T"
+     ],
+     "licensee_names": {
+      "TPC-T": "The Tata Power Company Ltd. (Transmission)"
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 185 of 2024; attachment name 'Final MYT Order-TPC-T-Case No. 185 of 2024_for upload'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/Final-Order-MYT-Order-AEML-TCase-No.-184-of-2024.pdf",
+     "title": "Case of Adani Electricity Mumbai Limited – Transmission (AEML-T) for Truing-up of Aggregate Revenue Requirement (ARR) for FY2022- 23 and FY 2023-24, Provisional Truing-up of ARR for FY2024 -25 and approval of ARR for 5th Control Period form FY 2025-26 to FY 2029-30",
+     "licensees": [
+      "AEML-T"
+     ],
+     "licensee_names": {
+      "AEML-T": "Adani Electricity Mumbai Limited – Transmission (AEML-T)"
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 184 of 2024; attachment name 'Final Order MYT Order-AEML-T(Case No. 184 of 2024)'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/Order-in-Case-No.-182-of-2024-MEGPTCL-MYT-SD-version.pdf",
+     "title": "Case of Maharashtra Eastern Grid Power Transmission Co. Ltd. for approval of Truing-Up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional Truing-up of ARR for FY 2024-25, and ARR for the MYT Control Period from FY 2025-26 to FY 2029-30",
+     "licensees": [
+      "MEGPTCL"
+     ],
+     "licensee_names": {
+      "MEGPTCL": "Maharashtra Eastern Grid Power Transmission Co. Ltd."
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 182 of 2024; attachment name 'Order in Case No. 182 of 2024 MEGPTCL MYT-SD version'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/Order-in-Case-No.-181-of-2024-ATIL-MYT_28.03.2025-sd-version.pdf",
+     "title": "Case of Adani Transmission (India) Limited for Approval of Truing-up of Aggregate Revenue Requirement (ARR) FY 2022-23 and FY 2023-24, Provisional Truing-up of FY 2024-25 and ARR for 5th Control Period from FY 2025-26 to FY 2029-30",
+     "licensees": [
+      "ATIL"
+     ],
+     "licensee_names": {
+      "ATIL": "Adani Transmission (India) Limited"
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 181 of 2024; attachment name 'Order in Case No. 181 of 2024 (ATIL-MYT)_28.03.2025-sd version'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/JPTL-MYT-Order_Case-No.-180-of-2024-Final-SD.pdf",
+     "title": "Case of Jaigad Power Transco Ltd. for approval of Truing-up of Aggregate Revenue Requirement (ARR) FY 2022-23 and FY 2023-24, Provisional Truing-up of FY 2024-25, and ARR for 5th Control Period from FY 2025-26 to FY 2029-30",
+     "licensees": [
+      "JPTL"
+     ],
+     "licensee_names": {
+      "JPTL": "Jaigad Power Transco Ltd."
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 180 of 2024; attachment name 'JPTL MYT Order_Case No. 180 of 2024-Final-SD'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/Order-APTCL-Case-No.-179-of-2024-Final-Sd_R1.pdf",
+     "title": "Case of Amravati Power Transmission Co. Ltd. for approval of Truing-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional Truing- up of ARR for FY 2024-25, and determination of ARR for the",
+     "licensees": [
+      "APTCL"
+     ],
+     "licensee_names": {
+      "APTCL": "Amravati Power Transmission Co. Ltd."
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 179 of 2024; attachment name 'Order-APTCL Case No. 179 of 2024 - Final Sd_R1'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/MYT-Order-of-MSETCL-Case-No.-178-of-2024-_28-03-2025_uploaded.pdf",
+     "title": "Case of Maharashtra State Electricity Transmission Co. Ltd. for Truing-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 and FY 2023-24, Provisional Truing-up of ARR for FY 2024-25 and approval of ARR for 5th MYT Control Period from FY 2025-26 to FY 2029-30",
+     "licensees": [
+      "MSETCL"
+     ],
+     "licensee_names": {
+      "MSETCL": "Maharashtra State Electricity Transmission Co. Ltd."
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 178 of 2024; attachment name 'MYT Order of MSETCL (Case No. 178 of 2024) _28 03 2025_uploaded'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2025/03/Final-MYT-Order-VIPL-T-Case-No-220-of-2024.pdf",
+     "title": "Petition of Vidarbha Industries Power Ltd. (Transmission Business) for True-up of Aggregate Revenue Requirement (ARR) for FY 2022-23 & FY 2023-24, Provisional True-up of ARR for FY 2024-25 and Determination of ARR for 5th MYT Control Period FY 2025-26 to 2029-30",
+     "licensees": [
+      "VIPL-T"
+     ],
+     "licensee_names": {
+      "VIPL-T": "Vidarbha Industries Power Ltd. (Transmission Business)"
+     },
+     "fiscal_year_of_arr": "FY2022-23, FY2023-24, FY2024-25, FY2025-26, FY2029-30",
+     "kind": "MYT",
+     "note": "Orders listing row dated 28-03-2025, case 220 of 2024; attachment name 'Final MYT Order-VIPL-T (Case No 220 of 2024)'.",
+     "http": 206
+    },
+    {
+     "url": "https://merc.gov.in/wp-content/uploads/2026/07/MERC-Order-Case-No.-193-of-2025.pdf",
+     "title": "Case of Adani Electricity Mumbai Infra Limited (AEMIL) seeking Determination and Approval of Provisional Tariff for 1000 MW VSC-based High Voltage Direct Current Kudus - Aarey Transmission Link.",
+     "licensees": [
+      "AEMIL"
+     ],
+     "licensee_names": {
+      "AEMIL": "Adani Electricity Mumbai Infra Limited (AEMIL)"
+     },
+     "fiscal_year_of_arr": "",
+     "kind": "tariff order",
+     "note": "Orders listing row dated 20-07-2026, case 193 of 2025; attachment name 'MERC Order Case No. 193 of 2025'. Provisional tariff determination for a single HVDC transmission link of AEMIL (not a licensee ARR/MYT order).",
+     "http": 206
+    }
+   ]
+  },
+  {
+   "commission": "DERC",
+   "listing_urls": [
+    "https://www.derc.gov.in/tarriff-orders (pages 0-13)"
+   ],
+   "notes": "No in-range DTL order listed. DTL rows on the Tariff Orders listing: True-up FY2021-22 (25/10/2025, https://www.derc.gov.in/sites/default/files/True-up%20of%20FY%202021-22_DTL.pdf), True-up FY2020-21 (19/07/2024), Tariff Order FY2021-22 (12/10/2021), and older. The newest section 'True Up Orders for FY 2022-23' (31/12/2025) lists IPGCL, PPCL, NDMC, BRPL, BYPL, TPDDL but no DTL, and no tariff orders after FY2021-22 are listed. Out-of-range DTL FY2021-22 true-up was not included in orders.",
+   "orders": []
+  },
+  {
+   "commission": "JERC",
+   "listing_urls": [
+    "https://jercuts.gov.in/order_category/goa/",
+    "https://jercuts.gov.in/order_category/chandigarh/",
+    "https://jercuts.gov.in/order_category/dadra_nagar_haveli/",
+    "https://jercuts.gov.in/order_category/andaman_nicobar/",
+    "https://jercuts.gov.in/order_category/lakshadweep/",
+    "https://jercuts.gov.in/order_category/puducherry/",
+    "https://jercuts.gov.in/order_category/daman_diu/",
+    "https://jercuts.gov.in/order_category/dadra-and-nagar-haveli-daman-and-diu/"
+   ],
+   "notes": "No in-range transmission-utility ARR/true-up/MYT order found. Goa and the UTs are served by integrated Electricity Departments (orders titled for 'Electricity Department', e.g. True-up FY2024-25 for ED Goa); Dadra and Nagar Haveli 'Transmission Division' tariff orders on the site are FY2018-19 (250/2017) and FY2019-20 (271/2018), out of range. Chandigarh has a State Transmission Utility Business Plan order (Petition 182/2026, https://jercuts.gov.in/wp-content/uploads/2026/09/STU-order-final-1.pdf) for FY2025-26..FY2029-30 - a business-plan order, not an ARR/tariff order, so excluded. Category pages were checked by link and row text for 'transmission/STU/transco'.",
+   "orders": []
+  }
+ ],
+ "http_note": "http = status of a ranged GET (-r 0-1023, curl -L); 206 means partial content served as requested, i.e. the URL answers; content type was application/pdf for every URL recorded."
+}

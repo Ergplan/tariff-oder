@@ -41,6 +41,12 @@ OTHER_ENTITY = re.compile(
     r"thermal|hydro|cspgcl|csptcl|upptcl|ptcul|ujvn|htps|dspm|kwtpp|abvtpp|hasdeo|\btps\b",
     re.I,
 )
+# in a transmission company's order, the tables to skip are those of the other businesses
+OTHER_ENTITY_FOR_TRANSCO = re.compile(
+    r"\bgenco\b|generat|\bdiscoms?\b|distribution (licensee|company|business)|retail supply|\bsldc\b|"
+    r"load despatch|power station|thermal|hydro|cspgcl|cspdcl|htps|dspm|kwtpp|abvtpp|hasdeo|\btps\b",
+    re.I,
+)
 PART_COLUMN = re.compile(
     r"agricultur|retail|\bwires?\b|\bsupply\b|htps|dspm|kwtpp|abvtpp|hasdeo|\bunits?\b|\buom\b|\bmus?\b|"
     r"deviation|formula|reference|variance|difference|\bratio\b|%|\bkwh\b|\bmw\b",
@@ -351,7 +357,11 @@ def is_footer(r: Row, height: float) -> bool:
 
 
 def read_tables(
-    path: str, licensees: list[str], aliases: dict[str, list[str]] | None = None, title_rx: re.Pattern[str] = ARR_TITLE
+    path: str,
+    licensees: list[str],
+    aliases: dict[str, list[str]] | None = None,
+    title_rx: re.Pattern[str] = ARR_TITLE,
+    kind: str = "discom",
 ) -> dict[str, Any]:
     """Every ARR summary table of the PDF, with its rows and its columns' meanings."""
     doc = pymupdf.open(path)
@@ -401,7 +411,8 @@ def read_tables(
                 continue  # the wires or the supply business alone is a part of the ARR, not the ARR
             if re.search(r"categor|agricultur|\bLT\b|\bHT\b|consumer class", title):
                 continue  # an ARR split across consumer categories
-            if OTHER_ENTITY.search(title) and not any(
+            other = OTHER_ENTITY_FOR_TRANSCO if kind == "transco" else OTHER_ENTITY
+            if other.search(title) and not any(
                 re.search(rf"(?<![A-Za-z]){re.escape(n)}(?![A-Za-z])", title, re.I)
                 for code in licensees
                 for n in [code, *aliases.get(code, [])]

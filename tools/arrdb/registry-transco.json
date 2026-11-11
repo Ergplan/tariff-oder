@@ -1,0 +1,24 @@
+{
+  "note": "Transmission utilities whose ARR orders were found on commission listing pages on 2026-11-11 (data/extra-sites-transco.json). Names are as the commission's own listing prints them, or, where the listing prints only an abbreviation, the utility's registered name. Aliases are how orders print them. No figure.",
+  "utilities": [
+    {"code": "UPPTCL", "name": "Uttar Pradesh Power Transmission Corporation Ltd", "commission": "UPERC", "state": "UP", "ownership": "state", "aliases": ["UPPTCL", "Petitioner", "Licensee"]},
+    {"code": "PTCUL", "name": "Power Transmission Corporation of Uttarakhand Ltd", "commission": "UERC", "state": "UK", "ownership": "state", "aliases": ["PTCUL", "Petitioner"]},
+    {"code": "MPPTCL", "name": "Madhya Pradesh Power Transmission Company Ltd", "commission": "MPERC", "state": "MP", "ownership": "state", "aliases": ["MPPTCL", "MP Transco", "Petitioner"]},
+    {"code": "OPTCL", "name": "Odisha Power Transmission Corporation Ltd", "commission": "OERC", "state": "OD", "ownership": "state", "aliases": ["OPTCL", "Petitioner"]},
+    {"code": "BSPTCL", "name": "Bihar State Power Transmission Company Ltd", "commission": "BERC", "state": "BR", "ownership": "state", "aliases": ["BSPTCL", "Petitioner"]},
+    {"code": "BGCL", "name": "Bihar Grid Company Ltd", "commission": "BERC", "state": "BR", "ownership": "state", "aliases": ["BGCL", "Petitioner"]},
+    {"code": "HPPTCL", "name": "Himachal Pradesh Power Transmission Corporation Ltd", "commission": "HPERC", "state": "HP", "ownership": "state", "aliases": ["HPPTCL", "HPPTC Ltd", "Petitioner"]},
+    {"code": "JUSNL", "name": "Jharkhand Urja Sancharan Nigam Ltd", "commission": "JSERC", "state": "JH", "ownership": "state", "aliases": ["JUSNL", "Petitioner"]},
+    {"code": "CSPTCL", "name": "Chhattisgarh State Power Transmission Company Ltd", "commission": "CSERC", "state": "CG", "ownership": "state", "aliases": ["CSPTCL"]},
+    {"code": "JSPL-T", "name": "Jindal Steel and Power Ltd (transmission licence)", "commission": "CSERC", "state": "CG", "ownership": "private", "aliases": ["JSPL", "Jindal"]},
+    {"code": "MSETCL", "name": "Maharashtra State Electricity Transmission Co. Ltd", "commission": "MERC", "state": "MH", "ownership": "state", "aliases": ["MSETCL", "Petitioner"]},
+    {"code": "TPC-T", "name": "The Tata Power Company Ltd (Transmission)", "commission": "MERC", "state": "MH", "ownership": "private", "aliases": ["TPC-T", "Petitioner"]},
+    {"code": "AEML-T", "name": "Adani Electricity Mumbai Ltd (Transmission)", "commission": "MERC", "state": "MH", "ownership": "private", "aliases": ["AEML-T", "Petitioner"]},
+    {"code": "ATIL", "name": "Adani Transmission (India) Ltd", "commission": "MERC", "state": "MH", "ownership": "private", "aliases": ["ATIL", "Petitioner"]},
+    {"code": "APTCL", "name": "Amravati Power Transmission Co. Ltd", "commission": "MERC", "state": "MH", "ownership": "private", "aliases": ["APTCL", "Petitioner"]},
+    {"code": "JPTL", "name": "Jaigad Power Transco Ltd", "commission": "MERC", "state": "MH", "ownership": "private", "aliases": ["JPTL", "Petitioner"]},
+    {"code": "MEGPTCL", "name": "Maharashtra Eastern Grid Power Transmission Co. Ltd", "commission": "MERC", "state": "MH", "ownership": "private", "aliases": ["MEGPTCL", "Petitioner"]},
+    {"code": "VIPL-T", "name": "Vidarbha Industries Power Ltd (Transmission Business)", "commission": "MERC", "state": "MH", "ownership": "private", "aliases": ["VIPL-T", "Petitioner"]},
+    {"code": "AEMIL", "name": "Adani Electricity Mumbai Infra Ltd", "commission": "MERC", "state": "MH", "ownership": "private", "aliases": ["AEMIL"]}
+  ]
+}
