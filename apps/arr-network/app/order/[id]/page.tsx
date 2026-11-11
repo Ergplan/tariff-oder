@@ -14,16 +14,16 @@ type R = Record<string, unknown>;
 
 const DEFAULT_TABLES = 4;
 
-export default async function OrderPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ table?: string }> }) {
+export default async function OrderPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ table?: string; u?: string }> }) {
   const { id } = await params;
-  const { table: tableParam } = await searchParams;
+  const { table: tableParam, u: fromUtility } = await searchParams;
   if (!/^\d{1,12}$/.test(id)) notFound();
   const oid = Number(id);
   const res = await load(async (sql) => {
     const [o] = await sql`SELECT o.*, c.name AS commission_name FROM orders o JOIN commissions c ON c.code = o.commission WHERE o.order_id = ${oid}`;
     if (!o) return null;
     const [utils, parses, tables, facts, readings, paragraphs, states] = await Promise.all([
-      sql`SELECT u.code, u.name, u.kind FROM order_utilities ou JOIN utilities u ON u.code = ou.utility WHERE ou.order_id = ${oid} ORDER BY u.code`,
+      sql`SELECT u.code, u.name, u.kind, u.state FROM order_utilities ou JOIN utilities u ON u.code = ou.utility WHERE ou.order_id = ${oid} ORDER BY u.code`,
       sql`SELECT p.*, (SELECT count(*) FROM parsed_tables t WHERE t.parse_id = p.parse_id)::int AS tables,
                  (SELECT count(*) FROM arr_values v WHERE v.parse_id = p.parse_id)::int AS readings
           FROM parses p WHERE p.order_id = ${oid} ORDER BY p.reader, p.reader_version`,
@@ -68,7 +68,9 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
     })),
     ...(byTable.has(null) ? [{ key: null, title: "Figures not tied to a table", page: null, unit: null, reader: "" }] : []),
   ];
-  const st = states[0];
+  // breadcrumb India › State › DISCOM › Order: the utility the visitor came from, else the order's first
+  const crumbU = utils.find((u) => u.code === fromUtility) ?? utils.find((u) => u.kind === "discom") ?? utils[0];
+  const st = (crumbU && states.find((s) => s.code === crumbU.state)) ?? states[0];
   // Large orders print hundreds of figures: by default show the bottom-line tables and a few
   // more; every other table is one link away.
   const headlineTables = new Set<number | null>(headlines.map((f) => (f.table_id as number) ?? null));
@@ -81,7 +83,8 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
 
   return (
     <>
-      <Crumbs items={[["India", "/"], ...(st ? [[st.name as string, `/state/${st.code}`] as [string, string]] : []), [`Order ${oid}`, null]]} />
+      <Crumbs items={[["India", "/"], ...(st ? [[st.name as string, `/state/${st.code}`] as [string, string]] : []),
+        ...(crumbU ? [[crumbU.code as string, `/utility/${encodeURIComponent(crumbU.code as string)}`] as [string, string]] : []), [`Order ${oid}`, null]]} />
       <section style={{ paddingTop: 20 }}>
         <p className="eyebrow">{o.commission as string} · {(o.arr_year as string) ?? "year not recorded"} · {((o.kind as string) ?? "order").replace(/_/g, " ")}</p>
         <h1 className="big" style={{ fontSize: "clamp(1.4rem, 3vw, 2.2rem)", maxWidth: "40ch" }}>{o.title as string}</h1>
@@ -183,7 +186,7 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
                 {tables.map((t) => (
                   <tr key={t.table_id as number}>
                     <td><PageLink url={url} page={t.page as number} /></td>
-                    <td><a href={shown.has(t.table_id as number) ? `#t${t.table_id}` : `?table=${t.table_id}#t${t.table_id}`}>{(t.title as string) ?? "(untitled)"}</a>{byTable.has(t.table_id as number) ? <span className="note"> · {byTable.get(t.table_id as number)!.length} figures</span> : <span className="note"> · no figures</span>}</td>
+                    <td><a href={shown.has(t.table_id as number) ? `#t${t.table_id}` : `?table=${t.table_id}${fromUtility ? `&u=${encodeURIComponent(fromUtility)}` : ""}#t${t.table_id}`}>{(t.title as string) ?? "(untitled)"}</a>{byTable.has(t.table_id as number) ? <span className="note"> · {byTable.get(t.table_id as number)!.length} figures</span> : <span className="note"> · no figures</span>}</td>
                     <td>{(t.unit as string) ?? <span className="muted">not printed</span>}{t.unit_from ? <span className="note"> · {t.unit_from as string}</span> : null}</td>
                     <td className="num">{t.ncols as number}</td>
                     <td className="mono" style={{ fontSize: "0.76rem" }}>{t.reader as string} {t.reader_version as string}</td>

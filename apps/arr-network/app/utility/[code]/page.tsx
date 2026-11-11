@@ -63,7 +63,7 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
   if (!res.ok) return <DbDown state={res} />;
   if (!res.data) notFound();
   const { u, arr, heads, keyParams, orders } = res.data;
-  const years = [...new Set(heads.map((h) => h.fiscal_year as string))].sort();
+  const years = [...new Set(heads.map((h) => h.fiscal_year as string))].sort().reverse(); // newest first
   const headRows = [...new Map(heads.map((h) => [h.head as string, h])).values()].sort((a, b) => (a.sort as number) - (b.sort as number) || String(a.head).localeCompare(String(b.head)));
   const cell = new Map(heads.map((h) => [`${h.head}|${h.fiscal_year}`, h]));
   const orderOfYear = new Map(heads.map((h) => [h.fiscal_year as string, h]));
@@ -72,7 +72,7 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
 
   return (
     <>
-      <Crumbs items={[["India", "/"], [u.state_name as string, `/state/${u.state}`], [code, null]]} />
+      <Crumbs items={[["India", "/"], [u.state_name as string, `/state/${u.state}`], [`${code} (${KIND_WORDS[u.kind as string] ?? u.kind})`, null]]} />
       <section style={{ paddingTop: 20 }}>
         <p className="eyebrow">{KIND_WORDS[u.kind as string] ?? (u.kind as string)} · {u.ownership as string}-owned · {u.commission as string}</p>
         <h1 className="big">{u.name as string}</h1>
@@ -85,7 +85,7 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
 
         <h3>ARR by year <span className="tag">Rs crore</span></h3>
         {arr.length ? (
-          <div className="two">
+          <div className="stack">
             <div>
               <ArrChart bars={bars} title={`${code}: ARR by financial year, claimed and approved (latest word)`} />
               <p className="note">Bars: outlined, the latest claimed bottom line; filled, the latest approved (the newest order&apos;s word on that year).</p>
@@ -101,7 +101,7 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
                       <td className="num"><Fig v={a.approved_crore} fact={a.approved_fact} c={a.approved_consensus} rev={a.approved_reviewed_by} url={a.approved_url} page={a.approved_page} /></td>
                       <td className="num">
                         <Fig v={a.latest_crore} fact={a.latest_fact} c={a.latest_consensus} rev={a.latest_reviewed_by} url={a.latest_url} page={a.latest_page} />
-                        {a.latest_crore !== null ? <><br /><span className="note">{(a.latest_stage as string) ?? ""}{a.latest_order ? <> · <a href={`/order/${a.latest_order}`}>order {a.latest_order_year as string}</a></> : null}</span></> : null}
+                        {a.latest_crore !== null ? <><br /><span className="note">{(a.latest_stage as string) ?? ""}{a.latest_order ? <> · <a href={`/order/${a.latest_order}?u=${encodeURIComponent(code)}`}>order {a.latest_order_year as string}</a></> : null}</span></> : null}
                       </td>
                     </tr>
                   ))}
@@ -117,12 +117,12 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
             <div className="tablewrap tall">
               <table>
                 <thead>
-                  <tr><th>Head</th>{years.map((y) => <th key={y} className="num">{y}<br /><a href={`/order/${orderOfYear.get(y)!.order_id}`} className="muted" style={{ textTransform: "none" }}>order {(orderOfYear.get(y)!.order_arr_year as string) ?? orderOfYear.get(y)!.order_id as number}</a></th>)}</tr>
+                  <tr><th className="rowhead">Head</th>{years.map((y) => <th key={y} className="num">{y}<br /><a href={`/order/${orderOfYear.get(y)!.order_id}?u=${encodeURIComponent(code)}`} className="muted" style={{ textTransform: "none" }}>order {(orderOfYear.get(y)!.order_arr_year as string) ?? orderOfYear.get(y)!.order_id as number}</a></th>)}</tr>
                 </thead>
                 <tbody>
                   {headRows.map((h) => (
                     <tr key={h.head as string}>
-                      <td>{h.head_name as string}</td>
+                      <td className="rowhead">{h.head_name as string}</td>
                       {years.map((y) => {
                         const c = cell.get(`${h.head}|${y}`);
                         if (!c) return <td key={y} className="num nil">—</td>;
@@ -139,7 +139,7 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
                 </tbody>
               </table>
             </div>
-            <p className="note">For each year, the approved figures of one order: the newest order that prints at least three heads for that year. * the order prints more than one row for that head; the row from its main ARR table is shown (open the order for all of them). Hover a figure to see its printed label.</p>
+            <p className="note">Newest year first. For each year, the approved figures of one order: the newest order that prints at least three heads for that year. * the order prints more than one row for that head; the row from its main ARR table is shown (open the order for all of them). Hover a figure to see its printed label.</p>
           </>
         ) : <p className="note">No approved cost head has been read for {code} yet.</p>}
 
@@ -174,7 +174,7 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
                 {orders.map((o) => (
                   <tr key={o.order_id as number}>
                     <td className="mono">{(o.arr_year as string) ?? "—"}</td>
-                    <td><a href={`/order/${o.order_id}`}>{o.title as string}</a></td>
+                    <td className="long"><a href={`/order/${o.order_id}?u=${encodeURIComponent(code)}`}>{o.title as string}</a></td>
                     <td>{(o.read_status as string).replace(/_/g, " ")}</td>
                     <td className="num">{o.facts as number}</td>
                     <td><PageLink url={o.url as string}>PDF</PageLink></td>

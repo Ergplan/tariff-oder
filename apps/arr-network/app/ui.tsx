@@ -39,7 +39,7 @@ export function Crumbs({ items }: { items: [string, string | null][] }) {
   return (
     <nav className="crumbs" aria-label="Breadcrumb">
       {items.map(([label, href], i) => (
-        <span key={i}>{i ? " / " : ""}{href ? <a href={href}>{label}</a> : <span aria-current="page">{label}</span>}</span>
+        <span key={i}>{i ? " › " : ""}{href ? <a href={href}>{label}</a> : <span aria-current="page">{label}</span>}</span>
       ))}
     </nav>
   );

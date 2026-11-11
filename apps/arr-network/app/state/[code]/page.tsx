@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ code: str
 }
 
 const GROUPS: [string, string, (k: string) => boolean][] = [
-  ["discom", "Distribution utilities (DISCOMs)", (k) => k === "discom"],
+  ["discom", "DISCOMs: choose one for its ARR", (k) => k === "discom"],
   ["transco", "Transmission utilities (TRANSCOs)", (k) => k === "transco"],
   ["other", "Other utilities", (k) => k !== "discom" && k !== "transco"],
 ];
@@ -48,24 +48,6 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
         <p className="eyebrow">{state.kind === "union_territory" ? "Union territory" : "State"} · {code}</p>
         <h1 className="big">{state.name as string}</h1>
 
-        <h3>Commission</h3>
-        {commissions.length ? (
-          <dl className="kv">
-            {commissions.map((c) => (
-              <div key={c.code as string} style={{ display: "contents" }}>
-                <dt>{c.code as string}</dt>
-                <dd>
-                  {c.name as string}
-                  {c.covers ? <span className="muted"> · regulates {c.covers as string}</span> : null}
-                  <br />
-                  {c.website ? <a href={c.website as string} rel="noopener noreferrer nofollow">{c.website as string}</a> : null}
-                  <span className="note"> {c.website_reachable === true ? "website reached" : c.website_reachable === false ? "website not reached" : "website not tried"}{c.checked_on ? ` on ${String(c.checked_on instanceof Date ? (c.checked_on as Date).toISOString().slice(0, 10) : c.checked_on)}` : ""}</span>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        ) : <p className="note">No commission is recorded for this state.</p>}
-
         {GROUPS.map(([key, title, test]) => {
           const rows = utilities.filter((u) => test(u.kind as string));
           return (
@@ -74,12 +56,12 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
               {rows.length ? (
                 <div className="tablewrap">
                   <table>
-                    <thead><tr><th>Utility</th><th>Kind</th><th>Ownership</th><th className="num">Orders</th><th className="num">Orders read</th><th className="num">Years with ARR</th><th>Latest approved year</th></tr></thead>
+                    <thead><tr><th>Utility</th>{key === "other" ? <th>Kind</th> : null}<th>Ownership</th><th className="num">Orders</th><th className="num">Orders read</th><th className="num">Years with ARR</th><th>Latest approved year</th></tr></thead>
                     <tbody>
                       {rows.map((u) => (
                         <tr key={u.utility as string}>
-                          <td><a href={`/utility/${encodeURIComponent(u.utility as string)}`}><b>{u.utility as string}</b></a><br /><span className="muted">{u.name as string}</span></td>
-                          <td>{KIND_WORDS[u.kind as string] ?? (u.kind as string)}</td>
+                          <td><a href={`/utility/${encodeURIComponent(u.utility as string)}`}><b>{u.utility as string}</b> → ARR</a><br /><span className="muted">{u.name as string}</span></td>
+                          {key === "other" ? <td>{KIND_WORDS[u.kind as string] ?? (u.kind as string)}</td> : null}
                           <td>{u.ownership as string}</td>
                           <td className="num">{u.orders as number}</td>
                           <td className="num">{u.orders_read as number}</td>
@@ -119,6 +101,24 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
           </>
         ) : null}
 
+        <h3>Commission</h3>
+        {commissions.length ? (
+          <dl className="kv">
+            {commissions.map((c) => (
+              <div key={c.code as string} style={{ display: "contents" }}>
+                <dt>{c.code as string}</dt>
+                <dd>
+                  {c.name as string}
+                  {c.covers ? <span className="muted"> · regulates {c.covers as string}</span> : null}
+                  <br />
+                  {c.website ? <a href={c.website as string} rel="noopener noreferrer nofollow">{c.website as string}</a> : null}
+                  <span className="note"> {c.website_reachable === true ? "website reached" : c.website_reachable === false ? "website not reached" : "website not tried"}{c.checked_on ? ` on ${String(c.checked_on instanceof Date ? (c.checked_on as Date).toISOString().slice(0, 10) : c.checked_on)}` : ""}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        ) : <p className="note">No commission is recorded for this state.</p>}
+
         <h3>Orders <span className="tag">{orders.length}</span></h3>
         {orders.length ? (
           <div className="tablewrap">
@@ -128,7 +128,7 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
                 {orders.map((o) => (
                   <tr key={o.order_id as number}>
                     <td className="mono">{(o.arr_year as string) ?? "—"}</td>
-                    <td><a href={`/order/${o.order_id}`}>{o.title as string}</a>{o.kind ? <><br /><span className="note">{o.kind as string}</span></> : null}</td>
+                    <td className="long"><a href={`/order/${o.order_id}`}>{o.title as string}</a>{o.kind ? <><br /><span className="note">{o.kind as string}</span></> : null}</td>
                     <td>{o.commission as string}</td>
                     <td>{(o.utilities as string) ?? "—"}</td>
                     <td>{(o.read_status as string).replace(/_/g, " ")}</td>

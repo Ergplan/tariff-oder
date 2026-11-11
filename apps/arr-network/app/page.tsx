@@ -66,19 +66,66 @@ export default async function Home() {
 
   return (
     <>
-      <section aria-labelledby="h1">
-        <p className="eyebrow">India · state electricity commissions · ARR orders</p>
-        <h1 id="h1" className="big">What each commission approved, with the page it says it on</h1>
+      <section aria-labelledby="h1" className="mapfirst">
+        <div className="maphead">
+          <h1 id="h1">India: choose a state</h1>
+          <p className="note" style={{ marginTop: 4 }}>Then a DISCOM, then its ARR by year, cost heads and orders, every figure with its page.</p>
+        </div>
+        <svg className="map" viewBox={`0 0 ${vw} ${vh}`} role="group" aria-labelledby="map-title map-desc">
+          <title id="map-title">Map of India by state and union territory</title>
+          <desc id="map-desc">Each state is a link to its page, shaded by what the database holds for it. The list below the map holds the same links.</desc>
+          {GEO.states.map((g) => {
+            const s = by.get(g.code);
+            const lv = level(s);
+            const label = `${g.name}: ${words(s)}`;
+            return (
+              <a key={g.code} href={`/state/${g.code}`} aria-label={label}>
+                <title>{label}</title>
+                <path d={g.d} className={`f${lv}`} />
+                {SMALL.has(g.code) ? (
+                  <>
+                    <circle className={`dot f${lv}`} cx={g.cx} cy={g.cy} r={6} />
+                    <circle className="hit" cx={g.cx} cy={g.cy} r={22} />
+                  </>
+                ) : null}
+              </a>
+            );
+          })}
+        </svg>
+        <div className="legend" aria-label="Legend">
+          {LEVELS.map(([cls, w]) => <span key={cls}><i className={cls} aria-hidden="true" />{w}</span>)}
+          <span><i className="f0" style={{ borderRadius: "50%" }} aria-hidden="true" />small territory (dot)</span>
+        </div>
+        <p className="note">Boundaries: {GEO.source} Simplified ({GEO.simplified}).</p>
+      </section>
+
+      <section aria-labelledby="list-h">
+        <h2 id="list-h">All states and union territories</h2>
+        <ul className="statelist wide" style={{ marginTop: 16 }}>
+          {GEO.states.slice().sort((a, b) => a.name.localeCompare(b.name)).map((g) => {
+            const s = by.get(g.code);
+            const lv = level(s);
+            return (
+              <li key={g.code}>
+                <a href={`/state/${g.code}`}>
+                  <i className={`f${lv}`} aria-hidden="true" />
+                  <span>{g.name}</span>
+                  <small>{s && s.orders ? `${s.orders_read}/${s.orders} read` : "no data"}<span className="sr">: {words(s)}</span></small>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <section aria-labelledby="about-h">
+        <p className="eyebrow">What the database holds</p>
+        <h2 id="about-h">ARR orders of India&apos;s power utilities</h2>
         <p className="plain">
           Every ARR order of India&apos;s distribution and transmission utilities that the network has found, and the figures read from it.
           Each figure keeps its order, page and the line as printed, and says how many independent readers agree on it.
         </p>
-        <form className="search" action="/search" role="search">
-          <label htmlFor="q" className="sr">Search orders and figures</label>
-          <input id="q" name="q" type="search" placeholder="Search orders: e.g. power purchase cost disallowed" />
-          <button type="submit">Search</button>
-        </form>
-        <div className="stats" aria-label="What the database holds">
+        <div className="stats" aria-label="Counts">
           <div><b>{count(totals.orders)}</b><span>orders found</span></div>
           <div><b>{count(totals.orders_read)}</b><span>orders read</span></div>
           <div><b>{count(totals.facts)}</b><span>figures</span></div>
@@ -86,58 +133,11 @@ export default async function Home() {
           <div><b>{count(totals.commissions)}</b><span>commissions</span></div>
           <div><b>{count(totals.reviewed)}</b><span>reviewed by a person</span></div>
         </div>
-      </section>
-
-      <section aria-labelledby="map-h">
-        <h2 id="map-h">States and union territories</h2>
-        <div className="mapgrid">
-          <div>
-            <svg className="map" viewBox={`0 0 ${vw} ${vh}`} role="group" aria-labelledby="map-title map-desc">
-              <title id="map-title">Map of India by state and union territory</title>
-              <desc id="map-desc">Each state is a link to its page, shaded by what the database holds for it. The list beside the map holds the same links.</desc>
-              {GEO.states.map((g) => {
-                const s = by.get(g.code);
-                const lv = level(s);
-                const label = `${g.name}: ${words(s)}`;
-                return (
-                  <a key={g.code} href={`/state/${g.code}`} aria-label={label}>
-                    <title>{label}</title>
-                    <path d={g.d} className={`f${lv}`} />
-                    {SMALL.has(g.code) ? (
-                      <>
-                        <circle className={`dot f${lv}`} cx={g.cx} cy={g.cy} r={6} />
-                        <circle className="hit" cx={g.cx} cy={g.cy} r={22} />
-                      </>
-                    ) : null}
-                  </a>
-                );
-              })}
-            </svg>
-            <div className="legend" aria-label="Legend">
-              {LEVELS.map(([cls, w]) => <span key={cls}><i className={cls} aria-hidden="true" />{w}</span>)}
-              <span><i className="f0" style={{ borderRadius: "50%" }} aria-hidden="true" />small territory (dot)</span>
-            </div>
-            <p className="note">Boundaries: {GEO.source} Simplified ({GEO.simplified}).</p>
-          </div>
-          <div>
-            <h3 style={{ marginTop: 0 }}>All states and union territories</h3>
-            <ul className="statelist">
-              {GEO.states.slice().sort((a, b) => a.name.localeCompare(b.name)).map((g) => {
-                const s = by.get(g.code);
-                const lv = level(s);
-                return (
-                  <li key={g.code}>
-                    <a href={`/state/${g.code}`}>
-                      <i className={`f${lv}`} aria-hidden="true" />
-                      <span>{g.name}</span>
-                      <small>{s && s.orders ? `${s.orders_read}/${s.orders} read` : "no data"}<span className="sr">: {words(s)}</span></small>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
+        <form className="search" action="/search" role="search">
+          <label htmlFor="q" className="sr">Search orders and figures</label>
+          <input id="q" name="q" type="search" placeholder="Search orders: e.g. power purchase cost disallowed" />
+          <button type="submit">Search</button>
+        </form>
       </section>
     </>
   );

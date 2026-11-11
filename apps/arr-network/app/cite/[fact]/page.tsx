@@ -29,7 +29,9 @@ export default async function CitePage({ params }: { params: Promise<{ fact: str
 
   return (
     <>
-      <Crumbs items={[["India", "/"], ...(f.utility !== "TOTAL" ? [[f.utility, `/utility/${encodeURIComponent(f.utility)}`] as [string, string]] : []), [`Order ${f.order_id}`, `/order/${f.order_id}`], [`Figure ${f.fact_id}`, null]]} />
+      <Crumbs items={[["India", "/"], ...(f.state && f.state_name ? [[f.state_name, `/state/${f.state}`] as [string, string]] : []),
+        ...(f.utility !== "TOTAL" ? [[f.utility, `/utility/${encodeURIComponent(f.utility)}`] as [string, string]] : []),
+        [`Order ${f.order_id}`, `/order/${f.order_id}${f.utility !== "TOTAL" ? `?u=${encodeURIComponent(f.utility)}` : ""}`], [`Figure ${f.fact_id}`, null]]} />
       <section style={{ paddingTop: 20 }}>
         <p className="eyebrow">Cite one figure</p>
         <h1 className="big" style={{ fontSize: "clamp(1.6rem, 3.6vw, 2.6rem)" }}>{amount(f)}</h1>

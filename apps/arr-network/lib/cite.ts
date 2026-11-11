@@ -1,7 +1,7 @@
 import { consensusWords, crore, VOICE_WORDS } from "./format.ts";
 
 export interface FactRow {
-  fact_id: number; utility: string; utility_name: string | null; state_name: string | null; commission: string;
+  fact_id: number; utility: string; utility_name: string | null; state: string | null; state_name: string | null; commission: string;
   commission_name?: string | null; fiscal_year: string; voice: string; stage: string | null; head: string; head_name: string;
   label: string; value_crore: number | null; value: number; unit: string | null; page: number; quote: string;
   consensus: string; readers: string[]; reviewed_by: string | null; reviewed_at: Date | string | null; order_id: number;
