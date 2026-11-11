@@ -267,7 +267,20 @@ ORDER BY ${orderBy}${limit ? `\nLIMIT ${limit}` : ""};`;
   if (!includeTotals && !discoms.length) assumed.push("Rows a combined order prints for the whole state (TOTAL) are left out; ask for the \"state total\" to include them.");
   assumed.push(dedupeNote);
   if (!isArr) assumed.push("A head is matched on each table row's printed label, and labels differ between commissions: read the label column before comparing DISCOMs.");
-  return { sql, explain, assumed, kind: share ? "share" : compare ? "compare" : agg ? "aggregate" : rank ? "rank" : "list", year: yearNote };
+  // how many of the DISCOMs in scope the answer can speak for: a ranking or a total over the
+  // DISCOMs that happen to be in the database is not a ranking or total of all of them
+  const scope = [];
+  if (discoms.length) scope.push(`d.code IN (${discoms.map((d) => q(d.code)).join(", ")})`);
+  if (states.length) scope.push(`d.state IN (${states.map((x) => q(x.state)).join(", ")})`);
+  if (commissions.length) scope.push(`d.commission IN (${commissions.map((c) => q(c.code)).join(", ")})`);
+  if (ownership) scope.push(`d.ownership = ${q(ownership)}`);
+  const covWhere = [...where.filter((w) => !w.startsWith("discom <>")), "discom <> 'TOTAL'",
+    voice ? `voice = ${q(voice)}` : "voice IN ('claimed', 'approved')", isArr ? null : headSql].filter(Boolean);
+  const coverage = {
+    covered: `SELECT COUNT(DISTINCT discom) AS n FROM ${isArr ? "v_arr" : "v_values"} WHERE ${covWhere.join(" AND ")}`,
+    listed: `SELECT COUNT(*) AS n FROM discoms d${scope.length ? ` WHERE ${scope.join(" AND ")}` : ""}`,
+  };
+  return { sql, explain, assumed, coverage, kind: share ? "share" : compare ? "compare" : agg ? "aggregate" : rank ? "rank" : "list", year: yearNote };
 }
 
 function voiceExplain(say, voice, assumed, said) {

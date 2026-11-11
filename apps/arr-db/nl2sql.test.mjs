@@ -76,6 +76,17 @@ test("ranking leaves out state totals and honours the number asked for", () => {
   assert.deepEqual(v, [...v].sort((a, b) => b - a));
 });
 
+test("a ranking says how many DISCOMs it ranks", () => {
+  const t = ask("Which discom has the highest approved ARR in FY2026-27?");
+  const covered = all(t.coverage.covered)[0].n;
+  const listed = all(t.coverage.listed)[0].n;
+  assert.ok(covered > 0 && covered < listed);
+  assert.equal(listed, all("SELECT COUNT(*) AS n FROM discoms")[0].n);
+  const up = ask("Total approved ARR of Uttar Pradesh discoms in FY2026-27");
+  assert.equal(all(up.coverage.listed)[0].n, 6);
+  assert.equal(all(up.coverage.covered)[0].n, up.rows[0].discoms_counted);
+});
+
 test("a sum names the DISCOMs it adds up", () => {
   const t = ask("Total approved ARR of Uttar Pradesh discoms in FY2026-27");
   assert.equal(t.kind, "aggregate");

@@ -57,7 +57,17 @@ function ask(question) {
   $("explain").innerHTML = t.explain.length
     ? t.explain.map((e) => `<li><code>${esc(e.what)}</code> <span>${esc(e.why)}</span></li>`).join("")
     : `<li><span>A question about the database itself; the query reads its catalogue.</span></li>`;
-  $("assumed").innerHTML = t.assumed.map((a) => `<li>${esc(a)}</li>`).join("");
+  const notes = [...t.assumed];
+  if (t.coverage) {
+    try {
+      const covered = all(t.coverage.covered)[0].n;
+      const listed = all(t.coverage.listed)[0].n;
+      if (covered < listed) {
+        notes.unshift(`This answer can speak for ${covered} of the ${listed} DISCOMs in scope; the database has no such figure for the other ${listed - covered} (see Coverage). A ranking or total here is over those ${covered} only.`);
+      }
+    } catch { /* the coverage count is a courtesy; the answer stands without it */ }
+  }
+  $("assumed").innerHTML = notes.map((a, i) => `<li${i === 0 && /can speak for/.test(a) ? ' class="warn"' : ""}>${esc(a)}</li>`).join("");
   $("sql").value = t.sql;
   run();
   try { history.replaceState(null, "", `#q=${encodeURIComponent(question)}`); } catch { /* a sandboxed frame */ }
@@ -136,7 +146,7 @@ function coverage() {
   const info = Object.fromEntries(all("SELECT key, value FROM build_info").map((r) => [r.key, r.value]));
   const acc = info.check ? JSON.parse(info.check) : null;
   $("accuracy").innerHTML = acc
-    ? `People had already read ${acc.orders_measured} of these orders row by row, recording each figure with its page. The reader was measured against those figures. Of <b>${acc.comparable_nonzero}</b> hand-read non-zero figures in tables the reader read, it found <b>${acc.found}</b> with the same number on the same page. Where the hand-read figure says whose it is, the reader agreed on claimed or approved <b>${acc.voice_agrees} of ${acc.voice_checked}</b> times, and on which DISCOM <b>${acc.licensee_agrees} of ${acc.licensee_checked}</b> times. The other ${Number(info.orders_read || 0) - acc.orders_measured} orders read have no hand-read figures, so their accuracy is <b>not measured</b>. A random sample of headline figures was looked at by eye during the build. It found layouts that were then fixed (wires-only tables taken for the whole ARR, an earlier approval taken for this order's), and more surely remain.`
+    ? `People had already read ${acc.orders_measured} of these orders row by row, recording each figure with its page. The reader was measured against those figures. Of <b>${acc.comparable_nonzero}</b> hand-read non-zero figures in tables the reader read, it found <b>${acc.found}</b> with the same number on the same page. Where the hand-read figure says whose it is, the reader agreed on claimed or approved <b>${acc.voice_agrees} of ${acc.voice_checked}</b> times, and on which DISCOM <b>${acc.licensee_agrees} of ${acc.licensee_checked}</b> times. The other ${Number(info.orders_read || 0) - acc.orders_measured} orders read have no hand-read figures, so their accuracy is <b>not measured</b> that way.${acc.cross_order ? ` A weaker check covers them. When a later order quotes an earlier approval ("approved in the tariff order"), the same decision has been read twice, from different PDFs. For <b>${acc.cross_order.agree} of ${acc.cross_order.pairs}</b> DISCOM–year–head pairs, the two reads give the same figure. Some of the rest are real revisions: an annual performance review (APR) figure quoted against the original approval. Others are misreads.` : ""} A random sample of headline figures was looked at by eye during the build. It found layouts that were then fixed (wires-only tables taken for the whole ARR, an earlier approval taken for this order's), and more surely remain.`
     : "Not measured in this build.";
   $("foot").textContent = `Built ${info.built_on || ""} · ${info.reader || ""} · ${info.status || ""}`;
   const schema = all("SELECT name, type, sql FROM sqlite_master WHERE type IN ('table','view') AND name NOT LIKE 'sqlite_%' ORDER BY type DESC, name");

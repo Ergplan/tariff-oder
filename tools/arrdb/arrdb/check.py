@@ -74,6 +74,43 @@ def hand_figures(repo: Path):
             }
 
 
+def cross_order(db: sqlite3.Connection) -> dict:
+    """Two reads of one printed decision: an order's approval of a year, and the same approval
+    quoted in a later order ("approved in the tariff order", "MYT order").  Both are read by the
+    reader independently, from different PDFs and layouts; when a DISCOM, year and head carry an
+    equal figure in both, the year, DISCOM and voice of both columns were read consistently."""
+    pairs = db.execute(
+        """
+        WITH a AS (SELECT v.discom, v.fiscal_year, v.head, v.value_crore, o.arr_year, o.commission
+                   FROM arr_values v JOIN orders o USING (order_id)
+                   WHERE v.voice = 'approved' AND v.is_primary = 1 AND v.head NOT IN ('other')
+                     AND v.discom IS NOT NULL AND v.discom <> 'TOTAL' AND v.value_crore IS NOT NULL
+                     AND v.fiscal_year = o.arr_year),
+             b AS (SELECT v.discom, v.fiscal_year, v.head, v.value_crore, o.arr_year
+                   FROM arr_values v JOIN orders o USING (order_id)
+                   WHERE v.voice = 'approved_earlier' AND v.head NOT IN ('other')
+                     AND v.discom IS NOT NULL AND v.discom <> 'TOTAL' AND v.value_crore IS NOT NULL)
+        SELECT a.commission, a.discom, a.fiscal_year, a.head,
+               MAX(CASE WHEN EXISTS (SELECT 1 FROM a a2 WHERE a2.discom = a.discom AND a2.fiscal_year = a.fiscal_year
+                                       AND a2.head = a.head AND abs(a2.value_crore - b.value_crore) < 0.006)
+                        THEN 1 ELSE 0 END) AS agrees
+        FROM a JOIN b ON b.discom = a.discom AND b.fiscal_year = a.fiscal_year AND b.head = a.head
+                     AND b.arr_year > a.arr_year
+        GROUP BY a.commission, a.discom, a.fiscal_year, a.head
+        """
+    ).fetchall()
+    by: dict[str, list[int]] = {}
+    for comm, _d, _y, _h, ok in pairs:
+        by.setdefault(comm, [0, 0])
+        by[comm][0] += 1
+        by[comm][1] += ok
+    return {
+        "pairs": len(pairs),
+        "agree": sum(p[4] for p in pairs),
+        "by_commission": {k: {"pairs": v[0], "agree": v[1]} for k, v in sorted(by.items())},
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--db", required=True)
@@ -164,6 +201,8 @@ def main() -> int:
         "licensee_agrees": c["licensee_agrees"],
     }
     report["summary"] = summary
+    summary["cross_order"] = cross_order(db)
+    print("cross-order:", json.dumps(summary["cross_order"]))
     if a.write:
         db.execute("INSERT OR REPLACE INTO build_info VALUES ('check', ?)", (json.dumps(summary),))
         db.commit()

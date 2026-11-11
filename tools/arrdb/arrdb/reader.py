@@ -691,6 +691,17 @@ def read_one(
             h = re.sub(r"^particulars\s*", "", col["header"], flags=re.I)
             out.append({**ln, "label": h, "head": head_of(h), "row_year": years_in(ln["label"])[0]})
         lines = out
+    # a serial-number column ("S. No") holds row numbers, not money
+    serial = {
+        i
+        for i, c in enumerate(columns)
+        if re.search(r"\b(s|sl|sr)\.?\s*(particulars\s*)?no\b|\breference\b", c["header"], re.I)
+    }
+    for i in range(len(columns)):
+        vs = [ln["value_printed"] for ln in lines if ln["column"] == i]
+        if len(vs) >= 3 and all(re.fullmatch(r"\d{1,2}", v) for v in vs):
+            serial.add(i)  # small whole numbers down a column are row numbers
+    lines = [ln for ln in lines if ln["column"] not in serial]
     used = sorted({ln["column"] for ln in lines})
     return Table(
         title=title,
