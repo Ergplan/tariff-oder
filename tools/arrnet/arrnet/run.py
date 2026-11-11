@@ -99,9 +99,11 @@ def verify(orders: list[dict[str, Any]], sink: Sink, log=print) -> dict[str, Any
     results, runs = [], []
     for o in orders:
         r = Run("verifier", verifier.VERSION, order_url=o["url"])
+        t0 = time.monotonic()
         v = verifier.verify_order(o)
         if v is None:
             continue
+        r.compute = time.monotonic() - t0
         results.append(v)
         runs.append(r)
     set_aside = verifier.set_aside_outliers([f for v in results for f in v["facts"]])
@@ -120,7 +122,9 @@ def verify(orders: list[dict[str, Any]], sink: Sink, log=print) -> dict[str, Any
         store.write(v["order"]["sha256"], "verified", v)
         if v["rejections"]:
             store.append_jsonl("rejections", v["rejections"])
+        t1 = time.monotonic()
         n = verifier.post_order(sink, v)
+        r.t0 = time.monotonic() - r.compute - (time.monotonic() - t1)  # this order's own time, not the batch's
         rej = len(v["rejections"])
         r.post(
             sink,
@@ -256,11 +260,11 @@ def main(argv: list[str] | None = None) -> int:
                 for r, g in out["gold"].items()
             }
         }
-        for k in ("gold_common_set",):
-            out[k] = {
-                r: {kk: g[kk] for kk in ("found", "comparable_nonzero", "voice_agrees", "voice_checked")}
-                for r, g in out.get(k, {}).items()
-            }
+        keep = ("found", "comparable_nonzero", "voice_agrees", "voice_checked", "licensee_agrees", "licensee_checked")
+        out["gold_common_set"] = {
+            other: {r: {k: g[k] for k in keep} for r, g in per.items()}
+            for other, per in out.get("gold_common_set", {}).items()
+        }
     elif a.step == "direct":
         res = director.direct(orders, sink)
         print(res["brief"])

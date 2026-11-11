@@ -282,7 +282,7 @@ def brief(orders: list[dict[str, Any]], q: Queue, planned: dict[str, Any], narra
         "",
         "## Spend",
         "",
-        f"- today: ${budget.spent():.4f} of the daily cap ${float(q.pol['budget']['daily_usd']):.2f}",
+        f"- today: ${budget.spent():.4f} (real calls) of the daily cap ${budget.caps('director')[0]:.2f}",
     ]
     lines += ["", "## Next", ""]
     lines += [f"- {k}: {n} queued" for k, n in sorted(queued.items())] or ["- nothing queued"]

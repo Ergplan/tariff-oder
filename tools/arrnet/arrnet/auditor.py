@@ -226,22 +226,25 @@ def measure(orders: list[dict[str, Any]], on: str | None = None) -> tuple[list[d
         m("gold_values_found", r, g["found"], g["comparable_nonzero"], {k: g[k] for k in ("counts", "orders_measured")})
         m("gold_voice_agrees", r, g["voice_agrees"], g["voice_checked"])
         m("gold_utility_agrees", r, g["licensee_agrees"], g["licensee_checked"])
-    if "docling" in readers and "textlayer" in readers:
-        dpages = {
-            sha: set(v["readers"]["docling"]["pages"]) for sha, v in verified.items() if "docling" in v["readers"]
-        }
-        for r in ("textlayer", "docling"):
-            g = gold(verified, figs, r, restrict_pages=dpages, table_reader="textlayer")
-            report["gold_common_set"][r] = g
+    # like for like: figures the text layer can be measured on, on the pages a sampled reader read
+    for other in ("docling", "llamaparse"):
+        if other not in readers or "textlayer" not in readers:
+            continue
+        opages = {sha: set(v["readers"][other]["pages"]) for sha, v in verified.items() if other in v["readers"]}
+        report["gold_common_set"][other] = {}
+        for r in ("textlayer", other):
+            g = gold(verified, figs, r, restrict_pages=opages, table_reader="textlayer")
+            report["gold_common_set"][other][r] = g
+            scope = f"{r}_on_{other}_pages"
             m(
                 "gold_values_found_common_set",
-                r,
+                scope,
                 g["found"],
                 g["comparable_nonzero"],
-                {"set": "figures the text layer can be measured on, on pages Docling converted", **g["counts"]},
+                {"set": f"figures the text layer can be measured on, on pages {other} read", **g["counts"]},
             )
-            m("gold_voice_agrees_common_set", r, g["voice_agrees"], g["voice_checked"])
-            m("gold_utility_agrees_common_set", r, g["licensee_agrees"], g["licensee_checked"])
+            m("gold_voice_agrees_common_set", scope, g["voice_agrees"], g["voice_checked"])
+            m("gold_utility_agrees_common_set", scope, g["licensee_agrees"], g["licensee_checked"])
     report["cross_order"] = {}
     for r in readers:
         co = cross_order(verified, r)
