@@ -1,10 +1,11 @@
 // Writes one validated batch in one transaction.  Each row runs in its own savepoint, so a row
 // the database refuses is rejected with a reason and the rest of the batch is still written.
 // No statement here writes reviewed_by, reviewed_at or review_note.
+import type postgres from "postgres";
 import type { Sql } from "../db.ts";
 import { validateRow, numberOnPage, type Refs, type Row } from "./validate.ts";
 
-type Tx = Parameters<Parameters<Sql["begin"]>[0]>[0];
+type Tx = postgres.TransactionSql<{}>;
 export interface Rejected { index: number; reason: string }
 class Reject extends Error {}
 const reject = (reason: string): never => { throw new Reject(reason); };
@@ -299,7 +300,7 @@ export async function writeBatch(sql: Sql, kind: string, rows: unknown[]): Promi
     await replaceFirst(tx, kind, first, valid.map((v) => v.row), L);
     for (const { index, row } of valid) {
       try {
-        await tx.savepoint(async (sp) => { await writers[kind](sp as unknown as Tx, row, L); });
+        await tx.savepoint(async (sp) => { await writers[kind](sp, row, L); });
         written++;
       } catch (e) {
         if (e instanceof Reject) rejected.push({ index, reason: e.message });

@@ -30,3 +30,9 @@ def pdf_dir() -> Path | None:
 
 def default_manifest() -> Path:
     return ARRDB / "data" / "orders.json"
+
+
+def default_manifests() -> list[Path]:
+    """The DISCOM orders and, when present, the TRANSCO orders."""
+    t = ARRDB / "data" / "orders-transco.json"
+    return [default_manifest(), *([t] if t.exists() else [])]

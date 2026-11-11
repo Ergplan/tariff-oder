@@ -40,7 +40,7 @@ export async function runReadOnly(input: string): Promise<RunResult> {
       await tx.unsafe(`SET LOCAL statement_timeout = ${TIMEOUT_MS}`);
       await tx.unsafe("SET LOCAL idle_in_transaction_session_timeout = 10000");
       // extended protocol (simple: false): the server refuses more than one statement
-      return tx.unsafe(`SELECT * FROM (\n${c.sql}\n) AS answer LIMIT ${ROW_CAP + 1}`, [], { simple: false });
+      return tx.unsafe(`SELECT * FROM (\n${c.sql}\n) AS answer LIMIT ${ROW_CAP + 1}`, [], { simple: false } as never);
     });
     const list = [...rows] as Record<string, unknown>[];
     const columns = rows.columns ? rows.columns.map((x: { name: string }) => x.name) : list[0] ? Object.keys(list[0]) : [];

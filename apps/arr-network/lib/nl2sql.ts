@@ -234,7 +234,7 @@ export function translate(question: string, vocab: Vocab): Translation {
       return `${cte} AS (\n  SELECT *, 1 AS rn FROM v_arr_latest\n  WHERE ${conds}\n)`;
     }
     return `${cte} AS (
-  SELECT *, ROW_NUMBER() OVER (PARTITION BY utility, fiscal_year, voice${headList ? ", head" : ""}${byLabel ? ", label" : ""}
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY utility, commission, fiscal_year, voice${headList ? ", head" : ""}${byLabel ? ", label" : ""}
                                ORDER BY order_arr_year DESC NULLS LAST, fact_id DESC) AS rn
   FROM ${headList ? "v_facts" : "v_arr"}
   WHERE ${conds}

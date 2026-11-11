@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start -p 3100",
     "typecheck": "tsc --noEmit",
-    "test": "node --test --experimental-strip-types --no-warnings test/*.test.ts",
+    "test": "node scripts/gen-migrations.mjs --check && node --test --experimental-strip-types --no-warnings test/*.test.ts",
     "migrations": "node scripts/gen-migrations.mjs",
     "seed": "node scripts/dev-seed.mjs"
   },

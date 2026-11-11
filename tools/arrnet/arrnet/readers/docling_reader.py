@@ -26,6 +26,7 @@ import pymupdf
 from .. import store
 from ..arrdb_bridge import TITLE, stage_of
 from ..reference import aliases as all_aliases
+from ..reference import reader_kind
 from .base import ParseResult, Reader
 from .interpret import grid_to_table, tables_to_rows, title_ok
 
@@ -46,19 +47,21 @@ def select_pages(
     licensees: list[str],
     aliases: dict[str, list[str]],
     max_ocr_pages: int | None = None,
+    neighbours: int = 1,
+    kind: str = "discom",
 ) -> tuple[list[int], dict[str, Any]]:
-    """The pages to convert and why: text-layer pages (ARR table pages first, then one page either
-    side) up to ``max_pages``, and pages without a text layer up to ``max_ocr_pages``."""
+    """The pages to convert and why: text-layer pages (ARR table pages first, then ``neighbours``
+    pages either side) up to ``max_pages``, and pages without a text layer up to ``max_ocr_pages``."""
     sha = order.get("sha256") or ""
     tl = store.read(sha, "textlayer") or {}
     pages_doc = store.read(sha, "pages") or {}
     no_text = [p["page"] for p in pages_doc.get("pages", []) if not p["has_text_layer"]]
     table_pages = sorted({p for t in tl.get("tables", []) for p in t.get("pages", [t["page"]])})
-    why = "text-layer table pages ±1"
+    why = f"text-layer table pages ±{neighbours}"
     if not table_pages:
         why = "pages whose text names an ARR table title"
         for p in pages_doc.get("pages", []):
-            if any(title_ok(m.group(0).strip(), licensees, aliases) for m in TITLE_LINE.finditer(p["text"])):
+            if any(title_ok(m.group(0).strip(), licensees, aliases, kind) for m in TITLE_LINE.finditer(p["text"])):
                 table_pages.append(p["page"])
     chosen: list[int] = []
     skip = set(no_text)
@@ -69,9 +72,10 @@ def select_pages(
 
     for p in table_pages:
         add(p)
-    for p in table_pages:
-        add(p - 1)
-        add(p + 1)
+    for d in range(1, neighbours + 1):
+        for p in table_pages:
+            add(p - d)
+            add(p + d)
     max_ocr = max_pages if max_ocr_pages is None else max_ocr_pages
     capped = len(chosen) > max_pages or len(no_text) > max_ocr
     ocr = sorted(no_text[:max_ocr])
@@ -141,7 +145,8 @@ class DoclingReader(Reader):
         al = all_aliases()
         aliases = {k: al.get(k, []) for k in lic}
         src = pymupdf.open(str(pdf_path))
-        pages, why = select_pages(order, len(src), self.max_pages, lic, aliases, self.max_ocr_pages)
+        kind = reader_kind(order)
+        pages, why = select_pages(order, len(src), self.max_pages, lic, aliases, self.max_ocr_pages, kind=kind)
         if not pages:
             return ParseResult(self.name, self.version, "ok", note="no page to convert: no ARR table title found", extra=why)
         ocr_pages = set(why["ocr_pages"])
@@ -164,7 +169,7 @@ class DoclingReader(Reader):
                     page_texts[str(p)] = doc.export_to_markdown(page_no=i + 1)
         tables = []
         for r in raw:
-            if not r["title"] or not title_ok(r["title"], lic, aliases):
+            if not r["title"] or not title_ok(r["title"], lic, aliases, kind):
                 continue
             t = grid_to_table(
                 r["grid"],

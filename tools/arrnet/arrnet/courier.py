@@ -29,7 +29,7 @@ def order_row(o: dict[str, Any], **extra: Any) -> dict[str, Any]:
         "arr_year": o.get("arr_year"),
         "years_decided": list(o.get("years") or []),
         "kind": str(o["kind"]) if o.get("kind") else None,
-        "utility_kind": "discom",
+        "utility_kind": o.get("utility_kind") or "discom",
         "found_by": o.get("found_by"),
         "fetched_on": o.get("fetched_on"),
         "read_status": "downloaded" if o.get("sha256") else "listed",

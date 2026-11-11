@@ -20,6 +20,7 @@ from ..arrdb_bridge import (
     NOT_ARR_TITLE,
     NUM,
     OTHER_ENTITY,
+    OTHER_ENTITY_FOR_TRANSCO,
     PART_BUSINESS,
     TOC,
     Column,
@@ -34,8 +35,9 @@ from ..arrdb_bridge import (
 SERIAL_CELL = re.compile(r"^(\(?[ivxlc]+[.)]?|\(?[a-z][.)]|\d{1,2}(\.\d)?[.)]?|[A-Z](=[A-Z+\-*/()]+)?)$", re.I)
 
 
-def title_ok(title: str, licensees: list[str], aliases: dict[str, list[str]]) -> bool:
-    """The title filter of arrdb.reader.read_tables: an ARR summary table of the licensee."""
+def title_ok(title: str, licensees: list[str], aliases: dict[str, list[str]], kind: str = "discom") -> bool:
+    """The title filter of arrdb.reader.read_tables: an ARR summary table of the licensee.  In a
+    transmission order (kind 'transco') the tables skipped are the other businesses'."""
     if TOC.search(title) or not ARR_TITLE.search(title) or NOT_ARR_TITLE.search(title):
         return False
     if PART_BUSINESS.search(title) and not re.search(
@@ -44,7 +46,8 @@ def title_ok(title: str, licensees: list[str], aliases: dict[str, list[str]]) ->
         return False
     if re.search(r"categor|agricultur|\bLT\b|\bHT\b|consumer class", title):
         return False
-    if OTHER_ENTITY.search(title) and not any(
+    other = OTHER_ENTITY_FOR_TRANSCO if kind == "transco" else OTHER_ENTITY
+    if other.search(title) and not any(
         re.search(rf"(?<![A-Za-z]){re.escape(n)}(?![A-Za-z])", title, re.I)
         for code in licensees
         for n in [code, *aliases.get(code, [])]

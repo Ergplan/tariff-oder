@@ -9,6 +9,7 @@ agent's own cap — the cap is enforced here, in code, whatever a planner or a m
 from __future__ import annotations
 
 import datetime as dt
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -62,7 +63,8 @@ class Budget:
 
     def caps(self, agent: str) -> tuple[float, float | None]:
         b = self.pol.get("budget", {})
-        return float(b.get("daily_usd", 0.0)), (b.get("per_agent_daily_usd") or {}).get(agent)
+        total = float(os.environ.get("ARRNET_BUDGET_DAILY_USD") or b.get("daily_usd", 0.0))
+        return total, (b.get("per_agent_daily_usd") or {}).get(agent)
 
     def remaining(self, agent: str) -> float:
         total, mine = self.caps(agent)

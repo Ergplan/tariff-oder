@@ -10,6 +10,7 @@ from typing import Any
 
 from ..arrdb_bridge import infer_units, read_tables, stage_of
 from ..reference import aliases as all_aliases
+from ..reference import reader_kind
 from .base import ParseResult, Reader
 from .interpret import tables_to_rows
 
@@ -27,7 +28,7 @@ class TextLayerReader(Reader):
         lic = list(order.get("licensees") or [])
         al = all_aliases()
         try:
-            res = read_tables(str(pdf_path), lic, {k: al.get(k, []) for k in lic})
+            res = read_tables(str(pdf_path), lic, {k: al.get(k, []) for k in lic}, kind=reader_kind(order))
         except Exception as e:  # a damaged PDF is reported, not fatal
             return ParseResult(self.name, self.version, "failed", note=f"{type(e).__name__}: {e}"[:300])
         tables = res["tables"]

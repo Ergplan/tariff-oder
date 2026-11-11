@@ -23,7 +23,7 @@ function level(s: StateRow | undefined): number {
 }
 function words(s: StateRow | undefined): string {
   if (!s) return "no data";
-  const parts = [LEVELS[level(s)][1]];
+  const parts: string[] = [LEVELS[level(s)][1]];
   if (s.orders) parts.push(`${s.orders} order${s.orders === 1 ? "" : "s"}, ${s.orders_read} read`);
   if (s.utilities) parts.push(`ARR figures for ${s.with_arr} of ${s.utilities} utilities`);
   return parts.join("; ");

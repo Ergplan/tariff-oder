@@ -71,7 +71,7 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
   const st = states[0];
   // Large orders print hundreds of figures: by default show the bottom-line tables and a few
   // more; every other table is one link away.
-  const headlineTables = new Set(headlines.map((f) => (f.table_id as number) ?? null));
+  const headlineTables = new Set<number | null>(headlines.map((f) => (f.table_id as number) ?? null));
   const chosen = tableParam === "all" ? tableList
     : tableParam && /^\d+$/.test(tableParam) ? tableList.filter((t) => t.key === Number(tableParam))
     : tableParam === "none" ? tableList.filter((t) => t.key === null)

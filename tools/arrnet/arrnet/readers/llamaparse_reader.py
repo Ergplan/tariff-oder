@@ -32,6 +32,7 @@ import pymupdf
 
 from ..arrdb_bridge import TITLE, stage_of
 from ..reference import aliases as all_aliases
+from ..reference import reader_kind
 from ..spend import Budget, BudgetExceeded, policy
 from .base import ParseResult, Reader
 from .docling_reader import select_pages
@@ -58,7 +59,7 @@ def page_ranges(pages: list[int]) -> str:
 
 
 def tables_from_pages(
-    md_pages: list[tuple[int, str]], licensees: list[str], aliases: dict[str, list[str]]
+    md_pages: list[tuple[int, str]], licensees: list[str], aliases: dict[str, list[str]], kind: str = "discom"
 ) -> tuple[list[dict[str, Any]], int]:
     """arrdb-shaped tables from (page, markdown) pairs; a titled pipe table, or the continuation of
     one at the top of the next page with the same number of columns."""
@@ -85,7 +86,7 @@ def tables_from_pages(
             )
     tables = []
     for r in raw:
-        if not r["title"] or not title_ok(r["title"], licensees, aliases):
+        if not r["title"] or not title_ok(r["title"], licensees, aliases, kind):
             continue
         t = grid_to_table(
             r["grid"], title=r["title"], page=r["page"], row_pages=r["row_pages"], licensees=licensees,
@@ -111,7 +112,9 @@ class LlamaParseReader(Reader):
         budget: Budget | None = None,
         pol: dict[str, Any] | None = None,
         sleep=time.sleep,
+        max_total_pages: int | None = None,
     ) -> None:
+        self.pages_left = max_total_pages  # a page allowance across the orders of one run
         self.key = api_key if api_key is not None else os.environ.get("LLAMA_CLOUD_API_KEY")
         self.transport, self.is_real, self.sleep = transport, is_real, sleep
         self.pol = pol or policy()
@@ -128,7 +131,15 @@ class LlamaParseReader(Reader):
         al = all_aliases()
         aliases = {k: al.get(k, []) for k in lic}
         n_pages = len(pymupdf.open(str(pdf_path)))
-        pages, why = select_pages(order, n_pages, int(lp["max_pages_per_order"]), lic, aliases)
+        kind = reader_kind(order)
+        cap = int(lp["max_pages_per_order"])
+        if self.pages_left is not None:
+            cap = min(cap, self.pages_left)
+        if cap <= 0:
+            return self.skipped("the run's page allowance is used up", is_real=self.is_real, provider="llamaindex")
+        pages, why = select_pages(order, n_pages, cap, lic, aliases, int(lp.get("max_ocr_pages_per_order", 0)),
+                                  neighbours=int(lp.get("neighbours", 0)), kind=kind)
+        pages = pages[:cap]
         if not pages:
             return ParseResult(self.name, self.version, "ok", is_real=self.is_real, provider="llamaindex",
                                note="no page to parse: no ARR table title found")
@@ -154,6 +165,8 @@ class LlamaParseReader(Reader):
                 if r.status_code >= 400:
                     return self._failed(f"upload refused: HTTP {r.status_code}: {r.text[:300]}", pages)
                 job_id = r.json()["id"]
+                if self.pages_left is not None:
+                    self.pages_left -= len(pages)
                 deadline = time.monotonic() + float(lp.get("timeout_seconds", 900))
                 while True:
                     g = c.get(f"/api/v2/parse/{job_id}", params={"expand": "markdown,usage"})
@@ -189,7 +202,7 @@ class LlamaParseReader(Reader):
         for p in got:
             n = int(p["page_number"])
             md_pages.append((pages[n - 1] if remap else n, p.get("markdown") or ""))
-        tables, found = tables_from_pages(md_pages, lic, aliases)
+        tables, found = tables_from_pages(md_pages, lic, aliases, kind)
         trows, vrows = tables_to_rows(tables, order.get("arr_year"), stage_of)
         return ParseResult(
             self.name,

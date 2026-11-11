@@ -21,15 +21,15 @@ llamaparse:
   credits_per_page: {fast: 1, cost_effective: 3, agentic: 10, agentic_plus: 25}
   usd_per_1000_credits: 1.50
   max_pages_per_order: 20
+  max_ocr_pages_per_order: 0   # pages without a text layer sent too (LlamaParse reads them itself)
+  neighbours: 0                # pages either side of a text-layer ARR table page
   poll_seconds: 5
   timeout_seconds: 900
 
 budget:
   daily_usd: 0.0          # all paid calls together, per UTC day; set by the operator
-  per_agent_daily_usd:    # optional tighter caps
-    extractor: 0.0
-    llamaparse: 0.0
-    director: 0.0
+                          # (ARRNET_BUDGET_DAILY_USD overrides it for one run)
+  per_agent_daily_usd: {} # optional tighter caps, e.g. {extractor: 2.0}
 
 docling:
   max_pages_per_order: 24

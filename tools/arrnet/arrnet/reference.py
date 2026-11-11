@@ -24,6 +24,12 @@ def registry() -> dict[str, Any]:
 
 
 @lru_cache(maxsize=1)
+def registry_transco() -> dict[str, Any]:
+    p = config.ARRDB / "registry-transco.json"
+    return json.loads(p.read_text()) if p.exists() else {"utilities": []}
+
+
+@lru_cache(maxsize=1)
 def reference() -> dict[str, Any]:
     return json.loads((config.HERE / "reference.json").read_text())
 
@@ -65,10 +71,20 @@ def rows() -> dict[str, list[dict[str, Any]]]:
             }
         )
     seen = {u["code"] for u in utilities}
-    for t in ref["transcos"]:
+    for t in registry_transco()["utilities"]:
         if t["code"] in seen:
             raise ValueError(f"duplicate utility code {t['code']}")
-        utilities.append(dict(t))
+        utilities.append(
+            {
+                "code": t["code"],
+                "name": t["name"],
+                "kind": "transco",
+                "commission": t["commission"],
+                "state": t["state"],
+                "ownership": t["ownership"],
+                "aliases": t.get("aliases", []),
+            }
+        )
     sort = {c: (i + 1) * 10 for i, (c, _, _) in enumerate(HEADS)}
     heads = [{"code": c, "name": n, "sort": sort.get(c, 1000)} for c, n in HEAD_NAMES.items()]
     return {
@@ -90,7 +106,22 @@ def known_codes() -> dict[str, set[str]]:
 
 
 def aliases() -> dict[str, list[str]]:
-    return {d["code"]: d.get("aliases", []) for d in registry()["discoms"]}
+    out = {d["code"]: d.get("aliases", []) for d in registry()["discoms"]}
+    out.update({t["code"]: t.get("aliases", []) for t in registry_transco()["utilities"]})
+    return out
+
+
+def transco_codes() -> set[str]:
+    return {t["code"] for t in registry_transco()["utilities"]}
+
+
+def reader_kind(order: dict[str, Any]) -> str:
+    """'transco' for a transmission order (or a combined order whose licensee is a TRANSCO): the
+    readers then keep transmission tables and skip generation, distribution and SLDC tables."""
+    uk = order.get("utility_kind") or "discom"
+    if uk == "transco" or (uk == "mixed" and set(order.get("licensees") or []) & transco_codes()):
+        return "transco"
+    return "discom"
 
 
 def seed(sink) -> dict[str, Any]:
