@@ -339,6 +339,8 @@ def post_order(sink, result: dict[str, Any]) -> dict[str, int]:
 
     for name, pr in result["readers"].items():
         base = {"order_url": url, "reader": name, "reader_version": pr["reader_version"]}
+        parse = {k: v for k, v in pr["parse"].items() if v is not None}
+        post("parses", [{**base, **parse, "cost_usd": round(float(parse.get("cost_usd") or 0), 6)}])
         tables = [{**base, **t} for t in pr["tables"]]
         values = [{**base, **{k: v for k, v in x.items() if not k.startswith("_")}} for x in pr["values"]]
         params = [{**base, **x} for x in pr["parameters"]]
