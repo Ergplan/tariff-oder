@@ -1005,6 +1005,60 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 158 (2026-11-11/12): Uttar Pradesh complete — three readers, key parameters and key paragraphs; the load made to work.**
+  - **Direction (operator):** "continue for next 12 hours and complete one for Uttar pradesh discoms", and, pasting
+    an empty order page ("Readers that ran 0 … Key paragraphs 0"): "all this needs to be filled".
+  - **Why the live order pages were empty, and the fixes (`84a8ef5`, `d72709b`, `b7f95a4`):**
+    - The loader's client gave up after 120 s and retried while the server (limit 300 s) was still writing; the
+      overlapping batches waited on each other's row locks and every write hung.  Now: the client waits 320 s,
+      the replay sends 250–1,000 rows per request, each batch sets `lock_timeout` 30 s and
+      `idle_in_transaction_session_timeout` 60 s, and `GET/POST /api/ingest/activity` lists the database's
+      sessions and ends any holding a transaction open for over 120 s.
+    - The functions ran in `sin1` and the database answers from US East: 214 ms per round trip (measured by
+      the activity route), about three round trips per row.  Functions moved to `iad1`: 2 ms.  Pages served
+      to visitors in India now pay one trans-Pacific hop instead of hundreds of database ones.
+    - `GET /api/ingest/health` reports `database_mb` (the Neon free plan holds 1 GB): 462 MB after this load.
+  - **Docling on every UP order** (21 orders, 16 distinct files, 1,365 s on CPU): 151 tables, 8,009 values.
+  - **The Extractor, answered by session agents (`b459b10`, `d72709b`).** No model key exists (the operator
+    declined one), so `tools/arrnet/arrnet/session_extract.py` writes the Extractor's exact requests — the
+    same system prompt (page text is untrusted data), page choice, delimited page text and JSON schema — as
+    packets; sixteen agents of this coding session (a smaller model) each read 24 packets and wrote replies;
+    the unchanged `_take` filter and the unchanged Verifier took them.  Recorded as reader `llm`, provider
+    `claude-code-session`, model `session agent`, cost 0 — never as an Anthropic API run.  Every reply was
+    checked (`session_extract check`: schema, filter, and the evidence test — every number of the quote on
+    the page, the value in the quote) until 0 failures, before it was used.
+    - Round 1 (192 pages, the Extractor's own choice): 68 were contents / list-of-tables pages and gave
+      nothing.  `is_contents` now detects them (68 of 68, no false positive among the other 124) and the
+      Extractor's chooser skips them; round 2 added 12 more pages per order ranked by key terms, directives
+      and figures (192 pages).
+    - Values printed as "14.50%" or "2,834.38*" were dropped by the filter; they are now parsed.
+    - Agents' noted judgement calls (kept as they are; a person may revisit): continuation tables that do not
+      name the licensee carry no utility; a few voices left null where the column says neither claimed nor
+      approved; on page 560 of the NPCL FY2024-25 order the year of a category-totals row was taken from the
+      surrounding text.  One agent first left UPPTCL figures without a utility; corrected on instruction.
+  - **Uttar Pradesh in production now** (`load-up`, 0 rejected): 8,830 facts for the 21 UP orders — 903 three
+    readers agree, 2,982 two agree, 4,730 one reader, 215 readers disagree (all values shown); 610 key
+    parameters (NPCL 209, UPPTCL 98, PVVNL 56, PUVVNL 48, MVVNL 44, KESCO 32, DVVNL 31, state total 40, not
+    printed 52) — mostly capitalisation, capex, revenue gap, RoE rate, distribution loss, energy sales,
+    subsidy, ABR, ACoS; 878 classified key paragraphs (365 directives, 257 submissions, 181 reasoning, 75
+    rulings); 16,582 embedded chunks.  Evidence rejections: 0.  None of it is a person's review.
+  - **Order page (`14f5714`):** a Key parameters section (value as printed, utility, year, voice, readers,
+    page, quote); "Key paragraphs" now counts rulings, directives, reasoning and submissions only (headings
+    had been counted).
+  - **Checked live** in Chromium at 1440 px and 390 px: map → Uttar Pradesh → PVVNL → order 63 → a citation;
+    no page error, no failed request, no horizontal overflow.  Order 63 shows 3 readers, 40 tables, 1,363
+    figures (38 conflicts), 33 key parameters, 45 key paragraphs.
+  - **Tests:** arrnet 52 pass (2 new for the session path); ruff clean; app `tsc` clean, app tests 12 pass.
+  - **Not done / known:**
+    - LlamaParse was not run on the UP pages this increment (one UP order has a LlamaParse reading from 157).
+    - Two UP order files have no packet (no text-layer page chosen); their `llm` parse says "0 of 0 pages
+      read" with status `ok` — it should say `skipped`.
+    - The UPPTCL scanned duplicates have no text layer; UPPTCL FY2024-25 and FY2026-27 approved bottom lines
+      are still missing from the headline.
+    - `INGEST_TOKEN` should be rotated (its value appeared in the session transcript).
+  - **Next smallest task:** mark an `llm` parse with no target page `skipped`; then the same three-reader +
+    Extractor pass for the next state.
+
   **Increment 157 (2026-11-11): the ARR Network — agents read every ARR order; India map → state → utility on Vercel with Neon.**
   - **Direction (operator, 2026-11-11):** "incubate this ARR agent network as a startup of agents, managed by
     agents for a collection of all ARR orders of discoms … Map of India, state selection then discom selection
@@ -1053,11 +1107,16 @@ open-access view.
     - **Embeddings for orders beyond the ten hand-read ones.** They take hours on this CPU.
     - **Docling on the 72 queued orders.**
   - **Deployed:**
-    - Vercel project `arr-101`, now with root `apps/arr-network`, Next.js, functions in `sin1`.
+    - Vercel project `arr-101`, now with root `apps/arr-network`, Next.js; functions moved from `sin1`
+      to `iad1` in increment 158 (next to the Neon database).
     - `DATABASE_URL` comes from the Neon integration. `INGEST_TOKEN` is a sensitive env var; it was
       generated in the session, so it should be rotated.
     - Migrations applied on Neon through `/api/ingest/migrate`.
-    - Data loaded by `python -m arrnet.replay` from the pipeline's dry-run output. Results are below.
+    - Data loaded by `python -m arrnet.replay` from the pipeline's dry-run output (finished
+      2026-11-11 18:30 UTC, after the fixes of increment 158): parses 188, parsed tables 858, values
+      38,912, facts 26,365 (fact readings 29,605), gold figures 2,679, pages 36,284, paragraphs
+      398,179 (headings and the paragraphs the chunks point at), chunks 73,196; every kind
+      0 rejected by the API.
   - **Known defects:**
     - 4,509 figures share a fact's natural key with a different-valued figure. They are kept in
       `arr_values` but not in `facts`; the schema needs a column to tell them apart.
