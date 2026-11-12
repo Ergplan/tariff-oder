@@ -1048,16 +1048,17 @@ open-access view.
   - **Checked live** in Chromium at 1440 px and 390 px: map → Uttar Pradesh → PVVNL → order 63 → a citation;
     no page error, no failed request, no horizontal overflow.  Order 63 shows 3 readers, 40 tables, 1,363
     figures (38 conflicts), 33 key parameters, 45 key paragraphs.
-  - **Tests:** arrnet 52 pass (2 new for the session path); ruff clean; app `tsc` clean, app tests 12 pass.
+  - **Tests:** arrnet 53 pass (3 new for the session path); ruff clean; app `tsc` clean, app tests 12 pass.
   - **Not done / known:**
     - LlamaParse was not run on the UP pages this increment (one UP order has a LlamaParse reading from 157).
-    - Two UP order files have no packet (no text-layer page chosen); their `llm` parse says "0 of 0 pages
-      read" with status `ok` — it should say `skipped`.
+    - Five scanned UPPTCL orders had no packet (no text layer); their `llm` parse said "0 of 0 pages read"
+      with status `ok`.  Fixed: the Extractor now returns `skipped` when no page is chosen (test added), and
+      the five production parse rows were re-posted as `skipped` with the reason.
     - The UPPTCL scanned duplicates have no text layer; UPPTCL FY2024-25 and FY2026-27 approved bottom lines
       are still missing from the headline.
     - `INGEST_TOKEN` should be rotated (its value appeared in the session transcript).
-  - **Next smallest task:** mark an `llm` parse with no target page `skipped`; then the same three-reader +
-    Extractor pass for the next state.
+  - **Next smallest task:** the same three-reader + Extractor pass for the next state (Docling on its orders,
+    `session_extract prepare --only <COMMISSION>` then `--more 12`, verify, index, `replay`).
 
   **Increment 157 (2026-11-11): the ARR Network — agents read every ARR order; India map → state → utility on Vercel with Neon.**
   - **Direction (operator, 2026-11-11):** "incubate this ARR agent network as a startup of agents, managed by

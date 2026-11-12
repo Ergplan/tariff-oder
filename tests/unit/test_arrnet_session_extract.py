@@ -75,3 +75,13 @@ def test_missing_reply_is_a_page_not_read(order, tmp_path):
     res = se.extractor(d).read(order)
     assert res.status == "partial" and res.pages_parsed == 0
     assert not res.values and not res.parameters
+
+
+def test_no_target_page_is_skipped(order, tmp_path):
+    d = tmp_path / "session"
+    se.prepare(d, [order])
+    other = {**order, "url": "https://example.org/other.pdf"}  # in no packet
+    (d / "index.json").write_text(json.dumps([{"key": "k", "order_url": order["url"], "sha256": order["sha256"],
+                                               "page": 2, "licensees": ["UPCL"]}]))  # fmt: skip
+    res = se.extractor(d).read(other)
+    assert res.status == "skipped" and res.provider == "claude-code-session"

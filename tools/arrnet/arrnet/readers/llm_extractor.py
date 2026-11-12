@@ -216,6 +216,8 @@ class Extractor(Reader):
         pages = doc["pages"]
         by_page = {p["page"]: p for p in pages}
         targets = (self.choose or _choose_pages)(order, pages, int(self.pol["extractor"]["max_pages_per_order"]))
+        if not targets:  # nothing to read is not a reading
+            return self.skipped("no page with a text layer was chosen for this order", **base)
         out = ParseResult(self.name, self.version, "ok", pages=targets, **base)
         sch = schema(self.heads, [p["code"] for p in self.params])
         t0 = time.monotonic()
