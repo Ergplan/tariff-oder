@@ -14,6 +14,11 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tests"))
+# the ARR Network agents and the ARR database reader are tools, not workspace packages; their
+# core dependencies (pymupdf, httpx, pyyaml) are already in the workspace, so their tests run here
+for tool in ("tools/arrnet", "tools/arrdb"):
+    if str(ROOT / tool) not in sys.path:
+        sys.path.append(str(ROOT / tool))
 
 TEST_DB = os.environ.get("TARIFF_TEST_DATABASE_URL", "postgresql+psycopg://postgres@127.0.0.1:5433/tariff_test")
 

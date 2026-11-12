@@ -19,6 +19,8 @@ apps/web/out/
 # Real source PDFs are referenced by hash only
 *.pdf
 !tests/fixtures/**/SYNTHETIC_*.pdf
+# notified regulations the clause tests read (public texts, hash in each manifest.json)
+!packages/regulations/**/*.pdf
 tests/fixtures/generated/
 # Terraform
 infra/gcp/.terraform/
