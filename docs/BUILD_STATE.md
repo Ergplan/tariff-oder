@@ -1005,6 +1005,48 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 159 (2026-11-12): Uttar Pradesh order sections — power purchase, renewables, tariff schedule, wheeling, TOD; the Mac mini kit.**
+  - **Directions (operator):** "For Uttar Pradesh we need tables of Power Purchase cost, Renewable energy portfolio,
+    Tariff Schedule in Detail, Wheeling Charges, TOD. All this neatly available in sections." And: "i would like to make
+    apple mini as the database engine for the project" — asked, the operator chose: the Mac mini as the primary
+    database and agent engine, Neon kept as the public read copy.
+  - **The Section Reader** (`tools/arrnet/arrnet/sections.py`, `section-reader 1`, deterministic, no model):
+    - Numbered tables come from the order's own list of tables (title + page), classified by title words into the five
+      sections (renewable before power purchase, so "APPC of renewable sources" is renewables); the table is found
+      under its number on that page (±3 pages).
+    - The rate schedule: the run of "RATE SCHEDULE <category>" headings (a heading named in the body, e.g. page 51 of
+      the FY2023-24 order, is not a part — that once produced 911 tables), then the lettered parts (miscellaneous
+      charges, power-factor apparatus) and the category-wise billing-rate / revenue annexure.  A table of time slots
+      ("05:00 hrs – 10:00 hrs", two or more) goes to TOD.  A category with no ruled table keeps its RATE lines as
+      printed (`kind: text`).
+    - Cells are the text layer's words inside each ruled cell (PyMuPDF `find_tables`).  Columns come from the header
+      cells' x-ranges (a merged header is a group heading prefixed to its columns; a data column under no header is a
+      column too); words split by sliver cells are rejoined; wrapped header lines and wrapped labels are joined; a
+      table running to the foot of its page is joined with the next page's table in the same frame; columns with no
+      value are dropped.  Every row keeps its page; every number of every row is checked on that page (client), and
+      again by the ingest API against the stored page text.
+  - **UP result (production, 0 rejected by the API):** 16 order files with a text layer, 1,262 tables, 15,540 rows —
+    power purchase 299 tables (8,248 rows, e.g. Table 6-21 approved station-wise power purchase FY2026-27, 185 rows
+    over pp. 291–296), renewables 196, tariff schedule 464, wheeling / open access 224, TOD 79.  3 rows failed the page
+    check and were dropped.  The 5 scanned UPPTCL orders have no text layer: no sections.  Tables the reader could not
+    find under their number are listed in the run note (e.g. "Table 6-39 (p. 483): no ruled table under its title").
+  - **Application:** migration `0003_sections` (`section_tables`, view `v_section_rows` for SQL / Ask), ingest kind
+    `section_tables` (validated: section, cells per column, a page per row; API page check), run step `sections`,
+    page `/order/[id]/sections` with five tabs (the tariff schedule grouped by category), linked from the order page,
+    the state page (a table of orders × sections) and the utility page.  Checked live in Chromium at 1440 px and
+    390 px on order 67 (State DISCOMs FY2026-27): 25 / 15 / 39 / 17 / 5 tables, no page error, no overflow.
+  - **Known limits:** rate-schedule table titles are the nearest printed line above the table, sometimes the start
+    of a sentence; the miscellaneous-charges schedule prints many items in one ruled cell and is shown as printed;
+    tables without ruling lines are not read (the text fallback covers rate categories only).  One reader: no
+    second reader confirms a cell yet.
+  - **Mac mini (`deploy/macmini/`, `59a23b2`):** `setup.sh` (Homebrew Postgres 17 + pgvector, Node 22, uv; the app
+    built against the local database; secrets only in `~/.arrnet/env`) and `publish.sh` (Neon refreshed in one
+    transaction after checking both sides have the same migrations).  `publish.sh` tested between two local
+    databases; `setup.sh` **not run on the Mac mini**: the session still sees no folder shared from it.
+  - **Tests:** arrnet 56 + 3 section-reader tests pass; app `tsc` clean, app tests 13 pass.
+  - **Next smallest task:** share a folder from the Mac mini (Claude desktop app → Settings → Claude Code → Remote
+    Control) and run `deploy/macmini/setup.sh` there; then the Section Reader for the next state.
+
   **Increment 158 (2026-11-11/12): Uttar Pradesh complete — three readers, key parameters and key paragraphs; the load made to work.**
   - **Direction (operator):** "continue for next 12 hours and complete one for Uttar pradesh discoms", and, pasting
     an empty order page ("Readers that ran 0 … Key paragraphs 0"): "all this needs to be filled".
