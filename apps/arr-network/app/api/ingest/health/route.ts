@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 const TABLES = [
   "states", "commissions", "utilities", "heads", "parameter_defs", "orders", "order_utilities", "pages", "parses",
   "parsed_tables", "arr_values", "facts", "fact_readings", "parameters", "paragraphs", "chunks", "work_items",
-  "agent_runs", "metrics", "findings", "briefs", "gold_figures",
+  "agent_runs", "metrics", "findings", "briefs", "gold_figures", "section_tables",
 ];
 
 export async function GET(req: Request) {

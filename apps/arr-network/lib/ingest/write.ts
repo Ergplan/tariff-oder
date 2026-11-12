@@ -3,7 +3,7 @@
 // No statement here writes reviewed_by, reviewed_at or review_note.
 import type postgres from "postgres";
 import type { Sql } from "../db.ts";
-import { validateRow, numberOnPage, type Refs, type Row } from "./validate.ts";
+import { validateRow, numberOnPage, numericTokens, type Refs, type Row } from "./validate.ts";
 
 type Tx = postgres.TransactionSql<{}>;
 export interface Rejected { index: number; reason: string }
@@ -52,6 +52,22 @@ class Lookup {
 async function pageCheck(tx: Tx, orderId: number, page: number, printed: string) {
   const r = await tx`SELECT text FROM pages WHERE order_id = ${orderId} AND page = ${page}`;
   if (r.length && !numberOnPage(printed, r[0].text as string)) reject("number not on page");
+}
+
+/** Every number of every row of a section table must be on that row's page, where the page text is stored. */
+async function rowsOnTheirPages(tx: Tx, orderId: number, rows: Row[]) {
+  const pages = [...new Set(rows.map((r) => r.page as number))];
+  const texts = new Map<number, string>();
+  for (const r of await tx`SELECT page, text FROM pages WHERE order_id = ${orderId} AND page = ANY(${pages}::int[])`) {
+    texts.set(r.page as number, r.text as string);
+  }
+  rows.forEach((r, i) => {
+    const text = texts.get(r.page as number);
+    if (text === undefined) return;
+    for (const c of r.cells as string[]) {
+      if (numericTokens(c).length && !numberOnPage(c, text)) reject(`rows[${i}]: number of "${c.slice(0, 40)}" not on page ${r.page}`);
+    }
+  });
 }
 
 const writers: Record<string, (tx: Tx, x: Row, L: Lookup) => Promise<void>> = {
@@ -251,6 +267,20 @@ const writers: Record<string, (tx: Tx, x: Row, L: Lookup) => Promise<void>> = {
     await tx`INSERT INTO briefs (written_by, is_real, body, decisions)
       VALUES (${x.written_by as string}, ${x.is_real as boolean}, ${x.body as string}, ${j(x.decisions ?? [])}::text::jsonb)`;
   },
+  async section_tables(tx, x, L) {
+    const id = await L.order(x.order_url as string);
+    const rows = x.rows as Row[];
+    await rowsOnTheirPages(tx, id, rows);
+    await tx`INSERT INTO section_tables (order_id, section, seq, kind, label, category, title, fiscal_year, page, pages, columns, rows,
+        n_rows, reader_version, is_real)
+      VALUES (${id}, ${x.section as string}, ${x.seq as number}, ${(x.kind as string) ?? "table"}, ${n(x.label as string)},
+        ${n(x.category as string)}, ${x.title as string}, ${n(x.fiscal_year as string)}, ${x.page as number},
+        ARRAY(SELECT jsonb_array_elements_text(${j(x.pages)}::text::jsonb)::int), ${j(x.columns)}::text::jsonb,
+        ${j(rows)}::text::jsonb, ${rows.length}, ${x.reader_version as string}, ${x.is_real as boolean})
+      ON CONFLICT (order_id, section, seq, reader_version) DO UPDATE SET kind = EXCLUDED.kind, label = EXCLUDED.label,
+        category = EXCLUDED.category, title = EXCLUDED.title, fiscal_year = EXCLUDED.fiscal_year, page = EXCLUDED.page,
+        pages = EXCLUDED.pages, columns = EXCLUDED.columns, rows = EXCLUDED.rows, n_rows = EXCLUDED.n_rows, is_real = EXCLUDED.is_real`;
+  },
   async gold_figures(tx, x) {
     await tx`INSERT INTO gold_figures (order_sha256, key, source, page, value, voice, utility, what)
       VALUES (${x.order_sha256 as string}, ${x.key as string}, ${x.source as string}, ${x.page as number}, ${x.value as number},
@@ -263,6 +293,15 @@ const writers: Record<string, (tx: Tx, x: Row, L: Lookup) => Promise<void>> = {
 /** Before the rows: the replace semantics of INGEST.md "Keys". */
 async function replaceFirst(tx: Tx, kind: string, first: Row | undefined, rows: Row[], L: Lookup) {
   if (!first || !rows.length) return;
+  if (kind === "section_tables" && first.replace_order === true) {
+    // a new reading of an order's sections replaces that reader version's earlier one, whole
+    const keys = new Set(rows.map((r) => `${r.order_url}\u0000${r.reader_version}`));
+    for (const k of keys) {
+      const [url, version] = k.split("\u0000");
+      const id = await L.order(url).catch(() => null);
+      if (id !== null) await tx`DELETE FROM section_tables WHERE order_id = ${id} AND reader_version = ${version}`;
+    }
+  }
   if (kind === "facts" && first.replace_order === true) {
     const urls = [...new Set(rows.map((r) => r.order_url as string))];
     for (const u of urls) {

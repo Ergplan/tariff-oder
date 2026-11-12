@@ -52,6 +52,7 @@ Fields not listed are not accepted. `?` marks an optional field.
 | `findings` | `{raised_by, severity, title, detail, order_url?}` |
 | `briefs` | `{written_by, is_real, body, decisions?: [..]}` |
 | `gold_figures` | `{order_sha256, key, source, page, value, voice?, utility?, what?}`. Upsert on its key. |
+| `section_tables` | `{order_url, section, seq, kind?, label?, category?, title, fiscal_year?, page, pages: [..], columns: [..], rows: [{cells: [..], page}], reader_version, is_real, replace_order?}`. `section` is one of `power_purchase`, `re_portfolio`, `tariff_schedule`, `wheeling`, `tod`; `kind` is `table` or `text`. Every row has as many cells as there are columns, and a page. Upsert on `(order, section, seq, reader_version)`; a batch whose first row has `"replace_order": true` first deletes that order's tables of that reader version. |
 
 ## Validation the API enforces
 
@@ -60,6 +61,8 @@ Fields not listed are not accepted. `?` marks an optional field.
   The API checks the quote against `pages.text` when that page is stored: with white space
   normalised, the page text must contain each numeric token of `value_printed`. A row that
   fails is rejected with `reason: "number not on page"`.
+- `section_tables`: where a row's page text is stored, every numeric token of every cell must be
+  on that page (the same test); otherwise the table is rejected with the row and cell named.
 - `voice`, `stage`, `consensus`, `reader`, `kind` values must be in the schema's lists.
 - `head` and `code` must exist in `heads` and `parameter_defs`.
 - `utility` must be a known utility code, `TOTAL`, or absent.

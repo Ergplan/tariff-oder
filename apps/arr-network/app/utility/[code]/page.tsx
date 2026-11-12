@@ -4,6 +4,7 @@ import { utilityArr, utilityOrders } from "@/lib/queries.ts";
 import { crore, KIND_WORDS, VOICE_WORDS } from "@/lib/format.ts";
 import { DbDown, Crumbs, PageLink, Consensus } from "../../ui.tsx";
 import { ArrChart } from "../../chart.tsx";
+import { SECTIONS } from "@/lib/sections.ts";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +34,7 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
     const [u] = await sql`SELECT u.*, s.name AS state_name, c.name AS commission_name
                           FROM utilities u JOIN states s ON s.code = u.state JOIN commissions c ON c.code = u.commission WHERE u.code = ${code}`;
     if (!u) return null;
-    const [arr, heads, keyParams, orders] = await Promise.all([
+    const [arr, heads, keyParams, orders, sectioned] = await Promise.all([
       utilityArr(sql, code),
       sql`
         WITH per AS (
@@ -57,12 +58,15 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
           FROM parameters p JOIN parameter_defs d ON d.code = p.code JOIN orders o ON o.order_id = p.order_id
           WHERE p.utility = ${code} ORDER BY d.grp, d.sort, p.code, p.fiscal_year, p.voice, o.arr_year DESC NULLS LAST`,
       utilityOrders(sql, code),
+      sql`SELECT o.order_id, o.arr_year, o.title, count(*)::int AS tables FROM section_tables t JOIN orders o ON o.order_id = t.order_id
+          JOIN order_utilities ou ON ou.order_id = o.order_id AND ou.utility = ${code}
+          GROUP BY o.order_id ORDER BY o.arr_year DESC NULLS LAST, o.order_id DESC`,
     ]);
-    return { u, arr, heads, keyParams, orders };
+    return { u, arr, heads, keyParams, orders, sectioned };
   });
   if (!res.ok) return <DbDown state={res} />;
   if (!res.data) notFound();
-  const { u, arr, heads, keyParams, orders } = res.data;
+  const { u, arr, heads, keyParams, orders, sectioned } = res.data;
   const years = [...new Set(heads.map((h) => h.fiscal_year as string))].sort().reverse(); // newest first
   const headRows = [...new Map(heads.map((h) => [h.head as string, h])).values()].sort((a, b) => (a.sort as number) - (b.sort as number) || String(a.head).localeCompare(String(b.head)));
   const cell = new Map(heads.map((h) => [`${h.head}|${h.fiscal_year}`, h]));
@@ -142,6 +146,20 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
             <p className="note">Newest year first. For each year, the approved figures of one order: the newest order that prints at least three heads for that year. * the order prints more than one row for that head; the row from its main ARR table is shown (open the order for all of them). Hover a figure to see its printed label.</p>
           </>
         ) : <p className="note">No approved cost head has been read for {code} yet.</p>}
+
+        <h3>Power purchase, renewables, tariff schedule, wheeling & TOD <span className="tag">{sectioned.length} orders</span></h3>
+        {sectioned.length ? (
+          <>
+            <nav className="chips" aria-label={`Sections of ${code}'s newest order`}>
+              {SECTIONS.map((x) => (
+                <a key={x.key} className="chip" href={`/order/${sectioned[0].order_id}/sections?s=${x.key}&u=${encodeURIComponent(code)}`}>{x.name}</a>
+              ))}
+            </nav>
+            <p className="note">From the newest order with sections read ({(sectioned[0].arr_year as string) ?? "year not recorded"}): <a href={`/order/${sectioned[0].order_id}/sections?u=${encodeURIComponent(code)}`}>{sectioned[0].title as string}</a>. Earlier orders: {sectioned.slice(1).map((o, i) => (
+              <span key={o.order_id as number}>{i ? ", " : ""}<a href={`/order/${o.order_id}/sections?u=${encodeURIComponent(code)}`}>{(o.arr_year as string) ?? `order ${o.order_id}`}</a></span>
+            ))}{sectioned.length > 1 ? "." : "none."}</p>
+          </>
+        ) : <p className="note">No section has been read from {code}&apos;s orders yet.</p>}
 
         <h3>Key parameters <span className="tag">{keyParams.length}</span></h3>
         {keyParams.length ? (

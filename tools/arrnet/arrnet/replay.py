@@ -22,7 +22,7 @@ from .ingest import HttpSink
 
 ORDER = [
     "states", "commissions", "utilities", "heads", "parameter_defs", "orders", "pages", "parses",
-    "parsed_tables", "arr_values", "parameters", "facts", "paragraphs", "chunks", "gold_figures",
+    "parsed_tables", "arr_values", "parameters", "facts", "paragraphs", "chunks", "gold_figures", "section_tables",
     "metrics", "findings", "agent_runs", "work_items", "briefs",
 ]  # fmt: skip
 
@@ -40,6 +40,7 @@ KEYS: dict[str, tuple[str, ...]] = {
     "paragraphs": ("order_url", "page", "seq"),
     "chunks": ("order_url", "page", "paragraph_seq"),
     "gold_figures": ("order_sha256", "source", "key"),
+    "section_tables": ("order_url", "section", "seq", "reader_version"),
     "metrics": ("measured_on", "name", "scope"),
     "work_items": ("kind", "target"),
 }
@@ -57,6 +58,24 @@ def dedupe(kind: str, rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         for r in rows:
             last[tuple(r.get(k) for k in KEYS[kind])] = r
         out = list(last.values())
+        if kind == "section_tables":
+            # the last run of an order wins whole: keep its rows only, one replace marker per order
+            last_run: dict[str, int] = {}
+            for i, r in enumerate(rows):
+                if r.get("replace_order"):
+                    last_run[r["order_url"]] = i
+            out = [r for i, r in enumerate(rows) if i >= last_run.get(r["order_url"], 0)]
+            last: dict[tuple, dict[str, Any]] = {}
+            for r in out:
+                last[tuple(r.get(k) for k in KEYS[kind])] = r
+            out = list(last.values())
+            seen_o: set[str] = set()
+            for r in out:
+                r.pop("replace_order", None)
+                if r["order_url"] not in seen_o:
+                    seen_o.add(r["order_url"])
+                    r["replace_order"] = True
+            return out
         if kind == "facts":
             # one replace_order marker per order, on its first fact
             seen: set[str] = set()

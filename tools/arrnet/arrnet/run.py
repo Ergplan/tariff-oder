@@ -98,6 +98,55 @@ def read(orders: list[dict[str, Any]], sink: Sink, reader: Reader, log=print) ->
     return stats
 
 
+def read_sections(orders: list[dict[str, Any]], sink: Sink, log=print) -> dict[str, Any]:
+    """The Section Reader on each order with a text layer: power purchase, renewable portfolio,
+    tariff schedule, wheeling / open access and time-of-day tables, every row checked on its page."""
+    from . import sections
+
+    stats: dict[str, Any] = {"orders": 0, "tables": 0, "rows": 0, "rows_failed": 0, "by_section": {}}
+    orders, _ = manifest.unique_files(orders)
+    for i, o in enumerate(orders, 1):
+        doc = store.read(o.get("sha256") or "", "pages")
+        path = manifest.pdf_path(o)
+        run = Run("reader:sections", sections.VERSION, order_url=o["url"])
+        if not doc or not path or not any(p["has_text_layer"] for p in doc["pages"]):
+            run.post(sink, "skipped", "no text layer or no file")
+            continue
+        try:
+            tables, notes = sections.read(path, doc["pages"])
+        except Exception as e:  # one order's failure does not stop the others
+            run.post(sink, "failed", f"{type(e).__name__}: {e}"[:300])
+            continue
+        ck = sections.check(tables, doc["pages"])
+        rows = []
+        for t in tables:
+            if not t.rows:
+                continue
+            row = {
+                "order_url": o["url"], "section": t.section, "seq": t.seq, "kind": t.kind, "label": t.label,
+                "category": t.category, "title": t.title, "fiscal_year": t.fiscal_year, "page": t.page,
+                "pages": t.pages, "columns": t.columns, "rows": t.rows, "reader_version": sections.VERSION,
+                "is_real": True,
+            }  # fmt: skip
+            rows.append({k: v for k, v in row.items() if v is not None})
+        if rows:
+            rows[0]["replace_order"] = True
+            sink.post("section_tables", rows)
+        stats["orders"] += 1
+        stats["tables"] += len(rows)
+        stats["rows"] += sum(len(r["rows"]) for r in rows)
+        stats["rows_failed"] += ck["rows_failed"]
+        for r in rows:
+            stats["by_section"][r["section"]] = stats["by_section"].get(r["section"], 0) + 1
+        n_rows = sum(len(r["rows"]) for r in rows)
+        note = f"{len(rows)} tables, {n_rows} rows; {ck['rows_failed']} rows failed the page check"
+        if notes:
+            note += f"; {len(notes)} notes: " + "; ".join(notes[:3])
+        run.post(sink, "ok", note[:500], rows_written=len(rows))
+        log(f"[{i}/{len(orders)}] sections {o['commission']} {o.get('title', '')[:50]!r}: {note[:160]}")
+    return stats
+
+
 def verify(orders: list[dict[str, Any]], sink: Sink, log=print) -> dict[str, Any]:
     orders, _ = manifest.unique_files(orders)
     results, runs = [], []
@@ -217,7 +266,9 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(
         prog="python -m arrnet.run", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    ap.add_argument("step", choices=["seed", "courier", "read", "verify", "index", "audit", "direct", "work", "all"])
+    ap.add_argument(
+        "step", choices=["seed", "courier", "read", "sections", "verify", "index", "audit", "direct", "work", "all"]
+    )
     ap.add_argument("--reader", choices=READERS)
     ap.add_argument("--only", help="commission code(s), comma-separated")
     ap.add_argument("--limit", type=int)
@@ -243,6 +294,8 @@ def main(argv: list[str] | None = None) -> int:
         if not a.reader:
             ap.error("read needs --reader")
         out = read(orders, sink, make_reader(a.reader, a))
+    elif a.step == "sections":
+        out = read_sections(orders, sink)
     elif a.step == "verify":
         out = verify(orders, sink)
     elif a.step == "index":

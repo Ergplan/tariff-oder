@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { load } from "@/lib/db.ts";
 import { crore, fmtDate, fmtTime, VOICE_WORDS, consensusWords } from "@/lib/format.ts";
 import { DbDown, Crumbs, PageLink, Consensus } from "../../ui.tsx";
+import { SECTIONS } from "@/lib/sections.ts";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,7 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
   const res = await load(async (sql) => {
     const [o] = await sql`SELECT o.*, c.name AS commission_name FROM orders o JOIN commissions c ON c.code = o.commission WHERE o.order_id = ${oid}`;
     if (!o) return null;
-    const [utils, parses, tables, facts, readings, paragraphs, states, keyParams] = await Promise.all([
+    const [utils, parses, tables, facts, readings, paragraphs, states, keyParams, sectionCounts] = await Promise.all([
       sql`SELECT u.code, u.name, u.kind, u.state FROM order_utilities ou JOIN utilities u ON u.code = ou.utility WHERE ou.order_id = ${oid} ORDER BY u.code`,
       sql`SELECT p.*, (SELECT count(*) FROM parsed_tables t WHERE t.parse_id = p.parse_id)::int AS tables,
                  (SELECT count(*) FROM arr_values v WHERE v.parse_id = p.parse_id)::int AS readings
@@ -45,12 +46,13 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
                  p.page, p.quote, p.consensus, p.reviewed_by, p.reader
           FROM parameters p JOIN parameter_defs d ON d.code = p.code WHERE p.order_id = ${oid}
           ORDER BY d.grp, d.sort, p.utility NULLS LAST, p.fiscal_year, p.voice, p.page`,
+      sql`SELECT section, count(*)::int AS tables FROM section_tables WHERE order_id = ${oid} GROUP BY section`,
     ]);
-    return { o, utils, parses, tables, facts, readings, paragraphs, states, keyParams };
+    return { o, utils, parses, tables, facts, readings, paragraphs, states, keyParams, sectionCounts };
   });
   if (!res.ok) return <DbDown state={res} />;
   if (!res.data) notFound();
-  const { o, utils, parses, tables, facts, readings, paragraphs, states, keyParams } = res.data;
+  const { o, utils, parses, tables, facts, readings, paragraphs, states, keyParams, sectionCounts } = res.data;
   const url = o.url as string;
   const byTable = new Map<number | null, R[]>();
   for (const f of facts) {
@@ -105,6 +107,20 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
           <dt>Found by</dt><dd>{(o.found_by as string) ?? "—"}{o.fetched_on ? ` · fetched ${fmtDate(o.fetched_on)}` : ""}</dd>
           <dt>Source URL</dt><dd className="mono" style={{ fontSize: "0.78rem" }}>{url}</dd>
         </dl>
+
+        <h3>Sections <span className="tag">tables as printed</span></h3>
+        {sectionCounts.length ? (
+          <nav className="chips" aria-label="Sections of this order">
+            {SECTIONS.map((x) => {
+              const c = sectionCounts.find((r) => r.section === x.key);
+              return (
+                <a key={x.key} className="chip" href={`/order/${oid}/sections?s=${x.key}${fromUtility ? `&u=${encodeURIComponent(fromUtility)}` : ""}`}>
+                  {x.name} <span className="tag">{c ? (c.tables as number) : 0}</span>
+                </a>
+              );
+            })}
+          </nav>
+        ) : <p className="note">No section (power purchase, renewables, tariff schedule, wheeling, TOD) has been read from this order yet{o.pages_without_text && o.pages_without_text === o.pages ? ": it is a scanned order with no text layer" : ""}.</p>}
 
         <h3>Readers that ran <span className="tag">{parses.length}</span></h3>
         {parses.length ? (

@@ -122,3 +122,21 @@ test("embeddings must have 384 dimensions", () => {
   ok("chunks", { order_url: url, page: 1, text: "synthetic", embedding: new Array(384).fill(0.01) });
   no("chunks", { order_url: url, page: 1, text: "synthetic", embedding: [0.1, 0.2] }, /must have 384 numbers/);
 });
+
+test("section tables: columns and rows as printed, each row with its page", () => {
+  const table = {
+    order_url: url, section: "power_purchase", seq: 1, label: "Table 9-9", title: "Synthetic power purchase",
+    page: 3, pages: [3, 4], columns: ["Source", "MU"], reader_version: "test 0", is_real: false,
+    rows: [{ cells: ["Station A", "123.45"], page: 3 }, { cells: ["Station B", "-"], page: 4 }],
+  };
+  ok("section_tables", table);
+  ok("section_tables", { ...table, section: "tod", kind: "text", columns: ["Rate, as printed"], rows: [{ cells: ["Rs. 1.23 / kWh"], page: 3 }] });
+  no("section_tables", { ...table, section: "fuel" }, /section/);
+  no("section_tables", { ...table, rows: [] }, /at least one row/);
+  no("section_tables", { ...table, rows: [{ cells: ["only one"], page: 3 }] }, /1 cells for 2 columns/);
+  no("section_tables", { ...table, rows: [{ cells: ["", " "], page: 3 }] }, /empty row/);
+  no("section_tables", { ...table, rows: [{ cells: ["a", "1"], page: 0 }] }, /page/);
+  no("section_tables", { ...table, rows: [{ cells: ["a", "1"], page: 3, quote: "x" }] }, /unknown field quote/);
+  no("section_tables", { ...table, columns: [] }, /columns/);
+  no("section_tables", { ...table, reviewed_by: "someone" }, /review fields/);
+});

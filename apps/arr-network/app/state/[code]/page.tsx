@@ -3,6 +3,7 @@ import { load } from "@/lib/db.ts";
 import { stateCoverage, stateOrders } from "@/lib/queries.ts";
 import { KIND_WORDS } from "@/lib/format.ts";
 import { DbDown, Crumbs, PageLink } from "../../ui.tsx";
+import { SECTIONS } from "@/lib/sections.ts";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +25,7 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
   const res = await load(async (sql) => {
     const [state] = await sql`SELECT code, name, kind FROM states WHERE code = ${code}`;
     if (!state) return null;
-    const [commissions, utilities, orders, years] = await Promise.all([
+    const [commissions, utilities, orders, years, sectioned] = await Promise.all([
       sql`SELECT c.code, c.name, c.website, c.website_reachable, c.checked_on,
                  (SELECT string_agg(s2.name, ', ' ORDER BY s2.name) FROM commission_states x JOIN states s2 ON s2.code = x.state WHERE x.commission = c.code) AS covers
           FROM commissions c JOIN commission_states cs ON cs.commission = c.code WHERE cs.state = ${code} ORDER BY c.code`,
@@ -32,12 +33,22 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
       stateOrders(sql, code),
       sql`SELECT utility, fiscal_year, string_agg(DISTINCT voice, ',') AS voices
           FROM v_arr WHERE state = ${code} GROUP BY utility, fiscal_year ORDER BY fiscal_year`,
+      sql`SELECT o.order_id, o.arr_year, o.title,
+                 (SELECT string_agg(ou.utility, ', ' ORDER BY ou.utility) FROM order_utilities ou WHERE ou.order_id = o.order_id) AS utilities,
+                 count(*) FILTER (WHERE t.section = 'power_purchase')::int AS power_purchase,
+                 count(*) FILTER (WHERE t.section = 're_portfolio')::int AS re_portfolio,
+                 count(*) FILTER (WHERE t.section = 'tariff_schedule')::int AS tariff_schedule,
+                 count(*) FILTER (WHERE t.section = 'wheeling')::int AS wheeling,
+                 count(*) FILTER (WHERE t.section = 'tod')::int AS tod
+          FROM section_tables t JOIN orders o ON o.order_id = t.order_id
+          WHERE EXISTS (SELECT 1 FROM order_utilities ou JOIN utilities u ON u.code = ou.utility WHERE ou.order_id = o.order_id AND u.state = ${code})
+          GROUP BY o.order_id ORDER BY o.arr_year DESC NULLS LAST, o.order_id DESC`,
     ]);
-    return { state, commissions, utilities, orders, years };
+    return { state, commissions, utilities, orders, years, sectioned };
   });
   if (!res.ok) return <DbDown state={res} />;
   if (!res.data) notFound();
-  const { state, commissions, utilities, orders, years } = res.data;
+  const { state, commissions, utilities, orders, years, sectioned } = res.data;
   const fys = [...new Set(years.map((y) => y.fiscal_year as string))].sort();
   const yv = new Map(years.map((y) => [`${y.utility}|${y.fiscal_year}`, String(y.voices)]));
 
@@ -47,6 +58,30 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
       <section style={{ paddingTop: 20 }}>
         <p className="eyebrow">{state.kind === "union_territory" ? "Union territory" : "State"} · {code}</p>
         <h1 className="big">{state.name as string}</h1>
+
+        {sectioned.length ? (
+          <>
+            <h3>Power purchase, renewables, tariff schedule, wheeling & TOD <span className="tag">{sectioned.length} orders</span></h3>
+            <p className="note">Tables as printed in each order, section by section. Newest ARR year first; the number is the tables read in that section.</p>
+            <div className="tablewrap">
+              <table>
+                <thead><tr><th>ARR year</th><th>Order</th><th>Utilities</th>{SECTIONS.map((x) => <th key={x.key} className="num">{x.short}</th>)}</tr></thead>
+                <tbody>
+                  {sectioned.map((o) => (
+                    <tr key={o.order_id as number}>
+                      <td className="mono">{(o.arr_year as string) ?? "—"}</td>
+                      <td className="long"><a href={`/order/${o.order_id}/sections`}>{o.title as string}</a></td>
+                      <td className="mono">{o.utilities as string}</td>
+                      {SECTIONS.map((x) => (
+                        <td key={x.key} className="num">{(o[x.key] as number) ? <a href={`/order/${o.order_id}/sections?s=${x.key}`}>{o[x.key] as number}</a> : <span className="muted">0</span>}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        ) : null}
 
         {GROUPS.map(([key, title, test]) => {
           const rows = utilities.filter((u) => test(u.kind as string));

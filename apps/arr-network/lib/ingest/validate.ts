@@ -14,6 +14,8 @@ export const PARSE_STATUS = ["ok", "partial", "failed", "skipped"] as const;
 export const OUTCOMES = PARSE_STATUS;
 export const PARAGRAPH_KINDS = ["text", "ruling", "directive", "reasoning", "submission", "heading"] as const;
 export const SEVERITY = ["info", "warn", "block"] as const;
+export const SECTIONS = ["power_purchase", "re_portfolio", "tariff_schedule", "wheeling", "tod"] as const;
+export const SECTION_KINDS = ["table", "text"] as const;
 export const WORK_DONE_STATES = ["done", "failed", "parked"] as const;
 
 /** Fields only a person may write.  Their presence anywhere rejects the row. */
@@ -103,6 +105,12 @@ export const SPECS: Record<string, Record<string, F>> = {
   },
   findings: { raised_by: r("text"), severity: r("text", { enum: SEVERITY }), title: r("text"), detail: r("text"), order_url: o("text") },
   briefs: { written_by: r("text"), is_real: r("bool"), body: r("text"), decisions: o("object[]") },
+  section_tables: {
+    order_url: r("text"), section: r("text", { enum: SECTIONS }), seq: r("int", { min: 1 }),
+    kind: o("text", { enum: SECTION_KINDS }), label: o("text"), category: o("text"), title: r("text"),
+    fiscal_year: o("text"), page: r("int", { min: 1 }), pages: r("int[]"), columns: r("json"), rows: r("object[]"),
+    reader_version: r("text"), is_real: r("bool"), replace_order: o("bool"),
+  },
   gold_figures: {
     order_sha256: r("text"), key: r("text"), source: r("text"), page: r("int", { min: 1 }), value: r("num"),
     voice: o("text", { enum: VOICES }), utility: o("text"), what: o("text"),
@@ -214,6 +222,23 @@ export function validateRow(kind: string, row: unknown, refs: Refs): Checked {
       if (!refs.commissions.has(x.commission as string)) return fail(`commission: unknown commission ${x.commission}`);
       for (const u of x.utilities as string[]) if (!refs.utilities.has(u)) return fail(`utilities: unknown utility code ${u}`);
       break;
+    case "section_tables": {
+      const cols = x.columns as unknown;
+      if (!Array.isArray(cols) || !cols.length || cols.some((c) => typeof c !== "string")) return fail("columns: must be a non-empty list of strings");
+      const rows = x.rows as Row[];
+      if (!rows.length) return fail("rows: at least one row is required");
+      for (let i = 0; i < rows.length; i++) {
+        const rw = rows[i];
+        const cells = rw.cells as unknown;
+        if (!Array.isArray(cells) || cells.some((c) => typeof c !== "string")) return fail(`rows[${i}].cells: must be a list of strings`);
+        if (cells.length !== cols.length) return fail(`rows[${i}].cells: ${cells.length} cells for ${cols.length} columns`);
+        if (!cells.some((c) => (c as string).trim())) return fail(`rows[${i}].cells: an empty row`);
+        if (typeof rw.page !== "number" || !Number.isInteger(rw.page) || rw.page < 1) return fail(`rows[${i}].page: must be an integer >= 1`);
+        const extra = Object.keys(rw).filter((k) => k !== "cells" && k !== "page");
+        if (extra.length) return fail(`rows[${i}]: unknown field ${extra[0]}`);
+      }
+      break;
+    }
     case "facts": {
       const readings = x.readings as Row[];
       if (!readings.length) return fail("readings: at least one reading is required");

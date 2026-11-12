@@ -105,6 +105,10 @@ SHAPES: dict[str, tuple[set[str], set[str]]] = {
     "findings": ({"raised_by", "severity", "title", "detail"}, {"order_url"}),
     "briefs": ({"written_by", "is_real", "body"}, {"decisions"}),
     "gold_figures": ({"order_sha256", "key", "source", "page", "value"}, {"voice", "utility", "what"}),
+    "section_tables": (
+        {"order_url", "section", "seq", "title", "page", "pages", "columns", "rows", "reader_version", "is_real"},
+        {"kind", "label", "category", "fiscal_year", "replace_order"},
+    ),
 }
 
 REVIEW_FIELDS = {"reviewed_by", "reviewed_at", "review_note"}
