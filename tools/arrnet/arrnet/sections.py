@@ -94,6 +94,13 @@ TOD_HEAD = re.compile(r"TOD\s+(Structure|Rates|Tariff)|TIME\s+OF\s+DAY|\bToD\b",
 def classify(title: str) -> str | None:
     for name, rx in CLASSIFY:
         if rx.search(title):
+            # fixed / energy charges of generating stations, or in crore, are a power purchase cost,
+            # not a retail tariff ("Fixed cost and Energy charges of MPPMCL allocated stations")
+            if name == "tariff_schedule" and (
+                re.search(r"\bCRORE\b|\bRs\.?\s*Cr\b", title, re.I)
+                or re.search(r"(?<!CHARGING )\bSTATIONS?\b|\bPPAs?\b|GENCO", title, re.I)
+            ):
+                return "power_purchase"
             return name
     return None
 

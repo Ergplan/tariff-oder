@@ -178,3 +178,10 @@ def test_a_schedule_without_per_category_headings_and_two_line_captions(tmp_path
     tod = [t for t in tables if t.section == "tod"]
     assert tod and tod[0].category == "HTS (General) - I (11 kV)"
     assert not any("Smart meters" in " ".join(r["cells"]) for t in tables for r in t.rows)  # the schedule ended
+
+
+def test_charges_of_stations_or_in_crore_are_power_purchase():
+    assert S.classify("Fixed cost and Energy charges of MPPMCL allocated stations for FY 2099-00") == "power_purchase"
+    assert S.classify("Fixed Charges and Energy Charges as Claimed by Petitioners (Rs. Crore)") == "power_purchase"
+    assert S.classify("Approved tariff for EV charging stations") == "tariff_schedule"
+    assert S.classify("Energy charges for LT domestic consumers") == "tariff_schedule"

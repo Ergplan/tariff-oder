@@ -5,7 +5,7 @@ export const SECTIONS = [
   { key: "re_portfolio", name: "Renewable energy portfolio", short: "Renewables",
     about: "Renewable purchase / consumption obligations (RPO, RCO), compliance, the renewable sources' cost and green tariff." },
   { key: "tariff_schedule", name: "Tariff schedule in detail", short: "Tariff schedule",
-    about: "The rate schedule, category by category (LMV-1 … HV-4): fixed / demand and energy charges by slab and supply voltage, miscellaneous charges and the category-wise billing rates." },
+    about: "The retail tariff schedule, category by category as the commission names them (LMV-1 … HV-4 in Uttar Pradesh, LV-1 … HV-9 in Madhya Pradesh, DS / NDS / IAS / LTIS / HTS in Bihar and Jharkhand, RTS-1 … RTS-9 in Uttarakhand …): fixed / demand and energy charges by slab and supply voltage, miscellaneous charges and the category-wise billing rates." },
   { key: "wheeling", name: "Wheeling, transmission & open access", short: "Wheeling & OA",
     about: "Wheeling and retail supply split, wheeling charges, transmission charges, voltage-wise losses and cost of supply, cross-subsidy and additional surcharges." },
   { key: "tod", name: "Time of day (TOD)", short: "TOD",
