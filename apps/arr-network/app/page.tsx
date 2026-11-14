@@ -57,10 +57,19 @@ export default async function Home() {
              (SELECT count(*) FROM commissions) AS commissions,
              (SELECT count(DISTINCT reader) FROM parses) AS readers,
              (SELECT count(*) FROM paragraphs WHERE kind IN ('ruling', 'directive', 'reasoning', 'submission')) AS key_paragraphs`;
-    return { states, totals };
+    const tariffs = await sql`
+      SELECT u.state, s.name,
+             count(DISTINCT t.order_id)::int AS orders,
+             count(*) FILTER (WHERE t.section = 'tariff_schedule')::int AS tariff_tables,
+             count(*)::int AS tables
+      FROM section_tables t
+      JOIN LATERAL (SELECT ou.utility FROM order_utilities ou WHERE ou.order_id = t.order_id LIMIT 1) x ON true
+      JOIN utilities u ON u.code = x.utility JOIN states s ON s.code = u.state
+      GROUP BY u.state, s.name ORDER BY s.name`;
+    return { states, totals, tariffs };
   });
   if (!res.ok) return <DbDown state={res} />;
-  const { states, totals } = res.data;
+  const { states, totals, tariffs } = res.data;
   const by = new Map(states.map((s) => [s.code, s]));
   const [, , vw, vh] = GEO.viewBox.split(" ").map(Number);
 
@@ -98,6 +107,20 @@ export default async function Home() {
         </div>
         <p className="note">Boundaries: {GEO.source} Simplified ({GEO.simplified}).</p>
       </section>
+
+      {tariffs.length ? (
+        <section aria-labelledby="tariff-h">
+          <h2 id="tariff-h">Tariff schedules, power purchase, renewables, wheeling &amp; TOD</h2>
+          <p className="note">The tables of each order as printed, section by section, for {tariffs.length} states. Choose a state, then an order.</p>
+          <div className="chips">
+            {tariffs.map((t) => (
+              <a key={t.state as string} className="chip" href={`/state/${t.state}#sections`}>
+                {t.name as string} <span className="tag">{t.orders as number} orders · {t.tariff_tables as number} tariff tables</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section aria-labelledby="list-h">
         <h2 id="list-h">All states and union territories</h2>

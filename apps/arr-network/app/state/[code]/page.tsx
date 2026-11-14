@@ -61,7 +61,7 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
 
         {sectioned.length ? (
           <>
-            <h3>Power purchase, renewables, tariff schedule, wheeling & TOD <span className="tag">{sectioned.length} orders</span></h3>
+            <h3 id="sections">Power purchase, renewables, tariff schedule, wheeling & TOD <span className="tag">{sectioned.length} orders</span></h3>
             <p className="note">Tables as printed in each order, section by section. Newest ARR year first; the number is the tables read in that section.</p>
             <div className="tablewrap">
               <table>
