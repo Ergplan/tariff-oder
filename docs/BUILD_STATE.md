@@ -1005,6 +1005,71 @@ open-access view.
   petition, a true-up petition, a licensee, a draft, the readings board and the desk menu.  `next lint` remains broken
   under Next 16 (pre-existing); the web gate is `tsc --noEmit`, clean.
 
+  **Increment 160 (2026-11-13/14): tariff sections for every state whose orders are reachable — 19 states live; Section Reader 3.**
+  - **Directions (operator):** "please add tariff details for 8 states", then "add tariff details for remaining states".
+  - **States read in the first round (orders already in the manifest):** Madhya Pradesh, Bihar, Jharkhand,
+    Maharashtra, Himachal Pradesh, Odisha, Uttarakhand, Chhattisgarh (plus Uttar Pradesh re-read), then Goa and the
+    UTs (JERC, 14 orders, 409 tables) and Delhi (DERC true-up orders).
+  - **New orders found for the remaining states** (three session discovery agents; every file checked to start with
+    `%PDF`, hashed, its first pages read for commission and year, its text layer checked; added to
+    `tools/arrdb/data/orders.json` with `found_by` naming the site): Assam (AERC, APDCL FY2026-27 and FY2023-24, from
+    apdcl.org); West Bengal (the WBSEDCL **"Gist of Tariff Order 2025-26"** and CESC's **2025-26 tariff and terms**,
+    titled as published tariff documents, **not full orders** — no WBERC order PDF was reachable); Punjab (PSPCL
+    FY2025-26 and FY2023-24, docs.pspcl.in); Haryana (HERC order of 25.03.2026 for UHBVN and DHBVN, FY2026-27, from
+    uhbvn.org.in); Delhi (the latest DERC *tariff* orders, FY2021-22, BRPL / BYPL / TPDDL — everything newer on
+    derc.gov.in is a true-up order); Tamil Nadu (TNERC T.O. 6 of 2025, TNPDCL, FY2025-26); Andhra Pradesh (APERC
+    FY2026-27 and FY2025-26, apspdcl.in); Telangana (TGERC FY2026-27 and FY2025-26, tgnpdcl.com).  15 orders,
+    5,486 pages (55 without a text layer) posted to production by `run.py courier`.
+  - **Not found / blocked (not worked around):** Gujarat — gercin.org fails TLS verification (skipped, TLS never
+    disabled), Torrent Power's site returns a WAF 403; Karnataka — kerc.karnataka.gov.in and the ESCOM sites do not
+    answer from this environment, the KERC combined order of March 2025 sits behind a Cloudflare challenge on a
+    mirror (not bypassed); Kerala — KSERC refused by policy earlier (not retried); the commission sites of AERC,
+    APERC, HERC, KERC, PSERC, RERC, TNERC, TGERC, WBERC, the North-East commissions and JKERC reset connections from
+    this environment; Punjab FY2026-27 order (PSERC 06.03.2026) and Haryana FY2025-26 order not on any reachable
+    host; Rajasthan, the North-East states, J&K not attempted beyond the commission sites.
+  - **Section Reader 3** (`tools/arrnet/arrnet/sections.py`), each change from a real order:
+    - invisible format marks (U+202D/U+202C around every word of the APERC FY2025-26 order) are stripped before any
+      pattern is applied — that order went from 0 to 64 tables;
+    - a document whose text is mostly invisible (render mode 3) is an OCR layer over scans: no tables are read from
+      it (the APERC FY2026-27 order, 462 of 466 pages, reads "4.05]" and "|APGENCO"); a note says so;
+    - a tariff sheet of ≤ 12 pages with no schedule heading is read whole (CESC);
+    - schedule headings added: "SCHEDULES OF TARIFF" (PSERC Annexure II), "ABSTRACT OF THE RETAIL SUPPLY TARIFF"
+      (TGERC Appendix A), "SCHEDULE – <CATEGORY>" (HPERC); the schedule starts at the first heading of its last run
+      (headings ≤ 15 pages apart); a body sentence naming the schedule is not its heading (short, capitals, or a
+      chapter / annexure / appendix line); the schedule's own appendix in the running head does not end it;
+    - TOD: a table with consumer-category / slab columns stays in the tariff schedule unless every row is timed;
+    - "(AFC)" / "generation projects" titles are power purchase.
+  - **Regression check against the section-reader 2 run logs** (every order of the 11 earlier commissions read
+    again locally, tables and rows per order compared): 121 orders unchanged, 35 changed — gains where a real
+    schedule is now found (HPERC orders 68 → 137, 76 → 153, 69 → 118 tables; MSEDCL 155 → 223; CSERC, JERC, Mumbai
+    licensees), and losses that were noise: the old reader had taken body sentences ("Retail Supply Tariff for
+    FY 2021-22 in accordance with …", "Schedule of Tariff alone shall form …") as schedule headings and filed
+    objection-chapter tables as tariff (HPERC 1st / 2nd APR: 168 → 141, 157 → 139 tables, now with the real
+    schedule).  One small loss kept: 2 tables of a 13-page Tata Power petition that sat under such a sentence.
+  - **Production (0 rows rejected by the API):** the new states — 20 orders, 570 tables, 5,301 rows (power purchase
+    126, renewables 43, tariff schedule 298, wheeling 65, TOD 38), 7 rows dropped by the page check.  The earlier
+    states re-read with section-reader 3: 156 orders, 5,820 tables, 59,903 rows (power purchase 1,217, renewables 576,
+    tariff schedule 2,874, wheeling 978, TOD 175), 7 rows dropped by the page check.  Production after both runs:
+    6,392 section tables, 183 orders, 41,092 pages, database 482 MB.
+  - **Live check** (Chromium, 1440 px and 390 px, every state of the home list): 19 states, no page error, no
+    horizontal overflow; tariff tables on each state's newest order with tables: Andhra Pradesh 62, Assam 31,
+    Bihar 63, Chhattisgarh 34, Delhi 12, Goa 44, Haryana 3, Himachal 64, Jharkhand 13, Madhya Pradesh 37,
+    Maharashtra 83, Odisha 10, Puducherry 58, Punjab 28, Tamil Nadu 24, Telangana 19, Uttar Pradesh 41,
+    Uttarakhand 34, West Bengal 17 (after both runs).
+  - **Known limits:** Haryana's FY2026-27 order prints only three ruled tables in its tariff chapter (read as
+    printed); the Delhi tariff orders are FY2021-22, the latest DERC tariff orders published; West Bengal has gists,
+    not orders; one reader, no second reader confirming a cell; nothing reviewed by a person.
+  - **Operations:** the container was reset during the increment (scratchpad, PDFs and virtual environments lost);
+    the PDFs were downloaded again by the courier, the environments rebuilt, and the production ingest token rotated
+    in Vercel (its earlier value had appeared in the session transcript).  The local arrnet environment lacks
+    `jsonschema`, so `test_arrnet_session_extract.py::test_packets_replies_and_provenance` fails locally (an
+    environment gap, not a code change; CI installs it).
+  - **Tests:** section reader 8 pass (new: tariff sheet, invisible marks / headings / TOD share, OCR layer, AFC);
+    arrnet 60 of 61 locally (the one above).
+  - **Next smallest task:** Karnataka, Gujarat, Rajasthan and Kerala need their orders from a network that can
+    reach the commission sites (the Mac mini can: run `courier --download` there, `deploy/macmini/`); the Mac mini
+    kit is still not run — share a folder from it (Claude desktop app → Settings → Claude Code → Remote Control).
+
   **Increment 159 (2026-11-12): Uttar Pradesh order sections — power purchase, renewables, tariff schedule, wheeling, TOD; the Mac mini kit.**
   - **Directions (operator):** "For Uttar Pradesh we need tables of Power Purchase cost, Renewable energy portfolio,
     Tariff Schedule in Detail, Wheeling Charges, TOD. All this neatly available in sections." And: "i would like to make
