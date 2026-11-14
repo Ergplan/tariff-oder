@@ -24,7 +24,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
-VERSION = "section-reader 1"
+VERSION = "section-reader 2"
 SECTIONS = ("power_purchase", "re_portfolio", "tariff_schedule", "wheeling", "tod")
 
 # the order of the tests matters: "APPC OF RENEWABLE SOURCES" is renewable, not power purchase
@@ -46,10 +46,48 @@ CLASSIFY: list[tuple[str, re.Pattern[str]]] = [
             re.I,
         ),
     ),
+    # last: a table of the retail tariff itself, where the order prints it in its body (MP, Maharashtra,
+    # Odisha ... tabulate "Approved tariff for LT domestic" rather than a separate rate schedule)
+    (
+        "tariff_schedule",
+        re.compile(
+            r"RETAIL (SUPPLY )?TARIFF|TARIFF SCHEDULE|RATE SCHEDULE|SCHEDULE OF (RETAIL )?TARIFF|APPROVED TARIFF|"
+            r"TARIFF (FOR|OF) (LT|HT|LV|HV|EHT|DOMESTIC|NON[- ]DOMESTIC|INDUSTRIAL|AGRICULTUR)|ENERGY CHARGES?\b|"
+            r"FIXED CHARGES?\b|DEMAND CHARGES?\b|TARIFF STRUCTURE|CATEGORY[- ]WISE (TARIFF|ABR|AVERAGE)|"
+            r"AVERAGE BILLING RATE|\bABR\b",
+            re.I,
+        ),
+    ),
 ]  # fmt: skip
-TABLE_NO = re.compile(r"(?i)\btable\s*(?:no\.?\s*)?(\d{1,3}(?:\s*[-.–]\s*\d{1,3})+)\s*[:.\-–]?")
+TABLE_NO = re.compile(r"(?i)\btable\s*(?:no\.?\s*)?[-–:]?\s*(\d{1,3}(?:\s*[-.–]\s*\d{1,3})*)\s*[:.\-–]?")
+# a caption printed above a table: 'Table 4.52: Aggregate Revenue Requirement ...' at the start of a line
+CAPTION = re.compile(r"^\s*table\s*(?:no\.?\s*)?[-–:]?\s*(\d{1,3}(?:\s*[-.–]\s*\d{1,3})*)\s*[:.\-–]?\s*(.*)$", re.I)
 NUM = re.compile(r"^\(?[-–]?\s*[\d,]*\d(?:\.\d+)?\s*\)?\s*%?\*?$")
-RATE_SCHEDULE = re.compile(r"RATE\s+SCHEDULE\s+((?:LMV|HV)\s*[-–]?\s*\d+[A-Z]?)\s*[:\-–]?\s*([^\n]*)", re.I)
+RATE_SCHEDULE = re.compile(
+    r"(?:RATE|TARIFF)\s+SCHEDULE\s*[-–:]?\s*((?:LMV|HV|LV)\s*[-–]?\s*\d+(?:\.\d+)?[A-Z]?)\s*[:\-–]?\s*([^\n]*)", re.I
+)
+# the heading that opens a whole schedule, in the forms the commissions print it ("Chapter 14: TARIFF
+# SCHEDULE", "Annexure 1: Rate Schedule Effective from 01.04.2026", "Appendix-1 / TARIFF SCHEDULE",
+# "RETAIL SUPPLY TARIFF EFFECTIVE FROM 1st APRIL, 2023", "TARIFF SCHEDULE FOR FY 2025-26")
+SCHEDULE_START = re.compile(
+    r"^\s*(?:(?:chapter|annexure|appendix|schedule)\s*[-–]?\s*[\dIVX]+[A-Z]?\s*[:.\-–]?\s*|\d+(?:\.\d+)*\.?\s+)*"
+    r"(?:(?:TARIFF|RATE)\s+SCHEDULE\b|RETAIL\s+SUPPLY\s+TARIFF\s+(?:EFFECTIVE|FOR|SCHEDULE)|SCHEDULE\s+OF\s+(?:RETAIL\s+)?TARIFF)",
+    re.I,
+)
+# a heading inside a schedule that names the category the next tables belong to
+CATEGORY_LINE = re.compile(
+    r"^\s*(?:\(?\d+(?:\.\d+)*\)?\.?\s+|[A-Z]\.\s+|PART\s*[-–]?\s*[A-Z]\s*[:\-–]\s*)?"
+    r"((?:RTS|LMV|LV|LT|HT|HV|EHT|EHV|DS|NDS|HTS|HTSS|HTIS|LTIS|IAS|SS|MES|PWW|KJ|AG|BPL)\b[^\n]{0,80}"
+    r"|[A-Z][A-Z &/()\-–,.']{4,70}"
+    r"|[A-Z][A-Za-z &/,\-–]{3,60}\([A-Z]{2,6}(?:[-–/ ][A-Za-z0-9]+)?\)[^\n.]{0,40})\s*:?\s*$"
+)
+# a capitals-only heading is a category only when it names a class of consumer or supply
+CATEGORY_WORDS = re.compile(
+    r"DOMESTIC|COMMERCIAL|INDUSTR|AGRICULT|IRRIGATION|PUMP|PUBLIC|STREET|LIGHT|WATER|RAILWAY|TRACTION|METRO|"
+    r"TEMPORARY|BULK|SUPPLY|SERVICE|INSTITUTION|HOSPITAL|EDUCATION|VEHICLE|CHARGING|GENERAL|MILITARY|SCHEDULE|"
+    r"CONSUMER|TENSION|VOLTAGE|KUTIR|BPL|HOUSING|COLONY|NON[- ]?DOMESTIC|SEASONAL|CAPTIVE|OPEN ACCESS|NET MET",
+    re.I,
+)
 TOD_HEAD = re.compile(r"TOD\s+(Structure|Rates|Tariff)|TIME\s+OF\s+DAY|\bToD\b", re.I)
 
 
@@ -118,6 +156,24 @@ def table_index(pages: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 continue
             seen.add(key)
             out.append({"label": label, "title": title, "page": int(pm.group(1))})
+    # captions printed above the tables themselves: the only index of an order with no list of
+    # tables, and a complement to one that omits some
+    listed = {x["label"] for x in out}
+    for p in pages:
+        if not p.get("has_text_layer") or is_contents(p["text"]):
+            continue
+        lines = [ln for ln in p["text"].splitlines() if ln.strip()]
+        for i, ln in enumerate(lines):
+            m = CAPTION.match(ln)
+            if not m:
+                continue
+            label = f"Table {_norm_label(m.group(1))}"
+            # 'Table – 25' alone on its line: the title is the next line
+            title = _ws(m.group(2) or (lines[i + 1] if i + 1 < len(lines) else "")).strip(" .:-–")
+            if label in listed or re.search(r"\.{4,}", title) or len(title) < 6:
+                continue
+            listed.add(label)
+            out.append({"label": label, "title": title[:200], "page": p["page"]})
     return out
 
 
@@ -302,31 +358,55 @@ def _leaves(hcells: list[tuple[str, Any]]) -> list[tuple[float, float]]:
 # ------------------------------------------------------------------ reading
 
 
+_CACHE: dict[tuple[int, str, int], Any] = {}
+
+
+def _blocks(doc: Any, pno: int) -> list[Any]:
+    """A page's text blocks, read once per document (the reader asks for them many times)."""
+    key = (id(doc), "blocks", pno)
+    if key not in _CACHE:
+        _CACHE[key] = doc[pno - 1].get_text("blocks")
+    return _CACHE[key]
+
+
 def _find_label(doc: Any, label: str, near: int, span: int = 3) -> tuple[int, float] | None:
     """(page, y of the label) for 'Table 6-21' on the page nearest to ``near``."""
     num = label.split(" ", 1)[1]
-    rx = re.compile(r"(?i)table\s*(?:no\.?\s*)?" + r"\s*[-.–]\s*".join(re.escape(x) for x in num.split("-")) + r"\b")
+    rx = re.compile(
+        r"(?i)table\s*(?:no\.?\s*)?[-–:]?\s*"
+        + r"\s*[-.–]\s*".join(re.escape(x) for x in num.split("-"))
+        + r"(?![\d.]\d)\b"
+    )
     for d in sorted(range(-span, span + 1), key=abs):
         pno = near + d
         if not 1 <= pno <= doc.page_count:
             continue
-        page = doc[pno - 1]
-        for b in page.get_text("blocks"):
+        for b in _blocks(doc, pno):
             if rx.search(_ws(b[4])) and not re.search(r"\.{4,}", b[4]):
+                return pno, b[1]
+    # the list of tables may print page numbers offset from the file's (front matter numbered apart):
+    # the first caption that opens a block with this number, anywhere after the contents
+    start = re.compile(r"^\s*" + rx.pattern.removeprefix("(?i)"), re.I)
+    for pno in range(1, doc.page_count + 1):
+        for b in _blocks(doc, pno):
+            if start.search(str(b[4])) and not re.search(r"\.{4,}", b[4]):
                 return pno, b[1]
     return None
 
 
 def _tables_on(doc: Any, pno: int) -> list[Any]:
     try:
-        return list(doc[pno - 1].find_tables().tables)
+        key = (id(doc), "tables", pno)
+        if key not in _CACHE:
+            _CACHE[key] = list(doc[pno - 1].find_tables().tables)
+        return _CACHE[key]
     except Exception:  # a page PyMuPDF cannot analyse has no table for us
         return []
 
 
 def _starts_new_table(doc: Any, pno: int, y_top: float) -> bool:
     """Is there a 'Table x-y' or 'RATE SCHEDULE' heading above y_top on page pno?"""
-    for b in doc[pno - 1].get_text("blocks"):
+    for b in _blocks(doc, pno):
         if b[3] <= y_top + 1 and (TABLE_NO.search(_ws(b[4])) or RATE_SCHEDULE.search(b[4])):
             return True
     return False
@@ -471,6 +551,81 @@ def _title_above(blocks: list[Any], y_top: float, fallback: str) -> str:
     return fallback
 
 
+def _schedule_region(doc: Any) -> tuple[int, int, str] | None:
+    """(first page, last page, heading) of the order's schedule: its last opening heading (earlier
+    mentions are in the body), to the next unrelated chapter / annexure or at most 70 pages."""
+    start = None
+    for i in range(doc.page_count):
+        for ln in [_ws(x) for x in doc[i].get_text().splitlines()[:12]]:
+            if ln and len(ln) < 140 and SCHEDULE_START.search(ln) and not re.search(r"\.{4,}", ln):
+                start = (i + 1, ln)
+                break
+    if not start:
+        return None
+    first, heading = start
+    last = min(doc.page_count, first + 70)
+    for p in range(first + 1, last + 1):
+        for ln in [_ws(x) for x in doc[p - 1].get_text().splitlines()[:14]]:
+            if re.match(r"^(chapter|annexure|appendix)\b", ln, re.I) and not re.search(
+                r"tariff|rate|schedule|condition|charges|supply", ln, re.I
+            ):
+                return first, p - 1, heading
+    return first, last, heading
+
+
+def _category_above(doc: Any, region: tuple[int, int], p: int, y: float) -> str | None:
+    """The nearest category heading printed before (page p, y) inside the schedule region."""
+    for q in range(p, region[0] - 1, -1):
+        blocks = [b for b in _blocks(doc, q) if q < p or b[3] <= y + 1]
+        for b in sorted(blocks, key=lambda b: -b[1]):
+            for ln in reversed([_ws(x) for x in str(b[4]).splitlines() if _ws(x)]):
+                m = CATEGORY_LINE.match(ln)
+                if not m or re.search(r"Rs\.|\d{3,}|ANNEXURE|^PAGE\b|ORDER FOR|COMMISSION", ln, re.I):
+                    continue
+                cat = _ws(m.group(1)).rstrip(":")
+                if cat.endswith(".") or len(cat.split()) > 12:  # a sentence, not a heading
+                    continue
+                bracket = re.search(r"\([A-Z]{2,6}(?:[-–/ ][A-Za-z0-9]+)?\)", cat)
+                if bracket:  # "Low Tension Industrial Service (LTIS): AC, 50 Cycles ..." -> up to its code
+                    cat = cat[: bracket.end()]
+                coded = re.match(
+                    r"(RTS|LMV|LV|LT|HT|HV|EHT|EHV|DS|NDS|HTS|HTSS|HTIS|LTIS|IAS|SS|MES|PWW|KJ|AG|BPL)\b", cat
+                )
+                if coded or CATEGORY_WORDS.search(cat):
+                    return cat[:80]
+    return None
+
+
+def read_schedule_region(doc: Any) -> tuple[list[SectionTable], list[str]]:
+    """Where the schedule has no per-category headings this reader knows: every ruled table between
+    the schedule's opening heading and its end, under the nearest category heading above it."""
+    region = _schedule_region(doc)
+    if not region:
+        return [], ["no tariff / rate schedule heading in the order"]
+    first, last, heading = region
+    out: list[SectionTable] = []
+    for p in range(first, last + 1):
+        blocks = _blocks(doc, p)
+        for t in _tables_on(doc, p):
+            cols, body, _ = grid(t)
+            if not body:
+                continue
+            cols, rws = drop_empty(cols, join_wrapped([{"cells": r, "page": p} for r in body]))
+            body = [r["cells"] for r in rws]
+            cells = " ".join(" ".join(r) for r in body) + " " + " ".join(cols)
+            slots = len(re.findall(r"\d{1,2}[:.]\d{2}\s*(?:hrs|hours|a\.?m\.?|p\.?m\.?)", cells, re.I))
+            section = "tod" if slots >= 2 else "tariff_schedule"
+            cat = _category_above(doc, (first, last), p, t.bbox[1])
+            out.append(
+                SectionTable(
+                    section=section, seq=0, label=cat, title=_title_above(blocks, t.bbox[1], cat or heading), page=p,
+                    pages=[p], columns=cols, rows=rws, category=cat,
+                )
+            )  # fmt: skip
+    notes = [] if out else [f"schedule pp. {first}-{last} ({heading[:60]}): no ruled table"]
+    return out, notes
+
+
 def read_rate_schedule(doc: Any) -> tuple[list[SectionTable], list[str]]:
     """Each part of the rate schedule: its ruled tables, a table of time slots going to the
     time-of-day section; a category with no ruled table keeps its 'RATE' text as printed."""
@@ -478,14 +633,14 @@ def read_rate_schedule(doc: Any) -> tuple[list[SectionTable], list[str]]:
     out: list[SectionTable] = []
     notes: list[str] = []
     if not parts:
-        return out, ["no 'RATE SCHEDULE' heading in the order"]
+        return read_schedule_region(doc)
     for k, (pno, cat, heading) in enumerate(parts):
         nxt = parts[k + 1] if k + 1 < len(parts) else None
         end = nxt[0] if nxt else min(pno + 3, doc.page_count)
         found = 0
         for p in range(pno, end + 1):
             page = doc[p - 1]
-            blocks = page.get_text("blocks")
+            blocks = _blocks(doc, p)
             y_start = _heading_y(page, heading) if p == pno else 0.0
             y_stop = _heading_y(page, nxt[2]) if nxt and p == nxt[0] else page.rect.height + 1
             if nxt and p == nxt[0] and y_stop == 0.0:
@@ -500,7 +655,7 @@ def read_rate_schedule(doc: Any) -> tuple[list[SectionTable], list[str]]:
                 body = [r["cells"] for r in rws]
                 cells = " ".join(" ".join(r) for r in body) + " " + " ".join(cols)
                 above = " ".join(_ws(b[4]) for b in blocks if t.bbox[1] - 60 <= b[3] <= t.bbox[1] + 1)
-                slots = len(re.findall(r"\d{1,2}[:.]\d{2}\s*(?:hrs|hours)", cells, re.I))
+                slots = len(re.findall(r"\d{1,2}[:.]\d{2}\s*(?:hrs|hours|a\.?m\.?|p\.?m\.?)", cells, re.I))
                 section = "tod" if slots >= 2 or (TOD_HEAD.search(above) and slots) else "tariff_schedule"
                 found += 1
                 out.append(
@@ -548,6 +703,8 @@ def read(pdf: str | Path, pages: list[dict[str, Any]]) -> tuple[list[SectionTabl
         numbered, n1 = read_numbered(doc, pages)
         sched, n2 = read_rate_schedule(doc)
     finally:
+        for k in [k for k in _CACHE if k[0] == id(doc)]:
+            del _CACHE[k]
         doc.close()
     tables = numbered + sched
     for name in SECTIONS:

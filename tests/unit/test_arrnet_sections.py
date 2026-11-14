@@ -133,3 +133,48 @@ def test_check_drops_a_row_whose_number_is_not_on_its_page(order):
     t.rows.append({"cells": ["HV-2 (invented)", "9.99"], "page": 4})
     ck = S.check(tables, pages)
     assert ck["rows_failed"] == 1 and all(r["cells"][1] != "9.99" for r in t.rows)
+
+
+def test_a_schedule_without_per_category_headings_and_two_line_captions(tmp_path):
+    """Another commission's layout: no list of tables, a caption 'Table – 7' with its title on the next
+    line, and a 'Chapter 9: TARIFF SCHEDULE' whose categories are headings such as 'Domestic Service (DS):'."""
+    doc = pymupdf.open()
+    p1 = doc.new_page()
+    p1.insert_text((72, 60), "Table - 7", fontsize=10)
+    p1.insert_text((72, 75), "Cross Subsidy Surcharge for FY 2099-00", fontsize=10)
+    ruled(p1, 60, 90, [200, 150], [["Category", "CSS (Rs./kWh)"], ["HT Industrial", "1.11"]])
+    p2 = doc.new_page()
+    p2.insert_text((72, 60), "Chapter 9: TARIFF SCHEDULE", fontsize=11)
+    p2.insert_text((72, 90), "Domestic Service (DS): AC, 50 Cycles, Single Phase", fontsize=9)
+    y = ruled(
+        p2,
+        60,
+        100,
+        [150, 150, 150],
+        [["Slab", "Fixed Charge", "Energy Charge"], ["0-100 units", "Rs. 75 / month", "Rs. 6.30 / kWh"]],
+    )
+    p2.insert_text((72, y + 25), "HTS (General) - I (11 kV)", fontsize=9)
+    ruled(
+        p2,
+        60,
+        y + 35,
+        [200, 150],
+        [["Time", "Rebate / surcharge"], ["05:00 am - 09:00 am", "(-) 20%"], ["05:00 pm - 11:00 pm", "(+) 20%"]],
+    )
+    p3 = doc.new_page()
+    p3.insert_text((72, 60), "Chapter 10: DIRECTIVES", fontsize=11)
+    ruled(p3, 60, 80, [200, 150], [["Directive", "Due by"], ["Smart meters 100%", "31.03.2100"]])
+    path = tmp_path / "other.pdf"
+    doc.save(str(path))
+    pages = [{"page": i + 1, "text": pg.get_text(), "has_text_layer": True} for i, pg in enumerate(doc)]
+
+    tables, _ = S.read(path, pages)
+    assert S.check(tables, pages)["rows_failed"] == 0
+    css = [t for t in tables if t.label == "Table 7"]
+    assert css and css[0].section == "wheeling" and css[0].title == "Cross Subsidy Surcharge for FY 2099-00"
+    ds = [t for t in tables if t.section == "tariff_schedule"]
+    assert len(ds) == 1 and ds[0].category == "Domestic Service (DS)"
+    assert ds[0].rows[0]["cells"] == ["0-100 units", "Rs. 75 / month", "Rs. 6.30 / kWh"]
+    tod = [t for t in tables if t.section == "tod"]
+    assert tod and tod[0].category == "HTS (General) - I (11 kV)"
+    assert not any("Smart meters" in " ".join(r["cells"]) for t in tables for r in t.rows)  # the schedule ended

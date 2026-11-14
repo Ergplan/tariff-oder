@@ -52,7 +52,7 @@ Fields not listed are not accepted. `?` marks an optional field.
 | `findings` | `{raised_by, severity, title, detail, order_url?}` |
 | `briefs` | `{written_by, is_real, body, decisions?: [..]}` |
 | `gold_figures` | `{order_sha256, key, source, page, value, voice?, utility?, what?}`. Upsert on its key. |
-| `section_tables` | `{order_url, section, seq, kind?, label?, category?, title, fiscal_year?, page, pages: [..], columns: [..], rows: [{cells: [..], page}], reader_version, is_real, replace_order?}`. `section` is one of `power_purchase`, `re_portfolio`, `tariff_schedule`, `wheeling`, `tod`; `kind` is `table` or `text`. Every row has as many cells as there are columns, and a page. Upsert on `(order, section, seq, reader_version)`; a batch whose first row has `"replace_order": true` first deletes that order's tables of that reader version. |
+| `section_tables` | `{order_url, section, seq, kind?, label?, category?, title, fiscal_year?, page, pages: [..], columns: [..], rows: [{cells: [..], page}], reader_version, is_real, replace_order?}`. `section` is one of `power_purchase`, `re_portfolio`, `tariff_schedule`, `wheeling`, `tod`; `kind` is `table` or `text`. Every row has as many cells as there are columns, and a page. Upsert on `(order, section, seq, reader_version)`; a batch whose first row has `"replace_order": true` first deletes all that order's section tables (a new reading supersedes every earlier one). |
 
 ## Validation the API enforces
 

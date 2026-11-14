@@ -294,12 +294,11 @@ const writers: Record<string, (tx: Tx, x: Row, L: Lookup) => Promise<void>> = {
 async function replaceFirst(tx: Tx, kind: string, first: Row | undefined, rows: Row[], L: Lookup) {
   if (!first || !rows.length) return;
   if (kind === "section_tables" && first.replace_order === true) {
-    // a new reading of an order's sections replaces that reader version's earlier one, whole
-    const keys = new Set(rows.map((r) => `${r.order_url}\u0000${r.reader_version}`));
-    for (const k of keys) {
-      const [url, version] = k.split("\u0000");
+    // a new reading of an order's sections replaces every earlier one, whole (one reader writes
+    // sections; a new version of it supersedes the old, never sits beside it)
+    for (const url of new Set(rows.map((r) => r.order_url as string))) {
       const id = await L.order(url).catch(() => null);
-      if (id !== null) await tx`DELETE FROM section_tables WHERE order_id = ${id} AND reader_version = ${version}`;
+      if (id !== null) await tx`DELETE FROM section_tables WHERE order_id = ${id}`;
     }
   }
   if (kind === "facts" && first.replace_order === true) {
