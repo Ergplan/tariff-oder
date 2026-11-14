@@ -24,7 +24,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
-VERSION = "section-reader 2"
+VERSION = "section-reader 3"
 SECTIONS = ("power_purchase", "re_portfolio", "tariff_schedule", "wheeling", "tod")
 
 # the order of the tests matters: "APPC OF RENEWABLE SOURCES" is renewable, not power purchase
@@ -70,8 +70,10 @@ RATE_SCHEDULE = re.compile(
 # SCHEDULE", "Annexure 1: Rate Schedule Effective from 01.04.2026", "Appendix-1 / TARIFF SCHEDULE",
 # "RETAIL SUPPLY TARIFF EFFECTIVE FROM 1st APRIL, 2023", "TARIFF SCHEDULE FOR FY 2025-26")
 SCHEDULE_START = re.compile(
-    r"^\s*(?:(?:chapter|annexure|appendix|schedule)\s*[-–]?\s*[\dIVX]+[A-Z]?\s*[:.\-–]?\s*|\d+(?:\.\d+)*\.?\s+)*"
-    r"(?:(?:TARIFF|RATE)\s+SCHEDULE\b|RETAIL\s+SUPPLY\s+TARIFF\s+(?:EFFECTIVE|FOR|SCHEDULE)|SCHEDULE\s+OF\s+(?:RETAIL\s+)?TARIFF)",
+    r"^\s*(?:(?:chapter|annexure|appendix|schedule)\s*[-–]?\s*(?:[\dIVX]+[A-Z]?|[A-Z])\s*[:.\-–]?\s*|\d+(?:\.\d+)*\.?\s+)*"
+    r"(?:(?:TARIFF|RATE)\s+SCHEDULE\b|RETAIL\s+SUPPLY\s+TARIFF\s+(?:EFFECTIVE|FOR|SCHEDULE)"
+    r"|SCHEDULES?\s+OF\s+(?:RETAIL\s+)?TARIFF|ABSTRACT\s+OF\s+(?:THE\s+)?RETAIL\s+SUPPLY\s+TARIFF"
+    r"|SCHEDULE\s*[-–]\s*[A-Z][A-Z-]+\s+[A-Z])",  # HPERC: "SCHEDULE – COMMERCIAL SUPPLY (CS)", one per category
     re.I,
 )
 # a heading inside a schedule that names the category the next tables belong to
@@ -98,7 +100,11 @@ def classify(title: str) -> str | None:
             # not a retail tariff ("Fixed cost and Energy charges of MPPMCL allocated stations")
             if name == "tariff_schedule" and (
                 re.search(r"\bCRORE\b|\bRs\.?\s*Cr\b", title, re.I)
-                or re.search(r"(?<!CHARGING )\bSTATIONS?\b|\bPPAs?\b|GENCO", title, re.I)
+                or re.search(
+                    r"(?<!CHARGING )\bSTATIONS?\b|\bPPAs?\b|GENCO|GENERATI(?:ON|NG)\s+(?:PROJECTS?|PLANTS?)|\(AFC\)",
+                    title,
+                    re.I,
+                )
             ):
                 return "power_purchase"
             return name
@@ -124,8 +130,21 @@ class SectionTable:
         return asdict(self)
 
 
+# invisible format marks some PDF writers wrap every word in (U+202D … U+202C in an APERC order):
+# not text, and they split headings and figures for every pattern below
+INVISIBLE = re.compile("[\u200b-\u200f\u202a-\u202e\u2060-\u2069\ufeff]")
+
+
 def _ws(s: Any) -> str:
-    return re.sub(r"\s+", " ", str(s or "")).strip()
+    return re.sub(r"\s+", " ", INVISIBLE.sub("", str(s or ""))).strip()
+
+
+def _text(page: Any, kind: str = "text") -> Any:
+    """``page.get_text(kind)`` without the invisible format marks (text, or the text of each block)."""
+    r = page.get_text(kind)
+    if isinstance(r, str):
+        return INVISIBLE.sub("", r)
+    return [(*b[:4], INVISIBLE.sub("", b[4]), *b[5:]) for b in r]
 
 
 def _norm_label(s: str) -> str:
@@ -372,7 +391,7 @@ def _blocks(doc: Any, pno: int) -> list[Any]:
     """A page's text blocks, read once per document (the reader asks for them many times)."""
     key = (id(doc), "blocks", pno)
     if key not in _CACHE:
-        _CACHE[key] = doc[pno - 1].get_text("blocks")
+        _CACHE[key] = _text(doc[pno - 1], "blocks")
     return _CACHE[key]
 
 
@@ -498,7 +517,7 @@ def _rate_schedule_parts(doc: Any) -> list[tuple[int, str, str]]:
     out: list[tuple[int, str, str]] = []
     first = None
     for i in range(doc.page_count):
-        t = doc[i].get_text()
+        t = _text(doc[i])
         for m in RATE_SCHEDULE.finditer(t):
             cat = re.sub(r"\s*[-–]\s*|\s+", "-", m.group(1).upper()).replace("--", "-")
             out.append((i + 1, cat, _ws(m.group(0))[:160]))
@@ -513,7 +532,7 @@ def _rate_schedule_parts(doc: Any) -> list[tuple[int, str, str]]:
     out = max(runs, key=len)
     last_cat = out[-1][0]
     for i in range(last_cat, min(doc.page_count, last_cat + 25)):
-        t = doc[i].get_text()
+        t = _text(doc[i])
         for m in LETTERED.finditer(t):
             name = _ws(m.group(2)).capitalize()
             if not re.search(
@@ -531,7 +550,7 @@ def _rate_schedule_parts(doc: Any) -> list[tuple[int, str, str]]:
 
 def _heading_y(page: Any, heading: str) -> float:
     key = _ws(heading)[:40].lower()
-    for b in page.get_text("blocks"):
+    for b in _text(page, "blocks"):
         if key and key in _ws(b[4]).lower():
             return b[1]
     return 0.0
@@ -558,26 +577,58 @@ def _title_above(blocks: list[Any], y_top: float, fallback: str) -> str:
     return fallback
 
 
+SCHEDULE_GAP = 15  # pages between two headings of one schedule
+
+
 def _schedule_region(doc: Any) -> tuple[int, int, str] | None:
-    """(first page, last page, heading) of the order's schedule: its last opening heading (earlier
-    mentions are in the body), to the next unrelated chapter / annexure or at most 70 pages."""
-    start = None
+    """(first page, last page, heading) of the order's schedule: the first of its last run of
+    opening headings (earlier mentions are in the body; a schedule printed per category, or with
+    the heading as its running head, repeats it page after page), to the next unrelated chapter /
+    annexure or at most 70 pages."""
+    starts: list[tuple[int, str]] = []
     for i in range(doc.page_count):
-        for ln in [_ws(x) for x in doc[i].get_text().splitlines()[:12]]:
-            if ln and len(ln) < 140 and SCHEDULE_START.search(ln) and not re.search(r"\.{4,}", ln):
-                start = (i + 1, ln)
+        for ln in [_ws(x) for x in _text(doc[i]).splitlines()[:12]]:
+            if ln and len(ln) < 140 and SCHEDULE_START.search(ln) and not re.search(r"\.{4,}", ln) and _headline(ln):
+                starts.append((i + 1, ln))
                 break
-    if not start:
+    if not starts:
         return None
-    first, heading = start
+    k = len(starts) - 1
+    while k > 0 and starts[k][0] - starts[k - 1][0] <= SCHEDULE_GAP:
+        k -= 1
+    first, heading = starts[k]
+    run = {p for p, _ in starts[k:]}  # a page that opens a part of this schedule does not end it
+    # the schedule's own appendix / annexure, repeated in its running head
+    own = {_part_tag(ln) for ln in [_ws(x) for x in _text(doc[first - 1]).splitlines()[:14]]} - {None}
     last = min(doc.page_count, first + 70)
     for p in range(first + 1, last + 1):
-        for ln in [_ws(x) for x in doc[p - 1].get_text().splitlines()[:14]]:
-            if re.match(r"^(chapter|annexure|appendix)\b", ln, re.I) and not re.search(
-                r"tariff|rate|schedule|condition|charges|supply", ln, re.I
+        if p in run:
+            continue
+        for ln in [_ws(x) for x in _text(doc[p - 1]).splitlines()[:14]]:
+            if (
+                re.match(r"^(chapter|annexure|appendix)\b", ln, re.I)
+                and not re.search(r"tariff|rate|schedule|condition|charges|supply", ln, re.I)
+                and _part_tag(ln) not in own
             ):
                 return first, p - 1, heading
     return first, last, heading
+
+
+def _part_tag(ln: str) -> str | None:
+    m = re.match(r"^\s*(chapter|annexure|appendix)\s*[-–]?\s*([\dIVX]+[A-Z]?|[A-Z])\b", ln, re.I)
+    return f"{m.group(1)} {m.group(2)}".upper() if m else None
+
+
+def _headline(ln: str) -> bool:
+    """A heading, not a sentence of the body that names the schedule ("Schedule of Tariff to the
+    residential units registered under the Tourism Policy of Govt."): short, in capitals, or opening
+    a chapter / annexure / appendix ("Annexure 6: Tariff Schedule for 5th MYT Control Period – …")."""
+    letters = [c for c in ln if c.isalpha()]
+    return (
+        len(ln) <= 60
+        or (bool(letters) and sum(c.isupper() for c in letters) >= 0.8 * len(letters))
+        or bool(re.match(r"^\s*(?:\d+(?:\.\d+)*\.?\s+)?(?:chapter|annexure|appendix)\b", ln, re.I))
+    )
 
 
 def _category_above(doc: Any, region: tuple[int, int], p: int, y: float) -> str | None:
@@ -603,10 +654,33 @@ def _category_above(doc: Any, region: tuple[int, int], p: int, y: float) -> str 
     return None
 
 
+SHEET_PAGES = 12
+CONSUMER_COLS = re.compile(r"consumer|categor|slab|tariff scheme|consumption", re.I)
+SLOT = re.compile(r"\d{1,2}[:.]\d{2}\s*(?:hrs|hours|a\.?m\.?|p\.?m\.?)", re.I)
+
+
+def is_tod(cols: list[str], body: list[list[str]]) -> bool:
+    """A time-of-day table: its columns are time slots, or time slots fill a good share of its
+    rows.  A tariff table with TOD rows among its categories (CESC 2025-26) stays in the tariff schedule."""
+    if len(SLOT.findall(" ".join(cols))) >= 2:
+        return True
+    rows = [r for r in body if any(r)]
+    timed = sum(1 for r in rows if SLOT.search(" ".join(r)))
+    # a table of consumer categories and slabs is the tariff, even where most categories have a
+    # TOD variant; only one whose every row is timed is the TOD table
+    share = 1.0 if CONSUMER_COLS.search(" ".join(cols)) else 0.4
+    return timed >= 2 and timed >= share * len(rows)
+
+
 def read_schedule_region(doc: Any) -> tuple[list[SectionTable], list[str]]:
     """Where the schedule has no per-category headings this reader knows: every ruled table between
     the schedule's opening heading and its end, under the nearest category heading above it."""
     region = _schedule_region(doc)
+    if not region and doc.page_count <= SHEET_PAGES:
+        # a tariff sheet (a licensee's published schedule of a few pages): the whole document is
+        # the schedule, under its first line
+        lines = [_ws(x) for x in _text(doc[0]).splitlines() if _ws(x)]
+        region = (1, doc.page_count, (lines[0] if lines else "tariff schedule")[:140])
     if not region:
         return [], ["no tariff / rate schedule heading in the order"]
     first, last, heading = region
@@ -619,9 +693,7 @@ def read_schedule_region(doc: Any) -> tuple[list[SectionTable], list[str]]:
                 continue
             cols, rws = drop_empty(cols, join_wrapped([{"cells": r, "page": p} for r in body]))
             body = [r["cells"] for r in rws]
-            cells = " ".join(" ".join(r) for r in body) + " " + " ".join(cols)
-            slots = len(re.findall(r"\d{1,2}[:.]\d{2}\s*(?:hrs|hours|a\.?m\.?|p\.?m\.?)", cells, re.I))
-            section = "tod" if slots >= 2 else "tariff_schedule"
+            section = "tod" if is_tod(cols, body) else "tariff_schedule"
             cat = _category_above(doc, (first, last), p, t.bbox[1])
             out.append(
                 SectionTable(
@@ -662,8 +734,8 @@ def read_rate_schedule(doc: Any) -> tuple[list[SectionTable], list[str]]:
                 body = [r["cells"] for r in rws]
                 cells = " ".join(" ".join(r) for r in body) + " " + " ".join(cols)
                 above = " ".join(_ws(b[4]) for b in blocks if t.bbox[1] - 60 <= b[3] <= t.bbox[1] + 1)
-                slots = len(re.findall(r"\d{1,2}[:.]\d{2}\s*(?:hrs|hours|a\.?m\.?|p\.?m\.?)", cells, re.I))
-                section = "tod" if slots >= 2 or (TOD_HEAD.search(above) and slots) else "tariff_schedule"
+                slots = len(SLOT.findall(cells))
+                section = "tod" if is_tod(cols, body) or (TOD_HEAD.search(above) and slots) else "tariff_schedule"
                 found += 1
                 out.append(
                     SectionTable(
@@ -691,7 +763,7 @@ def _rate_text(doc: Any, start: int, end: int) -> list[dict[str, Any]]:
     out = []
     on = False
     for p in range(start, end + 1):
-        for line in doc[p - 1].get_text().splitlines():
+        for line in _text(doc[p - 1]).splitlines():
             s = _ws(line)
             if re.match(r"^\d+\.\s*RATE\b|^RATE\s*:", s, re.I):
                 on = True
@@ -702,10 +774,25 @@ def _rate_text(doc: Any, start: int, end: int) -> list[dict[str, Any]]:
     return out
 
 
+def ocr_layer(doc: Any) -> bool:
+    """A scan with an OCR layer: most pages' text is invisible (render mode 3) over a picture.  Its
+    words are a recogniser's guesses (an APERC order reads "4.05]" and "|APGENCO"), not the
+    document's text, so no table is read from it."""
+    n = 0
+    for page in doc:
+        kinds = [s["type"] for s in page.get_texttrace()]
+        n += bool(kinds) and kinds.count(3) > len(kinds) / 2
+    return n > doc.page_count / 2
+
+
 def read(pdf: str | Path, pages: list[dict[str, Any]]) -> tuple[list[SectionTable], list[str]]:
     import pymupdf
 
     doc = pymupdf.open(str(pdf))
+    pages = [{**p, "text": INVISIBLE.sub("", p.get("text") or "")} for p in pages]
+    if ocr_layer(doc):
+        doc.close()
+        return [], ["the text layer is OCR over scanned pages: the tables are pictures, not read"]
     try:
         numbered, n1 = read_numbered(doc, pages)
         sched, n2 = read_rate_schedule(doc)

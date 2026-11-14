@@ -185,3 +185,71 @@ def test_charges_of_stations_or_in_crore_are_power_purchase():
     assert S.classify("Fixed Charges and Energy Charges as Claimed by Petitioners (Rs. Crore)") == "power_purchase"
     assert S.classify("Approved tariff for EV charging stations") == "tariff_schedule"
     assert S.classify("Energy charges for LT domestic consumers") == "tariff_schedule"
+    assert S.classify("Annual Fixed Charges (AFC) of Generation Projects for FY 2099-00") == "power_purchase"
+
+
+def test_a_tariff_sheet_with_no_schedule_heading(tmp_path):
+    """A licensee's published tariff of a few pages (CESC-style): no schedule heading, no list of
+    tables; every ruled table is the schedule, and a table of consumer categories with TOD rows among
+    them stays in the tariff schedule (only a table whose every row is timed is TOD)."""
+    doc = pymupdf.open()
+    p1 = doc.new_page()
+    p1.insert_text((72, 60), "LOW AND MEDIUM VOLTAGE CONSUMERS", fontsize=11)
+    ruled(
+        p1,
+        60,
+        80,
+        [150, 150, 150],
+        [
+            ["Type of Consumer", "Monthly consumption", "Energy Charge P/kWh"],
+            ["Domestic", "First 25", "111"],
+            ["Domestic", "Next 35", "122"],
+            ["Commercial TOD", "06.00 hrs to 17.00 hrs", "133"],
+        ],
+    )
+    p1.insert_text((72, 250), "Time of day rates", fontsize=10)
+    ruled(
+        p1,
+        60,
+        270,
+        [150, 150, 150],
+        [["Type of Consumer", "Period", "Energy Charge P/kWh"], ["Emergency", "06.00 hrs to 17.00 hrs", "144"],
+         ["Emergency", "17.00 hrs to 23.00 hrs", "155"]],
+    )  # fmt: skip
+    path = tmp_path / "sheet.pdf"
+    doc.save(str(path))
+    pages = [{"page": 1, "text": p1.get_text(), "has_text_layer": True}]
+
+    tables, notes = S.read(path, pages)
+    assert S.check(tables, pages)["rows_failed"] == 0
+    assert [t.section for t in sorted(tables, key=lambda t: t.rows[0]["cells"][-1])] == ["tariff_schedule", "tod"]
+
+
+def test_invisible_marks_and_headings():
+    """Bidi marks around every word (an APERC order) are not text; a body sentence naming the schedule
+    is not its heading; an appendix's own running head does not end it."""
+    assert S._ws("‭RETAIL‬ ‭SUPPLY‬​") == "RETAIL SUPPLY"
+    assert S.SCHEDULE_START.search("APPENDIX A: ABSTRACT OF THE RETAIL SUPPLY TARIFF FOR FY 2099-00")
+    assert S.SCHEDULE_START.search("SCHEDULES OF TARIFF")
+    assert S.SCHEDULE_START.search("SCHEDULE – COMMERCIAL SUPPLY (CS)")
+    assert not S.SCHEDULE_START.search("Schedule I of the Act")
+    assert S._headline("Schedule of Tariff and Charges")
+    assert S._headline("11 Annexure 6: Tariff Schedule for 5th MYT Control Period – FY 2025-26 to FY 2029-30")
+    assert not S._headline("Retail Supply Tariff for FY 2021-22 in accordance with the guidelines laid down in Section")
+    assert not S._headline("Schedule of Tariff to the residential units registered under the Tourism Policy of Govt.")
+    assert S._part_tag("Appendix A") == S._part_tag("APPENDIX A: ABSTRACT") == "APPENDIX A"
+    assert S.is_tod(["Category", "Rate"], [["Domestic", "5.00"], ["Peak 18:00 hrs to 22:00 hrs", "6.00"]]) is False
+    assert S.is_tod(["Period", "Rate"], [["06:00 hrs to 18:00 hrs", "5.00"], ["18:00 hrs to 22:00 hrs", "6.00"]])
+
+
+def test_an_ocr_layer_over_scans_is_not_read(tmp_path):
+    """Invisible text (render mode 3) on most pages is a recogniser's guesses over pictures: no tables."""
+    doc = pymupdf.open()
+    for _ in range(3):
+        doc.new_page().insert_text((72, 60), "Table 1: Power purchase 4.05] |Alpha", fontsize=10, render_mode=3)
+    assert S.ocr_layer(doc)
+    path = tmp_path / "scan.pdf"
+    doc.save(str(path))
+    pages = [{"page": i + 1, "text": pg.get_text(), "has_text_layer": True} for i, pg in enumerate(doc)]
+    tables, notes = S.read(path, pages)
+    assert tables == [] and "OCR" in notes[0]

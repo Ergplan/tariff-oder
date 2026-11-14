@@ -2802,5 +2802,327 @@
   "error": null,
   "bytes": 3665495,
   "fetched_on": "2026-11-11"
+ },
+ {
+  "url": "https://www.wbsedcl.in/irj/go/km/docs/internet/new_website/pdf/Tariff_Volumn/Gist%20of%20Tariff%20Order%202025-26_28_03.pdf",
+  "commission": "WBERC",
+  "title": "Gist of WBERC Tariff Order 2025-26 (WBSEDCL) - published tariff tables, not the full order",
+  "sha256": "78894f2e2fa6f6a15f32cc2bd8697c913a468bd6adbdd1c3fe866c1b9251d9ac",
+  "licensees": [
+   "WBSEDCL"
+  ],
+  "arr_year": "FY2025-26",
+  "kind": "tariff_schedule_gist",
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "listing": "https://www.wbsedcl.in/irj/go/km/docs/internet/new_website/Tariff_Notification.html",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.wbsedcl.in/irj/go/km/docs/internet/new_website/Tariff_Notification.html); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 2130869,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.cesc.co.in/storage/uploads/tariff/Tariff%20and%20Associated%20Terms%20and%20Conditions%20of%20tariff%20for%202025-26.pdf",
+  "commission": "WBERC",
+  "title": "CESC Tariff and Associated Terms and Conditions 2025-26 - published tariff summary, not the full order",
+  "sha256": "25fbef96a886c9a428c8d3afa198df7529ba5896dff417d8871b22d8f5ef6b25",
+  "licensees": [
+   "CESC"
+  ],
+  "arr_year": "FY2025-26",
+  "kind": "tariff_schedule_summary",
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "listing": "https://www.cesc.co.in/tariff",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.cesc.co.in/tariff); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 354948,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.apdcl.org/website/docs/acts_and_rules/TariffOrderMarch26.pdf",
+  "commission": "AERC",
+  "title": "AERC Tariff Order March 6, 2026: True-up FY2024-25, APR FY2025-26, Revised ARR FY2026-27 and Tariff FY2026-27 for APDCL (Petition 20/2025)",
+  "sha256": "db6b0e319ec1b7b87e2b55b92dc630b9cc4cc12e6030e18a531ea67997e1f5e0",
+  "licensees": [
+   "APDCL"
+  ],
+  "arr_year": "FY2026-27",
+  "kind": "tariff_order",
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "listing": "https://www.apdcl.org (site search result; linked under acts_and_rules docs, page not confirmed)",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.apdcl.org (site search result; linked under acts_and_rules docs, page not confirmed)); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 3737693,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.apdcl.org/website/docs/acts_and_rules/Tariff_Order_31032023.pdf",
+  "commission": "AERC",
+  "title": "AERC Tariff Order March 29, 2023: True-up FY2021-22, APR FY2022-23, Revised ARR and Tariff FY2023-24 for APDCL (Petition 17/2022)",
+  "sha256": "dcbe038205c7b1834a7b27ae8d5fa79a7e132a6be93ce58b6b3ce0a15762e4bc",
+  "licensees": [
+   "APDCL"
+  ],
+  "arr_year": "FY2023-24",
+  "kind": "tariff_order",
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "listing": "https://www.apdcl.org (site search result)",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.apdcl.org (site search result)); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 1545036,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://docs.pspcl.in/docs/cecommercial2520250329190314390.pdf",
+  "commission": "PSERC",
+  "title": "PSPCL Tariff Order for FY 2025-26 (true-up FY2023-24, ARR FY2025-26; Petition 61 of 2024, order 28.03.2025)",
+  "sha256": "60443240e11d26a9bce915d85deec6fb6e2da5d0c01b80db9a31498ce401ce90",
+  "licensees": [
+   "PSPCL"
+  ],
+  "arr_year": "FY2025-26",
+  "kind": "tariff_order",
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "listing": "https://docs.pspcl.in (PSPCL document host; found via web search)",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://docs.pspcl.in (PSPCL document host; found via web search)); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 10418862,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://docs.pspcl.in/docs/sesalesto20230526102113186.pdf",
+  "commission": "PSERC",
+  "title": "PSPCL Tariff Order for FY 2023-24 and ARR for 3rd MYT Control Period FY2023-24 to FY2025-26",
+  "sha256": "a5b27435c3a1078c0a4ea7a5064985dab37b05dca774b41f62b714dfc5c134f8",
+  "licensees": [
+   "PSPCL"
+  ],
+  "arr_year": "FY2023-24",
+  "kind": "tariff_order",
+  "years": [
+   "FY2023-24"
+  ],
+  "decides": [],
+  "listing": "https://docs.pspcl.in (found via web search)",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://docs.pspcl.in (found via web search)); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 9307336,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://uhbvn.org.in/staticContent/documents/HERC/2026/02_APR_2025_26_01GC.pdf",
+  "commission": "HERC",
+  "title": "Commission's Order in HERC Petition 94 & 95 of 2025: True-up FY2024-25, Mid-Year Review FY2025-26 and ARR of FY2026-27, UHBVNL and DHBVNL (25.03.2026)",
+  "sha256": "799a4a6c948fb968028bde549b74287ac69b5667ac33688b5bff45a081d783a7",
+  "licensees": [
+   "UHBVN",
+   "DHBVN"
+  ],
+  "arr_year": "FY2026-27",
+  "kind": "tariff_order",
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "listing": "https://uhbvn.org.in/web/portal/herc-petition",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://uhbvn.org.in/web/portal/herc-petition); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 9422191,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.derc.gov.in/sites/default/files/BRPL%20%20FY%202021-22.pdf",
+  "commission": "DERC",
+  "title": "BSES Rajdhani Power Limited Tariff Order FY 2021-22",
+  "sha256": "f41ac059b3884f82d5ec5c4f3721630468f95aa99a5bd85171741abf11f99c9e",
+  "licensees": [
+   "BRPL"
+  ],
+  "arr_year": "FY2021-22",
+  "kind": "tariff_order",
+  "years": [
+   "FY2021-22"
+  ],
+  "decides": [],
+  "listing": "https://www.derc.gov.in/tarriff-orders?page=3",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.derc.gov.in/tarriff-orders?page=3); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 2855095,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.derc.gov.in/sites/default/files/BYPL%20FY%202021-22.pdf",
+  "commission": "DERC",
+  "title": "BSES Yamuna Power Limited Tariff Order FY 2021-22",
+  "sha256": "d37b33e4ac5b5e0d7fd8a50e53aed1e72cd9820037646d6b85685ad7bda6c34e",
+  "licensees": [
+   "BYPL"
+  ],
+  "arr_year": "FY2021-22",
+  "kind": "tariff_order",
+  "years": [
+   "FY2021-22"
+  ],
+  "decides": [],
+  "listing": "https://www.derc.gov.in/tarriff-orders?page=3",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.derc.gov.in/tarriff-orders?page=3); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 3049996,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.derc.gov.in/sites/default/files/TPDDL%20FY%202021-22.pdf",
+  "commission": "DERC",
+  "title": "Tata Power Delhi Distribution Limited Tariff Order FY 2021-22",
+  "sha256": "fb940cc2a57aaab45eda8b104fd5bb4a9b4a895dd1dd73778682edf43d292a2e",
+  "licensees": [
+   "TPDDL"
+  ],
+  "arr_year": "FY2021-22",
+  "kind": "tariff_order",
+  "years": [
+   "FY2021-22"
+  ],
+  "decides": [],
+  "listing": "https://www.derc.gov.in/tarriff-orders?page=3",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.derc.gov.in/tarriff-orders?page=3); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 3060222,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.tnpdcl.org/static/tnpdcl/assets/files/tariff/2025/TO062025/TO62025.pdf",
+  "commission": "TNERC",
+  "title": "TNPDCL Tariff Order, 2025 - TNERC T.O.No.6 of 2025 dt 30-06-2025, Determination of Tariff for Distribution for FY 2025-26 (suo-motu)",
+  "sha256": "efc5a4600d4319bc81565a0001540fd2f5f5301461f9e61d5ec0f345acdf31c4",
+  "licensees": [
+   "TNPDCL"
+  ],
+  "arr_year": "FY2025-26",
+  "kind": "tariff_order",
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "listing": "https://www.tnpdcl.org/en/tnpdcl/billing-services/schedules-tariff/",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.tnpdcl.org/en/tnpdcl/billing-services/schedules-tariff/); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 1082004,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.apspdcl.in/files/regulatory/Tariff Order for the year 2026-27.pdf",
+  "commission": "APERC",
+  "title": "Retail Supply Tariffs FY 2026-27 - Order on Tariff for Retail Sale of Electricity during FY 2026-27 & DISCOMs' True up/Down and Performance Review FY 2024-25, 25th March 2026",
+  "sha256": "56d2ce7c4f8e30286b83bd36512ef44b96078ce4a2f0973d65ab2f97498ce72d",
+  "licensees": [
+   "APSPDCL",
+   "APCPDCL",
+   "APEPDCL"
+  ],
+  "arr_year": "FY2026-27",
+  "kind": "tariff_order",
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "listing": "https://www.apspdcl.in/electricity-tariff.php",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.apspdcl.in/electricity-tariff.php); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 101964753,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://www.apspdcl.in/files/regulatory/TO_2025-26.pdf",
+  "commission": "APERC",
+  "title": "Retail Supply Tariff FY 2025-26 - Order on Tariff for Retail Sale of Electricity during FY 2025-26 & DISCOMs' Performance Review FY 2023-24, 20th Feb 2025",
+  "sha256": "4222e32e8a423b76854e68bc1efcefab64ba396531988ebf8575f8aa78fb817e",
+  "licensees": [
+   "APSPDCL",
+   "APCPDCL",
+   "APEPDCL"
+  ],
+  "arr_year": "FY2025-26",
+  "kind": "tariff_order",
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "listing": "https://www.apspdcl.in/electricity-tariff.php",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://www.apspdcl.in/electricity-tariff.php); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 14078388,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://tgnpdcl.com/DocView/ANNOUNCEMENT/322",
+  "commission": "TGERC",
+  "title": "Order on Revised ARR & Retail Supply Tariffs for FY 2026-27 for Retail Supply Business and CSS for FY 2026-27, dated 30.03.2026",
+  "sha256": "1d76cba9d979bef236b02b3ed98a386dac37c63bf2824338eb71c9adf73baf74",
+  "licensees": [
+   "TGSPDCL",
+   "TGNPDCL"
+  ],
+  "arr_year": "FY2026-27",
+  "kind": "tariff_order",
+  "years": [
+   "FY2026-27"
+  ],
+  "decides": [],
+  "listing": "https://tgnpdcl.com/Announcements",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://tgnpdcl.com/Announcements); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 7154295,
+  "fetched_on": "2026-11-14"
+ },
+ {
+  "url": "https://tgnpdcl.com/DocView/ANNOUNCEMENT/268",
+  "commission": "TGERC",
+  "title": "Order on Revised ARR of Retail Supply Business and Retail Supply Tariffs for FY 2025-26, dated 29.04.2025",
+  "sha256": "14c31930f718b1d719dce0d0e438fbf78e5ef07a94b9f63edff9d5ab35cb7d7f",
+  "licensees": [
+   "TGSPDCL",
+   "TGNPDCL"
+  ],
+  "arr_year": "FY2025-26",
+  "kind": "tariff_order",
+  "years": [
+   "FY2025-26"
+  ],
+  "decides": [],
+  "listing": "https://tgnpdcl.com/Announcements",
+  "found_by": "session discovery agent 2026-11-14: fetched from the licensee's or commission's own site (https://tgnpdcl.com/Announcements); %PDF and SHA-256 checked, text layer checked",
+  "http": 200,
+  "error": null,
+  "bytes": 7921323,
+  "fetched_on": "2026-11-14"
  }
 ]
