@@ -60,7 +60,7 @@ export default async function UtilityPage({ params }: { params: Promise<{ code: 
       utilityOrders(sql, code),
       sql`SELECT o.order_id, o.arr_year, o.title, count(*)::int AS tables FROM section_tables t JOIN orders o ON o.order_id = t.order_id
           JOIN order_utilities ou ON ou.order_id = o.order_id AND ou.utility = ${code}
-          GROUP BY o.order_id ORDER BY o.arr_year DESC NULLS LAST, o.order_id DESC`,
+          GROUP BY o.order_id ORDER BY o.arr_year DESC NULLS LAST, count(*) DESC, o.order_id DESC`,
     ]);
     return { u, arr, heads, keyParams, orders, sectioned };
   });

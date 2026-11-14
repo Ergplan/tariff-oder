@@ -42,7 +42,7 @@ export default async function StatePage({ params }: { params: Promise<{ code: st
                  count(*) FILTER (WHERE t.section = 'tod')::int AS tod
           FROM section_tables t JOIN orders o ON o.order_id = t.order_id
           WHERE EXISTS (SELECT 1 FROM order_utilities ou JOIN utilities u ON u.code = ou.utility WHERE ou.order_id = o.order_id AND u.state = ${code})
-          GROUP BY o.order_id ORDER BY o.arr_year DESC NULLS LAST, o.order_id DESC`,
+          GROUP BY o.order_id ORDER BY o.arr_year DESC NULLS LAST, count(*) DESC, o.order_id DESC`,
     ]);
     return { state, commissions, utilities, orders, years, sectioned };
   });

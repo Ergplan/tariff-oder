@@ -204,3 +204,5 @@ details.more summary { cursor: pointer; font: 0.76rem var(--mono); letter-spacin
   .sectiontabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .sectiontabs .chip { white-space: nowrap; flex: 0 0 auto; }
 }
+.cathead { overflow-wrap: anywhere; }
+.sectable h4 .tag, .chip .tag { white-space: normal; overflow-wrap: anywhere; }
